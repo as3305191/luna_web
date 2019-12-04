@@ -74,9 +74,9 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=210.65.47.72; dbname=heart_failure; charset=utf8;',
-	'username' => 'jamie',
-	'password' => '!jamie',
+	'dsn'	=> 'mysql:host=35.221.254.13; dbname=body_fat; charset=utf8;',
+	'username' => 'apple',
+	'password' => '!apple',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
