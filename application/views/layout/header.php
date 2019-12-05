@@ -4,7 +4,7 @@
 
 		<!-- PLACE YOUR LOGO HERE -->
 		<span id="logo">
-			<img src="<?= base_url() ?>img/heart_failure/logo/group.png" alt="Heart_failure">
+			<img src="<?= base_url() ?>img/body_fat/logo/logo_1.png" alt="body_fat">
 		</span>
 		<!-- END LOGO PLACEHOLDER -->
 	</div>

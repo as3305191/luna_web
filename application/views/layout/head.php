@@ -39,7 +39,7 @@ specific styles this will also ensure you retrain your customization with each S
 <link rel="stylesheet" type="text/css" media="screen" href="<?= base_url('css/my.css') ?>">
 
 <!-- #FAVICONS -->
-<link rel="icon" type="image/png" href="<?= base_url('img/heart_failure/logo/group.png')  ?>" />
+<link rel="icon" type="image/png" href="<?= base_url('img/body_fat/logo/logo_1.png')  ?>" />
 
 <!-- #APP SCREEN / ICONS -->
 <!-- Specifying a Webpage Icon for Web Clip

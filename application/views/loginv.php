@@ -78,7 +78,7 @@
 				<div class="row center mb-10">
 					<div class=" no-padding ">
 						<div class="col-xs-12 col-sm-8 col-md-5 col-lg-4" style="text-align: center; margin: 0px auto!important; float: none!important;">
-							<img width="120" src="<?= base_url('img/heart_failure/logo/group.png') ?>" >
+							<img width="120" src="<?= base_url('img/body_fat/logo/logo_1.png') ?>" >
 						</div>
 					</div>
 				</div>
