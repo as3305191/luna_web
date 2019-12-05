@@ -14,14 +14,27 @@ class Members_dao extends MY_Model {
 		);
 	}
 
+	function find_by_condition($f){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+
+		if(!empty($f['account'])){
+			$this -> db -> where("_m.account", $f['account']);
+		}
+
+		if(!empty($f['email'])){
+			$this -> db -> or_where('_m.email', $f['email']);
+		}
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
+
 	function find_by_value($f){
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("users s", "s.id = _m.user_doctor_id", "left");
-		$this -> db -> join("users s1", "s1.id = _m.user_manager_id", "left");
-
 		$this -> db -> select('_m.*');
-		$this -> db -> select('s.user_name as user_doctor_name');
-		$this -> db -> select('s1.user_name as user_manager_name');
 
 		if(!empty($f['account'])){
 			$this -> db -> where("_m.account", $f['account']);
@@ -41,15 +54,6 @@ class Members_dao extends MY_Model {
 		return $this -> find_all();
 	}
 
-	function find_by_stations_and_role($all_stations,$role_id){
-		$id_arr_str = implode(',', $all_stations);
-		$this -> db -> where("(station_id in ({$id_arr_str}))");
-		$this -> db -> where("role_id", $role_id);
-		// $this -> db -> order_by("station_id", "asc");
-		$this -> db -> order_by("pos", "asc");
-		$this -> db -> order_by("account", "asc");
-		return $this -> find_all();
-	}
 
 	function find_by_parameter($id){
 		$this -> db -> from("$this->table_name as _m");
