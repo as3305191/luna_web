@@ -109,6 +109,29 @@ class Members extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function me(){
+		$res = array();
+		$id = $this -> get_post('member_id');
+		if(!empty($id)) {
+			$m = $this -> dao -> find_by_id($id);
+			if(!empty($m)){
+				$res['success'] = TRUE;
+				$res['member'] = $m;
+			}else{
+				$res['error_code'][] = "member not found";
+				$res['error_message'][] = "使用者不存在";
+			}
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
+
+
+
+
 
 
 
@@ -127,96 +150,7 @@ class Members extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
-	public function me(){
-		$id = $this -> get_post('member_id');
-		$f = array();
-		if(!empty($id)) {
-			$f['id'] = $id;
-			$m = $this -> dao -> find_by_value($f);
-			if(!empty($m)){
-				$res['success'] = TRUE;
-				$lastTime = $m[0] -> last_login_time;
-				$nowtime = date("Y-m-d");
-				$date = strtotime($lastTime);
-				$lastDate = date('Y-m-d', $date);
-				$diff = abs(strtotime($lastDate) - strtotime($nowtime));
-				$years = floor($diff / (365*60*60*24));
-				$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-				$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 
-				$m2 = $this -> log_dao -> find_by_value(array('member_id'=> $id));
-				if(!empty($m2)){
-					$res['login'] = TRUE;
-				}
-
-				// if($days > 1){
-				// 	$res['discontinue'] = TRUE;
-				// }
-
-				$level_status = $m[0]-> level_status;
-				if($level_status >0){
-					$level_data = array('level'=> $level_status);
-					$setting = $this -> record_setting_dao -> find_by_id(1);
-					$setting_count = 0;
-					if($level_status == 1){
-						$setting_count = $setting -> level_1;
-					}
-					if($level_status == 2){
-						$setting_count = $setting -> level_2;
-					}
-					if($level_status == 3){
-						$setting_count = $setting -> level_3;
-					}
-					if($level_status == 4){
-						$setting_count = $setting -> level_4;
-					}
-					$level_data['setting_count'] = $setting_count;
-
-					$current_count = 0;
-					$log = $this -> level_record_log_dao -> find_by_value(array('member_id'=> $id ,'level'=> $level_status));
-					if(!empty($log)){
-						$current_count = $log-> number;
-					}
-					$rest = $setting_count - $current_count;
-					$level_data['level_count'] = $current_count;
-					$level_data['rest_count'] = $rest;
-
-					$res['level'] = $level_data;
-				}
-
-				$last_update_index_time = $m[0]-> last_update_index_time;
-				$last_update_question_time = $m[0]-> last_update_question_time;
-				$last_update_hw_time = $m[0]-> last_update_hw_time;
-
-				if (date('Y-m-d') == date('Y-m-d', strtotime($last_update_index_time))) {
-					$m[0]->index_time = true;
-				}else{
-					$m[0]->index_time = false;
-				}
-
-				if (date('Y-m-d') == date('Y-m-d', strtotime($last_update_question_time))) {
-					$m[0]->question_time = true;
-				}else{
-					$m[0]->question_time = false;
-				}
-
-				if (date('Y-m-d') == date('Y-m-d', strtotime($last_update_hw_time))) {
-					$m[0]->hw_time = true;
-				}else{
-					$m[0]->hw_time = false;
-				}
-
-				$res['member'] = $m[0];
-			}else{
-				$res['error_code'][] = "member not found";
-				$res['error_message'][] = "使用者不存在";
-			}
-		}else{
-			$res['error_code'][] = "columns_required";
-			$res['error_message'][] = "缺少必填欄位";
-		}
-		$this -> to_json($res);
-	}
 
 	public function update_ip(){
 		$id = $this -> get_post('member_id');
