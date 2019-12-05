@@ -23,104 +23,13 @@ class Members extends MY_Base_Controller {
 		echo "index";
 	}
 
-	// 2019/01/08
 	// 登入
-	// public function login() {
-	// 	$account = $this -> get_post('account');
-	// 	$password = $this -> get_post('password');
-	// 	$device = $this -> get_post('device');
-	//
-	// 	$f = array();
-	// 	if(!empty($account) && !empty($password) && !empty($device)) {
-	// 			$f['account'] = $account;
-	// 			$m = $this -> dao -> find_by_value($f);
-	// 			if(!empty($m)) {
-	// 				$m1 = $m[0];
-	// 				if($m1 -> password == $password) {
-	// 					$lastTime = $m1 -> last_login_time;
-	// 					$loginCount = $m1 -> login_count;
-	//
-	// 					$nowtime = date("Y-m-d H:i:s");
-	// 					$nowdate = date("Y-m-d");
-	//
-	// 					$m2 = $this -> log_dao -> find_by_value(array('member_id'=> $m1-> id));
-	// 					if(!empty($m2)){
-	// 						$this -> log_dao -> update(array('member_id'=> $m1 -> id,'update_time'=> $nowtime), $m2-> id);
-	// 					}else {
-	// 						// 新增登入log紀錄
-	// 						$id = $this -> log_dao -> insert(array('member_id'=> $m1 -> id,'device'=> $device,'create_time'=> $nowtime));
-	//
-	// 						// 最後登入時間
-	// 						$start = strtotime($lastTime);
-	// 						$lastDate = date('Y-m-d', $start);
-	//
-	// 						$diff = abs(strtotime($lastDate) - strtotime($nowdate));
-	// 						$years = floor($diff / (365*60*60*24));
-	// 						$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-	// 						$timeDiff = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
-	//
-	// 						if($timeDiff == 1){
-	// 							$setting = $this -> record_setting_dao -> find_by_id(1);
-	// 							$day = $setting -> login;
-	//
-	// 							// 更新登入狀況
-	//
-	// 							$updateData = array('last_login_time'=> $nowtime);
-	//
-	// 							$newCount = $loginCount + 1;
-	// 							$updateCount = 0;
-	// 							$res['newCount'] = $newCount;
-	//
-	// 							if($newCount > $day - 1){
-	// 								$updateCount = $newCount - $day;
-	// 								if($seed == 3){
-	// 									$updateData['seed'] = 1;
-	// 								}else{
-	// 									$updateData['seed'] = $seed+1;
-	// 								}
-	// 							}else{
-	// 								$updateCount = $newCount;
-	// 							}
-	// 							$updateData['login_count'] = $updateCount;
-	//
-	// 							//連續登入七天開啟第一關
-	// 							if($m1->level_status == 0 && $newCount == $day -1 ){
-	// 								$updateData['level_status'] = 1;
-	// 							}
-	// 							$this -> dao -> update($updateData,$m1-> id);
-	// 						}else{
-	// 							// 中斷一天中重新計算
-	// 							$this -> dao -> update(array('last_login_time'=> $nowtime,'login_count'=> 1),$m1-> id);
-	// 							$res['is_break'] = TRUE;
-	// 						}
-	// 						$this -> tree_record_dao -> insert(array('member_id'=> $m1-> id,'score'=> 1,'record_id'=>$id));
-	// 					}
-	//
-	// 					$res['success'] = TRUE;
-	// 					$res['member'] = $m1;
-	// 				} else {
-	// 					$res['error_code'][] = "wrong_password";
-	// 					$res['error_message'][] = "密碼錯誤";
-	// 				}
-	// 			} else {
-	// 				$res['error_code'][] = "account_not_found";
-	// 				$res['error_message'][] = "查無此帳號";
-	// 			}
-	// 	} else {
-	// 		$res['error_code'][] = "columns_required";
-	// 		$res['error_message'][] = "缺少必填欄位";
-	// 	}
-	// 	$this -> to_json($res);
-	// }
-
-	// 登入更新
-	public function login() {
+	public function do_login() {
 		$account = $this -> get_post('account');
 		$password = $this -> get_post('password');
-		$device = $this -> get_post('device');
 
 		$f = array();
-		if(!empty($account) && !empty($password) && !empty($device)) {
+		if(!empty($account) && !empty($password)) {
 				$f['account'] = $account;
 				$m = $this -> dao -> find_by_value($f);
 				if(!empty($m)) {
@@ -143,100 +52,63 @@ class Members extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
-	public function login_log() {
-		$member_id = $this -> get_post('member_id');
-		$device = $this -> get_post('device');
-		$ip = $this -> get_post('ip');
+	// 註冊
+	public function do_register() {
+		$res = array();
+		$account = $this -> get_post('account');
+		$password = $this -> get_post('password');
+		$user_name = $this -> get_post('user_name');
+		$birth = $this -> get_post('birth');
+		$gender = $this -> get_post('gender');
+		$email = $this -> get_post('email');
 
-		$f = array();
-		if(!empty($member_id) && !empty($device)) {
+		if(!empty($account) && !empty($password) && !empty($user_name) && !empty($birth) && $gender !='' && !empty($email)) {
+				$lista = $this -> dao -> find_by_condition(array('account' => $account));
+				$listb = $this -> dao -> find_by_condition(array('email' => $email));
 
-			$m1 = $this -> dao -> find_by_id($member_id);
-			if(!empty($m1)) {
-
-
-				$lastTime = $m1 -> last_login_time;
-				$loginCount = $m1 -> login_count;
-				$seed = $m1 -> seed;
-
-				$nowtime = date("Y-m-d H:i:s");
-				$nowdate = date("Y-m-d");
-
-				$m2 = $this -> log_dao -> find_by_value(array('member_id'=> $m1-> id));
-				if(!empty($m2)){
-					$this -> log_dao -> update(array('member_id'=> $m1 -> id,'update_time'=> $nowtime), $m2-> id);
-					if(!empty($ip)){
-						$this -> dao -> update(array('ip'=>$ip),$m1-> id);
-					}
-				}else {
-					// 新增登入log紀錄
-					$id = $this -> log_dao -> insert(array('member_id'=> $m1 -> id,'device'=> $device,'create_time'=> $nowtime));
-
-					// 最後登入時間
-					$start = strtotime($lastTime);
-					$lastDate = date('Y-m-d', $start);
-
-					$diff = abs(strtotime($lastDate) - strtotime($nowdate));
+				if(empty($lista) && empty($listb)){
+					$date = strtotime($birth);
+					$datetime1 = date('Y-m-d', $date);
+					$datetime2 = date("Y-m-d");
+					$diff = abs(strtotime($datetime2) - strtotime($datetime1));
 					$years = floor($diff / (365*60*60*24));
-					$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-					$timeDiff = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
 
-					// if($timeDiff == 1){
-					$setting = $this -> record_setting_dao -> find_by_id(1);
-					$day = $setting -> login;
+					$insert_data = array('account' => $account,
+										 'password' => $password,
+									   'user_name' => $user_name,
+									   'birth' => $birth,
+									   'gender' => $gender,
+										 'age' => $years,
+									   'email' => $email
+									 );
 
-					// 更新登入狀況
+					$last_id = $this -> dao -> insert($insert_data);
 
-					$updateData = array('last_login_time'=> $nowtime);
 
-					$newCount = $loginCount + 1;
-					$updateCount = 0;
-					$res['newCount'] = $newCount;
-
-					if($newCount > $day - 1){
-						$updateCount = $newCount - $day;
-						if($seed == 3){
-							$updateData['seed'] = 1;
-						}else{
-							$updateData['seed'] = $seed+1;
-						}
-					}else{
-						$updateCount = $newCount;
+					$res['success'] = TRUE;
+					$res['id'] = $last_id;
+				}else if(!empty($lista) && !empty($listb)){
+					$res['error_code'][] = "already_registered";
+					$res['error_message'][] = "帳號及信箱已註冊";
+				}else{
+					if(!empty($lista)){
+						$res['error_code'][] = "already_registered";
+						$res['error_message'][] = "帳號已註冊";
+					}else if(!empty($listb)){
+						$res['error_code'][] = "already_registered";
+						$res['error_message'][] = "信箱已註冊";
 					}
-					$updateData['login_count'] = $updateCount;
-
-					// 連續登入七天開啟第一關
-					// if($m1->level_status == 0 && $newCount == $day -1 ){
-					// 	$updateData['level_status'] = 1;
-					// }
-
-					if(!empty($ip)){
-						$updateData['ip'] = $ip;
-					}
-					$this -> dao -> update($updateData,$m1-> id);
-
-					// }else{
-					// 	// 中斷一天中重新計算
-					// 	$this -> dao -> update(array('last_login_time'=> $nowtime,'login_count'=> 1),$m1-> id);
-					// 	$res['is_break'] = TRUE;
-					// }
-
-					$this -> tree_record_dao -> insert(array('member_id'=> $member_id,'score'=> 1,'record_id'=>$id,'type'=> 0));
 				}
-
-				$res['success'] = TRUE;
-			} else {
-				$res['error_code'][] = "account_not_found";
-				$res['error_message'][] = "查無此帳號";
-			}
-
-
 		} else {
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";
 		}
 		$this -> to_json($res);
 	}
+
+
+
+
 
 	public function do_again(){
 		$member_id = $this -> get_post('member_id');
