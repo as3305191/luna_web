@@ -61,8 +61,10 @@ class Members extends MY_Base_Controller {
 		$birth = $this -> get_post('birth');
 		$gender = $this -> get_post('gender');
 		$email = $this -> get_post('email');
+		$height = $this -> get_post('height');
 
-		if(!empty($account) && !empty($password) && !empty($user_name) && !empty($birth) && $gender !='' && !empty($email)) {
+
+		if(!empty($account) && !empty($password) && !empty($user_name) && !empty($birth) && $gender !='' && !empty($email) && !empty($height)) {
 				$lista = $this -> dao -> find_by_condition(array('account' => $account));
 				$listb = $this -> dao -> find_by_condition(array('email' => $email));
 
@@ -78,6 +80,7 @@ class Members extends MY_Base_Controller {
 									   'user_name' => $user_name,
 									   'birth' => $birth,
 									   'gender' => $gender,
+										 'height' => $height,
 										 'age' => $years,
 									   'email' => $email
 									 );
