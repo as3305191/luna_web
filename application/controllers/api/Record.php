@@ -5,6 +5,9 @@ class Record extends MY_Base_Controller {
 		parent::__construct();
 
 		$this -> load -> model('Members_dao', 'dao');
+		$this -> load -> model('Records_dao', 'records_dao');
+
+
 		$this -> load -> model('Members_log_dao', 'log_dao');
 		$this -> load -> model('Members_bonus_record_dao', 'bonus_record_dao');
 		$this -> load -> model('Question_dao', 'question_dao');
@@ -28,6 +31,67 @@ class Record extends MY_Base_Controller {
 	function index() {
 		echo "index";
 	}
+
+
+	public function add_record(){
+		$member_id = $this -> get_post('member_id');
+		$weight = $this -> get_post('weight');
+		$body_fat = $this -> get_post('body_fat');
+		$visceral_fat = $this -> get_post('visceral_fat');
+		$bmr = $this -> get_post('bmr');
+		$bone_mass = $this -> get_post('bone_mass');
+		$physical_age = $this -> get_post('physical_age');
+		$moisture = $this -> get_post('moisture');
+		$protein = $this -> get_post('protein');
+		$skeletal_muscle = $this -> get_post('skeletal_muscle');
+
+		if(!empty($member_id)){
+			$m = $this -> dao -> find_by_value($member_id);
+			if(!empty($m)) {
+				$insert_data = array('member_id' => $member_id,
+									 'weight' => $weight,
+									 'body_fat' => $body_fat,
+									 'visceral_fat' => $visceral_fat,
+									 'bmr' => $bmr,
+									 'bone_mass' => $bone_mass,
+									 'physical_age' => $physical_age,
+									 'moisture' => $moisture,
+									 'protein' => $protein,
+									 'skeletal_muscle' => $skeletal_muscle
+								 );
+				$id = $this -> records_dao -> insert($insert_data);
+				$res['success'] = TRUE;
+				$res['id'] = $id;
+			} else {
+				$res['error_code'][] = "account_not_found";
+				$res['error_message'][] = "查無此會員";
+			}
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+
+		$this -> to_json($res);
+	}
+
+	public function find_last_record(){
+		$member_id = $this -> get_post('member_id');
+		if(!empty($member_id)){
+			$m = $this -> records_dao -> find_by_value(array('member_id' => $member_id));
+
+			$res['success'] = TRUE;
+			$res['record'] = $m;
+
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
+
+
+
 
 
 	// 新增健康日記
