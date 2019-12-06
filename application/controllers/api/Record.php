@@ -80,8 +80,9 @@ class Record extends MY_Base_Controller {
 			$m = $this -> records_dao -> find_by_value(array('member_id' => $member_id));
 
 			$res['success'] = TRUE;
-			$res['record'] = $m;
-
+			if(!empty($m)){
+				$res['record'] = $m;
+			}
 		}else{
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";
