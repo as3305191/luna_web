@@ -44,6 +44,7 @@ class Record extends MY_Base_Controller {
 		$moisture = $this -> get_post('moisture');
 		$protein = $this -> get_post('protein');
 		$skeletal_muscle = $this -> get_post('skeletal_muscle');
+		$bmi = $this -> get_post('bmi');
 
 		if(!empty($member_id)){
 			$m = $this -> dao -> find_by_value($member_id);
@@ -57,7 +58,8 @@ class Record extends MY_Base_Controller {
 									 'physical_age' => $physical_age,
 									 'moisture' => $moisture,
 									 'protein' => $protein,
-									 'skeletal_muscle' => $skeletal_muscle
+									 'skeletal_muscle' => $skeletal_muscle,
+									 'bmi' => $bmi
 								 );
 				$id = $this -> records_dao -> insert($insert_data);
 				$res['success'] = TRUE;
