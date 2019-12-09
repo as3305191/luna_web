@@ -85,9 +85,23 @@ class Record extends MY_Base_Controller {
 			$res['success'] = TRUE;
 			if(!empty($m)){
 				$weight_kg = $m->weight/1000;
-				$body_fat =  $m->weight/1000 *$m->body_fat/100;
+				$body_fat =  $m->weight/1000 * $m->body_fat/100;
+				$visceral_fat =  $m->weight/1000 * $m->visceral_fat/100;
+				$protein =  $m->weight/1000 * $m->protein/100;
+				$moisture =  $m->weight/1000 * $m->moisture/100;
+				$muscle =  $m->weight/1000 * $m->muscle/100;
+				$bone_mass =  $m->weight/1000 * $m->bone_mass/100;
+				$skeletal_muscle =  $m->weight/1000 * $m->skeletal_muscle/100;
+
 				$m->weight =sprintf("%.1f",$weight_kg);
 				$m->body_fat_weight =sprintf("%.1f",$body_fat);
+				$m->visceral_fat_weight =sprintf("%.1f",$visceral_fat);
+				$m->protein_weight =sprintf("%.1f",$protein);
+				$m->moisture_weight =sprintf("%.1f",$moisture);
+				$m->muscle_weight =sprintf("%.1f",$muscle);
+				$m->bone_mass_weight =sprintf("%.1f",$bone_mass);
+				$m->skeletal_muscle_weight =sprintf("%.1f",$skeletal_muscle);
+
 				$res['record'] = $m;
 			}
 		}else{
