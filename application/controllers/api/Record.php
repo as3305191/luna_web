@@ -112,6 +112,42 @@ class Record extends MY_Base_Controller {
 	}
 
 
+		public function list_all_record(){
+			$member_id = $this -> get_post('member_id');
+			if(!empty($member_id)){
+				$list = $this -> records_dao -> find_by_parameter(array('member_id' => $member_id));
+
+				$res['success'] = TRUE;
+				foreach ($list as $each) {
+					$weight_kg = $each->weight/1000;
+					$body_fat = $each->weight/1000 * $each->body_fat/100;
+					$visceral_fat = $each->weight/1000 * $each->visceral_fat/100;
+					$protein = $each->weight/1000 * $each->protein/100;
+					$moisture = $each->weight/1000 * $each->moisture/100;
+					$muscle = $each->weight/1000 * $each->muscle/100;
+					$bone_mass = $each->weight/1000 * $each->bone_mass/100;
+					$skeletal_muscle =  $each->weight/1000 * $each->skeletal_muscle/100;
+
+					$each->weight =sprintf("%.1f",$weight_kg);
+					$each->body_fat_weight =sprintf("%.1f",$body_fat);
+					$each->visceral_fat_weight =sprintf("%.1f",$visceral_fat);
+					$each->protein_weight =sprintf("%.1f",$protein);
+					$each->moisture_weight =sprintf("%.1f",$moisture);
+					$each->muscle_weight =sprintf("%.1f",$muscle);
+					$each->bone_mass_weight =sprintf("%.1f",$bone_mass);
+					$each->skeletal_muscle_weight =sprintf("%.1f",$skeletal_muscle);
+
+					$res['list'] = $list;
+				}
+
+			}else{
+				$res['error_code'][] = "columns_required";
+				$res['error_message'][] = "缺少必填欄位";
+			}
+			$this -> to_json($res);
+		}
+
+
 
 
 

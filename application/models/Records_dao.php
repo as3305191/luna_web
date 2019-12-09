@@ -32,6 +32,23 @@ class Records_dao extends MY_Model {
 		return NULL;
 	}
 
+	function find_by_parameter($f){
+		$this -> db -> from("$this->table_name as _m");
+
+		// select
+		$this -> db -> select('_m.*');
+
+		if(!empty($f['member_id'])){
+			$this -> db -> where('_m.member_id',$f['member_id']);
+		}
+		$this -> db -> order_by("id", "desc");
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
+
 
 	function query_ajax($data) {
 		$start = $data['start'];
