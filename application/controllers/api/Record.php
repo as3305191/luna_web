@@ -40,16 +40,12 @@ class Record extends MY_Base_Controller {
 		$subcutaneous_fat = $this -> get_post('subcutaneous_fat');
 		$visceral_fat = $this -> get_post('visceral_fat');
 		$bmr = $this -> get_post('bmr');
-
-		$bmr = $this -> get_post('bmr');
 		$bone_mass = $this -> get_post('bone_mass');
 		$physical_age = $this -> get_post('physical_age');
 		$moisture = $this -> get_post('moisture');
 		$protein = $this -> get_post('protein');
 		$skeletal_muscle = $this -> get_post('skeletal_muscle');
 		$bmi = $this -> get_post('bmi');
-
-
 		if(!empty($member_id)){
 			$m = $this -> dao -> find_by_value($member_id);
 			if(!empty($m)) {
