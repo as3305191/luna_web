@@ -37,7 +37,10 @@ class Record extends MY_Base_Controller {
 		$member_id = $this -> get_post('member_id');
 		$weight = $this -> get_post('weight');
 		$body_fat = $this -> get_post('body_fat');
+		$subcutaneous_fat = $this -> get_post('subcutaneous_fat');
 		$visceral_fat = $this -> get_post('visceral_fat');
+		$bmr = $this -> get_post('bmr');
+
 		$bmr = $this -> get_post('bmr');
 		$bone_mass = $this -> get_post('bone_mass');
 		$physical_age = $this -> get_post('physical_age');
@@ -46,12 +49,14 @@ class Record extends MY_Base_Controller {
 		$skeletal_muscle = $this -> get_post('skeletal_muscle');
 		$bmi = $this -> get_post('bmi');
 
+
 		if(!empty($member_id)){
 			$m = $this -> dao -> find_by_value($member_id);
 			if(!empty($m)) {
 				$insert_data = array('member_id' => $member_id,
 									 'weight' => $weight,
 									 'body_fat' => $body_fat,
+									 'subcutaneous_fat' => $subcutaneous_fat,
 									 'visceral_fat' => $visceral_fat,
 									 'bmr' => $bmr,
 									 'bone_mass' => $bone_mass,
