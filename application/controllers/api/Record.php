@@ -83,10 +83,11 @@ class Record extends MY_Base_Controller {
 
 			$res['success'] = TRUE;
 			if(!empty($m)){
-				$body_fat =  $m->weight *$m->body_fat/100;
+				$weight_kg = $m->weight/1000;
+				$body_fat =  $m->weight/1000 *$m->body_fat/100;
+				$m->weight =sprintf("%.1f",$weight_kg);
 				$m->body_fat_weight =sprintf("%.1f",$body_fat);
 				$res['record'] = $m;
-
 			}
 		}else{
 			$res['error_code'][] = "columns_required";
