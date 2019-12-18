@@ -59,6 +59,50 @@ class Records_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_min_weight($f){
+   	$this -> db -> from("$this->table_name as _m");
+
+		// select
+		$this -> db -> select('_m.*');
+
+		if(!empty($f['member_id'])){
+			$this -> db -> where('_m.member_id',$f['member_id']);
+		}
+
+		$this -> db -> order_by("weight", "asc");
+
+		$query = $this -> db -> get($this -> table_name);
+
+		if ($query -> num_rows() > 0) {
+			$row = $query -> row();
+			return $row;
+		}
+		return NULL;
+	}
+
+	function find_max_weight($f){
+   	$this -> db -> from("$this->table_name as _m");
+
+		// select
+		$this -> db -> select('_m.*');
+
+		if(!empty($f['member_id'])){
+			$this -> db -> where('_m.member_id',$f['member_id']);
+		}
+
+		$this -> db -> order_by("weight", "desc");
+
+		$query = $this -> db -> get($this -> table_name);
+
+		if ($query -> num_rows() > 0) {
+			$row = $query -> row();
+			return $row;
+		}
+		return NULL;
+	}
+
+
+
 
 	function query_ajax($data) {
 		$start = $data['start'];

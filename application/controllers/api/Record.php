@@ -152,6 +152,35 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function diff_record(){
+		$member_id = $this -> get_post('member_id');
+		// $date = $this -> get_post('date');
+
+		if(!empty($member_id)){
+			$f = array('member_id' => $member_id);
+			if(!empty($date)){
+				$f['date'] = $date;
+			}
+
+			$max = $this -> records_dao -> find_max_weight($f);
+			$min = $this -> records_dao -> find_min_weight($f);
+
+			$res['success'] = TRUE;
+
+			$weight_kg = ($min->weight - $max->weight)/1000;
+			$body_fat_max = $max->body_fat * $max->weight/100;
+			$body_fat_min = $min->body_fat * $min->weight/100;
+			$body_diff = ($body_fat_min - $body_fat_max)/1000;
+
+			$res['weight_diff'] = number_format($weight_kg,1);
+			$res['body_fat_diff'] = number_format($body_diff,1);
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
 
 
 
