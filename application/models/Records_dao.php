@@ -41,6 +41,16 @@ class Records_dao extends MY_Model {
 		if(!empty($f['member_id'])){
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
+
+		if(!empty($f['date'])){
+			$date = date_create($f['date']);
+			$dateS = date_format($date,"Y-m-d 00:00:00");
+			$dateE = date_format($date,"Y-m-d 23:59:59");
+
+			$this -> db -> where('_m.create_time >=',$dateS);
+			$this -> db -> where('_m.create_time <=',$dateE);
+		}
+
 		$this -> db -> order_by("id", "desc");
 
 		$query = $this -> db -> get();
