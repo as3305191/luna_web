@@ -23,6 +23,10 @@ class Records_dao extends MY_Model {
 		}
 		$this -> db -> order_by("id", "desc");
 
+		if(!empty($f['date'])){
+			$this -> db -> where('_m.create_date =',$f['date']);
+		}
+
 		$query = $this -> db -> get();
 
 		if ($query -> num_rows() > 0) {
@@ -52,6 +56,25 @@ class Records_dao extends MY_Model {
 		}
 
 		$this -> db -> order_by("id", "desc");
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
+
+	function find_by_date($f){
+		$this -> db -> from("$this->table_name as _m");
+
+		// select
+
+		$this -> db -> select('_m.*');
+
+		if(!empty($f['member_id'])){
+			$this -> db -> where('_m.member_id',$f['member_id']);
+		}
+
+		$this -> db -> where('_m.pos', 1 );
 
 		$query = $this -> db -> get();
 		$list = $query -> result();

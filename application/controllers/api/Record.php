@@ -48,6 +48,8 @@ class Record extends MY_Base_Controller {
 		if(!empty($member_id)){
 			$m = $this -> dao -> find_by_value($member_id);
 			if(!empty($m)) {
+				$today = date("Y-m-d");
+
 				$insert_data = array('member_id' => $member_id,
 									 'weight' => $weight,
 									 'body_fat' => $body_fat,
@@ -59,8 +61,14 @@ class Record extends MY_Base_Controller {
 									 'moisture' => $moisture,
 									 'protein' => $protein,
 									 'skeletal_muscle' => $skeletal_muscle,
-									 'bmi' => $bmi
+									 'bmi' => $bmi,
+									 'create_date'=> $today
 								 );
+				$data = $this -> records_dao -> find_by_value(array('member_id'=>$member_id,'date'=>$today));
+				if(empty($data)){
+					$insert_data['pos'] = 1;
+				}
+
 				$id = $this -> records_dao -> insert($insert_data);
 				$res['success'] = TRUE;
 				$res['id'] = $id;
@@ -122,6 +130,47 @@ class Record extends MY_Base_Controller {
 			}
 
 			$list = $this -> records_dao -> find_by_parameter($f);
+
+			$res['success'] = TRUE;
+			foreach ($list as $each) {
+				$weight_kg = $each->weight/1000;
+				$body_fat = $each->weight/1000 * $each->body_fat/100;
+				$visceral_fat = $each->weight/1000 * $each->visceral_fat/100;
+				$protein = $each->weight/1000 * $each->protein/100;
+				$moisture = $each->weight/1000 * $each->moisture/100;
+				$muscle = $each->weight/1000 * $each->muscle/100;
+				$bone_mass = $each->weight/1000 * $each->bone_mass/100;
+				$skeletal_muscle =  $each->weight/1000 * $each->skeletal_muscle/100;
+
+				$each -> weight = number_format($weight_kg,1);
+				$each -> body_fat_weight = number_format($body_fat,1);
+				$each -> visceral_fat_weight = number_format($visceral_fat,1);
+				$each -> protein_weight = number_format($protein,1);
+				$each -> moisture_weight = number_format($moisture,1);
+				$each -> muscle_weight = number_format($muscle,1);
+				$each -> bone_mass_weight = number_format($bone_mass,1);
+				$each -> skeletal_muscle_weight = number_format($skeletal_muscle,1);
+			}
+
+			$res['list'] = $list;
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
+	public function list_all_record_by_date(){
+		$member_id = $this -> get_post('member_id');
+		$date = $this -> get_post('date');
+
+		if(!empty($member_id)){
+			$f = array('member_id' => $member_id);
+			if(!empty($date)){
+				$f['date'] = $date;
+			}
+
+			$list = $this -> records_dao -> find_by_date($f);
 
 			$res['success'] = TRUE;
 			foreach ($list as $each) {
