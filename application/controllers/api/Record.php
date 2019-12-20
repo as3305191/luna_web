@@ -204,6 +204,8 @@ class Record extends MY_Base_Controller {
 	public function diff_record(){
 		$member_id = $this -> get_post('member_id');
 		$type = $this -> get_post('type');
+		$id1 = $this -> get_post('id1');
+		$id2 = $this -> get_post('id2');
 
 		if(!empty($member_id)){
 			$f = array('member_id' => $member_id);
@@ -232,6 +234,11 @@ class Record extends MY_Base_Controller {
 						$data1 = $list[1];
 					}
 				}
+			}
+
+			if($type == '2'){ //自選資料
+				$data2 = $this -> records_dao -> find_by_id($id2);
+				$data1 = $this -> records_dao -> find_by_id($id1);
 			}
 
 			if($data1 != NULL && $data2 != NULL){
@@ -268,6 +275,12 @@ class Record extends MY_Base_Controller {
 		}
 		$this -> to_json($res);
 	}
+
+	public function diff_record_by_id(){
+
+
+	}
+
 
 
 
