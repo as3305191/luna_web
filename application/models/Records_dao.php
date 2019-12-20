@@ -67,7 +67,6 @@ class Records_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 
 		// select
-
 		$this -> db -> select('_m.*');
 
 		if(!empty($f['member_id'])){
@@ -76,11 +75,17 @@ class Records_dao extends MY_Model {
 
 		$this -> db -> where('_m.pos', 1 );
 
+		if(!empty($f['desc'])){
+			$this -> db -> order_by("id", "desc");
+		}
+
+
 		$query = $this -> db -> get();
 		$list = $query -> result();
 
 		return $list;
 	}
+
 
 	function find_min_weight($f){
    	$this -> db -> from("$this->table_name as _m");

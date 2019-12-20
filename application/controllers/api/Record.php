@@ -203,7 +203,7 @@ class Record extends MY_Base_Controller {
 
 	public function diff_record(){
 		$member_id = $this -> get_post('member_id');
-		// $date = $this -> get_post('date');
+		$type = $this -> get_post('type');
 
 		if(!empty($member_id)){
 			$f = array('member_id' => $member_id);
@@ -211,18 +211,57 @@ class Record extends MY_Base_Controller {
 				$f['date'] = $date;
 			}
 
-			$max = $this -> records_dao -> find_max_weight($f);
-			$min = $this -> records_dao -> find_min_weight($f);
-
 			$res['success'] = TRUE;
+			$data1 = NULL;
+			$data2 = NULL;
+			$weight_kg = 0;
+			$body_diff = 0;
 
-			$weight_kg = ($min->weight - $max->weight)/1000;
-			$body_fat_max = $max->body_fat * $max->weight/100;
-			$body_fat_min = $min->body_fat * $min->weight/100;
-			$body_diff = ($body_fat_min - $body_fat_max)/1000;
+			if(empty($type)){
+				$data1 = $this -> records_dao -> find_max_weight($f);
+				$data2 = $this -> records_dao -> find_min_weight($f);
+			}
+
+			if($type == '1'){ //最近兩日
+				$f['desc'] = TRUE;
+
+				$list = $this -> records_dao -> find_by_date($f);
+				if(!empty($list)){
+					$data2 = $list[0];
+					if(count($list) > 1){
+						$data1 = $list[1];
+					}
+				}
+			}
+
+			if($data1 != NULL && $data2 != NULL){
+				$weight_kg = ($data2->weight - $data1->weight)/1000;
+				$body_fat_d1 = $data1->body_fat * $data1->weight/100;
+				$body_fat_d2 = $data2->body_fat * $data2->weight/100;
+				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
+			}else if($data1 == NULL && $data2 == NULL){
+
+			}else if($data1 == NULL){
+				$weight_kg = ($data2->weight)/1000;
+				$body_fat_d1 = 0;
+				$body_fat_d2 = $data2->body_fat * $data2->weight/100;
+				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
+			}else if($data2 == NULL){
+				$weight_kg = (0 - $data1->weight)/1000;
+				$body_fat_d1 = $data1->body_fat * $data1->weight/100;
+				$body_fat_d2 = 0;
+				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
+			}
+
 
 			$res['weight_diff'] = number_format($weight_kg,1);
 			$res['body_fat_diff'] = number_format($body_diff,1);
+			if(!empty($data1)){
+				$res['data1'] = $data1;
+			}
+			if(!empty($data2)){
+				$res['data2'] = $data2;
+			}
 		}else{
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";
