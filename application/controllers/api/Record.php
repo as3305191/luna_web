@@ -6,24 +6,10 @@ class Record extends MY_Base_Controller {
 
 		$this -> load -> model('Members_dao', 'dao');
 		$this -> load -> model('Records_dao', 'records_dao');
+		$this -> load -> model('Ketone_dao', 'ketone_dao');
+		$this -> load -> model('Ketone_record_dao', 'ketone_record_dao');
 
 
-		$this -> load -> model('Members_log_dao', 'log_dao');
-		$this -> load -> model('Members_bonus_record_dao', 'bonus_record_dao');
-		$this -> load -> model('Question_dao', 'question_dao');
-		$this -> load -> model('Video_dao', 'video_dao');
-		$this -> load -> model('Video_detail_dao', 'video_detail_dao');
-		$this -> load -> model('Daily_record_index_dao', 'daily_record_index_dao');
-		$this -> load -> model('Daily_record_question_dao', 'daily_record_question_dao');
-		$this -> load -> model('Daily_record_question_detail_dao', 'daily_record_question_detail_dao');
-		$this -> load -> model('Relieve_method_dao', 'relieve_method_dao');
-		$this -> load -> model('Level_1_record_dao', 'level_1_record_dao');
-		$this -> load -> model('Level_2_record_dao', 'level_2_record_dao');
-		$this -> load -> model('Level_3_record_dao', 'level_3_record_dao');
-		$this -> load -> model('Level_4_record_dao', 'level_4_record_dao');
-		$this -> load -> model('Level_record_log_dao', 'level_record_log_dao');
-		$this -> load -> model('Record_setting_dao', 'record_setting_dao');
-		$this -> load -> model('Tree_record_dao', 'tree_record_dao');
 
 	}
 
@@ -32,6 +18,7 @@ class Record extends MY_Base_Controller {
 	}
 
 
+	// 新增秤重紀錄
 	public function add_record(){
 		$member_id = $this -> get_post('member_id');
 		$weight = $this -> get_post('weight');
@@ -84,6 +71,7 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	// 秤重最新紀錄
 	public function find_last_record(){
 		$member_id = $this -> get_post('member_id');
 		if(!empty($member_id)){
@@ -119,6 +107,7 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	// 秤重所有紀錄
 	public function list_all_record(){
 		$member_id = $this -> get_post('member_id');
 		$date = $this -> get_post('date');
@@ -160,6 +149,7 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	// 秤重所有紀錄(一天一筆)
 	public function list_all_record_by_date(){
 		$member_id = $this -> get_post('member_id');
 		$date = $this -> get_post('date');
@@ -201,7 +191,7 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
-	//列出
+	//列出月份日期
 	public function list_record_dates() {
 		$res = array('success' => TRUE);
 
@@ -219,7 +209,7 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
-
+  // 兩筆差異紀錄
 	public function diff_record(){
 		$member_id = $this -> get_post('member_id');
 		$type = $this -> get_post('type');
@@ -279,7 +269,6 @@ class Record extends MY_Base_Controller {
 				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
 			}
 
-
 			$res['weight_diff'] = number_format($weight_kg,1);
 			$res['body_fat_diff'] = number_format($body_diff,1);
 			if(!empty($data1)){
@@ -295,9 +284,57 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
-	public function diff_record_by_id(){
+	// 尿酮值列表
+	public function list_ketone(){
+		$list = $this -> ketone_dao -> find_all();
+		$res['success'] = TRUE;
+		$res['list'] = $list;
+		$this -> to_json($res);
+	}
 
+	// 新增尿酮紀錄
+	public function add_ketone_record(){
+		$member_id = $this -> get_post('member_id');
+		$ketone_id = $this -> get_post('ketone_id');
+		$date = $this -> get_post('date');
+		$time = $this -> get_post('time');
 
+		if(!empty($member_id) && !empty($ketone_id) && !empty($date) && !empty($time)) {
+			$insert_data = array('member_id'=> $member_id,
+											'ketone_id' => $ketone_id,
+											'date' => $date,
+											'time' => $time
+										);
+
+			$id = $this -> ketone_record_dao -> insert($insert_data);
+			$res['success'] = TRUE;
+			$res['id'] = $id;
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
+	// 尿酮紀錄列表
+	public function list_ketone_record(){
+		$member_id = $this -> get_post('member_id');
+		$page = $this -> get_post('page');
+
+		if(!empty($member_id)) {
+			$f = array('member_id' => $member_id);
+			if(!empty($page)){
+				$f['page'] = $page;
+			}
+			$list = $this -> ketone_record_dao -> find_by_parameter($f);
+			$res['success'] = TRUE;
+			$res['list'] = $list;
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+
+		$this -> to_json($res);
 	}
 
 
