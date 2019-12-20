@@ -208,7 +208,6 @@ class Record extends MY_Base_Controller {
 		$ym = $this -> get_post("ym");
 		$member_id = $this -> get_post("member_id");
 
-
 		if(!empty($member_id) && !empty($ym)) { //
 			$list = $this -> records_dao -> find_all_by_ym($member_id, $ym);
 		}else{
