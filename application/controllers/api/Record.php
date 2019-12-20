@@ -201,6 +201,26 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	//列出
+	public function list_record_dates() {
+		$res = array('success' => TRUE);
+
+		$ym = $this -> get_post("ym");
+		$member_id = $this -> get_post("member_id");
+
+
+		if(!empty($member_id) && !empty($ym)) { //
+			$list = $this -> records_dao -> find_all_by_ym($member_id, $ym);
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+
+		$res['list'] = $list;
+		$this -> to_json($res);
+	}
+
+
 	public function diff_record(){
 		$member_id = $this -> get_post('member_id');
 		$type = $this -> get_post('type');

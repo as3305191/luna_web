@@ -129,7 +129,18 @@ class Records_dao extends MY_Model {
 		return NULL;
 	}
 
+	function find_all_by_ym($member_id, $ym) {
+		$this -> db -> select("_m.create_date");
 
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> where("( _m.create_date like '{$ym}-%' )");
+		$this -> db -> where("_m.member_id", $member_id);
+		$this -> db -> where("_m.pos", 1);
+
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
 
 
 	function query_ajax($data) {
