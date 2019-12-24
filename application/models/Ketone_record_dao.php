@@ -25,6 +25,9 @@ class Ketone_record_dao extends MY_Model {
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
 
+		$this -> db -> where('_m.is_delete',0);
+
+
 		$this -> db -> order_by("id", "desc");
 
 		//	limit
