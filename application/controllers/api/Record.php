@@ -316,6 +316,29 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	// 編輯尿酮紀錄
+	public function edit_ketone_record(){
+		$id = $this -> get_post('id');
+		$ketone_id = $this -> get_post('ketone_id');
+		$date = $this -> get_post('date');
+		$time = $this -> get_post('time');
+
+		if(!empty($id) && !empty($ketone_id) && !empty($date) && !empty($time)) {
+			$insert_data = array(
+											'ketone_id' => $ketone_id,
+											'date' => $date,
+											'time' => $time
+										);
+
+			$this -> ketone_record_dao -> update($insert_data, $id);
+			$res['success'] = TRUE;
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
 	// 尿酮紀錄列表
 	public function list_ketone_record(){
 		$member_id = $this -> get_post('member_id');
