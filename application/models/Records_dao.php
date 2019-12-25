@@ -55,6 +55,7 @@ class Records_dao extends MY_Model {
 			$this -> db -> where('_m.create_time <=',$dateE);
 		}
 
+		$this -> db -> where('_m.is_delete', 1);
 		$this -> db -> order_by("id", "desc");
 
 		$query = $this -> db -> get();
