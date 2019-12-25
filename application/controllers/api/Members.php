@@ -128,6 +128,36 @@ class Members extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function edit(){
+		$res = array();
+		$member_id = $this -> get_post('member_id');
+		$user_name = $this -> get_post('user_name');
+		$birth = $this -> get_post('birth');
+		$height = $this -> get_post('height');
+		$coach_id = $this -> get_post('coach_id');
+
+		if(!empty($member_id)) {
+			$m = $this -> dao -> find_by_id($id);
+			if(!empty($m)){
+				$update_data = array('member_id'=> $member_id,
+												'user_name' => $user_name,
+												'birth' => $birth,
+												'height'=>$height,
+												'coach_id' => $coach_id
+											);
+				$res['success'] = TRUE;
+				$res['member'] = $m;
+			}else{
+				$res['error_code'][] = "member not found";
+				$res['error_message'][] = "使用者不存在";
+			}
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
 
 
 
