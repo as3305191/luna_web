@@ -263,6 +263,28 @@ class Record extends MY_Base_Controller {
 				$data1 = $this -> records_dao -> find_by_id($id1);
 			}
 
+			if($data1 != NULL && $data2 != NULL){
+				$weight_kg = ($data2->weight - $data1->weight)/1000;
+				$body_fat_d1 = $data1->body_fat * $data1->weight/100;
+				$body_fat_d2 = $data2->body_fat * $data2->weight/100;
+				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
+			}else if($data1 == NULL && $data2 == NULL){
+
+			}else if($data1 == NULL){
+				$weight_kg = ($data2->weight)/1000;
+				$body_fat_d1 = 0;
+				$body_fat_d2 = $data2->body_fat * $data2->weight/100;
+				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
+			}else if($data2 == NULL){
+				$weight_kg = (0 - $data1->weight)/1000;
+				$body_fat_d1 = $data1->body_fat * $data1->weight/100;
+				$body_fat_d2 = 0;
+				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
+			}
+
+			$res['weight_diff'] = number_format($weight_kg,1);
+			$res['body_fat_diff'] = number_format($body_diff,1);
+
 			if(!empty($data1)){
 				$weight_kg = $data1->weight/1000;
 				$body_fat = $data1->weight/1000 * $data1->body_fat/100;
@@ -303,27 +325,6 @@ class Record extends MY_Base_Controller {
 				$data2 -> skeletal_muscle_weight = number_format($skeletal_muscle,1);
 			}
 
-			if($data1 != NULL && $data2 != NULL){
-				$weight_kg = ($data2->weight - $data1->weight)/1000;
-				$body_fat_d1 = $data1->body_fat * $data1->weight/100;
-				$body_fat_d2 = $data2->body_fat * $data2->weight/100;
-				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
-			}else if($data1 == NULL && $data2 == NULL){
-
-			}else if($data1 == NULL){
-				$weight_kg = ($data2->weight)/1000;
-				$body_fat_d1 = 0;
-				$body_fat_d2 = $data2->body_fat * $data2->weight/100;
-				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
-			}else if($data2 == NULL){
-				$weight_kg = (0 - $data1->weight)/1000;
-				$body_fat_d1 = $data1->body_fat * $data1->weight/100;
-				$body_fat_d2 = 0;
-				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
-			}
-
-			$res['weight_diff'] = number_format($weight_kg,1);
-			$res['body_fat_diff'] = number_format($body_diff,1);
 			if(!empty($data1)){
 				$res['data1'] = $data1;
 			}
