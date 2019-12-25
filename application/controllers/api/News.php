@@ -16,7 +16,7 @@ class News extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
-	public function add_news(){
+	public function add(){
 		$res = array();
 		$title = $this -> get_post('title');
 		$content = $this -> get_post('content');
