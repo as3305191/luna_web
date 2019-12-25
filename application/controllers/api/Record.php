@@ -263,6 +263,46 @@ class Record extends MY_Base_Controller {
 				$data1 = $this -> records_dao -> find_by_id($id1);
 			}
 
+			if(!empty($data1)){
+				$weight_kg = $data1->weight/1000;
+				$body_fat = $data1->weight/1000 * $data1->body_fat/100;
+				$visceral_fat = $data1->weight/1000 * $data1->visceral_fat/100;
+				$protein = $data1->weight/1000 * $data1->protein/100;
+				$moisture = $data1->weight/1000 * $data1->moisture/100;
+				$muscle = $data1->weight/1000 * $data1->muscle/100;
+				$bone_mass = $data1->weight/1000 * $data1->bone_mass/100;
+				$skeletal_muscle =  $data1->weight/1000 * $data1->skeletal_muscle/100;
+
+				$data1 -> weight = number_format($weight_kg,1);
+				$data1 -> body_fat_weight = number_format($body_fat,1);
+				$data1 -> visceral_fat_weight = number_format($visceral_fat,1);
+				$data1 -> protein_weight = number_format($protein,1);
+				$data1 -> moisture_weight = number_format($moisture,1);
+				$data1 -> muscle_weight = number_format($muscle,1);
+				$data1 -> bone_mass_weight = number_format($bone_mass,1);
+				$data1 -> skeletal_muscle_weight = number_format($skeletal_muscle,1);
+			}
+
+			if(!empty($data2)){
+				$weight_kg = $data2->weight/1000;
+				$body_fat = $data2->weight/1000 * $data2->body_fat/100;
+				$visceral_fat = $data2->weight/1000 * $data2->visceral_fat/100;
+				$protein = $data2->weight/1000 * $data2->protein/100;
+				$moisture = $data2->weight/1000 * $data2->moisture/100;
+				$muscle = $data2->weight/1000 * $data2->muscle/100;
+				$bone_mass = $data2->weight/1000 * $data2->bone_mass/100;
+				$skeletal_muscle =  $data2->weight/1000 * $data2->skeletal_muscle/100;
+
+				$data2 -> weight = number_format($weight_kg,1);
+				$data2 -> body_fat_weight = number_format($body_fat,1);
+				$data2 -> visceral_fat_weight = number_format($visceral_fat,1);
+				$data2 -> protein_weight = number_format($protein,1);
+				$data2 -> moisture_weight = number_format($moisture,1);
+				$data2 -> muscle_weight = number_format($muscle,1);
+				$data2 -> bon_mass_weight = number_format($bone_mass,1);
+				$data2 -> skeletal_muscle_weight = number_format($skeletal_muscle,1);
+			}
+
 			if($data1 != NULL && $data2 != NULL){
 				$weight_kg = ($data2->weight - $data1->weight)/1000;
 				$body_fat_d1 = $data1->body_fat * $data1->weight/100;
