@@ -12,9 +12,32 @@ class News_dao extends MY_Model {
 		);
 	}
 
-	function find_all_order() {
-		$this -> db -> order_by('id', 'desc');
-		return $this -> find_all();
+	function find_by_parameter($f){
+		$this -> db -> from("$this->table_name as _m");
+
+		// select
+		$this -> db -> select('_m.*');
+
+
+		//	limit
+		if(empty($f['page'])) {
+			$page = 0;
+		} else {
+			$page = intval($f['page']);
+		}
+		if(empty($f['limit'])) {
+			// default is 10
+			$limit = 10;
+		} else {
+			$limit = intval($f['limit']);
+		}
+		$start = $page * $limit;
+		$this -> db -> limit($limit, $start);
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
 	}
 
 	function query_ajax($data) {

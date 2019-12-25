@@ -11,7 +11,12 @@ class News extends MY_Base_Controller {
 
 
 	public function list_all(){
-		$list = $this -> dao -> find_all();
+		$page = $this -> get_post('page');
+		$f = array();
+		if(!empty($page)){
+			$f['page'] = $page;
+		}
+		$list = $this -> dao -> find_by_parameter($f);
 		$res['list'] = $list;
 		$this -> to_json($res);
 	}
