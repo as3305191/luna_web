@@ -145,8 +145,8 @@ class Members extends MY_Base_Controller {
 												'height'=>$height,
 												'coach_id' => $coach_id
 											);
+				$m = $this -> dao -> update($update_data,$member_id);
 				$res['success'] = TRUE;
-				$res['member'] = $m;
 			}else{
 				$res['error_code'][] = "member not found";
 				$res['error_message'][] = "使用者不存在";
