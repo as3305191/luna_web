@@ -137,7 +137,7 @@ class Members extends MY_Base_Controller {
 		$coach_id = $this -> get_post('coach_id');
 
 		if(!empty($member_id)) {
-			$m = $this -> dao -> find_by_id($id);
+			$m = $this -> dao -> find_by_id($member_id);
 			if(!empty($m)){
 				$update_data = array('member_id'=> $member_id,
 												'user_name' => $user_name,
