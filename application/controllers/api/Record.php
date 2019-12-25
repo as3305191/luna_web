@@ -236,6 +236,10 @@ class Record extends MY_Base_Controller {
 			}
 
 			$res['success'] = TRUE;
+
+			$m = $this -> dao -> find_by_id($member_id);
+			$res['member'] = $m;
+
 			$data1 = NULL;
 			$data2 = NULL;
 			$weight_kg = 0;
