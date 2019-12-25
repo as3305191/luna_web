@@ -149,6 +149,19 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	// 刪除秤重所有紀錄
+	public function delete_record(){
+		$id = $this -> get_post('id');
+		if(!empty($id)) {
+			$this -> records_dao -> update(array('is_delete'=> 1),$id);
+			$res['success'] = TRUE;
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
 	// 秤重所有紀錄(一天一筆)
 	public function list_all_record_by_date(){
 		$member_id = $this -> get_post('member_id');
