@@ -139,13 +139,13 @@ class Members extends MY_Base_Controller {
 		if(!empty($member_id)) {
 			$m = $this -> dao -> find_by_id($member_id);
 			if(!empty($m)){
-				$update_data = array('member_id'=> $member_id,
+				$update_data = array(
 												'user_name' => $user_name,
 												'birth' => $birth,
 												'height'=>$height,
 												'coach_id' => $coach_id
 											);
-				$m = $this -> dao -> update($update_data,$member_id);
+				$m = $this -> dao -> update($update_data,$m->id);
 				$res['success'] = TRUE;
 			}else{
 				$res['error_code'][] = "member not found";
