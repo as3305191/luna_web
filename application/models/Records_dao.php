@@ -98,7 +98,8 @@ class Records_dao extends MY_Model {
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
 
-		$this -> db -> order_by("weight", "asc");
+		// $this -> db -> order_by("weight", "asc");
+		$this -> db -> order_by("id", "desc");
 
 		$query = $this -> db -> get($this -> table_name);
 
@@ -119,7 +120,7 @@ class Records_dao extends MY_Model {
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
 
-		$this -> db -> order_by("weight", "desc");
+		// $this -> db -> order_by("weight", "desc");
 
 		$query = $this -> db -> get($this -> table_name);
 
