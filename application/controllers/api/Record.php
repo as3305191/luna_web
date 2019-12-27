@@ -8,8 +8,7 @@ class Record extends MY_Base_Controller {
 		$this -> load -> model('Records_dao', 'records_dao');
 		$this -> load -> model('Ketone_dao', 'ketone_dao');
 		$this -> load -> model('Ketone_record_dao', 'ketone_record_dao');
-
-
+		$this -> load -> model('Disease_dao', 'disease_dao');
 
 	}
 
@@ -432,20 +431,12 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function list_disease(){
+		$f = array();
+		$list = $this -> disease_dao -> find_by_parameter($f);
 
-
-
-
-
-
-
-
-
-	public function goTest(){
-		$member_id = $this -> get_post('member_id');
-		$level  = $this -> get_post('level');
-		$list1 = $this -> bonus_record_dao -> count_bouus(array('member_id'=>$member_id,'level'=> 1));
-		$res['count'] = $list1->count;
+		$res['success'] = TRUE;
+		$res['list'] = $list;
 
 		$this -> to_json($res);
 	}
