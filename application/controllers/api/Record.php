@@ -165,11 +165,15 @@ class Record extends MY_Base_Controller {
 	public function list_all_record_by_date(){
 		$member_id = $this -> get_post('member_id');
 		$date = $this -> get_post('date');
+		$is_month = $this -> get_post('is_month');
 
 		if(!empty($member_id)){
 			$f = array('member_id' => $member_id);
 			if(!empty($date)){
 				$f['date'] = $date;
+			}
+			if(!empty($is_month)){
+				$f['is_month'] = $is_month;
 			}
 
 			$list = $this -> records_dao -> find_by_date($f);

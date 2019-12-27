@@ -80,6 +80,12 @@ class Records_dao extends MY_Model {
 			$this -> db -> order_by("id", "desc");
 		}
 
+		if(!empty($f['is_month'])){
+			$start = 	date('Y-m-01');
+			$end = 	date('Y-m-t');
+			$this -> db -> where('_m.create_date>=',$start);
+			$this -> db -> where('_m.create_date<=',$end);
+		}
 
 		$query = $this -> db -> get();
 		$list = $query -> result();
