@@ -166,6 +166,7 @@ class Record extends MY_Base_Controller {
 		$member_id = $this -> get_post('member_id');
 		$date = $this -> get_post('date');
 		$is_month = $this -> get_post('is_month');
+		$is_week = $this -> get_post('is_week');
 
 		if(!empty($member_id)){
 			$f = array('member_id' => $member_id);
@@ -174,6 +175,10 @@ class Record extends MY_Base_Controller {
 			}
 			if(!empty($is_month)){
 				$f['is_month'] = $is_month;
+			}
+
+			if(!empty($is_week)){
+				$f['is_week'] = $is_week;
 			}
 
 			$list = $this -> records_dao -> find_by_date($f);

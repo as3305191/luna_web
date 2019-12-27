@@ -87,6 +87,13 @@ class Records_dao extends MY_Model {
 			$this -> db -> where('_m.create_date<=',$end);
 		}
 
+		if(!empty($f['is_week'])){
+			$start = date('Y-m-d',strtotime('last Monday'));
+			$end = date('Y-m-d',strtotime('next Sunday'));
+			$this -> db -> where('_m.create_date>=',$start);
+			$this -> db -> where('_m.create_date<=',$end);
+		}
+
 		$query = $this -> db -> get();
 		$list = $query -> result();
 
