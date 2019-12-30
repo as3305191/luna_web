@@ -16,8 +16,8 @@ class Members extends MY_Mgmt_Controller {
 	{
 		$data = array();
 		$data = $this -> setup_user_data($data);
-		$data['role_list'] = $this -> users_dao -> find_all_roles();
-		$data['hospital_list'] = $this -> users_dao -> find_all_hospital();
+		// $data['role_list'] = $this -> users_dao -> find_all_roles();
+		// $data['hospital_list'] = $this -> users_dao -> find_all_hospital();
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$this->load->view('mgmt/members/list', $data);
 	}
@@ -30,22 +30,12 @@ class Members extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			'hospital_id',
 
 		));
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
-		foreach ($items as $each) {
-			$log_create = $this -> members_log_dao -> find_log_time($each->id);
-			if(!empty($log_create)){
-				$each -> time_diff = ceil((strtotime(date("Y-m-d H:i:s"))-strtotime($log_create))/86400);
-			}else{
-				$each -> time_diff = '';
 
-			}
-
-		}
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
@@ -77,10 +67,8 @@ class Members extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
-		$data['hospital_list'] = $this -> dao -> find_all_hospital();
-		$data['role_list'] = $this -> dao -> find_all_roles();
-		$data['doctor'] = $this -> users_dao -> find_all_doctor();
-		$data['manager'] = $this -> users_dao -> find_all_manager();
+
+		$data['coach'] = $this -> dao -> find_all_coach();
 
 		$this->load->view('mgmt/members/edit', $data);
 	}
@@ -92,10 +80,13 @@ class Members extends MY_Mgmt_Controller {
 			'account',
 			'password',
 			'user_name',
-			'role_id',
-			'hospital_id',
 			'age',
 			'gender',
+			'height',
+			'type',
+			'coach_id',
+			'birth',
+			'email'
 		));
 
 		if(empty($id)) {

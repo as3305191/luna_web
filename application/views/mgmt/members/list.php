@@ -13,7 +13,6 @@
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget">
 						<header>
-							<?php if($login_user -> role_id == 107 || $login_user -> role_id == 102 || $login_user -> role_id == 1):?>
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">
 									<button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
@@ -21,7 +20,6 @@
 									</button>
 								</div>
 							</div>
-							<?php endif ?>
 						</header>
 
 						<!-- widget div-->
@@ -41,27 +39,12 @@
 									<thead>
 										<tr>
 											<th class="min100">帳號</th>
-											<th class="min100">ip位置</th>
-											<th class="min100">醫院名稱</th>
 											<th class="min100">名稱</th>
-											<th class="min100">角色</th>
-											<th class="min100">已啟用天數</th>
 											<th class="min100">建立時間</th>
 										</tr>
 										<tr class="search_box">
 											    <th><input class="form-control input-xs min100" type="text" /></th>
-													<th></th>
-													<th>
-														<select name="hospital_id" id="hospital_id" class="form-control">
-															<option value="-1">無</option>
-															<?php foreach($hospital_list as $each): ?>
-																<option value="<?= $each -> id?>" ><?=  $each -> hospital_name ?></option>
-															<?php endforeach ?>
-														</select>
-													</th>
 											    <th><input class="form-control input-xs min100" type="text" /></th>
-													<th></th>
-													<th></th>
 													<th></th>
 										    </tr>
 									</thead>
@@ -106,26 +89,9 @@
 <script type="text/javascript">
 	var mCols = [{
 		data : 'account'
-	}, {
-		data : 'ip'
-	}, {
-		data : 'hospital_name'
 	},{
 		data : 'user_name'
-	}, {
-		data : 'role_name'
-	}, {
-		data : 'time_diff',
-		render : function(d,t,r){
-			if(d){
-				return d;
-			} else{
-				return '<span style="color:red">未啟用</span>';
-
-			}
-
-		}
-	}, {
+	},{
 		data : 'create_time'
 	}];
 
@@ -143,7 +109,7 @@
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [1,2,3,4],
+		"targets" : [1,2],
 		"orderable" : false
 	}];
 

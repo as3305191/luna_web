@@ -230,8 +230,7 @@ class Members_dao extends MY_Model {
 
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('r.role_name');
-		$this -> db -> select('h.hospital_name as hospital_name');
+
 
 		// join
 		$this -> ajax_from_join();
@@ -263,10 +262,6 @@ class Members_dao extends MY_Model {
 	function search_always($data) {
 		$this -> db -> where('_m.status', 0);
 
-		if(isset($data['role_id']) && $data['role_id'] > -1) {
-			$this -> db -> where('_m.role_id', $data['role_id']);
-		}
-
 		if(isset($data['id']) && $data['id'] > -1) {
 			$this -> db -> where('_m.id', $data['id']);
 		}
@@ -275,9 +270,7 @@ class Members_dao extends MY_Model {
 			$this -> db -> where('_m.is_foreign', $data['is_foreign']);
 		}
 
-		if(isset($data['hospital_id']) && $data['hospital_id'] > -1) {
-			$this -> db -> where('_m.hospital_id', $data['hospital_id']);
-		}
+
 
 		// if(isset($data['bypass_point']) && $data['bypass_point'] > -1) {
 		// 	$this -> db -> where('_m.bypass_point', $data['bypass_point']);
@@ -287,8 +280,8 @@ class Members_dao extends MY_Model {
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("roles as r", 'r.id = _m.role_id', "left");
-		$this -> db -> join("hospital as h", 'h.id = _m.hospital_id', "left");
+		// $this -> db -> join("roles as r", 'r.id = _m.role_id', "left");
+		// $this -> db -> join("hospital as h", 'h.id = _m.hospital_id', "left");
 	}
 
 	function find_by_account($account) {
@@ -637,6 +630,15 @@ class Members_dao extends MY_Model {
 		}
 		$list = $this -> db -> get() -> result();
 		return count($list);
+	}
+
+	function find_all_coach() {
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.type', 1);
+		$list = $this -> db -> get() -> result();
+		return $list;
 	}
 
 }
