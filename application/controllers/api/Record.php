@@ -9,6 +9,9 @@ class Record extends MY_Base_Controller {
 		$this -> load -> model('Ketone_dao', 'ketone_dao');
 		$this -> load -> model('Ketone_record_dao', 'ketone_record_dao');
 		$this -> load -> model('Disease_dao', 'disease_dao');
+		$this -> load -> model('Members_disease_dao', 'members_disease_dao');
+		$this -> load -> model('Members_disease_detail_dao', 'members_disease_detail_dao');
+		$this -> load -> model('Recipes_dao', 'recipes_dao');
 
 	}
 
@@ -446,6 +449,84 @@ class Record extends MY_Base_Controller {
 
 		$res['success'] = TRUE;
 		$res['list'] = $list;
+
+		$this -> to_json($res);
+	}
+
+	public function load_member_disease(){
+		$member_id = $this -> get_post('member_id');
+
+		if(!empty($member_id)) {
+			$m = $this -> members_disease_dao -> find_by_parameter(array('member_id' => $member_id));
+			$receipes = $this -> recipes_dao -> find_by_parameter(array('level' => $m->level));
+			$list = $this -> members_disease_detail_dao -> find_by_parameter(array('member_disease_id' => $m->id));
+			if(!empty($receipes)){
+				$m->receipe = $receipes;
+			}
+			if(!empty($m)){
+				$m->detail = $list;
+			}
+			$res['success'] = TRUE;
+			$res['data'] = $m;
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
+	public function add_member_disease_record(){
+		$member_id = $this -> get_post('member_id');
+		$reply_list  = $this -> get_post('reply_list');
+
+		if(!empty($member_id) && !empty($reply_list)) {
+			$f = array('member_id' => $member_id);
+			$m = $this -> dao -> find_by_id($member_id);
+			if(!empty($m)){
+
+				$m = $this -> members_disease_dao -> find_by_parameter(array('member_id' => $member_id));
+				$disease_id;
+				if(empty($m)){
+					$disease_id  = $this -> members_disease_dao -> insert(array('member_id' => $member_id));
+				}else{
+					$disease_id = $m ->id;
+				}
+				$this -> members_disease_detail_dao -> delete_by_id($disease_id);
+				$reply_arr = json_decode($reply_list,true);
+				$level1_count = 0;
+				$level2_count = 0;
+				$level3_count = 0;
+				foreach($reply_arr as $each){
+					if($each['level']=='1'){
+						$level1_count++;
+					}
+					if($each['level']=='2'){
+						$level2_count++;
+					}
+					if($each['level']=='3'){
+						$level3_count++;
+					}
+					$insert_data = array('member_disease_id' => $disease_id,'disease_id'=> $each['disease_id']);
+					$id = $this -> members_disease_detail_dao -> insert($insert_data);
+				}
+				$res['success'] = TRUE;
+				if($level1_count == 0){
+					if($level2_count == 0){
+						$this -> members_disease_dao -> update(array('level' => 3),$disease_id);
+					}else{
+						$this -> members_disease_dao -> update(array('level' => 2),$disease_id);
+					}
+				}else{
+					$this -> members_disease_dao -> update(array('level' => 1),$disease_id);
+				}
+			}else{
+				$res['error_code'][] = "account_not_found";
+				$res['error_message'][] = "無此使用者";
+			}
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
 
 		$this -> to_json($res);
 	}
