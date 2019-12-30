@@ -54,6 +54,24 @@
 
 				<fieldset>
 					<div class="form-group">
+						<label class="col-md-3 control-label">email</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="email" value="<?= isset($item) ? $item -> email : '' ?>" />
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">生日</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control dt_picker" name="birth" value="<?= isset($item) ? $item -> birth : '' ?>" />
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<div class="form-group">
 						<label class="col-md-3 control-label">密碼</label>
 						<div class="col-md-6">
 							<input type="text" class="form-control" name="password" value="<?= isset($item) ? $item -> password : '' ?>" />
@@ -84,15 +102,20 @@
 
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">醫院</label>
+						<label class="col-md-3 control-label">身高</label>
 						<div class="col-md-6">
-							<select name="hospital_id" id="f_hospital" class="form-control" onchange="hospital()">
-								<?php
-									foreach ($hospital_list as $each) {
-										$selected = ((isset($item) && isset($item -> hospital_id) && $item -> hospital_id == $each -> id) ? 'selected' : '');
-										echo "<option value='{$each -> id}' $selected>{$each -> hospital_name}</option>";
-									}
-								?>
+							<input type="text" class="form-control" name="height" value="<?= isset($item) ? $item -> height : '' ?>" />
+						</div>
+					</div>
+				</fieldset>
+
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">身份</label>
+						<div class="col-md-6">
+							<select name="type" id="" class="form-control" >
+								<option value="0" <?= isset($item) && $item -> type == 0 ? 'selected' : '' ?>>一般會員</option>
+							<option value="1" <?= isset($item) && $item -> type == 1 ? 'selected' : '' ?>>教練</option>
 							</select>
 						</div>
 					</div>
@@ -100,83 +123,18 @@
 
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">醫生</label>
+						<label class="col-md-3 control-label">所屬教練</label>
 						<div class="col-md-6">
-							<select name="user_doctor_id" id="f_doctor" class="form-control" >
-								<option value="-1">無</option>
-								<?php foreach($doctor as $each): ?>
-								<option value="<?= $each -> id?>" <?= isset($item) && $item -> user_doctor_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> user_name ?></option>
+							<select name="coach_id" id="" class="form-control" >
+								<option value="0">無</option>
+								<?php foreach($coach as $each): ?>
+								<option value="<?= $each -> id?>" <?= isset($item) && $item -> coach_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> user_name ?></option>
 							<?php endforeach ?>
 							</select>
 						</div>
 					</div>
 				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">個管師</label>
-						<div class="col-md-6">
-							<select name="user_manager_id" id="f_manager" class="form-control">
-								<option value="-1">無</option>
-								<?php foreach($manager as $each): ?>
-								<option value="<?= $each -> id?>" <?= isset($item) && $item -> user_manager_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> user_name ?></option>
-							<?php endforeach ?>
-							</select>
-						</div>
-					</div>
-				</fieldset>
-				<?php if (!empty($item -> id)): ?>
-					<hr>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">連續登日次數</label>
-							<!-- <button id="update_here" type="button"  style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:70px;height:40px">更新狀態</button> -->
-							<button type="button"  style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="update_here()">更新狀態</button>
 
-							<div class="col-md-6">
-								<span>目前：<?=  $item -> login_count ?></span>
-								<select  id="login_count" class="form-control">
-									<option value="0">0</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-									<option value="5">5</option>
-									<option value="6">6</option>
-								</select>
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">種子類型</label>
-							<div class="col-md-6">
-								<span>目前：<?=  $item -> seed ?></span>
-								<select  id="seed" class="form-control">
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-								</select>
-							</div>
-						</div>
-					</fieldset>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">目前關卡</label>
-							<div class="col-md-6">
-								<span>目前：<?=  $item -> level_status ?></span>
-								<select  id="level_status" class="form-control">
-									<option value="0">未進入關卡</option>
-									<option value="1">1</option>
-									<option value="2">2</option>
-									<option value="3">3</option>
-									<option value="4">4</option>
-								</select>
-							</div>
-						</div>
-					</fieldset>
-
-				<?php endif; ?>
 
 			</form>
 
@@ -194,6 +152,12 @@
 	}
 </style>
 <script>
+$(".dt_picker").datetimepicker({
+		format : 'YYYY-MM-DD'
+	}).on('dp.change',function(event){
+
+	});
+
 $('#app-edit-form').bootstrapValidator({
 	feedbackIcons : {
 		valid : 'glyphicon glyphicon-ok',
@@ -213,45 +177,6 @@ $('#app-edit-form').bootstrapValidator({
 
 })
 .bootstrapValidator('validate');
-
-	function hospital(){
-	    $.ajax({
-	      url: '<?= base_url() ?>' + 'mgmt/members/find_doctor',
-	      type: 'POST',
-	      data: {
-	        hospital: $('#f_hospital').find(':selected').attr('value')
-	      },
-	      dataType: 'json',
-	      success: function(d) {
-	        if(d) {
-	          console.log(d);
-	          $doctor_id= $('#f_doctor').empty();
-						$manager_id= $('#f_manager').empty();
-
-	          var html = '<option value="-1">無</option>';
-	          $doctor_id.append(html);
-						$manager_id.append(html);
-
-	          $.each(d.list, function(){
-	            $('<option/>', {
-	                'value': this.id,
-	                'text': this.user_name
-	            }).appendTo($doctor_id);
-	        });
-
-					$.each(d.list_1, function(){
-						$('<option/>', {
-								'value': this.id,
-								'text': this.user_name
-						}).appendTo($manager_id);
-				});
-	        }
-	      },
-	      failure:function(){
-	        alert('faialure');
-	      }
-	    });
-	  }
 
 			function update_here() {
 					$.ajax({
