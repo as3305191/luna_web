@@ -11,6 +11,8 @@ class Record extends MY_Base_Controller {
 		$this -> load -> model('Disease_dao', 'disease_dao');
 		$this -> load -> model('Members_disease_dao', 'members_disease_dao');
 		$this -> load -> model('Members_disease_detail_dao', 'members_disease_detail_dao');
+		$this -> load -> model('Recipes_dao', 'recipes_dao');
+
 	}
 
 	function index() {
@@ -456,7 +458,11 @@ class Record extends MY_Base_Controller {
 
 		if(!empty($member_id)) {
 			$m = $this -> members_disease_dao -> find_by_parameter(array('member_id' => $member_id));
+			$receipes = $this -> recipes_dao -> find_by_parameter(array('level' => $m->level));
 			$list = $this -> members_disease_detail_dao -> find_by_parameter(array('member_disease_id' => $m->id));
+			if(!empty($receipes)){
+				$m->receipe = $receipes;
+			}
 			if(!empty($m)){
 				$m->detail = $list;
 			}
