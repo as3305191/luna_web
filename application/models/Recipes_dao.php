@@ -157,6 +157,10 @@ class Recipes_dao extends MY_Model {
 	}
 
 	function search_always($data) {
+		if(!empty($data['level'])){
+			$level= $data['level'];
+			$this -> db -> where('m.level',$level);
+		}
 	}
 
 	function ajax_from_join() {
