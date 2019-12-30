@@ -458,16 +458,16 @@ class Record extends MY_Base_Controller {
 
 		if(!empty($member_id)) {
 			$m = $this -> members_disease_dao -> find_by_parameter(array('member_id' => $member_id));
-			$receipes = $this -> recipes_dao -> find_by_parameter(array('level' => $m->level));
-			$list = $this -> members_disease_detail_dao -> find_by_parameter(array('member_disease_id' => $m->id));
-			if(!empty($receipes)){
+			if(!empty($m)){
+				$list = $this -> members_disease_detail_dao -> find_by_parameter(array('member_disease_id' => $m->id));
+				$m->detail = $list;
+				$receipes = $this -> recipes_dao -> find_by_parameter(array('level' => $m->level));
 				$m->receipe = $receipes;
 			}
-			if(!empty($m)){
-				$m->detail = $list;
-			}
 			$res['success'] = TRUE;
-			$res['data'] = $m;
+			if(!empty($m)){
+				$res['data'] = $m;
+			}
 		}else{
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";
