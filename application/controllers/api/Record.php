@@ -285,19 +285,19 @@ class Record extends MY_Base_Controller {
 
 			if($data1 != NULL && $data2 != NULL){
 				$weight_kg = ($data2->weight - $data1->weight)/1000;
-				$body_fat_d1 = $data1->body_fat * $data1->weight/100;
-				$body_fat_d2 = $data2->body_fat * $data2->weight/100;
+				$body_fat_d1 = $data1->body_fat_rate * $data1->weight/100;
+				$body_fat_d2 = $data2->body_fat_rate * $data2->weight/100;
 				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
 			}else if($data1 == NULL && $data2 == NULL){
 
 			}else if($data1 == NULL){
 				$weight_kg = ($data2->weight)/1000;
 				$body_fat_d1 = 0;
-				$body_fat_d2 = $data2->body_fat * $data2->weight/100;
+				$body_fat_d2 = $data2->body_fat_rate * $data2->weight/100;
 				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
 			}else if($data2 == NULL){
 				$weight_kg = (0 - $data1->weight)/1000;
-				$body_fat_d1 = $data1->body_fat * $data1->weight/100;
+				$body_fat_d1 = $data1->body_fat_rate * $data1->weight/100;
 				$body_fat_d2 = 0;
 				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
 			}
