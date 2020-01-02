@@ -342,7 +342,7 @@ class Record extends MY_Base_Controller {
 				$data2 -> moisture = number_format($moisture,1);
 				$data2 -> muscle = number_format($muscle,1);
 				$data2 -> skeletal_muscle = number_format($skeletal_muscle,1);
-				$data2 -> bon_mass = number_format($bone_mass,1);
+				$data2 -> bone_mass = number_format($bone_mass,1);
 			}
 
 			if(!empty($data1)){
