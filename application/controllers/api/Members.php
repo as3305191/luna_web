@@ -63,7 +63,6 @@ class Members extends MY_Base_Controller {
 		$email = $this -> get_post('email');
 		$height = $this -> get_post('height');
 
-
 		if(!empty($account) && !empty($password) && !empty($user_name) && !empty($birth) && $gender !='' && !empty($email) && !empty($height)) {
 				$lista = $this -> dao -> find_by_condition(array('account' => $account));
 				$listb = $this -> dao -> find_by_condition(array('email' => $email));
@@ -87,6 +86,8 @@ class Members extends MY_Base_Controller {
 
 					$last_id = $this -> dao -> insert($insert_data);
 
+					$value = str_pad($last_id,6,'0',STR_PAD_LEFT);
+					$this -> dao -> update(array('code'=>$value),$last_id);
 
 					$res['success'] = TRUE;
 					$res['id'] = $last_id;
