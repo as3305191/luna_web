@@ -631,5 +631,40 @@ class Users_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
+
+	function query_ajax_by_coach($login_user_id) {
+		// $start = $data['start'];
+		// $limit = $data['length'];
+		// $columns = $data['columns'];
+		// $search = $data['search'];
+		// $order = $data['order'];
+
+		// select
+		$this -> db -> select('_m.*');
+		$this -> db -> where("coach_id", $login_user_id);
+
+
+		// join
+		$this -> ajax_from_join();
+
+		// search always
+		$this -> search_always($data);
+
+		// search
+		$this -> ajax_column_setup($columns, $search, $this -> alias_map);
+
+		// order
+		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
+		$this -> db -> order_by('id', 'desc');
+
+		// limit
+		$this -> db -> limit($limit, $start);
+
+		// query results
+		$query = $this -> db -> get();
+
+		// echo $this -> db -> last_query();
+		return $query -> result();
+	}
 }
 ?>
