@@ -5,6 +5,7 @@ if (!defined('BASEPATH'))
 	if (!function_exists('get_fat_info')) {
 		function get_fat_info($bmi, $body_fat_rate, $gender)
  		{
+			$bmi = $bmi + $body_fat_ratel; // 要相加
 			$msg = parse_ini_file("msg.properties", true, INI_SCANNER_RAW);
 
 			if($gender == 1) {

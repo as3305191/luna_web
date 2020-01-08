@@ -129,12 +129,439 @@ class Record extends MY_Base_Controller {
 				$m -> bone_mass = number_format($bone_mass,1);
 
 				$res['record'] = $m;
+
+				// 獲得suggestion
+				$res['td'] = $this -> get_suggestions($m -> id);
 			}
 		}else{
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";
 		}
 		$this -> to_json($res);
+	}
+
+	public function get_suggestions($member_id) {
+		$m = $this -> dao -> find_by_id($member_id);
+		$rec = $this -> records_dao -> find_by_value(array('member_id' => $member_id));
+
+		// thev body object
+		$td = new stdClass; // body 資料
+
+		$bmi = $rec -> bmi + $rec -> body_fat_rate; // 要相加
+		$msg = parse_ini_file("msg.properties", true, INI_SCANNER_RAW);
+
+		// fat info
+		$td -> fat_info = new stdClass;
+
+		if($m -> gender == 1) {
+			if($bmi<=34.5) {
+				$td -> fat_info -> idx_str = $msg["tip.fat1"];
+				$td -> fat_info -> bg = "yellow";
+				$td -> fat_info -> idx = 0;
+			}
+			else if($bmi>34.5 && $bmi<=43) {
+				$td -> fat_info -> idx_str = $msg["tip.fat2"];
+				$td -> fat_info -> bg = "green";
+				$td -> fat_info -> idx = 1;
+			}
+			else if($bmi>43 && $bmi<=49) {
+				$td -> fat_info -> idx_str = $msg["tip.fat3"];
+				$td -> fat_info -> bg = "violet";
+				$td -> fat_info -> idx = 2;
+			}
+			else if($bmi>49 && $bmi<=58) {
+				$td -> fat_info -> idx_str = $msg["tip.fat4"];
+				$td -> fat_info -> bg = "purplish";
+				$td -> fat_info -> idx = 3;
+			}
+			else if($bmi>58 && $bmi<=60) {
+				$td -> fat_info -> idx_str = $msg["tip.fat5"];
+				$td -> fat_info -> bg = "chocolate";
+				$td -> fat_info -> idx = 4;
+			}
+			else if($bmi>60){
+				$td -> fat_info -> idx_str = $msg["tip.fat6"];
+				$td -> fat_info -> bg = "red";
+				$td -> fat_info -> idx = 5;
+				$td -> fat_info -> advise = $msg["tip.fat6v"];
+			}
+		}
+
+		if($m -> gender == 0) {
+			if($bmi<=36.5) {
+				$td -> fat_info -> idx_str = $msg["tip.fat1"];
+				$td -> fat_info -> bg = "yellow";
+				$td -> fat_info -> idx = 0;
+			}
+			else if($bmi>36.5 && $bmi<45) {
+				$td -> fat_info -> idx_str = $msg["tip.fat2"];
+				$td -> fat_info -> bg = "green";
+				$td -> fat_info -> idx = 1;
+			}
+			else if($bmi>45 && $bmi<=51) {
+				$td -> fat_info -> idx_str = $msg["tip.fat3"];
+				$td -> fat_info -> bg = "violet";
+				$td -> fat_info -> idx = 2;
+			}
+			else if($bmi>51 && $bmi<=59) {
+				$td -> fat_info -> idx_str = $msg["tip.fat4"];
+				$td -> fat_info -> bg = "purplish";
+				$td -> fat_info -> idx = 3;
+			}
+			else if($bmi>59 && $bmi<=65) {
+				$td -> fat_info -> idx_str = $msg["tip.fat5"];
+				$td -> fat_info -> bg = "chocolate";
+				$td -> fat_info -> idx = 4;
+			}
+			else if($bmi>65){
+				$td -> fat_info -> idx_str = $msg["tip.fat6"];
+				$td -> fat_info -> bg = "red";
+				$td -> fat_info -> idx = 5;
+				$td -> fat_info -> advise = $msg["tip.fat6v"];
+			}
+		}
+
+		$td -> fat_info -> title = $msg["tip.fatlevel"];
+		$td -> fat_info -> value = $td -> fat_info -> idx_str;
+		$td -> fat_info -> explain = $msg["tip.fatleveln"];
+		$td -> fat_info -> level = array("yellow","green","violet","purplish","chocolate","red");
+		$td -> fat_info -> level_data = array(
+			$msg["tip.fat1"],
+			$msg["tip.fat2"],
+			$msg["tip.fat3"],
+			$msg["tip.fat4"],
+			$msg["tip.fat5"],
+			$msg["tip.fat6"],
+		);
+
+		// weight
+		$lowweight = $m -> height * $m -> height * 18.5 / 10000.0;
+		$hightweight = $m -> height * $m -> height * 24 / 10000.0;
+
+		$td -> weight = new stdClass;
+
+		if($rec -> bmi < 18) {
+			$td -> weight -> idx_str = $msg["tip.low"];
+			$td -> weight -> bg = "yellow";
+			$td -> weight -> idx = 0;
+			$td -> weight -> advise = $msg["tip.weight1"];
+		} elseif($rec -> bmi >= 18 && $rec -> bmi <= 24) {
+			$td -> weight -> idx_str = $msg["tip.hight"];
+			$td -> weight -> bg = "green";
+			$td -> weight -> idx = 1;
+			$td -> weight -> advise = $msg["tip.weight2"];
+		} else {
+			$td -> weight -> idx_str = $msg["tip.hight"];
+			$td -> weight -> bg = "red";
+			$td -> weight -> idx = 2;
+			$td -> weight -> advise = $msg["tip.weight3"];
+		}
+
+		$td -> weight -> title = $msg["tip.weight"];
+		$td -> weight -> value = number_format($rec->weight/1000, 2) . " kg";
+		$td -> weight -> explain = $msg["tip.weightv"];
+		$td -> weight -> level = array("yellow","green","red");
+		$td -> weight -> level_data = array(
+			$msg["tip.low"],
+			number_format($lowweight, 2),
+			number_format($hightweight, 2),
+			$msg["tip.hight"],
+		);
+
+
+		// bodyFatRate, fat
+		$td -> body_fat_rate = new stdClass;
+		$td -> fat = new stdClass;
+		$td -> water = new stdClass;
+		$td -> muscle = new stdClass;
+		$td -> ske_muscle = new stdClass;
+
+		$wrate = $rec -> moisture_rate / $rec -> weight * 1000; // 水
+		$mrate = $rec -> muscle_rate / $rec -> weight * 1000; // 肌肉
+		$srate = $rec -> skeletal_muscle_rate / $rec -> weight * 1000; // 骨骼肌肉
+
+		$fat_0 = 0.16;
+		$fat_1 = 0.2;
+
+		$body_fat_rate_0 = 16;
+		$body_fat_rate_1 = 20;
+
+		$water_0 = 0.54;
+		$water_1 = 0.66;
+
+		$muscle_0 = 4.7;
+		$muscle_1 = 6.34;
+		$muscle_2 = 5.84;
+		$muscle_3 = 7.7;
+
+		$ske_0 = 0.47;
+		$ske_1 = 0.57;
+		if($m -> gender == 1) {
+		}
+		if($m -> gender == 0) {
+			$fat_0 = 0.18;
+			$fat_1 = 0.22;
+
+			$body_fat_rate_0 = 18;
+			$body_fat_rate_1 = 22;
+
+			$water_0 = 0.52;
+			$water_1 = 0.64;
+
+			$muscle_0 = 3.55;
+			$muscle_1 = 6.2;
+			$muscle_2 = 4.3;
+			$muscle_3 = 7.6;
+
+			$ske_0 = 0.43;
+			$ske_1 = 0.53;
+		}
+
+		$lowfat = $rec -> weight / 1000 * $fat_0;
+		$hightfat = $rec -> weight / 1000 * $fat_1;
+
+		if($rec -> body_fat_rate < $body_fat_rate_0) {
+			$td -> body_fat_rate -> idx_str = $msg["tip.low"];
+			$td -> body_fat_rate -> bg = "yellow";
+			$td -> body_fat_rate -> idx = 0;
+			$td -> body_fat_rate -> advise = $msg["tip.weight1"];
+		} elseif($rec -> body_fat_rate >= $body_fat_rate_0 && $rec -> body_fat_rate < $body_fat_rate_1) {
+			$td -> body_fat_rate -> idx_str = $msg["tip.fat2"];
+			$td -> body_fat_rate -> bg = "green";
+			$td -> body_fat_rate -> idx = 1;
+			$td -> body_fat_rate -> advise = $msg["tip.bdfat1v"];
+		} else { // >= 20
+			$td -> body_fat_rate -> idx_str = $msg["tip.hight"];
+			$td -> body_fat_rate -> bg = "red";
+			$td -> body_fat_rate -> idx = 2;
+			$td -> body_fat_rate -> advise = $msg["tip.bdfat2v"];
+		}
+
+		$td -> body_fat_rate -> title = $msg["tip.bodyfate"];
+		$td -> body_fat_rate -> value = number_format($rec->body_fat_rate, 0) . " %";
+		$td -> body_fat_rate -> explain = $msg["tip.bdfatv"];
+		$td -> body_fat_rate -> level = array("yellow","green","red");
+		$td -> body_fat_rate -> level_data = array(
+			$msg["tip.low"],
+			"16",
+			"20",
+			$msg["tip.hight"],
+		);
+
+		$td -> fat = clone $td -> fat_info; // 複製肥胖等級
+		$td -> fat -> title = $msg["tip.fat"];
+		$td -> fat -> value = number_format($rec->body_fat / 100000, 0) . " %";
+		$td -> fat -> explain = $msg["tip.fatv"];
+		$td -> fat -> level = array("yellow","green","red");
+		$td -> fat -> level_data = array(
+			$msg["tip.low"],
+			number_format($lowfat, 2),
+			number_format($hightfat, 2),
+			$msg["tip.hight"],
+		);
+
+		// water
+		if($wrate <= $water_0) {
+			$td -> water -> idx_str = $msg["tip.low"];
+			$td -> water -> bg = "yellow";
+			$td -> water -> idx = 0;
+			$td -> water -> advise = $msg["tip.water1v"];
+		} elseif($wrate>$water_0 && $wrate<$water_1) {
+			$td -> water -> idx_str = $msg["tip.fat2"];
+			$td -> water -> bg = "green";
+			$td -> water -> idx = 1;
+			$td -> water -> advise = $msg["tip.water2v"];
+		} else {
+			$td -> water -> idx_str = $msg["tip.hight"];
+			$td -> water -> bg = "red";
+			$td -> water -> idx = 2;
+			$td -> water -> advise = $msg["tip.water3v"];
+		}
+		$lowWater = $rec -> weight / 1000 * $water_0;
+		$hightWater = $rec -> weight / 1000 * $water_1;
+
+		$td -> water -> title = $msg["tip.water"];
+		$td -> water -> value = number_format($rec->moisture_rate, 2) . " kg";
+		$td -> water -> explain = $msg["tip.waterv"];
+		$td -> water -> level = array("yellow","green","red");
+		$td -> water -> level_data = array(
+			$msg["tip.low"],
+			number_format($lowWater, 2),
+			number_format($hightWater, 2),
+			$msg["tip.hight"],
+		);
+
+		// muscle
+		$mrateLow = $m -> height *  $m -> height / 10000 * ($muscle_0 + ($muscle_1 * $m -> height / 100));
+		$mrateHigh = $m -> height *  $m -> height / 10000 * ($muscle_2 + ($muscle_3 * $m -> height / 100));
+
+		if($rec -> muscle_rate < $mrateLow) {
+			$td -> muscle -> idx_str = $msg["tip.low"];
+			$td -> muscle -> bg = "yellow";
+			$td -> muscle -> idx = 0;
+			$td -> muscle -> advise = $msg["tip.muscle1v"];
+		} elseif($rec -> muscle_rate >= $mrateLow && $rec -> muscle_rate <= $mrateHigh) {
+			$td -> muscle -> idx_str = $msg["tip.fat2"];
+			$td -> muscle -> bg = "green";
+			$td -> muscle -> idx = 1;
+			$td -> muscle -> advise = $msg["tip.muscle2v"];
+		} else {
+			$td -> muscle -> idx_str = $msg["tip.hight"];
+			$td -> muscle -> bg = "green";
+			$td -> muscle -> idx = 2;
+			$td -> muscle -> advise = $msg["tip.muscle3v"];
+		}
+		$td -> muscle -> title = $msg["tip.muscle"];
+		$td -> muscle -> value = number_format($rec->muscle_rate, 2) . " kg";
+		$td -> muscle -> explain = $msg["tip.musclev"];
+		$td -> muscle -> level = array("yellow","green","green");
+		$td -> muscle -> level_data = array(
+			$msg["tip.low"],
+			number_format($mrateLow, 1),
+			number_format($mrateHigh, 1),
+			$msg["tip.hight"],
+		);
+
+
+		if($srate <= $ske_0) {
+			$td -> ske_muscle -> idx_str = $msg["tip.low"];
+			$td -> ske_muscle -> bg = "yellow";
+			$td -> ske_muscle -> idx = 0;
+			$td -> ske_muscle -> advise = $msg["tip.skeMuscle1v"];
+		} elseif($srate > $ske_0 && $srate <= $ske_1) {
+			$td -> ske_muscle -> idx_str = $msg["tip.fat2"];
+			$td -> ske_muscle -> bg = "green";
+			$td -> ske_muscle -> idx = 1;
+			$td -> ske_muscle -> advise = $msg["tip.skeMuscle2v"];
+		} else {
+			$td -> ske_muscle -> idx_str = $msg["tip.hight"];
+			$td -> ske_muscle -> bg = "green";
+			$td -> ske_muscle -> idx = 2;
+			$td -> ske_muscle -> advise = $msg["tip.skeMuscle3v"];
+		}
+
+		$ske_low = $rec -> weight / 100 * $ske_0;
+		$ske_high = $rec -> weight / 100 * $ske_1;
+
+		$td -> ske_muscle -> title = $msg["tip.skeMuscle"];
+		$td -> ske_muscle -> value = number_format($rec->skeletal_muscle_rate, 2) . " kg";
+		$td -> ske_muscle -> explain = $msg["tip.skeMusclev"];
+		$td -> ske_muscle -> level = array("yellow","green","green");
+		$td -> ske_muscle -> level_data = array(
+			$msg["tip.low"],
+			number_format($ske_low, 1),
+			number_format($ske_high, 1),
+			$msg["tip.hight"],
+		);
+
+		// vis_fat 內臟脂肪
+		$td -> vis_fat = new stdClass;
+
+		if($rec -> visceral_fat_rate < 10) {
+			$td -> vis_fat -> idx_str = $msg["tip.fat2"];
+			$td -> vis_fat -> bg = "green";
+			$td -> vis_fat -> idx = 0;
+			$td -> vis_fat -> advise = $msg["tip.visFat1v"];
+		} elseif($rec -> visceral_fat_rate >= 10 && $rec -> visceral_fat_rate <= 14) {
+			$td -> vis_fat -> idx_str = $msg["tip.exstand"];
+			$td -> vis_fat -> bg = "chocolate";
+			$td -> vis_fat -> idx = 1;
+			$td -> vis_fat -> advise = $msg["tip.visFat2v"];
+		} else {
+			$td -> vis_fat -> idx_str = $msg["tip.hight"];
+			$td -> vis_fat -> bg = "red";
+			$td -> vis_fat -> idx = 2;
+			$td -> vis_fat -> advise = $msg["tip.visFat2v"];
+		}
+
+		$td -> vis_fat -> title = $msg["tip.visFat"];
+		$td -> vis_fat -> value = number_format($rec->visceral_fat_rate, 2);
+		$td -> vis_fat -> explain = $msg["tip.visFatv"];
+		$td -> vis_fat -> level = array("green","chocolate","red");
+		$td -> vis_fat -> level_data = array(
+			$msg["tip.low"],
+			number_format(10, 0),
+			$msg["tip.exstand"],
+			number_format(14, 0),
+			$msg["tip.hight"],
+		);
+
+		// protein 蛋白質
+		$td -> protein = new stdClass;
+
+		$prate = $rec -> protein_rate / $rec -> weight * 1000.0;
+		if($prate <= 0.14) {
+			$td -> protein -> idx_str = $msg["tip.low"];
+			$td -> protein -> bg = "yellow";
+			$td -> protein -> idx = 0;
+			$td -> protein -> advise = $msg["tip.weight1"];
+		} elseif($prate > 0.14 && $prate <= 0.17) {
+			$td -> protein -> idx_str = $msg["tip.fat2"];
+			$td -> protein -> bg = "green";
+			$td -> protein -> idx = 1;
+			$td -> protein -> advise = $msg["tip.protein1v"];
+		} else {
+			$td -> protein -> idx_str = $msg["tip.hight"];
+			$td -> protein -> bg = "green";
+			$td -> protein -> idx = 2;
+			$td -> protein -> advise = $msg["tip.protein2v"];
+		}
+
+		$td -> protein -> title = $msg["tip.protein"];
+		$td -> protein -> value = number_format($rec->protein_rate, 2);
+		$td -> protein -> explain = $msg["tip.proteinv"];
+		$td -> protein -> level = array("yellow","green","green");
+
+		$lowsP = $rec -> weight / 1000 * 0.14;
+		$hightsP = $rec -> weight / 1000 * 0.17;
+		$td -> protein -> level_data = array(
+			$msg["tip.low"],
+			number_format($lowsP, 1),
+			number_format($hightsP, 1),
+			$msg["tip.hight"],
+		);
+
+		// bone 蛋白質
+		$td -> bone = new stdClass;
+
+		$brate = $rec -> bone_mass_rate / $rec -> weight * 1000.0;
+		if($brate <= 0.045) {
+			$td -> bone -> idx_str = $msg["tip.low"];
+			$td -> bone -> bg = "yellow";
+			$td -> bone -> idx = 0;
+			$td -> bone -> advise = $msg["tip.bone1v"];
+		} elseif($brate > 0.045 && $brate <= 0.055) {
+			$td -> bone -> idx_str = $msg["tip.fat2"];
+			$td -> bone -> bg = "green";
+			$td -> bone -> idx = 1;
+			$td -> bone -> advise = $msg["tip.bone2v"];
+		} else {
+			$td -> bone -> idx_str = $msg["tip.hight"];
+			$td -> bone -> bg = "red";
+			$td -> bone -> idx = 2;
+			$td -> bone -> advise = $msg["tip.bone3v"];
+		}
+
+		$td -> bone -> title = $msg["tip.bone"];
+		$td -> bone -> value = number_format($rec->bone_mass_rate, 2);
+		$td -> bone -> explain = $msg["tip.bonev"];
+		$td -> bone -> level = array("yellow","green","red");
+
+		$lowsP = $rec -> weight / 1000 * 0.045;
+		$hightsP = $rec -> weight / 1000 * 0.055;
+		$td -> bone -> level_data = array(
+			$msg["tip.low"],
+			number_format($lowsP, 1),
+			$msg["tip.fat2"],
+			number_format($hightsP, 1),
+			$msg["tip.hight"],
+		);
+
+		// print_r(array(
+		// 	"td" => $td,
+		// 	"bmi" => $bmi,
+		// ));
+		return $td;
 	}
 
 	// 秤重所有紀錄
