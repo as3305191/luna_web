@@ -2,6 +2,57 @@
 if (!defined('BASEPATH'))
 	exit('No direct script access allowed');
 
+	if (!function_exists('get_fat_info')) {
+		function get_fat_info($bmi, $body_fat_rate, $gender)
+ 		{
+			$msg = parse_ini_file("msg.properties", true, INI_SCANNER_RAW);
+
+			if($gender == 1) {
+				if($bmi<=34.5) {
+					return $msg["tip.fat1"];
+				}
+				else if($bmi>34.5 && $bmi<=43) {
+					return $msg["tip.fat2"];
+				}
+				else if($bmi>43 && $bmi<=49) {
+					return $msg["tip.fat3"];
+				}
+				else if($bmi>49 && $bmi<=58) {
+					return $msg["tip.fat4"];
+				}
+				else if($bmi>58 && $bmi<=60) {
+					return $msg["tip.fat5"];
+				}
+				else if($bmi>60){
+					return $msg["tip.fat6"];
+				}
+			}
+
+			if($gender == 0) {
+				if($bmi<=36.5) {
+					return $msg["tip.fat1"];
+				}
+				else if($bmi>36.5 && $bmi<45) {
+					return $msg["tip.fat2"];
+				}
+				else if($bmi>45 && $bmi<=51) {
+					return $msg["tip.fat3"];
+				}
+				else if($bmi>51 && $bmi<=59) {
+					return $msg["tip.fat4"];
+				}
+				else if($bmi>59 && $bmi<=65) {
+					return $msg["tip.fat5"];
+				}
+				else if($bmi>65){
+					return $msg["tip.fat6"];
+				}
+			}
+
+			return "";
+		}
+	}
+
 	if (!function_exists('jwt_encode')) {
 		function jwt_encode($payload, $key, $alg = 'SHA256')
 		{

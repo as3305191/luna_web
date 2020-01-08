@@ -17,6 +17,8 @@ class Record extends MY_Base_Controller {
 
 	function index() {
 		echo "index";
+		$msg = parse_ini_file("msg.properties", true, INI_SCANNER_RAW);
+		echo $msg['tip.weight'];
 	}
 
 
@@ -25,6 +27,8 @@ class Record extends MY_Base_Controller {
 		$member_id = $this -> get_post('member_id');
 		$weight = $this -> get_post('weight');
 		$body_fat_rate = $this -> get_post('body_fat_rate');
+		$body_fat_rate = floatval($body_fat_rate);
+
 		$subcutaneous_fat_rate = $this -> get_post('subcutaneous_fat_rate');
 		$visceral_fat_rate = $this -> get_post('visceral_fat_rate');
 		$bmr = $this -> get_post('bmr');
@@ -34,12 +38,29 @@ class Record extends MY_Base_Controller {
 		$protein_rate = $this -> get_post('protein_rate');
 		$skeletal_muscle_rate = $this -> get_post('skeletal_muscle_rate');
 		$bmi = $this -> get_post('bmi');
+		$bmi = falatval($bmi);
+
 		if(!empty($member_id)){
-			$m = $this -> dao -> find_by_value($member_id);
+			$m = $this -> dao -> find_by_id($member_id);
 			if(!empty($m)) {
 				$today = date("Y-m-d");
 
 				$body_fat = $weight * $body_fat_rate/100;
+
+				$m2 = floatval($m -> height) * floatval($m -> height) / 10000.0; // 身高公尺平方
+				$weight_best = 0;
+				if($m -> gender == 1) { // 男生
+					$weight_best = $m2 * 22;
+				}
+				if($m -> gender == 0) { // 女生
+					$weight_best = $m2 * 20.6;
+				}
+
+				$bmi_best = 22; // always 22
+				$fat_info = get_fat_info($bmi, $body_fat_rate, $m -> gender);
+
+				$fat_rate_best = 18.0;
+				$fat_best =	$weight_best * $fat_rate_best / 100.0;
 
 				$insert_data = array('member_id' => $member_id,
 									 'weight' => $weight,
@@ -54,6 +75,10 @@ class Record extends MY_Base_Controller {
 									 'protein_rate' => $protein_rate,
 									 'skeletal_muscle_rate' => $skeletal_muscle_rate,
 									 'bmi' => $bmi,
+									 'bmi_best' => $bmi_best,
+									 'weight_best' => $weight_best,
+									 'fat_best' => $fat_best,
+									 'fat_info' => $fat_info,
 									 'create_date'=> $today
 								 );
 				$data = $this -> records_dao -> find_by_value(array('member_id'=>$member_id,'date'=>$today));
