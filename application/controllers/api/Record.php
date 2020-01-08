@@ -131,7 +131,7 @@ class Record extends MY_Base_Controller {
 				$res['record'] = $m;
 
 				// 獲得suggestion
-				$res['td'] = $this -> get_suggestions($m -> id);
+				$res['td'] = $this -> get_suggestions($member_id);
 			}
 		}else{
 			$res['error_code'][] = "columns_required";
