@@ -581,16 +581,6 @@ class Members_dao extends MY_Model {
 		return $list;
 	}
 
-	// function find_all_by_station($station_id) {
-	// 	$this -> db -> select("id");
-	// 	$this -> db -> select("user_name");
-	// 	$this -> db -> select("account");
-	// 	$this -> db -> from("{$this->table_name}");
-	// 	$this -> db -> where("station_id", $station_id);
-	// 	$list = $this -> db -> get() -> result();
-	// 	return $list;
-	// }
-
 	function find_by_status1($account) {
 
 		$this -> db -> select("*");
@@ -639,6 +629,61 @@ class Members_dao extends MY_Model {
 		$this -> db -> where('_m.type', 1);
 		$list = $this -> db -> get() -> result();
 		return $list;
+	}
+
+	function query_ajax_by_coach($login_user_id,$start_l) {
+		// $start = $data['start'];
+		// $limit = $data['length'];
+		// $columns = $data['columns'];
+		// $search = $data['search'];
+		// $order = $data['order'];
+
+		// select
+		$this -> db -> select('_m.*');
+		$this -> db -> where("coach_id", $login_user_id);
+
+		// join
+		$this -> ajax_from_join();
+
+		// search always
+		// $this -> search_always($data);
+
+		// search
+
+		$this -> db -> order_by('id', 'asc');
+		if($start_l>1){
+			$this -> db -> limit(5, $start_l);
+
+		}
+		// limit
+		$this -> db -> limit(5);
+
+		// query results
+		$query = $this -> db -> get();
+
+		// echo $this -> db -> last_query();
+		return $query -> result();
+	}
+
+	function find_all_by_coach($login_user_id) {
+
+		// select
+		$this -> db -> select('_m.*');
+		$this -> db -> where("coach_id", $login_user_id);
+
+		// join
+		$this -> ajax_from_join();
+
+		// search always
+		// $this -> search_always($data);
+		// search
+
+		$this -> db -> order_by('id', 'asc');
+		// query results
+		$query = $this -> db -> get();
+
+		// echo $this -> db -> last_query();
+		return $query -> result();
 	}
 
 }

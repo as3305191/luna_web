@@ -57,11 +57,14 @@
         <div class="row">
           <!-- Profile Sidebar -->
           <div class="col-lg-3 g-mb-50 g-mb-0--lg">
+            <input class="form-control" type="hidden" id="coach_id" value="<?=isset($login_user) ? $login_user->id: '' ?>"/>
 
 
             <!-- Sidebar Navigation -->
             <div class="list-group list-group-border-0 g-mb-40">
-              <!-- Overall -->
+              <div id="logout" class="btn-header transparent pull-right">
+                <span> <a href="<?= base_url() ?>coach/login/logout" title="Sign Out" data-action="userLogout" data-logout-msg="You can improve your security further after logging out by closing this opened browser">登出</a> </span>
+              </div>
               <a href="<?= base_url() ?>page-profile-main-1.html" class="list-group-item justify-content-between active">
                 <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> 主頁</span>
               </a>
@@ -166,10 +169,7 @@
                         <th class="g-font-weight-300 g-color-black">性別</th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                      </tr>
-
+                    <tbody id="dt_list_body">
                     </tbody>
                   </table>
                 </div>
@@ -177,37 +177,50 @@
               </div>
               <nav class="text-center" aria-label="Page Navigation">
                 <ul class="list-inline">
-                  <li class="list-inline-item float-sm-left">
-                    <a class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-16" href="#" aria-label="Previous">
-                      <span aria-hidden="true">
-                        <i class="fa fa-angle-left g-mr-5"></i> 上一頁
-                      </span>
-                      <span class="sr-only">Previous</span>
-                    </a>
-                  </li>
-                  <li class="list-inline-item g-hidden-sm-down">
-                    <a class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-14" href="#">1</a>
-                  </li>
-                  <li class="list-inline-item g-hidden-sm-down">
-                    <a class="u-pagination-v1__item u-pagination-v1-4 u-pagination-v1-4--active g-rounded-50 g-pa-7-14" href="#">2</a>
-                  </li>
-                  <li class="list-inline-item g-hidden-sm-down">
-                    <a class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-14" href="#">3</a>
-                  </li>
-                  <li class="list-inline-item g-hidden-sm-down">
-                    <a class="g-pa-7-14">...</a>
-                  </li>
-                  <li class="list-inline-item g-hidden-sm-down">
-                    <a class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-14" href="#">80</a>
-                  </li>
-                  <li class="list-inline-item float-sm-right">
-                    <a class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-16" href="#" aria-label="Next">
-                      <span aria-hidden="true">
-                        下一頁 <i class="fa fa-angle-right g-ml-5"></i>
-                      </span>
-                      <span class="sr-only">下一頁</span>
-                    </a>
-                  </li>
+                  <?php
+                    for ($i=1;$i<=$page;$i++){
+                  ?>
+                  <?php $j=$i?>
+
+                    <?php if ($i==1): ?>
+                      <li class="list-inline-item float-sm-left">
+                        <a class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-16" onclick="for_table(<?=$j?>)" aria-label="Previous">
+                          <span aria-hidden="true">
+                            <i class="fa fa-angle-left g-mr-5"></i> 最前頁
+                          </span>
+                          <span class="sr-only">Previous</span>
+                        </a>
+                      </li>
+                    <?php else: ?>
+                    <?php endif; ?>
+
+
+                    <?php if ($i==1): ?>
+                      <li class="list-inline-item g-hidden-sm-down" >
+                        <a class="u-pagination-v1__item u-pagination-v1-4 u-pagination-v1-4--active g-rounded-50 g-pa-7-14 s<?=$i?>"  onclick="for_table(<?=$i?>)">
+                      <?php echo $i?></a></li>
+                    <?php else: ?>
+                      <li class="list-inline-item g-hidden-sm-down" >
+                        <a class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-14 s<?=$i?>"  onclick="for_table(<?=$i?>)">
+                      <?php echo $i?></a></li>
+                    <?php endif; ?>
+
+
+                    <?php if ($i==$page): ?>
+                      <li class="list-inline-item float-sm-right">
+                        <a class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-16" onclick="for_table(<?=$j?>)" aria-label="Next">
+                          <span aria-hidden="true">
+                            最後頁 <i class="fa fa-angle-right g-ml-5"></i>
+                          </span>
+                          <span class="sr-only">下一頁</span>
+                        </a>
+                      </li>
+                    <?php else: ?>
+                    <?php endif; ?>
+
+                      <?php } ?>
+
+
                 </ul>
               </nav>
             </div>
@@ -308,9 +321,44 @@
 </script>
 <script>
 var baseUrl = '<?=base_url('')?>';
-  loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-    loadScript(baseUrl + "js/coach_home/list.js", function(){
-      currentApp = new CoachHomeAppClass(new BaseAppClass({}));
-    });
+
+function for_table(page){
+  var url = baseUrl + 'coach/coach_home/get_data';
+
+  $.ajax({
+    type : "POST",
+    url : url,
+    data : {
+      id: $('#coach_id').val(),
+      page: page
+    },
+    success : function(data) {
+      var $body = $('#dt_list_body').empty();
+      if(data.id!==''){
+        $.each(data.items, function(){
+          var me = this;
+          var $tr = $('<tr class="pointer">').click(function(){
+            // $('.job_id_1').val(me.id);
+            // $('.job_name').val(me.temp_title);
+          }).appendTo($body);
+          $('<td>').html(me.user_name).appendTo($tr);
+          $('<td>').html(me.age).appendTo($tr);
+          $('<td>').html(me.height).appendTo($tr);
+          if(me.gender==0){
+            $('<td>').html('女').appendTo($tr);
+          } else{
+            if(me.gender==1){
+              $('<td>').html('男').appendTo($tr);
+            }
+          }
+        })
+      }
+      $('.u-pagination-v1__item').removeClass('u-pagination-v1-4--active ');
+      $('.s'+page).addClass('u-pagination-v1-4--active');
+    }
   });
+}
+
+for_table(1);
+
 </script>
