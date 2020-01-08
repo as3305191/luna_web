@@ -343,12 +343,12 @@ class Record extends MY_Base_Controller {
 		$td -> body_fat_rate -> level = array("yellow","green","red");
 		$td -> body_fat_rate -> level_data = array(
 			$msg["tip.low"],
-			"16",
-			"20",
+			"$body_fat_rate_0",
+			"$body_fat_rate_1",
 			$msg["tip.hight"],
 		);
 
-		$td -> fat = clone $td -> fat_info; // 複製肥胖等級
+		$td -> fat = clone $td -> body_fat_rate; // 複製體脂率
 		$td -> fat -> title = $msg["tip.fat"];
 		$td -> fat -> value = number_format($rec->body_fat / 100000, 0) . " %";
 		$td -> fat -> explain = $msg["tip.fatv"];
