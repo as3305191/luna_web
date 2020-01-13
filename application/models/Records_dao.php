@@ -46,6 +46,10 @@ class Records_dao extends MY_Model {
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
 
+		if(!empty($f['id'])){
+			$this -> db -> where('_m.id',$f['id']);
+		}
+
 		if(!empty($f['date'])){
 			$date = date_create($f['date']);
 			$dateS = date_format($date,"Y-m-d 00:00:00");

@@ -133,7 +133,7 @@ class Record extends MY_Base_Controller {
 				$res['record'] = $m;
 
 				// 獲得suggestion
-				$res['td'] = $this -> get_suggestions($member_id);
+				$res['td'] = $this -> get_suggestions($member_id,0);
 			}
 		}else{
 			$res['error_code'][] = "columns_required";
@@ -142,9 +142,57 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
-	public function get_suggestions($member_id) {
+	// 秤重單筆紀錄
+	public function find_one_record(){
+		$id = $this -> get_post('id');
+		$member_id = $this -> get_post('member_id');
+
+		if(!empty($id && !empty($member_id))){
+			$m = $this -> records_dao -> find_by_id($id);
+
+			$res['success'] = TRUE;
+			if(!empty($m)){
+				$weight_kg = $m->weight/1000;
+				$body_fat =  $m->weight/1000 * $m->body_fat_rate/100;
+				$visceral_fat =  $m->weight/1000 * $m->visceral_fat_rate/100;
+				$protein =  $m->weight/1000 * $m->protein_rate/100;
+				$moisture =  $m->weight/1000 * $m->moisture_rate/100;
+				$muscle =  $m->weight/1000 * $m->muscle_rate/100;
+				$bone_mass =  $m->weight/1000 * $m->bone_mass_rate/100;
+				$skeletal_muscle =  $m->weight/1000 * $m->skeletal_muscle_rate/100;
+				$fat_best =  $m->weight/1000 * $m->body_fat_best/100;
+
+				// $m->weight =sprintf("%.2f",$weight_kg);
+				$m -> weight = number_format($weight_kg,1);
+				$m -> body_fat = number_format($body_fat,1);
+				$m -> visceral_fat = number_format($visceral_fat,1);
+				$m -> protein = number_format($protein,1);
+				$m -> moisture = number_format($moisture,1);
+				$m -> muscle = number_format($muscle,1);
+				$m -> skeletal_muscle = number_format($skeletal_muscle,1);
+				$m -> bone_mass = number_format($bone_mass,1);
+				$m -> fat_best = number_format($fat_best,1);
+
+				$res['record'] = $m;
+
+				// 獲得suggestion
+				$res['td'] = $this -> get_suggestions($member_id,$id);
+			}
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
+	public function get_suggestions($member_id, $id) {
 		$m = $this -> dao -> find_by_id($member_id);
-		$rec = $this -> records_dao -> find_by_value(array('member_id' => $member_id));
+		$rec;
+		if(empty($id)){
+			$rec = $this -> records_dao -> find_by_value(array('member_id' => $member_id));
+		}else{
+			$rec = $this -> records_dao -> find_by_id($id);
+		}
 
 		// thev body object
 		$td = new stdClass; // body 資料
@@ -570,6 +618,7 @@ class Record extends MY_Base_Controller {
 	public function list_all_record(){
 		$member_id = $this -> get_post('member_id');
 		$date = $this -> get_post('date');
+		$id = $this -> get_post('id');
 
 		if(!empty($member_id)){
 			$f = array('member_id' => $member_id);
