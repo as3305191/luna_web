@@ -66,7 +66,45 @@
               <a href="<?= base_url() ?>page-profile-main-1.html" class="list-group-item justify-content-between active">
                 <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> 主頁</span>
               </a>
-            
+              <!-- End Overall -->
+
+              <!-- Profile -->
+              <!-- <a href="<?= base_url() ?>page-profile-profile-1.html" class="list-group-item list-group-item-action justify-content-between">
+                <span><i class="icon-cursor g-pos-rel g-top-1 g-mr-8"></i> Profile</span>
+              </a> -->
+              <!-- End Profile -->
+
+              <!-- Users Contacts -->
+              <!-- <a href="<?= base_url() ?>page-profile-users-1.html" class="list-group-item list-group-item-action justify-content-between">
+                <span><i class="icon-notebook g-pos-rel g-top-1 g-mr-8"></i> Users Contacts</span>
+              </a> -->
+              <!-- End Users Contacts -->
+
+              <!-- My Projects -->
+              <!-- <a href="<?= base_url() ?>page-profile-projects-1.html" class="list-group-item list-group-item-action justify-content-between">
+                <span><i class="icon-layers g-pos-rel g-top-1 g-mr-8"></i> My Projects</span>
+                <span class="u-label g-font-size-11 g-bg-primary g-rounded-20 g-px-10">9</span>
+              </a> -->
+              <!-- End My Projects -->
+
+              <!-- Comments -->
+              <!-- <a href="<?= base_url() ?>page-profile-comments-1.html" class="list-group-item list-group-item-action justify-content-between">
+                <span><i class="icon-bubbles g-pos-rel g-top-1 g-mr-8"></i> Comments</span>
+                <span class="u-label g-font-size-11 g-bg-pink g-rounded-20 g-px-8">24</span>
+              </a> -->
+              <!-- End Comments -->
+
+              <!-- Reviews -->
+              <!-- <a href="<?= base_url() ?>page-profile-reviews-1.html" class="list-group-item list-group-item-action justify-content-between">
+                <span><i class="icon-heart g-pos-rel g-top-1 g-mr-8"></i> Reviews</span>
+              </a> -->
+              <!-- End Reviews -->
+
+              <!-- History -->
+              <!-- <a href="<?= base_url() ?>page-profile-history-1.html" class="list-group-item list-group-item-action justify-content-between">
+                <span><i class="icon-fire g-pos-rel g-top-1 g-mr-8"></i> History</span>
+              </a> -->
+              <!-- End History -->
 
               <!-- Settings -->
               <a href="<?= base_url() ?>page-profile-settings-1.html" class="list-group-item list-group-item-action justify-content-between">
