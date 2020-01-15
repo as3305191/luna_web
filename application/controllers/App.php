@@ -24,7 +24,7 @@ class App extends MY_Base_Controller {
 		$list = $this -> users_dao -> nav_list_by_role_id($role_id);
 		$data['menu_list'] = $list;
 		$this->load->view('layout/main', $data);
-		
+
 	}
 
 	public function test() {

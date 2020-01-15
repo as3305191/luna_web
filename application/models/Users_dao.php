@@ -393,7 +393,7 @@ class Users_dao extends MY_Model {
 		$lv1_list = $this -> nav_dao -> find_all_by_parent_id(0);
 		$sub_list = $this -> nav_dao -> find_all_not_lv1();
 
-		$sql = "select * from role_power where role_id = $role_id";
+		$sql = "select * from role_power where role_id = {$role_id}";
 		$rp_list = $this -> db -> query($sql) -> result();
 
 		$map = array();
