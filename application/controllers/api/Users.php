@@ -174,7 +174,7 @@ class Users extends MY_Base_Controller {
 			"member_id" => "{$member_id}",
 			"account" => "{$account}",
 			"new_password" => "{$new_password}",
-			"password" => "{$old_password}",
+			"old_password" => "{$old_password}",
 			"time" => time(),
 		);
 
