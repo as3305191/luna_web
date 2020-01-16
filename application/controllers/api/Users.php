@@ -135,8 +135,88 @@ class Users extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function get_member() {
+		$res = array();
 
+		$account = $this -> get_post("account");
+		$password = $this -> get_post("password");
 
+		$this -> load -> library('aeswithopenssl');
+		$arr = array(
+			"account" => "{$account}",
+			"password" => "{$password}",
+			"time" => time(),
+		);
+		$str = json_encode($arr);
+		$token = $this -> aeswithopenssl -> encryptWithOpenssl($str);
+
+		$ret = $this -> curl -> simple_post($this -> aeswithopenssl -> getUrl("getMemberRequest"), array(
+			"ApiKey" => $this -> aeswithopenssl -> getApiKey(),
+			"token" => $token,
+		));
+
+		// $res['success'] = TRUE;
+		// $res['token'] = $token;
+		$res = array_merge($res, (array)json_decode($ret));
+		$this -> to_json($res);
+	}
+
+	public function change_member_pwd() {
+		$res = array();
+
+		$member_id = $this -> get_post("member_id");
+		$account = $this -> get_post("account");
+		$new_password = $this -> get_post("new_password");
+		$old_password = $this -> get_post("old_password");
+
+		$this -> load -> library('aeswithopenssl');
+		$arr = array(
+			"member_id" => "{$member_id}",
+			"account" => "{$account}",
+			"new_password" => "{$new_password}",
+			"old_password" => "{$old_password}",
+			"time" => time(),
+		);
+		$str = json_encode($arr);
+		$token = $this -> aeswithopenssl -> encryptWithOpenssl($str);
+
+		$ret = $this -> curl -> simple_post($this -> aeswithopenssl -> getUrl("changeMemberPwdRequest"), array(
+			"ApiKey" => $this -> aeswithopenssl -> getApiKey(),
+			"token" => $token,
+		));
+
+		// $res['success'] = TRUE;
+		$res['str'] = $str;
+		$res = array_merge($res, (array)json_decode($ret));
+		$this -> to_json($res);
+	}
+
+	public function get_qrcode() {
+		$res = array();
+
+		$member_id = $this -> get_post("member_id");
+
+		if(empty($member_id)) {
+			return $this -> json_encode(array("error_msg" => "no member_id"));
+		}
+		$this -> load -> library('aeswithopenssl');
+		$arr = array(
+			"member_id" => "$member_id",
+			"time" => time(),
+		);
+		$str = json_encode($arr);
+		$token = $this -> aeswithopenssl -> encryptWithOpenssl($str);
+
+		$ret = $this -> curl -> simple_post($this -> aeswithopenssl -> getUrl("getMemberQrcodeRequest"), array(
+			"ApiKey" => $this -> aeswithopenssl -> getApiKey(),
+			"token" => $token,
+		));
+
+		// $res['success'] = TRUE;
+		// $res['token'] = $token;
+		$res = array_merge($res, (array)json_decode($ret));
+		$this -> to_json($res);
+	}
 
 
 
