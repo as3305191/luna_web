@@ -16,7 +16,7 @@ class Coach_home extends MY_Base_Controller {
 
 	public function index() {
 		$data = array();
-		$s_data = $this -> setup_user_data(array());
+		$s_data = $this -> setup_coach_data(array());
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
 		$data['p'] = count($res['items']);
@@ -32,7 +32,7 @@ class Coach_home extends MY_Base_Controller {
 		$id = $this -> get_post('id');
 		$page = $this -> get_post('page');
 
-		$s_data = $this -> setup_user_data(array());
+		$s_data = $this -> setup_coach_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		if($page>1){
 			$b=((int)$page-1)*5;
@@ -47,7 +47,7 @@ class Coach_home extends MY_Base_Controller {
 	}
 
 	public function logout() {
-		$corp = $this -> session -> userdata('corp');
+		// $corp = $this -> session -> userdata('corp');
 		$this -> session -> sess_destroy();
 		redirect('coach/login');
 	}

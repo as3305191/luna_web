@@ -265,6 +265,22 @@
 <script src="<?= base_url() ?>coach_1/assets/js/components/hs.scrollbar.js"></script>
 <script src="<?= base_url() ?>coach_1/assets/js/components/hs.go-to.js"></script>
 <script src="<?= base_url('js/plugin/bootstrap-fileinput/js/fileinput.js') ?>"></script>
+<!-- dataTable -->
+<!-- <script src="<?= base_url('js/DataTables/datatables.min.js')?>"></script> -->
+<script src="<?= base_url('js/plugin/datatables/jquery.dataTables.min.js')?>"></script>
+<script src="<?= base_url('js/plugin/datatables/dataTables.colVis.min.js')?>"></script>
+<script src="<?= base_url('js/plugin/datatables/dataTables.tableTools.min.js')?>"></script>
+<script src="<?= base_url('js/plugin/datatables/dataTables.bootstrap.min.js')?>"></script>
+<script src="<?= base_url('js/plugin/datatable-responsive/datatables.responsive.min.js')?>"></script>
+<script src="<?= base_url('js/plugin/datatable-scroller/js/dataTables.scroller.min.js')?>"></script>
+
+<!-- jQuery file upload -->
+<script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<!-- The Iframe Transport is required for browsers without support for XHR file uploads -->
+<script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+<!-- The basic File Upload plugin -->
+<script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/jquery.fileupload.js"></script>
+
 
 <!-- JS Customization -->
 <script src="<?= base_url() ?>coach_1/assets/js/custom.js"></script>
