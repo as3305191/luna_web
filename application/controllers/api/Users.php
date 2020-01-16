@@ -177,6 +177,7 @@ class Users extends MY_Base_Controller {
 			"old_password" => "{$old_password}",
 			"time" => time(),
 		);
+		
 		$str = json_encode($arr);
 		$token = $this -> aeswithopenssl -> encryptWithOpenssl($str);
 
