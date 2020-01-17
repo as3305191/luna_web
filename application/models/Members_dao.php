@@ -47,6 +47,22 @@ class Members_dao extends MY_Model {
 		return $this -> find_all();
 	}
 
+	// function find_by_account($f){
+	// 	$this -> db -> from("$this->table_name as _m");
+	// 	$this -> db -> select('_m.*');
+	//
+	// 	if(!empty($f['account'])){
+	// 		$this -> db -> where("_m.account", $f['account']);
+	// 	}
+	//
+	// 	$query = $this -> db -> get();
+	// 	if ($query -> num_rows() > 0) {
+	// 		$row = $query -> row();
+	// 		return $row;
+	// 	}
+	// 	return NULL;
+	// }
+
 	function find_by_role($station_id,$role_id){
 		$this -> db -> where("station_id", $station_id);
 		$this -> db -> where("role_id", $role_id);

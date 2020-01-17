@@ -6,6 +6,8 @@ class Users extends MY_Base_Controller {
 
 		// setup models
 		$this -> load -> model('Users_dao', 'dao');
+		$this -> load -> model('Members_dao', 'members_dao');
+
 
 	}
 
@@ -158,6 +160,27 @@ class Users extends MY_Base_Controller {
 		// $res['success'] = TRUE;
 		// $res['token'] = $token;
 		$res = array_merge($res, (array)json_decode($ret));
+
+		$json = (array)json_decode($ret);
+
+		if (array_key_exists("member_id",$json)){
+			$member_id = $json['member_id'];
+			$m = $this -> members_dao  -> find_by_account($member_id);
+			if(!empty($m)){
+				$res['member'] = $m;
+			}else{
+				$insert_data = array('account' => $member_id,
+									 'password' => $member_id,
+								 );
+				$last_id = $this -> members_dao -> insert($insert_data);
+				$value = str_pad($last_id,6,'0',STR_PAD_LEFT);
+				$this -> members_dao -> update(array('code'=>$value),$last_id);
+				$res['member'] = $this -> members_dao -> find_by_id($last_id);
+			}
+		}else{
+			$res['error_message'] = $json['message'];
+		}
+
 		$this -> to_json($res);
 	}
 
