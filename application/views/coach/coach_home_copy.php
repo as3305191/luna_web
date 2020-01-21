@@ -126,13 +126,13 @@
             <div class="row g-mb-40">
 
             <!-- Product Table Panel -->
-            <div class="card border-0">
+            <div class="">
               <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                 <h3 class="h6 mb-0">
                     <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 所有學員
                   </h3>
                 <div class="dropdown g-mb-10 g-mb-0--md">
-                  <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
+                  <!-- <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
                     <a class="dropdown-item g-px-10" href="<?= base_url() ?>#">
                       <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
                     </a>
@@ -151,7 +151,7 @@
                     <a class="dropdown-item g-px-10" href="<?= base_url() ?>#">
                       <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                     </a>
-                  </div>
+                  </div> -->
                 </div>
               </div>
 

@@ -48,7 +48,7 @@ class Login extends MY_Base_Controller {
 
 
 	public function logout() {
-		$corp = $this -> session -> userdata('corp');
+		// $corp = $this -> session -> userdata('corp');
 		$this -> session -> sess_destroy();
 		redirect('coach/login');
 	}

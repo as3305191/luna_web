@@ -54,7 +54,7 @@
               </span>
             </button>
             <!-- End Responsive Toggle Button -->
-
+            <input class="form-control" type="hidden" id="coach_id" value="<?=isset($login_user) ? $login_user->id: '' ?>"/>
             <!-- Logo -->
             <a href="../../index.html" class="navbar-brand d-flex">
               <svg width="86px" height="32px" viewBox="0 0 86 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
