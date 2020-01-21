@@ -268,7 +268,7 @@ class Users extends MY_Base_Controller {
 					$res['last_id'] = $arc -> id;
 				}else{
 					// not found, create new token
-					$i_data['user_id'] = $user_id;
+					$i_data['member_id'] = $member_id;
 					$last_id = $this -> arc_dao -> insert($i_data);
 					$res['last_id'] = $last_id;
 				}
