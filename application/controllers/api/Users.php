@@ -7,6 +7,7 @@ class Users extends MY_Base_Controller {
 		// setup models
 		$this -> load -> model('Users_dao', 'dao');
 		$this -> load -> model('Members_dao', 'members_dao');
+		$this -> load -> model('App_reg_code_dao', 'arc_dao');
 
 
 	}
@@ -241,6 +242,48 @@ class Users extends MY_Base_Controller {
 		$res = array_merge($res, (array)json_decode($ret));
 		$this -> to_json($res);
 	}
+
+	// update token
+	public function update_token() {
+		$res = array();
+		$res['success'] = TRUE;
+
+		$user_id = $this -> get_post('user_id');
+		$token = $this -> get_post('token');
+		$device_type = $this -> get_post('device_type');
+
+		if(!empty($user_id) && !empty($token) && !empty($device_type)) {
+			$this -> arc_dao -> delete_by_token($token, $user_id);
+
+			$i_data = array();
+			if(!empty($user_id)){
+				$i_data['token'] = $token;
+				$i_data['update_time'] = date('Y-m-d H:i:s');
+				$i_data['device_type'] = $device_type;
+
+				$arc = $this -> arc_dao -> find_by_member($user_id);
+
+				if(!empty($arc)) {
+					$this -> arc_dao -> update($i_data,$arc -> id);
+					$res['last_id'] = $arc -> id;
+				}else{
+					// not found, create new token
+					$i_data['user_id'] = $user_id;
+					$last_id = $this -> arc_dao -> insert($i_data);
+					$res['last_id'] = $last_id;
+				}
+
+			}
+		} else {
+			$res['error_code'][] = "member_id_token_device_type_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+
+		// todo
+		$this -> to_json($res);
+
+	}
+
 
 
 

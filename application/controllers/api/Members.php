@@ -283,6 +283,9 @@ class Members extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+
+
+
 	// 每天半夜12點執行
 	public function reset(){
 		$res['success'] = TRUE;
