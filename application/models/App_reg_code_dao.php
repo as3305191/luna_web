@@ -20,6 +20,40 @@ class App_reg_code_dao extends MY_Model {
 	//
 	// }
 
+	function find_by_member_and_token($user_id, $token) {
+		$this -> db -> where('member_id', $user_id);
+		$this -> db -> where('token', $token);
+		$list = $this -> find_all();
+		return $list;
+	}
+
+	function delete_by_token($token,$user_id)  {
+		$this -> db -> delete('app_reg_code', array('token' => $token,'member_id<>' => $user_id));
+	}
+
+	function find_by_member($user_id) {
+		$this -> db -> where('member_id', $user_id);
+		$list = $this -> find_all();
+
+		if (count($list) > 0) {
+			return $list[0];
+		}
+		return NULL;
+	}
+
+
+	function find_all_by_member_id($user_id) {
+		$this -> db -> where('member_id', $user_id);
+		$list = $this -> find_all();
+		return $list;
+	}
+
+	function find_all_by_member_id_new($user_id) {
+		$this -> db -> where('member_id', $user_id);
+		$list = $this -> find_all();
+		return $list;
+	}
+
 
 }
 ?>

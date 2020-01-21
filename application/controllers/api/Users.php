@@ -248,20 +248,20 @@ class Users extends MY_Base_Controller {
 		$res = array();
 		$res['success'] = TRUE;
 
-		$user_id = $this -> get_post('user_id');
+		$member_id = $this -> get_post('member_id');
 		$token = $this -> get_post('token');
 		$device_type = $this -> get_post('device_type');
 
-		if(!empty($user_id) && !empty($token) && !empty($device_type)) {
-			$this -> arc_dao -> delete_by_token($token, $user_id);
+		if(!empty($member_id) && !empty($token) && !empty($device_type)) {
+			$this -> arc_dao -> delete_by_token($token, $member_id);
 
 			$i_data = array();
-			if(!empty($user_id)){
+			if(!empty($member_id)){
 				$i_data['token'] = $token;
 				$i_data['update_time'] = date('Y-m-d H:i:s');
 				$i_data['device_type'] = $device_type;
 
-				$arc = $this -> arc_dao -> find_by_member($user_id);
+				$arc = $this -> arc_dao -> find_by_member($member_id);
 
 				if(!empty($arc)) {
 					$this -> arc_dao -> update($i_data,$arc -> id);
