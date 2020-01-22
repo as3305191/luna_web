@@ -30,6 +30,15 @@
     <a href="<?= base_url("coach/coach_setting") ?>" class="list-group-item list-group-item-action justify-content-between coach_setting">
       <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> 設定</span>
     </a>
+    <a href="<?= base_url("") ?>" class="list-group-item list-group-item-action justify-content-between coach_setting">
+      <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> 今日上秤學員顯示列表</span>
+    </a>
+    <a href="<?= base_url("") ?>" class="list-group-item list-group-item-action justify-content-between coach_setting">
+      <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> 3天未上秤學員列表</span>
+    </a>
+    <a href="<?= base_url("") ?>" class="list-group-item list-group-item-action justify-content-between coach_setting">
+      <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> 所有學員最後一天減脂紀錄</span>
+    </a>
     <a href="<?= base_url("coach/login/logout") ?>" class="list-group-item list-group-item-action justify-content-between">
       <span><i class="icon-logout g-pos-rel g-top-1 g-mr-8"></i> 登出</span>
     </a>

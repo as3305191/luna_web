@@ -29,28 +29,28 @@
                     <i class="icon-people align-self-center display-4 g-mr-20"></i>
 
                     <div class="g-line-height-1">
-                      <h4 class="h5">Overal Visits</h4>
-                      <div class="js-counter g-font-size-30" data-comma-separated="true">52147</div>
+                      <h4 class="h5">今日上秤學員總共減脂</h4>
+                      <div class="js-counter g-font-size-30" data-comma-separated="true">3％</div>
                     </div>
                   </header>
 
                   <div class="d-flex justify-content-between text-uppercase g-mb-25">
                     <div class="g-line-height-1">
-                      <h5 class="h6 g-font-weight-600">Last Week</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true">1385</div>
+                      <h5 class="h6 g-font-weight-600">昨天</h5>
+                      <div class="js-counter g-font-size-16" data-comma-separated="true">2人</div>
                     </div>
 
                     <div class="text-right g-line-height-1">
-                      <h5 class="h6 g-font-weight-600">Last Month</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true">6048</div>
+                      <h5 class="h6 g-font-weight-600">這禮拜</h5>
+                      <div class="js-counter g-font-size-16" data-comma-separated="true">3</div>
                     </div>
                   </div>
 
-                  <h6 class="g-mb-10">Project Completeness <span class="float-right g-ml-10">72%</span></h6>
+                  <!-- <h6 class="g-mb-10">Project Completeness <span class="float-right g-ml-10">72%</span></h6>
                   <div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">
                     <div class="js-hr-progress-bar-indicator progress-bar g-bg-white u-progress-bar--xs" role="progressbar" style="width: 72%;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <small class="g-font-size-12">11% less than last month</small>
+                  <small class="g-font-size-12">11% less than last month</small> -->
                 </div>
               </div>
 
@@ -60,29 +60,29 @@
                     <i class="icon-layers align-self-center display-4 g-mr-20"></i>
 
                     <div class="g-line-height-1">
-                      <h4 class="h5">Overal Views</h4>
-                      <div class="js-counter g-font-size-30" data-comma-separated="true">324056</div>
+                      <h4 class="h5">3天未上秤學員</h4>
+                      <div class="js-counter g-font-size-30" data-comma-separated="true">5人</div>
                     </div>
                   </header>
 
                   <div class="d-flex justify-content-between text-uppercase g-mb-25">
                     <div class="g-line-height-1">
-                      <h5 class="h6 g-font-weight-600">Last Week</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true">26904</div>
+                      <h5 class="h6 g-font-weight-600">昨天</h5>
+                      <div class="js-counter g-font-size-16" data-comma-separated="true">3人</div>
                     </div>
 
                     <div class="text-right g-line-height-1">
-                      <h5 class="h6 g-font-weight-600">Last Month</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true">124766</div>
+                      <h5 class="h6 g-font-weight-600">上禮拜</h5>
+                      <div class="js-counter g-font-size-16" data-comma-separated="true">12人</div>
                     </div>
                   </div>
 
-                  <h6 class="g-mb-10">Project Completeness <span class="float-right g-ml-10">89%</span></h6>
+                  <!-- <h6 class="g-mb-10">Project Completeness <span class="float-right g-ml-10">89%</span></h6>
                   <div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">
                     <div class="js-hr-progress-bar-indicator progress-bar g-bg-white u-progress-bar--xs" role="progressbar" style="width: 89%;" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                   <small class="g-font-size-12">16% higher than last month</small>
-                </div>
+                </div> -->
               </div>
             </div>
 
@@ -254,7 +254,7 @@
   }
 
   for_table(1);
-  
+
 
 </script>
 <!-- End Page Javascript -->
