@@ -469,6 +469,50 @@ if (!function_exists('send_gcm')) {
 	}
 }
 
+if (!function_exists('send_gcm_simple')) {
+	function send_gcm_simple($token, $title, $msg, $action = '') {
+		$url = 'https://fcm.googleapis.com/fcm/send';
+
+		$fields = array (
+				'to' => $token,
+				"priority" => "high",
+				'notification' => array(
+						"title" => $title,
+						"body" => $msg,
+						'badge' => "1",
+						"sound" => "default"
+				),
+				'data' => array(
+					// "title" => $title,
+					// "body" => $msg,
+					///////////////////////
+					'action' => $action
+				)
+		);
+		$fields = json_encode($fields);
+	//	echo $fields;
+		$headers = array (
+			'Authorization: key=AIzaSyCW69EciWfJ3cn_UEZex0sEXYiQzxdNo38',
+			'Content-Type: application/json'
+		);
+
+		$ch = curl_init ();
+		curl_setopt ( $ch, CURLOPT_URL, $url );
+		curl_setopt ( $ch, CURLOPT_POST, true );
+		curl_setopt ( $ch, CURLOPT_HTTPHEADER, $headers );
+		curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt ( $ch, CURLOPT_POSTFIELDS, $fields );
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // bypass ssl verify
+
+
+		$result = curl_exec ( $ch );
+		//echo $result;
+		return $result;
+
+		curl_close ( $ch );
+	}
+}
+
 if (!function_exists('send_gcm_topic')) {
 	function send_gcm_topic($title, $message, $condition, $badge = 1) {
 	    $url = 'https://fcm.googleapis.com/fcm/send';
