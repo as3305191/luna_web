@@ -19,8 +19,7 @@ class Coach_setting extends MY_Base_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
-		$data['p'] = count($res['items']);
-		$data['page'] = ceil($data['p']/5);
+
 		$data['now'] = 'coach_setting';
 
 		// $this -> to_json($data);
@@ -45,6 +44,26 @@ class Coach_setting extends MY_Base_Controller {
 		}
 
 		$this -> to_json($res);
+	}
+
+	public function insert() {
+		$res = array();
+		$id = $this -> get_post('id');
+		$data['account']= $this -> get_post('account');
+		$data['password']= $this -> get_post('password');
+		$data['email']= $this -> get_post('email');
+		if(!empty($id)) {
+			// insert
+
+
+			$this -> dao -> update($data, $id);
+		} else {
+			// update
+			// $this -> dao -> update($data, $id);
+		}
+
+		$res['success'] = TRUE;
+ 		$this -> to_json($res);
 	}
 
 	public function logout() {
