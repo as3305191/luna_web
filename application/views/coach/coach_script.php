@@ -71,4 +71,7 @@
         $.HSCore.components.HSTabs.init('[role="tablist"]');
       }, 200);
     });
+
+    var now_page = $('#now').val();
+    $('.'+now_page).addClass('active');
 </script>

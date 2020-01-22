@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Coach_home extends MY_Base_Controller {
+class Coach_setting extends MY_Base_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -21,11 +21,11 @@ class Coach_home extends MY_Base_Controller {
 		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
 		$data['p'] = count($res['items']);
 		$data['page'] = ceil($data['p']/5);
-		$data['now'] = 'coach_home';
+		$data['now'] = 'coach_setting';
 
 		// $this -> to_json($data);
 
-		$this -> load -> view('coach/coach_home', $data);
+		$this -> load -> view('coach/coach_setting', $data);
 	}
 
 	public function get_data() {
