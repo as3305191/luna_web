@@ -300,6 +300,14 @@ class Members extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function push_msg_test(){
+		$res = array();
+		$res['test'] = true;
+		$res['tt'] = send_gcm_simple('dX03w3DclFU:APA91bHqBNjqnDGQpW3I0YmOkQjcoCmutlYcOFZvRUFNOXAErcAxvm5wZAN8WYI8cNXWmXF_2GUT09Kqpsx2ucUgWhW0-Y1JgYNUrGJ6PajpaHywbz6LQva4XstEQwT1H8uDCi-i8aS8','123',array(''),'#123');
+		// $res['result'] = $this -> push_msg('55', array("broadcast",'55'), 'test', '1234567');
+		$this -> to_json($res);
+	}
+
 
 }
 ?>
