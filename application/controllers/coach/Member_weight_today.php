@@ -19,6 +19,8 @@ class Member_weight_today extends MY_Base_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
+		$data['p'] = count($res['items']);
+		$data['page'] = ceil($data['p']/5);
 
 		$data['now'] = 'member_weight_today';
 
@@ -54,7 +56,6 @@ class Member_weight_today extends MY_Base_Controller {
 		$data['email']= $this -> get_post('email');
 		if(!empty($id)) {
 			// insert
-
 
 			$this -> dao -> update($data, $id);
 		} else {
