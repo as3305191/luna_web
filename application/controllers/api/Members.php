@@ -140,10 +140,21 @@ class Members extends MY_Base_Controller {
 		if(!empty($member_id)) {
 			$m = $this -> dao -> find_by_id($member_id);
 			if(!empty($m)){
+
+				$years = 0;
+				if(!empty($birth)){
+					$date = strtotime($birth);
+					$datetime1 = date('Y-m-d', $date);
+					$datetime2 = date("Y-m-d");
+					$diff = abs(strtotime($datetime2) - strtotime($datetime1));
+					$years = floor($diff / (365*60*60*24));
+				}
+
 				$update_data = array(
 												'user_name' => $user_name,
 												'birth' => $birth,
 												'height'=>$height,
+												'year'=>$years,
 												'coach_id' => $coach_id
 											);
 				$m = $this -> dao -> update($update_data,$m->id);
