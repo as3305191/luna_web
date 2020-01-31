@@ -648,11 +648,6 @@ class Members_dao extends MY_Model {
 	}
 
 	function query_ajax_by_coach($login_user_id,$start_l) {
-		// $start = $data['start'];
-		// $limit = $data['length'];
-		// $columns = $data['columns'];
-		// $search = $data['search'];
-		// $order = $data['order'];
 
 		// select
 		$this -> db -> select('_m.*');

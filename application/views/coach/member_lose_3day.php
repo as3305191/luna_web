@@ -23,7 +23,7 @@
           <div class="col-lg-9">
             <!-- Overall Statistics -->
             <div class="row g-mb-40">
-          
+
 
             <!-- Profile Content -->
             <div class="col-lg-12">
@@ -67,9 +67,8 @@
                       <thead class="text-uppercase g-letter-spacing-1">
                         <tr>
                           <th class="g-font-weight-300 g-color-black g-min-width-200">學員名字</th>
-                          <th class="g-font-weight-300 g-color-black">年齡</th>
-                          <th class="g-font-weight-300 g-color-black">身高</th>
-                          <th class="g-font-weight-300 g-color-black">性別</th>
+                          <th class="g-font-weight-300 g-color-black">體重</th>
+
                         </tr>
                       </thead>
                       <tbody id="dt_list_body">
@@ -175,14 +174,6 @@
             }).appendTo($body);
             $('<td>').html(me.user_name).appendTo($tr);
             $('<td>').html(me.age).appendTo($tr);
-            $('<td>').html(me.height).appendTo($tr);
-            if(me.gender==0){
-              $('<td>').html('女').appendTo($tr);
-            } else{
-              if(me.gender==1){
-                $('<td>').html('男').appendTo($tr);
-              }
-            }
           })
         }
         $('.u-pagination-v1__item').removeClass('u-pagination-v1-4--active ');

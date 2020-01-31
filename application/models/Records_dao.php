@@ -238,5 +238,16 @@ class Records_dao extends MY_Model {
 			));
 		}
 	}
+
+	function find_last_weight($id) {
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.member_id', $id);
+		$this -> db -> order_by('_m.create_time', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+
 }
 ?>

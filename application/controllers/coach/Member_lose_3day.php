@@ -11,6 +11,7 @@ class Member_lose_3day extends MY_Base_Controller {
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
 		$this -> load -> model('Members_dao', 'dao');
+		$this -> load -> model('Records_dao', 'records_dao');
 
 	}
 
@@ -31,6 +32,7 @@ class Member_lose_3day extends MY_Base_Controller {
 
 	public function get_data() {
 		$res = array();
+
 		$id = $this -> get_post('id');
 		$page = $this -> get_post('page');
 
@@ -38,10 +40,18 @@ class Member_lose_3day extends MY_Base_Controller {
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		if($page>1){
 			$b=((int)$page-1)*5;
-			$res['items'] = $this -> dao -> query_ajax_by_coach($id,$b);
+			$items = $this -> dao -> query_ajax_by_coach($id,$b);
+			foreach ($items as $each) {
+				$each -> member_last_day_weight = $this -> records_dao -> find_last_weight($each -> id);
+			}
+			$res['items'] = $items;
 			$res['count_items'] = count($res['items']);
 		} else{
-			$res['items'] = $this -> dao -> query_ajax_by_coach($id,1);
+			$items = $this -> dao -> query_ajax_by_coach($id,1);
+			foreach ($items as $each) {
+				$each -> member_last_day_weight = $this -> records_dao -> find_last_weight($each -> id);
+			}
+			$res['items'] = $items;
 			$res['count_items'] = count($res['items']);
 		}
 
