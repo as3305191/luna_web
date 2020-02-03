@@ -117,6 +117,11 @@ class Members extends MY_Base_Controller {
 			$m = $this -> dao -> find_by_id($id);
 			if(!empty($m)){
 				$res['success'] = TRUE;
+				if(empty($m->update_time)){
+					$m->update= false;
+				}else{
+					$m->update= true;
+				}
 				$res['member'] = $m;
 			}else{
 				$res['error_code'][] = "member not found";
