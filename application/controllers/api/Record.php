@@ -134,7 +134,9 @@ class Record extends MY_Base_Controller {
 				$m -> rest_weight = number_format($rest_weight,1);
 
 				$res['record'] = $m;
-				$res['ketone'] = $ketone;
+				if(!empty($ketone)){
+					$res['ketone'] = $ketone;
+				}
 				// 獲得suggestion
 				$res['td'] = $this -> get_suggestions($member_id,0);
 			}
