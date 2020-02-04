@@ -855,9 +855,13 @@ class Record extends MY_Base_Controller {
 
 			if(!empty($data1)){
 				$res['data1'] = $data1;
+				$res['data1_id'] = $data1->id;
+				$res['td1'] = $this -> get_suggestions($member_id,$data1->id);
 			}
+
 			if(!empty($data2)){
 				$res['data2'] = $data2;
+				$res['td2'] = $this -> get_suggestions($member_id,$data2->id);
 			}
 		}else{
 			$res['error_code'][] = "columns_required";
