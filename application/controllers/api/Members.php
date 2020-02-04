@@ -163,7 +163,7 @@ class Members extends MY_Base_Controller {
 												'user_name' => $user_name,
 												'birth' => $birth,
 												'height'=>$height,
-												'year'=>$years,
+												'age'=>$years,
 												'coach_id' => $coach_id,
 												'gender' => $gender,
 												'update_time' => $date
