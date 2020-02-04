@@ -106,6 +106,7 @@ class Record extends MY_Base_Controller {
 		$member_id = $this -> get_post('member_id');
 		if(!empty($member_id)){
 			$m = $this -> records_dao -> find_by_value(array('member_id' => $member_id));
+			$ketone = $this -> ketone_record_dao -> find_by_one(array('member_id' => $member_id));
 
 			$res['success'] = TRUE;
 			if(!empty($m)){
@@ -133,7 +134,7 @@ class Record extends MY_Base_Controller {
 				$m -> rest_weight = number_format($rest_weight,1);
 
 				$res['record'] = $m;
-
+				$res['ketone'] = $ketone;
 				// 獲得suggestion
 				$res['td'] = $this -> get_suggestions($member_id,0);
 			}
