@@ -6,16 +6,11 @@ class Members extends MY_Base_Controller {
 
 		$this -> load -> model('Members_dao', 'dao');
 		$this -> load -> model('Members_log_dao', 'log_dao');
-		$this -> load -> model('Members_bonus_record_dao', 'members_bonus_record_dao');
-		$this -> load -> model('Question_dao', 'question_dao');
-		$this -> load -> model('Video_dao', 'video_dao');
-		$this -> load -> model('Video_detail_dao', 'video_detail_dao');
 		$this -> load -> model('Record_setting_dao', 'record_setting_dao');
-		$this -> load -> model('Tree_record_dao', 'tree_record_dao');
 		$this -> load -> model('Sentence_dao', 'sentence_dao');
 		$this -> load -> model('Level_record_log_dao', 'level_record_log_dao');
 		$this -> load -> model('Record_setting_dao', 'record_setting_dao');
-
+		$this -> load -> model('Ketone_record_dao', 'ketone_record_dao');
 
 	}
 
@@ -116,11 +111,18 @@ class Members extends MY_Base_Controller {
 		if(!empty($id)) {
 			$m = $this -> dao -> find_by_id($id);
 			if(!empty($m)){
+				$list = $this -> ketone_record_dao -> find_by_parameter(array('member_id'=>$id));
+
 				$res['success'] = TRUE;
 				if(empty($m->update_time)){
-					$m->update= false;
+					$m -> update = false;
 				}else{
-					$m->update= true;
+					$m -> update = true;
+				}
+				if(empty($list)){
+					$m -> has_ketone = false;
+				}else{
+					$m -> has_ketone = true;
 				}
 				$res['member'] = $m;
 			}else{
