@@ -144,7 +144,7 @@ class Members extends MY_Base_Controller {
 		$height = $this -> get_post('height');
 		$coach_id = $this -> get_post('coach_id');
 		$gender = $this -> get_post('gender');
-		$date = date('Y-m-d H:i:s');
+		$today = date('Y-m-d H:i:s');
 
 		if(!empty($member_id)) {
 			$m = $this -> dao -> find_by_id($member_id);
@@ -166,7 +166,7 @@ class Members extends MY_Base_Controller {
 												'age'=>$years,
 												'coach_id' => $coach_id,
 												'gender' => $gender,
-												'update_time' => $date
+												'update_time' => $today
 											);
 				$m = $this -> dao -> update($update_data,$m->id);
 				$res['success'] = TRUE;
