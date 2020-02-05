@@ -77,6 +77,7 @@ class Record extends MY_Base_Controller {
 									 'bmi' => $bmi,
 									 'bmi_best' => $bmi_best,
 									 'weight_best' => $weight_best,
+									 'fat_rate_best' => $fat_rate_best,
 									 'fat_best' => $fat_best,
 									 'fat_info' => $fat_info,
 									 'create_date'=> $today
@@ -118,7 +119,7 @@ class Record extends MY_Base_Controller {
 				$muscle =  $m->weight/1000 * $m->muscle_rate/100;
 				$bone_mass =  $m->weight/1000 * $m->bone_mass_rate/100;
 				$skeletal_muscle =  $m->weight/1000 * $m->skeletal_muscle_rate/100;
-				$fat_best =  $m->weight/1000 * $m->body_fat_best/100;
+				// $fat_best =  $m->weight/1000 * $m->body_fat_best/100;
 				$rest_weight = $weight_kg - $body_fat;
 
 				// $m->weight =sprintf("%.2f",$weight_kg);
@@ -130,7 +131,7 @@ class Record extends MY_Base_Controller {
 				$m -> muscle = number_format($muscle,1);
 				$m -> skeletal_muscle = number_format($skeletal_muscle,1);
 				$m -> bone_mass = number_format($bone_mass,1);
-				$m -> fat_best = number_format($fat_best,1);
+				// $m -> fat_best = number_format($fat_best,1);
 				$m -> rest_weight = number_format($rest_weight,1);
 
 				$res['record'] = $m;
