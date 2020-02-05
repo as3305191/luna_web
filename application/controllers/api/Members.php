@@ -139,6 +139,7 @@ class Members extends MY_Base_Controller {
 
 			$res['success'] = TRUE;
 			$res['id'] = $last_id;
+			$res['member'] = $this -> members_dao -> find_by_id($last_id);
 		} else {
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";
