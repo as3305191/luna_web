@@ -115,7 +115,7 @@ class Members extends MY_Base_Controller {
 		$image_id = $this -> get_post('image_id');
 		$account = date("YmdHis");
 
-		if(!empty($user_name) && !empty($birth) && $gender !='' && !empty($height)) {
+		if(!empty($user_name) && !empty($birth) && $gender!='' && !empty($height)) {
 			$date = strtotime($birth);
 			$datetime1 = date('Y-m-d', $date);
 			$datetime2 = date("Y-m-d");
