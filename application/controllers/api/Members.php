@@ -185,6 +185,8 @@ class Members extends MY_Base_Controller {
 		$height = $this -> get_post('height');
 		$coach_id = $this -> get_post('coach_id');
 		$gender = $this -> get_post('gender');
+		$is_share = $this -> get_post('is_share');
+		$image_id = $this -> get_post('image_id');
 		$today = date('Y-m-d H:i:s');
 
 		if(!empty($member_id)) {
@@ -207,6 +209,8 @@ class Members extends MY_Base_Controller {
 												'age'=>$years,
 												'coach_id' => $coach_id,
 												'gender' => $gender,
+												'is_share' => $is_share,
+												'image_id' => $image_id,
 												'update_time' => $today
 											);
 				$m = $this -> dao -> update($update_data,$m->id);
