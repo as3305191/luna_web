@@ -14,7 +14,7 @@ class Images extends MY_Base_Controller {
 
 	public function index() {
 		echo "index";
-
+		$i = new Imagick(realpath("./img/mybg.png"));
 	}
 
 
