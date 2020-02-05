@@ -128,7 +128,7 @@ class Members extends MY_Base_Controller {
 								 'birth' => $birth,
 								 'gender' => $gender,
 								 'height' => $height,
-								 'type' => '2',
+								 'type' => 2,
 								 'age' => $years
 							 );
 
