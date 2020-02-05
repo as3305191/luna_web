@@ -105,8 +105,8 @@ class Members extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
-	// 註冊
-	public function do_register_visitor() {
+	// 訪客登入
+	public function do_visitor_login() {
 		$res = array();
 		$user_name = $this -> get_post('user_name');
 		$birth = $this -> get_post('birth');
