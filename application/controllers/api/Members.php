@@ -113,7 +113,7 @@ class Members extends MY_Base_Controller {
 		$gender = $this -> get_post('gender');
 		$height = $this -> get_post('height');
 		$image_id = $this -> get_post('image_id');
-		$account = date("YmdHis'");
+		$account = date("YmdHis");
 
 		if(!empty($user_name) && !empty($birth) && $gender !='' && !empty($height)) {
 			$date = strtotime($birth);
