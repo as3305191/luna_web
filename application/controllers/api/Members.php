@@ -105,6 +105,47 @@ class Members extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	// 註冊
+	public function do_register_visitor() {
+		$res = array();
+		$user_name = $this -> get_post('user_name');
+		$birth = $this -> get_post('birth');
+		$gender = $this -> get_post('gender');
+		$height = $this -> get_post('height');
+		$image_id = $this -> get_post('image_id');
+		$account = date("YmdHis'");
+
+		if(!empty($user_name) && !empty($birth) && $gender !='' && !empty($image_id) && !empty($height)) {
+			$date = strtotime($birth);
+			$datetime1 = date('Y-m-d', $date);
+			$datetime2 = date("Y-m-d");
+			$diff = abs(strtotime($datetime2) - strtotime($datetime1));
+			$years = floor($diff / (365*60*60*24));
+
+			$insert_data = array('account' => $account,
+								 'password' => '123456',
+								 'user_name' => $user_name,
+								 'birth' => $birth,
+								 'gender' => $gender,
+								 'height' => $height,
+								 'type' => '2',
+								 'age' => $years
+							 );
+
+			$last_id = $this -> dao -> insert($insert_data);
+
+			$value = str_pad($last_id,6,'0',STR_PAD_LEFT);
+			$this -> dao -> update(array('code'=>$value),$last_id);
+
+			$res['success'] = TRUE;
+			$res['id'] = $last_id;
+		} else {
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
 	public function me(){
 		$res = array();
 		$id = $this -> get_post('member_id');
