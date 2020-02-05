@@ -111,7 +111,7 @@ class Members extends MY_Base_Controller {
 		if(!empty($id)) {
 			$m = $this -> dao -> find_by_id($id);
 			if(!empty($m)){
-				$list = $this -> ketone_record_dao -> find_by_parameter(array('member_id'=>$id));
+				$list = $this -> ketone_record_dao -> find_by_today(array('member_id'=>$id));
 
 				$res['success'] = TRUE;
 				if(empty($m->update_time)){
