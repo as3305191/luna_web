@@ -131,6 +131,10 @@ class Members extends MY_Base_Controller {
 								 'type' => 2,
 								 'age' => $years
 							 );
+							 
+			if(!empty($image_id)){
+				$insert_data['image_id'];
+			}
 
 			$last_id = $this -> dao -> insert($insert_data);
 
