@@ -194,7 +194,7 @@ class Members extends MY_Base_Controller {
 			$m = $this -> dao -> find_by_id($member_id);
 			if(!empty($m)){
 				$share;
-				if(!empty($share)){
+				if(!empty($is_share)){
 					$share = 1;
 				}else{
 					$share = 0;
