@@ -303,7 +303,7 @@ class Members extends MY_Base_Controller {
 	public function push_msg_test(){
 		$res = array();
 		$res['test'] = true;
-		$res['tt'] = send_gcm_simple('dX03w3DclFU:APA91bHqBNjqnDGQpW3I0YmOkQjcoCmutlYcOFZvRUFNOXAErcAxvm5wZAN8WYI8cNXWmXF_2GUT09Kqpsx2ucUgWhW0-Y1JgYNUrGJ6PajpaHywbz6LQva4XstEQwT1H8uDCi-i8aS8','123',array(''),'#123');
+		$res['tt'] = send_gcm_simple('fCHO4PlaIRs:APA91bEejh1GNCxwyU1it9pfpQ5B_l9JXQGRBvy94vE-S5zw_6WMuQ_i4isAPLEPRUDwkOl5TFwEOLiHX1xJf3Oesk8UdRMRhDLr-ch_r1Khhf0CRbmjuLlzjPBErAevodojZ-p6ksm7','hi','Hello');
 		// $res['result'] = $this -> push_msg('55', array("broadcast",'55'), 'test', '1234567');
 		$this -> to_json($res);
 	}

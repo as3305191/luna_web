@@ -492,7 +492,8 @@ if (!function_exists('send_gcm_simple')) {
 		$fields = json_encode($fields);
 	//	echo $fields;
 		$headers = array (
-			'Authorization: key=AIzaSyCW69EciWfJ3cn_UEZex0sEXYiQzxdNo38',
+			'Authorization: key=AAAA_CE4W8k:APA91bH6NNPMao0pkiiktokas5I_dhnQQw5gscCYln7AJSaRCYyeO4ssnK7t8fCDPqJckKTi8rucUj1ngW0M6NOv5B-a0Xvh6VqrfEcG_bCZtF_9eXNtbscUMeyPF29b4FhXKhjAHzOQ',
+			// 'Authorization: key=AIzaSyD19D4Lz_6TprlskuP-B06eTx9oOMN1SAs',
 			'Content-Type: application/json'
 		);
 
@@ -507,9 +508,10 @@ if (!function_exists('send_gcm_simple')) {
 
 		$result = curl_exec ( $ch );
 		//echo $result;
-		return $result;
+
 
 		curl_close ( $ch );
+		return $result;
 	}
 }
 
