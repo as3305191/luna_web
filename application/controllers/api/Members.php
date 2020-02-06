@@ -193,6 +193,12 @@ class Members extends MY_Base_Controller {
 		if(!empty($member_id)) {
 			$m = $this -> dao -> find_by_id($member_id);
 			if(!empty($m)){
+				$share;
+				if(!empty($share)){
+					$share = 1;
+				}else{
+					$share = 0;
+				}
 
 				$years = 0;
 				if(!empty($birth)){
@@ -210,7 +216,7 @@ class Members extends MY_Base_Controller {
 												'age'=>$years,
 												'coach_id' => $coach_id,
 												'gender' => $gender,
-												'is_share' => $is_share,
+												'is_share' => $share,
 												'image_id' => $image_id,
 												'update_time' => $today
 											);
