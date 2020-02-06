@@ -5,21 +5,21 @@ class News extends MY_Base_Controller {
 		parent::__construct();
 
 		// setup models
-		$this -> load -> model('News_dao', 'dao');
+		$this -> load -> model('News_private_dao', 'dao');
 
 	}
 
 
-	public function list_all(){
-		$page = $this -> get_post('page');
-		$f = array();
-		if(!empty($page)){
-			$f['page'] = $page;
-		}
-		$list = $this -> dao -> find_by_parameter($f);
-		$res['list'] = $list;
-		$this -> to_json($res);
-	}
+	// public function list_all(){
+	// 	$page = $this -> get_post('page');
+	// 	$f = array();
+	// 	if(!empty($page)){
+	// 		$f['page'] = $page;
+	// 	}
+	// 	$list = $this -> dao -> find_by_parameter($f);
+	// 	$res['list'] = $list;
+	// 	$this -> to_json($res);
+	// }
 
 	public function add(){
 		$res = array();
@@ -39,6 +39,46 @@ class News extends MY_Base_Controller {
 		}
 		$this -> to_json($res);
 	}
+
+	public function list_all(){
+		$res = array();
+
+		$member_id = $this -> get_post('member_id');
+		$page = $this -> get_post('page');
+		$f = array();
+		if(!empty($page)){
+			$f['page'] = $page;
+		}
+		if(!empty($member_id)){
+			$f['member_id'] = $member_id;
+			$count = $this -> dao -> find_unread($f);
+			$list = $this -> dao -> find_by_parameter($f);
+
+			$res['success'] = TRUE;
+			$res['unread'] = $count -> count;
+			$res['list'] = $list;
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+
+		$this -> to_json($res);
+	}
+
+	public function add_read(){
+		$res = array();
+		$id = $this -> get_post('id');
+		if(!empty($id)){
+			$this -> dao -> update(array('is_read'=> 1),$id);
+			$res['success'] = TRUE;
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
+
 
 
 
