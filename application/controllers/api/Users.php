@@ -286,7 +286,7 @@ class Users extends MY_Base_Controller {
 
 	public function push_test() {
 		$date = date('Y-m-d H:i:s');
-
+		$action = array('1','54');
 		$token = 'dkNVzLtJrI8:APA91bGrOpi13RsUWAw8_X9SO5fUgiQZxuRNRCldWIA1JSvonFHV46EweDzh4YEE6kig1D8Ou-3_y6SSolSnzBzG7bueuwSlq3iw7pFK8kC-E8XDEv1yek1X7nLMUElpQCfP9SKf-z2s';
 		$title = '樂為推播';
 		$msg = $date;
