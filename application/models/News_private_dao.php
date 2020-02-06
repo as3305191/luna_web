@@ -18,7 +18,7 @@ class News_private_dao extends MY_Model {
 		// select
 		$this -> db -> select('_m.*');
 
-		if(empty($f['member_id'])) {
+		if(!empty($f['member_id'])) {
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
 
@@ -50,7 +50,7 @@ class News_private_dao extends MY_Model {
 		// $this -> db -> select('_m.*');
 		$this -> db -> select('count(_m.id) as count');
 
-		if(empty($f['member_id'])) {
+		if(!empty($f['member_id'])) {
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
 		$this -> db -> where('_m.is_read',0);
