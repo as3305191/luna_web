@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Coach_home extends MY_Base_Controller {
+class Member_weight_today extends MY_Base_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -21,11 +21,12 @@ class Coach_home extends MY_Base_Controller {
 		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
 		$data['p'] = count($res['items']);
 		$data['page'] = ceil($data['p']/5);
-		$data['now'] = 'coach_home';
+
+		$data['now'] = 'member_weight_today';
 
 		// $this -> to_json($data);
 
-		$this -> load -> view('coach/coach_home', $data);
+		$this -> load -> view('coach/member_weight_today', $data);
 	}
 
 	public function get_data() {
@@ -37,14 +38,41 @@ class Coach_home extends MY_Base_Controller {
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		if($page>1){
 			$b=((int)$page-1)*5;
-			$res['items'] = $this -> dao -> query_ajax_by_coach($id,$b);
+			$items = $this -> dao -> query_ajax_by_coach($id,$b);
+			foreach ($items as $each) {
+				$each -> member_last_day_weight = $this -> records_dao -> find_today_weight($each -> id);
+			}
+			$res['items'] = $items;
 			$res['count_items'] = count($res['items']);
 		} else{
-			$res['items'] = $this -> dao -> query_ajax_by_coach($id,1);
+			$items = $this -> dao -> query_ajax_by_coach($id,1);
+			foreach ($items as $each) {
+				$each -> member_last_day_weight = $this -> records_dao -> find_today_weight($each -> id);
+			}
+			$res['items'] = $items;
 			$res['count_items'] = count($res['items']);
 		}
 
 		$this -> to_json($res);
+	}
+
+	public function insert() {
+		$res = array();
+		$id = $this -> get_post('id');
+		$data['account']= $this -> get_post('account');
+		$data['password']= $this -> get_post('password');
+		$data['email']= $this -> get_post('email');
+		if(!empty($id)) {
+			// insert
+
+			$this -> dao -> update($data, $id);
+		} else {
+			// update
+			// $this -> dao -> update($data, $id);
+		}
+
+		$res['success'] = TRUE;
+ 		$this -> to_json($res);
 	}
 
 	public function logout() {

@@ -6,16 +6,11 @@ class Members extends MY_Base_Controller {
 
 		$this -> load -> model('Members_dao', 'dao');
 		$this -> load -> model('Members_log_dao', 'log_dao');
-		$this -> load -> model('Members_bonus_record_dao', 'members_bonus_record_dao');
-		$this -> load -> model('Question_dao', 'question_dao');
-		$this -> load -> model('Video_dao', 'video_dao');
-		$this -> load -> model('Video_detail_dao', 'video_detail_dao');
 		$this -> load -> model('Record_setting_dao', 'record_setting_dao');
-		$this -> load -> model('Tree_record_dao', 'tree_record_dao');
 		$this -> load -> model('Sentence_dao', 'sentence_dao');
 		$this -> load -> model('Level_record_log_dao', 'level_record_log_dao');
 		$this -> load -> model('Record_setting_dao', 'record_setting_dao');
-
+		$this -> load -> model('Ketone_record_dao', 'ketone_record_dao');
 
 	}
 
@@ -110,13 +105,71 @@ class Members extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	// 訪客登入
+	public function do_visitor_login() {
+		$res = array();
+		$user_name = $this -> get_post('user_name');
+		$birth = $this -> get_post('birth');
+		$gender = $this -> get_post('gender');
+		$height = $this -> get_post('height');
+		$image_id = $this -> get_post('image_id');
+		$account = date("YmdHis");
+
+		if(!empty($user_name) && !empty($birth) && $gender!='' && !empty($height)) {
+			$date = strtotime($birth);
+			$datetime1 = date('Y-m-d', $date);
+			$datetime2 = date("Y-m-d");
+			$diff = abs(strtotime($datetime2) - strtotime($datetime1));
+			$years = floor($diff / (365*60*60*24));
+
+			$insert_data = array('account' => $account,
+								 'password' => '123456',
+								 'user_name' => $user_name,
+								 'birth' => $birth,
+								 'gender' => $gender,
+								 'height' => $height,
+								 'type' => 2,
+								 'age' => $years
+							 );
+
+			if(!empty($image_id)){
+				$insert_data['image_id'] = $image_id;
+			}
+
+			$last_id = $this -> dao -> insert($insert_data);
+
+			$value = str_pad($last_id,6,'0',STR_PAD_LEFT);
+			$this -> dao -> update(array('code'=>$value),$last_id);
+
+			$res['success'] = TRUE;
+			$res['id'] = $last_id;
+			$res['member'] = $this -> dao -> find_by_id($last_id);
+		} else {
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
 	public function me(){
 		$res = array();
 		$id = $this -> get_post('member_id');
 		if(!empty($id)) {
 			$m = $this -> dao -> find_by_id($id);
 			if(!empty($m)){
+				$list = $this -> ketone_record_dao -> find_by_today(array('member_id'=>$id));
+
 				$res['success'] = TRUE;
+				if(empty($m->update_time)){
+					$m -> update = false;
+				}else{
+					$m -> update = true;
+				}
+				if(empty($list)){
+					$m -> has_ketone = false;
+				}else{
+					$m -> has_ketone = true;
+				}
 				$res['member'] = $m;
 			}else{
 				$res['error_code'][] = "member not found";
@@ -136,15 +189,40 @@ class Members extends MY_Base_Controller {
 		$birth = $this -> get_post('birth');
 		$height = $this -> get_post('height');
 		$coach_id = $this -> get_post('coach_id');
+		$gender = $this -> get_post('gender');
+		$is_share = $this -> get_post('is_share');
+		$image_id = $this -> get_post('image_id');
+		$today = date('Y-m-d H:i:s');
 
 		if(!empty($member_id)) {
 			$m = $this -> dao -> find_by_id($member_id);
 			if(!empty($m)){
+				$share;
+				if(!empty($is_share)){
+					$share = 1;
+				}else{
+					$share = 0;
+				}
+
+				$years = 0;
+				if(!empty($birth)){
+					$date = strtotime($birth);
+					$datetime1 = date('Y-m-d', $date);
+					$datetime2 = date("Y-m-d");
+					$diff = abs(strtotime($datetime2) - strtotime($datetime1));
+					$years = floor($diff / (365*60*60*24));
+				}
+
 				$update_data = array(
 												'user_name' => $user_name,
 												'birth' => $birth,
 												'height'=>$height,
-												'coach_id' => $coach_id
+												'age'=>$years,
+												'coach_id' => $coach_id,
+												'gender' => $gender,
+												'is_share' => $share,
+												'image_id' => $image_id,
+												'update_time' => $today
 											);
 				$m = $this -> dao -> update($update_data,$m->id);
 				$res['success'] = TRUE;

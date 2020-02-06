@@ -24,6 +24,8 @@ class Members_disease_detail_dao extends MY_Model {
 			$this -> db -> where('_m.member_disease_id',$f['member_disease_id']);
 		}
 
+		$this -> db -> order_by('_m.disease_id',"asc");
+
 		$query = $this -> db -> get();
 		$list = $query -> result();
 

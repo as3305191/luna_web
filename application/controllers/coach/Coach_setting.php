@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Coach_home extends MY_Base_Controller {
+class Coach_setting extends MY_Base_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -19,13 +19,12 @@ class Coach_home extends MY_Base_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
-		$data['p'] = count($res['items']);
-		$data['page'] = ceil($data['p']/5);
-		$data['now'] = 'coach_home';
+
+		$data['now'] = 'coach_setting';
 
 		// $this -> to_json($data);
 
-		$this -> load -> view('coach/coach_home', $data);
+		$this -> load -> view('coach/coach_setting', $data);
 	}
 
 	public function get_data() {
@@ -45,6 +44,26 @@ class Coach_home extends MY_Base_Controller {
 		}
 
 		$this -> to_json($res);
+	}
+
+	public function insert() {
+		$res = array();
+		$id = $this -> get_post('id');
+		$data['account']= $this -> get_post('account');
+		$data['password']= $this -> get_post('password');
+		$data['email']= $this -> get_post('email');
+		if(!empty($id)) {
+			// insert
+
+
+			$this -> dao -> update($data, $id);
+		} else {
+			// update
+			// $this -> dao -> update($data, $id);
+		}
+
+		$res['success'] = TRUE;
+ 		$this -> to_json($res);
 	}
 
 	public function logout() {

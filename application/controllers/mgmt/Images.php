@@ -9,7 +9,7 @@ class Images extends MY_Base_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('Images_dao', 'dao');
-		$this -> load -> model('Files_dao', 'file_dao');
+		// $this -> load -> model('Files_dao', 'file_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
 
 		// setup base path
@@ -69,63 +69,63 @@ class Images extends MY_Base_Controller {
 	}
 
 	//image upload section
-	public function upload_file($file_path) {
-		$info = '';
-
-		$name = $_FILES['video_file']['name'];
-		$tmp_name = $_FILES['video_file']['tmp_name'];
-		$type = $_FILES['video_file']['type'];
-		$size = $_FILES['video_file']['size'];
-
-		// open up the file and extract the data/content from it
-		$i_data['file_name'] = $name;
-		$i_data['mime'] = $type;
-		$i_data['file_path'] = $file_path;
-		$i_data['file_size'] = $size;
-		$i_data['file_url'] = $file_path;
-
-		$last_id = $this -> file_dao -> insert_file_data($i_data);
-		if (!empty($last_id)) {
-			$m_dir = IMG_DIR . "$file_path/";
-			if(!file_exists($m_dir)) {
-				mkdir($m_dir);
-			}
-
-			$ext = $this -> get_ext($type);
-			$file_name = $last_id . '.' . $ext;
-			$extract = fopen($tmp_name, 'r');
-			$target = fopen($m_dir . $name, 'w');
-
-			// save image
-			$file = fread($extract, $size);
-			fwrite($target, $file);
-			fclose($extract);
-			fclose($target);
-
-			$url = 'mgmt/images/delete_file/' . $last_id;
-			$res = [
-			    'initialPreview' => [
-			   		base_url('mgmt/images/get_file/' . $last_id .'/file.mp4')
-			    ],
-			    'initialPreviewConfig' => [
-			        [
-								'type' =>  "video",
-								'size' =>  $size,
-								'filetype' =>  $type,
-								'caption' => "$name",
-								'filename' => "$name",
-								'downloadUrl' => base_url('mgmt/images/get_file/' . $last_id .'/file.mp4'),
-								'url' => $url,
-								'key' => $last_id
-							]
-			    ],
-			    "id" => $last_id
-			];
-
-			$this -> to_json($res);
-		}
-
-	}
+	// public function upload_file($file_path) {
+	// 	$info = '';
+	//
+	// 	$name = $_FILES['video_file']['name'];
+	// 	$tmp_name = $_FILES['video_file']['tmp_name'];
+	// 	$type = $_FILES['video_file']['type'];
+	// 	$size = $_FILES['video_file']['size'];
+	//
+	// 	// open up the file and extract the data/content from it
+	// 	$i_data['file_name'] = $name;
+	// 	$i_data['mime'] = $type;
+	// 	$i_data['file_path'] = $file_path;
+	// 	$i_data['file_size'] = $size;
+	// 	$i_data['file_url'] = $file_path;
+	//
+	// 	$last_id = $this -> file_dao -> insert_file_data($i_data);
+	// 	if (!empty($last_id)) {
+	// 		$m_dir = IMG_DIR . "$file_path/";
+	// 		if(!file_exists($m_dir)) {
+	// 			mkdir($m_dir);
+	// 		}
+	//
+	// 		$ext = $this -> get_ext($type);
+	// 		$file_name = $last_id . '.' . $ext;
+	// 		$extract = fopen($tmp_name, 'r');
+	// 		$target = fopen($m_dir . $name, 'w');
+	//
+	// 		// save image
+	// 		$file = fread($extract, $size);
+	// 		fwrite($target, $file);
+	// 		fclose($extract);
+	// 		fclose($target);
+	//
+	// 		$url = 'mgmt/images/delete_file/' . $last_id;
+	// 		$res = [
+	// 		    'initialPreview' => [
+	// 		   		base_url('mgmt/images/get_file/' . $last_id .'/file.mp4')
+	// 		    ],
+	// 		    'initialPreviewConfig' => [
+	// 		        [
+	// 							'type' =>  "video",
+	// 							'size' =>  $size,
+	// 							'filetype' =>  $type,
+	// 							'caption' => "$name",
+	// 							'filename' => "$name",
+	// 							'downloadUrl' => base_url('mgmt/images/get_file/' . $last_id .'/file.mp4'),
+	// 							'url' => $url,
+	// 							'key' => $last_id
+	// 						]
+	// 		    ],
+	// 		    "id" => $last_id
+	// 		];
+	//
+	// 		$this -> to_json($res);
+	// 	}
+	//
+	// }
 
 	//image upload section
 	public function upload($image_path) {
@@ -281,77 +281,77 @@ class Images extends MY_Base_Controller {
 		show_404();
 	}
 
-	public function get_file($id, $file_name = '') {
-		$data = array();
-		if (!empty($id)) {
-			$obj = $this -> file_dao -> find_by_id($id);
-			if(!empty($obj)) {
-				$file_url = $obj -> file_url;
-				$download_file_name = IMG_DIR . $file_url . '/' . $obj -> file_name;
-
-				$fp = @fopen($download_file_name, 'rb');
-				$size   = filesize($download_file_name); // File size
-				$length = $size;           // Content length
-				$start  = 0;               // Start byte
-				$end    = $size - 1;       // End byte
-				header('Content-type: video/mp4');
-				//header("Accept-Ranges: 0-$length");
-				header("Accept-Ranges: bytes");
-				if (isset($_SERVER['HTTP_RANGE'])) {
-				    $c_start = $start;
-				    $c_end   = $end;
-				    list(, $range) = explode('=', $_SERVER['HTTP_RANGE'], 2);
-				    if (strpos($range, ',') !== false) {
-				        header('HTTP/1.1 416 Requested Range Not Satisfiable');
-				        header("Content-Range: bytes $start-$end/$size");
-				        exit;
-				    }
-				    if ($range == '-') {
-				        $c_start = $size - substr($range, 1);
-				    }else{
-				        $range  = explode('-', $range);
-				        $c_start = $range[0];
-				        $c_end   = (isset($range[1]) && is_numeric($range[1])) ? $range[1] : $size;
-				    }
-				    $c_end = ($c_end > $end) ? $end : $c_end;
-				    if ($c_start > $c_end || $c_start > $size - 1 || $c_end >= $size) {
-				        header('HTTP/1.1 416 Requested Range Not Satisfiable');
-				        header("Content-Range: bytes $start-$end/$size");
-				        exit;
-				    }
-				    $start  = $c_start;
-				    $end    = $c_end;
-				    $length = $end - $start + 1;
-				    fseek($fp, $start);
-				    header('HTTP/1.1 206 Partial Content');
-				}
-				header("Content-Range: bytes $start-$end/$size");
-				header("Content-Length: ".$length);
-				$buffer = 1024 * 8;
-				while(!feof($fp) && ($p = ftell($fp)) <= $end) {
-				    if ($p + $buffer > $end) {
-				        $buffer = $end - $p + 1;
-				    }
-				    set_time_limit(0);
-				    echo fread($fp, $buffer);
-				    flush();
-				}
-				fclose($fp);
-				exit();
-				// die();
-				//
-				// header("Content-Disposition: attachment; filename=" . $obj -> file_name);
-				// header("Content-type: " . $obj -> mine);
-				// header("Content-Length: " . filesize($download_file_name));
-				//
-				// ob_clean();
-				// flush();
-				// readfile($download_file_name);
-				// exit ;
-			}
-		}
-		// show_404();
-	}
+	// public function get_file($id, $file_name = '') {
+	// 	$data = array();
+	// 	if (!empty($id)) {
+	// 		$obj = $this -> file_dao -> find_by_id($id);
+	// 		if(!empty($obj)) {
+	// 			$file_url = $obj -> file_url;
+	// 			$download_file_name = IMG_DIR . $file_url . '/' . $obj -> file_name;
+	//
+	// 			$fp = @fopen($download_file_name, 'rb');
+	// 			$size   = filesize($download_file_name); // File size
+	// 			$length = $size;           // Content length
+	// 			$start  = 0;               // Start byte
+	// 			$end    = $size - 1;       // End byte
+	// 			header('Content-type: video/mp4');
+	// 			//header("Accept-Ranges: 0-$length");
+	// 			header("Accept-Ranges: bytes");
+	// 			if (isset($_SERVER['HTTP_RANGE'])) {
+	// 			    $c_start = $start;
+	// 			    $c_end   = $end;
+	// 			    list(, $range) = explode('=', $_SERVER['HTTP_RANGE'], 2);
+	// 			    if (strpos($range, ',') !== false) {
+	// 			        header('HTTP/1.1 416 Requested Range Not Satisfiable');
+	// 			        header("Content-Range: bytes $start-$end/$size");
+	// 			        exit;
+	// 			    }
+	// 			    if ($range == '-') {
+	// 			        $c_start = $size - substr($range, 1);
+	// 			    }else{
+	// 			        $range  = explode('-', $range);
+	// 			        $c_start = $range[0];
+	// 			        $c_end   = (isset($range[1]) && is_numeric($range[1])) ? $range[1] : $size;
+	// 			    }
+	// 			    $c_end = ($c_end > $end) ? $end : $c_end;
+	// 			    if ($c_start > $c_end || $c_start > $size - 1 || $c_end >= $size) {
+	// 			        header('HTTP/1.1 416 Requested Range Not Satisfiable');
+	// 			        header("Content-Range: bytes $start-$end/$size");
+	// 			        exit;
+	// 			    }
+	// 			    $start  = $c_start;
+	// 			    $end    = $c_end;
+	// 			    $length = $end - $start + 1;
+	// 			    fseek($fp, $start);
+	// 			    header('HTTP/1.1 206 Partial Content');
+	// 			}
+	// 			header("Content-Range: bytes $start-$end/$size");
+	// 			header("Content-Length: ".$length);
+	// 			$buffer = 1024 * 8;
+	// 			while(!feof($fp) && ($p = ftell($fp)) <= $end) {
+	// 			    if ($p + $buffer > $end) {
+	// 			        $buffer = $end - $p + 1;
+	// 			    }
+	// 			    set_time_limit(0);
+	// 			    echo fread($fp, $buffer);
+	// 			    flush();
+	// 			}
+	// 			fclose($fp);
+	// 			exit();
+	// 			// die();
+	// 			//
+	// 			// header("Content-Disposition: attachment; filename=" . $obj -> file_name);
+	// 			// header("Content-type: " . $obj -> mine);
+	// 			// header("Content-Length: " . filesize($download_file_name));
+	// 			//
+	// 			// ob_clean();
+	// 			// flush();
+	// 			// readfile($download_file_name);
+	// 			// exit ;
+	// 		}
+	// 	}
+	// 	// show_404();
+	// }
 
 	//image upload section
 	public function upload_terms($image_path) {
