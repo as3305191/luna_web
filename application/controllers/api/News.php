@@ -55,7 +55,9 @@ class News extends MY_Base_Controller {
 			$list = $this -> dao -> find_by_parameter($f);
 
 			$res['success'] = TRUE;
-			$res['unread'] = $count -> count;
+			$res['data'] = $f;
+
+			$res['unread'] = $count->count;
 			$res['list'] = $list;
 		}else{
 			$res['error_code'][] = "columns_required";
