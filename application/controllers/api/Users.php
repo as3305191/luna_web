@@ -284,6 +284,56 @@ class Users extends MY_Base_Controller {
 
 	}
 
+	public function push_test() {
+		$date = date('Y-m-d H:i:s');
+
+		$token = 'dkNVzLtJrI8:APA91bGrOpi13RsUWAw8_X9SO5fUgiQZxuRNRCldWIA1JSvonFHV46EweDzh4YEE6kig1D8Ou-3_y6SSolSnzBzG7bueuwSlq3iw7pFK8kC-E8XDEv1yek1X7nLMUElpQCfP9SKf-z2s';
+		$title = '樂為推播';
+		$msg = $date;
+		$this -> send_gcm_notification($token, $title, $msg , $action);
+
+
+		$this -> to_json($res);
+	}
+
+
+	public function send_gcm_notification($token, $title, $msg , $action = array()) {
+		$action_str = implode("#",$action);
+
+		$url = 'https://fcm.googleapis.com/fcm/send';
+
+		$fields = array (
+				'to' => $token,
+				"priority" => "high",
+				'notification' => array(
+						"title" => $title,
+						"body" => $msg,
+						"sound" => "default"
+				),
+				"data" => array(
+					'action' => $action_str
+				)
+		);
+		$fields = json_encode($fields);
+	//	echo $fields;
+		$headers = array (
+			'Authorization: key=AAAAdSiW_z4:APA91bGEYh6xh_z0c3Kcde6tv-Pr5G_54motJ2p0IDEWa4Gzp-aFlvSPxVyVxzZEklsS1C3fpoaiMxrdl-9nvsmb8kBW4fpG4_OH8Y0EHo5VxRGmFIi-rYiyAhsUUEJPEHbeVa8StRqS',
+			'Content-Type: application/json'
+		);
+
+		$ch = curl_init ();
+		curl_setopt ( $ch, CURLOPT_URL, $url );
+		curl_setopt ( $ch, CURLOPT_POST, true );
+		curl_setopt ( $ch, CURLOPT_HTTPHEADER, $headers );
+		curl_setopt ( $ch, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt ( $ch, CURLOPT_POSTFIELDS, $fields );
+		curl_setopt(  $ch, CURLOPT_SSL_VERIFYPEER, false); // bypass ssl verify
+
+		$result = curl_exec ( $ch );
+
+		curl_close ( $ch );
+	}
+
 
 
 
