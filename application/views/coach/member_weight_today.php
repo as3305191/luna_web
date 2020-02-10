@@ -154,7 +154,7 @@
 <script>
   var baseUrl = '<?=base_url('')?>';
   function for_table(page){
-    var url = baseUrl + 'coach/coach_home/get_data';
+    var url = baseUrl + 'coach/member_weight_today/get_data';
 
     $.ajax({
       type : "POST",

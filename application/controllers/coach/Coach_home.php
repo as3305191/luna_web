@@ -11,6 +11,7 @@ class Coach_home extends MY_Base_Controller {
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
 		$this -> load -> model('Members_dao', 'dao');
+		$this -> load -> model('Records_dao', 'records_dao');
 
 	}
 
@@ -37,12 +38,25 @@ class Coach_home extends MY_Base_Controller {
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		if($page>1){
 			$b=((int)$page-1)*5;
-			$res['items'] = $this -> dao -> query_ajax_by_coach($id,$b);
+			$res['items'] = $this -> dao -> query_ajax_by_coach($login_user->code,$b);
 			$res['count_items'] = count($res['items']);
 		} else{
-			$res['items'] = $this -> dao -> query_ajax_by_coach($id,1);
+			$res['items'] = $this -> dao -> query_ajax_by_coach($login_user->code,1);
 			$res['count_items'] = count($res['items']);
 		}
+
+		$this -> to_json($res);
+	}
+
+	public function find_today_weight() {
+		$res = array();
+		$name = $this -> get_post('name');
+
+		$s_data = $this -> setup_user_data(array());
+		$member_name = $this -> dao -> find_by_member_name($name);
+		$member_weihght = $this -> records_dao -> find_by_member_weight($member_name->id);
+
+		$res['member_weihght'] = $member_weihght;
 
 		$this -> to_json($res);
 	}

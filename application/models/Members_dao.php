@@ -647,11 +647,11 @@ class Members_dao extends MY_Model {
 		return $list;
 	}
 
-	function query_ajax_by_coach($login_user_id,$start_l) {
+	function query_ajax_by_coach($login_coach_code,$start_l) {
 
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> where("coach_id", $login_user_id);
+		$this -> db -> where("coach_id", $login_coach_code);
 
 		// join
 		$this -> ajax_from_join();
@@ -695,6 +695,17 @@ class Members_dao extends MY_Model {
 
 		// echo $this -> db -> last_query();
 		return $query -> result();
+	}
+
+	function find_by_member_name($name) {
+		// $date = date('Y-m-d');
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where("(_m.user_name like '%{$name}%')");
+		$this -> db -> order_by('_m.create_time', 'desc');
+		// $this -> db -> limit(10);
+		$list = $this -> db -> get() -> result();
+		return $list[0];
 	}
 
 }

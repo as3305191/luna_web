@@ -11,6 +11,7 @@ class Member_weight_today extends MY_Base_Controller {
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
 		$this -> load -> model('Members_dao', 'dao');
+		$this -> load -> model('Records_dao', 'records_dao');
 
 	}
 
@@ -33,7 +34,6 @@ class Member_weight_today extends MY_Base_Controller {
 		$res = array();
 		$id = $this -> get_post('id');
 		$page = $this -> get_post('page');
-
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		if($page>1){
@@ -52,7 +52,6 @@ class Member_weight_today extends MY_Base_Controller {
 			$res['items'] = $items;
 			$res['count_items'] = count($res['items']);
 		}
-
 		$this -> to_json($res);
 	}
 

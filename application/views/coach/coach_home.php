@@ -98,7 +98,7 @@
                   <h3 class="h6 mb-0">
                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 所有學員
                     </h3>
-                  <div class="dropdown g-mb-10 g-mb-0--md">
+                  <!-- <div class="dropdown g-mb-10 g-mb-0--md">
                     <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
                       <a class="dropdown-item g-px-10" href="<?= base_url() ?>#">
                         <i class="icon-layers g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> Projects
@@ -119,7 +119,7 @@
                         <i class="icon-plus g-font-size-12 g-color-gray-dark-v5 g-mr-5"></i> View More
                       </a>
                     </div>
-                  </div>
+                  </div> -->
                 </div>
 
                 <div class="card-block g-pa-0" style="">
@@ -188,6 +188,35 @@
 
                   </ul>
                 </nav>
+                <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
+                  <h3 class="h6 mb-0">
+                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 學員今日體重
+                  </h3>
+                </div>
+
+                <div class="card-block g-pa-0" style="">
+                  <section>
+										<label class="label">學員名稱</label>
+										<label class="input_name"> <i class="icon-append fa fa-lock"></i>
+											<input type="text" id="member_name">
+									</section>
+                  <div class="table-responsive">
+                    <table id="dt_list_for_today_w" class="table table-bordered u-table--v2">
+                      <thead class="text-uppercase g-letter-spacing-1">
+                        <tr>
+                          <th class="g-font-weight-300 g-color-black">體重</th>
+                          <th class="g-font-weight-300 g-color-black">體脂率</th>
+                          <th class="g-font-weight-300 g-color-black">時間</th>
+
+                        </tr>
+                      </thead>
+                      <tbody id="list_for_today_w">
+                      </tbody>
+                    </table>
+                  </div>
+                  <!-- End Product Table -->
+                </div>
+
               </div>
               <!-- End Product Table Panel -->
             </div>
@@ -255,6 +284,34 @@
 
   for_table(1);
 
+  $('#member_name').on('change keyup', function(){
+    var url = baseUrl + 'coach/coach_home/find_today_weight';
+
+    $.ajax({
+      type : "POST",
+      url : url,
+      data : {
+        name: $('#member_name').val(),
+      },
+      success : function(data) {
+        var $body = $('#list_for_today_w').empty();
+        if(data.id!==''){
+          $.each(data.member_weihght, function(){
+            var me = this;
+            var $tr = $('<tr class="pointer">').click(function(){
+              // $('.job_id_1').val(me.id);
+              // $('.job_name').val(me.temp_title);
+            }).appendTo($body);
+            $('<td>').html(me.weight).appendTo($tr);
+            $('<td>').html(me.body_fat).appendTo($tr);
+            $('<td>').html(me.create_time).appendTo($tr);
+
+          })
+        }
+        // $('.u-pagination-v1__item').removeClass('u-pagination-v1-4--active ');
+      }
+    });
+		});
 
 </script>
 <!-- End Page Javascript -->

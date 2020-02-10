@@ -11,8 +11,7 @@ class Member_weight_last_day extends MY_Base_Controller {
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
 		$this -> load -> model('Members_dao', 'dao');
-
-
+		$this -> load -> model('Records_dao', 'records_dao');
 	}
 
 	public function index() {
@@ -22,12 +21,9 @@ class Member_weight_last_day extends MY_Base_Controller {
 		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
 		$data['p'] = count($res['items']);
 		$data['page'] = ceil($data['p']/5);
-
 		$data['now'] = 'member_weight_last_day';
-
 		// $this -> to_json($data);
-
-		$this -> load -> view('coach/coach_setting', $data);
+		$this -> load -> view('coach/member_weight_last_day', $data);
 	}
 
 	public function get_data() {
@@ -45,7 +41,6 @@ class Member_weight_last_day extends MY_Base_Controller {
 			$res['items'] = $this -> dao -> query_ajax_by_coach($id,1);
 			$res['count_items'] = count($res['items']);
 		}
-
 		$this -> to_json($res);
 	}
 
@@ -57,7 +52,6 @@ class Member_weight_last_day extends MY_Base_Controller {
 		$data['email']= $this -> get_post('email');
 		if(!empty($id)) {
 			// insert
-
 
 			$this -> dao -> update($data, $id);
 		} else {

@@ -241,13 +241,38 @@ class Records_dao extends MY_Model {
 
 	function find_last_weight($id) {
 		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.member_id', $id);
+		$this -> db -> where("(_m.create_time >= '{$s_dt}' and _m.create_time <= '{$e_dt} 23:59:59' )");
 
+		$this -> db -> order_by('_m.create_time', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list[0];
+	}
+
+	function find_today_weight($id) {
+		$date = date('Y-m-d');
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.member_id', $id);
+		$this -> db -> where("(_m.create_time like '{$date} %')");
+
+		$this -> db -> order_by('_m.create_time', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list[0];
+	}
+
+	function find_by_member_weight($id) {
+		// $date = date('Y-m-d');
+		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> where('_m.member_id', $id);
 		$this -> db -> order_by('_m.create_time', 'desc');
+		$this -> db -> limit(10);
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
+
 
 }
 ?>
