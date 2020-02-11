@@ -32,7 +32,6 @@ class Member_lose_3day extends MY_Base_Controller {
 
 	public function get_data() {
 		$res = array();
-
 		$id = $this -> get_post('id');
 		$page = $this -> get_post('page');
 
@@ -40,18 +39,19 @@ class Member_lose_3day extends MY_Base_Controller {
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		if($page>1){
 			$b=((int)$page-1)*5;
-			$items = $this -> dao -> query_ajax_by_coach($id,$b);
+			$items = $this -> dao -> query_ajax_by_coach($login_user->code,$b);
 			foreach ($items as $each) {
-				$each -> member_last_day_weight = $this -> records_dao -> find_last_weight($each -> id);
+				$each -> last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
 			}
 			$res['items'] = $items;
 			$res['count_items'] = count($res['items']);
 		} else{
-			$items = $this -> dao -> query_ajax_by_coach($id,1);
+			$items= $this -> dao -> query_ajax_by_coach($login_user->code,1);
 			foreach ($items as $each) {
-				$each -> member_last_day_weight = $this -> records_dao -> find_last_weight($each -> id);
+				$each -> last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
 			}
 			$res['items'] = $items;
+
 			$res['count_items'] = count($res['items']);
 		}
 

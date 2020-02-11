@@ -34,7 +34,7 @@
               <div class="card border-0">
                 <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                   <h3 class="h6 mb-0">
-                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 所有學員
+                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 最後一次減脂紀錄
                     </h3>
                   <div class="dropdown g-mb-10 g-mb-0--md">
                     <div class="dropdown-menu dropdown-menu-right rounded-0 g-mt-10">
@@ -67,7 +67,7 @@
                       <thead class="text-uppercase g-letter-spacing-1">
                         <tr>
                           <th class="g-font-weight-300 g-color-black g-min-width-200">學員名字</th>
-                          <th class="g-font-weight-300 g-color-black">體重</th>
+                          <th class="g-font-weight-300 g-color-black">體脂率</th>
 
                         </tr>
                       </thead>
@@ -173,7 +173,11 @@
               // $('.job_name').val(me.temp_title);
             }).appendTo($body);
             $('<td>').html(me.user_name).appendTo($tr);
-            $('<td>').html(me.age).appendTo($tr);
+            if(me.last_weight == null){
+              $('<td>').html('沒有測量').appendTo($tr);
+            }else{
+              $('<td>').html(me.last_weight.body_fat).appendTo($tr);
+            }
           })
         }
         $('.u-pagination-v1__item').removeClass('u-pagination-v1-4--active ');
