@@ -651,7 +651,8 @@ class Members_dao extends MY_Model {
 
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> where("coach_id", $login_coach_code);
+		$this -> db -> where("_m.coach_id", $login_coach_code);
+		$this -> db -> where("_m.status", 0);
 
 		// join
 		$this -> ajax_from_join();

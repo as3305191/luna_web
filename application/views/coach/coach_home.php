@@ -237,7 +237,34 @@
 
 </body>
 </html>
-
+<!-- Product Serach Modal -->
+<div class="modal fade" id="graduate" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+        <h3 id="deleteModalLabel">確認畢業</h3>
+			</div>
+      <fieldset>
+          <div class="form-group">
+            <label class="col-md-3 control-label">學員</label>
+            <div class="col-md-9">
+              <div class="col-md-9">
+                <input type="text" class="form-control" id="m_name"/>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-danger btn-sm" onclick="saveProductItem()">
+					<i class="fa fa-save"></i> 確認
+				</button>
+				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+					<i class="fa fa-close"></i> 關閉
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <!-- JS -->
 <?php $this -> load -> view("coach/coach_script")  ?>
 <!-- End JS -->
@@ -260,9 +287,10 @@
         if(data.id!==''){
           $.each(data.items, function(){
             var me = this;
-            var $tr = $('<tr class="pointer">').click(function(){
-              // $('.job_id_1').val(me.id);
-              // $('.job_name').val(me.temp_title);
+            var $tr = $('<tr class="pointer ">').click(function(){
+              $('#graduate').modal('show');
+              $('#m_name').val($(this).attr('user_name'));
+
             }).appendTo($body);
             $('<td>').html(me.user_name).appendTo($tr);
             $('<td>').html(me.age).appendTo($tr);
@@ -299,8 +327,6 @@
           $.each(data.member_weihght, function(){
             var me = this;
             var $tr = $('<tr class="pointer">').click(function(){
-              // $('.job_id_1').val(me.id);
-              // $('.job_name').val(me.temp_title);
             }).appendTo($body);
             $('<td>').html(me.weight).appendTo($tr);
             $('<td>').html(me.body_fat).appendTo($tr);
