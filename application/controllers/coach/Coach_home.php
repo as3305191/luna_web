@@ -61,6 +61,22 @@ class Coach_home extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	function update_graduate() {
+		$res = array();
+
+		$user_id = $this -> get_post("user_id");
+		$i_data['status']= 1;
+
+
+		if(!empty($user_id)){
+			$this-> dao ->update_by($i_data,'id',$user_id);
+			$res['success'] = "true";
+		} else{
+			$res['error'] = "true";
+		}
+		$this -> to_json($res);
+	}
+
 	public function logout() {
 		// $corp = $this -> session -> userdata('corp');
 		$this -> session -> sess_destroy();

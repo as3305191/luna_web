@@ -249,13 +249,14 @@
             <label class="col-md-3 control-label">學員</label>
             <div class="col-md-9">
               <div class="col-md-9">
-                <input type="text" class="form-control" id="m_name"/>
+                <input type="hidden" class="form-control"  id="m_id" />
+                <input type="text" class="form-control" style = "border-style:none none none none;" id="m_name" readonly/>
               </div>
             </div>
           </div>
         </fieldset>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger btn-sm" onclick="saveProductItem()">
+				<button type="button" class="btn btn-danger btn-sm" onclick="save_graduate()">
 					<i class="fa fa-save"></i> 確認
 				</button>
 				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
@@ -287,9 +288,10 @@
         if(data.id!==''){
           $.each(data.items, function(){
             var me = this;
-            var $tr = $('<tr class="pointer ">').click(function(){
+            var $tr = $('<tr class="pointer " user_name="'+me.user_name+'" user_id="'+me.id+'">').click(function(){
               $('#graduate').modal('show');
               $('#m_name').val($(this).attr('user_name'));
+              $('#m_id').val($(this).attr('user_id'));
 
             }).appendTo($body);
             $('<td>').html(me.user_name).appendTo($tr);
@@ -338,6 +340,29 @@
       }
     });
 		});
+
+    function save_graduate() {
+      var url = baseUrl + 'coach/coach_home/update_graduate';
+  		$.ajax({
+  			url : url,
+  			type: 'POST',
+  			data: {
+  				user_id: $('#m_id').val(),
+  			},
+  			dataType: 'json',
+  			success: function(d) {
+  				if(d.success=="true"){
+  					$('#graduate').modal('hide');
+            location.reload();
+  				}
+
+  			},
+
+  			failure:function(){
+  				alert('faialure');
+  			}
+  		});
+  	}
 
 </script>
 <!-- End Page Javascript -->
