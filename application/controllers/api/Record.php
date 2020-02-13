@@ -856,13 +856,21 @@ class Record extends MY_Base_Controller {
 
 			if(!empty($data1)){
 				$res['data1'] = $data1;
-				$res['data1_id'] = $data1->id;
+				// $res['data1_id'] = $data1->id;
 				$res['td1'] = $this -> get_suggestions($member_id,$data1->id);
+				$ketone1 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data1->create_date));
+				if(!empty($ketone1)){
+					$res['kt1'] = $ketone1;
+				}
 			}
 
 			if(!empty($data2)){
 				$res['data2'] = $data2;
 				$res['td2'] = $this -> get_suggestions($member_id,$data2->id);
+				$ketone2 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data2->create_date));
+				if(!empty($ketone2)){
+					$res['kt2'] = $ketone2;
+				}
 			}
 		}else{
 			$res['error_code'][] = "columns_required";
