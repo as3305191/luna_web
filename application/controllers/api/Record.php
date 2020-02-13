@@ -759,11 +759,12 @@ class Record extends MY_Base_Controller {
 			}
 
 			$res['success'] = TRUE;
+			$data = array();
 			$m = $this -> dao -> find_by_id($member_id);
-			$res['member'] = $m;
+			// $res['member'] = $m;
 
 			$list1 = $this -> records_dao -> find_by_date($f);
-			$res['days'] = count($list1);
+			// $res['days'] = count($list1);
 
 			$data1 = NULL;
 			$data2 = NULL;
@@ -811,8 +812,8 @@ class Record extends MY_Base_Controller {
 				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
 			}
 
-			$res['weight_diff'] = number_format($weight_kg,1);
-			$res['body_fat_diff'] = number_format($body_diff,1);
+			// $res['weight_diff'] = number_format($weight_kg,1);
+			// $res['body_fat_diff'] = number_format($body_diff,1);
 
 			if(!empty($data1)){
 				$weight_kg = $data1->weight/1000;
@@ -854,24 +855,32 @@ class Record extends MY_Base_Controller {
 				$data2 -> bone_mass = number_format($bone_mass,1);
 			}
 
+
+			$data['days'] = count($list1);
+			$data['weight_diff'] = number_format($weight_kg,1);
+			$data['body_fat_diff'] = number_format($body_diff,1);
+			$data['member'] = $m;
+
 			if(!empty($data1)){
-				$res['data1'] = $data1;
+				$data['data1'] = $data1;
 				// $res['data1_id'] = $data1->id;
-				$res['td1'] = $this -> get_suggestions($member_id,$data1->id);
+				$data['td1'] = $this -> get_suggestions($member_id,$data1->id);
 				$ketone1 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data1->create_date));
 				if(!empty($ketone1)){
-					$res['kt1'] = $ketone1;
+					$data['kt1'] = $ketone1;
 				}
 			}
 
 			if(!empty($data2)){
-				$res['data2'] = $data2;
-				$res['td2'] = $this -> get_suggestions($member_id,$data2->id);
+				$data['data2'] = $data2;
+				$data['td2'] = $this -> get_suggestions($member_id,$data2->id);
 				$ketone2 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data2->create_date));
 				if(!empty($ketone2)){
-					$res['kt2'] = $ketone2;
+					$data['kt2'] = $ketone2;
 				}
 			}
+
+			$res['data'] = $data;
 		}else{
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";
