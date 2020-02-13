@@ -276,21 +276,7 @@ class Members_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		$this -> db -> where('_m.status', 0);
-
-		if(isset($data['id']) && $data['id'] > -1) {
-			$this -> db -> where('_m.id', $data['id']);
-		}
-
-		if(isset($data['is_foreign']) && $data['is_foreign'] > -1) {
-			$this -> db -> where('_m.is_foreign', $data['is_foreign']);
-		}
-
-
-
-		// if(isset($data['bypass_point']) && $data['bypass_point'] > -1) {
-		// 	$this -> db -> where('_m.bypass_point', $data['bypass_point']);
-		// }
+	
 	}
 
 	function ajax_from_join() {

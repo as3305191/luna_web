@@ -40,11 +40,13 @@
 										<tr>
 											<th class="min100">帳號</th>
 											<th class="min100">名稱</th>
+											<th class="min100">身份</th>
 											<th class="min100">建立時間</th>
 										</tr>
 										<tr class="search_box">
 											    <th><input class="form-control input-xs min100" type="text" /></th>
 											    <th><input class="form-control input-xs min100" type="text" /></th>
+													<th></th>
 													<th></th>
 										    </tr>
 									</thead>
@@ -91,6 +93,20 @@
 		data : 'account'
 	},{
 		data : 'user_name'
+	},{
+		data : 'type',
+		render:function(d,t,r) {
+			if(d == 0) {
+				return '一般會員';
+			}
+			if(d == 1) {
+				return '教練';
+			}
+			if(d == 2) {
+				return '訪客';
+			}
+			return d;
+		}
 	},{
 		data : 'create_time'
 	}];

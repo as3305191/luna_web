@@ -43,6 +43,25 @@ class Members extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function get_weight_history() {
+		$res = array();
+
+		$data = $this -> get_posts(array(
+			'length',
+			'start',
+			'columns',
+			'search',
+			'order',
+		
+		));
+
+		$res['items'] = $this -> lottery_tx_dao -> find_user_lottery($data);
+		$res['recordsFiltered'] = $this -> lottery_tx_dao -> find_user_lottery($data, TRUE);
+		$res['recordsTotal'] = $this -> lottery_tx_dao -> find_user_lottery($data, TRUE);
+
+		$this -> to_json($res);
+	}
+
 	public function edit($id) {
 		$data = array();
 		$data['id'] = $id;
