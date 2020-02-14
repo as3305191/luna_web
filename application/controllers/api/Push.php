@@ -27,7 +27,7 @@ class Push extends MY_Base_Controller {
 			if(!empty($m)){
 				$res['success'] = TRUE;
 
-				$code = $this -> app_reg_code_dao -> find_by_member($m -> id);
+				$code = $this -> app_reg_code_dao -> find_by_member($m->id);
 
 				$res['msg_id'] = time();
 				$action = array('1');
