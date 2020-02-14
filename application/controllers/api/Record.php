@@ -740,7 +740,7 @@ class Record extends MY_Base_Controller {
 				$base = $m->weight;
 				$list = $this -> records_dao -> find_all_by_ym($member_id, $ym);
 				foreach ($list as $each) {
-					if($each-> weight > $base){
+					if($each-> weight >= $base){
 						$each -> exceed = 1;
 					}else{
 						$each -> exceed = 0;
