@@ -290,7 +290,7 @@ class Users extends MY_Base_Controller {
 
 		$date = date('Y-m-d H:i:s');
 		$action = array('1','54');
-		$token = 'dkNVzLtJrI8:APA91bGrOpi13RsUWAw8_X9SO5fUgiQZxuRNRCldWIA1JSvonFHV46EweDzh4YEE6kig1D8Ou-3_y6SSolSnzBzG7bueuwSlq3iw7pFK8kC-E8XDEv1yek1X7nLMUElpQCfP9SKf-z2s';
+		$token = 'eA2tKS_KLUsMrJoPIqh0qX:APA91bHXF7Hi_gCjHHZwfalJK2b6fh5GCyd-g80KzbmGrNNz1o32un7ShiXKS8bckkUJjSLuib2GhbD6n1S5NFtdvI1s8i8lIJ4jma1WEQrvDtq_W4TfnFcOgaKDi2zmQbeKqGzQALif';
 		$title = '樂為推播';
 		$msg = $date;
 		$this -> send_gcm_notification($token, $title, $msg , $action);
