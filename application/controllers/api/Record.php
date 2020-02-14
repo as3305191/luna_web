@@ -82,6 +82,7 @@ class Record extends MY_Base_Controller {
 									 'fat_rate_best' => $fat_rate_best,
 									 'fat_best' => $fat_best,
 									 'fat_info' => $fat_info,
+									 'adc1' => $adc1,
 									 'create_date'=> $today
 								 );
 				$data = $this -> records_dao -> find_by_value(array('member_id'=>$member_id,'date'=>$today));
