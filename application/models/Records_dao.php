@@ -149,7 +149,7 @@ class Records_dao extends MY_Model {
 	}
 
 	function find_all_by_ym($member_id, $ym) {
-		$this -> db -> select("_m.create_date");
+		$this -> db -> select("_m.create_date,_m.weight");
 
 		$this -> db -> from("$this->table_name as _m");
 
@@ -159,6 +159,23 @@ class Records_dao extends MY_Model {
 
 		$list = $this -> db -> get() -> result();
 		return $list;
+	}
+
+	function find_first($member_id) {
+		$this -> db -> select("_m.create_date,_m.weight");
+
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> where("_m.member_id", $member_id);
+		$this -> db -> where("_m.pos", 1);
+
+		$query = $this -> db -> get($this -> table_name);
+
+		if ($query -> num_rows() > 0) {
+			$row = $query -> row();
+			return $row;
+		}
+		return NULL;
 	}
 
 
