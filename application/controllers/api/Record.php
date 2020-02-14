@@ -38,6 +38,8 @@ class Record extends MY_Base_Controller {
 		$protein_rate = $this -> get_post('protein_rate');
 		$skeletal_muscle_rate = $this -> get_post('skeletal_muscle_rate');
 		$bmi = $this -> get_post('bmi');
+		$adc1 = $this -> get_post('adc1');
+
 		$bmi = floatval($bmi);
 
 		if(!empty($member_id)){
