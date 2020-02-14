@@ -23,7 +23,8 @@ class Push extends MY_Base_Controller {
 		$date = date('Y-m-d H:i:s');
 		if(!empty($title) && !empty($message) && !empty($target)) {
 
-			$m = $this -> members_dao -> find_by_value(array('account' => $target));
+			$m = $this -> members_dao -> find_by_account($target);
+			// $m = $this -> members_dao -> find_by_value(array('account'=> $target));
 			if(!empty($m)){
 				$res['success'] = TRUE;
 
