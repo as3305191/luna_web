@@ -6,6 +6,7 @@ class Push extends MY_Base_Controller {
 
 		$this -> load -> model('Members_dao', 'members_dao');
 		$this -> load -> model('App_reg_code_dao', 'app_reg_code_dao');
+		$this -> load -> model('News_private_dao', 'news_private_dao');
 
 	}
 
@@ -28,8 +29,13 @@ class Push extends MY_Base_Controller {
 			if(!empty($m)){
 				$res['success'] = TRUE;
 
-				$code = $this -> app_reg_code_dao -> find_by_member($m->id);
+				$update_data = array(
+												'title' => $title,
+												'content' => $message
+											);
+				$this -> news_private_dao -> insert($update_data);
 
+				$code = $this -> app_reg_code_dao -> find_by_member($m->id);
 				$res['msg_id'] = time();
 				$action = array('1');
 				$token = $code -> token;
