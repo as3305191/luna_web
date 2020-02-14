@@ -40,8 +40,6 @@ class Push extends MY_Base_Controller {
 				$res['error_message'][] = "查無此帳號";
 			}
 
-
-
 		} else {
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";
