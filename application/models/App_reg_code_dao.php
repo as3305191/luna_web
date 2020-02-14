@@ -42,6 +42,7 @@ class App_reg_code_dao extends MY_Model {
 	}
 
 
+
 	function find_all_by_member_id($user_id) {
 		$this -> db -> where('member_id', $user_id);
 		$list = $this -> find_all();
