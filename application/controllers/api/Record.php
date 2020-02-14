@@ -794,19 +794,19 @@ class Record extends MY_Base_Controller {
 			}
 
 			if($data1 != NULL && $data2 != NULL){
-				$weight_kg = ($data2->weight - $data1->weight)/1000;
+				$weight_diff = ($data2->weight - $data1->weight)/1000;
 				$body_fat_d1 = $data1->body_fat_rate * $data1->weight/100;
 				$body_fat_d2 = $data2->body_fat_rate * $data2->weight/100;
 				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
 			}else if($data1 == NULL && $data2 == NULL){
 
 			}else if($data1 == NULL){
-				$weight_kg = ($data2->weight)/1000;
+				$weight_diff = ($data2->weight)/1000;
 				$body_fat_d1 = 0;
 				$body_fat_d2 = $data2->body_fat_rate * $data2->weight/100;
 				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
 			}else if($data2 == NULL){
-				$weight_kg = (0 - $data1->weight)/1000;
+				$weight_diff = (0 - $data1->weight)/1000;
 				$body_fat_d1 = $data1->body_fat_rate * $data1->weight/100;
 				$body_fat_d2 = 0;
 				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
@@ -857,7 +857,7 @@ class Record extends MY_Base_Controller {
 
 
 			$data['days'] = count($list1);
-			$data['weight_diff'] = number_format($weight_kg,1);
+			$data['weight_diff'] = number_format($weight_diff,1);
 			$data['body_fat_diff'] = number_format($body_diff,1);
 			$data['member'] = $m;
 
