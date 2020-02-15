@@ -40,8 +40,9 @@
 				<div class="form-group" style="padding:0px 26px">
 	        <div class="col-md-12 col-xs-12 col-sm-12 no-padding" style="">
 		        <button type="button" class="basic_information btn_roles btn_1" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('basic_information')">基本資料</button>
-		        <button type="button" class="lottery btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('lottery')">摸彩卷</button>
-		        <button type="button" class="items btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('items')">道具</button>
+		        <button type="button" class="weight_history btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('weight_history')">上秤歷史紀錄</button>
+		        <button type="button" class="health_report btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('health_report')">健康報告</button>
+						<button type="button" class="ketone_record btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('ketone_record')">尿酮紀錄</button>
 
 	        </div>
         <div class="clearfix"></div>
@@ -148,6 +149,64 @@
 				</div>
 			</fieldset>
 		</div>
+		<div class="table_1" id="weight_history" style="display:none">
+			<table id="weight_history_list" class="table table-striped table-bordered table-hover" width="100%">
+				<thead>
+					<tr>
+						<th class="min100">體重</th>
+						<th class="min100">體脂率</th>
+						<th class="min100">脂肪</th>
+						<th class="min100">內臟脂肪率</th>
+						<th class="min100">蛋白率</th>
+						<th class="min100">水分率</th>
+						<th class="min100">肌肉率</th>
+						<th class="min100">骨骼肌率</th>
+						<th class="min100">骨重率</th>
+						<th class="min100">皮下脂肪率</th>
+						<th class="min100">肥胖等級</th>
+						<th class="min100">BMR</th>
+						<th class="min100">健康指數</th>
+						<th class="min100">身體年齡</th>
+						<th class="min100">身體類型</th>
+						<th class="min100">日期</th>
+
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="table_1" id="health_report" style="display:none">
+			<table id="health_report_list" class="table table-striped table-bordered table-hover" width="100%">
+				<thead>
+					<tr>
+						<th class="min100">物品</th>
+						<th class="min100">價格</th>
+						<th class="min100">數量</th>
+						<th class="min100">花費</th>
+						<th class="min100">時間</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="table_1" id="ketone_record" style="display:none">
+			<table id="ketone_record_list" class="table table-striped table-bordered table-hover" width="100%">
+				<thead>
+					<tr>
+						<th class="min100">尿酮數值</th>
+						<th class="min100">日期</th>
+					</tr>
+				</thead>
+				<tbody>
+				</tbody>
+			</table>
+		</div>
+
+
 
 			</form>
 
@@ -220,14 +279,8 @@ $('#app-edit-form').bootstrapValidator({
 		$('.'+id).addClass('btn_1');
 	}
 
-	// currentApp.weighthistoryList = new WeightHistoryClass(new BaseAppClass({}));
+	currentApp.weighthistoryList = new WeightHistoryClass(new BaseAppClass({}));
 	// currentApp.giftList = new FishtableGiftAppClass(new BaseAppClass({}));
-	// currentApp.rechargeList = new RechargerecordAppClass(new BaseAppClass({}));
-	// currentApp.storeList = new StoreAppClass(new BaseAppClass({}));
-	// currentApp.buyList = new BuyAppClass(new BaseAppClass({}));
-	// currentApp.friendsList = new FriendsAppClass(new BaseAppClass({}));
-	// currentApp.talkList = new TalkAppClass(new BaseAppClass({}));
-	// currentApp.caughtfishList = new CaughtfishAppClass(new BaseAppClass({}));
-	// currentApp.levelrecordfishList = new LevelrecordAppClass(new BaseAppClass({}));
-	// currentApp.loginList = new LoginAppClass(new BaseAppClass({}));
+	currentApp.ketonrecordList = new KetonrecordClass(new BaseAppClass({}));
+
 </script>

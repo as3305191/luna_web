@@ -155,5 +155,36 @@ class Ketone_record_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_user_ketone($data, $is_count = FALSE) {
+
+		$member_id= $data['member_id'];
+		$start = $data['start'];
+		$limit = $data['length'];
+
+		// select
+		$this -> db -> from("$this->table_name as _m");
+
+
+		$this -> db -> select('_m.*');
+		$this -> db -> select('kt.value as value');
+
+
+		if(!$is_count) {
+			$this -> db -> limit($limit, $start);
+		}
+
+		$this -> db -> where('_m.member_id',$member_id);
+		$this -> db -> join("ketone kt", 'kt.id = _m.ketone_id', 'left');
+
+		// query results
+		if(!$is_count) {
+			$query = $this -> db -> get();
+			return $query -> result();
+		} else {
+			return $this -> db -> count_all_results();
+		}
+
+	}
+
 }
 ?>

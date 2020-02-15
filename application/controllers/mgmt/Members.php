@@ -9,6 +9,8 @@ class Members extends MY_Mgmt_Controller {
 		$this -> load -> model('Members_log_dao', 'members_log_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
+		$this -> load -> model('Records_dao', 'records_dao');
+		$this -> load -> model('Ketone_record_dao', 'ketone_record_dao');
 
 	}
 
@@ -43,25 +45,6 @@ class Members extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function get_weight_history() {
-		$res = array();
-
-		$data = $this -> get_posts(array(
-			'length',
-			'start',
-			'columns',
-			'search',
-			'order',
-		
-		));
-
-		$res['items'] = $this -> lottery_tx_dao -> find_user_lottery($data);
-		$res['recordsFiltered'] = $this -> lottery_tx_dao -> find_user_lottery($data, TRUE);
-		$res['recordsTotal'] = $this -> lottery_tx_dao -> find_user_lottery($data, TRUE);
-
-		$this -> to_json($res);
-	}
-
 	public function edit($id) {
 		$data = array();
 		$data['id'] = $id;
@@ -90,6 +73,46 @@ class Members extends MY_Mgmt_Controller {
 		$data['coach'] = $this -> dao -> find_all_coach();
 
 		$this->load->view('mgmt/members/edit', $data);
+	}
+
+	public function get_weight_history() {
+		$res = array();
+
+		$data = $this -> get_posts(array(
+			'length',
+			'start',
+			'columns',
+			'search',
+			'order',
+			'member_id',
+
+		));
+
+		$res['items'] = $this -> records_dao -> find_user_weight_history($data);
+		$res['recordsFiltered'] = $this -> records_dao -> find_user_weight_history($data, TRUE);
+		$res['recordsTotal'] = $this -> records_dao -> find_user_weight_history($data, TRUE);
+
+		$this -> to_json($res);
+	}
+
+	public function get_Keton_data() {
+		$res = array();
+
+		$data = $this -> get_posts(array(
+			'length',
+			'start',
+			'columns',
+			'search',
+			'order',
+			'member_id',
+
+		));
+
+		$res['items'] = $this -> ketone_record_dao -> find_user_ketone($data);
+		$res['recordsFiltered'] = $this -> ketone_record_dao -> find_user_ketone($data, TRUE);
+		$res['recordsTotal'] = $this -> ketone_record_dao -> find_user_ketone($data, TRUE);
+
+		$this -> to_json($res);
 	}
 
 	public function insert() {

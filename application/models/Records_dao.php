@@ -305,5 +305,35 @@ class Records_dao extends MY_Model {
 
 	}
 
+	function find_user_weight_history($data, $is_count = FALSE) {
+
+		$member_id= $data['member_id'];
+		$start = $data['start'];
+		$limit = $data['length'];
+
+		// select
+		$this -> db -> from("$this->table_name as _m");
+
+
+		$this -> db -> select('_m.*');
+
+
+		if(!$is_count) {
+			$this -> db -> limit($limit, $start);
+		}
+		$this -> db -> where('_m.member_id',$member_id);
+
+		// query results
+		if(!$is_count) {
+			$query = $this -> db -> get();
+			return $query -> result();
+		} else {
+			return $this -> db -> count_all_results();
+		}
+
+	}
+
+
+
 }
 ?>
