@@ -35,6 +35,7 @@ class Record extends MY_Base_Controller {
 		$bone_mass_rate = $this -> get_post('bone_mass_rate');
 		$physical_age = $this -> get_post('physical_age');
 		$moisture_rate = $this -> get_post('moisture_rate');
+		$muscle_rate = $this -> get_post('muscle_rate');
 		$protein_rate = $this -> get_post('protein_rate');
 		$skeletal_muscle_rate = $this -> get_post('skeletal_muscle_rate');
 		$bmi = $this -> get_post('bmi');
@@ -75,6 +76,7 @@ class Record extends MY_Base_Controller {
 									 'physical_age' => $physical_age,
 									 'moisture_rate' => $moisture_rate,
 									 'protein_rate' => $protein_rate,
+									 'muscle_rate' => $muscle_rate,
 									 'skeletal_muscle_rate' => $skeletal_muscle_rate,
 									 'bmi' => $bmi,
 									 'bmi_best' => $bmi_best,
