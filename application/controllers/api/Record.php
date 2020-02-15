@@ -35,9 +35,12 @@ class Record extends MY_Base_Controller {
 		$bone_mass_rate = $this -> get_post('bone_mass_rate');
 		$physical_age = $this -> get_post('physical_age');
 		$moisture_rate = $this -> get_post('moisture_rate');
+		$muscle_rate = $this -> get_post('muscle_rate');
 		$protein_rate = $this -> get_post('protein_rate');
 		$skeletal_muscle_rate = $this -> get_post('skeletal_muscle_rate');
 		$bmi = $this -> get_post('bmi');
+		$adc1 = $this -> get_post('adc1');
+
 		$bmi = floatval($bmi);
 
 		if(!empty($member_id)){
@@ -73,6 +76,7 @@ class Record extends MY_Base_Controller {
 									 'physical_age' => $physical_age,
 									 'moisture_rate' => $moisture_rate,
 									 'protein_rate' => $protein_rate,
+									 'muscle_rate' => $muscle_rate,
 									 'skeletal_muscle_rate' => $skeletal_muscle_rate,
 									 'bmi' => $bmi,
 									 'bmi_best' => $bmi_best,
@@ -80,6 +84,7 @@ class Record extends MY_Base_Controller {
 									 'fat_rate_best' => $fat_rate_best,
 									 'fat_best' => $fat_best,
 									 'fat_info' => $fat_info,
+									 'adc1' => $adc1,
 									 'create_date'=> $today
 								 );
 				$data = $this -> records_dao -> find_by_value(array('member_id'=>$member_id,'date'=>$today));
@@ -734,13 +739,23 @@ class Record extends MY_Base_Controller {
 		$ym = $this -> get_post("ym");
 		$member_id = $this -> get_post("member_id");
 
-		if(!empty($member_id) && !empty($ym)) { //
-			$list = $this -> records_dao -> find_all_by_ym($member_id, $ym);
+		if(!empty($member_id) && !empty($ym)) {
+			$m = $this -> records_dao -> find_first($member_id);
+			if(!empty($m)){
+				$base = $m->weight;
+				$list = $this -> records_dao -> find_all_by_ym($member_id, $ym);
+				foreach ($list as $each) {
+					if($each-> weight >= $base){
+						$each -> exceed = 1;
+					}else{
+						$each -> exceed = 0;
+					}
+				}
+			}
 		}else{
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";
 		}
-
 		$res['list'] = $list;
 		$this -> to_json($res);
 	}
@@ -759,11 +774,12 @@ class Record extends MY_Base_Controller {
 			}
 
 			$res['success'] = TRUE;
+			$data = array();
 			$m = $this -> dao -> find_by_id($member_id);
-			$res['member'] = $m;
+			// $res['member'] = $m;
 
 			$list1 = $this -> records_dao -> find_by_date($f);
-			$res['days'] = count($list1);
+			// $res['days'] = count($list1);
 
 			$data1 = NULL;
 			$data2 = NULL;
@@ -793,26 +809,26 @@ class Record extends MY_Base_Controller {
 			}
 
 			if($data1 != NULL && $data2 != NULL){
-				$weight_kg = ($data2->weight - $data1->weight)/1000;
+				$weight_diff = ($data2->weight - $data1->weight)/1000;
 				$body_fat_d1 = $data1->body_fat_rate * $data1->weight/100;
 				$body_fat_d2 = $data2->body_fat_rate * $data2->weight/100;
 				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
 			}else if($data1 == NULL && $data2 == NULL){
 
 			}else if($data1 == NULL){
-				$weight_kg = ($data2->weight)/1000;
+				$weight_diff = ($data2->weight)/1000;
 				$body_fat_d1 = 0;
 				$body_fat_d2 = $data2->body_fat_rate * $data2->weight/100;
 				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
 			}else if($data2 == NULL){
-				$weight_kg = (0 - $data1->weight)/1000;
+				$weight_diff = (0 - $data1->weight)/1000;
 				$body_fat_d1 = $data1->body_fat_rate * $data1->weight/100;
 				$body_fat_d2 = 0;
 				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
 			}
 
-			$res['weight_diff'] = number_format($weight_kg,1);
-			$res['body_fat_diff'] = number_format($body_diff,1);
+			// $res['weight_diff'] = number_format($weight_kg,1);
+			// $res['body_fat_diff'] = number_format($body_diff,1);
 
 			if(!empty($data1)){
 				$weight_kg = $data1->weight/1000;
@@ -854,16 +870,32 @@ class Record extends MY_Base_Controller {
 				$data2 -> bone_mass = number_format($bone_mass,1);
 			}
 
+
+			$data['days'] = count($list1);
+			$data['weight_diff'] = number_format($weight_diff,1);
+			$data['body_fat_diff'] = number_format($body_diff,1);
+			$data['member'] = $m;
+
 			if(!empty($data1)){
-				$res['data1'] = $data1;
-				$res['data1_id'] = $data1->id;
-				$res['td1'] = $this -> get_suggestions($member_id,$data1->id);
+				$data['data1'] = $data1;
+				// $res['data1_id'] = $data1->id;
+				$data['td1'] = $this -> get_suggestions($member_id,$data1->id);
+				$ketone1 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data1->create_date));
+				if(!empty($ketone1)){
+					$data['kt1'] = $ketone1;
+				}
 			}
 
 			if(!empty($data2)){
-				$res['data2'] = $data2;
-				$res['td2'] = $this -> get_suggestions($member_id,$data2->id);
+				$data['data2'] = $data2;
+				$data['td2'] = $this -> get_suggestions($member_id,$data2->id);
+				$ketone2 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data2->create_date));
+				if(!empty($ketone2)){
+					$data['kt2'] = $ketone2;
+				}
 			}
+
+			$res['data'] = $data;
 		}else{
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";

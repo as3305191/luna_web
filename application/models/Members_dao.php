@@ -47,6 +47,8 @@ class Members_dao extends MY_Model {
 		return $this -> find_all();
 	}
 
+
+
 	// function find_by_account($f){
 	// 	$this -> db -> from("$this->table_name as _m");
 	// 	$this -> db -> select('_m.*');
@@ -276,7 +278,7 @@ class Members_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-	
+
 	}
 
 	function ajax_from_join() {
