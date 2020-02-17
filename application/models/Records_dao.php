@@ -210,6 +210,32 @@ class Records_dao extends MY_Model {
 		return $query -> result();
 	}
 
+	function find_record($id) {
+
+
+		// select
+		$this -> db -> select('_m.*');
+
+		// join
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> where('_m.member_id', $id);
+
+
+
+		$this -> db -> order_by('id', 'desc');
+
+		// limit
+		$this -> db -> limit(3);
+
+		$list = $this -> db -> get() -> result();
+		if(count($list) > 0) {
+			return $list;
+		} else{
+			return NULL;
+		}
+	}
+
 	function search_always($data) {
 	}
 

@@ -39,6 +39,7 @@ class Members extends MY_Mgmt_Controller {
 		$items = $this -> dao -> query_ajax($data);
 
 		$res['items'] = $items;
+
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
 
@@ -62,7 +63,9 @@ class Members extends MY_Mgmt_Controller {
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
+			$health_report = $this -> records_dao -> find_record($q_data['id']);
 
+			$data['health_report'] = $health_report[0];
 			$data['item'] = $item;
 		}
 
@@ -71,6 +74,7 @@ class Members extends MY_Mgmt_Controller {
 		$data['login_user'] = $login_user;
 
 		$data['coach'] = $this -> dao -> find_all_coach();
+		// $this -> to_json($data);
 
 		$this->load->view('mgmt/members/edit', $data);
 	}

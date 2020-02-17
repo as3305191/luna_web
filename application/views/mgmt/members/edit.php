@@ -178,19 +178,143 @@
 		</div>
 
 		<div class="table_1" id="health_report" style="display:none">
-			<table id="health_report_list" class="table table-striped table-bordered table-hover" width="100%">
-				<thead>
-					<tr>
-						<th class="min100">物品</th>
-						<th class="min100">價格</th>
-						<th class="min100">數量</th>
-						<th class="min100">花費</th>
-						<th class="min100">時間</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">體重</label>
+					<div class="col-md-6">
+						<input type="text"  class="form-control" value="<?= isset($health_report) ? $health_report -> weight : '' ?>" readonly />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">體脂率</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> body_fat : '' ?>"  readonly/>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">脂肪</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> body_fat_rate : '' ?>" readonly/>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">內臟脂肪率</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control"  value="<?= isset($health_report) ? $health_report -> visceral_fat_rate : '' ?>"readonly />
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">蛋白率</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> protein_rate : '' ?>" readonly/>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">水分率</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> moisture_rate : '' ?>" readonly/>
+
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">肌肉率</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> muscle_rate : '' ?>" readonly/>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">骨骼肌率</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> skeletal_muscle_rate : '' ?>" readonly/>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">骨重率</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> bone_mass_rate : '' ?>" readonly/>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">皮下脂肪率</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> subcutaneous_fat_rate : '' ?>" readonly/>
+
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">肥胖等級</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> fat_info : '' ?>" readonly/>
+
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">BMR</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> bmr : '' ?>" readonly/>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">健康指數</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> health_index : '' ?>" readonly/>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">身體年齡</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> physical_age : '' ?>" readonly/>
+					</div>
+				</div>
+			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">身體類型</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> body_type : '' ?>" readonly/>
+					</div>
+				</div>
+			</fieldset>
 		</div>
 
 		<div class="table_1" id="ketone_record" style="display:none">
