@@ -65,8 +65,8 @@ class Members extends MY_Mgmt_Controller {
 			$item = $list[0];
 			$health_report = $this -> records_dao -> find_record($q_data['id']);
 
-			$data['health_report'] = $health_report[0];
 			$data['item'] = $item;
+			$data['health_report'] = $health_report[0];
 		}
 
 		$s_data = $this -> setup_user_data(array());
