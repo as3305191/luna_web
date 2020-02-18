@@ -160,6 +160,7 @@ class Record extends MY_Base_Controller {
 
 		if(!empty($id && !empty($member_id))){
 			$m = $this -> records_dao -> find_by_id($id);
+			$ketone = $this -> ketone_record_dao -> find_by_one(array('member_id' => $member_id,'date' => $m->create_date));
 
 			$res['success'] = TRUE;
 			if(!empty($m)){

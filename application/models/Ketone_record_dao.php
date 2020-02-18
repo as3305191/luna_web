@@ -55,13 +55,16 @@ class Ketone_record_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> join("ketone k", "k.id = _m.ketone_id", "left");
 
-
 		// select
 		$this -> db -> select('_m.*');
 		$this -> db -> select('k.value,k.color,k.r,k.g,k.b');
 
 		if(!empty($f['member_id'])){
 			$this -> db -> where('_m.member_id',$f['member_id']);
+		}
+
+		if(!empty($f['date'])){
+			$this -> db -> where('_m.date',$f['date']);
 		}
 
 		$this -> db -> where('_m.is_delete',0);
