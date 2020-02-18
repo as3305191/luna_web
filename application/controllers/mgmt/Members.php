@@ -32,6 +32,7 @@ class Members extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
+			'type',
 
 		));
 		$s_data = $this -> setup_user_data(array());

@@ -46,7 +46,14 @@
 										<tr class="search_box">
 											    <th><input class="form-control input-xs min100" type="text" /></th>
 											    <th><input class="form-control input-xs min100" type="text" /></th>
-													<th></th>
+													<th>
+														<select name="type" id="type" class="form-control">
+															<option value="-1">無</option>
+															<option value="0" >一般會員</option>
+															<option value="1" >教練</option>
+															<option value="2" >訪客</option>
+														</select>
+													</th>
 													<th></th>
 										    </tr>
 									</thead>

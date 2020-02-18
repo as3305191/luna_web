@@ -54,36 +54,12 @@
 											<th class="min25"></th>
 											<th class="min100">帳號</th>
 											<th class="min100">名稱</th>
-											<th class="min100">醫院名稱</th>
-											<th class="min100">角色</th>
-											<th class="min100">建立時間</th>
 										</tr>
 										<tr class="search_box">
-											    <th></th>
-											    <th><input class="form-control input-xs min100" type="text" /></th>
-											    <th><input class="form-control input-xs min100" type="text" /></th>
-													<th>
-														<select name="hospital_id" id="hospital_id" class="form-control">
-															<option value="-1">無</option>
-															<?php foreach($hospital_list as $each): ?>
-																<option value="<?= $each -> id?>" ><?=  $each -> hospital_name ?></option>
-															<?php endforeach ?>
-														</select>
-													</th>
-
-													<th>
-														<select name="role_id" id="role_id" class="form-control">
-															<option value="-1">無</option>
-															<?php foreach($role_list as $each): ?>
-																<option value="<?= $each -> id?>" ><?=  $each -> role_name ?></option>
-															<?php endforeach ?>
-														</select>
-													</th>
-
-
-
-													<th></th>
-										    </tr>
+									    <th></th>
+									    <th><input class="form-control input-xs min100" type="text" /></th>
+									    <th><input class="form-control input-xs min100" type="text" /></th>
+								    </tr>
 									</thead>
 									<tbody>
 									</tbody>
@@ -128,12 +104,6 @@
 		data : 'account'
 	}, {
 		data : 'user_name'
-	}, {
-		data : 'hospital_name'
-	},{
-		data : 'role_name'
-	}, {
-		data : 'create_time'
 	}];
 
 	var mOrderIdx = 1;
@@ -150,7 +120,7 @@
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [1,2,3,4],
+		"targets" : [1,2],
 		"orderable" : false
 	}];
 

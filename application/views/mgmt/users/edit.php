@@ -84,19 +84,7 @@
 						</div>
 					</div>
 				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">醫院</label>
-						<div class="col-md-6">
-							<select name="hospital_id" id="hospital_id" class="form-control">
-								<option value="-1">無</option>
-								<?php foreach($hospital_list as $each): ?>
-									<option value="<?= $each -> id?>" ><?=  $each -> hospital_name ?></option>
-								<?php endforeach ?>
-							</select>
-						</div>
-					</div>
-				</fieldset>
+			
 			</form>
 
 		</div>

@@ -15,7 +15,7 @@ class Users extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$data['role_list'] = $this -> dao -> find_all_roles();
-		$data['hospital_list'] = $this -> dao -> find_all_hospital();
+		// $data['hospital_list'] = $this -> dao -> find_all_hospital();
 		$data['login_user'] = $this -> dao -> find_by_id($data['login_user_id']);
 		// $this -> to_json($data);
 
@@ -30,11 +30,6 @@ class Users extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			'role_id',
-			'is_foreign',
-			'station_id',
-			'bypass_point',
-			'hospital_id',
 
 		));
 		$s_data = $this -> setup_user_data(array());

@@ -7,11 +7,7 @@ var UsersAppClass = (function(app) {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
 					d.role_id = $('#role_id').val();
-					d.station_id = $('#station_id').val();
-					d.is_valid_email = $('#is_valid_email').val();
-					d.is_foreign = $('#is_foreign').val();
-					d.bypass_point = $('#bypass_point').val();
-					d.hospital_id = $('#hospital_id').val();
+			
 
 				},
 				dataSrc : 'items',

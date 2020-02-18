@@ -6,6 +6,7 @@ var MembersAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
+					d.type = $('#type').val();
 
 				},
 				dataSrc : 'items',
@@ -36,25 +37,10 @@ var MembersAppClass = (function(app) {
 		app.doExportAll = function() {
 			location.href = baseUrl + app.basePath + '/export_all';
 		}
-		$('#hospital_id').on('change', function(){
+	
+		$('#type').on('change', function(){
 			app.tableReload();
 		});
-		$('#role_id').on('change', function(){
-			app.tableReload();
-		});
-		$('#is_valid_email').on('change', function(){
-			app.tableReload();
-		});
-		$('#is_foreign').on('change', function(){
-			app.tableReload();
-		});
-		$('#station_id').on('change', function(){
-			app.tableReload();
-		});
-		$('#bypass_point').on('change', function(){
-			app.tableReload();
-		});
-
 		return app;
 	};
 

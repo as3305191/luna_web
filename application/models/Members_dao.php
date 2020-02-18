@@ -245,7 +245,6 @@ class Members_dao extends MY_Model {
 		$columns = $data['columns'];
 		$search = $data['search'];
 		$order = $data['order'];
-
 		// select
 		$this -> db -> select('_m.*');
 
@@ -278,7 +277,11 @@ class Members_dao extends MY_Model {
 	}
 
 	function search_always($data) {
+		$type = $data['type'];
 
+		if($type>-1){
+			$this -> db -> where("_m.type", $type);
+		}
 	}
 
 	function ajax_from_join() {
