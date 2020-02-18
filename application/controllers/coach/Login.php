@@ -46,6 +46,15 @@ class Login extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function do_login_app($id) {
+		$user = $this -> dao -> find_by_id($id);
+		if($user-> type == 1){
+			$this -> session -> set_userdata('user_id', $user -> id);
+			redirect("/coach/coach_home");
+		} else {
+			echo "You Are Not Coach!!!";
+		}
+	}
 
 	public function logout() {
 		// $corp = $this -> session -> userdata('corp');
