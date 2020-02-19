@@ -216,13 +216,13 @@ class Images extends MY_Base_Controller {
 
 		// resize
 		// $img_content = $this -> resizeBlob($img_content, 300, 300);
-		//
-		// $res['image_id'] = $last_id;
-		//
-		// $img_content = file_get_contents($img_path);
-		// $this -> dao -> update(array(
-			// 'img_thumb' => $img_content
-		// ), $last_id);
+
+		$res['image_id'] = $last_id;
+
+		$img_content = file_get_contents($img_path);
+		$this -> dao -> update(array(
+			'img_thumb' => $img_content
+		), $last_id);
 
 		$res['last_id'] = $last_id;
 		$this -> to_json($res);
