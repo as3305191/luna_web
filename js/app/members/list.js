@@ -37,7 +37,7 @@ var MembersAppClass = (function(app) {
 		app.doExportAll = function() {
 			location.href = baseUrl + app.basePath + '/export_all';
 		}
-	
+
 		$('#type').on('change', function(){
 			app.tableReload();
 		});
