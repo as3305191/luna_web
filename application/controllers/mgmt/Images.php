@@ -270,7 +270,7 @@ class Images extends MY_Base_Controller {
 				$download_file_name = IMG_DIR . $img_path;
 				header("Content-Disposition: attachment; filename=" . $obj -> image_name);
 				header("Content-type: " . $obj -> mine);
-				header("Content-Length: " . $obj -> image_size);
+				// header("Content-Length: " . $obj -> image_size);
 
 				ob_clean();
 				flush();
