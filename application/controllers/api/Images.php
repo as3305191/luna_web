@@ -62,7 +62,7 @@ class Images extends MY_Base_Controller {
 		$res['range'] = $data;
 
 		// resize
-		$img_content = $this -> resizeBlob($img_content, 300, 300);
+		// $img_content = $this -> resizeBlob($img_content, 300, 300);
 		//
 		// $res['image_id'] = $last_id;
 		//
