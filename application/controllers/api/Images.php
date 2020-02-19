@@ -219,7 +219,7 @@ class Images extends MY_Base_Controller {
 
 		$res['image_id'] = $last_id;
 
-		$img_content = file_get_contents($img_path);
+		// $img_content = file_get_contents($img_path);
 		$this -> dao -> update(array(
 			'img_thumb' => $img_content
 		), $last_id);
