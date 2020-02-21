@@ -452,7 +452,7 @@ class Record extends MY_Base_Controller {
 		$hightWater = $rec -> weight / 1000 * $water_1;
 
 		$td -> water -> title = $msg["tip.water"];
-		$td -> water -> value = number_format($rec->moisture_rate, 2) . " kg";
+		$td -> water -> value = number_format($wrate, 2) . " kg";
 		$td -> water -> explain = $msg["tip.waterv"];
 		$td -> water -> level = array("yellow","green","red");
 		$td -> water -> level_data = array(
