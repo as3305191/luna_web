@@ -39,6 +39,8 @@
 									<thead>
 										<tr>
 											<th class="min100">購物網站帳號</th>
+											<th class="min100">帳號</th>
+
 											<th class="min100">名稱</th>
 											<th class="min100">身份</th>
 											<th class="min100">建立時間</th>
@@ -46,6 +48,7 @@
 										<tr class="search_box">
 											    <th><input class="form-control input-xs min100" type="text" /></th>
 											    <th><input class="form-control input-xs min100" type="text" /></th>
+													<th><input class="form-control input-xs min100" type="text" /></th>
 													<th>
 														<select name="type" id="type" class="form-control">
 															<option value="-1">無</option>
@@ -98,6 +101,8 @@
 <script type="text/javascript">
 	var mCols = [{
 		data : 'account'
+	},{
+		data : 'v_account'
 	},{
 		data : 'user_name'
 	},{
