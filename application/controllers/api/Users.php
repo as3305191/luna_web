@@ -168,10 +168,20 @@ class Users extends MY_Base_Controller {
 			$member_id = $json['member_id'];
 			$m = $this -> members_dao  -> find_by_account($member_id);
 			if(!empty($m)){
+				$v_account = $m->v_account;
+				if(empty($v_account){
+					$upudate_data = array(
+										 'v_account' => $account,
+										 'v_password' => $password
+									 );
+					$this -> members_dao -> update($update_data , $m->id);
+				}
 				$res['member'] = $m;
 			}else{
 				$insert_data = array('account' => $member_id,
 									 'password' => $member_id,
+									 'v_account' => $account,
+									 'v_password' => $password
 								 );
 				$last_id = $this -> members_dao -> insert($insert_data);
 				$value = str_pad($last_id,6,'0',STR_PAD_LEFT);
