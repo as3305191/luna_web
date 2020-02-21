@@ -516,7 +516,7 @@ class Record extends MY_Base_Controller {
 		$ske_high = $rec -> weight / 1000 * $ske_1;
 
 		$td -> ske_muscle -> title = $msg["tip.skeMuscle"];
-		$td -> ske_muscle -> value = number_format($rec->skeletal_muscle_rate, 2) . " kg";
+		$td -> ske_muscle -> value = number_format($rec -> weight / 1000 * $rec->skeletal_muscle_rate, 2) . " kg";
 		$td -> ske_muscle -> explain = $msg["tip.skeMusclev"];
 		$td -> ske_muscle -> level = array("yellow","green","green");
 		$td -> ske_muscle -> level_data = array(
