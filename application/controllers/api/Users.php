@@ -170,7 +170,7 @@ class Users extends MY_Base_Controller {
 			if(!empty($m)){
 				$v_account = $m->v_account;
 				if(empty($v_account)){
-					$upudate_data = array(
+					$update_data = array(
 										 'v_account' => $account,
 										 'v_password' => $password
 									 );
