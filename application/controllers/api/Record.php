@@ -349,7 +349,7 @@ class Record extends MY_Base_Controller {
 
 		$wrate = $rec -> moisture_rate / 100.0; // 水
 		$mrate = $rec -> muscle_rate / $rec -> weight * 1000; // 肌肉
-		$srate = $rec -> skeletal_muscle_rate / $rec -> weight * 1000; // 骨骼肌肉
+		$srate = $rec -> skeletal_muscle_rate / 100.0; // 骨骼肌肉
 
 		$fat_0 = 0.16;
 		$fat_1 = 0.2;
@@ -512,8 +512,8 @@ class Record extends MY_Base_Controller {
 			$td -> ske_muscle -> advise = $msg["tip.skeMuscle3v"];
 		}
 
-		$ske_low = $rec -> weight / 100 * $ske_0;
-		$ske_high = $rec -> weight / 100 * $ske_1;
+		$ske_low = $rec -> weight / 1000 * $ske_0;
+		$ske_high = $rec -> weight / 1000 * $ske_1;
 
 		$td -> ske_muscle -> title = $msg["tip.skeMuscle"];
 		$td -> ske_muscle -> value = number_format($rec->skeletal_muscle_rate, 2) . " kg";
