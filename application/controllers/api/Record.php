@@ -122,7 +122,7 @@ class Record extends MY_Base_Controller {
 				$protein =  $m->weight/1000 * $m->protein_rate/100;
 				$moisture =  $m->weight/1000 * $m->moisture_rate/100;
 				$muscle =  $m->weight/1000 * $m->muscle_rate/100;
-				$bone_mass =  $m->weight/1000 * $m->bone_mass_rate/100;
+				$bone_mass =  $m->bone_mass_rate;
 				$skeletal_muscle =  $m->weight/1000 * $m->skeletal_muscle_rate/100;
 				// $fat_best =  $m->weight/1000 * $m->body_fat_best/100;
 				$rest_weight = $weight_kg - $body_fat;
@@ -170,7 +170,7 @@ class Record extends MY_Base_Controller {
 				$protein =  $m->weight/1000 * $m->protein_rate/100;
 				$moisture =  $m->weight/1000 * $m->moisture_rate/100;
 				$muscle =  $m->weight/1000 * $m->muscle_rate/100;
-				$bone_mass =  $m->weight/1000 * $m->bone_mass_rate/100;
+				$bone_mass =  $m->bone_mass_rate;
 				$skeletal_muscle =  $m->weight/1000 * $m->skeletal_muscle_rate/100;
 				// $fat_best =  $m->weight/1000 * $m->body_fat_best/100;
 				$rest_weight = $weight_kg - $body_fat;
