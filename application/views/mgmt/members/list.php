@@ -38,7 +38,7 @@
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min100">帳號</th>
+											<th class="min100">購物網站帳號</th>
 											<th class="min100">名稱</th>
 											<th class="min100">身份</th>
 											<th class="min100">建立時間</th>
