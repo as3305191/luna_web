@@ -347,7 +347,7 @@ class Record extends MY_Base_Controller {
 		$td -> muscle = new stdClass;
 		$td -> ske_muscle = new stdClass;
 
-		$wrate = $rec -> moisture_rate / $rec -> weight * 1000; // 水
+		$wrate = $rec -> moisture_rate / 100.0; // 水
 		$mrate = $rec -> muscle_rate / $rec -> weight * 1000; // 肌肉
 		$srate = $rec -> skeletal_muscle_rate / $rec -> weight * 1000; // 骨骼肌肉
 
