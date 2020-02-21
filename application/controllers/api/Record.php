@@ -210,6 +210,10 @@ class Record extends MY_Base_Controller {
 			$rec = $this -> records_dao -> find_by_id($id);
 		}
 
+		if($rec -> weight == 0) {
+			$rec -> weigh = 1;
+		}
+
 		// thev body object
 		$td = new stdClass; // body 資料
 
