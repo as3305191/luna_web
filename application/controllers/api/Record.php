@@ -211,7 +211,7 @@ class Record extends MY_Base_Controller {
 		}
 
 		if($rec -> weight == 0) {
-			$rec -> weigh = 1;
+			$rec -> weight = 1;
 		}
 
 		// thev body object
