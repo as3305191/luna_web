@@ -62,7 +62,7 @@ class Images extends MY_Base_Controller {
 		$res['range'] = $data;
 
 		// resize
-		$img_content = $this -> resizeBlob($img_content, 300, 300);
+		// $img_content = $this -> resizeBlob($img_content, 300, 300);
 		//
 		// $res['image_id'] = $last_id;
 		//
@@ -215,10 +215,10 @@ class Images extends MY_Base_Controller {
 		), $last_id);
 
 		// resize
-		$img_content = $this -> resizeBlob($img_content, 300, 300);
-		//
-		// $res['image_id'] = $last_id;
-		//
+		// $img_content = $this -> resizeBlob($img_content, 300, 300);
+
+		$res['image_id'] = $last_id;
+
 		// $img_content = file_get_contents($img_path);
 		$this -> dao -> update(array(
 			'img_thumb' => $img_content

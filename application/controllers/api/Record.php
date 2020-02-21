@@ -224,26 +224,31 @@ class Record extends MY_Base_Controller {
 				$td -> fat_info -> idx_str = $msg["tip.fat1"];
 				$td -> fat_info -> bg = "yellow";
 				$td -> fat_info -> idx = 0;
+				$td -> fat_info -> advise = $msg["tip.fat1v"];
 			}
 			else if($bmi>34.5 && $bmi<=43) {
 				$td -> fat_info -> idx_str = $msg["tip.fat2"];
 				$td -> fat_info -> bg = "green";
 				$td -> fat_info -> idx = 1;
+				$td -> fat_info -> advise = $msg["tip.fat2v"];
 			}
 			else if($bmi>43 && $bmi<=49) {
 				$td -> fat_info -> idx_str = $msg["tip.fat3"];
 				$td -> fat_info -> bg = "violet";
 				$td -> fat_info -> idx = 2;
+				$td -> fat_info -> advise = $msg["tip.fat3v"];
 			}
 			else if($bmi>49 && $bmi<=58) {
 				$td -> fat_info -> idx_str = $msg["tip.fat4"];
 				$td -> fat_info -> bg = "purplish";
 				$td -> fat_info -> idx = 3;
+				$td -> fat_info -> advise = $msg["tip.fat4v"];
 			}
 			else if($bmi>58 && $bmi<=60) {
 				$td -> fat_info -> idx_str = $msg["tip.fat5"];
 				$td -> fat_info -> bg = "chocolate";
 				$td -> fat_info -> idx = 4;
+				$td -> fat_info -> advise = $msg["tip.fat5v"];
 			}
 			else if($bmi>60){
 				$td -> fat_info -> idx_str = $msg["tip.fat6"];
