@@ -1,3 +1,4 @@
 #!/bin/bash
 current_date_time="`date +%Y%m%d%H%M%S`";
+
 git add -A && git commit -m "$1 $current_date_time" && git push && ssh -i ~/.ssh/bd-ssh pennyapple@35.221.234.24 ./up_body_fat
