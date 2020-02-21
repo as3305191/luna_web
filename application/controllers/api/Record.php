@@ -466,12 +466,13 @@ class Record extends MY_Base_Controller {
 		$mrateLow = $m -> height *  $m -> height / 10000 * ($muscle_0 + ($muscle_1 * $m -> height / 100));
 		$mrateHigh = $m -> height *  $m -> height / 10000 * ($muscle_2 + ($muscle_3 * $m -> height / 100));
 
-		if($rec -> muscle_rate < $mrateLow) {
+		$muscle_weight = $rec -> muscle_rate * $rec -> weight / 1000.0;
+		if($muscle_weight < $mrateLow) {
 			$td -> muscle -> idx_str = $msg["tip.low"];
 			$td -> muscle -> bg = "yellow";
 			$td -> muscle -> idx = 0;
 			$td -> muscle -> advise = $msg["tip.muscle1v"];
-		} elseif($rec -> muscle_rate >= $mrateLow && $rec -> muscle_rate <= $mrateHigh) {
+		} elseif($muscle_weight >= $mrateLow && $rec -> muscle_rate <= $mrateHigh) {
 			$td -> muscle -> idx_str = $msg["tip.fat2"];
 			$td -> muscle -> bg = "green";
 			$td -> muscle -> idx = 1;
@@ -483,7 +484,7 @@ class Record extends MY_Base_Controller {
 			$td -> muscle -> advise = $msg["tip.muscle3v"];
 		}
 		$td -> muscle -> title = $msg["tip.muscle"];
-		$td -> muscle -> value = number_format($rec->muscle_rate, 2) . " kg";
+		$td -> muscle -> value = number_format($muscle_weight, 2) . " kg";
 		$td -> muscle -> explain = $msg["tip.musclev"];
 		$td -> muscle -> level = array("yellow","green","green");
 		$td -> muscle -> level_data = array(
