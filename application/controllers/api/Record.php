@@ -450,7 +450,7 @@ class Record extends MY_Base_Controller {
 		}
 		$lowWater = $rec -> weight / 1000 * $water_0;
 		$hightWater = $rec -> weight / 1000 * $water_1;
-
+		$w_weight = $rec -> weight / 1000 * $wrate; 
 		$td -> water -> title = $msg["tip.water"];
 		$td -> water -> value = number_format($wrate, 2) . " kg";
 		$td -> water -> explain = $msg["tip.waterv"];
