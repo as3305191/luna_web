@@ -142,7 +142,7 @@ class Members extends MY_Base_Controller {
 			$code;
 			while ($i == 0) {
 				$param = str_pad(mt_rand(0, 999999), 6, "0", STR_PAD_BOTH);
-				$m = $this -> members_dao -> find_by_value(array('code'=> $param));
+				$m = $this -> dao -> find_by_value(array('code'=> $param));
 				if(empty($m)){
 					$i++;
 					$code = $param;
