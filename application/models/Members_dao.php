@@ -44,6 +44,10 @@ class Members_dao extends MY_Model {
 			$this -> db -> where("_m.id", $f['id']);
 		}
 
+		if(!empty($f['code'])){
+			$this -> db -> where("_m.code", $f['code']);
+		}
+
 		return $this -> find_all();
 	}
 

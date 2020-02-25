@@ -138,8 +138,20 @@ class Members extends MY_Base_Controller {
 
 			$last_id = $this -> dao -> insert($insert_data);
 
-			$value = str_pad($last_id,6,'0',STR_PAD_LEFT);
-			$this -> dao -> update(array('code'=>$value),$last_id);
+			$i=0;
+			$code;
+			while ($i == 0) {
+				$param = str_pad(mt_rand(0, 999999), 6, "0", STR_PAD_BOTH);
+				$m = $this -> members_dao -> find_by_value(array('code'=> $param));
+				if(empty($m)){
+					$i++;
+					$code = $param;
+				}else {
+					$i = 0;
+				}
+			}
+			// $value = str_pad($last_id,6,'0',STR_PAD_LEFT);
+			$this -> dao -> update(array('code'=>$code),$last_id);
 
 			$res['success'] = TRUE;
 			$res['id'] = $last_id;

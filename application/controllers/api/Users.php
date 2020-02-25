@@ -184,8 +184,21 @@ class Users extends MY_Base_Controller {
 									 'v_password' => $password
 								 );
 				$last_id = $this -> members_dao -> insert($insert_data);
-				$value = str_pad($last_id,6,'0',STR_PAD_LEFT);
-				$this -> members_dao -> update(array('code'=>$value),$last_id);
+
+				$i=0;
+				$code;
+				while ($i == 0) {
+					$param = str_pad(mt_rand(0, 999999), 6, "0", STR_PAD_BOTH);
+					$m = $this -> members_dao -> find_by_value(array('code'=> $param));
+					if(empty($m)){
+						$i++;
+						$code = $param;
+					}else {
+						$i = 0;
+					}
+				}
+				// $value = str_pad($last_id,6,'0',STR_PAD_LEFT);
+				$this -> members_dao -> update(array('code'=> $code),$last_id);
 				$res['member'] = $this -> members_dao -> find_by_id($last_id);
 			}
 		}else{
@@ -345,6 +358,13 @@ class Users extends MY_Base_Controller {
 		$result = curl_exec ( $ch );
 
 		curl_close ( $ch );
+	}
+
+	public function go_test_code() {
+		$res = array();
+		$res['success'] = TRUE;
+
+		$this -> to_json($res);
 	}
 
 
