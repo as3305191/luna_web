@@ -584,7 +584,7 @@ class Record extends MY_Base_Controller {
 		}
 
 		$td -> protein -> title = $msg["tip.protein"];
-		$td -> protein -> value = number_format($rec->protein_rate, 2);
+		$td -> protein -> value = number_format($prate, 2);
 		$td -> protein -> explain = $msg["tip.proteinv"];
 		$td -> protein -> level = array("yellow","green","green");
 
