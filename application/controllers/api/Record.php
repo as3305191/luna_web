@@ -565,8 +565,8 @@ class Record extends MY_Base_Controller {
 		// protein 蛋白質
 		$td -> protein = new stdClass;
 
-		$pkg = ($rec -> protein_rate * $rec -> weight / 100.0);
-		$prate = ($rec -> protein_rate * $rec -> weight / 100.0) / $rec -> weight * 1000.0;
+		$pkg = ($rec -> protein_rate * $rec -> weight / 1000.0 / 100.0);
+		$prate = ($rec -> protein_rate * $rec -> weight / 1000.0 / 100.0) / $rec -> weight * 1000.0;
 		if($prate <= 0.14) {
 			$td -> protein -> idx_str = $msg["tip.low"];
 			$td -> protein -> bg = "yellow";
