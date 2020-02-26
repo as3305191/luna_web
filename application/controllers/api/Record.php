@@ -321,7 +321,7 @@ class Record extends MY_Base_Controller {
 			$td -> weight -> idx = 0;
 			$td -> weight -> advise = $msg["tip.weight1"];
 		} elseif($rec -> bmi >= 18 && $rec -> bmi <= 24) {
-			$td -> weight -> idx_str = $msg["tip.hight"];
+			$td -> weight -> idx_str = $msg["tip.fat2"];
 			$td -> weight -> bg = "green";
 			$td -> weight -> idx = 1;
 			$td -> weight -> advise = $msg["tip.weight2"];
