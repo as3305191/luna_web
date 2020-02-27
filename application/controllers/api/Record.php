@@ -217,7 +217,7 @@ class Record extends MY_Base_Controller {
 		// thev body object
 		$td = new stdClass; // body 資料
 
-		$bmi = $rec -> bmi + $rec -> body_fat_rate; // 要相加
+		$bmi = ($rec -> bmi * 4 + $rec -> body_fat_rate * 6) / 10 * 2; // 要相加
 		$msg = parse_ini_file("msg.properties", true, INI_SCANNER_RAW);
 
 		// fat info
@@ -248,13 +248,13 @@ class Record extends MY_Base_Controller {
 				$td -> fat_info -> idx = 3;
 				$td -> fat_info -> advise = $msg["tip.fat4v"];
 			}
-			else if($bmi>58 && $bmi<=60) {
+			else if($bmi>58 && $bmi<61) {
 				$td -> fat_info -> idx_str = $msg["tip.fat5"];
 				$td -> fat_info -> bg = "chocolate";
 				$td -> fat_info -> idx = 4;
 				$td -> fat_info -> advise = $msg["tip.fat5v"];
 			}
-			else if($bmi>60){
+			else if($bmi>=61){
 				$td -> fat_info -> idx_str = $msg["tip.fat6"];
 				$td -> fat_info -> bg = "red";
 				$td -> fat_info -> idx = 5;
@@ -283,12 +283,12 @@ class Record extends MY_Base_Controller {
 				$td -> fat_info -> bg = "purplish";
 				$td -> fat_info -> idx = 3;
 			}
-			else if($bmi>59 && $bmi<=65) {
+			else if($bmi>59 && $bmi<66) {
 				$td -> fat_info -> idx_str = $msg["tip.fat5"];
 				$td -> fat_info -> bg = "chocolate";
 				$td -> fat_info -> idx = 4;
 			}
-			else if($bmi>65){
+			else if($bmi>=66){
 				$td -> fat_info -> idx_str = $msg["tip.fat6"];
 				$td -> fat_info -> bg = "red";
 				$td -> fat_info -> idx = 5;
