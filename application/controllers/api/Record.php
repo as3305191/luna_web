@@ -222,6 +222,7 @@ class Record extends MY_Base_Controller {
 		// thev body object
 		$td = new stdClass; // body 資料
 
+		// new formula
 		$bmi = ($rec -> bmi * 4 + $rec -> body_fat_rate * 6) / 10 * 2; // 要相加
 		$msg = parse_ini_file("msg.properties", true, INI_SCANNER_RAW);
 
