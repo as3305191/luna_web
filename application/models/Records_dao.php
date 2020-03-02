@@ -148,6 +148,29 @@ class Records_dao extends MY_Model {
 		return NULL;
 	}
 
+	function find_newest_weight($f){
+		$this -> db -> from("$this->table_name as _m");
+
+		// select
+		$this -> db -> select('_m.*');
+
+		if(!empty($f['member_id'])){
+			$this -> db -> where('_m.member_id',$f['member_id']);
+		}
+
+		if(!empty($f['new'])){
+			$this -> db -> order_by("id", "desc");
+		}
+
+		$query = $this -> db -> get($this -> table_name);
+
+		if ($query -> num_rows() > 0) {
+			$row = $query -> row();
+			return $row;
+		}
+		return NULL;
+	}
+
 	function find_all_by_ym($member_id, $ym) {
 		$this -> db -> select("_m.create_date,_m.weight");
 

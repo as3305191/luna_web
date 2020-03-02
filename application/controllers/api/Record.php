@@ -809,8 +809,9 @@ class Record extends MY_Base_Controller {
 			$body_diff = 0;
 
 			if(empty($type)){
-				$data1 = $this -> records_dao -> find_max_weight($f);
-				$data2 = $this -> records_dao -> find_min_weight($f);
+				$data1 = $this -> records_dao -> find_newest_weight($f);
+				$f['new'] = true;
+				$data2 = $this -> records_dao -> find_newest_weight($f);
 			}
 
 			if($type == '1'){ //最近兩日
