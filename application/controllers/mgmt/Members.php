@@ -58,7 +58,6 @@ class Members extends MY_Mgmt_Controller {
 				'columns',
 				'search',
 				'order',
-				'hospital_id',
 
 			));
 			$q_data['id'] = $id;

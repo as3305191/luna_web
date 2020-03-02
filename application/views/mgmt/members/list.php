@@ -146,4 +146,6 @@
 			currentApp = new MembersAppClass(new BaseAppClass({}));
 		});
 	});
+
+
 </script>

@@ -354,25 +354,25 @@ $(".dt_picker").datetimepicker({
 
 	});
 
-$('#app-edit-form').bootstrapValidator({
-	feedbackIcons : {
-		valid : 'glyphicon glyphicon-ok',
-		invalid : 'glyphicon glyphicon-remove',
-		validating : 'glyphicon glyphicon-refresh'
-	},
-	fields: {
-		account: {
-					validators: {
-						remote: {
-							message: '已經存在',
-							url: baseUrl + 'mgmt/users/check_account/' + ($('#item_id').val().length > 0 ? $('#item_id').val() : '0')
-						}
-					}
-			 }
-		}
-
-})
-.bootstrapValidator('validate');
+// $('#app-edit-form').bootstrapValidator({
+// 	feedbackIcons : {
+// 		valid : 'glyphicon glyphicon-ok',
+// 		invalid : 'glyphicon glyphicon-remove',
+// 		validating : 'glyphicon glyphicon-refresh'
+// 	},
+// 	fields: {
+// 		account: {
+// 					validators: {
+// 						remote: {
+// 							message: '已經存在',
+// 							url: baseUrl + 'mgmt/users/check_account/' + ($('#item_id').val().length > 0 ? $('#item_id').val() : '0')
+// 						}
+// 					}
+// 			 }
+// 		}
+//
+// })
+// .bootstrapValidator('validate');
 
 			function update_here() {
 					$.ajax({
