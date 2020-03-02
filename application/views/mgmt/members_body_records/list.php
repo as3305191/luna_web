@@ -13,13 +13,13 @@
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget">
 						<header>
-							<!-- <div class="widget-toolbar pull-left">
-								<div class="btn-group">
-									<button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
-										<i class="fa fa-plus"></i>新增
-									</button>
+							
+								<div class="widget-toolbar pull-left">
+									<input id="s_dt" placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
 								</div>
-							</div> -->
+								<div class="widget-toolbar pull-left" disabled>
+									~ <input id="e_dt" disabled placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
+								</div>
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">
 									<button onclick="currentApp.doExportAll()" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">

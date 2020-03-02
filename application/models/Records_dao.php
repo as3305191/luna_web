@@ -291,7 +291,9 @@ class Records_dao extends MY_Model {
 
 	function search_always($data) {
 		$this -> db -> select('m.user_name');
-
+		$dt = $data['dt'];
+		$e_dt = $data['e_dt'];
+		$this -> db -> where("(_m.create_time >= '{$dt}' and _m.create_time <= '{$e_dt} 23:59:59' )");
 	}
 
 	function ajax_from_join() {

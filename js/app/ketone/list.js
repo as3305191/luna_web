@@ -8,7 +8,8 @@ var KetoneClass = (function(app) {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
 					d.type = $('#type').val();
-
+					d.dt = $('#s_dt').val();
+					d.e_dt = $('#e_dt').val();
 				},
 				dataSrc : 'items',
 				dataType : 'json',
@@ -44,7 +45,12 @@ var KetoneClass = (function(app) {
 		});
 		return app;
 	};
-
+	
+	$(".dt_picker").datetimepicker({
+			format: 'YYYY-MM-DD'
+		}).on('dp.change',function(event){
+			currentApp.tableReload();
+		});
 	// return self
 	return app.init();
 });

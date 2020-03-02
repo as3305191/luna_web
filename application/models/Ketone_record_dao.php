@@ -173,9 +173,12 @@ class Ketone_record_dao extends MY_Model {
 	}
 
 	function search_always($data) {
+		$dt = $data['dt'];
+		$e_dt = $data['e_dt'];
 		$this -> db -> select('m.user_name');
 		$this -> db -> select('k.value');
 		$this -> db -> select('k.color');
+		$this -> db -> where("(_m.create_time >= '{$dt}' and _m.create_time <= '{$e_dt} 23:59:59' )");
 
 	}
 

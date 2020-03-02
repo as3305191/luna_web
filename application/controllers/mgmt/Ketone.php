@@ -32,7 +32,8 @@ class Ketone extends MY_Mgmt_Controller {
 			'search',
 			'order',
 			'type',
-
+			'dt',
+			'e_dt',
 		));
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
@@ -251,13 +252,13 @@ class Ketone extends MY_Mgmt_Controller {
 
 			//create a file pointer
     	$f = fopen('php://memory', 'w');
-			// $fields = array(
-			// 	iconv("UTF-8","Big5//IGNORE",'開始時間'),
-			// 	!empty($data['dt'])? $data['dt']: '',
-			// 	iconv("UTF-8","Big5//IGNORE",'結束時間'),
-			// 	!empty($data['e_dt'])? $data['e_dt']: '',
-			// );
-			// fputcsv($f, $fields, $delimiter);
+			$fields = array(
+				iconv("UTF-8","Big5//IGNORE",'開始時間'),
+				!empty($data['dt'])? $data['dt']: '',
+				iconv("UTF-8","Big5//IGNORE",'結束時間'),
+				!empty($data['e_dt'])? $data['e_dt']: '',
+			);
+			fputcsv($f, $fields, $delimiter);
 
 			$fields = array(
 				iconv("UTF-8","Big5//IGNORE",'會員'),
