@@ -28,7 +28,6 @@ class Coach_home extends MY_Base_Controller {
 		foreach ($members_lose_3days as $each) {
 			$each -> last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
 		}
-
 		foreach ($members_lose_3days as $each_lose_3days) {
 			$last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
 			$each_lose_3days -> last_weight = $last_weight;
@@ -39,11 +38,29 @@ class Coach_home extends MY_Base_Controller {
 			} else{
 				$data['count_members_lose_3days'] = 0;
 			}
+		}
+		$find_all_members = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
+		foreach ($find_all_members as $each) {
+			$today_body_fat = $this -> records_dao -> find_today_body_fat($each->id);
+			$last_body_fat = $this -> records_dao -> find_last_body_fat($each->id);
+			if(!empty($last_body_fat) && !empty($today_body_fat)){
+				$each->lose_body_fat = intval($last_body_fat->body_fat_rate)-intval($today_body_fat->body_fat_rate);
+			} else{
+				$each->lose_body_fat = 0;
+			}
+		}
+		if(!empty($find_all_members)){
+			$sum = 0;
+			foreach($find_all_members as $item){
+				$sum += (int) $item->lose_body_fat;
+			}
+			$data['all_lose_body_fat'] =$sum;
+
+		} else{
+			$data['all_lose_body_fat'] = 0;
 
 		}
-
 		// $this -> to_json($data);
-
 		$this -> load -> view('coach/coach_home', $data);
 	}
 
