@@ -178,9 +178,9 @@ class Records_dao extends MY_Model {
 
 		$this -> db -> where("( _m.create_date like '{$ym}-%' )");
 		$this -> db -> where("_m.member_id", $member_id);
-		$this -> db -> where("_m.pos", 1);
+		// $this -> db -> where("_m.pos", 1);
 		$this -> db -> where('_m.is_delete', 0);
-
+		$this -> db -> group_by('_m.create_date');
 
 		$list = $this -> db -> get() -> result();
 		return $list;
