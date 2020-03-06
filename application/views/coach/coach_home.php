@@ -30,11 +30,11 @@
 
                     <div class="g-line-height-1">
                       <h4 class="h5">今日上秤學員總共減脂</h4>
-                      <div class="js-counter g-font-size-30" data-comma-separated="true">3％</div>
+                      <div class="js-counter g-font-size-30" data-comma-separated="true">3</div>
                     </div>
                   </header>
 
-                  <div class="d-flex justify-content-between text-uppercase g-mb-25">
+                  <!-- <div class="d-flex justify-content-between text-uppercase g-mb-25">
                     <div class="g-line-height-1">
                       <h5 class="h6 g-font-weight-600">昨天</h5>
                       <div class="js-counter g-font-size-16" data-comma-separated="true">2人</div>
@@ -44,7 +44,7 @@
                       <h5 class="h6 g-font-weight-600">這禮拜</h5>
                       <div class="js-counter g-font-size-16" data-comma-separated="true">3</div>
                     </div>
-                  </div>
+                  </div> -->
 
                   <!-- <h6 class="g-mb-10">Project Completeness <span class="float-right g-ml-10">72%</span></h6>
                   <div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">
@@ -61,10 +61,11 @@
 
                     <div class="g-line-height-1">
                       <h4 class="h5">3天未上秤學員</h4>
-                      <div class="js-counter g-font-size-30" data-comma-separated="true">5人</div>
+                      <div class="js-counter g-font-size-30" data-comma-separated="true"><?=$count_members_lose_3days?></div>
+
                     </div>
                   </header>
-
+<!--
                   <div class="d-flex justify-content-between text-uppercase g-mb-25">
                     <div class="g-line-height-1">
                       <h5 class="h6 g-font-weight-600">昨天</h5>
@@ -75,7 +76,7 @@
                       <h5 class="h6 g-font-weight-600">上禮拜</h5>
                       <div class="js-counter g-font-size-16" data-comma-separated="true">12人</div>
                     </div>
-                  </div>
+                  </div> -->
 
                   <!-- <h6 class="g-mb-10">Project Completeness <span class="float-right g-ml-10">89%</span></h6>
                   <div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">

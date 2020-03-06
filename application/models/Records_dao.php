@@ -401,17 +401,50 @@ class Records_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> where('_m.member_id', $id);
-		$this -> db -> where("(_m.create_time <= '{$lose_3_date} 23:59:59' )");
+		// $this -> db -> group_by('_m.member_id');
+		// $this -> db -> where("(_m.create_time >'{$lose_3_date} ')");
 
-		$this -> db -> order_by('_m.create_time', 'desc');
+		$this -> db -> order_by('_m.id', 'desc');
+		// $this -> db -> limit(1);
+
 		$list = $this -> db -> get() -> result();
-		if(count($list) > 0) {
+		if($list[0]-> create_date < $lose_3_date) {
 			return $list[0];
 		} else{
 			return NULL;
 		}
 
 	}
+
+	// function query_ajax_by_coach($login_coach_code,$start_l) {
+	//
+	// 	// select
+	// 	$this -> db -> select('_m.*');
+	// 	$this -> db -> where("_m.coach_id", $login_coach_code);
+	// 	$this -> db -> where("_m.status", 0);
+	//
+	// 	// join
+	// 	$this -> ajax_from_join();
+	//
+	// 	// search always
+	// 	// $this -> search_always($data);
+	//
+	// 	// search
+	//
+	// 	$this -> db -> order_by('id', 'asc');
+	// 	if($start_l>1){
+	// 		$this -> db -> limit(5, $start_l);
+	//
+	// 	}
+	// 	// limit
+	// 	$this -> db -> limit(5);
+	//
+	// 	// query results
+	// 	$query = $this -> db -> get();
+	//
+	// 	// echo $this -> db -> last_query();
+	// 	return $query -> result();
+	// }
 
 	function find_user_weight_history($data, $is_count = FALSE) {
 

@@ -22,7 +22,25 @@ class Coach_home extends MY_Base_Controller {
 		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
 		$data['p'] = count($res['items']);
 		$data['page'] = ceil($data['p']/5);
-		$data['now'] = 'coach_home';
+		$data['now'] = 'coach_home';//現在哪頁
+
+		$members_lose_3days = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
+		foreach ($members_lose_3days as $each) {
+			$each -> last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
+		}
+
+		foreach ($members_lose_3days as $each_lose_3days) {
+			$last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
+			$each_lose_3days -> last_weight = $last_weight;
+		}
+		foreach ($members_lose_3days as $each_lose_3days_items) {
+			if($each_lose_3days_items->last_weight!==NULL){
+				$data['count_members_lose_3days'] = count($members_lose_3days);
+			} else{
+				$data['count_members_lose_3days'] = 0;
+			}
+
+		}
 
 		// $this -> to_json($data);
 

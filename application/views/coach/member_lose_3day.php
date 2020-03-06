@@ -67,6 +67,7 @@
                       <thead class="text-uppercase g-letter-spacing-1">
                         <tr>
                           <th class="g-font-weight-300 g-color-black g-min-width-200">學員名字</th>
+                          <th class="g-font-weight-300 g-color-black">最後一次測量日期</th>
                           <th class="g-font-weight-300 g-color-black">體脂率</th>
 
                         </tr>
@@ -153,6 +154,7 @@
 <!-- Page Javascript -->
 <script>
   var baseUrl = '<?=base_url('')?>';
+
   function for_table(page){
     var url = baseUrl + 'coach/member_lose_3day/get_data';
 
@@ -173,6 +175,7 @@
               // $('.job_name').val(me.temp_title);
             }).appendTo($body);
             $('<td>').html(me.user_name).appendTo($tr);
+            $('<td>').html(me.create_date).appendTo($tr);
             if(me.last_weight == null){
               $('<td>').html('沒有測量').appendTo($tr);
             }else{
