@@ -93,7 +93,7 @@ class Coach_home extends MY_Base_Controller {
 		if(!empty($name)){
 			$member_name = $this -> dao -> find_by_member_name($name);
 			if(!empty($member_name)){
-				$member_weihght = $this -> records_dao -> find_by_member_weight($member_name->id,$login_user);
+				$member_weihght = $this -> records_dao -> find_by_member_weight($member_name[0]->id,$login_user);
 			} else{
 				$member_weihght = '沒有結果';
 			}

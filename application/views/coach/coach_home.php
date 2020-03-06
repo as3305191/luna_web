@@ -30,7 +30,7 @@
 
                     <div class="g-line-height-1">
                       <h4 class="h5">今日上秤學員總共減脂</h4>
-                      <div class="js-counter g-font-size-30" data-comma-separated="true">3</div>
+                      <div class="js-counter g-font-size-30" data-comma-separated="true"><?=$all_lose_body_fat?></div>
                     </div>
                   </header>
 
