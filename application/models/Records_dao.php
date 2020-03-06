@@ -364,14 +364,20 @@ class Records_dao extends MY_Model {
 		return $list[0];
 	}
 
-	function find_by_member_weight($id) {
+	function find_by_member_weight($id,$login_user) {
 		$date = date('Y-m-d');
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		$this -> db -> where('_m.member_id', $id);
+		$this -> db -> select('m.user_name');
+
+		if(!empty($id) && $id!=='no_person_'){
+			$this -> db -> where('_m.member_id', $id);
+		}
+		$this -> db -> where('m.coach_id', $login_user->code);
+
 		$this -> db -> where("(_m.create_time like '{$date} %')");
 		$this -> db -> order_by('_m.create_time', 'desc');
-		$this -> db -> limit(10);
+		$this -> db -> join("members as m", 'm.id = _m.member_id', "left");
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}

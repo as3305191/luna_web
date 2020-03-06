@@ -703,11 +703,12 @@ class Members_dao extends MY_Model {
 		// $date = date('Y-m-d');
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		$this -> db -> where("(_m.user_name like '%{$name}%')");
+		$this -> db -> where("_m.user_name ", $name);
+
 		$this -> db -> order_by('_m.create_time', 'desc');
 		// $this -> db -> limit(10);
 		$list = $this -> db -> get() -> result();
-		return $list[0];
+		return $list;
 	}
 
 }

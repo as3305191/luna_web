@@ -53,8 +53,19 @@ class Coach_home extends MY_Base_Controller {
 		$name = $this -> get_post('name');
 
 		$s_data = $this -> setup_user_data(array());
-		$member_name = $this -> dao -> find_by_member_name($name);
-		$member_weihght = $this -> records_dao -> find_by_member_weight($member_name->id);
+		$login_user= $this -> dao -> find_by_id($s_data['login_user_id']);
+
+		if(!empty($name)){
+			$member_name = $this -> dao -> find_by_member_name($name);
+			if(!empty($member_name)){
+				$member_weihght = $this -> records_dao -> find_by_member_weight($member_name->id,$login_user);
+			} else{
+				$member_weihght = '沒有結果';
+			}
+		} else{
+			$member_weihght = $this -> records_dao -> find_by_member_weight($member_id='no_person_',$login_user);
+		}
+
 
 		$res['member_weihght'] = $member_weihght;
 
