@@ -273,9 +273,9 @@
           $.each(data.items, function(){
             var me = this;
             var $tr = $('<tr class="pointer " user_name="'+me.user_name+'" user_id="'+me.id+'">').click(function(){
-              $('#graduate').modal('show');
-              $('#m_name').val($(this).attr('user_name'));
-              $('#m_id').val($(this).attr('user_id'));
+              // $('#graduate').modal('show');//畢業功能
+              // $('#m_name').val($(this).attr('user_name'));
+              // $('#m_id').val($(this).attr('user_id'));
 
             }).appendTo($body);
             $('<td>').html(me.user_name).appendTo($tr);
