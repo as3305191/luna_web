@@ -410,9 +410,11 @@ class Records_dao extends MY_Model {
 		// $this -> db -> limit(1);
 
 		$list = $this -> db -> get() -> result();
-		if($list[0]-> create_date < $lose_3_date) {
-			return $list[0];
-		} else{
+		if(count($list)>0){
+			if($list[0]-> create_date < $lose_3_date) {
+				return $list[0];
+			}
+		}	else{
 			return NULL;
 		}
 
@@ -429,8 +431,12 @@ class Records_dao extends MY_Model {
 		// $this -> db -> limit(1);
 
 		$list = $this -> db -> get() -> result();
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return NULL;
+		}
 
-		return $list[0];
 	}
 
 
@@ -446,7 +452,11 @@ class Records_dao extends MY_Model {
 
 		$list = $this -> db -> get() -> result();
 
-		return $list[0];
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return NULL;
+		}
 	}
 
 	function find_user_weight_history($data, $is_count = FALSE) {
