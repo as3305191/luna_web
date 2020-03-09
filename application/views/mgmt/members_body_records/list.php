@@ -13,7 +13,7 @@
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget">
 						<header>
-							
+
 								<div class="widget-toolbar pull-left">
 									<input id="s_dt" placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
 								</div>
@@ -142,11 +142,17 @@
 	},{
 		data : 'adc1'
 	},{
-		data : 'weight'
-	},{
-		data : 'body_fat'
+		data : 'weight',
+		render: function(d,t,r) {
+			return d / 1000;
+		}
 	},{
 		data : 'body_fat_rate'
+	},{
+		data : 'body_fat',
+		render: function(d,t,r) {
+			return d / 1000;
+		}
 	},{
 		data : 'visceral_fat_rate'
 	},{
