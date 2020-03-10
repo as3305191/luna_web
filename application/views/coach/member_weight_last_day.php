@@ -176,7 +176,7 @@
             if(me.last_weight == null){
               $('<td>').html('沒有測量').appendTo($tr);
             }else{
-              $('<td>').html(parseFloat(me.last_weight.body_fat/1000).toFixed(2)).appendTo($tr);
+              $('<td>').html(me.last_weight.body_fat_rate).appendTo($tr);
             }
           })
         }

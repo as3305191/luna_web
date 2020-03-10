@@ -49,8 +49,8 @@
 											<th class="min100">會員</th>
 											<th class="min100">阻抗</th>
 											<th class="min100">體重</th>
-											<th class="min100">脂肪重</th>
 											<th class="min100">體脂率</th>
+											<th class="min100">脂肪</th>
 											<th class="min100">內臟脂肪率</th>
 											<th class="min100">蛋白率</th>
 											<th class="min100">水分率</th>
@@ -144,15 +144,15 @@
 	},{
 		data : 'weight',
 		render: function(d,t,r) {
-			return parseFloat(d/1000).toFixed(2);
-		}
-	},{
-		data : 'body_fat',
-		render: function(d,t,r) {
-			return parseFloat(d/1000).toFixed(2);
+			return d / 1000;
 		}
 	},{
 		data : 'body_fat_rate'
+	},{
+		data : 'body_fat',
+		render: function(d,t,r) {
+			return d / 1000;
+		}
 	},{
 		data : 'visceral_fat_rate'
 	},{

@@ -27,9 +27,9 @@
     </a>
 
     <!-- Settings -->
-    <a href="<?= base_url("coach/coach_setting") ?>" class="list-group-item list-group-item-action justify-content-between coach_setting">
+    <!-- <a href="<?= base_url("coach/coach_setting") ?>" class="list-group-item list-group-item-action justify-content-between coach_setting">
       <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> 設定</span>
-    </a>
+    </a> -->
     <!-- <a href="<?= base_url("coach/member_weight_today") ?>" class="list-group-item list-group-item-action justify-content-between member_weight_today">
       <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> 今日上秤學員顯示列表</span>
     </a> -->
