@@ -21,6 +21,7 @@ class Records_dao extends MY_Model {
 		if(!empty($f['member_id'])){
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
+		$this -> db -> where("_m.is_delete", 0);
 		$this -> db -> order_by("id", "desc");
 
 		if(!empty($f['date'])){
@@ -78,6 +79,7 @@ class Records_dao extends MY_Model {
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
 
+		$this -> db -> where("_m.is_delete", 0);
 		$this -> db -> where('_m.pos', 1 );
 
 		if(!empty($f['desc'])){
@@ -115,6 +117,7 @@ class Records_dao extends MY_Model {
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
 
+		$this -> db -> where("_m.is_delete", 0);
 		$this -> db -> order_by("weight", "asc");
 		// $this -> db -> order_by("id", "desc");
 
@@ -137,6 +140,7 @@ class Records_dao extends MY_Model {
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
 
+		$this -> db -> where("_m.is_delete", 0);
 		$this -> db -> order_by("weight", "desc");
 
 		$query = $this -> db -> get($this -> table_name);
@@ -162,7 +166,6 @@ class Records_dao extends MY_Model {
 			$this -> db -> order_by("id", "desc");
 		}
 		$this -> db -> where("_m.is_delete", 0);
-
 
 		$query = $this -> db -> get($this -> table_name);
 
@@ -196,6 +199,7 @@ class Records_dao extends MY_Model {
 
 		$this -> db -> where("_m.member_id", $member_id);
 		$this -> db -> where("_m.pos", 1);
+		$this -> db -> where("_m.is_delete", 0);
 
 		$query = $this -> db -> get($this -> table_name);
 
