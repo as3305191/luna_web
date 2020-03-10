@@ -108,15 +108,15 @@
                     <table id="dt_list" class="table table-bordered u-table--v2">
                       <thead class="text-uppercase g-letter-spacing-1">
                         <tr>
-                          <th class="g-font-weight-300 g-color-black">照片</th>
-                          <th class="g-font-weight-300 g-color-black">學員名字</th>
-                          <th class="g-font-weight-300 g-color-black">年齡</th>
-                          <th class="g-font-weight-300 g-color-black">身高</th>
-                          <th class="g-font-weight-300 g-color-black">性別</th>
-                          <th class="g-font-weight-300 g-color-black">體重</th>
-                          <th class="g-font-weight-300 g-color-black">體重變化</th>
-                          <th class="g-font-weight-300 g-color-black">脂肪變化</th>
-                          <th class="g-font-weight-300 g-color-black">肥胖程度</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">照片</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">學員名字</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">年齡</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">身高</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">性別</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">體重</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">體重變化</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">脂肪變化</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">肥胖程度</th>
 
                         </tr>
                       </thead>
@@ -192,10 +192,10 @@
                     <table id="dt_list_for_today_w" class="table table-bordered u-table--v2">
                       <thead class="text-uppercase g-letter-spacing-1">
                         <tr>
-                          <th class="g-font-weight-300 g-color-black">學員名稱</th>
-                          <th class="g-font-weight-300 g-color-black">體重</th>
-                          <th class="g-font-weight-300 g-color-black">體脂率</th>
-                          <th class="g-font-weight-300 g-color-black">時間</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">學員名稱</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">體重</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">體脂率</th>
+                          <th class="g-font-weight-300 g-color-black" style="min-width: 200px">時間</th>
 
                         </tr>
                       </thead>
@@ -285,7 +285,7 @@
 
             }).appendTo($body);
             if(me.image_id>0){
-              $('<td>').html('<img src="'+baseUrl+'mgmt/images/get/' +me.image_id+'/thumb" style="height:100px; width:100px;" />').appendTo($tr);
+              $('<td>').html('<img class="g-width-100 g-height-100 rounded-circle g-mb-20" src="'+baseUrl+'mgmt/images/get/' +me.image_id+'/thumb" style="height:100px; width:100px;" />').appendTo($tr);
             } else{
               $('<td>').html('未上傳').appendTo($tr);
             }
