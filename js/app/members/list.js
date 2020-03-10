@@ -130,9 +130,15 @@ var WeightHistoryClass = (function(app) {
 			pageLength: 50,
 
 			columns : [{
-				data : 'weight'
+				data : 'weight',
+				render: function(d,t,r) {
+					return parseFloat(d/1000).toFixed(2);
+				}
 			},{
-				data : 'body_fat'
+				data : 'body_fat',
+				render: function(d,t,r) {
+					return parseFloat(d/1000).toFixed(2);
+				}
 			},{
 				data : 'body_fat_rate'
 			},{

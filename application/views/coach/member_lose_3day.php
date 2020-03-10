@@ -179,7 +179,7 @@
             if(me.last_weight == null){
               $('<td>').html('沒有測量').appendTo($tr);
             }else{
-              $('<td>').html(me.last_weight.body_fat).appendTo($tr);
+              $('<td>').html(parseFloat(me.last_weight.body_fat/1000).toFixed(2)).appendTo($tr);
             }          })
         }
         $('.u-pagination-v1__item').removeClass('u-pagination-v1-4--active ');

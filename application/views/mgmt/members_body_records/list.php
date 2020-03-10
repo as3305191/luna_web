@@ -13,7 +13,7 @@
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget">
 						<header>
-							
+
 								<div class="widget-toolbar pull-left">
 									<input id="s_dt" placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
 								</div>
@@ -49,8 +49,8 @@
 											<th class="min100">會員</th>
 											<th class="min100">阻抗</th>
 											<th class="min100">體重</th>
+											<th class="min100">脂肪重</th>
 											<th class="min100">體脂率</th>
-											<th class="min100">脂肪</th>
 											<th class="min100">內臟脂肪率</th>
 											<th class="min100">蛋白率</th>
 											<th class="min100">水分率</th>
@@ -142,9 +142,15 @@
 	},{
 		data : 'adc1'
 	},{
-		data : 'weight'
+		data : 'weight',
+		render: function(d,t,r) {
+			return parseFloat(d/1000).toFixed(2);
+		}
 	},{
-		data : 'body_fat'
+		data : 'body_fat',
+		render: function(d,t,r) {
+			return parseFloat(d/1000).toFixed(2);
+		}
 	},{
 		data : 'body_fat_rate'
 	},{

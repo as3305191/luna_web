@@ -154,8 +154,8 @@
 				<thead>
 					<tr>
 						<th class="min100">體重</th>
+						<th class="min100">脂肪重</th>
 						<th class="min100">體脂率</th>
-						<th class="min100">脂肪</th>
 						<th class="min100">內臟脂肪率</th>
 						<th class="min100">蛋白率</th>
 						<th class="min100">水分率</th>
