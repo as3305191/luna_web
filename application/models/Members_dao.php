@@ -657,6 +657,7 @@ class Members_dao extends MY_Model {
 		$this -> db -> where("_m.status", 0);
 
 		// join
+		// $this -> db -> join("records r", "r.member_id = _m.id", "left");
 
 		// search
 

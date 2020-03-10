@@ -108,10 +108,16 @@
                     <table id="dt_list" class="table table-bordered u-table--v2">
                       <thead class="text-uppercase g-letter-spacing-1">
                         <tr>
-                          <th class="g-font-weight-300 g-color-black g-min-width-200">學員名字</th>
+                          <th class="g-font-weight-300 g-color-black">照片</th>
+                          <th class="g-font-weight-300 g-color-black">學員名字</th>
                           <th class="g-font-weight-300 g-color-black">年齡</th>
                           <th class="g-font-weight-300 g-color-black">身高</th>
                           <th class="g-font-weight-300 g-color-black">性別</th>
+                          <th class="g-font-weight-300 g-color-black">體重</th>
+                          <th class="g-font-weight-300 g-color-black">體重變化</th>
+                          <th class="g-font-weight-300 g-color-black">脂肪變化</th>
+                          <th class="g-font-weight-300 g-color-black">肥胖程度</th>
+
                         </tr>
                       </thead>
                       <tbody id="dt_list_body">
@@ -278,6 +284,11 @@
               // $('#m_id').val($(this).attr('user_id'));
 
             }).appendTo($body);
+            if(me.image_id>0){
+              $('<td>').html('<img src="'+baseUrl+'mgmt/images/get/' +me.image_id+'/thumb" style="height:100px; width:100px;" />').appendTo($tr);
+            } else{
+              $('<td>').html('未上傳').appendTo($tr);
+            }
             $('<td>').html(me.user_name).appendTo($tr);
             $('<td>').html(me.age).appendTo($tr);
             $('<td>').html(me.height).appendTo($tr);
@@ -288,6 +299,11 @@
                 $('<td>').html('男').appendTo($tr);
               }
             }
+            $('<td>').html(me.the_new_weight).appendTo($tr);
+            $('<td>').html(me.the_weight_change).appendTo($tr);
+            $('<td>').html(me.the_fat_rate_change).appendTo($tr);
+            $('<td>').html(me.the_fat_info).appendTo($tr);
+
           })
         }
         $('.u-pagination-v1__item').removeClass('u-pagination-v1-4--active ');

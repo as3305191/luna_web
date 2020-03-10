@@ -73,10 +73,25 @@ class Coach_home extends MY_Base_Controller {
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		if($page>1){
 			$b=((int)$page-1)*5;
-			$res['items'] = $this -> dao -> query_ajax_by_coach($login_user->code,$b);
+		 	$items = $this -> dao -> query_ajax_by_coach($login_user->code,$b);
+			foreach ($items as $each) {
+				$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
+				$each-> the_new_weight = intval($the_new_weight_list-> weight)/10;
+			}
+		 	$res['items'] = $items;
 			$res['count_items'] = count($res['items']);
 		} else{
-			$res['items'] = $this -> dao -> query_ajax_by_coach($login_user->code,1);
+			$items  = $this -> dao -> query_ajax_by_coach($login_user->code,1);
+			foreach ($items as $each) {
+			$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
+			$the_original_weight_list= $this -> records_dao -> find_original_weight($each->id);
+
+			$each-> the_new_weight = intval($the_new_weight_list-> weight)/1000;
+			$each-> the_weight_change = (intval($the_original_weight_list-> weight)-intval($the_new_weight_list-> weight))/10;
+			$each-> the_fat_rate_change = intval($the_original_weight_list-> body_fat_rate)-intval($the_new_weight_list-> body_fat_rate);
+			$each-> the_fat_info = $the_new_weight_list-> fat_info;
+			}
+			$res['items'] = $items;
 			$res['count_items'] = count($res['items']);
 		}
 

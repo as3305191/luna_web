@@ -487,7 +487,39 @@ class Records_dao extends MY_Model {
 
 	}
 
+	function find_each_weight($id) {
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.member_id', $id);
 
+		$this -> db -> order_by('_m.id', 'desc');
+		// $this -> db -> limit(1);
+
+		$list = $this -> db -> get() -> result();
+
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return NULL;
+		}
+	}
+
+	function find_original_weight($id) {
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.member_id', $id);
+
+		$this -> db -> order_by('_m.id', 'asc');
+		// $this -> db -> limit(1);
+
+		$list = $this -> db -> get() -> result();
+
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return NULL;
+		}
+	}
 
 }
 ?>
