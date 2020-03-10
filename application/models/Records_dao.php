@@ -161,6 +161,8 @@ class Records_dao extends MY_Model {
 		if(!empty($f['new'])){
 			$this -> db -> order_by("id", "desc");
 		}
+		$this -> db -> where("_m.is_delete", 0);
+
 
 		$query = $this -> db -> get($this -> table_name);
 
@@ -172,14 +174,15 @@ class Records_dao extends MY_Model {
 	}
 
 	function find_all_by_ym($member_id, $ym) {
+		$this -> db -> from("$this->table_name as _m");
+
 		$this -> db -> select("_m.create_date,_m.weight");
 
-		$this -> db -> from("$this->table_name as _m");
 
 		$this -> db -> where("( _m.create_date like '{$ym}-%' )");
 		$this -> db -> where("_m.member_id", $member_id);
 		// $this -> db -> where("_m.pos", 1);
-		$this -> db -> where('_m.is_delete', 0);
+		$this -> db -> where("_m.is_delete", 0);
 		$this -> db -> group_by('_m.create_date');
 
 		$list = $this -> db -> get() -> result();
