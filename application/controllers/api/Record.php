@@ -900,8 +900,16 @@ class Record extends MY_Base_Controller {
 
 
 			$data['days'] = count($list1);
-			$data['weight_diff'] = number_format($weight_diff,1);
-			$data['body_fat_diff'] = number_format($body_diff,1);
+			if($weight_diff > 0){
+				$data['weight_diff'] = '+'.number_format($weight_diff,1);
+			}else{
+				$data['weight_diff'] = number_format($weight_diff,1);
+			}
+			if($body_diff > 0){
+				$data['body_fat_diff'] = '+'.number_format($body_diff,1);
+			}else{
+				$data['body_fat_diff'] = number_format($body_diff,1);
+			}
 			$data['member'] = $m;
 
 			if(!empty($data1)){
