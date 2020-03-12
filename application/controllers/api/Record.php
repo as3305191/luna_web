@@ -273,26 +273,31 @@ class Record extends MY_Base_Controller {
 				$td -> fat_info -> idx_str = $msg["tip.fat1"];
 				$td -> fat_info -> bg = "yellow";
 				$td -> fat_info -> idx = 0;
+				$td -> fat_info -> advise = $msg["tip.fat1v"];
 			}
 			else if($bmi>36.5 && $bmi<45) {
 				$td -> fat_info -> idx_str = $msg["tip.fat2"];
 				$td -> fat_info -> bg = "green";
 				$td -> fat_info -> idx = 1;
+				$td -> fat_info -> advise = $msg["tip.fat2v"];
 			}
 			else if($bmi>45 && $bmi<=51) {
 				$td -> fat_info -> idx_str = $msg["tip.fat3"];
 				$td -> fat_info -> bg = "violet";
 				$td -> fat_info -> idx = 2;
+				$td -> fat_info -> advise = $msg["tip.fat3v"];
 			}
 			else if($bmi>51 && $bmi<=59) {
 				$td -> fat_info -> idx_str = $msg["tip.fat4"];
 				$td -> fat_info -> bg = "purplish";
 				$td -> fat_info -> idx = 3;
+				$td -> fat_info -> advise = $msg["tip.fat4v"];
 			}
 			else if($bmi>59 && $bmi<66) {
 				$td -> fat_info -> idx_str = $msg["tip.fat5"];
 				$td -> fat_info -> bg = "chocolate";
 				$td -> fat_info -> idx = 4;
+				$td -> fat_info -> advise = $msg["tip.fat5v"];
 			}
 			else if($bmi>=66){
 				$td -> fat_info -> idx_str = $msg["tip.fat6"];
@@ -832,22 +837,22 @@ class Record extends MY_Base_Controller {
 			}
 
 			if($data1 != NULL && $data2 != NULL){
-				$weight_diff = ($data2->weight - $data1->weight)/1000;
-				$body_fat_d1 = $data1->body_fat_rate * $data1->weight/100;
-				$body_fat_d2 = $data2->body_fat_rate * $data2->weight/100;
-				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
+				$weight_diff = number_format($data2->weight/1000,1) - number_format($data1->weight/1000,1);
+				$body_fat_d1 = $data1->weight/1000 * $data1->body_fat_rate/100;
+				$body_fat_d2 = $data2->weight/1000 * $data2->body_fat_rate/100;
+				$body_diff = number_format($body_fat_d2,1)- number_format($body_fat_d1,1);
 			}else if($data1 == NULL && $data2 == NULL){
 
 			}else if($data1 == NULL){
-				$weight_diff = ($data2->weight)/1000;
+				$weight_diff = number_format($data2->weight/1000,1);
 				$body_fat_d1 = 0;
-				$body_fat_d2 = $data2->body_fat_rate * $data2->weight/100;
-				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
+				$body_fat_d2 = $data2->weight/1000 * $data2->body_fat_rate/100;
+				$body_diff = number_format($body_fat_d2,1)- number_format($body_fat_d1,1);
 			}else if($data2 == NULL){
-				$weight_diff = (0 - $data1->weight)/1000;
-				$body_fat_d1 = $data1->body_fat_rate * $data1->weight/100;
+				$weight_diff = 0 - number_format($data1->weight/1000,1);
+				$body_fat_d1 = $data1->weight/1000 * $data1->body_fat_rate/100;
 				$body_fat_d2 = 0;
-				$body_diff = ($body_fat_d2 - $body_fat_d1)/1000;
+				$body_diff = number_format($body_fat_d2,1)- number_format($body_fat_d1,1);
 			}
 
 			// $res['weight_diff'] = number_format($weight_kg,1);
@@ -895,8 +900,16 @@ class Record extends MY_Base_Controller {
 
 
 			$data['days'] = count($list1);
-			$data['weight_diff'] = number_format($weight_diff,1);
-			$data['body_fat_diff'] = number_format($body_diff,1);
+			if($weight_diff > 0){
+				$data['weight_diff'] = '+'.number_format($weight_diff,1);
+			}else{
+				$data['weight_diff'] = number_format($weight_diff,1);
+			}
+			if($body_diff > 0){
+				$data['body_fat_diff'] = '+'.number_format($body_diff,1);
+			}else{
+				$data['body_fat_diff'] = number_format($body_diff,1);
+			}
 			$data['member'] = $m;
 
 			if(!empty($data1)){
