@@ -39,9 +39,9 @@
     <a href="<?= base_url("coach/member_weight_last_day") ?>" class="list-group-item list-group-item-action justify-content-between member_weight_last_day">
       <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> 所有學員最後一天減脂紀錄</span>
     </a>
-    <a href="<?= base_url("coach/login/logout") ?>" class="list-group-item list-group-item-action justify-content-between">
+    <!-- <a href="<?= base_url("coach/login/logout") ?>" class="list-group-item list-group-item-action justify-content-between">
       <span><i class="icon-logout g-pos-rel g-top-1 g-mr-8"></i> 登出</span>
-    </a>
+    </a> -->
     <!-- End Settings -->
   </div>
   <!-- End Sidebar Navigation -->

@@ -300,7 +300,7 @@
               }
             }
             $('<td>').html(me.the_new_weight).appendTo($tr);
-            $('<td>').html(me.the_weight_change).appendTo($tr);
+            $('<td>').html(parseFloat(me.the_weight_change/ 1000).toFixed(2)).appendTo($tr);
             $('<td>').html(me.the_fat_rate_change).appendTo($tr);
             $('<td>').html(me.the_fat_info).appendTo($tr);
 
@@ -332,8 +332,8 @@
             }).appendTo($body);
             if(me!=='沒有結果'){
               $('<td>').html(me.user_name).appendTo($tr);
-              $('<td>').html(me.weight).appendTo($tr);
-              $('<td>').html(me.body_fat).appendTo($tr);
+              $('<td>').html(parseFloat(me.weight/ 1000).toFixed(2)).appendTo($tr);
+              $('<td>').html(me.body_fat_rate).appendTo($tr);
               $('<td>').html(me.create_time).appendTo($tr);
             } else{
               $body;
