@@ -86,8 +86,8 @@ class Coach_home extends MY_Base_Controller {
 			$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
 			$the_original_weight_list= $this -> records_dao -> find_original_weight($each->id);
 
-			$each-> the_new_weight = floatval($the_new_weight_list-> weight)/1000;
-			$each-> the_weight_change = (floatval($the_original_weight_list-> weight)-floatval($the_new_weight_list-> weight))/10;
+			$each-> the_new_weight = floatval($the_new_weight_list-> weight);
+			$each-> the_weight_change = (floatval($the_original_weight_list-> weight)-floatval($the_new_weight_list-> weight));
 			$each-> the_fat_rate_change = floatval($the_original_weight_list-> body_fat_rate)-floatval($the_new_weight_list-> body_fat_rate);
 			$each-> the_fat_info = $the_new_weight_list-> fat_info;
 			}

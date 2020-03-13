@@ -299,9 +299,9 @@
                 $('<td>').html('男').appendTo($tr);
               }
             }
-            $('<td>').html(me.the_new_weight).appendTo($tr);
+            $('<td>').html(parseFloat(me.the_new_weight/ 1000).toFixed(2)).appendTo($tr);
             $('<td>').html(parseFloat(me.the_weight_change/ 1000).toFixed(2)).appendTo($tr);
-            $('<td>').html(me.the_fat_rate_change).appendTo($tr);
+            $('<td>').html(parseFloat(me.the_fat_rate_change).toFixed(2)).appendTo($tr);
             $('<td>').html(me.the_fat_info).appendTo($tr);
 
           })
