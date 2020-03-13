@@ -179,7 +179,7 @@ class Records_dao extends MY_Model {
 	function find_all_by_ym($member_id, $ym) {
 		$this -> db -> from("$this->table_name as _m");
 
-		$this -> db -> select("_m.create_date,_m.weight");
+		$this -> db -> select("_m.id,_m.create_date,_m.weight");
 
 
 		$this -> db -> where("( _m.create_date like '{$ym}-%' )");
@@ -190,6 +190,27 @@ class Records_dao extends MY_Model {
 
 		$list = $this -> db -> get() -> result();
 		return $list;
+	}
+
+	function find_one_data($member_id, $id) {
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select("_m.id,_m.create_date,_m.weight");
+
+		$this -> db -> where("_m.member_id", $member_id);
+		$this -> db -> where("_m.is_delete", 0);
+		$this -> db -> where("_m.id<", $id);
+		$this -> db -> order_by('id', 'desc');
+		$query = $this -> db -> get($this -> table_name);
+
+		if ($query -> num_rows() > 0) {
+			$row = $query -> row();
+			return $row;
+		}
+		return NULL;
+
+		// $list = $this -> db -> get() -> result();
+		// return $list;
 	}
 
 	function find_first($member_id) {
