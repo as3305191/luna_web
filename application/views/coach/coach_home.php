@@ -29,61 +29,44 @@
                     <i class="icon-people align-self-center display-4 g-mr-20"></i>
 
                     <div class="g-line-height-1">
-                      <h4 class="h5">今日上秤學員總共減脂</h4>
-                      <div class="js-counter g-font-size-30" data-comma-separated="true"><?=$all_lose_body_fat?></div>
+                      <h4 class="h5">今日上秤學員總共幾人</h4>
+                      <div class="js-counter g-font-size-30" data-comma-separated="true"><?=$count_today?></div>
                     </div>
                   </header>
 
-                  <!-- <div class="d-flex justify-content-between text-uppercase g-mb-25">
+                  <div class="d-flex justify-content-between text-uppercase g-mb-25">
                     <div class="g-line-height-1">
-                      <h5 class="h6 g-font-weight-600">昨天</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true">2人</div>
+                      <h5 class="h6 g-font-weight-600">3天未上秤學員</h5>
+                      <div class="js-counter g-font-size-16" data-comma-separated="true"><?=$count_members_lose_3days?></div>
                     </div>
 
-                    <div class="text-right g-line-height-1">
-                      <h5 class="h6 g-font-weight-600">這禮拜</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true">3</div>
-                    </div>
-                  </div> -->
-
-                  <!-- <h6 class="g-mb-10">Project Completeness <span class="float-right g-ml-10">72%</span></h6>
-                  <div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">
-                    <div class="js-hr-progress-bar-indicator progress-bar g-bg-white u-progress-bar--xs" role="progressbar" style="width: 72%;" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <small class="g-font-size-12">11% less than last month</small> -->
                 </div>
               </div>
 
-              <div class="col-md-6">
+              <div class="col-md-6 g-mb-30 g-mb-0--md">
                 <div class="g-bg-purple g-color-white g-pa-25">
                   <header class="d-flex text-uppercase g-mb-40">
                     <i class="icon-layers align-self-center display-4 g-mr-20"></i>
 
                     <div class="g-line-height-1">
-                      <h4 class="h5">3天未上秤學員</h4>
-                      <div class="js-counter g-font-size-30" data-comma-separated="true"><?=$count_members_lose_3days?></div>
+                      <h4 class="h5">幫助幾人</h4>
+                      <div class="js-counter g-font-size-30" data-comma-separated="true"><?=$count_help_people?></div>
 
                     </div>
                   </header>
-<!--
+
                   <div class="d-flex justify-content-between text-uppercase g-mb-25">
                     <div class="g-line-height-1">
-                      <h5 class="h6 g-font-weight-600">昨天</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true">3人</div>
+                      <h5 class="h6 g-font-weight-600">幾天</h5>
+                      <div class="js-counter g-font-size-16" data-comma-separated="true"><?=$days?></div>
                     </div>
 
                     <div class="text-right g-line-height-1">
-                      <h5 class="h6 g-font-weight-600">上禮拜</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true">12人</div>
+                      <h5 class="h6 g-font-weight-600">總共減脂</h5>
+                      <div class="js-counter g-font-size-16" data-comma-separated="true"><?=$help_fat_rate_change?></div>
                     </div>
-                  </div> -->
-
-                  <!-- <h6 class="g-mb-10">Project Completeness <span class="float-right g-ml-10">89%</span></h6>
-                  <div class="js-hr-progress-bar progress g-bg-black-opacity-0_1 rounded-0 g-mb-10">
-                    <div class="js-hr-progress-bar-indicator progress-bar g-bg-white u-progress-bar--xs" role="progressbar" style="width: 89%;" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <small class="g-font-size-12">16% higher than last month</small>
-                </div> -->
               </div>
             </div>
 

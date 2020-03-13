@@ -17,6 +17,9 @@ class Coach_home extends MY_Base_Controller {
 
 	public function index() {
 		$data = array();
+		$count_members_lose_3days_ = array();
+		$count_today_= array();
+
 		$s_data = $this -> setup_user_data(array());
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
@@ -34,32 +37,65 @@ class Coach_home extends MY_Base_Controller {
 		}
 		foreach ($members_lose_3days as $each_lose_3days_items) {
 			if($each_lose_3days_items->last_weight!==NULL){
-				$data['count_members_lose_3days'] = count($members_lose_3days);
+				$count_members_lose_3days_ = $each_lose_3days_items;
 			} else{
-				$data['count_members_lose_3days'] = 0;
+				$count_members_lose_3days_ = FALSE;
 			}
 		}
+		if(is_array($count_members_lose_3days_)){
+			$data['count_members_lose_3days'] = count($data['count_today_']);
+		} else{
+			$data['count_members_lose_3days'] = 0;
+		}
+
 		$find_all_members = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
 		foreach ($find_all_members as $each) {
 			$today_body_fat = $this -> records_dao -> find_today_body_fat($each->id);
-			$last_body_fat = $this -> records_dao -> find_last_body_fat($each->id);
-			if(!empty($last_body_fat) && !empty($today_body_fat)){
-				$each->lose_body_fat = floatval($last_body_fat->body_fat_rate)-floatval($today_body_fat->body_fat_rate);
+			$each -> today_body_fat = $today_body_fat;
+		}
+
+		foreach ($find_all_members as $each_today_members) {
+			if($each_today_members -> today_body_fat!==NULL){
+				$count_today_ = $each_today_members;
 			} else{
-				$each->lose_body_fat = 0;
+				$count_today_ = FALSE;
 			}
 		}
-		if(!empty($find_all_members)){
-			$sum = 0;
-			foreach($find_all_members as $item){
-				$sum += (int) $item->lose_body_fat;
-			}
-			$data['all_lose_body_fat'] =$sum;
 
+		if(is_array($count_members_lose_3days_)){
+			$data['count_today'] = count($count_today_);
 		} else{
-			$data['all_lose_body_fat'] = 0;
-
+			$data['count_today'] = 0;
 		}
+
+		foreach ($find_all_members as $each) {
+		$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
+		$the_original_weight_list= $this -> records_dao -> find_original_weight($each->id);
+		$each-> the_fat_rate_change = floatval($the_original_weight_list-> body_fat_rate)-floatval($the_new_weight_list-> body_fat_rate);
+		}
+
+		$sum = 0;
+		foreach($find_all_members as $each){
+			$sum += floatval($each->the_fat_rate_change);
+		}
+		$data['count_help_people'] = count($find_all_members);
+		$data['help_fat_rate_change'] = $sum;
+
+		$map_date= date("Y-m-d",strtotime("+1 day"));
+		foreach ($find_all_members as $each) {
+			$startdate = $this -> records_dao -> find_first_day($each->id);
+		}
+		if(strtotime($map_date)>strtotime($startdate)){
+			$map_date = $startdate;
+		}
+		$today = date("Y-m-d");
+		if(strtotime($today)>strtotime($map_date)){
+			$days=(strtotime($today)-strtotime($map_date))/(60*60*24);
+		} else{
+			$days=0;
+		}
+		$data['days'] = $days;
+
 		// $this -> to_json($data);
 		$this -> load -> view('coach/coach_home', $data);
 	}
