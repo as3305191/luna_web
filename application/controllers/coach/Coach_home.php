@@ -44,7 +44,7 @@ class Coach_home extends MY_Base_Controller {
 			$today_body_fat = $this -> records_dao -> find_today_body_fat($each->id);
 			$last_body_fat = $this -> records_dao -> find_last_body_fat($each->id);
 			if(!empty($last_body_fat) && !empty($today_body_fat)){
-				$each->lose_body_fat = intval($last_body_fat->body_fat_rate)-intval($today_body_fat->body_fat_rate);
+				$each->lose_body_fat = floatval($last_body_fat->body_fat_rate)-floatval($today_body_fat->body_fat_rate);
 			} else{
 				$each->lose_body_fat = 0;
 			}
@@ -86,9 +86,9 @@ class Coach_home extends MY_Base_Controller {
 			$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
 			$the_original_weight_list= $this -> records_dao -> find_original_weight($each->id);
 
-			$each-> the_new_weight = intval($the_new_weight_list-> weight)/1000;
-			$each-> the_weight_change = (intval($the_original_weight_list-> weight)-intval($the_new_weight_list-> weight))/10;
-			$each-> the_fat_rate_change = intval($the_original_weight_list-> body_fat_rate)-intval($the_new_weight_list-> body_fat_rate);
+			$each-> the_new_weight = floatval($the_new_weight_list-> weight)/1000;
+			$each-> the_weight_change = (floatval($the_original_weight_list-> weight)-floatval($the_new_weight_list-> weight))/10;
+			$each-> the_fat_rate_change = floatval($the_original_weight_list-> body_fat_rate)-floatval($the_new_weight_list-> body_fat_rate);
 			$each-> the_fat_info = $the_new_weight_list-> fat_info;
 			}
 			$res['items'] = $items;
