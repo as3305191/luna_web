@@ -100,7 +100,7 @@ class Coach_home extends MY_Base_Controller {
 		}
 		$data['days'] = $days;
 
-		$this -> to_json($data);
+		// $this -> to_json($data);
 		$this -> load -> view('coach/coach_home', $data);
 	}
 
