@@ -48,6 +48,8 @@ class Coach_home extends MY_Base_Controller {
 		} else{
 			$data['count_members_lose_3days'] = 0;
 		}
+		$data['members_lose_3days'] = $members_lose_3days;
+
 
 		$find_all_members = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
 		foreach ($find_all_members as $each) {
@@ -175,6 +177,19 @@ class Coach_home extends MY_Base_Controller {
 		} else{
 			$res['error'] = "true";
 		}
+		$this -> to_json($res);
+	}
+
+	function show_people() {
+		$res = array();
+
+		$id_array = $this -> get_post("id_array");
+
+		foreach ($id_array as $each) {
+			$items = $this-> dao ->find_by_id($each->id);
+		}
+		$res['items'] = $items;
+
 		$this -> to_json($res);
 	}
 

@@ -37,7 +37,7 @@
                   <div class="d-flex justify-content-between text-uppercase g-mb-25">
                     <div class="g-line-height-1">
                       <h5 class="h6 g-font-weight-600">3天未上秤學員</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true" onclick="show_lose_3days(<?= isset($count_today->id) ? $count_today->id : 0 ?>)"><?=$count_members_lose_3days?></div>
+                      <div class="js-counter g-font-size-16" data-comma-separated="true" onclick="show_lose_3days(<?= isset($members_lose_3days) ? 1: 0 ?>)"><?=$count_members_lose_3days?></div>
                     </div>
 
                   </div>
@@ -238,7 +238,41 @@
 		</div><!-- /.modal-content -->
 	</div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
-<!-- JS -->
+
+<div class="modal fade" id="lose_3day" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+        <h3 id="lose_3day_Label">3天未上線人員</h3>
+			</div>
+      <div class="js-scrollbar card-block  u-info-v1-1 g-bg-white-gradient-v1--after g-height-400 g-pa-0">
+        <?php if (!empty($members_lose_3days)): ?>
+          <?php foreach ($members_lose_3days as $each): ?>
+            <ul class="list-unstyled">
+              <li class="d-flex justify-content-start g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-10">
+                <div class="g-mt-2">
+                  <img class="g-width-50 g-height-50 rounded-circle" src="<?=base_url('')?>mgmt/images/get/<?=$each->image_id?>/thumb" alt="Image Description">
+                </div>
+                <div class="align-self-center g-px-10">
+                  <h5 class="h6 g-font-weight-600 g-color-black g-mb-3">
+                      <span class="g-mr-5"><?=$each->user_name?></span>
+                      <!-- <small class="g-font-size-12 g-color-blue">8k+ earned</small> -->
+                    </h5>
+                  <!-- <p class="m-0">Nulla ipsum dolor sit amet adipiscing</p> -->
+                </div>
+              </li>
+            </ul>
+          <?php endforeach; ?>
+        <?php endif; ?>
+      </div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+					<i class="fa fa-close"></i> 關閉
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <?php $this -> load -> view("coach/coach_script")  ?>
 <!-- End JS -->
 
@@ -352,9 +386,12 @@
   		});
   	}
 
-    function show_lose_3days($id) {
-      
+    function show_lose_3days($id_array) {
+      if($id_array>0){//人數大於1才顯示
+        $('#lose_3day').modal('show');//3先沒上線人員顯示
+      }
     }
+
 
 search_member();
 </script>
