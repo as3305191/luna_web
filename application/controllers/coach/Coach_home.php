@@ -37,13 +37,14 @@ class Coach_home extends MY_Base_Controller {
 		}
 		foreach ($members_lose_3days as $each_lose_3days_items) {
 			if($each_lose_3days_items->last_weight!==NULL){
-				$count_members_lose_3days_ = $each_lose_3days_items;
+				$data['count_members_lose_3days_all_list'] = $each_lose_3days_items;
+
 			} else{
-				$count_members_lose_3days_ = FALSE;
+				$data['count_members_lose_3days_all_list'] = 0;
 			}
 		}
-		if(is_array($count_members_lose_3days_)){
-			$data['count_members_lose_3days'] = count($data['count_today_']);
+		if(is_array($data['count_members_lose_3days_all_list']) && $data['count_members_lose_3days_all_list']!==0){
+			$data['count_members_lose_3days'] = count($data['count_members_lose_3days_all_list']);
 		} else{
 			$data['count_members_lose_3days'] = 0;
 		}
@@ -58,31 +59,34 @@ class Coach_home extends MY_Base_Controller {
 			if($each_today_members -> today_body_fat!==NULL){
 				$count_today_ = $each_today_members;
 			} else{
-				$count_today_ = FALSE;
+				$count_today_ = 0;
 			}
 		}
 
-		if(is_array($count_members_lose_3days_)){
+		if(is_array($count_today_) && $count_today_!==0){
 			$data['count_today'] = count($count_today_);
 		} else{
 			$data['count_today'] = 0;
 		}
+		$the_fat_rate_change = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
 
-		foreach ($find_all_members as $each) {
+		foreach ($the_fat_rate_change as $each) {
 		$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
 		$the_original_weight_list= $this -> records_dao -> find_original_weight($each->id);
 		$each-> the_fat_rate_change = floatval($the_original_weight_list-> body_fat_rate)-floatval($the_new_weight_list-> body_fat_rate);
 		}
 
 		$sum = 0;
-		foreach($find_all_members as $each){
+		foreach($the_fat_rate_change as $each){
 			$sum += floatval($each->the_fat_rate_change);
 		}
-		$data['count_help_people'] = count($find_all_members);
+		$data['count_help_people'] = count($the_fat_rate_change);
 		$data['help_fat_rate_change'] = $sum;
 
 		$map_date= date("Y-m-d",strtotime("+1 day"));
-		foreach ($find_all_members as $each) {
+		$find_date = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
+
+		foreach ($find_date as $each) {
 			$startdate = $this -> records_dao -> find_first_day($each->id);
 		}
 		if(strtotime($map_date)>strtotime($startdate)){
@@ -96,7 +100,7 @@ class Coach_home extends MY_Base_Controller {
 		}
 		$data['days'] = $days;
 
-		// $this -> to_json($data);
+		$this -> to_json($data);
 		$this -> load -> view('coach/coach_home', $data);
 	}
 

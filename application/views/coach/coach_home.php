@@ -37,7 +37,7 @@
                   <div class="d-flex justify-content-between text-uppercase g-mb-25">
                     <div class="g-line-height-1">
                       <h5 class="h6 g-font-weight-600">3天未上秤學員</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true"><?=$count_members_lose_3days?></div>
+                      <div class="js-counter g-font-size-16" data-comma-separated="true" onclick="show_lose_3days('<?=$count_today->id?>')"><?=$count_members_lose_3days?></div>
                     </div>
 
                   </div>
