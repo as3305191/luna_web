@@ -206,6 +206,19 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function check_record() {
+		$list = $this -> records_dao -> db -> query("select r.*, m.gender from records r inner join members m on m.id = r.member_id ") -> result();
+		foreach($list as $each) {
+			$fat_info = get_fat_info($each -> bmi, $each -> body_fat_rate, $each -> gender);
+			$this -> records_dao -> update(array(
+				'fat_info' => $fat_info
+			), $each -> id);
+			echo "$fat_info \n";
+		}
+		echo "count: " . count($list). " \n";
+		echo "ok...\n";
+	}
+
 	public function get_suggestions($member_id, $id) {
 		$m = $this -> dao -> find_by_id($member_id);
 		$rec;
