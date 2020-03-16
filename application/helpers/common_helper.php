@@ -5,7 +5,8 @@ if (!defined('BASEPATH'))
 	if (!function_exists('get_fat_info')) {
 		function get_fat_info($bmi, $body_fat_rate, $gender)
  		{
-			$bmi = $bmi + $body_fat_rate; // 要相加
+			// $bmi = $bmi + $body_fat_rate; // 要相加
+			$bmi = floatval($bmi * 4 + $body_fat_rate * 6) / 10.0 * 2.0; // 要相加
 			$msg = parse_ini_file("msg.properties", true, INI_SCANNER_RAW);
 
 			if($gender == 1) {
@@ -21,10 +22,10 @@ if (!defined('BASEPATH'))
 				else if($bmi>49 && $bmi<=58) {
 					return $msg["tip.fat4"];
 				}
-				else if($bmi>58 && $bmi<=60) {
+				else if($bmi>58 && $bmi<61) {
 					return $msg["tip.fat5"];
 				}
-				else if($bmi>60){
+				else if($bmi>=61){
 					return $msg["tip.fat6"];
 				}
 			}
@@ -42,10 +43,10 @@ if (!defined('BASEPATH'))
 				else if($bmi>51 && $bmi<=59) {
 					return $msg["tip.fat4"];
 				}
-				else if($bmi>59 && $bmi<=65) {
+				else if($bmi>59 && $bmi<66) {
 					return $msg["tip.fat5"];
 				}
-				else if($bmi>65){
+				else if($bmi>=66){
 					return $msg["tip.fat6"];
 				}
 			}
