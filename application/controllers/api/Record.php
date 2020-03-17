@@ -926,8 +926,11 @@ class Record extends MY_Base_Controller {
 				$data2 -> bone_mass = number_format($bone_mass,1);
 			}
 
+			$diff = abs(strtotime($data2->create_date) - strtotime($data1->create_date));
+			$day = floor($diff / (60*60*24));
+			// $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
 
-			$data['days'] = count($list1);
+			$data['days'] = $day;
 			if($weight_diff > 0){
 				$data['weight_diff'] = '+'.number_format($weight_diff,1);
 			}else{
