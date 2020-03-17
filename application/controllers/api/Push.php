@@ -73,7 +73,6 @@ class Push extends MY_Base_Controller {
 	}
 
 	public function send_gcm_notification($token, $title, $msg , $action = array(), $condition = "") {
-		$action_str = implode("#",$action);
 
 		$url = 'https://fcm.googleapis.com/fcm/send';
 
@@ -84,9 +83,7 @@ class Push extends MY_Base_Controller {
 						"body" => $msg,
 						"sound" => "default"
 				),
-				"data" => array(
-					'action' => $action_str
-				)
+				"data" => $action
 		);
 
 		if(!empty($condition)) {
