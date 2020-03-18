@@ -31,10 +31,6 @@ class Coach_home extends MY_Base_Controller {
 		foreach ($members_lose_3days as $each) {
 			$each -> last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
 		}
-		foreach ($members_lose_3days as $each_lose_3days) {
-			$last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
-			$each_lose_3days -> last_weight = $last_weight;
-		}
 		foreach ($members_lose_3days as $each_lose_3days_items) {
 			if($each_lose_3days_items->last_weight!==NULL){
 				$data['count_members_lose_3days_all_list'] = $each_lose_3days_items;

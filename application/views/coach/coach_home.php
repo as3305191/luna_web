@@ -1,3 +1,14 @@
+<style>
+@media only screen and (max-width: 750px) {
+	.dt_list_th{
+	  min-width: 67px !important;
+	}
+  .dt_list_th_big{
+	  min-width: 100px !important;
+	}
+}
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -91,16 +102,15 @@
                     <table id="dt_list" class="table table-bordered u-table--v2">
                       <thead class="text-uppercase g-letter-spacing-1">
                         <tr>
-                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">照片</th>
-                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">學員名字</th>
-                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">年齡</th>
-                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">身高</th>
-                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">性別</th>
-                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">體重</th>
-                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">體重變化</th>
-                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">脂肪變化</th>
-                          <th class="g-font-weight-300 g-color-black" style="min-width: 100px">肥胖程度</th>
-
+                          <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">照片</th>
+                          <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">學員</th>
+                          <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">年齡</th>
+                          <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">身高</th>
+                          <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">性別</th>
+                          <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">體重</th>
+                          <th class="g-font-weight-300 g-color-black dt_list_th_big" style="min-width: 100px">體重變化</th>
+                          <th class="g-font-weight-300 g-color-black dt_list_th_big" style="min-width: 100px">脂肪變化</th>
+                          <th class="g-font-weight-300 g-color-black dt_list_th_big" style="min-width: 100px">肥胖程度</th>
                         </tr>
                       </thead>
                       <tbody id="dt_list_body">
@@ -246,7 +256,7 @@
         <h3 id="lose_3day_Label">3天未上線人員</h3>
 			</div>
       <div class="js-scrollbar card-block  u-info-v1-1 g-bg-white-gradient-v1--after g-height-400 g-pa-0">
-        <?php if (!empty($members_lose_3days)): ?>
+        <?php if (!empty($members_lose_3days->last_weight)): ?>
           <?php foreach ($members_lose_3days as $each): ?>
             <ul class="list-unstyled">
               <li class="d-flex justify-content-start g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-10">
