@@ -34,16 +34,12 @@ class Coach_home extends MY_Base_Controller {
 		foreach ($members_lose_3days as $each_lose_3days_items) {
 			if($each_lose_3days_items->last_weight!==NULL){
 				$data['count_members_lose_3days_all_list'] = $each_lose_3days_items;
+				$count_members_lose_3days_[] = $each_lose_3days_items;
 
-			} else{
-				$data['count_members_lose_3days_all_list'] = 0;
 			}
 		}
-		if(is_array($data['count_members_lose_3days_all_list']) && $data['count_members_lose_3days_all_list']!==0){
-			$data['count_members_lose_3days'] = count($data['count_members_lose_3days_all_list']);
-		} else{
-			$data['count_members_lose_3days'] = 0;
-		}
+
+		$data['count_members_lose_3days'] = count($count_members_lose_3days_);
 		$data['members_lose_3days'] = $members_lose_3days;
 
 

@@ -256,8 +256,8 @@
         <h3 id="lose_3day_Label">3天未上線人員</h3>
 			</div>
       <div class="js-scrollbar card-block  u-info-v1-1 g-bg-white-gradient-v1--after g-height-400 g-pa-0">
-        <?php if (!empty($members_lose_3days->last_weight)): ?>
           <?php foreach ($members_lose_3days as $each): ?>
+            <?php if ($each->last_weight): ?>
             <ul class="list-unstyled">
               <li class="d-flex justify-content-start g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-10">
                 <div class="g-mt-2">
@@ -272,8 +272,8 @@
                 </div>
               </li>
             </ul>
-          <?php endforeach; ?>
-        <?php endif; ?>
+          <?php endif; ?>
+        <?php endforeach; ?>
       </div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
