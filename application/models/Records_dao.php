@@ -555,7 +555,7 @@ class Records_dao extends MY_Model {
 		$this -> db -> select('_m.create_date');
 		$this -> db -> where('_m.member_id', $id);
 
-		$this -> db -> order_by('_m.id', 'desc');
+		$this -> db -> order_by('_m.id', 'asc');
 		// $this -> db -> limit(1);
 
 		$list = $this -> db -> get() -> result();

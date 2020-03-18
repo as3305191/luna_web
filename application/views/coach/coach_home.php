@@ -75,7 +75,9 @@
 
                     <div class="text-right g-line-height-1">
                       <h5 class="h6 g-font-weight-600">總共減脂</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true"><?=$help_fat_rate_change?></div>
+                      <div class="g-font-size-16" data-comma-separated="true">
+                        <span><?=doubleval($help_fat_rate_change)?></span>
+                      </div>
                     </div>
                   </div>
               </div>

@@ -34,7 +34,7 @@ class Coach_home extends MY_Base_Controller {
 		foreach ($members_lose_3days as $each_lose_3days_items) {
 			if($each_lose_3days_items->last_weight!==NULL){
 				$data['count_members_lose_3days_all_list'] = $each_lose_3days_items;
-				$count_members_lose_3days_[] = $each_lose_3days_items;
+				$count_members_lose_3days_[] = $each_lose_3days_items;//3天
 
 			}
 		}
@@ -46,22 +46,12 @@ class Coach_home extends MY_Base_Controller {
 		$find_all_members = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
 		foreach ($find_all_members as $each) {
 			$today_body_fat = $this -> records_dao -> find_today_body_fat($each->id);
-			$each -> today_body_fat = $today_body_fat;
-		}
-
-		foreach ($find_all_members as $each_today_members) {
-			if($each_today_members -> today_body_fat!==NULL){
-				$count_today_ = $each_today_members;
-			} else{
-				$count_today_ = 0;
+			if($today_body_fat!==NULL){
+				$count_today_[] = $today_body_fat;//3天
 			}
 		}
 
-		if(is_array($count_today_) && $count_today_!==0){
-			$data['count_today'] = count($count_today_);
-		} else{
-			$data['count_today'] = 0;
-		}
+		$data['count_today'] = count($count_today_);
 		$the_fat_rate_change = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
 
 		foreach ($the_fat_rate_change as $each) {
@@ -75,17 +65,18 @@ class Coach_home extends MY_Base_Controller {
 			$sum += floatval($each->the_fat_rate_change);
 		}
 		$data['count_help_people'] = count($the_fat_rate_change);
-		$data['help_fat_rate_change'] = $sum;
+		$data['help_fat_rate_change'] =ROUND($sum,2) ;
 
 		$map_date= date("Y-m-d",strtotime("+1 day"));
 		$find_date = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
 
 		foreach ($find_date as $each) {
 			$startdate = $this -> records_dao -> find_first_day($each->id);
+			if(strtotime($map_date)>strtotime($startdate)){
+				$map_date = $startdate;
+			}
 		}
-		if(strtotime($map_date)>strtotime($startdate)){
-			$map_date = $startdate;
-		}
+
 		$today = date("Y-m-d");
 		if(strtotime($today)>strtotime($map_date)){
 			$days=(strtotime($today)-strtotime($map_date))/(60*60*24);
