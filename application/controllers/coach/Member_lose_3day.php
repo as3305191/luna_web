@@ -50,7 +50,6 @@ class Member_lose_3day extends MY_Base_Controller {
 				if($each_items->last_weight!==NULL){
 					$res['items'] = $items;
 					$res['count_items'] = count($items);
-
 				}
 			}
 		} else{

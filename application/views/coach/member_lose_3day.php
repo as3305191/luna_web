@@ -66,8 +66,9 @@
                     <table id="dt_list" class="table table-bordered u-table--v2">
                       <thead class="text-uppercase g-letter-spacing-1">
                         <tr>
-                          <th class="g-font-weight-300 g-color-black g-min-width-200">學員名字</th>
-                          <th class="g-font-weight-300 g-color-black">最後一次測量日期</th>
+                          <th class="g-font-weight-300 g-color-black g-min-width-200">學員</th>
+                          <th class="g-font-weight-300 g-color-black">最後日期</th>
+                          <th class="g-font-weight-300 g-color-black">體重</th>
                           <th class="g-font-weight-300 g-color-black">體脂率</th>
 
                         </tr>
@@ -170,17 +171,22 @@
         if(data.id!==''){
           $.each(data.items, function(){
             var me = this;
-            var $tr = $('<tr class="pointer">').click(function(){
-              // $('.job_id_1').val(me.id);
-              // $('.job_name').val(me.temp_title);
-            }).appendTo($body);
-            $('<td>').html(me.user_name).appendTo($tr);
-            $('<td>').html(me.create_date).appendTo($tr);
-            if(me.last_weight == null){
-              $('<td>').html('沒有測量').appendTo($tr);
-            }else{
-              $('<td>').html(parseFloat(me.last_weight.body_fat/1000).toFixed(2)).appendTo($tr);
-            }          })
+            var $tr = $('<tr>').appendTo($body);
+            if(me.last_weight !== null){
+              $('<td>').html(me.user_name).appendTo($tr);
+              $('<td>').html(me.last_weight.create_date).appendTo($tr);
+              if(me.last_weight == null){
+                $('<td>').html('沒有測量').appendTo($tr);
+              }else{
+                $('<td>').html(parseFloat(me.last_weight.weight/1000).toFixed(2)).appendTo($tr);
+              }
+              if(me.last_weight == null){
+                $('<td>').html('沒有測量').appendTo($tr);
+              }else{
+                $('<td>').html(parseFloat(me.last_weight.body_fat_rate).toFixed(2)).appendTo($tr);
+              }
+            }
+          })
         }
         $('.u-pagination-v1__item').removeClass('u-pagination-v1-4--active ');
         $('.s'+page).addClass('u-pagination-v1-4--active');
