@@ -177,8 +177,7 @@
                 <div class="card-block g-pa-0" style="">
                   <section>
 										<label class="label">學員名稱</label>
-										<label class="input_name"> <i class="icon-append fa fa-lock"></i>
-											<input type="text" id="member_name">
+											<input type="text" id="member_name" style="border-color:#787774;">
                       <button type="button" class="btn btn-danger btn-sm" onclick="search_member()">
                         搜尋
                       </button>

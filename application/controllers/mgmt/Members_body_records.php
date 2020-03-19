@@ -146,7 +146,7 @@ class Members_body_records extends MY_Mgmt_Controller {
 
 	public function delete($id) {
 		$res['success'] = TRUE;
-		$this -> dao -> delete($id);
+		$this -> records_dao -> delete($id);
 		$this -> to_json($res);
 	}
 
