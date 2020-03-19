@@ -69,6 +69,7 @@ class Recipes extends MY_Mgmt_Controller {
 
 		// $data['coach'] = $this -> dao -> find_all_coach();
 
+		// $this->to_json($data);
 		$this->load->view('mgmt/recipes/edit', $data);
 	}
 

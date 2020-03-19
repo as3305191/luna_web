@@ -161,6 +161,11 @@ class Recipes_dao extends MY_Model {
 			$level= $data['level'];
 			$this -> db -> where('_m.level',$level);
 		}
+		if(!empty($data['id'])){
+			$this -> db -> where('_m.id',$data['id']);
+		}
+
+
 	}
 
 	function ajax_from_join() {
