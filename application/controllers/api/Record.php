@@ -844,7 +844,7 @@ class Record extends MY_Base_Controller {
 			$m = $this -> dao -> find_by_id($member_id);
 			// $res['member'] = $m;
 
-			$list1 = $this -> records_dao -> find_by_date($f);
+			// $list1 = $this -> records_dao -> find_by_date($f);
 			// $res['days'] = count($list1);
 
 			$data1 = NULL;
