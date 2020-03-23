@@ -44,6 +44,7 @@ class Ketone_dao extends MY_Model {
 	}
 
 	function search_always($data) {
+		$this -> db -> where('is_delete', 0);
 	}
 
 	function ajax_from_join() {

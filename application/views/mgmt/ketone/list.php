@@ -13,7 +13,7 @@
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget">
 						<header>
-						
+
 								<div class="widget-toolbar pull-left">
 									<input id="s_dt" placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
 								</div>
@@ -45,7 +45,7 @@
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th></th>
+											<!-- <th></th> -->
 											<th class="min100">會員</th>
 											<th class="min100">酮體</th>
 
@@ -53,7 +53,7 @@
 											<th class="min100">建立時間</th>
 										</tr>
 										<tr class="search_box">
-											    <th></th>
+											    <!-- <th></th> -->
 											    <th><input class="form-control input-xs min100" type="text" /></th>
 													<th><input class="form-control input-xs min100" type="text" /></th>
 													<th></th>
@@ -99,7 +99,7 @@
 
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
-	var mCols = [null,{
+	var mCols = [{
 		data : 'user_name'
 	},{
 		data : 'value'
@@ -121,7 +121,7 @@
 		// }
 	}];
 
-	var mOrderIdx = 4;
+	var mOrderIdx = 3;
 
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 
@@ -135,7 +135,7 @@
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,1,2,3],
+		"targets" : [0,1,2],
 		"orderable" : false
 	}];
 

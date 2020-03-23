@@ -149,7 +149,8 @@ class Ketone extends MY_Mgmt_Controller {
 
 	public function delete($id) {
 		$res['success'] = TRUE;
-		$this -> dao -> delete($id);
+		// $this -> dao -> delete($id);
+		$this -> ketone_record_dao -> update(array('is_delete'=>1), $id);
 		$this -> to_json($res);
 	}
 
