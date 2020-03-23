@@ -91,13 +91,24 @@ class Record extends MY_Base_Controller {
 										 'create_date'=> $today
 									 );
 					$data = $this -> records_dao -> find_by_value(array('member_id'=>$member_id,'date'=>$today));
+
+					$can_insert = TRUE;
 					if(empty($data)){
 						$insert_data['pos'] = 1;
+					} else {
+						// contains old data
+						$diff = abs(time() - strtotime($data->create_time));
+						$res['diff'] = $diff;
+						if($diff < 10) {
+							$res['too_often'] = TRUE;
+							$can_insert = FALSE;
+						}
 					}
-
-					$id = $this -> records_dao -> insert($insert_data);
+					if($can_insert) {
+						$id = $this -> records_dao -> insert($insert_data);
+						$res['id'] = $id;
+					}
 					$res['success'] = TRUE;
-					$res['id'] = $id;
 				} else {
 					$res['error_code'][] = "account_not_found";
 					$res['error_message'][] = "查無此會員";
@@ -833,7 +844,7 @@ class Record extends MY_Base_Controller {
 			$m = $this -> dao -> find_by_id($member_id);
 			// $res['member'] = $m;
 
-			$list1 = $this -> records_dao -> find_by_date($f);
+			// $list1 = $this -> records_dao -> find_by_date($f);
 			// $res['days'] = count($list1);
 
 			$data1 = NULL;
