@@ -80,7 +80,10 @@ class Records_dao extends MY_Model {
 		}
 
 		$this -> db -> where("_m.is_delete", 0);
-		$this -> db -> where('_m.pos', 1 );
+		// $this -> db -> where('_m.pos', 1 );
+
+		$this -> db -> group_by('_m.create_date');
+
 
 		if(!empty($f['desc'])){
 			$this -> db -> order_by("id", "desc");
