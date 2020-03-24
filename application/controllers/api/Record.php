@@ -801,18 +801,19 @@ class Record extends MY_Base_Controller {
 					$f_data1 = $this -> records_dao -> find_one_data($member_id, $data1->id);
 					$base = 0;
 					if(!empty($f_data1)){
-						$base = $f_data1->weight;
+						$base = number_format($f_data1->weight,1);
 					}
 
 					foreach ($list as $each) {
-						if($each-> weight > $base){
+						$compare = number_format($each-> weight,1);
+						if($compare > $base){
 							$each -> exceed = 1;
-						}else if($each-> weight == $base){
+						}else if($compare == $base){
 							$each -> exceed = 2;
 						}else{
 							$each -> exceed = 0;
 						}
-						$base = $each->weight;
+						$base = $compare;
 					}
 				}
 
