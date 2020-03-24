@@ -78,6 +78,19 @@ class News extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function do_delete(){
+		$res = array();
+		$id = $this -> get_post('id');
+		if(!empty($id)){
+			$this -> dao -> update(array('is_delete'=> 1),$id);
+			$res['success'] = TRUE;
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
 
 
 

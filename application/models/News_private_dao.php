@@ -22,6 +22,8 @@ class News_private_dao extends MY_Model {
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
 
+		$this -> db -> where('_m.is_delete', 0);
+
 		//	limit
 		if(empty($f['page'])) {
 			$page = 0;
@@ -53,6 +55,7 @@ class News_private_dao extends MY_Model {
 		if(!empty($f['member_id'])) {
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
+		$this -> db -> where('_m.is_delete', 0);
 		$this -> db -> where('_m.is_read',0);
 
 		$query = $this -> db -> get();
