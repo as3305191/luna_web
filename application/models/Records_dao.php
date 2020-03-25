@@ -69,6 +69,40 @@ class Records_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_by_page($f){
+		$this -> db -> from("$this->table_name as _m");
+
+		// select
+		$this -> db -> select('_m.*');
+
+		if(!empty($f['member_id'])){
+			$this -> db -> where('_m.member_id',$f['member_id']);
+		}
+
+		//	limit
+		if(empty($f['page'])) {
+			$page = 0;
+		} else {
+			$page = intval($f['page']);
+		}
+		if(empty($f['limit'])) {
+			// default is 10
+			$limit = 10;
+		} else {
+			$limit = intval($f['limit']);
+		}
+		$start = $page * $limit;
+		$this -> db -> limit($limit, $start);
+
+		$this -> db -> where('_m.is_delete', 0);
+		$this -> db -> order_by("id", "desc");
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
+
 	function find_by_date($f){
 		$this -> db -> from("$this->table_name as _m");
 
