@@ -54,6 +54,13 @@ class News extends MY_Base_Controller {
 			$count = $this -> dao -> find_unread($f);
 			$list = $this -> dao -> find_by_parameter($f);
 
+			foreach ($list as $each) {
+				$value = '<!DOCTYPE html><html lang="zh-Hant-TW"><head><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+									<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"><meta charset="UTF-8">
+									</head><body>'.$each->content.'</body></html';
+				$each->html = $value;
+			}
+
 			$res['success'] = TRUE;
 			$res['unread'] = $count->count;
 			$res['list'] = $list;
