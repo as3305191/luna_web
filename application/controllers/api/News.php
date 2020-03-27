@@ -72,6 +72,26 @@ class News extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function find_news(){
+		$res = array();
+		$id = $this -> get_post('id');
+		if(!empty($id)){
+			$m = $this -> dao ->find_by_id($id);
+			if(!empty($m)){
+				$res['success'] = TRUE;
+				$res['data'] = $m;
+				$this -> dao -> update(array('is_read'=> 1),$id);
+			}else{
+				$res['error_code'][] = "id_not_found";
+				$res['error_message'][] = "無此ID";
+			}
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
 	public function add_read(){
 		$res = array();
 		$id = $this -> get_post('id');
