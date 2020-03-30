@@ -58,7 +58,6 @@ class Push extends MY_Base_Controller {
 				
 					// add private news for each member
 					foreach ($mlist as $each) {
-						// code...
 						$update_data['member_id'] = $each->id;
 						$np_id = $this -> news_private_dao -> insert($update_data);
 
