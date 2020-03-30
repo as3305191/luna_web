@@ -52,7 +52,11 @@ class Push extends MY_Base_Controller {
 													'is_read' => '0',
 													'content' => $message
 												);
-
+				
+					// call firebase							
+					$result = $this -> send_gcm_notification("", $title, $msg , $action, "'thev' in topics");
+				
+					// add private news for each member
 					foreach ($mlist as $each) {
 						// code...
 						$update_data['member_id'] = $each->id;
@@ -62,14 +66,13 @@ class Push extends MY_Base_Controller {
 						$action = array(
 							"np_id" => $np_id // new privafte id
 						);
-						$title = $title;
-						$msg = $message;
-						$token = $each->token;
+						// $title = $title;
+						// $msg = $message;
+						// $token = $each->token;
 						// if(!empty($token)){
 						// 	$this -> send_gcm_notification($token, $title, '' , $action);
 						// }
 					}
-					$result = $this -> send_gcm_notification("", $title, $msg , $action, "'thev' in topics");
 
 
 					// $result = $this -> send_gcm_notification("", $title, $msg , $action, "'thev' in topics");
