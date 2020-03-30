@@ -42,14 +42,14 @@ class Push extends MY_Base_Controller {
 				// $m = $this -> members_dao -> find_by_value(array('account'=> $target));
 				if(!empty($m)){
 					$res['success'] = TRUE;
-	
+
 					$update_data = array(
 													'title' => $title,
 													'member_id' => $m->id,
 													'content' => $message
 												);
 					$np_id = $this -> news_private_dao -> insert($update_data);
-	
+
 					$code = $this -> app_reg_code_dao -> find_by_member($m->id);
 					$res['msg_id'] = time();
 					$action = array(
@@ -58,7 +58,7 @@ class Push extends MY_Base_Controller {
 					$token = $code -> token;
 					$title = $title;
 					$msg = $message;
-					$this -> send_gcm_notification($token, $title, $msg , $action);
+					$this -> send_gcm_notification($token, $title, $title , $action);
 				}else{
 					$res['error_code'][] = "account_not_found";
 					$res['error_message'][] = "查無此帳號";
