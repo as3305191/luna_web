@@ -58,7 +58,7 @@ class Push extends MY_Base_Controller {
 					$token = $code -> token;
 					$title = $title;
 					$msg = $message;
-					$this -> send_gcm_notification($token, $title, $title , $action);
+					$this -> send_gcm_notification($token, $title, '' , $action);
 				}else{
 					$res['error_code'][] = "account_not_found";
 					$res['error_message'][] = "查無此帳號";
