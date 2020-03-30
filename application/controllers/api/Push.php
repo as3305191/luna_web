@@ -32,6 +32,14 @@ class Push extends MY_Base_Controller {
 					);
 					$title = $title;
 					$msg = $message;
+
+					$update_data = array(
+													'title' => $title,
+													'member_id' => '0',
+													'content' => $message
+												);
+					$np_id = $this -> news_private_dao -> insert($update_data);
+
 					$result = $this -> send_gcm_notification("", $title, $msg , $action, "'thev' in topics");
 				} else {
 					$res['error_code'][] = "columns_required";

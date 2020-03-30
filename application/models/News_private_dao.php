@@ -19,7 +19,12 @@ class News_private_dao extends MY_Model {
 		$this -> db -> select('_m.*');
 
 		if(!empty($f['member_id'])) {
+			$this -> db -> group_start();
 			$this -> db -> where('_m.member_id',$f['member_id']);
+			$this -> db -> or_group_start();
+			$this -> db -> where('_m.member_id','0');
+			$this -> db -> group_end();
+			$this -> db -> group_end();
 		}
 
 		$this -> db -> where('_m.is_delete', 0);
