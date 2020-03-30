@@ -36,6 +36,7 @@ class Push extends MY_Base_Controller {
 					$update_data = array(
 													'title' => $title,
 													'member_id' => '0',
+													'is_read' => '1',
 													'content' => $message
 												);
 					$np_id = $this -> news_private_dao -> insert($update_data);
