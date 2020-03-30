@@ -7,6 +7,7 @@ class Push extends MY_Base_Controller {
 		$this -> load -> model('Members_dao', 'members_dao');
 		$this -> load -> model('App_reg_code_dao', 'app_reg_code_dao');
 		$this -> load -> model('News_private_dao', 'news_private_dao');
+		$this -> load -> model('Post_log_dao', 'post_log_dao');
 
 	}
 
@@ -16,7 +17,7 @@ class Push extends MY_Base_Controller {
 
 	public function do_push() {
 		$this->do_log("do_push");
-		
+
 		$res = array();
 		$title = $this -> get_post("title");
 		$message = $this -> get_post("message");
