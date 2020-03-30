@@ -65,10 +65,11 @@ class Push extends MY_Base_Controller {
 						$title = $title;
 						$msg = $message;
 						$token = $each->token;
-						if(!empty($token)){
-							$this -> send_gcm_notification($token, $title, '' , $action);
-						}
+						// if(!empty($token)){
+						// 	$this -> send_gcm_notification($token, $title, '' , $action);
+						// }
 					}
+					$result = $this -> send_gcm_notification("", $title, $msg , $action, "'thev' in topics");
 
 
 					// $result = $this -> send_gcm_notification("", $title, $msg , $action, "'thev' in topics");
