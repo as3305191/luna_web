@@ -53,7 +53,7 @@ class Members_dao extends MY_Model {
 
 	function find_with_token(){
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("app_reg_code app", "k.member_id = _m.id", "left");
+		$this -> db -> join("app_reg_code app", "app.member_id = _m.id", "left");
 
 		$this -> db -> select('_m.*');
 		$this -> db -> select('app.token');
