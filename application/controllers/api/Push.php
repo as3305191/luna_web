@@ -15,6 +15,8 @@ class Push extends MY_Base_Controller {
 	}
 
 	public function do_push() {
+		$this->do_log("do_push");
+		
 		$res = array();
 		$title = $this -> get_post("title");
 		$message = $this -> get_post("message");
@@ -155,7 +157,13 @@ class Push extends MY_Base_Controller {
 		return $result;
 	}
 
-
+	private function do_log($tag = '') {
+		$i_data['post'] =json_encode($_POST, JSON_UNESCAPED_UNICODE);
+		$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
+		$i_data['tag'] = $tag;
+		$i_data['full_path'] = $actual_link;
+		$this -> post_log_dao -> insert($i_data);
+	}
 
 
 
