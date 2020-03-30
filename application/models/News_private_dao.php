@@ -28,6 +28,7 @@ class News_private_dao extends MY_Model {
 		}
 
 		$this -> db -> where('_m.is_delete', 0);
+		$this -> db ->order_by("_m.create_time", "desc");
 
 		//	limit
 		if(empty($f['page'])) {
