@@ -43,8 +43,28 @@ class Push extends MY_Base_Controller {
 
 					$result = $this -> send_gcm_notification("", $title, $msg , $action, "'thev' in topics");
 				} else {
-					$res['error_code'][] = "columns_required";
-					$res['error_message'][] = "缺少必填欄位link";
+					$res['success'] = TRUE;
+
+					$update_data = array(
+													'title' => $title,
+													'member_id' => '0',
+													'is_read' => '1',
+													'content' => $message
+												);
+
+					$np_id = $this -> news_private_dao -> insert($update_data);
+
+					$res['msg_id'] = time();
+					$action = array(
+						"np_id" => $np_id // new privafte id
+					);
+					$token = $code -> token;
+					$title = $title;
+					$msg = $message;
+					$result = $this -> send_gcm_notification("", $title, $msg , $action, "'thev' in topics");
+
+					// $res['error_code'][] = "columns_required";
+					// $res['error_message'][] = "缺少必填欄位link";
 				}
 			} else {
 				$m = $this -> members_dao -> find_by_account($target);
