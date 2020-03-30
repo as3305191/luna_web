@@ -17,6 +17,8 @@ class Push extends MY_Base_Controller {
 
 	public function do_push() {
 		$this->do_log("do_push");
+		$this->to_json(array('success'=>TRUE));
+		return;
 
 		$res = array();
 		$title = $this -> get_post("title");
