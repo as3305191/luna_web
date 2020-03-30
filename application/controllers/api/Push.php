@@ -58,7 +58,6 @@ class Push extends MY_Base_Controller {
 					$action = array(
 						"np_id" => $np_id // new privafte id
 					);
-					$token = $code -> token;
 					$title = $title;
 					$msg = $message;
 					$result = $this -> send_gcm_notification("", $title, $msg , $action, "'thev' in topics");
