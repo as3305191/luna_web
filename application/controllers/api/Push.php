@@ -17,8 +17,8 @@ class Push extends MY_Base_Controller {
 
 	public function do_push() {
 		$this->do_log("do_push");
-		$this->to_json(array('success'=>TRUE));
-		return;
+		// $this->to_json(array('success'=>TRUE));
+		// return;
 
 		$res = array();
 		$title = $this -> get_post("title");
@@ -57,10 +57,10 @@ class Push extends MY_Base_Controller {
 													'is_read' => '0',
 													'content' => $message
 												);
-				
-					// call firebase							
+
+					// call firebase
 					$result = $this -> send_gcm_notification("", $title, $msg , $action, "'thev' in topics");
-				
+
 					// add private news for each member
 					foreach ($mlist as $each) {
 						$update_data['member_id'] = $each->id;
