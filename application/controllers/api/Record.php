@@ -725,7 +725,7 @@ class Record extends MY_Base_Controller {
 		$page = $this -> get_post('page');
 
 		if(!empty($member_id)){
-			$f = array('member_id' => $member_id);
+			$f = array('member_id' => $member_id,'page' => $page);
 
 			$list = $this -> records_dao -> find_by_page($f);
 
