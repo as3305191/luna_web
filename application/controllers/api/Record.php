@@ -889,6 +889,7 @@ class Record extends MY_Base_Controller {
 
 			$data1 = NULL;
 			$data2 = NULL;
+			$weight_diff = 0;
 			$weight_kg = 0;
 			$body_diff = 0;
 
