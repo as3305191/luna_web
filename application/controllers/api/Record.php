@@ -983,7 +983,7 @@ class Record extends MY_Base_Controller {
 				$data2 -> bone_mass = number_format($bone_mass,1);
 			}
 
-			$day=0;
+			$day = 0;
 			if(!empty($data2->create_date)){
 				$diff = abs(strtotime($data2->create_date) - strtotime($data1->create_date));
 				$day = floor($diff / (60*60*24));
