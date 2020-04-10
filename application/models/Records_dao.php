@@ -213,6 +213,22 @@ class Records_dao extends MY_Model {
 		return NULL;
 	}
 
+	function find_list_all($f) {
+		$this -> db -> from("$this->table_name as _m");
+
+		// select
+		$this -> db -> select('_m.*');
+
+		if(!empty($f['member_id'])){
+			$this -> db -> where('_m.member_id',$f['member_id']);
+		}
+
+		$this -> db -> where("_m.is_delete", 0);
+
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+
 	function find_all_by_ym($member_id, $ym) {
 		$this -> db -> from("$this->table_name as _m");
 

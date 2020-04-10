@@ -893,9 +893,15 @@ class Record extends MY_Base_Controller {
 			$body_diff = 0;
 
 			if(empty($type)){
-				$data1 = $this -> records_dao -> find_newest_weight($f);
-				$f['new'] = true;
-				$data2 = $this -> records_dao -> find_newest_weight($f);
+				// $data1 = $this -> records_dao -> find_newest_weight($f);
+				// $f['new'] = true;
+				// $data2 = $this -> records_dao -> find_newest_weight($f);
+
+				$dataList = $this -> records_dao -> find_list_all($f);
+				if(!empty($dataList)){
+					$data1 = $dataList[0];
+					$data2 = end($dataList);
+				}
 			}
 
 			if($type == '1'){ //最近兩日
@@ -1198,167 +1204,6 @@ class Record extends MY_Base_Controller {
 
 		$this -> to_json($res);
 	}
-
-	// 兩筆差異紀錄
-	public function diff_record_test(){
-		$member_id = $this -> get_post('member_id');
-		$type = $this -> get_post('type');
-		$id1 = $this -> get_post('id1');
-		$id2 = $this -> get_post('id2');
-
-		if(!empty($member_id)){
-			$f = array('member_id' => $member_id);
-			if(!empty($date)){
-				$f['date'] = $date;
-			}
-
-			$res['success'] = TRUE;
-			$data = array();
-			$m = $this -> dao -> find_by_id($member_id);
-			// $res['member'] = $m;
-
-			// $list1 = $this -> records_dao -> find_by_date($f);
-			// $res['days'] = count($list1);
-
-			$data1 = NULL;
-			$data2 = NULL;
-			$weight_kg = 0;
-			$body_diff = 0;
-
-			if(empty($type)){
-				$data1 = $this -> records_dao -> find_newest_weight($f);
-				$f['new'] = true;
-				$data2 = $this -> records_dao -> find_newest_weight($f);
-			}
-
-			if($type == '1'){ //最近兩日
-				$f['desc'] = TRUE;
-
-				$list = $this -> records_dao -> find_by_date($f);
-				if(!empty($list)){
-					$data2 = $list[0];
-					if(count($list) > 1){
-						$data1 = $list[1];
-					}
-				}
-			}
-
-			if($type == '2'){ //自選資料
-				$data2 = $this -> records_dao -> find_by_id($id2);
-				$data1 = $this -> records_dao -> find_by_id($id1);
-			}
-
-			if($data1 != NULL && $data2 != NULL){
-				$weight_diff = number_format($data2->weight/1000,1) - number_format($data1->weight/1000,1);
-				$body_fat_d1 = $data1->weight/1000 * $data1->body_fat_rate/100;
-				$body_fat_d2 = $data2->weight/1000 * $data2->body_fat_rate/100;
-				$body_diff = number_format($body_fat_d2,1)- number_format($body_fat_d1,1);
-			}else if($data1 == NULL && $data2 == NULL){
-
-			}else if($data1 == NULL){
-				$weight_diff = number_format($data2->weight/1000,1);
-				$body_fat_d1 = 0;
-				$body_fat_d2 = $data2->weight/1000 * $data2->body_fat_rate/100;
-				$body_diff = number_format($body_fat_d2,1)- number_format($body_fat_d1,1);
-			}else if($data2 == NULL){
-				$weight_diff = 0 - number_format($data1->weight/1000,1);
-				$body_fat_d1 = $data1->weight/1000 * $data1->body_fat_rate/100;
-				$body_fat_d2 = 0;
-				$body_diff = number_format($body_fat_d2,1)- number_format($body_fat_d1,1);
-			}
-
-			// $res['weight_diff'] = number_format($weight_kg,1);
-			// $res['body_fat_diff'] = number_format($body_diff,1);
-
-			if(!empty($data1)){
-				$weight_kg = $data1->weight/1000;
-				$body_fat = $data1->weight/1000 * $data1->body_fat_rate/100;
-				$visceral_fat = $data1->weight/1000 * $data1->visceral_fat_rate/100;
-				$protein = $data1->weight/1000 * $data1->protein_rate/100;
-				$moisture = $data1->weight/1000 * $data1->moisture_rate/100;
-				$muscle = $data1->weight/1000 * $data1->muscle_rate/100;
-				$bone_mass = $data1->weight/1000 * $data1->bone_mass_rate/100;
-				$skeletal_muscle =  $data1->weight/1000 * $data1->skeletal_muscle_rate/100;
-
-				$data1 -> weight = number_format($weight_kg,1);
-				$data1 -> body_fat = number_format($body_fat,1);
-				$data1 -> visceral_fat = number_format($visceral_fat,1);
-				$data1 -> protein = number_format($protein,1);
-				$data1 -> moisture = number_format($moisture,1);
-				$data1 -> muscle = number_format($muscle,1);
-				$data1 -> bone_mass = number_format($bone_mass,1);
-				$data1 -> skeletal_muscle = number_format($skeletal_muscle,1);
-			}
-
-			if(!empty($data2)){
-				$weight_kg = $data2->weight/1000;
-				$body_fat = $data2->weight/1000 * $data2->body_fat_rate/100;
-				$visceral_fat = $data2->weight/1000 * $data2->visceral_fat_rate/100;
-				$protein = $data2->weight/1000 * $data2->protein_rate/100;
-				$moisture = $data2->weight/1000 * $data2->moisture_rate/100;
-				$muscle = $data2->weight/1000 * $data2->muscle_rate/100;
-				$bone_mass = $data2->weight/1000 * $data2->bone_mass_rate/100;
-				$skeletal_muscle =  $data2->weight/1000 * $data2->skeletal_muscle_rate/100;
-
-				$data2 -> weight = number_format($weight_kg,1);
-				$data2 -> body_fat = number_format($body_fat,1);
-				$data2 -> visceral_fat = number_format($visceral_fat,1);
-				$data2 -> protein = number_format($protein,1);
-				$data2 -> moisture = number_format($moisture,1);
-				$data2 -> muscle = number_format($muscle,1);
-				$data2 -> skeletal_muscle = number_format($skeletal_muscle,1);
-				$data2 -> bone_mass = number_format($bone_mass,1);
-			}
-
-			$diff = abs(strtotime($data2->create_date) - strtotime($data1->create_date));
-			$day = floor($diff / (60*60*24));
-			// $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
-
-			$data['days'] = $day;
-			if($weight_diff > 0){
-				$data['weight_diff'] = '+'.number_format($weight_diff,1);
-			}else{
-				$data['weight_diff'] = number_format($weight_diff,1);
-			}
-			if($body_diff > 0){
-				$data['body_fat_diff'] = '+'.number_format($body_diff,1);
-			}else{
-				$data['body_fat_diff'] = number_format($body_diff,1);
-			}
-			$data['member'] = $m;
-
-			// if(!empty($data1)){
-			// 	$data['data1'] = $data1;
-			// 	// $res['data1_id'] = $data1->id;
-			// 	$data['td1'] = $this -> get_suggestions($member_id,$data1->id);
-			// 	$ketone1 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data1->create_date));
-			// 	if(!empty($ketone1)){
-			// 		$data['kt1'] = $ketone1;
-			// 	}
-			// }
-			//
-			// if(!empty($data2)){
-			// 	$data['data2'] = $data2;
-			// 	$data['td2'] = $this -> get_suggestions($member_id,$data2->id);
-			// 	$ketone2 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data2->create_date));
-			// 	if(!empty($ketone2)){
-			// 		$data['kt2'] = $ketone2;
-			// 	}
-			// }
-
-			$res['data'] = $data;
-		}else{
-			$res['error_code'][] = "columns_required";
-			$res['error_message'][] = "缺少必填欄位";
-		}
-		$this -> to_json($res);
-	}
-
-
-
-
-
-
 
 
 }
