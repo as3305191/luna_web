@@ -1327,24 +1327,24 @@ class Record extends MY_Base_Controller {
 			// }
 			$data['member'] = $m;
 
-			if(!empty($data1)){
-				$data['data1'] = $data1;
-				// $res['data1_id'] = $data1->id;
-				$data['td1'] = $this -> get_suggestions($member_id,$data1->id);
-				$ketone1 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data1->create_date));
-				if(!empty($ketone1)){
-					$data['kt1'] = $ketone1;
-				}
-			}
-
-			if(!empty($data2)){
-				$data['data2'] = $data2;
-				$data['td2'] = $this -> get_suggestions($member_id,$data2->id);
-				$ketone2 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data2->create_date));
-				if(!empty($ketone2)){
-					$data['kt2'] = $ketone2;
-				}
-			}
+			// if(!empty($data1)){
+			// 	$data['data1'] = $data1;
+			// 	// $res['data1_id'] = $data1->id;
+			// 	$data['td1'] = $this -> get_suggestions($member_id,$data1->id);
+			// 	$ketone1 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data1->create_date));
+			// 	if(!empty($ketone1)){
+			// 		$data['kt1'] = $ketone1;
+			// 	}
+			// }
+			//
+			// if(!empty($data2)){
+			// 	$data['data2'] = $data2;
+			// 	$data['td2'] = $this -> get_suggestions($member_id,$data2->id);
+			// 	$ketone2 = $this -> ketone_record_dao -> find_by_date(array('member_id' => $member_id,'date'=> $data2->create_date));
+			// 	if(!empty($ketone2)){
+			// 		$data['kt2'] = $ketone2;
+			// 	}
+			// }
 
 			$res['data'] = $data;
 		}else{
