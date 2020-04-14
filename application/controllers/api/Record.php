@@ -126,9 +126,12 @@ class Record extends MY_Base_Controller {
 	// 秤重最新紀錄
 	public function find_last_record(){
 		$member_id = $this -> get_post('member_id');
+		$today = date("Y-m-d");
+
 		if(!empty($member_id)){
 			$m = $this -> records_dao -> find_by_value(array('member_id' => $member_id));
-			$ketone = $this -> ketone_record_dao -> find_by_one(array('member_id' => $member_id));
+			$ketone = $this -> ketone_record_dao -> find_by_one(array('member_id' => $member_id,'date' => $today));
+			// $ketone = $this -> ketone_record_dao -> find_by_one(array('member_id' => $member_id));
 
 			$res['success'] = TRUE;
 			if(!empty($m)){
