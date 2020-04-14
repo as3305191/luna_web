@@ -154,7 +154,6 @@
 						<th class="min100">皮下脂肪率</th>
 						<th class="min100">肥胖等級</th>
 						<th class="min100">BMR</th>
-						<th class="min100">健康指數</th>
 						<th class="min100">身體年齡</th>
 						<th class="min100">身體類型</th>
 						<th class="min100">日期</th>
@@ -278,14 +277,6 @@
 				</div>
 			</fieldset>
 
-			<fieldset>
-				<div class="form-group">
-					<label class="col-md-3 control-label">健康指數</label>
-					<div class="col-md-6">
-						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> health_index : '' ?>" readonly/>
-					</div>
-				</div>
-			</fieldset>
 
 			<fieldset>
 				<div class="form-group">

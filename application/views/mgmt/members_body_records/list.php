@@ -60,7 +60,6 @@
 											<th class="min100">皮下脂肪率</th>
 											<th class="min100">肥胖等級</th>
 											<th class="min100">BMR</th>
-											<th class="min100">健康指數</th>
 											<th class="min100">身體年齡</th>
 											<th class="min100">BMI</th>
 											<th class="min100">BMI最佳</th>
@@ -72,7 +71,6 @@
 										<tr class="search_box">
 											    <th></th>
 											    <th><input class="form-control input-xs min100" type="text" /></th>
-													<th></th>
 													<th></th>
 													<th></th>
 													<th></th>
@@ -176,8 +174,6 @@
 	},{
 		data : 'bmr'
 	},{
-		data : 'health_index'
-	},{
 		data : 'physical_age'
 	},{
 		data : 'bmi'
@@ -208,7 +204,7 @@
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22],
+		"targets" : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
 		"orderable" : false
 	}];
 
