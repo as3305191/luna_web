@@ -750,11 +750,11 @@ class Record extends MY_Base_Controller {
 				$each -> weight = number_format($weight_kg,2);
 				$each -> body_fat = number_format($body_fat,2);
 
-				$dRate = $m-> body_fat_rate;
-				$m -> body_fat_rate = number_format($dRate,2);
-				$m -> visceral_fat = number_format($visceral_fat,2);
-				$vRate = $m-> visceral_fat_rate;
-				$m -> visceral_fat_rate = number_format($vRate,2);
+				$dRate = $each-> body_fat_rate;
+				$each -> body_fat_rate = number_format($dRate,2);
+				$each -> visceral_fat = number_format($visceral_fat,2);
+				$vRate = $each-> visceral_fat_rate;
+				$each -> visceral_fat_rate = number_format($vRate,2);
 
 				$each -> visceral = number_format($visceral_fat,2);
 				$each -> protein = number_format($protein,2);
