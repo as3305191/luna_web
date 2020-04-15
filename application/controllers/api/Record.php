@@ -189,6 +189,10 @@ class Record extends MY_Base_Controller {
 			if(!empty($m)){
 				$weight_kg = $m->weight/1000;
 				$body_fat =  $m->weight/1000 * $m->body_fat_rate/100;
+				$dRate = $m-> body_fat_rate;
+				$m -> body_fat_rate = number_format($dRate,2);
+				$vRate = $m-> visceral_fat_rate;
+				$m -> visceral_fat_rate = number_format($vRate,2);
 				$visceral_fat =  $m->weight/1000 * $m->visceral_fat_rate/100;
 				$protein =  $m->weight/1000 * $m->protein_rate/100;
 				$moisture =  $m->weight/1000 * $m->moisture_rate/100;
@@ -199,16 +203,16 @@ class Record extends MY_Base_Controller {
 				$rest_weight = $weight_kg - $body_fat;
 
 				// $m->weight =sprintf("%.2f",$weight_kg);
-				$m -> weight = number_format($weight_kg,1);
-				$m -> body_fat = number_format($body_fat,1);
-				$m -> visceral_fat = number_format($visceral_fat,1);
-				$m -> protein = number_format($protein,1);
-				$m -> moisture = number_format($moisture,1);
-				$m -> muscle = number_format($muscle,1);
-				$m -> skeletal_muscle = number_format($skeletal_muscle,1);
-				$m -> bone_mass = number_format($bone_mass,1);
+				$m -> weight = number_format($weight_kg,2);
+				$m -> body_fat = number_format($body_fat,2);
+				$m -> visceral_fat = number_format($visceral_fat,2);
+				$m -> protein = number_format($protein,2);
+				$m -> moisture = number_format($moisture,2);
+				$m -> muscle = number_format($muscle,2);
+				$m -> skeletal_muscle = number_format($skeletal_muscle,2);
+				$m -> bone_mass = number_format($bone_mass,2);
 				// $m -> fat_best = number_format($fat_best,1);
-				$m -> rest_weight = number_format($rest_weight,1);
+				$m -> rest_weight = number_format($rest_weight,2);
 
 				$res['record'] = $m;
 				if(!empty($ketone)){
