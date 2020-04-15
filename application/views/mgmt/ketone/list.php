@@ -17,8 +17,8 @@
 								<div class="widget-toolbar pull-left">
 									<input id="s_dt" placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
 								</div>
-								<div class="widget-toolbar pull-left" disabled>
-									~ <input id="e_dt" disabled placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
+								<div class="widget-toolbar pull-left" >
+									~ <input id="e_dt"  placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
 								</div>
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">

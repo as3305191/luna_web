@@ -17,8 +17,8 @@
 								<div class="widget-toolbar pull-left">
 									<input id="s_dt" placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
 								</div>
-								<div class="widget-toolbar pull-left" disabled>
-									~ <input id="e_dt" disabled placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
+								<div class="widget-toolbar pull-left" >
+									~ <input id="e_dt"  placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
 								</div>
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">
@@ -48,6 +48,8 @@
 											<th></th>
 											<th class="min100">會員</th>
 											<th class="min100">阻抗</th>
+											<th class="min100">身高</th>
+											<th class="min100">實際年齡</th>
 											<th class="min100">體重</th>
 											<th class="min100">體脂率</th>
 											<th class="min100">脂肪</th>
@@ -91,7 +93,8 @@
 													<th></th>
 													<th></th>
 													<th></th>
-
+													<th></th>
+													<th></th>
 										    </tr>
 									</thead>
 									<tbody>
@@ -137,6 +140,10 @@
 		data : 'user_name'
 	},{
 		data : 'adc1'
+	},{
+		data : 'height'
+	},{
+		data : 'age'
 	},{
 		data : 'weight',
 		render: function(d,t,r) {
@@ -190,7 +197,7 @@
 
 	}];
 
-	var mOrderIdx = 4;
+	var mOrderIdx = 6;
 
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 
@@ -204,7 +211,7 @@
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21],
+		"targets" : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
 		"orderable" : false
 	}];
 
