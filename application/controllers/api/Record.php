@@ -133,6 +133,11 @@ class Record extends MY_Base_Controller {
 			$ketone = $this -> ketone_record_dao -> find_by_one(array('member_id' => $member_id,'date' => $today));
 			// $ketone = $this -> ketone_record_dao -> find_by_one(array('member_id' => $member_id));
 
+			$data1 = $this -> records_dao -> find_max_weight(array('member_id' => $member_id));
+			$data2 = $this -> records_dao -> find_min_weight(array('member_id' => $member_id));
+			$res['data1'] = $data1;
+			$res['data2'] = $data2;
+
 			$res['success'] = TRUE;
 			if(!empty($m)){
 				$weight_kg = $m->weight/1000;
