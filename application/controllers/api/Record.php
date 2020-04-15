@@ -186,8 +186,14 @@ class Record extends MY_Base_Controller {
 			if(!empty($dataList)){
 				$data1 = $dataList[0];
 				$data2 = end($dataList);
-				$res['data1'] = $data1;
-				$res['data2'] = $data2;
+
+				$res['max_weight'] = $data2->weight;
+				$res['min_weight'] = $data1->weight;
+				$res['diff_weight'] = $data2->weight-$data1->weight;
+
+				$res['max_bmi'] = $data2->bmi;
+				$res['min_bmi'] = $data1->bmi;
+				$res['diff_bmi'] = $data2->bmi-$data1->bmi;
 			}
 		}else{
 			$res['error_code'][] = "columns_required";
