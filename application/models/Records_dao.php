@@ -327,7 +327,8 @@ class Records_dao extends MY_Model {
 
 		// select
 		$this -> db -> select('_m.*');
-
+		$this -> db -> select('m.age as age');
+		$this -> db -> select('m.height as height');
 		// join
 		$this -> ajax_from_join();
 
