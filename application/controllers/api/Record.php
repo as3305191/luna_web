@@ -176,16 +176,19 @@ class Record extends MY_Base_Controller {
 	}
 
 	// 差異記錄
-	public function find_diff_range(){
+	public function find_range(){
 		$member_id = $this -> get_post('member_id');
 		$today = date("Y-m-d");
 
 		if(!empty($member_id)){
 			$res['success'] = TRUE;
-			$data1 = $this -> records_dao -> find_max_weight(array('member_id' => $member_id));
-			// $data2 = $this -> records_dao -> find_min_weight(array('member_id' => $member_id));
-			$res['data1'] = $data1;
-			// $res['data2'] = $data2;
+			$dataList = $this -> records_dao -> find_list_by_weight(array('member_id' => $member_id));
+			if(!empty($dataList)){
+				$data1 = $dataList[0];
+				$data2 = end($dataList);
+				$res['data1'] = $data1;
+				$res['data2'] = $data2;
+			}
 		}else{
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";

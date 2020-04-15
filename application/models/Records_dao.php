@@ -144,6 +144,28 @@ class Records_dao extends MY_Model {
 	}
 
 
+	function find_list_by_weight($f){
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select('_m.*');
+
+		if(!empty($f['member_id'])){
+			$this -> db -> where('_m.member_id',$f['member_id']);
+		}
+
+		$this -> db -> where("_m.is_delete", 0);
+		$this -> db -> order_by("weight", "asc");
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
+
+
+
+
+
 	function find_min_weight($f){
    	$this -> db -> from("$this->table_name as _m");
 
