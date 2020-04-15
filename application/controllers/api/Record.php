@@ -747,14 +747,21 @@ class Record extends MY_Base_Controller {
 				$bone_mass = $each->weight/1000 * $each->bone_mass_rate/100;
 				$skeletal_muscle =  $each->weight/1000 * $each->skeletal_muscle_rate/100;
 
-				$each -> weight = number_format($weight_kg,1);
-				$each -> body_fat = number_format($body_fat,1);
-				$each -> visceral = number_format($visceral_fat,1);
-				$each -> protein = number_format($protein,1);
-				$each -> moisture = number_format($moisture,1);
-				$each -> muscle = number_format($muscle,1);
-				$each -> skeletal_muscle = number_format($skeletal_muscle,1);
-				$each -> bone_mass = number_format($bone_mass,1);
+				$each -> weight = number_format($weight_kg,2);
+				$each -> body_fat = number_format($body_fat,2);
+
+				$dRate = $m-> body_fat_rate;
+				$m -> body_fat_rate = number_format($dRate,2);
+				$m -> visceral_fat = number_format($visceral_fat,2);
+				$vRate = $m-> visceral_fat_rate;
+				$m -> visceral_fat_rate = number_format($vRate,2);
+
+				$each -> visceral = number_format($visceral_fat,2);
+				$each -> protein = number_format($protein,2);
+				$each -> moisture = number_format($moisture,2);
+				$each -> muscle = number_format($muscle,2);
+				$each -> skeletal_muscle = number_format($skeletal_muscle,2);
+				$each -> bone_mass = number_format($bone_mass,2);
 			}
 
 			$res['list'] = $list;
