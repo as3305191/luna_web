@@ -149,7 +149,11 @@ class Record extends MY_Base_Controller {
 				// $m->weight =sprintf("%.2f",$weight_kg);
 				$m -> weight = number_format($weight_kg,1);
 				$m -> body_fat = number_format($body_fat,1);
+				$dRate = $m-> body_fat_rate;
+				$m -> body_fat_rate = number_format($dRate,1);
 				$m -> visceral_fat = number_format($visceral_fat,1);
+				$vRate = $m-> visceral_fat_rate;
+				$m -> visceral_fat_rate = number_format($vRate,1);
 				$m -> protein = number_format($protein,1);
 				$m -> moisture = number_format($moisture,1);
 				$m -> muscle = number_format($muscle,1);
