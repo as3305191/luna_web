@@ -131,12 +131,6 @@ class Record extends MY_Base_Controller {
 		if(!empty($member_id)){
 			$m = $this -> records_dao -> find_by_value(array('member_id' => $member_id));
 			$ketone = $this -> ketone_record_dao -> find_by_one(array('member_id' => $member_id,'date' => $today));
-			// $ketone = $this -> ketone_record_dao -> find_by_one(array('member_id' => $member_id));
-
-			$data1 = $this -> records_dao -> find_max_weight(array('member_id' => $member_id));
-			$data2 = $this -> records_dao -> find_min_weight(array('member_id' => $member_id));
-			$res['data1'] = $data1;
-			$res['data2'] = $data2;
 
 			$res['success'] = TRUE;
 			if(!empty($m)){
@@ -174,6 +168,24 @@ class Record extends MY_Base_Controller {
 				// 獲得suggestion
 				$res['td'] = $this -> get_suggestions($member_id,0);
 			}
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
+	// 差異記錄
+	public function find_diff_range(){
+		$member_id = $this -> get_post('member_id');
+		$today = date("Y-m-d");
+
+		if(!empty($member_id)){
+			$res['success'] = TRUE;
+			$data1 = $this -> records_dao -> find_max_weight(array('member_id' => $member_id));
+			$data2 = $this -> records_dao -> find_min_weight(array('member_id' => $member_id));
+			$res['data1'] = $data1;
+			$res['data2'] = $data2;
 		}else{
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";
