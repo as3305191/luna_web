@@ -183,9 +183,9 @@ class Record extends MY_Base_Controller {
 		if(!empty($member_id)){
 			$res['success'] = TRUE;
 			$data1 = $this -> records_dao -> find_max_weight(array('member_id' => $member_id));
-			$data2 = $this -> records_dao -> find_min_weight(array('member_id' => $member_id));
+			// $data2 = $this -> records_dao -> find_min_weight(array('member_id' => $member_id));
 			$res['data1'] = $data1;
-			$res['data2'] = $data2;
+			// $res['data2'] = $data2;
 		}else{
 			$res['error_code'][] = "columns_required";
 			$res['error_message'][] = "缺少必填欄位";
