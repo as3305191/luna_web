@@ -191,12 +191,15 @@ class Record extends MY_Base_Controller {
 				$min_weight = number_format($data1->weight/1000,2);
 				$diff_weight = $max_weight - $min_weight;
 
-				$res['max_date'] = $data2->create_date;
-				$res['min_date'] = $data1->create_date;
+				$data = array();
+				$data['max_date'] = $data2->create_date;
+				$data['min_date'] = $data1->create_date;
 
-				$res['max_weight'] = $max_weight;
-				$res['min_weight'] = $min_weight;
-				$res['diff_weight'] = number_format($diff_weight,2);
+				$data['max_weight'] = $max_weight;
+				$data['min_weight'] = $min_weight;
+				$data['diff_weight'] = number_format($diff_weight,2);
+
+				$res['diff'] = $data;
 			}
 		}else{
 			$res['error_code'][] = "columns_required";
