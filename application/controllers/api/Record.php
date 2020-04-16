@@ -199,6 +199,11 @@ class Record extends MY_Base_Controller {
 				$data['min_weight'] = $min_weight;
 				$data['diff_weight'] = number_format($diff_weight,2);
 
+				$diff_bmi = $data2->bmi - $data1->bmi;
+				$data['max_bmi'] = $data2->bmi;
+				$data['min_bmi'] = $data1->bmi;
+				$data['diff_bmi'] = number_format($diff_bmi,2);
+
 				$res['diff'] = $data;
 			}
 		}else{
