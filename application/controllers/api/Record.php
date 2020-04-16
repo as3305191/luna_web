@@ -1009,14 +1009,14 @@ class Record extends MY_Base_Controller {
 				$bone_mass = $data1->weight/1000 * $data1->bone_mass_rate/100;
 				$skeletal_muscle =  $data1->weight/1000 * $data1->skeletal_muscle_rate/100;
 
-				$data1 -> weight = number_format($weight_kg,1);
-				$data1 -> body_fat = number_format($body_fat,1);
-				$data1 -> visceral_fat = number_format($visceral_fat,1);
-				$data1 -> protein = number_format($protein,1);
-				$data1 -> moisture = number_format($moisture,1);
-				$data1 -> muscle = number_format($muscle,1);
-				$data1 -> bone_mass = number_format($bone_mass,1);
-				$data1 -> skeletal_muscle = number_format($skeletal_muscle,1);
+				$data1 -> weight = number_format($weight_kg,2);
+				$data1 -> body_fat = number_format($body_fat,2);
+				$data1 -> visceral_fat = number_format($visceral_fat,2);
+				$data1 -> protein = number_format($protein,2);
+				$data1 -> moisture = number_format($moisture,2);
+				$data1 -> muscle = number_format($muscle,2);
+				$data1 -> bone_mass = number_format($bone_mass,2);
+				$data1 -> skeletal_muscle = number_format($skeletal_muscle,2);
 			}
 
 			if(!empty($data2)){
@@ -1029,14 +1029,14 @@ class Record extends MY_Base_Controller {
 				$bone_mass = $data2->weight/1000 * $data2->bone_mass_rate/100;
 				$skeletal_muscle =  $data2->weight/1000 * $data2->skeletal_muscle_rate/100;
 
-				$data2 -> weight = number_format($weight_kg,1);
-				$data2 -> body_fat = number_format($body_fat,1);
-				$data2 -> visceral_fat = number_format($visceral_fat,1);
-				$data2 -> protein = number_format($protein,1);
-				$data2 -> moisture = number_format($moisture,1);
-				$data2 -> muscle = number_format($muscle,1);
-				$data2 -> skeletal_muscle = number_format($skeletal_muscle,1);
-				$data2 -> bone_mass = number_format($bone_mass,1);
+				$data2 -> weight = number_format($weight_kg,2);
+				$data2 -> body_fat = number_format($body_fat,2);
+				$data2 -> visceral_fat = number_format($visceral_fat,2);
+				$data2 -> protein = number_format($protein,2);
+				$data2 -> moisture = number_format($moisture,2);
+				$data2 -> muscle = number_format($muscle,2);
+				$data2 -> skeletal_muscle = number_format($skeletal_muscle,2);
+				$data2 -> bone_mass = number_format($bone_mass,2);
 			}
 
 			$day = 0;
