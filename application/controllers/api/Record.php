@@ -106,7 +106,15 @@ class Record extends MY_Base_Controller {
 					}
 					if($can_insert) {
 						$id = $this -> records_dao -> insert($insert_data);
-						$res['id'] = $id;
+						$item = $this -> records_dao -> find_last_by_member_id($member_id, $id);
+						// delete when exists records in 10 seconds
+						$diff = abs(time() - strtotime($item->create_time));
+						if($diff < 5) {
+							// delete 
+							$this -> records_dao -> delete($id);
+						} else {
+							$res['id'] = $id;
+						}
 					}
 					$res['success'] = TRUE;
 				} else {
@@ -121,6 +129,17 @@ class Record extends MY_Base_Controller {
 		}
 
 		$this -> to_json($res);
+	}
+
+	public function test_last($member_id, $last_id) {
+		$item = $this -> records_dao -> find_last_by_member_id($member_id, $last_id);
+		if(!empty($item)) {
+			$diff = abs(time() - strtotime($item->create_time));
+			echo $diff;
+		} else {
+			echo "NULL";
+		}
+		
 	}
 
 	// 秤重最新紀錄

@@ -645,5 +645,16 @@ class Records_dao extends MY_Model {
 
 	}
 
+	function find_last_by_member_id($member_id, $last_id) {
+		$this -> db -> where("member_id", $member_id);
+		$this -> db -> where("id < {$last_id}");
+		$this -> db -> limit(1);
+		$list = $this -> find_all();
+		if(count($list) > 0) {
+			return $list[0];
+		}
+		return NULL;
+	}
+
 }
 ?>
