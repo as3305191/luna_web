@@ -112,6 +112,7 @@ class Record extends MY_Base_Controller {
 						if($diff < 5) {
 							// delete 
 							$this -> records_dao -> delete($id);
+							$res['too_often'] = TRUE;
 						} else {
 							$res['id'] = $id;
 						}
