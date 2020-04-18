@@ -99,7 +99,7 @@ class Record extends MY_Base_Controller {
 						// contains old data
 						$diff = abs(time() - strtotime($data->create_time));
 						$res['diff'] = $diff;
-						if($diff < 10) {
+						if($diff < 5) {
 							$res['too_often'] = TRUE;
 							$can_insert = FALSE;
 						}
@@ -108,11 +108,16 @@ class Record extends MY_Base_Controller {
 						$id = $this -> records_dao -> insert($insert_data);
 						$item = $this -> records_dao -> find_last_by_member_id($member_id, $id);
 						// delete when exists records in 10 seconds
-						$diff = abs(time() - strtotime($item->create_time));
-						if($diff < 5) {
-							// delete 
-							$this -> records_dao -> delete($id);
-							$res['too_often'] = TRUE;
+						if(!empty($item)) {
+							$diff = abs(time() - strtotime($item->create_time));
+							if($diff < 5) {
+								// delete 
+								$res['diff'] = $diff;
+								$this -> records_dao -> delete($id);
+								$res['too_often'] = TRUE;
+							} else {
+								$res['id'] = $id;
+							}
 						} else {
 							$res['id'] = $id;
 						}
