@@ -143,6 +143,33 @@ class Records_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_avg($f){
+		$this -> db -> from("$this->table_name as _m");
+		// $this -> db -> select('_m.*');
+
+		$this -> db -> select('AVG(_m.weight) as weight, AVG(_m.body_fat) as body_fat , AVG(_m.body_fat_rate) as body_fat_rate');
+
+		if(!empty($f['member_id'])){
+			$this -> db -> where("_m.member_id", $f['member_id']);
+		}
+
+		if(!empty($f['start_date'])){
+			$this -> db -> where("_m.create_date>=", $f['start_date']);
+		}
+
+		if(!empty($f['end_date'])){
+			$this -> db -> where("_m.create_date<", $f['end_date']);
+		}
+
+		$query = $this -> db -> get();
+
+		if ($query -> num_rows() > 0) {
+			$row = $query -> row();
+			return $row;
+		}
+		return NULL;
+  }
+
 
 	function find_list_by_weight($f){
 		$this -> db -> from("$this->table_name as _m");

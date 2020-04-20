@@ -888,27 +888,158 @@ class Record extends MY_Base_Controller {
 				$f['is_week'] = $is_week;
 			}
 
-			$list = $this -> records_dao -> find_by_date($f);
-
 			$res['success'] = TRUE;
+			if(!empty($is_month)){
+
+				$date1 = date("Y-m-01");
+				$date2 = date("Y-m-08");
+				$date3 = date("Y-m-15");
+				$date4 = date("Y-m-22");
+				$date5 = date("Y-m-29");
+
+				$list = array();
+				$res['success'] = TRUE;
+				$f['start_date'] = $date1;
+				$f['end_date']  = $date2;
+				$m1 = $this -> records_dao -> find_avg($f);
+				if(!empty($m1->weight)){
+					$list[] = $m1;
+				}
+
+				$f['start_date'] = $date2;
+				$f['end_date']  = $date3;
+				$m2 = $this -> records_dao -> find_avg($f);
+				if(!empty($m2->weight)){
+					$list[] = $m2;
+				}
+
+				$f['start_date'] = $date3;
+				$f['end_date']  = $date4;
+				$m3 = $this -> records_dao -> find_avg($f);
+				if(!empty($m3->weight)){
+					$list[] = $m3;
+				}
+
+				$f['start_date'] = $date4;
+				$f['end_date']  = $date5;
+				$m4 = $this -> records_dao -> find_avg($f);
+				if(!empty($m4->weight)){
+					$list[] = $m4;
+				}
+
+				$f['start_date'] = $date5;
+				$f['end_date'] = '';
+				$m5 = $this -> records_dao -> find_avg($f);
+				if(!empty($m5->weight)){
+					$list[] = $m5;
+				}
+
+				foreach ($list as $each) {
+					$weight_kg = $each->weight/1000;
+					$body_fat =  $each->weight/1000 * $each->body_fat_rate/100;
+					$body_fat_rate =  $each->body_fat_rate;
+
+					$each -> weight = number_format($weight_kg,2);
+					$each -> body_fat = number_format($body_fat,2);
+					$each -> body_fat_rate = number_format($body_fat_rate,2);
+				}
+
+				$res['list'] = $list;
+
+			}else {
+
+				$list = $this -> records_dao -> find_by_date($f);
+				foreach ($list as $each) {
+					$weight_kg = $each->weight/1000;
+					$body_fat =  $each->weight/1000 * $each->body_fat_rate/100;
+					$visceral_fat = $each->weight/1000 * $each->visceral_fat_rate/100;
+					$protein = $each->weight/1000 * $each->protein_rate/100;
+					$moisture = $each->weight/1000 * $each->moisture_rate/100;
+					$muscle = $each->weight/1000 * $each->muscle_rate/100;
+					$bone_mass = $each->weight/1000 * $each->bone_mass_rate/100;
+					$skeletal_muscle =  $each->weight/1000 * $each->skeletal_muscle_rate/100;
+
+					$each -> weight = number_format($weight_kg,1);
+					$each -> body_fat = number_format($body_fat,1);
+					$each -> visceral = number_format($visceral_fat,1);
+					$each -> protein = number_format($protein,1);
+					$each -> moisture = number_format($moisture,1);
+					$each -> muscle = number_format($muscle,1);
+					$each -> skeletal_muscle = number_format($skeletal_muscle,1);
+					$each -> bone_mass = number_format($bone_mass,1);
+				}
+
+				$res['list'] = $list;
+
+			}
+
+
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
+	public function list_month(){
+		$member_id = $this -> get_post('member_id');
+
+		if(!empty($member_id)){
+			$f = array('member_id' => $member_id);
+
+			$date1 = date("Y-m-01");
+			$date2 = date("Y-m-08");
+			$date3 = date("Y-m-15");
+			$date4 = date("Y-m-22");
+			$date5 = date("Y-m-29");
+
+			$list = array();
+			$res['success'] = TRUE;
+			$f['start_date'] = $date1;
+			$f['end_date']  = $date2;
+			$m1 = $this -> records_dao -> find_avg($f);
+			if(!empty($m1->weight)){
+				$list[] = $m1;
+			}
+
+			$f['start_date'] = $date2;
+			$f['end_date']  = $date3;
+			$m2 = $this -> records_dao -> find_avg($f);
+			if(!empty($m2->weight)){
+				$list[] = $m2;
+			}
+
+			$f['start_date'] = $date3;
+			$f['end_date']  = $date4;
+			$m3 = $this -> records_dao -> find_avg($f);
+			if(!empty($m3->weight)){
+				$list[] = $m3;
+			}
+
+			$f['start_date'] = $date4;
+			$f['end_date']  = $date5;
+			$m4 = $this -> records_dao -> find_avg($f);
+			if(!empty($m4->weight)){
+				$list[] = $m4;
+			}
+
+			$f['start_date'] = $date5;
+			$f['end_date'] = '';
+			$m5 = $this -> records_dao -> find_avg($f);
+			if(!empty($m5->weight)){
+				$list[] = $m5;
+			}
+
+
 			foreach ($list as $each) {
 				$weight_kg = $each->weight/1000;
 				$body_fat =  $each->weight/1000 * $each->body_fat_rate/100;
-				$visceral_fat = $each->weight/1000 * $each->visceral_fat_rate/100;
-				$protein = $each->weight/1000 * $each->protein_rate/100;
-				$moisture = $each->weight/1000 * $each->moisture_rate/100;
-				$muscle = $each->weight/1000 * $each->muscle_rate/100;
-				$bone_mass = $each->weight/1000 * $each->bone_mass_rate/100;
-				$skeletal_muscle =  $each->weight/1000 * $each->skeletal_muscle_rate/100;
+				$body_fat_rate =  $each->body_fat_rate;
 
-				$each -> weight = number_format($weight_kg,1);
-				$each -> body_fat = number_format($body_fat,1);
-				$each -> visceral = number_format($visceral_fat,1);
-				$each -> protein = number_format($protein,1);
-				$each -> moisture = number_format($moisture,1);
-				$each -> muscle = number_format($muscle,1);
-				$each -> skeletal_muscle = number_format($skeletal_muscle,1);
-				$each -> bone_mass = number_format($bone_mass,1);
+				$each -> weight = number_format($weight_kg,2);
+				$each -> body_fat = number_format($body_fat,2);
+				$each -> body_fat_rate = number_format($body_fat_rate,2);
+
 			}
 
 			$res['list'] = $list;
