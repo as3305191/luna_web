@@ -111,7 +111,7 @@ class Record extends MY_Base_Controller {
 						if(!empty($item)) {
 							$diff = abs(time() - strtotime($item->create_time));
 							if($diff < 5) {
-								// delete 
+								// delete
 								$res['diff'] = $diff;
 								$this -> records_dao -> delete($id);
 								$res['too_often'] = TRUE;
@@ -145,7 +145,7 @@ class Record extends MY_Base_Controller {
 		} else {
 			echo "NULL";
 		}
-		
+
 	}
 
 	// 秤重最新紀錄
@@ -216,7 +216,15 @@ class Record extends MY_Base_Controller {
 				$min_weight = number_format($data1->weight/1000,2);
 				$diff_weight = $max_weight - $min_weight;
 
+				$max_fat = number_format($data2->body_fat/1000,2);
+				$min_fat = number_format($data1->body_fat/1000,2);
+				$diff_fat = $max_fat - $min_fat;
+
 				$data = array();
+
+				// $data['max'] = $data2;
+				// $data['min'] = $data1;
+
 				$data['max_date'] = $data2->create_date;
 				$data['min_date'] = $data1->create_date;
 
@@ -224,10 +232,19 @@ class Record extends MY_Base_Controller {
 				$data['min_weight'] = $min_weight;
 				$data['diff_weight'] = number_format($diff_weight,2);
 
+				$data['max_fat'] = $max_fat;
+				$data['min_fat'] = $min_fat;
+				$data['diff_fat'] = number_format($diff_weight,2);
+
 				$diff_bmi = $data2->bmi - $data1->bmi;
 				$data['max_bmi'] = $data2->bmi;
 				$data['min_bmi'] = $data1->bmi;
 				$data['diff_bmi'] = number_format($diff_bmi,2);
+
+				$diff_rate = $data2->body_fat_rate - $data1->body_fat_rate;
+				$data['max_rate'] = $data2->body_fat_rate;
+				$data['min_rate'] = $data1->body_fat_rate;
+				$data['diff_rate'] = number_format($diff_rate,2);
 
 				$res['diff'] = $data;
 			}
