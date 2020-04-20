@@ -234,7 +234,7 @@ class Record extends MY_Base_Controller {
 
 				$data['max_fat'] = $max_fat;
 				$data['min_fat'] = $min_fat;
-				$data['diff_fat'] = number_format($diff_weight,2);
+				$data['diff_fat'] = number_format($diff_fat,2);
 
 				$diff_bmi = $data2->bmi - $data1->bmi;
 				$data['max_bmi'] = $data2->bmi;
