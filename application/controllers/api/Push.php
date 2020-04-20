@@ -15,6 +15,18 @@ class Push extends MY_Base_Controller {
 		echo "push";
 	}
 
+	public function doTest(){
+		$action = array(
+			"link" => $link // link
+		);
+		$title = 'The V';
+		$msg = 'Message';
+		$token = 'difkJDey-gM:APA91bHTvXHh2ZUjl3PaWXS_Td8odCziQW1opIwl4_oGrec_SYBZLePQ_kjJZAzRKQcC39liWDuyjCmO9qC8jWeu52WXqG6ESNFWzC4nhM_1F7xmprzUfbjP6QpER3Qp3l_DI1KgRAZf';
+		$this -> send_gcm_notification($token, $title, '' , $action);
+
+
+	}
+
 	public function do_push() {
 		$this->do_log("do_push");
 		// $this->to_json(array('success'=>TRUE));
