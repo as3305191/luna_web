@@ -147,7 +147,7 @@ class Records_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		// $this -> db -> select('_m.*');
 
-		$this -> db -> select('AVG(_m.weight) as weight, AVG(_m.body_fat) as body_fat , AVG(_m.body_fat_rate) as body_fat_rate');
+		$this -> db -> select('_m.create_date,AVG(_m.weight) as weight, AVG(_m.body_fat) as body_fat , AVG(_m.body_fat_rate) as body_fat_rate');
 
 		if(!empty($f['member_id'])){
 			$this -> db -> where("_m.member_id", $f['member_id']);
