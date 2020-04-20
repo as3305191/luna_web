@@ -17,7 +17,7 @@ class Push extends MY_Base_Controller {
 
 	public function doTest(){
 		$action = array(
-			"link" => $link // link
+			"link" => '123' // link
 		);
 		$title = 'The V';
 		$msg = 'Message';
