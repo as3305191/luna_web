@@ -21,7 +21,7 @@ class Push extends MY_Base_Controller {
 		);
 		$title = 'The V';
 		$msg = 'Message';
-		$token = 'difkJDey-gM:APA91bHTvXHh2ZUjl3PaWXS_Td8odCziQW1opIwl4_oGrec_SYBZLePQ_kjJZAzRKQcC39liWDuyjCmO9qC8jWeu52WXqG6ESNFWzC4nhM_1F7xmprzUfbjP6QpER3Qp3l_DI1KgRAZf';
+		$token = 'dTp_nvpxwU4:APA91bFMaoS7zI6A6VVzuB39GjmDZn-kpWe5vo1LAbKfYyXOR8NuVEm-ybq48YrvOiOwHYSosB4E4neBIn5K_siKh9D0IhKDG1va4x0GFSfOsaQbPlVsdFky2Cdsr9DZaKZS97b7Izfr';
 		$this -> send_gcm_notification($token, $title, '' , $action);
 
 
