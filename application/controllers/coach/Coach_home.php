@@ -55,9 +55,13 @@ class Coach_home extends MY_Base_Controller {
 		$the_fat_rate_change = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
 
 		foreach ($the_fat_rate_change as $each) {
-		$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
-		$the_original_weight_list= $this -> records_dao -> find_original_weight($each->id);
-		$each-> the_fat_rate_change = floatval($the_original_weight_list-> body_fat_rate)-floatval($the_new_weight_list-> body_fat_rate);
+			$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
+			$the_original_weight_list= $this -> records_dao -> find_original_weight($each->id);
+			if(!empty($the_original_weight_list->body_fat_rate) && !empty($the_new_weight_list->body_fat_rate)){
+				$each-> the_fat_rate_change = floatval($the_original_weight_list-> body_fat_rate)-floatval($the_new_weight_list-> body_fat_rate);
+			} else{
+				$each-> the_fat_rate_change = 0;
+			}
 		}
 
 		$sum = 0;
