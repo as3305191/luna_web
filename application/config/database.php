@@ -75,8 +75,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> 'mysql:host=34.80.199.79; dbname=body_fat; charset=utf8;',
-	'username' => 'apple',
-	'password' => '!apple',
+	'username' => 'root',
+	'password' => '!@#admin',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
