@@ -292,9 +292,9 @@ class Members_body_records extends MY_Mgmt_Controller {
 
 					iconv("UTF-8","Big5//IGNORE",$each -> user_name),
 					iconv("UTF-8","Big5//IGNORE",$each -> adc1),
-					iconv("UTF-8","Big5//IGNORE",$each -> age),
-					iconv("UTF-8","Big5//IGNORE",$each -> height),
 					iconv("UTF-8","Big5//IGNORE",$each -> weight / 1000.0),
+					iconv("UTF-8","Big5//IGNORE",$each -> height),
+					iconv("UTF-8","Big5//IGNORE",$each -> age),
 					iconv("UTF-8","Big5//IGNORE",$each -> body_fat_rate),
 					iconv("UTF-8","Big5//IGNORE",$each -> body_fat / 1000.0),
 					iconv("UTF-8","Big5//IGNORE",$each -> visceral_fat_rate),
