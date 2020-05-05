@@ -71,12 +71,11 @@ class Coach_home extends MY_Base_Controller {
 		$data['count_help_people'] = count($the_fat_rate_change);
 		$data['help_fat_rate_change'] =ROUND($sum,2) ;
 
-		$map_date= date("Y-m-d",strtotime("+1 day"));
 		$find_date = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
-
+		$map_date = 0;
 		foreach ($find_date as $each) {
 			$startdate = $this -> records_dao -> find_first_day($each->id);
-			if(strtotime($map_date)>strtotime($startdate)){
+			if($map_date==0 || strtotime($map_date)>strtotime($startdate)){
 				$map_date = $startdate;
 			}
 		}
@@ -114,11 +113,26 @@ class Coach_home extends MY_Base_Controller {
 			foreach ($items as $each) {
 			$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
 			$the_original_weight_list= $this -> records_dao -> find_original_weight($each->id);
-
-			$each-> the_new_weight = floatval($the_new_weight_list-> weight);
-			$each-> the_weight_change = (floatval($the_original_weight_list-> weight)-floatval($the_new_weight_list-> weight));
-			$each-> the_fat_rate_change = floatval($the_original_weight_list-> body_fat_rate)-floatval($the_new_weight_list-> body_fat_rate);
-			$each-> the_fat_info = $the_new_weight_list-> fat_info;
+			if(!empty($the_new_weight_list-> weight)){
+				$each-> the_new_weight = floatval($the_new_weight_list-> weight);
+			} else{
+				$each-> the_new_weight = 0;
+			}
+			if(!empty($the_original_weight_list-> weight) && !empty($the_new_weight_list-> weight)){
+				$each-> the_weight_change = (floatval($the_original_weight_list-> weight)-floatval($the_new_weight_list-> weight));
+			} else{
+				$each-> the_weight_change = 0;
+			}
+			if(!empty($the_original_weight_list-> body_fat_rate) && !empty($the_new_weight_list-> body_fat_rate)){
+				$each-> the_fat_rate_change = floatval($the_original_weight_list-> body_fat_rate)-floatval($the_new_weight_list-> body_fat_rate);
+			} else{
+				$each-> the_fat_rate_change = 0;
+			}
+			if(!empty( $the_new_weight_list-> fat_info)){
+				$each-> the_fat_info = $the_new_weight_list-> fat_info;
+			} else{
+				$each-> the_fat_info = 0;
+			}
 			}
 			$res['items'] = $items;
 			$res['count_items'] = count($res['items']);

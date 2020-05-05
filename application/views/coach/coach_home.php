@@ -98,7 +98,7 @@
 
                 </div>
 
-                <div class="card-block g-pa-0" style="">
+                <div class="card-block g-pa-0">
                   <!-- Product Table -->
                   <div class="table-responsive">
                     <table id="dt_list" class="table table-bordered u-table--v2">
