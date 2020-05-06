@@ -18,9 +18,9 @@ class Member_weight_last_day extends MY_Base_Controller {
 		$data = array();
 		$s_data = $this -> setup_user_data(array());
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
-		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
+		$res['items'] = $this -> dao -> find_all_by_coach($data['login_user']->code);
 		$data['p'] = count($res['items']);
-		$data['page'] = ceil($data['p']/5);
+		$data['page'] = ceil($data['p']/10);
 		$data['now'] = 'member_weight_last_day';
 		// $this -> to_json($data);
 		$this -> load -> view('coach/member_weight_last_day', $data);

@@ -676,10 +676,10 @@ class Members_dao extends MY_Model {
 
 		$this -> db -> order_by('_m.id', 'asc');
 		if($start_l>1){
-			$this -> db -> limit(5, $start_l);
+			$this -> db -> limit(10, $start_l);
 
 		} else{
-			$this -> db -> limit(5);
+			$this -> db -> limit(10);
 		}
 		// limit
 

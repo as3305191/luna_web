@@ -24,7 +24,7 @@ class Coach_home extends MY_Base_Controller {
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> find_all_by_coach($data['login_user']->code);
 		$data['p'] = count($items);
-		$data['page'] = ceil($data['p']/5);
+		$data['page'] = ceil($data['p']/10);
 		$data['now'] = 'coach_home';//現在哪頁
 
 		$members_lose_3days = $this -> dao -> query_ajax_by_coachall($data['login_user']->code);
@@ -100,7 +100,7 @@ class Coach_home extends MY_Base_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		if($page>1){
-			$b=((int)$page-1)*5;
+			$b=((int)$page-1)*10;
 		 	$items = $this -> dao -> query_ajax_by_coach($login_user->code,$b);
 			foreach ($items as $each) {
 				$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
