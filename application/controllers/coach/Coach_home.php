@@ -22,8 +22,8 @@ class Coach_home extends MY_Base_Controller {
 
 		$s_data = $this -> setup_user_data(array());
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
-		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
-		$data['p'] = count($res['items']);
+		$items = $this -> dao -> find_all_by_coach($data['login_user']->code);
+		$data['p'] = count($items);
 		$data['page'] = ceil($data['p']/5);
 		$data['now'] = 'coach_home';//現在哪頁
 

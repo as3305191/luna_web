@@ -704,11 +704,11 @@ class Members_dao extends MY_Model {
 		return $list;
 	}
 
-	function find_all_by_coach($login_user_id) {
+	function find_all_by_coach($coach_id) {
 
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> where("coach_id", $login_user_id);
+		$this -> db -> where("coach_id", $coach_id);
 
 		// join
 		$this -> ajax_from_join();
