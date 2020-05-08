@@ -171,20 +171,20 @@ class Record extends MY_Base_Controller {
 				$rest_weight = $weight_kg - $body_fat;
 
 				// $m->weight =sprintf("%.2f",$weight_kg);
-				$m -> weight = number_format($weight_kg,2);
-				$m -> body_fat = number_format($body_fat,2);
+				$m -> weight = number_format($weight_kg,1);
+				$m -> body_fat = number_format($body_fat,1);
 				$dRate = $m-> body_fat_rate;
-				$m -> body_fat_rate = number_format($dRate,2);
-				$m -> visceral_fat = number_format($visceral_fat,2);
+				$m -> body_fat_rate = number_format($dRate,1);
+				$m -> visceral_fat = number_format($visceral_fat,1);
 				$vRate = $m-> visceral_fat_rate;
-				$m -> visceral_fat_rate = number_format($vRate,2);
-				$m -> protein = number_format($protein,2);
-				$m -> moisture = number_format($moisture,2);
-				$m -> muscle = number_format($muscle,2);
-				$m -> skeletal_muscle = number_format($skeletal_muscle,2);
-				$m -> bone_mass = number_format($bone_mass,2);
+				$m -> visceral_fat_rate = number_format($vRate,1);
+				$m -> protein = number_format($protein,1);
+				$m -> moisture = number_format($moisture,1);
+				$m -> muscle = number_format($muscle,1);
+				$m -> skeletal_muscle = number_format($skeletal_muscle,1);
+				$m -> bone_mass = number_format($bone_mass,1);
 				// $m -> fat_best = number_format($fat_best,1);
-				$m -> rest_weight = number_format($rest_weight,2);
+				$m -> rest_weight = number_format($rest_weight,1);
 
 				$res['record'] = $m;
 				if(!empty($ketone)){
@@ -212,12 +212,12 @@ class Record extends MY_Base_Controller {
 				$data1 = $dataList[0];
 				$data2 = end($dataList);
 
-				$max_weight = number_format($data2->weight/1000,2);
-				$min_weight = number_format($data1->weight/1000,2);
+				$max_weight = number_format($data2->weight/1000,1);
+				$min_weight = number_format($data1->weight/1000,1);
 				$diff_weight = $max_weight - $min_weight;
 
-				$max_fat = number_format($data2->body_fat/1000,2);
-				$min_fat = number_format($data1->body_fat/1000,2);
+				$max_fat = number_format($data2->body_fat/1000,1);
+				$min_fat = number_format($data1->body_fat/1000,1);
 				$diff_fat = $max_fat - $min_fat;
 
 				$data = array();
@@ -230,21 +230,21 @@ class Record extends MY_Base_Controller {
 
 				$data['max_weight'] = $max_weight;
 				$data['min_weight'] = $min_weight;
-				$data['diff_weight'] = number_format($diff_weight,2);
+				$data['diff_weight'] = number_format($diff_weight,1);
 
 				$data['max_fat'] = $max_fat;
 				$data['min_fat'] = $min_fat;
-				$data['diff_fat'] = number_format($diff_fat,2);
+				$data['diff_fat'] = number_format($diff_fat,1);
 
 				$diff_bmi = $data2->bmi - $data1->bmi;
 				$data['max_bmi'] = $data2->bmi;
 				$data['min_bmi'] = $data1->bmi;
-				$data['diff_bmi'] = number_format($diff_bmi,2);
+				$data['diff_bmi'] = number_format($diff_bmi,1);
 
 				$diff_rate = $data2->body_fat_rate - $data1->body_fat_rate;
 				$data['max_rate'] = $data2->body_fat_rate;
 				$data['min_rate'] = $data1->body_fat_rate;
-				$data['diff_rate'] = number_format($diff_rate,2);
+				$data['diff_rate'] = number_format($diff_rate,1);
 
 				$res['diff'] = $data;
 			}
@@ -278,20 +278,20 @@ class Record extends MY_Base_Controller {
 				$rest_weight = $weight_kg - $body_fat;
 
 				// $m->weight =sprintf("%.2f",$weight_kg);
-				$m -> weight = number_format($weight_kg,2);
-				$m -> body_fat = number_format($body_fat,2);
+				$m -> weight = number_format($weight_kg,1);
+				$m -> body_fat = number_format($body_fat,1);
 				$dRate = $m-> body_fat_rate;
-				$m -> body_fat_rate = number_format($dRate,2);
+				$m -> body_fat_rate = number_format($dRate,1);
 				$vRate = $m-> visceral_fat_rate;
-				$m -> visceral_fat_rate = number_format($vRate,2);
-				$m -> visceral_fat = number_format($visceral_fat,2);
-				$m -> protein = number_format($protein,2);
-				$m -> moisture = number_format($moisture,2);
-				$m -> muscle = number_format($muscle,2);
-				$m -> skeletal_muscle = number_format($skeletal_muscle,2);
-				$m -> bone_mass = number_format($bone_mass,2);
+				$m -> visceral_fat_rate = number_format($vRate,1);
+				$m -> visceral_fat = number_format($visceral_fat,1);
+				$m -> protein = number_format($protein,1);
+				$m -> moisture = number_format($moisture,1);
+				$m -> muscle = number_format($muscle,1);
+				$m -> skeletal_muscle = number_format($skeletal_muscle,1);
+				$m -> bone_mass = number_format($bone_mass,1);
 				// $m -> fat_best = number_format($fat_best,1);
-				$m -> rest_weight = number_format($rest_weight,2);
+				$m -> rest_weight = number_format($rest_weight,1);
 
 				$res['record'] = $m;
 				if(!empty($ketone)){
@@ -458,13 +458,13 @@ class Record extends MY_Base_Controller {
 		}
 
 		$td -> weight -> title = $msg["tip.weight"];
-		$td -> weight -> value = number_format($rec->weight/1000, 2) . " kg";
+		$td -> weight -> value = number_format($rec->weight/1000, 1) . " kg";
 		$td -> weight -> explain = $msg["tip.weightv"];
 		$td -> weight -> level = array("yellow","green","red");
 		$td -> weight -> level_data = array(
 			$msg["tip.low"],
-			number_format($lowweight, 2),
-			number_format($hightweight, 2),
+			number_format($lowweight, 1),
+			number_format($hightweight, 1),
 			$msg["tip.hight"],
 		);
 
@@ -555,8 +555,8 @@ class Record extends MY_Base_Controller {
 		$td -> fat -> level = array("yellow","green","red");
 		$td -> fat -> level_data = array(
 			$msg["tip.low"],
-			number_format($lowfat, 2),
-			number_format($hightfat, 2),
+			number_format($lowfat, 1),
+			number_format($hightfat, 1),
 			$msg["tip.hight"],
 		);
 
@@ -581,13 +581,13 @@ class Record extends MY_Base_Controller {
 		$hightWater = $rec -> weight / 1000 * $water_1;
 		$w_weight = $rec -> weight / 1000 * $wrate;
 		$td -> water -> title = $msg["tip.water"];
-		$td -> water -> value = number_format($w_weight, 2) . " kg";
+		$td -> water -> value = number_format($w_weight, 1) . " kg";
 		$td -> water -> explain = $msg["tip.waterv"];
 		$td -> water -> level = array("yellow","green","red");
 		$td -> water -> level_data = array(
 			$msg["tip.low"],
-			number_format($lowWater, 2),
-			number_format($hightWater, 2),
+			number_format($lowWater, 1),
+			number_format($hightWater, 1),
 			$msg["tip.hight"],
 		);
 
@@ -613,7 +613,7 @@ class Record extends MY_Base_Controller {
 			$td -> muscle -> advise = $msg["tip.muscle3v"];
 		}
 		$td -> muscle -> title = $msg["tip.muscle"];
-		$td -> muscle -> value = number_format($muscle_weight, 2) . " kg";
+		$td -> muscle -> value = number_format($muscle_weight, 1) . " kg";
 		$td -> muscle -> explain = $msg["tip.musclev"];
 		$td -> muscle -> level = array("yellow","green","green");
 		$td -> muscle -> level_data = array(
@@ -645,7 +645,7 @@ class Record extends MY_Base_Controller {
 		$ske_high = $rec -> weight / 1000 * $ske_1;
 
 		$td -> ske_muscle -> title = $msg["tip.skeMuscle"];
-		$td -> ske_muscle -> value = number_format($rec -> weight / 1000 * $rec->skeletal_muscle_rate / 100.0, 2) . " kg";
+		$td -> ske_muscle -> value = number_format($rec -> weight / 1000 * $rec->skeletal_muscle_rate / 100.0, 1) . " kg";
 		$td -> ske_muscle -> explain = $msg["tip.skeMusclev"];
 		$td -> ske_muscle -> level = array("yellow","green","green");
 		$td -> ske_muscle -> level_data = array(
@@ -676,7 +676,7 @@ class Record extends MY_Base_Controller {
 		}
 
 		$td -> vis_fat -> title = $msg["tip.visFat"];
-		$td -> vis_fat -> value = number_format($rec->visceral_fat_rate, 2);
+		$td -> vis_fat -> value = number_format($rec->visceral_fat_rate, 1);
 		$td -> vis_fat -> explain = $msg["tip.visFatv"];
 		$td -> vis_fat -> level = array("green","chocolate","red");
 		$td -> vis_fat -> level_data = array(
@@ -710,7 +710,7 @@ class Record extends MY_Base_Controller {
 		}
 
 		$td -> protein -> title = $msg["tip.protein"];
-		$td -> protein -> value = number_format($pkg, 2);
+		$td -> protein -> value = number_format($pkg, 1);
 		$td -> protein -> explain = $msg["tip.proteinv"];
 		$td -> protein -> level = array("yellow","green","green");
 
@@ -745,7 +745,7 @@ class Record extends MY_Base_Controller {
 		}
 
 		$td -> bone -> title = $msg["tip.bone"];
-		$td -> bone -> value = number_format($rec->bone_mass_rate, 2);
+		$td -> bone -> value = number_format($rec->bone_mass_rate, 1);
 		$td -> bone -> explain = $msg["tip.bonev"];
 		$td -> bone -> level = array("yellow","green","red");
 
@@ -791,14 +791,14 @@ class Record extends MY_Base_Controller {
 				$bone_mass = $each->weight/1000 * $each->bone_mass_rate/100;
 				$skeletal_muscle =  $each->weight/1000 * $each->skeletal_muscle_rate/100;
 
-				$each -> weight = number_format($weight_kg,2);
-				$each -> body_fat = number_format($body_fat,2);
-				$each -> visceral = number_format($visceral_fat,2);
-				$each -> protein = number_format($protein,2);
-				$each -> moisture = number_format($moisture,2);
-				$each -> muscle = number_format($muscle,2);
-				$each -> skeletal_muscle = number_format($skeletal_muscle,2);
-				$each -> bone_mass = number_format($bone_mass,2);
+				$each -> weight = number_format($weight_kg,1);
+				$each -> body_fat = number_format($body_fat,1);
+				$each -> visceral = number_format($visceral_fat,1);
+				$each -> protein = number_format($protein,1);
+				$each -> moisture = number_format($moisture,1);
+				$each -> muscle = number_format($muscle,1);
+				$each -> skeletal_muscle = number_format($skeletal_muscle,1);
+				$each -> bone_mass = number_format($bone_mass,1);
 			}
 
 			$res['list'] = $list;
@@ -830,21 +830,21 @@ class Record extends MY_Base_Controller {
 				$bone_mass = $each->weight/1000 * $each->bone_mass_rate/100;
 				$skeletal_muscle =  $each->weight/1000 * $each->skeletal_muscle_rate/100;
 
-				$each -> weight = number_format($weight_kg,2);
-				$each -> body_fat = number_format($body_fat,2);
+				$each -> weight = number_format($weight_kg,1);
+				$each -> body_fat = number_format($body_fat,1);
 
 				$dRate = $each-> body_fat_rate;
-				$each -> body_fat_rate = number_format($dRate,2);
-				$each -> visceral_fat = number_format($visceral_fat,2);
+				$each -> body_fat_rate = number_format($dRate,1);
+				$each -> visceral_fat = number_format($visceral_fat,1);
 				$vRate = $each-> visceral_fat_rate;
-				$each -> visceral_fat_rate = number_format($vRate,2);
+				$each -> visceral_fat_rate = number_format($vRate,1);
 
-				$each -> visceral = number_format($visceral_fat,2);
-				$each -> protein = number_format($protein,2);
-				$each -> moisture = number_format($moisture,2);
-				$each -> muscle = number_format($muscle,2);
-				$each -> skeletal_muscle = number_format($skeletal_muscle,2);
-				$each -> bone_mass = number_format($bone_mass,2);
+				$each -> visceral = number_format($visceral_fat,1);
+				$each -> protein = number_format($protein,1);
+				$each -> moisture = number_format($moisture,1);
+				$each -> muscle = number_format($muscle,1);
+				$each -> skeletal_muscle = number_format($skeletal_muscle,1);
+				$each -> bone_mass = number_format($bone_mass,1);
 			}
 
 			$res['list'] = $list;
@@ -939,9 +939,9 @@ class Record extends MY_Base_Controller {
 					$body_fat =  $each->weight/1000 * $each->body_fat_rate/100;
 					$body_fat_rate =  $each->body_fat_rate;
 
-					$each -> weight = number_format($weight_kg,2);
-					$each -> body_fat = number_format($body_fat,2);
-					$each -> body_fat_rate = number_format($body_fat_rate,2);
+					$each -> weight = number_format($weight_kg,1);
+					$each -> body_fat = number_format($body_fat,1);
+					$each -> body_fat_rate = number_format($body_fat_rate,1);
 				}
 
 				$res['list'] = $list;
@@ -1036,9 +1036,9 @@ class Record extends MY_Base_Controller {
 				$body_fat =  $each->weight/1000 * $each->body_fat_rate/100;
 				$body_fat_rate =  $each->body_fat_rate;
 
-				$each -> weight = number_format($weight_kg,2);
-				$each -> body_fat = number_format($body_fat,2);
-				$each -> body_fat_rate = number_format($body_fat_rate,2);
+				$each -> weight = number_format($weight_kg,1);
+				$each -> body_fat = number_format($body_fat,1);
+				$each -> body_fat_rate = number_format($body_fat_rate,1);
 
 			}
 
@@ -1182,14 +1182,14 @@ class Record extends MY_Base_Controller {
 				$bone_mass = $data1->weight/1000 * $data1->bone_mass_rate/100;
 				$skeletal_muscle =  $data1->weight/1000 * $data1->skeletal_muscle_rate/100;
 
-				$data1 -> weight = number_format($weight_kg,2);
-				$data1 -> body_fat = number_format($body_fat,2);
-				$data1 -> visceral_fat = number_format($visceral_fat,2);
-				$data1 -> protein = number_format($protein,2);
-				$data1 -> moisture = number_format($moisture,2);
-				$data1 -> muscle = number_format($muscle,2);
-				$data1 -> bone_mass = number_format($bone_mass,2);
-				$data1 -> skeletal_muscle = number_format($skeletal_muscle,2);
+				$data1 -> weight = number_format($weight_kg,1);
+				$data1 -> body_fat = number_format($body_fat,1);
+				$data1 -> visceral_fat = number_format($visceral_fat,1);
+				$data1 -> protein = number_format($protein,1);
+				$data1 -> moisture = number_format($moisture,1);
+				$data1 -> muscle = number_format($muscle,1);
+				$data1 -> bone_mass = number_format($bone_mass,1);
+				$data1 -> skeletal_muscle = number_format($skeletal_muscle,1);
 			}
 
 			if(!empty($data2)){
@@ -1202,14 +1202,14 @@ class Record extends MY_Base_Controller {
 				$bone_mass = $data2->weight/1000 * $data2->bone_mass_rate/100;
 				$skeletal_muscle =  $data2->weight/1000 * $data2->skeletal_muscle_rate/100;
 
-				$data2 -> weight = number_format($weight_kg,2);
-				$data2 -> body_fat = number_format($body_fat,2);
-				$data2 -> visceral_fat = number_format($visceral_fat,2);
-				$data2 -> protein = number_format($protein,2);
-				$data2 -> moisture = number_format($moisture,2);
-				$data2 -> muscle = number_format($muscle,2);
-				$data2 -> skeletal_muscle = number_format($skeletal_muscle,2);
-				$data2 -> bone_mass = number_format($bone_mass,2);
+				$data2 -> weight = number_format($weight_kg,1);
+				$data2 -> body_fat = number_format($body_fat,1);
+				$data2 -> visceral_fat = number_format($visceral_fat,1);
+				$data2 -> protein = number_format($protein,1);
+				$data2 -> moisture = number_format($moisture,1);
+				$data2 -> muscle = number_format($muscle,1);
+				$data2 -> skeletal_muscle = number_format($skeletal_muscle,1);
+				$data2 -> bone_mass = number_format($bone_mass,1);
 			}
 
 			$day = 0;
