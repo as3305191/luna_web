@@ -62,7 +62,11 @@ class Members extends MY_Mgmt_Controller {
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
-			$item = $list[0];
+			if(!empty($list)){
+				$item = $list[0];
+			} else{
+				$item = 0;
+			}
 			$health_report = $this -> records_dao -> find_record($q_data['id']);
 
 			$data['item'] = $item;
@@ -131,9 +135,14 @@ class Members extends MY_Mgmt_Controller {
 			'height',
 			'type',
 			'coach_id',
-			'birth',
 			'email'
 		));
+		$birth = $this -> get_post('birth');
+		if(empty($birth)){
+			$data['birth'] = NULL;
+		} else{
+			$data['birth'] = $birth ;
+		}
 
 		if(empty($id)) {
 			// insert

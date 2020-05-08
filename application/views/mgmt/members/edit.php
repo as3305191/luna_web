@@ -79,7 +79,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">生日</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control dt_picker" name="birth" value="<?= isset($item) ? $item -> birth : '' ?>" />
+						<input type="text" class="form-control dt_picker_" name="birth" value="<?= isset($item) ? $item -> birth : '' ?>" />
 					</div>
 				</div>
 			</fieldset>
@@ -348,7 +348,7 @@
 	}
 </style>
 <script>
-$(".dt_picker").datetimepicker({
+$(".dt_picker_").datetimepicker({
 		format : 'YYYY-MM-DD'
 	}).on('dp.change',function(event){
 
@@ -369,7 +369,7 @@ $('#app-edit-form').bootstrapValidator({
 						}
 					}
 			 }
-		}
+	}
 
 })
 .bootstrapValidator('validate');
