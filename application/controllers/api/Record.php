@@ -1186,6 +1186,7 @@ class Record extends MY_Base_Controller {
 
 				$data1 -> weight = number_format($weight_kg,1);
 				$data1 -> body_fat = number_format($body_fat,1);
+				$data1 -> body_fat_rate = number_format($data1->body_fat_rate,1);
 				$data1 -> visceral_fat = number_format($visceral_fat,1);
 				$data1 -> protein = number_format($protein,1);
 				$data1 -> moisture = number_format($moisture,1);
@@ -1206,6 +1207,7 @@ class Record extends MY_Base_Controller {
 
 				$data2 -> weight = number_format($weight_kg,1);
 				$data2 -> body_fat = number_format($body_fat,1);
+				$data2 -> body_fat_rate = number_format($data2->body_fat_rate,1);
 				$data2 -> visceral_fat = number_format($visceral_fat,1);
 				$data2 -> protein = number_format($protein,1);
 				$data2 -> moisture = number_format($moisture,1);
