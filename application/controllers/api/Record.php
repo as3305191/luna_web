@@ -795,6 +795,7 @@ class Record extends MY_Base_Controller {
 
 				$each -> weight = number_format($weight_kg,1);
 				$each -> body_fat = number_format($body_fat,1);
+				$each -> body_fat_rate = number_format($each->body_fat_rate,1);
 				$each -> visceral = number_format($visceral_fat,1);
 				$each -> protein = number_format($protein,1);
 				$each -> moisture = number_format($moisture,1);
