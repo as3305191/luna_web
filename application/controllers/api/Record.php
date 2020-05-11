@@ -185,6 +185,8 @@ class Record extends MY_Base_Controller {
 				$m -> bone_mass = number_format($bone_mass,1);
 				// $m -> fat_best = number_format($fat_best,1);
 				$m -> rest_weight = number_format($rest_weight,1);
+				$m -> bmi = number_format($m->bmi,1);
+				$m -> bmi_best = number_format($m->bmi_best,1);
 
 				$res['record'] = $m;
 				if(!empty($ketone)){
