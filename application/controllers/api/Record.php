@@ -239,13 +239,13 @@ class Record extends MY_Base_Controller {
 				$data['diff_fat'] = number_format($diff_fat,1);
 
 				$diff_bmi = $data2->bmi - $data1->bmi;
-				$data['max_bmi'] = $data2->bmi;
-				$data['min_bmi'] = $data1->bmi;
+				$data['max_bmi'] = number_format($data2->bmi,1); 
+				$data['min_bmi'] = number_format($data1->bmi,1);
 				$data['diff_bmi'] = number_format($diff_bmi,1);
 
 				$diff_rate = $data2->body_fat_rate - $data1->body_fat_rate;
-				$data['max_rate'] = $data2->body_fat_rate;
-				$data['min_rate'] = $data1->body_fat_rate;
+				$data['max_rate'] = number_format($data2->body_fat_rate,1);
+				$data['min_rate'] = number_format($data1->body_fat_rate,1);
 				$data['diff_rate'] = number_format($diff_rate,1);
 
 				$res['diff'] = $data;
