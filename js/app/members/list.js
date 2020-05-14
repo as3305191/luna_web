@@ -132,12 +132,12 @@ var WeightHistoryClass = (function(app) {
 			columns : [{
 				data : 'weight',
 				render: function(d,t,r) {
-					return parseFloat(d/1000).toFixed(2);
+					return parseFloat(d/1000).toFixed(1);
 				}
 			},{
 				data : 'body_fat',
 				render: function(d,t,r) {
-					return parseFloat(d/1000).toFixed(2);
+					return parseFloat(d/1000).toFixed(1);
 				}
 			},{
 				data : 'body_fat_rate'
@@ -211,7 +211,7 @@ var WeightHistoryClass = (function(app) {
 				$.each(json.items, function(){
 					sumWeight += parseFloat(this.sum_weight);
 				});
-				$('#sum_weight').html(numberWithCommas(sumWeight.toFixed(2)));
+				$('#sum_weight').html(numberWithCommas(sumWeight.toFixed(1)));
 		});
 
 		// get year month list
@@ -488,7 +488,7 @@ var KetonrecordClass = (function(app) {
 				$.each(json.items, function(){
 					sumWeight += parseFloat(this.sum_weight);
 				});
-				$('#sum_weight').html(numberWithCommas(sumWeight.toFixed(2)));
+				$('#sum_weight').html(numberWithCommas(sumWeight.toFixed(1)));
 		});
 
 		// get year month list

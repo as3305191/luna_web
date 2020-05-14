@@ -147,17 +147,17 @@
 	},{
 		data : 'weight',
 		render: function(d,t,r) {
-			return parseFloat(d / 1000).toFixed(2);
+			return parseFloat(d / 1000).toFixed(1);
 		}
 	},{
 		data : 'body_fat_rate',
 		render: function(d,t,r) {
-			return parseFloat(d).toFixed(2);
+			return parseFloat(d).toFixed(1);
 		}
 	},{
 		data : 'body_fat',
 		render: function(d,t,r) {
-			return parseFloat(d / 1000).toFixed(2);
+			return parseFloat(d / 1000).toFixed(1);
 		}
 	},{
 		data : 'visceral_fat_rate'
@@ -170,7 +170,7 @@
 	},{
 		data : 'skeletal_muscle_rate',
 		render: function(d,t,r) {
-			return parseFloat(d).toFixed(2);
+			return parseFloat(d).toFixed(1);
 		}
 	},{
 		data : 'bone_mass_rate'
