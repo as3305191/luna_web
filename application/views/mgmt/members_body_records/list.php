@@ -160,22 +160,40 @@
 			return parseFloat(d / 1000).toFixed(1);
 		}
 	},{
-		data : 'visceral_fat_rate'
+		data : 'visceral_fat_rate',
+		render: function(d,t,r) {
+			return parseFloat(d).toFixed(1);
+		}
 	},{
-		data : 'protein_rate'
+		data : 'protein_rate',
+		render: function(d,t,r) {
+			return parseFloat(d).toFixed(1);
+		}
 	},{
-		data : 'moisture_rate'
+		data : 'moisture_rate',
+		render: function(d,t,r) {
+			return parseFloat(d).toFixed(1);
+		}
 	},{
-		data : 'muscle_rate'
+		data : 'muscle_rate',
+		render: function(d,t,r) {
+			return parseFloat(d).toFixed(1);
+		}
 	},{
 		data : 'skeletal_muscle_rate',
 		render: function(d,t,r) {
 			return parseFloat(d).toFixed(1);
 		}
 	},{
-		data : 'bone_mass_rate'
+		data : 'bone_mass_rate',
+		render: function(d,t,r) {
+			return parseFloat(d).toFixed(1);
+		}
 	},{
-		data : 'subcutaneous_fat_rate'
+		data : 'subcutaneous_fat_rate',
+		render: function(d,t,r) {
+			return parseFloat(d).toFixed(1);
+		}
 	},{
 		data : 'fat_info'
 	},{
@@ -183,15 +201,30 @@
 	},{
 		data : 'physical_age'
 	},{
-		data : 'bmi'
+		data : 'bmi',
+		render: function(d,t,r) {
+			return parseFloat(d).toFixed(1);
+		}
 	},{
-		data : 'bmi_best'
+		data : 'bmi_best',
+		render: function(d,t,r) {
+			return parseFloat(d).toFixed(1);
+		}
 	},{
-		data : 'weight_best'
+		data : 'weight_best',
+		render: function(d,t,r) {
+			return parseFloat(d).toFixed(1);
+		}
 	},{
-		data : 'fat_rate_best'
+		data : 'fat_rate_best',
+		render: function(d,t,r) {
+			return parseFloat(d).toFixed(1);
+		}
 	},{
-		data : 'fat_best'
+		data : 'fat_best',
+		render: function(d,t,r) {
+			return parseFloat(d).toFixed(1);
+		}
 	},{
 		data : 'create_time'
 
