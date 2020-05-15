@@ -239,7 +239,7 @@ class Record extends MY_Base_Controller {
 				$data['diff_fat'] = number_format($diff_fat,1);
 
 				$diff_bmi = $data2->bmi - $data1->bmi;
-				$data['max_bmi'] = number_format($data2->bmi,1); 
+				$data['max_bmi'] = number_format($data2->bmi,1);
 				$data['min_bmi'] = number_format($data1->bmi,1);
 				$data['diff_bmi'] = number_format($diff_bmi,1);
 
@@ -1139,7 +1139,9 @@ class Record extends MY_Base_Controller {
 			if($type == '1'){ //最近兩日
 				$f['desc'] = TRUE;
 
-				$list = $this -> records_dao -> find_by_date($f);
+				// $list = $this -> records_dao -> find_by_date($f);
+				$list = $this -> records_dao -> find_by_2_dates($member_id);
+
 				if(!empty($list)){
 					$data2 = $list[0];
 					if(count($list) > 1){
