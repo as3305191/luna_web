@@ -145,7 +145,7 @@ class Records_dao extends MY_Model {
 
 
 	function find_by_2_dates($member_id){
-		$sql = "SELECT * FROM records WHERE id IN (SELECT MAX(id) FROM records WHERE member_id = $member_id GROUP BY create_date) order by id desc";
+		$sql = "SELECT * FROM records WHERE id IN (SELECT MAX(id) FROM records WHERE member_id = $member_id AND is_delete = 0 GROUP BY create_date) order by id desc";
 		$query = $this -> db -> query($sql)-> result();
 		return $query;
 	}
