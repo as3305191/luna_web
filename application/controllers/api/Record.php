@@ -43,95 +43,101 @@ class Record extends MY_Base_Controller {
 
 		$bmi = floatval($bmi);
 
-		if(!empty($member_id)){
-			if(empty($adc1)){
-				$res['success'] = TRUE;
-			}else{
-				$m = $this -> dao -> find_by_id($member_id);
-				if(!empty($m)) {
-					$today = date("Y-m-d");
+		if($weight == 0){
+			// 排除 weight = 0;
+			$res['success'] = TRUE;
+		}else{
+			if(!empty($member_id)){
+				if(empty($adc1)){
+					// 排除 阻抗 = 0;
+					$res['success'] = TRUE;
+				}else{
+					$m = $this -> dao -> find_by_id($member_id);
+					if(!empty($m)) {
+						$today = date("Y-m-d");
 
-					$body_fat = $weight * $body_fat_rate/100;
+						$body_fat = $weight * $body_fat_rate/100;
 
-					$m2 = floatval($m -> height) * floatval($m -> height) / 10000.0; // 身高公尺平方
-					$weight_best = 0;
-					if($m -> gender == 1) { // 男生
-						$weight_best = $m2 * 22;
-					}
-					if($m -> gender == 0) { // 女生
-						$weight_best = $m2 * 20.6;
-					}
-
-					$bmi_best = 22; // always 22
-					$fat_info = get_fat_info($bmi, $body_fat_rate, $m -> gender);
-
-					$fat_rate_best = 18.0;
-					$fat_best =	$weight_best * $fat_rate_best / 100.0;
-
-					$insert_data = array('member_id' => $member_id,
-										 'weight' => $weight,
-										 'body_fat' => $body_fat,
-										 'body_fat_rate' => $body_fat_rate,
-										 'subcutaneous_fat_rate' => $subcutaneous_fat_rate,
-										 'visceral_fat_rate' => $visceral_fat_rate,
-										 'bmr' => $bmr,
-										 'bone_mass_rate' => $bone_mass_rate,
-										 'physical_age' => $physical_age,
-										 'moisture_rate' => $moisture_rate,
-										 'protein_rate' => $protein_rate,
-										 'muscle_rate' => $muscle_rate,
-										 'skeletal_muscle_rate' => $skeletal_muscle_rate,
-										 'bmi' => $bmi,
-										 'bmi_best' => $bmi_best,
-										 'weight_best' => $weight_best,
-										 'fat_rate_best' => $fat_rate_best,
-										 'fat_best' => $fat_best,
-										 'fat_info' => $fat_info,
-										 'adc1' => $adc1,
-										 'create_date'=> $today
-									 );
-					$data = $this -> records_dao -> find_by_value(array('member_id'=>$member_id,'date'=>$today));
-
-					$can_insert = TRUE;
-					if(empty($data)){
-						$insert_data['pos'] = 1;
-					} else {
-						// contains old data
-						$diff = abs(time() - strtotime($data->create_time));
-						$res['diff'] = $diff;
-						if($diff < 5) {
-							$res['too_often'] = TRUE;
-							$can_insert = FALSE;
+						$m2 = floatval($m -> height) * floatval($m -> height) / 10000.0; // 身高公尺平方
+						$weight_best = 0;
+						if($m -> gender == 1) { // 男生
+							$weight_best = $m2 * 22;
 						}
-					}
-					if($can_insert) {
-						$id = $this -> records_dao -> insert($insert_data);
-						$item = $this -> records_dao -> find_last_by_member_id($member_id, $id);
-						// delete when exists records in 10 seconds
-						if(!empty($item)) {
-							$diff = abs(time() - strtotime($item->create_time));
+						if($m -> gender == 0) { // 女生
+							$weight_best = $m2 * 20.6;
+						}
+
+						$bmi_best = 22; // always 22
+						$fat_info = get_fat_info($bmi, $body_fat_rate, $m -> gender);
+
+						$fat_rate_best = 18.0;
+						$fat_best =	$weight_best * $fat_rate_best / 100.0;
+
+						$insert_data = array('member_id' => $member_id,
+											 'weight' => $weight,
+											 'body_fat' => $body_fat,
+											 'body_fat_rate' => $body_fat_rate,
+											 'subcutaneous_fat_rate' => $subcutaneous_fat_rate,
+											 'visceral_fat_rate' => $visceral_fat_rate,
+											 'bmr' => $bmr,
+											 'bone_mass_rate' => $bone_mass_rate,
+											 'physical_age' => $physical_age,
+											 'moisture_rate' => $moisture_rate,
+											 'protein_rate' => $protein_rate,
+											 'muscle_rate' => $muscle_rate,
+											 'skeletal_muscle_rate' => $skeletal_muscle_rate,
+											 'bmi' => $bmi,
+											 'bmi_best' => $bmi_best,
+											 'weight_best' => $weight_best,
+											 'fat_rate_best' => $fat_rate_best,
+											 'fat_best' => $fat_best,
+											 'fat_info' => $fat_info,
+											 'adc1' => $adc1,
+											 'create_date'=> $today
+										 );
+						$data = $this -> records_dao -> find_by_value(array('member_id'=>$member_id,'date'=>$today));
+
+						$can_insert = TRUE;
+						if(empty($data)){
+							$insert_data['pos'] = 1;
+						} else {
+							// contains old data
+							$diff = abs(time() - strtotime($data->create_time));
+							$res['diff'] = $diff;
 							if($diff < 5) {
-								// delete
-								$res['diff'] = $diff;
-								$this -> records_dao -> delete($id);
 								$res['too_often'] = TRUE;
+								$can_insert = FALSE;
+							}
+						}
+						if($can_insert) {
+							$id = $this -> records_dao -> insert($insert_data);
+							$item = $this -> records_dao -> find_last_by_member_id($member_id, $id);
+							// delete when exists records in 10 seconds
+							if(!empty($item)) {
+								$diff = abs(time() - strtotime($item->create_time));
+								if($diff < 5) {
+									// delete
+									$res['diff'] = $diff;
+									$this -> records_dao -> delete($id);
+									$res['too_often'] = TRUE;
+								} else {
+									$res['id'] = $id;
+								}
 							} else {
 								$res['id'] = $id;
 							}
-						} else {
-							$res['id'] = $id;
 						}
+						$res['success'] = TRUE;
+					} else {
+						$res['error_code'][] = "account_not_found";
+						$res['error_message'][] = "查無此會員";
 					}
-					$res['success'] = TRUE;
-				} else {
-					$res['error_code'][] = "account_not_found";
-					$res['error_message'][] = "查無此會員";
 				}
-			}
 
-		}else{
-			$res['error_code'][] = "columns_required";
-			$res['error_message'][] = "缺少必填欄位";
+			}else{
+				$res['error_code'][] = "columns_required";
+				$res['error_message'][] = "缺少必填欄位";
+			}
 		}
 
 		$this -> to_json($res);
@@ -239,7 +245,7 @@ class Record extends MY_Base_Controller {
 				$data['diff_fat'] = number_format($diff_fat,1);
 
 				$diff_bmi = $data2->bmi - $data1->bmi;
-				$data['max_bmi'] = number_format($data2->bmi,1); 
+				$data['max_bmi'] = number_format($data2->bmi,1);
 				$data['min_bmi'] = number_format($data1->bmi,1);
 				$data['diff_bmi'] = number_format($diff_bmi,1);
 
@@ -1139,7 +1145,9 @@ class Record extends MY_Base_Controller {
 			if($type == '1'){ //最近兩日
 				$f['desc'] = TRUE;
 
-				$list = $this -> records_dao -> find_by_date($f);
+				// $list = $this -> records_dao -> find_by_date($f);
+				$list = $this -> records_dao -> find_by_2_dates($member_id);
+
 				if(!empty($list)){
 					$data2 = $list[0];
 					if(count($list) > 1){

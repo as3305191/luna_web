@@ -143,6 +143,13 @@ class Records_dao extends MY_Model {
 		return $list;
 	}
 
+
+	function find_by_2_dates($member_id){
+		$sql = "SELECT * FROM records WHERE id IN (SELECT MAX(id) FROM records WHERE member_id = $member_id AND is_delete = 0 GROUP BY create_date) order by id desc";
+		$query = $this -> db -> query($sql)-> result();
+		return $query;
+	}
+
 	function find_avg($f){
 		$this -> db -> from("$this->table_name as _m");
 		// $this -> db -> select('_m.*');

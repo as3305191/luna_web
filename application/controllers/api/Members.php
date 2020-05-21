@@ -123,6 +123,7 @@ class Members extends MY_Base_Controller {
 			$years = floor($diff / (365*60*60*24));
 
 			$insert_data = array('account' => $account,
+								 'v_account' => $account,
 								 'password' => '123456',
 								 'user_name' => $user_name,
 								 'birth' => $birth,
