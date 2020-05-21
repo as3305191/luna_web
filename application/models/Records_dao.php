@@ -429,6 +429,8 @@ class Records_dao extends MY_Model {
 		$dt = $data['dt'];
 		$e_dt = $data['e_dt'];
 		$this -> db -> where("(_m.create_time >= '{$dt}' and _m.create_time <= '{$e_dt} 23:59:59' )");
+		$this -> db -> where('_m.is_delete', 0);
+
 	}
 
 	function ajax_from_join() {
