@@ -864,6 +864,50 @@ class Record extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function list_record_by_last_id(){
+		$member_id = $this -> get_post('member_id');
+		$last_id = $this -> get_post('last_id');
+
+		if(!empty($member_id)){
+			$f = array('member_id' => $member_id,'last_id' => $last_id);
+			$list = $this -> records_dao -> find_by_last_id($f);
+
+			$res['success'] = TRUE;
+			foreach ($list as $each) {
+				$weight_kg = $each->weight/1000;
+				$body_fat =  $each->weight/1000 * $each->body_fat_rate/100;
+				$visceral_fat = $each->weight/1000 * $each->visceral_fat_rate/100;
+				$protein = $each->weight/1000 * $each->protein_rate/100;
+				$moisture = $each->weight/1000 * $each->moisture_rate/100;
+				$muscle = $each->weight/1000 * $each->muscle_rate/100;
+				$bone_mass = $each->weight/1000 * $each->bone_mass_rate/100;
+				$skeletal_muscle =  $each->weight/1000 * $each->skeletal_muscle_rate/100;
+
+				$each -> weight = number_format($weight_kg,1);
+				$each -> body_fat = number_format($body_fat,1);
+
+				$dRate = $each-> body_fat_rate;
+				$each -> body_fat_rate = number_format($dRate,1);
+				$each -> visceral_fat = number_format($visceral_fat,1);
+				$vRate = $each-> visceral_fat_rate;
+				$each -> visceral_fat_rate = number_format($vRate,1);
+
+				$each -> visceral = number_format($visceral_fat,1);
+				$each -> protein = number_format($protein,1);
+				$each -> moisture = number_format($moisture,1);
+				$each -> muscle = number_format($muscle,1);
+				$each -> skeletal_muscle = number_format($skeletal_muscle,1);
+				$each -> bone_mass = number_format($bone_mass,1);
+			}
+
+			$res['list'] = $list;
+		}else{
+			$res['error_code'][] = "columns_required";
+			$res['error_message'][] = "缺少必填欄位";
+		}
+		$this -> to_json($res);
+	}
+
 	// 刪除秤重所有紀錄
 	public function delete_record(){
 		$id = $this -> get_post('id');
