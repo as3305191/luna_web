@@ -116,7 +116,7 @@ class Records_dao extends MY_Model {
 		//	limit
 		if(!empty($f['last_id'])) {
 			$val = $f['last_id'];
-			$this -> db -> where("_m.id > {$val}");
+			$this -> db -> where("_m.id < {$val}");
 		}
 
 		if(empty($f['limit'])) {
