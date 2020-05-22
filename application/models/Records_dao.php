@@ -302,7 +302,7 @@ class Records_dao extends MY_Model {
 	}
 
 	function find_all_by_ym_update($member_id, $ym) {
-		$sql = "SELECT * FROM records WHERE id IN (SELECT MAX(id) FROM records WHERE member_id = $member_id AND create_date LIKE '{$ym}-%'  AND is_delete = 0 GROUP BY create_date)";
+		$sql = "SELECT r.id, r.create_date, r.weight FROM records as r WHERE id IN (SELECT MAX(id) FROM records WHERE member_id = $member_id AND create_date LIKE '{$ym}-%'  AND is_delete = 0 GROUP BY create_date)";
 		$query = $this -> db -> query($sql)-> result();
 		return $query;
 		// return $query;
