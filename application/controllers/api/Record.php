@@ -1060,48 +1060,48 @@ class Record extends MY_Base_Controller {
 	}
 
 	//列出月份日期
-	public function list_record_dates() {
-		$res = array('success' => TRUE);
-
-		$ym = $this -> get_post("ym");
-		$member_id = $this -> get_post("member_id");
-
-		if(!empty($member_id) && !empty($ym)) {
-			$m = $this -> records_dao -> find_first($member_id);
-			if(!empty($m)){
-				// $base = $m->weight;
-
-				$list = $this -> records_dao -> find_all_by_ym($member_id, $ym);
-				if(!empty($list)){
-					$data1 = $list[0];
-					$f_data1 = $this -> records_dao -> find_one_data($member_id, $data1->id);
-					$base = 0;
-					if(!empty($f_data1)){
-						$base = number_format($f_data1->weight/1000,1);
-					}
-
-					foreach ($list as $each) {
-						$compare = number_format($each-> weight/1000,1);
-						if($compare > $base){
-							$each -> exceed = 1;
-						}else if($compare == $base){
-							$each -> exceed = 2;
-						}else{
-							$each -> exceed = 0;
-						}
-						$base = $compare;
-					}
-				}
-
-				// $res['f'] = $f_data1;
-				$res['list'] = $list;
-			}
-		}else{
-			$res['error_code'][] = "columns_required";
-			$res['error_message'][] = "缺少必填欄位";
-		}
-		$this -> to_json($res);
-	}
+	// public function list_record_dates() {
+	// 	$res = array('success' => TRUE);
+	//
+	// 	$ym = $this -> get_post("ym");
+	// 	$member_id = $this -> get_post("member_id");
+	//
+	// 	if(!empty($member_id) && !empty($ym)) {
+	// 		$m = $this -> records_dao -> find_first($member_id);
+	// 		if(!empty($m)){
+	// 			// $base = $m->weight;
+	//
+	// 			$list = $this -> records_dao -> find_all_by_ym($member_id, $ym);
+	// 			if(!empty($list)){
+	// 				$data1 = $list[0];
+	// 				$f_data1 = $this -> records_dao -> find_one_data($member_id, $data1->id);
+	// 				$base = 0;
+	// 				if(!empty($f_data1)){
+	// 					$base = number_format($f_data1->weight/1000,1);
+	// 				}
+	//
+	// 				foreach ($list as $each) {
+	// 					$compare = number_format($each-> weight/1000,1);
+	// 					if($compare > $base){
+	// 						$each -> exceed = 1;
+	// 					}else if($compare == $base){
+	// 						$each -> exceed = 2;
+	// 					}else{
+	// 						$each -> exceed = 0;
+	// 					}
+	// 					$base = $compare;
+	// 				}
+	// 			}
+	//
+	// 			// $res['f'] = $f_data1;
+	// 			$res['list'] = $list;
+	// 		}
+	// 	}else{
+	// 		$res['error_code'][] = "columns_required";
+	// 		$res['error_message'][] = "缺少必填欄位";
+	// 	}
+	// 	$this -> to_json($res);
+	// }
 
   // 兩筆差異紀錄
 	public function diff_record(){
@@ -1452,7 +1452,7 @@ class Record extends MY_Base_Controller {
 
 
 
-	public function list_record_dates_1() {
+	public function list_record_dates() {
 		$res = array('success' => TRUE);
 
 		$ym = $this -> get_post("ym");
