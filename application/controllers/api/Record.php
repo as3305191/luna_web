@@ -868,7 +868,10 @@ class Record extends MY_Base_Controller {
 	public function delete_record(){
 		$id = $this -> get_post('id');
 		if(!empty($id)) {
-			$this -> records_dao -> update(array('is_delete'=> 1),$id);
+			$this -> records_dao -> update(array(
+				'is_delete'=> 1,
+				'is_delete_bak'=> 1,
+			),$id);
 			$res['success'] = TRUE;
 		}else{
 			$res['error_code'][] = "columns_required";
