@@ -871,6 +871,7 @@ class Record extends MY_Base_Controller {
 			$this -> records_dao -> update(array(
 				'is_delete'=> 1,
 				'is_delete_bak'=> 1,
+				'delete_time'=> date("Y-m-d H:i:s"),
 			),$id);
 			$res['success'] = TRUE;
 		}else{
