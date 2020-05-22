@@ -301,6 +301,27 @@ class Records_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_all_by_ym_update($member_id, $ym) {
+		$sql = "SELECT * FROM records WHERE id IN (SELECT MAX(id) FROM records WHERE member_id = $member_id AND create_date date LIKE '{$ym}%' AND is_delete = 0 GROUP BY create_date) order by id asc";
+		$query = $this -> db -> query($sql)-> result();
+		// return $query;
+		// $this -> db -> from("$this->table_name as _m");
+		//
+		// $this -> db -> select("_m.id,_m.create_date,_m.weight");
+		//
+		//
+		// $this -> db -> where("( _m.create_date like '{$ym}-%' )");
+		// $this -> db -> where("_m.member_id", $member_id);
+		// // $this -> db -> where("_m.pos", 1);
+		// $this -> db -> where("_m.is_delete", 0);
+		// $this -> db -> group_by('_m.create_date');
+		//
+		// $list = $this -> db -> get() -> result();
+		// return $list;
+	}
+
+
+
 	function find_one_data($member_id, $id) {
 		$this -> db -> from("$this->table_name as _m");
 
