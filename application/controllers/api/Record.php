@@ -1485,7 +1485,7 @@ class Record extends MY_Base_Controller {
 					}
 				}
 
-				$res['f'] = $f_data1;
+				// $res['f'] = $f_data1;
 				$res['list'] = $list;
 			}
 		}else{
