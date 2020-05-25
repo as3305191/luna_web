@@ -72,8 +72,8 @@
 										</tr>
 										<tr class="search_box">
 											    <th></th>
-											    <th><input class="form-control input-xs min100" type="text" /></th>
-													<th></th>
+											    <th></th>
+													<th><input class="form-control input-xs min100" type="text" /></th>
 													<th></th>
 													<th></th>
 													<th></th>
@@ -229,7 +229,7 @@
 		}
 	}];
 
-	var mOrderIdx = 6;
+	var mOrderIdx = 1;
 
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 
@@ -239,11 +239,11 @@
 
 		defaultContent : defaultContent,
 		searchable : false,
-		orderable : false,
+		// orderable : false,
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
+		"targets" : [0,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],
 		"orderable" : false
 	}];
 
