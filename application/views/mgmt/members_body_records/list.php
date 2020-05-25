@@ -46,11 +46,12 @@
 									<thead>
 										<tr>
 											<th></th>
+											<th class="min100">建立時間</th>
 											<th class="min100">會員</th>
-											<th class="min100">阻抗</th>
+											<th class="min100">體重</th>
 											<th class="min100">身高</th>
 											<th class="min100">實際年齡</th>
-											<th class="min100">體重</th>
+											<th class="min100">阻抗</th>
 											<th class="min100">體脂率</th>
 											<th class="min100">脂肪</th>
 											<th class="min100">內臟脂肪率</th>
@@ -68,7 +69,6 @@
 											<th class="min100">體重最佳</th>
 											<th class="min100">體脂率最佳</th>
 											<th class="min100">體脂最佳</th>
-											<th class="min100">建立時間</th>
 										</tr>
 										<tr class="search_box">
 											    <th></th>
@@ -137,18 +137,20 @@
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 	var mCols = [null,{
+		data : 'create_time'
+	},{
 		data : 'user_name'
-	},{
-		data : 'adc1'
-	},{
-		data : 'height'
-	},{
-		data : 'age'
 	},{
 		data : 'weight',
 		render: function(d,t,r) {
 			return parseFloat(d / 1000).toFixed(1);
 		}
+	},{
+		data : 'height'
+	},{
+		data : 'age'
+	},{
+		data : 'adc1'
 	},{
 		data : 'body_fat_rate',
 		render: function(d,t,r) {
@@ -225,9 +227,6 @@
 		render: function(d,t,r) {
 			return parseFloat(d).toFixed(1);
 		}
-	},{
-		data : 'create_time'
-
 	}];
 
 	var mOrderIdx = 6;
