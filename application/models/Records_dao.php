@@ -103,6 +103,39 @@ class Records_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_by_last_id($f){
+		$this -> db -> from("$this->table_name as _m");
+
+		// select
+		$this -> db -> select('_m.*');
+
+		if(!empty($f['member_id'])){
+			$this -> db -> where('_m.member_id',$f['member_id']);
+		}
+
+		//	limit
+		if(!empty($f['last_id'])) {
+			$val = $f['last_id'];
+			$this -> db -> where("_m.id < {$val}");
+		}
+
+		if(empty($f['limit'])) {
+			// default is 10
+			$limit = 10;
+		} else {
+			$limit = intval($f['limit']);
+		}
+		$this -> db -> limit($limit);
+
+		$this -> db -> where('_m.is_delete', 0);
+		$this -> db -> order_by("id", "desc");
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
+
 	function find_by_date($f){
 		$this -> db -> from("$this->table_name as _m");
 
@@ -300,6 +333,28 @@ class Records_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
+
+	function find_all_by_ym_update($member_id, $ym) {
+		$sql = "SELECT r.id, r.create_date, r.weight FROM records as r WHERE id IN (SELECT MAX(id) FROM records WHERE member_id = $member_id AND create_date LIKE '{$ym}-%'  AND is_delete = 0 GROUP BY create_date)";
+		$query = $this -> db -> query($sql)-> result();
+		return $query;
+		// return $query;
+		// $this -> db -> from("$this->table_name as _m");
+		//
+		// $this -> db -> select("_m.id,_m.create_date,_m.weight");
+		//
+		//
+		// $this -> db -> where("( _m.create_date like '{$ym}-%' )");
+		// $this -> db -> where("_m.member_id", $member_id);
+		// // $this -> db -> where("_m.pos", 1);
+		// $this -> db -> where("_m.is_delete", 0);
+		// $this -> db -> group_by('_m.create_date');
+		//
+		// $list = $this -> db -> get() -> result();
+		// return $list;
+	}
+
+
 
 	function find_one_data($member_id, $id) {
 		$this -> db -> from("$this->table_name as _m");
