@@ -21,6 +21,9 @@ class Record extends MY_Base_Controller {
 		echo $msg['tip.weight'];
 	}
 
+	function recover_delete() {
+		$this -> records_dao -> db -> query("update records set is_delete = 0 where is_delete <> 0 and is_delete_bak = 0");
+	}
 
 	// 新增秤重紀錄
 	public function add_record(){
