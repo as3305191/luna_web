@@ -176,6 +176,22 @@ class Records_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_by_date_new($member_id){
+		$sql = "SELECT * FROM records WHERE id IN (SELECT MAX(id) FROM records WHERE member_id = $member_id AND is_delete = 0 GROUP BY create_date) order by id asc";
+		$query = $this -> db -> query($sql)-> result();
+		return $query;
+	}
+
+	function find_by_week($f){
+		$member_id = $f['member_id'];
+		$start = date('Y-m-d',strtotime('last Monday'));
+		$end = date('Y-m-d',strtotime('next Sunday'));
+
+		$sql = "SELECT * FROM records WHERE id IN (SELECT MAX(id) FROM records WHERE member_id = $member_id  AND is_delete = 0
+		AND create_date >= '$start' AND create_date <= '$end' GROUP BY create_date) order by id asc";
+		$query = $this -> db -> query($sql)-> result();
+		return $query;
+	}
 
 	function find_by_2_dates($member_id){
 		$sql = "SELECT * FROM records WHERE id IN (SELECT MAX(id) FROM records WHERE member_id = $member_id AND is_delete = 0 GROUP BY create_date) order by id desc";
@@ -311,6 +327,8 @@ class Records_dao extends MY_Model {
 		if(!empty($f['member_id'])){
 			$this -> db -> where('_m.member_id',$f['member_id']);
 		}
+
+		$this -> db -> order_by('id', 'desc');
 
 		$this -> db -> where("_m.is_delete", 0);
 

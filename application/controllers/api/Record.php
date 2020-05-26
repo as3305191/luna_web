@@ -1004,8 +1004,14 @@ class Record extends MY_Base_Controller {
 				$res['list'] = $list;
 
 			}else {
+				$list;
+				if(!empty($is_week)){
+					// $list = $this -> records_dao -> find_by_date($f);
+					$list = $this -> records_dao -> find_by_week($f);
+				}else{
+					$list = $this -> records_dao -> find_by_date_new($member_id);
+				}
 
-				$list = $this -> records_dao -> find_by_date($f);
 				foreach ($list as $each) {
 					$weight_kg = $each->weight/1000;
 					$body_fat =  $each->weight/1000 * $each->body_fat_rate/100;
@@ -1179,11 +1185,9 @@ class Record extends MY_Base_Controller {
 			$body_diff = 0;
 
 			if(empty($type)){
-				// $data1 = $this -> records_dao -> find_newest_weight($f);
-				// $f['new'] = true;
-				// $data2 = $this -> records_dao -> find_newest_weight($f);
+				// $dataList = $this -> records_dao -> find_list_all($f);
+				$dataList = $this -> records_dao -> find_by_date_new($member_id);
 
-				$dataList = $this -> records_dao -> find_list_all($f);
 				if(!empty($dataList)){
 					$data1 = $dataList[0];
 					$data2 = end($dataList);
