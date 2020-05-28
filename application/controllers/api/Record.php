@@ -21,6 +21,21 @@ class Record extends MY_Base_Controller {
 		echo $msg['tip.weight'];
 	}
 
+	function check_hours() {
+		echo "check hours\n";
+		$list = $this -> records_dao -> db -> query("select * from records where create_time < '2020-04-25 00:00:00' and create_time >= '2020-02-27 16:29:05'") -> result();
+		foreach($list as $each) {
+			// echo "{$each->create_time}\n";
+			// $st = "" . $each->create_time;
+			// $dt = date('Y-m-d H:i:s', strtotime($st) - 8 * 60 * 60);
+			// echo "{$dt}\n";
+			// $this -> records_dao -> update(array(
+			// 	'create_time' => $dt
+			// ), $each -> id);
+		}
+		echo count($list) . "\n";
+	}
+
 	function recover_delete() {
 		$this -> records_dao -> db -> query("update records set is_delete = 0 where is_delete <> 0 and is_delete_bak = 0");
 	}
