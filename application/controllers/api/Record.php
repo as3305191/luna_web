@@ -1260,7 +1260,7 @@ class Record extends MY_Base_Controller {
 				$protein = $data1->weight/1000 * $data1->protein_rate/100;
 				$moisture = $data1->weight/1000 * $data1->moisture_rate/100;
 				$muscle = $data1->weight/1000 * $data1->muscle_rate/100;
-				$bone_mass = $data1->weight/1000 * $data1->bone_mass_rate/100;
+				// $bone_mass = $data1->weight/1000 * $data1->bone_mass_rate/100;
 				$skeletal_muscle =  $data1->weight/1000 * $data1->skeletal_muscle_rate/100;
 
 				$data1 -> weight = number_format($weight_kg,1);
@@ -1270,7 +1270,7 @@ class Record extends MY_Base_Controller {
 				$data1 -> protein = number_format($protein,1);
 				$data1 -> moisture = number_format($moisture,1);
 				$data1 -> muscle = number_format($muscle,1);
-				$data1 -> bone_mass = number_format($bone_mass,1);
+				$data1 -> bone_mass = number_format($data1->bone_mass_rate,1);
 				$data1 -> skeletal_muscle = number_format($skeletal_muscle,1);
 			}
 
@@ -1281,7 +1281,7 @@ class Record extends MY_Base_Controller {
 				$protein = $data2->weight/1000 * $data2->protein_rate/100;
 				$moisture = $data2->weight/1000 * $data2->moisture_rate/100;
 				$muscle = $data2->weight/1000 * $data2->muscle_rate/100;
-				$bone_mass = $data2->weight/1000 * $data2->bone_mass_rate/100;
+				// $bone_mass = $data2->weight/1000 * $data2->bone_mass_rate/100;
 				$skeletal_muscle =  $data2->weight/1000 * $data2->skeletal_muscle_rate/100;
 
 				$data2 -> weight = number_format($weight_kg,1);
@@ -1292,7 +1292,7 @@ class Record extends MY_Base_Controller {
 				$data2 -> moisture = number_format($moisture,1);
 				$data2 -> muscle = number_format($muscle,1);
 				$data2 -> skeletal_muscle = number_format($skeletal_muscle,1);
-				$data2 -> bone_mass = number_format($bone_mass,1);
+				$data2 -> bone_mass = number_format($data2->bone_mass_rate,1);
 			}
 
 			$day = 0;
