@@ -1,11 +1,11 @@
 {
-    "name": "pennyapple/body_fat",
+    "name": "pony/ktx",
     "type": "project",
     "license": "MIT",
     "authors": [
         {
-            "name": "steve yeh",
-            "email": "aapplle123@gmail.com"
+            "name": "pony",
+            "email": "as3305191@gmail.com"
         }
     ],
     "require": {
