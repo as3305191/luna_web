@@ -5,11 +5,10 @@ class Computer_hard extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('Members_dao', 'dao');
+		$this -> load -> model('Computer_hard_dao', 'dao');
 		$this -> load -> model('Members_log_dao', 'members_log_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Records_dao', 'records_dao');
 		$this -> load -> model('Ketone_record_dao', 'ketone_record_dao');
 
 	}
@@ -33,24 +32,19 @@ class Computer_hard extends MY_Mgmt_Controller {
 			'search',
 			'order',
 			'type',
-
 		));
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
-
 		$res['items'] = $items;
-
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
-
 		$this -> to_json($res);
 	}
 
 	public function edit($id) {
 		$data = array();
 		$data['id'] = $id;
-
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
@@ -58,7 +52,6 @@ class Computer_hard extends MY_Mgmt_Controller {
 				'columns',
 				'search',
 				'order',
-
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
@@ -67,60 +60,17 @@ class Computer_hard extends MY_Mgmt_Controller {
 			} else{
 				$item = 0;
 			}
-			$health_report = $this -> records_dao -> find_record($q_data['id']);
-
 			$data['item'] = $item;
-			$data['health_report'] = $health_report[0];
+			
 		}
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
-
-		$data['coach'] = $this -> dao -> find_all_coach();
+		// $data['coach'] = $this -> dao -> find_all_coach();
 		// $this -> to_json($data);
 
 		$this->load->view('mgmt/computer_hard/edit', $data);
-	}
-
-	public function get_weight_history() {
-		$res = array();
-
-		$data = $this -> get_posts(array(
-			'length',
-			'start',
-			'columns',
-			'search',
-			'order',
-			'member_id',
-
-		));
-
-		$res['items'] = $this -> records_dao -> find_user_weight_history($data);
-		$res['recordsFiltered'] = $this -> records_dao -> find_user_weight_history($data, TRUE);
-		$res['recordsTotal'] = $this -> records_dao -> find_user_weight_history($data, TRUE);
-
-		$this -> to_json($res);
-	}
-
-	public function get_Keton_data() {
-		$res = array();
-
-		$data = $this -> get_posts(array(
-			'length',
-			'start',
-			'columns',
-			'search',
-			'order',
-			'member_id',
-
-		));
-
-		$res['items'] = $this -> ketone_record_dao -> find_user_ketone($data);
-		$res['recordsFiltered'] = $this -> ketone_record_dao -> find_user_ketone($data, TRUE);
-		$res['recordsTotal'] = $this -> ketone_record_dao -> find_user_ketone($data, TRUE);
-
-		$this -> to_json($res);
 	}
 
 	public function insert() {

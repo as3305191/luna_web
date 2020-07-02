@@ -12,10 +12,9 @@ class Verify extends MY_Base_Controller {
 	}
 
 	public function check_ver(){
-		$url = 'http://itunes.apple.com/lookup?bundleId=com.jie.heng.HelloThev';
+		$url = '';
 		$urls = $url.'&t='.mt_rand();
 		$string = file_get_contents($urls);
-
 		$a = strstr($string,'version');
 		$a = strstr($a,',',true);
 		$a = strstr($a,':');
@@ -24,7 +23,6 @@ class Verify extends MY_Base_Controller {
 		$data = array();
 		$data['version'] = $a;
 		$this -> to_json($data);
-
 	}
 
 
