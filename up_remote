@@ -1,2 +1,0 @@
-#!/bin/bash
-ssh pennyapple@34.80.123.241 sudo ./up_body_fat
