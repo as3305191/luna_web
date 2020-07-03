@@ -16,7 +16,7 @@ class Login extends MY_Base_Controller {
 		$data = array();
 		// check login
 		if(!empty($this -> session -> userdata('user_id'))) {
-			redirect("/app/#mgmt/news");
+			redirect("/app/#mgmt/computer");
 			return;
 		}
 		$data = $this -> get_captcha($data);

@@ -5,8 +5,7 @@ class Computer extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('Computer_hard_dao', 'dao');
-		$this -> load -> model('Computer_hard_num_dao', 'computer_hard_num_dao');
+		$this -> load -> model('Computer_dao', 'dao');
 
 		$this -> load -> model('Members_log_dao', 'members_log_dao');
 		$this -> load -> model('Images_dao', 'img_dao');

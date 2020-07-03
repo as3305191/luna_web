@@ -51,39 +51,77 @@
 		<div id="basic_information" style="">
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">硬體名稱</label>
+					<label class="col-md-3 control-label">電腦名稱</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control"  id="computer_hard_name" value="<?= isset($item) ? $item -> computer_hard_name : '' ?>"  />
+						<input type="text" required class="form-control"   name="computer_name" value="<?= isset($item) ? $item -> computer_name : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
-				<label class="col-md-3 control-label">序號</label>
-
-					<div class="col-md-2">
-						<input id="computer_num" type="text" class="form-control" placeholder="序號" />
-					</div>
-					<div class="col-md-2">
-						<button type="button" class="btn btn-sm btn-primary" onclick="addSpec()"><i class="fa fa-plus-circle fa-lg"></i></button>
+					<label class="col-md-3 control-label">硬體序號</label>
+					<div class="col-md-6">
+						<input type="text" required class="form-control"  name="computer_num" value="<?= isset($item) ? $item -> computer_num : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
-					<div class="col-md-12">
-						<label class="col-md-3 control-label">現有序號</label>
-						<div class="col-md-6" id="computer_num_list">
+					<label class="col-md-3 control-label">財產編號</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control"  name="computer_property_num" value="<?= isset($item) ? $item -> computer_property_num : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>	
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">預設使用者</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control"  name="admin_user" value="<?= isset($item) ? $item -> admin_user : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>	
+			<fieldset>
+				<div class="form-group">
+				<label class="col-md-3 control-label">硬體</label>
 
-						</div>
+					<div class="col-md-2">
+						<input id="computer_h" type="text" class="form-control" placeholder="點擊收尋" />
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-sm btn-primary" onclick="select_h()"><i class="fa fa-plus-circle fa-lg"></i></button>
 					</div>
 				</div>
 			</fieldset>
+			<fieldset>
+				<div class="form-group">
+				<label class="col-md-3 control-label">軟體</label>
 
-		
-
+					<div class="col-md-2">
+						<input id="computer_s" type="text" class="form-control" placeholder="點擊收尋" />
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-sm btn-primary" onclick="select_s()"><i class="fa fa-plus-circle fa-lg"></i></button>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">已用硬體</label>
+					<div class="col-md-6" id="hard_list">
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">已用軟體</label>
+					<div class="col-md-6" id="soft_list">
+					</div>
+				</div>
+			</fieldset>
 						<style>
 							#product_spec_list {
+							
 								margin-top: 10px;
 								margin-bottom: 10px;
 							}
