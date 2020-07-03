@@ -30,30 +30,27 @@
 			<input class="form-control" type="text">
 		</div>
 		<!-- end widget edit box -->
-
 		<!-- widget content -->
 		<div class="widget-body">
-
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<input type="hidden" name="role_id"  value="1" />
 				<div class="form-group" style="padding:0px 26px">
-	    
         <div class="clearfix"></div>
     </div>
-    <hr/>
+    	<hr/>
 		<div  style="">
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">硬體名稱</label>
+					<label class="col-md-3 control-label">軟體名稱(版本名)</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control"  name="computer_hard_name" value="<?= isset($item) ? $item -> computer_hard_name : '' ?>"  />
+						<input type="text" required class="form-control"  name="computer_soft_name" value="<?= isset($item) ? $item -> computer_soft_name : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">硬體序號</label>
+					<label class="col-md-3 control-label">軟體序號</label>
 					<div class="col-md-6">
 						<input type="text" required class="form-control"  name="computer_num" value="<?= isset($item) ? $item -> computer_num : '' ?>"  />
 					</div>
@@ -67,8 +64,15 @@
 					</div>
 				</div>
 			</fieldset>	
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">軟體可安裝次數</label>
+					<div class="col-md-6">
+						<input type="text" class="form-control"  name="usage_count" value="<?= isset($item) ? $item -> usage_count : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>	
 		</div>
-
 	</form>
 
 	</div>

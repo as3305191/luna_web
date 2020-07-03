@@ -1,11 +1,11 @@
 <?php
-class Computer_hard_dao extends MY_Model {
+class Computer_soft_dao extends MY_Model {
 
 	function __construct() {
 		parent::__construct();
 
 		// initialize table name
-		parent::set_table_name('computer_hard');
+		parent::set_table_name('computer_soft');
 
 		$this -> alias_map = array(
 		

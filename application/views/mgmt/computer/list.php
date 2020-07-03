@@ -111,8 +111,8 @@
 	}];
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/computer_hard/list.js", function(){
-			currentApp = new ComputehardAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/computer/list.js", function(){
+			currentApp = new ComputerAppClass(new BaseAppClass({}));
 		});
 	});
 

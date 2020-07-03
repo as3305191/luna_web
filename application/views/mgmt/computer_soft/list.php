@@ -39,7 +39,7 @@
 									<thead>
 										<tr>
 											<th class=""></th>
-											<th class="min100">硬體名稱</th>
+											<th class="min100">軟體名稱</th>
 											<th class="min100">建立時間</th>
 										</tr>
 										<tr class="search_box">
@@ -88,7 +88,7 @@
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 	var mCols = [null,{
-		data : 'computer_hard_name'
+		data : 'computer_soft_name'
 	},{
 		data : 'create_time'
 	}];
@@ -111,8 +111,8 @@
 	}];
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/computer_hard/list.js", function(){
-			currentApp = new ComputehardAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/computer_soft/list.js", function(){
+			currentApp = new ComputesoftAppClass(new BaseAppClass({}));
 		});
 	});
 

@@ -1,5 +1,5 @@
-var ComputehardAppClass = (function(app) {
-	app.basePath = "mgmt/computer_hard/";
+var ComputesoftAppClass = (function(app) {
+	app.basePath = "mgmt/computer_soft/";
 
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{

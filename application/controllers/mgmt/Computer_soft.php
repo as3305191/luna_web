@@ -5,11 +5,10 @@ class Computer_soft extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('Members_dao', 'dao');
+		$this -> load -> model('Computer_soft_dao', 'dao');
 		$this -> load -> model('Members_log_dao', 'members_log_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Records_dao', 'records_dao');
 		$this -> load -> model('Ketone_record_dao', 'ketone_record_dao');
 
 	}
@@ -65,17 +64,14 @@ class Computer_soft extends MY_Mgmt_Controller {
 			} else{
 				$item = 0;
 			}
-			$health_report = $this -> records_dao -> find_record($q_data['id']);
 
 			$data['item'] = $item;
-			$data['health_report'] = $health_report[0];
 		}
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
 
-		$data['coach'] = $this -> dao -> find_all_coach();
 		// $this -> to_json($data);
 
 		$this->load->view('mgmt/computer_soft/edit', $data);
@@ -125,27 +121,16 @@ class Computer_soft extends MY_Mgmt_Controller {
 		$res = array();
 		$id = $this -> get_post('id');
 		$data = $this -> get_posts(array(
-			'account',
-			'password',
-			'user_name',
-			'age',
-			'gender',
-			'height',
-			'type',
-			'coach_id',
-			'email'
+			'computer_soft_name',
+			'computer_num',
+			'computer_property_num',
+			'usage_count'
 		));
-		$birth = $this -> get_post('birth');
-		if(empty($birth)){
-			$data['birth'] = NULL;
-		} else{
-			$data['birth'] = $birth ;
-		}
-
 		if(empty($id)) {
 			// insert
 			$this -> dao -> insert($data);
 		} else {
+			// update
 			$this -> dao -> update($data, $id);
 		}
 

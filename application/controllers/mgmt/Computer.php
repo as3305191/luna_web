@@ -1,11 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Computer_hard extends MY_Mgmt_Controller {
+class Computer extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('Computer_hard_dao', 'dao');
+		$this -> load -> model('Computer_hard_num_dao', 'computer_hard_num_dao');
 
 		$this -> load -> model('Members_log_dao', 'members_log_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
@@ -21,7 +22,7 @@ class Computer_hard extends MY_Mgmt_Controller {
 		// $data['role_list'] = $this -> users_dao -> find_all_roles();
 		// $data['hospital_list'] = $this -> users_dao -> find_all_hospital();
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-		$this->load->view('mgmt/computer_hard/list', $data);
+		$this->load->view('mgmt/computer/list', $data);
 	}
 
 	public function get_data() {
@@ -68,43 +69,77 @@ class Computer_hard extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
+		// $data['coach'] = $this -> dao -> find_all_coach();
 		// $this -> to_json($data);
 
-		$this->load->view('mgmt/computer_hard/edit', $data);
+		$this->load->view('mgmt/computer/edit', $data);
 	}
 
 
 	public function insert() {
 		$res = array();
 		$id = $this -> get_post('id');
-		$data = $this -> get_posts(array(
-			'computer_hard_name',
-			'computer_num',
-			'computer_property_num'
-		));
+		$computer_hard_name = $this -> get_post('computer_hard_name');
+		$computer_num_array = $this -> get_post('computer_num_array');
 
+		$data['computer_hard_name'] = $computer_hard_name;
+		
 		if(empty($id)) {
 			// insert
-			$this -> dao -> insert($data);
+			$last_id = $this -> dao -> insert($data);
+			$u_data['computer_hard_id'] = $last_id;
+			foreach($computer_num_array as $each){
+				$computer_num_id = $each -> id;
+				$last_id = $this -> computer_hard_num_dao -> update($u_data, $computer_num_id);
+			}
+
 		} else {
-			// update
 			$this -> dao -> update($data, $id);
+			$u_data['computer_hard_id'] = $id;
+			foreach($computer_num_array as $each){
+				$computer_num_id = $each -> id;
+				$last_id = $this -> computer_hard_num_dao -> update($u_data, $computer_num_id);
+			}
 		}
 
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
 
+	public function add_number() {
+		$res = array();
+		$computer_num = $this -> get_post('computer_num');
 
+		if(!empty($computer_num)){
+			$data['computer_num'] = $computer_num ;
+			$last_id = $this -> computer_hard_num_dao -> insert($data);
+			$res['last_id'] = $last_id;
+			$res['last_computer_num'] = $computer_num;
+			$res['success'] = TRUE;
+		} 
+		
+ 		$this -> to_json($res);
+	}
+
+	public function find_all_list_now() {
+		$res = array();
+		$id = $this -> get_post('id');
+		$login_user = $this -> computer_hard_num_dao -> find_all_by_id($id);
+
+		if(!empty($computer_num)){
+			$data['computer_num'] = $computer_num ;
+			$last_id = $this -> computer_hard_num_dao -> insert($data);
+			$res['last_id'] = $last_id;
+			$res['last_computer_num'] = $computer_num;
+			$res['success'] = TRUE;
+		} 
+		
+ 		$this -> to_json($res);
+	}
 
 	public function delete($id) {
 		$res['success'] = TRUE;
-		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
-		$data['is_delete'] = 1;
-		$data['delete_userid'] = $login_user->id;
-
-		$this -> dao -> update($data, $id);
+		$this -> dao -> delete($id);
 		$this -> to_json($res);
 	}
 
