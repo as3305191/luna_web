@@ -131,8 +131,8 @@
 						<select name="coach_id" id="" class="form-control" >
 							<option value="0">無</option>
 							<?php foreach($coach as $each): ?>
-							<option value="<?= $each -> id?>" <?= isset($item) && $item -> coach_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> user_name ?></option>
-						<?php endforeach ?>
+								<option value="<?= $each -> id?>" <?= isset($item) && $item -> coach_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> user_name ?></option>
+							<?php endforeach ?>
 						</select>
 					</div>
 				</div>

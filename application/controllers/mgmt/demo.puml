@@ -1,0 +1,7 @@
+@startuml
+
+(*) --> "first activity"
+--> [you can put also labels] "second activity"
+--> (*)
+
+@enduml 

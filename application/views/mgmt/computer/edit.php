@@ -38,13 +38,7 @@
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<input type="hidden" name="role_id"  value="1" />
 				<div class="form-group" style="padding:0px 26px">
-	        <!-- <div class="col-md-12 col-xs-12 col-sm-12 no-padding" style="">
-		        <button type="button" class="basic_information btn_roles btn_1" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('basic_information')">基本資料</button>
-		        <button type="button" class="weight_history btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('weight_history')">上秤歷史紀錄</button>
-		        <button type="button" class="health_report btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('health_report')">健康報告</button>
-						<button type="button" class="ketone_record btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('ketone_record')">尿酮紀錄</button>
-
-	        </div> -->
+	    
         <div class="clearfix"></div>
     </div>
     <hr/>
@@ -53,15 +47,15 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">電腦名稱</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control"   name="computer_name" value="<?= isset($item) ? $item -> computer_name : '' ?>"  />
+						<input type="text" required class="form-control" name="computer_name"  id="computer_name" value="<?= isset($item) ? $item -> computer_name : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">硬體序號</label>
+					<label class="col-md-3 control-label">電腦序號</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control"  name="computer_num" value="<?= isset($item) ? $item -> computer_num : '' ?>"  />
+						<input type="text" required class="form-control" name="computer_num" id="computer_num" value="<?= isset($item) ? $item -> computer_num : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -69,7 +63,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">財產編號</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control"  name="computer_property_num" value="<?= isset($item) ? $item -> computer_property_num : '' ?>"  />
+						<input type="text" class="form-control"  id="computer_property_num" value="<?= isset($item) ? $item -> computer_property_num : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>	
@@ -77,16 +71,20 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">預設使用者</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control"  name="admin_user" value="<?= isset($item) ? $item -> admin_user : '' ?>"  />
+						<input type="text" class="form-control"  id="admin_user" value="<?= isset($item) ? $item -> admin_user_id : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>	
 			<fieldset>
 				<div class="form-group">
-				<label class="col-md-3 control-label">硬體</label>
-
-					<div class="col-md-2">
-						<input id="computer_h" type="text" class="form-control" placeholder="點擊收尋" />
+					<label class="col-md-3 control-label">硬體</label>
+					<div class="col-md-6">
+						<select class="form-group" id="c_h_name" style="width:100%"> 
+							<option value="0" >請選擇</option>
+							<?php foreach($computer_hard_list as $each): ?>
+								<option value="<?= $each -> id?>" ><?=  $each -> computer_hard_name ?> (可使用次數剩餘：<?=  $each -> usage_count ?>)</option>
+							<?php endforeach ?>
+						</select> 
 					</div>
 					<div class="col-md-2">
 						<button type="button" class="btn btn-sm btn-primary" onclick="select_h()"><i class="fa fa-plus-circle fa-lg"></i></button>
@@ -95,10 +93,14 @@
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
-				<label class="col-md-3 control-label">軟體</label>
-
-					<div class="col-md-2">
-						<input id="computer_s" type="text" class="form-control" placeholder="點擊收尋" />
+					<label class="col-md-3 control-label">軟體</label>
+					<div class="col-md-6">
+						<select class="form-group" id="c_s_name" style="width:100%"> 
+							<option value="0" >請選擇</option>
+							<?php foreach($computer_soft_list as $each): ?>
+								<option value="<?= $each -> id?>" ><?=  $each -> computer_soft_name ?> (可使用次數剩餘：<?=  $each -> usage_count ?>)</option>
+							<?php endforeach ?>
+						</select> 
 					</div>
 					<div class="col-md-2">
 						<button type="button" class="btn btn-sm btn-primary" onclick="select_s()"><i class="fa fa-plus-circle fa-lg"></i></button>
@@ -152,17 +154,24 @@
 
 </div>
 <!-- end widget -->
+<script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script>
+
 <style>
 	.kv-file-zoom {
 		display: none;
 	}
 </style>
-<script>
-$(".dt_picker_").datetimepicker({
-		format : 'YYYY-MM-DD'
-	}).on('dp.change',function(event){
 
-	});
+<script>
+$(document).ready(function() {
+	$('#c_h_name').select2();
+	$('#c_s_name').select2();
+});
+
+$(".dt_picker_").datetimepicker({
+	format : 'YYYY-MM-DD'
+}).on('dp.change',function(event){
+});
 
 $('#app-edit-form').bootstrapValidator({
 	feedbackIcons : {
@@ -183,25 +192,32 @@ $('#app-edit-form').bootstrapValidator({
 
 }).bootstrapValidator('validate');
 
-var computer_num_array = [];
+var computer_hard_id_array = [];
+var computer_soft_id_array = [];
+var soft_id_array = [];
+var hard_id_array = [];
 
 function do_save() {
-			var url = baseUrl + 'mgmt/computer_hard/insert'; // the script where you handle the form input.
+			var url = baseUrl + 'mgmt/computer/insert'; // the script where you handle the form input.
 			$.ajax({
 				type : "POST",
 				url : url,
 				data : {
 					id: $('#item_id').val(),
-					computer_hard_name: $('#computer_hard_name').val(),
-					computer_num_array: computer_num_array,
+					computer_name: $('#computer_name').val(),
+					computer_num: $('#computer_num').val(),
+					computer_property_num: $('#computer_property_num').val(),
+					admin_user: $('#admin_user').val(),
+					hard_id_array: hard_id_array.join(","),
+					soft_id_array: soft_id_array.join(","),
 				},
 				success : function(data) {
 					if(data.error_msg) {
 						layer.msg(data.error_msg);
 					} else {
-						app.mDtTable.ajax.reload(null, false);
+						currentApp.mDtTable.ajax.reload(null, false);
+						currentApp.backTo();
 					}
-					// app.backTo();
 				}
 			});
 		};
@@ -228,28 +244,31 @@ function do_save() {
 	}
 
 
-	function addSpec() {
-		var $computer_num = $('#computer_num');
-		var computer_num = $computer_num.val();
-		if(computer_num.length == 0) {
-			alert('請輸序號名稱');
-			return;
+	function select_h() {
+		var $c_h_id = $('#c_h_name');
+		var c_h_id = $c_h_id.val();
+		if(c_h_id<1){
+			alert('請選擇要使用硬體');
+			return
 		}
 		$.ajax({
-			url: baseUrl + 'mgmt/computer_hard/add_number',
+			url: baseUrl + 'mgmt/computer/add_useful',
 			type: 'POST',
 			data: {
-				computer_num: computer_num,
+				c_h_id: c_h_id
 			},
 			dataType: 'json',
 			success: function(d) {
 				if(d) {
-					$computer_num.val(''); // reset
-					computer_num_array.push({
-						id: d.last_id,
-						computer_hard_num: d.last_computer_num,
+					computer_hard_id_array.push({
+						id: d.last_hard_id,
+						hard_name: d.hard_name,
+						hard_num: d.hard_num,
 					});
-					redrawSpec();
+				
+					hard_id_array.push(d.last_hard_id);
+
+					redraw();
 				}
 			},
 			failure:function(){
@@ -258,12 +277,49 @@ function do_save() {
 		});
 	}
 
-	function redrawSpec() {
+	function select_s() {
+		var $c_s_id= $('#c_s_name');
+		var c_s_id = $c_s_id.val();
+		if(c_s_id<1){
+			alert('請選擇要使用軟體');
+			return
+		}
+		$.ajax({
+			url: baseUrl + 'mgmt/computer/add_useful',
+			type: 'POST',
+			data: {
+				c_s_id: c_s_id
+			},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					computer_soft_id_array.push({
+						id: d.last_soft_id,
+						soft_name: d.soft_name,
+						soft_num: d.soft_num,
+					});
+					soft_id_array.push(d.last_soft_id);
+					redraw();
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+
+	function redraw() {
 		// console.log(computer_num_array);
-		var $computer_num_list = $('#computer_num_list').empty();
-		$.each(computer_num_array, function(){
+		var $hard_list = $('#hard_list').empty();
+		var $soft_list = $('#soft_list').empty();
+
+		$.each(computer_hard_id_array, function(){
 			var me = this;
-			var $now_computer_num_array = $('<div><span computer_num_id="'+me.id+'">'+me.computer_hard_num+'</span><div>').appendTo($computer_num_list);
+			var $now_hard_list = $('<div><span style="color:red;" computer_hard_id="'+me.id+'">'+me.hard_name+'</span><button onclick="do_del_h('+me.id+');"><i class="fa fa-trash fa-lg"></i></button><div>').appendTo($hard_list);
+		});
+		$.each(computer_soft_id_array, function(){
+			var me = this;
+			var $now_soft_list = $('<div><span style="color:red;" computer_soft_id="'+me.id+'">'+me.soft_name+'</span><button onclick="do_del_s('+me.id+');"><i class="fa fa-trash fa-lg"></i></button><div>').appendTo($soft_list);
 		});
 	}
 

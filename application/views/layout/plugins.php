@@ -115,6 +115,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="<?= base_url('js/plugin/easy-pie-chart/jquery.easy-pie-chart.min.js') ?>"></script>
 
+
 <!-- Your GOOGLE ANALYTICS CODE Below -->
 <script type="text/javascript">
 	// var _gaq = _gaq || [];

@@ -6,6 +6,9 @@ class Computer extends MY_Mgmt_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('Computer_dao', 'dao');
+		$this -> load -> model('Computer_hard_dao', 'c_h_dao');
+		$this -> load -> model('Computer_soft_dao', 'c_s_dao');
+		$this -> load -> model('C_s_h_join_list_dao', 'c_s_h_join_list_dao');
 
 		$this -> load -> model('Members_log_dao', 'members_log_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
@@ -67,6 +70,15 @@ class Computer extends MY_Mgmt_Controller {
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
+
+		$computer_hard_list = $this -> c_h_dao -> find_all_usage_not_zero();
+		$computer_soft_list = $this -> c_s_dao -> find_all_usage_not_zero();
+		$all_user_list = $this -> c_s_dao -> find_all_user();
+
+		$data['computer_hard_list'] = $computer_hard_list;//硬體所有list
+		$data['computer_soft_list'] = $computer_soft_list;//軟體所有list
+		$data['computer_soft_list'] = $computer_soft_list;//軟體所有list
+
 		$data['login_user'] = $login_user;
 		// $data['coach'] = $this -> dao -> find_all_coach();
 		// $this -> to_json($data);
@@ -78,63 +90,81 @@ class Computer extends MY_Mgmt_Controller {
 	public function insert() {
 		$res = array();
 		$id = $this -> get_post('id');
-		$computer_hard_name = $this -> get_post('computer_hard_name');
-		$computer_num_array = $this -> get_post('computer_num_array');
+		$computer_name = $this -> get_post('computer_name');
+		$computer_num = $this -> get_post('computer_num');
+		$computer_property_num = $this -> get_post('computer_property_num');
+		$admin_user = $this -> get_post('admin_user');
+		$hard_id_array = $this -> get_post('hard_id_array');
+		$soft_id_array = $this -> get_post('soft_id_array');
+		$new_hard_id_array = mb_split(",", $hard_id_array);
+		$new_soft_id_array = mb_split(",", $soft_id_array);
+		$data['computer_name'] = $computer_name;
+		$data['computer_num'] = $computer_num;
+		$data['computer_property_num'] = $computer_property_num;
+		$data['admin_user_id'] = $admin_user;
 
-		$data['computer_hard_name'] = $computer_hard_name;
-		
 		if(empty($id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
-			$u_data['computer_hard_id'] = $last_id;
-			foreach($computer_num_array as $each){
-				$computer_num_id = $each -> id;
-				$last_id = $this -> computer_hard_num_dao -> update($u_data, $computer_num_id);
+			$u_data['computer_id'] = $last_id;
+			foreach($new_hard_id_array as $each){
+				$last_id = $this -> c_s_h_join_list_dao -> update($u_data, $each);
 			}
-
+			foreach($new_soft_id_array as $each){
+				$last_id = $this -> c_s_h_join_list_dao -> update($u_data, $each);
+			}
 		} else {
 			$this -> dao -> update($data, $id);
-			$u_data['computer_hard_id'] = $id;
-			foreach($computer_num_array as $each){
-				$computer_num_id = $each -> id;
-				$last_id = $this -> computer_hard_num_dao -> update($u_data, $computer_num_id);
+			$u_data['computer_id'] = $id;
+			foreach($new_hard_id_array as $each){
+				$last_id = $this -> c_s_h_join_list_dao -> update($u_data, $each);
+			}
+			foreach($new_soft_id_array as $each){
+				$last_id = $this -> c_s_h_join_list_dao -> update($u_data, $each);
 			}
 		}
 
 		$res['success'] = TRUE;
+		$res['computer_soft_id_array'] = $soft_id_array;
+		$res['computer_hard_id_array'] = $hard_id_array;
+
  		$this -> to_json($res);
 	}
 
-	public function add_number() {
+	public function add_useful() {
 		$res = array();
-		$computer_num = $this -> get_post('computer_num');
+		$c_h_id = $this -> get_post('c_h_id');
+		$c_s_id = $this -> get_post('c_s_id');
 
-		if(!empty($computer_num)){
-			$data['computer_num'] = $computer_num ;
-			$last_id = $this -> computer_hard_num_dao -> insert($data);
-			$res['last_id'] = $last_id;
-			$res['last_computer_num'] = $computer_num;
-			$res['success'] = TRUE;
+		if(!empty($c_h_id)){
+			$c_h_list= $this -> c_h_dao -> find_by_id($c_h_id);
+			$u_data['usage_count'] = intval($c_h_list->usage_count) -1;
+			$i_data['computer_hard_id'] = $c_h_id;
+
+			$last_id = $this -> c_s_h_join_list_dao -> insert($i_data);
+			$this -> c_h_dao -> update($u_data,$c_h_id);
+			$res['last_hard_id'] = $last_id;
+			$res['hard_name'] = $c_h_list->computer_hard_name;
+			$res['hard_num'] = $c_h_list->computer_num;
+
 		} 
 		
- 		$this -> to_json($res);
-	}
+		if(!empty($c_s_id)){
+			$c_s_list= $this -> c_s_dao -> find_by_id($c_s_id);
+			$u_data['usage_count'] = intval($c_s_list->usage_count) -1;
+			$i_data['computer_soft_id'] = $c_s_id;
 
-	public function find_all_list_now() {
-		$res = array();
-		$id = $this -> get_post('id');
-		$login_user = $this -> computer_hard_num_dao -> find_all_by_id($id);
+			$last_id = $this -> c_s_h_join_list_dao -> insert($i_data);
+			$this -> c_s_dao -> update($u_data,$c_s_id);
+			$res['last_soft_id'] = $last_id;
+			$res['soft_name'] = $c_s_list->computer_soft_name;
+			$res['soft_num'] = $c_s_list->computer_num;
 
-		if(!empty($computer_num)){
-			$data['computer_num'] = $computer_num ;
-			$last_id = $this -> computer_hard_num_dao -> insert($data);
-			$res['last_id'] = $last_id;
-			$res['last_computer_num'] = $computer_num;
-			$res['success'] = TRUE;
 		} 
-		
  		$this -> to_json($res);
 	}
+
+	
 
 	public function delete($id) {
 		$res['success'] = TRUE;

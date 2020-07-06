@@ -757,5 +757,17 @@ class Computer_soft_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_all_usage_not_zero() {
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select('_m.*');
+
+		$this -> db -> where('_m.usage_count>', 0);
+
+
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+
 }
 ?>
