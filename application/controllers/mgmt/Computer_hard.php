@@ -73,7 +73,6 @@ class Computer_hard extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/computer_hard/edit', $data);
 	}
 
-
 	public function insert() {
 		$res = array();
 		$id = $this -> get_post('id');
@@ -94,8 +93,6 @@ class Computer_hard extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
-
-
 
 	public function delete($id) {
 		$res['success'] = TRUE;

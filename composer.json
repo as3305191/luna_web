@@ -1,14 +1,14 @@
-// {
-//     "name": "pennyapple/body_fat",
-//     "type": "project",
-//     "license": "MIT",
-//     "authors": [
-//         {
-//             "name": "steve yeh",
-//             "email": "aapplle123@gmail.com"
-//         }
-//     ],
-//     "require": {
-//         "codeigniter/framework": "3.1.11"
-//     }
-// }
+{
+    "name": "as3305191/ktx_try",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "pony",
+            "email": "as3305191@gmail.com"
+        }
+    ],
+    "require": {
+        "codeigniter/framework": "3.1.11"
+    }
+}
