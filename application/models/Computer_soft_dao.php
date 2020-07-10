@@ -302,7 +302,7 @@ class Computer_soft_dao extends MY_Model {
 			$id = $data['id'];
 			$this -> db -> where("_m.id", $id);
 		}
-		$this -> db -> where("_m.is_delete",0);
+		// $this -> db -> where("_m.is_delete",0);
 
 	}
 
@@ -764,6 +764,19 @@ class Computer_soft_dao extends MY_Model {
 
 		$this -> db -> where('_m.usage_count>', 0);
 
+
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+
+	function find_all_this_table() {
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select('_m.*');
+
+		$this -> db -> where('_m.is_ok', 1);
+		$this -> db -> where('_m.is_delete', 0);
+		$this -> db -> where('_m.usage_count>', 0);
 
 		$list = $this -> db -> get() -> result();
 		return $list;

@@ -724,24 +724,31 @@ class C_s_h_join_list_dao extends MY_Model {
 		return $query -> result();
 	}
 
-	function find_all_coach_by_coach_id($login_user_id) {
+	function find_all_by_id($id,$type) {
 
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> where("_m.id", $login_user_id);
+		$this -> db -> where("_m.computer_id", $id);
+		if($type==0){
+			$this -> db -> select('c_h.computer_hard_id as hard_id');
+			$this -> db -> where('_m.computer_hard_id>', 0);
+			$this -> db -> where('c_s.is_delete', 0); 
+			$this -> db -> where('c_s.is_ok', 1); 
 
-		// join
-		$this -> ajax_from_join();
+			$this -> db -> join("computer_hard c_h", "c_h.id = _m.computer_hard_id", "left");
 
-		// search always
-		// $this -> search_always($data);
-		// search
+		}else if($type==1){
+			$this -> db -> select('c_s.computer_soft_id as soft_id');
+			$this -> db -> where('_m.computer_soft_id>', 0);
+			$this -> db -> where('c_s.is_delete', 0); 
+			$this -> db -> where('c_s.is_ok', 1); 
 
-		$this -> db -> order_by('id', 'asc');
-		// query results
+			$this -> db -> join("computer_soft c_s", "c_s.id = _m.computer_soft_id", "left");
+
+		}
+
 		$query = $this -> db -> get();
 
-		// echo $this -> db -> last_query();
 		return $query -> result();
 	}
 
@@ -766,6 +773,45 @@ class C_s_h_join_list_dao extends MY_Model {
 
 
 		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+
+	function find_use_now_by_computer($computer_id,$type) {
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		if($type==0){
+			$this -> db -> select('c_h.computer_hard_name as hard_name');
+			$this -> db -> where('_m.computer_hard_id>', 0);
+			$this -> db -> where('c_h.is_delete', 0); 
+			$this -> db -> where('c_h.is_ok', 1); 
+			$this -> db -> join("computer_hard c_h", "c_h.id = _m.computer_hard_id", "left");
+
+		}else if($type==1){
+			$this -> db -> select('c_s.computer_soft_name as soft_name');
+			$this -> db -> where('_m.computer_soft_id>', 0);
+			$this -> db -> where('c_s.is_delete', 0); 
+			$this -> db -> where('c_s.is_ok', 1); 
+
+			$this -> db -> join("computer_soft c_s", "c_s.id = _m.computer_soft_id", "left");
+
+		}
+		$this -> db -> where('_m.computer_id', $computer_id);
+		$this -> db -> order_by('id', 'asc'); // first admin
+
+		// query results
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		return $list;
+	}
+
+	function find_by_computer_id($computer_id) {
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.computer_id', $computer_id);
+
+		// query results
+		$query = $this -> db -> get();
+		$list = $query -> result();
 		return $list;
 	}
 

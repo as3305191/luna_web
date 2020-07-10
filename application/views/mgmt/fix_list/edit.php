@@ -10,11 +10,11 @@
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
 	<header>
-		<div class="widget-toolbar pull-left">
+		<!-- <div class="widget-toolbar pull-left">
 			<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo()" class="btn btn-default ">
 				<i class="fa fa-arrow-circle-left"></i>返回
 			</a>
-		</div>
+		</div> -->
 		<div class="widget-toolbar pull-left">
 			<a href="javascript:void(0);" id="" onclick="do_save()" class="btn btn-default btn-danger">
 				<i class="fa fa-save"></i>存檔
@@ -37,16 +37,12 @@
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<input type="hidden" name="role_id"  value="1" />
-				<!-- <fieldset>
-
-					<div class="col-md-6 form-group">
-						<button type="button" class="1 btn_roles btn_1" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmefieldset('1')">電腦基本資料資料</button>
-						<button type="button" class="2 btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmefieldset('2')">維修單</button>
-				</div>
-				</fieldset>
-				<hr/>-->
-			<div class="fieldset1" id="1" style="">
-
+				<div class="form-group" style="padding:0px 26px">
+	    
+        <div class="clearfix"></div>
+    </div>
+    <hr/>
+		<div id="basic_information" style="">
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">電腦名稱</label>
@@ -147,12 +143,7 @@
 				
 
 		</div>
-		<div class="fieldset1" id="2" style="display:none">
 
-			維修單
-				
-
-		</div>
 			</form>
 
 		</div>
@@ -177,19 +168,10 @@ $(document).ready(function() {
 	$('#c_s_name').select2();
 });
 
-$(".dt_picker").datetimepicker({
+$(".dt_picker_").datetimepicker({
 	format : 'YYYY-MM-DD'
 }).on('dp.change',function(event){
-
 });
-
-// function showmefieldset(id) {
-// 	//   document.getElementById(id).show();
-// 	$('.fieldset1').hide();
-// 	$('#'+id).show();
-// 	$('.btn_roles').removeClass('btn_1');
-// 	$('.'+id).addClass('btn_1');
-// }
 
 $('#app-edit-form').bootstrapValidator({
 	feedbackIcons : {

@@ -139,7 +139,12 @@ class Computer_soft extends MY_Mgmt_Controller {
 
 	public function delete($id) {
 		$res['success'] = TRUE;
-		$this -> dao -> delete($id);
+		$s_data = $this -> setup_user_data(array());
+		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
+		$data['is_delete'] = 1;
+		$data['delete_userid'] = $login_user->id;
+
+		$this -> dao -> update($data, $id);
 		$this -> to_json($res);
 	}
 

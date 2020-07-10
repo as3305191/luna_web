@@ -757,5 +757,22 @@ class Computer_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_by_name($h_s_name) {
+		$this -> db -> from("$this->table_name as _m");
+
+		// select
+		$this -> db -> select('_m.*');
+	
+		$this -> db -> where("_m.computer_name like '{$h_s_name}%'");
+		$this -> db -> where("_m.is_delete", 0);
+		$this -> db -> where("_m.is_ok", 1);
+
+		$this -> db -> order_by('_m.id', 'asc');
+		// limit
+
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+
 }
 ?>

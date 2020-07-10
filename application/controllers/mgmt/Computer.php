@@ -21,8 +21,6 @@ class Computer extends MY_Mgmt_Controller {
 	{
 		$data = array();
 		$data = $this -> setup_user_data($data);
-		// $data['role_list'] = $this -> users_dao -> find_all_roles();
-		// $data['hospital_list'] = $this -> users_dao -> find_all_hospital();
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$this->load->view('mgmt/computer/list', $data);
 	}
@@ -164,11 +162,38 @@ class Computer extends MY_Mgmt_Controller {
  		$this -> to_json($res);
 	}
 
-	
-
 	public function delete($id) {
 		$res['success'] = TRUE;
-		$this -> dao -> delete($id);
+		$s_data = $this -> setup_user_data(array());
+		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
+		$data['is_delete'] = 1;
+		$data['delete_userid'] = $login_user->id;
+
+		$hard_list = $this -> c_s_h_join_list_dao -> find_all_by_id($id,0);
+		$soft_list = $this -> c_s_h_join_list_dao -> find_all_by_id($id,1);
+		foreach($hard_list as $each){
+			$this -> c_h_dao -> update($data, $each->hard_id);
+		}
+		foreach($soft_list as $each){
+			$soft_now_list = $this -> c_s_dao -> find_by_id($each->soft_id);
+			if(!empty($soft_now_list) && $soft_now_list->usage_count==0){//如過使用次數剩餘0才做刪除
+				$this -> c_s_dao -> update($data, $soft_now_list->id);
+			}
+		}
+		$this -> dao -> update($data, $id);
+		$this -> to_json($res);
+	}
+
+	public function find_now_s_h_list() {
+		$computer_id = $this -> get_post('computer_id');
+		if($computer_id>0){
+			$hard_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($computer_id,0);
+			$soft_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($computer_id,1);
+			$res['hard_list'] = $hard_list;
+			$res['soft_list'] = $soft_list;
+
+		}
+		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
 
