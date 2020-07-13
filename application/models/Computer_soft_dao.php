@@ -782,5 +782,17 @@ class Computer_soft_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_now_can_use() {
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select('_m.*');
+
+		$this -> db -> where('_m.is_ok', 1);
+		$this -> db -> where('_m.is_delete', 0);
+		$this -> db -> where('_m.usage_count>', 0);
+
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
 }
 ?>

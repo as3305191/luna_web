@@ -206,11 +206,11 @@
 							data: $("#login-form").serialize(), // serializes the form's elements.
 							success: function(data)
 							{
-									if(data.msg) {
-										alert(data.msg);
-									} else {
-										location.href = "<?= base_url('app/#mgmt/news') ?>";
-									}
+								if(data.msg) {
+									alert(data.msg);
+								} else {
+									location.href = "<?= base_url('app/#mgmt/fix_list') ?>";
+								}
 							}
 						});
 					},

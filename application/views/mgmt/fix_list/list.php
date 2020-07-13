@@ -80,22 +80,27 @@
 									<tr>
 										<td class="min150" style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control dt_picker" name="fix_date" >
+                                                <input type="text" class="form-control dt_picker" id="fix_date" placeholder="請選擇日期">
                                             </div>
                                         </td>
 										<td style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control" name="fix_reason" placeholder="請輸入故障原因">
+                                                <input type="text" class="form-control" id="fix_reason" placeholder="請輸入故障原因">
                                             </div>
                                         </td>
 										<td style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control" name="fix_way" placeholder="如果未修復，修復後請至維修紀錄中修改">
+                                                <input type="text" class="form-control" id="fix_way_" placeholder="如果未修復，修復後請至維修紀錄中修改">
                                             </div>
                                         </td>
 										<td class="min120" style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control" name="fix_user" placeholder="請輸入維修人員">
+                                                 <select id="fix_user" class="form-control">
+                                                    <option selected disabled style="display:none">請選擇</option>
+                                                    <?php foreach($engineer as $each): ?>
+                                                        <option value="<?= $each -> id?>"><?=  $each -> user_name ?></option>
+                                                    <?php endforeach ?>
+                                                </select> 
                                             </div>
                                         </td>
 										<td style="border-right:none;">
@@ -122,36 +127,41 @@
 									<tr>
 										<td class="min150 " style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control dt_picker" name="fix_date" >
+                                                <input type="text" class="form-control dt_picker" id="change_date" placeholder="請選擇日期">
                                             </div>
                                         </td>
 										<td style="border-right:none;">
                                             <div class="input-group col-md-12">
                                                 <select class="form-control" id="old_sh" onchange="new_sh_change()">
-                                                   
+                                                    <option selected disabled style="display:none">目前沒有軟硬體</option>
                                                 </select>
                                             </div>
                                         </td>
 										<td style="border-right:none;">
                                             <div class="input-group col-md-12" id="new_sh_div">
                                                 <select class="form-control" id="new_sh">
-                                                   
+                                                 <option selected disabled style="display:none">目前沒有新的軟硬體</option>
                                                 </select>
                                             </div>
                                         </td>
                                         <td style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control" name="fix_reason" placeholder="請輸入故障原因">
+                                                <input type="text" class="form-control" id="change_reason" placeholder="請輸入故障原因">
                                             </div>
                                         </td>
 										<td style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control" name="fix_way" placeholder="請輸入處置情況">
+                                                <input type="text" class="form-control" id="change_way" placeholder="請輸入處置情況">
                                             </div>
                                         </td>
 										<td class="min120" style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control" name="fix_user" placeholder="請輸入維修人員">
+                                                <select id="change_user" class="form-control">
+                                                    <option selected disabled style="display:none">請選擇</option>
+                                                    <?php foreach($engineer as $each): ?>
+                                                        <option value="<?= $each -> id?>"><?=  $each -> user_name ?></option>
+                                                    <?php endforeach ?>
+                                                </select>   
                                             </div>
                                         </td>
 										<td style="border-right:none;">
@@ -177,27 +187,44 @@
 									<tr>
 										<td class="min150" style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control dt_picker" name="fix_date" >
+                                                <input type="text" class="form-control dt_picker" id="add_date" placeholder="請選擇日期">
                                             </div>
                                         </td>
                                         <td style="border-right:none;">
-                                            <div class="input-group col-md-12">
-                                                <input type="text" class="form-control" name="fix_reason" placeholder="請輸入新增軟硬體">
-                                            </div>
+                                            <select class="form-control" id="add_sh" >
+                                                <?php if(!empty($soft_list) || !empty($hard_list)): ?>
+                                                    <option selected disabled style="display:none">請選擇</option>
+                                                    <?php foreach($soft_list as $each): ?>
+                                                        <option value="asoft_<?= $each -> id?>"><?=  $each -> computer_soft_name ?></option>
+                                                    <?php endforeach ?>
+                                                    <?php foreach($hard_list as $each): ?>
+                                                        <option value="ahard_<?= $each -> id?>"><?=  $each -> computer_hard_name ?></option>
+                                                    <?php endforeach ?>
+                                                <?php else: ?>
+                                                    <option selected disabled style="display:none">目前沒有軟硬體</option>
+                                                <?php endif ?>
+
+                                             
+                                            </select>
                                         </td>
                                         <td style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control" name="fix_reason" placeholder="請輸入故障原因">
+                                                <input type="text" class="form-control" id="add_reason" placeholder="請輸入故障原因">
                                             </div>
                                         </td>
 										<td style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control" name="fix_way" placeholder="請輸入處置情況">
+                                                <input type="text" class="form-control" id="add_way" placeholder="請輸入處置情況">
                                             </div>
                                         </td>
 										<td class="min120" style="border-right:none;">
                                             <div class="input-group col-md-12">
-                                                <input type="text" class="form-control" name="fix_user" placeholder="請輸入維修人員">
+                                                <select id="add_user" class="form-control">
+                                                    <option selected disabled style="display:none">請選擇</option>
+                                                    <?php foreach($engineer as $each): ?>
+                                                        <option value="<?= $each -> id?>"><?=  $each -> user_name ?></option>
+                                                    <?php endforeach ?>
+                                                </select>                                     
                                             </div>
                                         </td>
 										<td style="border-right:none;">
@@ -260,7 +287,7 @@ $('#fix_way').on('change', function(){
 		$('.change').addClass('none');
 	}
 });
-
+var now_computer_id = [];
 var timeoutId = 0;
 $('#h_s_name').keyup(function(){ 
 	clearTimeout(timeoutId);
@@ -268,6 +295,7 @@ $('#h_s_name').keyup(function(){
 	if(h_s_name.length<1){
 		return;
 	}
+    now_computer_id = [];
 	timeoutId = setTimeout(function () {
 		$.ajax({
 			url: baseUrl + 'mgmt/fix_list/find_now_s_h_list',
@@ -335,9 +363,11 @@ function draw_now_computer($now_s_h_id,fix_type){
                             fix_type: d.fix_type,
                             computer_id: d.now_s_h_list.computer.id
                         });
-                        $('#old_sh').empty();
-                        console.log(d.now_s_h_list.s_array,);
 
+                        $('#old_sh').empty();
+                        console.log(now_sh_list);
+                        var html = '<option selected disabled style="display:none">請選擇</option>';
+                         $(html).appendTo($('#old_sh'));
                         $.each(d.now_s_h_list.s_array, function(){
                             $('<option />', {
                                 'value': 'soft_'+this.id,
@@ -361,22 +391,25 @@ function draw_now_computer($now_s_h_id,fix_type){
 
 function new_sh_change(){
     var old_sh = $('#old_sh').val();
-    var NewArray = new Array();
-    var NewArray = old_sh.split("_");
+    var oldArray = new Array();
+    var oldArray = old_sh.split("_");
+
+  
     $('#new_sh').empty();
     // console.log(NewArray);
     $.ajax({
         url: '<?= base_url() ?>' + 'mgmt/fix_list/find_h_or_s',
         type: 'POST',
         data: {
-            type: NewArray[0],
-            s_h_id: NewArray[1],
+            type: oldArray[0],
+            s_h_id: oldArray[1],
         },
         dataType: 'json',
         success: function(d) {
             if(d) {
                 if(!d.msg){
                     if(d.type=='hard') {
+                       
                         $.each(d.s_h_list, function(){
                             $('<option/>', {
                                 'value': this.id,
@@ -402,8 +435,148 @@ function new_sh_change(){
     });
   }
 
-  function add_fix(){
+  function add_fix(){//按下+按鈕時新增畫面以及寫入資料庫
+    var fix_date = $('#fix_date').val();
+    var fix_reason = $('#fix_reason').val();
+    var fix_way = $('#fix_way_').val();
+    var fix_user = $('#fix_user').val();
+
+    var change_date = $('#change_date').val();
+    var old_sh = $('#old_sh').val();
+    var new_sh = $('#new_sh').val();
+    var change_reason = $('#change_reason').val();
+    var change_way = $('#change_way').val();
+    var change_user = $('#change_user').val();
+
+    var add_date = $('#add_date').val();
+    var add_sh = $('#add_sh').val();
+    var add_reason = $('#add_reason').val();
+    var add_way = $('#add_way').val();
+    var add_user = $('#add_user').val();
+
+    var oldArray = new Array();
+    var oldArray = old_sh.split("_");
     
+
+    if($('#fix_way').val()=='fix'){
+        $('#change_date').empty();
+        $('#old_sh').empty();
+        $('#new_sh').empty();
+        $('#change_reason').empty();
+        $('#change_way').empty();
+        $('#change_user').empty();
+
+        $('#add_date').empty();
+        $('#add_sh').empty();
+        $('#add_reason').empty();
+        $('#add_way').empty();
+        $('#add_user').empty();
+
+        $.ajax({
+            url: '<?= base_url() ?>' + 'mgmt/fix_list/fix_record_insert',
+            type: 'POST',
+            data: {
+                fix_type: $('#fix_type').val(),
+                fix_way: $('#fix_way').val(),
+                fix_reason: fix_reason,//維修原因
+                fix_way: fix_way,//處置方式
+                fix_user: fix_user,//維修的人
+                fix_date: fix_date,
+                computer_id: now_sh_list[0]['computer_id'],
+
+            },
+            dataType: 'json',
+            success: function(d) {
+                if(d) {
+                    var $now_fix_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-6"><span fix_id="">  維修原因:  '+fix_reason+'  處置情形:  '+fix_way+'  維修者:  '+fix_user+'</span></div></div></hr>').appendTo($('#now_fix'));
+                }
+            },
+            failure:function(){
+                alert('faialure');
+            }
+        });
+
+    }
+
+    if($('#fix_way').val()=='change'){
+        $('#fix_date').empty();
+        $('#fix_reason').empty();
+        $('#fix_way_').empty();
+        $('#fix_user').empty();
+
+        $('#add_date').empty();
+        $('#add_sh').empty();
+        $('#add_reason').empty();
+        $('#add_way').empty();
+        $('#add_user').empty();
+     
+        $.ajax({
+            url: '<?= base_url() ?>' + 'mgmt/fix_list/fix_record_insert',
+            type: 'POST',
+            data: {
+                fix_type: $('#fix_type').val(),
+                fix_way: $('#fix_way').val(),
+                s_h_type: oldArray[0],//硬體or軟體
+                s_h_id: oldArray[1],
+                new_sh: new_sh,//新的
+                computer_id: now_sh_list[0]['computer_id'],
+                change_reason: change_reason,//更換原因
+                change_way: change_way,//處置方式
+                change_user: change_user,//更換的人
+                change_date: change_date,
+            },
+            dataType: 'json',
+            success: function(d) {
+                if(d) {
+                    var $now_change_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-6"><span change_id="'+d.last_id+'">舊有軟硬體:  '+old_sh+'   換成: '+new_sh+'  更換原因:  '+change_reason+'  處置情形:  '+change_way+'  維修者:  '+change_user+'</span></div></div></hr>').appendTo($('#now_fix'));
+                }
+            },
+            failure:function(){
+                alert('faialure');
+            }
+        });
+    }
+
+    if($('#fix_way').val()=='add'){
+        $('#fix_date').empty();
+        $('#fix_reason').empty();
+        $('#fix_way_').empty();
+        $('#fix_user').empty();
+
+        $('#change_date').empty();
+        $('#old_sh').empty();
+        $('#new_sh').empty();
+        $('#change_reason').empty();
+        $('#change_way').empty();
+        $('#change_user').empty();
+        var newArray = new Array();
+        var newArray = add_sh.split("_");
+        $.ajax({
+            url: '<?= base_url() ?>' + 'mgmt/fix_list/fix_record_insert',
+            type: 'POST',
+            data: {
+                fix_type: $('#fix_type').val(),
+                fix_way: $('#fix_way').val(),
+                s_h_type: newArray[0],//硬體or軟體
+                s_h_id: newArray[1],
+                add_reason: add_reason,//新增原因
+                add_way: add_way,//處置方式
+                add_user: add_user,//新增的人
+                add_date: add_date,
+                computer_id: now_sh_list[0]['computer_id'],
+
+            },
+            dataType: 'json',
+            success: function(d) {
+                if(d) {
+                    var $now_add_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-6"><span add_id="">  新增軟硬體: '+add_sh+'  新增原因:  '+add_reason+'  處置情形:  '+add_way+'  維修者:  '+add_user+'</span></div></div></hr>').appendTo($('#now_fix'));
+                }
+            },
+            failure:function(){
+                alert('faialure');
+            }
+        });
+    }   
   }
 
 </script>

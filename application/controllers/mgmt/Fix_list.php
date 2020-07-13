@@ -5,11 +5,14 @@ class Fix_list extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
+		$this -> load -> model('Fix_record_dao', 'dao');
 		$this -> load -> model('Computer_dao', 'computer_dao');
 		$this -> load -> model('Computer_hard_dao', 'c_h_dao');
 		$this -> load -> model('Computer_soft_dao', 'c_s_dao');
 		$this -> load -> model('C_s_h_join_list_dao', 'c_s_h_join_list_dao');
+		$this -> load -> model('C_s_h_join_temporary_dao', 'c_s_h_join_temporary_dao');
 
+		
 		$this -> load -> model('Members_log_dao', 'members_log_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
@@ -22,6 +25,10 @@ class Fix_list extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+		$data['engineer'] = $this -> users_dao -> find_all_engineer();
+		$data['soft_list'] = $this -> c_s_dao -> find_now_can_use();
+		$data['hard_list'] = $this -> c_h_dao -> find_now_can_use();
+
 		$this->load->view('mgmt/fix_list/list', $data);
 	}
 
@@ -228,5 +235,108 @@ class Fix_list extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
+	public function fix_record_insert() {
+		$res = array();
+		$fix_type = $this -> get_post('fix_type');
+		$fix_way = $this -> get_post('fix_way');//軟硬體
+		
+		$s_h_type = $this -> get_post('s_h_type');//軟硬體
+		
+		if(!empty($fix_type)){
+			if($fix_type =='1'){//電腦
+				if($fix_way =='change'){//更換軟硬體
+					$computer_id = $this -> get_post('computer_id');
+					$new_sh = $this -> get_post('new_sh');
+					$change_reason = $this -> get_post('change_reason');
+					$change_way = $this -> get_post('change_way');
+					$change_user = $this -> get_post('change_user');
+					$change_date = $this -> get_post('change_date');
+					$s_h_id = $this -> get_post('s_h_id');
+
+					if($s_h_type =='soft'){
+						$data['old_computer_soft_id'] = $s_h_id;
+						$data['new_computer_soft_id'] = $new_sh;
+						$find_soft = $this -> c_s_h_join_list_dao -> find_s_h_to_update($computer_id,$s_h_id,0);
+						$s_h_j_id = $find_soft[0] -> id;
+
+						// $this -> c_s_h_join_list_dao -> update($u_data, $s_h_j_id);
+						$s_h_c_insert['computer_id'] = $computer_id;
+						$s_h_c_insert['computer_soft_id'] = $new_sh;
+						$s_h_c_insert['type'] = 1;
+						$last_c_s_id = $this -> c_s_h_join_list_dao -> insert($s_h_c_insert);
+						$s_h_c_emporary_insert['s_h_j_id'] = $s_h_j_id;
+						$s_h_c_emporary_insert['new_s_h_j_id'] = $last_c_s_id;
+
+						$this -> c_s_h_join_temporary_dao -> insert($s_h_c_emporary_insert);//暫存
+
+					} elseif($s_h_type =='hard'){
+						$data['old_computer_hard_id'] = $s_h_id;
+						$data['new_computer_hard_id'] = $new_sh;
+						$find_hard = $this -> c_s_h_join_list_dao -> find_s_h_to_update($computer_id,$s_h_id,1);
+						$s_h_j_id = $find_hard[0] -> id;
+					
+						// $this -> c_s_h_join_list_dao -> update($u_data, $s_h_j_id);
+						$s_h_c_insert['computer_id'] = $computer_id;
+						$s_h_c_insert['computer_hard_id'] = $new_sh;
+						$s_h_c_insert['type'] = 1;
+						$last_c_s_id = $this -> c_s_h_join_list_dao -> insert($s_h_c_insert);
+						$s_h_c_emporary_insert['s_h_j_id'] = $s_h_j_id;
+						$s_h_c_emporary_insert['new_s_h_j_id'] = $last_c_s_id;
+						$this -> c_s_h_join_temporary_dao -> insert($s_h_c_emporary_insert);//暫存
+
+					}
+				
+					$data['fix_reason'] = $change_reason;
+					$data['fix_way'] = $change_way;
+					$data['report_date'] = $change_date;
+					$data['fix_user_id'] = $change_user;
+
+					$last_id = $this -> dao -> insert($data);
+					$res['last_id'] = $last_id ;
+					$res['last_c_s_id'] = $last_c_s_id ;
+					$res['delete_last_id'] = $s_h_j_id ;
+
+				}
+				if($fix_way =='add'){
+					$s_h_type = $this -> get_post('s_h_type');
+
+					if($s_h_type=='soft'){
+						$s_h_c_insert['computer_soft_id'] = $s_h_id;
+
+					} else if($s_h_type=='hard'){
+						$s_h_c_insert['computer_hard_id'] = $s_h_id;
+
+					}
+					$s_h_id = $this -> get_post('s_h_id');
+					$add_reason = $this -> get_post('add_reason');
+					$add_way = $this -> get_post('add_way');
+					$add_user = $this -> get_post('add_user');
+					$add_date = $this -> get_post('add_date');
+					$computer_id = $this -> get_post('computer_id');
+					$data['computer_id'] = $computer_id;
+					$data['fix_reason'] = $add_reason;
+					$data['fix_way'] = $add_way;
+					$data['report_date'] = $add_date;
+					$data['fix_user_id'] = $add_user;
+					if(!empty($computer_id)){
+						$this -> c_s_h_join_list_dao ->insert($s_h_c_insert);
+					}
+					$last_id = $this -> dao -> insert($data);
+
+				}
+				if($fix_way =='fix'){
+					
+				}
+			} 
+
+		}
+
+		$res['success'] = TRUE;
+
+		// $res['computer_hard_id_array'] = $hard_id_array;
+
+ 		$this -> to_json($res);
+	}
+
 
 }

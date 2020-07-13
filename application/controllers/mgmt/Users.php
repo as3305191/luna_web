@@ -53,7 +53,6 @@ class Users extends MY_Mgmt_Controller {
 				'columns',
 				'search',
 				'order',
-				'hospital_id',
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
@@ -78,7 +77,6 @@ class Users extends MY_Mgmt_Controller {
 			'password',
 			'user_name',
 			'role_id',
-			'hospital_id',
 
 		));
 

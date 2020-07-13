@@ -815,5 +815,24 @@ class C_s_h_join_list_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_s_h_to_update($computer_id,$s_h_id,$type) {
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.computer_id', $computer_id);
+		if($type==0){
+			$this -> db -> where('_m.computer_soft_id', $s_h_id);
+		}
+		if($type==1){
+			$this -> db -> where('_m.computer_hard_id', $s_h_id);
+		}
+		$this -> db -> where('_m.is_ok', 1);
+		$this -> db -> where('_m.is_delete', 0);
+
+		// query results
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		return $list;
+	}
+
 }
 ?>
