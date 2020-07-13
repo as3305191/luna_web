@@ -267,7 +267,7 @@ class Fix_list extends MY_Mgmt_Controller {
 						$s_h_c_emporary_insert['s_h_j_id'] = $s_h_j_id;
 						$s_h_c_emporary_insert['new_s_h_j_id'] = $last_c_s_id;
 
-						$this -> c_s_h_join_temporary_dao -> insert($s_h_c_emporary_insert);//暫存
+						$last_c_s_h_join_temporary_id = $this -> c_s_h_join_temporary_dao -> insert($s_h_c_emporary_insert);//暫存
 
 					} elseif($s_h_type =='hard'){
 						$data['old_computer_hard_id'] = $s_h_id;
@@ -282,16 +282,18 @@ class Fix_list extends MY_Mgmt_Controller {
 						$last_c_s_id = $this -> c_s_h_join_list_dao -> insert($s_h_c_insert);
 						$s_h_c_emporary_insert['s_h_j_id'] = $s_h_j_id;
 						$s_h_c_emporary_insert['new_s_h_j_id'] = $last_c_s_id;
-						$this -> c_s_h_join_temporary_dao -> insert($s_h_c_emporary_insert);//暫存
+						$last_c_s_h_join_temporary_id = $this -> c_s_h_join_temporary_dao -> insert($s_h_c_emporary_insert);//暫存
 
 					}
-				
 					$data['fix_reason'] = $change_reason;
 					$data['fix_way'] = $change_way;
 					$data['report_date'] = $change_date;
 					$data['fix_user_id'] = $change_user;
 
 					$last_id = $this -> dao -> insert($data);
+					$uudata['fix_record_id'] = $last_id;
+					$this -> c_s_h_join_temporary_dao -> update($uudata, $last_c_s_h_join_temporary_id);
+
 					$res['last_id'] = $last_id ;
 					$res['last_c_s_id'] = $last_c_s_id ;
 					$res['delete_last_id'] = $s_h_j_id ;
@@ -302,9 +304,11 @@ class Fix_list extends MY_Mgmt_Controller {
 
 					if($s_h_type=='soft'){
 						$s_h_c_insert['computer_soft_id'] = $s_h_id;
+						$data['new_computer_soft_id'] = $computer_id;
 
 					} else if($s_h_type=='hard'){
 						$s_h_c_insert['computer_hard_id'] = $s_h_id;
+						$data['new_computer_hard_id'] = $computer_id;
 
 					}
 					$s_h_id = $this -> get_post('s_h_id');
