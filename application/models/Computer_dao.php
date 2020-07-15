@@ -767,8 +767,6 @@ class Computer_dao extends MY_Model {
 		$this -> db -> where("_m.is_delete", 0);
 		$this -> db -> where("_m.is_ok", 1);
 
-		$this -> db -> order_by('_m.id', 'asc');
-		// limit
 
 		$list = $this -> db -> get() -> result();
 		return $list;

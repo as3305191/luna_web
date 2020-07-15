@@ -21,6 +21,9 @@ class Computer_hard extends MY_Mgmt_Controller {
 		// $data['role_list'] = $this -> users_dao -> find_all_roles();
 		// $data['hospital_list'] = $this -> users_dao -> find_all_hospital();
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+
+				$this -> to_json($data);
+
 		$this->load->view('mgmt/computer_hard/list', $data);
 	}
 

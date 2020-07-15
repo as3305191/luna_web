@@ -734,6 +734,7 @@ class C_s_h_join_list_dao extends MY_Model {
 			$this -> db -> where('_m.computer_hard_id>', 0);
 			$this -> db -> where('c_s.is_delete', 0); 
 			$this -> db -> where('c_s.is_ok', 1); 
+			$this -> db -> where('_m.type', 0);
 
 			$this -> db -> join("computer_hard c_h", "c_h.id = _m.computer_hard_id", "left");
 
@@ -742,6 +743,7 @@ class C_s_h_join_list_dao extends MY_Model {
 			$this -> db -> where('_m.computer_soft_id>', 0);
 			$this -> db -> where('c_s.is_delete', 0); 
 			$this -> db -> where('c_s.is_ok', 1); 
+			$this -> db -> where('_m.type', 0);
 
 			$this -> db -> join("computer_soft c_s", "c_s.id = _m.computer_soft_id", "left");
 
@@ -770,7 +772,9 @@ class C_s_h_join_list_dao extends MY_Model {
 		$this -> db -> select('_m.*');
 
 		$this -> db -> where('_m.usage_count>', 0);
-
+		$this -> db -> where('_m.type', 0);
+		$this -> db -> where('_m.is_ok', 1);
+		$this -> db -> where('_m.is_delete', 0);
 
 		$list = $this -> db -> get() -> result();
 		return $list;
@@ -784,6 +788,8 @@ class C_s_h_join_list_dao extends MY_Model {
 			$this -> db -> where('_m.computer_hard_id>', 0);
 			$this -> db -> where('c_h.is_delete', 0); 
 			$this -> db -> where('c_h.is_ok', 1); 
+			$this -> db -> where('_m.type', 0);
+
 			$this -> db -> join("computer_hard c_h", "c_h.id = _m.computer_hard_id", "left");
 
 		}else if($type==1){
@@ -791,12 +797,13 @@ class C_s_h_join_list_dao extends MY_Model {
 			$this -> db -> where('_m.computer_soft_id>', 0);
 			$this -> db -> where('c_s.is_delete', 0); 
 			$this -> db -> where('c_s.is_ok', 1); 
+			$this -> db -> where('_m.type', 0);
 
 			$this -> db -> join("computer_soft c_s", "c_s.id = _m.computer_soft_id", "left");
 
 		}
 		$this -> db -> where('_m.computer_id', $computer_id);
-		$this -> db -> order_by('id', 'asc'); // first admin
+		$this -> db -> order_by('id', 'asc');
 
 		// query results
 		$query = $this -> db -> get();
@@ -808,7 +815,9 @@ class C_s_h_join_list_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> where('_m.computer_id', $computer_id);
-
+		$this -> db -> where('_m.type', 0);
+		$this -> db -> where('_m.is_ok', 1);
+		$this -> db -> where('_m.is_delete', 0);
 		// query results
 		$query = $this -> db -> get();
 		$list = $query -> result();
@@ -827,6 +836,28 @@ class C_s_h_join_list_dao extends MY_Model {
 		}
 		$this -> db -> where('_m.is_ok', 1);
 		$this -> db -> where('_m.is_delete', 0);
+		$this -> db -> where('_m.type', 0);
+
+		// query results
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		return $list;
+	}
+
+
+	function find_hard_soft_list($computer_id,$s_h_id,$type) {
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.computer_id', $computer_id);
+		if($type==0){
+			$this -> db -> where('_m.computer_soft_id', $s_h_id);
+		}
+		if($type==1){
+			$this -> db -> where('_m.computer_hard_id', $s_h_id);
+		}
+		$this -> db -> where('_m.is_ok', 1);
+		$this -> db -> where('_m.is_delete', 0);
+		$this -> db -> where('_m.type', 1);
 
 		// query results
 		$query = $this -> db -> get();

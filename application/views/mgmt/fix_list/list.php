@@ -252,7 +252,7 @@
                 </div>
             </div>
 			<div class="col-md-12" style="margin-top:10px">
-				<button onclick="currentApp.doSubmit()"  style="float:right;border-radius:5px;background-color:#45BA71;border-color:#308F57;font-size:14px;padding:10px" class="btn btn-success">
+				<button onclick="do_save_fix();"  style="float:right;border-radius:5px;background-color:#45BA71;border-color:#308F57;font-size:14px;padding:10px" class="btn btn-success">
 					確定新增
 				</button>
 			</div> 
@@ -435,6 +435,8 @@ function new_sh_change(){
     });
   }
 
+  var now_fix_record = [];
+
   function add_fix(){//按下+按鈕時新增畫面以及寫入資料庫
     var fix_date = $('#fix_date').val();
     var fix_reason = $('#fix_reason').val();
@@ -453,10 +455,6 @@ function new_sh_change(){
     var add_reason = $('#add_reason').val();
     var add_way = $('#add_way').val();
     var add_user = $('#add_user').val();
-
-    var oldArray = new Array();
-    var oldArray = old_sh.split("_");
-    
 
     if($('#fix_way').val()=='fix'){
         $('#change_date').empty();
@@ -479,7 +477,7 @@ function new_sh_change(){
                 fix_type: $('#fix_type').val(),
                 fix_way: $('#fix_way').val(),
                 fix_reason: fix_reason,//維修原因
-                fix_way: fix_way,//處置方式
+                fix_way_: fix_way,//處置方式
                 fix_user: fix_user,//維修的人
                 fix_date: fix_date,
                 computer_id: now_sh_list[0]['computer_id'],
@@ -488,7 +486,8 @@ function new_sh_change(){
             dataType: 'json',
             success: function(d) {
                 if(d) {
-                    var $now_fix_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-6"><span fix_id="">  維修原因:  '+fix_reason+'  處置情形:  '+fix_way+'  維修者:  '+fix_user+'</span></div></div></hr>').appendTo($('#now_fix'));
+                    var $now_fix_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-12"><span fix_id="">  維修原因:  '+fix_reason+'  處置情形:  '+fix_way+'  維修者:  '+$('#fix_user option:selected').text()+'</span></div></div></hr>').appendTo($('#now_fix'));
+                    now_fix_record.push(d.last_id);
                 }
             },
             failure:function(){
@@ -499,6 +498,8 @@ function new_sh_change(){
     }
 
     if($('#fix_way').val()=='change'){
+        var oldArray = new Array();
+        var oldArray = old_sh.split("_");
         $('#fix_date').empty();
         $('#fix_reason').empty();
         $('#fix_way_').empty();
@@ -528,7 +529,8 @@ function new_sh_change(){
             dataType: 'json',
             success: function(d) {
                 if(d) {
-                    var $now_change_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-6"><span change_id="'+d.last_id+'">舊有軟硬體:  '+old_sh+'   換成: '+new_sh+'  更換原因:  '+change_reason+'  處置情形:  '+change_way+'  維修者:  '+change_user+'</span></div></div></hr>').appendTo($('#now_fix'));
+                    var $now_change_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="12ol-sm-ㄉ"><span change_id="'+d.last_id+'">舊有軟硬體:  '+$('#old_sh option:selected').text()+'   換成: '+$('#new_sh option:selected').text()+'  更換原因:  '+change_reason+'  處置情形:  '+change_way+'  維修者:  '+$('#change_user option:selected').text()+'</span></div></div></hr>').appendTo($('#now_fix'));
+                    now_fix_record.push(d.last_id);
                 }
             },
             failure:function(){
@@ -564,12 +566,12 @@ function new_sh_change(){
                 add_user: add_user,//新增的人
                 add_date: add_date,
                 computer_id: now_sh_list[0]['computer_id'],
-
             },
             dataType: 'json',
             success: function(d) {
                 if(d) {
-                    var $now_add_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-6"><span add_id="">  新增軟硬體: '+add_sh+'  新增原因:  '+add_reason+'  處置情形:  '+add_way+'  維修者:  '+add_user+'</span></div></div></hr>').appendTo($('#now_fix'));
+                    var $now_add_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-12"><span add_id="+d.last_id+">  新增軟硬體: '+$('#add_sh option:selected').text()+'  新增原因:  '+add_reason+'  處置情形:  '+add_way+'  維修者:  '+$('#add_user option:selected').text()+'</span></div></div></hr>').appendTo($('#now_fix'));
+                    now_fix_record.push(d.last_id);
                 }
             },
             failure:function(){
@@ -579,4 +581,26 @@ function new_sh_change(){
     }   
   }
 
+function do_save_fix() {
+    $.ajax({
+        url: '<?= base_url() ?>' + 'mgmt/fix_list/do_save_fix_list',
+        type: 'POST',
+        data: {},
+        dataType: 'json',
+        success: function(d) {
+            if(d) {
+                if(d.msg){
+                    alert(d.msg);
+                } else{
+                    location.reload();
+                    alert('儲存成功');
+                }
+             
+            }
+        },
+        failure:function(){
+            alert('faialure');
+        }
+    });
+}
 </script>
