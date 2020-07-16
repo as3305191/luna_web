@@ -9,11 +9,12 @@ class Computer extends MY_Mgmt_Controller {
 		$this -> load -> model('Computer_hard_dao', 'c_h_dao');
 		$this -> load -> model('Computer_soft_dao', 'c_s_dao');
 		$this -> load -> model('C_s_h_join_list_dao', 'c_s_h_join_list_dao');
+		$this -> load -> model('Fix_record_dao', 'fix_record_dao');
 
 		$this -> load -> model('Members_log_dao', 'members_log_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Ketone_record_dao', 'ketone_record_dao');
+	
 
 	}
 
@@ -84,6 +85,71 @@ class Computer extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/computer/edit', $data);
 	}
 
+	public function get_fix_record() {
+		$res = array();
+
+		$data = $this -> get_posts(array(
+			'length',
+			'start',
+			'columns',
+			'search',
+			'order',
+			'computer_id',
+		));
+
+		$res['items'] = $this -> fix_record_dao -> find_compter_fix($data);
+		foreach($res['items'] as $each){
+			$o_h = $each ->old_computer_hard_id;
+			$o_s = $each ->old_computer_soft_id;
+			$n_h = $each ->new_computer_hard_id;
+			$n_s = $each ->new_computer_soft_id;
+			$o_h_name = $this -> c_h_dao -> find_sh_name($o_h);
+			$o_s_name = $this -> c_s_dao -> find_sh_name($o_s);
+			$n_h_name = $this -> c_h_dao -> find_sh_name($n_h);
+			$n_s_name = $this -> c_s_dao -> find_sh_name($n_s);
+			$each -> o_h_name = $o_h_name;
+			$each -> o_s_name = $o_s_name;
+			$each -> n_h_name = $n_h_name;
+			$each -> n_s_name = $n_s_name;
+		}
+		$res['recordsFiltered'] = $this -> fix_record_dao -> find_compter_fix($data, TRUE);
+		$res['recordsTotal'] = $this -> fix_record_dao -> find_compter_fix($data, TRUE);
+
+		$this -> to_json($res);
+	}
+
+	public function get_fix_recording() {
+		$res = array();
+
+		$data = $this -> get_posts(array(
+			'length',
+			'start',
+			'columns',
+			'search',
+			'order',
+			'computer_id',
+		));
+
+		$res['items'] = $this -> fix_record_dao -> find_compter_fix($data);
+		foreach($res['items'] as $each){
+			$o_h = $each ->old_computer_hard_id;
+			$o_s = $each ->old_computer_soft_id;
+			$n_h = $each ->new_computer_hard_id;
+			$n_s = $each ->new_computer_soft_id;
+			$o_h_name = $this -> c_h_dao -> find_sh_name($o_h);
+			$o_s_name = $this -> c_s_dao -> find_sh_name($o_s);
+			$n_h_name = $this -> c_h_dao -> find_sh_name($n_h);
+			$n_s_name = $this -> c_s_dao -> find_sh_name($n_s);
+			$each -> o_h_name = $o_h_name;
+			$each -> o_s_name = $o_s_name;
+			$each -> n_h_name = $n_h_name;
+			$each -> n_s_name = $n_s_name;
+		}
+		$res['recordsFiltered'] = $this -> fix_record_dao -> find_compter_fix($data, TRUE);
+		$res['recordsTotal'] = $this -> fix_record_dao -> find_compter_fix($data, TRUE);
+
+		$this -> to_json($res);
+	}
 
 	public function insert() {
 		$res = array();

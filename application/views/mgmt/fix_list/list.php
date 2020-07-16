@@ -595,7 +595,6 @@ function do_save_fix() {
                     location.reload();
                     alert('儲存成功');
                 }
-             
             }
         },
         failure:function(){

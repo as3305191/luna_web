@@ -49,8 +49,8 @@ var ComputerAppClass = (function(app) {
 });
 
 
-var WeightHistoryClass = (function(app) {
-	app.basePath = "mgmt/members/";
+var FixrecordAppClass = (function(app) {
+	app.basePath = "mgmt/computer/";
 	app.disableRowClick = true;
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click
@@ -111,15 +111,13 @@ var WeightHistoryClass = (function(app) {
 		}
 	};
 
-
 	app.init = function() {
-		app.mDtTable = $('#weight_history_list').DataTable($.extend(app.dtConfig,{
+		app.mDtTable = $('#fix_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
-				url : baseUrl + app.basePath + '/get_weight_history',
+				url : baseUrl + app.basePath + '/get_fix_record',
 				data : function(d) {
-					d.member_id = $('#item_id').val();
+					d.computer = $('#item_id').val();
 					// d.lottery_no = $('#lottery_select').val();
-
 					return d;
 				},
 				dataSrc : 'items',
@@ -129,50 +127,66 @@ var WeightHistoryClass = (function(app) {
 
 			pageLength: 50,
 
-			columns : [{
-				data : 'weight',
-				render: function(d,t,r) {
-					return parseFloat(d/1000).toFixed(1);
+			columns : [
+				{
+					data : 'report_date'
+				},
+				{
+					data : 'fix_date'
+				},
+				{
+					data : 'done_fix_date'
+				},
+				{
+					data : 'fix_type',
+					render: function(d,t,r) {
+						if(d=='change'){
+							return'更換';
+						}
+						if(d=='add'){
+							return'新增';
+						}
+						if(d=='fix'){
+							return'維修';
+						}
+					}
+				},
+				{
+					data : 'fix_type',
+					render: function(d,t,r) {
+						if(d=='change'){
+							if(r.old_computer_hard_id>0){
+								return r.o_h_name+'更換為'+r.n_h_name;
+							} else{
+								return r.o_s_name+'更換為'+r.n_s_name;
+							}
+						}
+						if(d=='add'){
+							if(r.new_computer_hard_id>0){
+								return '新增'+r.n_h_name;
+							} else{
+								return '新增'+r.n_s_name;
+							}
+						}
+						if(d=='fix'){
+							return'無新增或更換零件';
+						}
+					}
+				},
+				{
+					data : 'fix_reason'
+				},
+				{
+					data : 'fix_way'
+				},
+				{
+					data : 'user_name'
 				}
-			},{
-				data : 'body_fat',
-				render: function(d,t,r) {
-					return parseFloat(d/1000).toFixed(1);
-				}
-			},{
-				data : 'body_fat_rate'
-			},{
-				data : 'visceral_fat_rate'
-			},{
-				data : 'protein_rate'
-			},{
-				data : 'moisture_rate'
-			},{
-				data : 'muscle_rate'
-			},{
-				data : 'skeletal_muscle_rate'
-			},{
-				data : 'bone_mass_rate'
-			},{
-				data : 'subcutaneous_fat_rate'
-			},{
-				data : 'fat_info'
-			},{
-				data : 'bmr'
-			},{
-				data : 'health_index'
-			},{
-				data : 'physical_age'
-			},{
-				data : 'body_type'
-			},{
-				data : 'create_date'
-			}
 		],
 			ordering: false,
 			order : [[0, "desc"]],
 			columnDefs : [{
-				"targets" : [0, 1,2],
+				"targets" : [0,1,2],
 				"orderable" : false
 			}],
 
@@ -344,8 +358,8 @@ var WeightHistoryClass = (function(app) {
 	return app.init();
 });
 
-var KetonrecordClass = (function(app) {
-	app.basePath = "mgmt/members/";
+var FixrecordingAppClass = (function(app) {
+	app.basePath = "mgmt/computer/";
 	app.disableRowClick = true;
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click
@@ -406,15 +420,13 @@ var KetonrecordClass = (function(app) {
 		}
 	};
 
-
 	app.init = function() {
-		app.mDtTable = $('#ketone_record_list').DataTable($.extend(app.dtConfig,{
+		app.mDtTable = $('#fix_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
-				url : baseUrl + app.basePath + '/get_Keton_data',
+				url : baseUrl + app.basePath + '/get_fix_record',
 				data : function(d) {
-					d.member_id = $('#item_id').val();
+					d.computer = $('#item_id').val();
 					// d.lottery_no = $('#lottery_select').val();
-
 					return d;
 				},
 				dataSrc : 'items',
@@ -424,16 +436,66 @@ var KetonrecordClass = (function(app) {
 
 			pageLength: 50,
 
-			columns : [{
-				data : 'value'
-			},{
-				data : 'create_time'
-			}
+			columns : [
+				{
+					data : 'report_date'
+				},
+				{
+					data : 'fix_date'
+				},
+				{
+					data : 'done_fix_date'
+				},
+				{
+					data : 'fix_type',
+					render: function(d,t,r) {
+						if(d=='change'){
+							return'更換';
+						}
+						if(d=='add'){
+							return'新增';
+						}
+						if(d=='fix'){
+							return'維修';
+						}
+					}
+				},
+				{
+					data : 'fix_type',
+					render: function(d,t,r) {
+						if(d=='change'){
+							if(r.old_computer_hard_id>0){
+								return r.o_h_name+'更換為'+r.n_h_name;
+							} else{
+								return r.o_s_name+'更換為'+r.n_s_name;
+							}
+						}
+						if(d=='add'){
+							if(r.new_computer_hard_id>0){
+								return '新增'+r.n_h_name;
+							} else{
+								return '新增'+r.n_s_name;
+							}
+						}
+						if(d=='fix'){
+							return'無新增或更換零件';
+						}
+					}
+				},
+				{
+					data : 'fix_reason'
+				},
+				{
+					data : 'fix_way'
+				},
+				{
+					data : 'user_name'
+				}
 		],
 			ordering: false,
 			order : [[0, "desc"]],
 			columnDefs : [{
-				"targets" : [0, 1],
+				"targets" : [0,1,2],
 				"orderable" : false
 			}],
 
@@ -499,23 +561,7 @@ var KetonrecordClass = (function(app) {
 
 
 		// do submit
-		app.doSubmit = function() {
-			// if(!$('#app-lottery-edit-form').data('bootstrapValidator').validate().isValid()) return;
-			var url = baseUrl + app.basePath + 'insert_fish_tab_lottery'; // the script where you handle the form input.
-			$.ajax({
-				type : "POST",
-				url : url,
-				data : $("#app-lottery-edit-form").serialize(),
-				success : function(data) {
-					if(data.error_msg) {
-						layer.msg(data.error_msg);
-					} else {
-						app.mDtTable.ajax.reload(null, false);
-					}
-					// app.backTo();
-				}
-			});
-		};
+	
 
 		app.doDelItem = function() {
 			$.ajax({
@@ -620,3 +666,4 @@ var KetonrecordClass = (function(app) {
 	// return self
 	return app.init();
 });
+

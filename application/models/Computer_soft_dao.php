@@ -794,5 +794,16 @@ class Computer_soft_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
+
+	function find_sh_name($sh_id) {
+		$this -> db -> from("$this->table_name as _m");
+
+		// select
+		$this -> db -> select('_m.computer_soft_name');
+		$this -> db -> where("_m.id",$sh_id);
+
+		$list = $this -> db -> get() -> result();
+		return $list[0];
+	}
 }
 ?>

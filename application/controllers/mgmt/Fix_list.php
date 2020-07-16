@@ -28,7 +28,6 @@ class Fix_list extends MY_Mgmt_Controller {
 		$data['soft_list'] = $this -> c_s_dao -> find_now_can_use();
 		$data['hard_list'] = $this -> c_h_dao -> find_now_can_use();
 		// $this -> to_json($data);
-
 		$this->load->view('mgmt/fix_list/list', $data);
 	}
 

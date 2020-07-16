@@ -772,5 +772,6 @@ class Computer_dao extends MY_Model {
 		return $list;
 	}
 
+	
 }
 ?>

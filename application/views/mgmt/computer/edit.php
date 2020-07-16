@@ -37,16 +37,14 @@
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<input type="hidden" name="role_id"  value="1" />
-				<!-- <fieldset>
-
+				<fieldset>
 					<div class="col-md-6 form-group">
 						<button type="button" class="1 btn_roles btn_1" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmefieldset('1')">電腦基本資料資料</button>
-						<button type="button" class="2 btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmefieldset('2')">維修單</button>
-				</div>
+						<button type="button" class="2 btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmefieldset('2')">維修紀錄</button>
+					</div>
 				</fieldset>
-				<hr/>-->
+				<hr/>
 			<div class="fieldset1" id="1" style="">
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">電腦名稱</label>
@@ -148,9 +146,47 @@
 
 		</div>
 		<div class="fieldset1" id="2" style="display:none">
+			<div>
+				<label class="col-md-3" style="font-weight:bold;font-size:large;">已完成維修紀錄:</label>
+				<table id="fix_list" class="table table-striped table-bordered table-hover" width="100%">
+					<thead>
+						<tr>
+							<th class="min100">報修日期</th>
+							<th class="min100">維修日期</th>
+							<th class="min100">完修日期</th>
+							<th class="min100">維修方式</th>
+							<th class="min100">維修方法</th>
+							<th class="min100">故障原因</th>
+							<th class="min100">處置情形</th>
+							<th class="min100">維修人員</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 
-			維修單
-				
+			</hr>
+			
+			<div>
+				<label class="col-md-3" style="font-weight:bold;font-size:large;">維修中:</label>
+				<table id="fix_list" class="table table-striped table-bordered table-hover" width="100%">
+					<thead>
+						<tr>
+							<th class="min100">報修日期</th>
+							<th class="min100">維修日期</th>
+							<th class="min100">完修日期</th>
+							<th class="min100">維修方式</th>
+							<th class="min100">維修方法</th>
+							<th class="min100">故障原因</th>
+							<th class="min100">處置情形</th>
+							<th class="min100">維修人員</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 
 		</div>
 			</form>
@@ -183,13 +219,13 @@ $(".dt_picker").datetimepicker({
 
 });
 
-// function showmefieldset(id) {
-// 	//   document.getElementById(id).show();
-// 	$('.fieldset1').hide();
-// 	$('#'+id).show();
-// 	$('.btn_roles').removeClass('btn_1');
-// 	$('.'+id).addClass('btn_1');
-// }
+function showmefieldset(id) {
+	//   document.getElementById(id).show();
+	$('.fieldset1').hide();
+	$('#'+id).show();
+	$('.btn_roles').removeClass('btn_1');
+	$('.'+id).addClass('btn_1');
+}
 
 $('#app-edit-form').bootstrapValidator({
 	feedbackIcons : {
@@ -380,4 +416,7 @@ function do_save() {
 	}
 
 	drawfirst();
+
+	currentApp.lotteryList = new FixrecordAppClass(new BaseAppClass({}));
+
 </script>

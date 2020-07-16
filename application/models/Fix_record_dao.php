@@ -774,5 +774,32 @@ class Fix_record_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_compter_fix($data,$is_count = FALSE) {
+		$start = $data['start'];
+		$limit = $data['length'];
+		$computer_id = $data['computer_id'];
+
+		// select
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> select('u.user_name as user_name');
+
+		// $this -> db -> join("computer c", "c.id = _m.computer_id", "left");
+		$this -> db -> join("users u", "u.id = _m.fix_user_id", "left");
+
+		$this -> db -> where('_m.computer_id',$computer_id);
+		$this -> db -> where('_m.type',0);
+
+		if(!$is_count) {
+			$this -> db -> limit($limit, $start);
+		}
+		// query results
+		if(!$is_count) {
+			$query = $this -> db -> get();
+			return $query -> result();
+		} else {
+			return $this -> db -> count_all_results();
+		}
+	}
 }
 ?>
