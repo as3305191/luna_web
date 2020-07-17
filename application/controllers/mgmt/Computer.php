@@ -68,7 +68,7 @@ class Computer extends MY_Mgmt_Controller {
 		}
 
 		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 
 		$computer_hard_list = $this -> c_h_dao -> find_all_usage_not_zero();
 		$computer_soft_list = $this -> c_s_dao -> find_all_usage_not_zero();
@@ -94,7 +94,7 @@ class Computer extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			'computer_id',
+			'computer',
 		));
 
 		$res['items'] = $this -> fix_record_dao -> find_compter_fix($data);
@@ -107,10 +107,26 @@ class Computer extends MY_Mgmt_Controller {
 			$o_s_name = $this -> c_s_dao -> find_sh_name($o_s);
 			$n_h_name = $this -> c_h_dao -> find_sh_name($n_h);
 			$n_s_name = $this -> c_s_dao -> find_sh_name($n_s);
-			$each -> o_h_name = $o_h_name;
-			$each -> o_s_name = $o_s_name;
-			$each -> n_h_name = $n_h_name;
-			$each -> n_s_name = $n_s_name;
+			if(!empty($o_h_name)){
+				$each -> o_h_name = $o_h_name;
+			} else{
+				$each -> o_h_name = '';
+			}
+			if(!empty($o_s_name)){
+				$each -> o_s_name = $o_s_name;
+			} else{
+				$each -> o_s_name = '';
+			}
+			if(!empty($n_h_name)){
+				$each -> n_h_name = $n_h_name;
+			} else{
+				$each -> n_h_name = '';
+			}
+			if(!empty($n_s_name)){
+				$each -> n_s_name = $n_s_name;
+			} else{
+				$each -> n_s_name = '';
+			}
 		}
 		$res['recordsFiltered'] = $this -> fix_record_dao -> find_compter_fix($data, TRUE);
 		$res['recordsTotal'] = $this -> fix_record_dao -> find_compter_fix($data, TRUE);
@@ -127,10 +143,10 @@ class Computer extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			'computer_id',
+			'computer',
 		));
 
-		$res['items'] = $this -> fix_record_dao -> find_compter_fix($data);
+		$res['items'] = $this -> fix_record_dao -> find_compter_fixing($data);
 		foreach($res['items'] as $each){
 			$o_h = $each ->old_computer_hard_id;
 			$o_s = $each ->old_computer_soft_id;
@@ -144,9 +160,29 @@ class Computer extends MY_Mgmt_Controller {
 			$each -> o_s_name = $o_s_name;
 			$each -> n_h_name = $n_h_name;
 			$each -> n_s_name = $n_s_name;
+			if(!empty($o_h_name)){
+				$each -> o_h_name = $o_h_name;
+			} else{
+				$each -> o_h_name = '';
+			}
+			if(!empty($o_s_name)){
+				$each -> o_s_name = $o_s_name;
+			} else{
+				$each -> o_s_name = '';
+			}
+			if(!empty($n_h_name)){
+				$each -> n_h_name = $n_h_name;
+			} else{
+				$each -> n_h_name = '';
+			}
+			if(!empty($n_s_name)){
+				$each -> n_s_name = $n_s_name;
+			} else{
+				$each -> n_s_name = '';
+			}
 		}
-		$res['recordsFiltered'] = $this -> fix_record_dao -> find_compter_fix($data, TRUE);
-		$res['recordsTotal'] = $this -> fix_record_dao -> find_compter_fix($data, TRUE);
+		$res['recordsFiltered'] = $this -> fix_record_dao -> find_compter_fixing($data, TRUE);
+		$res['recordsTotal'] = $this -> fix_record_dao -> find_compter_fixing($data, TRUE);
 
 		$this -> to_json($res);
 	}

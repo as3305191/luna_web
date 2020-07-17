@@ -803,7 +803,7 @@ class Computer_hard_dao extends MY_Model {
 		$this -> db -> where("_m.id",$sh_id);
 
 		$list = $this -> db -> get() -> result();
-		return $list[0];
+		return $list;
 	}
 }
 ?>

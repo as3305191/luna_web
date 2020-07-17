@@ -287,6 +287,7 @@ class Fix_list extends MY_Mgmt_Controller {
 					$data['new_c_s_h_jion_list_id'] = $last_c_s_id;
 					$data['computer_id'] = $computer_id;
 					$data['type'] = 1;
+					$data['fix_type'] = $fix_way ;
 
 					$last_id = $this -> dao -> insert($data);
 
@@ -330,6 +331,7 @@ class Fix_list extends MY_Mgmt_Controller {
 					$data['fix_user_id'] = $add_user;
 					$data['new_c_s_h_jion_list_id'] = $last_c_s_id;
 					$data['type'] = 1;
+					$data['fix_type'] = $fix_way ;
 
 			
 					$last_id = $this -> dao -> insert($data);
@@ -339,15 +341,16 @@ class Fix_list extends MY_Mgmt_Controller {
 					$computer_id = $this -> get_post('computer_id');
 					$fix_type = $this -> get_post('fix_type');
 					$fix_reason = $this -> get_post('fix_reason');
-					$fix_way = $this -> get_post('fix_way_');
+					$fix_way_ = $this -> get_post('fix_way_');
 					$fix_user = $this -> get_post('fix_user');
 					$fix_date = $this -> get_post('fix_date');
 					$data['computer_id'] = $computer_id;
 					$data['fix_reason'] = $fix_reason;
-					$data['fix_way'] = $fix_way;
+					$data['fix_way'] = $fix_way_;
 					$data['report_date'] = $fix_date;
 					$data['fix_user_id'] = $fix_user;
 					$data['type'] = 1;
+					$data['fix_type'] = $fix_way ;
 
 					$last_id = $this -> dao -> insert($data);
 
@@ -380,7 +383,7 @@ class Fix_list extends MY_Mgmt_Controller {
 	public function do_save_fix_list() {
 		$fix_record_id = $this -> session -> userdata('now_fix_record');
 		if(!empty($fix_record_id) && count($fix_record_id)>0){
-			$this->session->unset_userdata($fix_record_id);
+			$this->session->unset_userdata('now_fix_record');
 		} else{
 			$res['msg'] = '請先填寫維修單';
 		}

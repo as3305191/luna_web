@@ -84,7 +84,70 @@
 		</section>
 	</div>
 </div>
+<div class="modal fade" id="fixModal" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+			</div>
+			<div class="modal-body" id="">
+				<form id="" class="">
+					<input id="fix_record_id"  type="hidden" value="">
+					<input id="fix_type"  type="" value="hidden">
 
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3 control-label">維修日期</label>
+							<div class="col-md-9">
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="fix_date" value=""  />
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3 control-label">完修日期</label>
+							<div class="col-md-9">
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="done_fix_date" value=""  />
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3 control-label">維修方法</label>
+							<div class="col-md-9">
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="fix_way" value=""  />
+								</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3 control-label">故障原因</label>
+							<div class="col-md-9">
+								<div class="col-md-9">
+									<input type="text" class="form-control" id="fix_result" value=""  />
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger btn-sm" onclick="save_fix()">
+						<i class="fa fa-save"></i> 存擋
+					</button>
+					<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+						<i class="fa fa-close"></i> 關閉
+					</button>
+				</div>
+				</form>
+			</div>
+
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div>
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 	var mCols = [null,{

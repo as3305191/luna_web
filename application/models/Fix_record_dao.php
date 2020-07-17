@@ -777,11 +777,14 @@ class Fix_record_dao extends MY_Model {
 	function find_compter_fix($data,$is_count = FALSE) {
 		$start = $data['start'];
 		$limit = $data['length'];
-		$computer_id = $data['computer_id'];
+		$computer_id = $data['computer'];
 
 		// select
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
+		$this -> db -> select("DATE_FORMAT(_m.fix_date, '%Y-%m-%d') as fix_date");
+		$this -> db -> select("DATE_FORMAT(_m.report_date, '%Y-%m-%d') as report_date");
+		$this -> db -> select("DATE_FORMAT(_m.done_fix_date, '%Y-%m-%d') as done_fix_date");		
 		$this -> db -> select('u.user_name as user_name');
 
 		// $this -> db -> join("computer c", "c.id = _m.computer_id", "left");
@@ -789,6 +792,37 @@ class Fix_record_dao extends MY_Model {
 
 		$this -> db -> where('_m.computer_id',$computer_id);
 		$this -> db -> where('_m.type',0);
+
+		if(!$is_count) {
+			$this -> db -> limit($limit, $start);
+		}
+		// query results
+		if(!$is_count) {
+			$query = $this -> db -> get();
+			return $query -> result();
+		} else {
+			return $this -> db -> count_all_results();
+		}
+	}
+
+	function find_compter_fixing($data,$is_count = FALSE) {
+		$start = $data['start'];
+		$limit = $data['length'];
+		$computer_id = $data['computer'];
+
+		// select
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> select("DATE_FORMAT(_m.fix_date, '%Y-%m-%d') as fix_date");
+		$this -> db -> select("DATE_FORMAT(_m.report_date, '%Y-%m-%d') as report_date");
+		$this -> db -> select("DATE_FORMAT(_m.done_fix_date, '%Y-%m-%d') as done_fix_date");	
+		$this -> db -> select('u.user_name as user_name');
+
+		// $this -> db -> join("computer c", "c.id = _m.computer_id", "left");
+		$this -> db -> join("users u", "u.id = _m.fix_user_id", "left");
+
+		$this -> db -> where('_m.computer_id',$computer_id);
+		$this -> db -> where('_m.type',1);
 
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);

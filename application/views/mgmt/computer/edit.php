@@ -36,7 +36,7 @@
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-				<input type="hidden" name="role_id"  value="1" />
+				<input type="hidden" id="role_id" value="<?= isset($login_user) ? $login_user -> role_id : '' ?>"  />
 				<fieldset>
 					<div class="col-md-6 form-group">
 						<button type="button" class="1 btn_roles btn_1" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmefieldset('1')">電腦基本資料資料</button>
@@ -82,7 +82,7 @@
 					<label class="col-md-3 control-label">硬體</label>
 					<div class="col-md-6">
 						<select class="form-group" id="c_h_name" style="width:100%"> 
-							<option value="0" >請選擇</option>
+						<option selected disabled style="display:none">請選擇</option>
 							<?php foreach($computer_hard_list as $each): ?>
 								<option value="<?= $each -> id?>" ><?=  $each -> computer_hard_name ?> (可使用次數剩餘：<?=  $each -> usage_count ?>)</option>
 							<?php endforeach ?>
@@ -98,7 +98,7 @@
 					<label class="col-md-3 control-label">軟體</label>
 					<div class="col-md-6">
 						<select class="form-group" id="c_s_name" style="width:100%"> 
-							<option value="0" >請選擇</option>
+						<option selected disabled style="display:none">請選擇</option>
 							<?php foreach($computer_soft_list as $each): ?>
 								<option value="<?= $each -> id?>" ><?=  $each -> computer_soft_name ?> (可使用次數剩餘：<?=  $each -> usage_count ?>)</option>
 							<?php endforeach ?>
@@ -170,7 +170,7 @@
 			
 			<div>
 				<label class="col-md-3" style="font-weight:bold;font-size:large;">維修中:</label>
-				<table id="fix_list" class="table table-striped table-bordered table-hover" width="100%">
+				<table id="fix_listing" class="table table-striped table-bordered table-hover" width="100%">
 					<thead>
 						<tr>
 							<th class="min100">報修日期</th>
@@ -417,6 +417,8 @@ function do_save() {
 
 	drawfirst();
 
-	currentApp.lotteryList = new FixrecordAppClass(new BaseAppClass({}));
+	currentApp.fixrecord = new FixrecordAppClass(new BaseAppClass({}));
+	currentApp.fixrecording = new FixrecordingAppClass(new BaseAppClass({}));
+
 
 </script>

@@ -27,6 +27,7 @@
 			loadScript(baseUrl + "js/app/images/list.js", function(){
 				imagesApp.init();
 			});
+			
 		</script>
 	</body>
 </html>

@@ -263,6 +263,13 @@
 
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
+
+$(document).ready(function() { 
+    window.onbeforeunload = function () {
+        return "要離開視窗囉！";
+    }
+}); 
+
 $(".dt_picker").datetimepicker({
 	format : 'YYYY-MM-DD'
 }).on('dp.change',function(event){
@@ -365,7 +372,7 @@ function draw_now_computer($now_s_h_id,fix_type){
                         });
 
                         $('#old_sh').empty();
-                        console.log(now_sh_list);
+                        // console.log(now_sh_list);
                         var html = '<option selected disabled style="display:none">請選擇</option>';
                          $(html).appendTo($('#old_sh'));
                         $.each(d.now_s_h_list.s_array, function(){
@@ -457,18 +464,18 @@ function new_sh_change(){
     var add_user = $('#add_user').val();
 
     if($('#fix_way').val()=='fix'){
-        $('#change_date').empty();
-        $('#old_sh').empty();
-        $('#new_sh').empty();
-        $('#change_reason').empty();
-        $('#change_way').empty();
-        $('#change_user').empty();
+        // $('#change_date').empty();
+        // $('#old_sh').empty();
+        // $('#new_sh').empty();
+        // $('#change_reason').empty();
+        // $('#change_way').empty();
+        // $('#change_user').empty();
 
-        $('#add_date').empty();
-        $('#add_sh').empty();
-        $('#add_reason').empty();
-        $('#add_way').empty();
-        $('#add_user').empty();
+        // $('#add_date').empty();
+        // $('#add_sh').empty();
+        // $('#add_reason').empty();
+        // $('#add_way').empty();
+        // $('#add_user').empty();
 
         $.ajax({
             url: '<?= base_url() ?>' + 'mgmt/fix_list/fix_record_insert',
@@ -500,16 +507,16 @@ function new_sh_change(){
     if($('#fix_way').val()=='change'){
         var oldArray = new Array();
         var oldArray = old_sh.split("_");
-        $('#fix_date').empty();
-        $('#fix_reason').empty();
-        $('#fix_way_').empty();
-        $('#fix_user').empty();
+        // $('#fix_date').empty();
+        // $('#fix_reason').empty();
+        // $('#fix_way_').empty();
+        // $('#fix_user').empty();
 
-        $('#add_date').empty();
-        $('#add_sh').empty();
-        $('#add_reason').empty();
-        $('#add_way').empty();
-        $('#add_user').empty();
+        // $('#add_date').empty();
+        // $('#add_sh').empty();
+        // $('#add_reason').empty();
+        // $('#add_way').empty();
+        // $('#add_user').empty();
      
         $.ajax({
             url: '<?= base_url() ?>' + 'mgmt/fix_list/fix_record_insert',
@@ -540,17 +547,17 @@ function new_sh_change(){
     }
 
     if($('#fix_way').val()=='add'){
-        $('#fix_date').empty();
-        $('#fix_reason').empty();
-        $('#fix_way_').empty();
-        $('#fix_user').empty();
+        // $('#fix_date').empty();
+        // $('#fix_reason').empty();
+        // $('#fix_way_').empty();
+        // $('#fix_user').empty();
 
-        $('#change_date').empty();
-        $('#old_sh').empty();
-        $('#new_sh').empty();
-        $('#change_reason').empty();
-        $('#change_way').empty();
-        $('#change_user').empty();
+        // $('#change_date').empty();
+        // $('#old_sh').empty();
+        // $('#new_sh').empty();
+        // $('#change_reason').empty();
+        // $('#change_way').empty();
+        // $('#change_user').empty();
         var newArray = new Array();
         var newArray = add_sh.split("_");
         $.ajax({
@@ -602,4 +609,17 @@ function do_save_fix() {
         }
     });
 }
+
+window.document.body.onbeforeunload = function()
+{
+    if(confirm('您尚未將編輯過的表單資料送出，請問您確定要離開網頁嗎？'))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
 </script>

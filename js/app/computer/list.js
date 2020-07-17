@@ -219,13 +219,13 @@ var FixrecordAppClass = (function(app) {
 
 		app.mDtTable.on( 'xhr', function () {
 		    var json = app.mDtTable.ajax.json();
-				$('#sum_orders').html(numberWithCommas(json.items.length));
+				// $('#sum_orders').html(numberWithCommas(json.items.length));
 
-				var sumWeight = 0;
-				$.each(json.items, function(){
-					sumWeight += parseFloat(this.sum_weight);
-				});
-				$('#sum_weight').html(numberWithCommas(sumWeight.toFixed(1)));
+				// var sumWeight = 0;
+				// $.each(json.items, function(){
+				// 	sumWeight += parseFloat(this.sum_weight);
+				// });
+				// $('#sum_weight').html(numberWithCommas(sumWeight.toFixed(1)));
 		});
 
 		// get year month list
@@ -360,7 +360,12 @@ var FixrecordAppClass = (function(app) {
 
 var FixrecordingAppClass = (function(app) {
 	app.basePath = "mgmt/computer/";
-	app.disableRowClick = true;
+	if($('#role_id').val()==7){
+		app.disableRowClick = false;
+	} else{
+		app.disableRowClick = true;
+	}
+
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click
 				if(!app.disableRowClick) {
@@ -369,7 +374,7 @@ var FixrecordingAppClass = (function(app) {
 						_rtd = _rtd.not(':first').not(':last')
 					}
 					_rtd.addClass('pointer').on('click', function(){
-						app.doEdit(aData.id);
+						app.doEdit(aData.id,aData.fix_type);
 
 						// remove all highlight first
 						$(this).parent().parent().find('tr').removeClass('active');
@@ -421,9 +426,9 @@ var FixrecordingAppClass = (function(app) {
 	};
 
 	app.init = function() {
-		app.mDtTable = $('#fix_list').DataTable($.extend(app.dtConfig,{
+		app.mDtTable = $('#fix_listing').DataTable($.extend(app.dtConfig,{
 			ajax : {
-				url : baseUrl + app.basePath + '/get_fix_record',
+				url : baseUrl + app.basePath + '/get_fix_recording',
 				data : function(d) {
 					d.computer = $('#item_id').val();
 					// d.lottery_no = $('#lottery_select').val();
@@ -528,13 +533,13 @@ var FixrecordingAppClass = (function(app) {
 
 		app.mDtTable.on( 'xhr', function () {
 		    var json = app.mDtTable.ajax.json();
-				$('#sum_orders').html(numberWithCommas(json.items.length));
+				// $('#sum_orders').html(numberWithCommas(json.items.length));
 
-				var sumWeight = 0;
-				$.each(json.items, function(){
-					sumWeight += parseFloat(this.sum_weight);
-				});
-				$('#sum_weight').html(numberWithCommas(sumWeight.toFixed(1)));
+				// var sumWeight = 0;
+				// $.each(json.items, function(){
+				// 	sumWeight += parseFloat(this.sum_weight);
+				// });
+				// $('#sum_weight').html(numberWithCommas(sumWeight.toFixed(1)));
 		});
 
 		// get year month list
@@ -577,17 +582,22 @@ var FixrecordingAppClass = (function(app) {
 
 
 		// edit
-		app.doEdit = function(id) {
-		    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
-		    	.appendTo($('#edit-modal-body').empty());
-		    $("#btn-submit-edit").prop( "disabled", true);
+		app.doEdit = function(id,fix_type) {
+		 
+			$('#fixModal').modal('show');
+			$('#fix_record_id').val(id);
+			$('#fix_type').val(fix_type);
 
-			$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
+		    // $("#btn-submit-edit").prop( "disabled", true);
 
-			$('#edit-modal-body').load(baseUrl + 'mgmt/fish_table/edit/' + id, function(){
-	        	$("#btn-submit-edit").prop( "disabled", false);
-	        	loading.remove();
-			});
+			// $('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
+
+			// $('#edit-modal-body').load(baseUrl + 'mgmt/fish_table/edit/' + id, function(){
+	        // 	$("#btn-submit-edit").prop( "disabled", false);
+	        // 	loading.remove();
+			// });
+			
+			
 		};
 
 		app.doFlow = function(id) {
