@@ -15,7 +15,7 @@ class Computer extends MY_Mgmt_Controller {
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
 	
-
+		$this -> load-> library('word');
 	}
 
 	public function index()
@@ -42,6 +42,7 @@ class Computer extends MY_Mgmt_Controller {
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
+
 		$this -> to_json($res);
 	}
 
@@ -64,7 +65,8 @@ class Computer extends MY_Mgmt_Controller {
 				$item = 0;
 			}
 			$data['item'] = $item;
-			
+			$this -> session -> set_userdata('fix_data', $q_data);
+
 		}
 
 		$s_data = $this -> setup_user_data(array());
@@ -331,139 +333,122 @@ class Computer extends MY_Mgmt_Controller {
  		$this -> to_json($res);
 	}
 
-	public function check_account($id) {
-		$account = $this -> get_post('account');
-		$item = $this -> dao -> find_by("account", $account);
+	public function update_fix_type() {
 		$res = array();
-		if(!empty($id)) {
-			if (!empty($item)) {
-				if($item -> id == $id) {
-					$res['valid'] = TRUE;
-				} else {
-					$res['valid'] = FALSE;
-				}
+		$u_data = array();
+		$fix_record_id = $this -> get_post('fix_record_id');
+		$fix_type = $this -> get_post('fix_type');
+		$fix_date = $this -> get_post('fix_date');
+		$done_fix_date = $this -> get_post('done_fix_date');
+		$fix_way = $this -> get_post('fix_way');
+		$fix_reason = $this -> get_post('fix_reason');
+		
+		if(!empty($fix_record_id)){
+			$u_data['fix_type'] = $fix_type;
+			$u_data['fix_date'] = $fix_date;
+			$u_data['done_fix_date'] = $done_fix_date;
+			$u_data['fix_way'] = $fix_way;
+			$u_data['fix_reason'] = $fix_reason;
+			if(!empty($done_fix_date)){
+				$u_data['type'] = 0;
+			} else{
+				$u_data['type'] = 2;
+			}
+			$this -> fix_record_dao -> update_by($u_data,'id',$fix_record_id);
 
-				$res['item'] = $item;
-			} else {
-				$res['valid'] = TRUE;
-			}
-		} else { // create
-			if (!empty($item)) {
-				$res['valid'] = FALSE;
-			} else {
-				$res['valid'] = TRUE;
-			}
+			$res['success'] = TRUE;
 		}
-
-		$this -> to_json($res);
-	}
-
-	public function check_code() {
-		$code = $this -> get_post('intro_code');
-		$list = $this -> dao -> find_all_by('code', $code);
-		$res = array();
-		$res['valid'] = (count($list) > 0);
-		$this -> to_json($res);
-	}
-
-	public function chg_user() {
-		$user_id = $this -> get_post('user_id');
-		$this -> session -> set_userdata('user_id', $user_id);
-		$res = array();
-
-		$this -> to_json($res);
-	}
-
-	public function find_doctor(){
-		$res = array();
-		$hospital_id = $this -> get_post('hospital');
-		// $res['result'] = TRUE;
-		$res['list'] = $this -> users_dao -> find_doctor_by_hospital($hospital_id);
-		$res['list_1'] = $this -> users_dao -> find_manager_by_hospital($hospital_id);
-
-		$this -> to_json($res);
+		
+ 		$this -> to_json($res);
 	}
 
 	function export_all() {
-			$this->load->dbutil();
-      $this->load->helper('file');
-      $this->load->helper('download');
-      $delimiter = ",";
-      $newline = "\r\n";
-			$date = date('YmdHis');
-      $filename = $date."-user.csv";
+		$data = $this -> session -> userdata("fix_data");
+		$list = $this -> dao -> query_ajax($data);
+		$h = array();
+		$s = array();
 
-			$corp_list = $this -> corp_dao -> find_all();
-
-			//create a file pointer
-    	$f = fopen('php://memory', 'w');
-			$fields = array(
-				iconv("UTF-8","Big5//IGNORE",'帳號'),
-				iconv("UTF-8","Big5//IGNORE",'會員姓名'),
-				'Email',
-				'LINE ID',
-				iconv("UTF-8","Big5//IGNORE",'公司'),
-				iconv("UTF-8","Big5//IGNORE",'貨幣數量'),
-				'NTD',
-				iconv("UTF-8","Big5//IGNORE",'藍鑽')
-			);
-			fputcsv($f, $fields, $delimiter);
-
-      $query = "SELECT id, account,
-				user_name,
-				email, line_id, corp_id
-      	FROM `users`
-				WHERE status = 0 ";
-
-			$s_data = $this -> setup_user_data(array());
-			$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
-			$data['login_user'] = $login_user;
-
-			if($login_user -> role_id == 99) {
-				// all roles
-
-			} else {
-				$query .= " and corp_id = {$login_user->corp_id} ";
+		if(!empty($list)){
+			$item = $list[0];
+			$hard_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($item->id,0);
+			$soft_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($item->id,1);
+			foreach($hard_list as $h_list){
+				$h[] = $h_list->hard_name;
 			}
-
-      $result = $this->db->query($query) -> result();
-			foreach($result as $each) {
-				$lineData = array($each -> account, iconv("UTF-8","Big5//IGNORE",$each -> user_name), $each -> email, $each -> line_id);
-
-				$corp_sys_name = '';
-				foreach($corp_list as $corp) {
-					if($each -> corp_id == $corp -> id) {
-						$corp_sys_name = $corp -> sys_name;
-					}
-				}
-
-				$lineData[] = $corp_sys_name;
-				$lineData[] = $this -> wtx_dao -> get_sum_amt($each -> id);
-				$lineData[] = $this -> wtx_ntd_dao -> get_sum_amt($each -> id);
-				$lineData[] = $this -> wtx_bdc_dao -> get_sum_amt($each -> id);
-				// $lineData[]= 0;
-				// $lineData[]= 0;
-				// $lineData[]= 0;
-				// foreach($lineData as $aCol) {
-				// 	$aCol = iconv("UTF-8","Big5//IGNORE",$aCol);
-				// }
-
-				fputcsv($f, $lineData, $delimiter);
+			foreach($soft_list as $s_list){
+				$s[] = $s_list->soft_name;
 			}
-			//move back to beginning of file
+			$compter_fix_list = $this -> fix_record_dao -> find_now_compter_fix($item->id);
+		} 
+	
+		$PHPWord = new PHPWord(); 
+		$PHPWord->setDefaultFontName('華康仿宋體'); 
+		$section = $PHPWord->createSection(); 
 
-    	fseek($f, 0);
+		// Define table style arrays 
+		$styleTable = array('borderSize'=>6, 'cellMargin'=>80); 
+		$styleFirstRow = array('borderBottomSize'=>18, 'borderBottomColor'=>'0000FF', 'bgColor'=>'66BBFF'); 
+		$centered= array('align'=>'center');
+		// Define cell style arrays 
+		$styleCell = array('valign'=>'center'); 
+		$styleCellBTLR = array('valign'=>'center', 'textDirection'=>PHPWord_Style_Cell::TEXT_DIR_BTLR); 
+		
+		// Define font style for first row 
+		$fontStyle = array('bold'=>true, 'align'=>'center'); 
+		
+		// Add table style 
+		$PHPWord->addTableStyle('myOwnTableStyle', $styleTable, $styleFirstRow); 
+		$header = $section->createHeader(); 
+		$table = $header->addTable(); 
+		$table->addRow(900); 
+		$table->addCell(8000,$styleCell)->addText('寬事工業股份有限公司',$fontStyle,$centered); 
+		
+		$table->addRow(900); 
+		$table->addCell(8000,$styleCell)->addText('電腦管制表',$fontStyle,$centered); 
+		$table->addRow(900); 
+		$table->addCell(8000,$styleCell)->addText('電腦編號：'.$item->computer_num); 
+		// Add table 
+		$table = $section->addTable('myOwnTableStyle'); 
 
-			//set headers to download file rather than displayed
-			 header('Content-Type: text/csv');
-			 header('Content-Disposition: attachment; filename="' . $filename . '";');
+		$table->addRow(); 
+		$table->addCell(1000)->addText('項目',$fontStyle,$centered); 
+		$table->addCell(8000)->addText('內容明細',$fontStyle,$centered); 
+		$table->addRow(); 
+		$table->addCell(1000)->addText('硬體配備',$fontStyle,$centered); 
+		$table->addCell(8000)->addText(implode(",",$h),$fontStyle,$centered); 
+		$table->addRow(); 
+		$table->addCell(1000)->addText('安裝軟體',$fontStyle,$centered); 
+		$table->addCell(8000)->addText(implode(",",$s),$fontStyle,$centered);
+		$table->addRow(); 
+		$table->addCell(1000)->addText('使用者',$fontStyle,$centered); 
+		$table->addCell(8000)->addText($item->admin_user_id,$fontStyle,$centered);  
+		$table->addRow(); 
+		$table->addCell(9000)->addText('維修紀錄',$fontStyle,$centered); 
+		$table->addRow(); 
+		$table->addCell(1500)->addText('完修日期',$fontStyle,$centered); 
+		$table->addCell(3000)->addText('故障原因',$fontStyle,$centered); 
+		$table->addCell(3000)->addText('處置情形',$fontStyle,$centered); 
+		$table->addCell(1500)->addText('維修人員',$fontStyle,$centered); 
 
-			 //output all remaining data on a file pointer
-			 fpassthru($f);
-      // $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
-      // force_download($filename,@iconv("UTF-8","Big5//IGNORE",$data));
+		// Add more rows/cells 
+		foreach($compter_fix_list as $each){
+			$table->addRow(); 
+			$table->addCell(1500)->addText($each->done_fix_date,$fontStyle,$centered); 
+			$table->addCell(3000)->addText($each->fix_reason,$fontStyle,$centered); 
+			$table->addCell(3000)->addText($each->fix_way,$fontStyle,$centered); 
+			$table->addCell(1500)->addText($each->user_name,$fontStyle,$centered); 
+		
+		} 
+		
+		
+		$date = date('YmdHis');
+		$filename = $date."-維修單.docx";
+		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
+		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+		header('Cache-Control: max-age=0'); //no cache
+		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2007');
+		$objWriter->save('php://output');
 	}
-
 
 
 }

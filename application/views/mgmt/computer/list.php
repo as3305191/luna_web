@@ -95,20 +95,20 @@
 					<input id="fix_type"  type="hidden" value="">
 					<fieldset>
 						<div class="form-group">
-							<label class="col-md-3 control-label">維修日期</label>
+							<label class="col-md-3 control-label ">維修日期</label>
 							<div class="col-md-9">
 								<div class="col-md-9">
-									<input type="text" class="form-control" id="fix_date" value=""  />
+									<input type="text" class="form-control dt_picker" id="fix_date" value=""  />
 								</div>
 							</div>
 						</div>
 					</fieldset>
 					<fieldset>
 						<div class="form-group">
-							<label class="col-md-3 control-label">完修日期</label>
+							<label class="col-md-3 control-label ">完修日期</label>
 							<div class="col-md-9">
 								<div class="col-md-9">
-									<input type="text" class="form-control" id="done_fix_date" value=""  />
+									<input type="text" class="form-control dt_picker" id="done_fix_date" value=""  />
 								</div>
 							</div>
 						</div>
@@ -128,7 +128,7 @@
 							<label class="col-md-3 control-label">故障原因</label>
 							<div class="col-md-9">
 								<div class="col-md-9">
-									<input type="text" class="form-control" id="fix_result" value=""  />
+									<input type="text" class="form-control" id="fix_reason" value=""  />
 								</div>
 							</div>
 						</div>
@@ -149,6 +149,8 @@
 </div>
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
+
+	
 	var mCols = [null,{
 		data : 'computer_name'
 	},{
@@ -178,30 +180,5 @@
 		});
 	});
 
-	function save_fix(){
-        $.ajax({
-            url: '<?= base_url() ?>' + 'mgmt/fix_list/fix_record_insert',
-            type: 'POST',
-            data: {
-				fix_date: $('#fix_record_id').val(),
-                fix_date: $('#fix_type').val(),
-                fix_date: $('#fix_date').val(),
-                done_fix_date: $('#done_fix_date').val(),
-				fix_way: $('#fix_way').val(),
-                fix_result: $('#fix_result').val(),
-
-            },
-            dataType: 'json',
-            success: function(d) {
-                if(d) {
-                    var $now_change_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="12ol-sm-ㄉ"><span change_id="'+d.last_id+'">舊有軟硬體:  '+$('#old_sh option:selected').text()+'   換成: '+$('#new_sh option:selected').text()+'  更換原因:  '+change_reason+'  處置情形:  '+change_way+'  維修者:  '+$('#change_user option:selected').text()+'</span></div></div></hr>').appendTo($('#now_fix'));
-                    now_fix_record.push(d.last_id);
-                }
-            },
-            failure:function(){
-                alert('faialure');
-            }
-        });
-	}
 
 </script>

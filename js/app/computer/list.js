@@ -41,6 +41,13 @@ var ComputerAppClass = (function(app) {
 		$('#type').on('change', function(){
 			app.tableReload();
 		});
+		
+		$(".dt_picker").datetimepicker({
+			format : 'YYYY-MM-DD'
+		}).on('dp.change',function(event){
+
+		});
+		
 		return app;
 	};
 
@@ -374,7 +381,7 @@ var FixrecordingAppClass = (function(app) {
 						_rtd = _rtd.not(':first').not(':last')
 					}
 					_rtd.addClass('pointer').on('click', function(){
-						app.doEdit(aData.id,aData.fix_type);
+						app.doEdit(aData.id,aData.fix_type,aData.done_fix_date,aData.fix_date,aData.fix_reason,aData.fix_way);
 
 						// remove all highlight first
 						$(this).parent().parent().find('tr').removeClass('active');
@@ -582,11 +589,15 @@ var FixrecordingAppClass = (function(app) {
 
 
 		// edit
-		app.doEdit = function(id,fix_type) {
+		app.doEdit = function(id,fix_type,done_fix_date,fix_date,fix_reason,fix_way) {
 		 
 			$('#fixModal').modal('show');
 			$('#fix_record_id').val(id);
 			$('#fix_type').val(fix_type);
+			$('#done_fix_date').val(done_fix_date);
+			$('#fix_date').val(fix_date);
+			$('#fix_reason').val(fix_reason);
+			$('#fix_way').val(fix_way);
 
 		    // $("#btn-submit-edit").prop( "disabled", true);
 

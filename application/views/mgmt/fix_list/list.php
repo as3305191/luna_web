@@ -22,7 +22,6 @@
                             <option value="1">電腦</option>
                             <option value="2">軟體</option>
                             <option value="3">硬體</option>
-
                         </select>
                     </div>
                 </div>
@@ -264,11 +263,11 @@
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 
-$(document).ready(function() { 
-    window.onbeforeunload = function () {
-        return "要離開視窗囉！";
-    }
-}); 
+// $(document).ready(function() { 
+//     window.onbeforeunload = function () {
+//         return "要離開視窗囉！";
+//     }
+// }); 
 
 $(".dt_picker").datetimepicker({
 	format : 'YYYY-MM-DD'
@@ -400,7 +399,6 @@ function new_sh_change(){
     var old_sh = $('#old_sh').val();
     var oldArray = new Array();
     var oldArray = old_sh.split("_");
-
   
     $('#new_sh').empty();
     // console.log(NewArray);
@@ -464,19 +462,6 @@ function new_sh_change(){
     var add_user = $('#add_user').val();
 
     if($('#fix_way').val()=='fix'){
-        // $('#change_date').empty();
-        // $('#old_sh').empty();
-        // $('#new_sh').empty();
-        // $('#change_reason').empty();
-        // $('#change_way').empty();
-        // $('#change_user').empty();
-
-        // $('#add_date').empty();
-        // $('#add_sh').empty();
-        // $('#add_reason').empty();
-        // $('#add_way').empty();
-        // $('#add_user').empty();
-
         $.ajax({
             url: '<?= base_url() ?>' + 'mgmt/fix_list/fix_record_insert',
             type: 'POST',
@@ -507,16 +492,6 @@ function new_sh_change(){
     if($('#fix_way').val()=='change'){
         var oldArray = new Array();
         var oldArray = old_sh.split("_");
-        // $('#fix_date').empty();
-        // $('#fix_reason').empty();
-        // $('#fix_way_').empty();
-        // $('#fix_user').empty();
-
-        // $('#add_date').empty();
-        // $('#add_sh').empty();
-        // $('#add_reason').empty();
-        // $('#add_way').empty();
-        // $('#add_user').empty();
      
         $.ajax({
             url: '<?= base_url() ?>' + 'mgmt/fix_list/fix_record_insert',
@@ -547,17 +522,7 @@ function new_sh_change(){
     }
 
     if($('#fix_way').val()=='add'){
-        // $('#fix_date').empty();
-        // $('#fix_reason').empty();
-        // $('#fix_way_').empty();
-        // $('#fix_user').empty();
 
-        // $('#change_date').empty();
-        // $('#old_sh').empty();
-        // $('#new_sh').empty();
-        // $('#change_reason').empty();
-        // $('#change_way').empty();
-        // $('#change_user').empty();
         var newArray = new Array();
         var newArray = add_sh.split("_");
         $.ajax({

@@ -20,6 +20,14 @@
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
+		<div class="widget-toolbar pull-right">
+			<div class="btn-group">
+				<button onclick="currentApp.doExportAll()" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
+					<i class="fa fa-save"></i>匯出
+				</button>
+			</div>
+		</div>
+
 	</header>
 
 	<!-- widget div-->
@@ -213,11 +221,7 @@ $(document).ready(function() {
 	$('#c_s_name').select2();
 });
 
-$(".dt_picker").datetimepicker({
-	format : 'YYYY-MM-DD'
-}).on('dp.change',function(event){
 
-});
 
 function showmefieldset(id) {
 	//   document.getElementById(id).show();
@@ -380,7 +384,6 @@ function do_save() {
 	}
 
 	function drawfirst() {
-		
 		var $hard_list = $('#hard_list').empty();
 		var $soft_list = $('#soft_list').empty();
 		var $item_id = $('#item_id').val();
@@ -420,5 +423,33 @@ function do_save() {
 	currentApp.fixrecord = new FixrecordAppClass(new BaseAppClass({}));
 	currentApp.fixrecording = new FixrecordingAppClass(new BaseAppClass({}));
 
+
+
+	function save_fix(){
+        $.ajax({
+            url: '<?= base_url() ?>' + 'mgmt/computer/update_fix_type',
+            type: 'POST',
+            data: {
+				fix_record_id: $('#fix_record_id').val(),
+                fix_type: $('#fix_type').val(),
+                fix_date: $('#fix_date').val(),
+                done_fix_date: $('#done_fix_date').val(),
+				fix_way: $('#fix_way').val(),
+                fix_reason: $('#fix_reason').val(),
+
+            },
+            dataType: 'json',
+            success: function(d) {
+                if(d.success) {
+					currentApp.fixrecord.tableReload();
+					currentApp.fixrecording.tableReload();
+					$('#fixModal').modal('hide');
+                }
+            },
+            failure:function(){
+                alert('faialure');
+            }
+        });
+	}
 
 </script>
