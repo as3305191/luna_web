@@ -395,7 +395,11 @@ class PHPWord_Writer_Word2007_Base extends PHPWord_Writer_Word2007_WriterPart {
 					$height = $_heights[$i];
 					
 					$objWriter->startElement('w:tr');
-					
+					$objWriter->startElement('w:trPr');
+					$objWriter->startElement('w:cantSplit');
+					$objWriter->endElement();
+					$objWriter->endElement();
+					  //end add
 						if(!is_null($height)) {
 							$objWriter->startElement('w:trPr');
 								$objWriter->startElement('w:trHeight');
@@ -409,7 +413,15 @@ class PHPWord_Writer_Word2007_Base extends PHPWord_Writer_Word2007_WriterPart {
 								
 								$cellStyle = $cell->getStyle();
 								$width = $cell->getWidth();
-								
+								$gridSpan = $cell->getGridSpan();
+
+								//add
+								if ($gridSpan > 1) {
+									$objWriter->startElement('w:gridSpan');
+									$objWriter->writeAttribute('w:val',$gridSpan);
+									$objWriter->endElement();
+									//end add
+								}
 								$objWriter->startElement('w:tcPr');
 									$objWriter->startElement('w:tcW');
 										$objWriter->writeAttribute('w:w', $width);
@@ -506,7 +518,10 @@ class PHPWord_Writer_Word2007_Base extends PHPWord_Writer_Word2007_WriterPart {
 		$textDir = $style->getTextDirection();
 		$brdSz = $style->getBorderSize();
 		$brdCol = $style->getBorderColor();
-		
+		$gridSpan = $style->getGridSpan();
+		$vMerge = $style->getVMerge( ); 
+
+	
 		$bTop = (!is_null($brdSz[0])) ? true : false;
 		$bLeft = (!is_null($brdSz[1])) ? true : false;
 		$bRight = (!is_null($brdSz[2])) ? true : false;
@@ -577,6 +592,19 @@ class PHPWord_Writer_Word2007_Base extends PHPWord_Writer_Word2007_WriterPart {
 					}
 					
 				$objWriter->endElement();
+			}
+			if(!is_null($gridSpan)) 
+			{ 
+				$objWriter->startElement('w: gridSpan'); 
+				$objWriter->writeAttribute('w:val', $gridSpan); 
+				$objWriter->endElement(); 
+			}
+			/** edited by www.phpddt.com */
+			if(!is_null($vMerge)) 
+			{ 
+				$objWriter->startElement('w:vMerge'); 
+				$objWriter->writeAttribute('w:val', $vMerge); 
+				$objWriter->endElement(); 
 			}
 		}
 	}

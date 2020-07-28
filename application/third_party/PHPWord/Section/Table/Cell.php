@@ -34,6 +34,12 @@
  * @copyright  Copyright (c) 2011 PHPWord
  */
 class PHPWord_Section_Table_Cell {
+	/**
+    * How many columns this cell spans
+    * @var int
+    */
+	private $_gridSpan;
+
 	
 	/**
 	 * Cell Width
@@ -79,11 +85,13 @@ class PHPWord_Section_Table_Cell {
 	 * @param int $width
 	 * @param mixed $style
 	 */
-	public function __construct($insideOf, $pCount, $width = null, $style = null) {
+
+	public function __construct($insideOf, $pCount, $width = null, $style = null,$gridSpan=1) {
 		$this->_insideOf = $insideOf;
 		$this->_pCount = $pCount;
 		$this->_width = $width;
-		
+		$this->_insideOf = $insideOf;
+		$this->_gridSpan = $gridSpan;
 		if(!is_null($style)) {
 			if(is_array($style)) {
 				$this->_style = new PHPWord_Style_Cell();
@@ -98,6 +106,16 @@ class PHPWord_Section_Table_Cell {
 				$this->_style = $style;
 			}
 		}
+	}
+	
+
+	/**
+	* Get the number of columns this cell spans
+	*
+	* @return int
+	*/
+	public function getGridSpan(){
+		return $this->_gridSpan;
 	}
 	
 	/**

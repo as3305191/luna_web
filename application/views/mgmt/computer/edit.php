@@ -52,7 +52,7 @@
 					</div>
 				</fieldset>
 				<hr/>
-			<div class="fieldset1" id="1" style="">
+			<div class="fieldset1" id="1">
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">電腦名稱</label>
@@ -81,7 +81,12 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">預設使用者</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control"  id="admin_user" value="<?= isset($item) ? $item -> admin_user_id : '' ?>"  />
+						<select class="form-group" id="admin_user" style="width:100%"> 
+						<option selected disabled style="display:none">請選擇</option>
+							<?php foreach($user_list as $each): ?>
+								<option value="<?= $each -> id?>" <?=isset($item) && $item -> admin_user_id == $each -> id ? 'selected' : '' ?>><?=  $each -> user_name ?></option>
+							<?php endforeach ?>
+						</select> 
 					</div>
 				</div>
 			</fieldset>	
@@ -219,9 +224,8 @@
 $(document).ready(function() {
 	$('#c_h_name').select2();
 	$('#c_s_name').select2();
+	$('#admin_user').select2();	
 });
-
-
 
 function showmefieldset(id) {
 	//   document.getElementById(id).show();
@@ -302,7 +306,6 @@ function do_save() {
 				}
 			});
 	}
-
 
 	function select_h() {
 		var $c_h_id = $('#c_h_name');
@@ -422,8 +425,6 @@ function do_save() {
 
 	currentApp.fixrecord = new FixrecordAppClass(new BaseAppClass({}));
 	currentApp.fixrecording = new FixrecordingAppClass(new BaseAppClass({}));
-
-
 
 	function save_fix(){
         $.ajax({

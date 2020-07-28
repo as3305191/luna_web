@@ -627,5 +627,24 @@ class Users_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_all_user(){
+		$this -> db -> from("$this->table_name as _m");
+		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
+
+		$this -> db -> select('_m.id');
+		$this -> db -> select('_m.user_name');
+		$this -> db -> select('_m.status');
+
+		// $this -> db -> select('r.role_name');
+		// $this -> db -> where('_m.role_id',7);
+		$this -> db -> where('_m.status',0);
+
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
+
 }
 ?>

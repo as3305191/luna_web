@@ -115,13 +115,13 @@ class PHPWord_Section_Table {
 	* @param mixed $style
 	* @return PHPWord_Section_Table_Cell
 	*/
-	public function addCell($width, $style = null) {
-		$cell = new PHPWord_Section_Table_Cell($this->_insideOf, $this->_pCount, $width, $style);
+	public function addCell($width, $style = null,$gridSpan=1) {
+		$cell = new PHPWord_Section_Table_Cell($this->_insideOf, $this->_pCount, $width, $style,$gridSpan);
 		$i = count($this->_rows) - 1;
 		$this->_rows[$i][] = $cell;
 		return $cell;
 	}
-	
+
 	/**
 	 * Get all rows
 	 * 
@@ -130,7 +130,7 @@ class PHPWord_Section_Table {
 	public function getRows() {
 		return $this->_rows;
 	}
-	
+
 	/**
 	 * Get all row heights
 	 * 
