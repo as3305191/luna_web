@@ -45,7 +45,8 @@ class Images_dao extends MY_Model {
 		$order = $data['order'];
 
 		// select
-		$this -> db -> select('_m.*');
+		// $this -> db -> select('_m.*');
+		$this -> db -> select('id,image_path,image_url,upload_time,image_thumb_url,image_name,width,height,mime,image_size,title,status');
 
 		// join
 		$this -> ajax_from_join();
@@ -80,6 +81,36 @@ class Images_dao extends MY_Model {
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
+	}
+
+	function get_img_byte_length($id) {
+		$this->db->from('images');
+		$this->db->where('id', $id);
+		$this->db->select('OCTET_LENGTH(img) as len');
+
+		$query = $this->db->get();
+    	return intVal($query -> result()[0]->len);
+	}
+
+	function get_img_thumb_byte_length($id) {
+		$this->db->from('images');
+		$this->db->where('id', $id);
+		$this->db->select('OCTET_LENGTH(img_thumb) as len');
+
+		$query = $this->db->get();
+		return intVal($query -> result()[0]->len);
+	}
+
+	function find_by_id_data($id){
+		$this -> db -> select('id,image_path,image_url,upload_time,image_thumb_url,image_name,width,height,mime,image_size,title,status');
+		$this -> db -> from($this -> table_name);
+		$this -> db -> where('id',$id);
+		$this -> db -> where('status',0);
+		$list = $this -> db -> get() -> result();
+		foreach ($list as $row) {
+			return $row;
+		}
+		return NULL;
 	}
 
 }

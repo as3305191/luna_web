@@ -1,0 +1,85 @@
+.koko-shopping-rate {
+    padding: 3rem 0;
+    text-align: center
+}
+
+.koko-shopping-rate h2 {
+    font-size: 2rem;
+}
+
+.koko-shopping-rate-cnt {
+    padding: 2rem;
+    text-align: left;
+    background-color: #f4f3f1;
+    margin-top: 1.5rem;
+}
+
+.koko-shopping-rate-cnt-title {
+    margin: 0 0 .5rem
+}
+
+.koko-shopping-rate-cnt .shipping-area {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 1rem 0 2rem
+}
+
+.koko-shopping-rate-cnt .select-styled {
+    padding-top: .75rem;
+    padding-bottom: .75rem;
+}
+
+.koko-shopping-rate-cnt .select-options li {
+    padding: .5rem 0;
+}
+
+.koko-shopping-rate-cnt-description {
+    padding: 1rem 0;
+}
+
+.shipping-table {
+    width: 100%;
+    margin: 0 auto;
+    border-top: none;
+    background: #fff;
+    text-align: center;
+    font-size: .75rem;
+    border: 1px solid #d9d6ce;
+    table-layout: fixed;
+}
+
+.shipping-table thead th {
+    background: #7a715e;
+}
+
+.shipping-table thead th {
+    width: 12.5%;
+    border-color: #fff;
+    color: #fff;
+    font-weight: normal;
+}
+
+.shipping-table  td,
+.shipping-table  th {
+    padding: .75rem 0;
+    border: 1px solid #d2d0cb;
+}
+
+.shipping-table  tbody th {
+    background: #e0ddd5;
+}
+
+.shipping-table .fee_none {
+    background: rgba(0, 0, 0, .1);
+}
+
+.shipping-table-website thead th:nth-child(1) {
+    width: 2%
+}
+
+.shipping-table-website thead th:nth-child(2) {
+    width: 2%
+}
+
+.shipping-table-website thead th:nth-child(3) {
+}

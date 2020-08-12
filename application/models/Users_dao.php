@@ -253,7 +253,9 @@ class Users_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		// $this -> db -> where('_m.status', 0);
+		if(isset($data['id']) && $data['id'] > -1){
+			$this -> db -> where('_m.id', $data['id']);
+		}
 
 		if(isset($data['role_id']) && $data['role_id'] > -1) {
 			$this -> db -> where('_m.role_id', $data['role_id']);
@@ -308,6 +310,54 @@ class Users_dao extends MY_Model {
 				$each -> nav_power_list = $this -> nav_power_dao -> find_all_by_nav_id($each -> id);
 				$lv1 = $map[$each -> parent_id];
 				array_push($lv1 -> sub_list, $each); // add to sublist
+			}
+		}
+
+		foreach($map as $key => $each) {
+			if(count($each -> sub_list) == 0 && empty($each -> base_path)) {
+				unset($map[$key]);
+			}
+		}
+
+		return $map;
+	}
+
+	function nav_list_with_role_role_id($role_id) {
+		$this -> load -> model('Nav_dao', 'nav_dao');
+		$this -> load -> model('Nav_power_dao', 'nav_power_dao');
+		$lv1_list = $this -> nav_dao -> find_all_by_parent_id(0);
+		$sub_list = $this -> nav_dao -> find_all_not_lv1();
+
+		$sql = "select * from role_power where role_id = $role_id";
+		$rp_list = $this -> db -> query($sql) -> result();
+
+		$map = array();
+
+		// traverse lv1
+		foreach($lv1_list as $each) {
+			$map[$each->id] = $each;
+			$each -> nav_power_list = $this -> nav_power_dao -> find_all_by_nav_id($each -> id);
+
+			foreach($rp_list as $rp) {
+				if($rp -> nav_id == $each -> id) {
+					$each -> rp = $rp;
+				}
+			}
+			$each -> sub_list = array();
+		}
+
+		// traverse lv2
+		foreach($sub_list as $each) {
+			if(isset($map[$each -> parent_id])) {
+				$each -> nav_power_list = $this -> nav_power_dao -> find_all_by_nav_id($each -> id);
+
+				$lv1 = $map[$each -> parent_id];
+				foreach($rp_list as $rp) {
+					if($rp -> nav_id == $each -> id) {
+						$each -> rp = $rp;
+					}
+				}
+				array_push($lv1 -> sub_list, $each);
 			}
 		}
 
@@ -447,9 +497,14 @@ class Users_dao extends MY_Model {
 		return $this -> db -> get('user_role') -> result();
 	}
 
-	function find_all_roles() {
-		$this -> db -> where('(id <> 1)');
-		return $this -> db -> get('roles') -> result();
+	function find_all_department() {
+		$this -> db -> where('(parent_id<1)');
+		return $this -> db -> get('department') -> result();
+	}
+
+	function find_all_div($parent_id) {
+		$this -> db -> where('parent_id',$parent_id);
+		return $this -> db -> get('department') -> result();
 	}
 
 	function find_all_hospital() {

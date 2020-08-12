@@ -14,17 +14,15 @@
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget">
-						<header>
-							<div class="widget-toolbar pull-left">
-								<div class="btn-group">
-									<button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-default" data-toggle="dropdown">
-										<i class="fa fa-plus"></i>新增
-									</button>
-								</div>
+					<div class="col-md-12 col-xs-12 col-sm-12" style="padding:10px 17px 10px 17px;">
+							<div class="col-md-12 col-xs-12 col-sm-12 no-padding" style="">
+									<span style="font-size: 16pt; color:#0d0d56">權限管理</span>
+									<button class="btn" id="new_department" style="float:right;background-color:#FF9030;color:white;width:140px">新增部門</button>
 							</div>
-						</header>
+					</div>
+
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="" >
 						<!-- widget div-->
 						<div>
 
@@ -36,24 +34,20 @@
 							<!-- end widget edit box -->
 
 							<!-- widget content -->
-							<div class="widget-body no-padding">
+							<div class="widget-body" >
+								<section class="col-md-12 col-xs-12 col-sm-12" style="padding: 17px 17px;border:1px solid #ccc;background-color:#fff">
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min25"></th>
-											<th class="min50">ID</th>
-											<th class="">角色名稱</th>
+											<th class="">部門名稱</th>
+											<th class="">操作</th>
 										</tr>
-										<tr class="search_box">
-									    <th></th>
-									    <th></th>
-									    <th><input class="form-control input-xs" type="text" /></th>
-								    </tr>
 									</thead>
-									<tbody>
+									<tbody id="t_data">
+
 									</tbody>
 								</table>
-
+								</section>
 							</div>
 							<!-- end widget content -->
 
@@ -86,6 +80,8 @@
 	</div>
 
 </div>
+
+
 <?php $this -> load -> view('general/delete_modal'); ?>
 
 <script type="text/javascript">
@@ -94,4 +90,66 @@
 			currentApp = new RolesAppClass(new BaseAppClass({}));
 		});
 	});
+
+	$('#t_data').empty();
+	$('#t_data').html('<?=$t_data?>');
+
+	function add_under($id) {
+		layer.open({
+			type:2,
+			title:'',
+			closeBtn:0,
+			area:['400px','200px'],
+			shadeClose:true,
+			content:'<?=base_url('mgmt/roles/show_role_window/')?>'+$id
+		})
+	}
+
+	function edit_page($id) {
+		var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>').appendTo($('#edit-modal-body').empty());
+		$("#btn-submit-edit").prop( "disabled", true);
+
+		$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
+
+		$('#edit-modal-body').load(baseUrl + 'mgmt/roles/edit_page/' + $id, function(){
+					$("#btn-submit-edit").prop( "disabled", false);
+					loading.remove();
+		});
+	}
+
+	$('#new_department').click(function() {
+		layer.open({
+      type:2,
+      title:'',
+      closeBtn:0,
+      area:['400px','200px'],
+      shadeClose:true,
+      content:'<?=base_url('mgmt/roles/new_department')?>'
+    })
+	})
+
+	function del_page($id) {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/roles/del_page',
+			type: 'POST',
+			data: {
+				id:$id
+			},
+			dataType: 'json',
+			success: function(d) {
+				if(d.success){
+					var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+					parent.layer.close(index);
+					layer.msg('已刪除');
+					parent.location.reload();
+				}
+				if(d.error_msg){
+					layer.msg(d.error_msg);
+				}
+			},
+			failure:function(){
+				layer.msg('faialure');
+			}
+		});
+	}
 </script>

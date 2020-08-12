@@ -7,6 +7,7 @@ class Users extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('Users_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
+		$this -> load -> model('Department_dao','d_dao');
 
 	}
 
@@ -14,7 +15,7 @@ class Users extends MY_Mgmt_Controller {
 	{
 		$data = array();
 		$data = $this -> setup_user_data($data);
-		$data['role_list'] = $this -> dao -> find_all_roles();
+		$data['role_list'] = $this -> dao -> find_all_department();
 		// $data['hospital_list'] = $this -> dao -> find_all_hospital();
 		$data['login_user'] = $this -> dao -> find_by_id($data['login_user_id']);
 		// $this -> to_json($data);
@@ -57,6 +58,16 @@ class Users extends MY_Mgmt_Controller {
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
+			if($item->role_id>0){
+				$department = $this -> d_dao -> find_by_id($item->role_id);
+				if($department->parent_id>0){
+					$item->department_id = $department->parent_id;
+					$item->div_id = $department->id;
+					$data['div_list'] = $this -> dao -> find_all_div($department->parent_id);
+				} else{
+					$item->department_id = $department->id;
+				}
+			}
 
 			$data['item'] = $item;
 		}
@@ -64,9 +75,17 @@ class Users extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
-		$data['role_list'] = $this -> dao -> find_all_roles();
-		$data['hospital_list'] = $this -> dao -> find_all_hospital();
+		$data['department_list'] = $this -> dao -> find_all_department();
+
 		$this->load->view('mgmt/users/edit', $data);
+	}
+
+	public function find_div_by_department() {
+		$department = $this -> get_post('department');
+		$list = $this -> d_dao -> find_all_by('parent_id', $department);
+		$res = array();
+		$res['div_list'] = $list;
+		$this -> to_json($res);
 	}
 
 	public function insert() {
@@ -76,14 +95,25 @@ class Users extends MY_Mgmt_Controller {
 			'account',
 			'password',
 			'user_name',
-			'role_id',
-
+			
 		));
+		$role_id = $this -> get_post('role_id');
+		$div_id = $this -> get_post('div_id');
 
 		if(empty($id)) {
 			// insert
+			if(!empty($div_id)){
+				$data['role_id'] = $div_id;
+			} else{
+				$data['role_id'] = $role_id;
+			}
 			$this -> dao -> insert($data);
 		} else {
+			if(!empty($div_id)){
+				$data['role_id'] = $div_id;
+			} else{
+				$data['role_id'] = $role_id;
+			}
 			$this -> dao -> update($data, $id);
 		}
 

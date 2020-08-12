@@ -35,7 +35,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">角色名稱</label>
 						<div class="col-md-6">
-							<input type="text" required class="form-control" name="role_name" value="<?= isset($item) ? $item -> role_name : '' ?>" />
+							<input type="text" required class="form-control" name="role_name" value="<?= isset($item) ? $item -> name : '' ?>" />
 						</div>
 					</div>
 				</fieldset>

@@ -575,16 +575,6 @@ function do_save_fix() {
     });
 }
 
-window.document.body.onbeforeunload = function()
-{
-    if(confirm('您尚未將編輯過的表單資料送出，請問您確定要離開網頁嗎？'))
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
+
 
 </script>

@@ -302,7 +302,7 @@ class Fix_record_dao extends MY_Model {
 			$id = $data['id'];
 			$this -> db -> where("_m.id", $id);
 		}
-		$this -> db -> where("_m.is_delete",0);
+		// $this -> db -> where("_m.is_delete",0);
 
 	}
 
@@ -853,6 +853,42 @@ class Fix_record_dao extends MY_Model {
 		$this -> db -> where('_m.type',0);
 
 		$query = $this -> db -> get();
+		return $query -> result();
+	}
+
+	function query_fixing_ajax($data) {
+		$start = $data['start'];
+		$limit = $data['length'];
+		$columns = $data['columns'];
+		$search = $data['search'];
+		$order = $data['order'];
+
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> select("DATE_FORMAT(_m.fix_date, '%Y-%m-%d') as fix_date");
+		$this -> db -> select("DATE_FORMAT(_m.report_date, '%Y-%m-%d') as report_date");
+		$this -> db -> select("DATE_FORMAT(_m.done_fix_date, '%Y-%m-%d') as done_fix_date");
+		$this -> db -> select("DATE_FORMAT(_m.create_time, '%Y-%m-%d') as create_date");
+
+		$this -> db -> select('c.computer_name as computer_name');
+		$this -> db -> where("_m.type>",0);
+		
+		// search
+		$this -> ajax_column_setup($columns, $search, $this -> alias_map);
+		$this -> db -> join("c_s_h_join_list as csh", 'csh.id = _m.computer_id', "left");
+		$this -> db -> join("computer as c", 'c.id = csh.computer_id', "left");//電腦table join
+
+		// order
+		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
+		$this -> db -> order_by('id', 'desc');
+
+		// limit
+		$this -> db -> limit($limit, $start);
+
+		// query results
+		$query = $this -> db -> get();
+
+		// echo $this -> db -> last_query();
 		return $query -> result();
 	}
 }

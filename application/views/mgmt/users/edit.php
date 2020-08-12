@@ -60,31 +60,46 @@
 					</div>
 				</fieldset>
 
-				<!-- <fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">單位</label>
-						<div class="col-md-6">
-							<select name="station_id" id="user_station_id" class="form-control" >
-								<?php foreach($station_list as $each): ?>
-									<option value="<?= $each -> id?>" <?= isset($item) && $item -> station_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
-								<?php endforeach ?>
-							</select>
-						</div>
-					</div>
-				</fieldset> -->
+			
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">權限角色</label>
+						<label class="col-md-3 control-label">部門</label>
 						<div class="col-md-6">
-							<select name="role_id" id="user_role_id" class="form-control">
-								<?php foreach($role_list as $each): ?>
-									<option value="<?= $each -> id?>" <?= isset($item) && $item -> role_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> role_name ?></option>
+							<select name="role_id" id="department_id" class="form-control" onchange="department_change();">
+								<?php foreach($department_list as $each): ?>
+									<option value="<?= $each -> id?>" <?= isset($item) && $item -> department_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
 								<?php endforeach ?>
 							</select>
 						</div>
 					</div>
 				</fieldset>
-			
+
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">課</label>
+						<div class="col-md-6">
+						<?php if(!empty($item)): ?>
+							<select name="div_id" id="div_id" class="form-control">
+								<?php if(!empty( $item -> div_id)): ?>
+									
+									<?php foreach($div_list as $each): ?>
+										<option value="<?= $each -> id?>" <?= isset($item) && $item -> department_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
+									<?php endforeach ?>
+								<?php else: ?>
+									<option disabled="disabled" >部門沒有課</option>
+								<?php endif ?>
+							</select>
+
+						<?php else: ?>
+							<select name="div_id" id="div_id" class="form-control" >
+								<option disabled="disabled">請先選擇部門</option>
+							</select>
+						<?php endif ?>
+							
+						</div>
+					</div>
+				</fieldset>
+
 			</form>
 
 		</div>
@@ -125,4 +140,32 @@
 	}).on('dp.change',function(event){
 
 	});
+
+	function department_change(){
+    var $department = $('#department_id').val();
+    $.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/users/find_div_by_department',
+			type: 'POST',
+			data: {
+				department: $department
+			},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$div = $('#div_id').empty();
+					$.each(d.div_list, function(){
+						$('<option/>', {
+							'value': this.id,
+							'text': this.name
+						}).appendTo($div);
+					});
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+  }
+
 </script>

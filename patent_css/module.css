@@ -1,0 +1,839 @@
+/* ========================================================================== *\
+    Module
+\* ========================================================================== */
+
+/*  Page inner index Hero
+----------------------------------------  */
+.koko-hero {
+    color: #fff;
+    background-image: url('https://res.cloudinary.com/janeiredale/image/upload/f_auto,q_auto:best/v1516387994/Category/banners/Desktop/Cat-banner-Working-File-allface-V5.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.koko-hero .content-text {
+    position: absolute;
+    top: 50%;
+    left: 2rem;
+    max-width: 50%;
+    transform: translateY(-50%);
+}
+
+.koko-hero .content-text h2 {
+    font-size: 1.75rem;
+}
+
+.koko-hero .content-text p {
+    margin: 1rem 0;
+}
+
+.koko-hero .content-text .btn {
+    padding: .5rem 3rem;
+}
+
+.koko-hero .content-box,
+.koko-hero .content-box--white {
+    display: inline-block;
+    max-width: 24rem;
+}
+
+.koko-hero .content-box {
+    margin: 4rem auto;
+    padding: 2rem 3rem;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.koko-hero .content-box h3,
+.koko-hero .content-box--white h3 {
+    font-size: 1.5rem;
+}
+
+/*  Category Page Hero
+----------------------------------------  */
+.koko-hero .content-box--white {
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, .84);
+    box-shadow: 0 6px 10px -6px rgba(0, 0, 0, .1);
+}
+
+.koko-hero .content-box--white img {
+    margin: 0 auto;
+}
+
+.koko-hero .content-box--white p {
+    margin: .5rem 0;
+    color: #8d8d8d;
+}
+
+/* owl carousel-theme-full */
+.carousel-theme-full .owl-dots {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.carousel-theme-full .owl-dots .owl-dot {
+    display: inline-block;
+    margin: 0 .5rem;
+    vertical-align: middle;
+    border-radius: 4rem;
+    outline: none;
+}
+
+.carousel-theme-full .owl-dots .owl-dot:not(.active) {
+    width: 2rem;
+    height: .175rem;
+    opacity: .7;
+    background-color: #fff;
+}
+
+.carousel-theme-full .owl-dots .owl-dot.active {
+    width: 2.5rem;
+    height: .25rem;
+    opacity: 1;
+    background-color: #998e76;
+}
+
+.koko-hot-product,
+.koko-record,
+.koko-push-product,
+.koko-sale-product,
+.koko-daily-special,
+.koko-category {
+    padding: 2rem 2rem 1rem;
+    text-align: center;
+}
+
+.koko-cart-main,
+.koko-product-list,
+.koko-cart-finish {
+    padding: 2rem 0;
+}
+
+.koko-activity {
+    padding: 1rem 0;
+}
+
+.koko-stepform {
+    padding: 3rem 0 1rem;
+}
+
+.koko-hot-product h3,
+.koko-record h3,
+.koko-push-product h3,
+.koko-sale-product h3,
+.koko-daily-special h3,
+.koko-categories h3 {
+    font-size: 1.875rem;
+}
+
+.koko-hot-product h3 + p,
+.koko-record h3 + p,
+.koko-push-product h3 + p,
+.koko-sale-product h3 + p,
+.koko-daily-special h3 + p,
+.koko-categories h3 + p {
+    color: #8d8d8d;
+}
+
+#koko-record-list {
+    opacity: .7;
+}
+
+.koko-categories {
+    padding: 3rem 2rem;
+}
+
+.koko-categories:nth-child(odd) {
+    background-color: #fff;
+}
+
+.koko-categories .koko-card:not(:first-child),.product-category-cnt {
+    margin: .5rem 0;
+}
+
+.product-category-list {
+    float: left;
+    width: 33.33333333%;
+    padding-right: .5rem;
+    text-align: left;
+}
+
+.product-category-list li:not(:first-child) {
+    margin: .25rem 0;
+}
+
+.product-category-list li > a {
+    font-size: .8125rem;
+    display: block;
+    padding: .25rem .5rem;
+    color: #394646;
+    border-bottom: 1px solid #c2deda;
+    background-color: #ecf7f5;
+}
+
+.product-category-list li:last-child > a {
+    color: #000;
+    background-color: #cee2de;
+}
+
+.product-category-list li > a:hover {
+    color: #000;
+    background-color: #fcfffe;
+}
+
+.product-category-adv {
+    float: left;
+    width: 66.66666667%;
+}
+
+.product-category-adv > img {
+    width: 100%;
+}
+
+.koko-categories:nth-child(even) {
+    background-color: #f3f3f1;
+}
+
+.koko-categories:nth-child(even) .koko-title--2 h3 {
+    background-color: #f3f3f1;
+}
+
+.koko-categories:nth-child(even) .koko-title--2:after {
+    border-color: #f4e6dc;
+}
+
+.koko-categories:nth-child(even) .product-category-list li > a {
+    color: #313d53;
+    border-bottom: 1px solid #efdbcd;
+    background-color: #f5ede8;
+}
+
+.koko-categories:nth-child(even) .product-category-list li:last-child > a {
+    background-color: #efdbcd;
+}
+
+.koko-categories:nth-child(even) .product-category-list li > a:hover {
+    background-color: #fff9f5;
+}
+
+@media all and (max-width:992px) {
+    .product-category-list {
+        width: 100%;
+        margin-bottom: .5rem;
+        padding-right: 0;
+    }
+
+    .product-category-list li {
+        float: left;
+    }
+
+    .product-category-list.product-category-list li {
+        margin: .25rem;
+    }
+
+    .product-category-adv {
+        width: 100%;
+    }
+
+}
+
+@media all and (max-width:768px) {
+    .product-category-cnt {
+        margin: 0 0 .75rem;
+    }
+
+    .product-category-list li > a {
+        font-size: .9375rem;
+    }
+
+}
+
+.koko-sign-panel {
+    padding: 2rem 0;
+}
+
+.sign-tab {
+    width: 24rem;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+}
+
+.sign-tab > div {
+    display: none;
+    padding: 1rem 0;
+}
+
+.sign-tab > input {
+    display: none;
+}
+
+.sign-tab > label {
+    font-size: 1rem;
+    display: inline-block;
+    margin: 1rem 1rem 0;
+    padding: .25rem .5rem;
+    transition: all .25s cubic-bezier(.38, .8, .32, 1.07);
+    text-align: center;
+    color: #ccc;
+    border: 1px solid transparent;
+}
+
+.sign-tab > label:hover {
+    cursor: pointer;
+    color: #666;
+}
+
+.sign-tab > input:checked + label {
+    font-size: 1.25rem;
+    font-weight: bolder;
+    color: #000;
+    border-bottom: 2px solid #998e76;
+}
+
+#signIn:checked ~ #signInCnt,
+#signUp:checked ~ #signUpCnt {
+    display: block;
+}
+
+.sign-form {
+    padding: 1rem 1.75rem;
+    text-align: left;
+}
+
+.sign-form .forget-row {
+    margin-bottom: 1.5rem;
+}
+
+.forget-row .forget-link {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+}
+
+.forget-panel {
+    width: 24rem;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #fff;
+}
+
+.forget-panel h4 {
+    font-size: 1.25rem;
+    padding: .75rem;
+    border-bottom: #e5e5e5 1px solid;
+}
+
+.sign-form {
+    padding: 1rem 1.75rem;
+    text-align: left;
+}
+
+.koko-products {
+    padding: 2rem 1rem;
+}
+
+.koko-products dl {
+    font-size: 0;
+    margin: .5rem 0;
+    color: #8d8d8d;
+}
+
+.koko-products dt,
+.koko-products dd {
+    font-size: .8125rem;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.koko-products dt {
+    width: 20%;
+    text-align: justify;
+    text-align-last: justify;
+}
+
+.koko-products dt:after {
+    position: absolute;
+    right: -1rem;
+    content: '：';
+}
+
+.koko-products .flag {
+    width: 2rem
+}
+
+.koko-products dd {
+    width: 80%;
+    margin-left: 0;
+    padding-left: 2.5rem;
+}
+
+.price-toolstip-cnt {
+    z-index: 1;
+}
+
+.price-toolstip {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.product-images-carousel {
+    padding: 0 .5rem;
+}
+
+.product-images-carousel img {
+    width: 100%;
+    height: 100%;
+}
+
+#sm-product img {
+    opacity: .2;
+}
+
+#sm-product img:hover {
+    opacity: .87;
+}
+
+#sm-product .current img {
+    opacity: 1;
+}
+
+.product-details h2 {
+    margin-bottom: 1rem;
+    font-size: 2rem
+}
+
+.koko-products .product-details .product-price {
+    font-size: 0;
+    margin: 1rem 0;
+    padding: .25rem .75rem;
+    background-color: #f5f5f5;
+}
+
+.koko-products .product-price--sub,
+.koko-products .product-price .special {
+    display: inline-block;
+    width: 50%;
+    vertical-align: middle;
+}
+
+.koko-products .product-price--sub {
+    font-size: .9375rem;
+}
+
+.koko-products .product-price--sub .original {
+    font-size: .8125rem;
+    margin: .5rem 0;
+    text-decoration: line-through;
+    color: #8d8d8d;
+}
+
+.koko-products .product-price--sub .point {
+    font-size: .875rem;
+    margin: .5rem 0;
+    color: #7b3a42;
+}
+
+.koko-products .product-price .sell {
+    font-size: .875rem;
+}
+
+.koko-products .product-price .special {
+    font-size: .8125rem;
+    text-align: right;
+    vertical-align: bottom
+}
+
+.koko-products .product-price .special strong {
+    letter-spacing: 1px;
+}
+
+.koko-products .product-price .special strong {
+    font-size: 2.5rem;
+    margin: 0 .125rem;
+    color: #deac7c;
+    z-index: 1;
+    font-weight: normal;
+}
+
+.product-price .special strong:after {
+    content: '';
+    width: 108%;
+    height: 100%;
+    box-shadow: -1px -1px 2px 0px rgba(0, 0, 0, 0.08);
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(25%, #fed330), color-stop(40%, rgba(0, 0, 0, 0)));
+    background-image: linear-gradient(to top, #ffffff 100%, rgb(234, 229, 218) 60%);
+    position: absolute;
+    left: -4px;
+    bottom: -2px;
+    z-index: -1;
+    transform: rotate(-2deg);
+    transform-origin: left bottom;
+    transition: width .1s ease-out;
+}
+
+.koko-products .select-styled {
+    padding: .125rem 1.75rem .125rem .75rem;
+}
+
+.koko-products .select-options li {
+    padding-top: .125rem;
+    padding-bottom: .125rem;
+}
+
+.product-add-cart {
+    border-bottom: #d4cec0 3px solid;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(153, 142, 118, .18);
+}
+
+.product-add-cart .product-add-cart-cnt {
+    padding: 1rem .75rem;
+}
+
+.number-spinner {
+    font-size: 0;
+}
+
+.number-spinner .btn--square.btn--square {
+    border-color: #ededed;
+}
+
+.number-spinner > input {
+    height: 2.125rem;
+    padding: 0 .125rem 0 .5rem;
+    vertical-align: middle;
+    border-radius: 0;
+    background-color: #fff;
+}
+
+.product-add-cart .remark {
+    font-size: .8125rem;
+    margin: 1rem 0 .75rem;
+    color: #7a705b;
+}
+
+.in-cart-coupon {
+    font-size: 1.375rem;
+    padding: .75rem 0;
+    user-select: none;
+    text-align: center;
+    letter-spacing: 4px;
+    color: #fff;
+    border-bottom: 3px solid #903856;
+    background: rgb(2, 0, 36);
+    background: -moz-linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(166, 30, 77, 1) 0%, rgba(166, 30, 30, 1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(166, 30, 77, 1) 0%, rgba(166, 30, 30, 1) 100%);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(166, 30, 77, 1) 0%, rgba(166, 30, 30, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024", endColorstr="#a61e1e", GradientType=1);
+}
+
+.in-cart-coupon strong {
+    top: 1.5px;
+}
+
+.in-cart-coupon:before {
+    font-size: 2.75rem;
+    position: absolute;
+    top: -.75rem;
+    left: -.125rem;
+    width: 100%;
+    content: 'SUPER SALE';
+    opacity: .16;
+    color: #fff;
+}
+
+.coupon-img {
+    width: 100%;
+    height: 100%;
+}
+
+.koko-description {
+    padding: 2rem;
+}
+
+.product-description .description-cnt {
+    padding: 1rem 0 2rem;
+    color: #999;
+}
+
+.product-description .description-cnt p {
+    font-size: .875rem;
+    margin-bottom: .125rem;
+}
+
+.koko-category .sidebar {
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, .04);
+}
+
+.category-sidebar {
+    margin-bottom: 2rem;
+}
+
+.sidebar .category-title {
+    font-size: 1.125rem;
+    margin-bottom: 1rem;
+    padding-bottom: .375rem;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.sidebar .category-title i {
+    font-size: 1.5rem;
+    margin-right: .5rem;
+    color: #999;
+}
+
+.sidebar .category-title:after {
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    display: block;
+    width: 5.625rem;
+    height: 2px;
+    content: '';
+    background-color: #897f6a;
+}
+
+.category-content {
+    padding-bottom: .5rem;
+    padding-left: 1rem;
+}
+
+.category-1 {
+    font-size: .9375rem;
+}
+
+.category-1  i {
+    margin-right: .5rem;
+    vertical-align: middle
+}
+
+.category-list {
+    padding: .25rem .5rem;
+}
+
+.category-list > li {
+    padding: .125rem 0;
+}
+
+.category-list > li > a {
+    font-size: .9375rem;
+    padding: .125rem 0;
+}
+
+.category-list > li > a > i {
+    font-size: .75rem;
+    color: #d6d1c8;
+}
+
+.category-list > li > a > span {
+    font-size: .875rem;
+}
+
+.category-sub-list {
+    display: none;
+    margin-bottom: .375rem;
+    margin-left: .75rem;
+    border-left: 1px solid #e2e2e2;
+}
+
+.category-sub-list li {
+    padding: .25rem 0 .25rem 1rem;
+}
+
+.category-sub-list li > a {
+    font-size: .8125rem;
+    color: #8d8d8d;
+}
+
+.sub-sidebar {
+    margin: 2rem 0;
+}
+
+.sub-sidebar .children-clear {
+    font-size: .8125rem;
+    position: absolute;
+    top: 50%;
+    right: .5rem;
+    transform: translateY(-50%);
+    color: #768199;
+}
+
+.sub-sidebar .children-clear:hover {
+    color: #000;
+}
+
+.sub-sidebar .children-more {
+    font-size: .875rem;
+    float: right;
+    color: #998e76;
+}
+
+.sub-sidebar .children-more i {
+    font-size: .75rem;
+}
+
+.sub-sidebar .children-more:hover {
+    color: #000;
+}
+
+.sub-sidebar .control--checkbox span {
+    font-size: .8125rem;
+}
+
+.sub-sidebar .control--checkbox span:hover {
+    color: #deac7c;
+}
+
+.category-content .price-input {
+    display: inline-block;
+    width: 44%;
+}
+
+.koko-category-main {
+    margin: 1rem 0;
+}
+
+.koko-category .koko-card {
+    margin: 1rem 0;
+}
+
+.koko-category-main .search-txt {
+    text-align: left
+}
+
+.koko-category-main .select {
+    position: absolute;
+    top: -1rem;
+    right: .5rem;
+}
+
+.categories-block {
+    padding: 1rem 2rem 2rem;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, .04);
+}
+
+.categories-block:not(:first-child) {
+    margin-top: 1rem;
+}
+
+.categories-block .koko-title--2 h3 > i {
+    font-size: 1.75rem;
+}
+
+.categories-block .koko-title--2 h3 > span {
+    font-size: 1.25rem;
+}
+
+.categories-block:nth-child(even) .koko-title--2:after {
+    border-color: #f4e6dc;
+}
+
+.categories-block .koko-title--4 {
+    font-size: 1rem;
+    padding-left: 1rem;
+}
+
+.categories-block .koko-title--4:after {
+    width: .5rem;
+    height: .5rem;
+}
+
+.categories-block:nth-child(odd) .koko-title--4:after {
+    background-color: #cfe5e2;
+}
+
+.categories-block:nth-child(even) .koko-title--4:after {
+    background-color: #efdbcd;
+}
+
+.categories-block .categories-row {
+    padding-top: 1.25rem;
+}
+
+.categories-block .categories-row ul {
+    padding-top: .5rem;
+}
+
+.categories-block .categories-row ul > li {
+    display: inline-block;
+    margin-right: .75rem;
+}
+
+.categories-block .categories-row ul > li > a {
+    font-size: .875rem;
+    text-decoration: underline;
+    color: #8d8d8d;
+}
+
+.categories-block .categories-row ul > li > a:hover {
+    color: #000;
+}
+
+.koko-categories-blcok {
+    padding: 1rem 0;
+}
+
+.categories-list {
+    font-size: 0;
+}
+
+.categories-list li {
+    margin-bottom: .25rem;
+}
+
+.categories-list li a {
+    display: block;
+    padding: .125rem 1rem;
+    border: #fff 2px solid;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .04);
+}
+
+.categories-list li:nth-child(odd) a {
+    background-color: #fff;
+}
+
+.categories-list li:nth-child(even) a {
+    background-color: #f6f5f4;
+}
+
+.categories-list li a i {
+    display: inline-block;
+    vertical-align: middle;
+    color: #cecece;
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    transition: inherit;
+}
+
+.categories-list li a span {
+    display: initial;
+    vertical-align: middle;
+    font-size: .8125rem;
+    transition: inherit;
+}
+
+.categories-list li a:hover,
+.categories-list li a.active {
+    background-color: #faf5f5;
+    border-color: #d4a5ab;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, .12);
+}
+
+.categories-list li a:hover i,
+.categories-list li a.active i {
+    color: #7b3a42;
+}
+
+.categories-list li a:hover span,
+.categories-list li a.active span {
+    color: #7b3a42;
+}

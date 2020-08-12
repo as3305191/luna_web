@@ -243,6 +243,7 @@ class Fix_list extends MY_Mgmt_Controller {
 		
 		if(!empty($fix_type)){
 			if($fix_type =='1'){//電腦
+				$data['fix_status'] = $fix_type;
 				if($fix_way =='change'){//更換軟硬體
 					$computer_id = $this -> get_post('computer_id');
 					$new_sh = $this -> get_post('new_sh');
@@ -290,8 +291,6 @@ class Fix_list extends MY_Mgmt_Controller {
 					$data['fix_type'] = $fix_way ;
 
 					$last_id = $this -> dao -> insert($data);
-
-
 				}
 				if($fix_way =='add'){
 					$s_h_type = $this -> get_post('s_h_type');
@@ -314,9 +313,7 @@ class Fix_list extends MY_Mgmt_Controller {
 						$s_h_c_insert['computer_id'] = $computer_id;
 						$s_h_c_insert['computer_hard_id'] = $s_h_id;
 						$s_h_c_insert['type'] = 1;
-
 						$last_c_s_id = $this -> c_s_h_join_list_dao -> insert($s_h_c_insert);
-					
 					}
 
 					$add_reason = $this -> get_post('add_reason');
@@ -333,7 +330,6 @@ class Fix_list extends MY_Mgmt_Controller {
 					$data['type'] = 1;
 					$data['fix_type'] = $fix_way ;
 
-			
 					$last_id = $this -> dao -> insert($data);
 
 				}
@@ -356,7 +352,39 @@ class Fix_list extends MY_Mgmt_Controller {
 
 				}
 			} 
+
+			if($fix_type =='2'){//軟體
+				$data['fix_status'] = $fix_type;
+				if($fix_way =='fix'){
+
+				}
+
+				if($fix_way =='change'){
+
+				}
+
+				if($fix_way =='add'){
+
+				}
+
+			}
+
+			if($fix_type =='3'){//硬體
+				$data['fix_status'] = $fix_type;
+				if($fix_way =='fix'){//維修
+					
+				}
+
+				if($fix_way =='change'){//更換
+
+				}
+				
+				if($fix_way =='add'){//新增
+					
+				}
+			}
 		}
+
 		$res['last_id'] = $last_id;
 		$res['success'] = TRUE;
 		$s_data = array();
