@@ -127,8 +127,8 @@
          }
       }
 
-	})
-	.bootstrapValidator('validate');
+	}).bootstrapValidator('validate');
+	
 	$(".dt_picker").datetimepicker({
 		format : 'YYYY-MM-DD'
 	}).on('dp.change',function(event){

@@ -11,6 +11,8 @@
     "require": {
         "codeigniter/framework": "3.1.11",
         "phpoffice/phpword": "^0.17.0",
-        "laminas/laminas-escaper": "^2.6"
+        "laminas/laminas-escaper": "^2.6",
+        "lcobucci/jwt": "^3.3"
+
     }
 }

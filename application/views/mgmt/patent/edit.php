@@ -6,6 +6,13 @@
     background-color: #FFD22F !important;
     color: #F57316 !important;
   }
+  .is_ok {
+    background-color:lightgreen;
+  }
+  .not_ok {
+	background-color:red;
+  }
+ 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
@@ -16,12 +23,11 @@
 			</a>
 		</div>
 		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="" onclick="do_save()" class="btn btn-default btn-danger">
+			<a href="javascript:void(0);" id="" onclick="currentApp.doSubmit();" class="btn btn-default btn-danger">
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
 	</header>
-
 	<!-- widget div-->
 	<div>
 		<!-- widget edit box -->
@@ -30,15 +36,12 @@
 			<input class="form-control" type="text">
 		</div>
 		<!-- end widget edit box -->
-
 		<!-- widget content -->
 		<div class="widget-body">
-
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<input type="hidden" name="role_id"  value="1" />
 				<div class="form-group" style="padding:0px 26px">
-	    
         <div class="clearfix"></div>
     </div>
     <hr/>
@@ -47,13 +50,162 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利名稱</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="patnet"  id="patnet_name" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+						<input type="text" required class="form-control" name="patnet_name"  id="patnet_name" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">專利的圖片</label>
+					<label class="col-md-3 control-label">專利家族代碼</label>
+					<div class="col-md-6">
+						<input type="text"  class="form-control" name="patent_family"  id="patent_family" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-sm btn-primary" onclick="check_family()">檢查</button>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利國家</label>
+					<div class="col-md-6">
+						<select name="patnet_country" id="patnet_country" class="form-control" >
+							<option  value="1" >台灣</option>
+							<option  value="2" >美國</option>
+							<option  value="3" >日本</option>
+							<option  value="4" >大陸</option>
+							<option  value="5" >加拿大</option>
+						</select>
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-sm btn-primary" onclick="add_new_country()"><i class="fa fa-plus-circle fa-lg"></i></button>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">關鍵字</label>
+					<div class="col-md-6">
+						<input type="text"  class="form-control" name="patnet_key"  id="patnet_key" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利類別</label>
+					<div class="col-md-6">
+						<select name="patnet_category" id="patnet_category" class="form-control" >
+							<option  value="1" >發明</option>
+							<option  value="2" >新型</option>
+							<option  value="3" >設計</option>
+						</select>	
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">申請號</label>
+					<div class="col-md-6">
+						<input type="text" required class="form-control" name="application_num"  id="application_num" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">公開號</label>
+					<div class="col-md-6">
+						<input id="public-num-input" name="file" type="file" accept=".pdf" multiple class="file-loading form-control">
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利號</label>
+					<div class="col-md-6">
+						<input id="patnet-num-input" name="file" type="file" accept=".pdf" multiple class="file-loading form-control">
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">申請日</label>
+					<div class="col-md-6">
+						<input type="text" required class="form-control dt_picker" name="application_date"  id="application_date" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">公開日</label>
+					<div class="col-md-6">
+						<input type="text"  class="form-control dt_picker" name="public_date"  id="public_date" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">公告日</label>
+					<div class="col-md-6">
+						<input type="text"  class="form-control dt_picker" name="announcement_name"  id="announcement_name" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利權期間</label>
+					<div class="col-md-2 widget-toolbar pull-left">
+						<input id="s_dt" placeholder="請輸入開始日期" type="text" class="dt_picker" value="" />
+					</div>
+					
+					<div class="col-md-2 widget-toolbar pull-left">
+						~<input id="e_dt" placeholder="請輸入結束日期" type="text" class="dt_picker" value="" />
+					</div>
+					<div class="col-md-2 widget-toolbar pull-left">
+						共
+						<input type="text" id="year"/>
+						年						
+					</div>
+					
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利權止日</label>
+					<div class="col-md-6">
+						<input type="text" class="dt_picker form-control" name="patnetend_end_date"  id="patnetend_end_date" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利狀態</label>
+					<div class="col-md-6">
+						<select name="patnet_status" id="patnet_status" class="form-control" >
+							<option  value="1" >有效</option>
+							<option  value="2" >無效</option>
+						</select>	
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利摘要</label>
+					<div class="col-md-6">
+						<textarea type="text" require class="form-control" rows="10" id="patent_note" name="patent_note" style="resize:none;width:100%"><?= isset($item) ? $item->description : '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利範圍</label>
+					<div class="col-md-6">
+						<textarea type="text" require class="form-control" rows="10" id="patent_range" name="patent_range" style="resize:none;width:100%"><?= isset($item) ? $item->description : '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>		
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利代表圖</label>
 					<div class="col-md-6">
 						<input id="img-input" name="file" type="file" accept="image/*" multiple class="file-loading form-control">
 					</div>
@@ -61,7 +213,7 @@
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">專利的檔案</label>
+					<label class="col-md-3 control-label">專利分析相關文件</label>
 					<div class="col-md-6">
 						<input id="file-input" name="file" type="file" accept=".pdf" multiple class="file-loading form-control">
 					</div>
@@ -107,10 +259,47 @@
 <style>
 	.kv-file-zoom {
 		display: none;
-	}
+	}	
 </style>
 
 <script>
+$(document).ready(function() {
+	var url = baseUrl + 'mgmt/patent/new_patent_family'; // the script where you handle the form input.
+	$.ajax({
+		type : "POST",
+		url : url,
+		// data : {},
+		success : function(d) {
+			$('#patent_family').val(d.family_num);
+		}
+	});
+});
+
+$('#app-edit-form').bootstrapValidator({
+		feedbackIcons : {
+			valid : 'glyphicon glyphicon-ok',
+			invalid : 'glyphicon glyphicon-remove',
+			validating : 'glyphicon glyphicon-refresh'
+		},
+		fields: {
+			account: {
+            validators: {
+              remote: {
+              	message: '已經存在',
+              	url: baseUrl + 'mgmt/users/check_account/' + ($('#item_id').val().length > 0 ? $('#item_id').val() : '0')
+              }
+            }
+         }
+      }
+
+	}).bootstrapValidator('validate');
+
+$(".dt_picker").datetimepicker({
+    format : 'YYYY-MM-DD'
+}).on('dp.change',function(event){
+
+});
+
 var img='';
 var pdf_array=[];
 
@@ -211,26 +400,122 @@ $("#img-input").fileinput({
 
 	});
 
-	function do_save() {
-			var url = baseUrl + 'mgmt/patent/insert'; // the script where you handle the form input.
-			$.ajax({
-				type : "POST",
-				url : url,
-				data : {
-					id: $('#item_id').val(),
-					patnet_name: $('#patnet_name').val(),
-					img: img,
-					pdf_array: pdf_array.join(","),
-				},
-				success : function(data) {
-					if(data.error_msg) {
-						layer.msg(data.error_msg);
-					} else {
-						// currentApp.mDtTable.ajax.reload(null, false);
-						currentApp.doEdit(0);
-					}
-				}
-			});
-		};
+	$("#public-num-input").fileinput({
+					language: "zh-TW",
+        <?php if(!empty($item -> images) && count($item -> images) > 0): ?>
+        	initialPreview: [
+        		<?php foreach($item -> images as $img): ?>
+        			'<?=  base_url('mgmt/images/get_file/' . $img -> id) ?>',
+        		<?php endforeach ?>
+        	],
+        	initialPreviewConfig: [
+        	<?php foreach($item -> images as $img): ?>
+    		{
+	        		'caption' : '<?= $img -> image_name ?>',
+	        		'size' : <?= $img -> image_size ?>,
+	        		'width' : '120px',
+	        		'url' : '<?= base_url('mgmt/images/delete/' . $img -> id)  ?>',
+	        		'key' : <?= $img -> id ?>
+	        },
+    		<?php endforeach ?>
+
+        	],
+        <?php else: ?>
+        	initialPreview: [],
+        	initialPreviewConfig: [],
+        <?php endif ?>
+        initialPreviewAsData: true,
+        overwriteInitial: false,
+        maxFileCount: 1,
+        uploadUrl: 'mgmt/images/upload_img_or_pdf/file',
+        uploadExtraData: {
+        }
+    }).on('fileuploaded', function(event, data, previewId, index) {
+    	// upload image
+	   var id = data.response.id;
+	   pdf_array.push(id);
+	   console.log(pdf_array);
+	//    $("#file-input").fileinput('reset');
+	}).on('fileselect', function(event, numFiles, label) {
+    	$("#file-input").fileinput('upload');
+	}).on('filedeleted', function(event,data,key) {
+		pdf_array.splice($.inArray(data,img_array),1);
+
+	}).on('fileuploaderror', function(event, data, previewId, index) {
+		alert('upload error');
+	}).on('filedeleted', function(event,data,key) {
+	
+
+	});
+
+	$("#patnet-num-input").fileinput({
+					language: "zh-TW",
+        <?php if(!empty($item -> images) && count($item -> images) > 0): ?>
+        	initialPreview: [
+        		<?php foreach($item -> images as $img): ?>
+        			'<?=  base_url('mgmt/images/get_file/' . $img -> id) ?>',
+        		<?php endforeach ?>
+        	],
+        	initialPreviewConfig: [
+        	<?php foreach($item -> images as $img): ?>
+    		{
+	        		'caption' : '<?= $img -> image_name ?>',
+	        		'size' : <?= $img -> image_size ?>,
+	        		'width' : '120px',
+	        		'url' : '<?= base_url('mgmt/images/delete/' . $img -> id)  ?>',
+	        		'key' : <?= $img -> id ?>
+	        },
+    		<?php endforeach ?>
+
+        	],
+        <?php else: ?>
+        	initialPreview: [],
+        	initialPreviewConfig: [],
+        <?php endif ?>
+        initialPreviewAsData: true,
+        overwriteInitial: false,
+        maxFileCount: 1,
+        uploadUrl: 'mgmt/images/upload_img_or_pdf/file',
+        uploadExtraData: {
+        }
+    }).on('fileuploaded', function(event, data, previewId, index) {
+    	// upload image
+	   var id = data.response.id;
+	   pdf_array.push(id);
+	   console.log(pdf_array);
+	//    $("#file-input").fileinput('reset');
+	}).on('fileselect', function(event, numFiles, label) {
+    	$("#file-input").fileinput('upload');
+	}).on('filedeleted', function(event,data,key) {
+		pdf_array.splice($.inArray(data,img_array),1);
+
+	}).on('fileuploaderror', function(event, data, previewId, index) {
+		alert('upload error');
+	}).on('filedeleted', function(event,data,key) {
+	
+
+	});
+
+function check_family(){
+	var url = baseUrl + 'mgmt/patent/check_family'; 
+	$.ajax({
+		type : "POST",
+		url : url,
+		data : {
+			patent_family: $('#patent_family').val(),
+		},
+		success : function(d) {
+			if(d.valid=='TRUE'){//沒有重複
+				$('#patent_family').removeClass('not_ok');
+				$('#patent_family').addClass('is_ok');
+			} else{//有重複
+				$('#patent_family').removeClass('is_ok');
+				$('#patent_family').addClass('not_ok');
+			}
+		}
+	});
+}
+
+
 
 </script>

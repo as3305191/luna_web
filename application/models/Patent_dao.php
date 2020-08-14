@@ -26,5 +26,16 @@ class Patent_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_by_all_today_add(){
+		$date = date('Y-m-d');
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> where("_m.create_time like '{$date}%'");
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return count($list);
+	}
+
 }
 ?>

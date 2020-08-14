@@ -45,7 +45,7 @@ class Login extends MY_Base_Controller {
 					$uniqueId = uniqid(rand(), TRUE);
 					$s_uid = md5($uniqueId);
 					$this -> session -> set_userdata("s_uid", $s_uid);
-					// $this -> users_dao -> update(array('token' => $s_uid), $user -> id);
+					$this -> users_dao -> update(array('token' => $s_uid), $user -> id);
 				} else {
 					$res['msg'] = "帳號或密碼錯誤";
 				}

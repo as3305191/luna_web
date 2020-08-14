@@ -36,17 +36,18 @@ var patentAppClass = (function(app) {
 			$.ajax({
 				type : "POST",
 				url : url,
-				data : $("#app-edit-form").serialize() + "&" + $.param({
-					"station_list": JSON.stringify(stationListStore),
-					"type0_list": JSON.stringify(type0ProductStore),
-					"type2_list": JSON.stringify(type2ProductStore),
-				}),
-				success : function(data) {
-					app.mDtTable.ajax.reload(null, false);
-					app.backTo();
+				data : {
+					id: $('#item_id').val(),
+					patnet_name: $('#patnet_name').val(),
+					img: img,
+					pdf_array: pdf_array.join(","),
+				},
+				success : function(d) {
+					currentApp.doEdit(0);
 				}
 			});
 		};
+
 
 		app.doEdit = function(id) {
 		    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
