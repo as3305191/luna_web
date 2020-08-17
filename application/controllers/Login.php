@@ -56,7 +56,7 @@ class Login extends MY_Base_Controller {
 			$res['msg'] = "請輸入必填資料";
 		}
 
-		$this -> to_json($find_status);
+		$this -> to_json($res);
 	}
 
 	function get_captcha($data) {

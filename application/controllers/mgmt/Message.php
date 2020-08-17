@@ -12,8 +12,7 @@ class Message extends MY_Mgmt_Controller {
 		$this -> load -> model('C_s_h_join_list_dao', 'c_s_h_join_list_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
-		$this->load->helper('url');
-        $this->load->library('session');
+	
 	}
 
 	public function index()
@@ -25,7 +24,7 @@ class Message extends MY_Mgmt_Controller {
         // if(empty($this->session->username)) $this->js_alert('名稱錯誤',site_url().'/login');
 
         $data['socket_url'] = "ws://localhost:9000/web_socket/Chat-Using-WebSocket-and-PHP-Socket-master/CI_talk/ktx_try/server.php";//socket server 路徑指向
-        $data['username'] = $login_user->username ;
+        $data['username'] = $login_user->user_name;
         $data['user_colour'] = $this->session->user_colour ;
         $data['sex'] = $this->session->sex ;
         $data['head'] = $this->session->head ;

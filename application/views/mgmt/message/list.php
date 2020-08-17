@@ -55,13 +55,13 @@
 <script language="javascript" type="text/javascript">
     $(document).ready(function(){
         //create a new WebSocket object.(建立socket物件)
-        var wsUri = "<?php $socket_url;?>";
+        var wsUri = "<?= $socket_url;?>";
         websocket = new WebSocket(wsUri);
         websocket.onopen = function(ev) { // connection is open (socket連接時觸發的事件)
             if(ev.isTrusted && ev.type=='open'){
                 //確認socket連結是 open 狀態
                 //取得名稱
-                var name = '<?php  $username;?>';
+                var name = '<?=  $username;?>';
                 if(name.trim()=='' || name.trim()==null || name.trim()==[] || typeof(name) =='undefined'){
                     alert('尚未登入');
                     window.location = "<?= site_url().'/index.php/login'?>";
