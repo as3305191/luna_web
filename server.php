@@ -1,6 +1,6 @@
 <?php
-$host = 'localhost'; //host
-$port = '9000'; //port
+$host = '192.168.3.251'; //host
+$port = '8081'; //port
 $null = NULL; //null var
 
 //Create TCP/IP sream socket (建立socket)
@@ -174,7 +174,7 @@ function perform_handshaking($receved_header,$client_conn, $host, $port)
 	"Upgrade: websocket\r\n" .
 	"Connection: Upgrade\r\n" .
 	"WebSocket-Origin: $host\r\n" .
-	"WebSocket-Location: ws://$host:$port/demo/shout.php\r\n".
+	"WebSocket-Location: ws://$host:$port/server.php\r\n".
 	"Sec-WebSocket-Accept:$secAccept\r\n\r\n";
 	socket_write($client_conn,$upgrade,strlen($upgrade));//寫數據至socket
 }

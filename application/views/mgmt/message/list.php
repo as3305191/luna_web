@@ -34,11 +34,11 @@
                 <div class="widgetbox uncollapsible">
                     <div class="title"><h4>線上使用者</h4></div>
                     <div class="widgetcontent nopadding">
-                        <!--
-                                                        <div class="chatsearch">
-                                                            <input type="text" name="" value="Search" />
-                                                        </div>
-                                                        -->
+                        
+                            <!-- <div class="chatsearch">
+                                <input type="text" name="" value="Search" />
+                            </div> -->
+                                                       
                         <ul class="contactlist">
                         </ul>
                     </div><!--widgetcontent-->
@@ -61,12 +61,8 @@
             if(ev.isTrusted && ev.type=='open'){
                 //確認socket連結是 open 狀態
                 //取得名稱
-                var name = '<?=  $username;?>';
-                if(name.trim()=='' || name.trim()==null || name.trim()==[] || typeof(name) =='undefined'){
-                    alert('尚未登入');
-                    window.location = "<?= site_url().'/index.php/login'?>";
-                    return false;
-                }else{
+                var name = '<?= $username;?>';
+             
                     $('#chatmessage').append("<div class=\"system_msg\">連結中......</div>"); //notify user
                     $("#welcome_str").html('歡迎 <b>'+name+' </b>, 請於下方輸入留言:');
                     //prepare json data
@@ -74,12 +70,10 @@
                         type : 'join_name',
                         join_name: name,
                         color : '<?= $user_colour; ?>',
-                        sex : '<?= $sex;?>',
                         head : '<?= $head;?>',
                     };
                     //convert and send data to server (連接傳送數據)
                     websocket.send(JSON.stringify(msg));
-                }
             }
         }
 
@@ -99,7 +93,7 @@
 
             if(myname == ""){ //empty name?
                 alert('尚未登入');
-                window.location = "<?=site_url().'/login'?>";
+                window.location = "<?=site_url('/login')?>";
                 return false;
             }
             if(mymessage == ""){ //emtpy message?
