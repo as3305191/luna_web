@@ -26,6 +26,7 @@
                     </span>
                     <button id="emotion" class="btn btn-success" style="float: left;">插入表情</button>
                     <button id="send-btn" class="btn btn-warning" style="float: left;margin-left: 20px;">送出</button>
+                    <!-- <button class="btn btn-danger" id="leave-btn" style="float: left;margin-left: 20px;">登出/離開</button> -->
                 </div>
 
             </div><!--subcontent-->
@@ -64,7 +65,7 @@
                 //確認socket連結是 open 狀態
                 //取得名稱
                 var name = '<?= $username;?>';
-             
+                console.log(name);
                     // $('#chatmessage').append("<div class=\"system_msg\">連結中......</div>"); //notify user
                     // $("#welcome_str").html('歡迎 <b>'+name+' </b>, 請於下方輸入留言:');
                     //prepare json data
@@ -129,6 +130,7 @@
             var msg = JSON.parse(ev.data); //PHP sends Json data
             var type = msg.type; //message type
             var ucolor = msg.color; //color
+
             if(type == 'usermsg')
             {
                 var uname = msg.name; //user name
@@ -190,6 +192,7 @@
             //         }
             //     }
             // }
+
 
             $('#msgbox').val(''); //reset text
             // $('.contactlist').empty();
