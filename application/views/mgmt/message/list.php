@@ -2,9 +2,24 @@
 .u_name:hover {
   background-color: yellow;
 }
+#sidebar{
+		position: absolute;
+		top: 3em;
+		width: 32%;
+		margin-left: 68%;
+		padding: 0.5em 0;
+		background-color: #933;
+	}
+/* #content
+{
+    margin-right: 32%;
+    padding: 0.5em;
+} */
 </style>
 
 <body>
+<?php $this->load->view("layout/sidebar");?>
+
 <div class="bodywrapper">
     <div class="centercontent">
         <div class="pageheader notab">
@@ -147,7 +162,7 @@
                     if(me_id==my_id){
                         $('#chatmessage').append("<div><span class=\"user_name\" style='color:#"+ucolor+"'>"+uname+"</span> : <span class=\"user_message\">"+umsg+"</span></div>");
                     }
-                    
+
                     if(me_id==to_message_id){
                         $('#chatmessage').append("<div><span class=\"user_name\" style='color:#"+ucolor+"'>"+uname+"</span> : <span class=\"user_message\">"+umsg+"</span></div>");
                     }
@@ -238,27 +253,28 @@
         $('#to_message_id').val(id);
     }  
 
-    function all_users(){//所有人名單
-                $.ajax({
-                    url: '<?= base_url() ?>' + 'mgmt/message/find_all_user',
-                    type: 'POST',
-                    data: {},
-                    dataType: 'json',
-                    success: function(d) {
-                        var add_html='';
-                        $.each(d.all_users, function(){
-                            var me = this;
-                            add_html += '<li class="online new u_name" style="" onclick="change('+me.id+');">'+me.user_name+'</li>';
-                        });
-                        $('.contactlist').append(add_html);
+  function all_users(){//所有人名單
+      $.ajax({
+          url: '<?= base_url() ?>' + 'mgmt/message/find_all_user',
+          type: 'POST',
+          data: {},
+          dataType: 'json',
+          success: function(d) {
+              var add_html='';
+              $.each(d.all_users, function(){
+                  var me = this;
+                  add_html += '<a href="" class="list-group-item justify-content-between" onclick="change('+me.id+');">'+
+                           ' <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i>'+me.user_name+'</span></a> ';
+              });
+              $('#user_sidebar').append(add_html);
 
-                        console.log(d);
+              console.log(d);
 
-                    },
-                    failure:function(){
-                        alert('faialure');
-                    }
-                });
-            }      
-            all_users(); 
+          },
+          failure:function(){
+              alert('faialure');
+          }
+      });
+  }      
+  all_users(); 
 </script>
