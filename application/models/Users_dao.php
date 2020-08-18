@@ -701,5 +701,21 @@ class Users_dao extends MY_Model {
 		return $list;
 	}
 
+
+	function find_all_user_by_message(){
+		$this -> db -> from("$this->table_name as _m");
+		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
+
+		$this -> db -> select('_m.*');
+	
+
+		// $this -> db -> select('r.role_name');
+		$this -> db -> where('_m.status',0);
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
 }
 ?>

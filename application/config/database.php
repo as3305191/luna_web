@@ -74,9 +74,9 @@ $active_group = 'default';
 $query_builder = TRUE;
 
 $db['default'] = array(
-	'dsn'	=> 'mysql:host=192.168.3.251; dbname=ktx; charset=utf8;',
-	'username' => 'pony',
-	'password' => '!pony',
+	'dsn'	=> 'mysql:host=127.0.0.1; dbname=ktx; charset=utf8;',
+	'username' => 'root',
+	'password' => 'as09760731',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,

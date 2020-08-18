@@ -1,5 +1,7 @@
 <?php
-$host = '192.168.3.251'; //host
+// $host = '192.168.3.251'; //host
+// $port = '8081'; //port
+$host = 'localhost'; //host
 $port = '8081'; //port
 $null = NULL; //null var
 
@@ -74,8 +76,10 @@ while (true) {
 				$user_name = $tst_msg->name; //sender name
 				$user_message = $tst_msg->message; //message text
 				$user_color = $tst_msg->color; //color
+				$to_message_id= $tst_msg->to_message_id; 
+
 				//prepare data to be sent to client (mask 加密轉換)
-				$response_text = mask(json_encode(array('type'=>'usermsg', 'name'=>$user_name, 'message'=>$user_message, 'color'=>$user_color)));
+				$response_text = mask(json_encode(array('type'=>'usermsg', 'name'=>$user_name, 'message'=>$user_message, 'color'=>$user_color,'to_message_id'=>$to_message_id)));
 			}
 			
 			send_message($response_text); //send data 發佈至各socket

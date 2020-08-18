@@ -12,6 +12,8 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> load -> model('C_s_h_join_list_dao', 'c_s_h_join_list_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
+		$this -> load -> model('Country_dao', 'country_dao');
+
 	}
 
 	public function index()
@@ -144,7 +146,6 @@ class Patent extends MY_Mgmt_Controller {
 	public function find_this_computer() {
 		$now_s_h_id = $this -> get_post('now_s_h_id');
 		$fix_type = $this -> get_post('fix_type');
-
 		if(!empty($fix_type)){
 			if($fix_type==1){
 				$now_s_h_list['computer'] = $this -> computer_dao -> find_by_id($now_s_h_id);
@@ -173,7 +174,6 @@ class Patent extends MY_Mgmt_Controller {
 				$res['msg'] = '搜尋不到結果';
 			}
 			$res['fix_type'] = $fix_type;
-
 		}
 		$res['success'] = TRUE;
 		$this -> to_json($res);
@@ -354,6 +354,27 @@ class Patent extends MY_Mgmt_Controller {
 		} else{
 			$res['msg'] = '請先填寫維修單';
 		}
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function new_country(){
+		$data = array();
+		$this -> load -> view('layout/show_new_country',$data);
+	}
+
+	public function add_country(){
+		$data = array();
+		$data['parent_id'] = '0';
+		$pos_num = $this -> country_dao -> find_all_by('level',0);
+		$pos_nums = count($pos_num);
+
+		$data['pos'] = $pos_nums;
+		$name = $this -> get_post('new_name');
+		$data['name'] = $name;
+		$data['level'] = '0';
+		$this -> country_dao -> insert($data);
+
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}

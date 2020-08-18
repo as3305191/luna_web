@@ -27,9 +27,7 @@
 }
 </style>
 
-<?php $this -> load -> view("mgmt/patent/patent_head")  ?>
-
-    
+<?php $this -> load -> view("mgmt/patent/patent_head")  ?>    
         <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
 		<!-- widget grid -->

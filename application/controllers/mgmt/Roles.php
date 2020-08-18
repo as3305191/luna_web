@@ -169,7 +169,6 @@ class Roles extends MY_Base_Controller {
 		$parent = $this -> d_dao -> find_by_id($id);
 		$data = array();
 		$data['parent'] = $parent;
-
 		$this -> load -> view('layout/show_role_window',$data);
 	}
 
@@ -202,7 +201,6 @@ class Roles extends MY_Base_Controller {
 
 	public function new_department(){
 		$data = array();
-
 		$this -> load -> view('layout/show_new_department',$data);
 	}
 

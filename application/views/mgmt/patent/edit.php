@@ -78,7 +78,7 @@
 						</select>
 					</div>
 					<div class="col-md-2">
-						<button type="button" class="btn btn-sm btn-primary" onclick="add_new_country()"><i class="fa fa-plus-circle fa-lg"></i></button>
+						<button type="button" class="btn btn-sm btn-primary" id="add_country"><i class="fa fa-plus-circle fa-lg"></i></button>
 					</div>
 				</div>
 			</fieldset>
@@ -154,11 +154,11 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利權期間</label>
 					<div class="col-md-2 widget-toolbar pull-left">
-						<input id="s_dt" placeholder="請輸入開始日期" type="text" class="dt_picker" value="" />
+						<input id="s_dt" placeholder="開始日期" type="text" class="dt_picker" value="" />
 					</div>
 					
 					<div class="col-md-2 widget-toolbar pull-left">
-						~<input id="e_dt" placeholder="請輸入結束日期" type="text" class="dt_picker" value="" />
+						~<input id="e_dt" placeholder="結束日期" type="text" class="dt_picker" value="" />
 					</div>
 					<div class="col-md-2 widget-toolbar pull-left">
 						共
@@ -516,6 +516,15 @@ function check_family(){
 	});
 }
 
-
+$('#add_country').click(function() {
+		layer.open({
+      type:2,
+      title:'',
+      closeBtn:0,
+      area:['400px','200px'],
+      shadeClose:true,
+      content:'<?=base_url('mgmt/patent/new_country')?>'
+    })
+	})
 
 </script>

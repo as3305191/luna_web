@@ -29,15 +29,12 @@ class Images extends MY_Base_Controller {
 
 		// user data setup
 		$data = $this -> setup_user_data($data);
-
 		// search setup
 		$search_keys = array('id', 'image_name', 'description');
 		$columns = $this -> setup_search_columns($search_keys);
 		$data = array_merge($data, $columns);
-
 		// paging
 		$data = array_merge($data, $this -> getPagingData($columns));
-
 		//setup url and thumb_url
 		foreach($data['items'] as $each){
 			$file_base_url = base_url();
@@ -50,7 +47,6 @@ class Images extends MY_Base_Controller {
 			$each->image_url = $image_url;
 			$each->image_thumb_url = $image_thumb_url;
 		}
-
 		// load view
 		$nav = $this -> get_get_post('nonav');
 		$data['nonav'] = $nav;
@@ -111,15 +107,15 @@ class Images extends MY_Base_Controller {
 			    ],
 			    'initialPreviewConfig' => [
 			        [
-								'type' =>  "video",
-								'size' =>  $size,
-								'filetype' =>  $type,
-								'caption' => "$name",
-								'filename' => "$name",
-								'downloadUrl' => base_url('mgmt/images/get_file/' . $last_id .'/file.mp4'),
-								'url' => $url,
-								'key' => $last_id
-							]
+						'type' =>  "video",
+						'size' =>  $size,
+						'filetype' =>  $type,
+						'caption' => "$name",
+						'filename' => "$name",
+						'downloadUrl' => base_url('mgmt/images/get_file/' . $last_id .'/file.mp4'),
+						'url' => $url,
+						'key' => $last_id
+					]
 			    ],
 			    "id" => $last_id
 			];
