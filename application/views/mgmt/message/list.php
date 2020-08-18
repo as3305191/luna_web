@@ -22,7 +22,7 @@
                     </span>
                     <button id="emotion" class="btn btn-success" style="float: left;">插入表情</button>
                     <button id="send-btn" class="btn btn-warning" style="float: left;margin-left: 20px;">送出</button>
-                    <button class="btn btn-danger" id="leave-btn" style="float: left;margin-left: 20px;">登出/離開</button>
+                    <!-- <button class="btn btn-danger" id="leave-btn" style="float: left;margin-left: 20px;">登出/離開</button> -->
                 </div>
 
             </div><!--subcontent-->
@@ -62,9 +62,9 @@
                 //確認socket連結是 open 狀態
                 //取得名稱
                 var name = '<?= $username;?>';
-             
-                    $('#chatmessage').append("<div class=\"system_msg\">連結中......</div>"); //notify user
-                    $("#welcome_str").html('歡迎 <b>'+name+' </b>, 請於下方輸入留言:');
+                console.log(name);
+                    // $('#chatmessage').append("<div class=\"system_msg\">連結中......</div>"); //notify user
+                    // $("#welcome_str").html('歡迎 <b>'+name+' </b>, 請於下方輸入留言:');
                     //prepare json data
                     var msg = {
                         type : 'join_name',
@@ -124,6 +124,7 @@
             var msg = JSON.parse(ev.data); //PHP sends Json data
             var type = msg.type; //message type
             var ucolor = msg.color; //color
+
             if(type == 'usermsg')
             {
                 var uname = msg.name; //user name
@@ -178,7 +179,7 @@
                         }else{
                             var img_path = '<?= base_url()."images/thumbs/head/"; ?>'+join_list[index].head+'.jpg';
                         }
-                        var add_html = "<li class='online new'><a href=''><img src='"+img_path+"' alt=''><span style='color:#"+join_list[index].color+"'>"+join_list[index].join_name+"</span></a></li>";
+                        var add_html = "<li class='online new'><a href=''>"+join_list[index].join_name+"</a></li>";
                         $('.contactlist').append(add_html);
                     }
                 }
@@ -204,7 +205,7 @@
             str = str.replace(/\</g,'&lt;');
             str = str.replace(/\>/g,'&gt;');
             str = str.replace(/\n/g,'<br/>');
-            str = str.replace(/\[em_([0-9]*)\]/g,'<img src="<?= base_url().'images/face';?>/$1.gif" border="0" />');
+            str = str.replace(/\[em_([0-9]*)\]/g,'<img src="<?= base_url().'img/face';?>/$1.gif" border="0" />');
             return str;
         }
 

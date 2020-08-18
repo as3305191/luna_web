@@ -285,7 +285,7 @@ var getFacesIcon = function () {
 var faces = function () {
     var alt = getFacesIcon(), arr = {};
     $.each(alt, function (index, item) {
-        arr[item] = '/static/images/face/' + index + '.gif';
+        arr[item] = '/static/img/face/' + index + '.gif';
     });
     return arr;
 }();
@@ -295,7 +295,7 @@ var showFaces = function () {
     var alt = getFacesIcon();
     var _html = '<div class="layui-whisper-face"><ul class="layui-clear whisper-face-list">';
     $.each(alt, function (index, item) {
-        _html += '<li title="' + item + '" onclick="checkFace(this)"><img src="/static/images/face/' + index + '.gif" /></li>';
+        _html += '<li title="' + item + '" onclick="checkFace(this)"><img src="/static/img/face/' + index + '.gif" /></li>';
     });
     _html += '</ul></div>';
 
