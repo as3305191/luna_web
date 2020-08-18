@@ -93,6 +93,8 @@
         function message_send(){
             var mymessage = $('#msgbox').val(); //get message text
             var to_message_id = $('#to_message_id').val(); 
+            var my_id = $('#me_id').val(); 
+
             console.log(to_message_id);
             var myname = '<?= $username;?>'; //get user name
 
@@ -111,6 +113,7 @@
                 type : 'usermsg',
                 message: mymessage,
                 name: myname,
+                my_id: my_id,
                 to_message_id: to_message_id,
                 color : '<?= $user_colour; ?>'
             };
@@ -137,12 +140,18 @@
                 var umsg = msg.message; //message text
                 var to_message_id = msg.to_message_id; //message text
                 var me_id =$('#me_id').val(); //message text
+                var my_id = msg.my_id; //message text
 
                 var umsg=replace_em(umsg);//QQ表情 字串轉換
                 if(uname && umsg){
+                    if(me_id==my_id){
+                        $('#chatmessage').append("<div><span class=\"user_name\" style='color:#"+ucolor+"'>"+uname+"</span> : <span class=\"user_message\">"+umsg+"</span></div>");
+                    }
+                    
                     if(me_id==to_message_id){
                         $('#chatmessage').append("<div><span class=\"user_name\" style='color:#"+ucolor+"'>"+uname+"</span> : <span class=\"user_message\">"+umsg+"</span></div>");
                     }
+                   
                 }
             }
             if(type == 'system')
