@@ -10,11 +10,11 @@
 		padding: 0.5em 0;
 		background-color: #933;
 	}
-/* #content
+.bodywrapper
 {
     margin-right: 32%;
     padding: 0.5em;
-} */
+}
 </style>
 
 <body>
@@ -30,14 +30,15 @@
 
             <div class="subcontent chatcontent">
 
-                <div id="chatmessage" class="chatmessage radius2">
-                    <div id="chatmessageinner"></div><!--chatmessageinner-->
+                <div  class="chatmessage radius2">
+                    <textarea type="text" require class="form-control" rows="10" id="chatmessage" name="patent_note" style="resize:none;width:100%"></textarea>
+
                 </div><!--chatmessage-->
                 <br>
                 <span id="welcome_str"></span>
                 <div class="messagebox radius2">
                     <span class="inputbox" style="width:70%;float: left;">
-                        <input type="text" id="msgbox" name="msgbox"  />
+                        <input type="text" class="form-control" id="msgbox" name="msgbox"  />
                     </span>
                     <button id="emotion" class="btn btn-success" style="float: left;">插入表情</button>
                     <button id="send-btn" class="btn btn-warning" style="float: left;margin-left: 20px;">送出</button>
@@ -51,7 +52,7 @@
         <div class="rightpanel">
             <div class="rightpanelinner">
                 <div class="widgetbox uncollapsible">
-                    <div class="title"><h4>所有使用者</h4></div>
+                    <!-- <div class="title"><h4>所有使用者</h4></div> -->
                     <div class="widgetcontent nopadding">
                             <!-- <div class="chatsearch">
                                 <input type="text" name="" value="Search" />
@@ -263,8 +264,7 @@
               var add_html='';
               $.each(d.all_users, function(){
                   var me = this;
-                  add_html += '<a href="" class="list-group-item justify-content-between" onclick="change('+me.id+');">'+
-                           ' <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i>'+me.user_name+'</span></a> ';
+                  add_html += '<a class="list-group-item justify-content-between u_name" onclick="change('+me.id+');">'+' <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i>'+me.user_name+'</span></a> ';
               });
               $('#user_sidebar').append(add_html);
 
