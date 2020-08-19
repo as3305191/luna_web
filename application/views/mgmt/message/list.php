@@ -210,7 +210,7 @@
                         }
                     });
                 }
-                $('#chatmessage').scrollTop = $('#chatmessage').scrollHeight;
+                $('#chatmessage').scrollTop($('#chatmessage')[0].scrollHeight);
             }
             if(type == 'system')
             {
@@ -276,7 +276,8 @@
                         $('#chat_name').text(d.to_user_name_list.user_name);
 
                     }
-                    $('#chatmessage').scrollTop = $('#chatmessage').scrollHeight;
+
+                    $('#chatmessage').scrollTop($('#chatmessage')[0].scrollHeight);
 
                 },
                 failure:function(){
