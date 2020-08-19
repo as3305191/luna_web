@@ -276,6 +276,8 @@
                         $('#chat_name').text(d.to_user_name_list.user_name);
 
                     }
+                    $('#chatmessage').scrollTop = $('#chatmessage').scrollHeight;
+
                 },
                 failure:function(){
                     alert('faialure');
