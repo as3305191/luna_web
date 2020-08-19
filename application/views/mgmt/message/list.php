@@ -218,51 +218,7 @@
                     var umsg = msg.message; //message text
                     //$('#chatmessage').append("<div class=\"system_msg\">"+umsg+"</div>");
                 }
-
-                //更新名單
-                // if(msg.info == 'leave'){
-                //     var umsg = msg.message; //message text
-                //     $('#chatmessage').append("<div class=\"system_msg\">"+umsg+"</div>");
-
-                //     var join_list = msg.join_list; //join list
-                //     $('.contactlist').empty();
-                //     for(var index in join_list) {
-                //         if(join_list[index].join_name){
-                //             if(join_list[index].head == ''){
-                //                 var img_path = '<?= base_url()."images/thumbs/head/unknown.png"; ?>';
-                //             }else{
-                //                 var img_path = '<?= base_url()."images/thumbs/head/"; ?>'+join_list[index].head+'.jpg';
-                //             }
-                //             var add_html = "<li class='online new'><a href=''><img src='"+img_path+"' alt=''><span style='color:#"+join_list[index].color+"'>"+join_list[index].join_name+"</span></a></li>";
-                //             $('.contactlist').append(add_html);
-                //         }
-                //     }
-                // }
             }
-
-            // if(type == 'join_name'){
-            //     var join_name = msg.join_name; //join name
-            //     var join_list = msg.join_list; //join list
-            //     // $('#chatmessage').append("<div class=\"system_msg\">"+join_name+"連線成功</div>");
-            //     //更新名單
-            //     $('.contactlist').empty();
-            //     for(var index in join_list) {
-            //         if(join_list[index].join_name){
-            //             if(join_list[index].head == ''){
-            //                 var img_path = '<?= base_url()."images/thumbs/head/unknown.png"; ?>';
-            //             }else{
-            //                 var img_path = '<?= base_url()."images/thumbs/head/"; ?>'+join_list[index].head+'.jpg';
-            //             }
-            //             var add_html = "<li class='online new'><a href=''><img src='"+img_path+"' alt=''><span style='color:#"+join_list[index].color+"'>"+join_list[index].join_name+"</span></a></li>";
-            //             $('.contactlist').append(add_html);
-            //         }
-            //     }
-            // }
-
-
-            // $('.contactlist').empty();
-
-         
         };
 
         websocket.onerror	= function(ev){$('#chatmessage').append("<div class=\"system_error\">Error Occurred - "+ev.data+"</div>");}; //與server連接發生錯誤時
@@ -285,6 +241,7 @@
             str = str.replace(/\[em_([0-9]*)\]/g,'<img src="<?= base_url().'img/face';?>/$1.gif" border="0" />');
             return str;
         }     
+
         $('#chatmessage').scrollTop = $('#chatmessage').scrollHeight;
     });
 
@@ -295,8 +252,6 @@
             var me_id=$('#me_id').val();
             var to_message_id = $('#to_message_id').val();
             var chatmessage_box = $('#chatmessage').empty();
-            var chat_name = $(this).attr('user_name');
-            $('#chat_name').text(chat_name);
 
             $.ajax({
                 url: '<?= base_url() ?>' + 'mgmt/message/reload_message_record',
@@ -312,12 +267,14 @@
                         $.each(d.msg_list, function(){
                             var me = this;
                             if(me.user_id==me_id){
-                                msg_html += '<div class="right">'+me.user_name+':'+me.msg+'</div</br>';
+                                msg_html += '<div class="right">'+me.user_name+':'+me.msg+'</div></br>';
                             } else{
-                                msg_html += '<div class="">'+me.to_user_name+':'+me.msg+'</div></br>';
+                                msg_html += '<div class="">'+me.user_name+':'+me.msg+'</div></br>';
                             }
                         });
                         chatmessage_box.append(msg_html);
+                        $('#chat_name').text(d.to_user_name_list.user_name);
+
                     }
                 },
                 failure:function(){
