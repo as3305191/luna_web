@@ -208,7 +208,6 @@
                 var uname = msg.name; //user name
                 var umsg = msg.message; //message text
                 var to_message_id = msg.to_message_id; //message text
-                var to_message_id_ = $('#to_message_id').val(); //message text
 
                 var me_id =$('#me_id').val(); //message text
                 var my_id = msg.my_id; //message text
@@ -219,7 +218,7 @@
                         $('#chatmessage').append('<div class="col-md-12" style="padding:0px 0px 15px 0px"><div lass="col-md-4 right">'+uname+':<div>'+umsg+'</div></div></div></br>');
                     }
 
-                    if(my_id==to_message_id_ && me_id==to_message_id){
+                    if(my_id==to_message_id){
                         $('#chatmessage').append('<div class="col-md-12" style="padding:0px 0px 15px 0px"><div class="col-md-4 left">'+uname+':<div>'+umsg+'</div></div></div></br>');
                     }
                 
