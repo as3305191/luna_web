@@ -40,12 +40,26 @@
 	display: none;
 }
 
-/* .arrow {
-width:0;
-height:0;
-font-size:0;
-border:solid 10px #000;
-} */
+.send {
+    position:relative;
+    width:150px;
+    height:35px;
+    background:#F8C301;
+    border-radius:5px; /* 圓角 */
+    margin:30px auto 0;
+}
+
+.send .arrow {
+    position:absolute;
+    top:5px;
+    right:-16px; /* 圓角的位置需要細心除錯哦 */
+    width:0;
+    height:0;
+    font-size:0;
+    border:solid 8px;
+    border-color:#4D4948 #4D4948 #4D4948 #F8C301;
+}
+
 </style>
 
 <body>
@@ -277,9 +291,9 @@ border:solid 10px #000;
                         $.each(d.msg_list, function(){
                             var me = this;
                             if(me.user_id==me_id){
-                                msg_html += '<div class="col-md-12 "><div class="col-md-4 right">'+me.user_name+':'+me.msg+'</div></div></br>';
+                                msg_html += '<div class="col-md-12 "><div class="col-md-4 right send"><div class="arrow">'+me.user_name+':'+me.msg+'</div></div></div></div></br>';
                             } else{
-                                msg_html += '<div class="col-md-12 "><div class="col-md-4 left">'+me.user_name+':'+me.msg+'</div></div></br>';
+                                msg_html += '<div class="col-md-12 "><div class="col-md-4 left send"><div class="arrow">'+me.user_name+':'+me.msg+'</div></div></div></br>';
                             }
                         });
                         chatmessage_box.append(msg_html);
