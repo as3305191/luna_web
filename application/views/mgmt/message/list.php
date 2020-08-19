@@ -39,12 +39,12 @@
 	display: none;
 }
 
-.arrow {
+/* .arrow {
 width:0;
 height:0;
 font-size:0;
 border:solid 10px #000;
-}
+} */
 </style>
 
 <body>
