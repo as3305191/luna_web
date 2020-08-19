@@ -296,8 +296,8 @@
             var me_id=$('#me_id').val();
             var to_message_id = $('#to_message_id').val();
             var chatmessage_box = $('#chatmessage').empty();
-            var user_name = $(this).attr('user_name');
-            $('#chat_name').text(user_name);
+            var chat_name = $(this).attr('user_name');
+            $('#chat_name').text(chat_name);
 
             $.ajax({
                 url: '<?= base_url() ?>' + 'mgmt/message/reload_message_record',
