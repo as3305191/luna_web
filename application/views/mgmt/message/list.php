@@ -40,24 +40,26 @@
 	display: none;
 }
 
-.send {
+.mwt_border{
+    width:250px;
+    height:90px;
+    text-align:center;
+    background:#fff;
     position:relative;
-    width:150px;
-    height:35px;
-    background:#F8C301;
-    border-radius:5px; /* 圓角 */
-    margin:30px auto 0;
+    border: solid 1px #333;
+    margin:30px;
+    padding:30px;
 }
 
-.send .arrow {
+.mwt_border .arrow_r_int{
+    width:0px;
+    height:0px;
+    border-width:15px;
+    border-style:solid;
+    border-color:transparent transparent transparent #333;
     position:absolute;
-    top:5px;
-    right:-16px; /* 圓角的位置需要細心除錯哦 */
-    width:0;
-    height:0;
-    font-size:0;
-    border:solid 8px;
-    border-color:#4D4948 #4D4948 #4D4948 #F8C301;
+    top:20%;
+    right:-30px;
 }
 
 </style>
@@ -291,9 +293,9 @@
                         $.each(d.msg_list, function(){
                             var me = this;
                             if(me.user_id==me_id){
-                                msg_html += '<div class="col-md-12 "><div class="col-md-4 right send"><div class="arrow">'+me.user_name+':'+me.msg+'</div></div></div></div></br>';
+                                msg_html += '<div class="col-md-12 "><div class="col-md-4 right mwt_border"><div class="arrow_r_int">'+me.user_name+':'+me.msg+'</div></div></div></div></br>';
                             } else{
-                                msg_html += '<div class="col-md-12 "><div class="col-md-4 left send"><div class="arrow">'+me.user_name+':'+me.msg+'</div></div></div></br>';
+                                msg_html += '<div class="col-md-12 "><div class="col-md-4 left mwt_border"><div class="arrow_r_int">'+me.user_name+':'+me.msg+'</div></div></div></br>';
                             }
                         });
                         chatmessage_box.append(msg_html);
