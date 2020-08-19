@@ -101,6 +101,8 @@
                 //確認socket連結是 open 狀態
                 //取得名稱
                 var name = '<?= $username;?>';
+                var me_id = '<?= $me->id;?>';
+
                 console.log(name);
                     // $('#chatmessage').append("<div class=\"system_msg\">連結中......</div>"); //notify user
                     // $("#welcome_str").html('歡迎 <b>'+name+' </b>, 請於下方輸入留言:');
@@ -189,7 +191,7 @@
                         $('#chatmessage').append('<div class="">'+uname+':'+umsg+'</br></div>');
                     }
                     $.ajax({
-                        url: '<?= base_url() ?>' + 'mgmt/message/insert_message',
+                        url: '<?= base_url() ?>' + 'mgmt/message/insert',
                         type: 'POST',
                         data: {
                             me_id:me_id,
@@ -280,13 +282,43 @@
             return str;
         }
 
+        function change(id){
+            $('#to_message_id').val(id);
+            var chatmessage_box = $('#chatmessage').empty();
+            $.ajax({
+                url: '<?= base_url() ?>' + 'mgmt/message/reload_message_record',
+                type: 'POST',
+                data: {
+                    me_id:me_id,
+                    to_message_id:id,
+                },
+                dataType: 'json',
+                success: function(d) {
+                    if(d){
+                        var msg_html = '';
+                        $.each(d.msg_list, function(){
+                            var me = this;
+                            if(me.user_id==me_id){
+                                msg_html += '<div class="right">'+uname+':'+umsg+'</br></div>';
+                            } else{
+                                msg_html += '<div class="">'+uname+':'+umsg+'</br></div>';
+                            }
+                        });
+                        $('#chatmessage').append(msg_html);
+
+                    }
+                },
+                failure:function(){
+                    alert('faialure');
+                }
+            });
+        }  
+
     });
 
 
 
-    function change(id){
-        $('#to_message_id').val(id);
-    }  
+   
 
   function all_users(){//所有人名單
       $.ajax({
@@ -302,7 +334,7 @@
               });
               $('#user_sidebar').append(add_html);
 
-              console.log(d);
+            //   console.log(d);
 
           },
           failure:function(){

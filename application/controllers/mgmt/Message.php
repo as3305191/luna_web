@@ -141,6 +141,24 @@ class Message extends MY_Mgmt_Controller {
  		$this -> to_json($res);
 	}
 
+	public function reload_message_record() {
+		$res = array();
+		$me_id = $this -> get_post('me_id');
+		$to_message_id = $this -> get_post('to_message_id');
+
+		$data['user_id'] = $me_id;
+		$data['to_user_id'] = $to_message_id;
+
+		if(!empty($me_id) && !empty($to_message_id)) {
+			// insert
+			$msg_list = $this -> dao -> find_record($data);
+			$res['msg_list'] = $msg_list;
+		} 
+
+		$res['success'] = TRUE;
+ 		$this -> to_json($res);
+	}
+
 	public function find_patent() {
 		$data = $this -> get_post('data');
 		$items = $this -> dao -> find_patent($data);
