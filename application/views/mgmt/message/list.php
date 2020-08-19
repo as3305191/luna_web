@@ -155,6 +155,7 @@
             };
             //convert and send data to server (連接傳送數據)
             websocket.send(JSON.stringify(msg));
+            $('#msgbox').val(''); //reset text
         }
 
         $('#leave-btn').click(function(){
@@ -239,7 +240,6 @@
             // }
 
 
-            $('#msgbox').val(''); //reset text
             // $('.contactlist').empty();
 
          
