@@ -53,7 +53,7 @@
         <div id="contentwrapper" class="contentwrapper withrightpanel">
 
             <div class="subcontent chatcontent">
-                <div id="hello" class="chatmessage radius2" >
+                <div id="hello" >
                     <span>歡迎來聊天室</span>
                 </div>
                 <div id="chatmessage" class="chatmessage radius2 none" contenteditable=true >
@@ -81,7 +81,7 @@
                             <!-- <div class="chatsearch">
                                 <input type="text" name="" value="Search" />
                             </div> -->
-                            <input type="hidden" id="to_message_id"/>
+                            <input type="hidden" id="to_message_id" value="0"/>
                             <input type="hidden" id="me_id" value="<?= isset($me) ? $me -> id : '' ?>"/>
                         <ul class="contactlist" id="all_users">
                         </ul>
@@ -188,11 +188,11 @@
 
                 if(uname && umsg){
                     if(me_id==my_id){
-                        $('#chatmessage').append('<div class="right">'+uname+':'+umsg+'</br></div>');
+                        $('#chatmessage').append('<div class="right">'+uname+':'+umsg+'</div></br>');
                     }
 
                     if(me_id==to_message_id){
-                        $('#chatmessage').append('<div class="">'+uname+':'+umsg+'</br></div>');
+                        $('#chatmessage').append('<div class="">'+uname+':'+umsg+'</div></br>');
                     }
                     $.ajax({
                         url: '<?= base_url() ?>' + 'mgmt/message/insert',
@@ -288,20 +288,23 @@
 
     });
 
-
-    function change(id,user_name){
+    var user_name='';
+    function change(id){
             $('#hello').addClass('none');
             $('#chatmessage').removeClass('none');
+            $('#to_message_id').val(id);
+            var me_id=$('#me_id').val();
+            var to_message_id = $('#to_message_id').val();
+            var chatmessage_box = $('#chatmessage').empty();
+            var user_name = this.find('user_name');
             $('#chat_name').text(user_name);
 
-            $('#to_message_id').val(id);
-            var chatmessage_box = $('#chatmessage').empty();
             $.ajax({
                 url: '<?= base_url() ?>' + 'mgmt/message/reload_message_record',
                 type: 'POST',
                 data: {
                     me_id:me_id,
-                    to_message_id:id,
+                    to_message_id: to_message_id
                 },
                 dataType: 'json',
                 success: function(d) {
@@ -310,9 +313,9 @@
                         $.each(d.msg_list, function(){
                             var me = this;
                             if(me.user_id==me_id){
-                                msg_html += '<div class="right">'+uname+':'+umsg+'</br></div>';
+                                msg_html += '<div class="right">'+me.user_name+':'+me.msg+'</div</br>';
                             } else{
-                                msg_html += '<div class="">'+uname+':'+umsg+'</br></div>';
+                                msg_html += '<div class="">'+me.to_user_name+':'+me.msg+'</div></br>';
                             }
                         });
                         $('#chatmessage').append(msg_html);
@@ -336,7 +339,7 @@
               var add_html='';
               $.each(d.all_users, function(){
                   var me = this;
-                  add_html += '<a class="list-group-item justify-content-between u_name" onclick="change('+me.id+''+me.user_name+');">'+' <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i>'+me.user_name+'</span></a> ';
+                  add_html += '<a class="list-group-item justify-content-between u_name" user_name="'+me.user_name+'" onclick="change('+me.id+');">'+' <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i>'+me.user_name+'</span></a> ';
               });
               $('#user_sidebar').append(add_html);
 
