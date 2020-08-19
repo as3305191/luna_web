@@ -208,6 +208,8 @@
                 var uname = msg.name; //user name
                 var umsg = msg.message; //message text
                 var to_message_id = msg.to_message_id; //message text
+                var to_message_id_ = $('#to_message_id').val(); //message text
+
                 var me_id =$('#me_id').val(); //message text
                 var my_id = msg.my_id; //message text
                 var umsg=replace_em(umsg);//QQ表情 字串轉換
@@ -217,9 +219,12 @@
                         $('#chatmessage').append('<div class="col-md-12" style="padding:0px 0px 0px 0px"><div lass="col-md-4 right">'+uname+'<div>:'+umsg+'</div></div></div></br>');
                     }
 
-                    if(me_id==to_message_id){
+                    if(to_message_id_ ==to_message_id){
                         $('#chatmessage').append('<div class="col-md-12" style="padding:0px 0px 0px 0px"><div class="col-md-4 left">'+uname+'<div>:'+umsg+'</div></div></div></br>');
                     }
+                    // if(me_id==to_message_id){
+
+                    // }
                     $.ajax({
                         url: '<?= base_url() ?>' + 'mgmt/message/insert',
                         type: 'POST',
@@ -323,11 +328,10 @@
               var add_html='';
               $.each(d.all_users, function(){
                   var me = this;
-                  add_html += '<a class="list-group-item justify-content-between u_name" user_name="'+me.user_name+'" onclick="change('+me.id+');">'+' <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i>'+me.user_name+'</span></a> ';
+                  add_html += '<a id="user_'+me.id+'" class="list-group-item justify-content-between u_name" user_name="'+me.user_name+'" onclick="change('+me.id+');">'+' <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i>'+me.user_name+'</span></a> ';
               });
               $('#user_sidebar').append(add_html);
 
-            //   console.log(d);
 
           },
           failure:function(){
