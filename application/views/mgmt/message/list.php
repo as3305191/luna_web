@@ -219,7 +219,7 @@
                         $('#chatmessage').append('<div class="col-md-12" style="padding:0px 0px 0px 0px"><div lass="col-md-4 right">'+uname+'<div>:'+umsg+'</div></div></div></br>');
                     }
 
-                    if(me_id==to_message_id && to_message_id_ ==to_message_id){
+                    if(me_id==to_message_id){
                         $('#chatmessage').append('<div class="col-md-12" style="padding:0px 0px 0px 0px"><div class="col-md-4 left">'+uname+'<div>:'+umsg+'</div></div></div></br>');
                     }
                     // if(me_id==to_message_id){
