@@ -35,6 +35,9 @@
     background-color:white;
 }
 
+.none {
+	display: none;
+}
 </style>
 
 <body>
@@ -43,17 +46,18 @@
 <div class="bodywrapper">
     <div class="centercontent">
         <div class="pageheader notab">
-                <h1 class="pagetitle">聊天室</h1>
+                <h1 class="pagetitle">聊天室：</h1>
+                <span id="chat_name"></span>
         </div><!--pageheader-->
 
         <div id="contentwrapper" class="contentwrapper withrightpanel">
 
             <div class="subcontent chatcontent">
-
-                <div id="chatmessage" class="chatmessage radius2" contenteditable=true>
-                    <!-- <textarea type="text" require class="form-control" rows="10" name="patent_note" style="resize:none;width:100%"></textarea> -->
-
-                </div><!--chatmessage-->
+                <div id="hello" class="chatmessage radius2" contenteditable=true>
+                    <span>歡迎來聊天室</span>
+                </div>
+                <div id="chatmessage" class="chatmessage radius2 none" contenteditable=true >
+                </div>
                 <br>
                 <span id="welcome_str"></span>
                 <div class="messagebox radius2">
@@ -280,9 +284,16 @@
             str = str.replace(/\n/g,'<br/>');
             str = str.replace(/\[em_([0-9]*)\]/g,'<img src="<?= base_url().'img/face';?>/$1.gif" border="0" />');
             return str;
-        }
+        }     
 
-        function change(id){
+    });
+
+
+    function change(id,user_name){
+            $('#hello').addClass('none');
+            $('#chatmessage').removeClass('none');
+            $('#chat_name').text(user_name);
+
             $('#to_message_id').val(id);
             var chatmessage_box = $('#chatmessage').empty();
             $.ajax({
@@ -313,11 +324,6 @@
                 }
             });
         }  
-
-    });
-
-
-
    
 
   function all_users(){//所有人名單
@@ -330,7 +336,7 @@
               var add_html='';
               $.each(d.all_users, function(){
                   var me = this;
-                  add_html += '<a class="list-group-item justify-content-between u_name" onclick="change('+me.id+');">'+' <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i>'+me.user_name+'</span></a> ';
+                  add_html += '<a class="list-group-item justify-content-between u_name" onclick="change('+me.id+''+me.user_name+');">'+' <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i>'+me.user_name+'</span></a> ';
               });
               $('#user_sidebar').append(add_html);
 
