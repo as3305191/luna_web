@@ -96,6 +96,8 @@
 <!--  使用 QQFace 表情符號 JS-->
 <script type="text/javascript" src="<?= base_url('js/jquery.qqFace.js');?>"></script>
 <script language="javascript" type="text/javascript">
+    var $div = $('#chatmessage');
+
     $(document).ready(function(){
         //create a new WebSocket object.(建立socket物件)
         var wsUri = "<?= $socket_url;?>";
@@ -210,7 +212,7 @@
                         }
                     });
                 }
-                $('#chatmessage').scrollTop($('#chatmessage')[0].scrollHeight);
+                $div.scrollTop($div[0].scrollHeight);
             }
             if(type == 'system')
             {
@@ -277,7 +279,7 @@
 
                     }
 
-                    $('#chatmessage').scrollTop($('#chatmessage')[0].scrollHeight);
+                    $div.scrollTop($div[0].scrollHeight);
 
                 },
                 failure:function(){
