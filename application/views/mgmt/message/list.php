@@ -17,12 +17,13 @@
 }
 .right
 {
+    float:right;
     text-align: right;
- 
+
 }
 .left
 {
-    text-align: left;
+    float:left;
  
 }
 #chatmessage {
@@ -197,11 +198,11 @@ border:solid 10px #000;
 
                 if(uname && umsg){
                     if(me_id==my_id){
-                        $('#chatmessage').append('<div><div class="col-md-4 right arrow">'+uname+':'+umsg+'</div></div></br>');
+                        $('#chatmessage').append('<div class="col-md-12"><div lass="col-md-4 right">'+uname+':'+umsg+'</div></div></br>');
                     }
 
                     if(me_id==to_message_id){
-                        $('#chatmessage').append('<div><div class="col-md-4 arrow">'+uname+':'+umsg+'</div></div></br>');
+                        $('#chatmessage').append('<div class="col-md-12"><div class="col-md-4 left">'+uname+':'+umsg+'</div></div></br>');
                     }
                     $.ajax({
                         url: '<?= base_url() ?>' + 'mgmt/message/insert',
@@ -276,9 +277,9 @@ border:solid 10px #000;
                         $.each(d.msg_list, function(){
                             var me = this;
                             if(me.user_id==me_id){
-                                msg_html += '<div><div class="col-md-4 right arrow">'+me.user_name+':'+me.msg+'</div></div></br>';
+                                msg_html += '<div class="col-md-12 "><div class="col-md-4 right">'+me.user_name+':'+me.msg+'</div></div></br>';
                             } else{
-                                msg_html += '<div><div class="col-md-4 arrow">'+me.user_name+':'+me.msg+'</div></div></br>';
+                                msg_html += '<div class="col-md-12 "><div class="col-md-4 left">'+me.user_name+':'+me.msg+'</div></div></br>';
                             }
                         });
                         chatmessage_box.append(msg_html);
