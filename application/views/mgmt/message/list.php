@@ -318,8 +318,7 @@
                                 msg_html += '<div class="">'+me.to_user_name+':'+me.msg+'</div></br>';
                             }
                         });
-                        $('#chatmessage').append(msg_html);
-
+                        chatmessage_box.append(msg_html);
                     }
                 },
                 failure:function(){
