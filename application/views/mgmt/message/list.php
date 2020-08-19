@@ -288,7 +288,6 @@
 
     });
 
-    var user_name='';
     function change(id){
             $('#hello').addClass('none');
             $('#chatmessage').removeClass('none');
@@ -296,8 +295,6 @@
             var me_id=$('#me_id').val();
             var to_message_id = $('#to_message_id').val();
             var chatmessage_box = $('#chatmessage').empty();
-            var chat_name = $(this).attr('user_name');
-            $('#chat_name').text(chat_name);
 
             $.ajax({
                 url: '<?= base_url() ?>' + 'mgmt/message/reload_message_record',
@@ -313,12 +310,14 @@
                         $.each(d.msg_list, function(){
                             var me = this;
                             if(me.user_id==me_id){
-                                msg_html += '<div class="right">'+me.user_name+':'+me.msg+'</div</br>';
+                                msg_html += '<div class="right">'+me.user_name+':'+me.msg+'</div></br>';
                             } else{
-                                msg_html += '<div class="">'+me.to_user_name+':'+me.msg+'</div></br>';
+                                msg_html += '<div class="">'+me.user_name+':'+me.msg+'</div></br>';
                             }
                         });
                         chatmessage_box.append(msg_html);
+                        $('#chat_name').text(d.to_user_name_list.user_name);
+
                     }
                 },
                 failure:function(){
@@ -338,7 +337,7 @@
               var add_html='';
               $.each(d.all_users, function(){
                   var me = this;
-                  add_html += '<a class="list-group-item justify-content-between u_name" user_name="'+me.user_name+'" onclick="change('+me.id+');">'+' <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i>'+me.user_name+'</span></a> ';
+                  add_html += '<a class="list-group-item justify-content-between u_name" onclick="change('+me.id+');">'+' <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i>'+me.user_name+'</span></a> ';
               });
               $('#user_sidebar').append(add_html);
 
