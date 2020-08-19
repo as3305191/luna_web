@@ -53,7 +53,7 @@
         <div id="contentwrapper" class="contentwrapper withrightpanel">
 
             <div class="subcontent chatcontent">
-                <div id="hello" class="chatmessage radius2" contenteditable=true>
+                <div id="hello" class="chatmessage radius2" >
                     <span>歡迎來聊天室</span>
                 </div>
                 <div id="chatmessage" class="chatmessage radius2 none" contenteditable=true >
