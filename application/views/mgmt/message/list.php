@@ -315,7 +315,7 @@
                             if(me.user_id==me_id){
                                 msg_html += '<div class="right">'+me.user_name+':'+me.msg+'</div</br>';
                             } else{
-                                msg_html += '<div class="">'+me.to_user_name+':'+me.msg+'</div></br>';
+                                msg_html += '<div class="">'+me.user_name+':'+me.msg+'</div></br>';
                             }
                         });
                         $('#chatmessage').append(msg_html);
