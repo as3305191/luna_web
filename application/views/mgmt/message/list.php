@@ -253,7 +253,6 @@
             // }
 
 
-            // $('#msgbox').val(''); //reset text
             // $('.contactlist').empty();
 
          
