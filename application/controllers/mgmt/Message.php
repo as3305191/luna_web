@@ -5,7 +5,7 @@ use Lcobucci\JWT\Parser;
 class Message extends MY_Mgmt_Controller {
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('Patent_dao', 'dao');
+		$this -> load -> model('User_msg_dao', 'dao');
 		$this -> load -> model('Computer_dao', 'computer_dao');
 		$this -> load -> model('Computer_hard_dao', 'c_h_dao');
 		$this -> load -> model('Computer_soft_dao', 'c_s_dao');
@@ -23,8 +23,8 @@ class Message extends MY_Mgmt_Controller {
 		if(empty($login_user)) $this->js_alert('尚未登入',site_url().'/login');
         // if(empty($this->session->username)) $this->js_alert('名稱錯誤',site_url().'/login');
 
-		$data['socket_url'] = "ws://192.168.3.251:8081/server.php";
-		// $data['socket_url'] = "ws://localhost:8081/server.php";
+		// $data['socket_url'] = "ws://192.168.3.251:8081/server.php";
+		$data['socket_url'] = "ws://localhost:8081/server.php";
         $data['me'] = $login_user;
         $data['username'] = $login_user->user_name;
         $data['user_colour'] = $this->session->user_colour ;
@@ -124,22 +124,19 @@ class Message extends MY_Mgmt_Controller {
 
 	public function insert() {
 		$res = array();
-		$id = $this -> get_post('id');
-		$patnet_name = $this -> get_post('patnet_name');
-		$img= $this -> get_post('img');
-		$pdf_array = $this -> get_post('pdf_array');
-		$data['img_id'] = $img;
-		$data['files_id'] = $pdf_array;
-		$data['patent_name'] = $patnet_name;
+		$me_id = $this -> get_post('me_id');
+		$to_message_id = $this -> get_post('to_message_id');
+		$msg = $this -> get_post('msg');
 
-		if(empty($id)) {
+		$data['user_id'] = $me_id;
+		$data['to_user_id'] = $to_message_id;
+		$data['msg'] = $msg;
+
+		if(!empty($me_id) && !empty($to_message_id) && !empty($msg)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
 
-		} else {
-			$this -> dao -> update($data, $id);
-			
-		}
+		} 
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}

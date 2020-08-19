@@ -177,8 +177,8 @@
                 var to_message_id = msg.to_message_id; //message text
                 var me_id =$('#me_id').val(); //message text
                 var my_id = msg.my_id; //message text
-
                 var umsg=replace_em(umsg);//QQ表情 字串轉換
+
                 if(uname && umsg){
                     if(me_id==my_id){
                         $('#chatmessage').append('<div class="right">'+uname+':'+umsg+'</br></div>');
@@ -187,7 +187,21 @@
                     if(me_id==to_message_id){
                         $('#chatmessage').append('<div class="">'+uname+':'+umsg+'</br></div>');
                     }
-                   
+                    $.ajax({
+                        url: '<?= base_url() ?>' + 'mgmt/message/insert_message',
+                        type: 'POST',
+                        data: {
+                            me_id:me_id,
+                            to_message_id:to_message_id,
+                            msg:umsg
+                        },
+                        dataType: 'json',
+                        success: function(d) {
+                        },
+                        failure:function(){
+                            alert('faialure');
+                        }
+                    });
                 }
             }
             if(type == 'system')
@@ -239,7 +253,7 @@
             // }
 
 
-            $('#msgbox').val(''); //reset text
+            // $('#msgbox').val(''); //reset text
             // $('.contactlist').empty();
 
          

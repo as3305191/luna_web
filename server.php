@@ -1,8 +1,8 @@
 <?php
-$host = '192.168.3.251'; //host
-$port = '8081'; //port
-// $host = 'localhost'; //host
+// $host = '192.168.3.251'; //host
 // $port = '8081'; //port
+$host = 'localhost'; //host
+$port = '8081'; //port
 $null = NULL; //null var
 
 //Create TCP/IP sream socket (建立socket)
