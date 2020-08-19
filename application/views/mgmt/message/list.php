@@ -184,11 +184,11 @@
 
                 if(uname && umsg){
                     if(me_id==my_id){
-                        $('#chatmessage').append('<div class="right">'+uname+':'+umsg+'</br></div>');
+                        $('#chatmessage').append('<div class="right">'+uname+':'+umsg+'</div></br>');
                     }
 
                     if(me_id==to_message_id){
-                        $('#chatmessage').append('<div class="">'+uname+':'+umsg+'</br></div>');
+                        $('#chatmessage').append('<div class="">'+uname+':'+umsg+'</div></br>');
                     }
                     $.ajax({
                         url: '<?= base_url() ?>' + 'mgmt/message/insert',
@@ -282,15 +282,20 @@
             return str;
         }
 
-        function change(id){
+     
+
+    });
+
+    function change(id){
             $('#to_message_id').val(id);
             var chatmessage_box = $('#chatmessage').empty();
+            var me_id = $('#me_id').val();
             $.ajax({
                 url: '<?= base_url() ?>' + 'mgmt/message/reload_message_record',
                 type: 'POST',
                 data: {
                     me_id:me_id,
-                    to_message_id:id,
+                    to_message_id: $('#to_message_id').val(),
                 },
                 dataType: 'json',
                 success: function(d) {
@@ -299,26 +304,19 @@
                         $.each(d.msg_list, function(){
                             var me = this;
                             if(me.user_id==me_id){
-                                msg_html += '<div class="right">'+uname+':'+umsg+'</br></div>';
+                                msg_html += '<div class="right">'+me.user_name+':'+me.msg+'</div></br>';
                             } else{
-                                msg_html += '<div class="">'+uname+':'+umsg+'</br></div>';
+                                msg_html += '<div class="">'+me.user_name+':'+me.msg+'</div></br>';
                             }
                         });
-                        $('#chatmessage').append(msg_html);
-
+                        chatmessage_box.append(msg_html);
                     }
                 },
                 failure:function(){
                     alert('faialure');
                 }
             });
-        }  
-
-    });
-
-
-
-   
+        } 
 
   function all_users(){//所有人名單
       $.ajax({
