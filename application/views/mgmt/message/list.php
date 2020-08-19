@@ -15,6 +15,26 @@
     margin-right: 32%;
     padding: 0.5em;
 }
+.right
+{
+    text-align: right;
+ 
+}
+.left
+{
+    text-align: left;
+ 
+}
+#chatmessage {
+    border:1px solid #ccc;
+    min-height:300px;
+    max-height:300px;
+    overflow: auto;
+    font-size: 14px;      
+    outline: none; 
+    background-color:white;
+}
+
 </style>
 
 <body>
@@ -30,8 +50,8 @@
 
             <div class="subcontent chatcontent">
 
-                <div  class="chatmessage radius2">
-                    <textarea type="text" require class="form-control" rows="10" id="chatmessage" name="patent_note" style="resize:none;width:100%"></textarea>
+                <div id="chatmessage" class="chatmessage radius2" contenteditable=true>
+                    <!-- <textarea type="text" require class="form-control" rows="10" name="patent_note" style="resize:none;width:100%"></textarea> -->
 
                 </div><!--chatmessage-->
                 <br>
@@ -161,11 +181,11 @@
                 var umsg=replace_em(umsg);//QQ表情 字串轉換
                 if(uname && umsg){
                     if(me_id==my_id){
-                        $('#chatmessage').append("<div><span class=\"user_name\" style='color:#"+ucolor+"'>"+uname+"</span> : <span class=\"user_message\">"+umsg+"</span></div>");
+                        $('#chatmessage').append('<div class="right">'+uname+':'+umsg+'</br></div>');
                     }
 
                     if(me_id==to_message_id){
-                        $('#chatmessage').append("<div><span class=\"user_name\" style='color:#"+ucolor+"'>"+uname+"</span> : <span class=\"user_message\">"+umsg+"</span></div>");
+                        $('#chatmessage').append('<div class="">'+uname+':'+umsg+'</br></div>');
                     }
                    
                 }
