@@ -38,6 +38,13 @@
 .none {
 	display: none;
 }
+
+.arrow {
+width:0;
+height:0;
+font-size:0;
+border:solid 10px #000;
+}
 </style>
 
 <body>
@@ -190,11 +197,11 @@
 
                 if(uname && umsg){
                     if(me_id==my_id){
-                        $('#chatmessage').append('<div class="right">'+uname+':'+umsg+'</div></br>');
+                        $('#chatmessage').append('<div><div class="col-md-4 right arrow">'+uname+':'+umsg+'</div></div></br>');
                     }
 
                     if(me_id==to_message_id){
-                        $('#chatmessage').append('<div class="">'+uname+':'+umsg+'</div></br>');
+                        $('#chatmessage').append('<div><div class="col-md-4 arrow">'+uname+':'+umsg+'</div></div></br>');
                     }
                     $.ajax({
                         url: '<?= base_url() ?>' + 'mgmt/message/insert',
@@ -269,9 +276,9 @@
                         $.each(d.msg_list, function(){
                             var me = this;
                             if(me.user_id==me_id){
-                                msg_html += '<div class="right">'+me.user_name+':'+me.msg+'</div></br>';
+                                msg_html += '<div><div class="col-md-4 right arrow">'+me.user_name+':'+me.msg+'</div></div></br>';
                             } else{
-                                msg_html += '<div class="">'+me.user_name+':'+me.msg+'</div></br>';
+                                msg_html += '<div><div class="col-md-4 arrow">'+me.user_name+':'+me.msg+'</div></div></br>';
                             }
                         });
                         chatmessage_box.append(msg_html);
