@@ -216,15 +216,13 @@
 
                 if(uname && umsg){
                     if(me_id==my_id){
-                        $('#chatmessage').append('<div class="col-md-12" style="padding:0px 0px 0px 0px"><div lass="col-md-4 right">'+uname+'<div>:'+umsg+'</div></div></div></br>');
+                        $('#chatmessage').append('<div class="col-md-12" style="padding:0px 0px 15px 0px"><div lass="col-md-4 right">'+uname+':<div>'+umsg+'</div></div></div></br>');
                     }
 
-                    if(my_id==to_message_id_){
-                        $('#chatmessage').append('<div class="col-md-12" style="padding:0px 0px 0px 0px"><div class="col-md-4 left">'+uname+'<div>:'+umsg+'</div></div></div></br>');
+                    if(my_id==to_message_id_ && me_id==to_message_id){
+                        $('#chatmessage').append('<div class="col-md-12" style="padding:0px 0px 15px 0px"><div class="col-md-4 left">'+uname+':<div>'+umsg+'</div></div></div></br>');
                     }
-                    // if(me_id==to_message_id){
-
-                    // }
+                
                     $.ajax({
                         url: '<?= base_url() ?>' + 'mgmt/message/insert',
                         type: 'POST',
@@ -298,9 +296,9 @@
                         $.each(d.msg_list, function(){
                             var me = this;
                             if(me.user_id==me_id){
-                                msg_html += '<div class="col-md-12 " style="padding:0px 0px 0px 0px"><div class="col-md-4 right">'+me.user_name+'<div>:'+me.msg+'</div></div></div></div></br>';
+                                msg_html += '<div class="col-md-12 " style="padding:0px 0px 15px 0px"><div class="col-md-4 right">'+me.user_name+':<div>'+me.msg+'</div></div></div></div></br>';
                             } else{
-                                msg_html += '<div class="col-md-12 " style="padding:0px 0px 0px 0px"><div class="col-md-4 left">'+me.user_name+'<div>:'+me.msg+'</div></div></div></br>';
+                                msg_html += '<div class="col-md-12 " style="padding:0px 0px 15px 0px"><div class="col-md-4 left">'+me.user_name+':<div>'+me.msg+'</div></div></div></br>';
                             }
                         });
                         chatmessage_box.append(msg_html);
