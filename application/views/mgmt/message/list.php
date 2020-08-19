@@ -210,6 +210,7 @@
                         }
                     });
                 }
+                $('#chatmessage').scrollTop = $('#chatmessage').scrollHeight;
             }
             if(type == 'system')
             {
@@ -242,7 +243,6 @@
             return str;
         }     
 
-        $('#chatmessage').scrollTop = $('#chatmessage').scrollHeight;
     });
 
     function change(id){
