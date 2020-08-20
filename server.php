@@ -57,30 +57,31 @@ while (true) {
 			if($tst_msg->type=='join_name'){
 				//名稱輸入
 				$join_name = $tst_msg->join_name; //sender name
-				$user_color = $tst_msg->color; //color
-                $sex = $tst_msg->sex; //性別
-				$head = $tst_msg->head; //頭像
+				$me_id = $tst_msg->me_id; //sender name
+				// $user_color = $tst_msg->color; //color
+                // $sex = $tst_msg->sex; //性別
+				// $head = $tst_msg->head; //頭像
 
 				//找key值
 				$key = array_keys($clients,$changed_socket);
 				$join_list[$key[0]]['join_name']=$join_name;
+				$join_list[$key[0]]['me_id']=$me_id;
 				// $join_list[$key[0]]['color']=$user_color;
 				// $join_list[$key[0]]['sex']=$sex;
 				// $join_list[$key[0]]['head']=$head;
 
 				//prepare data to be sent to client (mask 加密轉換)
-				$response_text = mask(json_encode(array('type'=>'join_name', 'join_name'=>$join_name,'color'=>$user_color,
-                    'join_list'=>$join_list)));
+				$response_text = mask(json_encode(array('type'=>'join_name','me_id'=>$me_id, 'join_name'=>$join_name, 'join_list'=>$join_list)));
 			}else{
 				//訊息輸入
 				$user_name = $tst_msg->name; //sender name
 				$user_message = $tst_msg->message; //message text
-				$user_color = $tst_msg->color; //color
+				// $user_color = $tst_msg->color; //color
 				$to_message_id= $tst_msg->to_message_id; 
 				$my_id= $tst_msg->my_id; 
 
 				//prepare data to be sent to client (mask 加密轉換)
-				$response_text = mask(json_encode(array('type'=>'usermsg', 'name'=>$user_name, 'message'=>$user_message, 'color'=>$user_color,'to_message_id'=>$to_message_id,'my_id'=>$my_id)));
+				$response_text = mask(json_encode(array('type'=>'usermsg', 'name'=>$user_name, 'message'=>$user_message,'to_message_id'=>$to_message_id,'my_id'=>$my_id)));
 			}
 			
 			send_message($response_text); //send data 發佈至各socket

@@ -133,15 +133,14 @@
                 var name = '<?= $username;?>';
                 var me_id = '<?= $me->id;?>';
 
-                console.log(name);
+                // console.log(name);
                     // $('#chatmessage').append("<div class=\"system_msg\">連結中......</div>"); //notify user
                     // $("#welcome_str").html('歡迎 <b>'+name+' </b>, 請於下方輸入留言:');
                     //prepare json data
                     var msg = {
                         type : 'join_name',
                         join_name: name,
-                        color : '<?= $user_colour; ?>',
-                        head : '<?= $head;?>',
+                        me_id :'<?= $me->id;?>',
                     };
                     //convert and send data to server (連接傳送數據)
                     websocket.send(JSON.stringify(msg));
@@ -162,8 +161,9 @@
             var mymessage = $('#msgbox').val(); //get message text
             var to_message_id = $('#to_message_id').val(); 
             var my_id = $('#me_id').val(); 
+            var me_id = '<?= $me->id;?>';
 
-            console.log(to_message_id);
+            // console.log(to_message_id);
             var myname = '<?= $username;?>'; //get user name
 
             if(myname == ""){ //empty name?
@@ -181,10 +181,27 @@
                 type : 'usermsg',
                 message: mymessage,
                 name: myname,
-                my_id: my_id,
+                my_id: me_id,
                 to_message_id: to_message_id,
-                color : '<?= $user_colour; ?>'
             };
+            if(me_id==my_id){
+                $.ajax({
+                    url: '<?= base_url() ?>' + 'mgmt/message/insert',
+                    type: 'POST',
+                    data: {
+                        me_id:my_id,
+                        to_message_id:to_message_id,
+                        msg:mymessage
+                    },
+                    dataType: 'json',
+                    success: function(d) {
+                    },
+                    failure:function(){
+                        alert('faialure');
+                    }
+                });
+            }
+              
             //convert and send data to server (連接傳送數據)
             websocket.send(JSON.stringify(msg));
             $('#msgbox').val(''); //reset text
@@ -222,22 +239,8 @@
                     if(my_id==to_message_id_){
                         $('#chatmessage').append('<div class="col-md-12" style="padding:0px 0px 15px 0px"><div class="col-md-4 left">'+uname+':<div>'+umsg+'</div></div></div></br>');
                     }
-                
-                    $.ajax({
-                        url: '<?= base_url() ?>' + 'mgmt/message/insert',
-                        type: 'POST',
-                        data: {
-                            me_id:me_id,
-                            to_message_id:to_message_id,
-                            msg:umsg
-                        },
-                        dataType: 'json',
-                        success: function(d) {
-                        },
-                        failure:function(){
-                            alert('faialure');
-                        }
-                    });
+
+                  
                 }
                 $div.scrollTop($div[0].scrollHeight);
             }
