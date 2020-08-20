@@ -64,9 +64,9 @@ while (true) {
 				//找key值
 				$key = array_keys($clients,$changed_socket);
 				$join_list[$key[0]]['join_name']=$join_name;
-				$join_list[$key[0]]['color']=$user_color;
-				$join_list[$key[0]]['sex']=$sex;
-				$join_list[$key[0]]['head']=$head;
+				// $join_list[$key[0]]['color']=$user_color;
+				// $join_list[$key[0]]['sex']=$sex;
+				// $join_list[$key[0]]['head']=$head;
 
 				//prepare data to be sent to client (mask 加密轉換)
 				$response_text = mask(json_encode(array('type'=>'join_name', 'join_name'=>$join_name,'color'=>$user_color,
