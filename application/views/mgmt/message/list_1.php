@@ -11,7 +11,7 @@
  <meta content="yes" name="apple-mobile-web-app-capable" />
  <meta content="black" name="apple-mobile-web-app-status-bar-style" />
  <meta content="telephone=no" name="format-detection" />
-　　<style type="text/css">
+<!-- 　　<style type="text/css">
  body{background:url(/static/images/yuyin_bg.jpg);background-size:100%;}
  @media all and (min-width: 640px) {
   body,html,.wenwen-footer,.speak_window{width:640px!important;margin:0 auto}
@@ -49,7 +49,7 @@
  .question_text i{border-left:10px solid #42929d;right:10px;}
  .answer_text p a{color:#42929d;display:inline-block;}
  .write_list{position:absolute;left:0;width:100%;background:#fff;border-top:solid 1px #ddd;padding:5px;line-height:30px;}
-　　</style>
+　　</style> -->
 </head>
 
 <body>
@@ -90,7 +90,7 @@
 
 <script type="text/javascript">
  if ("WebSocket" in window){
-  var ws = new WebSocket("ws://192.168.0.1:9052");
+  var ws = new WebSocket("ws://192.168.3.251:8082/server_1.php");
   ws.onopen = function(){
    console.log("握手成功");
    var myemail = $("#myemail").val();
