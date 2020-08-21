@@ -165,12 +165,6 @@
 
             // console.log(to_message_id);
             var myname = '<?= $username;?>'; //get user name
-
-            if(myname == ""){ //empty name?
-                alert('尚未登入');
-                window.location = "<?=site_url('/login')?>";
-                return false;
-            }
             if(mymessage == ""){ //emtpy message?
                 alert("未輸入留言");
                 return false;
@@ -184,36 +178,28 @@
                 my_id: me_id,
                 to_message_id: to_message_id,
             };
-            if(me_id==my_id){
-                $.ajax({
-                    url: '<?= base_url() ?>' + 'mgmt/message/insert',
-                    type: 'POST',
-                    data: {
-                        me_id:my_id,
-                        to_message_id:to_message_id,
-                        msg:mymessage
-                    },
-                    dataType: 'json',
-                    success: function(d) {
-                    },
-                    failure:function(){
-                        alert('faialure');
-                    }
-                });
-            }
-              
-            //convert and send data to server (連接傳送數據)
             websocket.send(JSON.stringify(msg));
+
+            // if(me_id==my_id){
+            //     $.ajax({
+            //         url: '<?= base_url() ?>' + 'mgmt/message/insert',
+            //         type: 'POST',
+            //         data: {
+            //             me_id:my_id,
+            //             to_message_id:to_message_id,
+            //             msg:mymessage
+            //         },
+            //         dataType: 'json',
+            //         success: function(d) {
+            //         },
+            //         failure:function(){
+            //             alert('faialure');
+            //         }
+            //     });
+            // }
+              
             $('#msgbox').val(''); //reset text
         }
-
-        $('#leave-btn').click(function(){
-            websocket.close();
-            $('#chatmessage').append("<div class=\"system_msg\">您已離線...</div>");
-
-            window.location = "<?= site_url().'/login/logout'?>";
-        });
-
         //#### Message received from server? (view端接收server數據時觸發事件)
         websocket.onmessage = function(ev) {
             var msg = JSON.parse(ev.data); //PHP sends Json data
@@ -226,7 +212,6 @@
                 var umsg = msg.message; //message text
                 var to_message_id = msg.to_message_id; //message text
                 var to_message_id_ = $('#to_message_id').val(); //message text
-
                 var me_id =$('#me_id').val(); //message text
                 var my_id = msg.my_id; //message text
                 var umsg=replace_em(umsg);//QQ表情 字串轉換

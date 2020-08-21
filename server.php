@@ -21,6 +21,7 @@ $clients = array($socket);
 
 //name list 進入聊天室人員名單
 $join_list = array();
+$information = array();
 
 //start endless loop, so that our script doesn't stop
 while (true) {
@@ -34,12 +35,13 @@ while (true) {
 		$socket_new = socket_accept($socket); //accpet new socket (接受新的socket，一旦成功建立socket连接，将会返回一个新的socket资源)
 		$clients[] = $socket_new; //add socket to client array
 		$join_list[] = ''; //名單
+		$information = [];
 		$header = socket_read($socket_new, 1024); //read data sent by the socket
 		perform_handshaking($header, $socket_new, $host, $port); //perform websocket handshake (寫數據至socket, 從 HTTP 協定升級為 WebSocket 協定)
 		
 		socket_getpeername($socket_new, $ip); //get ip address of connected socket
 		$response = mask(json_encode(array('type'=>'system','info'=>'enter', 'message'=>$ip.' 已連線'))); //prepare json data (mask:包裹資料成為二進制字串)
-		send_message($response); //notify all users about new connection (發送至每個socket)
+		send_message($response,array('type'=>'system','info'=>'enter', 'message'=>$ip.' 已連線'),$join_list); //notify all users about new connection (發送至每個socket)
 		
 		//make room for new socket
 		$found_socket = array_search($socket, $changed);//搜索socket在changed陣列的index
@@ -56,35 +58,31 @@ while (true) {
 			$tst_msg = json_decode($received_text); //json decode 
 			if($tst_msg->type=='join_name'){
 				//名稱輸入
-				$join_name = $tst_msg->join_name; //sender name
-				$me_id = $tst_msg->me_id; //sender name
-				// $user_color = $tst_msg->color; //color
-                // $sex = $tst_msg->sex; //性別
-				// $head = $tst_msg->head; //頭像
-
+				$join_name = $tst_msg->join_name;
+				$me_id = $tst_msg->me_id;
+				$information = [];
 				//找key值
 				$key = array_keys($clients,$changed_socket);
 				$join_list[$key[0]]['join_name']=$join_name;
 				$join_list[$key[0]]['me_id']=$me_id;
-				// $join_list[$key[0]]['color']=$user_color;
-				// $join_list[$key[0]]['sex']=$sex;
-				// $join_list[$key[0]]['head']=$head;
-
+				$information[] = $tst_msg;
 				//prepare data to be sent to client (mask 加密轉換)
 				$response_text = mask(json_encode(array('type'=>'join_name','me_id'=>$me_id, 'join_name'=>$join_name, 'join_list'=>$join_list)));
-			}else{
+				send_message($response_text,array('type'=>'join_name','me_id'=>$me_id, 'join_name'=>$join_name, 'join_list'=>$join_list),$join_list); //send data 發佈至各socket
+
+			}
+			if($tst_msg->type=='usermsg'){
 				//訊息輸入
 				$user_name = $tst_msg->name; //sender name
 				$user_message = $tst_msg->message; //message text
-				// $user_color = $tst_msg->color; //color
 				$to_message_id= $tst_msg->to_message_id; 
 				$my_id= $tst_msg->my_id; 
-
+				$information = [];
+				$information[]= $tst_msg;
 				//prepare data to be sent to client (mask 加密轉換)
 				$response_text = mask(json_encode(array('type'=>'usermsg', 'name'=>$user_name, 'message'=>$user_message,'to_message_id'=>$to_message_id,'my_id'=>$my_id)));
+				send_message($response_text,array('type'=>'usermsg', 'name'=>$user_name, 'message'=>$user_message,'to_message_id'=>$to_message_id,'my_id'=>$my_id),$join_list); //send data 發佈至各socket
 			}
-			
-			send_message($response_text); //send data 發佈至各socket
 			break 2; //exist this loop
 		}
 		
@@ -93,7 +91,7 @@ while (true) {
 			//移除名單
 			//找key值
 			$key = array_keys($clients,$changed_socket);
-		
+			$information = [];
 			// remove client for $clients array 從socket clients陣列移除
 			$found_socket = array_search($changed_socket, $clients);
 			socket_getpeername($changed_socket, $ip);//取得來源socket IP 及 post
@@ -104,19 +102,32 @@ while (true) {
 			unset($join_list[$key[0]]);
 			$response = mask(json_encode(array('type'=>'system', 'info'=>'leave','message'=>$ip.'--'.$leave_name.' 離線','join_list'=>$join_list)));
 			
-			send_message($response);
+			send_message($response,array('type'=>'system', 'info'=>'leave','message'=>$ip.'--'.$leave_name.' 離線','join_list'=>$join_list),$join_list);
 		}
 	}
 }
 // close the listening socket
 socket_close($socket);
 
-function send_message($msg)
+function send_message($msg,$array_inf,$join_list)
 {
 	global $clients;
 	foreach($clients as $changed_socket)
 	{
-		@socket_write($changed_socket,$msg,strlen($msg));
+		// $inf_array = json_encode($array_inf);
+		// $tst_msg = strlen($msg); //json decode 
+		// error_log(json_encode($join_list));
+		error_log(json_encode($join_list));
+
+		if($array_inf['type']=='usermsg'){
+			if($join_list[1]['me_id']==$array_inf['my_id']
+			// ||$join_list[1]['me_id']==$array_inf['to_message_id']
+			){
+				@socket_write($changed_socket,$msg,strlen($msg));
+			}
+		} else{
+			@socket_write($changed_socket,$msg,strlen($msg));
+		}
 	}
 	return true;
 }

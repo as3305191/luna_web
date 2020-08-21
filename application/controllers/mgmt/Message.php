@@ -27,9 +27,9 @@ class Message extends MY_Mgmt_Controller {
 		// $data['socket_url'] = "ws://localhost:8081/server.php";
         $data['me'] = $login_user;
         $data['username'] = $login_user->user_name;
-        $data['user_colour'] = $this->session->user_colour ;
-        $data['sex'] = $this->session->sex ;
-        $data['head'] = $this->session->head ;
+        // $data['user_colour'] = $this->session->user_colour ;
+        // $data['sex'] = $this->session->sex ;
+        // $data['head'] = $this->session->head ;
 		// $this -> to_json($data);
 
 		$this->load->view('mgmt/message/list', $data);
