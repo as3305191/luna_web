@@ -212,8 +212,8 @@ A={
     var so=false,n=false;
     var lus=A.$('us'),lct=A.$('ct');
     function st(){
-        n=prompt('取個名子');
-        n=n.substr(0,16);
+        // n=prompt('取個名子');
+        n='<?= $username?>';
         if(!n){
             return ;   
         }

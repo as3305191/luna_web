@@ -2,7 +2,7 @@
 error_reporting(E_ALL ^ E_NOTICE);
 ob_implicit_flush();
  
-//地址与接口，即创建socket时需要服务器的IP和端口
+//地址與接口，即創建socket時需要服務器的IP和端口
 // $sk=new Sock('127.0.0.1',8000);
 $sk=new Sock('192.168.3.251',8081);
 
