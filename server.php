@@ -259,6 +259,7 @@ class Sock{
         if($g['type']=='add'){
             //第一次进入添加聊天名字，把姓名保存在相应的users里面
             $this->users[$k]['name']=$g['ming'];
+            $this->users[$k]['me_id']=$g['me_id'];
             $ar['type']='add';
             $ar['name']=$g['ming'];
             $ar['me_id']=$g['me_id'];
