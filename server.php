@@ -285,6 +285,7 @@ class Sock{
     function send1($k,$ar,$key='all'){
         $ar['code1']=$key;
         $ar['code']=$k;
+        date_default_timezone_set('Asia/Taipei');
         $ar['time']=date('m-d H:i:s');
         //对发送信息进行编码处理
         $str = $this->code(json_encode($ar));
