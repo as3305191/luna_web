@@ -259,9 +259,9 @@ class Sock{
         if($g['type']=='add'){
             //第一次进入添加聊天名字，把姓名保存在相应的users里面
             $this->users[$k]['name']=$g['ming'];
-            $this->users[$k]['me_id']=$g['me_id'];
             $ar['type']='add';
             $ar['name']=$g['ming'];
+            $ar['me_id']=$g['me_id'];
             $key='all';
         }else{
             //发送信息行为，其中$g['key']表示面对大家还是个人，是前段传过来的信息
@@ -276,7 +276,7 @@ class Sock{
     function getusers(){
         $ar=array();
         foreach($this->users as $k=>$v){
-            $ar[]=array('code'=>$k,'name'=>$v['name'],'me_id'=>$v['me_id']);
+            $ar[]=array('code'=>$k,'name'=>$v['name']);
         }
         return $ar;
     }
