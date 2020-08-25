@@ -249,7 +249,7 @@ A={
                 da.users.unshift({'code':'all','name':'大家'});
                 for(var i=0;i<da.users.length;i++){
                     if(da.users[i].me_id>0){
-                        var obj=A.$$('<p me_id="'+da.users[i].me_id+'" onclick="reload_chat_room('+da.users[i].me_id+')">'+da.users[i].name+'</p>');
+                        // var obj=A.$$('<p me_id="'+da.users[i].me_id+'" onclick="reload_chat_room('+da.users[i].me_id+')">'+da.users[i].name+'</p>');
                     } else{
                         var obj=A.$$('<p me_id="0" onclick="reload_chat_room(0)">'+da.users[i].name+'</p>');
                     }
