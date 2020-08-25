@@ -269,7 +269,7 @@ A={
                     delete users[da.nrong];
                 }else{
                     da.nrong=da.nrong.replace(/{\\(\d+)}/g,function(a,b){
-                        return '<img src="sk/'+b+'.gif">';
+                        return '<img src="../img/face/'+b+'.gif">';
                     }).replace(/^data\:image\/png;base64\,.{50,}$/i,function(a){
                         return '<img src="'+a+'">';
                     });
