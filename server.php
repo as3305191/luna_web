@@ -37,7 +37,7 @@ class Sock{
             $changes=$this->sockets;
             $write=NULL;
             $except=NULL;
-             
+
             /*
             //这个函数是同时接受多个连接的关键，我的理解它是为了阻塞程序继续往下执行。
             socket_select ($sockets, $write = NULL, $except = NULL, NULL);
@@ -259,6 +259,7 @@ class Sock{
         if($g['type']=='add'){
             //第一次进入添加聊天名字，把姓名保存在相应的users里面
             $this->users[$k]['name']=$g['ming'];
+            $this->users[$k]['me_id']=$g['me_id'];
             $ar['type']='add';
             $ar['name']=$g['ming'];
             $key='all';

@@ -209,11 +209,12 @@ A={
     var key='all',mkey;
     var users={};
     var url='<?= $socket_url?>';
-    var so=false,n=false;
+    var so=false,n=false,me_id=false;
     var lus=A.$('us'),lct=A.$('ct');
     function st(){
         // n=prompt('取個名子');
         n='<?= $username?>';
+        me_id='<?= $me_id?>';
         if(!n){
             return ;   
         }
@@ -223,7 +224,7 @@ A={
         so.onopen=function(){
             //状态为1证明握手成功，然后把client自定义的名字发送过去
             if(so.readyState==1){
-                so.send('type=add&ming='+n);
+                so.send('type=add&ming='+n+'&me_id='+me_id);
             }
         }
          

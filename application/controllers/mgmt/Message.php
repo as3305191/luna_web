@@ -26,7 +26,9 @@ class Message extends MY_Mgmt_Controller {
 		$data['socket_url'] = "ws://192.168.3.251:8081/server.php";
 		// $data['socket_url'] = "ws://localhost:8081/server.php";
         $data['me'] = $login_user;
-        $data['username'] = $login_user->user_name;
+		$data['username'] = $login_user->user_name;
+		$data['me_id'] = $login_user->id;
+
         // $data['user_colour'] = $this->session->user_colour ;
         // $data['sex'] = $this->session->sex ;
         // $data['head'] = $this->session->head ;
