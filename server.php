@@ -6,14 +6,14 @@ ob_implicit_flush();
 // $sk=new Sock('127.0.0.1',8000);
 $sk=new Sock('192.168.3.251',8081);
 
-//对创建的socket循环进行监听，处理数据
+//對創建的socket循環進行監聽，處理數據
 $sk->run();
  
-//下面是sock类
+//下面是sock類
 class Sock{
-    public $sockets; //socket的连接池，即client连接进来的socket标志
-    public $users;   //所有client连接进来的信息，包括socket、client名字等
-    public $master;  //socket的resource，即前期初始化socket时返回的socket资源
+    public $sockets; //socket的連接池，即client連接進來的socket標誌
+    public $users;   //所有client連接進來的信息，包括socket、client名字等
+    public $master;  //socket的resource，即前期初始化socket時返回的socket
      
     private $sda=array();   //已接收的数据
     private $slen=array();  //数据总长度
