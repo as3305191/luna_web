@@ -248,7 +248,7 @@ A={
                 mkey=da.code;
                 da.users.unshift({'code':'all','name':'大家'});
                 for(var i=0;i<da.users.length;i++){
-                    var obj=A.$$('<p>'+da.users[i].name+'</p>');
+                    var obj=A.$$('<p me_id="'+da.users[i].me_id+'">'+da.users[i].name+'</p>');
                     lus.appendChild(obj);
                     if(mkey!=da.users[i].code){
                         cuser(obj,da.users[i].code);
