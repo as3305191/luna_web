@@ -277,7 +277,7 @@ class Sock{
     function getusers(){
         $ar=array();
         foreach($this->users as $k=>$v){
-            $ar[]=array('code'=>$k,'name'=>$v['name']);
+            $ar[]=array('code'=>$k,'name'=>$v['name'],'me_id'=>$v['me_id']);
         }
         return $ar;
     }
