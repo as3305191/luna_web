@@ -337,7 +337,7 @@ A={
  
     var bq=A.$('imgbq'),ems=A.$('ems');
     var l=80,r=4,c=5,s=0,p=Math.ceil(l/(r*c));
-    var pt='../img/face';
+    var pt='../img/face/';
     bq.onclick=function(e){
         var e=e||event;
         if(!so){
