@@ -31,7 +31,7 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 
 <body>
 <input type="" id="me_id" value="<?= isset($me_id) ? $me_id : '' ?>" />
-<input type="" id="f_chat_id" value="" />
+<input type="" id="f_chat_id" onchange="f_chat_id_change(this.value)" value="" />
 
 <div id="ltian">
     <div id="us" class="jb"></div>
@@ -466,7 +466,12 @@ $('#f_chat_id').val(0);
 //     $('#f_chat_id').val(id);
 // }
 
-$('#f_chat_id').on('change', function(){
-    $('#ct').empty();
-});
+// $('#f_chat_id').on('change', function(){
+//     document.getElementById("ct").innerHTML='';
+// });
+
+function f_chat_id_change(){
+    document.getElementById("ct").innerHTML='';
+
+}
 </script>
