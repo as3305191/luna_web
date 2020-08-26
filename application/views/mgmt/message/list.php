@@ -31,6 +31,9 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 </style>
 
 <body>
+<input type="hidden" id="me_id" value="<?= isset($me_id) ? $me_id : '' ?>" />
+<input type="hidden" id="f_chat_id" value="" />
+
 <div id="ltian">
     <div id="us" class="jb"></div>
     <div id="ct"></div>
@@ -212,15 +215,12 @@ A={
     var so=false,n=false,me_id=false;
     var lus=A.$('us'),lct=A.$('ct');
     function st(){
-        // n=prompt('取個名子');
         n='<?= $username?>';
         me_id='<?= $me_id?>';
         if(!n){
             return ;   
         }
-        //创建socket，注意URL的格式：ws://ip:端口
         so=new WebSocket(url);
-        //握手监听函数
         so.onopen=function(){
             //状态为1证明握手成功，然后把client自定义的名字发送过去
             if(so.readyState==1){
@@ -249,7 +249,9 @@ A={
                 da.users.unshift({'code':'all','name':'廣播'});
                 for(var i=0;i<da.users.length;i++){
                     if(da.users[i].me_id>0){
-                        var obj=A.$$('<p me_id="'+da.users[i].me_id+'" onclick="reload_chat_room('+da.users[i].me_id+')">'+da.users[i].name+'</p>');
+                        if(da.users[i].me_id !== $('#me_id').val()){
+                            var obj=A.$$('<p me_id="'+da.users[i].me_id+'" onclick="reload_chat_room('+da.users[i].me_id+')">'+da.users[i].name+'</p>');
+                        }
                     } else{
                         var obj=A.$$('<p me_id="0" onclick="reload_chat_room(0)">'+da.users[i].name+'</p>');
                     }
@@ -453,11 +455,16 @@ A={
         var da=rc.toDataURL();
         so.send('nr='+esc(da)+'&key='+key);
     }
-     
 })();
 
 function reload_chat_room(id){
-
+    var me_id = $('#me_id').val();
+    $('#f_chat_id').val();
+    if(id==me_id){
+        alert('不能和自己聊天');
+    } else{
+        $('#f_chat_id').val(id);
+    }
 }
 
 </script>
