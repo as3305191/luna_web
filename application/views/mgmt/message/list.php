@@ -249,7 +249,8 @@ A={
                 da.users.unshift({'code':'all','name':'廣播'});
                 for(var i=0;i<da.users.length;i++){
                     if(da.users[i].me_id>0){
-                        if(da.users[i].me_id !== $('#me_id').val()){
+                        if(da.users[i].me_id == $('#me_id').val()){
+                        } else{
                             var obj=A.$$('<p me_id="'+da.users[i].me_id+'" onclick="reload_chat_room('+da.users[i].me_id+')">'+da.users[i].name+'</p>');
                         }
                     } else{
