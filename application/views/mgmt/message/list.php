@@ -335,6 +335,9 @@ A={
             t.parentNode.children.rcss('ck','');
             t.rcss('','ck');
             key=code;
+            if($('#f_chat_id').val()!==t.getAttribute('me_id')){
+                document.getElementById("ct").innerHTML='';
+            }
             $('#f_chat_id').val(t.getAttribute('me_id'));
         }
     }
@@ -470,8 +473,8 @@ $('#f_chat_id').val(0);
 //     document.getElementById("ct").innerHTML='';
 // });
 
-function f_chat_id_change(){
-    document.getElementById("ct").innerHTML='';
+// function f_chat_id_change(){
+//     document.getElementById("ct").innerHTML='';
 
-}
+// }
 </script>
