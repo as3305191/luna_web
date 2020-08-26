@@ -37,11 +37,11 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <div id="ltian">
     <div id="us" class="jb"></div>
     <div id="ct"></div>
-    <a href="javascript:;" class="qp" onClick="this.parentNode.children[1].innerHTML=''">清屏</a>
+    <a style="display:none" href="javascript:;" class="qp" onClick="this.parentNode.children[1].innerHTML=''">清屏</a>
 </div>
 <div class="rin">
     <button id="sd">發送</button>
-    <span><img src="//www.yxsss.com/ui/sk/t.png" title="表情" id="imgbq"><img src="//www.yxsss.com/ui/sk/e.png" title="上傳圖片"><form><input type="file" title="上傳圖片" id="upimg"></form></span>
+    <span><img src="//www.yxsss.com/ui/sk/t.png" title="表情" id="imgbq"><img src="//www.yxsss.com/ui/sk/e.png" title="上傳圖片" style="display:none"><form style="display:none"><input type="file" title="上傳圖片" id="upimg"></form></span>
     <p><input id="nrong"></p>
 </div>
 <div id="ems"><p></p><p class="tc"></p></div>
@@ -245,7 +245,14 @@ A={
                 var obj=A.$$('<p>'+da.name+'</p>');
                 lus.appendChild(obj);
                 cuser(obj,da.code);
-                obj=A.$$('<p me_id="'+da.users[i].me_id+'"><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
+                if(da.me_id>0){
+                        if(da.me_id!==$('#me_id').val()){
+                            var obj=A.$$('<p me_id="'+da.me_id+'">'+da.name+'</p>');
+                        }   
+                    } else{
+                        var obj=A.$$('<p me_id="0">'+da.name+'</p>');
+                    }
+                obj=A.$$('<p me_id="'+da.me_id+'"><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
                 c=da.code;
             }else if(da.type=='madd'){
                 mkey=da.code;
