@@ -463,11 +463,11 @@ function reload_chat_room(id){
     if(id==me_id){
         alert('不能和自己聊天');
     } else{
-        if(f_chat_id!==id){
-            $('#ct').empty();
-            $('#f_chat_id').val(id);
-        }
+        $('#f_chat_id').val(id);
     }
 }
 
+$('#f_chat_id').on('change', function(){
+    $('#ct').empty();
+});
 </script>
