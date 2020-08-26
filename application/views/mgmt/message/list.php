@@ -14,6 +14,7 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 .rin span img{margin:0px 3px; cursor:pointer;}
 .rin span form{position:absolute; width:25px; height:25px; overflow:hidden; opacity:0; top:5px; right:5px;}
 .rin span input{width:180px; height:25px; margin-left:-160px; cursor:pointer}
+ 
 #ct p{padding:5px; line-height:20px;}
 #ct a{color:#069; cursor:pointer;}
 #ct span{color:#999; margin-right:10px;}
@@ -30,13 +31,13 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 </style>
 
 <body>
-<input type="" id="me_id" value="<?= isset($me_id) ? $me_id : '' ?>" />
-<input type="" id="f_chat_id" onchange="f_chat_id_change(this.value)" value="" />
+<input type="hidden" id="me_id" value="<?= isset($me_id) ? $me_id : ''?>">
+<input type="hidden" id="f_chat_id">
 
 <div id="ltian">
     <div id="us" class="jb"></div>
     <div id="ct"></div>
-    <!-- <a href="javascript:;" class="qp" onClick="this.parentNode.children[1].innerHTML=''">清屏</a> -->
+    <a href="javascript:;" class="qp" onClick="this.parentNode.children[1].innerHTML=''">清屏</a>
 </div>
 <div class="rin">
     <button id="sd">發送</button>
@@ -214,12 +215,15 @@ A={
     var so=false,n=false,me_id=false;
     var lus=A.$('us'),lct=A.$('ct');
     function st(){
+        // n=prompt('取個名子');
         n='<?= $username?>';
         me_id='<?= $me_id?>';
         if(!n){
             return ;   
         }
+        //创建socket，注意URL的格式：ws://ip:端口
         so=new WebSocket(url);
+        //握手监听函数
         so.onopen=function(){
             //状态为1证明握手成功，然后把client自定义的名字发送过去
             if(so.readyState==1){
@@ -238,22 +242,21 @@ A={
             eval('var da='+msg.data);
             var obj=false,c=false;
             if(da.type=='add'){
-                var obj=A.$$('<div me_id="'+da.me_id+'"><p>'+da.name+'</p></div>');
+                var obj=A.$$('<p>'+da.name+'</p>');
                 lus.appendChild(obj);
                 cuser(obj,da.code);
-                obj=A.$$('<p><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
+                obj=A.$$('<p me_id="'+da.users[i].me_id+'"><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
                 c=da.code;
             }else if(da.type=='madd'){
                 mkey=da.code;
-                da.users.unshift({'code':'all','name':'廣播'});
+                da.users.unshift({'code':'all','name':'大家'});
                 for(var i=0;i<da.users.length;i++){
                     if(da.users[i].me_id>0){
-                        if(da.users[i].me_id == $('#me_id').val()){
-                        } else{
-                            var obj=A.$$('<div me_id="'+da.users[i].me_id+'"><p>'+da.users[i].name+'</p></div>');
-                        }
+                        if(da.users[i].me_id!==$('#me_id').val()){
+                            var obj=A.$$('<p me_id="'+da.users[i].me_id+'">'+da.users[i].name+'</p>');
+                        }   
                     } else{
-                        var obj=A.$$('<div me_id="0"><p>'+da.users[i].name+'</p></div>');
+                        var obj=A.$$('<p me_id="0">'+da.users[i].name+'</p>');
                     }
                     lus.appendChild(obj);
                     if(mkey!=da.users[i].code){
@@ -337,6 +340,7 @@ A={
             key=code;
             if($('#f_chat_id').val()!==t.getAttribute('me_id')){
                 document.getElementById("ct").innerHTML='';
+                $('#ct').empty();
             }
             $('#f_chat_id').val(t.getAttribute('me_id'));
         }
@@ -414,7 +418,6 @@ A={
         A.$('nrong').focus();
         document.onclick='';
     }
-
     hh();
     A.on(window,'resize',function(){
         A.$('ltian').style.height=(document.documentElement.clientHeight - 70)+'px';
@@ -459,22 +462,6 @@ A={
         var da=rc.toDataURL();
         so.send('nr='+esc(da)+'&key='+key);
     }
-
+     
 })();
-$('#f_chat_id').val(0);
-
-// function reload_chat_room(id){
-//     // var me_id = $('#me_id').val();
-//     // var f_chat_id = $('#f_chat_id').val();
-//     $('#f_chat_id').val(id);
-// }
-
-// $('#f_chat_id').on('change', function(){
-//     document.getElementById("ct").innerHTML='';
-// });
-
-// function f_chat_id_change(){
-//     document.getElementById("ct").innerHTML='';
-
-// }
 </script>
