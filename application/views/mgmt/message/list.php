@@ -238,7 +238,7 @@ A={
             eval('var da='+msg.data);
             var obj=false,c=false;
             if(da.type=='add'){
-                var obj=A.$$('<p me_id="'+da.me_id+'" onclick="reload_chat_room('+da.me_id+')">'+da.name+'</p>');
+                var obj=A.$$('<div onclick="reload_chat_room('+da.me_id+');"><p>'+da.name+'</p></div>');
                 lus.appendChild(obj);
                 cuser(obj,da.code);
                 obj=A.$$('<p><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
@@ -250,10 +250,10 @@ A={
                     if(da.users[i].me_id>0){
                         if(da.users[i].me_id == $('#me_id').val()){
                         } else{
-                            var obj=A.$$('<p me_id="'+da.users[i].me_id+'" onclick="reload_chat_room('+da.users[i].me_id+')">'+da.users[i].name+'</p>');
+                            var obj=A.$$('<div onclick="reload_chat_room('+da.users[i].me_id+');"><p>'+da.users[i].name+'</p></div>');
                         }
                     } else{
-                        var obj=A.$$('<p me_id="0" onclick="reload_chat_room(0)">'+da.users[i].name+'</p>');
+                        var obj=A.$$('<div onclick="reload_chat_room(0);"><p>'+da.users[i].name+'</p></div>');
                     }
                     lus.appendChild(obj);
                     if(mkey!=da.users[i].code){
@@ -458,13 +458,14 @@ A={
 
 })();
 $('#f_chat_id').val(0);
+
 function reload_chat_room(id){
     // var me_id = $('#me_id').val();
     // var f_chat_id = $('#f_chat_id').val();
     $('#f_chat_id').val(id);
 }
 
-$('#f_chat_id').on('change', function(){
-    $('#ct').empty();
-});
+// $('#f_chat_id').on('change', function(){
+//     $('#ct').empty();
+// });
 </script>
