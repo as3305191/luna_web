@@ -458,8 +458,8 @@ A={
 })();
 
 function reload_chat_room(id){
-    var me_id = $('#me_id').val();
-    var f_chat_id = $('#f_chat_id').val();
+    // var me_id = $('#me_id').val();
+    // var f_chat_id = $('#f_chat_id').val();
     $('#f_chat_id').val(id);
 }
 
