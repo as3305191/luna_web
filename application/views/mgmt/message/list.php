@@ -31,7 +31,7 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 
 <body>
 <input type="" id="me_id" value="<?= isset($me_id) ? $me_id : '' ?>" />
-<input type="" id="f_chat_id" value="0" />
+<input type="" id="f_chat_id" value="" />
 
 <div id="ltian">
     <div id="us" class="jb"></div>
@@ -455,8 +455,9 @@ A={
         var da=rc.toDataURL();
         so.send('nr='+esc(da)+'&key='+key);
     }
-})();
 
+})();
+$('#f_chat_id').val(0);
 function reload_chat_room(id){
     // var me_id = $('#me_id').val();
     // var f_chat_id = $('#f_chat_id').val();
