@@ -31,8 +31,8 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 </style>
 
 <body>
-<input type="hidden" id="me_id" value="<?= isset($me_id) ? $me_id : '' ?>" />
-<input type="hidden" id="f_chat_id" value="0" />
+<input type="" id="me_id" value="<?= isset($me_id) ? $me_id : '' ?>" />
+<input type="" id="f_chat_id" value="0" />
 
 <div id="ltian">
     <div id="us" class="jb"></div>
