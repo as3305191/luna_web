@@ -14,7 +14,6 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 .rin span img{margin:0px 3px; cursor:pointer;}
 .rin span form{position:absolute; width:25px; height:25px; overflow:hidden; opacity:0; top:5px; right:5px;}
 .rin span input{width:180px; height:25px; margin-left:-160px; cursor:pointer}
- 
 #ct p{padding:5px; line-height:20px;}
 #ct a{color:#069; cursor:pointer;}
 #ct span{color:#999; margin-right:10px;}
