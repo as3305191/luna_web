@@ -31,8 +31,8 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 </style>
 
 <body>
-<input type="" id="me_id" value="<?= isset($me_id) ? $me_id : '' ?>" />
-<input type="" id="f_chat_id" value="0" />
+<input type="hidden" id="me_id" value="<?= isset($me_id) ? $me_id : '' ?>" />
+<input type="hidden" id="f_chat_id" value="0" />
 
 <div id="ltian">
     <div id="us" class="jb"></div>
@@ -460,11 +460,7 @@ A={
 function reload_chat_room(id){
     var me_id = $('#me_id').val();
     var f_chat_id = $('#f_chat_id').val();
-    if(id==me_id){
-        alert('不能和自己聊天');
-    } else{
-        $('#f_chat_id').val(id);
-    }
+    $('#f_chat_id').val(id);
 }
 
 $('#f_chat_id').on('change', function(){
