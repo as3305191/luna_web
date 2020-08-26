@@ -238,11 +238,7 @@ A={
             eval('var da='+msg.data);
             var obj=false,c=false;
             if(da.type=='add'){
-                if(da.users[i].me_id>0){
-                        var obj=A.$$('<p me_id="'+da.me_id+'" onclick="reload_chat_room('+da.me_id+')">'+da.users[i].name+'</p>');
-                    } else{
-                        var obj=A.$$('<p me_id="0" onclick="reload_chat_room(0)">'+da.name+'</p>');
-                    }
+                var obj=A.$$('<p me_id="'+da.me_id+'" onclick="reload_chat_room('+da.me_id+')">'+da.users[i].name+'</p>');
                 lus.appendChild(obj);
                 cuser(obj,da.code);
                 obj=A.$$('<p><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
