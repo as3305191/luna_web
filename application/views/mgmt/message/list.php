@@ -335,7 +335,7 @@ A={
             t.parentNode.children.rcss('ck','');
             t.rcss('','ck');
             key=code;
-            $('#f_chat_id').val(t.attr('me_id'));
+            $('#f_chat_id').val(t.getAttribute('me_id'));
         }
     }
     A.$('ltian').style.height=(document.documentElement.clientHeight - 70)+'px';
