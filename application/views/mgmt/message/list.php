@@ -327,7 +327,10 @@ A={
             return false;  
         }
         A.$('nrong').value='';
-        so.send('nr='+esc(da)+'&key='+key);
+        me_id='<?= $me_id?>';
+        var to_chat_id = $('#f_chat_id').val();
+
+        so.send('nr='+esc(da)+'&key='+key+'&me_id='+me_id+'&to_chat_id='+to_chat_id);
     }
     A.$('nrong').onkeydown=function(e){
         var e=e||event;
