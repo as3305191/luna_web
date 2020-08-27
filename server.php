@@ -277,7 +277,7 @@ class Sock{
             $sql="SELECT id FROM `users` WHERE status='0'";
             $select=mysqli_query($link,$sql);
             foreach($select as $each){
-                $map_all_user[]=$each;
+                $map_all_user[]=$each->id;
             }
             $offline_user[]=array_diff($map_all_user,$this->online_user);
 
