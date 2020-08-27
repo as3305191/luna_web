@@ -289,7 +289,7 @@ class Sock{
                         $offline_user[$each_map]=true;
                     }
                 }
-                $ar['online_user']=array_unique($online_user);
+                $ar['online_user']=$online_user;
                 $ar['offline_user']=$offline_user;
             }
            
