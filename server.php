@@ -16,7 +16,6 @@ class Sock{
     public $online_user=array();
     public $map_all_user=array();
     public $offline_user=array();
-    public $only_one_online_user;
 
     private $sda=array();   //已接收的数据
     private $slen=array();  //数据总长度
@@ -284,16 +283,14 @@ class Sock{
                 }
                 
                 $online_user[]=$me_id;
-                $only_one_online_user=array_unique($online_user);
                 foreach($map_all_user as $each_map){
                     foreach($online_user as $each_online){
                         if($each_map !==$each_online)
                         $offline_user[]=$each_map;
                     }
                 }
-                $ar['online_user']=$online_user;
+                $ar['online_user']=array_unique($online_user);
                 $ar['offline_user']=$offline_user;
-
             }
            
         }else{
