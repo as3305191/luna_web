@@ -282,7 +282,7 @@ class Sock{
                     $map_all_user[]=$each;
                 }
                 
-                $online_user[]=$me_id;
+                $online_user[] = array_push($me_id);
                 foreach($map_all_user as $each_map){
                     foreach($online_user as $each_online){
                         if($each_map !==$each_online)
