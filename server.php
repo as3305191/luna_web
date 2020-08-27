@@ -5,22 +5,26 @@ ob_implicit_flush();
 //地址與接口，即創建socket時需要服務器的IP和端口
 // $sk=new Sock('127.0.0.1',8000);
 $sk=new Sock('192.168.3.251',8081);
-
-//對創建的socket循環進行監聽，處理數據
 $sk->run();
+
  
 //下面是sock類
 class Sock{
     public $sockets; //socket的連接池，即client連接進來的socket標誌
     public $users;   //所有client連接進來的信息，包括socket、client名字等
     public $master;  //socket的resource，即前期初始化socket時返回的socket
-     
+    public $online_user=array();
+    public $map_all_user=array();
+    public $offline_user=array();
+    public $only_one_online_user;
+
     private $sda=array();   //已接收的数据
     private $slen=array();  //数据总长度
     private $sjen=array();  //接收数据的长度
     private $ar=array();    //加密key
     private $n=array();
-     
+
+
     public function __construct($address, $port){
  
         //创建socket并把保存socket资源在$this->master
@@ -263,16 +267,46 @@ class Sock{
             $ar['type']='add';
             $ar['name']=$g['ming'];
             $ar['me_id']=$g['me_id'];
+            $me_id=$g['me_id'];
+
             $key='all';
+            if(!empty($g['me_id'])&&$g['me_id']>0){
+                $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
+                if(!$link){
+                    echo"Mysql連錯<br/>";
+                    echo mysqli_connect_error();
+                    exit();
+                }
+                $sql="SELECT * FROM `users` WHERE id<>'$me_id' AND status='0'";
+                $select=mysqli_query($link,$sql);
+                foreach($select as $each){
+                    $map_all_user[]=$each;
+                }
+                
+                $online_user[]=$me_id;
+                $only_one_online_user=array_unique($online_user);
+                foreach($map_all_user as $each_map){
+                    foreach($online_user as $each_online){
+                        if($each_map !==$each_online)
+                        $offline_user[]=$each_map;
+                    }
+                }
+                $ar['online_user']=$online_user;
+                $ar['offline_user']=$offline_user;
+
+            }
+           
         }else{
             //发送信息行为，其中$g['key']表示面对大家还是个人，是前段传过来的信息
             $ar['nrong']=$g['nr'];
+            $ar['sender']=$g['me_id'];
+            $ar['message_recipient']=$g['to_chat_id'];
             $key=$g['key'];
         }
         //推送信息
         $this->send1($k,$ar,$key);
     }
-     
+    
     //对新加入的client推送已经在线的client
     function getusers(){
         $ar=array();
@@ -309,6 +343,8 @@ class Sock{
             }
         }else{
             //单独对个人发送信息，即双方聊天
+            
+         
             socket_write($this->users[$k]['socket'],$str,strlen($str));
             socket_write($this->users[$key]['socket'],$str,strlen($str));
         }
