@@ -269,7 +269,7 @@ class Sock{
             $me_id=$g['me_id'];
 
             $key='all';
-            if(!empty($g['me_id'])&&$g['me_id']>0){
+            if($g['me_id']>0){
                 $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
                 if(!$link){
                     echo"Mysql連錯<br/>";
