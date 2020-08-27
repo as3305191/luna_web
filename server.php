@@ -289,8 +289,8 @@ class Sock{
                         $offline_user[]=$each_map;
                     }
                 }
-                $ar['online_user']=$online_user;
-                $ar['offline_user']=array_unique($offline_user);
+                $ar['online_user']=array_unique($online_user);
+                $ar['offline_user']=$offline_user;
             }
            
         }else{
