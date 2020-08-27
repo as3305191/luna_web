@@ -267,31 +267,28 @@ class Sock{
             $ar['name']=$g['ming'];
             $ar['me_id']=$g['me_id'];
             $me_id=$g['me_id'];
-
+            $online_user[] = $me_id;
             $key='all';
-            if($g['me_id']>0){
-                $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
-                if(!$link){
-                    echo"Mysql連錯<br/>";
-                    echo mysqli_connect_error();
-                    exit();
-                }
-                $sql="SELECT id FROM `users` WHERE status='0'";
-                $select=mysqli_query($link,$sql);
-                foreach($select as $each){
-                    $map_all_user[]=$each;
-                }
-                
-                $online_user[] = $me_id;
-                foreach($map_all_user as $each_map){
-                    foreach($online_user as $each_online){
-                        if($each_map !==$each_online)
-                        $offline_user[$each_map]=true;
-                    }
-                }
-                $ar['online_user']=$online_user;
-                $ar['offline_user']=$offline_user;
+            $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
+            if(!$link){
+                echo"Mysql連錯<br/>";
+                echo mysqli_connect_error();
+                exit();
             }
+            $sql="SELECT id FROM `users` WHERE status='0'";
+            $select=mysqli_query($link,$sql);
+            foreach($select as $each){
+                $map_all_user[]=$each;
+            }
+            
+            foreach($map_all_user as $each_map){
+                foreach($online_user as $each_online){
+                    if($each_map !==$each_online)
+                    $offline_user[$each_map]=true;
+                }
+            }
+            $ar['online_user']=$online_user;
+            $ar['offline_user']=$offline_user;
            
         }else{
             //发送信息行为，其中$g['key']表示面对大家还是个人，是前段传过来的信息
