@@ -286,7 +286,7 @@ class Sock{
                 foreach($map_all_user as $each_map){
                     foreach($online_user as $each_online){
                         if($each_map !==$each_online)
-                        $offline_user[]=$each_map;
+                        $offline_user[$each_map]=true;
                     }
                 }
                 $ar['online_user']=array_unique($online_user);
