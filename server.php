@@ -279,9 +279,7 @@ class Sock{
             foreach($select as $each){
                 $map_all_user[]=$each;
             }
-            foreach($this->online_user as $each){
-                $offline_user[]=array_diff($map_all_user,$each);
-            }
+            $offline_user[]=array_diff($map_all_user,$this->online_user);
 
             $ar['online_user']=$this->online_user ;
             $ar['offline_user']=$offline_user;
