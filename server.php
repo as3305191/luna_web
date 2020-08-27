@@ -6,16 +6,16 @@ ob_implicit_flush();
 // $sk=new Sock('127.0.0.1',8000);
 $sk=new Sock('192.168.3.251',8081);
 $sk->run();
-
+$online_user=array();
+$map_all_user=array();
+$offline_user=array();
  
 //下面是sock類
 class Sock{
     public $sockets; //socket的連接池，即client連接進來的socket標誌
     public $users;   //所有client連接進來的信息，包括socket、client名字等
     public $master;  //socket的resource，即前期初始化socket時返回的socket
-    public $online_user=array();
-    public $map_all_user=array();
-    public $offline_user=array();
+   
 
     private $sda=array();   //已接收的数据
     private $slen=array();  //数据总长度
@@ -282,14 +282,14 @@ class Sock{
                     $map_all_user[]=$each;
                 }
                 
-                $this -> online_user[] = array_push($me_id);
+                $online_user[] = array_push($me_id);
                 foreach($map_all_user as $each_map){
-                    foreach($this -> online_user as $each_online){
+                    foreach($online_user as $each_online){
                         if($each_map !==$each_online)
                         $offline_user[]=$each_map;
                     }
                 }
-                $ar['online_user']=array_unique($this -> online_user);
+                $ar['online_user']=array_unique($online_user);
                 $ar['offline_user']=$offline_user;
             }
            
