@@ -276,13 +276,13 @@ class Sock{
                     echo mysqli_connect_error();
                     exit();
                 }
-                $sql="SELECT * FROM `users` WHERE id<>'$me_id' AND status='0'";
+                $sql="SELECT * FROM `users` WHERE status='0'";
                 $select=mysqli_query($link,$sql);
                 foreach($select as $each){
                     $map_all_user[]=$each;
                 }
                 
-                $online_user[] = array_push($me_id);
+                $online_user[] = $me_id;
                 foreach($map_all_user as $each_map){
                     foreach($online_user as $each_online){
                         if($each_map !==$each_online)
