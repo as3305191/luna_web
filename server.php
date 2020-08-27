@@ -280,7 +280,7 @@ class Sock{
                 $map_all_user[]=$each;
             }
             
-            $offline_user=array_diff($map_all_user,$$this->online_user );
+            $offline_user=array_diff($map_all_user,$this->online_user );
 
             $ar['online_user']=$this->online_user ;
             $ar['offline_user']=$offline_user;
