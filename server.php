@@ -276,7 +276,7 @@ class Sock{
                     echo mysqli_connect_error();
                     exit();
                 }
-                $sql="SELECT * FROM `users` WHERE status='0'";
+                $sql="SELECT * FROM `users` WHERE status<>'0'";
                 $select=mysqli_query($link,$sql);
                 foreach($select as $each){
                     $map_all_user[]=$each;
