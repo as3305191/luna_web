@@ -96,13 +96,15 @@ class Message extends MY_Mgmt_Controller {
 
 	public function insert() {
 		$res = array();
-		$me_id = $this -> get_post('me_id');
-		$to_message_id = $this -> get_post('to_message_id');
-		$msg = $this -> get_post('msg');
+		$me_id = $this -> get_post('me');
+		$to_message_id = $this -> get_post('f_chat_id');
+		$msg = $this -> get_post('message');
+		$status = $this -> get_post('status');
 
 		$data['user_id'] = $me_id;
 		$data['to_user_id'] = $to_message_id;
-		$data['msg'] = $msg;
+		$data['content'] = $msg;
+		$data['status'] = $status;
 
 		if(!empty($me_id) && !empty($to_message_id) && !empty($msg)) {
 			// insert

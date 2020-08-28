@@ -340,15 +340,18 @@ class Sock{
             }
         }else{
             //单独对个人发送信息，即双方聊天  
-            if( $ar['is_online']==0){
+            if( $ar['is_online']==0){//未上限所以未讀
                 $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
                 if(!$link){
                     echo"Mysql連錯<br/>";
                     echo mysqli_connect_error();
                     exit();
                 }
-                $sql="SELECT id FROM `users` WHERE status='0'";
-                $select=mysqli_query($link,$sql);
+                $content=$ar['nrong'];
+                $from_user_id=$ar['sender'];
+                $to_user_id=$ar['message_recipient'];
+                $sql="INSERT INTO user_msg(from_user_id,to_user_id,status)VALUES('$from_user_id','$to_user_id','$content','0')";
+                mysqli_query($link,$sql);
             } else{
                 socket_write($this->users[$k]['socket'],$str,strlen($str));
                 socket_write($this->users[$key]['socket'],$str,strlen($str));

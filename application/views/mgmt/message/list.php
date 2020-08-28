@@ -343,14 +343,35 @@ A={
                         return '<img src="'+a+'">';
                     });
                     //da.code 发信息人的code
+                    var status='';
                     if(da.code1==mkey){
-                        obj=A.$$('<p class="c3"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p>');
+                        if(da.sender==$('#f_chat_id').val()){
+                            obj=A.$$('<p class="c3"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p>');
+                            status=1;
+                        } else{
+                            status=0;
+                        }
+                        var url = baseUrl + 'mgmt/message/insert';
+                        $.ajax({
+                            type : "POST",
+                            url : url,
+                            data : {
+                                me: $('#me_id').val(),
+                                f_chat_id: $('#da.sender').val(),
+                                message: da.nrong,
+                                status: status
+                            },
+                            success : function(data) {
+                            
+                            }
+                        });
                         c=da.code;
                     }else if(da.code==mkey){
-                        if(da.code1!='all')
-                        obj=A.$$('<p class="c3"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
-                        else
-                        obj=A.$$('<p><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
+                        if(da.code1!='all'){
+                                obj=A.$$('<p class="c3"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
+                        } else{
+                            obj=A.$$('<p><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
+                        }
                         c=da.code1;
                     }else if(da.code==false){
                         obj=A.$$('<p><span>['+da.time+']</span>'+da.nrong+'</p>');
@@ -358,6 +379,7 @@ A={
                         obj=A.$$('<p><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對'+users[da.code1].innerHTML+'說：'+da.nrong+'</p>');
                         c=da.code;
                     }
+
                 }
             }
             if(c){
