@@ -338,17 +338,17 @@ class Sock{
             foreach($users as $v){
                 socket_write($v['socket'],$str,strlen($str));
             }
-            $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
-            if(!$link){
-                echo"Mysql連錯<br/>";
-                echo mysqli_connect_error();
-                exit();
-            }
-            $content=$ar['nrong'];
-            $from_user_id=$ar['sender'];
-            $to_user_id=$ar['message_recipient'];
-            $sql="INSERT INTO user_msg('from_user_id','to_user_id','status')VALUES('$from_user_id','$to_user_id','$content','0')";
-            mysqli_query($link,$sql);
+            // $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
+            // if(!$link){
+            //     echo"Mysql連錯<br/>";
+            //     echo mysqli_connect_error();
+            //     exit();
+            // }
+            // $content=$ar['nrong'];
+            // $from_user_id=$ar['sender'];
+            // $to_user_id=$ar['message_recipient'];
+            // $sql="INSERT INTO user_msg('from_user_id','to_user_id','status')VALUES('$from_user_id','$to_user_id','$content','0')";
+            // mysqli_query($link,$sql);
         }else{
             //单独对个人发送信息，即双方聊天  
             if( $ar['is_online']==0){//未上限所以未讀
