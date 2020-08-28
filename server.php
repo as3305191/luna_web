@@ -347,7 +347,7 @@ class Sock{
             $content=$ar['nrong'];
             $from_user_id=$ar['sender'];
             $to_user_id=$ar['message_recipient'];
-            $sql="INSERT INTO user_msg(from_user_id,to_user_id,status)VALUES('$from_user_id','$to_user_id','$content','0')";
+            $sql="INSERT INTO user_msg('from_user_id','to_user_id','status')VALUES('$from_user_id','$to_user_id','$content','0')";
             mysqli_query($link,$sql);
         }else{
             //单独对个人发送信息，即双方聊天  
@@ -361,7 +361,7 @@ class Sock{
                 $content=$ar['nrong'];
                 $from_user_id=$ar['sender'];
                 $to_user_id=$ar['message_recipient'];
-                $sql="INSERT INTO user_msg(from_user_id,to_user_id,status)VALUES('$from_user_id','$to_user_id','$content','0')";
+                $sql="INSERT INTO user_msg('from_user_id','to_user_id','status')VALUES('$from_user_id','$to_user_id','$content','0')";
                 mysqli_query($link,$sql);
             } else{
                 socket_write($this->users[$k]['socket'],$str,strlen($str));
