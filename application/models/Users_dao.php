@@ -717,5 +717,14 @@ class Users_dao extends MY_Model {
 
 		return $list;
 	}
+
+	function find_all_offline_users($id) {
+		$this -> db -> from("{$this->table_name}");
+		$this -> db -> select("id");
+		$this -> db -> select("user_name");
+		$this -> db -> where("id", $id);
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
 }
 ?>

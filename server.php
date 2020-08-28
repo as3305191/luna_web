@@ -265,7 +265,14 @@ class Sock{
             $ar['name']=$g['ming'];
             $ar['me_id']=$g['me_id'];
             $me_id=$g['me_id'];
-            $this->online_user[] = $me_id;
+            if(count($this->online_user)>0){
+                if(!in_array($me_id,$this->online_user)){
+                    $this->online_user[] = $me_id;
+                }
+            } else{
+                $this->online_user[] = $me_id;
+            }
+          
             $map_all_user = array();
             $key='all';
             $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
@@ -277,13 +284,12 @@ class Sock{
             $sql="SELECT id FROM `users` WHERE status='0'";
             $select=mysqli_query($link,$sql);
             foreach($select as $each){
-                $map_all_user[]=$each->id;
+                $map_all_user[]=$each['id'];
             }
             $offline_user[]=array_diff($map_all_user,$this->online_user);
-
-            $ar['online_user']=$this->online_user ;
+            $ar['online_user']=$this->online_user;
             $ar['offline_user']=$offline_user;
-           
+
         }else{
             //发送信息行为，其中$g['key']表示面对大家还是个人，是前段传过来的信息
             $ar['nrong']=$g['nr'];

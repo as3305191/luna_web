@@ -4,7 +4,8 @@ body,p{margin:0px; padding:0px; font-size:14px; color:#333; font-family:Arial, H
 #ltian{border:1px #ccc solid;overflow-y:auto; overflow-x:hidden; position:relative;}
 #ct{margin-right:111px; height:100%;overflow-y:auto;overflow-x: hidden;}
 #us{width:110px; overflow-y:auto; overflow-x:hidden; float:right; border-left:1px #ccc solid; height:100%; background-color:#F1F1F1;}
-#us p{padding:3px 5px; color:#08C; line-height:20px; height:20px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+#us #us_online p{padding:3px 5px; color:#08C; line-height:20px; height:20px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
+#us #us_offline p{padding:3px 5px; color:#878787;line-height:20px; height:20px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 #us p:hover,#us p:active,#us p.ck{background-color:#069; color:#FFF;}
 #us p.my:hover,#us p.my:active,#us p.my{color:#333;background-color:transparent;}
 button{float:right; width:80px; height:35px; font-size:18px;}
@@ -35,7 +36,10 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <input type="hidden" id="f_chat_id" value="0">
 
 <div id="ltian">
-    <div id="us" class="jb"></div>
+    <div id="us" class="jb">
+        <div id="us_online" class="jb"></div>
+        <div id="us_offline" class="jb"></div>
+    </div>
     <div id="ct"></div>
     <a style="display:none" href="javascript:;" class="qp" onClick="this.parentNode.children[1].innerHTML=''">清屏</a>
 </div>
@@ -213,7 +217,7 @@ A={
     var users={};
     var url='<?= $socket_url?>';
     var so=false,n=false,me_id=false;
-    var lus=A.$('us'),lct=A.$('ct');
+    var lus=A.$('us_online'),lct=A.$('ct');
     function st(){
         // n=prompt('取個名子');
         n='<?= $username?>';
@@ -244,10 +248,37 @@ A={
             if(da.type=='add'){
                 if(da.me_id>0){
                         var obj=A.$$('<p me_id="'+da.me_id+'">'+da.name+'</p>');
-                    }                lus.appendChild(obj);
+                    }             
+                lus.appendChild(obj);
                 cuser(obj,da.code);
+               
                 obj=A.$$('<p"><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
                 c=da.code;
+                var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
+                var each_offline_user = '';
+                var us_offline = $('#us_offline').empty();
+                $.ajax({
+                    url : url,
+                    type: 'POST',
+                    data: {
+                        id_array: da.offline_user,
+
+                    },
+                    dataType: 'json',
+                    success: function(d) {
+                        // console.log(d);
+                        $.each(d.offline_users, function(){
+                            var me = this;
+                            each_offline_user += '<p me_id="'+me[0].id+'" onclick="change_f_chat('+me[0].id+');">'+me[0].user_name+'</p>';
+                        })
+                        var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
+                        us_offline.append(html);
+
+                    },
+                    failure:function(){
+                        alert('faialure');
+                    }
+                });
             }else if(da.type=='madd'){
                 mkey=da.code;
                 da.users.unshift({'code':'all','name':'大家'});
@@ -263,12 +294,38 @@ A={
                     if(mkey!=da.users[i].code){
                         cuser(obj,da.users[i].code);
                     }else{
-                        obj.className='my';
+                        // obj.className='my';
                         document.title=da.users[i].name;
                     }
                 }
                 obj=A.$$('<p><span>['+da.time+']</span>歡迎'+da.name+'加入</p>');
-                users.all.className='ck';
+                // users.all.className='ck';
+                var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
+                var each_offline_user = '';
+                var us_offline = $('#us_offline').empty();
+                $.ajax({
+                    url : url,
+                    type: 'POST',
+                    data: {
+                        id_array: da.offline_user,
+
+                    },
+                    dataType: 'json',
+                    success: function(d) {
+                        // console.log(d);
+                        $.each(d.offline_users, function(){
+                            var me = this;
+                            each_offline_user += '<p me_id="'+me[0].id+'" onclick="change_f_chat('+me[0].id+');">'+me[0].user_name+'</p>';
+                        })
+                        var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
+                        us_offline.append(html);
+
+                    },
+
+                    failure:function(){
+                        alert('faialure');
+                    }
+                });
             }
              
             if(obj==false){
@@ -339,8 +396,8 @@ A={
     function cuser(t,code){
         users[code]=t;
         t.onclick=function(){
-            t.parentNode.children.rcss('ck','');
-            t.rcss('','ck');
+            // t.parentNode.children.rcss('ck','');
+            // t.rcss('','ck');
             key=code;
             if($('#f_chat_id').val()!==t.getAttribute('me_id')){
                 document.getElementById("ct").innerHTML='';
@@ -374,7 +431,7 @@ A={
         ems.children[1].appendChild(a);
         ef(a,i);
     }
-    ems.children[1].children[0].className='ck';
+    // ems.children[1].children[0].className='ck';
      
     function ct(){
         var wz=bq.weiz();
@@ -390,8 +447,8 @@ A={
             s=i*r*c;
             ems.children[0].innerHTML='';
             hh();
-            this.parentNode.children.rcss('ck','');
-            this.rcss('','ck');
+            // this.parentNode.children.rcss('ck','');
+            // this.rcss('','ck');
             try{e.stopPropagation();}catch(o){}
         }
     }
@@ -468,4 +525,8 @@ A={
     }
      
 })();
+
+function change_f_chat(id){
+    $('#f_chat_id').val(id);
+}
 </script>

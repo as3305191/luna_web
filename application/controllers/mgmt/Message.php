@@ -141,11 +141,20 @@ class Message extends MY_Mgmt_Controller {
  		$this -> to_json($res);
 	}
 
-
-
 	public function find_all_user() {
 		$all_users = $this -> users_dao -> find_all_user_by_message();
 		$res['all_users'] = $all_users;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function find_offline_users() {
+		$offline_arr = $this -> get_post('id_array');
+		// json_decode($offline_arr,true);
+		foreach($offline_arr[0] as $each_offline){
+			$all_users = $this -> users_dao -> find_all_offline_users($each_offline);
+			$res['offline_users'][] = $all_users;
+		}
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
