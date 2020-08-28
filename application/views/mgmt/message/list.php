@@ -370,7 +370,21 @@ A={
                         if(da.code1!='all'){
                                 obj=A.$$('<p class="c3"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
                         } else{
-                            obj=A.$$('<p><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
+                            if(da.message_recipient>0){
+                                var url = baseUrl + 'mgmt/message/find_offline_user';
+                                $.ajax({
+                                    type : "POST",
+                                    url : url,
+                                    data : {
+                                        f_chat_id: da.message_recipient,
+                                    },
+                                    success : function(d) {
+                                        obj=A.$$('<p><span>['+da.time+']</span>我對<a>'+d.user_name+'</a>說：'+da.nrong+'</p>');
+                                    }
+                                });
+                            } else{
+                                obj=A.$$('<p><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
+                            }
                         }
                         c=da.code1;
                     }else if(da.code==false){

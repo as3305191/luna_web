@@ -160,4 +160,13 @@ class Message extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
+
+	public function find_offline_user() {
+		$f_chat_id = $this -> get_post('f_chat_id');
+		// json_decode($offline_arr,true);
+		$user_list = $this -> users_dao -> find_by_id($f_chat_id);
+		$res['user_list'] = $user_list;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
 }
