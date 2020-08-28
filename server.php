@@ -264,6 +264,7 @@ class Sock{
             $ar['type']='add';
             $ar['name']=$g['ming'];
             $ar['me_id']=$g['me_id'];
+
             $me_id=$g['me_id'];
             if(count($this->online_user)>0){
                 if(!in_array($me_id,$this->online_user)){
@@ -295,6 +296,8 @@ class Sock{
             $ar['nrong']=$g['nr'];
             $ar['sender']=$g['me_id'];
             $ar['message_recipient']=$g['to_chat_id'];
+            $is_online=$g['is_online'];//0沒上限1上限2公開群組
+            $ar['is_online']= $is_online;
             $key=$g['key'];
         }
         //推送信息
@@ -336,11 +339,21 @@ class Sock{
                 socket_write($v['socket'],$str,strlen($str));
             }
         }else{
-            //单独对个人发送信息，即双方聊天
+            //单独对个人发送信息，即双方聊天  
+            if( $ar['is_online']==0){
+                $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
+                if(!$link){
+                    echo"Mysql連錯<br/>";
+                    echo mysqli_connect_error();
+                    exit();
+                }
+                $sql="SELECT id FROM `users` WHERE status='0'";
+                $select=mysqli_query($link,$sql);
+            } else{
+                socket_write($this->users[$k]['socket'],$str,strlen($str));
+                socket_write($this->users[$key]['socket'],$str,strlen($str));
+            }       
             
-         
-            socket_write($this->users[$k]['socket'],$str,strlen($str));
-            socket_write($this->users[$key]['socket'],$str,strlen($str));
         }
     }
      

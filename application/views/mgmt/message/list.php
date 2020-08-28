@@ -34,6 +34,7 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <body>
 <input type="hidden" id="me_id" value="<?= isset($me_id) ? $me_id : ''?>">
 <input type="hidden" id="f_chat_id" value="0">
+<input type="hidden" id="is_online"  value="2">
 
 <div id="ltian">
     <div id="us" class="jb">
@@ -222,6 +223,7 @@ A={
         // n=prompt('取個名子');
         n='<?= $username?>';
         me_id='<?= $me_id?>';
+
         if(!n){
             return ;   
         }
@@ -380,8 +382,9 @@ A={
         A.$('nrong').value='';
         me_id='<?= $me_id?>';
         var to_chat_id = $('#f_chat_id').val();
+        var is_online=$('#is_online').val();
 
-        so.send('nr='+esc(da)+'&key='+key+'&me_id='+me_id+'&to_chat_id='+to_chat_id);
+        so.send('nr='+esc(da)+'&key='+key+'&me_id='+me_id+'&to_chat_id='+to_chat_id+'&is_online='+is_online);
     }
     A.$('nrong').onkeydown=function(e){
         var e=e||event;
@@ -404,6 +407,14 @@ A={
                 $('#ct').empty();
             }
             $('#f_chat_id').val(t.getAttribute('me_id'));
+            if(t.getAttribute('me_id')==0){
+                $('#is_online').val(2);
+
+            } else{
+                $('#is_online').val(1);
+
+            }
+
         }
     }
     A.$('ltian').style.height=(document.documentElement.clientHeight - 70)+'px';
@@ -528,5 +539,7 @@ A={
 
 function change_f_chat(id){
     $('#f_chat_id').val(id);
+    $('#is_online').val(0);
+
 }
 </script>
