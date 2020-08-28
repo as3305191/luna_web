@@ -379,7 +379,7 @@ A={
                                         f_chat_id: da.message_recipient,
                                     },
                                     success : function(d) {
-                                        obj=A.$$('<p><span>['+da.time+']</span>我對<a>'+d.user_name+'</a>說：'+da.nrong+'</p>');
+                                        obj=A.$$('<p><span>['+da.time+']</span>我對<a>'+users[da.code1]+'</a>說：'+da.nrong+'</p>');
                                     }
                                 });
                             } else{
