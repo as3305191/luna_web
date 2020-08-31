@@ -290,6 +290,9 @@ class Sock{
             $offline_user[]=array_diff($map_all_user,$this->online_user);
             $ar['online_user']=$this->online_user;
             $ar['offline_user']=$offline_user;
+            $sql1="UPDATE users SET code=$k WHERE id=$me_id";
+
+            mysqli_query($link,$sql1);
 
         }else{
             //发送信息行为，其中$g['key']表示面对大家还是个人，是前段传过来的信息
@@ -370,6 +373,19 @@ class Sock{
         $this->close($k);
         $ar['type']='rmove';
         $ar['nrong']=$k;
+        $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
+        if(!$link){
+            echo"Mysql連錯<br/>";
+            echo mysqli_connect_error();
+            exit();
+        }
+        $sql="SELECT id FROM `users` WHERE code=$k";
+        $select=mysqli_query($link,$sql);
+        foreach($select as $each){
+            $now_off_user[]=$each['id'];
+        }
+        mysqli_query($link,$sql);
+        $online_user[]=array_diff($this->online_user,$now_off_user);
         $this->send1(false,$ar,'all');
     }
      
