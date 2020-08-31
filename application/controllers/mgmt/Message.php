@@ -101,7 +101,7 @@ class Message extends MY_Mgmt_Controller {
 		$msg = $this -> get_post('message');
 		$status = $this -> get_post('status');
 
-		$data['user_id'] = $me_id;
+		$data['from_user_id'] = $me_id;
 		$data['to_user_id'] = $to_message_id;
 		$data['content'] = $msg;
 		$data['status'] = $status;

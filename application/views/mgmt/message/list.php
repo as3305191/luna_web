@@ -35,6 +35,8 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <input type="hidden" id="me_id" value="<?= isset($me_id) ? $me_id : ''?>">
 <input type="hidden" id="f_chat_id" value="0">
 <input type="hidden" id="is_online"  value="2">
+<input type="hidden" id="to_chat_name"  value="">
+
 
 <div id="ltian">
     <div id="us" class="jb">
@@ -271,7 +273,7 @@ A={
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            each_offline_user += '<p me_id="'+me[0].id+'" onclick="change_f_chat('+me[0].id+');">'+me[0].user_name+'</p>';
+                            us_offline += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
                         })
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
@@ -317,7 +319,7 @@ A={
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            each_offline_user += '<p me_id="'+me[0].id+'" onclick="change_f_chat('+me[0].id+');">'+me[0].user_name+'</p>';
+                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
                         })
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
@@ -343,28 +345,8 @@ A={
                         return '<img src="'+a+'">';
                     });
                     //da.code 发信息人的code
-                    var status='';
                     if(da.code1==mkey){
-                        if(da.sender==$('#f_chat_id').val()){
-                            obj=A.$$('<p class="c3"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p>');
-                            status=1;
-                        } else{
-                            status=0;
-                        }
-                        var url = baseUrl + 'mgmt/message/insert';
-                        $.ajax({
-                            type : "POST",
-                            url : url,
-                            data : {
-                                me: $('#me_id').val(),
-                                f_chat_id: $('#da.sender').val(),
-                                message: da.nrong,
-                                status: status
-                            },
-                            success : function(data) {
-                            
-                            }
-                        });
+                        obj=A.$$('<p class="c3"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p>');
                         c=da.code;
                     }else if(da.code==mkey){
                         if(da.code1!='all'){
@@ -419,8 +401,55 @@ A={
         me_id='<?= $me_id?>';
         var to_chat_id = $('#f_chat_id').val();
         var is_online=$('#is_online').val();
-
-        so.send('nr='+esc(da)+'&key='+key+'&me_id='+me_id+'&to_chat_id='+to_chat_id+'&is_online='+is_online);
+        var to_chat_name=$('#to_chat_name').val();
+        var today=new Date();
+        if(today.getMonth()+1<10){
+            var Month = '0'+(today.getMonth()+1);
+        } else{
+            var Month = (today.getMonth()+1);
+        }
+        if(today.getDate()<10){
+            var now_Date = '0'+today.getDate();
+        } else{
+            var now_Date = today.getDate();
+        }
+        if(today.getHours()<10){
+            var Hours = '0'+today.getHours();
+        } else{
+            var Hours = today.getHours();
+        }
+        if(today.getMinutes()<10){
+            var Minutes = '0'+today.getMinutes();
+        } else{
+            var Minutes = today.getMinutes();
+        }
+        if(today.getSeconds()<10){
+            var Seconds = '0'+today.getSeconds();
+        } else{
+            var Seconds = today.getSeconds();
+        }
+        var currentDateTime = (Month)+ '-'+now_Date+' '+Hours+':'+Minutes+':'+Seconds;
+        if(is_online==0){
+            var url = baseUrl + 'mgmt/message/insert';
+            $.ajax({
+                type : "POST",
+                url : url,
+                data : {
+                    me: me_id,
+                    f_chat_id: to_chat_id,
+                    message:da,
+                    status: 0
+                },
+                success : function(data) {
+                    obj=A.$$('<p><span>['+currentDateTime+']</span>我對<a>'+to_chat_name+'</a>說：'+da+'</p>');
+                    //append
+                    lct.appendChild(obj);
+                    lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+                }
+            });
+        } else{
+            so.send('nr='+esc(da)+'&key='+key+'&me_id='+me_id+'&to_chat_id='+to_chat_id+'&is_online='+is_online);
+        }
     }
     A.$('nrong').onkeydown=function(e){
         var e=e||event;
@@ -573,9 +602,9 @@ A={
      
 })();
 
-function change_f_chat(id){
+function change_f_chat(id,name){
     $('#f_chat_id').val(id);
     $('#is_online').val(0);
-
+    $('#to_chat_name').val(name);
 }
 </script>
