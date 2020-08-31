@@ -21,10 +21,10 @@ class User_msg_dao extends MY_Model {
 		if(!empty($data['user_id']) && !empty($data['to_user_id'])){
 		
 			$this -> db -> group_start();
-			$this -> db -> where("_m.user_id", $data['user_id']);
+			$this -> db -> where("_m.from_user_id", $data['user_id']);
 			$this -> db -> where("_m.to_user_id", $data['to_user_id']);
 			$this -> db -> or_group_start();
-			$this -> db -> where("_m.user_id", $data['to_user_id']);
+			$this -> db -> where("_m.from_user_id", $data['to_user_id']);
 			$this -> db -> where("_m.to_user_id", $data['user_id']);
 			$this -> db -> group_end();
 			$this -> db -> group_end();

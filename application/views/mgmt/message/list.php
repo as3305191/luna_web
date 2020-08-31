@@ -353,8 +353,8 @@ A={
                                 type : "POST",
                                 url : url,
                                 data : {
-                                    me: da.message_recipient,
-                                    f_chat_id: da.sender,
+                                    me: da.sender,
+                                    f_chat_id: da.message_recipient,
                                     message:da.nrong,
                                     status: 1//已讀
                                 },
@@ -624,6 +624,8 @@ function change_f_chat(id,name){
     $('#f_chat_id').val(id);
     $('#is_online').val(0);
     $('#to_chat_name').val(name);
+    var me_id=$('#me_id').val();
+
     var url = baseUrl + 'mgmt/message/reload_message_record';
     $.ajax({
         type : "POST",
@@ -633,13 +635,13 @@ function change_f_chat(id,name){
             to_message_id: id,
         },
         success : function(data) {
-            message=da.replace(/{\\(\d+)}/g,function(a,b){
-                return '<img src="../img/face/'+b+'.gif">';
-            });
-            obj=A.$$('<p><span>['+currentDateTime+']</span>我對<a>'+to_chat_name+'</a>說：'+message+'</p>');
-            //append
-            lct.appendChild(obj);
-            lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+            // message=da.replace(/{\\(\d+)}/g,function(a,b){
+            //     return '<img src="../img/face/'+b+'.gif">';
+            // });
+            // obj=A.$$('<p><span>['+currentDateTime+']</span>我對<a>'+to_chat_name+'</a>說：'+message+'</p>');
+            // //append
+            // lct.appendChild(obj);
+            // lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
         }
     });
 
