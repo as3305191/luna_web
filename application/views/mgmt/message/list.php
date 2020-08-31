@@ -37,7 +37,6 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <input type="hidden" id="is_online"  value="2">
 <input type="hidden" id="to_chat_name"  value="">
 
-
 <div id="ltian">
     <div id="us" class="jb">
         <div id="us_online" class="jb"></div>
@@ -438,10 +437,13 @@ A={
                     me: me_id,
                     f_chat_id: to_chat_id,
                     message:da,
-                    status: 0
+                    status: 0//未讀
                 },
                 success : function(data) {
-                    obj=A.$$('<p><span>['+currentDateTime+']</span>我對<a>'+to_chat_name+'</a>說：'+da+'</p>');
+                    message=da.replace(/{\\(\d+)}/g,function(a,b){
+                        return '<img src="../img/face/'+b+'.gif">';
+                    });
+                    obj=A.$$('<p><span>['+currentDateTime+']</span>我對<a>'+to_chat_name+'</a>說：'+message+'</p>');
                     //append
                     lct.appendChild(obj);
                     lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
@@ -485,7 +487,6 @@ A={
     A.$('ltian').style.height=(document.documentElement.clientHeight - 70)+'px';
     st();
      
- 
     var bq=A.$('imgbq'),ems=A.$('ems');
     var l=80,r=4,c=5,s=0,p=Math.ceil(l/(r*c));
     var pt='../img/face/';

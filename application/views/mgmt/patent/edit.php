@@ -517,14 +517,14 @@ function check_family(){
 }
 
 $('#add_country').click(function() {
-		layer.open({
-      type:2,
-      title:'',
-      closeBtn:0,
-      area:['400px','200px'],
-      shadeClose:true,
-      content:'<?=base_url('mgmt/patent/new_country')?>'
+	layer.open({
+		type:2,
+		title:'',
+		closeBtn:0,
+		area:['400px','200px'],
+		shadeClose:true,
+		content:'<?=base_url('mgmt/patent/new_country')?>'
     })
-	})
+})
 
 </script>
