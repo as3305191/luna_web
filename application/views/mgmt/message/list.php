@@ -272,7 +272,7 @@ A={
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            us_offline += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
                         })
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
@@ -345,27 +345,44 @@ A={
                     });
                     //da.code 发信息人的code
                     if(da.code1==mkey){
-                        obj=A.$$('<p class="c3"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p>');
-                        c=da.code;
+                        if(da.sender==$('#f_chat_id').val()){
+                            obj=A.$$('<p class="c3"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p>');
+                            c=da.code;
+                            var url = baseUrl + 'mgmt/message/insert';
+                            $.ajax({
+                                type : "POST",
+                                url : url,
+                                data : {
+                                    me: da.message_recipient,
+                                    f_chat_id: da.sender,
+                                    message:da.nrong,
+                                    status: 1//已讀
+                                },
+                                success : function(data) {
+                                }
+                            });
+                        } else{
+                            var url = baseUrl + 'mgmt/message/insert';
+                            $.ajax({
+                                type : "POST",
+                                url : url,
+                                data : {
+                                    me: da.message_recipient,
+                                    f_chat_id: da.sender,
+                                    message:da.nrong,
+                                    status: 0//未讀
+                                },
+                                success : function(data) {
+                                }
+                            });
+                        }
+                        
                     }else if(da.code==mkey){
                         if(da.code1!='all'){
                                 obj=A.$$('<p class="c3"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
                         } else{
-                            if(da.message_recipient>0){
-                                var url = baseUrl + 'mgmt/message/find_offline_user';
-                                $.ajax({
-                                    type : "POST",
-                                    url : url,
-                                    data : {
-                                        f_chat_id: da.message_recipient,
-                                    },
-                                    success : function(d) {
-                                        obj=A.$$('<p><span>['+da.time+']</span>我對<a>'+users[da.code1]+'</a>說：'+da.nrong+'</p>');
-                                    }
-                                });
-                            } else{
-                                obj=A.$$('<p><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
-                            }
+                            obj=A.$$('<p><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
+
                         }
                         c=da.code1;
                     }else if(da.code==false){
