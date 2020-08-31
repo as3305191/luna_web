@@ -600,6 +600,7 @@ A={
             r.readAsDataURL(f);
         }
     });
+
     img.onload=function(){
         ih=img.height,iw=img.width;
         if(iw/ih > dw/dh && iw > dw){
@@ -617,12 +618,31 @@ A={
         var da=rc.toDataURL();
         so.send('nr='+esc(da)+'&key='+key);
     }
-     
 })();
 
 function change_f_chat(id,name){
     $('#f_chat_id').val(id);
     $('#is_online').val(0);
     $('#to_chat_name').val(name);
+    var url = baseUrl + 'mgmt/message/reload_message_record';
+    $.ajax({
+        type : "POST",
+        url : url,
+        data : {
+            me_id: me_id,
+            to_message_id: id,
+        },
+        success : function(data) {
+            message=da.replace(/{\\(\d+)}/g,function(a,b){
+                return '<img src="../img/face/'+b+'.gif">';
+            });
+            obj=A.$$('<p><span>['+currentDateTime+']</span>我對<a>'+to_chat_name+'</a>說：'+message+'</p>');
+            //append
+            lct.appendChild(obj);
+            lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+        }
+    });
+
 }
+
 </script>
