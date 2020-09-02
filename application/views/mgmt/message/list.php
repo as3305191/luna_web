@@ -549,6 +549,40 @@ A={
                 $('#is_online').val(1);
 
             }
+            
+            $('#is_online').val(0);
+            var me_id=$('#me_id').val();
+            var url = baseUrl + 'mgmt/message/reload_message_record';
+        
+            $.ajax({
+                type : "POST",
+                url : url,
+                data : {
+                    me_id: me_id,
+                    to_message_id:  $('#f_chat_id').val(),
+                },
+                success : function(d) {
+                    if(d.msg_list){
+                        var message = '';
+                    
+                        $.each(d.msg_list, function(){
+                            var me = this;
+                            message=me.content.replace(/{\\(\d+)}/g,function(a,b){
+                                return '<img src="../img/face/'+b+'.gif">';
+                            });
+                            if(me.from_user_id==me_id){
+                                obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span>我對<a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p>');
+                                lct.appendChild(obj);
+                                lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+                            } else{
+                                obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p>');
+                                lct.appendChild(obj);
+                                lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+                            }
+                        })
+                    }
+                }
+            });
 
         }
     }
@@ -707,8 +741,6 @@ function change_f_chat(id,name){
                     }
                 })
             }
-           
-         
         }
     });
 
