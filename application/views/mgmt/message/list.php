@@ -242,6 +242,31 @@ A={
         so.onclose=function(){
             so=false;
             lct.appendChild(A.$$('<p class="c2">退出聊天室</p>'));
+            var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
+                var each_offline_user = '';
+                var us_offline = $('#us_offline').empty();
+                $.ajax({
+                    url : url,
+                    type: 'POST',
+                    data: {
+                        id_array: da.offline_user,
+
+                    },
+                    dataType: 'json',
+                    success: function(d) {
+                        // console.log(d);
+                        $.each(d.offline_users, function(){
+                            var me = this;
+                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                        })
+                        var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
+                        us_offline.append(html);
+
+                    },
+                    failure:function(){
+                        alert('faialure');
+                    }
+                });
         }
          
         //数据接收监听，接收服务器推送过来的信息，返回的数据给msg，然后进行显示
@@ -337,6 +362,32 @@ A={
                     lct.appendChild(obj);
                     users[da.nrong].del();
                     delete users[da.nrong];
+                    var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
+                    var each_offline_user = '';
+                    var us_offline = $('#us_offline').empty();
+                    $.ajax({
+                        url : url,
+                        type: 'POST',
+                        data: {
+                            id_array: da.offline_user,
+
+                        },
+                        dataType: 'json',
+                        success: function(d) {
+                            // console.log(d);
+                            $.each(d.offline_users, function(){
+                                var me = this;
+                                each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                            })
+                            var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
+                            us_offline.append(html);
+
+                        },
+
+                        failure:function(){
+                            alert('faialure');
+                        }
+                    });
                 }else{
                     da.nrong=da.nrong.replace(/{\\(\d+)}/g,function(a,b){
                         return '<img src="../img/face/'+b+'.gif">';
@@ -621,12 +672,14 @@ A={
 })();
 
 function change_f_chat(id,name){
+    var lus=A.$('us_online'),lct=A.$('ct');
     $('#f_chat_id').val(id);
     $('#is_online').val(0);
     $('#to_chat_name').val(name);
     var me_id=$('#me_id').val();
-
     var url = baseUrl + 'mgmt/message/reload_message_record';
+    $('#ct').empty();
+    // lct.empty();
     $.ajax({
         type : "POST",
         url : url,
@@ -634,14 +687,28 @@ function change_f_chat(id,name){
             me_id: me_id,
             to_message_id: id,
         },
-        success : function(data) {
-            // message=da.replace(/{\\(\d+)}/g,function(a,b){
-            //     return '<img src="../img/face/'+b+'.gif">';
-            // });
-            // obj=A.$$('<p><span>['+currentDateTime+']</span>我對<a>'+to_chat_name+'</a>說：'+message+'</p>');
-            // //append
-            // lct.appendChild(obj);
-            // lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+        success : function(d) {
+            if(d.msg_list){
+                var message = '';
+               
+                $.each(d.msg_list, function(){
+                    var me = this;
+                    message=me.content.replace(/{\\(\d+)}/g,function(a,b){
+                        return '<img src="../img/face/'+b+'.gif">';
+                    });
+                    if(me.from_user_id==me_id){
+                        obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span>我對<a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p>');
+                        lct.appendChild(obj);
+                        lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+                    } else{
+                        obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p>');
+                        lct.appendChild(obj);
+                        lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+                    }
+                })
+            }
+           
+         
         }
     });
 

@@ -127,7 +127,7 @@ class Message extends MY_Mgmt_Controller {
 			// insert
 			$msg_list = $this -> dao -> find_record($data);
 			foreach($msg_list as $each){
-				$user_name_find = $this -> users_dao -> find_by_id($each->user_id);
+				$user_name_find = $this -> users_dao -> find_by_id($each->from_user_id);
 				$to_user_name_find = $this -> users_dao -> find_by_id($each->to_user_id);
 				$each->user_name = $user_name_find->user_name;
 				$each->to_user_name = $to_user_name_find->user_name;

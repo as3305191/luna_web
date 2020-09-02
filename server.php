@@ -282,8 +282,8 @@ class Sock{
                 echo mysqli_connect_error();
                 exit();
             }
-            $sql1="UPDATE users SET code=$k WHERE id=$me_id";
-            mysqli_query($link,$sql1);
+            // $sql1="UPDATE users SET code=$k WHERE id=$me_id";
+            // mysqli_query($link,$sql1);
             $sql="SELECT id FROM `users` WHERE status='0'";
             $select=mysqli_query($link,$sql);
             foreach($select as $each){
@@ -336,13 +336,23 @@ class Sock{
         $ar['code']=$k;
         date_default_timezone_set('Asia/Taipei');
         $ar['time']=date('m-d H:i:s');
+        $me_id=$ar['me_id'];
         //对发送信息进行编码处理
         $str = $this->code(json_encode($ar));
         //面对大家即所有在线者发送信息
+       
         if($key=='all'){
             $users=$this->users;
             //如果是add表示新加的client
             if($ar['type']=='add'){
+                $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
+                if(!$link){
+                    echo"Mysql連錯<br/>";
+                    echo mysqli_connect_error();
+                    exit();
+                }
+                $sql="UPDATE users SET code='$k' WHERE id='$me_id'";
+                mysqli_query($link,$sql);
                 $ar['type']='madd';
                 $ar['users']=$this->getusers();        //取出所有在线者，用于显示在在线用户列表中
                 $str1 = $this->code(json_encode($ar)); //单独对新client进行编码处理，数据不一样
@@ -379,13 +389,26 @@ class Sock{
             echo mysqli_connect_error();
             exit();
         }
-        $sql="SELECT id FROM `users` WHERE code=$k";
+        $sql="SELECT id FROM `users` WHERE code='$k'";
         $select=mysqli_query($link,$sql);
-        foreach($select as $each){
-            $now_off_user[]=$each['id'];
-        }
+        // $now_off_user = array();
+        // foreach($select as $each){
+        //     $now_off_user[]=$each['id'];
+        // }
         mysqli_query($link,$sql);
-        $online_user[]=array_diff($this->online_user,$now_off_user);
+        foreach($select as $each){
+            $map_all_user[]=$each['id'];
+        }
+        $now_online=array_diff($this->online_user,$map_all_user);
+        $this->online_user=$now_online;
+        $ar['now_online']=$this->online_user;
+        $sql1="SELECT id FROM `users` WHERE status='0'";
+        $select1=mysqli_query($link,$sql1);
+        foreach($select1 as $each){
+            $map_all_user1[]=$each['id'];
+        }
+        $offline_user[]=array_diff($map_all_user1,$this->online_user);
+        $ar['offline_user']=$offline_user;
         $this->send1(false,$ar,'all');
     }
      
