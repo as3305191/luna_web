@@ -270,6 +270,7 @@ A={
                 });
         }
          
+         
         //数据接收监听，接收服务器推送过来的信息，返回的数据给msg，然后进行显示
         so.onmessage=function(msg){
             eval('var da='+msg.data);
