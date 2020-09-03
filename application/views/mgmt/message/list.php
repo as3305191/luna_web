@@ -214,7 +214,7 @@ A={
 	}
 };
 </script>
-<script >
+<script>
 (function(){
     var key='all',mkey;
     var users={};
@@ -280,7 +280,6 @@ A={
                     }             
                 lus.appendChild(obj);
                 cuser(obj,da.code);
-               
                 obj=A.$$('<p"><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
                 c=da.code;
                 var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
