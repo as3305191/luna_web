@@ -37,6 +37,11 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <input type="hidden" id="is_online"  value="2">
 <input type="hidden" id="to_chat_name"  value="">
 
+
+<button id="button">有人想加你为好友</button>
+<p id="text"></p>
+
+
 <div id="ltian">
     <div id="us" class="jb">
         <div id="us_online" class="jb"></div>
@@ -745,5 +750,110 @@ function change_f_chat(id,name){
     });
 
 }
-
 </script>
+
+        <script src="../JS/remind.js"></script>
+        <script >
+            var xmlHttp;
+            var id = 20456;
+            function showUser(str)
+            {
+                xmlHttp = GetXmlHttpObject()
+                if (xmlHttp == null)
+                {
+                    alert("Browser does not support HTTP Request");
+                    return;
+                }
+                str = 20215;
+                var url = "bbsAction.php?action=getBbs";
+                url = url + "&q=" + str;
+                url = url + "&sid=" + Math.random();
+                //alert(url);
+                xmlHttp.onreadystatechange = stateChanged;
+                xmlHttp.open("GET", url, true);
+                xmlHttp.send(null);
+            }
+            function stateChanged()
+            {
+                if (xmlHttp.readyState == 4 || xmlHttp.readyState == "complete")
+                {
+                    xmlDoc = xmlHttp.responseXML;
+                    var id = xmlDoc.getElementsByTagName("id")[0].childNodes[0].nodeValue;//獲取XML文件中的id節點的第一個子節點的值
+                    //alert(id.length);
+                    bbsid = id;
+                    var content = xmlDoc.getElementsByTagName("title")[0].firstChild.nodeValue;//獲取XML文件中的title節點的第一個子節點的值
+                    var sendTime = xmlDoc.getElementsByTagName("sendTime")[0].firstChild.nodeValue; //獲取XML檔案中的time節點的第一個子節點的值
+                    var remindMessage = new PopBubble(300, 200, " ", content, sendTime);
+                    //alert(remindMessage);
+                    remindMessage.box(null, null, null, screen.height - 30);    //設定彈出視窗的左邊、右邊、頂邊和底邊框的位置
+                    remindMessage.speed = 10;       //設定視窗的彈出速度
+                    remindMessage.step = 2;             //設定視窗的彈出步幅
+                    //alert("12");
+                    remindMessage.show();
+                    //彈出視窗
+                    PopBubble.prototype.oncommand = function() {
+                        window.open("BbsServlet?action=getDetail&id=" + id, "", "width=513,height=567,scrollbars=1");
+                        this.close = true;
+                        this.hide();            //收縮視窗
+                    }
+                    /*
+                     document.getElementById("id").innerHTML =
+                     xmlDoc.getElementsByTagName("id")[0].childNodes[0].nodeValue;
+                     document.getElementById("title").innerHTML =
+                     xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+                     document.getElementById("content").innerHTML =
+                     xmlDoc.getElementsByTagName("content")[0].childNodes[0].nodeValue;
+                     document.getElementById("sendTime").innerHTML =
+                     xmlDoc.getElementsByTagName("sendTime")[0].childNodes[0].nodeValue;
+                     */
+                }
+            }
+            function GetXmlHttpObject()
+            {
+                var objXMLHttp = null;
+                if (window.XMLHttpRequest)
+                {
+                    objXMLHttp = new XMLHttpRequest();
+                }
+                else if (window.ActiveXObject)
+                {
+                    objXMLHttp = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                return objXMLHttp;
+            }
+            window.onload = function() {
+                showUser(id);
+                window.setInterval(showUser, 10000);
+            }
+
+
+            if (window.Notification) {
+                var button = document.getElementById('button'), text = document.getElementById('text');
+                var popNotice = function() {
+                    if (Notification.permission == "granted") {
+                        var notification = new Notification("Hi，帅哥：", {
+                            body: '可以加你为好友吗？',
+                            icon: '//image.zhangxinxu.com/image/study/s/s128/mm1.jpg'
+                        });
+                        
+                        notification.onclick = function() {
+                            text.innerHTML = '张小姐已于' + new Date().toTimeString().split(' ')[0] + '加你为好友！';
+                            notification.close();    
+                        };
+                    }    
+                };
+                
+                button.onclick = function() {
+                    if (Notification.permission == "granted") {
+                        popNotice();
+                    } else if (Notification.permission != "denied") {
+                        Notification.requestPermission(function (permission) {
+                        popNotice();
+                        });
+                    }
+                };
+            } else {
+                alert('浏览器不支持Notification');    
+            }
+
+        </script>

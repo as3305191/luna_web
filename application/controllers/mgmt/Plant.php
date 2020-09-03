@@ -69,12 +69,10 @@ class Plant extends MY_Mgmt_Controller {
 		$res = array();
 		$id = $this -> get_post('id');
 		$data = $this -> get_posts(array(
-
 			'plant',
 			'sloc',
 			'desc',
 			'is_show',
-
 		));
 
 		if(empty($id)) {
