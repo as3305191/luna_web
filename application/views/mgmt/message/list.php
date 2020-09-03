@@ -37,17 +37,13 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <input type="hidden" id="is_online"  value="2">
 <input type="hidden" id="to_chat_name"  value="">
 
-
-<button id="button">有人想加你为好友</button>
-<p id="text"></p>
-
-
 <div id="ltian">
     <div id="us" class="jb">
         <div id="us_online" class="jb"></div>
         <div id="us_offline" class="jb"></div>
     </div>
-    <div id="ct"></div>
+    <div id="ct">
+    </div>
     <a style="display:none" href="javascript:;" class="qp" onClick="this.parentNode.children[1].innerHTML=''">清屏</a>
 </div>
 <div class="rin">
@@ -825,35 +821,4 @@ function change_f_chat(id,name){
                 showUser(id);
                 window.setInterval(showUser, 10000);
             }
-
-
-            if (window.Notification) {
-                var button = document.getElementById('button'), text = document.getElementById('text');
-                var popNotice = function() {
-                    if (Notification.permission == "granted") {
-                        var notification = new Notification("Hi，帅哥：", {
-                            body: '可以加你为好友吗？',
-                            icon: '//image.zhangxinxu.com/image/study/s/s128/mm1.jpg'
-                        });
-                        
-                        notification.onclick = function() {
-                            text.innerHTML = '张小姐已于' + new Date().toTimeString().split(' ')[0] + '加你为好友！';
-                            notification.close();    
-                        };
-                    }    
-                };
-                
-                button.onclick = function() {
-                    if (Notification.permission == "granted") {
-                        popNotice();
-                    } else if (Notification.permission != "denied") {
-                        Notification.requestPermission(function (permission) {
-                        popNotice();
-                        });
-                    }
-                };
-            } else {
-                alert('浏览器不支持Notification');    
-            }
-
         </script>
