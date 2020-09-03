@@ -15,23 +15,23 @@ class Sock{
     public $master;  //socket的resource，即前期初始化socket時返回的socket
     public $online_user=array();
 
-    private $sda=array();   //已接收的数据
-    private $slen=array();  //数据总长度
-    private $sjen=array();  //接收数据的长度
+    private $sda=array();   //已接收的數據
+    private $slen=array();  //數據的總長
+    private $sjen=array();  //接收的數據總長
     private $ar=array();    //加密key
     private $n=array();
 
 
     public function __construct($address, $port){
  
-        //创建socket并把保存socket资源在$this->master
+        //建socket並把保存socket資源在$this->master
         $this->master=$this->WebSocket($address, $port);
  
-        //创建socket连接池
+        //創建socket的連接池
         $this->sockets=array($this->master);
     }
      
-    //对创建的socket循环进行监听，处理数据
+    //對創建的socket循環進行監聽，處理數據
     function run(){
         //死循环，直到socket断开
         while(true){
@@ -40,34 +40,32 @@ class Sock{
             $except=NULL;
 
             /*
-            //这个函数是同时接受多个连接的关键，我的理解它是为了阻塞程序继续往下执行。
+            //
             socket_select ($sockets, $write = NULL, $except = NULL, NULL);
- 
-            $sockets可以理解为一个数组，这个数组中存放的是文件描述符。当它有变化（就是有新消息到或者有客户端连接/断开）时，socket_select函数才会返回，继续往下执行。
-            $write是监听是否有客户端写数据，传入NULL是不关心是否有写变化。
-            $except是$sockets里面要被排除的元素，传入NULL是”监听”全部。
-            最后一个参数是超时时间
-            如果为0：则立即结束
-            如果为n>1: 则最多在n秒后结束，如遇某一个连接有新动态，则提前返回
-            如果为null：如遇某一个连接有新动态，则返回
+            $write是監聽是否有客户端寫數據，傳入NULL是不理是否有寫變化。
+            $except是$sockets里面要被排除的元素，傳入NULL是”監聽”全部。
+            最后一个參數超時
+            如果0：立刻結束
+            如果n>1: 則最多在n秒后结束，如遇某一个連接有新動態，則提前返回
+            如果null：如遇某一个連接有新動態，則返回
             */
             socket_select($changes,$write,$except,NULL);
             foreach($changes as $sock){
                  
-                //如果有新的client连接进来，则
+                //如果有新的client連接近來，則
                 if($sock==$this->master){
  
-                    //接受一个socket连接
+                    //接受一个socket連接
                     $client=socket_accept($this->master);
  
-                    //给新连接进来的socket一个唯一的ID
+                    //给新連接近來的socket一个唯一的ID
                     $key=uniqid();
-                    $this->sockets[]=$client;  //将新连接进来的socket存进连接池
+                    $this->sockets[]=$client;  //將新連接近來的socket存近連接池
                     $this->users[$key]=array(
-                        'socket'=>$client,  //记录新连接进来client的socket信息
-                        'shou'=>false       //标志该socket资源没有完成握手
+                        'socket'=>$client,  //紀錄新連接近來client的socket信息
+                        'shou'=>false       //標誌该socket资源没有完成握手
                     );
-                //否则1.为client断开socket连接，2.client发送信息
+                //否則1.为client断开socket連接，2.client发送信息
                 }else{
                     $len=0;
                     $buffer='';
@@ -81,23 +79,23 @@ class Sock{
                     //根据socket在user池里面查找相应的$k,即健ID
                     $k=$this->search($sock);
  
-                    //如果接收的信息长度小于7，则该client的socket为断开连接
+                    //如果接收的信息长度小于7，則该client的socket为断开連接
                     if($len<7){
-                        //给该client的socket进行断开操作，并在$this->sockets和$this->users里面进行删除
+                        //给该client的socket近行断开操作，并在$this->sockets和$this->users里面近行删除
                         $this->send2($k);
                         continue;
                     }
                     //判断该socket是否已经握手
                     if(!$this->users[$k]['shou']){
-                        //如果没有握手，则进行握手处理
+                        //如果没有握手，則近行握手处理
                         $this->woshou($k,$buffer);
                     }else{
-                        //走到这里就是该client发送信息了，对接受到的信息进行uncode处理
+                        //走到这里就是该client发送信息了，对接受到的信息近行uncode处理
                         $buffer = $this->uncode($buffer,$k);
                         if($buffer==false){
                             continue;
                         }
-                        //如果不为空，则进行消息推送操作
+                        //如果不为空，則近行消息推送操作
                         $this->send($k,$buffer);
                     }
                 }
@@ -113,7 +111,7 @@ class Sock{
         socket_close($this->users[$k]['socket']);
         //删除相应的user信息
         unset($this->users[$k]);
-        //重新定义sockets连接池
+        //重新定义sockets連接池
         $this->sockets=array($this->master);
         foreach($this->users as $v){
             $this->sockets[]=$v['socket'];
@@ -131,7 +129,7 @@ class Sock{
         return false;
     }
      
-    //传相应的IP与端口进行创建socket操作
+    //传相应的IP与端口近行创建socket操作
     function WebSocket($address,$port){
         $server = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
         socket_set_option($server, SOL_SOCKET, SO_REUSEADDR, 1);//1表示接受所有的数据包
@@ -144,7 +142,7 @@ class Sock{
      
      
     /*
-    * 函数说明：对client的请求进行回应，即握手操作
+    * 函数说明：对client的请求近行回应，即握手操作
     * @$k clien的socket对应的健，即每个用户有唯一$k并对应socket
     * @$buffer 接收client请求的所有信息
     */
@@ -155,7 +153,7 @@ class Sock{
         $key  = trim(substr($buf,0,strpos($buf,"\r\n")));
         $new_key = base64_encode(sha1($key."258EAFA5-E914-47DA-95CA-C5AB0DC85B11",true));
          
-        //按照协议组合信息进行返回
+        //按照协议组合信息近行返回
         $new_message = "HTTP/1.1 101 Switching Protocols\r\n";
         $new_message .= "Upgrade: websocket\r\n";
         $new_message .= "Sec-WebSocket-Version: 13\r\n";
@@ -163,7 +161,7 @@ class Sock{
         $new_message .= "Sec-WebSocket-Accept: " . $new_key . "\r\n\r\n";
         socket_write($this->users[$k]['socket'],$new_message,strlen($new_message));
  
-        //对已经握手的client做标志
+        //对已经握手的client做標誌
         $this->users[$k]['shou']=true;
         return true;
          
@@ -177,7 +175,7 @@ class Sock{
         $head = substr($msg[1],0,2); 
         if ($head == '81' && !isset($this->slen[$key])) { 
             $len=substr($msg[1],2,2);
-            $len=hexdec($len);//把十六进制的转换为十进制
+            $len=hexdec($len);//把十六近制的转换为十近制
             if(substr($msg[1],2,2)=='fe'){
                 $len=substr($msg[1],4,4);
                 $len=hexdec($len);
@@ -253,12 +251,12 @@ class Sock{
      
     //用户加入或client发送信息
     function send($k,$msg){
-        //将查询字符串解析到第二个参数变量中，以数组的形式保存如：parse_str("name=Bill&age=60",$arr)
+        //將查询字符串解析到第二个参数变量中，以数组的形式保存如：parse_str("name=Bill&age=60",$arr)
         parse_str($msg,$g);
         $ar=array();
  
         if($g['type']=='add'){
-            //第一次进入添加聊天名字，把姓名保存在相应的users里面
+            //第一次近入添加聊天名字，把姓名保存在相应的users里面
             $this->users[$k]['name']=$g['ming'];
             $this->users[$k]['me_id']=$g['me_id'];
             $ar['type']='add';
@@ -330,14 +328,14 @@ class Sock{
         return $ar;
     }
      
-    //$k 发信息人的socketID $key接受人的 socketID ，根据这个socketID可以查找相应的client进行消息推送，即指定client进行发送
+    //$k 发信息人的socketID $key接受人的 socketID ，根据这个socketID可以查找相应的client近行消息推送，即指定client近行发送
     function send1($k,$ar,$key='all'){
         $ar['code1']=$key;
         $ar['code']=$k;
         date_default_timezone_set('Asia/Taipei');
         $ar['time']=date('m-d H:i:s');
         $me_id=$ar['me_id'];
-        //对发送信息进行编码处理
+        //对发送信息近行编码处理
         $str = $this->code(json_encode($ar));
         //面对大家即所有在线者发送信息
        
@@ -355,13 +353,13 @@ class Sock{
                 mysqli_query($link,$sql);
                 $ar['type']='madd';
                 $ar['users']=$this->getusers();        //取出所有在线者，用于显示在在线用户列表中
-                $str1 = $this->code(json_encode($ar)); //单独对新client进行编码处理，数据不一样
+                $str1 = $this->code(json_encode($ar)); //单独对新client近行编码处理，数据不一样
                 //对新client自己单独发送，因为有些数据是不一样的
                 socket_write($users[$k]['socket'],$str1,strlen($str1));
                 //上面已经对client自己单独发送的，后面就无需再次发送，故unset
                 unset($users[$k]);
             }
-            //除了新client外，对其他client进行发送信息。数据量大时，就要考虑延时等问题了
+            //除了新client外，对其他client近行发送信息。数据量大时，就要考虑延时等问题了
             foreach($users as $v){
                 socket_write($v['socket'],$str,strlen($str));
             }
@@ -412,7 +410,7 @@ class Sock{
         $this->send1(false,$ar,'all');
     }
      
-    //记录日志
+    //紀錄日志
     function e($str){
         //$path=dirname(__FILE__).'/log.txt';
         $str=$str."\n";
