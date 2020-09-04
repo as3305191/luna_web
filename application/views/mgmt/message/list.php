@@ -33,7 +33,7 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 #ems a{color:#069; border-radius:2px; display:inline-block; margin:2px 5px; padding:1px 8px; text-decoration:none; background-color:#D5DFFD;}
 #ems a:hover,#ems a:active,#ems a.ck{color:#FFF; background-color:#069;}
 .tc{text-align:center; margin-top:5px;}
-.c_red{background-color: red;}
+.c_red{background-color: red !important;}
 </style>
 
 
