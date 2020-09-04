@@ -351,7 +351,7 @@ A={
                     type: 'POST',
                     data: {
                         id_array: da.offline_user,
-
+                        online_id_array = da.online_user,
                     },
                     dataType: 'json',
                     success: function(d) {
