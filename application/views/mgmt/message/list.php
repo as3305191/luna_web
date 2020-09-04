@@ -582,6 +582,7 @@ A={
             if($('#f_chat_id').val()!==t.getAttribute('me_id')){
                 document.getElementById("ct").innerHTML='';
                 $('#ct').empty();
+              
             }
             $('#f_chat_id').val(t.getAttribute('me_id'));
             if(t.getAttribute('me_id')==0){
@@ -591,7 +592,9 @@ A={
                 $('#is_online').val(1);
 
             }
-            
+            var online_sidebar = $('#us_online').find('p[me_id="'+t.getAttribute('me_id')+'"]');
+            var parent = offline_sidebar.parentNode;
+            parent.removeChild(obj);
             $('#is_online').val(0);
             var me_id=$('#me_id').val();
             var url = baseUrl + 'mgmt/message/reload_message_record';
@@ -755,6 +758,9 @@ function change_f_chat(id,name){
     var me_id=$('#me_id').val();
     var url = baseUrl + 'mgmt/message/reload_message_record';
     $('#ct').empty();
+    var offline_sidebar = $('#us_offline').find('p[me_id="'+id+'"]');
+    var parent = offline_sidebar.parentNode;
+    parent.removeChild(obj);
     // lct.empty();
     $.ajax({
         type : "POST",
