@@ -289,7 +289,6 @@ class Sock{
             $offline_user[]=array_diff($map_all_user,$this->online_user);
             $ar['online_user']=$this->online_user;
             $ar['offline_user']=$offline_user;
-          
 
         }else{
             //发送信息行为，其中$g['key']表示面对大家还是个人，是前段传过来的信息

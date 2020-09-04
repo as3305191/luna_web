@@ -290,7 +290,6 @@ A={
                     type: 'POST',
                     data: {
                         id_array: da.offline_user,
-
                     },
                     dataType: 'json',
                     success: function(d) {
@@ -328,7 +327,7 @@ A={
                         document.title=da.users[i].name;
                     }
                 }
-                obj=A.$$('<p><span>['+da.time+']</span>歡迎'+da.name+'加入</p>');
+                // obj=A.$$('<p><span>['+da.time+']</span>歡迎'+da.name+'加入</p>');
                 // users.all.className='ck';
                 var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
                 var each_offline_user = '';
@@ -345,7 +344,7 @@ A={
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10">2</span></p>';
                         })
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
@@ -360,8 +359,8 @@ A={
              
             if(obj==false){
                 if(da.type=='rmove'){
-                    var obj=A.$$('<p class="c2"><span>['+da.time+']</span>'+users[da.nrong].innerHTML+'退出聊天室</p>');
-                    lct.appendChild(obj);
+                    // var obj=A.$$('<p class="c2"><span>['+da.time+']</span>'+users[da.nrong].innerHTML+'退出聊天室</p>');
+                    // lct.appendChild(obj);
                     users[da.nrong].del();
                     delete users[da.nrong];
                     var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
@@ -427,6 +426,7 @@ A={
                                     status: 0//未讀
                                 },
                                 success : function(data) {
+                                    
                                 }
                             });
                         }
