@@ -377,7 +377,7 @@ A={
                                         var notread='';
                                     }
                                    
-                                    notread.append($('#us_online').children().find('p[me_id="'+me[0].id+'"]'));
+                                    $('#us_online').children().find('p[me_id="'+me[0].id+'"]').append(notread);
                                 }
                             })
                         }
