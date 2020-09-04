@@ -599,23 +599,8 @@ A={
             if($('#f_chat_id').val()!==t.getAttribute('me_id')){
                 document.getElementById("ct").innerHTML='';
                 $('#ct').empty();
-              
-            }
-            $('#f_chat_id').val(t.getAttribute('me_id'));
-            if(t.getAttribute('me_id')==0){
-                $('#is_online').val(2);
-
-            } else{
-                $('#is_online').val(1);
-
-            }
-            var online_sidebar = $('#us_online').find('p[me_id="'+t.getAttribute('me_id')+'"]');
-            var span = online_sidebar.find('span');
-            span.remove();
-            $('#is_online').val(0);
-            var me_id=$('#me_id').val();
-
-            if(type=='madd'){
+                $('#is_online').val(0);
+                var me_id=$('#me_id').val();
                 var url = baseUrl + 'mgmt/message/reload_message_record';
                 $.ajax({
                     type : "POST",
@@ -623,6 +608,7 @@ A={
                     data : {
                         me_id: me_id,
                         to_message_id:  $('#f_chat_id').val(),
+                        type:type,
                     },
                     success : function(d) {
                         if(d.msg_list){
@@ -646,7 +632,19 @@ A={
                         }
                     }
                 });
+                $('#f_chat_id').val(t.getAttribute('me_id'));
             }
+            if(t.getAttribute('me_id')==0){
+                $('#is_online').val(2);
+
+            } else{
+                $('#is_online').val(1);
+
+            }
+            var online_sidebar = $('#us_online').find('p[me_id="'+t.getAttribute('me_id')+'"]');
+            var span = online_sidebar.find('span');
+            span.remove();
+           
         }
     }
     A.$('ltian').style.height=(document.documentElement.clientHeight - 70)+'px';

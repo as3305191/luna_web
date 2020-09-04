@@ -68,6 +68,8 @@ class Message extends MY_Mgmt_Controller {
 		$res = array();
 		$me_id = $this -> get_post('me_id');
 		$to_message_id = $this -> get_post('to_message_id');
+		$type = $this -> get_post('type');
+
 		$data['user_id'] = $me_id;
 		$data['to_user_id'] = $to_message_id;
 		if(!empty($me_id) && !empty($to_message_id)) {
