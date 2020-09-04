@@ -115,7 +115,7 @@ class Message extends MY_Mgmt_Controller {
 				$online_users = $this -> users_dao -> find_all_offline_users($each_online);
 				foreach($online_users as $each_online_user){
 					$not_read = $this -> dao -> find_not_read($data['login_user_id'],$each_online_user->id);
-					$each_offline_user->no_read =$not_read;
+					$each_online_user->no_read =$not_read;
 				}
 				$res['online_users'][] = $online_users;
 			}
