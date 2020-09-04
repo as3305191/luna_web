@@ -299,6 +299,7 @@ A={
                     type: 'POST',
                     data: {
                         id_array: da.offline_user,
+                        online_id_array:da.online_user,
                     },
                     dataType: 'json',
                     success: function(d) {
@@ -312,6 +313,20 @@ A={
                                 each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
                             } 
                         })
+
+                        if(d.online_users!=false){
+                            $.each(d.online_users, function(){
+                                var me = this;
+                                var online_user_sidebar = $('#us_online').find('p[me_id="'+me[0].id+'"]');
+                                if(me[0].no_read>0){
+                                    var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                                } else{
+                                    var notread='';
+                                }
+                                
+                                online_user_sidebar.append(notread);
+                            })
+                        }
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
 
