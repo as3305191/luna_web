@@ -376,7 +376,8 @@ A={
                                     } else{
                                         var notread='';
                                     }
-                                    notread.append(online_user_sidebar);
+                                   
+                                    notread.append($('#us_online').children().find('p[me_id="'+me[0].id+'"]'));
                                 }
                             })
                         }
