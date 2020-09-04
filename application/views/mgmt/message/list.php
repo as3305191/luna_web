@@ -262,8 +262,8 @@ A={
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span>';
-                            if(me.notread>0){
+                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                            if(me[0].no_read>0){
                                 each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
                             } else{
                                 each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
@@ -305,8 +305,8 @@ A={
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span>';
-                            if(me.notread>0){
+                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                            if(me[0].no_read>0){
                                 each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
                             } else{
                                 each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
@@ -358,8 +358,8 @@ A={
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span>';
-                            if(me.notread>0){
+                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                            if(me[0].no_read>0){
                                 each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
                             } else{
                                 each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
@@ -397,8 +397,8 @@ A={
                             // console.log(d);
                             $.each(d.offline_users, function(){
                                 var me = this;
-                                var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span>';
-                                if(me.notread>0){
+                                var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                                if(me[0].no_read>0){
                                      each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
                                 } else{
                                     each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
@@ -406,7 +406,6 @@ A={
                             })
                             var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                             us_offline.append(html);
-
                         },
 
                         failure:function(){
@@ -414,13 +413,13 @@ A={
                         }
                     });
                 }else{
-                    da.nrong=da.nrong.replace(/{\\(\d+)}/g,function(a,b){
-                        return '<img src="../img/face/'+b+'.gif">';
-                    }).replace(/^data\:image\/png;base64\,.{50,}$/i,function(a){
-                        return '<img src="'+a+'">';
-                    });
-                    //da.code 發消息人的code
-
+                    if(da.nrong!=null){
+                        da.nrong=da.nrong.replace(/{\\(\d+)}/g,function(a,b){
+                            return '<img src="../img/face/'+b+'.gif">';
+                        });
+                        //da.code 發消息人的code
+                    }
+     
                     if(da.code1==mkey){
                         if(da.sender==$('#f_chat_id').val()){
                             obj=A.$$('<p class="c3"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p>');
@@ -457,10 +456,11 @@ A={
                         
                     }else if(da.code==mkey){
                         if(da.code1!='all'){
-                                obj=A.$$('<p class="c3"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
+                            obj=A.$$('<p class="c3"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
                         } else{
-                            obj=A.$$('<p><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
-
+                            if(users[da.code1]!=null){
+                                obj=A.$$('<p class="c3"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p>');
+                            }
                         }
                         c=da.code1;
                     }else if(da.code==false){
@@ -473,12 +473,14 @@ A={
                 }
             }
             if(c){
+                if(obj!=false){
                     obj.children[1].onclick=function(){
                         users[c].onclick();
                     }
+                    lct.appendChild(obj);
+                    lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                 }
-            lct.appendChild(obj);
-            lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+            }
         }
     }
     A.$('sd').onclick=function(){
