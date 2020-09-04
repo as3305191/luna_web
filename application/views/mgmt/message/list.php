@@ -288,7 +288,7 @@ A={
                         var obj=A.$$('<p me_id="'+da.me_id+'">'+da.name+'</p>');
                     }             
                 lus.appendChild(obj);
-                cuser(obj,da.code);
+                cuser(obj,da.code,da.type);
                 obj=A.$$('<p"><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
                 c=da.code;
                 var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
@@ -350,7 +350,7 @@ A={
                     }
                     
                     if(mkey!=da.users[i].code){
-                        cuser(obj,da.users[i].code);
+                        cuser(obj,da.users[i].code,da.type);
                     }else{
                         // obj.className='my';
                         document.title=da.users[i].name;
@@ -590,7 +590,7 @@ A={
         da=da.replace(/</g,'<').replace(/>/g,'>').replace(/\"/g,'"');
         return encodeURIComponent(da);
     }
-    function cuser(t,code){
+    function cuser(t,code,type){
         users[code]=t;
         t.onclick=function(){
             // t.parentNode.children.rcss('ck','');
@@ -614,38 +614,39 @@ A={
             span.remove();
             $('#is_online').val(0);
             var me_id=$('#me_id').val();
-            var url = baseUrl + 'mgmt/message/reload_message_record';
-        
-            $.ajax({
-                type : "POST",
-                url : url,
-                data : {
-                    me_id: me_id,
-                    to_message_id:  $('#f_chat_id').val(),
-                },
-                success : function(d) {
-                    if(d.msg_list){
-                        var message = '';
-                    
-                        $.each(d.msg_list, function(){
-                            var me = this;
-                            message=me.content.replace(/{\\(\d+)}/g,function(a,b){
-                                return '<img src="../img/face/'+b+'.gif">';
-                            });
-                            if(me.from_user_id==me_id){
-                                obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span>我對<a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p>');
-                                lct.appendChild(obj);
-                                lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
-                            } else{
-                                obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p>');
-                                lct.appendChild(obj);
-                                lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
-                            }
-                        })
-                    }
-                }
-            });
 
+            if(type=='madd'){
+                var url = baseUrl + 'mgmt/message/reload_message_record';
+                $.ajax({
+                    type : "POST",
+                    url : url,
+                    data : {
+                        me_id: me_id,
+                        to_message_id:  $('#f_chat_id').val(),
+                    },
+                    success : function(d) {
+                        if(d.msg_list){
+                            var message = '';
+                        
+                            $.each(d.msg_list, function(){
+                                var me = this;
+                                message=me.content.replace(/{\\(\d+)}/g,function(a,b){
+                                    return '<img src="../img/face/'+b+'.gif">';
+                                });
+                                if(me.from_user_id==me_id){
+                                    obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span>我對<a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p>');
+                                    lct.appendChild(obj);
+                                    lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+                                } else{
+                                    obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p>');
+                                    lct.appendChild(obj);
+                                    lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+                                }
+                            })
+                        }
+                    }
+                });
+            }
         }
     }
     A.$('ltian').style.height=(document.documentElement.clientHeight - 70)+'px';
