@@ -2,7 +2,6 @@
 <link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/css/unify-components.css">
 <link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/css/unify-globals.css">
 <link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/css/custom.css">
-
 <style>
 body,p{margin:0px; padding:0px; font-size:14px; color:#333; font-family:Arial, Helvetica, sans-serif;}
 #ltian,.rin{width:98%; margin:5px auto;}
@@ -35,7 +34,6 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 .tc{text-align:center; margin-top:5px;}
 .c_red{background-color: #FF5151 !important;}
 </style>
-
 
 <body>
 <input type="hidden" id="me_id" value="<?= isset($me_id) ? $me_id : ''?>">
@@ -265,7 +263,11 @@ A={
                         $.each(d.offline_users, function(){
                             var me = this;
                             var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span>';
-                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                            if(me.notread>0){
+                                each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
+                            } else{
+                                each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                            }
                         })
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
@@ -304,8 +306,11 @@ A={
                         $.each(d.offline_users, function(){
                             var me = this;
                             var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span>';
-
-                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                            if(me.notread>0){
+                                each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
+                            } else{
+                                each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                            } 
                         })
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
@@ -354,8 +359,11 @@ A={
                         $.each(d.offline_users, function(){
                             var me = this;
                             var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span>';
-
-                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                            if(me.notread>0){
+                                each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
+                            } else{
+                                each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                            } 
                         })
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
@@ -390,8 +398,11 @@ A={
                             $.each(d.offline_users, function(){
                                 var me = this;
                                 var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span>';
-
-                                each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                                if(me.notread>0){
+                                     each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
+                                } else{
+                                    each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                                }
                             })
                             var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                             us_offline.append(html);

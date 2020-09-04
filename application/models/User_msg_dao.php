@@ -45,7 +45,6 @@ class User_msg_dao extends MY_Model {
 		$this -> db -> select('_m.*');
 
 		if(!empty($my_id) && !empty($to_id)){
-		
 			$this -> db -> where("_m.from_user_id", $my_id);
 			$this -> db -> where("_m.to_user_id", $to_id);
 			$this -> db -> where("_m.status", 0);
