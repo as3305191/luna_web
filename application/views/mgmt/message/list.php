@@ -1,3 +1,9 @@
+
+<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/vendor/icon-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/vendor/icon-line/css/simple-line-icons.css">
+<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/vendor/icon-etlinefont/style.css">
+<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/vendor/icon-line-pro/style.css">
+<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/vendor/icon-hs/style.css">
 <style>
 body,p{margin:0px; padding:0px; font-size:14px; color:#333; font-family:Arial, Helvetica, sans-serif;}
 #ltian,.rin{width:98%; margin:5px auto;}
@@ -30,7 +36,7 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 .tc{text-align:center; margin-top:5px;}
 
 </style>
-<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/vendor/icon-line/css/simple-line-icons.css">
+
 
 <body>
 <input type="hidden" id="me_id" value="<?= isset($me_id) ? $me_id : ''?>">
