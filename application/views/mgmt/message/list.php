@@ -67,7 +67,7 @@ HTMLElement.prototype.rcss=function(a,b){
 		eval('var s = new RegExp(/\\b'+b+'\\b/)');
 		if(!s.test(this.className)){
 			this.className=this.className.trim()+' '+b;
-		}
+        }
 	}else{
 		eval('var s=this.className.replace(/\\b'+a+'\\b/g,b)');
 		this.className=s.trim();

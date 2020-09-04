@@ -164,7 +164,6 @@ class Sock{
         //对已经握手的client做標誌
         $this->users[$k]['shou']=true;
         return true;
-         
     }
      
     //解码函数
@@ -175,7 +174,7 @@ class Sock{
         $head = substr($msg[1],0,2); 
         if ($head == '81' && !isset($this->slen[$key])) { 
             $len=substr($msg[1],2,2);
-            $len=hexdec($len);//把十六近制的转换为十近制
+            $len=hexdec($len);//把十六近制的轉換十近制
             if(substr($msg[1],2,2)=='fe'){
                 $len=substr($msg[1],4,4);
                 $len=hexdec($len);
