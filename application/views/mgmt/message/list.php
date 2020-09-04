@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/css/unify-core.css">
 <link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/css/unify-components.css">
 <link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/css/unify-globals.css">
+<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/css/custom.css">
+
 <style>
 body,p{margin:0px; padding:0px; font-size:14px; color:#333; font-family:Arial, Helvetica, sans-serif;}
 #ltian,.rin{width:98%; margin:5px auto;}
