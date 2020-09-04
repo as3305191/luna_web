@@ -110,6 +110,7 @@ class Message extends MY_Mgmt_Controller {
 			}
 			$res['offline_users'][] = $all_users;
 		}
+		$res['count'][] = $not_read;
 		// $res['login_user'] = $login_user;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
