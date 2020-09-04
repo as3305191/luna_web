@@ -593,8 +593,8 @@ A={
 
             }
             var online_sidebar = $('#us_online').find('p[me_id="'+t.getAttribute('me_id')+'"]');
-            var parent = online_sidebar.parentNode;
-            parent[0].removeChild(online_sidebar[0]);
+            var span = online_sidebar.find('span');
+            span.remove();
             $('#is_online').val(0);
             var me_id=$('#me_id').val();
             var url = baseUrl + 'mgmt/message/reload_message_record';
@@ -759,8 +759,8 @@ function change_f_chat(id,name){
     var url = baseUrl + 'mgmt/message/reload_message_record';
     $('#ct').empty();
     var offline_sidebar = $('#us_offline').find('p[me_id="'+id+'"]');
-    var parent = offline_sidebar.parentNode;
-    parent[0].removeChild(offline_sidebar[0]);
+    var span = offline_sidebar.find('span');
+    span.remove();
     // lct.empty();
     $.ajax({
         type : "POST",
