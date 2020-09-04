@@ -452,7 +452,6 @@ A={
                     if(da.code1==mkey){
                         if(da.sender==$('#f_chat_id').val()){
                             obj=A.$$('<p class="c3"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p>');
-                            $('#us_offline').find('p[me_id="'+id+'"]').find('span').test($('#us_offline').find('p[me_id="'+id+'"]').find('span').test()+1);
 
                             c=da.code;
                             var url = baseUrl + 'mgmt/message/insert';
@@ -469,6 +468,7 @@ A={
                                 }
                             });
                         } else{
+                            $('#us_offline').find('p[me_id="'+id+'"]').find('span').test($('#us_offline').find('p[me_id="'+id+'"]').find('span').test()+1);
                             var url = baseUrl + 'mgmt/message/insert';
                             $.ajax({
                                 type : "POST",
@@ -640,7 +640,6 @@ A={
                                 obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p>');
                                 lct.appendChild(obj);
                                 lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
-                                $('#us_offline').find('p[me_id="'+id+'"]').find('span').test($('#us_offline').find('p[me_id="'+id+'"]').find('span').test()+1);
                             }
                         })
                     }
@@ -804,7 +803,6 @@ function change_f_chat(id,name){
                         obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p>');
                         lct.appendChild(obj);
                         lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
-                        $('#us_offline').find('p[me_id="'+id+'"]').find('span').test($('#us_offline').find('p[me_id="'+id+'"]').find('span').test()+1);
                     }
                 })
             }
