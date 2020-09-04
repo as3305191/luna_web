@@ -38,5 +38,23 @@ class User_msg_dao extends MY_Model {
 
 		return $list;
 	}
+
+	function find_each_not_read($my_id,$to_id) {
+
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+
+		if(!empty($my_id) && !empty($to_id)){
+		
+			$this -> db -> where("_m.from_user_id", $my_id);
+			$this -> db -> where("_m.to_user_id", $to_id);
+			$this -> db -> where("_m.status", 0);
+		}
+		
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return count($list);
+	}
 }
 ?>

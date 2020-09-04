@@ -99,9 +99,15 @@ class Message extends MY_Mgmt_Controller {
 
 	public function find_offline_users() {
 		$offline_arr = $this -> get_post('id_array');
-		// json_decode($offline_arr,true);
+		$data = array();
+		$data = $this -> setup_user_data($data);
+		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
 		foreach($offline_arr[0] as $each_offline){
 			$all_users = $this -> users_dao -> find_all_offline_users($each_offline);
+			foreach($all_users as $each_offline_user){
+				$not_read = $this -> dao -> find_each_not_read($login_user->id,$each_offline_user->id);
+				$each_offline_user->not_read = $not_read;
+			}
 			$res['offline_users'][] = $all_users;
 		}
 		$res['success'] = TRUE;
