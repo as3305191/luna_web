@@ -1,7 +1,6 @@
-<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/vendor/bootstrap/bootstrap.min.css">
-<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/vendor/malihu-scrollbar/jquery.mCustomScrollbar.min.css">
-<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/vendor/hs-megamenu/src/hs.megamenu.css">
-<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/vendor/hamburgers/hamburgers.min.css">
+<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/css/unify-core.css">
+<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/css/unify-components.css">
+<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/css/unify-globals.css">
 <style>
 body,p{margin:0px; padding:0px; font-size:14px; color:#333; font-family:Arial, Helvetica, sans-serif;}
 #ltian,.rin{width:98%; margin:5px auto;}
