@@ -314,11 +314,13 @@ A={
                     if(da.users[i].me_id>0){
                         if(da.users[i].me_id!==$('#me_id').val()){
                             var obj=A.$$('<p me_id="'+da.users[i].me_id+'">'+da.users[i].name+'</p>');
+                            lus.appendChild(obj);
                         }   
                     } else{
                         var obj=A.$$('<p me_id="0">'+da.users[i].name+'</p>');
+                        lus.appendChild(obj);
                     }
-                    lus.appendChild(obj);
+                    
                     if(mkey!=da.users[i].code){
                         cuser(obj,da.users[i].code);
                     }else{
