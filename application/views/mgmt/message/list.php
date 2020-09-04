@@ -30,6 +30,7 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 .tc{text-align:center; margin-top:5px;}
 
 </style>
+<link rel="stylesheet" href="<?= base_url() ?>coach_1/assets/vendor/icon-line/css/simple-line-icons.css">
 
 <body>
 <input type="hidden" id="me_id" value="<?= isset($me_id) ? $me_id : ''?>">
