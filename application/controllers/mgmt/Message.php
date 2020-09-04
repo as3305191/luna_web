@@ -69,10 +69,8 @@ class Message extends MY_Mgmt_Controller {
 		$res = array();
 		$me_id = $this -> get_post('me_id');
 		$to_message_id = $this -> get_post('to_message_id');
-
 		$data['user_id'] = $me_id;
 		$data['to_user_id'] = $to_message_id;
-
 		if(!empty($me_id) && !empty($to_message_id)) {
 			// insert
 			$msg_list = $this -> dao -> find_record($data);
@@ -81,14 +79,13 @@ class Message extends MY_Mgmt_Controller {
 				$to_user_name_find = $this -> users_dao -> find_by_id($each->to_user_id);
 				$each->user_name = $user_name_find->user_name;
 				$each->to_user_name = $to_user_name_find->user_name;
+				$u_data['status'] = '1';
+				$this -> dao -> update($u_data, $each->id);
 			}
 			$to_user_name_list = $this -> users_dao -> find_by_id($to_message_id);
-
 			$res['msg_list'] = $msg_list;
 			$res['to_user_name_list'] = $to_user_name_list;
-
 		} 
-
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}

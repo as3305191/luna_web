@@ -309,7 +309,7 @@ A={
                 });
             }else if(da.type=='madd'){
                 mkey=da.code;
-                da.users.unshift({'code':'all','name':'大家'});
+                // da.users.unshift({'code':'all','name':'大家'});
                 for(var i=0;i<da.users.length;i++){
                     if(da.users[i].me_id>0){
                         if(da.users[i].me_id!==$('#me_id').val()){
@@ -453,7 +453,6 @@ A={
                 }
             lct.appendChild(obj);
             lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
-             
         }
     }
     A.$('sd').onclick=function(){
