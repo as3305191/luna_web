@@ -593,7 +593,7 @@ A={
 
             }
             var online_sidebar = $('#us_online').find('p[me_id="'+t.getAttribute('me_id')+'"]');
-            var parent = offline_sidebar.parentNode;
+            var parent = online_sidebar.parentNode;
             parent.removeChild(obj);
             $('#is_online').val(0);
             var me_id=$('#me_id').val();
