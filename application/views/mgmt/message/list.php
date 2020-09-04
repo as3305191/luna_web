@@ -365,6 +365,21 @@ A={
                                 each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
                             } 
                         })
+
+                        if(d.online_users!=false){
+                            var online_user_sidebar = $('#us_online').children().attr('me_id');
+                            $.each(d.online_users, function(){
+                                var me = this;
+                                if(me[0].id==online_user_sidebar){
+                                    if(me[0].no_read>0){
+                                        var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                                    } else{
+                                        var notread='';
+                                    }
+                                    notread.append(online_user_sidebar);
+                                }
+                            })
+                        }
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
 
