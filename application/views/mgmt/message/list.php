@@ -369,7 +369,7 @@ A={
                         if(d.online_users!=false){
                             $.each(d.online_users, function(){
                                 var me = this;
-                                var online_user_sidebar = $('#us_online').children().find('p[me_id="'+me[0].id+'"]');
+                                var online_user_sidebar = $('#us_online').find('p[me_id="'+me[0].id+'"]');
                                 if(me[0].no_read>0){
                                     var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
                                 } else{
