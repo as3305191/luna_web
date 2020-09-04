@@ -33,7 +33,7 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 #ems a{color:#069; border-radius:2px; display:inline-block; margin:2px 5px; padding:1px 8px; text-decoration:none; background-color:#D5DFFD;}
 #ems a:hover,#ems a:active,#ems a.ck{color:#FFF; background-color:#069;}
 .tc{text-align:center; margin-top:5px;}
-
+.c_red{background-color: red;}
 </style>
 
 
@@ -264,7 +264,7 @@ A={
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10">2</span></p>';
+                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span></p>';
                         })
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
@@ -302,7 +302,7 @@ A={
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10">2</span></p>';
+                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span></p>';
                         })
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
@@ -350,7 +350,7 @@ A={
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10">2</span></p>';
+                            each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span></p>';
                         })
                         var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
@@ -384,7 +384,7 @@ A={
                             // console.log(d);
                             $.each(d.offline_users, function(){
                                 var me = this;
-                                each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10">2</span></p>';
+                                each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red">2</span></p>';
                             })
                             var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                             us_offline.append(html);
