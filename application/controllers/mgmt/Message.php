@@ -69,6 +69,7 @@ class Message extends MY_Mgmt_Controller {
 		$me_id = $this -> get_post('me_id');
 		$to_message_id = $this -> get_post('to_message_id');
 		$type = $this -> get_post('type');
+		$is_online = $this -> get_post('is_online');
 
 		$data['user_id'] = $me_id;
 		$data['to_user_id'] = $to_message_id;
@@ -80,8 +81,11 @@ class Message extends MY_Mgmt_Controller {
 				$to_user_name_find = $this -> users_dao -> find_by_id($each->to_user_id);
 				$each->user_name = $user_name_find->user_name;
 				$each->to_user_name = $to_user_name_find->user_name;
-				$u_data['status'] = '1';
-				$this -> dao -> update($u_data, $each->id);
+				if($is_online!==2){
+					$u_data['status'] = '1';
+					$this -> dao -> update($u_data, $each->id);
+				}
+				
 			}
 			$to_user_name_list = $this -> users_dao -> find_by_id($to_message_id);
 			$res['msg_list'] = $msg_list;

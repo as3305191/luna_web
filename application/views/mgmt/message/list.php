@@ -246,7 +246,7 @@ A={
         //握手失敗或者其他原因連接socket失敗，清除so的對象
         so.onclose=function(){
             so=false;
-            lct.appendChild(A.$$('<p class="c2">退出聊天室</p>'));
+            // lct.appendChild(A.$$('<p class="c2">退出聊天室</p>'));
             var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
                 var each_offline_user = '';
                 var us_offline = $('#us_offline').empty();
@@ -289,7 +289,7 @@ A={
                     }             
                 lus.appendChild(obj);
                 cuser(obj,da.code);
-                obj=A.$$('<p"><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
+                // obj=A.$$('<p"><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
                 c=da.code;
                 var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
                 var each_offline_user = '';
@@ -511,6 +511,7 @@ A={
             }
             if(c){
                 if(obj!=false){
+                    
                     obj.children[1].onclick=function(){
                         users[c].onclick();
                     }
@@ -625,6 +626,8 @@ A={
                 data : {
                     me_id: me_id,
                     to_message_id:  $('#f_chat_id').val(),
+                    is_online:  $('#is_online').val(),
+
                 },
                 success : function(d) {
                     if(d.msg_list){
@@ -788,6 +791,7 @@ function change_f_chat(id,name){
         data : {
             me_id: me_id,
             to_message_id: id,
+            is_online:  $('#is_online').val(),
         },
         success : function(d) {
             if(d.msg_list){
