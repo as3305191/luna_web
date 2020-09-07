@@ -33,6 +33,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
 #ems a:hover,#ems a:active,#ems a.ck{color:#FFF; background-color:#069;}
 .tc{text-align:center; margin-top:5px;}
 .c_red{background-color: #FF5151 !important;}
+.none {display: none;}
 </style>
 
 <body>
@@ -41,6 +42,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <input type="hidden" id="is_online"  value="2">
 <input type="hidden" id="to_chat_name"  value="">
 
+<div id="chat_with_name" style="padding:0px 0px 0px 16px; font-size:20px"></div>
 <div id="ltian">
     <div id="us" class="jb">
         <div id="us_online" class="jb"></div>
@@ -50,7 +52,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
     </div>
     <a style="display:none" href="javascript:;" class="qp" onClick="this.parentNode.children[1].innerHTML=''">清屏</a>
 </div>
-<div class="rin">
+<div id="rin_send" class="rin none">
     <button id="sd">發送</button>
     <span><img src="../img/face/1.gif" title="表情" id="imgbq"><img src="../img/face/1.gif" title="上傳圖片" style="display:none"><form style="display:none"><input type="file" title="上傳圖片" id="upimg"></form></span>
     <p><input id="nrong"></p>
@@ -607,8 +609,8 @@ A={
             if($('#f_chat_id').val()!==t.getAttribute('me_id')){
                 document.getElementById("ct").innerHTML='';
                 $('#ct').empty();
-              
             }
+            $('#rin_send').removeClass('none');
             $('#f_chat_id').val(t.getAttribute('me_id'));
             if(t.getAttribute('me_id')>0){
                 $('#is_online').val(1);
@@ -616,6 +618,8 @@ A={
             var online_sidebar = $('#us_online').find('p[me_id="'+t.getAttribute('me_id')+'"]');
             var span = online_sidebar.find('span');
             span.remove();
+            var chat_with_name =  $('#chat_with_name').empty();
+            chat_with_name.append(online_sidebar.text());
             // $('#is_online').val(0);
             var me_id=$('#me_id').val();
             var url = baseUrl + 'mgmt/message/reload_message_record';
@@ -626,7 +630,7 @@ A={
                 data : {
                     me_id: me_id,
                     to_message_id:  $('#f_chat_id').val(),
-                    is_online:  $('#is_online').val(),
+                    f_chat_id:  $('#f_chat_id').val(),
 
                 },
                 success : function(d) {
@@ -775,9 +779,12 @@ A={
 
 function change_f_chat(id,name){
     var lus=A.$('us_online'),lct=A.$('ct');
+    $('#rin_send').removeClass('none');
     $('#f_chat_id').val(id);
     $('#is_online').val(0);
     $('#to_chat_name').val(name);
+    var chat_with_name =  $('#chat_with_name').empty();
+    chat_with_name.append(name);
     var me_id=$('#me_id').val();
     var url = baseUrl + 'mgmt/message/reload_message_record';
     $('#ct').empty();
@@ -791,12 +798,11 @@ function change_f_chat(id,name){
         data : {
             me_id: me_id,
             to_message_id: id,
-            is_online:  $('#is_online').val(),
+            f_chat_id:  $('#f_chat_id').val(),
         },
         success : function(d) {
             if(d.msg_list){
                 var message = '';
-               
                 $.each(d.msg_list, function(){
                     var me = this;
                     message=me.content.replace(/{\\(\d+)}/g,function(a,b){
