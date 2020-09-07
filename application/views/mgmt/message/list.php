@@ -13,10 +13,10 @@ body,p{margin:0px; padding:0px; font-size:14px; color:#333; font-family:Arial, H
 #us p:hover,#us p:active,#us p.ck{background-color:#069; color:#FFF;}
 #us p.my:hover,#us p.my:active,#us p.my{color:#333;background-color:transparent;}
 button{float:right; width:80px; height:35px; font-size:18px;}
-input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; border:solid 1px #CCC;}
+input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; border:solid 1px #CCC;}
 .rin p{margin-right:160px;}
 .rin span{float:right; padding:6px 5px 0px 5px; position:relative;}
-.rin span img{margin:0px 3px; cursor:pointer;}
+.rin span img{margin:0px -4px; cursor:pointer;}
 .rin span form{position:absolute; width:25px; height:25px; overflow:hidden; opacity:0; top:5px; right:5px;}
 .rin span input{width:180px; height:25px; margin-left:-160px; cursor:pointer}
  
@@ -52,7 +52,7 @@ input{width:100%; height:30px; padding:2px; line-height:20px; outline:none; bord
 </div>
 <div class="rin">
     <button id="sd">發送</button>
-    <span><img src="//www.yxsss.com/ui/sk/t.png" title="表情" id="imgbq"><img src="//www.yxsss.com/ui/sk/e.png" title="上傳圖片" style="display:none"><form style="display:none"><input type="file" title="上傳圖片" id="upimg"></form></span>
+    <span><img src="../img/face/1.gif" title="表情" id="imgbq"><img src="../img/face/1.gif" title="上傳圖片" style="display:none"><form style="display:none"><input type="file" title="上傳圖片" id="upimg"></form></span>
     <p><input id="nrong"></p>
 </div>
 <div id="ems"><p></p><p class="tc"></p></div>
@@ -288,7 +288,7 @@ A={
                         var obj=A.$$('<p me_id="'+da.me_id+'">'+da.name+'</p>');
                     }             
                 lus.appendChild(obj);
-                cuser(obj,da.code,da.type);
+                cuser(obj,da.code);
                 obj=A.$$('<p"><span>['+da.time+']</span>歡迎<a>'+da.name+'</a>加入</p>');
                 c=da.code;
                 var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
@@ -350,7 +350,7 @@ A={
                     }
                     
                     if(mkey!=da.users[i].code){
-                        cuser(obj,da.users[i].code,da.type);
+                        cuser(obj,da.users[i].code);
                     }else{
                         // obj.className='my';
                         document.title=da.users[i].name;
@@ -468,14 +468,20 @@ A={
                                 }
                             });
                         } else{
-                            $('#us_offline').find('p[me_id="'+id+'"]').find('span').test($('#us_offline').find('p[me_id="'+id+'"]').find('span').test()+1);
+                            var num_span = $('#us_online').find('p[me_id="'+da.sender+'"]');
+                            if(num_span.children('span').length>0){
+                                $('#us_online').find('p[me_id="'+da.sender+'"]').children('span').text(parseInt($('#us_online').find('p[me_id="'+da.sender+'"]').children('span').text())+1);
+                            } else{
+                                $('#us_online').find('p[me_id="'+da.sender+'"]').append('<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">1</span>');
+                            }
+                            // console.log(num_span);
                             var url = baseUrl + 'mgmt/message/insert';
                             $.ajax({
                                 type : "POST",
                                 url : url,
                                 data : {
-                                    me: da.message_recipient,
-                                    f_chat_id: da.sender,
+                                    me: da.sender,
+                                    f_chat_id: da.message_recipient,
                                     message:da.nrong,
                                     status: 0//未讀
                                 },
@@ -520,7 +526,7 @@ A={
         }
         var da=A.$('nrong').value.trim();
         if(da==''){
-            alert('内容不能空');
+            // alert('内容不能空');
             return false;  
         }
         A.$('nrong').value='';
@@ -556,27 +562,28 @@ A={
         }
         var currentDateTime = (Month)+ '-'+now_Date+' '+Hours+':'+Minutes+':'+Seconds;
         if(is_online==0){
-            var url = baseUrl + 'mgmt/message/insert';
-            $.ajax({
-                type : "POST",
-                url : url,
-                data : {
-                    me: me_id,
-                    f_chat_id: to_chat_id,
-                    message:da,
-                    status: 0//未讀
-                },
-                success : function(data) {
-                    message=da.replace(/{\\(\d+)}/g,function(a,b){
-                        return '<img src="../img/face/'+b+'.gif">';
-                    });
-                    obj=A.$$('<p><span>['+currentDateTime+']</span>我對<a>'+to_chat_name+'</a>說：'+message+'</p>');
-                    //append
-                    lct.appendChild(obj);
-                    lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
-                }
-            });
-        } else{
+                var url = baseUrl + 'mgmt/message/insert';
+                $.ajax({
+                    type : "POST",
+                    url : url,
+                    data : {
+                        me: me_id,
+                        f_chat_id: to_chat_id,
+                        message:da,
+                        status: 0//未讀
+                    },
+                    success : function(data) {
+                        message=da.replace(/{\\(\d+)}/g,function(a,b){
+                            return '<img src="../img/face/'+b+'.gif">';
+                        });
+                        obj=A.$$('<p><span>['+currentDateTime+']</span>我對<a>'+to_chat_name+'</a>說：'+message+'</p>');
+                        //append
+                        lct.appendChild(obj);
+                        lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+                    }
+                });
+        }
+        else{
             so.send('nr='+esc(da)+'&key='+key+'&me_id='+me_id+'&to_chat_id='+to_chat_id+'&is_online='+is_online);
         }
     }
@@ -590,7 +597,7 @@ A={
         da=da.replace(/</g,'<').replace(/>/g,'>').replace(/\"/g,'"');
         return encodeURIComponent(da);
     }
-    function cuser(t,code,type){
+    function cuser(t,code){
         users[code]=t;
         t.onclick=function(){
             // t.parentNode.children.rcss('ck','');
@@ -599,55 +606,52 @@ A={
             if($('#f_chat_id').val()!==t.getAttribute('me_id')){
                 document.getElementById("ct").innerHTML='';
                 $('#ct').empty();
-                $('#is_online').val(0);
-                var me_id=$('#me_id').val();
-                var url = baseUrl + 'mgmt/message/reload_message_record';
-                $.ajax({
-                    type : "POST",
-                    url : url,
-                    data : {
-                        me_id: me_id,
-                        to_message_id:  $('#f_chat_id').val(),
-                        type:type,
-                    },
-                    success : function(d) {
-                        if(d.msg_list){
-                            var message = '';
-                        
-                            $.each(d.msg_list, function(){
-                                var me = this;
-                                message=me.content.replace(/{\\(\d+)}/g,function(a,b){
-                                    return '<img src="../img/face/'+b+'.gif">';
-                                });
-                                if(me.from_user_id==me_id){
-                                    obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span>我對<a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p>');
-                                    lct.appendChild(obj);
-                                    lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
-                                } else{
-                                    obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p>');
-                                    lct.appendChild(obj);
-                                    lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
-                                }
-                            })
-                        }
-                    }
-                });
-                $('#f_chat_id').val(t.getAttribute('me_id'));
+              
             }
-            if(t.getAttribute('me_id')==0){
-                $('#is_online').val(2);
-
-            } else{
+            $('#f_chat_id').val(t.getAttribute('me_id'));
+            if(t.getAttribute('me_id')>0){
                 $('#is_online').val(1);
-
             }
             var online_sidebar = $('#us_online').find('p[me_id="'+t.getAttribute('me_id')+'"]');
             var span = online_sidebar.find('span');
             span.remove();
-           
+            // $('#is_online').val(0);
+            var me_id=$('#me_id').val();
+            var url = baseUrl + 'mgmt/message/reload_message_record';
+        
+            $.ajax({
+                type : "POST",
+                url : url,
+                data : {
+                    me_id: me_id,
+                    to_message_id:  $('#f_chat_id').val(),
+                },
+                success : function(d) {
+                    if(d.msg_list){
+                        var message = '';
+                    
+                        $.each(d.msg_list, function(){
+                            var me = this;
+                            message=me.content.replace(/{\\(\d+)}/g,function(a,b){
+                                return '<img src="../img/face/'+b+'.gif">';
+                            });
+                            if(me.from_user_id==me_id){
+                                obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span>我對<a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p>');
+                                lct.appendChild(obj);
+                                lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+                            } else{
+                                obj=A.$$('<p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p>');
+                                lct.appendChild(obj);
+                                lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
+                            }
+                        })
+                    }
+                }
+            });
+
         }
     }
-    A.$('ltian').style.height=(document.documentElement.clientHeight - 70)+'px';
+    A.$('ltian').style.height=(document.documentElement.clientHeight - 250)+'px';
     st();
      
     var bq=A.$('imgbq'),ems=A.$('ems');
