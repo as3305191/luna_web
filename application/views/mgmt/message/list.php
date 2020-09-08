@@ -332,10 +332,10 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                         }
                     }else if(da.code==mkey){
                         if(da.code1!='all'){
-                            obj=A.$$('<div class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span class="col-xs-6 col-sm-6 col-md-6 col-lg-6">我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></br>');
+                            obj=A.$$('<div class="row c3 class="col-xs-6 col-sm-6 col-md-6 col-lg-6""><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span >我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></br>');
                         } else{
                             if(users[da.code1]!=null){
-                                obj=A.$$('<div class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span class="col-xs-6 col-sm-6 col-md-6 col-lg-6">我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></br>');
+                                obj=A.$$('<div class="row c3 class="col-xs-6 col-sm-6 col-md-6 col-lg-6""><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></br>');
                             }
                         }
                         c=da.code1;
