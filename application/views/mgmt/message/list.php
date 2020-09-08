@@ -41,7 +41,6 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <input type="hidden" id="f_chat_id" value="0">
 <input type="hidden" id="is_online"  value="2">
 <input type="hidden" id="to_chat_name"  value="">
-
 <div id="chat_with_name" style="padding:0px 0px;"></div>
 <div id="ltian">
     <div id="us" class="jb">
@@ -331,13 +330,12 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                                 }
                             });
                         }
-                        
                     }else if(da.code==mkey){
                         if(da.code1!='all'){
-                            obj=A.$$('<div class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></br>');
+                            obj=A.$$('<div class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span class="col-xs-6 col-sm-6 col-md-6 col-lg-6">我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></br>');
                         } else{
                             if(users[da.code1]!=null){
-                                obj=A.$$('<div class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></br>');
+                                obj=A.$$('<div class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span class="col-xs-6 col-sm-6 col-md-6 col-lg-6">我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></br>');
                             }
                         }
                         c=da.code1;
@@ -347,7 +345,6 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                         obj=A.$$('<p><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對'+users[da.code1].innerHTML+'說：'+da.nrong+'</p>');
                         c=da.code;
                     }
-
                 }
             }
             if(c){
