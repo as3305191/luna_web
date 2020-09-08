@@ -107,7 +107,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me[0].no_read+'</span>';
                             if(me[0].no_read>0){
                                 each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
                             } else{
@@ -150,7 +150,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me[0].no_read+'</span>';
                             if(me[0].no_read>0){
                                 each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
                             } else{
@@ -163,7 +163,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                                 var me = this;
                                 var online_user_sidebar = $('#us_online').find('p[me_id="'+me[0].id+'"]');
                                 if(me[0].no_read>0){
-                                    var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                                    var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me[0].no_read+'</span>';
                                 } else{
                                     var notread='';
                                 }
@@ -217,7 +217,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                         // console.log(d);
                         $.each(d.offline_users, function(){
                             var me = this;
-                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                            var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me[0].no_read+'</span>';
                             if(me[0].no_read>0){
                                 each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
                             } else{
@@ -230,7 +230,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                                 var me = this;
                                 var online_user_sidebar = $('#us_online').find('p[me_id="'+me[0].id+'"]');
                                 if(me[0].no_read>0){
-                                    var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                                    var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me[0].no_read+'</span>';
                                 } else{
                                     var notread='';
                                 }
@@ -270,7 +270,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                             // console.log(d);
                             $.each(d.offline_users, function(){
                                 var me = this;
-                                var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">'+me[0].no_read+'</span>';
+                                var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me[0].no_read+'</span>';
                                 if(me[0].no_read>0){
                                      each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
                                 } else{
@@ -316,7 +316,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                             if(num_span.children('span').length>0){
                                 $('#us_online').find('p[me_id="'+da.sender+'"]').children('span').text(parseInt($('#us_online').find('p[me_id="'+da.sender+'"]').children('span').text())+1);
                             } else{
-                                $('#us_online').find('p[me_id="'+da.sender+'"]').append('<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right">1</span>');
+                                $('#us_online').find('p[me_id="'+da.sender+'"]').append('<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">1</span>');
                             }
                             // console.log(num_span);
                             var url = baseUrl + 'mgmt/message/insert';
