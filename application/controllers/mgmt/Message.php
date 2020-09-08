@@ -22,6 +22,8 @@ class Message extends MY_Mgmt_Controller {
 		$data['username'] = $login_user->user_name;
 		$data['me_id'] = $login_user->id;
 		// $this -> to_json($data);
+		echo "<script>location.href='".$_SERVER['PATH_INFO'], "mgmt/message"."</script>";
+
 		$this->load->view('mgmt/message/list', $data);
 	}
 
