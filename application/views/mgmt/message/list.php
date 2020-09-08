@@ -71,7 +71,6 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
         // n=prompt('取個名子');
         n='<?= $username?>';
         me_id='<?= $me_id?>';
-
         if(!n){
             return ;   
         }
