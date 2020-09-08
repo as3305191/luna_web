@@ -60,14 +60,14 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
 </body>
 <?php $this -> load -> view('mgmt/message/message_script'); ?>
 <script>
-window.onload()=on_re_load();
-
 function on_re_load(){ 
     if(location.href.indexOf('#reloaded')==-1){
         location.href=location.href+"#reloaded"; 
         location.reload(); 
     } 
 }
+var result = on_re_load();
+window.onload()=result;
 
 (function(){
     var key='all',mkey;
