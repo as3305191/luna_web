@@ -38,7 +38,7 @@
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<input type="hidden" name="role_id"  value="1" />
 				<div class="form-group" style="padding:0px 26px">
-	        <div class="col-md-12 col-xs-12 col-sm-12 no-padding" style="">
+	        <div class="col-md-12 col-xs-12 col-sm-12 no-padding" >
 		        <button type="button" class="basic_information btn_roles btn_1" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('basic_information')">基本資料</button>
 		        <button type="button" class="weight_history btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('weight_history')">上秤歷史紀錄</button>
 		        <button type="button" class="health_report btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('health_report')">健康報告</button>
@@ -48,7 +48,7 @@
         <div class="clearfix"></div>
     </div>
     <hr/>
-		<div class="table_1" id="basic_information" style="">
+		<div class="table_1" id="basic_information">
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">帳號</label>
