@@ -42,7 +42,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <input type="hidden" id="is_online"  value="2">
 <input type="hidden" id="to_chat_name"  value="">
 
-<div id="chat_with_name" style="padding:0px 0px 0px 16px; font-size:20px"></div>
+<div id="chat_with_name" style="padding:0px 0px;"></div>
 <div id="ltian">
     <div id="us" class="jb">
         <div id="us_online" class="jb"></div>
@@ -329,7 +329,7 @@ A={
                                 online_user_sidebar.append(notread);
                             })
                         }
-                        var html='<div><p class="my">離線-----</p>'+each_offline_user+'</div>';
+                        var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                         us_offline.append(html);
 
                     },
@@ -453,7 +453,7 @@ A={
      
                     if(da.code1==mkey){
                         if(da.sender==$('#f_chat_id').val()){
-                            obj=A.$$('<div class="col-md-12"><div class="col-md-6"><p class="c3"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p></div></div>');
+                            obj=A.$$('<div  class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p></div></br>');
 
                             c=da.code;
                             var url = baseUrl + 'mgmt/message/insert';
@@ -495,10 +495,10 @@ A={
                         
                     }else if(da.code==mkey){
                         if(da.code1!='all'){
-                            obj=A.$$('<div class="col-md-12"><div class="col-md-6" style="float:right;"><p class="c3"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></div>');
+                            obj=A.$$('<div class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></br>');
                         } else{
                             if(users[da.code1]!=null){
-                                obj=A.$$('<div class="col-md-12"><div class="col-md-6" style="float:right;"><p class="c3"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></div>');
+                                obj=A.$$('<div class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span>我對<a>'+users[da.code1].innerHTML+'</a>說：'+da.nrong+'</p></div></br>');
                             }
                         }
                         c=da.code1;
@@ -579,7 +579,7 @@ A={
                         message=da.replace(/{\\(\d+)}/g,function(a,b){
                             return '<img src="../img/face/'+b+'.gif">';
                         });
-                        obj=A.$$('<div class="col-md-12"><div class="col-md-6" style="float:right;"><p><span>['+currentDateTime+']</span>我對<a>'+to_chat_name+'</a>說：'+message+'</p></div></div>');
+                        obj=A.$$('<div class="row c3"><p style="float:right;padding:3px 15px;"><span>['+currentDateTime+']</span>我對<a>'+to_chat_name+'</a>說：'+message+'</p></div></br>');
                         //append
                         lct.appendChild(obj);
                         lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
@@ -643,12 +643,11 @@ A={
                                 return '<img src="../img/face/'+b+'.gif">';
                             });
                             if(me.from_user_id==me_id){
-                                obj=A.$$('<div class="col-md-12"><div class="col-md-6" style="float:right;"><p><span>['+me.create_time.substr(5)+']</span>我對<a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p></div></div>');
+                                obj=A.$$('<div class="row"><p style="float:right;padding:3px 15px;"><span>['+me.create_time.substr(5)+']</span>我對<a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p></div></br>');
                                 lct.appendChild(obj);
                                 lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                             } else{
-
-                                obj=A.$$('<div class="col-md-12"><div class="col-md-6"><p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p></div></div>');
+                                obj=A.$$('<div><p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p></div></br>');
                                 lct.appendChild(obj);
                                 lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                             }
@@ -810,11 +809,11 @@ function change_f_chat(id,name){
                         return '<img src="../img/face/'+b+'.gif">';
                     });
                     if(me.from_user_id==me_id){
-                        obj=A.$$('<div class="col-md-12"><div class="col-md-6"><a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p></div></div>');
+                        obj=A.$$('<div class="row"><p style="float:right;padding:3px 15px;"><span>['+me.create_time.substr(5)+']</span>我對<a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p></div></br>');
                         lct.appendChild(obj);
                         lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                     } else{
-                        obj=A.$$('<div class="col-md-12"><div class="col-md-6"><p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p></div></div>');
+                        obj=A.$$('<div><p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p></div></br>');
                         lct.appendChild(obj);
                         lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                     }
