@@ -103,15 +103,15 @@ HTMLElement.prototype.next=function(){
 	return this.nextElementSibling||this.nextSibling;
 }
 HTMLElement.prototype.weiz=function(){
-		var y=this.offsetTop,x=this.offsetLeft,e=this.offsetParent;
-		while(e){
-			y+=e.offsetTop;
-			x+=e.offsetLeft;
-			e=e.offsetParent
-		};
-		return{
-			'y':y,'x':x
-		}
+    var y=this.offsetTop,x=this.offsetLeft,e=this.offsetParent;
+    while(e){
+        y+=e.offsetTop;
+        x+=e.offsetLeft;
+        e=e.offsetParent
+    };
+    return{
+        'y':y,'x':x
+    }
 }
 A={
 	$:function(id){
@@ -656,7 +656,6 @@ A={
                     }
                 }
             });
-
         }
     }
     A.$('ltian').style.height=(document.documentElement.clientHeight - 250)+'px';
