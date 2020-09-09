@@ -628,9 +628,8 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
         var da=rc.toDataURL();
         so.send('nr='+esc(da)+'&key='+key);
     }
-})();
 
-function change_f_chat(id,name){
+    function change_f_chat(id,name){
     var lus=A.$('us_online'),lct=A.$('ct');
     $('#rin_send').removeClass('none');
     $('#f_chat_id').val(id);
@@ -678,4 +677,7 @@ function change_f_chat(id,name){
     });
 
 }
+})();
+
+
 </script>
