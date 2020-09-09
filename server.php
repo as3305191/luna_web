@@ -275,7 +275,7 @@ class Sock{
 
             $all_online_user=mysqli_query($link,$sql2);
             if(!empty($all_online_user)){
-                $this->online_user[] = $all_online_user->now_online;
+                $this->online_user[] = $all_online_user['now_online'];
             }
        
 
