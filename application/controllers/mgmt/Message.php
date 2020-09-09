@@ -111,27 +111,31 @@ class Message extends MY_Mgmt_Controller {
 		$data = $this -> setup_user_data($data);
 		$offline_arr = $this -> get_post('id_array');
 		$online_id_array = $this -> get_post('online_id_array');
-
-		foreach($offline_arr[0] as $each_offline){
-			$all_users = $this -> users_dao -> find_all_offline_users($each_offline);
-			foreach($all_users as $each_offline_user){
-				$not_read = $this -> dao -> find_not_read($data['login_user_id'],$each_offline_user->id);
-				$each_offline_user->no_read =$not_read;
+		if(!empty($offline_arr)){
+			foreach($offline_arr[0] as $each_offline){
+				$all_users = $this -> users_dao -> find_all_offline_users($each_offline);
+				foreach($all_users as $each_offline_user){
+					$not_read = $this -> dao -> find_not_read($data['login_user_id'],$each_offline_user->id);
+					$each_offline_user->no_read =$not_read;
+				}
+				$res['offline_users'][] = $all_users;
 			}
-			$res['offline_users'][] = $all_users;
 		}
 		if(!empty($online_id_array)){
-			foreach($online_id_array as $each_online){
-				$online_users = $this -> users_dao -> find_all_offline_users($each_online);
-				foreach($online_users as $each_online_user){
-					$not_read = $this -> dao -> find_not_read($data['login_user_id'],$each_online_user->id);
-					$each_online_user->no_read =$not_read;
+			if(!empty($online_id_array)){
+				foreach($online_id_array as $each_online){
+					$online_users = $this -> users_dao -> find_all_offline_users($each_online);
+					foreach($online_users as $each_online_user){
+						$not_read = $this -> dao -> find_not_read($data['login_user_id'],$each_online_user->id);
+						$each_online_user->no_read =$not_read;
+					}
+					$res['online_users'][] = $online_users;
 				}
-				$res['online_users'][] = $online_users;
+			} else{
+				$res['online_users'][]=false;
 			}
-		} else{
-			$res['online_users'][]=false;
 		}
+	
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
