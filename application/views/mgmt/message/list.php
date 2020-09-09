@@ -75,15 +75,10 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
             return ;   
         }
        
-        
         $.ajax({
             type : "POST",
             url : baseUrl + 'mgmt/message/find_me_is_online',
-            data : {
-                me_id: me_id,
-                to_message_id: id,
-                f_chat_id:  $('#f_chat_id').val(),
-            },
+            data : {},
             success : function(d) {
                 if(d.is_online>1){
                     //創socket，注意URL的格式：ws://ip:端口
