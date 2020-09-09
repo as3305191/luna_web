@@ -274,9 +274,11 @@ class Sock{
             $sql2="SELECT * FROM `user_online` WHERE id='1'";
 
             $all_online_user=mysqli_query($link,$sql2);
-            foreach($all_online_user[0]->now_online as $each_value){
-                $this->online_user[] = $each_value;
+            if(!empty($all_online_user)){
+                $this->online_user[] = $all_online_user[0]->now_online;
             }
+       
+
             if($me_id>0){
                 if(count($this->online_user)>0){
                     if(!in_array($me_id,$this->online_user)){
