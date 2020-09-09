@@ -157,6 +157,8 @@ class Message extends MY_Mgmt_Controller {
 			} else{
 				$res['is_online'] = 2;//不在線上
 			}
+		} else{
+			$res['is_online'] = 2;//不在線上
 		}
 
 		
