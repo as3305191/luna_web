@@ -274,7 +274,7 @@ class Sock{
             $sql2="SELECT now_online FROM `user_online` WHERE id='1'";
 
             $all_online_user=mysqli_query($link,$sql2);
-            foreach($all_online_user as $each=>$each_value){
+            foreach($all_online_user[0] as $each_value){
                 $this->online_user[] = $each_value;
             }
             if($me_id>0){
