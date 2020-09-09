@@ -121,7 +121,6 @@ class Message extends MY_Mgmt_Controller {
 				$res['offline_users'][] = $all_users;
 			}
 		}
-		if(!empty($online_id_array)){
 			if(!empty($online_id_array)){
 				foreach($online_id_array as $each_online){
 					$online_users = $this -> users_dao -> find_all_offline_users($each_online);
@@ -134,7 +133,6 @@ class Message extends MY_Mgmt_Controller {
 			} else{
 				$res['online_users'][]=false;
 			}
-		}
 	
 		$res['success'] = TRUE;
 		$this -> to_json($res);
