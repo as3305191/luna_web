@@ -60,6 +60,11 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
 </body>
 <?php $this -> load -> view('mgmt/message/message_script'); ?>
 <script>
+    
+if(location.href.indexOf('#reloaded')==-1){
+    location.href=location.href+"#reloaded";
+    location.reload(); 
+} 
 
 (function(){
     var key='all',mkey;
