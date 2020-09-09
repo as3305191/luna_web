@@ -272,19 +272,21 @@ class Sock{
                 exit();
             }
             $sql2="SELECT now_online FROM `user_online` WHERE id='1'";
-            
-            $this->online_user[]=mysqli_query($link,$sql2);
+            $all_online_user=mysqli_query($link,$sql2);
+            foreach($online_user as $each=>$each_value){
+                $this->online_user[] = $each_value;
+            }
             if($me_id>0){
                 if(count($this->online_user)>0){
-                    // if(!in_array($me_id,$this->online_user)){
+                    if(!in_array($me_id,$this->online_user)){
                         $this->online_user[] = $me_id;
-                        $now_online_user = json_encode($this->online_user);
+                        $now_online_user = implode(',',$this->online_user) ;
                         $sql3="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
                         mysqli_query($link,$sql3);
-                    // }
+                    }
                 } else{
                     $this->online_user[] = $me_id;
-                    $now_online_user = json_encode($this->online_user);
+                    $now_online_user = implode(',',$this->online_user) ;
                     $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
                     mysqli_query($link,$sql4);
                 }
@@ -415,6 +417,10 @@ class Sock{
         $offline_user[]=array_diff($map_all_user1,$this->online_user);
         $ar['offline_user']=$offline_user;
         $this->send1(false,$ar,'all');
+
+        $now_online_user = implode(',',$ar['now_online']) ;
+        $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
+        mysqli_query($link,$sql4);
     }
      
     //紀錄日志
