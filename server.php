@@ -278,7 +278,6 @@ class Sock{
             if(!empty($all_online_user)){
                 $this->online_user[] = $row;
             }
-            error_log($all_online_user);
 
             if($me_id>0){
                 if(count($this->online_user)>0){
