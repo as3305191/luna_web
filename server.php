@@ -262,9 +262,7 @@ class Sock{
             $ar['name']=$g['ming'];
             $ar['me_id']=$g['me_id'];
             $me_id=$g['me_id'];
-            
-     
-        
+         
             $map_all_user = array();
             $key='all';
             $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
@@ -278,12 +276,12 @@ class Sock{
             $this->online_user[]=mysqli_query($link,$sql2);
             if($me_id>0){
                 if(count($this->online_user)>0){
-                    if(!in_array($me_id,$this->online_user)){
+                    // if(!in_array($me_id,$this->online_user)){
                         $this->online_user[] = $me_id;
                         $now_online_user = $this->online_user;
                         $sql3="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
                         mysqli_query($link,$sql3);
-                    }
+                    // }
                 } else{
                     $this->online_user[] = $me_id;
                     $now_online_user = $this->online_user;
