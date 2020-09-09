@@ -287,7 +287,6 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                         type: 'POST',
                         data: {
                             id_array: da.offline_user,
-
                         },
                         dataType: 'json',
                         success: function(d) {
