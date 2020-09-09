@@ -75,25 +75,34 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
             return ;   
         }
        
-        $.ajax({
-            type : "POST",
-            url : baseUrl + 'mgmt/message/find_me_is_online',
-            data : {},
-            success : function(d) {
-                if(d.is_online==2){
-                    //創socket，注意URL的格式：ws://ip:端口
-                    so=new WebSocket(url);
-                    //握手监听函数
-                    so.onopen=function(){
-                        //狀態1證明握手成功，然後把client自訂的名字發出去
-                        if(so.readyState==1){
-                            so.send('type=add&ming='+n+'&me_id='+me_id);
-                        }
-                    }
-                }
-            }
-        });
+        // $.ajax({
+        //     type : "POST",
+        //     url : baseUrl + 'mgmt/message/find_me_is_online',
+        //     data : {},
+        //     success : function(d) {
+        //         if(d.is_online==2){
+        //             //創socket，注意URL的格式：ws://ip:端口
+        //             so=new WebSocket(url);
+        //             //握手监听函数
+        //             so.onopen=function(){
+        //                 //狀態1證明握手成功，然後把client自訂的名字發出去
+        //                 if(so.readyState==1){
+        //                     so.send('type=add&ming='+n+'&me_id='+me_id);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // });
 
+        //創socket，注意URL的格式：ws://ip:端口
+        so=new WebSocket(url);
+        //握手监听函数
+        so.onopen=function(){
+            //狀態1證明握手成功，然後把client自訂的名字發出去
+            if(so.readyState==1){
+                so.send('type=add&ming='+n+'&me_id='+me_id);
+            }
+        }
 
         //握手失敗或者其他原因連接socket失敗，清除so的對象
         so.onclose=function(){
