@@ -62,10 +62,6 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <script>
 
 (function(){
-    if(location.href.indexOf('#reloaded')==-1){
-        location.href=location.href+"#reloaded"; 
-        location.reload(); 
-    } 
     var key='all',mkey;
     var users={};
     var url='<?= $socket_url?>';
