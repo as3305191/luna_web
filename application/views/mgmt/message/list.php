@@ -656,7 +656,15 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
         so.send('nr='+esc(da)+'&key='+key);
     }
 
-    function change_f_chat(id,name){
+ 
+    if(location.href.indexOf('#reloaded')==-1){
+        location.href=location.href+"#reloaded";
+        location.reload(); 
+        // st();
+    } 
+})();
+
+function change_f_chat(id,name){
         var lus=A.$('us_online'),lct=A.$('ct');
         $('#rin_send').removeClass('none');
         $('#f_chat_id').val(id);
@@ -704,12 +712,4 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
         });
 
     }
-    if(location.href.indexOf('#reloaded')==-1){
-        location.href=location.href+"#reloaded";
-        location.reload(); 
-        // st();
-    } 
-})();
-
-
 </script>
