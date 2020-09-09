@@ -61,11 +61,6 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <?php $this -> load -> view('mgmt/message/message_script'); ?>
 <script>
     
-if(location.href.indexOf('#reloaded')==-1){
-    location.href=location.href+"#reloaded";
-    location.reload(); 
-} 
-
 (function(){
     var key='all',mkey;
     var users={};
@@ -73,6 +68,10 @@ if(location.href.indexOf('#reloaded')==-1){
     var so=false,n=false,me_id=false;
     var lus=A.$('us_online'),lct=A.$('ct');
     function st(){
+        if(location.href.indexOf('#reloaded')==-1){
+            location.href=location.href+"#reloaded";
+            location.reload(); 
+        } 
         // n=prompt('取個名子');
         n='<?= $username?>';
         me_id='<?= $me_id?>';
