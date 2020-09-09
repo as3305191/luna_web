@@ -262,15 +262,9 @@ class Sock{
             $ar['name']=$g['ming'];
             $ar['me_id']=$g['me_id'];
             $me_id=$g['me_id'];
-          
-            if(count($this->online_user)>0){
-                if(!in_array($me_id,$this->online_user)){
-                    $this->online_user[] = $me_id;
-                }
-            } else{
-                $this->online_user[] = $me_id;
-            }
-          
+            
+     
+        
             $map_all_user = array();
             $key='all';
             $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
@@ -279,8 +273,24 @@ class Sock{
                 echo mysqli_connect_error();
                 exit();
             }
-            // $sql1="UPDATE users SET code=$k WHERE id=$me_id";
-            // mysqli_query($link,$sql1);
+            $sql2="SELECT now_online FROM `user_online` WHERE id='1'";
+            
+            $this->online_user[]=mysqli_query($link,$sql2);
+          
+            if($me_id>0){
+                if(count($this->online_user)>0){
+                    if(!in_array($me_id,$this->online_user)){
+                        $this->online_user[] = $me_id;
+                        $sql3="UPDATE user_online SET now_online='$this->online_user' WHERE id='1'";
+                        mysqli_query($link,$sql3);
+                    }
+                } else{
+                    $this->online_user[] = $me_id;
+                    $sql4="UPDATE user_online SET now_online='$this->online_user' WHERE id='1'";
+                    mysqli_query($link,$sql4);
+                }
+            }
+
             $sql="SELECT id FROM `users` WHERE status='0'";
             $select=mysqli_query($link,$sql);
             foreach($select as $each){
