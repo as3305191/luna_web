@@ -271,12 +271,12 @@ class Sock{
                 echo mysqli_connect_error();
                 exit();
             }
-            $sql2="SELECT * FROM `user_online` WHERE id='1'";
+            $sql2="SELECT now_online FROM `user_online` WHERE id='1'";
 
             $all_online_user=mysqli_query($link,$sql2);
             $row=mysqli_fetch_assoc($all_online_user);
             if(!empty($all_online_user)){
-                $this->online_user[] = $row['now_online'];
+                $this->online_user[] = $row;
             }
             error_log($all_online_user);
 
