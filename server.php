@@ -280,13 +280,13 @@ class Sock{
                 if(count($this->online_user)>0){
                     if(!in_array($me_id,$this->online_user)){
                         $this->online_user[] = $me_id;
-                        $now_online_user = $this->online_user;
+                        $now_online_user = json_encode($this->online_user);
                         $sql3="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
                         mysqli_query($link,$sql3);
                     }
                 } else{
                     $this->online_user[] = $me_id;
-                    $now_online_user = $this->online_user;
+                    $now_online_user = json_encode($this->online_user);
                     $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
                     mysqli_query($link,$sql4);
                 }
