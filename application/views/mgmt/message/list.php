@@ -80,7 +80,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
             url : baseUrl + 'mgmt/message/find_me_is_online',
             data : {},
             success : function(d) {
-                if(d.is_online>1){
+                if(d.is_online==2){
                     //創socket，注意URL的格式：ws://ip:端口
                     so=new WebSocket(url);
                     //握手监听函数
