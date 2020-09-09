@@ -276,17 +276,18 @@ class Sock{
             $sql2="SELECT now_online FROM `user_online` WHERE id='1'";
             
             $this->online_user[]=mysqli_query($link,$sql2);
-          
             if($me_id>0){
                 if(count($this->online_user)>0){
                     if(!in_array($me_id,$this->online_user)){
                         $this->online_user[] = $me_id;
-                        $sql3="UPDATE user_online SET now_online='$this->online_user' WHERE id='1'";
+                        $now_online_user = $this->online_user;
+                        $sql3="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
                         mysqli_query($link,$sql3);
                     }
                 } else{
                     $this->online_user[] = $me_id;
-                    $sql4="UPDATE user_online SET now_online='$this->online_user' WHERE id='1'";
+                    $now_online_user = $this->online_user;
+                    $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
                     mysqli_query($link,$sql4);
                 }
             }
