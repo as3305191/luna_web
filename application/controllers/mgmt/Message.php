@@ -131,7 +131,7 @@ class Message extends MY_Mgmt_Controller {
 					$res['online_users'][] = $online_users;
 				}
 			} else{
-				$res['online_users'][]=false;
+				$res['online_users']=false;
 			}
 	
 		$res['success'] = TRUE;
