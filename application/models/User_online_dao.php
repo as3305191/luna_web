@@ -12,7 +12,7 @@ class User_online_dao extends MY_Model {
 		);
 	}
 
-	function find_me_is_online_or_not($user_id) {
+	function find_me_is_online_or_not() {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> where("_m.id",1);
