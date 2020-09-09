@@ -272,7 +272,7 @@ class Sock{
                 exit();
             }
             $sql2="SELECT now_online FROM `user_online` WHERE id='1'";
-            
+
             $this->online_user[]=mysqli_query($link,$sql2);
             if($me_id>0){
                 if(count($this->online_user)>0){
