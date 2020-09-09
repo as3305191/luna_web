@@ -8,7 +8,8 @@ class Message extends MY_Mgmt_Controller {
 		$this -> load -> model('User_msg_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
-	
+		$this -> load -> model('User_online_dao', 'user_online_dao');
+
 	}
 
 	public function index()
@@ -140,6 +141,25 @@ class Message extends MY_Mgmt_Controller {
 		// json_decode($offline_arr,true);
 		$user_list = $this -> users_dao -> find_by_id($f_chat_id);
 		$res['user_list'] = $user_list;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function find_me_is_online() {
+		$data = array();
+		$data = $this -> setup_user_data($data);
+		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
+		$is_online_list= $this -> user_online_dao -> find_me_is_online_or_not();
+		if(!empty($is_online_list->now_online)){
+			$is_online_array[] = $is_online_list[0]->now_online;
+			if(in_array($login_user ->id, $is_online_array)){
+				$res['is_online'] = 0;//在線上
+			} else{
+				$res['is_online'] = 2;//不在線上
+			}
+		}
+
+		
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
