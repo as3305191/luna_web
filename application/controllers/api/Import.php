@@ -25,13 +25,15 @@ class Import extends MY_Base_Controller {
 			for($row=2; $row<=$highestRow; $row++){
 				$account = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
 				$password = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+				$empid = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
 				$del_date = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
-			
+
 				if($del_date=='NULL'){
 
 					$data = array(
 						'account'  =>$account,
-						'password' =>$password
+						'password' =>$password,
+						'empid' =>$empid
 					);
 					$this->users_copy_dao->insert($data);
 
