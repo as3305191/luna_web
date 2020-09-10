@@ -434,8 +434,8 @@ class Sock{
         $this->send1(false,$ar,'all');
 
         $now_online_user = implode(',',$ar['now_online']) ;
-        // $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
-        // mysqli_query($link,$sql4);
+        $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
+        mysqli_query($link,$sql4);
     }
      
     //紀錄日志
