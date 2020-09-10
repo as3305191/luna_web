@@ -109,12 +109,10 @@ var RolesAppClass = (function(app) {
 			type : "POST",
 			url : url,
 			data : $("#app-edit-form").serialize(),
-			success : function(data) {
-				if(data.error_msg) {
-					layer.msg(data.error_msg);
-				} else {
-					app.mDtTable.ajax.reload(null, false);
-				}	
+			success : function(d) {
+				if(d.success){
+					location.reload();
+				}
 			}
 		});
 	};

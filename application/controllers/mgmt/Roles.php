@@ -371,8 +371,8 @@ class Roles extends MY_Base_Controller {
 
 		$this -> d_dao -> update_by($data,'id',$id);
 		$res = array();
-		$res['success'] = TRUE;
 		$res['data'] = $data;
+		$res['success'] = TRUE;
 
 		$this -> to_json($res);
 	}
