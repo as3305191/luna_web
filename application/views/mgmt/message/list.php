@@ -67,6 +67,10 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
     var url='<?= $socket_url?>';
     var so=false,n=false,me_id=false;
     var lus=A.$('us_online'),lct=A.$('ct');
+    if(location.href.indexOf('#reloaded')==-1){
+        location.href=location.href+"#reloaded";
+            location.reload(); 
+    }
     function st(){
        
         // n=prompt('取個名子');

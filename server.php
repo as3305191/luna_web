@@ -288,7 +288,7 @@ class Sock{
                 $this->online_user=mb_split(",",$now_all_online_user_json->now_online);
             }
             // error_log(print_r($now_all_online_user_json->now_online,true));
-            error_log(print_r($this->online_user,true));
+            // error_log(print_r($this->online_user,true));
 
             if($me_id>0){
                 if(count($this->online_user)>0){
@@ -434,8 +434,8 @@ class Sock{
         $this->send1(false,$ar,'all');
 
         $now_online_user = implode(',',$ar['now_online']) ;
-        // $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
-        // mysqli_query($link,$sql4);
+        $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
+        mysqli_query($link,$sql4);
     }
      
     //紀錄日志
