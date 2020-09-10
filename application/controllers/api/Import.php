@@ -53,10 +53,10 @@ class Import extends MY_Base_Controller {
 			for($row=2; $row<=$highestRow; $row++){
 				$empid = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
 				$user_name = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-				$emptel = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-				$depname = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
-				$depmail = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
-				$usermail = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
+				$emptel = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+				$depname = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
+				$depmail = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
+				$usermail = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
 	
 
 
