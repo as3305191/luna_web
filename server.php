@@ -275,9 +275,11 @@ class Sock{
 
             $all_online_user=mysqli_query($link,$sql2);
             // $row=mysqli_fetch_assoc($all_online_user);
-            if(!empty($all_online_user)){
-                $this->online_user[] = $all_online_user;
+            while($r = mysqli_fetch_assoc($all_online_user)) {
+                $rows[] = $r;
             }
+            
+            $this->online_user = json_encode($rows);
 
             if($me_id>0){
                 if(count($this->online_user)>0){
