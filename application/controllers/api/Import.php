@@ -17,6 +17,7 @@ class Import extends MY_Base_Controller {
 	public function index() {
 		echo "index";
 	}
+
 	function import(){
 		$object = PHPExcel_IOFactory::load("123.xlsx");
 		foreach($object->getWorksheetIterator() as $worksheet){
@@ -44,7 +45,34 @@ class Import extends MY_Base_Controller {
 		// $this -> to_json($res);
 	}
 
+	function import1(){
+		$object = PHPExcel_IOFactory::load("234.xlsx");
+		foreach($object->getWorksheetIterator() as $worksheet){
+			$highestRow = $worksheet->getHighestRow();
+			$highestColumn = $worksheet->getHighestColumn();
+			for($row=2; $row<=$highestRow; $row++){
+				$empid = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+				$user_name = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+				$emptel = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+				$depname = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
+				$depmail = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
+				$usermail = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
+	
 
+
+					$data = array(
+						'user_name' =>$user_name,
+						'emptel' =>$emptel,
+						'depname' =>$depname,
+						'depmail' =>$depmail,
+						'usermail' =>$usermail,
+					);
+					$this->users_copy_dao->update_by($data,'empid',$empid);
+			}
+		}
+		// $res['success'] = TRUE;
+		// $this -> to_json($res);
+	}
 
 }
 ?>
