@@ -286,7 +286,7 @@ class Sock{
             // foreach($now_online_user[0] as $key=>$value){
             //     $this->online_user[] = mb_split(",",$value);
             // }
-            error_log(print_r($this->online_user,true));
+            // error_log(print_r($this->online_user,true));
             if($me_id>0){
                 if(count($this->online_user)>0){
                     if(!in_array($me_id,$this->online_user)){
