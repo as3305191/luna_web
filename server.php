@@ -279,34 +279,42 @@ class Sock{
                 $rows[] = $r;
             }
             
-            $now_online_user = json_encode($rows[0]);
-            // $this->online_user=mb_split(",",$now_online_user[0]->now_online);
-           
-            error_log(print_r($now_online_user->now_online,true));
-            // if($me_id>0){
-            //     if(count($this->online_user)>0){
-            //         if(!in_array($me_id,$this->online_user)){
-            //             array_push($this->online_user,$me_id);
-            //             $now_online_user = implode(',',$this->online_user) ;
-            //             $sql3="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
-            //             mysqli_query($link,$sql3);
-            //         }
-            //     } else{
-            //         $this->online_user[] = $me_id;
-            //         $now_online_user = $this->online_user;
-            //         $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
-            //         mysqli_query($link,$sql4);
-            //     }
-            // }
+            $now_all_online_user = json_encode($rows[0]);
+            // $this->online_user=mb_split(",",$now_all_online_user->now_online);
+            $now_all_online_user_json = json_decode($now_all_online_user);
+            if($now_all_online_user_json->now_online==''){
+                $this->online_user=array();
+            } else{
+                $this->online_user=mb_split(",",$now_all_online_user_json->now_online);
+            }
+            // error_log(print_r($now_all_online_user_json->now_online,true));
+            error_log(print_r($this->online_user,true));
 
-            // $sql="SELECT id FROM `users` WHERE status='0'";
-            // $select=mysqli_query($link,$sql);
-            // foreach($select as $each){
-            //     $map_all_user[]=$each['id'];
-            // }
-            // $offline_user[]=array_diff($map_all_user,$this->online_user);
-            // $ar['online_user']=$this->online_user;
-            // $ar['offline_user']=$offline_user;
+            if($me_id>0){
+                if(count($this->online_user)>0){
+                    if(!in_array($me_id,$this->online_user)){
+                        array_push($this->online_user,$me_id);
+                        $now_online_user = implode(",",$this->online_user);
+                        $sql3="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
+                        mysqli_query($link,$sql3);
+                    }
+                } else{
+                    $this->online_user = [];
+                    $this->online_user[] = $me_id;
+                    $now_online_user = $this->online_user;
+                    $sql4="UPDATE user_online SET now_online='$now_online_user[0]' WHERE id='1'";
+                    mysqli_query($link,$sql4);
+                }
+            }
+
+            $sql="SELECT id FROM `users` WHERE status='0'";
+            $select=mysqli_query($link,$sql);
+            foreach($select as $each){
+                $map_all_user[]=$each['id'];
+            }
+            $offline_user[]=array_diff($map_all_user,$this->online_user);
+            $ar['online_user']=$this->online_user;
+            $ar['offline_user']=$offline_user;
 
         }else{
             //发送信息行为，其中$g['key']表示面对大家还是个人，是前段传过来的信息
