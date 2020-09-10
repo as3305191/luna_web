@@ -276,7 +276,7 @@ class Sock{
             $all_online_user=mysqli_query($link,$sql2);
             // $row=mysqli_fetch_assoc($all_online_user);
             if(!empty($all_online_user)){
-                $this->online_user = $all_online_user;
+                $this->online_user[] = $all_online_user;
             }
 
             if($me_id>0){
@@ -289,7 +289,7 @@ class Sock{
                     }
                 } else{
                     $this->online_user[] = $me_id;
-                    $now_online_user = implode(',',$this->online_user) ;
+                    $now_online_user = $this->online_user;
                     $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
                     mysqli_query($link,$sql4);
                 }
