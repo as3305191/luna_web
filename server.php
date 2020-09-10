@@ -279,23 +279,29 @@ class Sock{
                 $rows[] = $r;
             }
             
-            $this->online_user[] = json_encode($rows[0]);
-            error_log($this->online_user);
-            // if($me_id>0){
-            //     if(count($this->online_user)>0){
-            //         if(!in_array($me_id,$this->online_user)){
-            //             array_push($this->online_user,$me_id);
-            //             $now_online_user = implode(',',$this->online_user) ;
-            //             $sql3="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
-            //             mysqli_query($link,$sql3);
-            //         }
-            //     } else{
-            //         $this->online_user[] = $me_id;
-            //         $now_online_user = $this->online_user;
-            //         $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
-            //         mysqli_query($link,$sql4);
-            //     }
+            $now_online_user[] = json_encode($rows[0]);
+            $this->online_user=$now_online_user[0]->now_online;
+            mb_split(",",$this->online_user);
+           
+            // foreach($now_online_user[0] as $key=>$value){
+            //     $this->online_user[] = mb_split(",",$value);
             // }
+            error_log(print_r($this->online_user,true));
+            if($me_id>0){
+                if(count($this->online_user)>0){
+                    if(!in_array($me_id,$this->online_user)){
+                        array_push($this->online_user,$me_id);
+                        $now_online_user = implode(',',$this->online_user) ;
+                        $sql3="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
+                        mysqli_query($link,$sql3);
+                    }
+                } else{
+                    $this->online_user[] = $me_id;
+                    $now_online_user = $this->online_user;
+                    $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
+                    mysqli_query($link,$sql4);
+                }
+            }
 
             $sql="SELECT id FROM `users` WHERE status='0'";
             $select=mysqli_query($link,$sql);
