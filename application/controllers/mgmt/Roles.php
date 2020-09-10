@@ -284,7 +284,7 @@ class Roles extends MY_Base_Controller {
 		$id = $this -> get_post('roles_id');
 
 		$data = $this -> get_posts(array(
-			'role_name',
+			'name',
 			'new_project',
 			'view_project',
 			'view_project_option',
