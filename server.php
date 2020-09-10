@@ -279,12 +279,12 @@ class Sock{
                 $rows[] = $r;
             }
             
-            $this->online_user = json_encode($rows);
+            $this->online_user = json_encode($rows[0]);
 
             if($me_id>0){
                 if(count($this->online_user)>0){
                     if(!in_array($me_id,$this->online_user)){
-                        $this->online_user[] = $me_id;
+                        array_push($this->online_user,$me_id);
                         $now_online_user = implode(',',$this->online_user) ;
                         $sql3="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
                         mysqli_query($link,$sql3);
