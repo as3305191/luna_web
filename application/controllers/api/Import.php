@@ -58,8 +58,6 @@ class Import extends MY_Base_Controller {
 				$depmail = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
 				$usermail = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
 	
-
-
 					$data = array(
 						'user_name' =>$user_name,
 						'emptel' =>$emptel,
