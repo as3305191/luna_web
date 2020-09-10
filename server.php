@@ -288,7 +288,7 @@ class Sock{
                 $this->online_user=mb_split(",",$now_all_online_user_json->now_online);
             }
             // error_log(print_r($now_all_online_user_json->now_online,true));
-            error_log(print_r($this->online_user,true));
+            // error_log(print_r($this->online_user,true));
 
             if($me_id>0){
                 if(count($this->online_user)>0){
