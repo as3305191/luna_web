@@ -86,8 +86,8 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
         so.onopen=function(){
             //狀態1證明握手成功，然後把client自訂的名字發出去
             if(so.readyState==1){
-                if(socket.length>0){
-                    so.send('type=old_remove&socket='+socket);
+                if(socket!=='0'){
+                    so.send('type=old_remove&socket='+socket+'&me_id='+me_id);
                 }
                 so.send('type=add&ming='+n+'&me_id='+me_id);
             }

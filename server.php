@@ -317,7 +317,17 @@ class Sock{
             $ar['offline_user']=$offline_user;
 
         }else if($g['type']=='old_remove'){
-            $this->close($g['socket']);
+            $socket=$g['socket'];
+            $me_id=$g['me_id'];
+            $this->close($socket);
+            $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
+            if(!$link){
+                echo"Mysql連錯<br/>";
+                echo mysqli_connect_error();
+                exit();
+            }
+            $sql="UPDATE users SET code='0' WHERE id='$me_id'";
+            mysqli_query($link,$sql);
         }  else{
             //发送信息行为，其中$g['key']表示面对大家还是个人，是前段传过来的信息
             $ar['nrong']=$g['nr'];
