@@ -19,7 +19,6 @@ class Users extends MY_Mgmt_Controller {
 		// $data['hospital_list'] = $this -> dao -> find_all_hospital();
 		$data['login_user'] = $this -> dao -> find_by_id($data['login_user_id']);
 		// $this -> to_json($data);
-
 		$this->load->view('mgmt/users/list', $data);
 	}
 
@@ -31,22 +30,18 @@ class Users extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-
 		));
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
-
 		$res['items'] = $this -> dao -> query_ajax($data);
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
-
 		$this -> to_json($res);
 	}
 
 	public function edit($id) {
 		$data = array();
 		$data['id'] = $id;
-
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
@@ -68,15 +63,12 @@ class Users extends MY_Mgmt_Controller {
 					$item->department_id = $department->id;
 				}
 			}
-
 			$data['item'] = $item;
 		}
-
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
 		$data['department_list'] = $this -> dao -> find_all_department();
-
 		$this->load->view('mgmt/users/edit', $data);
 	}
 
