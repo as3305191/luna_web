@@ -337,8 +337,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                             alert('faialure');
                         }
                     });
-                    so.send('type=add&ming='+n+'&me_id='+me_id);
-
+                    st();
                 } else{
                     if(da.nrong!=null){
                         da.nrong=da.nrong.replace(/{\\(\d+)}/g,function(a,b){
