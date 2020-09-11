@@ -69,10 +69,10 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
     var lus=A.$('us_online'),lct=A.$('ct');
  
     function st(){
-        if(location.href.indexOf('#reloaded')==-1){
-            location.href=location.href+"#reloaded";
-                location.reload(); 
-        }
+        // if(location.href.indexOf('#reloaded')==-1){
+        //     location.href=location.href+"#reloaded";
+        //         location.reload(); 
+        // }
         // n=prompt('取個名子');
         n='<?= $username?>';
         me_id='<?= $me_id?>';
