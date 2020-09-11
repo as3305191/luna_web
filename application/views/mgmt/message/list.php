@@ -265,6 +265,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                 if(da.type=='rmove'){
                     // var obj=A.$$('<p class="c2"><span>['+da.time+']</span>'+users[da.nrong].innerHTML+'退出聊天室</p>');
                     // lct.appendChild(obj);
+                    console.log(users[da.nrong]);
                     users[da.nrong].del();
                     delete users[da.nrong];
                     var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
@@ -301,6 +302,8 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                     // location.reload(); 
 
                 }else if(da.type=='now_rmove'){
+                    console.log(users[da.nrong]);
+                    users[da.nrong].del();
                     delete users[da.nrong];
                     var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
                     var each_offline_user = '';
