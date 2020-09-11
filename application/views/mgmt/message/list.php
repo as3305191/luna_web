@@ -120,7 +120,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                                     each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
                                 }
                             })
-                            var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
+                            var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
                             us_offline.append(html);
                         }
                     },
@@ -234,7 +234,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                                     each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
                                 } 
                             })
-                            var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
+                            var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
                             us_offline.append(html);
                         }
                     
@@ -291,7 +291,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                                         each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
                                     }
                                 })
-                                var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
+                                var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
                                 us_offline.append(html);
                             }
                         },
@@ -328,16 +328,17 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                                         each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
                                     }
                                 })
-                                var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
+                                var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
                                 us_offline.append(html);
                             }
-                            so.send('type=add&ming='+n+'&me_id='+me_id);
                         },
 
                         failure:function(){
                             alert('faialure');
                         }
                     });
+                    so.send('type=add&ming='+n+'&me_id='+me_id);
+
                 } else{
                     if(da.nrong!=null){
                         da.nrong=da.nrong.replace(/{\\(\d+)}/g,function(a,b){
