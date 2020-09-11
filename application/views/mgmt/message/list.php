@@ -7,7 +7,7 @@ body,p{margin:0px; padding:0px; font-size:14px; color:#333; font-family:Arial, H
 #ltian,.rin{width:98%; margin:5px auto;}
 #ltian{border:1px #ccc solid;overflow-y:auto; overflow-x:hidden; position:relative;}
 #ct{margin-right:111px; height:100%;overflow-y:auto;overflow-x: hidden;}
-#us{width:110px; overflow-y:auto; overflow-x:hidden; float:right; border-left:1px #ccc solid; height:100%; background-color:#F1F1F1;}
+#us{width:125px; overflow-y:auto; overflow-x:hidden; float:right; border-left:1px #ccc solid; height:100%; background-color:#F1F1F1;}
 #us #us_online p{padding:3px 5px; color:#08C; line-height:20px; height:20px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 #us #us_offline p{padding:3px 5px; color:#878787;line-height:20px; height:20px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 #us p:hover,#us p:active,#us p.ck{background-color:#069; color:#FFF;}
@@ -19,7 +19,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
 .rin span img{margin:0px -4px; cursor:pointer;}
 .rin span form{position:absolute; width:25px; height:25px; overflow:hidden; opacity:0; top:5px; right:5px;}
 .rin span input{width:180px; height:25px; margin-left:-160px; cursor:pointer}
- 
+  
 #ct p{padding:5px; line-height:20px;}
 #ct a{color:#069; cursor:pointer;}
 #ct span{color:#999; margin-right:10px;}
