@@ -39,24 +39,24 @@ var UsersAppClass = (function(app) {
 			location.href = baseUrl + app.basePath + '/export_all';
 		}
 
-		$('#hospital_id').on('change', function(){
-			app.tableReload();
-		});
-		$('#role_id').on('change', function(){
-			app.tableReload();
-		});
-		$('#is_valid_email').on('change', function(){
-			app.tableReload();
-		});
-		$('#is_foreign').on('change', function(){
-			app.tableReload();
-		});
-		$('#station_id').on('change', function(){
-			app.tableReload();
-		});
-		$('#bypass_point').on('change', function(){
-			app.tableReload();
-		});
+		// $('#hospital_id').on('change', function(){
+		// 	app.tableReload();
+		// });
+		// $('#role_id').on('change', function(){
+		// 	app.tableReload();
+		// });
+		// $('#is_valid_email').on('change', function(){
+		// 	app.tableReload();
+		// });
+		// $('#is_foreign').on('change', function(){
+		// 	app.tableReload();
+		// });
+		// $('#station_id').on('change', function(){
+		// 	app.tableReload();
+		// });
+		// $('#bypass_point').on('change', function(){
+		// 	app.tableReload();
+		// });
 
 		return app;
 	};

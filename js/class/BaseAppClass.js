@@ -72,7 +72,7 @@ var BaseAppClass = (function(app) {
 
 	app.dtActions = function() {
 		// search box
-		$(app.dtListId + " thead th input[type=text]").on('keyup change', function() {
+		$(app.dtListId + " thead th input[type=text]").on('change keyup', function() {
 			var me = this;
 
 			setTimeout(function(){
