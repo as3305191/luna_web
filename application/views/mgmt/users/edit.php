@@ -66,7 +66,7 @@
 						<label class="col-md-3 control-label">部門</label>
 						<div class="col-md-6">
 							<select name="role_id" id="department_id" class="form-control" onchange="department_change();">
-							<option >請選擇</option>
+							<option value="0">請選擇</option>
 								<?php foreach($department_list as $each): ?>
 									<option value="<?= $each -> id?>" <?= isset($item) && $item -> department_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
 								<?php endforeach ?>

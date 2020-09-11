@@ -82,7 +82,9 @@ class Users extends MY_Mgmt_Controller {
 
 	public function find_div_by_department() {
 		$department = $this -> get_post('department');
-		$list = $this -> d_dao -> find_all_by('parent_id', $department);
+		if($department>0){
+			$list = $this -> d_dao -> find_all_by('parent_id', $department);
+		}
 		$res = array();
 		$res['div_list'] = $list;
 		$this -> to_json($res);
