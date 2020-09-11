@@ -61,6 +61,8 @@ class Users extends MY_Mgmt_Controller {
 				} else{
 					$item->department_id = $department->id;
 				}
+			} else{
+				$item->department_id = 0;
 			}
 			$data['item'] = $item;
 		}
