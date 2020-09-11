@@ -211,7 +211,7 @@ class Roles extends MY_Base_Controller {
 		$res = array();
 		$id = $this -> get_post('id');
 		$data = $this -> get_posts(array(
-			'role_name'
+			'name'
 		));
 
 		$nav_ids = $this -> get_post('nav_ids');
