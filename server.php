@@ -328,6 +328,10 @@ class Sock{
             }
             $sql="UPDATE users SET code='0' WHERE id='$me_id'";
             mysqli_query($link,$sql);
+            $ar['type']='rmove';
+            $ar['nrong']=$socket;
+            $this->send1(false,$ar,'all');
+
         }  else{
             //发送信息行为，其中$g['key']表示面对大家还是个人，是前段传过来的信息
             $ar['nrong']=$g['nr'];
