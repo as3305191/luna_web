@@ -14,7 +14,7 @@ var UsersAppClass = (function(app) {
 				dataType : 'json',
 				type : 'post',
 				complete:function(data){
-					$('#s_total').html('推薦會員數:' + data.responseJSON.recordsTotal);
+					// $('#s_total').html('推薦會員數:' + data.responseJSON.recordsTotal);
 				}
 			},
 
