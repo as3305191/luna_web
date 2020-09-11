@@ -498,7 +498,7 @@ class Users_dao extends MY_Model {
 	}
 
 	function find_all_department() {
-		$this -> db -> where('(parent_id<1)');
+		$this -> db -> where('parent_id',20);
 		return $this -> db -> get('department') -> result();
 	}
 
