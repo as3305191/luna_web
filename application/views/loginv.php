@@ -209,7 +209,7 @@
 								if(data.msg) {
 									alert(data.msg);
 								} else {
-									location.href = "<?= base_url('app/#mgmt/fix_list') ?>";
+									location.href = "<?= base_url('app/#mgmt/message') ?>";
 								}
 							}
 						});
