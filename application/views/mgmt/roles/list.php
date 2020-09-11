@@ -7,12 +7,10 @@
 	<div class="tab-pane active" id="list_page">
 		<!-- widget grid -->
 		<section id="widget-grid" class="">
-
 			<!-- row -->
 			<div class="row">
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
 					<div class="col-md-12 col-xs-12 col-sm-12" style="padding:10px 17px 10px 17px;">
 						<div class="col-md-12 col-xs-12 col-sm-12 no-padding" style="">
 							<span style="font-size: 16pt; color:#0d0d56">權限管理</span>
