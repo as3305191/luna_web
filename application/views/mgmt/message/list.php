@@ -65,39 +65,20 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
     var key='all',mkey;
     var users={};
     var url='<?= $socket_url?>';
-    var so=false,n=false,me_id=false;
+    var so=false,n=false,me_id=false,socket=false;
     var lus=A.$('us_online'),lct=A.$('ct');
  
     function st(){
-        if(location.href.indexOf('#reloaded')==-1){
-            location.href=location.href+"#reloaded";
-                location.reload(); 
-        }
+      
         // n=prompt('取個名子');
         n='<?= $username?>';
         me_id='<?= $me_id?>';
+        socket='<?= $mesocket_id?>';        
         if(!n){
             return ;   
         }
        
-        // $.ajax({
-        //     type : "POST",
-        //     url : baseUrl + 'mgmt/message/find_me_is_online',
-        //     data : {},
-        //     success : function(d) {
-        //         if(d.is_online==2){
-        //             //創socket，注意URL的格式：ws://ip:端口
-        //             so=new WebSocket(url);
-        //             //握手监听函数
-        //             so.onopen=function(){
-        //                 //狀態1證明握手成功，然後把client自訂的名字發出去
-        //                 if(so.readyState==1){
-        //                     so.send('type=add&ming='+n+'&me_id='+me_id);
-        //                 }
-        //             }
-        //         }
-        //     }
-        // });
+      
 
         //創socket，注意URL的格式：ws://ip:端口
         so=new WebSocket(url);
@@ -105,6 +86,9 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
         so.onopen=function(){
             //狀態1證明握手成功，然後把client自訂的名字發出去
             if(so.readyState==1){
+                if(socket.length>0){
+                    so.send('type=old_remove&socket='+socket);
+                }
                 so.send('type=add&ming='+n+'&me_id='+me_id);
             }
         }
@@ -180,7 +164,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                                     each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
                                 } 
                             })
-                            var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
+                            var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
                             us_offline.append(html);
                         }
                      

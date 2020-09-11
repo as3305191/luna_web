@@ -316,7 +316,9 @@ class Sock{
             $ar['online_user']=$this->online_user;
             $ar['offline_user']=$offline_user;
 
-        }else{
+        }else if($g['type']=='old_remove'){
+            $this->send2($g['socket']);
+        }  else{
             //发送信息行为，其中$g['key']表示面对大家还是个人，是前段传过来的信息
             $ar['nrong']=$g['nr'];
             $ar['sender']=$g['me_id'];

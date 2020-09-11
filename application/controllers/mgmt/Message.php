@@ -22,6 +22,7 @@ class Message extends MY_Mgmt_Controller {
         $data['me'] = $login_user;
 		$data['username'] = $login_user->user_name;
 		$data['me_id'] = $login_user->id;
+		$data['old_socket'] = $login_user->socket;
 		// $this -> to_json($data);
 
 		$this->load->view('mgmt/message/list', $data);
