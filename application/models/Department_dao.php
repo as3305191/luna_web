@@ -166,6 +166,24 @@ class Department_dao extends MY_Model {
 		return $list;
 	}
 
+	function update_role_power($role_id, $nav_id_arr, $nav_power_arr) {
+		$this -> del_power_by_role_id($role_id);
+
+		// add power
+		for($i = 0 ; $i < count($nav_id_arr) ; $i++) {
+			$this -> db -> insert('role_power', array(
+				'role_id' => $role_id,
+				'nav_id' => $nav_id_arr[$i],
+				'nav_power' => $nav_power_arr[$i]
+			));
+		}
+	}
+
+
+	function del_power_by_role_id($role_id) {
+		$sql = "delete from role_power where role_id = $role_id";
+		$this -> db -> query($sql);
+	}
 
 }
 ?>

@@ -211,7 +211,7 @@ class Roles extends MY_Base_Controller {
 		$res = array();
 		$id = $this -> get_post('id');
 		$data = $this -> get_posts(array(
-			'name'
+			'role_name'
 		));
 
 		$nav_ids = $this -> get_post('nav_ids');
@@ -226,14 +226,14 @@ class Roles extends MY_Base_Controller {
 			}
 		}
 
-		// if(empty($id)) {
-		// 	// insert
-		// 	$id = $this -> dao -> insert($data);
-		// } else {
-		// 	// update
-		// 	$this -> dao -> update($data, $id);
-		// }
-		$this -> d_dao -> update_role_power($id, $nav_ids, $nav_powers);
+		if(empty($id)) {
+			// insert
+			$id = $this -> dao -> insert($data);
+		} else {
+			// update
+			$this -> dao -> update($data, $id);
+		}
+		$this -> dao -> update_role_power($id, $nav_ids, $nav_powers);
 
 		$res['success'] = TRUE;
  		$this -> to_json($res);
@@ -371,8 +371,8 @@ class Roles extends MY_Base_Controller {
 
 		$this -> d_dao -> update_by($data,'id',$id);
 		$res = array();
-		$res['data'] = $data;
 		$res['success'] = TRUE;
+		$res['data'] = $data;
 
 		$this -> to_json($res);
 	}
