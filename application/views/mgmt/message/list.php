@@ -88,8 +88,9 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
             if(so.readyState==1){
                 if(socket!=='0'){
                     so.send('type=old_remove&socket='+socket+'&me_id='+me_id);
+                } else{
+                    so.send('type=add&ming='+n+'&me_id='+me_id);
                 }
-                so.send('type=add&ming='+n+'&me_id='+me_id);
             }
         }
 
@@ -330,6 +331,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                                 var html='<div><p class="my">離線中...</p>'+each_offline_user+'</div>';
                                 us_offline.append(html);
                             }
+                            so.send('type=add&ming='+n+'&me_id='+me_id);
                         },
 
                         failure:function(){
