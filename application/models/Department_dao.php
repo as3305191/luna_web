@@ -168,7 +168,6 @@ class Department_dao extends MY_Model {
 
 	function update_role_power($role_id, $nav_id_arr, $nav_power_arr) {
 		$this -> del_power_by_role_id($role_id);
-
 		// add power
 		for($i = 0 ; $i < count($nav_id_arr) ; $i++) {
 			$this -> db -> insert('role_power', array(

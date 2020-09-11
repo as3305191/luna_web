@@ -233,7 +233,7 @@ class Roles extends MY_Base_Controller {
 			// d_dao
 			$this -> d_dao -> update($data, $id);
 		}
-		$this -> d_dao -> update_role_power($id, $nav_ids, $nav_powers);
+		// $this -> dao -> update_role_power($id, $nav_ids, $nav_powers);
 
 		$res['success'] = TRUE;
  		$this -> to_json($res);
