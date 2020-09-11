@@ -226,14 +226,14 @@ class Roles extends MY_Base_Controller {
 			}
 		}
 
-		if(empty($id)) {
-			// insert
-			$id = $this -> dao -> insert($data);
-		} else {
-			// update
-			$this -> dao -> update($data, $id);
-		}
-		$this -> dao -> update_role_power($id, $nav_ids, $nav_powers);
+		// if(empty($id)) {
+		// 	// insert
+		// 	$id = $this -> dao -> insert($data);
+		// } else {
+		// 	// update
+		// 	$this -> dao -> update($data, $id);
+		// }
+		$this -> d_dao -> update_role_power($id, $nav_ids, $nav_powers);
 
 		$res['success'] = TRUE;
  		$this -> to_json($res);
