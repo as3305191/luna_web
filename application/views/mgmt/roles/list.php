@@ -10,29 +10,24 @@
 
 			<!-- row -->
 			<div class="row">
-
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 					<div class="col-md-12 col-xs-12 col-sm-12" style="padding:10px 17px 10px 17px;">
-							<div class="col-md-12 col-xs-12 col-sm-12 no-padding" style="">
-									<span style="font-size: 16pt; color:#0d0d56">權限管理</span>
-									<button class="btn" id="new_department" style="float:right;background-color:#FF9030;color:white;width:140px">新增部門</button>
-							</div>
+						<div class="col-md-12 col-xs-12 col-sm-12 no-padding" style="">
+							<span style="font-size: 16pt; color:#0d0d56">權限管理</span>
+							<button class="btn" id="new_department" style="float:right;background-color:#FF9030;color:white;width:140px">新增部門</button>
+						</div>
 					</div>
-
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="" >
 						<!-- widget div-->
 						<div>
-
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
-
 							</div>
 							<!-- end widget edit box -->
-
 							<!-- widget content -->
 							<div class="widget-body" >
 								<section class="col-md-12 col-xs-12 col-sm-12" style="padding: 17px 17px;border:1px solid #ccc;background-color:#fff">

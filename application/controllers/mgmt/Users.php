@@ -36,7 +36,16 @@ class Users extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 
-		$res['items'] = $this -> dao -> query_ajax($data);
+		$items = $this -> dao -> query_ajax($data);
+		foreach($items as $each){
+			$department_list = $this -> d_dao -> find_by_id($each->role_id);
+			if($department_list->level==4){
+				$each->department_id = $each->role_id;
+			} else{
+				$each->department_id =$this -> d_dao -> find_by_id($department_list->parent_id);
+			}
+		}
+		$res['item']  = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
 
