@@ -21,7 +21,6 @@ class Users extends MY_Mgmt_Controller {
 		// $this -> to_json($data);
 		$this->load->view('mgmt/users/list', $data);
 	}
-
 	public function get_data() {
 		$res = array();
 		$data = $this -> get_posts(array(
@@ -217,7 +216,6 @@ class Users extends MY_Mgmt_Controller {
 						$corp_sys_name = $corp -> sys_name;
 					}
 				}
-
 				$lineData[] = $corp_sys_name;
 				$lineData[] = $this -> wtx_dao -> get_sum_amt($each -> id);
 				$lineData[] = $this -> wtx_ntd_dao -> get_sum_amt($each -> id);
@@ -234,11 +232,9 @@ class Users extends MY_Mgmt_Controller {
 			//move back to beginning of file
 
     	fseek($f, 0);
-
 			//set headers to download file rather than displayed
 			 header('Content-Type: text/csv');
 			 header('Content-Disposition: attachment; filename="' . $filename . '";');
-
 			 //output all remaining data on a file pointer
 			 fpassthru($f);
       // $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
