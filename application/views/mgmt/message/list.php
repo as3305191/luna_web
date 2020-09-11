@@ -314,7 +314,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                             alert('faialure');
                         }
                     });
-                    location.reload(); 
+                    // location.reload(); 
 
                 }else{
                     if(da.nrong!=null){
