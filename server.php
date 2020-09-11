@@ -328,7 +328,7 @@ class Sock{
             }
             $sql="UPDATE users SET code='0' WHERE id='$me_id'";
             mysqli_query($link,$sql);
-            $ar['type']='rmove';
+            $ar['type']='now_rmove';
             $ar['nrong']=$socket;
             $this->send1(false,$ar,'all');
 
