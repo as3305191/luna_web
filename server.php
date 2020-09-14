@@ -458,9 +458,11 @@ class Sock{
         // foreach($select as $each){
         //     $now_off_user[]=$each['id'];
         // }
-        mysqli_query($link,$sql);
         foreach($select as $each){
-            $map_all_user[]=$each['id'];
+            $id = $each['id'];
+            $sql5="UPDATE users SET code='0' WHERE id='$id'";
+            mysqli_query($link,$sql5);
+            $map_all_user[]=$id;
         }
         $now_online=array_diff($this->online_user,$map_all_user);
         $this->online_user=$now_online;
@@ -477,6 +479,8 @@ class Sock{
         $now_online_user = implode(',',$ar['now_online']) ;
         $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
         mysqli_query($link,$sql4);
+
+        
     }
      
     //紀錄日志
