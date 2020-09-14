@@ -303,9 +303,9 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                     // location.reload(); 
 
                 }else if(da.type=='now_rmove'){
-                    console.log(users[da.nrong]);
-                    users[da.nrong].del();
-                    delete users[da.nrong];
+                    // console.log(users[da.nrong]);
+                    // users[da.nrong].del();
+                    // delete users[da.nrong];
                     var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
                     var each_offline_user = '';
                     var us_offline = $('#us_offline').empty();
