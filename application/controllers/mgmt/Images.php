@@ -720,6 +720,7 @@ class Images extends MY_Base_Controller {
 
 		// load an image
 		$i = new Imagick(realpath($img_path));
+		header("Content-Type:image/jpg");
 		// get the current image dimensions
 		$geo = $i->getImageGeometry();
 
