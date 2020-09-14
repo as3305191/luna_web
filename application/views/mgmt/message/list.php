@@ -337,8 +337,14 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                             alert('faialure');
                         }
                     });
+                    if(count(da.me_id)>1){
+                        if(da.me_id.includes(me_id)){
+                        } else{
+                            return st();
+                        }
+                    }
+                                       
                     // reload_st();
-                    return st();
                 } else{
                     if(da.nrong!=null){
                         da.nrong=da.nrong.replace(/{\\(\d+)}/g,function(a,b){
