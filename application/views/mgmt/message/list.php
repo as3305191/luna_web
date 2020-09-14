@@ -60,10 +60,10 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
 </body>
 <?php $this -> load -> view('mgmt/message/message_script'); ?>
 <script>
-if(location.href.indexOf('#reloaded')==-1){
-    location.href=location.href+"#reloaded";
-    location.reload(); 
-}
+// if(location.href.indexOf('#reloaded')==-1){
+//     location.href=location.href+"#reloaded";
+//     location.reload(); 
+// }
 
 (function(){
     var key='all',mkey;
@@ -89,7 +89,8 @@ if(location.href.indexOf('#reloaded')==-1){
             //狀態1證明握手成功，然後把client自訂的名字發出去
             if(so.readyState==1){
                 if(socket!=='0'){
-                    so.send('type=old_remove&socket='+socket+'&me_id='+me_id);
+                    // so.send('type=old_remove&socket='+socket+'&me_id='+me_id);
+                    location.reload(); 
                 } else{
                     so.send('type=add&ming='+n+'&me_id='+me_id);
                 }
