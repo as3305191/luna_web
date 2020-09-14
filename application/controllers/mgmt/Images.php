@@ -160,6 +160,7 @@ class Images extends MY_Base_Controller {
 		$i_data['height'] = $image_height;
 		$i_data['img'] = $img_content;
 		$last_id = $this -> dao -> insert_image_data($i_data);
+
 		// if (!empty($last_id)) {
 		// 	// resize
 		// 	$this -> resizeBlob($tmp_name, 50, 50);
@@ -187,7 +188,8 @@ class Images extends MY_Base_Controller {
 		// 		$res['append'] = FALSE;
 		// 	}
 
-			// $res['append'] = FALSE;
+
+			$res['append'] = FALSE;
 
 			$this -> to_json($res);
 		}
