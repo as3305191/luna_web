@@ -162,7 +162,7 @@ class Images extends MY_Base_Controller {
 		$last_id = $this -> dao -> insert_image_data($i_data);
 		if (!empty($last_id)) {
 			// resize
-			$this -> resizeBlob($tmp_name, 50, 50);
+			$this -> resize($tmp_name, 50, 50);
 
 			$img_content = file_get_contents($tmp_name);
 			$this -> dao -> update(array(
