@@ -23,7 +23,7 @@
 			</a>
 		</div>
 		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="" onclick="currentApp.doSubmit();" class="btn btn-default btn-danger">
+			<a href="javascript:void(0);" id="" onclick="do_save();" class="btn btn-default btn-danger">
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
@@ -40,12 +40,12 @@
 		<div class="widget-body">
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-				<input type="hidden" name="role_id"  value="1" />
+				<!-- <input type="hidden" name="role_id"  value="1" /> -->
 				<div class="form-group" style="padding:0px 26px">
         <div class="clearfix"></div>
     </div>
     <hr/>
-		<div id="basic_information">
+		<div >
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利名稱</label>
@@ -526,5 +526,25 @@ $('#add_country').click(function() {
 		content:'<?=base_url('mgmt/patent/new_country')?>'
     })
 })
+
+function do_save() {
+	var url = baseUrl + 'mgmt/patent/insert'; // the script where you handle the form input.
+	$.ajax({
+		type : "POST",
+		url : url,
+		data : {
+			id: $('#item_id').val(),
+			pdf_array: pdf_array.join(","),
+		},
+		success : function(data) {
+			if(data.error_msg) {
+				layer.msg(data.error_msg);
+			} else {
+				currentApp.mDtTable.ajax.reload(null, false);
+				currentApp.backTo();
+			}
+		}
+	});
+};
 
 </script>
