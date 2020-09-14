@@ -17,6 +17,7 @@ class Images extends MY_Base_Controller {
 		// setup base path
 		$this -> base_path = 'mgmt/images';
 		$this -> load -> helper('url');
+		$this -> load -> library('image_lib');
 	}
 
 	function index() {
@@ -694,6 +695,19 @@ class Images extends MY_Base_Controller {
     	$i->thumbnailImage($width, $height, true);
 		return $i->getImagesBlob();
 		// $i->writeImage(realpath($img_path));
+	}
+
+	public function resizetext($image, $width = 400, $height = 400) {
+		$config['image_library'] = 'gd2';
+		$config['source_image'] = $image;
+		$config['create_thumb'] = TRUE;
+		$config['maintain_ratio'] = TRUE;
+		$config['width'] = $width;
+		$config['height'] = $height;
+		
+		// $this -> load -> library('image_lib'，$config);
+		$new_image = $this -> image_lib ->resize();
+		return $new_image;
 	}
 
 	public function resize($img_path, $width = 400, $height = 400)
