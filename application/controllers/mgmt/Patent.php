@@ -13,7 +13,6 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Country_dao', 'country_dao');
-
 	}
 
 	public function index()
