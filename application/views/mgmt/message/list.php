@@ -337,8 +337,8 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                             alert('faialure');
                         }
                     });
-                    reload_st();
-                    // st();
+                    // reload_st();
+                    return st();
                 } else{
                     if(da.nrong!=null){
                         da.nrong=da.nrong.replace(/{\\(\d+)}/g,function(a,b){
@@ -632,9 +632,9 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
         }
     }
      
-    function reload_st(){
-        st();
-    }
+    // function reload_st(){
+    //     st();
+    // }
 
     function gb(){
         ems.style.display='';
