@@ -326,6 +326,31 @@ class Sock{
                 echo mysqli_connect_error();
                 exit();
             }
+            $sql="SELECT id FROM `users` WHERE code='$socket'";
+            $select=mysqli_query($link,$sql);
+            // $now_off_user = array();
+            // foreach($select as $each){
+            //     $now_off_user[]=$each['id'];
+            // }
+            mysqli_query($link,$sql);
+            foreach($select as $each){
+                $map_all_user[]=$each['id'];
+            }
+            $now_online=array_diff($this->online_user,$map_all_user);
+            $this->online_user=$now_online;
+            $ar['now_online']=$this->online_user;
+            $sql1="SELECT id FROM `users` WHERE status='0'";
+            $select1=mysqli_query($link,$sql1);
+            foreach($select1 as $each){
+                $map_all_user1[]=$each['id'];
+            }
+            $offline_user[]=array_diff($map_all_user1,$this->online_user);
+            $ar['offline_user']=$offline_user;
+    
+            $now_online_user = implode(',',$ar['now_online']) ;
+            $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
+            mysqli_query($link,$sql4);
+
             $sql="UPDATE users SET code='0' WHERE id='$me_id'";
             mysqli_query($link,$sql);
             $ar['type']='now_rmove';
