@@ -90,7 +90,6 @@ if(location.href.indexOf('#reloaded')==-1){
             if(so.readyState==1){
                 if(socket!=='0'){
                     so.send('type=old_remove&socket='+socket+'&me_id='+me_id);
-                    location.reload();
                 } else{
                     so.send('type=add&ming='+n+'&me_id='+me_id);
                 }
