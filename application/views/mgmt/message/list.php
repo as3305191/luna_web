@@ -337,8 +337,13 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                             alert('faialure');
                         }
                     });
-                    if(count(da.me_id)>1){
+                    if(Array.isArray(me_id)){
                         if(da.me_id.includes(me_id)){
+                        } else{
+                            return st();
+                        }
+                    } else{
+                        if(da.me_id==me_id){
                         } else{
                             return st();
                         }
