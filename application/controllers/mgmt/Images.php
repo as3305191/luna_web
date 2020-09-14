@@ -160,32 +160,32 @@ class Images extends MY_Base_Controller {
 		$i_data['height'] = $image_height;
 		$i_data['img'] = $img_content;
 		$last_id = $this -> dao -> insert_image_data($i_data);
-		if (!empty($last_id)) {
-			// resize
-			$this -> resizeBlob($tmp_name, 50, 50);
+		// if (!empty($last_id)) {
+		// 	// resize
+		// 	$this -> resizeBlob($tmp_name, 50, 50);
 
-			$img_content = file_get_contents($tmp_name);
-			$this -> dao -> update(array(
-				'img_thumb' => $img_content
-			), $last_id);
+		// 	$img_content = file_get_contents($tmp_name);
+		// 	$this -> dao -> update(array(
+		// 		'img_thumb' => $img_content
+		// 	), $last_id);
 
-			$url = 'mgmt/images/delete/' . $last_id;
-			$res = [
-			    'initialPreview' => [
-			   		base_url('mgmt/images/get/' . $last_id)
-			    ],
-			    'initialPreviewConfig' => [
-			        ['caption' => "$name", 'size' => $size, 'width' => '120px', 'url' => $url, 'key' => $last_id]
-			    ],
-			    "id" => $last_id
-			];
+		// 	$url = 'mgmt/images/delete/' . $last_id;
+		// 	$res = [
+		// 	    'initialPreview' => [
+		// 	   		base_url('mgmt/images/get/' . $last_id)
+		// 	    ],
+		// 	    'initialPreviewConfig' => [
+		// 	        ['caption' => "$name", 'size' => $size, 'width' => '120px', 'url' => $url, 'key' => $last_id]
+		// 	    ],
+		// 	    "id" => $last_id
+		// 	];
 
-			//可重複上圖
-			if($image_path == 'product_img' || $image_path == 'store_img') {
-				$res['append'] = TRUE;
-			} else {
-				$res['append'] = FALSE;
-			}
+		// 	//可重複上圖
+		// 	if($image_path == 'product_img' || $image_path == 'store_img') {
+		// 		$res['append'] = TRUE;
+		// 	} else {
+		// 		$res['append'] = FALSE;
+		// 	}
 
 			// $res['append'] = FALSE;
 
