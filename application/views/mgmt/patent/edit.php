@@ -330,7 +330,7 @@ $("#img-input").fileinput({
         initialPreviewAsData: true,
         overwriteInitial: false,
         maxFileCount: 1,
-        uploadUrl: 'mgmt/images/upload_img_or_pdf/img',
+        uploadUrl: 'mgmt/images/upload/img',
         uploadExtraData: {
         }
     }).on('fileuploaded', function(event, data, previewId, index) {

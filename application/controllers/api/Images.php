@@ -465,7 +465,7 @@ class Images extends MY_Base_Controller {
 		}
 
 
-    $i->thumbnailImage($width, $height, true);
+    	$i->thumbnailImage($width, $height, true);
 		return $i->getImagesBlob();
 		// $i->writeImage(realpath($img_path));
 	}
