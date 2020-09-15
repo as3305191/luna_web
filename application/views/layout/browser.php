@@ -26,6 +26,7 @@
 			var baseUrl = '<?= base_url(); ?>';
 			loadScript(baseUrl + "js/app/images/list.js", function(){
 				imagesApp.init();
+
 			});
 			
 		</script>

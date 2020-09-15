@@ -171,4 +171,5 @@ function showMarquee() {
 	}, 4000);
 }
 showMarquee();
+
 </script>
