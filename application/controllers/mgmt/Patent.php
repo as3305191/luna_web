@@ -117,6 +117,24 @@ class Patent extends MY_Mgmt_Controller {
 		$patnet_name = $this -> get_post('patnet_name');
 		$img= $this -> get_post('img');
 		$pdf_array = $this -> get_post('pdf_array');
+
+		// id: $('#item_id').val(),
+		// pdf_array: pdf_array.join(","),
+		// img: img,
+		// patnet_key: $('#patnet_key').val(),
+		// patnet_category: $('#patnet_category').val(),
+		// public_num_input:  public_num_input.join(","),
+		// patnet_num_input:  patnet_num_input.join(","),
+		// application_date: $('#application_date').val(),
+		// public_date: $('#public_date').val(),
+		// announcement_date: $('#announcement_date').val(),
+		// s_dt: $('#s_dt').val(),
+		// e_dt: $('#e_dt').val(),
+		// patnetend_end_date: $('#patnetend_end_date').val(),
+		// patnet_status: $('#patnet_status').val(),
+		// patent_note: $('#patent_note').val(),
+		// patent_range: $('#patent_range').val(),
+
 		$data['img_id'] = $img;
 		$data['files_id'] = $pdf_array;
 		$data['patent_name'] = $patnet_name;
