@@ -528,6 +528,34 @@ $('#add_country').click(function() {
     })
 })
 
+function load_country() {
+	$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/patent/find_country',
+			type: 'POST',
+			data: {
+				department: $department
+			},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$patnet_country = $('#patnet_country').empty();
+					$.each(d.country, function(){
+						$('<option/>', {
+							'value': this.id,
+							'text': this.country_name
+						}).appendTo($patnet_country);
+					});
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+
+}
+load_country();
+
 function do_save() {
 	var url = baseUrl + 'mgmt/patent/insert'; // the script where you handle the form input.
 	$.ajax({

@@ -142,42 +142,6 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function find_this_computer() {
-		$now_s_h_id = $this -> get_post('now_s_h_id');
-		$fix_type = $this -> get_post('fix_type');
-		if(!empty($fix_type)){
-			if($fix_type==1){
-				$now_s_h_list['computer'] = $this -> computer_dao -> find_by_id($now_s_h_id);
-				$s_h_list= $this -> c_s_h_join_list_dao -> find_by_computer_id($now_s_h_id);
-				foreach($s_h_list  as $each_c_s_h){
-					if($each_c_s_h -> computer_hard_id>0){
-						$hard= $this -> c_h_dao -> find_by_id($each_c_s_h -> computer_hard_id);
-						$hard_array[] = $hard;
-					} else{
-						$soft= $this -> c_s_dao -> find_by_id($each_c_s_h -> computer_soft_id);
-						$soft_array[] = $soft;
-					}
-				}
-				$now_s_h_list['h_array'] = $hard_array;
-				$now_s_h_list['s_array'] = $soft_array;
-			}
-			if($fix_type==2){
-				// $fix_list = $this -> c_s_dao -> find_by_name($h_s_name);
-			}
-			if($fix_type==3){
-				// $fix_list = $this -> c_h_dao -> find_by_name($h_s_name);
-			}
-			if(!empty($now_s_h_list)){
-				$res['now_s_h_list'] = $now_s_h_list;
-			} else{
-				$res['msg'] = '搜尋不到結果';
-			}
-			$res['fix_type'] = $fix_type;
-		}
-		$res['success'] = TRUE;
-		$this -> to_json($res);
-	}
-
 	public function find_h_or_s() {
 		$type = $this -> get_post('type');
 		$s_h_id = $this -> get_post('s_h_id');
@@ -367,6 +331,15 @@ class Patent extends MY_Mgmt_Controller {
 		$country_name = $this -> get_post('country_name');
 		$data['country_name'] = $country_name;
 		$this -> country_dao -> insert($data);
+
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function find_country(){
+		$data = array();
+		$country = $this -> country_dao -> find_all();
+		$res['country'] = $country;
 
 		$res['success'] = TRUE;
 		$this -> to_json($res);
