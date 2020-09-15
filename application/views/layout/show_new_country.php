@@ -38,7 +38,7 @@
   			url: '<?= base_url() ?>' + 'mgmt/patent/add_country',
   			type: 'POST',
   			data: {
-          new_name : $('#name').val()
+          country_name : $('#name').val()
   			},
   			dataType: 'json',
   			success: function(d) {

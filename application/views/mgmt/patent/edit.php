@@ -18,7 +18,7 @@
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
 	<header>
 		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo()" class="btn btn-default ">
+			<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo()" class="btn btn-default">
 				<i class="fa fa-arrow-circle-left"></i>返回
 			</a>
 		</div>
@@ -70,11 +70,10 @@
 					<label class="col-md-3 control-label">專利國家</label>
 					<div class="col-md-6">
 						<select name="patnet_country" id="patnet_country" class="form-control" >
-							<option  value="1" >台灣</option>
-							<option  value="2" >美國</option>
-							<option  value="3" >日本</option>
-							<option  value="4" >大陸</option>
-							<option  value="5" >加拿大</option>
+							<option value="-1">無</option>
+							<?php foreach($country as $each): ?>
+								<option value="<?= $each -> id?>" ><?=  $each -> country_name ?></option>
+							<?php endforeach ?>
 						</select>
 					</div>
 					<div class="col-md-2">
@@ -302,6 +301,8 @@ $(".dt_picker").datetimepicker({
 
 var img='';
 var pdf_array=[];
+var public_num_input=[];
+var patnet_num_input=[];
 
 $("#img-input").fileinput({
 					language: "zh-TW",
@@ -391,7 +392,7 @@ $("#img-input").fileinput({
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#file-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
-		pdf_array.splice($.inArray(data,img_array),1);
+		pdf_array.splice($.inArray(data,pdf_array),1);
 
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
@@ -433,13 +434,13 @@ $("#img-input").fileinput({
     }).on('fileuploaded', function(event, data, previewId, index) {
     	// upload image
 	   var id = data.response.id;
-	   pdf_array.push(id);
-	   console.log(pdf_array);
+	   public_num_input.push(id);
+	   console.log(public_num_input);
 	//    $("#file-input").fileinput('reset');
 	}).on('fileselect', function(event, numFiles, label) {
-    	$("#file-input").fileinput('upload');
+    	$("#public-num-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
-		pdf_array.splice($.inArray(data,img_array),1);
+		public_num_input.splice($.inArray(data,public_num_input),1);
 
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
@@ -481,13 +482,13 @@ $("#img-input").fileinput({
     }).on('fileuploaded', function(event, data, previewId, index) {
     	// upload image
 	   var id = data.response.id;
-	   pdf_array.push(id);
-	   console.log(pdf_array);
+	   patnet_num_input.push(id);
+	   console.log(patnet_num_input);
 	//    $("#file-input").fileinput('reset');
 	}).on('fileselect', function(event, numFiles, label) {
-    	$("#file-input").fileinput('upload');
+    	$("#patnet-num-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
-		pdf_array.splice($.inArray(data,img_array),1);
+		patnet_num_input.splice($.inArray(data,patnet_num_input),1);
 
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
@@ -535,6 +536,24 @@ function do_save() {
 		data : {
 			id: $('#item_id').val(),
 			pdf_array: pdf_array.join(","),
+			img: img,
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+			pdf_array: pdf_array.join(","),
+
 		},
 		success : function(data) {
 			if(data.error_msg) {

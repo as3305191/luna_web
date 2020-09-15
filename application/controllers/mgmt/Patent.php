@@ -70,10 +70,10 @@ class Patent extends MY_Mgmt_Controller {
 		$computer_hard_list = $this -> c_h_dao -> find_all_usage_not_zero();
 		$computer_soft_list = $this -> c_s_dao -> find_all_usage_not_zero();
 		// $all_user_list = $this -> c_s_dao -> find_all_user();
-
+		$country = $this -> country_dao -> find_all();
 		$data['computer_hard_list'] = $computer_hard_list;//硬體所有list
 		$data['computer_soft_list'] = $computer_soft_list;//軟體所有list
-
+		$data['country'] = $country;//軟體所有list
 		$data['login_user'] = $login_user;
 		// $data['coach'] = $this -> dao -> find_all_coach();
 		// $this -> to_json($data);
@@ -364,14 +364,8 @@ class Patent extends MY_Mgmt_Controller {
 
 	public function add_country(){
 		$data = array();
-		$data['parent_id'] = '0';
-		$pos_num = $this -> country_dao -> find_all_by('level',0);
-		$pos_nums = count($pos_num);
-
-		$data['pos'] = $pos_nums;
-		$name = $this -> get_post('new_name');
-		$data['name'] = $name;
-		$data['level'] = '0';
+		$country_name = $this -> get_post('country_name');
+		$data['country_name'] = $country_name;
 		$this -> country_dao -> insert($data);
 
 		$res['success'] = TRUE;
