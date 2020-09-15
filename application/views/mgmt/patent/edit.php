@@ -532,9 +532,7 @@ function load_country() {
 	$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/patent/find_country',
 			type: 'POST',
-			data: {
-				department: $department
-			},
+			data: {},
 			dataType: 'json',
 			success: function(d) {
 				if(d) {
