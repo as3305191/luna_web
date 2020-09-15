@@ -85,7 +85,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">關鍵字</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="patnet_key"  id="patnet_key" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+						<input type="text"  class="form-control" name="patnet_key"  id="patnet_key" value="<?= isset($item) ? $item -> patnet_key : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -145,7 +145,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">公告日</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control dt_picker" name="announcement_name"  id="announcement_name" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+						<input type="text"  class="form-control dt_picker" name="announcement_date"  id="announcement_date" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -563,22 +563,19 @@ function do_save() {
 			id: $('#item_id').val(),
 			pdf_array: pdf_array.join(","),
 			img: img,
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
-			pdf_array: pdf_array.join(","),
+			patnet_key: $('#patnet_key').val(),
+			patnet_category: $('#patnet_category').val(),
+			public_num_input:  public_num_input.join(","),
+			patnet_num_input:  patnet_num_input.join(","),
+			application_date: $('#application_date').val(),
+			public_date: $('#public_date').val(),
+			announcement_date: $('#announcement_date').val(),
+			s_dt: $('#s_dt').val(),
+			e_dt: $('#e_dt').val(),
+			patnetend_end_date: $('#patnetend_end_date').val(),
+			patnet_status: $('#patnet_status').val(),
+			patent_note: $('#patent_note').val(),
+			patent_range: $('#patent_range').val(),
 
 		},
 		success : function(data) {
