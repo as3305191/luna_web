@@ -117,35 +117,42 @@ class Patent extends MY_Mgmt_Controller {
 		$patnet_name = $this -> get_post('patnet_name');
 		$img= $this -> get_post('img');
 		$pdf_array = $this -> get_post('pdf_array');
-
-		// id: $('#item_id').val(),
-		// pdf_array: pdf_array.join(","),
-		// img: img,
-		// patnet_key: $('#patnet_key').val(),
-		// patnet_category: $('#patnet_category').val(),
-		// public_num_input:  public_num_input.join(","),
-		// patnet_num_input:  patnet_num_input.join(","),
-		// application_date: $('#application_date').val(),
-		// public_date: $('#public_date').val(),
-		// announcement_date: $('#announcement_date').val(),
-		// s_dt: $('#s_dt').val(),
-		// e_dt: $('#e_dt').val(),
-		// patnetend_end_date: $('#patnetend_end_date').val(),
-		// patnet_status: $('#patnet_status').val(),
-		// patent_note: $('#patent_note').val(),
-		// patent_range: $('#patent_range').val(),
+		$patnet_key = $this -> get_post('patnet_key');
+		$patnet_category = $this -> get_post('patnet_category');
+		$public_num_input = $this -> get_post('public_num_input');
+		$patnet_num_input = $this -> get_post('patnet_num_input');
+		$application_date = $this -> get_post('application_date');
+		$public_date = $this -> get_post('public_date');
+		$announcement_date = $this -> get_post('announcement_date');
+		$s_dt = $this -> get_post('s_dt');
+		$e_dt = $this -> get_post('e_dt');
+		$patnetend_end_date = $this -> get_post('patnetend_end_date');
+		$patnet_status = $this -> get_post('patnet_status');
+		$patent_note = $this -> get_post('patent_note');
+		$patent_range = $this -> get_post('patent_range');
 
 		$data['img_id'] = $img;
 		$data['files_id'] = $pdf_array;
 		$data['patent_name'] = $patnet_name;
+		$data['patnet_key'] = $patnet_key;
+		$data['patnet_category'] = $patnet_category;
+		$data['public_num_input'] = $public_num_input;
+		$data['patnet_num_input'] = $patnet_num_input;
+		$data['application_date'] = $application_date;
+		$data['public_date'] = $public_date;
+		$data['announcement_date'] = $announcement_date;
+		$data['s_dt'] = $s_dt;
+		$data['e_dt'] = $e_dt;
+		$data['patnetend_end_date'] = $patnetend_end_date;
+		$data['patnet_status'] = $patnet_status;
+		$data['patent_note'] = $patent_note;
+		$data['patent_range'] = $patent_range;
 
 		if(empty($id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
-
 		} else {
 			$this -> dao -> update($data, $id);
-			
 		}
 		$res['success'] = TRUE;
  		$this -> to_json($res);

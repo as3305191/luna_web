@@ -561,6 +561,7 @@ function do_save() {
 		url : url,
 		data : {
 			id: $('#item_id').val(),
+			patnet_name: $('#patnet_name').val(),
 			pdf_array: pdf_array.join(","),
 			img: img,
 			patnet_key: $('#patnet_key').val(),
