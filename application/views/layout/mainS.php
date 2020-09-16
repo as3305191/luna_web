@@ -61,7 +61,9 @@
 		<?php $this->load->view('layout/plugins'); ?>
 		<!-- Scripts -->
 		<script>
+
 			var wOnResize = function(){
+
 				var currentListElId = "#dt_list";
 				if(currentApp && currentApp.dtListId) {
 					currentListElId = currentApp.dtListId;
@@ -76,10 +78,12 @@
 			$(window).on('resize', wOnResize);
 
 			$(document).ajaxComplete(function( event, xhr, settings ) {
+
 			    if(xhr.responseText.indexOf('<script>window.location') > -1) {
 			    	window.location.reload();
 			    }
 			});
+
 		</script>
 	</body>
 </html>

@@ -12,11 +12,11 @@ body,p{margin:0px; padding:0px; font-size:14px; color:#333; font-family:Arial, H
 #us #us_offline p{padding:3px 5px; color:#878787;line-height:20px; height:20px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 #us p:hover,#us p:active,#us p.ck{background-color:#069; color:#FFF;}
 #us p.my:hover,#us p.my:active,#us p.my{color:#333;background-color:transparent;}
-button{float:right; width:80px; height:35px; font-size:18px;}
-input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; border:solid 1px #CCC;}
+button{float:right; width:80px; height:80px; font-size:18px; line-height:20px;}
+textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; border:solid 1px #CCC;}
 .rin p{margin-right:160px;}
 .rin span{float:right; padding:6px 5px 0px 5px; position:relative;}
-.rin span img{margin:0px -4px; cursor:pointer;}
+.rin span img{margin:50px 3px; cursor:pointer;}
 .rin span form{position:absolute; width:25px; height:25px; overflow:hidden; opacity:0; top:5px; right:5px;}
 .rin span input{width:180px; height:25px; margin-left:-160px; cursor:pointer}
   
@@ -54,7 +54,9 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
 <div id="rin_send" class="rin none">
     <button id="sd">發送</button>
     <span><img src="../img/face/1.gif" title="表情" id="imgbq"><img src="../img/face/1.gif" title="上傳圖片" style="display:none"><form style="display:none"><input type="file" title="上傳圖片" id="upimg"></form></span>
-    <p><input id="nrong"></p>
+    <p><textarea type="text" id="nrong" rows="20"  ></textarea></p>
+    
+
 </div>
 <div id="ems"><p></p><p class="tc"></p></div>
 </body>
@@ -71,7 +73,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
     var url='<?= $socket_url?>';
     var so=false,n=false,me_id=false,socket=false;
     var lus=A.$('us_online'),lct=A.$('ct');
- 
+    // console.log(users);
     function st(){
       
         // n=prompt('取個名子');
@@ -88,18 +90,32 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
         so.onopen=function(){
             //狀態1證明握手成功，然後把client自訂的名字發出去
             if(so.readyState==1){
-                if(socket!=='0'){
-                    // so.send('type=old_remove&socket='+socket+'&me_id='+me_id);
-                    location.reload(); 
-                } else{
+                if(socket=='0'){
                     so.send('type=add&ming='+n+'&me_id='+me_id);
+                    // so.send('type=old_remove&socket='+socket+'&me_id='+me_id);
+                } else{
+                    so.send('type=old_remove&socket='+socket+'&me_id='+me_id);
+                    
+                        // so=new WebSocket(url);
+                    window.location.reload();
+                    
+                    
+                    // so=new WebSocket(url);
+                    // so.send('type=add&ming='+n+'&me_id='+me_id);
+                    // location.reload();
                 }
             }
         }
-
+        // window.onbeforeunload=function(){
+        //     so.close();
+        // }
+        window.addEventListener("hashchange", e=> {
+            so.close();
+        });
         //握手失敗或者其他原因連接socket失敗，清除so的對象
         so.onclose=function(){
             so=false;
+            
             // lct.appendChild(A.$$('<p class="c2">退出聊天室</p>'));
             // var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
             //     var each_offline_user = '';
@@ -269,7 +285,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                 if(da.type=='rmove'){
                     // var obj=A.$$('<p class="c2"><span>['+da.time+']</span>'+users[da.nrong].innerHTML+'退出聊天室</p>');
                     // lct.appendChild(obj);
-                    console.log(users[da.nrong]);
+                    // console.log(users[da.nrong]);
                     users[da.nrong].del();
                     delete users[da.nrong];
                     var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
@@ -516,10 +532,18 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
     }
     A.$('nrong').onkeydown=function(e){
         var e=e||event;
-        if(e.keyCode==13){
+        if(e.keyCode == 13 && !e.shiftKey){
             A.$('sd').onclick();
         }
+        
+        if (e.keyCode == 13 && e.shiftKey) { 
+           $('＜/br＞').appendTo(A.$('nrong'));
+           var str = document.getElementByIdx_x_x("textarea").value;
+            str = str.replace("＜/br＞","＜/br＞");
+        } 
     }
+  
+    
     function esc(da){
         da=da.replace(/</g,'<').replace(/>/g,'>').replace(/\"/g,'"');
         return encodeURIComponent(da);
@@ -529,10 +553,12 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
         t.onclick=function(){
             // t.parentNode.children.rcss('ck','');
             // t.rcss('','ck');
+            $('#ct').empty();
+            $('#nrong').val('');
             key=code;
             if($('#f_chat_id').val()!==t.getAttribute('me_id')){
                 document.getElementById("ct").innerHTML='';
-                $('#ct').empty();
+                
             }
             $('#rin_send').removeClass('none');
             $('#f_chat_id').val(t.getAttribute('me_id'));
@@ -580,6 +606,7 @@ input{width:103%; height:30px; padding:2px; line-height:20px; outline:none; bord
                             }
                         })
                     }
+                    $('#nrong').focus();
                 }
             });
         }
@@ -725,6 +752,8 @@ function change_f_chat(id,name){
         var me_id=$('#me_id').val();
         var url = baseUrl + 'mgmt/message/reload_message_record';
         $('#ct').empty();
+        $('#nrong').val('');
+
         var offline_sidebar = $('#us_offline').find('p[me_id="'+id+'"]');
         var span = offline_sidebar.find('span');
         span.remove();
@@ -758,6 +787,7 @@ function change_f_chat(id,name){
                         }
                     })
                 }
+                $('#nrong').focus();
             }
         });
 

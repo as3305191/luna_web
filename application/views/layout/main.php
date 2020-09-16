@@ -66,7 +66,9 @@
 		<?php $this->load->view('layout/plugins'); ?>
 		<!-- Scripts -->
 		<script>
+
 			var wOnResize = function(){
+
 				var currentListElId = "#dt_list";
 				// if(currentApp && currentApp.dtListId) {
 				// 	currentListElId = currentApp.dtListId;
@@ -107,7 +109,6 @@
 	    $(document).ajaxError(function () {
         layui.layer.close(window._ajaxLoading);
 	    });
-
 		</script>
 	</body>
 </html>
