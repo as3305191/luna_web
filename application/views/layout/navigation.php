@@ -26,7 +26,7 @@
 							<?php else: ?>
 								<img height="30" src="<?= base_url('mgmt/images/get/' . $each -> image_id) . '/thumb' ?>" />
 							<?php endif ?>
-							<?= $each -> department_name ?></a>
+							<?= $each -> name ?></a>
 					</li>
 				<?php endforeach ?>
 			<?php endif ?>
