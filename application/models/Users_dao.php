@@ -536,9 +536,13 @@ class Users_dao extends MY_Model {
 	function find_group_users($id) {
 		$list = array();
 		$u = $this -> find_by_id($id);
-		if(!empty($u) && !empty($u -> group_id)) {
-			$this -> db -> where('status', 0);
-			$this -> db -> where('group_id', $u -> group_id);
+		if(!empty($u)) {
+			$this -> db -> from("$this->table_name as _m");
+			$this -> db -> select('d.name as department_name');
+			$this -> db -> where('_m.status', 0);
+			// $this -> db -> where('group_id', $u -> group_id);
+			$this -> db -> join("department d", "d.id = _m.role_id", "left");
+
 
 		}
 		return $list;
