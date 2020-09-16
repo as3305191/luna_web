@@ -20,13 +20,14 @@
 			<?php if(!empty($group_list)): ?>
 				<?php foreach($group_list as $each): ?>
 					<li>
-						<a href="javascript:void(0);" onclick="chgUser(<?= $each -> id ?>)">
+						<!-- <a href="javascript:void(0);" onclick="chgUser(<?= $each -> id ?>)">
 							<?php if(empty($each -> image_id)): ?>
 								<img height="30" src="<?= base_url('img/demo/login/noimage.png') ?>" />
 							<?php else: ?>
 								<img height="30" src="<?= base_url('mgmt/images/get/' . $each -> image_id) . '/thumb' ?>" />
 							<?php endif ?>
-							<?= $each -> name ?></a>
+							</a> -->
+							<?= $each -> name ?>
 					</li>
 				<?php endforeach ?>
 			<?php endif ?>
