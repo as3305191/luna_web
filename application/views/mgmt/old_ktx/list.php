@@ -1,3 +1,4 @@
+<?php header('Access-Control-Allow-Origin: *');?>
 <style>
 /* *{
 	margin:0;
@@ -14,14 +15,14 @@ body{
 	font:100%;
 }
 </style>
-<div  style="position:relative;width:100%;height:100%;">
-	<iframe id="iframe_ktx" name="iframe_ktx" src="//192.168.1.211/index.aspx" style=" width:100%; height:1000px" frameborder="0" scrolling="auto"></iframe>
+<div id="iframe_div" src="//192.168.1.211/index.aspx" style="position:relative;width:100%;height:100%;">
+	<!-- <iframe id="iframe_ktx" name="iframe_ktx" src="//192.168.1.211/index.aspx" style=" width:100%; height:1000px" frameborder="0" scrolling="auto"></iframe> -->
 </div>
 
 
 <script type="text/javascript">
-var account='<?= $login_user->account?>';
-var password='<?= $login_user->password?>';
+// var account='<?= $login_user->account?>';
+// var password='<?= $login_user->password?>';
 // var iframe_index = ($('#iframe_ktx').contentDocument||$('#iframe_ktx').contentWindow);
 	// $(document).ready(function(){
 		
@@ -30,5 +31,8 @@ var password='<?= $login_user->password?>';
 	// $('#iframe_ktx').contents().find('#TxbAccount').text(account);
 	// iframe_index.contents().find('#TxbPassword').text(account);
 	// iframe_index.getElementById('TxbPassword').value=password;
+	// $.get('ws://192.168.1.211/index.aspx',function(data){
+	// 	$('#iframe_div').html(data);
+	// })
 
 </script>
