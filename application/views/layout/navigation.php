@@ -15,7 +15,6 @@
 			</a>
 		</span>
 
-
 		<ul class="dropdown-menu" style="top:auto;">
 			<?php if(!empty($group_list)): ?>
 				<?php foreach($group_list as $each): ?>
@@ -29,9 +28,7 @@
 								<!-- <img height="30" src="<?= base_url('mgmt/images/get/' . $each -> image_id) . '/thumb' ?>" /> -->
 							<?php endif ?>
 							<i class="fa fa-desktop"></i>
-
 							<span><?= $each -> name ?></span></a>
-							
 					</li>
 				<?php endforeach ?>
 			<?php endif ?>
