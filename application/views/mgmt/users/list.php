@@ -19,7 +19,12 @@
 									<button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
 										<i class="fa fa-plus"></i>新增
 									</button>
+									<!-- <button class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
+									測試
+									</button> -->
 								</div>
+
+
 							</div>
 							<?php endif ?>
 
@@ -129,4 +134,16 @@
 			currentApp = new UsersAppClass(new BaseAppClass({}));
 		});
 	});
+
+	if (!("Notification" in window)) {
+		 alert("This browser does not support desktop notification");
+	} 
+	var prm = Notification.permission;
+	console.log(prm);
+	if (prm == 'default' || prm == 'undefined' || prm == 'denied') {
+		Notification.requestPermission(function(permission) {
+			// permission 可為「granted」（同意）、「denied」（拒絕）和「default」（未授權）
+			// 在這裡可針對使用者的授權做處理
+		});
+	}	
 </script>
