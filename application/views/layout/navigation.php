@@ -20,14 +20,18 @@
 			<?php if(!empty($group_list)): ?>
 				<?php foreach($group_list as $each): ?>
 					<li>
-						<!-- <a href="javascript:void(0);" onclick="chgUser(<?= $each -> id ?>)">
+					<!-- onclick="chgUser(<?= $each -> id ?>)" -->
+						<a href="javascript:void(0);" >
 							<?php if(empty($each -> image_id)): ?>
-								<img height="30" src="<?= base_url('img/demo/login/noimage.png') ?>" />
+								<!-- <img height="30" src="<?= base_url('img/demo/login/noimage.png') ?>" /> -->
+								<i class="fa fa-angle-down"></i>
 							<?php else: ?>
-								<img height="30" src="<?= base_url('mgmt/images/get/' . $each -> image_id) . '/thumb' ?>" />
+								<!-- <img height="30" src="<?= base_url('mgmt/images/get/' . $each -> image_id) . '/thumb' ?>" /> -->
 							<?php endif ?>
-							</a> -->
-							<?= $each -> name ?>
+							<i class="fa fa-desktop"></i>
+
+							<span><?= $each -> name ?></span></a>
+							
 					</li>
 				<?php endforeach ?>
 			<?php endif ?>

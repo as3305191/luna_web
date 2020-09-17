@@ -502,6 +502,7 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
             var Seconds = today.getSeconds();
         }
         var currentDateTime = (Month)+ '-'+now_Date+' '+Hours+':'+Minutes+':'+Seconds;
+        
         if(is_online==0){
                 var url = baseUrl + 'mgmt/message/insert';
                 $.ajax({
@@ -537,9 +538,10 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
         }
         
         if (e.keyCode == 13 && e.shiftKey) { 
-           $('＜/br＞').appendTo(A.$('nrong'));
-           var str = document.getElementByIdx_x_x("textarea").value;
-            str = str.replace("＜/br＞","＜/br＞");
+            //$('＜/br＞').appendTo(A.$('nrong'));
+            var str = $("#nrong").value;
+            str = str.replace(/\n|\r\n/g,"");
+             // content = content.replace();
         } 
     }
   
