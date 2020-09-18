@@ -377,6 +377,31 @@ class Sock{
                 $to_user_id=$ar['message_recipient'];
                 $sql="INSERT INTO user_msg('from_user_id','to_user_id','content','status')VALUES('$from_user_id','$to_user_id','$content','0')";
                 mysqli_query($link,$sql);
+            } else{
+               
+                $link=@mysqli_connect('127.0.0.1', 'pony', '!pony', 'ktx');
+                if (!$link) {
+                    echo"Mysql連錯<br/>";
+                    echo mysqli_connect_error();
+                    exit();
+                }
+                $to_user_id = $ar['message_recipient'];
+                $content=$ar['nrong'];
+                $from_user_id=$ar['sender'];
+                $sql="SELECT code FROM `users` WHERE id='$to_user_id'";
+                $select=mysqli_query($link, $sql);
+                while ($r = mysqli_fetch_assoc($select)) {
+                    $rows[] = $r;
+                }
+                $to_message_user= json_encode($rows[0]);
+                // $this->online_user=mb_split(",",$now_all_online_user->now_online);
+                $to_message_user_list= json_decode($to_message_user);
+                if ($to_message_user_list->code==0) {//對方沒上線
+                    $this->insert_to_user_is_offline_content($ar);
+                    $ar['status']='0';
+                } else{
+                    $ar['status']='1';
+                }
             }
         }
            
@@ -400,10 +425,11 @@ class Sock{
         date_default_timezone_set('Asia/Taipei');
         $ar['time']=date('m-d H:i:s');
         $me_id=$ar['me_id'];
+        
         //对发送信息近行编码处理
         $str = $this->code(json_encode($ar));
         //面对大家即所有在线者发送信息
-       
+        
         if($key=='all'){
             $users=$this->users;
             //如果是add表示新加的client
@@ -414,7 +440,8 @@ class Sock{
                     echo mysqli_connect_error();
                     exit();
                 }
-                $sql="UPDATE users SET code='$k' WHERE id='$me_id'";
+                $socket = $ar['code'];
+                $sql="UPDATE users SET code='$socket' WHERE id='$me_id'";
                 mysqli_query($link,$sql);
                 $ar['type']='madd';
                 $ar['users']=$this->getusers();        //取出所有在线者，用于显示在在线用户列表中
@@ -434,13 +461,34 @@ class Sock{
             if( $ar['is_online']==0){//未上限所以未讀
          
             } else{
-                socket_write($this->users[$k]['socket'],$str,strlen($str));
-                socket_write($this->users[$key]['socket'],$str,strlen($str));
+                if( $ar['status']==0){
+                    socket_write($this->users[$k]['socket'],$str,strlen($str));
+                } else{
+                    socket_write($this->users[$k]['socket'],$str,strlen($str));
+                    socket_write($this->users[$key]['socket'],$str,strlen($str));
+                }
             }       
             
         }
     }
      
+    function insert_to_user_is_offline_content($ar){
+        $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
+        if(!$link){
+            echo"Mysql連錯<br/>";
+            echo mysqli_connect_error();
+            exit();
+        }
+        $content=$ar['nrong'];
+        $from_user_id=$ar['sender'];
+        $to_user_id=$ar['message_recipient'];
+        $sql="INSERT INTO user_msg('from_user_id','to_user_id','content','status')VALUES('$from_user_id','$to_user_id','$content','0')";
+        // error_log(print_r($sql,true));
+        $insert=mysqli_query($link,$sql);
+        error_log(print_r($insert,true));
+
+    }
+
     //用户退出向所用client推送信息
     function send2($k){
         $this->close($k);
@@ -454,13 +502,19 @@ class Sock{
         }
         $sql="SELECT id FROM `users` WHERE code='$k'";
         $select=mysqli_query($link,$sql);
+        while ($r = mysqli_fetch_assoc($select)) {
+            $rows[] = $r;
+        }
+        $off_user= json_encode($rows[0]);
+        $off_user_list= json_decode($off_user);
+        $ar['r_id']=$off_user_list->id;
         // $now_off_user = array();
         // foreach($select as $each){
         //     $now_off_user[]=$each['id'];
         // }
         foreach($select as $each){
             $id = $each['id'];
-            $sql5="UPDATE users SET code='0' WHERE id='$id'";
+            $sql5="UPDATE users SET code= '0' WHERE id='$id'";
             mysqli_query($link,$sql5);
             $map_all_user[]=$id;
         }

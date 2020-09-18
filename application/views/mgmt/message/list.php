@@ -110,7 +110,15 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
         //     so.close();
         // }
         window.addEventListener("hashchange", e=> {
-            so.close();
+            var url=e.oldURL;
+            var old_URL=url.substring(url.indexOf('#', 0) + 1);
+            var oldURL = old_URL.split('#')[0].split("/").slice(0,2).join("/");
+          
+            if(oldURL == 'mgmt/message'){
+                so.close();
+            }
+            // console.log(oldURL);
+
         });
         //握手失敗或者其他原因連接socket失敗，清除so的對象
         so.onclose=function(){
@@ -156,6 +164,7 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
             if(da.type=='add'){
                 if(da.me_id>0){
                     var obj=A.$$('<p me_id="'+da.me_id+'">'+da.name+'</p>');
+                   
                 }             
                 lus.appendChild(obj);
                 cuser(obj,da.code);
@@ -186,6 +195,10 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                             })
                             var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
                             us_offline.append(html);
+                            if(da.me_id==$('#f_chat_id').val()){
+                                var f_chat_id = $('#f_chat_id').val();
+                                $('#us_online').find('p[me_id="'+f_chat_id+'"]').click();
+                            }
                         }
                      
                         if(d.online_users!=false){
@@ -209,7 +222,9 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                 });
             }else if(da.type=='madd'){
                 mkey=da.code;
-                // da.users.unshift({'code':'all','name':'大家'});
+                if($('#me_id').val()=='307'){
+                //  da.users.unshift({'code':'all','name':'大家'});
+                }
                 for(var i=0;i<da.users.length;i++){
                     if(da.users[i].me_id>0){
                         if(da.users[i].me_id!==$('#me_id').val()){
@@ -312,6 +327,9 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                                 })
                                 var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
                                 us_offline.append(html);
+                                if(da.r_id==$('#f_chat_id').val()){
+                                    $('#us_offline').find('p[me_id="'+da.r_id+'"]').click();
+                                }
                             }
                         },
 
@@ -385,6 +403,7 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                     if(da.code1==mkey){
                         if(da.sender==$('#f_chat_id').val()){
                             // obj=A.$$('<div  class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p></div></br>');
+                            
                             obj=A.$$('<div class="row c3"><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+da.time+']</span><a style="white-space:nowrap;">'+users[da.code].innerHTML+':</a><span style="color:#000000;">'+da.nrong+'</span></div></p></div></div></br>');
                             c=da.code;
                             var url = baseUrl + 'mgmt/message/insert';
@@ -434,6 +453,8 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                                 obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+da.time+']</span><span style="color:#000000;">'+da.nrong+'</span></div></p></div></div></br>');
 
                             }
+                            // obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+da.time+']</span><span style="color:#000000;">'+da.nrong+'</span></div></p></div></div></br>');
+
                         }
                         c=da.code1;
                     }else if(da.code==false){
