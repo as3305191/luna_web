@@ -223,7 +223,7 @@ class Users_dao extends MY_Model {
 
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('r.role_name');
+		$this -> db -> select('r.name as d_name');
 
 		// join
 		$this -> ajax_from_join();
@@ -266,7 +266,7 @@ class Users_dao extends MY_Model {
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("roles as r", 'r.id = _m.role_id', "left");
+		$this -> db -> join("department as d", 'd.id = _m.role_id', "left");
 	}
 
 	function find_by_account($account) {

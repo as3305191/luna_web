@@ -59,6 +59,8 @@
 											<th class="min25"></th>
 											<th class="min100">帳號</th>
 											<th class="min100">名稱</th>
+											<th class="min100">部門/課</th>
+
 										</tr>
 										<tr class="search_box">
 									    <th></th>
@@ -109,6 +111,8 @@
 		data : 'account'
 	}, {
 		data : 'user_name'
+	},{
+		data : 'd_name'
 	}];
 
 	var mOrderIdx = 1;
@@ -135,15 +139,15 @@
 		});
 	});
 
-	if (!("Notification" in window)) {
-		 alert("This browser does not support desktop notification");
-	} 
-	var prm = Notification.permission;
-	console.log(prm);
-	if (prm == 'default' || prm == 'undefined' || prm == 'denied') {
-		Notification.requestPermission(function(permission) {
-			// permission 可為「granted」（同意）、「denied」（拒絕）和「default」（未授權）
-			// 在這裡可針對使用者的授權做處理
-		});
-	}	
+	// if (!("Notification" in window)) {
+	// 	 alert("This browser does not support desktop notification");
+	// } 
+	// var prm = Notification.permission;
+	// console.log(prm);
+	// if (prm == 'default' || prm == 'undefined' || prm == 'denied') {
+	// 	Notification.requestPermission(function(permission) {
+	// 		// permission 可為「granted」（同意）、「denied」（拒絕）和「default」（未授權）
+	// 		// 在這裡可針對使用者的授權做處理
+	// 	});
+	// }	
 </script>
