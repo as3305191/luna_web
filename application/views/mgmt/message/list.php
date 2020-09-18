@@ -6,7 +6,7 @@
 body,p{margin:0px; padding:0px; font-size:14px; color:#333; font-family:Arial, Helvetica, sans-serif;}
 #ltian,.rin{width:98%; margin:5px auto;}
 #ltian{border:1px #ccc solid;overflow-y:auto; overflow-x:hidden; position:relative;}
-#ct{margin-right:111px; height:100%;overflow-y:auto;overflow-x: hidden;}
+#ct{margin-right:111px; height:100%;overflow-y:auto;overflow-x: hidden;background-color:#FFB7DD;}
 #us{width:125px; overflow-y:auto; overflow-x:hidden; float:right; border-left:1px #ccc solid; height:100%; background-color:#F1F1F1;}
 #us #us_online p{padding:3px 5px; color:#08C; line-height:20px; height:20px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 #us #us_offline p{padding:3px 5px; color:#878787;line-height:20px; height:20px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
@@ -34,6 +34,7 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
 .tc{text-align:center; margin-top:5px;}
 .c_red{background-color: #FF5151 !important;}
 .none {display: none;}
+#menu{background-color: #fff; border:solid 2px;border-color:000000 !important;}
 </style>
 
 <body>
@@ -42,6 +43,7 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
 <input type="hidden" id="is_online"  value="2">
 <input type="hidden" id="to_chat_name"  value="">
 <div id="chat_with_name" style="padding:0px 0px;"></div>
+
 <div id="ltian">
     <div id="us" class="jb">
         <div id="us_online" class="jb"></div>
@@ -59,6 +61,11 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
 
 </div>
 <div id="ems"><p></p><p class="tc"></p></div>
+<div id="menu" style="display: none;">
+    <p id="recycle">收回訊息</p>
+    <!-- <p id="update">修改</p>
+    <p id="send">傳送資料</p> -->
+</div>
 </body>
 <?php $this -> load -> view('mgmt/message/message_script'); ?>
 <script>
@@ -540,7 +547,7 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                             return '<img src="../img/face/'+b+'.gif">';
                         });
                         // obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;"><p style="padding:3px 15px;float:right;"><div class="col-lg-2" style="padding:6px 10px 10px 0px"><span style="white-space:nowrap;">['+currentDateTime+']</span></div><div class="col-lg-10" style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="color:#000000">'+message+'</div></span></p></div></div></br>');
-                        obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+currentDateTime+']</span><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
+                        obj=A.$$('<div class="row message_row c3"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+currentDateTime+']</span><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
 
                         //append
                         lct.appendChild(obj);
@@ -616,14 +623,14 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                                 return '<img src="../img/face/'+b+'.gif">';
                             });
                             if(me.from_user_id==me_id){
-                                obj=A.$$('<div class="row"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
+                                obj=A.$$('<div class="row message_row"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
 
                                 // obj=A.$$('<div class="row"><p style="float:right;padding:3px 15px;"><span>['+me.create_time.substr(5)+']</span>我對<a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p></div></br>');
                                 lct.appendChild(obj);
                                 lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                             } else{
                                 // obj=A.$$('<div><p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p></div></br>');
-                                obj=A.$$('<div class="row"><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><a style="white-space:nowrap;">'+d.to_user_name_list.user_name+':</a><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
+                                obj=A.$$('<div class="row message_row"><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><a style="white-space:nowrap;">'+d.to_user_name_list.user_name+':</a><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
                                 lct.appendChild(obj);
                                 lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                             }
@@ -798,13 +805,13 @@ function change_f_chat(id,name){
                             return '<img src="../img/face/'+b+'.gif">';
                         });
                         if(me.from_user_id==me_id){
-                            obj=A.$$('<div class="row"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
+                            obj=A.$$('<div class="row message_row"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
 
                             lct.appendChild(obj);
                             lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                         } else{
                             // obj=A.$$('<div><p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p></div></br>');
-                            obj=A.$$('<div class="row"><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><a style="white-space:nowrap;">'+d.to_user_name_list.user_name+':</a><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
+                            obj=A.$$('<div class="row message_row"><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><a style="white-space:nowrap;">'+d.to_user_name_list.user_name+':</a><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
                             lct.appendChild(obj);
                             lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                         }
@@ -815,4 +822,33 @@ function change_f_chat(id,name){
         });
 
     }
+
+    $('#ct').mousedown(function(e){
+        document.oncontextmenu = function(e){
+            return false;
+        }
+        if(e.which == 3){  // 1 = 滑鼠左鍵; 2 = 滑鼠中鍵; 3 = 滑鼠右鍵
+            // var MouseX = event.pageX;
+            // var MouseY = event.pageY;
+            // var x = e.offsetLeft, y = e.offsetTop;
+            var x = e.originalEvent.x || e.originalEvent.layerX || 0;
+            var y = e.originalEvent.y || e.originalEvent.layerY || 0;
+            $("#menu").css({
+                left: x-160 + "px",
+                top: y-55 + "px",
+                position: 'absolute'
+            });
+            $("#menu").show();
+            $('#recycle').on('click', function(){
+                $("#menu").hide();
+            	alert('測試中');
+            });
+        }
+        if(e.which == 1){  //如果滑鼠左鍵點下，則隱藏右鍵選單
+            $("#menu").hide();
+            document.oncontextmenu = function(e){
+                return true;
+            }
+        }
+    })
 </script>
