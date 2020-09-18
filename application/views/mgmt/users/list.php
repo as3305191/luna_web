@@ -66,6 +66,7 @@
 									    <th></th>
 									    <th><input class="form-control input-xs min100" type="text" /></th>
 									    <th><input class="form-control input-xs min100" type="text" /></th>
+										<th></th>
 								    </tr>
 									</thead>
 									<tbody>
@@ -115,7 +116,7 @@
 		data : 'd_name'
 	}];
 
-	var mOrderIdx = 1;
+	var mOrderIdx = 3;
 
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 
@@ -129,7 +130,7 @@
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [1,2],
+		"targets" : [1,2,3],
 		"orderable" : false
 	}];
 

@@ -8,7 +8,6 @@ var UsersAppClass = (function(app) {
 				data : function(d) {
 					d.role_id = $('#role_id').val();
 			
-
 				},
 				dataSrc : 'items',
 				dataType : 'json',

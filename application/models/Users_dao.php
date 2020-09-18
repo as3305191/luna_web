@@ -223,7 +223,8 @@ class Users_dao extends MY_Model {
 
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('r.name as d_name');
+		$this -> db -> select('d.name as d_name');
+		$this -> db -> select('d.id as d_id');
 
 		// join
 		$this -> ajax_from_join();
@@ -236,7 +237,8 @@ class Users_dao extends MY_Model {
 
 		// order
 		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
-		$this -> db -> order_by('id', 'desc');
+		// $this -> db -> order_by('id', 'desc');
+		$this -> db -> order_by('d_id', 'asc');
 
 		// limit
 		$this -> db -> limit($limit, $start);
