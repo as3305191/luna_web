@@ -8,7 +8,6 @@ class Users extends MY_Mgmt_Controller {
 		$this -> load -> model('Users_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Department_dao','d_dao');
-
 	}
 
 	public function index()
