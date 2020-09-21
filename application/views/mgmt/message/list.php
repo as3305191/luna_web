@@ -823,7 +823,7 @@ function change_f_chat(id,name){
 
     }
 
-    $('#ct').mousedown(function(e){
+    $('.message_row').mousedown(function(e){
         document.oncontextmenu = function(e){
             return false;
         }
