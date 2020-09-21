@@ -74,7 +74,6 @@ class Patent extends MY_Mgmt_Controller {
 		$data['login_user'] = $login_user;
 		// $data['coach'] = $this -> dao -> find_all_coach();
 		// $this -> to_json($data);
-
 		$this->load->view('mgmt/patent/edit', $data);
 	}
 
