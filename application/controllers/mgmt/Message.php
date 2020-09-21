@@ -63,6 +63,22 @@ class Message extends MY_Mgmt_Controller {
 			$last_id = $this -> dao -> insert($data);
 
 		} 
+		$res['last_id'] = $last_id;
+		$res['success'] = TRUE;
+ 		$this -> to_json($res);
+	}
+
+	public function find_last() {
+		$res = array();
+		$data = array();
+		$me_id = $this -> get_post('me');
+		$to_message_id = $this -> get_post('f_chat_id');
+		$message = $this -> get_post('message');
+		$data['me_id'] = $me_id;
+		$data['to_message_id'] = $to_message_id;
+		$data['message'] = $message;
+		$last_id = $this -> dao -> find_last_message($data);
+		$res['last_id'] = $last_id;
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}

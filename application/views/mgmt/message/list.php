@@ -6,7 +6,7 @@
 body,p{margin:0px; padding:0px; font-size:14px; color:#333; font-family:Arial, Helvetica, sans-serif;}
 #ltian,.rin{width:98%; margin:5px auto;}
 #ltian{border:1px #ccc solid;overflow-y:auto; overflow-x:hidden; position:relative;}
-#ct{margin-right:111px; height:100%;overflow-y:auto;overflow-x: hidden;background-color:#FFB7DD;}
+#ct{margin-right:111px; height:100%;overflow-y:auto;overflow-x: hidden;/* background-color:#FFB7DD;*/} 
 #us{width:125px; overflow-y:auto; overflow-x:hidden; float:right; border-left:1px #ccc solid; height:100%; background-color:#F1F1F1;}
 #us #us_online p{padding:3px 5px; color:#08C; line-height:20px; height:20px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
 #us #us_offline p{padding:3px 5px; color:#878787;line-height:20px; height:20px; cursor:pointer; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;}
@@ -57,8 +57,6 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
     <button id="sd">發送</button>
     <span><img src="../img/face/1.gif" title="表情" id="imgbq"><img src="../img/face/1.gif" title="上傳圖片" style="display:none"><form style="display:none"><input type="file" title="上傳圖片" id="upimg"></form></span>
     <p><textarea type="text" id="nrong" rows="20"  ></textarea></p>
-    
-
 </div>
 <div id="ems"><p></p><p class="tc"></p></div>
 <div id="menu" style="display: none;">
@@ -102,11 +100,8 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                     // so.send('type=old_remove&socket='+socket+'&me_id='+me_id);
                 } else{
                     so.send('type=old_remove&socket='+socket+'&me_id='+me_id);
-                    
-                        // so=new WebSocket(url);
+                    // so=new WebSocket(url);
                     window.location.reload();
-                    
-                    
                     // so=new WebSocket(url);
                     // so.send('type=add&ming='+n+'&me_id='+me_id);
                     // location.reload();
@@ -411,7 +406,6 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                         if(da.sender==$('#f_chat_id').val()){
                             // obj=A.$$('<div  class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p></div></br>');
                             
-                            obj=A.$$('<div class="row c3"><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+da.time+']</span><a style="white-space:nowrap;">'+users[da.code].innerHTML+':</a><span style="color:#000000;">'+da.nrong+'</span></div></p></div></div></br>');
                             c=da.code;
                             var url = baseUrl + 'mgmt/message/insert';
                             $.ajax({
@@ -424,6 +418,7 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                                     status: 1//已讀
                                 },
                                 success : function(data) {
+                                    obj=A.$$('<div class="row c3"><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+da.time+']</span><a style="white-space:nowrap;">'+users[da.code].innerHTML+':</a><span msg_id="'+data.last_id+'" class="message_row" style="color:#000000;">'+da.nrong+'</span></div></p></div></div></br>');
                                 }
                             });
                         } else{
@@ -451,17 +446,24 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                         }
                     }else if(da.code==mkey){
                         if(da.code1!='all'){
-                            // obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;"><p style="padding:3px 15px;float:right;"><div class="col-lg-2" style="padding:6px 10px 10px 0px"><span style="white-space:nowrap;">['+da.time+']</span></div><div class="col-lg-10" style="padding:0px 20px 0px 0px;"><span style="word-break:break-all;color:#000000">'+da.nrong+'</div></span></p></div></div></br>');
-                            obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+da.time+']</span><span style="color:#000000;">'+da.nrong+'</span></div></p></div></div></br>');
+                            var url = baseUrl + 'mgmt/message/find_last';
+                            $.ajax({
+                                type : "POST",
+                                url : url,
+                                data : {
+                                    me: da.sender,
+                                    f_chat_id: da.message_recipient,
+                                    message:da.nrong,
+                                },
+                                success : function(data) {
+                                    obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+da.time+']</span><span msg_id="'+data.last_id+'"style="color:#000000;">'+da.nrong+'</span></div></p></div></div></br>');
 
+                                }
+                            });
                         } else{
                             if(users[da.code1]!=null){
-                                // obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;"><p style="padding:3px 15px;float:right;"><div class="col-lg-2" style="padding:6px 10px 10px 0px"><span style="white-space:nowrap;">['+da.time+']</span></div><div class="col-lg-10" style="padding:0px 20px 0px 0px;"><span style="word-break:break-all;color:#000000">'+da.nrong+'</div></span></p></div></div></br>');
                                 obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+da.time+']</span><span style="color:#000000;">'+da.nrong+'</span></div></p></div></div></br>');
-
                             }
-                            // obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+da.time+']</span><span style="color:#000000;">'+da.nrong+'</span></div></p></div></div></br>');
-
                         }
                         c=da.code1;
                     }else if(da.code==false){
@@ -547,7 +549,7 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                             return '<img src="../img/face/'+b+'.gif">';
                         });
                         // obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;"><p style="padding:3px 15px;float:right;"><div class="col-lg-2" style="padding:6px 10px 10px 0px"><span style="white-space:nowrap;">['+currentDateTime+']</span></div><div class="col-lg-10" style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="color:#000000">'+message+'</div></span></p></div></div></br>');
-                        obj=A.$$('<div class="row message_row c3"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+currentDateTime+']</span><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
+                        obj=A.$$('<div class="row c3"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+currentDateTime+']</span><span class="message_row" msg_id="'+data.last_id+'" style="color:#000000;">'+message+'</span></div></p></div></div></br>');
 
                         //append
                         lct.appendChild(obj);
@@ -623,14 +625,14 @@ textarea{width:103%; height:80px; padding:2px; line-height:20px; outline:none; b
                                 return '<img src="../img/face/'+b+'.gif">';
                             });
                             if(me.from_user_id==me_id){
-                                obj=A.$$('<div class="row message_row"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
+                                obj=A.$$('<div class="row "><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><span class="message_row" msg_id="'+me.id+'" style="color:#000000;">'+message+'</span></div></p></div></div></br>');
 
                                 // obj=A.$$('<div class="row"><p style="float:right;padding:3px 15px;"><span>['+me.create_time.substr(5)+']</span>我對<a>'+d.to_user_name_list.user_name+'</a>說：'+message+'</p></div></br>');
                                 lct.appendChild(obj);
                                 lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                             } else{
                                 // obj=A.$$('<div><p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p></div></br>');
-                                obj=A.$$('<div class="row message_row"><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><a style="white-space:nowrap;">'+d.to_user_name_list.user_name+':</a><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
+                                obj=A.$$('<div class="row "><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><a style="white-space:nowrap;">'+d.to_user_name_list.user_name+':</a><span class="message_row" msg_id="'+me.id+'" style="color:#000000;">'+message+'</span></div></p></div></div></br>');
                                 lct.appendChild(obj);
                                 lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                             }
@@ -805,13 +807,13 @@ function change_f_chat(id,name){
                             return '<img src="../img/face/'+b+'.gif">';
                         });
                         if(me.from_user_id==me_id){
-                            obj=A.$$('<div class="row message_row"><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
+                            obj=A.$$('<div class="row "><div class="col-lg-6" style="float:right;text-align:right"><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><span class="message_row" msg_id="'+me.id+'" style="color:#000000;">'+message+'</span></div></p></div></div></br>');
 
                             lct.appendChild(obj);
                             lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                         } else{
                             // obj=A.$$('<div><p><span>['+me.create_time.substr(5)+']</span><a>'+d.to_user_name_list.user_name+'</a>對我說：'+message+'</p></div></br>');
-                            obj=A.$$('<div class="row message_row"><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><a style="white-space:nowrap;">'+d.to_user_name_list.user_name+':</a><span style="color:#000000;">'+message+'</span></div></p></div></div></br>');
+                            obj=A.$$('<div class="row"><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+me.create_time.substr(5)+']</span><a style="white-space:nowrap;">'+d.to_user_name_list.user_name+':</a><span class="message_row" msg_id="'+me.id+'" style="color:#000000;">'+message+'</span></div></p></div></div></br>');
                             lct.appendChild(obj);
                             lct.scrollTop=Math.max(0,lct.scrollHeight-lct.offsetHeight);
                         }
@@ -823,32 +825,34 @@ function change_f_chat(id,name){
 
     }
 
-    $('.message_row').mousedown(function(e){
-        document.oncontextmenu = function(e){
-            return false;
-        }
-        if(e.which == 3){  // 1 = 滑鼠左鍵; 2 = 滑鼠中鍵; 3 = 滑鼠右鍵
-            // var MouseX = event.pageX;
-            // var MouseY = event.pageY;
-            // var x = e.offsetLeft, y = e.offsetTop;
-            var x = e.originalEvent.x || e.originalEvent.layerX || 0;
-            var y = e.originalEvent.y || e.originalEvent.layerY || 0;
-            $("#menu").css({
-                left: x-160 + "px",
-                top: y-55 + "px",
-                position: 'absolute'
-            });
-            $("#menu").show();
-            $('#recycle').on('click', function(){
-                $("#menu").hide();
-            	alert('測試中');
-            });
-        }
-        if(e.which == 1){  //如果滑鼠左鍵點下，則隱藏右鍵選單
-            $("#menu").hide();
-            document.oncontextmenu = function(e){
-                return true;
-            }
-        }
-    })
+    // $('#ct').mousedown(function(e){
+    //     document.oncontextmenu = function(e){
+    //         return false;
+    //     }
+    //     $('.message_row').mousedown(function(e){
+    //         if(e.which == 3){  // 1 = 滑鼠左鍵; 2 = 滑鼠中鍵; 3 = 滑鼠右鍵
+    //         var x = e.originalEvent.x || e.originalEvent.layerX || 0;
+    //         var y = e.originalEvent.y || e.originalEvent.layerY || 0;
+    //         $("#menu").css({
+    //             left: (x-180 )+ "px",
+    //             top: (y-100) + "px",
+    //             position: 'absolute'
+    //         });
+    //         $("#menu").show();
+    //         $('#recycle').on('click', function(){
+    //             $("#menu").hide();
+               
+                
+    //         });
+           
+    //     }
+    //     if(e.which == 1){  //如果滑鼠左鍵點下，則隱藏右鍵選單
+    //         $("#menu").hide();
+    //         document.oncontextmenu = function(e){
+    //             return true;
+    //         }
+    //     }
+    //     });
+      
+    // })
 </script>

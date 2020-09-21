@@ -376,7 +376,8 @@ class Sock{
                 $from_user_id=$ar['sender'];
                 $to_user_id=$ar['message_recipient'];
                 $sql="INSERT INTO user_msg('from_user_id','to_user_id','content','status')VALUES('$from_user_id','$to_user_id','$content','0')";
-                mysqli_query($link,$sql);
+                $last_id = mysqli_query($link,$sql);
+                $ar['last_id']=$last_id;
             } else{
                
                 $link=@mysqli_connect('127.0.0.1', 'pony', '!pony', 'ktx');
@@ -397,8 +398,9 @@ class Sock{
                 // $this->online_user=mb_split(",",$now_all_online_user->now_online);
                 $to_message_user_list= json_decode($to_message_user);
                 if ($to_message_user_list->code==0) {//對方沒上線
-                    $this->insert_to_user_is_offline_content($ar);
+                   
                     $ar['status']='0';
+                    $this->insert_to_user_is_offline_content($ar);
                 } else{
                     $ar['status']='1';
                 }
@@ -485,8 +487,8 @@ class Sock{
         $sql="INSERT INTO user_msg('from_user_id','to_user_id','content','status')VALUES('$from_user_id','$to_user_id','$content','0')";
         // error_log(print_r($sql,true));
         $insert=mysqli_query($link,$sql);
-        error_log(print_r($insert,true));
-
+        // error_log(print_r($insert,true));
+        $ar['last_id']=$insert;
     }
 
     //用户退出向所用client推送信息

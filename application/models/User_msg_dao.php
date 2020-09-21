@@ -64,5 +64,22 @@ class User_msg_dao extends MY_Model {
 
 		return $list;
 	}
+
+	function find_last_message($data) {
+		$from_user_id = $data['me_id'] ;
+		$to_user_id = $data['to_message_id'];
+		$content = $data['message'];
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.id');
+		$this -> db -> where("_m.from_user_id", $from_user_id);
+		$this -> db -> where("_m.to_user_id", $to_user_id);
+		$this -> db -> where("_m.content",$content);
+		$this -> db -> order_by("_m.create_time", "desc");
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
 }
 ?>
