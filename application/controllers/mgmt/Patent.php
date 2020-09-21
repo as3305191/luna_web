@@ -107,7 +107,7 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function insert() {
+	public function insert() {//新增
 		$res = array();
 		$id = $this -> get_post('id');
 		$patnet_name = $this -> get_post('patnet_name');
