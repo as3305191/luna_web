@@ -299,7 +299,7 @@ class Images extends MY_Base_Controller {
 								'filetype' =>  $type,
 								'caption' => "$name",
 								'filename' => "$name",
-								'downloadUrl' => base_url('mgmt/images/get_file/' . $v_last_id),
+								'downloadUrl' => base_url('mgmt/images/get_file_file/' . $v_last_id),
 								'url' => $url,
 								'key' => $v_last_id
 							]
