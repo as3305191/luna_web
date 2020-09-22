@@ -171,7 +171,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利權止日</label>
 					<div class="col-md-6">
-						<input type="text" class="dt_picker form-control" name="patnetend_end_date"  id="patnetend_end_date" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+						<input type="text" class="dt_picker form-control" name="patent_finish_date"  id="patent_finish_date" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -573,7 +573,7 @@ function do_save() {
 			announcement_date: $('#announcement_date').val(),
 			s_dt: $('#s_dt').val(),
 			e_dt: $('#e_dt').val(),
-			patnetend_end_date: $('#patnetend_end_date').val(),
+			patent_finish_date: $('#patent_finish_date').val(),
 			patnet_status: $('#patnet_status').val(),
 			patent_note: $('#patent_note').val(),
 			patent_range: $('#patent_range').val(),

@@ -126,7 +126,7 @@ class Patent extends MY_Mgmt_Controller {
 		$announcement_date = $this -> get_post('announcement_date');
 		$s_dt = $this -> get_post('s_dt');
 		$e_dt = $this -> get_post('e_dt');
-		$patnetend_end_date = $this -> get_post('patnetend_end_date');
+		$patent_finish_date = $this -> get_post('patent_finish_date');
 		$patnet_status = $this -> get_post('patnet_status');
 		$patent_note = $this -> get_post('patent_note');
 		$patent_range = $this -> get_post('patent_range');
@@ -143,7 +143,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data['announcement_date'] = $announcement_date;
 		$data['patent_start_dt'] = $s_dt;
 		$data['patent_end_dt'] = $e_dt;
-		$data['patnetend_end_date'] = $patnetend_end_date;
+		$data['patent_finish_date'] = $patent_finish_date;
 		$data['patnet_status'] = $patnet_status;
 		$data['patent_note'] = $patent_note;
 		$data['patent_range'] = $patent_range;
