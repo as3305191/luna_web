@@ -36,19 +36,19 @@
 								<label>項目類別</label>
 							</div>
 							<div class="widget-toolbar pull-left">
-								<select name="" id="s_storage" class="">
+								<select name="" id="1" class="">
 									<option value="0">原料</option>
 									<option value="2">成品</option>
 								</select>
 							</div>
                             <div class="widget-toolbar pull-left">
-								<select name="" id="s_storage" class="">
+								<select name="" id="2" class="">
 									<option value="0">原料</option>
 									<option value="2">成品</option>
 								</select>
                             </div>
                             <div class="widget-toolbar pull-left">
-								<select name="" id="s_storage" class="">
+								<select name="" id="3" class="">
 									<option value="0">原料</option>
 									<option value="2">成品</option>
 								</select>
@@ -57,46 +57,45 @@
 								<label>申請人</label>
 							</div>
 							<div class="widget-toolbar pull-left">
-								<input id="s_container_sn" ondragover="" autocomplete="off" type="text" class="form-control" />
+								<input id="application_person" ondragover="" autocomplete="off" type="text" class="form-control" />
 							</div>
 							<div class="widget-toolbar pull-left">
 								<label>申請號</label>
 							</div>
 							<div class="widget-toolbar pull-left">
-								<input id="s_sn" type="text" class="form-control" autocomplete="off" />
+								<input id="application_num" type="text" class="form-control" autocomplete="off" />
 							</div>
 							<div class="widget-toolbar pull-left">
 								<label>發明人</label>
 							</div>
 							<div class="widget-toolbar pull-left">
-								<input id="s_lot_number" ondragover="" type="text" class="form-control" autocomplete="off"/>
+								<input id="invention_person_search" ondragover="" type="text" class="form-control" autocomplete="off"/>
 							</div>
 
 							<div class="widget-toolbar pull-left">
 								<label>公開號</label>
 							</div>
 							<div class="widget-toolbar pull-left">
-								<input id="s_product_name1"  type="text" class="form-control" style="background:#FFFFFF" value="" readonly/>
-								<input id="s_product_name"  type="button" style="width:171px;position:relative;z-index:300;top:-30px;background-color: transparent; border: 0" class="form-control" autocomplete="off"/>
+								<input id="public_num_search"  type="text" class="form-control" style="background:#FFFFFF" value="" readonly/>
 							</div>
 
 							<div class="widget-toolbar pull-left">
 								<label>關鍵字</label>
 							</div>
 							<div class="widget-toolbar pull-left">
-								<input id="s_trace_batch" type="text" class="form-control"autocomplete="off" />
+								<input id="key_search" type="text" class="form-control"autocomplete="off" />
                             </div>
                             <div class="widget-toolbar pull-left">
 								<label>專利號</label>
                             </div>
                             <div class="widget-toolbar pull-left">
-								<input id="s_trace_batch" type="text" class="form-control"autocomplete="off" />
+								<input id="patent_search" type="text" class="form-control"autocomplete="off" />
                             </div>
                             <div class="widget-toolbar pull-left">
 								<label>摘要搜尋</label>
 							</div>
 							<div class="widget-toolbar pull-left">
-								<input id="s_trace_batch" type="text" class="form-control"autocomplete="off" />
+								<input id="summary_search" type="text" class="form-control"autocomplete="off" />
                             </div>
 
                             <div class="widget-toolbar pull-left" id="patent_status">
