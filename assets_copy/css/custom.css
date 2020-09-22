@@ -1,0 +1,38 @@
+/* Add here all your css styles (customizations) */
+.search-sel {
+    height: 3.5rem;
+    border-radius: 0;
+}
+
+.g-bg-primary {
+    background-color: #52afdc !important;
+}
+
+.u-btn-primary {
+    color: #fff;
+    background-color: #52afdc;
+}
+
+.g-brd-primary-dark-v1 {
+    border-color: #2a9fd8 !important;
+}
+
+#logo-img {
+    width: 60px;
+}
+
+.u-btn-outline-lightgray {
+    background-color: white;
+}
+
+.c-pointer {
+    cursor: pointer;
+}
+
+.no-pic {
+    padding-left: 5px;
+}
+
+.navbar-brand {
+    font-size: 2rem;
+}
