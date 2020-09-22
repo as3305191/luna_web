@@ -290,7 +290,7 @@ class Images extends MY_Base_Controller {
 			$url = 'mgmt/images/delete_file/' . $v_last_id;
 			$res = [
 					'initialPreview' => [
-						base_url('mgmt/images/get_file_file/' . $v_last_id )
+						base_url('mgmt/images/get_file/' . $v_last_id )
 					],
 					'initialPreviewConfig' => [
 							[
@@ -466,20 +466,13 @@ class Images extends MY_Base_Controller {
 			if(!empty($obj)) {
 				$file_url = $obj -> file_url;
 				$download_file_name = __DIR__ . IMG_DIR . $file_url . '/' . $obj -> file_name;
-
-				$fp = @fopen($download_file_name, 'rb');
-				header('Content-Description: File Transfer');
-				header("Content-Disposition: inline; filename=" . $obj -> file_name);
+				$fp = @fopen($download_file_name, 'r');
 				header('Content-type:' . $obj -> mime);
-				header("Accept-Ranges: bytes");
-				header('Expires: 0');
-				header('Cache-Control: must-revalidate');
-				header('Pragma: public');
-				header("Content-Length: " . filesize($download_file_name));
 
-				readfile($obj -> file_name);
-				fclose($fp);
+				readfile("pdf/".$obj -> file_name);
 				exit();
+				// fclose($fp);
+				// exit();
 				// die();
 				//
 		
