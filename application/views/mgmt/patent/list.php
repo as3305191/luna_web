@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="<?= base_url() ?>assets/css/custom.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/vendor/prism/themes/prism.css">
+<link rel="stylesheet" href="<?= base_url() ?>assets/vendor/custombox/custombox.min.css">
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
 
