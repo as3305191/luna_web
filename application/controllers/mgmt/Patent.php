@@ -136,8 +136,8 @@ class Patent extends MY_Mgmt_Controller {
 		$data['patent_name'] = $patnet_name;
 		$data['patent_key'] = $patent_key;
 		$data['patnet_category'] = $patnet_category;
-		$data['public_num_input'] = $public_num_input;
-		$data['patnet_num_input'] = $patnet_num_input;
+		$data['public_num'] = $public_num_input;
+		$data['patnet_num'] = $patnet_num_input;
 		$data['application_date'] = $application_date;
 		$data['public_date'] = $public_date;
 		$data['announcement_date'] = $announcement_date;
