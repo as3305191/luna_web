@@ -141,8 +141,8 @@ class Patent extends MY_Mgmt_Controller {
 		$data['application_date'] = $application_date;
 		$data['public_date'] = $public_date;
 		$data['announcement_date'] = $announcement_date;
-		$data['s_dt'] = $s_dt;
-		$data['e_dt'] = $e_dt;
+		$data['patent_start_dt'] = $s_dt;
+		$data['patent_end_dt'] = $e_dt;
 		$data['patnetend_end_date'] = $patnetend_end_date;
 		$data['patnet_status'] = $patnet_status;
 		$data['patent_note'] = $patent_note;
