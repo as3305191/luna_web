@@ -20,7 +20,59 @@
 									</button>
 								</div>
 							</div>
+                            <div class="widget-toolbar pull-left">
+								<label>範圍查詢 <input id="s_multiple" type="checkbox" class="" value="" /></label>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<input id="s_dt" placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
+							</div>
+							<div class="widget-toolbar pull-left" disabled>
+								~ <input id="e_dt" disabled placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
+							</div>
+							<div class="widget-toolbar pull-left">
+								<label>原料/成品</label>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<select name="" id="s_storage" class="">
+									<option value="0">原料</option>
+									<option value="2">成品</option>
 
+								</select>
+							</div>
+
+							<div class="widget-toolbar pull-left">
+								<label>原料櫃號</label>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<input id="s_container_sn" ondragover="" autocomplete="off" type="text" class="form-control" />
+							</div>
+							<div class="widget-toolbar pull-left">
+								<label>工單編號</label>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<input id="s_sn" type="text" class="form-control" autocomplete="off" />
+							</div>
+							<div class="widget-toolbar pull-left">
+								<label>料號</label>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<input id="s_lot_number" ondragover="" type="text" class="form-control" autocomplete="off"/>
+							</div>
+
+							<div class="widget-toolbar pull-left">
+								<label>品名</label>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<input id="s_product_name1"  type="text" class="form-control" style="background:#FFFFFF" value="" readonly/>
+								<input id="s_product_name"  type="button" style="width:171px;position:relative;z-index:300;top:-30px;background-color: transparent; border: 0" class="form-control" autocomplete="off"/>
+							</div>
+
+							<div class="widget-toolbar pull-left">
+								<label>批號</label>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<input id="s_trace_batch" type="text" class="form-control"autocomplete="off" />
+							</div>
 						</header>
 
 						<!-- widget div-->
@@ -40,8 +92,8 @@
 									<thead>
 										<tr>
 											<th class="min25"></th>
-											<th class="min150">id</th>
-											<th class="min200">plant</th>
+											<th class="min100">id</th>
+											<th class="min100">plant</th>
 											<th class="min100">sloc</th>
 											<th class="min100">desc</th>
 											<th class="min100">is_show</th>
