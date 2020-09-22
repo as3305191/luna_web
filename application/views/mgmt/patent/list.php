@@ -126,8 +126,8 @@
 	}];
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/plant/list.js", function(){
-			currentApp = new PlantAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/patent/list.js", function(){
+			currentApp = new patentAppClass(new BaseAppClass({}));
 		});
 	});
 </script>
