@@ -96,7 +96,7 @@
 								<input id="s_trace_batch" type="text" class="form-control"autocomplete="off" />
                             </div>
 
-                            <div class="g-mb-20" id="patent_status">
+                            <div class="widget-toolbar pull-left" id="patent_status">
                                 <div>
                                 <?php foreach ($patent_status as $each) : ?>
                                     <label class="u-check g-pl-0">
