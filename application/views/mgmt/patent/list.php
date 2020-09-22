@@ -21,7 +21,7 @@
 						<header>
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">
-									<button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
+									<button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-success" >
 										<i class="fa fa-plus"></i>新增
 									</button>
 								</div>
