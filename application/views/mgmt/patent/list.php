@@ -20,7 +20,7 @@
 									</button>
 								</div>
 							</div>
-                            <div class="widget-toolbar pull-left">
+                            <!-- <div class="widget-toolbar pull-left">
 								<label>範圍查詢 <input id="s_multiple" type="checkbox" class="" value="" /></label>
 							</div>
 							<div class="widget-toolbar pull-left">
@@ -28,39 +28,49 @@
 							</div>
 							<div class="widget-toolbar pull-left" disabled>
 								~ <input id="e_dt" disabled placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
-							</div>
+							</div> -->
 							<div class="widget-toolbar pull-left">
-								<label>原料/成品</label>
+								<label>項目類別</label>
 							</div>
 							<div class="widget-toolbar pull-left">
 								<select name="" id="s_storage" class="">
 									<option value="0">原料</option>
 									<option value="2">成品</option>
-
 								</select>
 							</div>
-
+                            <div class="widget-toolbar pull-left">
+								<select name="" id="s_storage" class="">
+									<option value="0">原料</option>
+									<option value="2">成品</option>
+								</select>
+                            </div>
+                            <div class="widget-toolbar pull-left">
+								<select name="" id="s_storage" class="">
+									<option value="0">原料</option>
+									<option value="2">成品</option>
+								</select>
+							</div>
 							<div class="widget-toolbar pull-left">
-								<label>原料櫃號</label>
+								<label>申請人</label>
 							</div>
 							<div class="widget-toolbar pull-left">
 								<input id="s_container_sn" ondragover="" autocomplete="off" type="text" class="form-control" />
 							</div>
 							<div class="widget-toolbar pull-left">
-								<label>工單編號</label>
+								<label>申請號</label>
 							</div>
 							<div class="widget-toolbar pull-left">
 								<input id="s_sn" type="text" class="form-control" autocomplete="off" />
 							</div>
 							<div class="widget-toolbar pull-left">
-								<label>料號</label>
+								<label>發明人</label>
 							</div>
 							<div class="widget-toolbar pull-left">
 								<input id="s_lot_number" ondragover="" type="text" class="form-control" autocomplete="off"/>
 							</div>
 
 							<div class="widget-toolbar pull-left">
-								<label>品名</label>
+								<label>公開號</label>
 							</div>
 							<div class="widget-toolbar pull-left">
 								<input id="s_product_name1"  type="text" class="form-control" style="background:#FFFFFF" value="" readonly/>
@@ -68,11 +78,34 @@
 							</div>
 
 							<div class="widget-toolbar pull-left">
-								<label>批號</label>
+								<label>關鍵字</label>
 							</div>
 							<div class="widget-toolbar pull-left">
 								<input id="s_trace_batch" type="text" class="form-control"autocomplete="off" />
+                            </div>
+                            <div class="widget-toolbar pull-left">
+								<label>專利號</label>
+                            </div>
+                            <div class="widget-toolbar pull-left">
+								<input id="s_trace_batch" type="text" class="form-control"autocomplete="off" />
+                            </div>
+                            <div class="widget-toolbar pull-left">
+								<label>摘要搜尋</label>
 							</div>
+							<div class="widget-toolbar pull-left">
+								<input id="s_trace_batch" type="text" class="form-control"autocomplete="off" />
+                            </div>
+
+                            <div class="g-mb-20" id="patent_status">
+                                <div>
+                                <?php foreach ($patent_status as $each) : ?>
+                                    <label class="u-check g-pl-0">
+                                    <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="patent_status[]" type="checkbox" value="<?= $each->id ?>">
+                                        <span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->attribute_name ?></span>
+                                    </label>
+                                <?php endforeach ?>
+                                </div>
+                            </div>
 						</header>
 
 						<!-- widget div-->
@@ -145,6 +178,10 @@
 <?php $this -> load -> view('general/delete_modal'); ?>
 
 <script type="text/javascript">
+    var patent_status = $("input[name='patent_status[]']:checked").map(function() {
+        return this.value
+    }).get();
+
 	var mCols = [null, {
 		data : 'id'
 	}, {
