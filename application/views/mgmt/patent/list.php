@@ -101,7 +101,7 @@
                                 <?php foreach ($patent_status as $each) : ?>
                                     <label class="u-check g-pl-0">
                                     <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="patent_status[]" type="checkbox" value="<?= $each->id ?>">
-                                        <span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->attribute_name ?></span>
+                                        <span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
                                     </label>
                                 <?php endforeach ?>
                                 </div>
