@@ -117,7 +117,7 @@ class Patent extends MY_Mgmt_Controller {
 		$patnet_name = $this -> get_post('patnet_name');
 		$img= $this -> get_post('img');
 		$pdf_array = $this -> get_post('pdf_array');
-		$patnet_key = $this -> get_post('patnet_key');
+		$patent_key = $this -> get_post('patent_key');
 		$patnet_category = $this -> get_post('patnet_category');
 		$public_num_input = $this -> get_post('public_num_input');
 		$patnet_num_input = $this -> get_post('patnet_num_input');
@@ -134,7 +134,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data['img_id'] = $img;
 		$data['files_id'] = $pdf_array;
 		$data['patent_name'] = $patnet_name;
-		$data['patnet_key'] = $patnet_key;
+		$data['patent_key'] = $patent_key;
 		$data['patnet_category'] = $patnet_category;
 		$data['public_num_input'] = $public_num_input;
 		$data['patnet_num_input'] = $patnet_num_input;

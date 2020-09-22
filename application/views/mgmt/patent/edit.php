@@ -85,7 +85,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">關鍵字</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="patnet_key"  id="patnet_key" value="<?= isset($item) ? $item -> patnet_key : '' ?>"  />
+						<input type="text"  class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patnet_key : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
