@@ -79,7 +79,7 @@
 								<label>公開號</label>
 							</div>
 							<div class="widget-toolbar pull-left">
-								<input id="public_num_search"  type="text" class="form-control" style="background:#FFFFFF" value="" readonly/>
+								<input id="public_num_search"  type="text" class="form-control" style="background:#FFFFFF" autocomplete="off"/>
 							</div>
 
 							<div class="widget-toolbar pull-left">
