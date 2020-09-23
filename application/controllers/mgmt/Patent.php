@@ -74,7 +74,7 @@ class Patent extends MY_Mgmt_Controller {
 
 			$data['item'] = $item;
 		}
-		// $this -> to_json($data);
+		$this -> to_json($data);
 
 		$this->load->view('mgmt/patent/edit', $data);
 	}
