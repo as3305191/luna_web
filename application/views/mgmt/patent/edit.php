@@ -153,11 +153,11 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利權期間</label>
 					<div class="col-md-2 widget-toolbar pull-left">
-						<input id="s_dt" placeholder="開始日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_start_date : '' ?>" />
+						<input id="s_dt" placeholder="開始日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_start_dt : '' ?>" />
 					</div>
 					
 					<div class="col-md-2 widget-toolbar pull-left">
-						~<input id="e_dt" placeholder="結束日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_end_date : '' ?>" />
+						~<input id="e_dt" placeholder="結束日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_end_dt : '' ?>" />
 					</div>
 					<div class="col-md-2 widget-toolbar pull-left">
 						共
