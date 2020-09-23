@@ -187,7 +187,7 @@
 		data : 'patent_name'
 	}, {
 		data : 'img_id'
-	};
+	}];
 
 	var mOrderIdx = 5;
 
