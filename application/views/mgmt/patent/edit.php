@@ -309,7 +309,7 @@ $("#img-input").fileinput({
         <?php if(!empty($item -> image) && count($item -> image) > 0): ?>
         	initialPreview: [
         		<?php foreach($item -> image as $img): ?>
-        			'<?=  base_url('mgmt/images/get/' . $img) ?>',
+        			'<?=  base_url('mgmt/images/get/' . $img->id) ?>',
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
@@ -318,8 +318,8 @@ $("#img-input").fileinput({
 	        		'caption' : '<?= $img -> image_name ?>',
 	        		'size' : <?= $img -> image_size ?>,
 	        		'width' : '120px',
-	        		'url' : '<?= base_url('mgmt/images/delete/' . $img )  ?>',
-	        		'key' : <?= $img  ?>
+	        		'url' : '<?= base_url('mgmt/images/delete/' . $img->id )  ?>',
+	        		'key' : <?= $img->id?>
 	        },
     		<?php endforeach ?>
 
@@ -358,7 +358,7 @@ $("#img-input").fileinput({
         <?php if(!empty($item -> files) && count($item -> files) > 0): ?>
         	initialPreview: [
         		<?php foreach($item -> files as $files): ?>
-        			'<?=  base_url('mgmt/images/get_pdf/' . $files) ?>',
+        			'<?=  base_url('mgmt/images/get_pdf/' . $files->id) ?>',
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
@@ -367,8 +367,8 @@ $("#img-input").fileinput({
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 	        		'width' : '120px',
-	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files)  ?>',
-	        		'key' : <?= $files?>
+	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id)  ?>',
+	        		'key' : <?= $files->id?>
 	        },
     		<?php endforeach ?>
 
@@ -406,7 +406,7 @@ $("#img-input").fileinput({
         <?php if(!empty($item -> public_number) && count($item -> public_number) > 0): ?>
         	initialPreview: [
         		<?php foreach($item -> public_number as $files): ?>
-        			'<?=  base_url('mgmt/images/get_pdf/' . $files) ?>',
+        			'<?=  base_url('mgmt/images/get_pdf/' . $files->id) ?>',
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
@@ -415,8 +415,8 @@ $("#img-input").fileinput({
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 	        		'width' : '120px',
-	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files )  ?>',
-	        		'key' : <?= $files?>
+	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
+	        		'key' : <?= $files->id?>
 	        },
     		<?php endforeach ?>
 
@@ -454,7 +454,7 @@ $("#img-input").fileinput({
         <?php if(!empty($item -> patnet_number) && count($item -> patnet_number) > 0): ?>
         	initialPreview: [
         		<?php foreach($item -> patnet_number as $files): ?>
-        			'<?=  base_url('mgmt/images/get_pdf/' . $files) ?>',
+        			'<?=  base_url('mgmt/images/get_pdf/' . $files->id) ?>',
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
@@ -463,8 +463,8 @@ $("#img-input").fileinput({
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 	        		'width' : '120px',
-	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files )  ?>',
-	        		'key' : <?= $files  ?>
+	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
+	        		'key' : <?= $files->id  ?>
 	        },
     		<?php endforeach ?>
 
