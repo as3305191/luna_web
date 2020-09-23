@@ -237,7 +237,7 @@ class Images extends MY_Base_Controller {
 			$url = 'mgmt/images/delete_file/' . $v_last_id;
 			$res = [
 					'initialPreview' => [
-						base_url('mgmt/images/get_file_file/' . $v_last_id )
+						base_url('mgmt/images/get_pdf/' . $v_last_id )
 					],
 					'initialPreviewConfig' => [
 							[
@@ -246,7 +246,7 @@ class Images extends MY_Base_Controller {
 								'filetype' =>  $type,
 								'caption' => "$name",
 								'filename' => "$name",
-								'downloadUrl' => base_url('mgmt/images/get_file_file/' . $v_last_id),
+								'downloadUrl' => base_url('mgmt/images/get_pdf/' . $v_last_id),
 								'url' => $url,
 								'key' => $v_last_id
 							]
@@ -352,6 +352,29 @@ class Images extends MY_Base_Controller {
 	// 	}
 	// 	show_404();
 	// }
+
+	public function get_pdf($id) {
+		$data = array();
+		if (!empty($id)) {
+			$obj = $this -> dao -> find_by_id($id);
+			if(!empty($obj)) {
+				$pdf = $obj -> pdf_file ;
+				// $download_file_name = IMG_DIR . $img_path;
+				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
+
+
+				header("Content-type: " . $obj -> mime);
+				header("Content-Length: " . strlen($pdf));
+
+
+				// ob_clean();
+				// flush();
+				echo $pdf;
+				exit ;
+			}
+		}
+		show_404();
+	}
 
 	public function get($id, $is_thumb = '') {
 		$data = array();
