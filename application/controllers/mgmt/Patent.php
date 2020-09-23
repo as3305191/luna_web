@@ -59,9 +59,18 @@ class Patent extends MY_Mgmt_Controller {
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
-			// if(!empty($item -> image_id)) {
-			// 	$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
-			// }
+			if(!empty($item -> img_id)) {
+				$item -> image = explode(",", $item -> img_id);
+			}
+			if(!empty($item -> files_id)) {
+				$item -> files = explode(",", $item -> files_id);
+			}
+			if(!empty($item -> public_num)) {
+				$item -> public_number = explode(",", $item -> public_num);
+			}
+			if(!empty($item -> patnet_num)) {
+				$item -> patnet_number = explode(",", $item -> patnet_num);
+			}
 
 			$data['item'] = $item;
 		}
