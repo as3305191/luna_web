@@ -378,8 +378,8 @@ $("#img-input").fileinput({
         	initialPreview: [],
         	initialPreviewConfig: [],
         <?php endif ?>
-        initialPreviewAsData: true,
-        overwriteInitial: false,
+		overwriteInitial: false,
+    	initialPreviewAsData: true,
         maxFileCount: 1,
         uploadUrl: 'mgmt/images/upload_img_or_pdf/file',
         uploadExtraData: {
@@ -427,8 +427,8 @@ $("#img-input").fileinput({
         	initialPreview: [],
         	initialPreviewConfig: [],
         <?php endif ?>
-        initialPreviewAsData: true,
-        overwriteInitial: false,
+		overwriteInitial: false,
+    	initialPreviewAsData: true,
         maxFileCount: 1,
         uploadUrl: 'mgmt/images/upload_img_or_pdf/file',
         uploadExtraData: {
@@ -476,8 +476,8 @@ $("#img-input").fileinput({
         	initialPreview: [],
         	initialPreviewConfig: [],
         <?php endif ?>
-        initialPreviewAsData: true,
         overwriteInitial: false,
+    	initialPreviewAsData: true,
         maxFileCount: 1,
         uploadUrl: 'mgmt/images/upload_img_or_pdf/file',
         uploadExtraData: {
