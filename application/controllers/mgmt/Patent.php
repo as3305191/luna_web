@@ -88,6 +88,8 @@ class Patent extends MY_Mgmt_Controller {
 
 			$data['item'] = $item;
 		}
+		$data['country'] = $this -> country_dao -> find_all();
+
 		$this -> to_json($data);
 
 		$this->load->view('mgmt/patent/edit', $data);
