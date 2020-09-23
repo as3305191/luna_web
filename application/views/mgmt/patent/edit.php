@@ -377,7 +377,8 @@ $("#img-input").fileinput({
         <?php else: ?>
         	initialPreview: [],
         	initialPreviewConfig: [],
-        <?php endif ?>
+		<?php endif ?>
+		pdfRendererUrl: 'https://plugins.krajee.com/pdfjs/web/viewer.html',
 		overwriteInitial: false,
     	initialPreviewAsData: true,
         maxFileCount: 1,
@@ -426,7 +427,8 @@ $("#img-input").fileinput({
         <?php else: ?>
         	initialPreview: [],
         	initialPreviewConfig: [],
-        <?php endif ?>
+		<?php endif ?>
+		pdfRendererUrl: 'https://plugins.krajee.com/pdfjs/web/viewer.html',
 		overwriteInitial: false,
     	initialPreviewAsData: true,
         maxFileCount: 1,
@@ -475,7 +477,8 @@ $("#img-input").fileinput({
         <?php else: ?>
         	initialPreview: [],
         	initialPreviewConfig: [],
-        <?php endif ?>
+		<?php endif ?>
+		pdfRendererUrl: 'https://plugins.krajee.com/pdfjs/web/viewer.html',
         overwriteInitial: false,
     	initialPreviewAsData: true,
         maxFileCount: 1,
