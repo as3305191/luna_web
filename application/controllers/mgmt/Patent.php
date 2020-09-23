@@ -11,6 +11,8 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> load -> model('Computer_soft_dao', 'c_s_dao');
 		$this -> load -> model('C_s_h_join_list_dao', 'c_s_h_join_list_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
+		$this -> load -> model('Files_dao','file_dao');
+
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Country_dao', 'country_dao');
 		$this -> load -> model('Patent_status_dao', 'patent_status_dao');
@@ -60,16 +62,28 @@ class Patent extends MY_Mgmt_Controller {
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
 			if(!empty($item -> img_id)) {
-				$item -> image = explode(",", $item -> img_id);
+				$image= explode(",", $item -> img_id);
+				foreach($image as $each){
+					$item -> image[] = $this -> img_dao -> find_by_id($each);
+				}
 			}
 			if(!empty($item -> files_id)) {
-				$item -> files = explode(",", $item -> files_id);
+				$files = explode(",", $item -> files_id);
+				foreach($files as $each){
+					$item -> files[] = $this -> file_dao -> find_by_id($each);
+				}
 			}
 			if(!empty($item -> public_num)) {
-				$item -> public_number = explode(",", $item -> public_num);
+				$public_number = explode(",", $item -> public_num);
+				foreach($public_number as $each){
+					$item -> public_number[] = $this -> file_dao -> find_by_id($each);
+				}
 			}
 			if(!empty($item -> patnet_num)) {
-				$item -> patnet_number = explode(",", $item -> patnet_num);
+				$patnet_number = explode(",", $item -> patnet_num);
+				foreach($patnet_number as $each){
+					$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
+				}
 			}
 
 			$data['item'] = $item;
