@@ -36,9 +36,9 @@ class Patent_dao extends MY_Model {
 		$query = $this -> db -> get();
 		$list = $query -> result();
 		if(count($list)>0){
-			return '0';
-		} else{
 			return $list[0]->patent_family;
+		} else{
+			return '0';
 		}
 
 		

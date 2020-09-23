@@ -103,7 +103,7 @@ class Patent extends MY_Mgmt_Controller {
 		}
 		// $data['country'] = $this -> country_dao -> find_all();
 
-		$this -> to_json($data);
+		// $this -> to_json($data);
 
 		$this->load->view('mgmt/patent/edit', $data);
 	}
