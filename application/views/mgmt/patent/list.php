@@ -130,19 +130,15 @@
 									<thead>
 										<tr>
 											<th class="min25"></th>
-											<th class="min100">id</th>
-											<th class="min100">plant</th>
-											<th class="min100">sloc</th>
-											<th class="min100">desc</th>
-											<th class="min100">is_show</th>
+											<th class="min100">專利名稱</th>
+											<th class="min100">代表圖</th>
+											
 										</tr>
 										<tr class="search_box">
 									    <th></th>
 									    <th><input class="form-control input-xs min100" type="text" /></th>
-									    <th><input class="form-control input-xs min100" type="text" /></th>
-									    <th><input class="form-control input-xs min100" type="text" /></th>
-									    <th><input class="form-control input-xs min100" type="text" /></th>
 									    <th></th>
+									 
 								    </tr>
 									</thead>
 									<tbody>
@@ -188,19 +184,10 @@
     }).get();
 
 	var mCols = [null, {
-		data : 'id'
+		data : 'patent_name'
 	}, {
-		data : 'plant'
-	}, {
-		data : 'sloc'
-	}, {
-		data : 'desc',
-		render: function(d,t,r) {
-			return d + " / " + r.reward_foreign;
-		}
-	}, {
-		data : 'is_show'
-	}];
+		data : 'img_id'
+	};
 
 	var mOrderIdx = 5;
 
@@ -215,7 +202,7 @@
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [1,2,3,4],
+		"targets" : [1,2],
 		"orderable" : false
 	}];
 

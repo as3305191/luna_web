@@ -306,14 +306,14 @@ var patnet_num_input=[];
 
 $("#img-input").fileinput({
 					language: "zh-TW",
-        <?php if(!empty($item -> images) && count($item -> images) > 0): ?>
+        <?php if(!empty($item -> img_id) && count($item -> img_id) > 0): ?>
         	initialPreview: [
-        		<?php foreach($item -> images as $img): ?>
+        		<?php foreach($item -> img_id as $img): ?>
         			'<?=  base_url('mgmt/images/get/' . $img -> id) ?>',
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
-        	<?php foreach($item -> images as $img): ?>
+        	<?php foreach($item -> img_id as $img): ?>
     		{
 	        		'caption' : '<?= $img -> image_name ?>',
 	        		'size' : <?= $img -> image_size ?>,
@@ -355,20 +355,20 @@ $("#img-input").fileinput({
 
 	$("#file-input").fileinput({
 					language: "zh-TW",
-        <?php if(!empty($item -> images) && count($item -> images) > 0): ?>
+        <?php if(!empty($item -> files_id) && count($item -> files_id) > 0): ?>
         	initialPreview: [
-        		<?php foreach($item -> images as $img): ?>
-        			'<?=  base_url('mgmt/images/get_file/' . $img -> id) ?>',
+        		<?php foreach($item -> files_id as $files): ?>
+        			'<?=  base_url('mgmt/images/get_pdf/' . $files -> id) ?>',
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
-        	<?php foreach($item -> images as $img): ?>
+        	<?php foreach($item -> files_id as $files): ?>
     		{
-	        		'caption' : '<?= $img -> image_name ?>',
-	        		'size' : <?= $img -> image_size ?>,
+	        		'caption' : '<?= $files -> file_name ?>',
+	        		'size' : <?= $files -> file_size ?>,
 	        		'width' : '120px',
-	        		'url' : '<?= base_url('mgmt/images/delete/' . $img -> id)  ?>',
-	        		'key' : <?= $img -> id ?>
+	        		'url' : '<?= base_url('mgmt/images/delete/' . $files -> id)  ?>',
+	        		'key' : <?= $files -> id ?>
 	        },
     		<?php endforeach ?>
 
@@ -403,20 +403,20 @@ $("#img-input").fileinput({
 
 	$("#public-num-input").fileinput({
 					language: "zh-TW",
-        <?php if(!empty($item -> images) && count($item -> images) > 0): ?>
+        <?php if(!empty($item -> public_num) && count($item -> public_num) > 0): ?>
         	initialPreview: [
-        		<?php foreach($item -> images as $img): ?>
-        			'<?=  base_url('mgmt/images/get_file/' . $img -> id) ?>',
+        		<?php foreach($item -> public_num as $files): ?>
+        			'<?=  base_url('mgmt/images/get_pdf/' . $files -> id) ?>',
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
-        	<?php foreach($item -> images as $img): ?>
+				<?php foreach($item -> public_num as $files): ?>
     		{
-	        		'caption' : '<?= $img -> image_name ?>',
-	        		'size' : <?= $img -> image_size ?>,
+	        		'caption' : '<?= $files -> file_name ?>',
+	        		'size' : <?= $files -> file_size ?>,
 	        		'width' : '120px',
-	        		'url' : '<?= base_url('mgmt/images/delete/' . $img -> id)  ?>',
-	        		'key' : <?= $img -> id ?>
+	        		'url' : '<?= base_url('mgmt/images/delete/' . $files -> id)  ?>',
+	        		'key' : <?= $files -> id ?>
 	        },
     		<?php endforeach ?>
 
@@ -451,20 +451,20 @@ $("#img-input").fileinput({
 
 	$("#patnet-num-input").fileinput({
 					language: "zh-TW",
-        <?php if(!empty($item -> images) && count($item -> images) > 0): ?>
+        <?php if(!empty($item -> patnet_num) && count($item -> patnet_num) > 0): ?>
         	initialPreview: [
-        		<?php foreach($item -> images as $img): ?>
-        			'<?=  base_url('mgmt/images/get_file/' . $img -> id) ?>',
+        		<?php foreach($item -> patnet_num as $files): ?>
+        			'<?=  base_url('mgmt/images/get_pdf/' . $files -> id) ?>',
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
-        	<?php foreach($item -> images as $img): ?>
+				<?php foreach($item -> patnet_num as $files): ?>
     		{
-	        		'caption' : '<?= $img -> image_name ?>',
-	        		'size' : <?= $img -> image_size ?>,
+	        		'caption' : '<?= $files -> file_name ?>',
+	        		'size' : <?= $files -> file_size ?>,
 	        		'width' : '120px',
-	        		'url' : '<?= base_url('mgmt/images/delete/' . $img -> id)  ?>',
-	        		'key' : <?= $img -> id ?>
+	        		'url' : '<?= base_url('mgmt/images/delete/' . $files -> id)  ?>',
+	        		'key' : <?= $files -> id ?>
 	        },
     		<?php endforeach ?>
 
