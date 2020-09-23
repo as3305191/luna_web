@@ -13,8 +13,9 @@
 <script src="<?= base_url('js/plugin/jquery-touch/jquery.ui.touch-punch.min.js') ?>"></script>
 
 <!-- BOOTSTRAP FILEINPUT -->
-<script src="<?= base_url('js/plugin/bootstrap-fileinput/js/plugins/sortable.js') ?>"></script>
+<script src="<?= base_url('js/plugin/bootstrap-fileinput/js/plugins/sortable.min.js') ?>"></script>
 <script src="<?= base_url('js/plugin/bootstrap-fileinput/js/fileinput.js') ?>"></script>
+<script src="<?= base_url('js/plugin/bootstrap-fileinput/js/plugins/purify.min.js') ?>"></script>
 <script src="<?= base_url('js/plugin/bootstrap-fileinput/js/locales/zh-TW.js') ?>"></script>
 
 <!-- MOMENT.JS -->

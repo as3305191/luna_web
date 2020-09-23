@@ -724,14 +724,14 @@ class Images extends MY_Base_Controller {
 
 	public function delete($id){
 		$res = array();
-		$this -> dao -> delete($id);
+		//$this -> dao -> delete($id);
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
 
 	public function delete_file($id){
 		$res = array();
-		$this -> file_dao -> delete($id);
+		//$this -> dao -> delete($id);
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}

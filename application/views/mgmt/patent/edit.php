@@ -239,7 +239,6 @@
 							}
 
 						</style>
-				
 
 		</div>
 
@@ -318,7 +317,8 @@ $("#img-input").fileinput({
 	        		'caption' : '<?= $img -> image_name ?>',
 	        		'size' : <?= $img -> image_size ?>,
 	        		'width' : '120px',
-	        		'url' : '<?= base_url('mgmt/images/delete/' . $img->id )  ?>',
+					'url' : '<?= base_url('mgmt/images/delete/' . $img->id )  ?>',
+					'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
 	        		'key' : <?= $img->id?>
 	        },
     		<?php endforeach ?>
@@ -329,7 +329,8 @@ $("#img-input").fileinput({
         	initialPreviewConfig: [],
         <?php endif ?>
         initialPreviewAsData: true,
-        overwriteInitial: false,
+		overwriteInitial: false,
+		purifyHtml:true ,
         maxFileCount: 1,
         uploadUrl: 'mgmt/images/upload/img',
         uploadExtraData: {
@@ -354,7 +355,11 @@ $("#img-input").fileinput({
 	});
 
 	$("#file-input").fileinput({
-					language: "zh-TW",
+		language: "zh-TW",
+		initialPreviewAsData: true,
+		overwriteInitial: false,
+		purifyHtml:true ,
+		 
         <?php if(!empty($item -> files) && count($item -> files) > 0): ?>
         	initialPreview: [
         		<?php foreach($item -> files as $files): ?>
@@ -368,6 +373,7 @@ $("#img-input").fileinput({
 	        		'size' : <?= $files -> file_size ?>,
 					'width' : '120px',
 					'type': 'pdf',
+					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id)  ?>',
 	        		'key' : <?= $files->id?>
 	        },
@@ -378,9 +384,7 @@ $("#img-input").fileinput({
         	initialPreview: [],
         	initialPreviewConfig: [],
 		<?php endif ?>
-		pdfRendererUrl: 'https://plugins.krajee.com/pdfjs/web/viewer.html',
-		overwriteInitial: false,
-    	initialPreviewAsData: true,
+	
         maxFileCount: 1,
         uploadUrl: 'mgmt/images/upload_img_or_pdf/file',
         uploadExtraData: {
@@ -418,6 +422,7 @@ $("#img-input").fileinput({
 	        		'size' : <?= $files -> file_size ?>,
 					'width' : '120px',
 					'type': 'pdf',
+					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
 	        		'key' : <?= $files->id?>
 	        },
@@ -428,7 +433,6 @@ $("#img-input").fileinput({
         	initialPreview: [],
         	initialPreviewConfig: [],
 		<?php endif ?>
-		pdfRendererUrl: 'https://plugins.krajee.com/pdfjs/web/viewer.html',
 		overwriteInitial: false,
     	initialPreviewAsData: true,
         maxFileCount: 1,
@@ -468,8 +472,9 @@ $("#img-input").fileinput({
 	        		'size' : <?= $files -> file_size ?>,
 					'width' : '120px',
 					'type': 'pdf',
+					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
-	        		'key' : <?= $files->id  ?>
+	        		'key' : '<?= $files->id  ?>'
 	        },
     		<?php endforeach ?>
 
@@ -478,7 +483,6 @@ $("#img-input").fileinput({
         	initialPreview: [],
         	initialPreviewConfig: [],
 		<?php endif ?>
-		pdfRendererUrl: 'https://plugins.krajee.com/pdfjs/web/viewer.html',
         overwriteInitial: false,
     	initialPreviewAsData: true,
         maxFileCount: 1,

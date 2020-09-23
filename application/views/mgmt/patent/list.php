@@ -1,9 +1,7 @@
 
    <!-- CSS Unify Theme -->
    <link rel="stylesheet" href="<?= base_url() ?>assets_co/assets_/css/styles.multipage-real-estate.css">
-   <link rel="stylesheet" href="<?= base_url() ?>assets_co/css/unify-core.css">
-   <link rel="stylesheet" href="<?= base_url() ?>assets_co/css/unify-components.css">
-   <link rel="stylesheet" href="<?= base_url() ?>assets_co/css/unify-globals.css">
+  
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
 
