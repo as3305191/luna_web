@@ -367,7 +367,7 @@ $("#img-input").fileinput({
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 	        		'width' : '120px',
-	        		'url' : '<?= base_url('mgmt/images/delete/' . $files -> id)  ?>',
+	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files -> id)  ?>',
 	        		'key' : <?= $files -> id ?>
 	        },
     		<?php endforeach ?>
@@ -415,7 +415,7 @@ $("#img-input").fileinput({
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 	        		'width' : '120px',
-	        		'url' : '<?= base_url('mgmt/images/delete/' . $files -> id)  ?>',
+	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files -> id)  ?>',
 	        		'key' : <?= $files -> id ?>
 	        },
     		<?php endforeach ?>
@@ -463,7 +463,7 @@ $("#img-input").fileinput({
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 	        		'width' : '120px',
-	        		'url' : '<?= base_url('mgmt/images/delete/' . $files -> id)  ?>',
+	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files -> id)  ?>',
 	        		'key' : <?= $files -> id ?>
 	        },
     		<?php endforeach ?>
