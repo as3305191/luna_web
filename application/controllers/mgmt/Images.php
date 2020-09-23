@@ -217,39 +217,46 @@ class Images extends MY_Base_Controller {
 			}
 		
 		}
+		if (!empty($v_last_id)) {
+			// $m_dir = __DIR__ . IMG_DIR . "$image_path/";
+			// if(!file_exists($m_dir)) {
+			// 	mkdir($m_dir);
+			// }
 
-		if (!empty($last_id)) {
-			// resize
-			$this -> resize($tmp_name, 120, 120);//製作縮圖
+			$ext = $this -> get_ext($type);
+			$file_name = $v_last_id . '.' . $ext;
+			$extract = fopen($tmp_name, 'r');
+			// $target = fopen($m_dir . $name, 'w');
 
-			$img_content = file_get_contents($tmp_name);
-			$this -> dao -> update(array(
-				'img_thumb' => $img_content
-			), $last_id);
+			// save image
+			$file = fread($extract, $size);
+			// fwrite($target, $file);
+			fclose($extract);
+			// fclose($target);
 
-			$url = 'mgmt/images/delete/' . $last_id;
+			$url = 'mgmt/images/delete_file/' . $v_last_id;
 			$res = [
-			    'initialPreview' => [
-			   		base_url('mgmt/images/get/' . $last_id)
-			    ],
-			    'initialPreviewConfig' => [
-			        ['caption' => "$name", 'size' => $size, 'width' => '120px', 'url' => $url, 'key' => $last_id]
-			    ],
-			    "id" => $last_id
+					'initialPreview' => [
+						base_url('mgmt/images/get_file_file/' . $v_last_id )
+					],
+					'initialPreviewConfig' => [
+							[
+								'type' =>  "pdf",
+								'size' =>  $size,
+								'filetype' =>  $type,
+								'caption' => "$name",
+								'filename' => "$name",
+								'downloadUrl' => base_url('mgmt/images/get_file_file/' . $v_last_id),
+								'url' => $url,
+								'key' => $v_last_id
+							]
+					],
+					"id" => $v_last_id
 			];
-
-			//可重複上圖
-			if($image_path == 'product_img' || $image_path == 'store_img') {
-				$res['append'] = TRUE;
-			} else {
-				$res['append'] = FALSE;
-			}
-
-			$res['is_img'] = 1;
+			$res['file_name'] = $name;
 
 			$this -> to_json($res);
 		}
-		
 
 	}
 
@@ -399,50 +406,34 @@ class Images extends MY_Base_Controller {
 		// show_404();
 	}
 
-	// public function get_file_file($id) {//預覽
-	// 	$data = array();
-	// 	if (!empty($id)) {
-	// 		$obj = $this -> file_dao -> find_by_id($id);
-	// 		if(!empty($obj)) {
-	// 			$file_url = $obj -> file_url;
-	// 			$download_file_name = __DIR__ . IMG_DIR . $file_url . '/' . $obj -> file_name;
-	// 			$fp = @fopen($download_file_name, 'r');
-	// 			header('Content-type:' . $obj -> mime);
-
-	// 			readfile("pdf/".$obj -> file_name);
-	// 			exit();
-	// 			// fclose($fp);
-	// 			// exit();
-	// 			// die();
-	// 			//
-		
-	// 		}
-	// 	}
-	// 	// show_404();
-	// }
-	public function get_file_file($id) {
+	public function get_file_file($id) {//預覽
 		$data = array();
 		if (!empty($id)) {
 			$obj = $this -> file_dao -> find_by_id($id);
 			if(!empty($obj)) {
-				$file_url = $obj -> file_path . '/' .$obj -> file_name;
-				// $download_file_name = IMG_DIR . $img_path;
-				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
+				$file_url = $obj -> file_url;
+				$download_file_name = __DIR__ . IMG_DIR . $file_url . '/' . $obj -> file_name;
 
+				$fp = @fopen($download_file_name, 'rb');
+				header('Content-Description: File Transfer');
+				header("Content-Disposition: inline; filename=" . $obj -> file_name);
+				header('Content-type:' . $obj -> mime);
+				header("Accept-Ranges: bytes");
+				header('Expires: 0');
+				header('Cache-Control: must-revalidate');
+				header('Pragma: public');
+				header("Content-Length: " . filesize($download_file_name));
 
-				header("Content-type: " . $obj -> mime);
-				header("Content-Length: " . strlen($file_url));
-
-
-				// ob_clean();
-				// flush();
-				echo $file_url;
-				exit ;
+				readfile($obj -> file_name);
+				fclose($fp);
+				exit();
+				// die();
+				//
+		
 			}
 		}
-		show_404();
+		// show_404();
 	}
-
 
 	public function get_file_new($id) {
 		$data = array();
