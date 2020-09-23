@@ -29,24 +29,24 @@ var patentAppClass = (function(app) {
 		// get year month list
 		// app.tableReload();
 
-		// do submit
-		app.doSubmit = function() {
-			if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
-			var url = baseUrl + app.basePath + 'insert'; // the script where you handle the form input.
-			$.ajax({
-				type : "POST",
-				url : url,
-				data : {
-					id: $('#item_id').val(),
-					patnet_name: $('#patnet_name').val(),
-					img: img,
-					pdf_array: pdf_array.join(","),
-				},
-				success : function(d) {
-					currentApp.doEdit(0);
-				}
-			});
-		};
+		// // do submit
+		// app.doSubmit = function() {
+		// 	if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
+		// 	var url = baseUrl + app.basePath + 'insert'; // the script where you handle the form input.
+		// 	$.ajax({
+		// 		type : "POST",
+		// 		url : url,
+		// 		data : {
+		// 			id: $('#item_id').val(),
+		// 			patnet_name: $('#patnet_name').val(),
+		// 			img: img,
+		// 			pdf_array: pdf_array.join(","),
+		// 		},
+		// 		success : function(d) {
+		// 			currentApp.doEdit(0);
+		// 		}
+		// 	});
+		// };
 
 
 		app.doEdit = function(id) {
