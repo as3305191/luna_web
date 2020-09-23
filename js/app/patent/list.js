@@ -37,21 +37,6 @@ var patentAppClass = (function(app) {
 		}
 
 
-
-			app.doEdit = function(id) {
-			var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
-										.appendTo($('#edit-modal-body').empty());
-			$('.tab-pane').removeClass('active');
-			$('#edit_page').addClass('active');
-			app.lastDoEditId = id;
-			$('#edit-modal-body').load(baseUrl + app.basePath + 'flow/' + id, {
-				'station': $('#station_id_1').val()
-			}, function(){
-        	loading.remove();
-			});
-		};
-
-
 		$('#station_id').on('change', function(){
 			var station_id = $('#station_id').val();
 			$('#station_id_1').val(station_id);
