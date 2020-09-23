@@ -50,7 +50,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利名稱</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="patnet_name"  id="patnet_name" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+						<input type="text" required class="form-control" name="patnet_name"  id="patnet_name" value="<?= isset($item) ? $item -> patent_name : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -58,7 +58,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利家族代碼</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="patent_family"  id="patent_family" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+						<input type="text"  class="form-control" name="patent_family"  id="patent_family" value="<?= isset($item) ? $item -> patent_family : '' ?>"  />
 					</div>
 					<div class="col-md-2">
 						<button type="button" class="btn btn-sm btn-primary" onclick="check_family()">檢查</button>
@@ -561,6 +561,7 @@ function do_save() {
 		url : url,
 		data : {
 			id: $('#item_id').val(),
+			patent_family:$('#patent_family').val(),
 			patnet_name: $('#patnet_name').val(),
 			pdf_array: pdf_array.join(","),
 			img: img,
