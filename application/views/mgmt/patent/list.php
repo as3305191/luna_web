@@ -187,9 +187,12 @@
 	}, {
 		data : 'img_id',
 		render: function(d,t,r){
-			var html = '<div style="background-image: url('+baseUrl+'api/images/get/'+d+'/thumb)';
-			
-			return html;
+			if(d>0){
+				var html = '<img class="product-img" src="'+baseUrl+'api/images/get/' +d+'/thumb">';
+				return html;
+			} else{
+				return '';
+			}
 		}
 		
 	}];
