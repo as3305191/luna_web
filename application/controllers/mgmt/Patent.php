@@ -63,40 +63,47 @@ class Patent extends MY_Mgmt_Controller {
 			$item = $list[0];
 			if(!empty($item -> img_id)) {
 				$image= explode(",", $item -> img_id);
-				$item -> img_id = $image;
+				$item -> image_id =$image ;
 				foreach($image as $each){
 					$item -> image[] = $this -> img_dao -> find_by_id($each);
 				}
+			} else{
+				$item -> image_id ='' ;
 			}
 			if(!empty($item -> files_id)) {
 				$files = explode(",", $item -> files_id);
-				$item -> files_id = $files;
+				$item -> pdf_array =$files;
 				foreach($files as $each){
 					$item -> files[] = $this -> file_dao -> find_by_id($each);
 				}
+			}else{
+				$item -> pdf_array ='' ;
 			}
 			if(!empty($item -> public_num)) {
-				$public_number = explode(",", $item -> public_num);
-				$item -> public_num = $public_number;
-
+				$public_number = explode(",", $item -> public_num);				
+				$item -> public_num_input =$public_number;
 				foreach($public_number as $each){
 					$item -> public_number[] = $this -> file_dao -> find_by_id($each);
 				}
+			}else{
+				$item -> public_num_input ='' ;
 			}
 			if(!empty($item -> patnet_num)) {
 				$patnet_number = explode(",", $item -> patnet_num);
-				$item -> patnet_num = $patnet_number;
+				$item -> patnet_num_input =$patnet_number;
 
 				foreach($patnet_number as $each){
 					$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
 				}
+			}else{
+				$item -> patnet_num_input ='' ;
 			}
 
 			$data['item'] = $item;
 		}
 		// $data['country'] = $this -> country_dao -> find_all();
 
-		// $this -> to_json($data);
+		$this -> to_json($data);
 
 		$this->load->view('mgmt/patent/edit', $data);
 	}
