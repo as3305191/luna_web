@@ -54,30 +54,19 @@ class Patent extends MY_Mgmt_Controller {
 				'start',
 				'columns',
 				'search',
-				'order',
+				'order'
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
-			if(!empty($list)){
-				$item = $list[0];
-			} else{
-				$item = 0;
-			}
+			$item = $list[0];
+			// if(!empty($item -> image_id)) {
+			// 	$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
+			// }
+
 			$data['item'] = $item;
 		}
-
-		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
-		$computer_hard_list = $this -> c_h_dao -> find_all_usage_not_zero();
-		$computer_soft_list = $this -> c_s_dao -> find_all_usage_not_zero();
-		// $all_user_list = $this -> c_s_dao -> find_all_user();
-		$country = $this -> country_dao -> find_all();
-		$data['computer_hard_list'] = $computer_hard_list;//硬體所有list
-		$data['computer_soft_list'] = $computer_soft_list;//軟體所有list
-		$data['country'] = $country;//軟體所有list
-		$data['login_user'] = $login_user;
-		// $data['coach'] = $this -> dao -> find_all_coach();
 		// $this -> to_json($data);
+
 		$this->load->view('mgmt/patent/edit', $data);
 	}
 
