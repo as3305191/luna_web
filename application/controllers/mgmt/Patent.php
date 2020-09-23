@@ -38,7 +38,7 @@ class Patent extends MY_Mgmt_Controller {
 		));
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
-		$items = $this -> dao -> query_fixing_ajax($data);
+		$items = $this -> dao -> query_ajax($data);
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
