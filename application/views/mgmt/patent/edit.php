@@ -302,6 +302,8 @@ var img='';
 var pdf_array=[];
 var public_num_input=[];
 var patnet_num_input=[];
+// console.log(img);
+// console.log(pdf_array);
 
 $("#img-input").fileinput({
 					language: "zh-TW",
