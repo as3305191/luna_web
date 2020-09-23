@@ -29,12 +29,19 @@ class Patent_dao extends MY_Model {
 	function find_by_all_today_add(){
 		$date = date('Y-m-d');
 		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
 		$this -> db -> where("_m.create_time like '{$date}%'");
+		$this -> db -> order_by("_m.id","desc");
 
 		$query = $this -> db -> get();
 		$list = $query -> result();
+		if(count($list)>0){
+			return '0';
+		} else{
+			return $list[0]->patent_family;
+		}
 
-		return count($list);
+		
 	}
 
 	function query_ajax($data) {
