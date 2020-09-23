@@ -177,6 +177,7 @@
 <?php $this -> load -> view('general/delete_modal'); ?>
 
 <script type="text/javascript">
+	var baseUrl = '<?=base_url('')?>';
     var patent_status = $("input[name='patent_status[]']:checked").map(function() {
         return this.value
     }).get();
@@ -184,7 +185,13 @@
 	var mCols = [null, {
 		data : 'patent_name'
 	}, {
-		data : 'img_id'
+		data : 'img_id',
+		render: function(d,t,r){
+			var html = '<div style="background-image: url('+baseUrl+'api/images/get/'+d+'/thumb)';
+			
+			return html;
+		}
+		
 	}];
 
 	var mOrderIdx = 5;
