@@ -366,7 +366,8 @@ $("#img-input").fileinput({
     		{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
-	        		'width' : '120px',
+					'width' : '120px',
+					'type': 'pdf',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id)  ?>',
 	        		'key' : <?= $files->id?>
 	        },
@@ -414,7 +415,8 @@ $("#img-input").fileinput({
     		{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
-	        		'width' : '120px',
+					'width' : '120px',
+					'type': 'pdf',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
 	        		'key' : <?= $files->id?>
 	        },
@@ -462,7 +464,8 @@ $("#img-input").fileinput({
     		{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
-	        		'width' : '120px',
+					'width' : '120px',
+					'type': 'pdf',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
 	        		'key' : <?= $files->id  ?>
 	        },
