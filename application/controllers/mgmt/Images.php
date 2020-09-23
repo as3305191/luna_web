@@ -205,38 +205,16 @@ class Images extends MY_Base_Controller {
 		$type = $_FILES['file']['type'];
 		$size = $_FILES['file']['size'];
 
-		if ($type == 'image/jpeg' || $type == 'image/png' || $type == 'image/gif' || $type =='image/jpg') {
-			// open up the file and extract the data/content from it
-			$i_data['image_name'] = $name;
-			$i_data['mime'] = $type;
-			$i_data['image_path'] = $image_path;
-			$i_data['image_size'] = $size;
-
-			// set store id
-			$store_id = $this -> get_post('store_id');
-			if(!empty($store_id)) {
-				$i_data['store_id'] = $store_id;
+		if ($type !== 'image/jpeg' || $type !== 'image/png' || $type !== 'image/gif' || $type !=='image/jpg') {
+			if(!empty($type)){
+				$v_data['file_name'] = $name;
+				$v_data['mime'] = $type;
+				$v_data['file_path'] = $image_path;
+				$v_data['file_size'] = $size;
+				$v_data['file_url'] = $image_path;
+				$v_last_id = $this -> files_dao -> insert_file_data($v_data);
 			}
-
-			$img_content = file_get_contents($tmp_name);
-
-			$image_info = getimagesize($tmp_name);
-			$image_width = $image_info[0];
-			$image_height = $image_info[1];
-			$i_data['width'] = $image_width;
-			$i_data['height'] = $image_height;
-			$i_data['img'] = $img_content;
-			$last_id = $this -> dao -> insert_image_data($i_data);
-
-		}else if(empty($type)){
-
-		}else{
-			$v_data['file_name'] = $name;
-			$v_data['mime'] = $type;
-			$v_data['file_path'] = $image_path;
-			$v_data['file_size'] = $size;
-			$v_data['file_url'] = $image_path;
-			$v_last_id = $this -> files_dao -> insert_file_data($v_data);
+		
 		}
 
 		if (!empty($last_id)) {
@@ -270,46 +248,7 @@ class Images extends MY_Base_Controller {
 
 			$this -> to_json($res);
 		}
-		if (!empty($v_last_id)) {
-			// $m_dir = __DIR__ . IMG_DIR . "$image_path/";
-			// if(!file_exists($m_dir)) {
-			// 	mkdir($m_dir);
-			// }
-
-			$ext = $this -> get_ext($type);
-			$file_name = $v_last_id . '.' . $ext;
-			$extract = fopen($tmp_name, 'r');
-			// $target = fopen($m_dir . $name, 'w');
-
-			// save image
-			$file = fread($extract, $size);
-			// fwrite($target, $file);
-			fclose($extract);
-			// fclose($target);
-
-			$url = 'mgmt/images/delete_file/' . $v_last_id;
-			$res = [
-					'initialPreview' => [
-						base_url('mgmt/images/get_file/' . $v_last_id )
-					],
-					'initialPreviewConfig' => [
-							[
-								'type' =>  "pdf",
-								'size' =>  $size,
-								'filetype' =>  $type,
-								'caption' => "$name",
-								'filename' => "$name",
-								'downloadUrl' => base_url('mgmt/images/get_file_file/' . $v_last_id),
-								'url' => $url,
-								'key' => $v_last_id
-							]
-					],
-					"id" => $v_last_id
-			];
-			$res['file_name'] = $name;
-
-			$this -> to_json($res);
-		}
+		
 
 	}
 
@@ -459,27 +398,50 @@ class Images extends MY_Base_Controller {
 		// show_404();
 	}
 
-	public function get_file_file($id) {//預覽
+	// public function get_file_file($id) {//預覽
+	// 	$data = array();
+	// 	if (!empty($id)) {
+	// 		$obj = $this -> file_dao -> find_by_id($id);
+	// 		if(!empty($obj)) {
+	// 			$file_url = $obj -> file_url;
+	// 			$download_file_name = __DIR__ . IMG_DIR . $file_url . '/' . $obj -> file_name;
+	// 			$fp = @fopen($download_file_name, 'r');
+	// 			header('Content-type:' . $obj -> mime);
+
+	// 			readfile("pdf/".$obj -> file_name);
+	// 			exit();
+	// 			// fclose($fp);
+	// 			// exit();
+	// 			// die();
+	// 			//
+		
+	// 		}
+	// 	}
+	// 	// show_404();
+	// }
+	public function get_file_file($id) {
 		$data = array();
 		if (!empty($id)) {
 			$obj = $this -> file_dao -> find_by_id($id);
 			if(!empty($obj)) {
-				$file_url = $obj -> file_url;
-				$download_file_name = __DIR__ . IMG_DIR . $file_url . '/' . $obj -> file_name;
-				$fp = @fopen($download_file_name, 'r');
-				header('Content-type:' . $obj -> mime);
+				$file_url = $obj -> file_path . '/' .$obj -> file_name;
+				// $download_file_name = IMG_DIR . $img_path;
+				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
 
-				readfile("pdf/".$obj -> file_name);
-				exit();
-				// fclose($fp);
-				// exit();
-				// die();
-				//
-		
+
+				header("Content-type: " . $obj -> mime);
+				header("Content-Length: " . strlen($file_url));
+
+
+				// ob_clean();
+				// flush();
+				echo $file_url;
+				exit ;
 			}
 		}
-		// show_404();
+		show_404();
 	}
+
 
 	public function get_file_new($id) {
 		$data = array();
