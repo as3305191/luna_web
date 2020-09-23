@@ -262,15 +262,17 @@
 
 <script>
 $(document).ready(function() {
-	var url = baseUrl + 'mgmt/patent/new_patent_family'; // the script where you handle the form input.
-	$.ajax({
-		type : "POST",
-		url : url,
-		// data : {},
-		success : function(d) {
-			$('#patent_family').val(d.family_num);
-		}
-	});
+	if($('#item_id').va()==0){
+		var url = baseUrl + 'mgmt/patent/new_patent_family'; // the script where you handle the form input.
+		$.ajax({
+			type : "POST",
+			url : url,
+			// data : {},
+			success : function(d) {
+				$('#patent_family').val(d.family_num);
+			}
+		});
+	}
 });
 
 $('#app-edit-form').bootstrapValidator({
@@ -408,7 +410,7 @@ $("#img-input").fileinput({
 	});
 
 	$("#public-num-input").fileinput({
-					language: "zh-TW",
+		language: "zh-TW",
         <?php if(!empty($item -> public_number) && count($item -> public_number) > 0): ?>
         	initialPreview: [
         		<?php foreach($item -> public_number as $files): ?>
