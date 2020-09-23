@@ -212,6 +212,7 @@ class Images extends MY_Base_Controller {
 				$v_data['file_path'] = $image_path;
 				$v_data['file_size'] = $size;
 				$v_data['file_url'] = $image_path;
+				$v_data['pdf_file'] = file_get_contents($tmp_name);;
 				$v_last_id = $this -> files_dao -> insert_file_data($v_data);
 			}
 		
