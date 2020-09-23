@@ -6,7 +6,10 @@ var patentAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-				
+					// d.type_id = $('#type_id').val();
+					// d.status = $('#s_status').val();
+					// d.start_time = $('#s_start_time').val();
+					// d.station_id = $('#station_id').val();
 				},
 				dataSrc : 'items',
 				dataType : 'json',
@@ -17,55 +20,50 @@ var patentAppClass = (function(app) {
 
 			iDisplayLength : 50,
 
-			// columns : mCols,
+			columns : mCols,
 
-			// order : [[0, "desc"]],
-			// columnDefs : mColDefs
+			order : [[0, "desc"]],
+			columnDefs : mColDefs
 		}));
 
 		// data table actions
 		app.dtActions();
 
 		// get year month list
-		// app.tableReload();
-
-		// // do submit
-		// app.doSubmit = function() {
-		// 	if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
-		// 	var url = baseUrl + app.basePath + 'insert'; // the script where you handle the form input.
-		// 	$.ajax({
-		// 		type : "POST",
-		// 		url : url,
-		// 		data : {
-		// 			id: $('#item_id').val(),
-		// 			patnet_name: $('#patnet_name').val(),
-		// 			img: img,
-		// 			pdf_array: pdf_array.join(","),
-		// 		},
-		// 		success : function(d) {
-		// 			currentApp.doEdit(0);
-		// 		}
-		// 	});
-		// };
-
-
-		app.doEdit = function(id) {
-		    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
-		    	.appendTo($('#edit-modal-body').empty());
-		    $("#btn-submit-edit").prop( "disabled", true);
-
-			$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
-
-			$('#edit-modal-body').load(baseUrl + 'mgmt/patent/edit/' + id, function(){
-	        	$("#btn-submit-edit").prop( "disabled", false);
-	        	loading.remove();
-			});
-		};
+		app.tableReload();
 
 		app.doExportAll = function() {
 			location.href = baseUrl + app.basePath + '/export_all';
 		}
 
+
+
+			app.doEdit = function(id) {
+			var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
+										.appendTo($('#edit-modal-body').empty());
+			$('.tab-pane').removeClass('active');
+			$('#edit_page').addClass('active');
+			app.lastDoEditId = id;
+			$('#edit-modal-body').load(baseUrl + app.basePath + 'flow/' + id, {
+				'station': $('#station_id_1').val()
+			}, function(){
+        	loading.remove();
+			});
+		};
+
+
+		$('#station_id').on('change', function(){
+			var station_id = $('#station_id').val();
+			$('#station_id_1').val(station_id);
+			$('#st_id1').val(station_id);
+			app.tableReload();
+		});
+		$('#type_id').on('change', function(){
+			app.tableReload();
+		});
+		$('#s_status').on('change', function(){
+			app.tableReload();
+		});
 		return app;
 	};
 
