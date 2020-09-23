@@ -85,7 +85,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">關鍵字</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patnet_key : '' ?>"  />
+						<input type="text"  class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patent_key : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -105,7 +105,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">申請號</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="application_num"  id="application_num" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+						<input type="text" required class="form-control" name="application_num"  id="application_num" value="<?= isset($item) ? $item -> application_num : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -129,7 +129,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">申請日</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control dt_picker" name="application_date"  id="application_date" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+						<input type="text" required class="form-control dt_picker" name="application_date"  id="application_date" value="<?= isset($item) ? $item -> application_date : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -137,7 +137,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">公開日</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control dt_picker" name="public_date"  id="public_date" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+						<input type="text"  class="form-control dt_picker" name="public_date"  id="public_date" value="<?= isset($item) ? $item -> public_date : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -145,7 +145,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">公告日</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control dt_picker" name="announcement_date"  id="announcement_date" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+						<input type="text"  class="form-control dt_picker" name="announcement_date"  id="announcement_date" value="<?= isset($item) ? $item -> announcement_date : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -153,11 +153,11 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利權期間</label>
 					<div class="col-md-2 widget-toolbar pull-left">
-						<input id="s_dt" placeholder="開始日期" type="text" class="dt_picker" value="" />
+						<input id="s_dt" placeholder="開始日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_start_date : '' ?>" />
 					</div>
 					
 					<div class="col-md-2 widget-toolbar pull-left">
-						~<input id="e_dt" placeholder="結束日期" type="text" class="dt_picker" value="" />
+						~<input id="e_dt" placeholder="結束日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_end_date : '' ?>" />
 					</div>
 					<div class="col-md-2 widget-toolbar pull-left">
 						共
@@ -171,7 +171,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利權止日</label>
 					<div class="col-md-6">
-						<input type="text" class="dt_picker form-control" name="patent_finish_date"  id="patent_finish_date" value="<?= isset($item) ? $item -> patnet_name : '' ?>"  />
+						<input type="text" class="dt_picker form-control" name="patent_finish_date"  id="patent_finish_date" value="<?= isset($item) ? $item -> patent_finish_date : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -190,7 +190,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利摘要</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="10" id="patent_note" name="patent_note" style="resize:none;width:100%"><?= isset($item) ? $item->description : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="10" id="patent_note" name="patent_note" style="resize:none;width:100%"><?= isset($item) ? $item -> patent_note : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -198,7 +198,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利範圍</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="10" id="patent_range" name="patent_range" style="resize:none;width:100%"><?= isset($item) ? $item->description : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="10" id="patent_range" name="patent_range" style="resize:none;width:100%"><?= isset($item) ? $item -> patent_range : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>		
