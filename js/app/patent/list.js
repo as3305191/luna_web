@@ -22,7 +22,7 @@ var patentAppClass = (function(app) {
 
 			columns : mCols,
 
-			order : [[0, "desc"]],
+			order : [[1, "desc"]],
 			columnDefs : mColDefs
 		}));
 
