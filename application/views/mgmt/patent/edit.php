@@ -69,7 +69,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利國家</label>
 					<div class="col-md-6">
-					<input type="hidden"  id="p_country" value="<?= isset($item) ? $item -> patent_country : '' ?>"  />
+					<input type="hidden"  id="p_country" required value="<?= isset($item) ? $item -> patent_country : '' ?>"  />
 
 						<select name="patnet_country" id="patent_country" class="form-control" >
 						
@@ -92,7 +92,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利類別</label>
 					<div class="col-md-6">
-						<select name="patnet_category" id="patnet_category" class="form-control" >
+						<select name="patnet_category" required id="patnet_category" class="form-control" >
 							<option  value="1" >發明</option>
 							<option  value="2" >新型</option>
 							<option  value="3" >設計</option>
@@ -288,14 +288,14 @@ $('#app-edit-form').bootstrapValidator({
 		},
 		fields: {
 			account: {
-            validators: {
-              remote: {
-              	message: '已經存在',
-              	url: baseUrl + 'mgmt/users/check_account/' + ($('#item_id').val().length > 0 ? $('#item_id').val() : '0')
-              }
-            }
-         }
-      }
+				validators: {
+					remote: {
+						message: '已經存在',
+						url: baseUrl + 'mgmt/users/check_account/' + ($('#item_id').val().length > 0 ? $('#item_id').val() : '0')
+					}
+				}
+			 }
+      	}
 
 	}).bootstrapValidator('validate');
 
