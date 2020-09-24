@@ -72,7 +72,7 @@
 						<select name="patnet_country" id="patnet_country" class="form-control" >
 							<option value="-1">無</option>
 							<?php foreach($country as $each): ?>
-								<option value="<?= $each -> id?>" ><?=  $each -> country_name ?></option>
+								<option value="<?= $each -> id?>" <?=isset($item) && $item -> patent_country == $each -> id ? 'selected' : '' ?>><?=  $each -> country_name ?></option>
 							<?php endforeach ?>
 						</select>
 					</div>
