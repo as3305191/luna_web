@@ -299,8 +299,12 @@ $(".dt_picker").datetimepicker({
 }).on('dp.change',function(event){
 
 });
+<?php if($item->id>0): ?>
+	var img= <?= $item->image_id ?>
+<?php else: ?>
+	var img='';
+<?php endif ?>
 
-var img='';
 var pdf_array=[];
 var public_num_input=[];
 var patnet_num_input=[];
@@ -553,12 +557,33 @@ function load_country() {
 					// console.log(d);
 					$patnet_country = $('#patnet_country').empty();
 					$.each(d.country, function(){
-						if(item_id)
-						$('<option/>', {
-							'value': this.id,
-							'text': this.country_name
-						}).appendTo($patnet_country);
-						$(this).attr("selected", "true"); 
+						if($('#item_id').val()>0){
+							<?php if(!empty($item -> patent_country) && $item -> patent_country>0): ?>
+								if(this.id==<?php $item -> patent_country?>){
+									$('<option/>', {
+										'value': this.id,
+										'text': this.country_name
+									}).attr("selected", true).appendTo($patnet_country);
+								}else{
+									$('<option/>', {
+										'value': this.id,
+										'text': this.country_name
+									}).appendTo($patnet_country);
+								}
+							<?php else: ?>
+								$('<option/>', {
+									'value': this.id,
+									'text': this.country_name
+								}).appendTo($patnet_country);
+							<?php endif ?>
+
+						} else{
+							$('<option/>', {
+								'value': this.id,
+								'text': this.country_name
+							}).appendTo($patnet_country);
+						}
+						
 					});
 				}
 			},
