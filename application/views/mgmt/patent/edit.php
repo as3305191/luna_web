@@ -104,7 +104,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">申請號</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="application_num"  id="application_num" value="<?= isset($item) ? $item -> application_num : '' ?>"  />
+						<input type="text" required class="form-control" name="application_number" id="application_number"  value="<?= isset($item) ? $item -> application_num : '' ?>" />
 					</div>
 				</div>
 			</fieldset>
@@ -598,6 +598,7 @@ function load_country() {
 load_country();
 
 function do_save() {
+	if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
 	var url = baseUrl + 'mgmt/patent/insert'; // the script where you handle the form input.
 	$.ajax({
 		type : "POST",
@@ -608,6 +609,7 @@ function do_save() {
 			patnet_name: $('#patnet_name').val(),
 			pdf_array: pdf_array.join(","),
 			img: img,
+			application_number:$('#application_number').val(),
 			patent_country:$('#patent_country').val(),
 			patent_key: $('#patent_key').val(),
 			patnet_category: $('#patnet_category').val(),

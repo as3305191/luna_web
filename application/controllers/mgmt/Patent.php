@@ -152,9 +152,12 @@ class Patent extends MY_Mgmt_Controller {
 		$patent_note = $this -> get_post('patent_note');
 		$patent_range = $this -> get_post('patent_range');
 		$patent_family = $this -> get_post('patent_family');
+		$application_num = $this -> get_post('application_number');
 
 		
+		
 		$data['img_id'] = $img;
+		$data['application_num'] = $application_num;
 		$data['patent_family'] = $patent_family;
 		$data['patent_country'] = $patent_country;
 		$data['files_id'] = $pdf_array;
