@@ -154,8 +154,6 @@ class Patent extends MY_Mgmt_Controller {
 		$patent_family = $this -> get_post('patent_family');
 		$application_num = $this -> get_post('application_number');
 
-		
-		
 		$data['img_id'] = $img;
 		$data['application_num'] = $application_num;
 		$data['patent_family'] = $patent_family;
@@ -175,11 +173,13 @@ class Patent extends MY_Mgmt_Controller {
 		$data['patnet_status'] = $patnet_status;
 		$data['patent_note'] = $patent_note;
 		$data['patent_range'] = $patent_range;
+		$data['update_date'] = date("Y-m-d H:i:s");
 
 		if(empty($id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
 		} else {
+
 			$this -> dao -> update($data, $id);
 		}
 		$res['success'] = TRUE;

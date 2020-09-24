@@ -130,14 +130,12 @@
 											<th class="min25"></th>
 											<th class="min100">專利名稱</th>
 											<th class="min100">代表圖</th>
-											
+											<th class="min100">申請號</th>
+											<th class="min100">公開號</th>
+											<th class="min100">申請日</th>
+											<th class="min100">公告日</th>
+											<th class="min100">更新日</th>
 										</tr>
-										<tr class="search_box">
-									    <th></th>
-									    <th><input class="form-control input-xs min100" type="text" /></th>
-									    <th></th>
-									 
-								    </tr>
 									</thead>
 									<tbody>
 									</tbody>
@@ -195,6 +193,16 @@
 			}
 		}
 		
+	}, {
+		data : 'application_num'
+	}, {
+		data : 'public_num'
+	}, {
+		data : 'application_date'
+	}, {
+		data : 'announcement_date'
+	}, {
+		data : 'update_date'
 	}];
 
 	var mOrderIdx = 5;
@@ -202,7 +210,7 @@
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 
 	var mColDefs = [{
-		targets : 1,
+		targets : 0,
 		data : null,
 		defaultContent : defaultContent,
 		searchable : false,
@@ -210,7 +218,7 @@
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,1,2],
+		"targets" : [0,1,2,3,4],
 		"orderable" : false
 	}];
 
