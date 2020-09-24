@@ -553,10 +553,12 @@ function load_country() {
 					// console.log(d);
 					$patnet_country = $('#patnet_country').empty();
 					$.each(d.country, function(){
+						if(item_id)
 						$('<option/>', {
 							'value': this.id,
 							'text': this.country_name
 						}).appendTo($patnet_country);
+						$(this).attr("selected", "true"); 
 					});
 				}
 			},
