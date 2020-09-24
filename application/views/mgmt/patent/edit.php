@@ -69,7 +69,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利國家</label>
 					<div class="col-md-6">
-						<select name="patnet_country" id="patnet_country" class="form-control" >
+						<select name="patnet_country" id="patent_country" class="form-control" >
 							<option value="-1">無</option>
 							<?php foreach($country as $each): ?>
 								<option value="<?= $each -> id?>" <?=isset($item) && $item -> patent_country == $each -> id ? 'selected' : '' ?>><?=  $each -> country_name ?></option>
@@ -624,7 +624,7 @@ function do_save() {
 			patnet_name: $('#patnet_name').val(),
 			pdf_array: pdf_array.join(","),
 			img: img,
-			patnet_country:$('#patnet_country').val(),
+			patent_country:$('#patent_country').val(),
 			patent_key: $('#patent_key').val(),
 			patnet_category: $('#patnet_category').val(),
 			public_num_input:  public_num_input.join(","),
