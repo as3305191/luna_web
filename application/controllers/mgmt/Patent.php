@@ -64,39 +64,34 @@ class Patent extends MY_Mgmt_Controller {
 			if(!empty($item -> img_id)) {
 				$image= explode(",", $item -> img_id);
 				$item -> image_id =$image ;
-				foreach($image as $each){
-					$item -> image[] = $this -> img_dao -> find_by_id($each);
-				}
-			} else{
-				$item -> image_id ='' ;
-			}
+				// foreach($image as $each){
+				// 	$item -> image[] = $this -> img_dao -> find_by_id($each);
+				// }
+			} 
+			
 			if(!empty($item -> files_id)) {
 				$files = explode(",", $item -> files_id);
 				$item -> pdf_array =$files;
-				foreach($files as $each){
-					$item -> files[] = $this -> file_dao -> find_by_id($each);
-				}
-			}else{
-				$item -> pdf_array ='' ;
+				// foreach($files as $each){
+				// 	$item -> files[] = $this -> file_dao -> find_by_id($each);
+				// }
 			}
+
 			if(!empty($item -> public_num)) {
 				$public_number = explode(",", $item -> public_num);				
 				$item -> public_num_input =$public_number;
-				foreach($public_number as $each){
-					$item -> public_number[] = $this -> file_dao -> find_by_id($each);
-				}
-			}else{
-				$item -> public_num_input ='' ;
+				// foreach($public_number as $each){
+				// 	$item -> public_number[] = $this -> file_dao -> find_by_id($each);
+				// }
 			}
+
 			if(!empty($item -> patnet_num)) {
 				$patnet_number = explode(",", $item -> patnet_num);
 				$item -> patnet_num_input =$patnet_number;
 
-				foreach($patnet_number as $each){
-					$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
-				}
-			}else{
-				$item -> patnet_num_input ='' ;
+				// foreach($patnet_number as $each){
+				// 	$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
+				// }
 			}
 
 			$data['item'] = $item;

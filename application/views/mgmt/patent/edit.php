@@ -299,16 +299,14 @@ $(".dt_picker").datetimepicker({
 }).on('dp.change',function(event){
 
 });
-<?php if($item->id>0): ?>
-	var img= <?= $item->image_id ?>
-<?php else: ?>
-	var img='';
-<?php endif ?>
+var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false;
+img='<?= isset($item->image_id)?$item->image_id['0']:''?>';
 
-var pdf_array=[];
-var public_num_input=[];
-var patnet_num_input=[];
-// console.log(img);
+
+pdf_array=[];
+public_num_input=[];
+patnet_num_input=[];
+console.log(img);
 // console.log(pdf_array);
 
 $("#img-input").fileinput({
