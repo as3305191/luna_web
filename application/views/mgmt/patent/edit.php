@@ -69,11 +69,10 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利國家</label>
 					<div class="col-md-6">
+					<input type="hidden"  id="p_country" value="<?= isset($item) ? $item -> patent_country : '' ?>"  />
+
 						<select name="patnet_country" id="patent_country" class="form-control" >
-							<option value="-1">無</option>
-							<?php foreach($country as $each): ?>
-								<option value="<?= $each -> id?>" <?=isset($item) && $item -> patent_country == $each -> id ? 'selected' : '' ?>><?=  $each -> country_name ?></option>
-							<?php endforeach ?>
+						
 						</select>
 					</div>
 					<div class="col-md-2">
@@ -573,35 +572,20 @@ function load_country() {
 			success: function(d) {
 				if(d) {
 					// console.log(d);
-					$patnet_country = $('#patnet_country').empty();
+					$patnet_country = $('#patent_country').empty();
 					$.each(d.country, function(){
-						if($('#item_id').val()>0){
-							<?php if(!empty($item -> patent_country) && $item -> patent_country>0): ?>
-								if(this.id==<?php $item -> patent_country?>){
-									$('<option/>', {
-										'value': this.id,
-										'text': this.country_name
-									}).attr("selected", true).appendTo($patnet_country);
-								}else{
-									$('<option/>', {
-										'value': this.id,
-										'text': this.country_name
-									}).appendTo($patnet_country);
-								}
-							<?php else: ?>
-								$('<option/>', {
-									'value': this.id,
-									'text': this.country_name
-								}).appendTo($patnet_country);
-							<?php endif ?>
-
-						} else{
+						if(this.id==$('#p_country').val()){
+							$('<option/>', {
+								'value': this.id,
+								'text': this.country_name
+							}).attr("selected", true).appendTo($patnet_country);
+						}else{
 							$('<option/>', {
 								'value': this.id,
 								'text': this.country_name
 							}).appendTo($patnet_country);
 						}
-						
+										
 					});
 				}
 			},
