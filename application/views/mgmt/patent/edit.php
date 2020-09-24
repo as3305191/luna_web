@@ -113,7 +113,9 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">公開號</label>
 					<div class="col-md-6">
-						<input id="public-num-input" name="file" type="file" accept=".pdf" multiple class="file-loading form-control">
+						<input id="public-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control">
+						<input id="public_num"  type="hidden"  value="<?= isset($item) ? $item -> public_num : '' ?>">
+
 					</div>
 				</div>
 			</fieldset>
@@ -121,7 +123,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利號</label>
 					<div class="col-md-6">
-						<input id="patnet-num-input" name="file" type="file" accept=".pdf" multiple class="file-loading form-control">
+						<input id="patnet-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control">
+						<input id="patnet_num" type="hidden"  value="<?= isset($item) ? $item -> patnet_num : '' ?>">
 					</div>
 				</div>
 			</fieldset>
@@ -214,7 +217,10 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利分析相關文件</label>
 					<div class="col-md-6">
-						<input id="file-input" name="file" type="file" accept=".pdf" multiple class="file-loading form-control">
+						<input id="file-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" >
+						<input id="files_id" type="hidden"  value="<?= isset($item) ? $item -> files_id : '' ?>">
+
+						
 					</div>
 				</div>
 			</fieldset>	
@@ -299,15 +305,29 @@ $(".dt_picker").datetimepicker({
 }).on('dp.change',function(event){
 
 });
-var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false;
-img='<?= isset($item->image_id)?$item->image_id['0']:''?>';
+var img='<?= isset($item->image_id)?$item->image_id['0']:''?>';
+var pdf_array=[];
+var public_num_input=[];
+var patnet_num_input=[];
+if($('#item_id').val()>0){
+	if($('#files_id').val().length>0){
+		pdf_array.push($('#files_id').val());
+	}
+
+	if($('#public_num').val().length>0){
+		public_num_input.push($('#public_num').val());
+	}
+	
+	if($('#patnet_num').val().length>0){
+		patnet_num_input.push($('#patnet_num').val());
+	}
+}
 
 
-pdf_array=[];
-public_num_input=[];
-patnet_num_input=[];
-console.log(img);
+// console.log(img);
 // console.log(pdf_array);
+// console.log(public_num_input);
+// console.log(patnet_num_input);
 
 $("#img-input").fileinput({
 					language: "zh-TW",

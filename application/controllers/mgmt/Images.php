@@ -199,11 +199,13 @@ class Images extends MY_Base_Controller {
 
 	public function upload_img_or_pdf($image_path) {
 		$info = '';
+		// error_log(print_r($_FILES['file'],true));
+		// error_log(print_r($sql,true));
 
-		$name = $_FILES['file']['name'];
-		$tmp_name = $_FILES['file']['tmp_name'];
-		$type = $_FILES['file']['type'];
-		$size = $_FILES['file']['size'];
+		$name = $_FILES['file']['name'][0];
+		$tmp_name = $_FILES['file']['tmp_name'][0];
+		$type = $_FILES['file']['type'][0];
+		$size = $_FILES['file']['size'][0];
 
 		if ($type !== 'image/jpeg' || $type !== 'image/png' || $type !== 'image/gif' || $type !=='image/jpg') {
 			if(!empty($type)){
