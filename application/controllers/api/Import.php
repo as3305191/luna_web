@@ -18,32 +18,45 @@ class Import extends MY_Base_Controller {
 		echo "index";
 	}
 
-	// function import(){
-	// 	$object = PHPExcel_IOFactory::load("123.xlsx");
-	// 	foreach($object->getWorksheetIterator() as $worksheet){
-	// 		$highestRow = $worksheet->getHighestRow();
-	// 		$highestColumn = $worksheet->getHighestColumn();
-	// 		for($row=2; $row<=$highestRow; $row++){
-	// 			$account = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-	// 			$password = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-	// 			$empid = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-	// 			$del_date = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+	function import(){
+		$object = PHPExcel_IOFactory::load("專利資訊匯入專利檢索系統用台灣.xls");
+		foreach($object->getWorksheetIterator() as $worksheet){
+			$highestRow = $worksheet->getHighestRow();
+			$highestColumn = $worksheet->getHighestColumn();
+			for($row=2; $row<=$highestRow; $row++){
+				$patent_name_eng = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+				$patent_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+				$application_num = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+				$empid = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+				$empid = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+				$empid = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+				$empid = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
+				$empid = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
+				$empid = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
+				$del_date = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
+				$del_date = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
+				$del_date = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
+				$del_date = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
+				$del_date = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
+				$del_date = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
+				$del_date = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
+				$del_date = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
 
-	// 			if($del_date=='NULL'){
+				if($del_date=='NULL'){
 
-	// 				$data = array(
-	// 					'account'  =>$account,
-	// 					'password' =>$password,
-	// 					'empid' =>$empid
-	// 				);
-	// 				$this->users_copy_dao->insert($data);
+					$data = array(
+						'account'  =>$account,
+						'password' =>$password,
+						'empid' =>$empid
+					);
+					$this->users_copy_dao->insert($data);
 
-	// 			}
-	// 		}
-	// 	}
-	// 	// $res['success'] = TRUE;
-	// 	// $this -> to_json($res);
-	// }
+				}
+			}
+		}
+		// $res['success'] = TRUE;
+		// $this -> to_json($res);
+	}
 
 	// function import1(){
 	// 	$object = PHPExcel_IOFactory::load("234.xlsx");
