@@ -643,4 +643,25 @@ function do_save() {
 	});
 };
 
+$('#s_dt').on('change', function(){
+	if($('#e_dt').val().length>0){
+		date1 = $('#e_dt').val().split('-');
+		date1 = parseInt(date1[0]) * 12 + parseInt(date1[1]);
+		date2 = $('#s_dt').val().split('-');
+		date2 = parseInt(date2[0]) * 12 + parseInt(date2[1]);
+		var m = Math.abs(date1 - date2);
+		$('#year').val(m);
+	}
+});
+$('#e_dt').on('change', function(){
+	if($('#s_dt').val().length>0){
+		date1 = $('#e_dt').val().split('-');
+		date1 = parseInt(date1[0]) * 12 + parseInt(date1[1]);
+		date2 = $('#s_dt').val().split('-');
+		date2 = parseInt(date2[0]) * 12 + parseInt(date2[1]);
+		var m = Math.abs(date1 - date2);
+		$('#year').val(m);
+	}
+});
+
 </script>
