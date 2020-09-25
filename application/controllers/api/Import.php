@@ -43,14 +43,12 @@ class Import extends MY_Base_Controller {
 				$del_date = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
 
 				if($del_date=='NULL'){
-
 					$data = array(
 						'account'  =>$account,
 						'password' =>$password,
 						'empid' =>$empid
 					);
 					$this->users_copy_dao->insert($data);
-
 				}
 			}
 		}
