@@ -84,7 +84,8 @@ var patentAppClass = (function(app) {
 		$('#summary_search').on('change', function(){
 			app.tableReload();
 		});
-
+		
+	
 		return app;
 	};
 

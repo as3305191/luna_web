@@ -299,40 +299,42 @@ $('#app-edit-form').bootstrapValidator({
 
 	}).bootstrapValidator('validate');
 
-$(".dt_picker").datetimepicker({
-    format : 'YYYY-MM-DD'
-}).on('dp.change',function(event){
 
-});
+var pdf_array=false,public_num_input=false,patnet_num_input=false;
 var img='<?= isset($item->image_id)?$item->image_id['0']:''?>';
-var pdf_array=[];
-var public_num_input=[];
-var patnet_num_input=[];
+
 if($('#item_id').val()>0){
+	pdf_array=[];
+	public_num_input=[];
+	patnet_num_input=[];
 	if($('#files_id').val().length>0){
 		pdf_array.push($('#files_id').val());
-		pdf_array.splice($.inArray(0,pdf_array),1);
+		// pdf_array.splice($.inArray(0,pdf_array),1);
 
 	}
 
 	if($('#public_num').val().length>0){
 		public_num_input.push($('#public_num').val());
-		public_num_input.splice($.inArray(0,public_num_input),1);
+		// public_num_input.splice($.inArray(0,public_num_input),1);
 
 	}
 	
 	if($('#patnet_num').val().length>0){
 		patnet_num_input.push($('#patnet_num').val());
-		patnet_num_input.splice($.inArray(0,patnet_num_input),1);
+		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 
 	}
+} else{
+	pdf_array=[];
+	public_num_input=[];
+	patnet_num_input=[];
 }
 
 
-// console.log(img);
-// console.log(pdf_array);
-// console.log(public_num_input);
-// console.log(patnet_num_input);
+console.log(img);
+console.log(pdf_array);
+console.log(public_num_input);
+console.log(patnet_num_input);
 
 $("#img-input").fileinput({
 					language: "zh-TW",
@@ -643,25 +645,30 @@ function do_save() {
 	});
 };
 
-$('#s_dt').on('change', function(){
-	if($('#e_dt').val().length>0){
-		date1 = $('#e_dt').val().split('-');
-		date1 = parseInt(date1[0]) * 12 + parseInt(date1[1]);
-		date2 = $('#s_dt').val().split('-');
-		date2 = parseInt(date2[0]) * 12 + parseInt(date2[1]);
-		var m = Math.abs(date1 - date2);
-		$('#year').val(m);
-	}
-});
-$('#e_dt').on('change', function(){
-	if($('#s_dt').val().length>0){
-		date1 = $('#e_dt').val().split('-');
-		date1 = parseInt(date1[0]) * 12 + parseInt(date1[1]);
-		date2 = $('#s_dt').val().split('-');
-		date2 = parseInt(date2[0]) * 12 + parseInt(date2[1]);
-		var m = Math.abs(date1 - date2);
-		$('#year').val(m);
-	}
-});
+	$(".dt_picker").datetimepicker({
+		format : 'YYYY-MM-DD'
+	}).on('dp.change',function(event){
+		var s_dt = $('#s_dt').val();
+		var e_dt = $('#e_dt').val();
+		if(e_dt.indexOf(" ") >= 0 || e_dt== null){
+			$('#year').val('0');
+		}else if(s_dt.indexOf(" ") >= 0 || s_dt== null){
+			$('#year').val('0');
+		} else{
+			// console.log('123');
+			date1 = e_dt.split('-');
+			date1 = parseInt(date1[0]) * 12 + parseInt(date1[1]);
+			date2 = s_dt.split('-');
+			date2 = parseInt(date2[0]) * 12 + parseInt(date2[1]);
+			if(date1>=date2){
+				var m = Math.abs(date1 - date2);
+				$('#year').val(m).removeClass('not_ok');
+			} else{
+				$('#year').val('結束日期不可小於開始日期').addClass('not_ok');
+			}
+			
+		}
+		
+	});
 
 </script>
