@@ -134,6 +134,7 @@ class Patent extends MY_Mgmt_Controller {
 	public function insert() {//新增
 		$res = array();
 		$id = $this -> get_post('id');
+		$patent_name_eng = $this -> get_post('patent_name_eng');
 		$patnet_name = $this -> get_post('patnet_name');
 		$img= $this -> get_post('img');
 		$pdf_array = $this -> get_post('pdf_array');
@@ -155,6 +156,7 @@ class Patent extends MY_Mgmt_Controller {
 		$application_num = $this -> get_post('application_number');
 
 		$data['img_id'] = $img;
+		$data['patent_name_eng'] = $patent_name_eng;
 		$data['application_num'] = $application_num;
 		$data['patent_family'] = $patent_family;
 		$data['patent_country'] = $patent_country;
