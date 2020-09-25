@@ -27,20 +27,20 @@ class Import extends MY_Base_Controller {
 				$patent_name_eng = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
 				$patent_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
 				$application_num = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-				$application_date = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-				$public_num = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-				$public_date = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
-				$patnet_num = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+				$application_date = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+				$public_num = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
+				$public_date = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
+				$patnet_num = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
 				$announcement_date = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
 				$patent_start_dt = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
-				$patent_end_dt = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
-				$patent_finish_date = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
-				$patnet_status = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
-				$patnet_note = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
-				$patent_range = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
-				$del_date = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
-				$del_date = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
-				$del_date = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
+				$inventor = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
+				$applicant = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
+				$patent_end_dt = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
+				$patent_finish_date = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
+				$patnet_status = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
+				$patnet_note = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
+				$patent_range = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
+				$patent_key = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
 
 				$data = array(
 					'patent_name_eng'  =>$patent_name_eng,
@@ -57,9 +57,9 @@ class Import extends MY_Base_Controller {
 					'patnet_status' =>$patnet_status,
 					'patnet_note' =>$patnet_note,
 					'patent_range' =>$patent_range,
-					'empid' =>$empid,
-					'empid' =>$empid,
-					'empid' =>$empid
+					'inventor' =>$inventor,
+					'patent_key' =>$patent_key,
+					'applicant' =>$applicant
 
 				);
 				$this->users_copy_dao->insert($data);
