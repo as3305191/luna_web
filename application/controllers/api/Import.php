@@ -42,29 +42,27 @@ class Import extends MY_Base_Controller {
 				$del_date = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
 				$del_date = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
 
-				if($del_date=='NULL'){
-					$data = array(
-						'patent_name_eng'  =>$patent_name_eng,
-						'patent_name' =>$patent_name,
-						'application_num' =>$application_num,
-						'application_date' =>$application_date,
-						'public_num' =>$public_num,
-						'public_date' =>$public_date,
-						'patnet_num' =>$patnet_num,
-						'announcement_date' =>$announcement_date,
-						'patent_start_dt' =>$patent_start_dt,
-						'patent_end_dt' =>$patent_end_dt,
-						'patent_finish_date' =>$patent_finish_date,
-						'patnet_status' =>$patnet_status,
-						'patnet_note' =>$patnet_note,
-						'patent_range' =>$patent_range,
-						'empid' =>$empid,
-						'empid' =>$empid,
-						'empid' =>$empid
+				$data = array(
+					'patent_name_eng'  =>$patent_name_eng,
+					'patent_name' =>$patent_name,
+					'application_num' =>$application_num,
+					'application_date' =>$application_date,
+					'public_num' =>$public_num,
+					'public_date' =>$public_date,
+					'patnet_num' =>$patnet_num,
+					'announcement_date' =>$announcement_date,
+					'patent_start_dt' =>$patent_start_dt,
+					'patent_end_dt' =>$patent_end_dt,
+					'patent_finish_date' =>$patent_finish_date,
+					'patnet_status' =>$patnet_status,
+					'patnet_note' =>$patnet_note,
+					'patent_range' =>$patent_range,
+					'empid' =>$empid,
+					'empid' =>$empid,
+					'empid' =>$empid
 
-					);
-					$this->users_copy_dao->insert($data);
-				}
+				);
+				$this->users_copy_dao->insert($data);
 			}
 		}
 		// $res['success'] = TRUE;
