@@ -687,6 +687,9 @@ function do_save() {
 			date1 = e_dt.split('-');
 			date2 = s_dt.split('-');
 			if(date1[0]>=date2[0]){
+				console.log(date1);
+				console.log(date2);
+
 				var m = Math.abs(((parseInt(date1[0])- parseInt(date2[0]) )* 12) + parseInt(date1[1]) + parseInt(date2[1]));
 				if(date1[1]==date2[1] ){
 
