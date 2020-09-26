@@ -688,7 +688,7 @@ function do_save() {
 			date2 = s_dt.split('-');
 			if((Date.parse(e_dt)).valueOf()>= (Date.parse(s_dt)).valueOf()){
 				dateTime_date1=new Date(e_dt);
-				dateTime_date1=dateTime_date1.setDate(dateTime_date1.getDate()+1);
+				dateTime_date1=dateTime_date1.setDate(dateTime_date1.getDate()-1);
 				if((Date.parse(s_dt)).valueOf()>=(Date.parse(dateTime_date1))){
 					var m = Math.abs(parseInt(date1[0]) * 12 + parseInt(date1[1])- (parseInt(date2[0]) * 12 + parseInt(date2[1])));
 					var year=Math.floor(m/12); 
