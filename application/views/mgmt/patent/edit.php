@@ -691,7 +691,7 @@ function do_save() {
 				if(date1[1]==date2[1] ){
 
 				} else{
-					$year=floor($m/12); 
+					$year=parseInt($m/12); 
 					$('#year').val(year).removeClass('not_ok');
 				}
 				
