@@ -685,11 +685,9 @@ function do_save() {
 		} else{
 			// console.log('123');
 			date1 = e_dt.split('-');
-			date1 = parseInt(date1[0]));
 			date2 = s_dt.split('-');
-			date2 = parseInt(date2[0]));
 			if(date1>=date2){
-				var m = Math.abs(date1 - date2);
+				var m = Math.abs(date1[0]- date2[0]);
 				$('#year').val(m).removeClass('not_ok');
 			} else{
 				$('#year').val('結束日期不可小於開始日期').addClass('not_ok');
