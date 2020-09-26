@@ -58,7 +58,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利名稱(英)</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="patent_name_eng"  id="patent_name_eng" value="<?= isset($item) ? $item -> patent_name_eng : '' ?>"  />
+						<input type="text" required class="form-control" name="patent_name_eng"  id="patent_name_eng" value="<?= isset($item) ? $item -> patent_name_eng : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -686,16 +686,15 @@ function do_save() {
 			// console.log('123');
 			date1 = e_dt.split('-');
 			date2 = s_dt.split('-');
-			if(date1[0]>=date2[0]){
-				console.log(date1);
-				console.log(date2);
-
-				var m = Math.abs(((parseInt(date1[0])- parseInt(date2[0]) )* 12) + (parseInt(date1[1]) - parseInt(date2[1])));
-				if(date1[1]==date2[1] ){
-
-				} else{
+			if((Date.parse(e_dt)).valueOf()>= (Date.parse(s_dt)).valueOf()){
+				dateTime_date1=new Date(e_dt);
+				dateTime_date1=dateTime_date1.setDate(dateTime_date1.getDate()+1);
+				if((Date.parse(s_dt)).valueOf()>=(Date.parse(dateTime_date1))){
+					var m = Math.abs(parseInt(date1[0]) * 12 + parseInt(date1[1])- (parseInt(date2[0]) * 12 + parseInt(date2[1])));
 					var year=Math.floor(m/12); 
 					$('#year').val(year).removeClass('not_ok');
+				} else{
+					$('#year').val('0');
 				}
 				
 			} else{
