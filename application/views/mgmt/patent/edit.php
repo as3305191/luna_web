@@ -694,7 +694,7 @@ function do_save() {
 				if(date1[1]==date2[1] ){
 
 				} else{
-					var year=Math.floor((m-1)/12); 
+					var year=Math.floor(m/12); 
 					$('#year').val(year).removeClass('not_ok');
 				}
 				
