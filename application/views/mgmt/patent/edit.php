@@ -687,10 +687,16 @@ function do_save() {
 			date1 = e_dt.split('-');
 			date2 = s_dt.split('-');
 			if((Date.parse(e_dt)).valueOf()>= (Date.parse(s_dt)).valueOf()){
-				the_day_before_e_dt=new Date(e_dt);
-				the_day_before_e_dt=the_day_before_e_dt.setDate(the_day_before_e_dt.getDate()-1);
-				console.log(the_day_before_e_dt);
-				if((Date.parse(s_dt)).valueOf()>=(Date.parse(the_day_before_e_dt)).valueOf()){
+				var the_day_before_e_dt=new Date(e_dt);
+				the_day_before_e_dt=the_day_before_e_dt.setDate(the_day_before_e_dt.getDate()+1);
+				the_day_before_e_dt=new Date(the_day_before_e_dt);
+				the_day_before_e_dt=the_day_before_e_dt.setFullYear(the_day_before_e_dt.getFullYear()-1);
+				the_day_before_e_dt=new Date(the_day_before_e_dt);
+				var the_day_before_date1 = the_day_before_e_dt.toLocaleDateString().replace(/\//g,"-");
+				var s_dt_new =new Date(s_dt);
+				s_dt_new = s_dt_new.toLocaleDateString().replace(/\//g,"-");
+
+				if((Date.parse(s_dt_new)).valueOf()<=(Date.parse(the_day_before_date1)).valueOf()){
 					var m = Math.abs(parseInt(date1[0]) * 12 + parseInt(date1[1])- (parseInt(date2[0]) * 12 + parseInt(date2[1])));
 					var year=Math.floor(m/12); 
 					$('#year').val(year).removeClass('not_ok');
