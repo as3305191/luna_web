@@ -128,6 +128,14 @@
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
+					<label class="col-md-3 control-label">公告號</label>
+					<div class="col-md-6">
+						<input type="text"  class="form-control dt_picker" name="announcement_num"  id="announcement_num" value="<?= isset($item) ? $item -> announcement_num : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
 					<label class="col-md-3 control-label">專利號</label>
 					<div class="col-md-6">
 						<input id="patnet-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control">
@@ -171,7 +179,7 @@
 					</div>
 					<div class="col-md-2 widget-toolbar pull-left">
 						共
-						<input type="text" id="year"/>
+						<input type="text" id="year" value="<?= isset($item) ? $item -> year : '' ?>" />
 						年						
 					</div>
 					
@@ -204,6 +212,14 @@
 					</div>
 				</div>
 			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利備註</label>
+					<div class="col-md-6">
+						<textarea type="text" require class="form-control" rows="10" id="patnet_note_for_users" name="patnet_note_for_users" style="resize:none;width:100%"><?= isset($item) ? $item -> patnet_note_for_users : '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>	
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利範圍</label>
@@ -627,6 +643,7 @@ function do_save() {
 			pdf_array: pdf_array.join(","),
 			img: img,
 			application_number:$('#application_number').val(),
+			announcement_num:$('#announcement_num').val(),
 			patent_country:$('#patent_country').val(),
 			patent_key: $('#patent_key').val(),
 			patnet_category: $('#patnet_category').val(),
@@ -641,7 +658,9 @@ function do_save() {
 			patnet_status: $('#patnet_status').val(),
 			patent_note: $('#patent_note').val(),
 			patent_range: $('#patent_range').val(),
-
+			patnet_note_for_users: $('#patnet_note_for_users').val(),
+			year: $('#year').val()			
+			
 		},
 		success : function(data) {
 			if(data.error_msg) {
@@ -666,9 +685,9 @@ function do_save() {
 		} else{
 			// console.log('123');
 			date1 = e_dt.split('-');
-			date1 = parseInt(date1[0]) * 12 + parseInt(date1[1]);
+			date1 = parseInt(date1[0]));
 			date2 = s_dt.split('-');
-			date2 = parseInt(date2[0]) * 12 + parseInt(date2[1]);
+			date2 = parseInt(date2[0]));
 			if(date1>=date2){
 				var m = Math.abs(date1 - date2);
 				$('#year').val(m).removeClass('not_ok');
