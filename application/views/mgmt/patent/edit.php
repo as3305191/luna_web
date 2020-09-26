@@ -679,9 +679,9 @@ function do_save() {
 		var s_dt = $('#s_dt').val();
 		var e_dt = $('#e_dt').val();
 		if(e_dt.indexOf(" ") >= 0 || e_dt== null){
-			$('#year').val('0');
+			$('#year').val('0').removeClass('not_ok');
 		}else if(s_dt.indexOf(" ") >= 0 || s_dt== null){
-			$('#year').val('0');
+			$('#year').val('0').removeClass('not_ok');
 		} else{
 			// console.log('123');
 			date1 = e_dt.split('-');
@@ -694,7 +694,7 @@ function do_save() {
 					var year=Math.floor(m/12); 
 					$('#year').val(year).removeClass('not_ok');
 				} else{
-					$('#year').val('0');
+					$('#year').val('0').removeClass('not_ok');
 				}
 				
 			} else{
