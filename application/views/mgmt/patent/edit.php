@@ -689,6 +689,7 @@ function do_save() {
 			if((Date.parse(e_dt)).valueOf()>= (Date.parse(s_dt)).valueOf()){
 				the_day_before_e_dt=new Date(e_dt);
 				the_day_before_e_dt=the_day_before_e_dt.setDate(the_day_before_e_dt.getDate()-1);
+				console.log(the_day_before_e_dt);
 				if((Date.parse(s_dt)).valueOf()>=(Date.parse(the_day_before_e_dt)).valueOf()){
 					var m = Math.abs(parseInt(date1[0]) * 12 + parseInt(date1[1])- (parseInt(date2[0]) * 12 + parseInt(date2[1])));
 					var year=Math.floor(m/12); 
