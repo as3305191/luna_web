@@ -690,7 +690,7 @@ function do_save() {
 				console.log(date1);
 				console.log(date2);
 
-				var m = Math.abs(((parseInt(date1[0])- parseInt(date2[0]) )* 12) + parseInt(date1[1]) + parseInt(date2[1]));
+				var m = Math.abs(((parseInt(date1[0])- parseInt(date2[0]) )* 12) + (parseInt(date1[1]) - parseInt(date2[1])));
 				if(date1[1]==date2[1] ){
 
 				} else{
