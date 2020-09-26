@@ -58,7 +58,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利名稱(英)</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="patent_name_eng"  id="patent_name_eng" value="<?= isset($item) ? $item -> patent_name_eng : '' ?>"  />
+						<input type="text" class="form-control" name="patent_name_eng"  id="patent_name_eng" value="<?= isset($item) ? $item -> patent_name_eng : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
