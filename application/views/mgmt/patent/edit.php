@@ -707,9 +707,7 @@ function do_save() {
 			} else{
 				$('#year').val('結束日期不可小於開始日期').addClass('not_ok');
 			}
-			
 		}
-		
 	});
 
 </script>
