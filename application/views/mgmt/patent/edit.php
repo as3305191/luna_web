@@ -120,8 +120,24 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">公開號</label>
 					<div class="col-md-6">
+						<input type="text" required class="form-control" name="public_num" id="public_num"  value="<?= isset($item) ? $item -> public_num : '' ?>" />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利號</label>
+					<div class="col-md-6">
+						<input type="text" required class="form-control" name="patnet_num" id="patnet_num"  value="<?= isset($item) ? $item -> patnet_num : '' ?>" />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">公開號檔案</label>
+					<div class="col-md-6">
 						<input id="public-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control">
-						<input id="public_num"  type="hidden"  value="<?= isset($item) ? $item -> public_num : '' ?>">
+						<input id="public_num_file"  type="hidden"  value="<?= isset($item) ? $item -> public_num_file : '' ?>">
 
 					</div>
 				</div>
@@ -136,10 +152,10 @@
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">專利號</label>
+					<label class="col-md-3 control-label">專利號檔案</label>
 					<div class="col-md-6">
 						<input id="patnet-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control">
-						<input id="patnet_num" type="hidden"  value="<?= isset($item) ? $item -> patnet_num : '' ?>">
+						<input id="patnet_num_file" type="hidden"  value="<?= isset($item) ? $item -> patnet_num_file : '' ?>">
 					</div>
 				</div>
 			</fieldset>
@@ -337,14 +353,14 @@ if($('#item_id').val()>0){
 
 	}
 
-	if($('#public_num').val().length>0){
-		public_num_input.push($('#public_num').val());
+	if($('#public_num_file').val().length>0){
+		public_num_input.push($('#public_num_file').val());
 		// public_num_input.splice($.inArray(0,public_num_input),1);
 
 	}
 	
-	if($('#patnet_num').val().length>0){
-		patnet_num_input.push($('#patnet_num').val());
+	if($('#patnet_num_file').val().length>0){
+		patnet_num_input.push($('#patnet_num_file').val());
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 
 	}
@@ -355,10 +371,10 @@ if($('#item_id').val()>0){
 }
 
 
-console.log(img);
-console.log(pdf_array);
-console.log(public_num_input);
-console.log(patnet_num_input);
+// console.log(img);
+// console.log(pdf_array);
+// console.log(public_num_input);
+// console.log(patnet_num_input);
 
 $("#img-input").fileinput({
 					language: "zh-TW",
@@ -659,7 +675,10 @@ function do_save() {
 			patent_note: $('#patent_note').val(),
 			patent_range: $('#patent_range').val(),
 			patnet_note_for_users: $('#patnet_note_for_users').val(),
-			year: $('#year').val()			
+			year: $('#year').val(),
+			public_num: $('#public_num').val(),
+			patnet_num: $('#patnet_num').val()	
+	
 			
 		},
 		success : function(data) {

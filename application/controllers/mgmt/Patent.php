@@ -76,16 +76,16 @@ class Patent extends MY_Mgmt_Controller {
 					$item -> files[] = $this -> file_dao -> find_by_id($each);
 				}
 			}
-			if(!empty($item -> public_num)) {
-				$public_number = explode(",", $item -> public_num);				
+			if(!empty($item -> public_num_file)) {
+				$public_number = explode(",", $item -> public_num_file);				
 				$item -> public_num_input =$public_number;
 				foreach($public_number as $each){
 					$item -> public_number[] = $this -> file_dao -> find_by_id($each);
 				}
 			}
 
-			if(!empty($item -> patnet_num)) {
-				$patnet_number = explode(",", $item -> patnet_num);
+			if(!empty($item -> patnet_num_file)) {
+				$patnet_number = explode(",", $item -> patnet_num_file);
 				$item -> patnet_num_input =$patnet_number;
 				foreach($patnet_number as $each){
 					$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
@@ -157,10 +157,14 @@ class Patent extends MY_Mgmt_Controller {
 		$announcement_num = $this -> get_post('announcement_num');
 		$patnet_note_for_users = $this -> get_post('patnet_note_for_users');
 		$year = $this -> get_post('year');
-
+		$public_num = $this -> get_post('public_num');
+		$patnet_num = $this -> get_post('patnet_num');
+	
 		$data['img_id'] = $img;
 		$data['patent_name_eng'] = $patent_name_eng;
 		$data['year'] = $year;
+		$data['public_num'] = $public_num;
+		$data['patnet_num'] = $patnet_num;
 		$data['application_num'] = $application_num;
 		$data['announcement_num'] = $announcement_num;
 		$data['patent_family'] = $patent_family;
@@ -170,8 +174,8 @@ class Patent extends MY_Mgmt_Controller {
 		$data['patent_name'] = $patnet_name;
 		$data['patent_key'] = $patent_key;
 		$data['patnet_category'] = $patnet_category;
-		$data['public_num'] = $public_num_input;
-		$data['patnet_num'] = $patnet_num_input;
+		$data['public_num_file'] = $public_num_input;
+		$data['patnet_num_file'] = $patnet_num_input;
 		$data['application_date'] = $application_date;
 		$data['public_date'] = $public_date;
 		$data['announcement_date'] = $announcement_date;
