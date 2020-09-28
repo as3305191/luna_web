@@ -108,7 +108,8 @@ class Patent extends MY_Mgmt_Controller {
 			$last_num = $count_num+1;
 			$family_num = date('Ymd').'0'.$last_num;
 		} else{
-			$family_num = $count_num+1;
+			$last_num = $count_num+1;
+			$family_num = date('Ymd').'0'.$last_num;
 		}
 		$res['family_num'] = $family_num;		
 		$res['success'] = TRUE;
