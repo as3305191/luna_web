@@ -120,7 +120,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">公開號</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="public_num" id="public_num"  value="<?= isset($item) ? $item -> public_num : '' ?>" />
+						<input type="text"  class="form-control" name="public_num" id="public_num"  value="<?= isset($item) ? $item -> public_num : '' ?>" />
 					</div>
 				</div>
 			</fieldset>
@@ -128,7 +128,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利號</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="patnet_num" id="patnet_num"  value="<?= isset($item) ? $item -> patnet_num : '' ?>" />
+						<input type="text"  class="form-control" name="patnet_num" id="patnet_num"  value="<?= isset($item) ? $item -> patnet_num : '' ?>" />
 					</div>
 				</div>
 			</fieldset>
