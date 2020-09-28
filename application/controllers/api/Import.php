@@ -11,6 +11,8 @@ class Import extends MY_Base_Controller {
 		parent::__construct();
 		$this -> load -> model('Images_dao', 'dao');
 		$this -> load -> model('Users_copy_dao', 'users_copy_dao');
+		$this -> load -> model('Patent_dao', 'patent_dao');
+
 		$this->load->library('excel');
 	}
 
@@ -46,6 +48,57 @@ class Import extends MY_Base_Controller {
 				$patent_key = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
 				$patnet_note_for_users = $worksheet->getCellByColumnAndRow(18, $row)->getValue();
 				
+				if($patent_name_eng==null){
+					$patent_name_eng='';
+				}
+				if($patent_name==null){
+					$patent_name='';
+				}
+				if($application_num==null){
+					$application_num='';
+				}
+				if($new_application_date==null){
+					$new_application_date='';
+				}
+				if($public_num==null){
+					$public_num='';
+				}
+				if($patnet_num==null){
+					$patnet_num='';
+				}
+				if($announcement_num==null){
+					$announcement_num='';
+				}
+				if($new_announcement_date==null){
+					$new_announcement_date='';
+				}
+				if($applicant==null){
+					$applicant='';
+				}
+				if($inventor==null){
+					$inventor='';
+				}
+				if($patent_start_dt==null){
+					$patent_start_dt='';
+				}
+				if($patent_end_dt==null){
+					$patent_end_dt='';
+				}
+				if($patent_finish_date==null){
+					$patent_finish_date='';
+				}
+				if($patnet_note==null){
+					$patnet_note='';
+				}
+				if($patent_range==null){
+					$patent_range='';
+				}
+				if($patent_key==null){
+					$patent_key='';
+				}
+				if($patnet_note_for_users ==null){
+					$patnet_note_for_users ='';
+				}
 
 				$data = array(
 					'patent_name_eng'  =>$patent_name_eng,
@@ -61,14 +114,14 @@ class Import extends MY_Base_Controller {
 					'patent_end_dt' =>$patent_end_dt,
 					'patent_finish_date' =>$patent_finish_date,
 					'patnet_note_for_users' =>$patnet_note_for_users,
-					'patnet_note' =>$patnet_note,
+					'patent_note' =>$patnet_note,
 					'patent_range' =>$patent_range,
 					'inventor' =>$inventor,
 					'patent_key' =>$patent_key,
 					'applicant' =>$applicant
 
 				);
-				$this->users_copy_dao->insert($data);
+				$this->patent_dao->insert($data);
 			}
 		}
 		// $res['success'] = TRUE;
