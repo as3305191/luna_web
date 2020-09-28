@@ -106,7 +106,8 @@
 
 		$('#edit-modal-body').load(baseUrl + 'mgmt/roles/edit_page/' + $id, function(){
 					$("#btn-submit-edit").prop( "disabled", false);
-					loading.remove();
+					$('#t_data').empty();
+					$('#t_data').html('<?=$t_data?>');
 		});
 	}
 
