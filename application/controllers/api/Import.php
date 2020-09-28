@@ -48,9 +48,9 @@ class Import extends MY_Base_Controller {
 				$new_public_date =substr($public_date, 0, 4)."-".substr($public_date, 4, 2)."-".substr($public_date, 6, 2);
 				$new_announcement_date =substr($announcement_date, 0, 4)."-".substr($announcement_date, 4, 2)."-".substr($announcement_date, 6, 2);
 
-				$patent_start_dt_new = str_replace("\\", '-', $patent_start_dt);
-				$patent_end_dt_new = str_replace("\\", '-', $patent_end_dt);
-				$patent_finish_date_new = str_replace("\\", '-', $patent_finish_date);
+				$patent_start_dt_new = str_replace("/", '-', $patent_start_dt);
+				$patent_end_dt_new = str_replace("/", '-', $patent_end_dt);
+				$patent_finish_date_new = str_replace("/", '-', $patent_finish_date);
 
 
 				if($patent_name_eng==null){
