@@ -76,7 +76,10 @@ class Patent_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		
+		if(!empty($data['id'])){
+			$id = $data['id'];
+			$this -> db -> where("_m.id",$id);
+		}
 	}
 
 	function ajax_from_join() {
