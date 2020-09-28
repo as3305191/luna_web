@@ -40,47 +40,6 @@
 					</div>
 				</fieldset>
 
-				<div class="row">
-					<table id="power-table" class="table table-hover">
-						<thead>
-							<tr>
-								<th class="min50"><input type="checkbox" id="chk-all" /></th>
-								<th class="min150">主選單</th>
-								<th class="min150">次選單</th>
-								<th>操作權限</th>
-							</tr>
-						</thead>
-						<tbody>
-							<?php foreach($menu_list as $each): ?>
-								<tr class="main">
-									<td><input name="nav_ids[]" value="<?= $each -> id ?>" <?= !empty($each -> rp) ? 'checked' : '' ?> id="mm_<?= $each -> id ?>" data-id="<?= $each -> id ?>" type="checkbox" class="menu-chk" /></td>
-									<td><?= $each -> nav_name ?></td>
-									<td></td>
-									<td>
-										<!-- <input type="hidden" name="nav_powers[]" value="0" /> -->
-									</td>
-								</tr>
-								<?php if(!empty($each -> sub_list)): ?>
-									<?php foreach($each -> sub_list as $s_each): ?>
-										<tr class="sub">
-											<td><input name="nav_ids[]" value="<?= $s_each -> id ?>" <?= !empty($s_each -> rp) ? 'checked' : '' ?> type="checkbox" data-mm="<?= $each -> id ?>" class="menu-chk" /></td>
-											<td></td>
-											<td><?= $s_each -> nav_name ?></td>
-											<td>
-												<?php if(!empty($s_each -> nav_power_list)): ?>
-													<?php foreach($s_each -> nav_power_list as $nav_each): ?>
-														<label><input type="checkbox" name="nav_powers_<?= $s_each -> id ?>[]" value="<?= $nav_each -> id ?>" <?= !empty($s_each -> rp -> power_list) && in_array($nav_each -> id, json_decode($s_each -> rp -> power_list)) ? "checked" : "" ?> /><?= $nav_each -> nav_power_name ?></label>
-													<?php endforeach ?>
-												<?php endif?>
-											</td>
-										</tr>
-									<?php endforeach; ?>
-								<?php endif; ?>
-							<?php endforeach; ?>
-
-						<tbody>
-					</table>
-				</div>
 			</form>
 
 		</div>

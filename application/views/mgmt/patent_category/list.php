@@ -14,7 +14,7 @@
 					<div class="col-md-12 col-xs-12 col-sm-12" style="padding:10px 17px 10px 17px;">
 						<div class="col-md-12 col-xs-12 col-sm-12 no-padding" >
 							<span style="font-size: 16pt; color:#0d0d56">專利項目類別</span>
-							<button class="btn" id="new_department" style="float:right;background-color:#FF9030;color:white;width:140px">新增部門</button>
+							<button class="btn" id="new_department" style="float:right;background-color:#FF9030;color:white;width:140px">新增專利主項目</button>
 						</div>
 					</div>
 					<!-- Widget ID (each widget will need unique ID)-->

@@ -188,7 +188,7 @@ class Patent_category extends MY_Base_Controller {
 		$parent = $this -> dao -> find_by_id($id);
 		$data = array();
 		$data['parent'] = $parent;
-		$this -> load -> view('layout/show_role_window',$data);
+		$this -> load -> view('layout/show_patent_window',$data);
 	}
 
 	/**
@@ -220,7 +220,7 @@ class Patent_category extends MY_Base_Controller {
 
 	public function new_department(){
 		$data = array();
-		$this -> load -> view('layout/show_new_department',$data);
+		$this -> load -> view('layout/show_new_patent',$data);
 	}
 
 	/**
@@ -233,17 +233,17 @@ class Patent_category extends MY_Base_Controller {
 			'name'
 		));
 
-		$nav_ids = $this -> get_post('nav_ids');
-		// $nav_powers = $this -> get_post('nav_powers');
+		// $nav_ids = $this -> get_post('nav_ids');
+		// // $nav_powers = $this -> get_post('nav_powers');
 
-		$nav_powers = array();
-		foreach($nav_ids as $a_id) {
-			$nav_powers[$a_id] = array();
-			$post_arr = $this -> get_post("nav_powers_{$a_id}");
-			if(!empty($post_arr)) {
-				$nav_powers[$a_id] = $post_arr;
-			}
-		}
+		// $nav_powers = array();
+		// foreach($nav_ids as $a_id) {
+		// 	$nav_powers[$a_id] = array();
+		// 	$post_arr = $this -> get_post("nav_powers_{$a_id}");
+		// 	if(!empty($post_arr)) {
+		// 		$nav_powers[$a_id] = $post_arr;
+		// 	}
+		// }
 
 		if(empty($id)) {
 			// insert
@@ -252,7 +252,7 @@ class Patent_category extends MY_Base_Controller {
 			// dao
 			$this -> dao -> update($data, $id);
 		}
-		$this -> dao -> update_role_power($id, $nav_ids, $nav_powers);
+		// $this -> dao -> update_role_power($id, $nav_ids, $nav_powers);
 
 		$res['success'] = TRUE;
  		$this -> to_json($res);
