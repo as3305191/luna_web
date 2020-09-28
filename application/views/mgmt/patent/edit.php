@@ -92,7 +92,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">發明人</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="inventor"  id="inventor" value="<?= isset($item) ? $item -> inventor : '' ?>"  />
+						<textarea type="text" require class="form-control" rows="10" id="inventor" name="inventor" style="resize:none;width:100%"><?= isset($item) ? $item -> inventor : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -100,7 +100,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">申請人</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="applicant"  id="applicant" value="<?= isset($item) ? $item -> applicant : '' ?>"  />
+						<textarea type="text" require class="form-control" rows="10" id="applicant" name="applicant" style="resize:none;width:100%"><?= isset($item) ? $item -> applicant : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
