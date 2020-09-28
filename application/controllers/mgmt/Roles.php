@@ -37,6 +37,25 @@ class Roles extends MY_Base_Controller {
 		$this->load->view('mgmt/roles/list', $data);
 	}
 
+	public function re_index()
+	{
+		$data = array();
+		$this -> setup_user_data($data);
+
+		$item = $this -> d_dao -> find_all_by('parent_id','0');
+		// $data['item'] = $item;
+		$max_level = $this -> d_dao -> get_max();
+		$data['max_level'] = $max_level;
+		$datas = $this -> d_dao -> find_all();
+
+		$data['items'] = $items = $this -> generateTree($datas);
+
+		$t_data = $this -> drawTree($items);
+		$data['t_data'] = $t_data;
+		// $this -> to_json($t_data);
+		$this -> to_json($data);
+	}
+
 	/**
 	 * @brief 畫權限管理列表的樹
 	 */

@@ -106,8 +106,19 @@
 
 		$('#edit-modal-body').load(baseUrl + 'mgmt/roles/edit_page/' + $id, function(){
 					$("#btn-submit-edit").prop( "disabled", false);
-					$('#t_data').empty();
-					$('#t_data').html('<?=$t_data?>');
+					var url = baseUrl + 'mgmt/roles/re_index'; 
+					$.ajax({
+						type : "POST",
+						url : url,
+						data : {},
+						success : function(data) {
+							if(data) {
+								$('#t_data').empty();
+								$('#t_data').html(data.t_data);
+							}
+						}
+					});
+					
 		});
 	}
 
