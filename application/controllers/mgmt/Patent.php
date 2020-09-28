@@ -159,12 +159,16 @@ class Patent extends MY_Mgmt_Controller {
 		$year = $this -> get_post('year');
 		$public_num = $this -> get_post('public_num');
 		$patnet_num = $this -> get_post('patnet_num');
-	
+		$applicant = $this -> get_post('applicant');
+		$inventor = $this -> get_post('inventor');
+
 		$data['img_id'] = $img;
 		$data['patent_name_eng'] = $patent_name_eng;
 		$data['year'] = $year;
 		$data['public_num'] = $public_num;
 		$data['patnet_num'] = $patnet_num;
+		$data['applicant'] = $applicant;
+		$data['inventor'] = $inventor;
 		$data['application_num'] = $application_num;
 		$data['announcement_num'] = $announcement_num;
 		$data['patent_family'] = $patent_family;

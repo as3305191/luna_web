@@ -90,12 +90,29 @@
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
+					<label class="col-md-3 control-label">發明人</label>
+					<div class="col-md-6">
+						<input type="text"  class="form-control" name="inventor"  id="inventor" value="<?= isset($item) ? $item -> inventor : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">申請人</label>
+					<div class="col-md-6">
+						<input type="text"  class="form-control" name="applicant"  id="applicant" value="<?= isset($item) ? $item -> applicant : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
 					<label class="col-md-3 control-label">關鍵字</label>
 					<div class="col-md-6">
 						<input type="text"  class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patent_key : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
+
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利類別</label>
@@ -677,8 +694,10 @@ function do_save() {
 			patnet_note_for_users: $('#patnet_note_for_users').val(),
 			year: $('#year').val(),
 			public_num: $('#public_num').val(),
-			patnet_num: $('#patnet_num').val()	
-	
+			patnet_num: $('#patnet_num').val(),	
+			applicant: $('#applicant').val(),	
+			inventor: $('#inventor').val()	
+
 			
 		},
 		success : function(data) {
