@@ -56,25 +56,25 @@ var patentAppClass = (function(app) {
 		// $('#3').on('change', function(){
 		// 	app.tableReload();
 		// });
-		$('#application_person').on('change', function(){
+		$('#application_person').on('change keyup', function(){
 			app.tableReload();
 		});
-		$('#application_num_search').on('change', function(){
+		$('#application_num_search').on('change keyup', function(){
 			app.tableReload();
 		});
-		$('#invention_person_search').on('change', function(){
+		$('#invention_person_search').on('change keyup', function(){
 			app.tableReload();
 		});
-		$('#public_num_search').on('change', function(){
+		$('#public_num_search').on('change keyup', function(){
 			app.tableReload();
 		});
-		$('#key_search').on('change', function(){
+		$('#key_search').on('change keyup', function(){
 			app.tableReload();
 		});
-		$('#patent_search').on('change', function(){
+		$('#patent_search').on('change keyup', function(){
 			app.tableReload();
 		});
-		$('#summary_search').on('change', function(){
+		$('#summary_search').on('change keyup', function(){
 			app.tableReload();
 		});
 		
