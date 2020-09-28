@@ -64,7 +64,7 @@
 								<label>申請號</label>
 							</div>
 							<div class="widget-toolbar pull-left">
-								<input id="application_num" type="text" class="form-control" autocomplete="off" />
+								<input id="application_num_search" type="text" class="form-control" autocomplete="off" />
 							</div>
 							<div class="widget-toolbar pull-left">
 								<label>發明人</label>
@@ -91,12 +91,6 @@
                             </div>
                             <div class="widget-toolbar pull-left">
 								<input id="patent_search" type="text" class="form-control"autocomplete="off" />
-                            </div>
-                            <div class="widget-toolbar pull-left">
-								<label>摘要搜尋</label>
-							</div>
-							<div class="widget-toolbar pull-left">
-								<input id="summary_search" type="text" class="form-control"autocomplete="off" />
                             </div>
 
                             <div class="widget-toolbar pull-left" id="patent_status">

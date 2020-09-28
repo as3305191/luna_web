@@ -84,6 +84,36 @@ class Patent_dao extends MY_Model {
 			$id = $data['id'];
 			$this -> db -> where("_m.id",$id);
 		}
+		if(!empty($data['application_person'])){
+			$application_person = $data['application_person'];
+			$this -> db -> where("_m.applicant",$application_person);
+		}
+		if(!empty($data['application_num'])){
+			$application_num = $data['application_num'];
+			$this -> db -> where("_m.application_num",$application_num);
+		}
+		if(!empty($data['invention_person_search'])){
+			$invention_person_search = $data['invention_person_search'];
+			$this -> db -> where("_m.application_date",$invention_person_search);
+		}
+		if(!empty($data['public_num_search'])){
+			$public_num_search = $data['public_num_search'];
+			$this -> db -> where("_m.public_num",$public_num_search);
+		}
+		
+		if(!empty($data['patent_search'])){
+			$patent_search = $data['patent_search'];
+			$this -> db -> where("_m.patnet_num",$patent_search);
+		}
+		// if(!empty($data['summary_search'])){
+		// 	$summary_search = $data['summary_search'];
+		// 	$this -> db -> where("_m.id",$summary_search);
+		// }
+		
+		// if(!empty($data['key_search'])){
+		// 	$key_search = $data['key_search'];
+		// 	$this -> db -> where("_m.id",$key_search);
+		// }
 	}
 
 	function ajax_from_join() {

@@ -14,13 +14,13 @@ var patentAppClass = (function(app) {
 					// d.type_1 = $('#1').val();
 					// d.type_2 = $('#2').val();
 					// d.type_3 = $('#3').val();
-					// d.application_person = $('#application_person').val();
-					// d.application_num = $('#application_num').val();
-					// d.invention_person_search = $('#invention_person_search').val();
-					// d.public_num_search = $('#public_num_search').val();
-					// d.key_search = $('#key_search').val();
-					// d.patent_search = $('#patent_search').val();
-					// d.summary_search = $('#summary_search').val();
+					d.application_person = $('#application_person').val();
+					d.application_num = $('#application_num_search').val();
+					d.invention_person_search = $('#invention_person_search').val();
+					d.public_num_search = $('#public_num_search').val();
+					d.key_search = $('#key_search').val();
+					d.patent_search = $('#patent_search').val();
+					d.summary_search = $('#summary_search').val();
 				},
 				dataSrc : 'items',
 				dataType : 'json',
@@ -56,27 +56,27 @@ var patentAppClass = (function(app) {
 		// $('#3').on('change', function(){
 		// 	app.tableReload();
 		// });
-		// $('#application_person').on('change', function(){
-		// 	app.tableReload();
-		// });
-		// $('#application_num').on('change', function(){
-		// 	app.tableReload();
-		// });
-		// $('#invention_person_search').on('change', function(){
-		// 	app.tableReload();
-		// });
-		// $('#public_num_search').on('change', function(){
-		// 	app.tableReload();
-		// });
-		// $('#key_search').on('change', function(){
-		// 	app.tableReload();
-		// });
-		// $('#patent_search').on('change', function(){
-		// 	app.tableReload();
-		// });
-		// $('#summary_search').on('change', function(){
-		// 	app.tableReload();
-		// });
+		$('#application_person').on('change', function(){
+			app.tableReload();
+		});
+		$('#application_num_search').on('change', function(){
+			app.tableReload();
+		});
+		$('#invention_person_search').on('change', function(){
+			app.tableReload();
+		});
+		$('#public_num_search').on('change', function(){
+			app.tableReload();
+		});
+		$('#key_search').on('change', function(){
+			app.tableReload();
+		});
+		$('#patent_search').on('change', function(){
+			app.tableReload();
+		});
+		$('#summary_search').on('change', function(){
+			app.tableReload();
+		});
 		
 	
 		return app;

@@ -37,6 +37,13 @@ class Patent extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
+			'application_person',
+			'application_num',
+			'invention_person_search',
+			'public_num_search',
+			'key_search',
+			'patent_search',
+			'summary_search'
 		));
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
