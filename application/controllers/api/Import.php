@@ -21,7 +21,7 @@ class Import extends MY_Base_Controller {
 	}
 
 	function import(){
-		$object = PHPExcel_IOFactory::load("專利資訊匯入專利檢索系統用台灣.xls");
+		$object = PHPExcel_IOFactory::load("專利資訊匯入專利檢索系統用大陸.xls");
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
