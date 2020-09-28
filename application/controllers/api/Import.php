@@ -30,14 +30,11 @@ class Import extends MY_Base_Controller {
 				$patent_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
 				$application_num = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
 				$application_date = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-				$new_application_date =substr($application_date, 0, 4)."-".substr($application_date, 4, 2)."-".substr($application_date, 6, 2);
 				$public_num = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 				$public_date = $worksheet->getCellByColumnAndRow(6, $row)->getValue();
-				$new_public_date =substr($public_date, 0, 4)."-".substr($public_date, 4, 2)."-".substr($public_date, 6, 2);
 				$patnet_num = $worksheet->getCellByColumnAndRow(7, $row)->getValue();
 				$announcement_num = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
 				$announcement_date = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
-				$new_announcement_date =substr($announcement_date, 0, 4)."-".substr($announcement_date, 4, 2)."-".substr($announcement_date, 6, 2);
 				$applicant = $worksheet->getCellByColumnAndRow(10, $row)->getValue();
 				$inventor = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
 				$patent_start_dt = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
@@ -47,7 +44,15 @@ class Import extends MY_Base_Controller {
 				$patent_range = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
 				$patent_key = $worksheet->getCellByColumnAndRow(17, $row)->getValue();
 				$patnet_note_for_users = $worksheet->getCellByColumnAndRow(18, $row)->getValue();
-				
+				$new_application_date =substr($application_date, 0, 4)."-".substr($application_date, 4, 2)."-".substr($application_date, 6, 2);
+				$new_public_date =substr($public_date, 0, 4)."-".substr($public_date, 4, 2)."-".substr($public_date, 6, 2);
+				$new_announcement_date =substr($announcement_date, 0, 4)."-".substr($announcement_date, 4, 2)."-".substr($announcement_date, 6, 2);
+
+				$patent_start_dt_new = str_replace("\\", '-', $patent_start_dt);
+				$patent_end_dt_new = str_replace("\\", '-', $patent_end_dt);
+				$patent_finish_date_new = str_replace("\\", '-', $patent_finish_date);
+
+
 				if($patent_name_eng==null){
 					$patent_name_eng='';
 				}
@@ -110,9 +115,9 @@ class Import extends MY_Base_Controller {
 					'patnet_num' =>$patnet_num,
 					'announcement_num' =>$announcement_num,
 					'announcement_date' =>$new_announcement_date,
-					'patent_start_dt' =>$patent_start_dt,
-					'patent_end_dt' =>$patent_end_dt,
-					'patent_finish_date' =>$patent_finish_date,
+					'patent_start_dt' =>$patent_start_dt_new,
+					'patent_end_dt' =>$patent_end_dt_new,
+					'patent_finish_date' =>$patent_finish_date_new,
 					'patnet_note_for_users' =>$patnet_note_for_users,
 					'patent_note' =>$patnet_note,
 					'patent_range' =>$patent_range,
