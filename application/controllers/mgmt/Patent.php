@@ -26,6 +26,8 @@ class Patent extends MY_Mgmt_Controller {
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$data['patent_status'] = $this -> patent_status_dao -> find_all();
+		// $this -> to_json($data);
+
 		$this -> load -> view('mgmt/patent/list', $data);
 	}
 
@@ -102,7 +104,7 @@ class Patent extends MY_Mgmt_Controller {
 
 			$data['item'] = $item;
 			$u_data = $this -> setup_user_data($u_data);
-			$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+			$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		}
 		// $data['country'] = $this -> country_dao -> find_all();
 
