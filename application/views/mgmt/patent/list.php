@@ -206,22 +206,34 @@
 
 	if($('#l_user_id').val()=='52' ||$('#l_user_id').val()=='26' ){
 		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
+		var mColDefs = [{
+			targets : 0,
+			data : null,
+			defaultContent : defaultContent,
+			searchable : false,
+			orderable : false,
+			width : "5%",
+			className : ''
+		}, {
+			"targets" : [0,1,2,3,4,5,6],
+			"orderable" : false
+		}];
 	} else{
 		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;" disabled><i class="fa fa-trash fa-lg"></i></a>';
+		var mColDefs = [{
+			targets : 0,
+			data : null,
+			defaultContent : defaultContent,
+			searchable : false,
+			orderable : false,
+			width : "5%",
+			className : ''
+		}, {
+			"targets" : [0,1,2,3,4,5],
+			"orderable" : false
+		}];
 	}
 
-	var mColDefs = [{
-		targets : 0,
-		data : null,
-		defaultContent : defaultContent,
-		searchable : false,
-		orderable : false,
-		width : "5%",
-		className : ''
-	}, {
-		"targets" : [0,1,2,3,4,5,6],
-		"orderable" : false
-	}];
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/patent/list.js", function(){
