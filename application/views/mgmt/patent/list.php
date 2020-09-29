@@ -17,22 +17,17 @@
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget">
 						<header>
-							<div class="widget-toolbar pull-left">
-								<div class="btn-group">
-									<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
-										<i class="fa fa-plus"></i>新增
-									</button>
+						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
+
+							<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+								<div class="widget-toolbar pull-left">
+									<div class="btn-group">
+										<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
+											<i class="fa fa-plus"></i>新增
+										</button>
+									</div>
 								</div>
-							</div>
-                            <!-- <div class="widget-toolbar pull-left">
-								<label>範圍查詢 <input id="s_multiple" type="checkbox" class="" value="" /></label>
-							</div>
-							<div class="widget-toolbar pull-left">
-								<input id="s_dt" placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
-							</div>
-							<div class="widget-toolbar pull-left" disabled>
-								~ <input id="e_dt" disabled placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
-							</div> -->
+							<?php endif?>
 							<div class="widget-toolbar pull-left">
 								<label>項目類別</label>
 							</div>
@@ -121,7 +116,9 @@
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min25"></th>
+											<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+												<th class="min25"></th>
+											<?php endif?>
 											<th class="min100">專利名稱</th>
 											<th class="min100">代表圖</th>
 											<th class="min100">申請人</th>
@@ -176,7 +173,7 @@
         return this.value
     }).get();
 
-	var mCols = [null, {
+	var mCols = [null,{
 		data : 'patent_name'
 	}, {
 		data : 'img_id',
@@ -207,7 +204,11 @@
 
 	var mOrderIdx = 5;
 
-	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
+	if($('#l_user_id').val()=='52' ||$('#l_user_id').val()=='26' ){
+		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
+	} else{
+		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;" disabled><i class="fa fa-trash fa-lg"></i></a>';
+	}
 
 	var mColDefs = [{
 		targets : 0,
