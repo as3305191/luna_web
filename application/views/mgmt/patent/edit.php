@@ -22,11 +22,13 @@
 				<i class="fa fa-arrow-circle-left"></i>返回
 			</a>
 		</div>
+		<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
 		<div class="widget-toolbar pull-left">
 			<a href="javascript:void(0);" id="" onclick="do_save();" class="btn btn-default btn-danger">
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
+		<?php endif?>
 	</header>
 	<!-- widget div-->
 	<div>
