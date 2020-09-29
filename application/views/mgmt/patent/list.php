@@ -231,12 +231,15 @@
 							'</div>';
 					}
 					$(html).appendTo($category);
+					var category_option = '<option value="all">全部</option>';
+					$category_0 = $('#category_0').empty();
+					$category_0.append(category_option);
 					$.each(d.category, function(){
 						if(d.category.level==0){
 							$('<option />', {
 							'value': this.id,
 							'text': this.name,
-							}).appendTo($('#category_0'));
+							}).appendTo(category_0);
 						}
 					});
 				}
