@@ -230,7 +230,8 @@
 								'</select>'+
 							'</div>';
 					}
-					html.appendto($category);
+					html.appendTo($category);
+
 				}
 			},
 			failure:function(){
