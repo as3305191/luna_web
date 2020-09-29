@@ -254,7 +254,7 @@
 
 	var j=0;
 	for(j;j<=total_category;j++){
-		$('category_'+j).change(function() {
+		$('select#category_'+j).change(function() {
 			if(this.val()!=='all'){
 				$.ajax({
 					url: '<?= base_url() ?>' + 'mgmt/patent/find_next_category',
