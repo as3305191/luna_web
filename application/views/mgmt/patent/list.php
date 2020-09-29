@@ -33,20 +33,17 @@
 							</div>
 							<div class="widget-toolbar pull-left">
 								<select name="" id="1" class="">
-									<option value="0">原料</option>
-									<option value="2">成品</option>
+									
 								</select>
 							</div>
                             <div class="widget-toolbar pull-left">
 								<select name="" id="2" class="">
-									<option value="0">原料</option>
-									<option value="2">成品</option>
+									
 								</select>
                             </div>
                             <div class="widget-toolbar pull-left">
 								<select name="" id="3" class="">
-									<option value="0">原料</option>
-									<option value="2">成品</option>
+								
 								</select>
 							</div>
 							<div class="widget-toolbar pull-left">
