@@ -124,13 +124,13 @@
 
 	$('#new_department').click(function() {
 		layer.open({
-      type:2,
-      title:'',
-      closeBtn:0,
-      area:['400px','200px'],
-      shadeClose:true,
-      content:'<?=base_url('mgmt/patent_category/new_department')?>'
-    })
+		type:2,
+		title:'',
+		closeBtn:0,
+		area:['400px','200px'],
+		shadeClose:true,
+		content:'<?=base_url('mgmt/patent_category/new_department')?>'
+		})
 	})
 
 	function del_page($id) {
