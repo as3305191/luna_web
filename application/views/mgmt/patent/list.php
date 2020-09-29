@@ -31,21 +31,9 @@
 							<div class="widget-toolbar pull-left">
 								<label>項目類別</label>
 							</div>
-							<div class="widget-toolbar pull-left">
-								<select name="" id="1" class="">
-									
-								</select>
+							<div id="category">
 							</div>
-                            <div class="widget-toolbar pull-left">
-								<select name="" id="2" class="">
-									
-								</select>
-                            </div>
-                            <div class="widget-toolbar pull-left">
-								<select name="" id="3" class="">
-								
-								</select>
-							</div>
+						
 							<div class="widget-toolbar pull-left">
 								<label>申請人</label>
 							</div>
@@ -223,4 +211,33 @@
 			currentApp = new patentAppClass(new BaseAppClass({}));
 		});
 	});
+
+	function load_category() {
+	$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/patent/find_all_category',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$category = $('#category').empty();
+					var i=1;
+					var html='';
+					for(i;i<=d.max;i++){
+						html+='<div class="widget-toolbar pull-left">'+
+								'<select id="category_'+i+'" class="">'+
+								'</select>'+
+							'</div>';
+					}
+					html.appendto($category);
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+
+}
+load_category();
 </script>

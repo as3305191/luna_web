@@ -182,5 +182,6 @@ class Patent_category_dao extends MY_Model {
 		$sql = "delete from role_power where role_id = $role_id";
 		$this -> db -> query($sql);
 	}
+
 }
 ?>

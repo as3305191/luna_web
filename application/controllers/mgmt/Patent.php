@@ -16,7 +16,7 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Country_dao', 'country_dao');
 		$this -> load -> model('Patent_status_dao', 'patent_status_dao');
-
+		$this -> load -> model('Patent_category_dao', 'patent_category_dao');
 		
 	}
 
@@ -265,17 +265,26 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function send_mail() {
-		// mail("收件者","主旨","內容","from:寄件者");
-		mb_internal_encoding("utf-8");
-		$to="inf@kwantex.com";
-		$subject=mb_encode_mimeheader("自動發信","utf-8");
-		$message="測試一下";
-		$headers="MIME-Version: 1.0\r\n";
-		$headers.="Content-type: text/html; charset=utf-8\r\n";
-		$headers.="From:".mb_encode_mimeheader("江官駿","utf-8")."<inf@kwantex.com>\r\n";
-		mail($to,$subject,$message,$headers);
+	// public function send_mail() {
+	// 	// mail("收件者","主旨","內容","from:寄件者");
+	// 	mb_internal_encoding("utf-8");
+	// 	$to="inf@kwantex.com";
+	// 	$subject=mb_encode_mimeheader("自動發信","utf-8");
+	// 	$message="測試一下";
+	// 	$headers="MIME-Version: 1.0\r\n";
+	// 	$headers.="Content-type: text/html; charset=utf-8\r\n";
+	// 	$headers.="From:".mb_encode_mimeheader("江官駿","utf-8")."<inf@kwantex.com>\r\n";
+	// 	mail($to,$subject,$message,$headers);
+	// }
+
+	public function find_all_category(){
+		$data = array();
+		$category = $this -> patent_category_dao -> find_all();
+		$max= $this -> patent_category_dao -> get_max();
+		$res['category'] = $category;
+		$res['max'] = $max;
+
+		$res['success'] = TRUE;
+		$this -> to_json($res);
 	}
-
-
 }
