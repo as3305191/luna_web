@@ -230,7 +230,7 @@
 								'</select>'+
 							'</div>';
 					}
-					html.appendTo($category);
+					$(html).appendTo($category);
 
 				}
 			},
