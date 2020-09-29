@@ -231,7 +231,14 @@
 							'</div>';
 					}
 					$(html).appendTo($category);
-
+					$.each(d.category, function(){
+						if(d.category.level==0){
+							$('<option />', {
+							'value': this.id,
+							'text': this.name,
+							}).appendTo($('#category_0'));
+						}
+					});
 				}
 			},
 			failure:function(){

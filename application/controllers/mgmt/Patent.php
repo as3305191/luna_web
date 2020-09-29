@@ -278,7 +278,7 @@ class Patent extends MY_Mgmt_Controller {
 	// }
 
 	public function find_all_category(){
-		$data = array();
+		$res = array();
 		$category = $this -> patent_category_dao -> find_all();
 		$max= $this -> patent_category_dao -> get_max();
 		$res['category'] = $category;
