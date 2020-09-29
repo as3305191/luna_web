@@ -18,7 +18,6 @@
 					<div class="jarviswidget">
 						<header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
-
 							<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
 								<div class="widget-toolbar pull-left">
 									<div class="btn-group">
@@ -211,44 +210,68 @@
 			currentApp = new patentAppClass(new BaseAppClass({}));
 		});
 	});
-
+	var total_category=0;
 	function load_category() {
-	$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/patent/find_all_category',
-			type: 'POST',
-			data: {},
-			dataType: 'json',
-			success: function(d) {
-				if(d) {
-					// console.log(d);
-					$category = $('#category').empty();
-					var i=0;
-					var html='';
-					for(i;i<=d.max;i++){
-						html+='<div class="widget-toolbar pull-left">'+
-								'<select id="category_'+i+'" class="">'+
-								'</select>'+
-							'</div>';
-					}
-					$(html).appendTo($category);
-					var category_option = '<option value="all">全部</option>';
-					$category_0 = $('#category_0').empty();
-					$category_0.append(category_option);
-					$.each(d.category, function(){
-						if(this.level==0){
-							$('<option />', {
-							'value': this.id,
-							'text': this.name,
-							}).appendTo(category_0);
+		$.ajax({
+				url: '<?= base_url() ?>' + 'mgmt/patent/find_all_category',
+				type: 'POST',
+				data: {},
+				dataType: 'json',
+				success: function(d) {
+					if(d) {
+						// console.log(d);
+						$category = $('#category').empty();
+						var i=0;
+						var html='';
+						total_category = d.max;
+						for(i;i<=d.max;i++){
+							html+='<div class="widget-toolbar pull-left">'+
+									'<select id="category_'+i+'" class="">'+
+									'</select>'+
+								'</div>';
 						}
-					});
+						$(html).appendTo($category);
+						var category_option = '<option value="all">全部</option>';
+						$category_0 = $('#category_0').empty();
+						$category_0.append(category_option);
+						$.each(d.category, function(){
+							if(this.level==0){
+								$('<option />', {
+									'value': this.id,
+									'text': this.name,
+								}).appendTo(category_0);
+							}
+						});
+					}
+				},
+				failure:function(){
+					alert('faialure');
 				}
-			},
-			failure:function(){
-				alert('faialure');
-			}
 		});
 
-}
-load_category();
+	}	
+	load_category();
+
+	var j=0;
+	for(j;j<=total_category;j++){
+		$('category_'+j).change(function() {
+			if(this.val()!=='all'){
+				$.ajax({
+					url: '<?= base_url() ?>' + 'mgmt/patent/find_next_category',
+					type: 'POST',
+					data: {
+						next_level:j+1,
+						this_val:this.val(),
+					},
+					dataType: 'json',
+					success: function(d) {
+					
+					},
+					failure:function(){
+						alert('faialure');
+					}
+				});
+			}
+		});
+	}
 </script>

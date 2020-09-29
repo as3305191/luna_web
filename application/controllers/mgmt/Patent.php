@@ -287,4 +287,17 @@ class Patent extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
+
+	public function find_next_category(){
+		$res = array();
+		$next_level= $this -> get_post('next_level');
+
+		$category = $this -> patent_category_dao -> find_all();
+		$max= $this -> patent_category_dao -> get_max();
+		$res['category'] = $category;
+		$res['max'] = $max;
+
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
 }
