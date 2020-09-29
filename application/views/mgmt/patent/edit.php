@@ -81,7 +81,7 @@
 					<div class="col-md-6">
 					<input type="hidden"  id="p_country" required value="<?= isset($item) ? $item -> patent_country : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
 
-						<select name="patnet_country" id="patent_country" class="form-control" >
+						<select name="patnet_country" id="patent_country" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
 						
 						</select>
 					</div>
@@ -94,7 +94,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">發明人</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="3" id="inventor" name="inventor" style="resize:none;width:100%"><?= isset($item) ? $item -> inventor : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="3" id="inventor" name="inventor" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> inventor : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -102,7 +102,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">申請人</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="3" id="applicant" name="applicant" style="resize:none;width:100%"><?= isset($item) ? $item -> applicant : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="3" id="applicant" name="applicant" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> applicant : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -119,7 +119,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利類別</label>
 					<div class="col-md-6">
-						<select name="patnet_category" required id="patnet_category" class="form-control" >
+						<select name="patnet_category" required id="patnet_category" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
 							<option  value="1" >發明</option>
 							<option  value="2" >新型</option>
 							<option  value="3" >設計</option>
@@ -243,7 +243,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利摘要</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="10" id="patent_note" name="patent_note" style="resize:none;width:100%"><?= isset($item) ? $item -> patent_note : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="10" id="patent_note" name="patent_note" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> patent_note : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -251,7 +251,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利備註</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="10" id="patnet_note_for_users" name="patnet_note_for_users" style="resize:none;width:100%"><?= isset($item) ? $item -> patnet_note_for_users : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="10" id="patnet_note_for_users" name="patnet_note_for_users" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> patnet_note_for_users : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>	
@@ -259,7 +259,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利範圍</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="10" id="patent_range" name="patent_range" style="resize:none;width:100%"><?= isset($item) ? $item -> patent_range : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="10" id="patent_range" name="patent_range" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> patent_range : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>		
