@@ -235,7 +235,7 @@
 					$category_0 = $('#category_0').empty();
 					$category_0.append(category_option);
 					$.each(d.category, function(){
-						if(d.category.level==0){
+						if(this.level==0){
 							$('<option />', {
 							'value': this.id,
 							'text': this.name,
