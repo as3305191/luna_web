@@ -222,7 +222,7 @@
 				if(d) {
 					// console.log(d);
 					$category = $('#category').empty();
-					var i=1;
+					var i=0;
 					var html='';
 					for(i;i<=d.max;i++){
 						html+='<div class="widget-toolbar pull-left">'+
