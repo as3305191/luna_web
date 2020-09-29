@@ -254,24 +254,44 @@
 
 	var j=0;
 	for(j;j<=total_category;j++){
-		$('select#category_'+j).change(function() {
-			if(this.val()!=='all'){
-				$.ajax({
-					url: '<?= base_url() ?>' + 'mgmt/patent/find_next_category',
-					type: 'POST',
-					data: {
-						next_level:j+1,
-						this_val:this.val(),
-					},
-					dataType: 'json',
-					success: function(d) {
+		$('#category select').change(function() {
+			// if(this.val()!=='all'){
+			// 	$.ajax({
+			// 		url: '<?= base_url() ?>' + 'mgmt/patent/find_next_category',
+			// 		type: 'POST',
+			// 		data: {
+			// 			next_level:j+1,
+			// 			this_val:this.val(),
+			// 		},
+			// 		dataType: 'json',
+			// 		success: function(d) {
 					
-					},
-					failure:function(){
-						alert('faialure');
-					}
-				});
-			}
+			// 		},
+			// 		failure:function(){
+			// 			alert('faialure');
+			// 		}
+			// 	});
+			// }
 		});
 	}
+	$('#category select').change(function() {
+			// if(this.val()!=='all'){
+			// 	$.ajax({
+			// 		url: '<?= base_url() ?>' + 'mgmt/patent/find_next_category',
+			// 		type: 'POST',
+			// 		data: {
+			// 			next_level:j+1,
+			// 			this_val:this.val(),
+			// 		},
+			// 		dataType: 'json',
+			// 		success: function(d) {
+					
+			// 		},
+			// 		failure:function(){
+			// 			alert('faialure');
+			// 		}
+			// 	});
+			// }
+			alert(this.id);
+		});
 </script>
