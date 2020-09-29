@@ -116,9 +116,7 @@
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
-												<th class="min25"></th>
-											<?php endif?>
+											<th class="min25"></th>
 											<th class="min100">專利名稱</th>
 											<th class="min100">代表圖</th>
 											<th class="min100">申請人</th>
@@ -206,34 +204,22 @@
 
 	if($('#l_user_id').val()=='52' ||$('#l_user_id').val()=='26' ){
 		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
-		var mColDefs = [{
-			targets : 0,
-			data : null,
-			defaultContent : defaultContent,
-			searchable : false,
-			orderable : false,
-			width : "5%",
-			className : ''
-		}, {
-			"targets" : [0,1,2,3,4,5,6],
-			"orderable" : false
-		}];
 	} else{
-		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;" disabled><i class="fa fa-trash fa-lg"></i></a>';
-		var mColDefs = [{
-			targets : 0,
-			data : null,
-			defaultContent : defaultContent,
-			searchable : false,
-			orderable : false,
-			width : "5%",
-			className : ''
-		}, {
-			"targets" : [0,1,2,3,4,5],
-			"orderable" : false
-		}];
+		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;" disabled',><i class="fa fa-trash fa-lg"></i></a>';
 	}
 
+	var mColDefs = [{
+		targets : 0,
+		data : null,
+		defaultContent : defaultContent,
+		searchable : false,
+		orderable : false,
+		width : "5%",
+		className : ''
+	}, {
+		"targets" : [0,1,2,3,4,5,6],
+		"orderable" : false
+	}];
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/patent/list.js", function(){
