@@ -94,7 +94,7 @@ class Patent_dao extends MY_Model {
 		}
 		if(!empty($data['invention_person_search'])){
 			$invention_person_search = $data['invention_person_search'];
-			$this -> db -> where("_m.application_date like '%$invention_person_search%'");
+			$this -> db -> where("_m.inventor like '%$invention_person_search%'");
 		}
 		if(!empty($data['public_num_search'])){
 			$public_num_search = $data['public_num_search'];
