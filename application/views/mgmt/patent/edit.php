@@ -395,22 +395,34 @@ if($('#item_id').val()>0){
 
 $("#img-input").fileinput({
 					language: "zh-TW",
-        <?php if(!empty($item -> image) && count($item -> image) > 0): ?>
+		<?php if(!empty($item -> image) && count($item -> image) > 0): ?>
+
         	initialPreview: [
         		<?php foreach($item -> image as $img): ?>
         			'<?=  base_url('mgmt/images/get/' . $img->id) ?>',
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
-        	<?php foreach($item -> image as $img): ?>
-    		{
-	        		'caption' : '<?= $img -> image_name ?>',
-	        		'size' : <?= $img -> image_size ?>,
-	        		'width' : '120px',
-					'url' : '<?= base_url('mgmt/images/delete/' . $img->id )  ?>',
-					'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
-	        		'key' : <?= $img->id?>
-	        },
+			<?php foreach($item -> image as $img): ?>
+				<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+				{
+						'caption' : '<?= $img -> image_name ?>',
+						'size' : <?= $img -> image_size ?>,
+						'width' : '120px',
+						'url' : '<?= base_url('mgmt/images/delete/' . $img->id )  ?>',
+						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
+						'key' : <?= $img->id?>
+				},
+				<?php else: ?>
+				{
+						'caption' : '<?= $img -> image_name ?>',
+						'size' : <?= $img -> image_size ?>,
+						'width' : '120px',
+						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
+						'key' : <?= $img->id?>
+				},
+				<?php endif ?>
+
     		<?php endforeach ?>
 
         	],
@@ -458,7 +470,8 @@ $("#img-input").fileinput({
         	],
         	initialPreviewConfig: [
         	<?php foreach($item -> files as $files): ?>
-    		{
+			<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+				{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 					'width' : '120px',
@@ -466,7 +479,17 @@ $("#img-input").fileinput({
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id)  ?>',
 	        		'key' : <?= $files->id?>
-	        },
+				},
+				<?php else: ?>
+					{
+						'caption' : '<?= $files -> file_name ?>',
+						'size' : <?= $files -> file_size ?>,
+						'width' : '120px',
+						'type': 'pdf',
+						'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
+						'key' : <?= $files->id?>
+					},
+				<?php endif ?>
     		<?php endforeach ?>
 
         	],
@@ -507,7 +530,10 @@ $("#img-input").fileinput({
         	],
         	initialPreviewConfig: [
 				<?php foreach($item -> public_number as $files): ?>
-    		{
+    	
+			
+			<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+				{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 					'width' : '120px',
@@ -515,7 +541,18 @@ $("#img-input").fileinput({
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
 	        		'key' : <?= $files->id?>
-	        },
+			},
+				<?php else: ?>
+					{
+	        		'caption' : '<?= $files -> file_name ?>',
+	        		'size' : <?= $files -> file_size ?>,
+					'width' : '120px',
+					'type': 'pdf',
+					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
+	        		'key' : <?= $files->id?>
+			},
+				<?php endif ?>
+
     		<?php endforeach ?>
 
         	],
@@ -557,7 +594,10 @@ $("#img-input").fileinput({
         	],
         	initialPreviewConfig: [
 				<?php foreach($item -> patnet_number as $files): ?>
-    		{
+
+			
+			<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+				{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 					'width' : '120px',
@@ -565,7 +605,18 @@ $("#img-input").fileinput({
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
 	        		'key' : '<?= $files->id  ?>'
-	        },
+			},
+				<?php else: ?>
+					{
+	        		'caption' : '<?= $files -> file_name ?>',
+	        		'size' : <?= $files -> file_size ?>,
+					'width' : '120px',
+					'type': 'pdf',
+					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
+	        		'key' : '<?= $files->id  ?>'
+			},
+				<?php endif ?>
+
     		<?php endforeach ?>
 
         	],
