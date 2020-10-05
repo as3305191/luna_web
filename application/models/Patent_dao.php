@@ -112,6 +112,10 @@ class Patent_dao extends MY_Model {
 		// 	$summary_search = $data['summary_search'];
 		// 	$this -> db -> where("_m.id",$summary_search);
 		// }
+		if(!empty($data['now_category']) && $data['now_category']!=="all"){
+			$category = $data['now_category'];
+			$this -> db -> where("_m.patnet_category",$category);
+		}
 		
 		// if(!empty($data['key_search'])){
 		// 	$key_search = $data['key_search'];
@@ -126,6 +130,6 @@ class Patent_dao extends MY_Model {
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 
-
+	
 }
 ?>

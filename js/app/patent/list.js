@@ -14,6 +14,7 @@ var patentAppClass = (function(app) {
 					// d.type_1 = $('#1').val();
 					// d.type_2 = $('#2').val();
 					// d.type_3 = $('#3').val();
+					d.now_category = $('#now_category').val();
 					d.application_person = $('#application_person').val();
 					d.application_num = $('#application_num_search').val();
 					d.invention_person_search = $('#invention_person_search').val();
@@ -77,8 +78,48 @@ var patentAppClass = (function(app) {
 		$('#summary_search').on('change keyup', function(){
 			app.tableReload();
 		});
+		$('#now_category').on('change', function(){
+			app.tableReload();
+		});
 		
-	
+		
+		$('.p_category').on('change', function(){
+			var me = $(this);
+			var _dataVal = me.data("val");
+			var select_Val = me.val();
+			$('#now_category').val(select_Val);
+			if(me.val()!=='all'){
+				var next_c =_dataVal+1;
+				console.log(next_c);
+				$.ajax({
+					url:  baseUrl + app.basePath + '/find_next_category',
+					type: 'POST',
+					data: {
+						next_level:next_c,
+						this_val:select_Val,
+					},
+					dataType: 'json',
+					success: function(d) {
+						var category_option = '<option value="all">全部</option>';
+						var $category = $('#category_'+next_c).empty();
+						$category.append(category_option);
+						if(d.category){
+							$.each(d.category, function(){
+								$('<option />', {
+									'value': this.id,
+									'text': this.name,
+								}).appendTo($category);
+							});
+						}
+						app.tableReload();
+					},
+					failure:function(){
+					}
+				});
+			}
+
+		});
+
 		return app;
 	};
 

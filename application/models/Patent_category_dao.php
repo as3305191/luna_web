@@ -183,5 +183,16 @@ class Patent_category_dao extends MY_Model {
 		$this -> db -> query($sql);
 	}
 
+	function find_next($next_level,$this_val){
+		$this -> db -> from("$this->table_name as _m");
+		
+		$this -> db -> where("_m.level",$next_level);
+		$this -> db -> where("_m.parent_id",$this_val);
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
 }
 ?>
