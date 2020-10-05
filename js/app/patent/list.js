@@ -120,41 +120,7 @@ var patentAppClass = (function(app) {
 
 		});
 
-		$('.p_patnet_status').on('change', function(){
-			var me = $(this);
-			var _dataVal = me.data("val");
-			var select_Val = me.val();
-			$('#in_patnet_status').val(select_Val);
-			if(me.val()!=='all'){
-				var next_c =_dataVal+1;
-				console.log(next_c);
-				$.ajax({
-					url:  baseUrl + app.basePath + '/find_next_category',
-					type: 'POST',
-					data: {
-						next_level:next_c,
-						this_val:select_Val,
-					},
-					dataType: 'json',
-					success: function(d) {
-						var category_option = '<option value="all">全部</option>';
-						var $category = $('#patnet_status_'+next_c).empty();
-						$category.append(category_option);
-						if(d.category){
-							$.each(d.category, function(){
-								$('<option />', {
-									'value': this.id,
-									'text': this.name,
-								}).appendTo($category);
-							});
-						}
-					},
-					failure:function(){
-					}
-				});
-			}
-
-		});
+	
 
 		return app;
 	};

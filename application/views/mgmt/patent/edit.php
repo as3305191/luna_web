@@ -12,7 +12,7 @@
   .not_ok {
 	background-color:red;
   }
-
+  
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
@@ -42,7 +42,7 @@
 		<div class="widget-body">
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-				<!-- <input type="hidden" name="role_id"  value="1" /> -->
+				<input type="hidden" name="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
 				<div class="form-group" style="padding:0px 26px">
         <div class="clearfix"></div>
     </div>
@@ -51,7 +51,7 @@
 		<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利類型</label>
-					<div class="col-md-6" id="patnet_status">
+					<div class="col-md-6" id="patnet_status" >
 						
 					</div>
 					<input type="hidden" required class="form-control" id="in_patnet_status" value="<?= isset($item) ? $item -> patnet_status : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
@@ -833,13 +833,58 @@ function do_save() {
 						var $category_0 = $('#patnet_status_0').empty();
 						$category_0.append(category_option);
 						$.each(d.category, function(){
+							
 							if(this.level==0){
+								if($('#role_id')==52||$('#role_id')==26){
+									$('<option />', {
+										'value': this.id,
+										'text': this.name,
+									}).appendTo($category_0);
+								} else{
+									$('<option />', {
+										'value': this.id,
+										'text': this.name,
+										'disabled': true,
+									}).appendTo($category_0);
+								}
+								
+							}
+						});
+						$('.p_patnet_status').on('change', function(){
+			var me = $(this);
+			var _dataVal = me.data("val");
+			var select_Val = me.val();
+			$('#in_patnet_status').val(select_Val);
+			if(me.val()!=='all'){
+				var next_c =_dataVal+1;
+				console.log(next_c);
+				$.ajax({
+					url:  baseUrl + 'mgmt/patent/find_next_category',
+					type: 'POST',
+					data: {
+						next_level:next_c,
+						this_val:select_Val,
+					},
+					dataType: 'json',
+					success: function(d) {
+						var category_option = '<option value="all">全部</option>';
+						var $category = $('#patnet_status_'+next_c).empty();
+						$category.append(category_option);
+						if(d.category){
+							$.each(d.category, function(){
 								$('<option />', {
 									'value': this.id,
 									'text': this.name,
-								}).appendTo($category_0);
-							}
-						});
+								}).appendTo($category);
+							});
+						}
+					},
+					failure:function(){
+					}
+				});
+			}
+
+		});
 					}
 				},
 				failure:function(){
