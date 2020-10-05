@@ -42,7 +42,7 @@
 		<div class="widget-body">
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-				<input type="hidden" name="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
+				<input type="hidden" id="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
 				<div class="form-group" style="padding:0px 26px">
         <div class="clearfix"></div>
     </div>
@@ -54,7 +54,7 @@
 					<div class="col-md-6" id="patnet_status" >
 						
 					</div>
-					<input type="hidden" required class="form-control" id="in_patnet_status" value="<?= isset($item) ? $item -> patnet_status : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+					<input type="hidden" required class="form-control" id="in_patnet_status" value="<?= isset($item) ? $item -> patnet_status : '0' ?>"/>
 
 				</div>
 			</fieldset>
@@ -242,7 +242,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利狀態</label>
 					<div class="col-md-6">
-						<select name="patnet_status" id="patnet_status" class="form-control" >
+						<select name="patnet_type" id="patnet_type" class="form-control" >
 							<option  value="1" >有效</option>
 							<option  value="2" >無效</option>
 						</select>	
@@ -835,7 +835,7 @@ function do_save() {
 						$.each(d.category, function(){
 							
 							if(this.level==0){
-								if($('#role_id')==52||$('#role_id')==26){
+								if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
 									$('<option />', {
 										'value': this.id,
 										'text': this.name,
@@ -851,36 +851,46 @@ function do_save() {
 							}
 						});
 						$('.p_patnet_status').on('change', function(){
-			var me = $(this);
-			var _dataVal = me.data("val");
-			var select_Val = me.val();
-			$('#in_patnet_status').val(select_Val);
-				var next_c =_dataVal+1;
-				console.log(next_c);
-				$.ajax({
-					url:  baseUrl + 'mgmt/patent/find_next_category',
-					type: 'POST',
-					data: {
-						next_level:next_c,
-						this_val:select_Val,
-					},
-					dataType: 'json',
-					success: function(d) {
-						var category_option = '<option value="all">全部</option>';
-						var $category = $('#patnet_status_'+next_c).empty();
-						$category.append(category_option);
-						if(d.category){
-							$.each(d.category, function(){
-								$('<option />', {
-									'value': this.id,
-									'text': this.name,
-								}).appendTo($category);
-							});
-						}
-					},
-					failure:function(){
-					}
-				});
+							var me = $(this);
+							var _dataVal = me.data("val");
+							var select_Val = me.val();
+							var before_dataVal = _dataVal-1;
+							if(select_Val=='all'){
+								if(_dataVal>0){
+									$('#in_patnet_status').val($('#patnet_status_'+before_dataVal).val());
+								}else{
+									$('#in_patnet_status').val("0");
+
+								}
+							} else{
+								$('#in_patnet_status').val(select_Val);
+							}
+								var next_c =_dataVal+1;
+								console.log(next_c);
+								$.ajax({
+									url:  baseUrl + 'mgmt/patent/find_next_category',
+									type: 'POST',
+									data: {
+										next_level:next_c,
+										this_val:select_Val,
+									},
+									dataType: 'json',
+									success: function(d) {
+										var category_option = '<option value="all">全部</option>';
+										var $category = $('#patnet_status_'+next_c).empty();
+										$category.append(category_option);
+										if(d.category){
+											$.each(d.category, function(){
+												$('<option />', {
+													'value': this.id,
+													'text': this.name,
+												}).appendTo($category);
+											});
+										}
+									},
+									failure:function(){
+									}
+								});
 
 			});
 					}
