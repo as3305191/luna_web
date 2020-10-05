@@ -278,7 +278,7 @@
       var me = $(this);
       var _dataVal = me.data("val");
       if (_dataVal) {
-        console.log(_ctype);
+        console.log(_dataVal);
       }
     });
 
