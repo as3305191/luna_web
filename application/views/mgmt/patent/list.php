@@ -226,7 +226,7 @@
 						total_category = d.max;
 						for(i;i<=d.max;i++){
 							html+='<div class="widget-toolbar pull-left">'+
-									'<select id="category_'+i+'" data-val="'+i+'" >'+
+									'<select id="category_'+i+'" class="category" data-val="'+i+'" >'+
 									'</select>'+
 								'</div>';
 						}
@@ -278,7 +278,7 @@
 		
 
 	$(function() {
-		$('#category select').on("selected", function() {
+		$('.category').on("selected", function() {
 			// var me = $(this);
 			// var _dataVal = me.data("val");
 			// if (_dataVal) {
