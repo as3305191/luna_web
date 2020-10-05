@@ -226,7 +226,7 @@
 						total_category = d.max;
 						for(i;i<=d.max;i++){
 							html+='<div class="widget-toolbar pull-left">'+
-									'<select id="category_'+i+'" class="category_'+i+'">'+
+									'<select id="category_'+i+'" data-val="'+i+'" >'+
 									'</select>'+
 								'</div>';
 						}
@@ -253,7 +253,7 @@
 
 	load_category();
     var _ctype = $('#category').data("val");
-	$('.category_' + _ctype).change(function() {
+	$('#category_' + _ctype).change(function() {
 		// if(this.val()!=='all'){
 		// 	$.ajax({
 		// 		url: '<?= base_url() ?>' + 'mgmt/patent/find_next_category',
