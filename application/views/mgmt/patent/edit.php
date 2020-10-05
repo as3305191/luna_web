@@ -882,7 +882,7 @@ function do_save() {
 					}
 				});
 
-		});
+			});
 					}
 				},
 				failure:function(){
