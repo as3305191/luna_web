@@ -275,7 +275,9 @@
 
 	// });
 	
-	$(document).ready(function() {
+		
+
+	$(function() {
 		$('#category select').on("change", function() {
 			// var me = $(this);
 			// var _dataVal = me.data("val");
