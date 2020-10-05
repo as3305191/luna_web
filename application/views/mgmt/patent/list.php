@@ -277,11 +277,12 @@
 	
 	$(document).ready(function() {
 		$('#category select').on("change", function() {
-		var me = $(this);
-		var _dataVal = me.data("val");
-		if (_dataVal) {
-			console.log(_dataVal);
-		}
+			// var me = $(this);
+			// var _dataVal = me.data("val");
+			// if (_dataVal) {
+			// 	console.log(_dataVal);
+			// }
+			alert('123');
 		});
 	});
 </script>
