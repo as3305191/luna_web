@@ -88,7 +88,6 @@ var patentAppClass = (function(app) {
 			var _dataVal = me.data("val");
 			var select_Val = me.val();
 			$('#now_category').val(select_Val);
-			if(me.val()!=='all'){
 				var next_c =_dataVal+1;
 				console.log(next_c);
 				$.ajax({
@@ -116,7 +115,6 @@ var patentAppClass = (function(app) {
 					failure:function(){
 					}
 				});
-			}
 
 		});
 

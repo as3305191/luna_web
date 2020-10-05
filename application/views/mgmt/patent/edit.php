@@ -855,7 +855,6 @@ function do_save() {
 			var _dataVal = me.data("val");
 			var select_Val = me.val();
 			$('#in_patnet_status').val(select_Val);
-			if(me.val()!=='all'){
 				var next_c =_dataVal+1;
 				console.log(next_c);
 				$.ajax({
@@ -882,7 +881,6 @@ function do_save() {
 					failure:function(){
 					}
 				});
-			}
 
 		});
 					}
