@@ -148,7 +148,6 @@ var patentAppClass = (function(app) {
 								}).appendTo($category);
 							});
 						}
-						app.tableReload();
 					},
 					failure:function(){
 					}
