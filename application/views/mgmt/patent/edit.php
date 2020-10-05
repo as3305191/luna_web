@@ -824,7 +824,7 @@ function do_save() {
 						total_edit_category = d.max;
 						for(i;i<=d.max;i++){
 							html+='<div class="widget-toolbar pull-left">'+
-									'<select id="patnet_status_'+i+'" class="p_patnet_status" data-val="'+i+'" >'+
+									'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" >'+
 									'</select>'+
 								'</div>';
 						}
