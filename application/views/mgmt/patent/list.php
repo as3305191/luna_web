@@ -250,8 +250,9 @@
 		});
 
 	}	
-	load_category();
 
+	load_category();
+    var _ctype = $('#category').data("val");
 	$('.category_' + _ctype).change(function() {
 		// if(this.val()!=='all'){
 		// 	$.ajax({
