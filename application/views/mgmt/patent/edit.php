@@ -242,15 +242,9 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利狀態</label>
 					<div class="col-md-6">
-<<<<<<< HEAD
-						<select name="patnet_type" id="patnet_type" class="form-control" >
-							<option  value="1" >有效</option>
-							<option  value="2" >無效</option>
-=======
 						<select name="patnet_status" id="patnet_status" class="form-control" >
 							<option  value="1" <?= isset($item) && $item -> patnet_status == 1 ? 'selected' : '' ?>>有效</option>
 							<option  value="2" <?= isset($item) && $item -> patnet_status == 2 ? 'selected' : '' ?>>無效</option>
->>>>>>> 1f4fb2c8806da9127fdc69f89a2b75764f02d5b8
 						</select>	
 					</div>
 				</div>
