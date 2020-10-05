@@ -274,7 +274,7 @@
 	// 	console.log(_ctype);
 
 	// });
-	$('#category select').on("click", function() {
+	$('#category select').on("change", function() {
       var me = $(this);
       var _dataVal = me.data("val");
       if (_dataVal) {
