@@ -267,10 +267,12 @@
 				
 		// 		},
 		// 		failure:function(){
-					console.log(_ctype);
+					// console.log(_ctype);
 		// 		}
 		// 	});
 		// }
+		console.log(_ctype);
+
 	});
 
 </script>
