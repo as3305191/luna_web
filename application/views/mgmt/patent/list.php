@@ -225,10 +225,8 @@
 						var html='';
 						total_category = d.max;
 						for(i;i<=d.max;i++){
-							html+='<div class="widget-toolbar pull-left">'+
-									'<select id="category_'+i+'" data-val="'+i+'" >'+
-									'</select>'+
-								'</div>';
+							html+='<select id="category_'+i+'" data-val="'+i+'" >'+
+								'</select>';
 						}
 						$(html).appendTo($category);
 						var category_option = '<option value="all">全部</option>';
@@ -252,7 +250,7 @@
 	}	
 	load_category();
 
-	
+
     var _ctype = $('#category select.active').data("val");
 	$('#category_' + _ctype).change(function() {
 		// if(this.val()!=='all'){
