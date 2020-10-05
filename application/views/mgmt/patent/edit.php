@@ -129,10 +129,10 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利狀態</label>
 					<div class="col-md-6">
-						<select name="patnet_type" required id="patnet_category" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
-							<option  value="1" >發明</option>
-							<option  value="2" >新型</option>
-							<option  value="3" >設計</option>
+						<select name="patnet_category" required id="patnet_category" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
+							<option  value="1"  <?= isset($item) && $item -> patnet_category == 1 ? 'selected' : '' ?>>發明</option>
+							<option  value="2"  <?= isset($item) && $item -> patnet_category == 2 ? 'selected' : '' ?>>新型</option>
+							<option  value="3"  <?= isset($item) && $item -> patnet_category == 3 ? 'selected' : '' ?>>設計</option>
 						</select>	
 					</div>
 				</div>
@@ -243,8 +243,8 @@
 					<label class="col-md-3 control-label">專利狀態</label>
 					<div class="col-md-6">
 						<select name="patnet_status" id="patnet_status" class="form-control" >
-							<option  value="1" >有效</option>
-							<option  value="2" >無效</option>
+							<option  value="1" <?= isset($item) && $item -> patnet_status == 1 ? 'selected' : '' ?>>有效</option>
+							<option  value="2" <?= isset($item) && $item -> patnet_status == 2 ? 'selected' : '' ?>>無效</option>
 						</select>	
 					</div>
 				</div>
