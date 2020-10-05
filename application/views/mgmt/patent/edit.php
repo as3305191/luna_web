@@ -51,10 +51,8 @@
 		<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利類型</label>
-					<div class="col-md-6">
-						<select name="patnet_status" id="patnet_status" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
-							
-						</select>	
+					<div class="col-md-6" d="patnet_status">
+						
 					</div>
 					<input type="hidden" required class="form-control" id="in_patnet_status" value="<?= isset($item) ? $item -> patnet_status : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
 
