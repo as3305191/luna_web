@@ -252,27 +252,35 @@
 	}	
 	load_category();
 	
-    var _ctype = $('#category select').find(":selected").data("val");
-	$('#category_' + _ctype).change(function() {
-		// if(this.val()!=='all'){
-		// 	$.ajax({
-		// 		url: '<?= base_url() ?>' + 'mgmt/patent/find_next_category',
-		// 		type: 'POST',
-		// 		data: {
-		// 			next_level:j+1,
-		// 			this_val:this.val(),
-		// 		},
-		// 		dataType: 'json',
-		// 		success: function(d) {
+    // var _ctype = $('#category select').data("val");
+	// $('#category_' + _ctype).change(function() {
+	// 	// if(this.val()!=='all'){
+	// 	// 	$.ajax({
+	// 	// 		url: '<?= base_url() ?>' + 'mgmt/patent/find_next_category',
+	// 	// 		type: 'POST',
+	// 	// 		data: {
+	// 	// 			next_level:j+1,
+	// 	// 			this_val:this.val(),
+	// 	// 		},
+	// 	// 		dataType: 'json',
+	// 	// 		success: function(d) {
 				
-		// 		},
-		// 		failure:function(){
-					// console.log(_ctype);
-		// 		}
-		// 	});
-		// }
-		console.log(_ctype);
+	// 	// 		},
+	// 	// 		failure:function(){
+	// 				// console.log(_ctype);
+	// 	// 		}
+	// 	// 	});
+	// 	// }
+	// 	console.log(_ctype);
 
-	});
+	// });
+	$('#category select').on("click", function() {
+      var me = $(this);
+      var _dataVal = me.data("val");
+      if (_dataVal) {
+        // location.hash = "#sel_" + _dataVal;
+        console.log(_ctype);
+      }
+    });
 
 </script>
