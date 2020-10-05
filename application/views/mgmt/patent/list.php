@@ -252,7 +252,7 @@
 	}	
 	load_category();
 	
-    var _ctype = $('#category select.change').data("val");
+    var _ctype = $('#category select').find(":selected").data("val");
 	$('#category_' + _ctype).change(function() {
 		// if(this.val()!=='all'){
 		// 	$.ajax({
