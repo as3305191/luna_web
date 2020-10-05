@@ -45,7 +45,8 @@ class Patent extends MY_Mgmt_Controller {
 			'public_num_search',
 			'key_search',
 			'patent_search',
-			'summary_search'
+			'summary_search',
+			'now_category'
 		));
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
@@ -291,11 +292,9 @@ class Patent extends MY_Mgmt_Controller {
 	public function find_next_category(){
 		$res = array();
 		$next_level= $this -> get_post('next_level');
-
-		$category = $this -> patent_category_dao -> find_all();
-		$max= $this -> patent_category_dao -> get_max();
+		$this_val= $this -> get_post('this_val');
+		$category = $this -> patent_category_dao -> find_next($next_level,$this_val);
 		$res['category'] = $category;
-		$res['max'] = $max;
 
 		$res['success'] = TRUE;
 		$this -> to_json($res);

@@ -30,6 +30,8 @@
 							<div class="widget-toolbar pull-left">
 								<label>項目類別</label>
 							</div>
+							<input id="now_category" type="hidden"/>
+
 							<div id="category">
 							</div>
 						
@@ -226,20 +228,20 @@
 						total_category = d.max;
 						for(i;i<=d.max;i++){
 							html+='<div class="widget-toolbar pull-left">'+
-									'<select id="category_'+i+'" class="category" data-val="'+i+'" >'+
+									'<select id="category_'+i+'" class="p_category" data-val="'+i+'" >'+
 									'</select>'+
 								'</div>';
 						}
 						$(html).appendTo($category);
 						var category_option = '<option value="all">全部</option>';
-						$category_0 = $('#category_0').empty();
+						var $category_0 = $('#category_0').empty();
 						$category_0.append(category_option);
 						$.each(d.category, function(){
 							if(this.level==0){
 								$('<option />', {
 									'value': this.id,
 									'text': this.name,
-								}).appendTo(category_0);
+								}).appendTo($category_0);
 							}
 						});
 					}
@@ -252,39 +254,4 @@
 	}	
 	load_category();
 	
-    // var _ctype = $('#category select').data("val");
-	// $('#category_' + _ctype).change(function() {
-	// 	// if(this.val()!=='all'){
-	// 	// 	$.ajax({
-	// 	// 		url: '<?= base_url() ?>' + 'mgmt/patent/find_next_category',
-	// 	// 		type: 'POST',
-	// 	// 		data: {
-	// 	// 			next_level:j+1,
-	// 	// 			this_val:this.val(),
-	// 	// 		},
-	// 	// 		dataType: 'json',
-	// 	// 		success: function(d) {
-				
-	// 	// 		},
-	// 	// 		failure:function(){
-	// 				// console.log(_ctype);
-	// 	// 		}
-	// 	// 	});
-	// 	// }
-	// 	console.log(_ctype);
-
-	// });
-	
-		
-
-	$(function() {
-		$('.category').on("selected", function() {
-			// var me = $(this);
-			// var _dataVal = me.data("val");
-			// if (_dataVal) {
-			// 	console.log(_dataVal);
-			// }
-			alert('123');
-		});
-	});
 </script>
