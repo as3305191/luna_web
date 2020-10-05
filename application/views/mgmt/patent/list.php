@@ -267,7 +267,7 @@
 				
 		// 		},
 		// 		failure:function(){
-					alert(_ctype);
+					console.log(_ctype);
 		// 		}
 		// 	});
 		// }
