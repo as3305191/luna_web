@@ -274,12 +274,14 @@
 	// 	console.log(_ctype);
 
 	// });
-	$('#category select').on("change", function() {
-      var me = $(this);
-      var _dataVal = me.data("val");
-      if (_dataVal) {
-        console.log(_dataVal);
-      }
-    });
-
+	
+	$(document).ready(function() {
+		$('#category select').on("change", function() {
+		var me = $(this);
+		var _dataVal = me.data("val");
+		if (_dataVal) {
+			console.log(_dataVal);
+		}
+		});
+	});
 </script>
