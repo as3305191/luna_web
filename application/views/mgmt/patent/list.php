@@ -250,9 +250,10 @@
 		});
 
 	}	
-
 	load_category();
-    var _ctype = $('#category select').data("val");
+
+	
+    var _ctype = $('#category select.active').data("val");
 	$('#category_' + _ctype).change(function() {
 		// if(this.val()!=='all'){
 		// 	$.ajax({
