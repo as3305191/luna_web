@@ -48,6 +48,18 @@
     </div>
     <hr/>
 		<div >
+		<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">專利類型</label>
+					<div class="col-md-6">
+						<select name="patnet_status" id="patnet_status" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
+							
+						</select>	
+					</div>
+					<input type="hidden" required class="form-control" id="in_patnet_status" value="<?= isset($item) ? $item -> patnet_status : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+
+				</div>
+			</fieldset>
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利名稱</label>
@@ -117,9 +129,9 @@
 
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">專利類別</label>
+					<label class="col-md-3 control-label">專利狀態</label>
 					<div class="col-md-6">
-						<select name="patnet_category" required id="patnet_category" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
+						<select name="patnet_type" required id="patnet_category" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
 							<option  value="1" >發明</option>
 							<option  value="2" >新型</option>
 							<option  value="3" >設計</option>
@@ -747,9 +759,8 @@ function do_save() {
 			public_num: $('#public_num').val(),
 			patnet_num: $('#patnet_num').val(),	
 			applicant: $('#applicant').val(),	
-			inventor: $('#inventor').val()	
-
-			
+			inventor: $('#inventor').val(),
+			patnet_type: $('#patnet_type').val()	
 		},
 		success : function(data) {
 			if(data.error_msg) {
