@@ -278,7 +278,7 @@
 		
 
 	$(function() {
-		$('#category select').on("change", function() {
+		$('#category select').on("selected", function() {
 			// var me = $(this);
 			// var _dataVal = me.data("val");
 			// if (_dataVal) {
