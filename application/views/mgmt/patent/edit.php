@@ -919,9 +919,15 @@ function do_save() {
 						});
 
 						$('.p_patnet_status').on('change', function(){
+							
 							var me = $(this);
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
+							$.each(current_app, function(key,value){
+								if(key>select_Val){
+									$('#'+key).empty();
+								}
+							});
 							var before_dataVal = _dataVal-1;
 							if(select_Val=='all'){
 								if(_dataVal>0){
