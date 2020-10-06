@@ -358,7 +358,7 @@ $(document).ready(function() {
 						console.log(value);
 						$('#'+key).children().each(function(){
 							if ($(this).val()==value){
-								$(this).attr("selected", "true"); 
+								$(this).attr("selected", true); 
 							}
 						});
 					});
