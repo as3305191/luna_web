@@ -863,12 +863,11 @@ function do_save() {
 							if(this.level==0){
 								if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
 									
-									if(current_app[0]['patnet_status_0']){
-										if(ccurrent_app[0]['patnet_status_0']==this.id){
+									if(current_app[0]['patnet_status_0'] &&current_app[0]['patnet_status_0']==this.id){
 											$('<option />', {
 												'value': this.id,
 												'text': this.name,
-											}).attr("selected", true).appendTo($category_0);										}
+											}).attr("selected", true).appendTo($category_0);										
 									} else{
 										$('<option />', {
 											'value': this.id,
@@ -876,13 +875,11 @@ function do_save() {
 										}).appendTo($category_0);
 									}
 								} else{
-									if(current_app[0]['patnet_status_0']){
-										if(current_app[0]['patnet_status_0']==this.id){
-\											$('<option />', {
+									if(current_app[0]['patnet_status_0'] && current_app[0]['patnet_status_0']==this.id){
+											$('<option />', {
 												'value': this.id,
 												'text': this.name,
 											}).attr("selected", true).appendTo($category_0);
-										}
 									} else{
 										$('<option />', {
 											'value': this.id,
@@ -929,12 +926,11 @@ function do_save() {
 											$.each(d.category, function(){
 												if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
 
-													if(current_app[0]['patnet_status_'+next_c]){
-														if(current_app[0]['patnet_status_'+next_c]==this.id){
+													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
 															$('<option />', {
 																'value': this.id,
 																'text': this.name,
-															}).attr("selected", true).appendTo($category);										}
+															}).attr("selected", true).appendTo($category);										
 													} else{
 														$('<option />', {
 															'value': this.id,
@@ -944,12 +940,11 @@ function do_save() {
 
 													
 												} else{
-													if(current_app[0]['patnet_status_'+next_c]){
-														if(current_app[0]['patnet_status_'+next_c]==this.id){
+													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
 															$('<option />', {
 																'value': this.id,
 																'text': this.name,
-															}).attr("selected", true).appendTo($category);										}
+															}).attr("selected", true).appendTo($category);									
 													} else{
 														$('<option />', {
 															'value': this.id,
