@@ -842,25 +842,29 @@ function do_save() {
 						total_edit_category = d.max;
 						for(i;i<=d.max;i++){
 							if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
+								var option ='';
 								$.each(d.category, function(){
 									if(this.level==i){
-										html+='<div class="widget-toolbar pull-left">'+
+										option += '<option value="'+this.id+'">'+this.name+'</option>';
+									}
+									html+='<div class="widget-toolbar pull-left">'+
 											'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" >'+
-												'<option value="'+this.id+'">'+this.name+'</option>'+
+												+option+
 											'</select>'+
 										'</div>';
-									}
 								});
 								
 							} else{
+								var option ='';
 								$.each(d.category, function(){
 									if(this.level==i){
-										html+='<div class="widget-toolbar pull-left">'+
+										option += '<option value="'+this.id+'">'+this.name+'</option>';
+									}
+									html+='<div class="widget-toolbar pull-left">'+
 											'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" disabled>'+
-												'<option value="'+this.id+'">'+this.name+'</option>'+
+											+option+
 											'</select>'+
 										'</div>';
-									}
 								});
 							}
 							
