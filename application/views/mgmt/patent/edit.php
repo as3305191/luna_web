@@ -355,7 +355,7 @@ $(document).ready(function() {
 			},
 			success : function(d) {
 				if(d.patnet_status_0){
-					current_app.push(d);
+					d.push(current_app);
 					console.log(current_app);
 
 				}
