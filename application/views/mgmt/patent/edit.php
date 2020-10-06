@@ -29,6 +29,13 @@
 			</a>
 		</div>
 		<?php endif?>
+		<div class="widget-toolbar pull-right">
+			<div class="btn-group">
+				<button onclick="currentApp.doExportAll()" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
+					<i class="fa fa-save"></i>匯出
+				</button>
+			</div>
+		</div>
 	</header>
 	<!-- widget div-->
 	<div>
@@ -846,6 +853,7 @@ function do_save() {
 
 								html+='<div class="widget-toolbar pull-left">'+
 										'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" >'+
+											'<option value="all">全部</option>'+
 										'</select>'+
 									'</div>';
 								
@@ -853,18 +861,15 @@ function do_save() {
 							
 								html+='<div class="widget-toolbar pull-left">'+
 											'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" disabled>'+
+												'<option value="all">全部</option>'+
 											'</select>'+
 										'</div>';
 							}
 							
 						}
 						$(html).appendTo($category);
-						var category_option = '<option value="all">全部</option>';
-						var $category_0 = $('#patnet_status_0').empty();
-						
 						$.each(d.category, function(){
 							var level = this.level;
-							$('#patnet_status_'+level).append(category_option);
 								if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
 									
 									if(current_app[0]['patnet_status_'+level] &&current_app[0]['patnet_status_'+level]==this.id){
@@ -901,11 +906,11 @@ function do_save() {
 							var me = $(this);
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
-							$.each(current_app, function(key,value){
-								var key_ = key;
-								var keynum = parseFloat(key_.substring(key_.length-1,1));
-								if(keynum>_dataVal){
-									$('#patnet_status_'+_dataVal).empty();
+							$.each(current_app[0], function(key,value){
+								var keynum_d_val = $('#'+key).data("val");
+								if(keynum_d_val>_dataVal){
+									$('#patnet_status_'+keynum_d_val).empty();
+									$('<option value="all">全部</option>').appendTo($('#patnet_status_'+keynum_d_val));
 								}
 							});
 							var before_dataVal = _dataVal-1;
@@ -920,7 +925,7 @@ function do_save() {
 								$('#in_patnet_status').val(select_Val);
 							}
 								var next_c =_dataVal+1;
-								console.log(next_c);
+								// console.log(next_c);
 								$.ajax({
 									url:  baseUrl + 'mgmt/patent/find_next_category',
 									type: 'POST',

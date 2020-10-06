@@ -106,6 +106,7 @@ class Patent extends MY_Mgmt_Controller {
 		
 
 			$data['item'] = $item;
+			$this -> session -> set_userdata('patent_data', $q_data);
 			$u_data = $this -> setup_user_data($u_data);
 			$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		}
@@ -323,4 +324,144 @@ class Patent extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
 		$this -> to_json(array_reverse($res));
 	}
+
+	function export_all() {
+		$data = $this -> session -> userdata("patent_data");
+		$list = $this -> dao -> query_ajax($data);
+		$h = array();
+		$s = array();
+
+		if(!empty($list)){
+			$item = $list[0];
+			$hard_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($item->id,0);
+			$soft_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($item->id,1);
+			foreach($hard_list as $h_list){
+				$h[] = $h_list->hard_name;
+			}
+			foreach($soft_list as $s_list){
+				$s[] = $s_list->soft_name;
+			}
+			$compter_fix_list = $this -> fix_record_dao -> find_now_compter_fix($item->id);
+		} 
+	
+		$PHPWord = new PHPWord(); 
+		$PHPWord->setDefaultFontName('華康仿宋體'); 
+		// $section = $PHPWord->createSection();
+		$sectionStyle = array('orientation' => null,  'marginLeft' => 2000,  'marginRight' => 2000); //頁面設定
+		$section = $PHPWord->createSection($sectionStyle); //建立一個頁面
+		 
+		
+		// $tableStyle = array('borderSize'=>6, 'borderColor'=>'006699', 'cellMargin'=>80);
+
+		// Add table style 
+		// $PHPWord->addTableStyle('myOwnTableStyle', $styleTable, $styleFirstRow); 
+		// $PHPWord->addTableStyle('tableStyle',$tableStyle,null);
+		// $table = $section->addTable('tableStyle');
+		// $table->addRow(900); 
+		// $table->addCell(8000,$styleCell)->addText('寬事工業股份有限公司',$fontStyle,$centered); 
+		
+		// $table->addRow(900); 
+		// $table->addCell(8000,$styleCell)->addText('電腦管制表',$fontStyle,$centered); 
+		// $table->addRow(900); 
+		// $table->addCell(8000,$styleCell)->addText('電腦編號：'.$item->computer_num); 
+		// // Add table 
+		// $table = $section->addTable('myOwnTableStyle'); 
+
+		// $table->addRow(); 
+		// $table->addCell(1000)->addText('項目',$fontStyle,$centered); 
+		// $table->addCell(8000)->addText('內容明細',$fontStyle,$centered); 
+		// $table->addRow(); 
+		// $table->addCell(1000)->addText('硬體配備',$fontStyle,$centered); 
+		// $table->addCell(8000)->addText(implode(",",$h),$fontStyle,$centered); 
+		// $table->addRow(); 
+		// $table->addCell(1000)->addText('安裝軟體',$fontStyle,$centered); 
+		// $table->addCell(8000)->addText(implode(",",$s),$fontStyle,$centered);
+		// $table->addRow(); 
+		// $table->addCell(1000)->addText('使用者',$fontStyle,$centered); 
+		// $table->addCell(8000)->addText($item->admin_user_id,$fontStyle,$centered);  
+		// $table->addRow(); 
+		// $table->addCell(9000)->addText('維修紀錄',$fontStyle,$centered); 
+		// $table->addRow(); 
+		// $table->addCell(1500)->addText('完修日期',$fontStyle,$centered); 
+		// $table->addCell(3000)->addText('故障原因',$fontStyle,$centered); 
+		// $table->addCell(3000)->addText('處置情形',$fontStyle,$centered); 
+		// $table->addCell(1500)->addText('維修人員',$fontStyle,$centered); 
+
+		// // Add more rows/cells 
+		// foreach($compter_fix_list as $each){
+		// 	$table->addRow(); 
+		// 	$table->addCell(1500)->addText($each->done_fix_date,$fontStyle,$centered); 
+		// 	$table->addCell(3000)->addText($each->fix_reason,$fontStyle,$centered); 
+		// 	$table->addCell(3000)->addText($each->fix_way,$fontStyle,$centered); 
+		// 	$table->addCell(1500)->addText($each->user_name,$fontStyle,$centered); 
+		// } 
+		$tableStyle = array('borderSize'=>6, 'borderColor'=>'006699', 'cellMargin'=>80);
+		$whitetableStyle = array('borderSize'=>6, 'borderColor'=>'ffffff', 'cellMargin'=>80);
+		$footer_style = array('borderSize'=>6, 'borderColor'=>'ffffff', 'cellMargin'=>80);
+
+		$PHPWord->addTableStyle('white_tableStyle',$whitetableStyle,null);
+		$PHPWord->addTableStyle('tableStyle',$tableStyle,null);
+		$PHPWord->addTableStyle('footer_tableStyle',$footer_style,null);
+
+		$white_table = $section->addTable('white_tableStyle');
+		$table = $section->addTable('tableStyle');
+		$footer_table = $section->addTable('footer_tableStyle');
+
+		$white_table->addRow();
+		$white_table->addCell(8000,null,8)->addText('寬仕工業股份有限公司',array('bold' => true, 'size'=>25),array('align'=>'center'));
+
+		$white_table->addRow();
+		$white_table->addCell(8000,null,8)->addText('電腦管制表',array('size'=>25),array('align'=>'center', 'size'=>16));
+
+		$white_table->addRow();
+		$white_table->addCell(8000,null,8)->addText('電腦編號:'.$item->computer_num,null);
+
+		$table->addRow();
+		$table->addCell(1000,null,1)->addText('項目',null,array('align'=>'center'));
+		$table->addCell(6000,null,6)->addText('內容明細',null,array('align'=>'center'));
+		$table->addCell(1000,null,1)->addText('備註',null,array('align'=>'center'));
+
+		$table->addRow();
+		$table->addCell(1000,null,1)->addText('硬體配備',null,array('align'=>'center'));
+		$table->addCell(6000,null,6)->addText(implode(",",$h),null);
+		$table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
+
+		$table->addRow();
+		$table->addCell(1000,null,1)->addText('安裝軟體',null,array('align'=>'center'));
+		$table->addCell(6000,null,6)->addText(implode(",",$s),null);
+		$table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
+
+		$table->addRow();
+		$table->addCell(1000,null,1)->addText('使用者',null,array('align'=>'center'));
+		$table->addCell(6000,null,6)->addText($item->admin_user_id,null);
+		$table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
+
+		$table->addRow();
+		$table->addCell(8000,null,8)->addText('維修紀錄',null,array('align'=>'center'));
+
+		$table->addRow();
+		$table->addCell(1000,null,1)->addText('維修日期',null,array('align'=>'center'));
+		$table->addCell(3000,null,3)->addText('故障原因',null,array('align'=>'center'));
+		$table->addCell(3000,null,3)->addText('處置情形',null,array('align'=>'center'));
+		$table->addCell(1000,null,1)->addText('維修人員',null,array('align'=>'center'));
+
+		foreach($compter_fix_list as $each){
+			$table->addRow();
+			$table->addCell(1000,null,1)->addText(str_replace("-",",",$each->done_fix_date),null);
+			$table->addCell(3000,null,3)->addText($each->fix_reason,null);
+			$table->addCell(3000,null,3)->addText($each->fix_way,null);
+			$table->addCell(1000,null,1)->addText($each->user_name,null);
+		}
+		$footer_table->addRow();
+		$footer_table->addCell(8000,null,8)->addText('R020102-A',null,array('align'=>'right'));
+
+		$date = date('YmdHis');
+		$filename = $date."-維修單.docx";
+		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
+		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+		header('Cache-Control: max-age=0'); //no cache
+		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2007');
+		$objWriter->save('php://output');
+	}
+
 }
