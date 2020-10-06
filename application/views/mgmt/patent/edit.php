@@ -355,7 +355,7 @@ $(document).ready(function() {
 			success : function(d) {
 				if(d.patnet_status_0){
 					$.each(d, function(key, value) {
-						console.log(key);
+						console.log(value);
 						$('#'+key).children().each(function(){
 							if ($(this).val()==value){
 								$(this).attr("selected", "true"); 
