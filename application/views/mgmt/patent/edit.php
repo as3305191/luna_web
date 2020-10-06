@@ -847,12 +847,13 @@ function do_save() {
 									if(this.level==i){
 										option += '<option value="'+this.id+'">'+this.name+'</option>';
 									}
-									html+='<div class="widget-toolbar pull-left">'+
-											'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" >'+
-												+option+
-											'</select>'+
-										'</div>';
 								});
+
+								html+='<div class="widget-toolbar pull-left">'+
+										'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" >'+
+											+option+
+										'</select>'+
+									'</div>';
 								
 							} else{
 								var option ='';
@@ -860,12 +861,13 @@ function do_save() {
 									if(this.level==i){
 										option += '<option value="'+this.id+'">'+this.name+'</option>';
 									}
-									html+='<div class="widget-toolbar pull-left">'+
+									
+								});
+								html+='<div class="widget-toolbar pull-left">'+
 											'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" disabled>'+
 											+option+
 											'</select>'+
 										'</div>';
-								});
 							}
 							
 						}
