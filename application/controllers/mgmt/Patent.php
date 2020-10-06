@@ -103,6 +103,8 @@ class Patent extends MY_Mgmt_Controller {
 				}
 			}
 
+		
+
 			$data['item'] = $item;
 			$u_data = $this -> setup_user_data($u_data);
 			$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
@@ -298,6 +300,25 @@ class Patent extends MY_Mgmt_Controller {
 		$category = $this -> patent_category_dao -> find_next($next_level,$this_val);
 		$res['category'] = $category;
 
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function find_each_category_val(){
+		$res = array();
+		$item_id= $this -> get_post('item_id');
+		$last_child_category= $this -> patent_category_dao -> find_by_id($item_id);
+		$last_level = $last_child_category->level;
+		for($i=$last_level;$i>-1;$i--){
+			$last_child = $this -> patent_category_dao -> find_by_id($item_id);
+			if($i=$last_level){
+				$res['category_'.$i] = $item_id;
+			} else{
+				$j = $i+1;
+				$last_child = $this -> patent_category_dao -> find_by_id($res['category_'.$j]);
+				$res['category_'.$i] = $last_child->parent_id;
+			}
+		}
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}

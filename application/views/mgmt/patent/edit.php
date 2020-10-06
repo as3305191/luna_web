@@ -344,6 +344,18 @@ $(document).ready(function() {
 				$('#patent_family').val(d.family_num);
 			}
 		});
+	} else{
+		var url = baseUrl + 'mgmt/patent/find_each_category_val'; // the script where you handle the form input.
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+				item_id:$('#item_id').val(),
+			},
+			success : function(d) {
+				$('#patent_family').val(d.family_num);
+			}
+		});
 	}
 });
 
