@@ -902,7 +902,7 @@ function do_save() {
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
 							$.each(current_app, function(key,value){
-								if(key>select_Val){
+								if(key>_dataVal){
 									$('#'+key).empty();
 								}
 							});
