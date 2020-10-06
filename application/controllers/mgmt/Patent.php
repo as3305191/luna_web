@@ -314,10 +314,10 @@ class Patent extends MY_Mgmt_Controller {
 			$last_child = $this -> patent_category_dao -> find_by_id($last_child_category->id);
 			if($i<$last_level){
 				$j = $i+1;
-				$last_child = $this -> patent_category_dao -> find_by_id($res['category_'.$j]);
-				$res['category_'.$i] = $last_child->parent_id;
+				$last_child = $this -> patent_category_dao -> find_by_id($res['patnet_status_'.$j]);
+				$res['patnet_status_'.$i] = $last_child->parent_id;
 			} else{
-				$res['category_'.$i] = $last_child->id;
+				$res['patnet_status_'.$i] = $last_child->id;
 			}
 		}
 		$res['success'] = TRUE;

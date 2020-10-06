@@ -353,6 +353,17 @@ $(document).ready(function() {
 				item_id:$('#item_id').val(),
 			},
 			success : function(d) {
+				if(d.patnet_status_0){
+					$.
+					$(this).attr("selected", "true");
+				}
+				$.each(d, function(key, value) {
+					$('#'+key).children().each(function(){
+						if ($(this).val()==value){
+							$(this).attr("selected", "true"); 
+						}
+					});
+				});
 			}
 		});
 	}
