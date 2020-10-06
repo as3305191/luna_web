@@ -353,7 +353,6 @@ $(document).ready(function() {
 				item_id:$('#item_id').val(),
 			},
 			success : function(d) {
-				$('#patent_family').val(d.family_num);
 			}
 		});
 	}
