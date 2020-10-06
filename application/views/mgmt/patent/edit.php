@@ -354,8 +354,8 @@ $(document).ready(function() {
 				item_id:$('#item_id').val(),
 			},
 			success : function(d) {
-				if(d.patnet_status_0){
-					d.push(current_app);
+				if(d){
+					current_app.push(d);
 					console.log(current_app);
 
 				}
