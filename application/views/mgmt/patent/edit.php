@@ -333,7 +333,7 @@
 </style>
 
 <script>
-var current_app = {};
+var current_app = [];
 $(document).ready(function() {
 	if($('#item_id').val()==0){
 		var url = baseUrl + 'mgmt/patent/new_patent_family'; // the script where you handle the form input.
