@@ -842,16 +842,27 @@ function do_save() {
 						total_edit_category = d.max;
 						for(i;i<=d.max;i++){
 							if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
-								html+='<div class="widget-toolbar pull-left">'+
-									'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" >'+
-									'</select>'+
-								'</div>';
-								} else{
-									html+='<div class="widget-toolbar pull-left">'+
-									'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" disabled>'+
-									'</select>'+
-								'</div>';
-								}
+								$.each(d.category, function(){
+									if(this.level==$i){
+										html+='<div class="widget-toolbar pull-left">'+
+											'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" >'+
+												'<option value="'+this.id+'">'+this.name+'</option>'+
+											'</select>'+
+										'</div>';
+									}
+								});
+								
+							} else{
+								$.each(d.category, function(){
+									if(this.level==$i){
+										html+='<div class="widget-toolbar pull-left">'+
+											'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" disabled>'+
+												'<option value="'+this.id+'">'+this.name+'</option>'+
+											'</select>'+
+										'</div>';
+									}
+								});
+							}
 							
 						}
 						$(html).appendTo($category);
@@ -890,77 +901,6 @@ function do_save() {
 									$('#patnet_status_0').attr("disabled",true);
 								}
 								
-								$('.p_patnet_status').on('change', function(){
-							var me = $(this);
-							var _dataVal = me.data("val");
-							var select_Val = me.val();
-							var before_dataVal = _dataVal-1;
-							if(select_Val=='all'){
-								if(_dataVal>0){
-									$('#in_patnet_status').val($('#patnet_status_'+before_dataVal).val());
-								}else{
-									$('#in_patnet_status').val("0");
-
-								}
-							} else{
-								$('#in_patnet_status').val(select_Val);
-							}
-								var next_c =_dataVal+1;
-								console.log(next_c);
-								$.ajax({
-									url:  baseUrl + 'mgmt/patent/find_next_category',
-									type: 'POST',
-									data: {
-										next_level:next_c,
-										this_val:select_Val,
-									},
-									dataType: 'json',
-									success: function(d) {
-										var category_option = '<option value="all">全部</option>';
-										var $category = $('#patnet_status_'+next_c).empty();
-										$category.append(category_option);
-										if(d.category){
-											$.each(d.category, function(){
-												if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
-
-													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
-															$('<option />', {
-																'value': this.id,
-																'text': this.name,
-															}).attr("selected", true).appendTo($category);										
-													} else{
-														$('<option />', {
-															'value': this.id,
-															'text': this.name,
-														}).appendTo($category);
-													}
-
-													
-												} else{
-													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
-															$('<option />', {
-																'value': this.id,
-																'text': this.name,
-															}).attr("selected", true).appendTo($category);									
-													} else{
-														$('<option />', {
-															'value': this.id,
-															'text': this.name,
-														}).appendTo($category);
-													}
-													
-													$('#patnet_status_'+next_c).attr("disabled",true);
-												}
-												
-											});
-											
-										}
-									},
-									failure:function(){
-									}
-								});
-
-						});
 								
 							}
 						});
