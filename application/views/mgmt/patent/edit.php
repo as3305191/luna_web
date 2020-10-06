@@ -333,6 +333,7 @@
 </style>
 
 <script>
+var current_app = {};
 $(document).ready(function() {
 	if($('#item_id').val()==0){
 		var url = baseUrl + 'mgmt/patent/new_patent_family'; // the script where you handle the form input.
@@ -354,14 +355,8 @@ $(document).ready(function() {
 			},
 			success : function(d) {
 				if(d.patnet_status_0){
-					$.each(d, function(key, value) {
-						console.log(value);
-						$('select#'+key).children().each(function(){
-							if ($(this).val()==value){
-								$(this).attr("selected", true); 
-							}
-						});
-					});
+					current_app.push(d);
+					console.log(current_app);
 				}
 			}
 		});
