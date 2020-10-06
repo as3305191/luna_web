@@ -863,8 +863,8 @@ function do_save() {
 							if(this.level==0){
 								if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
 									
-									if(current_app[0].patnet_status_0){
-										if(current_app[0].patnet_status_0==this.id){
+									if(current_app[0]['patnet_status_0']){
+										if(ccurrent_app[0]['patnet_status_0']==this.id){
 											$('<option />', {
 												'value': this.id,
 												'text': this.name,
@@ -876,8 +876,8 @@ function do_save() {
 										}).appendTo($category_0);
 									}
 								} else{
-									if(current_app[0].patnet_status_0){
-										if(current_app[0].patnet_status_0==this.id){
+									if(current_app[0]['patnet_status_0']){
+										if(current_app[0]['patnet_status_0']==this.id){
 \											$('<option />', {
 												'value': this.id,
 												'text': this.name,
