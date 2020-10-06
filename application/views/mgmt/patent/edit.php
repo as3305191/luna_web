@@ -357,6 +357,7 @@ $(document).ready(function() {
 				if(d.patnet_status_0){
 					current_app.push(d);
 					console.log(current_app);
+
 				}
 			}
 		});
@@ -839,10 +840,18 @@ function do_save() {
 						var html='';
 						total_edit_category = d.max;
 						for(i;i<=d.max;i++){
-							html+='<div class="widget-toolbar pull-left">'+
+							if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
+								html+='<div class="widget-toolbar pull-left">'+
 									'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" >'+
 									'</select>'+
 								'</div>';
+								} else{
+									html+='<div class="widget-toolbar pull-left">'+
+									'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" disabled>'+
+									'</select>'+
+								'</div>';
+								}
+							
 						}
 						$(html).appendTo($category);
 						var category_option = '<option value="all">全部</option>';
@@ -861,8 +870,9 @@ function do_save() {
 										'value': this.id,
 										'text': this.name,
 									}).appendTo($category_0);
+									$('#patnet_status_0').attr("disabled",true);
 								}
-								$('#patnet_status_0').attr("disable".true)
+								
 							}
 						});
 						$('.p_patnet_status').on('change', function(){
@@ -896,11 +906,20 @@ function do_save() {
 										$category.append(category_option);
 										if(d.category){
 											$.each(d.category, function(){
-												$('<option />', {
-													'value': this.id,
-													'text': this.name,
-												}).appendTo($category);
+												if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
+													$('<option />', {
+														'value': this.id,
+														'text': this.name,
+													}).appendTo($category);
+												} else{
+													$('<option />', {
+														'value': this.id,
+														'text': this.name,
+													}).appendTo($category);
+													$('#patnet_status_'+next_c).attr("disabled",true);
+												}
 											});
+											
 										}
 									},
 									failure:function(){
