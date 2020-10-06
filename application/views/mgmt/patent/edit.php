@@ -903,7 +903,7 @@ function do_save() {
 							var select_Val = me.val();
 							$.each(current_app, function(key,value){
 								var key_ = key;
-								var keynum = parseFloat(key_.substr(key_.length-1,1));
+								var keynum = parseFloat(key_.substring(key_.length-1,1));
 								if(keynum>_dataVal){
 									$('#patnet_status_'+_dataVal).empty();
 								}
