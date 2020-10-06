@@ -839,10 +839,10 @@ function do_save() {
 						$category = $('#patnet_status').empty();
 						var i=0;
 						var html='';
+						var option ='';
 						total_edit_category = d.max;
 						for(i;i<=d.max;i++){
 							if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
-								var option ='';
 								$.each(d.category, function(){
 									if(this.level==i){
 										option += '<option value="'+this.id+'">'+this.name+'</option>';
@@ -856,7 +856,6 @@ function do_save() {
 									'</div>';
 								
 							} else{
-								var option ='';
 								$.each(d.category, function(){
 									if(this.level==i){
 										option += '<option value="'+this.id+'">'+this.name+'</option>';
