@@ -865,10 +865,9 @@ function do_save() {
 									$('<option />', {
 										'value': this.id,
 										'text': this.name,
-										'disabled': true,
 									}).appendTo($category_0);
 								}
-								
+								$('#patnet_status_0').attr("disable".true)
 							}
 						});
 						$('.p_patnet_status').on('change', function(){
