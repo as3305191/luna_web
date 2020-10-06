@@ -321,6 +321,6 @@ class Patent extends MY_Mgmt_Controller {
 			}
 		}
 		$res['success'] = TRUE;
-		$this -> to_json($res);
+		$this -> to_json(array_reverse($res));
 	}
 }
