@@ -902,8 +902,9 @@ function do_save() {
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
 							$.each(current_app, function(key,value){
-								if(key>_dataVal){
-									$('#'+key).empty();
+								var keynum = parseFloat(key.substr(-1));
+								if(keynum>_dataVal){
+									$('#patnet_status_'+_dataVal).empty();
 								}
 							});
 							var before_dataVal = _dataVal-1;
