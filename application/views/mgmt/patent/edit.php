@@ -954,7 +954,6 @@ function do_save() {
 														}).appendTo($category);
 													}
 
-													
 												} else{
 													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
 															$('<option />', {
