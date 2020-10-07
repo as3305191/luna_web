@@ -411,7 +411,7 @@ class Patent extends MY_Mgmt_Controller {
 		$footer_table = $section->addTable('footer_tableStyle');
 
 		$white_table->addRow();
-		$white_table->addCell(8000,null,8)->addText('寬仕工業股份有限公司',array('bold' => true, 'size'=>25),array('align'=>'center'));
+		$white_table->addCell(8000,null,8)->addText('專利詳細資訊',array('bold' => true, 'size'=>25),array('align'=>'center'));
 
 		$white_table->addRow();
 		$white_table->addCell(8000,null,8)->addText('電腦管制表',array('size'=>25),array('align'=>'center', 'size'=>16));
