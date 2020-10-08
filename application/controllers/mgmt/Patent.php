@@ -398,68 +398,68 @@ class Patent extends MY_Mgmt_Controller {
 		// 	$table->addCell(3000)->addText($each->fix_way,$fontStyle,$centered); 
 		// 	$table->addCell(1500)->addText($each->user_name,$fontStyle,$centered); 
 		// } 
-		$tableStyle = array('borderSize'=>6, 'borderColor'=>'006699', 'cellMargin'=>80);
-		$whitetableStyle = array('borderSize'=>6, 'borderColor'=>'ffffff', 'cellMargin'=>80);
-		$footer_style = array('borderSize'=>6, 'borderColor'=>'ffffff', 'cellMargin'=>80);
+		$header_Style = array('borderSize'=>5, 'borderColor'=>'006699', 'cellMargin'=>80);
+		$body_Style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
+		$footer_style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
 
-		$PHPWord->addTableStyle('white_tableStyle',$whitetableStyle,null);
-		$PHPWord->addTableStyle('tableStyle',$tableStyle,null);
+		$PHPWord->addTableStyle('white_tableStyle',$header_Style,null);
+		$PHPWord->addTableStyle('tableStyle',$body_Style,null);
 		$PHPWord->addTableStyle('footer_tableStyle',$footer_style,null);
 
-		$white_table = $section->addTable('white_tableStyle');
-		$table = $section->addTable('tableStyle');
+		$header_table = $section->addTable('header_Style');
+		$body_table = $section->addTable('body_Style');
 		$footer_table = $section->addTable('footer_tableStyle');
 
-		$white_table->addRow();
-		$white_table->addCell(8000,null,8)->addText('專利詳細資訊',array('bold' => true, 'size'=>25),array('align'=>'center'));
+		$header_table->addRow();
+		$header_table->addCell(8000,null,8)->addText('專利詳細資訊',array('bold' => true, 'size'=>25),array('align'=>'center'));
 
-		$white_table->addRow();
-		$white_table->addCell(8000,null,8)->addText('電腦管制表',array('size'=>25),array('align'=>'center', 'size'=>16));
+		$header_table->addRow();
+		$header_table->addCell(8000,null,8)->addText('電腦管制表',array('size'=>25),array('align'=>'center', 'size'=>16));
 
-		$white_table->addRow();
-		$white_table->addCell(8000,null,8)->addText('電腦編號:'.$item->computer_num,null);
+		$header_table->addRow();
+		$header_table->addCell(8000,null,8)->addText('電腦編號:'.$item->computer_num,null);
 
-		$table->addRow();
-		$table->addCell(1000,null,1)->addText('項目',null,array('align'=>'center'));
-		$table->addCell(6000,null,6)->addText('內容明細',null,array('align'=>'center'));
-		$table->addCell(1000,null,1)->addText('備註',null,array('align'=>'center'));
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('項目',null,array('align'=>'center'));
+		$body_table->addCell(6000,null,6)->addText('內容明細',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText('備註',null,array('align'=>'center'));
 
-		$table->addRow();
-		$table->addCell(1000,null,1)->addText('硬體配備',null,array('align'=>'center'));
-		$table->addCell(6000,null,6)->addText(implode(",",$h),null);
-		$table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('硬體配備',null,array('align'=>'center'));
+		$body_table->addCell(6000,null,6)->addText(implode(",",$h),null);
+		$body_table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
 
-		$table->addRow();
-		$table->addCell(1000,null,1)->addText('安裝軟體',null,array('align'=>'center'));
-		$table->addCell(6000,null,6)->addText(implode(",",$s),null);
-		$table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('安裝軟體',null,array('align'=>'center'));
+		$body_table->addCell(6000,null,6)->addText(implode(",",$s),null);
+		$body_table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
 
-		$table->addRow();
-		$table->addCell(1000,null,1)->addText('使用者',null,array('align'=>'center'));
-		$table->addCell(6000,null,6)->addText($item->admin_user_id,null);
-		$table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('使用者',null,array('align'=>'center'));
+		$body_table->addCell(6000,null,6)->addText($item->admin_user_id,null);
+		$body_table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
 
-		$table->addRow();
-		$table->addCell(8000,null,8)->addText('維修紀錄',null,array('align'=>'center'));
+		$body_table->addRow();
+		$body_table->addCell(8000,null,8)->addText('維修紀錄',null,array('align'=>'center'));
 
-		$table->addRow();
-		$table->addCell(1000,null,1)->addText('維修日期',null,array('align'=>'center'));
-		$table->addCell(3000,null,3)->addText('故障原因',null,array('align'=>'center'));
-		$table->addCell(3000,null,3)->addText('處置情形',null,array('align'=>'center'));
-		$table->addCell(1000,null,1)->addText('維修人員',null,array('align'=>'center'));
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('維修日期',null,array('align'=>'center'));
+		$body_table->addCell(3000,null,3)->addText('故障原因',null,array('align'=>'center'));
+		$body_table->addCell(3000,null,3)->addText('處置情形',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText('維修人員',null,array('align'=>'center'));
 
 		foreach($compter_fix_list as $each){
-			$table->addRow();
-			$table->addCell(1000,null,1)->addText(str_replace("-",",",$each->done_fix_date),null);
-			$table->addCell(3000,null,3)->addText($each->fix_reason,null);
-			$table->addCell(3000,null,3)->addText($each->fix_way,null);
-			$table->addCell(1000,null,1)->addText($each->user_name,null);
+			$body_table->addRow();
+			$body_table->addCell(1000,null,1)->addText(str_replace("-",",",$each->done_fix_date),null);
+			$body_table->addCell(3000,null,3)->addText($each->fix_reason,null);
+			$body_table->addCell(3000,null,3)->addText($each->fix_way,null);
+			$body_table->addCell(1000,null,1)->addText($each->user_name,null);
 		}
 		$footer_table->addRow();
 		$footer_table->addCell(8000,null,8)->addText('R020102-A',null,array('align'=>'right'));
 
 		$date = date('YmdHis');
-		$filename = $date."-維修單.docx";
+		$filename = $date."-專利詳細資訊.docx";
 		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
 		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
 		header('Cache-Control: max-age=0'); //no cache
