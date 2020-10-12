@@ -473,6 +473,7 @@ class Patent extends MY_Mgmt_Controller {
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('專利名稱(英)',null,array('align'=>'center'));
 		$body_table->addCell(3000,null,3)->addText($item->patent_name_eng,null);
+		$body_table->addCell(1000,array('vMerge' => 'fusion'),1);
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('專利國家',null,array('align'=>'center'));
