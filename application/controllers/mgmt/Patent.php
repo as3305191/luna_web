@@ -353,7 +353,10 @@ class Patent extends MY_Mgmt_Controller {
 				$files = explode(",", $item -> files_id);
 				$item -> pdf_array =$files;
 				foreach($files as $each){
-					$item -> files[] = $this -> file_dao -> find_by_id($each);
+					$file_list = $this -> file_dao -> find_by_id($each);
+					foreach($file_list as $each_list){
+						$item -> files[] = $each_list->file_name;
+					}
 				}
 			}
 			if(!empty($item -> public_num_file)) {
@@ -370,6 +373,19 @@ class Patent extends MY_Mgmt_Controller {
 				foreach($patnet_number as $each){
 					$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
 				}
+			}
+
+			if(!empty($item -> patent_family)) {
+				$file_list = $this -> dao -> find_by_family($item -> patent_family,$item -> id);
+				foreach($file_list as $each){
+					if(!empty($each->public_num)){
+						$item -> all_family[] = $each->public_num;
+					} else{
+						$item -> all_family[] = $each->patnet_num;
+					}
+
+				}
+					
 			}
 
 		} 
@@ -509,11 +525,11 @@ class Patent extends MY_Mgmt_Controller {
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('專利分析相關資訊',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,4)->addText(implode(",",$h),null);
+		$body_table->addCell(4000,null,4)->addText(implode(",",$item->files),null);
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('專利家族',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,4)->addText(implode(",",$h),null);
+		$body_table->addCell(4000,null,4)->addText(implode(",",$item->all_family),null);
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('關鍵字',null,array('align'=>'center'));

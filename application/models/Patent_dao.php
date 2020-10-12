@@ -130,6 +130,18 @@ class Patent_dao extends MY_Model {
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 
-	
+
+	function find_by_family($patent_family,$id){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+
+		$this -> db -> where("_m.patent_family",$patent_family);
+		$this -> db -> where("_m.id<>",$id);
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
 }
 ?>
