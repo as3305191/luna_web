@@ -13,7 +13,6 @@ var patentAppClass = (function(app) {
 
 					// d.type_1 = $('#1').val();
 					// d.type_2 = $('#2').val();
-					d.id = $('#item_id').val();
 					d.now_category = $('#now_category').val();
 					d.application_person = $('#application_person').val();
 					d.application_num = $('#application_num_search').val();
