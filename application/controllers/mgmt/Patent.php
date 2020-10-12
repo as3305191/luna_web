@@ -449,8 +449,8 @@ class Patent extends MY_Mgmt_Controller {
 		$PHPWord->addTableStyle('tableStyle',$body_Style,null);
 		$PHPWord->addTableStyle('footer_tableStyle',$footer_style,null);
 
-		$header_table = $section->addTable('header_Style');
-		$body_table = $section->addTable('body_Style');
+		$header_table = $section->addTable('white_tableStyle');
+		$body_table = $section->addTable('tableStyle');
 		$footer_table = $section->addTable('footer_tableStyle');
 
 		$header_table->addRow();
