@@ -334,11 +334,10 @@ class Patent extends MY_Mgmt_Controller {
 
 	function export_all($id) {
 		$data = $this -> session -> userdata("patent_data");
-		$h = array();
-		$s = array();
+		
 		// $id= $this -> get_post('id');
 
-		if(!empty($list)){
+		if($id>0){
 			$data['id'] = $id;
 			$list = $this -> dao -> query_ajax($data);
 			$item = $list[0];
