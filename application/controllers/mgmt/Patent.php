@@ -336,7 +336,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data = $this -> session -> userdata("patent_data");
 		$h = array();
 		$s = array();
-		$id= $this -> get_post('id');
+		// $id= $this -> get_post('id');
 
 		if(!empty($list)){
 			$data['id'] = $id;
