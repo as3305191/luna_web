@@ -495,13 +495,13 @@ class Patent extends MY_Mgmt_Controller {
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('專利權期間',null,array('align'=>'center'));
-		$body_table->addCell(2000,null,2)->addText($item->patent_name_en,null);
+		$body_table->addCell(2000,null,2)->addText($item->patent_start_dt.'~'.$item->patent_end_dt,null);
 		$body_table->addCell(1000,null,1)->addText('專利權止日',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->patent_name_en,null);
+		$body_table->addCell(1000,null,1)->addText($item->patent_finish_date,null);
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('專利摘要',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,4)->addText($item->patent_name_en,null);
+		$body_table->addCell(4000,null,4)->addText($item->patent_note,null);
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('專利範圍',null,array('align'=>'center'));
