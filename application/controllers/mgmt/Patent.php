@@ -332,7 +332,7 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json(array_reverse($res));
 	}
 
-	function export_all() {
+	function export_all($id) {
 		$data = $this -> session -> userdata("patent_data");
 		$h = array();
 		$s = array();

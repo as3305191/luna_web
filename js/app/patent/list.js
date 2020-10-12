@@ -44,8 +44,8 @@ var patentAppClass = (function(app) {
 		// get year month list
 		app.tableReload();
 
-		app.doExportAll = function() {
-			location.href = baseUrl + app.basePath + '/export_all';
+		app.doExportAll = function(id) {
+			location.href = baseUrl + app.basePath + '/export_all/' + id;
 		}
 
 		// $('#1').on('change', function(){
