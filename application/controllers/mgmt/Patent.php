@@ -445,9 +445,8 @@ class Patent extends MY_Mgmt_Controller {
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('項目類別',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText(implode(",",$h),null);
-		$body_table->addCell(1000,null,1)->addText(implode(",",$h),null);
-		$body_table->addCell(1000,null,1)->addText(implode(",",$h),null);
+		$body_table->addCell(3000,null,3)->addText(implode(",",$h),null);
+		
 
 
 		$body_table->addRow();
