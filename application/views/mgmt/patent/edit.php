@@ -29,7 +29,7 @@
 			</a>
 		</div>
 		<?php endif?>
-		<?php if(isset($item) && $item>0): ?>
+		<?php if(isset($item) && $item->id>0): ?>
 			<div class="widget-toolbar pull-right">
 				<div class="btn-group">
 					<button onclick="currentApp.doExportAll()" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
