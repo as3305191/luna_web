@@ -29,13 +29,16 @@
 			</a>
 		</div>
 		<?php endif?>
-		<div class="widget-toolbar pull-right">
-			<div class="btn-group">
-				<button onclick="currentApp.doExportAll()" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
-					<i class="fa fa-save"></i>匯出
-				</button>
+		<?php if(isset($item) && $item>0): ?>
+			<div class="widget-toolbar pull-right">
+				<div class="btn-group">
+					<button onclick="currentApp.doExportAll()" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
+						<i class="fa fa-save"></i>匯出
+					</button>
+				</div>
 			</div>
-		</div>
+		<?php endif?>
+
 	</header>
 	<!-- widget div-->
 	<div>
