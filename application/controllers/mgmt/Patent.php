@@ -482,9 +482,6 @@ class Patent extends MY_Mgmt_Controller {
 		$body_table->addCell(1000,null,1)->addText($item->patnet_type,null);
 		$body_table->addCell(1000,array('vMerge' => 'fusion'),1);
 
-
-
-
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('申請號',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->application_num,null);
