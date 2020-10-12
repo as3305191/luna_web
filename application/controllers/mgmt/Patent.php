@@ -17,7 +17,8 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> load -> model('Country_dao', 'country_dao');
 		$this -> load -> model('Patent_status_dao', 'patent_status_dao');
 		$this -> load -> model('Patent_category_dao', 'patent_category_dao');
-		
+		$this -> load-> library('word');
+
 	}
 
 	public function index()
