@@ -441,8 +441,8 @@ class Patent extends MY_Mgmt_Controller {
 		// 	$table->addCell(3000)->addText($each->fix_way,$fontStyle,$centered); 
 		// 	$table->addCell(1500)->addText($each->user_name,$fontStyle,$centered); 
 		// } 
-		$header_Style = array('borderSize'=>5, 'borderColor'=>'006699', 'cellMargin'=>80);
-		$body_Style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
+		$header_Style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
+		$body_Style = array('borderSize'=>5, 'borderColor'=>'006699', 'cellMargin'=>80);
 		$footer_style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
 
 		$PHPWord->addTableStyle('white_tableStyle',$header_Style,null);
