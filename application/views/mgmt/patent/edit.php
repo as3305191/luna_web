@@ -125,6 +125,14 @@
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
+					<label class="col-md-3 control-label">受讓人</label>
+					<div class="col-md-6">
+						<textarea type="text" require class="form-control" rows="3" id="assignee" name="assignee" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> assignee : '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
 					<label class="col-md-3 control-label">關鍵字</label>
 					<div class="col-md-6">
 						<input type="text"  class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patent_key : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
@@ -783,7 +791,8 @@ function do_save() {
 			patnet_num: $('#patnet_num').val(),	
 			applicant: $('#applicant').val(),	
 			inventor: $('#inventor').val(),
-			patnet_type: $('#patnet_type').val()	
+			patnet_type: $('#patnet_type').val(),
+			assignee: $('#assignee').val()
 		},
 		success : function(data) {
 			if(data.error_msg) {

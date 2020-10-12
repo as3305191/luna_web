@@ -179,8 +179,11 @@ class Patent extends MY_Mgmt_Controller {
 		$applicant = $this -> get_post('applicant');
 		$inventor = $this -> get_post('inventor');
 		$patnet_type = $this -> get_post('patnet_type');
+		$assignee = $this -> get_post('assignee');
 
+		
 		$data['img_id'] = $img;
+		$data['assignee'] = $assignee;
 		$data['patnet_type'] = $patnet_type;
 		$data['patent_name_eng'] = $patent_name_eng;
 		$data['year'] = $year;
@@ -330,21 +333,44 @@ class Patent extends MY_Mgmt_Controller {
 
 	function export_all() {
 		$data = $this -> session -> userdata("patent_data");
-		$list = $this -> dao -> query_ajax($data);
 		$h = array();
 		$s = array();
+		$id= $this -> get_post('id');
 
 		if(!empty($list)){
+			$list = $this -> dao -> query_ajax($data);
 			$item = $list[0];
-			$hard_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($item->id,0);
-			$soft_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($item->id,1);
-			foreach($hard_list as $h_list){
-				$h[] = $h_list->hard_name;
+			if(!empty($item -> img_id)) {
+				$image= explode(",", $item -> img_id);
+				$item -> image_id =$image ;
+				foreach($image as $each){
+					$item -> image[] = $this -> img_dao -> find_by_id($each);
+				}
+			} 
+
+			if(!empty($item -> files_id)) {
+				$files = explode(",", $item -> files_id);
+				$item -> pdf_array =$files;
+				foreach($files as $each){
+					$item -> files[] = $this -> file_dao -> find_by_id($each);
+				}
 			}
-			foreach($soft_list as $s_list){
-				$s[] = $s_list->soft_name;
+			if(!empty($item -> public_num_file)) {
+				$public_number = explode(",", $item -> public_num_file);				
+				$item -> public_num_input =$public_number;
+				foreach($public_number as $each){
+					$item -> public_number[] = $this -> file_dao -> find_by_id($each);
+				}
 			}
-			$compter_fix_list = $this -> fix_record_dao -> find_now_compter_fix($item->id);
+
+			if(!empty($item -> patnet_num_file)) {
+				$patnet_number = explode(",", $item -> patnet_num_file);
+				$item -> patnet_num_input =$patnet_number;
+				foreach($patnet_number as $each){
+					$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
+				}
+			}
+
 		} 
 	
 		$PHPWord = new PHPWord(); 
@@ -411,52 +437,90 @@ class Patent extends MY_Mgmt_Controller {
 		$footer_table = $section->addTable('footer_tableStyle');
 
 		$header_table->addRow();
-		$header_table->addCell(8000,null,8)->addText('專利詳細資訊',array('bold' => true, 'size'=>25),array('align'=>'center'));
+		$header_table->addCell(5000,null,5)->addText('專利詳細資訊',array('bold' => true, 'size'=>25),array('align'=>'center'));
 
 		$header_table->addRow();
-		$header_table->addCell(8000,null,8)->addText('電腦管制表',array('size'=>25),array('align'=>'center', 'size'=>16));
-
-		$header_table->addRow();
-		$header_table->addCell(8000,null,8)->addText('電腦編號:'.$item->computer_num,null);
+		$header_table->addCell(5000,null,5)->addText('專利家族代碼:'.$item->patent_family,array('size'=>25),array('align'=>'right', 'size'=>16));
 
 		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('項目',null,array('align'=>'center'));
-		$body_table->addCell(6000,null,6)->addText('內容明細',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText('備註',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText('項目類別',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText(implode(",",$h),null);
+		$body_table->addCell(1000,null,1)->addText(implode(",",$h),null);
+		$body_table->addCell(1000,null,1)->addText(implode(",",$h),null);
+
 
 		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('硬體配備',null,array('align'=>'center'));
-		$body_table->addCell(6000,null,6)->addText(implode(",",$h),null);
-		$body_table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText('專利名稱',null,array('align'=>'center'));
+		$body_table->addCell(3000,null,3)->addText($item->patent_name,null);
+		
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('專利名稱(英)',null,array('align'=>'center'));
+		$body_table->addCell(3000,null,3)->addText($item->patent_name_eng,null);
 
 		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('安裝軟體',null,array('align'=>'center'));
-		$body_table->addCell(6000,null,6)->addText(implode(",",$s),null);
-		$body_table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText('專利國家',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->patent_country,null);
+		$body_table->addCell(1000,null,1)->addText('專利類別',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->patnet_type,null);
 
 		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('使用者',null,array('align'=>'center'));
-		$body_table->addCell(6000,null,6)->addText($item->admin_user_id,null);
-		$body_table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText('申請號',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->application_num,null);
+		$body_table->addCell(1000,null,1)->addText('申請日',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->application_date,null);
 
 		$body_table->addRow();
-		$body_table->addCell(8000,null,8)->addText('維修紀錄',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText('公開號',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->public_num,null);
+		$body_table->addCell(1000,null,1)->addText('公開日',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->public_date,null);
 
 		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('維修日期',null,array('align'=>'center'));
-		$body_table->addCell(3000,null,3)->addText('故障原因',null,array('align'=>'center'));
-		$body_table->addCell(3000,null,3)->addText('處置情形',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText('維修人員',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText('專利號',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->patnet_num,null);
+		$body_table->addCell(1000,null,1)->addText('公告日',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->announcement_date,null);
 
-		foreach($compter_fix_list as $each){
-			$body_table->addRow();
-			$body_table->addCell(1000,null,1)->addText(str_replace("-",",",$each->done_fix_date),null);
-			$body_table->addCell(3000,null,3)->addText($each->fix_reason,null);
-			$body_table->addCell(3000,null,3)->addText($each->fix_way,null);
-			$body_table->addCell(1000,null,1)->addText($each->user_name,null);
-		}
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('申請人',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->applicant,null);
+		$body_table->addCell(1000,null,1)->addText('發明人',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->inventor,null);
+
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('受讓人',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->assignee,null);
+		$body_table->addCell(1000,null,1)->addText('專利狀態',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->patnet_status,null);
+
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('專利權期間',null,array('align'=>'center'));
+		$body_table->addCell(2000,null,2)->addText($item->patent_name_en,null);
+		$body_table->addCell(1000,null,1)->addText('專利權止日',null,array('align'=>'center'));
+		$body_table->addCell(1000,null,1)->addText($item->patent_name_en,null);
+
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('專利摘要',null,array('align'=>'center'));
+		$body_table->addCell(4000,null,4)->addText($item->patent_name_en,null);
+
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('專利範圍',null,array('align'=>'center'));
+		$body_table->addCell(4000,null,4)->addText($item->patent_range,null);
+
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('專利分析相關資訊',null,array('align'=>'center'));
+		$body_table->addCell(4000,null,4)->addText(implode(",",$h),null);
+
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('專利家族',null,array('align'=>'center'));
+		$body_table->addCell(4000,null,4)->addText(implode(",",$h),null);
+
+		$body_table->addRow();
+		$body_table->addCell(1000,null,1)->addText('關鍵字',null,array('align'=>'center'));
+		$body_table->addCell(4000,null,4)->addText($item->patent_key,null);
+		
 		$footer_table->addRow();
-		$footer_table->addCell(8000,null,8)->addText('R020102-A',null,array('align'=>'right'));
+		$footer_table->addCell(5000,null,5)->addText('更新日:'.$item->update_date,null);
 
 		$date = date('YmdHis');
 		$filename = $date."-專利詳細資訊.docx";
