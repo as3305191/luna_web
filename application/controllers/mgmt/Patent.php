@@ -339,6 +339,7 @@ class Patent extends MY_Mgmt_Controller {
 		$id= $this -> get_post('id');
 
 		if(!empty($list)){
+			$data['id'] = $id;
 			$list = $this -> dao -> query_ajax($data);
 			$item = $list[0];
 			if(!empty($item -> img_id)) {
