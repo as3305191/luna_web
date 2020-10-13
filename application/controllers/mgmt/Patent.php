@@ -347,7 +347,9 @@ class Patent extends MY_Mgmt_Controller {
 				foreach($image as $each){
 					$item -> image[] = $this -> img_dao -> find_by_id($each);
 				}
-			} 
+			} else{
+				$item -> image='';
+			}
 
 			if(!empty($item -> files_id)) {
 				$files = explode(",", $item -> files_id);
@@ -359,7 +361,7 @@ class Patent extends MY_Mgmt_Controller {
 					}
 				}
 			} else{
-				$item -> files[]='';
+				$item -> files='';
 			}
 			if(!empty($item -> public_num_file)) {
 				$public_number = explode(",", $item -> public_num_file);				
@@ -368,7 +370,7 @@ class Patent extends MY_Mgmt_Controller {
 					$item -> public_number[] = $this -> file_dao -> find_by_id($each);
 				}
 			}else{
-				$item -> public_number[]='';
+				$item -> public_number='';
 			}
 
 			if(!empty($item -> patnet_num_file)) {
@@ -378,7 +380,7 @@ class Patent extends MY_Mgmt_Controller {
 					$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
 				}
 			}else{
-				$item -> patnet_number[]='';
+				$item -> patnet_number='';
 			}
 
 			if(!empty($item -> patent_family)) {
@@ -393,7 +395,7 @@ class Patent extends MY_Mgmt_Controller {
 				}
 					
 			} else{
-				$item -> all_family[]='';
+				$item -> all_family='';
 			}
 
 		} 
