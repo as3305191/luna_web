@@ -358,6 +358,8 @@ class Patent extends MY_Mgmt_Controller {
 						$item -> files[] = $each_list->file_name;
 					}
 				}
+			} else{
+				$item -> files[]='';
 			}
 			if(!empty($item -> public_num_file)) {
 				$public_number = explode(",", $item -> public_num_file);				
@@ -365,6 +367,8 @@ class Patent extends MY_Mgmt_Controller {
 				foreach($public_number as $each){
 					$item -> public_number[] = $this -> file_dao -> find_by_id($each);
 				}
+			}else{
+				$item -> public_number[]='';
 			}
 
 			if(!empty($item -> patnet_num_file)) {
@@ -373,6 +377,8 @@ class Patent extends MY_Mgmt_Controller {
 				foreach($patnet_number as $each){
 					$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
 				}
+			}else{
+				$item -> patnet_number[]='';
 			}
 
 			if(!empty($item -> patent_family)) {
@@ -386,6 +392,8 @@ class Patent extends MY_Mgmt_Controller {
 
 				}
 					
+			} else{
+				$item -> all_family[]='';
 			}
 
 		} 
