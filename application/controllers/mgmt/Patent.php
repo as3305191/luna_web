@@ -436,47 +436,47 @@ class Patent extends MY_Mgmt_Controller {
 		$body_table->addCell(3000,null,3)->addText($item->patent_name,null);
 
 		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'fusion'));
+		$body_table->addCell(1000,array('vMerge' => 'continue'));
 		$body_table->addCell(1000,null,1)->addText('專利名稱(英)',null,array('align'=>'center'));
 		$body_table->addCell(3000,null,3)->addText($item->patent_name_eng,null);
 
 		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'fusion'));
+		$body_table->addCell(1000,array('vMerge' => 'continue'));
 		$body_table->addCell(1000,null,1)->addText('專利國家',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->patent_country,null);
 		$body_table->addCell(1000,null,1)->addText('專利類別',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->patnet_type,null);
 
 		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'fusion'));
+		$body_table->addCell(1000,array('vMerge' => 'continue'));
 		$body_table->addCell(1000,null,1)->addText('申請號',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->application_num,null);
 		$body_table->addCell(1000,null,1)->addText('申請日',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->application_date,null);
 
 		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'fusion'));
+		$body_table->addCell(1000,array('vMerge' => 'continue'));
 		$body_table->addCell(1000,null,1)->addText('公開號',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->public_num,null);
 		$body_table->addCell(1000,null,1)->addText('公開日',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->public_date,null);
 
 		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'fusion'));
+		$body_table->addCell(1000,array('vMerge' => 'continue'));
 		$body_table->addCell(1000,null,1)->addText('專利號',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->patnet_num,null);
 		$body_table->addCell(1000,null,1)->addText('公告日',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->announcement_date,null);
 
 		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'fusion'));
+		$body_table->addCell(1000,array('vMerge' => 'continue'));
 		$body_table->addCell(1000,null,1)->addText('申請人',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->applicant,null);
 		$body_table->addCell(1000,null,1)->addText('發明人',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->inventor,null);
 
 		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'fusion'));
+		$body_table->addCell(1000,array('vMerge' => 'continue'));
 		$body_table->addCell(1000,null,1)->addText('受讓人',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->assignee,null);
 		$body_table->addCell(1000,null,1)->addText('專利狀態',null,array('align'=>'center'));
