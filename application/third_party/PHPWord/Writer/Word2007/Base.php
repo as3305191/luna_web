@@ -519,7 +519,7 @@ class PHPWord_Writer_Word2007_Base extends PHPWord_Writer_Word2007_WriterPart {
 		$brdSz = $style->getBorderSize();
 		$brdCol = $style->getBorderColor();
 		$gridSpan = $style->getGridSpan();
-		$vMerge = $style->getVMerge( ); 
+		$vMerge = $style->getVMerge(); 
 
 	
 		$bTop = (!is_null($brdSz[0])) ? true : false;
@@ -595,7 +595,7 @@ class PHPWord_Writer_Word2007_Base extends PHPWord_Writer_Word2007_WriterPart {
 			}
 			if(!is_null($gridSpan)) 
 			{ 
-				$objWriter->startElement('w: gridSpan'); 
+				$objWriter->startElement('w:gridSpan'); 
 				$objWriter->writeAttribute('w:val', $gridSpan); 
 				$objWriter->endElement(); 
 			}

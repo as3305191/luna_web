@@ -291,18 +291,22 @@ class PHPWord_Style_Cell {
 	}
 	private $_gridSpan;// for the colspan
 	private $_vMerge;// for the rowspan
+
 	public function setGridSpan($pValue = null) 
     { 
        $this->_gridSpan = $pValue; 
-    } 
+	} 
+	
     public function getGridSpan() 
     { 
        return $this->_gridSpan; 
-    }
+	}
+	
     public function setVMerge($pValue = null) 
     { 
        $this->_vMerge = $pValue; 
-    } 
+	} 
+	
     public function getVMerge() 
     { 
        return $this->_vMerge; 
