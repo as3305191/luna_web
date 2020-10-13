@@ -406,7 +406,6 @@ class Patent extends MY_Mgmt_Controller {
 		$sectionStyle = array('orientation' => null,  'marginLeft' => 2000,  'marginRight' => 2000); //頁面設定
 		$section = $PHPWord->createSection($sectionStyle); //建立一個頁面
 		 
-
 		$header_Style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
 		$body_Style = array('borderSize'=>5, 'borderColor'=>'000000', 'cellMargin'=>80);
 		$footer_style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
