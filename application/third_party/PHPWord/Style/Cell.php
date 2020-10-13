@@ -126,6 +126,9 @@ class PHPWord_Style_Cell {
 	/**
 	 * Create a new Cell Style
 	 */
+	private $_gridSpan;// for the colspan
+	private $_vMerge;// for the rowspan
+
 	public function __construct() {
 		$this->_valign = null;
 		$this->_textDirection = null;
@@ -289,9 +292,8 @@ class PHPWord_Style_Cell {
 	public function getDefaultBorderColor() {
 		return $this->_defaultBorderColor;
 	}
-	private $_gridSpan;// for the colspan
-	private $_vMerge;// for the rowspan
 
+	
 	public function setGridSpan($pValue = null) 
     { 
        $this->_gridSpan = $pValue; 
