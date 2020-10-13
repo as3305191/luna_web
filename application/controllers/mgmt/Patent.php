@@ -406,51 +406,7 @@ class Patent extends MY_Mgmt_Controller {
 		$sectionStyle = array('orientation' => null,  'marginLeft' => 2000,  'marginRight' => 2000); //頁面設定
 		$section = $PHPWord->createSection($sectionStyle); //建立一個頁面
 		 
-		
-		// $tableStyle = array('borderSize'=>6, 'borderColor'=>'006699', 'cellMargin'=>80);
 
-		// Add table style 
-		// $PHPWord->addTableStyle('myOwnTableStyle', $styleTable, $styleFirstRow); 
-		// $PHPWord->addTableStyle('tableStyle',$tableStyle,null);
-		// $table = $section->addTable('tableStyle');
-		// $table->addRow(900); 
-		// $table->addCell(8000,$styleCell)->addText('寬事工業股份有限公司',$fontStyle,$centered); 
-		
-		// $table->addRow(900); 
-		// $table->addCell(8000,$styleCell)->addText('電腦管制表',$fontStyle,$centered); 
-		// $table->addRow(900); 
-		// $table->addCell(8000,$styleCell)->addText('電腦編號：'.$item->computer_num); 
-		// // Add table 
-		// $table = $section->addTable('myOwnTableStyle'); 
-
-		// $table->addRow(); 
-		// $table->addCell(1000)->addText('項目',$fontStyle,$centered); 
-		// $table->addCell(8000)->addText('內容明細',$fontStyle,$centered); 
-		// $table->addRow(); 
-		// $table->addCell(1000)->addText('硬體配備',$fontStyle,$centered); 
-		// $table->addCell(8000)->addText(implode(",",$h),$fontStyle,$centered); 
-		// $table->addRow(); 
-		// $table->addCell(1000)->addText('安裝軟體',$fontStyle,$centered); 
-		// $table->addCell(8000)->addText(implode(",",$s),$fontStyle,$centered);
-		// $table->addRow(); 
-		// $table->addCell(1000)->addText('使用者',$fontStyle,$centered); 
-		// $table->addCell(8000)->addText($item->admin_user_id,$fontStyle,$centered);  
-		// $table->addRow(); 
-		// $table->addCell(9000)->addText('維修紀錄',$fontStyle,$centered); 
-		// $table->addRow(); 
-		// $table->addCell(1500)->addText('完修日期',$fontStyle,$centered); 
-		// $table->addCell(3000)->addText('故障原因',$fontStyle,$centered); 
-		// $table->addCell(3000)->addText('處置情形',$fontStyle,$centered); 
-		// $table->addCell(1500)->addText('維修人員',$fontStyle,$centered); 
-
-		// // Add more rows/cells 
-		// foreach($compter_fix_list as $each){
-		// 	$table->addRow(); 
-		// 	$table->addCell(1500)->addText($each->done_fix_date,$fontStyle,$centered); 
-		// 	$table->addCell(3000)->addText($each->fix_reason,$fontStyle,$centered); 
-		// 	$table->addCell(3000)->addText($each->fix_way,$fontStyle,$centered); 
-		// 	$table->addCell(1500)->addText($each->user_name,$fontStyle,$centered); 
-		// } 
 		$header_Style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
 		$body_Style = array('borderSize'=>5, 'borderColor'=>'000000', 'cellMargin'=>80);
 		$footer_style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
@@ -462,6 +418,7 @@ class Patent extends MY_Mgmt_Controller {
 		$header_table = $section->addTable('white_tableStyle');
 		$body_table = $section->addTable('tableStyle');
 		$footer_table = $section->addTable('footer_tableStyle');
+		// $picture_table = $section->addTable();
 
 		$header_table->addRow();
 		$header_table->addCell(5000,null,5)->addText('專利詳細資訊',array('bold' => true, 'size'=>20),array('align'=>'center'));
@@ -474,56 +431,56 @@ class Patent extends MY_Mgmt_Controller {
 		$body_table->addCell(4000,null,4)->addText("1",null);
 
 		$body_table->addRow();
+		$body_table->addCell(1000,array('vMerge' => 'restart'))->addText('1');
 		$body_table->addCell(1000,null,1)->addText('專利名稱',null,array('align'=>'center'));
 		$body_table->addCell(3000,null,3)->addText($item->patent_name,null);
-		$body_table->addCell(1000,array('vMerge' => 'restart'))->addText('1');
 
 		$body_table->addRow();
+		$body_table->addCell(1000,array('vMerge' => 'fusion'));
 		$body_table->addCell(1000,null,1)->addText('專利名稱(英)',null,array('align'=>'center'));
 		$body_table->addCell(3000,null,3)->addText($item->patent_name_eng,null);
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
 
 		$body_table->addRow();
+		$body_table->addCell(1000,array('vMerge' => 'fusion'));
 		$body_table->addCell(1000,null,1)->addText('專利國家',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->patent_country,null);
 		$body_table->addCell(1000,null,1)->addText('專利類別',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->patnet_type,null);
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
 
 		$body_table->addRow();
+		$body_table->addCell(1000,array('vMerge' => 'fusion'));
 		$body_table->addCell(1000,null,1)->addText('申請號',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->application_num,null);
 		$body_table->addCell(1000,null,1)->addText('申請日',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->application_date,null);
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
 
 		$body_table->addRow();
+		$body_table->addCell(1000,array('vMerge' => 'fusion'));
 		$body_table->addCell(1000,null,1)->addText('公開號',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->public_num,null);
 		$body_table->addCell(1000,null,1)->addText('公開日',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->public_date,null);
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
 
 		$body_table->addRow();
+		$body_table->addCell(1000,array('vMerge' => 'fusion'));
 		$body_table->addCell(1000,null,1)->addText('專利號',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->patnet_num,null);
 		$body_table->addCell(1000,null,1)->addText('公告日',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->announcement_date,null);
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
 
 		$body_table->addRow();
+		$body_table->addCell(1000,array('vMerge' => 'fusion'));
 		$body_table->addCell(1000,null,1)->addText('申請人',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->applicant,null);
 		$body_table->addCell(1000,null,1)->addText('發明人',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->inventor,null);
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
 
 		$body_table->addRow();
+		$body_table->addCell(1000,array('vMerge' => 'fusion'));
 		$body_table->addCell(1000,null,1)->addText('受讓人',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->assignee,null);
 		$body_table->addCell(1000,null,1)->addText('專利狀態',null,array('align'=>'center'));
 		$body_table->addCell(1000,null,1)->addText($item->patnet_status,null);
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('專利權期間',null,array('align'=>'center'));
@@ -559,7 +516,7 @@ class Patent extends MY_Mgmt_Controller {
 		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
 		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
 		header('Cache-Control: max-age=0'); //no cache
-		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2007');
+		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2003');
 		$objWriter->save('php://output');
 	}
 
