@@ -163,7 +163,7 @@
 		data : 'img_id',
 		render: function(d,t,r){
 			if(d>0){
-				var html = '<div style="min-height:150px; object-fit: cover;background-image: url('+baseUrl+'api/images/get/'+d+'/thumb);" ></div>';
+				var html = '<img src="'+baseUrl+'api/images/get/'+d+'/thumb" style="max-height:200px;max-width:200px" ></div>';
 				return html;
 			} else{
 				return '';
