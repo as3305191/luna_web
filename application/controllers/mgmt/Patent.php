@@ -471,13 +471,12 @@ class Patent extends MY_Mgmt_Controller {
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('項目類別',null,array('align'=>'center'));
-		$body_table->addCell(3000,null,3)->addText("1",null);
-		$body_table->addCell(1000,array('vMerge' => 'restart'))->addText('1');
+		$body_table->addCell(4000,null,4)->addText("1",null);
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('專利名稱',null,array('align'=>'center'));
 		$body_table->addCell(3000,null,3)->addText($item->patent_name,null);
-		$body_table->addCell(1000,array('vMerge' => 'fusion'));
+		$body_table->addCell(1000,array('vMerge' => 'restart'))->addText('1');
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('專利名稱(英)',null,array('align'=>'center'));
