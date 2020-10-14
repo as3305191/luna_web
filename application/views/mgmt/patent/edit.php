@@ -299,6 +299,8 @@
 					<label class="col-md-3 control-label">專利代表圖</label>
 					<div class="col-md-6">
 						<input id="img-input" name="file" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
+						<input id="img_id" type="hidden"  value="<?= isset($item) ? $item -> img_id : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
+
 					</div>
 				</div>
 			</fieldset>
@@ -389,13 +391,20 @@ $('#app-edit-form').bootstrapValidator({
 	}).bootstrapValidator('validate');
 
 
-var pdf_array=false,public_num_input=false,patnet_num_input=false;
-var img='<?= isset($item->image_id)?$item->image_id['0']:''?>';
+var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false;
 
 if($('#item_id').val()>0){
 	pdf_array=[];
 	public_num_input=[];
 	patnet_num_input=[];
+	img=[];
+
+	if($('#img_id').val().length>0){
+		img.push($('#img_id').val());
+		// pdf_array.splice($.inArray(0,pdf_array),1);
+
+	}
+
 	if($('#files_id').val().length>0){
 		pdf_array.push($('#files_id').val());
 		// pdf_array.splice($.inArray(0,pdf_array),1);
@@ -417,6 +426,8 @@ if($('#item_id').val()>0){
 	pdf_array=[];
 	public_num_input=[];
 	patnet_num_input=[];
+	img=[];
+
 }
 
 
@@ -471,16 +482,16 @@ $("#img-input").fileinput({
         }
     }).on('fileuploaded', function(event, data, previewId, index) {
 		// upload image
-		img='';
 		var id = data.response.id;
-		img=id ;
+		img.push(id);
 		// console.log(img_array);
 		// $('#image_id').val(id);
 	   $("#img-input").fileinput('reset');
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#img-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
-		img='';
+		img.splice($.inArray(data,img),1);
+
 		// console.log(img_array);
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
@@ -774,7 +785,7 @@ function do_save() {
 			patent_name_eng: $('#patent_name_eng').val(),
 			patnet_name: $('#patnet_name').val(),
 			pdf_array: pdf_array.join(","),
-			img: img,
+			img: img.join(","),
 			application_number:$('#application_number').val(),
 			announcement_num:$('#announcement_num').val(),
 			patent_country:$('#patent_country').val(),
