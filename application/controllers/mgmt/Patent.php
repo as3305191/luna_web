@@ -391,7 +391,6 @@ class Patent extends MY_Mgmt_Controller {
 					} else{
 						$item -> all_family[] = $each->patnet_num;
 					}
-
 				}
 					
 			} else{
