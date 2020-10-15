@@ -165,6 +165,11 @@ class PHPWord_Style_Cell {
 	public function getVAlign() {
 		return $this->_valign;
 	}
+
+  	// public function FunctionName(Type $var = null)
+	// {
+
+	// }
 	
 	public function setVAlign($pValue = null) {
 		$this->_valign = $pValue;
