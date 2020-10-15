@@ -444,7 +444,7 @@ $("#img-input").fileinput({
         		<?php foreach($item -> image as $img): ?>
         			'<?=  base_url('mgmt/images/get/' . $img->id) ?>',
         		<?php endforeach ?>
-        	],
+			],
         	initialPreviewConfig: [
 			<?php foreach($item -> image as $img): ?>
 				<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
@@ -486,7 +486,7 @@ $("#img-input").fileinput({
 		img.push(id);
 		// console.log(img_array);
 		// $('#image_id').val(id);
-	   $("#img-input").fileinput('reset');
+	//    $("#img-input").fileinput('reset');
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#img-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
