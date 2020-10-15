@@ -431,7 +431,7 @@ if($('#item_id').val()>0){
 }
 
 
-// console.log(img);
+console.log(img);
 // console.log(pdf_array);
 // console.log(public_num_input);
 // console.log(patnet_num_input);
@@ -477,14 +477,14 @@ $("#img-input").fileinput({
 		overwriteInitial: false,
 		purifyHtml:true ,
         maxFileCount: 1,
-        uploadUrl: 'mgmt/images/upload/img',
+        uploadUrl: 'mgmt/images/upload_img_or_pdf/img',
         uploadExtraData: {
         }
     }).on('fileuploaded', function(event, data, previewId, index) {
 		// upload image
 		var id = data.response.id;
 		img.push(id);
-		// console.log(img_array);
+		console.log(img);
 		// $('#image_id').val(id);
 	//    $("#img-input").fileinput('reset');
 	}).on('fileselect', function(event, numFiles, label) {
