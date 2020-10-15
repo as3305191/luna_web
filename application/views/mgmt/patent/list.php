@@ -160,7 +160,7 @@
 	var mCols = [null,{
 		data : 'patent_name'
 	}, {
-		data : 'img_id',
+		data : 'image',
 		render: function(d,t,r){
 			if(d>0){
 				var html = '<img src="'+baseUrl+'api/images/get/'+d+'/thumb" style="max-height:200px;max-width:200px" ></div>';
