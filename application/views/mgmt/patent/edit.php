@@ -298,7 +298,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利代表圖</label>
 					<div class="col-md-6">
-						<input id="img-input" name="file" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
+						<input id="img-input" name="file[]" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
 						<input id="img_id" type="hidden"  value="<?= isset($item) ? $item -> img_id : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
 
 					</div>
@@ -477,7 +477,7 @@ $("#img-input").fileinput({
 		overwriteInitial: false,
 		purifyHtml:true ,
         maxFileCount: 1,
-        uploadUrl: 'mgmt/images/upload_img_or_pdf/img',
+        uploadUrl: 'mgmt/images/upload/img',
         uploadExtraData: {
         }
     }).on('fileuploaded', function(event, data, previewId, index) {
