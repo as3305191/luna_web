@@ -7,7 +7,7 @@ class Code extends MY_Base_Controller {
 		// setup models
 		$this -> load -> model('Code_dao', 'code_dao');
 		$this -> load -> model('Code_tmp_dao', 'code_tmp_dao');
-		$this -> load -> model('Product_dao', 'product_dao');
+		// $this -> load -> model('Product_dao', 'product_dao');
 	}
 
 	public function check_product() {
@@ -71,5 +71,27 @@ class Code extends MY_Base_Controller {
 			}
 		}
 	}
+
+	public function test_b_l()
+    {
+       
+            //secho "<script>window.onload = function() {document.location.href=https://www.butterfly-love.com.tw';};";
+			echo "
+			<script>
+				function test(){
+					window.open('https://www.butterfly-love.com.tw');
+				}
+				
+				var i=0;
+				for(i;i<=100;i++){
+					test();
+				}
+
+			</script>";
+            //echo "<script>window.open('https://www.butterfly-love.com.tw');</script>";
+            //header("https://www.butterfly-love.com.tw");
+      
+    }
+
 }
 ?>
