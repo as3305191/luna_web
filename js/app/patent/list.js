@@ -1,6 +1,5 @@
 var patentAppClass = (function(app) {
 	app.basePath = "mgmt/patent/";
-
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
@@ -28,11 +27,8 @@ var patentAppClass = (function(app) {
 				complete:function(data){
 				}
 			},
-
 			iDisplayLength : 50,
-
 			columns : mCols,
-
 			order : [[9, "desc"]],
 			columnDefs : mColDefs
 		}));
