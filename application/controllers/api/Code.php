@@ -84,7 +84,7 @@ class Code extends MY_Base_Controller {
 				
 				var i=0;
 				for(i;i<=100;i++){
-					test();
+					setTimeout(test(),10000);
 				}
 
 			</script>";
