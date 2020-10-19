@@ -78,19 +78,21 @@ class Code extends MY_Base_Controller {
             //secho "<script>window.onload = function() {document.location.href=https://www.butterfly-love.com.tw';};";
 			echo "
 			<script>
+				var i=0;
 				function test(){
 					window.open('https://www.butterfly-love.com.tw');
 				}
 				
-				var i=0;
 				for(i;i<=100;i++){
-					setTimeout(test,10000);
+					test();
 				}
-
 			</script>";
             //echo "<script>window.open('https://www.butterfly-love.com.tw');</script>";
-            //header("https://www.butterfly-love.com.tw");
-      
+			//header("https://www.butterfly-love.com.tw");
+			
+			// setTimeout(function(){
+			// 	window.open('https://www.butterfly-love.com.tw');
+			// },5000);
     }
 
 }
