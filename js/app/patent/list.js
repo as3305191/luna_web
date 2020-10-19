@@ -9,7 +9,6 @@ var patentAppClass = (function(app) {
 					// d.status = $('#s_status').val();
 					// d.start_time = $('#s_start_time').val();
 					// d.station_id = $('#station_id').val();
-
 					// d.type_1 = $('#1').val();
 					// d.type_2 = $('#2').val();
 					d.now_category = $('#now_category').val();
