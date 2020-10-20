@@ -39,7 +39,7 @@ var patentAppClass = (function(app) {
 		app.tableReload();
 
 		app.doExportAll = function(id) {
-			window.open = baseUrl + app.basePath + '/export_all/' + id;
+			window.open(baseUrl + app.basePath + '/export_all/' + id);
 		}
 
 		// $('#1').on('change', function(){
