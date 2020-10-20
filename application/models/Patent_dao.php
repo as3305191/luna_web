@@ -126,7 +126,6 @@ class Patent_dao extends MY_Model {
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-	
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 

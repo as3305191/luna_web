@@ -160,6 +160,8 @@ class Patent extends MY_Mgmt_Controller {
 
 	public function insert() {//新增
 		$res = array();
+		$img_array = array();
+
 		$id = $this -> get_post('id');
 		$patent_name_eng = $this -> get_post('patent_name_eng');
 		$patnet_name = $this -> get_post('patnet_name');
@@ -190,9 +192,13 @@ class Patent extends MY_Mgmt_Controller {
 		$inventor = $this -> get_post('inventor');
 		$patnet_type = $this -> get_post('patnet_type');
 		$assignee = $this -> get_post('assignee');
-
+		// foreach ($img as $each) {
+		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
+		// }
 		
 		$data['img_id'] = $img;
+		$data['img_active'] = $img_array[0];
+
 		$data['assignee'] = $assignee;
 		$data['patnet_type'] = $patnet_type;
 		$data['patent_name_eng'] = $patent_name_eng;
