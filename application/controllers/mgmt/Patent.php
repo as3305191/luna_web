@@ -197,7 +197,7 @@ class Patent extends MY_Mgmt_Controller {
 		// }
 		
 		$data['img_id'] = $img;
-		$data['img_active'] = $img_array[0];
+		// $data['img_active'] = $img_array[0];
 
 		$data['assignee'] = $assignee;
 		$data['patnet_type'] = $patnet_type;
