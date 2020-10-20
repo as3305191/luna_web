@@ -531,4 +531,71 @@ class Patent extends MY_Mgmt_Controller {
 	// 	$objWriter->save('php://output');
 	// }
 
+	public function export_all($id) {
+		$data = array();
+		$u_data = array();
+		$data['id'] = $id;
+		if(!empty($id)) {
+			$q_data = $this -> get_posts(array(
+				'length',
+				'start',
+				'columns',
+				'search',
+				'order'
+			));
+			$q_data['id'] = $id;
+			$list = $this -> dao -> query_ajax($q_data);
+			$item = $list[0];
+			if(!empty($item -> img_id)) {
+				$image= explode(",", $item -> img_id);
+				$item -> image_id =$image ;
+				foreach($image as $each){
+					$item -> image[] = $this -> img_dao -> find_by_id($each);
+				}
+			} else{
+				$item -> image =array();
+			}
+
+			if(!empty($item -> files_id)) {
+				$files = explode(",", $item -> files_id);
+				$item -> pdf_array =$files;
+				foreach($files as $each){
+					$item -> files[] = $this -> file_dao -> find_by_id($each);
+				}
+			}else{
+				$item -> files =array();
+			}
+
+			if(!empty($item -> public_num_file)) {
+				$public_number = explode(",", $item -> public_num_file);				
+				$item -> public_num_input =$public_number;
+				foreach($public_number as $each){
+					$item -> public_number[] = $this -> file_dao -> find_by_id($each);
+				}
+			}else{
+				$item -> public_number =array();
+			}
+
+			if(!empty($item -> patnet_num_file)) {
+				$patnet_number = explode(",", $item -> patnet_num_file);
+				$item -> patnet_num_input =$patnet_number;
+				foreach($patnet_number as $each){
+					$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
+				}
+			}else{
+				$item -> patnet_number =array();
+			}
+
+			$data['item'] = $item;
+			$this -> session -> set_userdata('patent_data', $q_data);
+			$u_data = $this -> setup_user_data($u_data);
+			$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
+		}
+		// $data['country'] = $this -> country_dao -> find_all();
+
+		// $this -> to_json($data);
+		
+		$this->load->view('mgmt/patent/export', $data);
+	}
+
 }
