@@ -203,7 +203,6 @@
 					</div>
 				</div>
 			</fieldset>
-			
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">申請日</label>
