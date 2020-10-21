@@ -100,9 +100,8 @@
 					<label class="col-md-3 control-label">專利國家</label>
 					<div class="col-md-6">
 					<input type="hidden"  id="p_country" required value="<?= isset($item) ? $item -> patent_country : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
-
 						<select name="patnet_country" id="patent_country" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
-						
+						<!-- option from javascript -->
 						</select>
 					</div>
 					<div class="col-md-2">
