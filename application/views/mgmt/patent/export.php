@@ -177,7 +177,6 @@
 					<div class="col-md-6">
 						<input id="public-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
 						<input id="public_num_file"  type="hidden"  value="<?= isset($item) ? $item -> public_num_file : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
-
 					</div>
 				</div>
 			</fieldset>
