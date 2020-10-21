@@ -12,7 +12,6 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> load -> model('C_s_h_join_list_dao', 'c_s_h_join_list_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Files_dao','file_dao');
-
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Country_dao', 'country_dao');
 		$this -> load -> model('Patent_status_dao', 'patent_status_dao');
