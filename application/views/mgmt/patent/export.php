@@ -38,7 +38,6 @@
 				</div>
 			</div>
 		<?php endif?>
-
 	</header>
 	<!-- widget div-->
 	<div>
