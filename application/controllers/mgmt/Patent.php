@@ -6,10 +6,6 @@ class Patent extends MY_Mgmt_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('Patent_dao', 'dao');
-		$this -> load -> model('Computer_dao', 'computer_dao');
-		$this -> load -> model('Computer_hard_dao', 'c_h_dao');
-		$this -> load -> model('Computer_soft_dao', 'c_s_dao');
-		$this -> load -> model('C_s_h_join_list_dao', 'c_s_h_join_list_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Files_dao','file_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
