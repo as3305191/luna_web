@@ -48,12 +48,7 @@
 		</div>
 		<!-- end widget edit box -->
 		<!-- widget content -->
-		<div class="widget-body">
-			<form id="app-edit-form" method="post" class="form-horizontal">
-				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-				<input type="hidden" id="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
-				<div class="form-group" style="padding:0px 26px">
-        <div class="clearfix"></div>
+		
     </div>
 	<table id="export_table_list" class="table table-striped table-bordered table-hover" width="100%">
 		<thead>
