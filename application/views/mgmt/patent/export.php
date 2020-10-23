@@ -55,7 +55,25 @@
 				<div class="form-group" style="padding:0px 26px">
         <div class="clearfix"></div>
     </div>
-  
+	<table id="export_table_list" class="table table-striped table-bordered table-hover" width="100%">
+		<thead>
+			<tr>
+				<th class="min25"></th>
+				<th class="min100">專利名稱</th>
+				<th class="min100">代表圖</th>
+				<th class="min100">申請人</th>
+				<th class="min100">發明人</th>
+				<th class="min100">申請號</th>
+				<th class="min100">公開號</th>
+				<th class="min100">申請日</th>
+				<th class="min100">公告日</th>
+				<th class="min100">更新日</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
 </div>
 <!-- end widget -->
 <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script>
