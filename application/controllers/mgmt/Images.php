@@ -178,7 +178,14 @@ class Images extends MY_Base_Controller {
 
 			    ],
 			    'initialPreviewConfig' => [
-			        ['caption' => "$name", 'size' => $size, 'width' => '120px', 'url' => $url, 'key' => $last_id]
+			        [	'caption' =>  $name,
+						'size' => $size,
+						'width'  =>   '120px',
+						'url'  =>   $url,
+						'downloadUrl' =>  base_url('mgmt/images/get/' . $last_id),
+						'key'  =>   $last_id
+						
+						]
 			    ],
 			    "id" => $last_id
 			];
