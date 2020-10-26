@@ -130,10 +130,10 @@ class Images extends MY_Base_Controller {
 	public function upload($image_path) {
 		$info = '';
 
-		$name = $_FILES['file']['name'];
-		$tmp_name = $_FILES['file']['tmp_name'];
-		$type = $_FILES['file']['type'];
-		$size = $_FILES['file']['size'];
+		$name = $_FILES['file']['name'][0];
+		$tmp_name = $_FILES['file']['tmp_name'][0];
+		$type = $_FILES['file']['type'][0];
+		$size = $_FILES['file']['size'][0];
 
 		if (!($type == 'image/jpeg' || $type == 'image/png' || $type == 'image/gif' || $type =='image/jpg')) {
 			$info = "非支援上傳格式(jpeg/jpg/png/gif)";
