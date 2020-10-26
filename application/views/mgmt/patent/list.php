@@ -107,7 +107,7 @@
 											<th class="min100">代表圖</th>
 											<th class="min100">申請人</th>
 											<th class="min100">發明人</th>
-											<th class="min100">申請號</th>
+											<th class="min100">專利號</th>
 											<th class="min100">公開號</th>
 											<th class="min100">申請日</th>
 											<th class="min100">公告日</th>
@@ -175,7 +175,7 @@
 	},{
 		data : 'inventor'
 	}, {
-		data : 'application_num'
+		data : 'patnet_num'
 	}, {
 		data : 'public_num'
 	}, {

