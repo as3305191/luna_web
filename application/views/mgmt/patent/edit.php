@@ -292,7 +292,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利代表圖</label>
 					<div class="col-md-6">
-						<input id="img-input" name="file" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
+						<input id="img-input" name="file[]" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
 						<input id="img_id" type="hidden"  value="<?= isset($item) ? $item -> img_id : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
 
 					</div>
