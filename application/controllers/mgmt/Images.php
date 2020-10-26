@@ -174,7 +174,8 @@ class Images extends MY_Base_Controller {
 			$url = 'mgmt/images/delete/' . $last_id;
 			$res = [
 			    'initialPreview' => [
-			   		base_url('mgmt/images/get/' . $last_id)
+					   base_url('mgmt/images/get/' . $last_id)
+
 			    ],
 			    'initialPreviewConfig' => [
 			        ['caption' => "$name", 'size' => $size, 'width' => '120px', 'url' => $url, 'key' => $last_id]
