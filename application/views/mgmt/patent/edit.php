@@ -308,7 +308,6 @@
 				</div>
 			</fieldset>	
 			
-
 						<style>
 							#product_spec_list {
 							
@@ -328,7 +327,6 @@
 							}
 
 						</style>
-
 		</div>
 
 			</form>
