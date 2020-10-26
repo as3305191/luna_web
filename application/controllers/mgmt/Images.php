@@ -198,7 +198,7 @@ class Images extends MY_Base_Controller {
 		// 	}
 
 
-			$res['append'] = FALSE;
+			$res['append'] = TRUE;
 
 			$this -> to_json($res);
 		}
