@@ -47,6 +47,17 @@ class Patent extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
+		foreach($items as $each){
+			if(!empty($each -> img_id)) {
+				$image= explode(",", $each -> img_id);
+				$each -> image_id =$image ;
+				$each -> image = $image[0];
+			} else{
+				$each -> image =0;
+			}
+		}
+	
+
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
