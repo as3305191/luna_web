@@ -164,12 +164,12 @@ class Images extends MY_Base_Controller {
 
 		if (!empty($last_id)) {
 			// resize
-			$this -> resizetext($tmp_name, 50, 50);
+			// $this -> resizetext($tmp_name, 50, 50);
 
-			$img_content = file_get_contents($tmp_name);
-			$this -> dao -> update(array(
-				'img_thumb' => $img_content
-			), $last_id);
+			// $img_content = file_get_contents($tmp_name);
+			// $this -> dao -> update(array(
+			// 	'img_thumb' => $img_content
+			// ), $last_id);
 
 			$url = 'mgmt/images/delete/' . $last_id;
 			$res = [
