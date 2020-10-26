@@ -48,7 +48,6 @@
 		</div>
 		<!-- end widget edit box -->
 		<!-- widget content -->
-		
     </div>
 	<table id="export_table_list" class="table table-striped table-bordered table-hover" width="100%">
 		<thead>
