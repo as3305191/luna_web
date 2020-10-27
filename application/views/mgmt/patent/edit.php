@@ -65,7 +65,6 @@
 						
 					</div>
 					<input type="hidden" required class="form-control" id="in_patnet_status" value="<?= isset($item) ? $item -> patnet_status : '0' ?>"/>
-
 				</div>
 			</fieldset>
 			<fieldset>
