@@ -62,7 +62,6 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利類型</label>
 					<div class="col-md-6" id="patnet_status" >
-						
 					</div>
 					<input type="hidden" required class="form-control" id="in_patnet_status" value="<?= isset($item) ? $item -> patnet_status : '0' ?>"/>
 				</div>
