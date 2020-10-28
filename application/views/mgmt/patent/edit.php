@@ -29,14 +29,14 @@
 			</a>
 		</div>
 		<?php endif?>
-		<?php if(isset($item) && $item->id>0): ?>
-			<!-- <div class="widget-toolbar pull-right">
+		<?php if($login_user->role_id==24): ?>
+			<div class="widget-toolbar pull-right">
 				<div class="btn-group">
 					<button onclick="currentApp.doExportAll(<?=$item -> id ?>)" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
 						<i class="fa fa-save"></i>匯出
 					</button>
 				</div>
-			</div> -->
+			</div>
 		<?php endif?>
 
 	</header>
