@@ -104,7 +104,7 @@
 										<tr>
 											<th class="min25"></th>
 											<th class="min100">專利名稱</th>
-											<th class="min100">代表圖</th>
+											<th class="min100" style="text-align:center;vertical-align:middle;">代表圖</th>
 											<th class="min100">申請人</th>
 											<th class="min100">發明人</th>
 											<th class="min100">專利號</th>
@@ -163,7 +163,7 @@
 		data : 'image',
 		render: function(d,t,r){
 			if(d>0){
-				var html = '<div style="background-image: url("'+baseUrl+'api/images/get/'+d+'/thumb");max-height:200px;max-width:200px;text-align:center;vertical-align:middle;" ></div>';
+				var html = '<div style="background-image: url("'+baseUrl+'api/images/get/'+d+'/thumb");max-height:200px;max-width:200px;" ></div>';
 				return html;
 			} else{
 				return '';
