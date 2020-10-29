@@ -604,4 +604,16 @@ class Patent extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/patent/export', $data);
 	}
 
+
+	public function demo()
+	{
+		$data = array();
+		$data = $this -> setup_user_data($data);
+		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+		// $data['patent_status'] = $this -> patent_status_dao -> find_all();
+		// $this -> to_json($data);
+
+		$this -> load -> view('mgmt/patent/demo', $data);
+	}
+
 }
