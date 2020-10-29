@@ -26,27 +26,8 @@
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
 	<header>
-		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo()" class="btn btn-default">
-				<i class="fa fa-arrow-circle-left"></i>返回
-			</a>
-		</div>
-		<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
-		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="" onclick="do_save();" class="btn btn-default btn-danger">
-				<i class="fa fa-save"></i>存檔
-			</a>
-		</div>
-		<?php endif?>
-		<?php if(isset($item) && $item->id>0): ?>
-			<div class="widget-toolbar pull-right">
-				<div class="btn-group">
-					<button onclick="currentApp.doExportAll(<?=$item -> id ?>)" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
-						<i class="fa fa-save"></i>匯出
-					</button>
-				</div>
-			</div>
-		<?php endif?>
+		
+	
 	</header>
 	<!-- widget div-->
 	<div>
