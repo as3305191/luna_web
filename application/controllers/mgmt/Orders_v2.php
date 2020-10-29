@@ -178,7 +178,6 @@ class Orders_v2 extends MY_Mgmt_Controller {
 		));
 
 		$s_data = $this -> setup_user_data(array());
-
 		$data['update_time'] = date("Y-m-d H:i:s");
 		$data['update_user_id'] = $s_data['login_user_id'];
 
