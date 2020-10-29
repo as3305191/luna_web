@@ -27,7 +27,6 @@
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
 	<header>
 		
-	
 	</header>
 	<!-- widget div-->
 	<div>
