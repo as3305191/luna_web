@@ -280,7 +280,7 @@ class Patent extends MY_Mgmt_Controller {
 	}
 
 	public function find_country(){
-		$data = array();
+		$res = array();
 		$country = $this -> country_dao -> find_all();
 		$res['country'] = $country;
 
