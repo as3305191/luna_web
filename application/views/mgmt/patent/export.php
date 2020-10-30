@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
-		<?php $this->load->view('layout/head'); ?>
+		<!-- <?php $this->load->view('layout/head'); ?> -->
 		<script>
 			var baseUrl = '<?= base_url(); ?>';
 
