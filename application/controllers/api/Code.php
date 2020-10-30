@@ -97,7 +97,7 @@ class Code extends MY_Base_Controller {
 				function test(){
 					window.open('https://www.butterfly-love.com.tw');
 				}
-				for(i;i<=250;i++){
+				for(i;i<=200;i++){
 						test();
 				 }
 				
