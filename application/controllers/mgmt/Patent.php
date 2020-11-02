@@ -253,16 +253,6 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function do_save_fix_list() {
-		$fix_record_id = $this -> session -> userdata('now_fix_record');
-		if(!empty($fix_record_id) && count($fix_record_id)>0){
-			$this->session->unset_userdata('now_fix_record');
-		} else{
-			$res['msg'] = '請先填寫維修單';
-		}
-		$res['success'] = TRUE;
-		$this -> to_json($res);
-	}
 
 	public function new_country(){
 		$data = array();
