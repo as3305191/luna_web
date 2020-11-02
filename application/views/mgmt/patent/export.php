@@ -5,15 +5,15 @@
 	display: none;
 }
 .btn_1 {
-    background-color: #FFD22F !important;
-    color: #F57316 !important;
-  }
-  .is_ok {
-    background-color:lightgreen;
-  }
-  .not_ok {
+	background-color: #FFD22F !important;
+	color: #F57316 !important;
+}
+.is_ok {
+	background-color:lightgreen;
+}
+.not_ok {
 	background-color:red;
-  }
+}
 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
