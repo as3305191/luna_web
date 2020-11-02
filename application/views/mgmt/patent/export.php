@@ -18,19 +18,8 @@
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
-	<header>
-		
-	</header>
-	<!-- widget div-->
-	<div>
-		<!-- widget edit box -->
-		<div class="jarviswidget-editbox">
-			<!-- This area used as dropdown edit box -->
-			<input class="form-control" type="text">
-		</div>
-		<!-- end widget edit box -->
-		<!-- widget content -->
-    </div>
+
+
 	<table id="export_table_list" class="table table-striped table-bordered table-hover" width="100%">
 		<thead>
 			<tr>
