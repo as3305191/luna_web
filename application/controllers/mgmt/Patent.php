@@ -57,7 +57,6 @@ class Patent extends MY_Mgmt_Controller {
 			}
 		}
 	
-
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
