@@ -232,7 +232,6 @@ class Patent extends MY_Mgmt_Controller {
 			// insert
 			$last_id = $this -> dao -> insert($data);
 		} else {
-
 			$this -> dao -> update($data, $id);
 		}
 		$res['success'] = TRUE;
@@ -244,7 +243,6 @@ class Patent extends MY_Mgmt_Controller {
 		$items = $this -> dao -> find_patent($data);
 		$res['success'] = TRUE;
 		$res['items'] = $items ;
-
 		$this -> to_json($res);
 	}
 
@@ -259,7 +257,6 @@ class Patent extends MY_Mgmt_Controller {
 		$country_name = $this -> get_post('country_name');
 		$data['country_name'] = $country_name;
 		$this -> country_dao -> insert($data);
-
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
@@ -306,7 +303,6 @@ class Patent extends MY_Mgmt_Controller {
 		$this_val= $this -> get_post('this_val');
 		$category = $this -> patent_category_dao -> find_next($next_level,$this_val);
 		$res['category'] = $category;
-
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
