@@ -29,9 +29,8 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr>
-			<td colspan="2">總金額: $31,390</td>
-		</tr>
+			<tr>
+			</tr>
 		</tbody>
 	</table>
 
