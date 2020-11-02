@@ -23,7 +23,6 @@
 	<table id="export_table_list" class="table table-striped table-bordered table-hover" width="70%">
 		<thead>
 			<tr>
-				<th class="min25"></th>
 				<th class="min100">專利名稱</th>
 				<th class="min100">代表圖</th>
 				<th class="min100">申請人</th>
