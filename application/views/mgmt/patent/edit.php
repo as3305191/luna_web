@@ -29,7 +29,7 @@
 			</a>
 		</div>
 		<?php endif?>
-		<?php if($login_user->role_id==23): ?>
+		<?php if($login_user->role_id==24): ?>
 			<div class="widget-toolbar pull-right">
 				<div class="btn-group">
 					<button onclick="currentApp.doExportAll(<?=isset($item->id) && $item->id>0? $item -> id : ''?>)" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
