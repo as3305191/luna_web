@@ -1006,6 +1006,19 @@ function do_save() {
 	}	
 	load_edit_category();
 
-
+	function add_export($id) {
+			layer.open({
+				type:2,
+				title:'',
+				closeBtn:0,
+				area:['800px','800px'],
+				shadeClose:true,
+				content:'<?=base_url('mgmt/patent/export_all/')?>'+$id
+			})
+		}
+		
+	currentApp.doExportAll = function(id) {
+		add_export(id);
+	}
 
 </script>
