@@ -23,10 +23,9 @@
 		<thead>
 			<tr>
 				<th class="min100" colspan="5" style="text-align:center;vertical-align:middle;">專利詳細資訊</th>
-				<th class="min100"></th>
-				<th class="min100"></th>
-				<th class="min100"></th>
-				<th class="min100"></th>
+			</tr>
+			<tr>
+				<th class="min100" colspan="5" style="text-align:right">專利家族代碼</th>
 			</tr>
 		</thead>
 		<tbody>
