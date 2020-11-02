@@ -33,10 +33,7 @@
 			</tr>
 		</tbody>
 	</table>
-
 </div>
 <!-- end widget -->
 <script>
-
-
 </script>
