@@ -20,7 +20,7 @@
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
 
 
-	<table id="export_table_list" class="table table-striped table-bordered table-hover" width="100%">
+	<table id="export_table_list" class="table table-striped table-bordered table-hover" width="70%">
 		<thead>
 			<tr>
 				<th class="min25"></th>
