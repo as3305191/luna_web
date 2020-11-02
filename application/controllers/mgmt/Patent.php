@@ -124,9 +124,7 @@ class Patent extends MY_Mgmt_Controller {
 			$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		}
 		// $data['country'] = $this -> country_dao -> find_all();
-
 		// $this -> to_json($data);
-		
 		$this->load->view('mgmt/patent/edit', $data);
 	}
 
@@ -539,7 +537,6 @@ class Patent extends MY_Mgmt_Controller {
 			} else{
 				$item -> image =array();
 			}
-
 			if(!empty($item -> files_id)) {
 				$files = explode(",", $item -> files_id);
 				$item -> pdf_array =$files;
@@ -549,7 +546,6 @@ class Patent extends MY_Mgmt_Controller {
 			}else{
 				$item -> files =array();
 			}
-
 			if(!empty($item -> public_num_file)) {
 				$public_number = explode(",", $item -> public_num_file);				
 				$item -> public_num_input =$public_number;
@@ -559,7 +555,6 @@ class Patent extends MY_Mgmt_Controller {
 			}else{
 				$item -> public_number =array();
 			}
-
 			if(!empty($item -> patnet_num_file)) {
 				$patnet_number = explode(",", $item -> patnet_num_file);
 				$item -> patnet_num_input =$patnet_number;
@@ -569,16 +564,13 @@ class Patent extends MY_Mgmt_Controller {
 			}else{
 				$item -> patnet_number =array();
 			}
-
 			$data['item'] = $item;
 			$this -> session -> set_userdata('patent_data', $q_data);
 			$u_data = $this -> setup_user_data($u_data);
 			$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		}
 		// $data['country'] = $this -> country_dao -> find_all();
-
 		// $this -> to_json($data);
-		
 		$this->load->view('mgmt/patent/export', $data);
 	}
 
@@ -590,7 +582,6 @@ class Patent extends MY_Mgmt_Controller {
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		// $data['patent_status'] = $this -> patent_status_dao -> find_all();
 		// $this -> to_json($data);
-
 		$this -> load -> view('mgmt/patent/demo', $data);
 	}
 
