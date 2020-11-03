@@ -28,84 +28,100 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-		</tbody>
-		<tbody>
-			<tr></tr>
+			<tr class="min100">專利項目</tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 		</tbody>
 		<tbody>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-		</tbody>
-		<tbody>
-			<tr></tr>
+			<tr>專利名稱</tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 		</tbody>
 		<tbody>
+			<tr>專利國家</tr>
 			<tr></tr>
+			<tr>專利類別</tr>
+			<tr></tr>
+			<tr></tr>
+		</tbody>
+		<tbody>
+			<tr>申請號</tr>
+			<tr></tr>
+			<tr>申請日</tr>
+			<tr></tr>
+			<tr></tr>
+		</tbody>
+		<tbody>
+			<tr>公開號</tr>
+			<tr></tr>
+			<tr>公開日</tr>
+			<tr></tr>
+			<tr></tr>
+		</tbody>
+		<tbody>
+			<tr>專利號</tr>
+			<tr></tr>
+			<tr>公告日</tr>
+			<tr></tr>
+			<tr></tr>
+		</tbody>
+		<tbody>
+			<tr>申請人</tr>
+			<tr></tr>
+			<tr>發明人</tr>
+			<tr></tr>
+			<tr></tr>
+		</tbody>
+		<tbody>
+			<tr>受讓人</tr>
+			<tr></tr>
+			<tr>專利狀態</tr>
+			<tr></tr>
+			<tr></tr>
+		</tbody>
+		<tbody>
+			<tr>專利授權期間</tr>
+			<tr></tr>
+			<tr></tr>
+			<tr>專利截止日</tr>
+			<tr></tr>
+		</tbody>
+		<tbody>
+			<tr>專利摘要</tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 		</tbody>
 		<tbody>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-		</tbody>
-		<tbody>
-			<tr></tr>
+			<tr>專利範圍</tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 		</tbody>
 		<tbody>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-		</tbody>
-		<tbody>
-			<tr></tr>
+			<tr>專利分析相關資訊</tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 		</tbody>
+		</tbody>
 		<tbody>
-			<tr></tr>
+			<tr>專利家族</tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 		</tbody>
-		<tbody>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
-			<tr></tr>
 		</tbody>
 		<tbody>
-			<tr></tr>
+			<tr>關鍵字</tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
