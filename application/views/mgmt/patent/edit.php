@@ -380,7 +380,6 @@ $('#app-edit-form').bootstrapValidator({
 
 	}).bootstrapValidator('validate');
 
-
 var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false;
 
 if($('#item_id').val()>0){
@@ -420,8 +419,7 @@ if($('#item_id').val()>0){
 
 }
 
-
-console.log(img);
+// console.log(img);
 // console.log(pdf_array);
 // console.log(public_num_input);
 // console.log(patnet_num_input);
@@ -474,7 +472,7 @@ $("#img-input").fileinput({
 		// upload image
 		var id = data.response.id;
 		img.push(id);
-		console.log(img);
+		// console.log(img);
 		// $('#image_id').val(id);
 	//    $("#img-input").fileinput('reset');
 	}).on('fileselect', function(event, numFiles, label) {
@@ -539,7 +537,7 @@ $("#img-input").fileinput({
     	// upload image
 	   var id = data.response.id;
 	   pdf_array.push(id);
-	   console.log(pdf_array);
+	//    console.log(pdf_array);
 	//    $("#file-input").fileinput('reset');
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#file-input").fileinput('upload');
@@ -603,7 +601,7 @@ $("#img-input").fileinput({
     	// upload image
 	   var id = data.response.id;
 	   public_num_input.push(id);
-	   console.log(public_num_input);
+	//    console.log(public_num_input);
 	//    $("#file-input").fileinput('reset');
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#public-num-input").fileinput('upload');
@@ -667,7 +665,7 @@ $("#img-input").fileinput({
     	// upload image
 	   var id = data.response.id;
 	   patnet_num_input.push(id);
-	   console.log(patnet_num_input);
+	//    console.log(patnet_num_input);
 	//    $("#file-input").fileinput('reset');
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#patnet-num-input").fileinput('upload');
@@ -692,7 +690,7 @@ if($('#item_id').val()>0){
 		success : function(d) {
 			if(d){
 				current_app.push(d);
-				console.log(current_app);
+				// console.log(current_app);
 			}
 		}
 	});
