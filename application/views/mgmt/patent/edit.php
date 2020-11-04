@@ -240,7 +240,6 @@
 						<input type="text" id="year" value="<?= isset($item) ? $item -> year : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
 						年						
 					</div>
-					
 				</div>
 			</fieldset>
 			<fieldset>
