@@ -53,7 +53,6 @@
 							<div class="widget-toolbar pull-left">
 								<input id="invention_person_search" ondragover="" type="text" class="form-control" autocomplete="off"/>
 							</div>
-
 							<div class="widget-toolbar pull-left">
 								<label>公開號</label>
 							</div>
