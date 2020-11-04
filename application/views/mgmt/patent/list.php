@@ -185,7 +185,7 @@
 
 	var mOrderIdx = 5;
 
-	if($('#l_user_id').val()=='52' ||$('#l_user_id').val()=='26' ){
+	if($('#l_user_id').val()=='52' || $('#l_user_id').val()=='26' ){
 		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 	} else{
 		var defaultContent = '<a role="button" data-toggle="modal" style="margin-right: 5px;" ><i class="fa fa-trash fa-lg"></i></a>';
