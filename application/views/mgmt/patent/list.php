@@ -60,7 +60,6 @@
 							<div class="widget-toolbar pull-left">
 								<input id="public_num_search"  type="text" class="form-control" style="background:#FFFFFF" autocomplete="off"/>
 							</div>
-
 							<div class="widget-toolbar pull-left">
 								<label>關鍵字</label>
 							</div>
