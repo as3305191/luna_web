@@ -1002,6 +1002,5 @@ function do_save() {
 
 	}	
 	load_edit_category();
-
 	
 </script>
