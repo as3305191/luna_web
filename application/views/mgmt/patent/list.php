@@ -140,7 +140,7 @@
 			<!-- row -->
 			<div class="row">
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="edit-modal-body">
-
+									
 				</article>
 			</div>
 		</section>
