@@ -47,8 +47,8 @@
 						<form id="app-edit-form-s3" method="post" class="form-horizontal">
 							<input type="hidden" name="id" value="<?= $id ?>" />
 
-
-									<?php foreach ($item as $each): ?>
+							<?php if(!empty($item)): ?>
+								<?php foreach ($item as $each): ?>
 										<?php if ($each -> rule_type == 1): ?>
 											<h2>編輯 服務條款</h2>
 										<?php elseif($each -> rule_type == 2): ?>
@@ -67,7 +67,9 @@
 												</div>
 											</div>
 										</fieldset>
-									<?php endforeach; ?>
+									<?php endforeach; ?>		
+							<?php endif; ?>
+								
 
 						</form>
 					<!-- </div> -->
