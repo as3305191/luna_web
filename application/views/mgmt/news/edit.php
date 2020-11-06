@@ -110,15 +110,15 @@
 <script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
 <script>
-	// $('#spec_1_title').on('change keyup', function(){
-	// 	$('#spec_1_head').text($(this).val().length > 0 ? $(this).val() : $(this).data('dVal'));
-	// });
-	// $('#spec_2_title').on('change keyup', function(){
-	// 	$('#spec_2_head').text($(this).val().length > 0 ? $(this).val() : $(this).data('dVal'));
-	// });
+	$('#spec_1_title').on('change keyup', function(){
+		$('#spec_1_head').text($(this).val().length > 0 ? $(this).val() : $(this).data('dVal'));
+	});
+	$('#spec_2_title').on('change keyup', function(){
+		$('#spec_2_head').text($(this).val().length > 0 ? $(this).val() : $(this).data('dVal'));
+	});
 
-	// $('#spec_1_title').data('dVal', $('#spec_1_head').text()).trigger('change');
-	// $('#spec_2_title').data('dVal', $('#spec_2_head').text()).trigger('change');
+	$('#spec_1_title').data('dVal', $('#spec_1_head').text()).trigger('change');
+	$('#spec_2_title').data('dVal', $('#spec_2_head').text()).trigger('change');
 
 	// spec
 
