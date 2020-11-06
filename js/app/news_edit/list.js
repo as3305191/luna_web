@@ -18,7 +18,6 @@ var NewsEditAppClass = (function(app) {
 			}, {
 				data : 'create_time'
 			}],
-
 			order : [[2, "desc"]],
 			columnDefs : [{
 				targets : 0,
@@ -29,6 +28,9 @@ var NewsEditAppClass = (function(app) {
 				orderable : false,
 				width : "5%",
 				className : ''
+			}, {
+				"targets" : 0,
+				"orderable" : false
 			}, {
 				"targets" : 1,
 				"orderable" : false
