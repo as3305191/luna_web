@@ -37,25 +37,16 @@
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min75"></th>
-											<th class="min150">圖片</th>
-											<th class="min250">文章標題</th>
-
-											<th class="min150">上架時間</th>
-											<th class="min150">下架時間</th>
-											<th class="min150">文章摘要</th>
-											<th>創造時間</th>
+											<!-- <th class="min75"></th> -->
+											<th class="min150">標題</th>
+											<th class="min250">類型</th>
+											<th>建立時間</th>
 										</tr>
 										<tr class="search_box">
-											    <th></th>
-											    <th></th>
-											    <th><input class="form-control input-xs" type="text" /></th>
-
-											    <th><input class="form-control input-xs" type="text" /></th>
-											    <th><input class="form-control input-xs" type="text" /></th>
-											    <th><input class="form-control input-xs" type="text" /></th>
-											    <th></th>
-										    </tr>
+											<th><input class="form-control input-xs" type="text" /></th>
+											<th><input class="form-control input-xs" type="text" /></th>
+											<th></th>
+										</tr>
 									</thead>
 									<tbody>
 									</tbody>
@@ -105,7 +96,7 @@
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/news/list.js", function(){
 			currentApp = new newsAppClass(new BaseAppClass({}));
-			currentApp.doEdit("<?=$id?>");
+			// currentApp.doEdit("<?=$id?>");
 		});
 	});
 </script>
