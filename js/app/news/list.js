@@ -57,7 +57,6 @@ var newsAppClass = (function(app) {
 			for ( instance in CKEDITOR.instances )
 		        CKEDITOR.instances[instance].updateElement();
 
-
 			var url = baseUrl + app.basePath + 'insert'; // the script where you handle the form input.
 			var imgIdList = app.getImgIdList();
 			$.ajax({
