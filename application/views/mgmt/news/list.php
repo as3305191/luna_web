@@ -33,6 +33,7 @@
 									<thead>
 										<tr>
 											<th class="">標題</th>
+											<th class="">類別</th>
 											<th class="min200">建立時間</th>
 										</tr>
 									</thead>
