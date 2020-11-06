@@ -13,24 +13,15 @@ var newsAppClass = (function(app) {
 				type : 'post'
 			},
 
-			columns : [null, {
-				data : 'image_id',
-				render: function ( data, type, row ) {
-	    			return (data && data > 0 ? '<image src="' + baseUrl + 'api/images/get/' + data + '/thumb" style="width:120px" />' : "");
-		    	}
-			}, {
+			columns : [{
 				data : 'article_name'
 			},  {
-				data : 'start_time'
-			}, {
-				data : 'end_time'
-			}, {
 				data : 'abstract'
 			}, {
 				data : 'create_time'
 			}],
 
-			order : [[6, "desc"]],
+			order : [[2, "desc"]],
 			columnDefs : [{
 				targets : 0,
 				data : null,
@@ -42,22 +33,13 @@ var newsAppClass = (function(app) {
 				width : "5%",
 				className : ''
 			}, {
+				"targets" : 0,
+				"orderable" : false
+			}, {
 				"targets" : 1,
 				"orderable" : false
 			}, {
 				"targets" : 2,
-				"orderable" : false
-			}, {
-				"targets" : 3,
-				"orderable" : false
-			}, {
-				"targets" : 4,
-				"orderable" : false
-			}, {
-				"targets" : 5,
-				"orderable" : false
-			}, {
-				"targets" : 6,
 				"orderable" : false
 			}],
 		}));
