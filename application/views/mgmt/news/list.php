@@ -12,8 +12,14 @@
 
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget">
-						<header style="height:0px;">
-
+					<header>
+							<div class="widget-toolbar pull-left">
+								<div class="btn-group">
+									<button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
+										<i class="fa fa-plus"></i>新增
+									</button>
+								</div>
+							</div>
 						</header>
 
 						<!-- widget div-->
