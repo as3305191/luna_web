@@ -21,8 +21,6 @@
 								</div> 
 							</div>-->
 
-
-
 						</header>
 
 						<!-- widget div-->
