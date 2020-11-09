@@ -992,11 +992,10 @@ class Images extends MY_Base_Controller {
 			$i_data['image_size'] = $size;
 	
 			// set store id
-			$place_mark_id = $this -> get_post('id');
-			$place_mark_list = $this->place_mark_dao->find_by_id($place_mark_id);
+			$news_style = $this -> get_post('style');
 	
-			if(!empty($place_mark_id)) {
-				$i_data['place_mark_id'] = $place_mark_id;
+			if(!empty($news_style)) {
+				$i_data['news_style'] = $news_style;
 			}
 			
 			$img_content = file_get_contents($tmp_name);
@@ -1008,14 +1007,14 @@ class Images extends MY_Base_Controller {
 			$i_data['height'] = $image_height;
 			$i_data['img'] = $img_content;
 			$last_id = $this -> dao -> insert_image_data($i_data);
-			if($place_mark_list->image_id==0) {
-				$insert_data['image_id'] = $last_id;
-				$up_data['place_mark_status'] = 1;
+			// if($place_mark_list->image_id==0) {
+			// 	$insert_data['image_id'] = $last_id;
+			// 	$up_data['place_mark_status'] = 1;
 	
-				$this -> place_mark_dao -> update($insert_data, $place_mark_id);//如果沒預設值更新
-				$this -> dao -> update($up_data, $last_id);//如果沒預設值更新
+			// 	$this -> place_mark_dao -> update($insert_data, $place_mark_id);//如果沒預設值更新
+			// 	$this -> dao -> update($up_data, $last_id);//如果沒預設值更新
 	
-			}
+			// }
 			if (!empty($last_id)) {
 	
 	
