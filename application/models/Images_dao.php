@@ -123,6 +123,7 @@ class Images_dao extends MY_Model {
 
 		$this -> db -> select('_m.id');
 		$this -> db -> select('_m.upload_time');
+		$this -> db -> select('_m.status');
 
 		$this -> db -> order_by('_m.id','desc');
 

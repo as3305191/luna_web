@@ -205,47 +205,54 @@ class News_img extends MY_Mgmt_Controller {
 	public function img_post(){
 		$img_id = $this -> get_post('img_id');
 		$u_data = array();
-		$up_place_data = array();
-		$clean_default = array();
-
-		$p = $this -> img_dao -> find_by_img_id($img_id);
-		$find_list_by_pm_id = $this -> img_dao -> find_by_pm_id($p->place_mark_id);	
-		$list_count = count($find_list_by_pm_id);
-		if($list_count>1){
-			if($p -> place_mark_status == 0) {
-				$other_default_list= $this -> img_dao -> find_other_default($p->place_mark_id, $p->id);
-				if(!empty($other_default_list)){
-					$clean_default['place_mark_status'] = 0;//清除其他預設
-					$this -> img_dao -> update($clean_default, $other_default_list->id);//清除其他預設
-				}
-	
-				$u_data['place_mark_status'] = 1;
-				$up_place_data['image_id'] = $img_id;
-	
-				$this -> img_dao -> update($u_data, $img_id);
-				$this -> dao -> update($up_place_data, $p->place_mark_id);//回寫預設
+		
+		$p = $this -> img_dao -> find_by_id($img_id);
+		if(!empty($p )){
+			if($p->status==0){
+				$u_data['status'] = 1;
 				$res['success_msg'] = '變更預設成功';
-				$res['success'] = TRUE;
-			}  else {
-				$u_data['place_mark_status'] = 0;
-				$up_place_data['image_id'] = 0;
+			} else{
+				$u_data['status'] = 0;
 				$res['success_msg'] = '變更非預設成功';
-				$this -> img_dao -> update($u_data, $img_id);
-				$this -> dao -> update($up_place_data, $p->place_mark_id);//回寫預設
-				$res['success'] = TRUE;
-	
 			}
-		} else{
-			$this -> dao -> update(array(
-				'image_id' => $img_id
-			), $p->place_mark_id);
-			$this -> img_dao -> update(array(
-				'place_mark_status' => 1
-			), $img_id);
-			$res['success_msg'] = '變更預設成功';
+			$this -> img_dao -> update($u_data, $img_id);
 		}
-
-
+	
+		// $find_list_by_pm_id = $this -> img_dao -> find_by_pm_id($p->place_mark_id);	
+		// $list_count = count($find_list_by_pm_id);
+		// if($list_count>1){
+		// 	if($p -> place_mark_status == 0) {
+		// 		$other_default_list= $this -> img_dao -> find_other_default($p->place_mark_id, $p->id);
+		// 		if(!empty($other_default_list)){
+		// 			$clean_default['place_mark_status'] = 0;//清除其他預設
+		// 			$this -> img_dao -> update($clean_default, $other_default_list->id);//清除其他預設
+		// 		}
+	
+		// 		$u_data['place_mark_status'] = 1;
+		// 		$up_place_data['image_id'] = $img_id;
+	
+		// 		$this -> img_dao -> update($u_data, $img_id);
+		// 		$this -> dao -> update($up_place_data, $p->place_mark_id);//回寫預設
+		// 		$res['success_msg'] = '變更預設成功';
+		// 		$res['success'] = TRUE;
+		// 	}  else {
+		// 		$u_data['place_mark_status'] = 0;
+		// 		$up_place_data['image_id'] = 0;
+		// 		$res['success_msg'] = '變更非預設成功';
+		// 		$this -> img_dao -> update($u_data, $img_id);
+		// 		$this -> dao -> update($up_place_data, $p->place_mark_id);//回寫預設
+		// 		$res['success'] = TRUE;
+	
+		// 	}
+		// } else{
+		// 	$this -> dao -> update(array(
+		// 		'image_id' => $img_id
+		// 	), $p->place_mark_id);
+		// 	$this -> img_dao -> update(array(
+		// 		'place_mark_status' => 1
+		// 	), $img_id);
+		// 	$res['success_msg'] = '變更預設成功';
+		// }
 		$this -> to_json($res);
 	}
 
