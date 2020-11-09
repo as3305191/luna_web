@@ -2,6 +2,10 @@
 .file-drag-handle {
 	display: none;
 }
+.btn_1 {
+    background-color: #FFD22F !important;
+    color: #F57316 !important;
+  }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
@@ -32,24 +36,36 @@
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-
 				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">標題</label>
-						<div class="col-md-6">
-							<input type="text" required class="form-control"  name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
-						</div>
+					<div class="col-md-6 form-group">
+						<button type="button" class="1 btn_roles btn_1" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmefieldset('1')">電腦基本資料資料</button>
+						<button type="button" class="2 btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmefieldset('2')">維修紀錄</button>
 					</div>
 				</fieldset>
+				<hr/>
+				<div class="fieldset1" id="1">
 
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">內容</label>
-						<div class="col-md-6">
-							<textarea required class="form-control" id="m_content" name="content"><?= isset($item) ? $item -> content : '' ?></textarea>
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3 control-label">標題</label>
+							<div class="col-md-6">
+								<input type="text" required class="form-control"  name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
+							</div>
 						</div>
+					</fieldset>
+
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3 control-label">內容</label>
+							<div class="col-md-6">
+								<textarea required class="form-control" id="m_content" name="content"><?= isset($item) ? $item -> content : '' ?></textarea>
+							</div>
+						</div>
+					</fieldset>
 					</div>
-				</fieldset>
+					<div class="fieldset1" id="2" style="display:none">
+					4圖上傳
+					</div>
 
 
 
@@ -101,6 +117,13 @@
 <script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
 <script type="text/javascript">
+function showmefieldset(id) {
+	//   document.getElementById(id).show();
+	$('.fieldset1').hide();
+	$('#'+id).show();
+	$('.btn_roles').removeClass('btn_1');
+	$('.'+id).addClass('btn_1');
+}
 // ckeditor
 var config = {
 		plugins:'basicstyles,sourcearea,image,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
