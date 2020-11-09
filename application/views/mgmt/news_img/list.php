@@ -39,35 +39,30 @@
 							<!-- widget content -->
 							<div class="widget-body no-padding">
 
-							<form id="app-edit-form" method="post" class="form-horizontal">
-				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item->id : '' ?>" />
 			
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">上傳照片</label>
-							<div class="col-md-6">
-								<input id="image_id" name="image_id" type="hidden" value="<?= isset($item) ? $item->image_id : '' ?>">
-								<img id="file-input-win-img" style="max-width:80%;position: relative;z-index: 100;<?= isset($item) && !empty($item->image_id) ? " " : 'display:none;' ?>" />
-								<input id="img-input" name="file" type="file" accept=".jpg, .jpeg" class="form-control">
-								<div id="file-input-progress-win-img" class="progress" style="display:none">
-									<div class="progress-bar progress-bar-success"></div>
-								</div>
-							</div>
-						</div>
-					</fieldset>
-					<hr>
-					<table id="pic_list" class="table table-striped table-bordered table-hover" width="100%">
-						<thead>
-							<tr>
-								<th class="min100">是否預設</th>
-								<th class="min100">照片</th>
-								<th>日期</th>
-							</tr>
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-			</form>
+									<div class="form-group">
+										<label class="col-md-3 control-label">上傳照片</label>
+										<div class="col-md-6">
+											<input id="image_id" name="image_id" type="hidden" value="<?= isset($item) ? $item->image_id : '' ?>">
+											<img id="file-input-win-img" style="max-width:80%;position: relative;z-index: 100;<?= isset($item) && !empty($item->image_id) ? " " : 'display:none;' ?>" />
+											<input id="img-input" name="file" type="file" accept=".jpg, .jpeg" class="form-control">
+											<div id="file-input-progress-win-img" class="progress" style="display:none">
+												<div class="progress-bar progress-bar-success"></div>
+											</div>
+										</div>
+									</div>
+								<hr>
+								<table id="pic_list" class="table table-striped table-bordered table-hover" width="100%">
+									<thead>
+										<tr>
+											<th class="min100">是否預設</th>
+											<th class="min100">照片</th>
+											<th>日期</th>
+										</tr>
+									</thead>
+									<tbody>
+									</tbody>
+								</table>
 
 							</div>
 							<!-- end widget content -->
