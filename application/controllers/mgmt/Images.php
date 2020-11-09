@@ -546,7 +546,7 @@ class Images extends MY_Base_Controller {
 		$info = '';
 		$f_name = 'file';
 
-		if($image_path == 'dm_image') {
+		if($image_path == 'img') {
 			$f_name = 'upload';
 		}
 
