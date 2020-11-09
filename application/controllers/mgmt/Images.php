@@ -619,7 +619,7 @@ class Images extends MY_Base_Controller {
 				$img_obj = $this->dao->find_by_id($last_id);
 				echo '<script type="text/javascript">' .
 							// 'window.parent.CKEDITOR.tools.callFunction("1", "' . base_url('mgmt/images/get/' . $last_id) . '", "");' .
-							'window.parent.CKEDITOR.tools.callFunction('+$last_id+', "' . base_url('images/get/' . $img_obj->image_url) . '", "");' .
+						    'window.parent.CKEDITOR.tools.callFunction("1", "' . base_url('mgmt/images/get/' . $last_id) . '", "");' .
 							'</script>';
 				return;
 			} else {
