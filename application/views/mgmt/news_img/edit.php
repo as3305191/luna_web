@@ -38,120 +38,7 @@
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item->id : '' ?>" />
-				<div class="form-group" style="padding:0px 26px">
-					<div class="col-md-12 col-xs-12 col-sm-12 no-padding" style="">
-						<button type="button" class="new_information btn_roles btn_1" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('new_information')">景點資料管理</button>
-						<button type="button" class="image_list btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('image_list')">圖片列表/上傳</button>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-				<hr />
-				<div class="table_1" id="new_information">
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">名稱</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="place_mark_name" value="<?= isset($item) ? $item->place_mark_name : '' ?>" />
-							</div>
-						</div>
-					</fieldset>
-
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">類型</label>
-
-							<div class="col-md-6">
-								<?php foreach ($pma_list as $each) : ?>
-									<div class="col-md-4">
-										<label class="">
-											<input class="" name="s_attr[]" type="checkbox" value="<?= $each->attribute_name ?>" <?php foreach ($attribute_new as $each_attribute) : ?> <?= ((isset($each_attribute) && $each_attribute == $each->attribute_name) ? 'checked' : '') ?> <?php endforeach ?>>
-											<?= $each->attribute_name ?>
-										</label>
-									</div>
-								<?php endforeach ?>
-							</div>
-
-						</div>
-					</fieldset>
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">經度</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" id="lng" name="lng" value="<?= isset($item) ? $item->lng : '' ?>" />
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">緯度</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" id="lat" name="lat" value="<?= isset($item) ? $item->lat : '' ?>" />
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label"></label>
-							<div class="col-md-6">
-								<button type="button" class="btn btn-primary" onclick="doGetCityAndArea()">經緯度取得城市/區域</button>
-							</div>
-						</div>
-					</fieldset>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">城市</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="city" value="<?= isset($item) ? $item->city : '' ?>" />
-							</div>
-						</div>
-					</fieldset>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">區域</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="district" value="<?= isset($item) ? $item->district : '' ?>" />
-							</div>
-						</div>
-					</fieldset>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">地址</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="full_address" value="<?= isset($item) ? $item->full_address : '' ?>" />
-							</div>
-						</div>
-					</fieldset>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">官網</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="web_url" value="<?= isset($item) ? $item->web_url : '' ?>" />
-							</div>
-						</div>
-					</fieldset>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">粉絲專頁</label>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="facebook_url" value="<?= isset($item) ? $item->facebook_url : '' ?>" />
-							</div>
-						</div>
-					</fieldset>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">描述</label>
-							<div class="col-md-6">
-								<textarea type="text" class="form-control" rows="10" id="m_content" name="description" style="resize:none;width:100%"><?= isset($item) ? $item->description : '' ?></textarea>
-							</div>
-						</div>
-					</fieldset>
-				</div>
-
-				<div class="table_1" id="image_list" style="display:none">
+			
 					<fieldset>
 						<div class="form-group">
 							<label class="col-md-3 control-label">上傳照片</label>
@@ -177,7 +64,6 @@
 						<tbody>
 						</tbody>
 					</table>
-				</div>
 			</form>
 
 		</div>
