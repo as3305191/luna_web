@@ -541,7 +541,7 @@ class Images extends MY_Base_Controller {
 		// show_404();
 	}
 
-	//image upload section
+
 	public function upload_terms($image_path) {
 		$info = '';
 		$f_name = 'file';
@@ -644,7 +644,7 @@ class Images extends MY_Base_Controller {
 			$this -> to_json($res);
 		}
 	}
-
+	
 	function get_ext($mime) {
 		if(array_key_exists($mime, $this -> mime_map)) {
 			$val = $this -> mime_map[$mime];
