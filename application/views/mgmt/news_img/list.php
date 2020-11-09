@@ -105,43 +105,9 @@
 			currentApp = new NewsimgClass(new BaseAppClass({}));
 		});
 	});
-
-	
-
-
-	$("#file-input").fileinput({
-		<?php if (!empty($item->img)) : ?>
-			initialPreview: [],
-			initialPreviewConfig: [{
-				'caption': '<?= $item->img->image_name ?>',
-				'size': <?= $item->img->image_size ?>,
-				'width': '120px',
-				'url': '<?= base_url('mgmt/images/delete/' . $item->img->id)  ?>',
-				'key': <?= $item->img->id ?>
-			}],
-		<?php else : ?>
-			initialPreview: [],
-			initialPreviewConfig: [],
-		<?php endif ?>
-		initialPreviewAsData: true,
-		maxFileCount: 1,
-		uploadUrl: 'mgmt/images/upload/user_img',
-		uploadExtraData: {}
-	}).on('fileselect', function(event, numFiles, label) {
-		layer.load(2);
-		$("#file-input").fileinput('upload');
-	}).on('fileuploaded', function(event, data, previewId, index) {
-		var id = data.response.id;
-		$('#image_id').val(id);
-	}).on('fileuploaderror', function(event, data, previewId, index) {
-		alert('upload error');
-	}).on('filedeleted', function(event, key) {
-		$('#image_id').val(0);
-	});
-
 	$("#m_bulletin_type").val($("#bulletin_type").val());
 
-	$('#img-input').fileupload({
+	$('#img-input').fileinput({
 			url: '<?= base_url('mgmt/images/upload/user_img') ?>',
 			dataType: 'json',
 			done: function(e, data) {
