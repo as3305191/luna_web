@@ -8,5 +8,7 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 	config.image_previewText = ' ';
+	config.removeDialogTabs = 'image:advanced;image:Link';
+
 
 };
