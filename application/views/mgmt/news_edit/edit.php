@@ -2,10 +2,6 @@
 .file-drag-handle {
 	display: none;
 }
-.btn_1 {
-    background-color: #FFD22F !important;
-    color: #F57316 !important;
-  }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
@@ -43,29 +39,23 @@
 					</div>
 				</fieldset>
 				<hr/>
-				<div class="fieldset1" id="1">
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">標題</label>
-							<div class="col-md-6">
-								<input type="text" required class="form-control"  name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
-							</div>
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">標題</label>
+						<div class="col-md-6">
+							<input type="text" required class="form-control"  name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
 						</div>
-					</fieldset>
+					</div>
+				</fieldset>
 
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">內容</label>
-							<div class="col-md-6">
-								<textarea required class="form-control" id="m_content" name="content"><?= isset($item) ? $item -> content : '' ?></textarea>
-							</div>
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">內容</label>
+						<div class="col-md-6">
+							<textarea required class="form-control" id="m_content" name="content"><?= isset($item) ? $item -> content : '' ?></textarea>
 						</div>
-					</fieldset>
 					</div>
-					<div class="fieldset1" id="2" style="display:none">
-					4圖上傳
-					</div>
+				</fieldset>
 
 
 
@@ -117,13 +107,6 @@
 <script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
 <script type="text/javascript">
-function showmefieldset(id) {
-	//   document.getElementById(id).show();
-	$('.fieldset1').hide();
-	$('#'+id).show();
-	$('.btn_roles').removeClass('btn_1');
-	$('.'+id).addClass('btn_1');
-}
 // ckeditor
 var config = {
 		plugins:'basicstyles,sourcearea,image,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
