@@ -9,6 +9,5 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.uiColor = '#AADC6E';
 	config.image_previewText = ' ';
 	config.removeDialogTabs = 'image:advanced;image:Link';
-	config.filebrowserImageUrl = baseUrl +'mgmt/images/upload_terms/img';
 	config.filebrowserUpladMethod = 'form';
 };
