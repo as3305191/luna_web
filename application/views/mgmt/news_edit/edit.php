@@ -103,10 +103,11 @@
 <script type="text/javascript">
 // ckeditor
 var config = {
+		plugins:'basicstyles,sourcearea,image,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
 		customConfig : '',
 		toolbarCanCollapse : false,
 		colorButton_enableMore : false,
-		removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
+		// removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
 		extraPlugins : 'imagemaps,autogrow,uploadimage',
 		autoGrow_onStartup : true,
 		height:400,
