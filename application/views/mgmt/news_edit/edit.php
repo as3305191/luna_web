@@ -110,7 +110,7 @@ var config = {
 		extraPlugins : 'imagemaps,autogrow,uploadimage',
 		autoGrow_onStartup : true,
 		height:400,
-
+		startupFocus: true,
 		allowedContent: true
 	}
 	config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
