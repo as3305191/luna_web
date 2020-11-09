@@ -8,7 +8,6 @@ class News_img extends MY_Mgmt_Controller {
 		$this -> load -> model('Place_mark_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Place_mark_attributes_dao', 'place_mark_attributes_dao');
 
 		// $this->load->library('excel');
 	}
@@ -54,8 +53,6 @@ class News_img extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			'place_mark_id',
-
 		));
 
 		$s_data = $this -> setup_user_data(array());
@@ -94,7 +91,6 @@ class News_img extends MY_Mgmt_Controller {
 			$data['attribute_new'] = $attribute_new;
 
 		}
-		$data['pma_list'] = $this -> place_mark_attributes_dao -> find_all_order(0);
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);

@@ -117,7 +117,6 @@ class Images_dao extends MY_Model {
 
 		$start = $data['start'];
 		$limit = $data['length'];
-		$place_mark_id= $data['place_mark_id'];
 		
 		// select
 		$this -> db -> from("$this->table_name as _m");
@@ -125,7 +124,7 @@ class Images_dao extends MY_Model {
 		$this -> db -> select('_m.id');
 		$this -> db -> select('_m.upload_time');
 
-		$this -> db -> order_by('_m.id','asc');
+		$this -> db -> order_by('_m.id','desc');
 
 		
 		if(!$is_count) {

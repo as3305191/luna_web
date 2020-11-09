@@ -1016,10 +1016,7 @@ class Images extends MY_Base_Controller {
 	
 			// }
 			if (!empty($last_id)) {
-	
-	
-				// resize
-				$this -> resize($tmp_name, 300, 300);
+				$this -> resizetext($tmp_name, 300, 300);
 	
 				$img_content = file_get_contents($tmp_name);
 				$this -> dao -> update(array(
