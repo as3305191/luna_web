@@ -133,6 +133,7 @@ class Images_dao extends MY_Model {
 		}
 		
 		$this -> db -> where('_m.status',0);
+		$this -> db -> where('_m.image_path','news_img');
 
 		// query results
 		if(!$is_count) {
