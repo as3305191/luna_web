@@ -108,7 +108,6 @@ var config = {
 		colorButton_enableMore : false,
 		removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
 		extraPlugins : 'imagemaps,autogrow,uploadimage',
-		filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/news_img',
 		autoGrow_onStartup : true,
 		height:400,
 
