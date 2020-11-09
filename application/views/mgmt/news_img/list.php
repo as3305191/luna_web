@@ -227,8 +227,6 @@
 		});
 	};
 
-	currentApp.image_List = new ImageAppClass(new BaseAppClass({}));
-
 
 
 	function doGetCityAndArea() {
