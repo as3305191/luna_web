@@ -7,14 +7,13 @@ class News_edit extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('News_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
-
 	}
 
 	public function index()
 	{
 		$data = array();
 		$this -> setup_user_data($data);
-		$this->load->view('mgmt/news_edit/list', $data);
+		$this -> load -> view('mgmt/news_edit/list', $data);
 	}
 
 	public function get_data() {
@@ -28,14 +27,11 @@ class News_edit extends MY_Mgmt_Controller {
 			'company_id',
 			'role_id'
 		));
-
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
-
 		$res['items'] = $this -> dao -> query_ajax($data);
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
-
 		$this -> to_json($res);
 	}
 
