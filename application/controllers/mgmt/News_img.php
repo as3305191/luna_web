@@ -10,7 +10,7 @@ class News_img extends MY_Mgmt_Controller {
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Place_mark_attributes_dao', 'place_mark_attributes_dao');
 
-		$this->load->library('excel');
+		// $this->load->library('excel');
 	}
 
 	public function index()
