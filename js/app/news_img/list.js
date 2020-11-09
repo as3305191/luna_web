@@ -72,7 +72,7 @@ var NewsimgClass = (function(app) {
 
 
 var ImageAppClass = (function(app) {
-	app.basePath = "mgmt/place_mark/";
+	app.basePath = "mgmt/news_img/";
 	app.disableRowClick = true;
 
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
