@@ -5,10 +5,10 @@
 
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
-	// config.language = 'fr';
+	config.language = 'zh';
 	// config.uiColor = '#AADC6E';
 	config.image_previewText = ' ';
 	config.removeDialogTabs = 'image:advanced;image:Link';
-
-
+	config.filebrowserImageUrl = baseUrl +'mgmt/images/upload_terms/img';
+	config.filebrowserUpladMethod = 'form';
 };
