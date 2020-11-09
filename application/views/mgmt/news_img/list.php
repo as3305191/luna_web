@@ -112,7 +112,7 @@
 	});
 	$("#m_bulletin_type").val($("#bulletin_type").val());
 
-	$('#img-input').fileupload({
+	$('#img-input').fileinput({
 			url: '<?= base_url('mgmt/images/upload/user_img') ?>',
 			dataType: 'json',
 			done: function(e, data) {
@@ -134,8 +134,7 @@
 				currentApp.image_List.tableReload();
 
 			}
-		}).prop('disabled', !$.support.fileInput)
-		.parent().addClass($.support.fileInput ? undefined : 'disabled');
+		}).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
 
 
 	currentApp.doSubmit = function() {
