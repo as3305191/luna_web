@@ -175,7 +175,7 @@
 <script type="text/javascript">
 	var baseUrl = '<?= base_url(); ?>';
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/store/news_img/list.js", function(){
+		loadScript(baseUrl + "js/app/news_img/list.js", function(){
 			currentApp = new newsimgAppClass(new BaseAppClass({}));
 		});
 	});
