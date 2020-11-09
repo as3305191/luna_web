@@ -157,12 +157,6 @@
 		}).prop('disabled', !$.support.fileInput)
 		.parent().addClass($.support.fileInput ? undefined : 'disabled');
 
-	function showmetable(id) {
-		$('.table_1').hide();
-		$('#' + id).show();
-		$('.btn_roles').removeClass('btn_1');
-		$('.' + id).addClass('btn_1');
-	}
 
 	currentApp.doSubmit = function() {
 		if (!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
@@ -202,30 +196,7 @@
 
 	currentApp.image_List = new ImageAppClass(new BaseAppClass({}));
 
-	// ckeditor
-	$(function() {
-		// ckeditor
-		var config = {
-			plugins: 'basicstyles,sourcearea,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
-			extraPlugins: 'autogrow',
-			autoGrow_onStartup: true,
-			autoGrow_minHeight: 400,
-			//autoGrow_maxHeight: 800,
-			removePlugins: 'resize'
-		}
-		config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
 
-
-		try {
-			CKEDITOR.instances['m_content'].destroy(true);
-		} catch (e) {
-
-		}
-		CKEDITOR.replace("m_content", config);
-		CKEDITOR.instances['m_content'].on('change', function() {
-			CKEDITOR.instances['m_content'].updateElement()
-		});
-	});
 
 	function doGetCityAndArea() {
 		var lng = $("#lng").val();
