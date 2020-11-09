@@ -1,121 +1,88 @@
-var newsimgAppClass = (function(app) {
-	var basePath = "mgmt/news_img/";
+var NewsimgClass = (function(app) {
+	app.basePath = "mgmt/news_img/";
+
 	app.init = function() {
-		// init add wrapper marker
-		app.addDtWrapper = false;
-
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
-			iDisplayLength : 25,
-
 			ajax : {
-				url : baseUrl + basePath + '/get_data',
+				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-
+					// d.corp_id = $('#corp_id').val();
 				},
 				dataSrc : 'items',
 				dataType : 'json',
 				type : 'post'
 			},
 
-			columns : [null, {
-				data : 'store_name',
-				render: function ( data, type, row ) {
-					var status = '<span style="color:green;">上架中</span>';
-					if(!((moment().diff(moment(row.start_time)) > 0 && moment().diff(moment(row.end_time)) < 0)) || row.post_checked == 0) {
-						status = '<span style="color:red;">下架中</span>';
-					}
-					if(!((moment().diff(moment(row.start_time)) > 0 && moment().diff(moment(row.end_time)) < 0)) ){
-						status += '<br /><span style="color:red;">時間超過</span>';
-					}
-					return status;
-				}
+			columns : [null,{
+				data : 'place_mark_name'
 			},{
 				data : 'image_id',
-				render: function ( data, type, row ) {
-	    			return (data && data > 0 ? '<div class="img_con" style="width:50px;height:50px;background-image:url(' + baseUrl + 'mgmt/images/get/' + data + '/thumb)" />' : "");
-		    }
-			}, {
-				data : 'serial'
+				render: function (data) {
+					if(data>0){
+						return (data && data > 0 ? '<div class="img_con" style="object-fit: cover;background-image:url(' + baseUrl + 'api/images/get/' + data + '/thumb)" />' : "");
+					} else{
+						return '';
+					}
+		    	} 
 			},{
-				data : 'product_name'
+				data : 'lng'
 			}, {
-				data : 'mul_cate',
-				render: function ( data, type, row ) {
-	    			var html = '';
-
-						$.each(data,function(){
-							var me = this;
-							html += ('<span class="badge bg-color-blue">'+me.cate_name+'</span>');
-						});
-
-	    			return html;
-		    	}
-			}, {
-				data : 'start_time'
-			}, {
-				data : 'end_time'
-			}, {
+				data : 'lat'
+			},{
 				data : 'create_time'
 			}],
 
-			bSortCellsTop : true,
-			order : [[8, "desc"]],
+			order : [[5, "asc"]],
 			columnDefs : [{
 				targets : 0,
 				data : null,
-				render:function ( data, type, row ) {
-					var input = '';
-					if(row.post_checked == 1){
-						input = '<input type="checkbox" name="product_post" class="product-post onoffswitch-checkbox" checked id="id_'+row.id+'" >'
-					}else{
-						input = '<input type="checkbox" name="product_post" class="product-post onoffswitch-checkbox" id="id_'+row.id+'" >'
-					}
-					var html = '<span class="onoffswitch" style="margin-top: 10px;">'
-						+input
-						+'<label class="onoffswitch-label" for="id_'+row.id+'">'
-							+'<span class="onoffswitch-inner" data-swchon-text="上架" data-swchoff-text="下架"></span>'
-							+'<span class="onoffswitch-switch"></span>'
-						+'</label>'
-					+'</span>'
-					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>';
-					return html;
-		    },
+				defaultContent : app.defaultContent,
 				searchable : false,
 				orderable : false,
 				width : "5%",
 				className : ''
-			}, {
-				"targets" : 1,
+			},{
+				"targets" : [0,1,2,3,4],
 				"orderable" : false
-			}, {
-				"targets" : 2,
-				"orderable" : false
-			}, {
-				"targets" : 3,
-				"orderable" : false
-			}, {
-				"targets" : 4,
-				"orderable" : false
-			}, {
-				"targets" : 5,
-				"orderable" : false
-			}, {
-				"targets" : 6,
-				"orderable" : false
-			}, {
-				"targets" : 7,
-				"orderable" : false
-			}, {
-				"targets" : 8,
-				"orderable" : false
-			}
-			],
-			pagingType : "full_numbers",
+			}]
+		}));
+	
 
-			fnRowCallback : function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+		app.doPay = function() {
+			doPay();
+		}
+
+		// data table actions
+		app.dtActions();
+
+		// get year month list
+		app.tableReload();
+
+		// $('#corp_id').on('change', function(){
+		// 	$('#waring').hide();
+		// 	app.tableReload();
+		// });
+
+		return app;
+	};
+
+	// return self
+	return app.init();
+});
+
+
+var ImageAppClass = (function(app) {
+	app.basePath = "mgmt/place_mark/";
+	app.disableRowClick = true;
+
+	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click
 				if(!app.disableRowClick) {
-					$(nRow).find('td').not(':first').addClass('pointer').on('click', function(){
+					var _rtd = $(nRow).find('td');
+					if(!app.enableFirstClickable) {
+						_rtd = _rtd.not(':first')
+					}
+					_rtd.addClass('pointer').on('click', function(){
 						app.doEdit(aData.id);
 
 						// remove all highlight first
@@ -132,113 +99,202 @@ var newsimgAppClass = (function(app) {
 				if(app._lastPk && aData.id && app._lastPk == aData.id) {
 					$(nRow).addClass('active');
 				}
-				// delete click
-				$(nRow).find("a").eq(0).click(function() {
-					app.setDelId(aData.id);
-					$('#modal_do_delete')
-						.prop('onclick',null)
-						.off('click')
-						.on('click', function(){
-							app.doDelItem();
-						});
-				});
 
-				// copy click
-				$(nRow).find("a").eq(1).click(function() {
-					app.setDelId(aData.id);
-					$('#modal_do_copy')
-						.prop('onclick',null)
-						.off('click')
-						.on('click', function(){
-							app.doCopyItem();
-						});
-				});
+					// delete click
+					$(nRow).find("a").eq(0).click(function() {
+						app.setDelId(aData.id);
+						$('#modal_do_delete')
+							.prop('onclick',null)
+							.off('click')
+							.on('click', function(){
+								app.doDelItem();
+							});
+					});
 
-
-				//product post
-				$(nRow).find('.product-post').eq(0).click(function(){
-					var $me = $(this);
-					$.ajax({
-						url: baseUrl + basePath + '/product_post',
-						data: {
-						  'product_id': aData.id
-						},
-				   error: function() {
-				      // $('#info').html('<p>An error has occurred</p>');
-				   },
-				   dataType: 'json',
-				   success: function(data) {
-						 if(data.error_msg == 'exceed'){
-							//  $me.prop('checked') = !$me.prop('checked');
-							$me.prop('checked',!$me.prop('checked'));
+					//img post
+					$(nRow).find('.product-post').eq(0).click(function(){
+						var me = $(this).attr('id');
+						$.ajax({
+							url: baseUrl + app.basePath + '/img_post',
+							data: {
+							  'img_id': me
+							},
+					   error: function() {
+					   },
+					   dataType: 'json',
+					   success: function(data) {
+						if(data.success){
 							$.smallBox({
-					      title: "超過上架限數",
-					      content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
-					      color: "#e74c3c",
-					      iconSmall: "fa fa-times bounce animated",
-					      timeout: 4000
-					    });
-							return;
-						 }
-
-						 $.smallBox({
-		 			      title: data.success_msg,
-		 			      content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
-		 			      color: "#5F895F",
-		 			      iconSmall: "fa fa-check bounce animated",
-		 			      timeout: 4000
-		 			    });
-
-							// table reload
-							app.tableReload();
-				   },
-				   type: 'POST'
+								title: data.success_msg,
+								content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+								color: "#5F895F",
+								iconSmall: "fa fa-check bounce animated",
+								timeout: 4000
+							  });
+						}
+						if(data.message){
+							layer.msg(data.message);
+						}
+						app.tableReload();
+					},
+						type: 'POST'
+						})
 					})
-				})
+
+				if(app.fnRowCallbackExt) {
+					app.fnRowCallbackExt(nRow, aData, iDisplayIndex, iDisplayIndexFull);
+				}
+		};
+
+	app.dtConfig = {
+		processing : true,
+		serverSide : true,
+		responsive : true,
+
+		deferLoading : 0, // don't reload on init
+		iDisplayLength : 10,
+		sDom: app.sDom,
+		language : {
+			url : baseUrl + "js/datatables-lang/zh-TW.json"
+		},
+		bSortCellsTop : true,
+		fnRowCallback : app.fnRowCallback1,
+		footerCallback: function( tfoot, data, start, end, display ) {
+			setTimeout(function(){ $(window).trigger('resize'); }, 300);
+		}
+	};
+
+
+	app.init = function() {
+		app.mDtTable = $('#pic_list').DataTable($.extend(app.dtConfig,{
+			ajax : {
+				url : baseUrl + app.basePath + 'get_data_image',
+				data : function(d) {
+					d.place_mark_id = $('#item_id').val();
+					return d;
+				},
+				dataSrc : 'items',
+				dataType : 'json',
+				type : 'post'
+			},
+
+			pageLength: 50,
+
+			columns : [null,{
+				data : 'id',
+				render: function (data) {
+					if(data>0){
+						return (data && data > 0 ? '<div class="img_con" style="width:150px;height:150px;background-image:url(' + baseUrl + 'api/images/get/' + data + '/thumb)" />' : "");
+					} else{
+						return '';
+					}
+		    	} 
+			},{
+				data : 'upload_time'
+			}],
+			ordering: false,
+			order : [[2, "desc"]],
+			columnDefs : [{
+				targets : 0,
+				data : null,
+				render:function ( data, type, row ) {
+					var input = '';
+					if(row.place_mark_status == 1){
+						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
+					}else{
+						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
+					}
+
+					if(row.place_mark_status == 1){
+						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
+						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
+						+input
+						+'<label class="onoffswitch-label" for="'+row.id+'">'
+							+'<span class="onoffswitch-inner" data-swchon-text="預設" data-swchoff-text="非預設"></span>'
+							+'<span class="onoffswitch-switch"></span>'
+						+'</label>'
+					+'</span>';
+					}else{
+						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
+						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
+						+input
+						+'<label class="onoffswitch-label" for="'+row.id+'">'
+							+'<span class="onoffswitch-inner" data-swchon-text="預設" data-swchoff-text="非預設"></span>'
+							+'<span class="onoffswitch-switch"></span>'
+						+'</label>'
+					+'</span>'
+					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>';
+					}
+					return html;
+		    },
+				searchable : false,
+				orderable : false,
+				width : "8%",
+				className: ''
+			}, {
+				"targets" : 1,
+				"orderable" : false
+			}, {
+				"targets" : 2,
+				"orderable" : false
+			}],
+
+			footerCallback: function (row, data, start, end, display ) {
+				var api = this.api();
+
 			}
+
+
+
+			
 		}));
-		//product_cate select2(search_bar)
 
-		// $('#search_cate_main').select2();
-		$("#search_cate_main").on('keyup change', function() {
-			var mulcate_val = ''
-			if($(this).val() !== null){
-				mulcate_val = $(this).val();
+		// data table actions
+		app.dtActions();
+
+		function getCoVal(co, key) {
+			if(co[key]) {
+				return parseInt(co[key]);
 			}
-				app.mDtTable.column($(this).parent().index() + ':visible').search(mulcate_val).draw();
+			return 0;
+		}
 
+		function setSpanVal(elId, val) {
+			console.log("val: " + val);
+			console.log("elId: " + elId);
+			if(val > 0) {
+	    		$('#' + elId).parent().find('span').show().text(val);
+	    	} else {
+	    		$('#' + elId).parent().find('span').hide();
+	    	}
+		}
+
+		// get year month list
+		app.tableReload();
+
+	
+
+		$('#status_filter > label > span').hide();
+
+		// set pay status filter
+		$('#pay_status_filter label').on('click', function(){
+			$(this).find('input').prop('checked', true);
+			app.tableReload();
 		});
+		$('#pay_status_filter > label > span').hide();
 
 
-		$("#dt_list thead th input[type=text]").on('keyup change', function() {
-			app.mDtTable.column($(this).parent().index() + ':visible').search(this.value).draw();
-		});
-
-		// data table responsive
-		$('#dt_list').on('draw.dt', function() {
-			if (!app.addDtWrapper) {
-				app.addDtWrapper = true;
-				$('#dt_list').wrap($('<div></div>').addClass('table-responsive'));
-			}
-
-			$('[data-toggle="tooltip"]').tooltip();
-		});
-
-		// table reload
-		app.tableReload = function() {
-			app.mDtTable.ajax.reload(null, false);
-		};
-
-		// delete
-		app.setDelId = function(delId) {
-			app._delId = delId;
-		};
 
 		app.doDelItem = function() {
 			$.ajax({
-				url : baseUrl + basePath  + 'delete/' + app._delId,
-				success: function() {
-					app.tableReload();
+				url : baseUrl + app.basePath  + 'delete_img/' + app._delId,
+				success: function(d) {
+					if(d.success){
+						app.mDtTable.ajax.reload();
+					}
+					if(d.message){
+						layer.msg(d.message);
+					}
 				},
 				failure: function() {
 					alert('Network Error...');
@@ -246,36 +302,8 @@ var newsimgAppClass = (function(app) {
 			});
 		};
 
-		app.inv_manage = function() {
-			layui.use('layer', function(){
-			  var layer = layui.layer;
-
-				layer.open({
-				title:'',
-			  type: 2,
-			  area: ['700px', '450px'],
-			  fixed: false, //不固定
-			  maxmin: true,
-			  content: 'store/inventory/inv_manage'
-			});
-			});
-		}
-
-		//copy
-		app.doCopyItem = function(){
-			$.ajax({
-				url : baseUrl + basePath  + 'copy/' + app._delId,
-				success: function() {
-					app.tableReload();
-				},
-				failure: function() {
-					alert('Network Error...');
-				}
-			});
-		}
 
 		// edit
-
 		app.doEdit = function(id) {
 		    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
 		    	.appendTo($('#edit-modal-body').empty());
@@ -283,97 +311,17 @@ var newsimgAppClass = (function(app) {
 
 			$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
 
-			$('#edit-modal-body').load(baseUrl + basePath + 'edit/' + id, function(){
+			$('#edit-modal-body').load(baseUrl + 'mgmt/fish_table/edit/' + id, function(){
 	        	$("#btn-submit-edit").prop( "disabled", false);
 	        	loading.remove();
 			});
 		};
-		// do submit
-		app.doSubmit = function() {
-			if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
-
-			// sync ckeditor first
-			for ( instance in CKEDITOR.instances )
-		        CKEDITOR.instances[instance].updateElement();
 
 
-			var url = baseUrl + basePath + 'insert'; // the script where you handle the form input.
-			var imgIdList = app.getImgIdList();
-			$.ajax({
-				type : "POST",
-				url : url,
-				data : $("#app-edit-form").serialize()
-						+ '&' + $("#app-edit-form-s3").serialize()
-						+ '&' + $("#app-edit-form-s4").serialize()
-						+ '&' + $("#app-edit-form-s6").serialize()
-						+ '&' + $("#app-edit-form-s7").serialize()
-						+ '&off_list=' + encodeURIComponent(JSON.stringify(offStore))
-						+ '&pro_list=' + encodeURIComponent(JSON.stringify(proStore))
-						+ '&spec_list=' + encodeURIComponent(JSON.stringify(specStore))
-						+ '&img_id_list=' + imgIdList.join(','),
-				success : function(data) {
-					app.tableReload();
-					app.backTo();
-				}
-			});
-		};
-
-		//**** select search *****//
-		$("#search_product_cate").on('keyup change', function() {
-			var mulcate_val = ''
-			if($(this).val() !== null){
-				mulcate_val = $(this).val();
-			}
-			app.mDtTable.column($(this).parent().index() + ':visible').search(mulcate_val).draw();
-
-		});
-
-		app.getImgIdList = function() {
-			var idList = [];
-			$('.kv-file-content img').each(function() {
-				if($(this).attr('src').indexOf('http') == 0) {
-					var _id = $(this).attr('src').split('/').pop();
-					idList.push(_id);
-				}
-			});
-			return idList;
-		};
-
-		// image operations
-		app.addImg = function(id) {
-			if(!app.imgIds) {
-				app.imgIds = [];
-			}
-			app.imgIds.push(id);
-		};
-
-		app.delImg = function(id) {
-			if(app.imgIds && app.imgIds.length > 0) {
-				for(var i = app.imgIds.length - 1; i >= 0; i--) {
-				    if(app.imgIds[i] === id) {
-				       app.imgIds.splice(i, 1);
-				    }
-				}
-			}
-		};
-
-		app.getImgs = function() {
-			if(!app.imgIds) {
-				app.imgIds = [];
-			}
-			return app.imgIds;
-		};
-
-		app.clearImgs = function() {
-			app.imgIds = [];
-		};
-
-
-
-		// get year month list
-		app.tableReload();
 
 		return app;
 	};
+
+	// return self
 	return app.init();
 });
