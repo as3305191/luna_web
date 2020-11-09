@@ -137,41 +137,41 @@
 		}).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
 
 
-	currentApp.doSubmit = function() {
-		if (!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
+	// currentApp.doSubmit = function() {
+	// 	if (!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
 
-		$('#lang').val($('#sys_lang').val());
-		var sAttr = $("input[name='s_attr[]']:checked").map(function() {
-			return this.value
-		}).get();
+	// 	$('#lang').val($('#sys_lang').val());
+	// 	var sAttr = $("input[name='s_attr[]']:checked").map(function() {
+	// 		return this.value
+	// 	}).get();
 
-		var url = baseUrl + 'mgmt/place_mark/insert'; // the script where you handle the form input.
-		$.ajax({
-			type: "POST",
-			url: url,
-			data: {
-				sAttr: sAttr.join('#'),
-				id: $('#item_id').val(),
-				place_mark_name: $('input[name="place_mark_name"]').val(),
-				lng: $('input[name="lng"]').val(),
-				lat: $('input[name="lat"]').val(),
-				description: $('input[name="description"]').val(),
-				full_address: $('input[name="full_address"]').val(),
-				country: $('input[name="country"]').val(),
-				city: $('input[name="city"]').val(),
-				district: $('input[name="district"]').val(),
-				web_url: $('input[name="web_url"]').val(),
-				facebook_url: $('input[name="facebook_url"]').val(),
+	// 	var url = baseUrl + 'mgmt/place_mark/insert'; // the script where you handle the form input.
+	// 	$.ajax({
+	// 		type: "POST",
+	// 		url: url,
+	// 		data: {
+	// 			sAttr: sAttr.join('#'),
+	// 			id: $('#item_id').val(),
+	// 			place_mark_name: $('input[name="place_mark_name"]').val(),
+	// 			lng: $('input[name="lng"]').val(),
+	// 			lat: $('input[name="lat"]').val(),
+	// 			description: $('input[name="description"]').val(),
+	// 			full_address: $('input[name="full_address"]').val(),
+	// 			country: $('input[name="country"]').val(),
+	// 			city: $('input[name="city"]').val(),
+	// 			district: $('input[name="district"]').val(),
+	// 			web_url: $('input[name="web_url"]').val(),
+	// 			facebook_url: $('input[name="facebook_url"]').val(),
 
-			},
-			success: function(data) {
-				// app.mDtTable.ajax.reload(null, false);
-				// app.backTo();
+	// 		},
+	// 		success: function(data) {
+	// 			// app.mDtTable.ajax.reload(null, false);
+	// 			// app.backTo();
 
 
-			}
-		});
-	};
+	// 		}
+	// 	});
+	// };
 
 
 
