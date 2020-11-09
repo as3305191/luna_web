@@ -969,6 +969,85 @@ class Images extends MY_Base_Controller {
 			return $image2;
 		}
 	}
+	
 
+		//image upload section
+		public function upload_news($image_path) {
+			$info = '';
+	
+			$name = $_FILES['file']['name'];
+			$tmp_name = $_FILES['file']['tmp_name'];
+			$type = $_FILES['file']['type'];
+			$size = $_FILES['file']['size'];
+	
+			if (!($type == 'image/jpeg' || $type == 'image/png' || $type == 'image/gif' || $type =='image/jpg')) {
+				$info = "非支援上傳格式(jpeg/jpg/png/gif)";
+				$success = FALSE;
+			}
+	
+			// open up the file and extract the data/content from it
+			$i_data['image_name'] = $name;
+			$i_data['mime'] = $type;
+			$i_data['image_path'] = $image_path;
+			$i_data['image_size'] = $size;
+	
+			// set store id
+			$place_mark_id = $this -> get_post('id');
+			$place_mark_list = $this->place_mark_dao->find_by_id($place_mark_id);
+	
+			if(!empty($place_mark_id)) {
+				$i_data['place_mark_id'] = $place_mark_id;
+			}
+			
+			$img_content = file_get_contents($tmp_name);
+	
+			$image_info = getimagesize($tmp_name);
+			$image_width = $image_info[0];
+			$image_height = $image_info[1];
+			$i_data['width'] = $image_width;
+			$i_data['height'] = $image_height;
+			$i_data['img'] = $img_content;
+			$last_id = $this -> dao -> insert_image_data($i_data);
+			if($place_mark_list->image_id==0) {
+				$insert_data['image_id'] = $last_id;
+				$up_data['place_mark_status'] = 1;
+	
+				$this -> place_mark_dao -> update($insert_data, $place_mark_id);//如果沒預設值更新
+				$this -> dao -> update($up_data, $last_id);//如果沒預設值更新
+	
+			}
+			if (!empty($last_id)) {
+	
+	
+				// resize
+				$this -> resize($tmp_name, 300, 300);
+	
+				$img_content = file_get_contents($tmp_name);
+				$this -> dao -> update(array(
+					'img_thumb' => $img_content
+				), $last_id);
+	
+				$url = 'mgmt/images/delete/' . $last_id;
+				$res = [
+					'initialPreview' => [
+						   base_url('mgmt/images/get/' . $last_id)
+					],
+					'initialPreviewConfig' => [
+						['caption' => "$name", 'size' => $size, 'width' => '120px', 'url' => $url, 'key' => $last_id]
+					],
+					"id" => $last_id
+				];
+	
+				//可重複上圖
+				if($image_path == 'product_img' || $image_path == 'store_img') {
+					$res['append'] = TRUE;
+				} else {
+					$res['append'] = FALSE;
+				}
+	
+				$this -> to_json($res);
+			}
+	
+		}
 }
 ?>

@@ -110,7 +110,7 @@
 	$("#m_bulletin_type").val($("#bulletin_type").val());
 
 	$('#img-input').fileupload({
-			url: '<?= base_url('mgmt/images/upload/user_img') ?>',
+			url: '<?= base_url('mgmt/images/upload_news/user_img') ?>',
 			dataType: 'json',
 			done: function(e, data) {
 				// $('#file-input-win-img').prop('src', data.result.initialPreview[0]).show();
