@@ -98,9 +98,9 @@
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
-<script src="<?= base_url('js/plugin/bootstrap-fileinput/js/plugins/sortable.js') ?>"></script>
-<script src="<?= base_url('js/plugin/bootstrap-fileinput/js/fileinput.js') ?>"></script>
-<script src="<?= base_url('js/plugin/bootstrap-fileinput/js/locales/zh-TW.js') ?>"></script>
+<script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
+<script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/jquery.iframe-transport.js"></script>
+<script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/jquery.fileupload.js"></script>
 
 <script type="text/javascript">
 
