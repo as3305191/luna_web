@@ -141,7 +141,9 @@ class News_img extends MY_Mgmt_Controller {
 
 	public function delete($id) {
 		$res['success'] = TRUE;
-		$this -> img_dao -> update(array('status'=>1), $id);	
+		$this -> img_dao -> delete($id);
+
+		// $this -> img_dao -> update(array('status'=>1), $id);	
 		$this -> to_json($res);
 	}
 
