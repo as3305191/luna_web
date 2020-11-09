@@ -128,7 +128,7 @@
 			success: function(data) {
 				layer.msg("圖片上傳成功")
 				layer.closeAll();
-				currentApp.image_List.tableReload();
+				currentApp.tableReload();
 
 			}
 		}).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
