@@ -124,17 +124,14 @@ class Images_dao extends MY_Model {
 
 		$this -> db -> select('_m.id');
 		$this -> db -> select('_m.upload_time');
-		$this -> db -> select('_m.place_mark_status');
 
 		$this -> db -> order_by('_m.id','asc');
 
-		if(!empty($place_mark_id) && $place_mark_id>0) {
-
-			$this -> db -> where('place_mark_id', $place_mark_id);
-		}
+		
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
 		}
+		
 		$this -> db -> where('_m.status',0);
 
 		// query results
