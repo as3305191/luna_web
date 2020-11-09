@@ -206,7 +206,7 @@
 				colorButton_enableMore : false,
 				removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
 				extraPlugins : 'imagemaps,autogrow,uploadimage',
-				filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/dm_image',
+				filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/img',
 				autoGrow_onStartup : true,
 				height:400,
 
