@@ -161,10 +161,4 @@
 <input type="radio" class="s1" name="r" id="r4">
 <input type="radio" class="s1" name="r" id="r5">
 
-<div class="navigation">
-    <label class="bar" for="r1"></label>
-    <label class="bar" for="r2"></label>
-    <label class="bar" for="r3"></label>
-    <label class="bar" for="r4"></label>
-    <label class="bar" for="r5"></label>
-</div>
+
