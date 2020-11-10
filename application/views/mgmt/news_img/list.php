@@ -140,6 +140,9 @@
 					},
 					dataType: 'json',
 					success: function(d) {
+						layer.msg("圖片上傳成功")
+						layer.closeAll();
+						currentApp.tableReload();
 					},
 					failure:function(){
 						alert('faialure');
@@ -155,9 +158,7 @@
 				);
 			},
 			success: function(data) {
-				layer.msg("圖片上傳成功")
-				layer.closeAll();
-				currentApp.tableReload();
+				
 
 			}
 		}).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
