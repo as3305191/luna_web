@@ -29,7 +29,17 @@
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
-
+								<div class="form-group">
+									<label class="col-md-3 control-label">圖片類別</label>
+									<div class="col-md-6">
+										<select name="img_style" id="img_style" class="form-control">
+											<!-- option from javascript -->
+										</select>
+									</div>
+									<div class="col-md-2">
+										<button type="button" class="btn btn-sm btn-primary" id="add_img_style"><i class="fa fa-plus-circle fa-lg"></i></button>
+									</div>
+								</div>
 							</div>
 							<!-- end widget edit box -->
 							<input type="hidden" class="form-control" id="user_id" name="user_id" value="<?= isset($login_user) ? $login_user->id : '' ?>"  />
@@ -107,6 +117,18 @@
 			currentApp = new NewsimgClass(new BaseAppClass({}));
 		});
 	});
+
+	$('#add_img_style').click(function() {
+		layer.open({
+			type:2,
+			title:'',
+			closeBtn:0,
+			area:['400px','200px'],
+			shadeClose:true,
+			content:'<?=base_url('mgmt/news_img/new_img_style')?>'
+		})
+	})
+
 	$("#m_bulletin_type").val($("#bulletin_type").val());
 
 	$('#img-input').fileupload({
@@ -191,4 +213,31 @@
 			}
 		});
 	}
+
+	function load_img_style() {
+	$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/news_img/find_img_style',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$img_style = $('#img_style').empty();
+					$.each(d.country, function(){
+						$('<option/>', {
+							'value': this.id,
+							'text': this.img_style
+						}).appendTo($img_style);
+					});
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+
+}
+load_country();
+
 </script>

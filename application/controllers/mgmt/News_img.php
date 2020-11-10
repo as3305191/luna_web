@@ -8,6 +8,7 @@ class News_img extends MY_Mgmt_Controller {
 		$this -> load -> model('Place_mark_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
+		$this -> load -> model('Img_style_dao', 'img_style_dao');
 
 		// $this->load->library('excel');
 	}
@@ -703,4 +704,27 @@ class News_img extends MY_Mgmt_Controller {
       // $data = $this->dbutil->csv_from_result($result, $delimiter, $newline);
       // force_download($filename,@iconv("UTF-8","Big5//IGNORE",$data));
 	}
+
+	public function new_img_style(){
+		$data = array();
+		$this -> load -> view('layout/show_new_img_style',$data);
+	}
+
+	public function add_img_style(){
+		$data = array();
+		$img_style = $this -> get_post('img_style');
+		$data['img_style'] = $img_style;
+		$this -> img_style_dao -> insert($data);
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function find_img_style(){
+		$res = array();
+		$img_style_list = $this -> img_style_dao -> find_all();
+		$res['img_style'] = $img_style_list;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
 }
