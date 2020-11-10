@@ -97,19 +97,11 @@ input[name="r"] {
     </div>
 </div>
 
-<div class="navigation">
-    <label class="bar" for=""></label>
-    <label class="bar" for=""></label>
-    <label class="bar" for=""></label>
-    <label class="bar" for=""></label>
-    <label class="bar" for=""></label>
-</div>
-
-<input type="radio" name="r" id="r1" checked>
-<input type="radio" name="r" id="r2">
-<input type="radio" name="r" id="r3">
-<input type="radio" name="r" id="r4">
-<input type="radio" name="r" id="r5">
+<input type="radio" class="s1" name="r" id="r1" checked>
+<input type="radio" class="s1" name="r" id="r2">
+<input type="radio" class="s1" name="r" id="r3">
+<input type="radio" class="s1" name="r" id="r4">
+<input type="radio" class="s1" name="r" id="r5">
 
 <div class="navigation">
     <label class="bar" for="r1"></label>
