@@ -16,7 +16,7 @@
 							<div class="widget-toolbar pull-left">
 								<label class="col-md-3 control-label">圖片類別</label>
 								<div class="col-md-6">
-									<select name="img_style" id="img_style" class="form-control">
+									<select id="img_style" class="form-control">
 										<!-- option from javascript -->
 									</select>
 								</div>
@@ -122,6 +122,9 @@
 	$("#m_bulletin_type").val($("#bulletin_type").val());
 
 	$('#img-input').fileupload({
+			data: {
+				img_style: $('#img_style').val()
+			},
 			url: '<?= base_url('mgmt/images/upload_news/news_img') ?>',
 			dataType: 'json',
 			done: function(e, data) {
