@@ -152,14 +152,6 @@ class News_img extends MY_Mgmt_Controller {
 	}
 
 	public function delete($id) {
-		$res['success'] = TRUE;
-		$this -> img_dao -> delete($id);
-
-		// $this -> img_dao -> update(array('status'=>1), $id);	
-		$this -> to_json($res);
-	}
-
-	public function delete_img($id) {
 		$find_list = $this -> img_dao -> find_by_img_id($id);
 		$find_list_by_pm_id = $this -> img_dao -> find_by_pm_id($find_list->place_mark_id);	
 		$list_count = count($find_list_by_pm_id);
@@ -176,6 +168,14 @@ class News_img extends MY_Mgmt_Controller {
 			$res['message'] = '不能刪除僅有的預設圖';
 		}
 		
+		$this -> to_json($res);
+	}
+
+	public function delete_img($id) {
+		$res['success'] = TRUE;
+		$this -> img_dao -> delete($id);
+
+		// $this -> img_dao -> update(array('status'=>1), $id);	
 		$this -> to_json($res);
 	}
 
