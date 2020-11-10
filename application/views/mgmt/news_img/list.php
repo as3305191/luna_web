@@ -29,6 +29,14 @@
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
+								
+							</div>
+							<!-- end widget edit box -->
+							<input type="hidden" class="form-control" id="user_id" name="user_id" value="<?= isset($login_user) ? $login_user->id : '' ?>"  />
+
+							<!-- widget content -->
+							<div class="widget-body no-padding">
+								
 								<div class="form-group">
 									<label class="col-md-3 control-label">圖片類別</label>
 									<div class="col-md-6">
@@ -39,26 +47,16 @@
 									<div class="col-md-2">
 										<button type="button" class="btn btn-sm btn-primary" id="add_img_style"><i class="fa fa-plus-circle fa-lg"></i></button>
 									</div>
-								</div>
-							</div>
-							<!-- end widget edit box -->
-							<input type="hidden" class="form-control" id="user_id" name="user_id" value="<?= isset($login_user) ? $login_user->id : '' ?>"  />
-
-							<!-- widget content -->
-							<div class="widget-body no-padding">
-
-			
-									<div class="form-group">
-										<label class="col-md-3 control-label">上傳照片</label>
-										<div class="col-md-6">
-											<input id="image_id" name="image_id" type="hidden" value="<?= isset($item) ? $item->image_id : '' ?>">
-											<img id="file-input-win-img" style="max-width:80%;position: relative;z-index: 100;<?= isset($item) && !empty($item->image_id) ? " " : 'display:none;' ?>" />
-											<input id="img-input" name="file" type="file" accept=".jpg, .jpeg" class="form-control">
-											<div id="file-input-progress-win-img" class="progress" style="display:none">
-												<div class="progress-bar progress-bar-success"></div>
-											</div>
+									<label class="col-md-3 control-label">上傳照片</label>
+									<div class="col-md-6">
+										<input id="image_id" name="image_id" type="hidden" value="<?= isset($item) ? $item->image_id : '' ?>">
+										<img id="file-input-win-img" style="max-width:80%;position: relative;z-index: 100;<?= isset($item) && !empty($item->image_id) ? " " : 'display:none;' ?>" />
+										<input id="img-input" name="file" type="file" accept=".jpg, .jpeg" class="form-control">
+										<div id="file-input-progress-win-img" class="progress" style="display:none">
+											<div class="progress-bar progress-bar-success"></div>
 										</div>
 									</div>
+								</div>
 								<hr>
 								<table id="pic_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
