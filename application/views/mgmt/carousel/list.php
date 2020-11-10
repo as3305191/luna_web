@@ -155,10 +155,10 @@
         </div>
     </div>
 
-<input type="radio" class="s1" name="r" id="r1" checked>
-<input type="radio" class="s1" name="r" id="r2">
-<input type="radio" class="s1" name="r" id="r3">
-<input type="radio" class="s1" name="r" id="r4">
-<input type="radio" class="s1" name="r" id="r5">
+<input type="radio" class="s1" name="r" id="r1" style="display:none" checked>
+<input type="radio" class="s1" name="r" id="r2" style="display:none" >
+<input type="radio" class="s1" name="r" id="r3" style="display:none" >
+<input type="radio" class="s1" name="r" id="r4" style="display:none" >
+<input type="radio" class="s1" name="r" id="r5" style="display:none" >
 
 
