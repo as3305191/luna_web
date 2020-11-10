@@ -21,7 +21,7 @@ class Carousel extends MY_Mgmt_Controller {
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		// $this -> to_json($data);
 
-		$this->load->view('mgmt/carousel/list', $data);
+		$this->load->view('carousel/list', $data);
 	}
 
 	public function get_data() {
