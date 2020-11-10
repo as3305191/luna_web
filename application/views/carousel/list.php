@@ -1,6 +1,10 @@
 <head>
   
     <style>
+        html, body {
+            margin:0;
+            padding:0;
+        }
         .slide-container {
             width: 500px;
             height: 300px;
