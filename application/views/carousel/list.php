@@ -142,6 +142,7 @@
             <input type="radio" name="r" id="r5">
             <div class="slide s1">
                 <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
+                <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
             </div>
             <div class="slide">
                 <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
