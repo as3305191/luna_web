@@ -5,6 +5,16 @@
             margin:0;
             padding:0;
         }
+
+        .container {
+
+        height:100%;width:100%;
+        /*width: 100%;*/
+        border: 1px solid green;
+        position:fixed;
+        background-color:black ;
+        }
+
         .slide-container {
             width: 500px;
             height: 300px;
@@ -125,8 +135,8 @@
         }
     </style>
 </head>
-
-    <div class="slide-container middle">
+<div class="container">
+<div class="slide-container middle">
         <div class="slide-wrap">
             <input type="radio" name="r" id="r1" checked>
             <input type="radio" name="r" id="r2">
@@ -164,5 +174,8 @@
 <input type="radio" class="s1" name="r" id="r3" style="display:none" >
 <input type="radio" class="s1" name="r" id="r4" style="display:none" >
 <input type="radio" class="s1" name="r" id="r5" style="display:none" >
+</div>
+
+   
 
 
