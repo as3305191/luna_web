@@ -145,7 +145,7 @@
                 <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
             </div>
 
-            <div class="navigation">
+            <div class="navigation" style="display:none">
                 <label class="bar" for="r1"></label>
                 <label class="bar" for="r2"></label>
                 <label class="bar" for="r3"></label>
