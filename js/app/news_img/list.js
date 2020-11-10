@@ -122,7 +122,7 @@ var NewsimgClass = (function(app) {
 				data : 'id',
 				render: function (data) {
 					if(data){
-						return  baseUrl + 'api/images/get/' + data + '/thumb';
+						return String(baseUrl + 'api/images/get/' + data + '/thumb');
 					} else{
 						return  '';
 
