@@ -131,6 +131,20 @@
 				// $('#file-input-win-img').prop('src', data.result.initialPreview[0]).show();
 				$('#image_id').val(data.result.id).attr('uid', data.result.id);
 				// $('#file-input-progress-win-img').hide();
+				$.ajax({
+					url: '<?= base_url() ?>' + 'mgmt/news_img/update_img_style',
+					type: 'POST',
+					data: {
+						last_id:data.result.id,
+						img_style:$('#img_style').val()
+					},
+					dataType: 'json',
+					success: function(d) {
+					},
+					failure:function(){
+						alert('faialure');
+					}
+				});
 			},
 			progressall: function(e, data) {
 				var progress = parseInt(data.loaded / data.total * 100, 10);

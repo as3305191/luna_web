@@ -66,6 +66,17 @@ class News_img extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function update_img_style() {
+		$res = array();
+		$last_id = $this -> get_post('last_id');
+		$img_style = $this -> get_post('img_style');
+		$this -> img_dao -> update(array(
+			'img_style' => $img_style
+		), $last_id);
+
+		$this -> to_json($res);
+	}
+
 	public function edit($id) {
 		$data = array();
 		$data['id'] = $id;
