@@ -238,6 +238,6 @@
 		});
 
 }
-load_country();
+load_img_style();
 
 </script>
