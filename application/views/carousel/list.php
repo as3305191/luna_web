@@ -142,19 +142,18 @@
             <input type="radio" name="r" id="r5">
             <div class="slide s1">
                 <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
-                <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
             </div>
             <div class="slide">
-                <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
+                <img src="<?= base_url('api/images/get/314/thumb') ?>" alt="">
             </div>
             <div class="slide">
-                <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
+                <img src="<?= base_url('api/images/get/1/thumb') ?>" alt="">
             </div>
             <div class="slide">
-                <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
+                <img src="<?= base_url('api/images/get/2/thumb') ?>" alt="">
             </div>
             <div class="slide">
-                <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
+                <img src="<?= base_url('api/images/get/3/thumb') ?>" alt="">
             </div>
 
             <div class="navigation" style="display:none">
