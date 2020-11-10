@@ -224,7 +224,7 @@
 				if(d) {
 					// console.log(d);
 					$img_style = $('#img_style').empty();
-					$.each(d.country, function(){
+					$.each(d.img_style, function(){
 						$('<option/>', {
 							'value': this.id,
 							'text': this.img_style
