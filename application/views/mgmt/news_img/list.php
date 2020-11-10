@@ -29,7 +29,7 @@
 								<div class="col-md-6">
 									<input id="image_id" name="image_id" type="hidden" value="<?= isset($item) ? $item->image_id : '' ?>">
 									<img id="file-input-win-img" style="max-width:80%;position: relative;z-index: 100;<?= isset($item) && !empty($item->image_id) ? " " : 'display:none;' ?>" />
-									<input id="img-input" name="file" type="file" accept=".jpg, .jpeg" class="form-control">
+									<input id="img-input" name="file" type="file" accept="image/*" class="form-control">
 									<div id="file-input-progress-win-img" class="progress" style="display:none">
 										<div class="progress-bar progress-bar-success"></div>
 									</div>
