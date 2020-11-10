@@ -1,5 +1,4 @@
 <head>
-  
     <style>
         html, body {
             margin:0;
@@ -7,11 +6,10 @@
         }
 
         .container {
-        position: absolute;
-        height:100%;width:100%;
-        /*width: 100%;*/
-        /* position:fixed; */
-        background-color:black ;
+            height:100%;
+            width:100%;
+            position:fixed;
+            background-color:black ;
         }
 
         .slide-container {
