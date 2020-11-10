@@ -150,11 +150,11 @@
             <input type="radio" name="r" id="r3">
             <input type="radio" name="r" id="r4">
             <input type="radio" name="r" id="r5">
-            <div class="slide s1">
-                <div class="news_img_1">
+            <div class="slide s1" >
+                <div class="news_img_1" style="padding: 0px 0px 0px 0px">
                     <img src="<?= base_url('api/images/get/3/thumb') ?>" alt="">
                 </div>
-                <div class="news_img_2">
+                <div class="news_img_2" style="padding: 0px 0px 0px 0px">
                     <img src="<?= base_url('api/images/get/314/thumb') ?>" alt="">
                 </div>
             </div>
