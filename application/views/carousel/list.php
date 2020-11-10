@@ -14,7 +14,7 @@
 
         .slide-container {
             width: 500px;
-            height: 300px;
+            height: 100%;
             overflow: hidden;
         }
 
@@ -40,6 +40,16 @@
         .slide img {
             width: 100%;
             height: 100%;
+        }
+
+        .news_img_1{
+            width: 100%;
+            height: 50%;
+        }
+
+        .news_img_2{
+            width: 100%;
+            height: 50%;
         }
 
         .navigation {
@@ -141,7 +151,12 @@
             <input type="radio" name="r" id="r4">
             <input type="radio" name="r" id="r5">
             <div class="slide s1">
-                <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
+                <div class="news_img_1">
+                    <img src="<?= base_url('api/images/get/3/thumb') ?>" alt="">
+                </div>
+                <div class="news_img_2">
+                    <img src="<?= base_url('api/images/get/314/thumb') ?>" alt="">
+                </div>
             </div>
             <div class="slide">
                 <img src="<?= base_url('api/images/get/314/thumb') ?>" alt="">
