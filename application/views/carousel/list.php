@@ -10,8 +10,7 @@
         position: absolute;
         height:100%;width:100%;
         /*width: 100%;*/
-        border: 1px solid green;
-        position:fixed;
+        /* position:fixed; */
         background-color:black ;
         }
 
