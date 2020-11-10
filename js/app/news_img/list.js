@@ -108,6 +108,8 @@ var NewsimgClass = (function(app) {
 			pageLength: 50,
 
 			columns : [null,{
+				data : 'style_name'
+			},{
 				data : 'id',
 				render: function (data) {
 					if(data>0){
@@ -116,6 +118,16 @@ var NewsimgClass = (function(app) {
 						return '';
 					}
 		    	} 
+			},{
+				data : 'id',
+				render: function (data) {
+					if(data){
+						return  baseUrl + 'api/images/get/' + data + '/thumb';
+					} else{
+						return  '';
+
+					}
+				}
 			},{
 				data : 'upload_time'
 			}],

@@ -54,7 +54,9 @@
 									<thead>
 										<tr>
 											<th class="min100">是否預設</th>
+											<th class="min100">分類</th>
 											<th class="min100">照片</th>
+											<th class="min100">網址</th>
 											<th>日期</th>
 										</tr>
 									</thead>

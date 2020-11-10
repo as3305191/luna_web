@@ -992,10 +992,10 @@ class Images extends MY_Base_Controller {
 			$i_data['image_size'] = $size;
 	
 			// set store id
-			$news_style = $this -> get_post('style');
+			$img_style = $this -> get_post('img_style');
 	
 			if(!empty($news_style)) {
-				$i_data['news_style'] = $news_style;
+				$i_data['img_style'] = $img_style;
 			}
 			
 			$img_content = file_get_contents($tmp_name);
