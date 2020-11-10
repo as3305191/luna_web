@@ -1,4 +1,20 @@
 <style>
+.slide-container {
+    width: 500px;
+    height: 300px;
+  	overflow: hidden;
+}
+.middle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.slide img {
+    width: 100%;
+    height: 100%;
+}
+
 .navigation {
     position: absolute;
     left: 50%;
@@ -68,7 +84,19 @@ input[name="r"] {
     }
 }
 </style>
-<!-- inner slide-wrap -->
+
+<div class="slide-container middle">
+    <div class="slide-wrap">
+        <div class="slide">
+            <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
+        </div>
+        <div class="slide">
+            <img src="<?= base_url('img/ktx_img/logo.jpg') ?>" alt="">
+        </div>
+        
+    </div>
+</div>
+
 <div class="navigation">
     <label class="bar" for=""></label>
     <label class="bar" for=""></label>
@@ -77,7 +105,6 @@ input[name="r"] {
     <label class="bar" for=""></label>
 </div>
 
-<!-- inner slide-wrap -->
 <input type="radio" name="r" id="r1" checked>
 <input type="radio" name="r" id="r2">
 <input type="radio" name="r" id="r3">
