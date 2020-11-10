@@ -14,16 +14,14 @@
 					<div class="jarviswidget">
 						<header>
 							<div class="widget-toolbar pull-left">
-								<div class="btn-group">
-									<label class="col-md-3 control-label">圖片類別</label>
-										<div class="col-md-6">
-											<select name="img_style" id="img_style" class="form-control">
-												<!-- option from javascript -->
-											</select>
-										</div>
-										<div class="col-md-2">
-											<button type="button" class="btn btn-sm btn-primary" id="add_img_style"><i class="fa fa-plus-circle fa-lg"></i></button>
-										</div>
+								<label class="col-md-3 control-label">圖片類別</label>
+								<div class="col-md-6">
+									<select name="img_style" id="img_style" class="form-control">
+										<!-- option from javascript -->
+									</select>
+								</div>
+								<div class="col-md-2">
+									<button type="button" class="btn btn-sm btn-primary" id="add_img_style"><i class="fa fa-plus-circle fa-lg"></i></button>
 								</div>
 							</div>
 							<div class="widget-toolbar pull-left">
