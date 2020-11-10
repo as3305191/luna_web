@@ -124,9 +124,7 @@
 	$("#m_bulletin_type").val($("#bulletin_type").val());
 
 	$('#img-input').fileupload({
-			data: {
-				img_style: $('#img_style').val()
-			},
+			
 			url: '<?= base_url('mgmt/images/upload_news/news_img') ?>',
 			dataType: 'json',
 			done: function(e, data) {
