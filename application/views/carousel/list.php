@@ -45,17 +45,17 @@
         .news_img_1{
             margin:0;
             padding:0;
-            height:100%;
+            height:50%;
             width:100%;
-            position:fixed;
+            position: absolute;
         }
 
         .news_img_2{
             margin:0;
             padding:0;
-            height:100%;
+            height:50%;
             width:100%;
-            position:fixed;
+            position: absolute;
         }
 
         .navigation {
