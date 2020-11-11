@@ -43,13 +43,19 @@
         }
 
         .news_img_1{
-            width: 100%;
-            height: 100%;
+            margin:0;
+            padding:0;
+            height:100%;
+            width:100%;
+            position:fixed;
         }
 
         .news_img_2{
-            width: 100%;
-            height: 100%;
+            margin:0;
+            padding:0;
+            height:100%;
+            width:100%;
+            position:fixed;
         }
 
         .navigation {
@@ -98,9 +104,9 @@
             margin-left: -80%;
         }
 
-        .s1 {
+        /* .s1 {
             animation: loop 12s linear infinite;
-        }
+        } */
 
         @keyframes loop {
             0% {
