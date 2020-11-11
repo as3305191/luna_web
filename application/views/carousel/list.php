@@ -177,18 +177,34 @@
             <input type="radio" name="r" id="r5">
             <div class="slide s1" >
                 <div class="news_img_1">
-                    <img src="<?= base_url('api/images/get/'.$carousel_id[0].'/thumb') ?>"  alt="">
+                    <?php if(!empty($carousel_id[0]) && $carousel_id[0]): ?>
+                        <img src="<?= base_url('api/images/get/'.$carousel_id[0].'/thumb') ?>"  alt="">
+                    <?php else: ?>
+                        <img src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
+                    <?php endif ?>
                 </div>
                 <div class="news_img_2">
-                    <img src="<?= base_url('api/images/get/'.$carousel_id[1].'/thumb') ?>"  alt="">
+                    <?php if(!empty($carousel_id[1]) && $carousel_id[1]): ?>
+                        <img src="<?= base_url('api/images/get/'.$carousel_id[1].'/thumb') ?>"  alt="">
+                    <?php else: ?>
+                        <img src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
+                    <?php endif ?>
                 </div>
             </div>
             <div class="slide ">
                 <div class="news_img_1">
-                    <img src="<?= base_url('api/images/get/'.$carousel_id[2].'/thumb') ?>"  alt="">
+                    <?php if(!empty($carousel_id[2]) && $carousel_id[2]): ?>
+                        <img src="<?= base_url('api/images/get/'.$carousel_id[2].'/thumb') ?>"  alt="">
+                    <?php else: ?>
+                        <img src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
+                    <?php endif ?>
                 </div>
                 <div class="news_img_2">
-                    <img src="<?= base_url('api/images/get/'.$carousel_id[3].'/thumb') ?>"  alt="">
+                    <?php if(!empty($carousel_id[3]) && $carousel_id[3]): ?>
+                        <img src="<?= base_url('api/images/get/'.$carousel_id[3].'/thumb') ?>"  alt="">
+                    <?php else: ?>
+                        <img src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
+                    <?php endif ?>
                 </div>
             </div>
             <div class="slide">
