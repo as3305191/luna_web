@@ -68,7 +68,7 @@ var NewsimgClass = (function(app) {
 									},
 									dataType: 'json',
 									success: function(data) {
-								
+										
 									},
 									type: 'POST'
 								})
