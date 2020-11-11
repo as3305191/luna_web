@@ -13,14 +13,14 @@ class Carousel extends MY_Mgmt_Controller {
 
 	}
 
-	public function index($reload=0)
+	public function index()
 	{
 		$data = array();
 		$items = $this -> img_style_dao -> find_carousel($data);
 		foreach($items as $each){
 			$data['carousel_id'][]= $each->id;
 		}
-		// $reload = $this -> get_post('reload');
+		$reload = $this -> get_post('reload');
 
 		if(!empty($reload) && $reload>0){
 			echo "
