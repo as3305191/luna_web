@@ -13,7 +13,7 @@
         }
 
         .slide-container {
-            width: 500px;
+            /* max-width: 500vh; */
             height: 100%;
             overflow: hidden;
         }
@@ -28,7 +28,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%);
+            transform: translate(-50%, -45%);
         }
 
         .slide {
@@ -37,21 +37,44 @@
             transition: 1s;
         }
 
-        .slide img {
-            width: 100%;
-            height: 100%;
-        }
-
         .news_img_1{
-            width: 100%;
+            width: 90%;
             height: 40%;
-            word-wrap: break-word;
+            margin-left: auto;
+            margin-right: auto;
+            text-align:center;
+            padding:0px 0px 10px 0px;
         }
 
         .news_img_2{
-            position: relative;
-            width: 100%;
+            width: 90%;
             height: 40%;
+            margin-left: auto;
+            margin-right: auto;           
+            text-align:center;
+            padding:10px 0px 0px 0px;
+        }
+
+        .news_img_1 img {
+            width: 60vh;
+            height: 40vh;
+            z-index:9999;
+            /* position: absolute; */
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+
+        .news_img_2 img {
+            width: 60vh;
+            height: 40vh;
+            z-index:9999;
+            margin-left: auto;
+            margin-right: auto;
+
+            /* position: absolute; */
+            /* bottom: 10%; */
+
         }
 
         .navigation {
@@ -100,9 +123,9 @@
             margin-left: -80%;
         }
 
-        /* .s1 {
+        .s1 {
             animation: loop 12s linear infinite;
-        } */
+        }
 
         @keyframes loop {
             0% {
@@ -153,15 +176,20 @@
             <input type="radio" name="r" id="r4">
             <input type="radio" name="r" id="r5">
             <div class="slide s1" >
-                <div class="news_img_1" style="padding: 10px 0px 10px 0px">
-                    <img src="<?= base_url('api/images/get/315/thumb') ?>" style="margin:auto;" alt="">
+                <div class="news_img_1">
+                    <img src="<?= base_url('api/images/get/315/thumb') ?>"  alt="">
                 </div>
-                <div class="news_img_2" style="padding: 855px 0px 10px 0px">
-                    <img src="<?= base_url('api/images/get/314/thumb') ?>" style="margin:auto;" alt="">
+                <div class="news_img_2">
+                    <img src="<?= base_url('api/images/get/314/thumb') ?>"  alt="">
                 </div>
             </div>
-            <div class="slide">
-                <img src="<?= base_url('api/images/get/314/thumb') ?>" alt="">
+            <div class="slide ">
+                <div class="news_img_1">
+                    <img src="<?= base_url('api/images/get/314/thumb') ?>"  alt="">
+                </div>
+                <div class="news_img_2">
+                    <img src="<?= base_url('api/images/get/315/thumb') ?>"  alt="">
+                </div>
             </div>
             <div class="slide">
                 <img src="<?= base_url('api/images/get/1/thumb') ?>" alt="">
@@ -190,6 +218,9 @@
 <input type="radio" class="s1" name="r" id="r5" style="display:none" >
 </div>
 
+<script>
+
+</script>
    
 
 
