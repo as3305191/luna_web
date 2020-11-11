@@ -227,7 +227,8 @@ class News_img extends MY_Mgmt_Controller {
 				$res['success_msg'] = '變更非預設成功';
 			}
 			$this -> img_dao -> update($u_data, $img_id);
-			$this -> curl -> simple_post("http://192.168.3.251/app/carousel/reload",$reload);
+			// $this -> curl -> simple_post("http://192.168.3.251/app/carousel/reload",$reload);
+			$this -> carousel(1);
 		}
 	
 		// $find_list_by_pm_id = $this -> img_dao -> find_by_pm_id($p->place_mark_id);	
@@ -736,6 +737,23 @@ class News_img extends MY_Mgmt_Controller {
 		$res['img_style'] = $img_style_list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
+	}
+
+	public function carousel($reload=0)
+	{
+		$data = array();
+		$items = $this -> img_style_dao -> find_carousel($data);
+		foreach($items as $each){
+			$data['carousel_id'][]= $each->id;
+		}
+		if(!empty($reload) && $reload>0){
+			echo "
+			<script>
+				location.reload();
+			</script>";
+		}
+			
+		$this->load->view('carousel/list', $data);
 	}
 
 }
