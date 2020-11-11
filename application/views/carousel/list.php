@@ -177,18 +177,18 @@
             <input type="radio" name="r" id="r5">
             <div class="slide s1" >
                 <div class="news_img_1">
-                    <img src="<?= base_url('api/images/get/315/thumb') ?>"  alt="">
+                    <img src="<?= base_url('api/images/get/'.$carousel_id[0].'/thumb') ?>"  alt="">
                 </div>
                 <div class="news_img_2">
-                    <img src="<?= base_url('api/images/get/314/thumb') ?>"  alt="">
+                    <img src="<?= base_url('api/images/get/'.$carousel_id[1].'/thumb') ?>"  alt="">
                 </div>
             </div>
             <div class="slide ">
                 <div class="news_img_1">
-                    <img src="<?= base_url('api/images/get/314/thumb') ?>"  alt="">
+                    <img src="<?= base_url('api/images/get/'.$carousel_id[2].'/thumb') ?>"  alt="">
                 </div>
                 <div class="news_img_2">
-                    <img src="<?= base_url('api/images/get/315/thumb') ?>"  alt="">
+                    <img src="<?= base_url('api/images/get/'.$carousel_id[3].'/thumb') ?>"  alt="">
                 </div>
             </div>
             <div class="slide">
