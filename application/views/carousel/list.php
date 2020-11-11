@@ -38,18 +38,18 @@
         }
 
         .slide img {
-            width: 100%;
-            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
         }
 
         .news_img_1{
-            width: 100%;
-            height: 50%;
+            max-width: 100%;
+            max-height: 100%;
         }
 
         .news_img_2{
-            width: 100%;
-            height: 50%;
+            max-width: 100%;
+            max-height: 100%;
         }
 
         .navigation {
