@@ -219,7 +219,7 @@ class News_img extends MY_Mgmt_Controller {
 		$u_data = array();
 		
 		$p = $this -> img_dao -> find_by_id($img_id);
-		if(!empty($p )){
+		if(!empty($p)){
 			if($p->status==0){
 				$u_data['status'] = 1;
 				$res['success_msg'] = '變更預設成功';
@@ -228,6 +228,7 @@ class News_img extends MY_Mgmt_Controller {
 				$res['success_msg'] = '變更非預設成功';
 			}
 			$this -> img_dao -> update($u_data, $img_id);
+			base_url('carousel');
 		}
 	
 		// $find_list_by_pm_id = $this -> img_dao -> find_by_pm_id($p->place_mark_id);	
