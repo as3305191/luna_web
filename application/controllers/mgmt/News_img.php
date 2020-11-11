@@ -17,7 +17,6 @@ class News_img extends MY_Mgmt_Controller {
 	{
 		$data = array();
 		$data = $this -> setup_user_data($data);
-		
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		// $this -> to_json($data);
 
@@ -228,7 +227,6 @@ class News_img extends MY_Mgmt_Controller {
 				$res['success_msg'] = '變更非預設成功';
 			}
 			$this -> img_dao -> update($u_data, $img_id);
-			base_url('carousel');
 		}
 	
 		// $find_list_by_pm_id = $this -> img_dao -> find_by_pm_id($p->place_mark_id);	

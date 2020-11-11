@@ -19,6 +19,15 @@ class Carousel extends MY_Mgmt_Controller {
 		foreach($items as $each){
 			$data['carousel_id'][]= $each->id;
 		}
+		$reload = $this -> get_post('reload');
+
+		if(!empty($reload) && $reload>0){
+			echo "
+			<script>
+				location.reload();
+			</script>";
+		}
+		
 		$this->load->view('carousel/list', $data);
 	}
 
