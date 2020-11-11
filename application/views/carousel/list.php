@@ -52,7 +52,7 @@
 
         .news_img_2{
             margin:0;
-            padding:0;
+            padding:30px;
             height:50%;
             width:100%;
             position: absolute;
@@ -160,7 +160,7 @@
                 <div class="news_img_1" style="padding: 10px 0px 10px 0px">
                     <img src="<?= base_url('api/images/get/315/thumb') ?>" style="margin:auto;" alt="">
                 </div>
-                <div class="news_img_2" style="padding: 10px 0px 10px 0px">
+                <div class="news_img_2" style="padding: 855px 0px 10px 0px">
                     <img src="<?= base_url('api/images/get/314/thumb') ?>" style="margin:auto;" alt="">
                 </div>
             </div>
