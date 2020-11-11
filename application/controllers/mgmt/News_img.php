@@ -16,7 +16,17 @@ class News_img extends MY_Mgmt_Controller {
 	public function index()
 	{
 
+		$data = array();
+		// $data = $this -> setup_user_data($data);
+		// $data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+		// $this -> to_json($data);
+		$this->load->view('mgmt/news_img/list', $data);
+		
+	}
 
+	public function carousel($reload=0)
+	{
+	
 		$data = array();
 		$items = $this -> img_style_dao -> find_carousel($data);
 		foreach($items as $each){
@@ -24,16 +34,6 @@ class News_img extends MY_Mgmt_Controller {
 		}
 	
 		$this->load->view('carousel/list', $data);
-		
-	}
-
-	public function carousel($reload=0)
-	{
-		$data = array();
-		// $data = $this -> setup_user_data($data);
-		// $data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-		// $this -> to_json($data);
-		$this->load->view('mgmt/news_img/list', $data);
 	}
 
 	public function get_data() {
