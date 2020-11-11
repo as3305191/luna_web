@@ -227,7 +227,7 @@ class News_img extends MY_Mgmt_Controller {
 				$res['success_msg'] = '變更非預設成功';
 			}
 			$this -> img_dao -> update($u_data, $img_id);
-			$this -> curl -> simple_post("http://192.168.3.251/app/carousel/index",$reload);
+			$this -> curl -> simple_post("http://192.168.3.251/app/carousel/reload",$reload);
 		}
 	
 		// $find_list_by_pm_id = $this -> img_dao -> find_by_pm_id($p->place_mark_id);	

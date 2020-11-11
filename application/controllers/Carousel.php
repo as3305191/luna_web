@@ -22,15 +22,19 @@ class Carousel extends MY_Mgmt_Controller {
 		}
 		$reload = $this -> get_post('reload');
 
-		if(!empty($reload) && $reload>0){
-			echo "
-			<script>
-				location.reload();
-			</script>";
-		}
-		
 		$this->load->view('carousel/list', $data);
 	}
 
+	public function reload()
+	{
+		$reload = $this -> get_post('reload');
+		if(!empty($reload) && $reload>0){
+			// echo "
+			// <script>
+			// 	location.reload();
+			// </script>";
+			$this -> index();
+		}
+	}
 
 }
