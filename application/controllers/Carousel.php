@@ -12,7 +12,7 @@ class Carousel extends MY_Mgmt_Controller {
 
 	}
 
-	public function index()
+	public function index($reload=0)
 	{
 		$data = array();
 		$items = $this -> img_style_dao -> find_carousel($data);
@@ -21,12 +21,12 @@ class Carousel extends MY_Mgmt_Controller {
 		}
 		// $reload = $this -> get_post('reload');
 
-		// if(!empty($reload) && $reload>0){
-		// 	echo "
-		// 	<script>
-		// 		location.reload();
-		// 	</script>";
-		// }
+		if(!empty($reload) && $reload>0){
+			echo "
+			<script>
+				location.reload();
+			</script>";
+		}
 		
 		$this->load->view('carousel/list', $data);
 	}
