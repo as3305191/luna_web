@@ -59,19 +59,19 @@ var NewsimgClass = (function(app) {
 									timeout: 4000
 								});
 
-								$.ajax({
-									url: baseUrl + 'carousel',
-									data: {
-									  'reload': 1
-									},
-									error: function() {
-									},
-									dataType: 'json',
-									success: function(data) {
+								// $.ajax({
+								// 	url: baseUrl + 'carousel',
+								// 	data: {
+								// 	  'reload': 1
+								// 	},
+								// 	error: function() {
+								// 	},
+								// 	dataType: 'json',
+								// 	success: function(data) {
 										
-									},
-									type: 'POST'
-								})
+								// 	},
+								// 	type: 'POST'
+								// })
 
 							}
 							if(data.message){
