@@ -265,7 +265,7 @@ var NewsimgClass = (function(app) {
 
 			$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
 
-			$('#edit-modal-body').load(baseUrl + 'mgmt/fish_table/edit/' + id, function(){
+			$('#edit-modal-body').load(baseUrl + 'mgmt/news_img/carousel/' + id, function(){
 	        	$("#btn-submit-edit").prop( "disabled", false);
 	        	loading.remove();
 			});
