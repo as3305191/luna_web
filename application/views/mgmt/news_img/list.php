@@ -107,7 +107,7 @@
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/news_img/list.js", function(){
 			currentApp = new NewsimgClass(new BaseAppClass({}));
-			currentApp.doEdit();
+			// currentApp.doEdit();
 		});
 	});
 
