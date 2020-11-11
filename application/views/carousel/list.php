@@ -43,19 +43,15 @@
         }
 
         .news_img_1{
-            margin:0;
-            padding:0;
-            height:50%;
-            width:100%;
-            position: absolute;
+            width: 100%;
+            height: 40%;
+            word-wrap: break-word;
         }
 
         .news_img_2{
-            margin:0;
-            padding:30px;
-            height:50%;
-            width:100%;
-            position: absolute;
+            position: relative;
+            width: 100%;
+            height: 40%;
         }
 
         .navigation {
