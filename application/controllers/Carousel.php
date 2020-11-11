@@ -5,6 +5,7 @@ class Carousel extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
+		$this -> load -> helper('common');
 		$this -> load -> model('Place_mark_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
