@@ -112,7 +112,7 @@
 					$s_news_style = $('#s_news_style').empty();
 					var option = '<option value="0">全部</option>';
           			$s_news_style.append(option);
-					$.each(d.img_style, function(){
+					$.each(d.news_style, function(){
 						$('<option/>', {
 							'value': this.id,
 							'text': this.news_style
