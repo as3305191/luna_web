@@ -177,8 +177,31 @@
         }
     </style>
 </head>
-<div class="container">
-<div class="slide-container middle">
+
+
+
+
+<div class="tab-content">
+	<div class="tab-pane active" id="list_page">
+
+		<!-- widget grid -->
+		<section id="widget-grid" class="">
+
+			<!-- row -->
+			<div class="row">
+
+				<!-- NEW WIDGET START -->
+				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget">
+						<header>
+						
+						</header>
+						<!-- widget div-->
+						<div>
+                        <div class="container">
+    <div class="slide-container middle">
         <div class="slide-wrap">
             <input type="radio" name="r" id="r1" checked>
             <input type="radio" name="r" id="r2">
@@ -218,7 +241,7 @@
                 </div>
 
             </div> -->
-   
+
             <div class="slide" style="text-align:center;">
                 <span class="news_content" style="color:#FFFFFF;font-size:20px;">
                     123321
@@ -241,11 +264,30 @@
         </div>
     </div>
 
-<input type="radio" class="s1" name="r" id="r1" style="display:none" checked>
-<input type="radio" class="s1" name="r" id="r2" style="display:none" >
-<input type="radio" class="s1" name="r" id="r3" style="display:none" >
-<input type="radio" class="s1" name="r" id="r4" style="display:none" >
-<input type="radio" class="s1" name="r" id="r5" style="display:none" >
+    <input type="radio" class="s1" name="r" id="r1" style="display:none" checked>
+    <input type="radio" class="s1" name="r" id="r2" style="display:none" >
+    <input type="radio" class="s1" name="r" id="r3" style="display:none" >
+    <input type="radio" class="s1" name="r" id="r4" style="display:none" >
+    <input type="radio" class="s1" name="r" id="r5" style="display:none" >
+</div>
+						</div>
+						<!-- end widget div -->
+
+					</div>
+					<!-- end widget -->
+
+				</article>
+				<!-- WIDGET END -->
+
+			</div>
+
+			<!-- end row -->
+
+		</section>
+		<!-- end widget grid -->
+	</div>
+
+
 </div>
 
 <script type="text/javascript">
