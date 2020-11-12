@@ -7,14 +7,10 @@ var CarouselClass = (function(app) {
 		// data table actions
 		app.dtActions();
 		app.tableReload = function() {
-			app.mDtTable.ajax.reload(function(){
-				if(typeof wOnResize != undefined) {
-					wOnResize();
-				}
-			}, false);
+			location.reload();
 		};
 		// get year month list
-		app.tableReload();
+		// app.tableReload();
 
 		return app;
 	};
