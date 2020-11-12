@@ -40,10 +40,15 @@
 				</fieldset>
 				<hr/>
 				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">標題</label>
+					<div class="widget-toolbar pull-left">
+						<label class="col-md-3 control-label">公告類別</label>
 						<div class="col-md-6">
-							<input type="text" required class="form-control"  name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
+							<select id="news_style" class="form-control">
+								<!-- option from javascript -->
+							</select>
+						</div>
+						<div class="col-md-2">
+							<button type="button" class="btn btn-sm btn-primary" id="add_news_style"><i class="fa fa-plus-circle fa-lg"></i></button>
 						</div>
 					</div>
 				</fieldset>
@@ -121,5 +126,44 @@ var config = {
 
 CKEDITOR.replace( "m_content", config);
 CKEDITOR.instances['m_content'].on('change', function() { CKEDITOR.instances['m_content'].updateElement() });
+
+$('#add_news_style').click(function() {
+		layer.open({
+			type:2,
+			title:'',
+			closeBtn:0,
+			area:['400px','200px'],
+			shadeClose:true,
+			content:'<?=base_url('mgmt/news_edit/new_news_style')?>'
+		})
+	})
+
+	function load_news_style() {
+	$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/news_edit/find_news_style',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+			
+					$news_style = $('#news_style').empty();
+					var option = '<option value="0">全部</option>';
+          			$news_style.append(option);
+					$.each(d.news_style, function(){
+						$('<option/>', {
+							'value': this.id,
+							'text': this.news_style
+						}).appendTo($news_style);
+					});
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+
+}
+load_news_style();
 
 </script>

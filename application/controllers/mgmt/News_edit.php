@@ -7,6 +7,7 @@ class News_edit extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('News_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
+		$this -> load -> model('News_style_dao', 'news_style_dao');		
 	}
 
 	public function index()
@@ -127,6 +128,28 @@ class News_edit extends MY_Mgmt_Controller {
 		$this -> session -> set_userdata('user_id', $user_id);
 		$res = array();
 
+		$this -> to_json($res);
+	}
+
+	public function new_news_style(){
+		$data = array();
+		$this -> load -> view('layout/show_new_news_style',$data);
+	}
+
+	public function add_news_style(){
+		$data = array();
+		$news_style = $this -> get_post('news_style');
+		$data['news_style'] = $news_style;
+		$this -> news_style_dao -> insert($data);
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function find_news_style(){
+		$res = array();
+		$news_style_list = $this -> news_style_dao -> find_all();
+		$res['news_style'] = $news_style_list;
+		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
 }
