@@ -185,7 +185,7 @@
             <input type="radio" name="r" id="r3">
             <input type="radio" name="r" id="r4">
             <input type="radio" name="r" id="r5">
-            <div class="slide s1" >
+            <!-- <div class="slide s1" >
                 <div class="news_img_1">
                     <?php if(!empty($carousel_id[0]) && $carousel_id[0]): ?>
                         <img src="<?= base_url('api/images/get/'.$carousel_id[0].'/thumb') ?>"  alt="">
@@ -216,8 +216,8 @@
                         <img src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
                     <?php endif ?>
                 </div>
-            </div>
-            <div class="slide">
+            </div> -->
+            <div class="slide s1" style="text-align:center;">
                 <span class="news_content" style="color:#FFFFFF;">
                     123321
                 </span>
