@@ -50,34 +50,21 @@ var NewsimgClass = (function(app) {
 							},
 							dataType: 'json',
 							success: function(data) {
-							if(data.success){
-								$.smallBox({
-									title: data.success_msg,
-									content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
-									color: "#5F895F",
-									iconSmall: "fa fa-check bounce animated",
-									timeout: 4000
-								});
+								if(data.success_msg){
+									$.smallBox({
+										title: data.success_msg,
+										content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+										color: "#5F895F",
+										iconSmall: "fa fa-check bounce animated",
+										timeout: 4000
+									});
 
-								// $.ajax({
-								// 	url: baseUrl + 'carousel',
-								// 	data: {
-								// 	  'reload': 1
-								// 	},
-								// 	error: function() {
-								// 	},
-								// 	dataType: 'json',
-								// 	success: function(data) {
-										
-								// 	},
-								// 	type: 'POST'
-								// })
+									app.tableReload();
 
-							}
-							if(data.message){
-								layer.msg(data.message);
-							}
-							app.tableReload();
+								}
+								if(data.message){
+									layer.msg(data.message);
+								}
 							},
 							type: 'POST'
 						})
