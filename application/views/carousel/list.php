@@ -248,9 +248,16 @@
 <input type="radio" class="s1" name="r" id="r5" style="display:none" >
 </div>
 
-<script>
+<script type="text/javascript">
 
+	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
+		loadScript(baseUrl + "js/app/carousel/list.js", function(){
+			currentApp = new CarouselClass(new BaseAppClass({}));
+			// currentApp.doEdit();
+		});
+    });
 </script>
+
    
 
 
