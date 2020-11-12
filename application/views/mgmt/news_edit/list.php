@@ -102,7 +102,7 @@
 
 	function load_s_news_style() {
 	$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/news_img/find_news_style',
+			url: '<?= base_url() ?>' + 'mgmt/news_style/find_news_style',
 			type: 'POST',
 			data: {},
 			dataType: 'json',
