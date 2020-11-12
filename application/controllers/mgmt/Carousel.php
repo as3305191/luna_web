@@ -18,7 +18,7 @@ class Carousel extends MY_Mgmt_Controller {
 		$data = $this -> setup_user_data($data);
 		
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-		$content = file_get_contents('https://tw.rter.info/capi.php');
+		$content = file_get_contents('https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates.php');
 		$currency = json_decode($content);
 		$data['currency'] = $currency;
 		$this -> to_json($data['currency']);
