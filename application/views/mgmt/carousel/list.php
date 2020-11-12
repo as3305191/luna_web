@@ -286,7 +286,7 @@
 
 
 </div>
-
+<?php $this->load->view('layout/plugins'); ?>
 <script type="text/javascript">
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
