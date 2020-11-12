@@ -244,7 +244,8 @@ class News_img extends MY_Mgmt_Controller {
 			// $this -> curl -> simple_post("http://192.168.3.251/app/carousel/reload",$reload);
 			$this -> carousel(1);
 		}
-	
+		$res['success'] = TRUE;
+
 		// $find_list_by_pm_id = $this -> img_dao -> find_by_pm_id($p->place_mark_id);	
 		// $list_count = count($find_list_by_pm_id);
 		// if($list_count>1){

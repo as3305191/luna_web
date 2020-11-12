@@ -50,21 +50,21 @@ var NewsimgClass = (function(app) {
 							},
 							dataType: 'json',
 							success: function(data) {
-							if(data.success){
-								$.smallBox({
-									title: data.success_msg,
-									content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
-									color: "#5F895F",
-									iconSmall: "fa fa-check bounce animated",
-									timeout: 4000
-								});
+								if(data.success_msg){
+									$.smallBox({
+										title: data.success_msg,
+										content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+										color: "#5F895F",
+										iconSmall: "fa fa-check bounce animated",
+										timeout: 4000
+									});
 
-								app.tableReload();
+									app.tableReload();
 
-							}
-							if(data.message){
-								layer.msg(data.message);
-							}
+								}
+								if(data.message){
+									layer.msg(data.message);
+								}
 							},
 							type: 'POST'
 						})
