@@ -53,7 +53,7 @@
 								<table id="pic_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min150">是否預設</th>
+											<th class="min100">是否預設</th>
 											<th class="min100">分類</th>
 											<th class="min100">照片</th>
 											<th class="min100">網址</th>
