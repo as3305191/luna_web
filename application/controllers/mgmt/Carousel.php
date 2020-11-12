@@ -15,12 +15,15 @@ class Carousel extends MY_Mgmt_Controller {
 	public function index()
 	{
 		$data = array();
-		$data = $this -> setup_user_data($data);
-		
-		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+		// $data = $this -> setup_user_data($data);
+		// $data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		// $content = file_get_contents('https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates.php');
 		// $currency = json_decode($content);
 		// $data['currency'] = $currency;
+		$items = $this -> img_style_dao -> find_carousel($data);
+		foreach($items as $each){
+			$data['carousel_id'][]= $each->id;
+		}
 		// $this -> to_json($data);
 		$this->load->view('mgmt/carousel/list', $data);
 	}
