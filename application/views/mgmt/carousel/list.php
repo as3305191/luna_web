@@ -9,7 +9,7 @@
             height:100%;
             width:100%;
             position:fixed;
-            background-color:black ;
+            background-color:black;
         }
 
         .slide-container {
