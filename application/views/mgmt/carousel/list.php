@@ -176,6 +176,7 @@
             /* 复位到第一张图片 */
         }
     </style>
+
 </head>
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
@@ -319,15 +320,7 @@
 		</section>
 	</div>
 </div>
-<script type="text/javascript">
 
-	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/carousel/list.js", function(){
-			currentApp = new CarouselClass(new BaseAppClass({}));
-			// currentApp.doEdit();
-		});
-    });
-</script>
 
    
 
