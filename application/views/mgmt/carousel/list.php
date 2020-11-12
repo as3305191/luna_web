@@ -190,7 +190,7 @@
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
- <div class="container">
+ <div class="container" id="news_container">
     <div class="slide-container middle">
         <div class="slide-wrap">
             <input type="radio" name="r" id="r1" checked>
@@ -279,7 +279,6 @@
 
 
 </div>
-<?php $this->load->view('layout/plugins'); ?>
 <script type="text/javascript">
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
