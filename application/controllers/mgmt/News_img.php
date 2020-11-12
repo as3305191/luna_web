@@ -33,7 +33,7 @@ class News_img extends MY_Mgmt_Controller {
 			$data['carousel_id'][]= $each->id;
 		}
 	
-		$this->load->view('carousel/list', $data);
+		$this->load->view('mgmt/carousel/list', $data);
 	}
 
 	public function get_data() {
