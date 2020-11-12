@@ -177,7 +177,6 @@
         }
     </style>
 </head>
-
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
 
@@ -190,7 +189,35 @@
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
- <div class="container" id="news_container">
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget">
+						<header>
+							<div class="widget-toolbar pull-left">
+								<div class="btn-group">
+									<!-- <button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
+										<i class="fa fa-plus"></i>新增
+									</button> -->
+								</div>
+							</div>
+
+
+
+						</header>
+
+						<!-- widget div-->
+						<div>
+
+							<!-- widget edit box -->
+							<div class="jarviswidget-editbox">
+								<!-- This area used as dropdown edit box -->
+
+							</div>
+							<!-- end widget edit box -->
+
+							<!-- widget content -->
+							<div class="widget-body no-padding">
+
+							<div class="container" id="dt_list">
     <div class="slide-container middle">
         <div class="slide-wrap">
             <input type="radio" name="r" id="r1" checked>
@@ -260,6 +287,10 @@
     <input type="radio" class="s1" name="r" id="r4" style="display:none" >
     <input type="radio" class="s1" name="r" id="r5" style="display:none" >
 </div>
+
+							</div>
+							<!-- end widget content -->
+
 						</div>
 						<!-- end widget div -->
 
@@ -277,7 +308,16 @@
 		<!-- end widget grid -->
 	</div>
 
+	<div class="tab-pane animated fadeIn" id="edit_page">
+		<section class="">
+			<!-- row -->
+			<div class="row">
+				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="edit-modal-body">
 
+				</article>
+			</div>
+		</section>
+	</div>
 </div>
 <script type="text/javascript">
 
