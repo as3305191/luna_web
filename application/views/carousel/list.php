@@ -133,9 +133,9 @@
             margin-left: -80%;
         }
 
-        .s1 {
+        /* .s1 {
             animation: loop 12s linear infinite;
-        }
+        } */
 
         @keyframes loop {
             0% {
@@ -218,7 +218,7 @@
                 </div>
             </div>
             <div class="slide">
-                <span class="news_content">
+                <span class="news_content" style="color:#FFFFFF;">
                     123321
                 </span>
             </div>
