@@ -63,10 +63,12 @@ class News_edit extends MY_Mgmt_Controller {
 	public function insert() {
 		$res = array();
 		$id = $this -> get_post('id');
-		$data = $this -> get_posts(array(
-			'title',
-			'content'
-		));
+		$title = $this -> get_post('title');
+		$m_content = $this -> get_post('m_content');
+		$news_style = $this -> get_post('news_style');
+		$data['title'] = $title;
+		$data['m_content'] = $m_content;
+		$data['news_style'] = $news_style;
 
 		if(empty($id)) {
 			// insert
