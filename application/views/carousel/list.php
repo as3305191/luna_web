@@ -219,7 +219,7 @@
 
             </div> -->
    
-            <div class="slide">
+            <div class="slide" style="text-align:center;">
                 <span class="news_content" style="color:#FFFFFF;font-size:20px;">
                     123321
                 </span>
