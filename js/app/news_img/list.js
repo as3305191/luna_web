@@ -112,7 +112,9 @@ var NewsimgClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + 'get_data_image',
 				data : function(d) {
-					d.place_mark_id = $('#item_id').val();
+					d.item_id = $('#item_id').val();
+					d.s_img_style = $('#s_img_style').val();
+
 					return d;
 				},
 				dataSrc : 'items',
@@ -271,7 +273,9 @@ var NewsimgClass = (function(app) {
 			});
 		};
 
-
+		$('#s_img_style').on('change', function(){
+			app.tableReload();
+		});
 
 		return app;
 	};

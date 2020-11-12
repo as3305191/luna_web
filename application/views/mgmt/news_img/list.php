@@ -59,6 +59,19 @@
 											<th class="min100">網址</th>
 											<th>日期</th>
 										</tr>
+										<tr class="search_box">
+											<th></th>
+											<th>
+												<div class="col-md-6">
+													<select id="s_img_style" class="form-control">
+														<!-- option from javascript -->
+													</select>
+												</div>
+											</th>
+											<th></th>
+											<th></th>
+											<th></th>
+										</tr>
 									</thead>
 									<tbody>
 									</tbody>
@@ -238,6 +251,13 @@
 							'value': this.id,
 							'text': this.img_style
 						}).appendTo($img_style);
+					});
+					$s_img_style = $('#s_img_style').empty();
+					$.each(d.img_style, function(){
+						$('<option/>', {
+							'value': this.id,
+							'text': this.img_style
+						}).appendTo($s_img_style);
 					});
 				}
 			},

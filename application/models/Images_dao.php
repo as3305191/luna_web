@@ -117,6 +117,7 @@ class Images_dao extends MY_Model {
 
 		$start = $data['start'];
 		$limit = $data['length'];
+	
 		
 		// select
 		$this -> db -> from("$this->table_name as _m");
@@ -126,7 +127,7 @@ class Images_dao extends MY_Model {
 		$this -> db -> select('_m.status');
 		$this -> db -> select('_m.img_style');
 		$this -> db -> select('i_s.img_style as style_name');
-
+		
 		$this -> db -> order_by('_m.id','desc');
 
 		$this -> db -> join("img_style i_s", "i_s.id = _m.img_style", "left");
@@ -134,7 +135,10 @@ class Images_dao extends MY_Model {
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
 		}
-		
+		if(!empty($data['s_img_style'])){
+			$s_img_style = $data['s_img_style'];
+			$this -> db -> where('_m.img_style',$s_img_style);
+		}
 		// $this -> db -> where('_m.status',0);
 		$this -> db -> where('_m.image_path','news_img');
 

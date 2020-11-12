@@ -66,6 +66,7 @@ class News_img extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
+			's_img_style'
 		));
 
 		$s_data = $this -> setup_user_data(array());
