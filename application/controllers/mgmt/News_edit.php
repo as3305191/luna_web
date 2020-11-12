@@ -68,7 +68,7 @@ class News_edit extends MY_Mgmt_Controller {
 		$news_style = $this -> get_post('news_style');
 		$data['title'] = $title;
 		$data['content'] = $m_content;
-		$data['news_style'] = $news_style;
+		$data['news_style_id'] = $news_style;
 
 		if(empty($id)) {
 			// insert
