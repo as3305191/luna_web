@@ -242,7 +242,7 @@ class News_img extends MY_Mgmt_Controller {
 			}
 			$this -> img_dao -> update($u_data, $img_id);
 			// $this -> curl -> simple_post("http://192.168.3.251/app/carousel/reload",$reload);
-			$this -> carousel(1);
+			// $this -> carousel(1);
 		}
 		$res['success'] = TRUE;
 
