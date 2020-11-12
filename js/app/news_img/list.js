@@ -153,11 +153,11 @@ var NewsimgClass = (function(app) {
 				data : null,
 				render:function ( data, type, row ) {
 					var input = '';
-					if(row.status == 1){
-						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
-					}else{
-						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
-					}
+					// if(row.status == 1){
+					// 	input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
+					// }else{
+					// 	input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
+					// }
 
 					if(row.status == 1){
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
