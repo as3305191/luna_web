@@ -135,7 +135,7 @@ class Images_dao extends MY_Model {
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
 		}
-		if(!empty($data['s_img_style'])){
+		if(!empty($data['s_img_style']) && $data['s_img_style']>0){
 			$s_img_style = $data['s_img_style'];
 			$this -> db -> where('_m.img_style',$s_img_style);
 		}

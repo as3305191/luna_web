@@ -253,6 +253,9 @@
 						}).appendTo($img_style);
 					});
 					$s_img_style = $('#s_img_style').empty();
+
+					var option = '<option value="0">全部</option>';
+          			$s_img_style.append(option);
 					$.each(d.img_style, function(){
 						$('<option/>', {
 							'value': this.id,
