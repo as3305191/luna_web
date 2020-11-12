@@ -190,14 +190,7 @@
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
-					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget">
-						<header>
-						
-						</header>
-						<!-- widget div-->
-						<div>
-                        <div class="container">
+ <div class="container">
     <div class="slide-container middle">
         <div class="slide-wrap">
             <input type="radio" name="r" id="r1" checked>
