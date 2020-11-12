@@ -50,7 +50,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">標題</label>
 						<div class="col-md-6">
-							<input type="text" required class="form-control"  name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
+							<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
 						</div>
 					</div>
 				</fieldset>
@@ -169,16 +169,16 @@ load_news_style();
 
 
 function do_save() {
-	if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
-	var url = baseUrl + 'mgmt/patent/insert'; // the script where you handle the form input.
+	// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
+	var url = baseUrl + 'mgmt/news_edit/insert'; // the script where you handle the form input.
 	$.ajax({
 		type : "POST",
 		url : url,
 		data : {
 			id: $('#item_id').val(),
-			patent_family:$('#patent_family').val(),
-			patent_name_eng: $('#patent_name_eng').val(),
-			patnet_name: $('#patnet_name').val(),
+			news_style:$('#news_style').val(),
+			title: $('#title').val(),
+			m_content: $('#m_content').val()
 		},
 		success : function(data) {
 			if(data.error_msg) {
