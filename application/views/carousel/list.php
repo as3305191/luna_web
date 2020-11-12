@@ -216,9 +216,11 @@
                         <img src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
                     <?php endif ?>
                 </div>
+
             </div> -->
-            <div class="slide s1" style="text-align:center;">
-                <span class="news_content" style="color:#FFFFFF;">
+   
+            <div class="slide">
+                <span class="news_content" style="color:#FFFFFF;font-size:20px;">
                     123321
                 </span>
             </div>
