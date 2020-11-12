@@ -34,7 +34,7 @@
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				
 				<fieldset>
-					<div class="widget-toolbar pull-left">
+					<div class="form-group">
 						<label class="col-md-3 control-label">公告類別</label>
 						<div class="col-md-6">
 							<select id="news_style" class="form-control">
