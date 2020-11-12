@@ -32,13 +32,7 @@
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-				<fieldset>
-					<div class="col-md-6 form-group">
-						<button type="button" class="1 btn_roles btn_1" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmefieldset('1')">電腦基本資料資料</button>
-						<button type="button" class="2 btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmefieldset('2')">維修紀錄</button>
-					</div>
-				</fieldset>
-				<hr/>
+				
 				<fieldset>
 					<div class="widget-toolbar pull-left">
 						<label class="col-md-3 control-label">公告類別</label>
