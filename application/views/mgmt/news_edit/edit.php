@@ -12,7 +12,7 @@
 			</a>
 		</div>
 		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="back_parent" onclick="currentApp.doSubmit()" class="btn btn-default btn-danger">
+			<a href="javascript:void(0);" id="back_parent" onclick="do_save();" class="btn btn-default btn-danger">
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
@@ -46,7 +46,14 @@
 						</div>
 					</div>
 				</fieldset>
-
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">標題</label>
+						<div class="col-md-6">
+							<input type="text" required class="form-control"  name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
+						</div>
+					</div>
+				</fieldset>
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
@@ -159,5 +166,29 @@ $('#add_news_style').click(function() {
 
 }
 load_news_style();
+
+
+function do_save() {
+	if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
+	var url = baseUrl + 'mgmt/patent/insert'; // the script where you handle the form input.
+	$.ajax({
+		type : "POST",
+		url : url,
+		data : {
+			id: $('#item_id').val(),
+			patent_family:$('#patent_family').val(),
+			patent_name_eng: $('#patent_name_eng').val(),
+			patnet_name: $('#patnet_name').val(),
+		},
+		success : function(data) {
+			if(data.error_msg) {
+				layer.msg(data.error_msg);
+			} else {
+				currentApp.mDtTable.ajax.reload(null, false);
+				currentApp.backTo();
+			}
+		}
+	});
+};
 
 </script>
