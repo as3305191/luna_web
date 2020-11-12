@@ -21,7 +21,7 @@ class Carousel extends MY_Mgmt_Controller {
 		$content = file_get_contents('https://tw.rter.info/capi.php');
 		$currency = json_decode($content);
 		$data['currency'] = $currency;
-		$this -> to_json($data);
+		$this -> to_json($data['currency']);
 		$this->load->view('mgmt/carousel/list', $data);
 	}
 
