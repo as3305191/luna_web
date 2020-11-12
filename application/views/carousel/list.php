@@ -77,6 +77,16 @@
 
         }
 
+        .news_content  {
+            width: 60vh;
+            height: 40vh;
+            z-index:9999;
+            /* position: absolute; */
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+
         .navigation {
             position: absolute;
             left: 50%;
@@ -208,7 +218,9 @@
                 </div>
             </div>
             <div class="slide">
-                <img src="<?= base_url('api/images/get/1/thumb') ?>" alt="">
+                <span class="news_content">
+                    123321
+                </span>
             </div>
             <div class="slide">
                 <img src="<?= base_url('api/images/get/2/thumb') ?>" alt="">
