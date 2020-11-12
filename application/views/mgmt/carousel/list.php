@@ -178,9 +178,6 @@
     </style>
 </head>
 
-
-
-
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
 
