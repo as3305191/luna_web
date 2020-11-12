@@ -6,7 +6,13 @@ var CarouselClass = (function(app) {
 
 		// data table actions
 		app.dtActions();
-
+		app.tableReload = function() {
+			app.mDtTable.ajax.reload(function(){
+				if(typeof wOnResize != undefined) {
+					wOnResize();
+				}
+			}, false);
+		};
 		// get year month list
 		app.tableReload();
 
