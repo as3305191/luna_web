@@ -16,9 +16,11 @@ var NewsEditAppClass = (function(app) {
 			columns : [null, {
 				data : 'title'
 			}, {
+				data : 'news_style'
+			}, {
 				data : 'create_time'
 			}],
-			order : [[2, "desc"]],
+			order : [[3, "desc"]],
 			columnDefs : [{
 				targets : 0,
 				data : null,
@@ -48,7 +50,7 @@ var NewsEditAppClass = (function(app) {
 		// get year month list
 		app.tableReload();
 
-		$('#role_id').on('change', function(){
+		$('#s_news_style').on('change', function(){
 			app.tableReload();
 		});
 

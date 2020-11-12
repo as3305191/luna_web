@@ -39,10 +39,22 @@
 									<thead>
 										<tr>
 											<th class="min50"></th>
-											<th class="min200">內容</th>
+											<th class="min150">標題</th>
+											<th class="min250">類型</th>
 											<th class="min150">建立時間</th>
 										</tr>
-
+										<tr class="search_box">
+											<th></th>
+											<th></th>
+											<th>
+												<div class="col-md-6">
+													<select id="s_news_style" class="form-control">
+														<!-- option from javascript -->
+													</select>
+												</div>
+											</th>
+											<th></th>
+										</tr>
 									</thead>
 									<tbody>
 									</tbody>

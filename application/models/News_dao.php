@@ -49,6 +49,7 @@ class News_dao extends MY_Model {
 
 		// select
 		$this -> db -> select('_m.*');
+		$this -> db -> select('ns.news_style as news_style');
 
 		// join
 		$this -> ajax_from_join();
@@ -72,27 +73,15 @@ class News_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		// $this -> db -> where('_m.status', 0);
-		if(isset($data['user_role_id']) && $data['user_role_id'] > -1) {
-			$this -> db -> where('user_role_id', $data['user_role_id']);
-		}
-		if(isset($data['role_id']) && $data['role_id'] > -1) {
-			$this -> db -> where('_m.role_id', $data['role_id']);
-		}
-
-		if(isset($data['corp_id']) && $data['corp_id'] > -1) {
-			$this -> db -> where('_m.corp_id', $data['corp_id']);
-		}
-
-		if(isset($data['id']) && $data['id'] > -1) {
-			$this -> db -> where('_m.id', $data['id']);
+		if(isset($data['s_news_style']) && $data['s_news_style'] > 0) {
+			$this -> db -> where('ns.id', $data['s_news_style']);
 		}
 	}
 
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		// $this -> db -> join("users mu", "mu.id = _m.manager_id", "left");
+		$this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
 		// $this -> db -> join("users iu", "iu.id = _m.intro_id", "left");
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
