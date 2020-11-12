@@ -59,25 +59,12 @@ var NewsimgClass = (function(app) {
 									timeout: 4000
 								});
 
-								// $.ajax({
-								// 	url: baseUrl + 'carousel',
-								// 	data: {
-								// 	  'reload': 1
-								// 	},
-								// 	error: function() {
-								// 	},
-								// 	dataType: 'json',
-								// 	success: function(data) {
-										
-								// 	},
-								// 	type: 'POST'
-								// })
+								app.tableReload();
 
 							}
 							if(data.message){
 								layer.msg(data.message);
 							}
-							app.tableReload();
 							},
 							type: 'POST'
 						})
