@@ -58,7 +58,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
 						<div class="col-md-6">
-							<textarea required class="form-control" id="m_content" name="content"><?= isset($item) ? $item -> content : '' ?></textarea>
+							<textarea required class="form-control" id="m_content" name="m_content"><?= isset($item) ? $item -> content : '' ?></textarea>
 						</div>
 					</div>
 				</fieldset>
@@ -178,7 +178,7 @@ function do_save() {
 			id: $('#item_id').val(),
 			news_style:$('#news_style').val(),
 			title: $('#title').val(),
-			m_content: $('#m_content').val()
+			m_content: $('#m_content').text()
 		},
 		success : function(data) {
 			if(data.error_msg) {
