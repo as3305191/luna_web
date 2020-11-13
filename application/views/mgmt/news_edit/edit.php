@@ -219,7 +219,6 @@ load_news_style();
 
 
 $(function() {
-		reCreateBootstrapValidator();
 
 		$("#file").change(function(event) {
 			// filePreview(this);
@@ -254,10 +253,7 @@ $(function() {
 			});
 		});
 
-		changeDataSourceLabel();
-		$(document.body).on('change', '#category_id', function() {
-			changeDataSourceLabel();
-		});
+		
 	});
 
 function do_save() {
