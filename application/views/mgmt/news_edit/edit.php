@@ -29,7 +29,9 @@
 
 		<!-- widget content -->
 		<div class="widget-body">
-
+			<form id="img-upload-form" method="post" style="display: none;" enctype="multipart/form-data">
+				<input type="file" name="file" id="file" />
+			</form>
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				
@@ -195,6 +197,48 @@ $('#add_news_style').click(function() {
 }
 load_news_style();
 
+
+$(function() {
+		reCreateBootstrapValidator();
+
+		$("#file").change(function(event) {
+			// filePreview(this);
+			var data = new FormData();
+			data.append('file', event.target.files[0]);
+
+			$.ajax({
+				url: 'mgmt/images/upload/news',
+				contentType: false,
+				cache: false,
+				processData:false,
+				dataType: 'json',
+				data: data,
+				type: 'POST',
+				success: function (response) {
+					console.info('response', response);
+
+					if (response.id) {
+						$('#hn_img_id').val(response.id);
+
+						$('#preview_img').css('height', '200px');
+						$('#preview_img').attr('src', 'mgmt/images/get/' + response.id + '/thumb');
+					}
+				},
+				beforeSend: function () {
+				},
+				complete: function () {
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					console.error(xhr.status + ' ' + thrownError);
+				}
+			});
+		});
+
+		changeDataSourceLabel();
+		$(document.body).on('change', '#category_id', function() {
+			changeDataSourceLabel();
+		});
+	});
 
 function do_save() {
 	// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
