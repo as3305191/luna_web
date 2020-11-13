@@ -542,11 +542,11 @@ class Images extends MY_Base_Controller {
 	}
 
 
+	//image upload section
 	public function upload_terms($image_path) {
-		$info = '';
 		$f_name = 'file';
 
-		if($image_path == 'news_img') {
+		if($image_path == 'dm_image') {
 			$f_name = 'upload';
 		}
 
@@ -566,11 +566,11 @@ class Images extends MY_Base_Controller {
 		$i_data['image_path'] = $image_path;
 		$i_data['image_size'] = $size;
 
-		// set store id
-		$store_id = $this -> get_post('store_id');
-		if(!empty($store_id)) {
-			$i_data['store_id'] = $store_id;
-		}
+		// // set store id
+		// $store_id = $this -> get_post('store_id');
+		// if(!empty($store_id)) {
+		// 	$i_data['store_id'] = $store_id;
+		// }
 
 		$image_info = getimagesize($_FILES[$f_name]["tmp_name"]);
 		$image_width = $image_info[0];
@@ -619,7 +619,7 @@ class Images extends MY_Base_Controller {
 				$img_obj = $this->dao->find_by_id($last_id);
 				echo '<script type="text/javascript">' .
 							// 'window.parent.CKEDITOR.tools.callFunction("1", "' . base_url('mgmt/images/get/' . $last_id) . '", "");' .
-						    'window.parent.CKEDITOR.tools.callFunction("1", "' . base_url('mgmt/images/get/' . $last_id) . '", "");' .
+							'window.parent.CKEDITOR.tools.callFunction("1", "' . base_url('img/article/' . $img_obj->image_url) . '", "");' .
 							'</script>';
 				return;
 			} else {
@@ -633,12 +633,12 @@ class Images extends MY_Base_Controller {
 				    "id" => $last_id
 				];
 
-				//可重複上圖
-				if($image_path == 'product_img' || $image_path == 'store_img') {
-					$res['append'] = TRUE;
-				} else {
-					$res['append'] = FALSE;
-				}
+				// //可重複上圖
+				// if($image_path == 'product_img' || $image_path == 'store_img') {
+				// 	$res['append'] = TRUE;
+				// } else {
+				// 	$res['append'] = FALSE;
+				// }
 			}
 
 			$this -> to_json($res);
