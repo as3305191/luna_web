@@ -112,7 +112,7 @@
 
 <script type="text/javascript">
 var news_style = false;
-news_style='<?= isset($item) ? $item -> news_style : 0?>';
+news_style='<?= isset($item) ? $item -> news_style_id : 0?>';
 // ckeditor
 $(function() {
 		// ckeditor
