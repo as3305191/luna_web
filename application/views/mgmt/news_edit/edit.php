@@ -203,7 +203,7 @@ function do_save() {
 			id: $('#item_id').val(),
 			news_style:$('#news_style').val(),
 			title: $('#title').val(),
-			m_content: $('textarea[name="m_news_content"]').val()
+			m_content: $('#news_content').getData()
 		},
 		success : function(data) {
 			if(data.error_msg) {
