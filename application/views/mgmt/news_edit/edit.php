@@ -279,19 +279,6 @@ function do_save() {
 	});
 };
 
-function callbackImgUrl($imageUrl){
-		currentApp.imgDialog.setValueOf( 'info', 'txtUrl', $imageUrl );
-	}
 
-	$('#myTab a').click(function (e) {
-		  e.preventDefault()
-		  $(this).tab('show');
-		  if($(this).attr('href') == '#s3') {
-		  		setTimeout(function(){
-		  			CKEDITOR.instances.desc.execCommand('autogrow');
-		  		}, 500);
-		  }
-	})
-
-	currentApp.clearImgs();
+	
 </script>
