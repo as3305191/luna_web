@@ -151,15 +151,7 @@
 		});
 	});
 
-	function changeDataSourceLabel() {
-		var category_id = $('#app-edit-form #category_id option:selected').val();
-		console.info('xxxx', category_id);
-		if (category_id == 3) {
-			$('#data_source_label').html('頭銜名稱');
-		} else {
-			$('#data_source_label').html('資料來源');
-		}
-	}
+
 
 	function filePreview(input) {
 		if (input.files && input.files[0]) {
