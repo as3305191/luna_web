@@ -93,7 +93,7 @@ class News_dao extends MY_Model {
 
 		$this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
 
-		$this -> db -> order_by('id', 'desc');
+		$this -> db -> order_by('_m.id', 'desc');
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
