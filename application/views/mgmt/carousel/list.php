@@ -261,15 +261,23 @@
             </div>
 
             <div class="slide" style="text-align:center;">
-                <span class="news_content" style="color:#FFFFFF;font-size:20px;">
-                    <?= isset($news-> title ) ? $news -> title : '' ?>
-                </span>
-                <span class="news_content" style="color:#FFFFFF;font-size:20px;">
-                    <?= isset($news-> news_style_name) ? $news -> news_style_name : '' ?>
-                </span>
-                <span class="news_content" style="color:#FFFFFF;font-size:20px;">
+               
+                <div>
+                    <span class="news_content" style="color:#FFFFFF;font-size:20px;">
+                        <?= isset($news-> news_style_name) ? $news -> news_style_name : '' ?>
+                    </span>
+                </div>
+                <div>
+                    <span class="news_content" style="color:#FFFFFF;font-size:20px;">
+                        <?= isset($news-> title ) ? $news -> title : '' ?>
+                    </span>
+                </div>
+                <div>
+                    <span class="news_content" style="color:#FFFFFF;font-size:20px;">
                     <?= isset($news -> content) ? $news -> content : '' ?>
-                </span>
+                    </span>
+                </div>
+               
             </div>
             <div class="slide">
                 <img src="<?= base_url('api/images/get/2/thumb') ?>" alt="">

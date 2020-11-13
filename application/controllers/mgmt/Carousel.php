@@ -26,7 +26,7 @@ class Carousel extends MY_Mgmt_Controller {
 			$data['carousel_id'][]= $each->id;
 		}
 		$items_news = $this -> news_dao -> find_carousel($data);
-		$data['news']= $items_news;
+		$data['news']= $items_news[0];
 		// $this -> to_json($data);
 		$this->load->view('mgmt/carousel/list', $data);
 	}
