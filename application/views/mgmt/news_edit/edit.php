@@ -112,28 +112,20 @@
 
 <script type="text/javascript">
 // ckeditor
-$(function() {
-		// ckeditor
-		var config = {
-			plugins: 'basicstyles,sourcearea,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
-			extraPlugins: 'autogrow',
-			autoGrow_onStartup: true,
-			autoGrow_minHeight: 400,
-			//autoGrow_maxHeight: 800,
-			removePlugins: 'resize'
-		}
-		config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
+var config = {
+		plugins:'basicstyles,sourcearea,image,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
+		extraPlugins : 'filebrowser,autogrow',
+		filebrowserBrowseUrl: baseUrl + 'mgmt/images/browser',
+		startupFocus: true,
+		autoGrow_onStartup: true,
+		autoGrow_minHeight: 400,
+		//autoGrow_maxHeight: 800,
+		removePlugins: 'resize'
+	};
 
-
-		try {
-			CKEDITOR.instances['m_content'].destroy(true);
-		} catch (e) {
-
-		}
-		CKEDITOR.replace("m_content", config);
-		CKEDITOR.instances['m_content'].on('change', function() {
-			CKEDITOR.instances['m_content'].updateElement()
-		});
+	// CKEditors
+	$('#m_content').ckeditor(config).editor.on('dialogShow',function(event){
+		currentApp.imgDialog = event.data;
 	});
 
 $('#add_news_style').click(function() {
@@ -200,4 +192,19 @@ function do_save() {
 	});
 };
 
+function callbackImgUrl($imageUrl){
+		currentApp.imgDialog.setValueOf( 'info', 'txtUrl', $imageUrl );
+	}
+
+	$('#myTab a').click(function (e) {
+		  e.preventDefault()
+		  $(this).tab('show');
+		  if($(this).attr('href') == '#s3') {
+		  		setTimeout(function(){
+		  			CKEDITOR.instances.desc.execCommand('autogrow');
+		  		}, 500);
+		  }
+	})
+
+	currentApp.clearImgs();
 </script>
