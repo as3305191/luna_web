@@ -117,7 +117,7 @@ news_style='<?= isset($item) ? $item -> news_style_id : 0?>';
 $(function() {
 		// ckeditor
 		var config = {
-			plugins: 'basicstyles,sourcearea,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
+			// plugins: 'basicstyles,sourcearea,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
 			extraPlugins: 'autogrow',
 			autoGrow_onStartup: true,
 			autoGrow_minHeight: 400,
