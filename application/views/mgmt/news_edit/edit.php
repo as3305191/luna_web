@@ -122,7 +122,7 @@ $(function() {
 			autoGrow_onStartup: true,
 			autoGrow_minHeight: 400,
 			filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/dm_image',
-			removePlugins: 'resize',
+			// removePlugins: 'resize',
 			extraPlugins : 'imagemaps,autogrow,uploadimage',
 			allowedContent: true
 
