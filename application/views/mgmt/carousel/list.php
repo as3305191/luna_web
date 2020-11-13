@@ -263,18 +263,18 @@
             <div class="slide" style="text-align:center;">
                
                 <div>
-                    <span class="news_content" style="color:#FFFFFF;font-size:20px;">
+                    <span class="news_content" style="color:red;font-size:100px;">
                         <?= isset($news-> news_style_name) ? $news -> news_style_name : '' ?>
                     </span>
                 </div>
                 <div>
-                    <span class="news_content" style="color:#FFFFFF;font-size:20px;">
+                    <span class="news_content" style="color:green;font-size:80px;">
                         <?= isset($news-> title ) ? $news -> title : '' ?>
                     </span>
                 </div>
                 <div>
-                    <span class="news_content" style="color:#FFFFFF;font-size:20px;">
-                    <?= isset($news -> content) ? $news -> content : '' ?>
+                    <span class="news_content" style="color:#FFFFFF;font-size:50px;text-align:left" >
+                     <?= isset($news -> content) ? $news -> content : '' ?>
                     </span>
                 </div>
                
