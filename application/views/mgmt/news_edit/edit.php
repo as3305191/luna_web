@@ -58,7 +58,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
 						<div class="col-md-6">
-							<textarea required class="form-control" id="m_content" name="m_content"><?= isset($item) ? $item -> content : '' ?></textarea>
+							<textarea type="text" class="form-control" rows="10" id="m_content" name="m_news_content" style="resize:none;width:100%"><?= isset($item) ? $item->content : '' ?></textarea>
 						</div>
 					</div>
 				</fieldset>
@@ -111,21 +111,30 @@
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
 
 <script type="text/javascript">
+var news_style = false;
+news_style='<?= isset($item) ? $item -> news_style : 0?>';
 // ckeditor
-var config = {
-		plugins:'basicstyles,sourcearea,image,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
-		extraPlugins : 'filebrowser,autogrow',
-		filebrowserBrowseUrl: baseUrl + 'mgmt/images/browser',
-		startupFocus: true,
-		autoGrow_onStartup: true,
-		autoGrow_minHeight: 400,
-		//autoGrow_maxHeight: 800,
-		removePlugins: 'resize'
-	};
+$(function() {
+		// ckeditor
+		var config = {
+			plugins: 'basicstyles,sourcearea,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
+			extraPlugins: 'autogrow',
+			autoGrow_onStartup: true,
+			autoGrow_minHeight: 400,
+			//autoGrow_maxHeight: 800,
+			removePlugins: 'resize'
+		}
+		config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
 
-	// CKEditors
-	$('#m_content').ckeditor(config).editor.on('dialogShow',function(event){
-		currentApp.imgDialog = event.data;
+		try {
+			CKEDITOR.instances['m_content'].destroy(true);
+		} catch (e) {
+
+		}
+		CKEDITOR.replace("m_content", config);
+		CKEDITOR.instances['m_content'].on('change', function() {
+			CKEDITOR.instances['m_content'].updateElement()
+		});
 	});
 
 $('#add_news_style').click(function() {
@@ -152,10 +161,26 @@ $('#add_news_style').click(function() {
 					var option = '<option value="0">全部</option>';
           			$news_style.append(option);
 					$.each(d.news_style, function(){
-						$('<option/>', {
-							'value': this.id,
-							'text': this.news_style
-						}).appendTo($news_style);
+						if(news_style>0){
+							if(news_style==this.id){
+								$('<option/>', {
+									'value': this.id,
+									'text': this.news_style
+								}).attr("selected", true).appendTo($news_style);
+							} else{
+								$('<option/>', {
+									'value': this.id,
+									'text': this.news_style
+								}).appendTo($news_style);
+							}
+							
+						} else{
+							$('<option/>', {
+								'value': this.id,
+								'text': this.news_style
+							}).appendTo($news_style);
+						}
+						
 					});
 				}
 			},
@@ -178,8 +203,7 @@ function do_save() {
 			id: $('#item_id').val(),
 			news_style:$('#news_style').val(),
 			title: $('#title').val(),
-			m_content: $('input[name="m_content"]').val(),
-			
+			m_content: $('textarea[name="m_news_content"]').val()
 		},
 		success : function(data) {
 			if(data.error_msg) {
