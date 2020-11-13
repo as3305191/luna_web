@@ -203,7 +203,7 @@ function do_save() {
 			id: $('#item_id').val(),
 			news_style:$('#news_style').val(),
 			title: $('#title').val(),
-			m_content: $('#news_content').instances.desc.getData()
+			m_content: CKEDITOR.instances.m_content.getData()
 		},
 		success : function(data) {
 			if(data.error_msg) {
