@@ -12,7 +12,7 @@
 			</a>
 		</div>
 		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="back_parent" onclick="do_save();" class="btn btn-default btn-danger">
+			<a href="javascript:void(0);" id="" onclick="currentApp.doSubmit()" class="btn btn-default btn-danger">
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
@@ -32,38 +32,32 @@
 			<form id="img-upload-form" method="post" style="display: none;" enctype="multipart/form-data">
 				<input type="file" name="file" id="file" />
 			</form>
+
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">公告類別</label>
+						<label class="col-md-3 control-label">類別</label>
 						<div class="col-md-6">
-							<select id="news_style" class="form-control">
-								<!-- option from javascript -->
+							<select name="news_style" id="news_style" class="form-control">
+								
 							</select>
 						</div>
-						<div class="col-md-2">
-							<button type="button" class="btn btn-sm btn-primary" id="add_news_style"><i class="fa fa-plus-circle fa-lg"></i></button>
-						</div>
 					</div>
 				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">標題</label>
-						<div class="col-md-6">
-							<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
+			
+				<fieldset id='content_panel'>
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
-						<div class="col-md-6">
-							<textarea type="text" class="form-control" rows="10" id="m_content" name="m_news_content" style="resize:none;width:100%"><?= isset($item) ? $item->content : '' ?></textarea>
+						<div class="col-md-9">
+							<textarea required class="form-control" id="m_content" name="content"><?= isset($item) ? $item -> content : '' ?></textarea>
 						</div>
 					</div>
 				</fieldset>
+
+
+			
 			</form>
 
 		</div>
@@ -78,24 +72,6 @@
 	.kv-file-zoom {
 		display: none;
 	}
-</style>
-<script>
-	$('#app-edit-form').bootstrapValidator({
-		feedbackIcons : {
-			valid : 'glyphicon glyphicon-ok',
-			invalid : 'glyphicon glyphicon-remove',
-			validating : 'glyphicon glyphicon-refresh'
-		},
-		fields: {
-		}
-	})
-	.bootstrapValidator('validate');
-</script>
-
-<style>
-	.kv-file-zoom {
-		display: none;
-	}
 	.cke_skin_v2 input.cke_dialog_ui_input_text, .cke_skin_v2 input.cke_dialog_ui_input_password {
 	    background-color: white;
 	    border: none;
@@ -106,18 +82,15 @@
 	    position: relative;
 	    z-index: 9999;
 	}
-
+	div.cke_dialog_body {
+		border: 1px solid #BCBCBC;
+	}
 </style>
 <!-- PAGE RELATED PLUGIN(S) -->
 <script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
-
-<script type="text/javascript">
-var news_style = false;
-news_style='<?= isset($item) ? $item -> news_style_id : 0?>';
-// ckeditor
-
-var g_bootstrap_validator = null;
+<script>
+	var g_bootstrap_validator = null;
 	function reCreateBootstrapValidator() {
 		if (null != g_bootstrap_validator) {
 			$("#app-edit-form").data('bootstrapValidator').destroy();
@@ -136,148 +109,7 @@ var g_bootstrap_validator = null;
 		}).bootstrapValidator('validate');
 	}
 
-$(function() {
-		// ckeditor
-		var config = {
-			// plugins: 'basicstyles,sourcearea,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
-			extraPlugins: 'autogrow',
-			autoGrow_onStartup: true,
-			autoGrow_minHeight: 400,
-			filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/dm_image',
-			// removePlugins: 'resize',
-			extraPlugins : 'imagemaps,autogrow,uploadimage',
-			allowedContent: true
-
-		}
-		config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
-
-		try {
-			CKEDITOR.instances['m_content'].destroy(true);
-		} catch (e) {
-
-		}
-		CKEDITOR.replace("m_content", config);
-		CKEDITOR.instances['m_content'].on('change', function() {
-			CKEDITOR.instances['m_content'].updateElement()
-		});
-	
-	});
-
-$('#add_news_style').click(function() {
-		layer.open({
-			type:2,
-			title:'',
-			closeBtn:0,
-			area:['400px','200px'],
-			shadeClose:true,
-			content:'<?=base_url('mgmt/news_edit/new_news_style')?>'
-		})
-	})
-
-	function load_news_style() {
-	$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/news_edit/find_news_style',
-			type: 'POST',
-			data: {},
-			dataType: 'json',
-			success: function(d) {
-				if(d) {
-			
-					$news_style = $('#news_style').empty();
-					var option = '<option value="0">全部</option>';
-          			$news_style.append(option);
-					$.each(d.news_style, function(){
-						if(news_style>0){
-							if(news_style==this.id){
-								$('<option/>', {
-									'value': this.id,
-									'text': this.news_style
-								}).attr("selected", true).appendTo($news_style);
-							} else{
-								$('<option/>', {
-									'value': this.id,
-									'text': this.news_style
-								}).appendTo($news_style);
-							}
-							
-						} else{
-							$('<option/>', {
-								'value': this.id,
-								'text': this.news_style
-							}).appendTo($news_style);
-						}
-						
-					});
-				}
-			},
-			failure:function(){
-				alert('faialure');
-			}
-		});
-
-}
-load_news_style();
-
-
-$(function() {
-
-		$("#file").change(function(event) {
-			// filePreview(this);
-			var data = new FormData();
-			data.append('file', event.target.files[0]);
-
-			$.ajax({
-				url: 'mgmt/images/upload/news',
-				contentType: false,
-				cache: false,
-				processData:false,
-				dataType: 'json',
-				data: data,
-				type: 'POST',
-				success: function (response) {
-					console.info('response', response);
-
-					if (response.id) {
-
-					}
-				},
-				beforeSend: function () {
-				},
-				complete: function () {
-				},
-				error: function (xhr, ajaxOptions, thrownError) {
-					console.error(xhr.status + ' ' + thrownError);
-				}
-			});
-		});
-
-		
-	});
-
-function do_save() {
-	// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
-	var url = baseUrl + 'mgmt/news_edit/insert'; // the script where you handle the form input.
-	$.ajax({
-		type : "POST",
-		url : url,
-		data : {
-			id: $('#item_id').val(),
-			news_style:$('#news_style').val(),
-			title: $('#title').val(),
-			m_content: CKEDITOR.instances.m_content.getData()
-		},
-		success : function(data) {
-			if(data.error_msg) {
-				layer.msg(data.error_msg);
-			} else {
-				currentApp.mDtTable.ajax.reload(null, false);
-				currentApp.backTo();
-			}
-		}
-	});
-};
-
-$(function() {
+	$(function() {
 		reCreateBootstrapValidator();
 
 		$("#file").change(function(event) {
@@ -297,8 +129,10 @@ $(function() {
 					console.info('response', response);
 
 					if (response.id) {
+						$('#hn_img_id').val(response.id);
 
-						
+						$('#preview_img').css('height', '200px');
+						$('#preview_img').attr('src', 'mgmt/images/get/' + response.id + '/thumb');
 					}
 				},
 				beforeSend: function () {
@@ -330,7 +164,10 @@ $(function() {
 	function filePreview(input) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
-		
+			reader.onload = function (e) {
+				$('#preview_img').attr('src', e.target.result);
+				$('#preview_img').css('height', '200px');
+			}
 			reader.readAsDataURL(input.files[0]);
 		}
 	}
@@ -339,5 +176,46 @@ $(function() {
 		$('#file').val('');
 		$('#file').trigger('click');
 	}
-	
+
+	$(".dt_picker").datetimepicker({
+		format: 'YYYY-MM-DD'
+	// }).on('dp.change',function(event){
+	// 	currentApp.tableReload();
+	});
+
+	// $('#is_url').change(function() {
+	// 	$('#data_source').attr('type', ($(this).is(':checked') ? 'url' : 'text'));
+	// 	$('#data_source').attr('data-bv-uri', $(this).is(':checked'));
+	// 	if ($(this).is(':checked')) {
+	// 		$('#content_panel').hide();
+	// 	} else {
+	// 		$('#content_panel').show();
+	// 	}
+	// 	reCreateBootstrapValidator();
+	// });
+
+	$(function() {
+		// ckeditor
+		var config = {
+				customConfig : '',
+				toolbarCanCollapse : false,
+				colorButton_enableMore : false,
+				removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
+				extraPlugins : 'imagemaps,autogrow,uploadimage',
+				filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/dm_image',
+				autoGrow_onStartup : true,
+				height:400,
+
+				allowedContent: true
+			}
+			config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
+
+
+		try {
+			CKEDITOR.instances['m_content'].destroy(true);
+		} catch (e) {
+		}
+		CKEDITOR.replace("m_content", config);
+		CKEDITOR.instances['m_content'].on('change', function() { CKEDITOR.instances['m_content'].updateElement() });
+	});
 </script>
