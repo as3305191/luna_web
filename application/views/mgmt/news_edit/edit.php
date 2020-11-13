@@ -109,49 +109,6 @@
 		}).bootstrapValidator('validate');
 	}
 
-	$(function() {
-		reCreateBootstrapValidator();
-
-		$("#file").change(function(event) {
-			// filePreview(this);
-			var data = new FormData();
-			data.append('file', event.target.files[0]);
-
-			$.ajax({
-				url: 'mgmt/images/upload/news',
-				contentType: false,
-				cache: false,
-				processData:false,
-				dataType: 'json',
-				data: data,
-				type: 'POST',
-				success: function (response) {
-					console.info('response', response);
-
-					if (response.id) {
-						$('#hn_img_id').val(response.id);
-
-						$('#preview_img').css('height', '200px');
-						$('#preview_img').attr('src', 'mgmt/images/get/' + response.id + '/thumb');
-					}
-				},
-				beforeSend: function () {
-				},
-				complete: function () {
-				},
-				error: function (xhr, ajaxOptions, thrownError) {
-					console.error(xhr.status + ' ' + thrownError);
-				}
-			});
-		});
-
-		changeDataSourceLabel();
-		$(document.body).on('change', '#category_id', function() {
-			changeDataSourceLabel();
-		});
-	});
-
-
 
 	function filePreview(input) {
 		if (input.files && input.files[0]) {
