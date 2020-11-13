@@ -50,24 +50,33 @@ var NewsEditAppClass = (function(app) {
 		// get year month list
 		app.tableReload();
 
+		app.doSubmit = function() {
+			//if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
 
-		var imgIdList = app.getImgIdList();
-		$.ajax({
-			type : "POST",
-			url : url,
-			data : $("#app-edit-form").serialize()
-					+ '&' + $("#app-edit-form-s3").serialize()
-					// + '&' + $("#app-edit-form-s4").serialize()
-					// + '&spec_list=' + encodeURIComponent(JSON.stringify(specStore))
-					+ '&img_id_list=' + imgIdList.join(','),
-			success : function(data) {
-				app.tableReload();
-				currentApp.doEdit(data.id);
-				$('input[name="id"]').val(data.id);
-				// $('#editModal').modal('hide');
-			}
-		});
-	};
+			// sync ckeditor first
+			for ( instance in CKEDITOR.instances )
+		        CKEDITOR.instances[instance].updateElement();
+
+
+			var url = baseUrl + app.basePath + 'insert'; // the script where you handle the form input.
+			var imgIdList = app.getImgIdList();
+			$.ajax({
+				type : "POST",
+				url : url,
+				data : $("#app-edit-form").serialize()
+						+ '&' + $("#app-edit-form-s3").serialize()
+						// + '&' + $("#app-edit-form-s4").serialize()
+						// + '&spec_list=' + encodeURIComponent(JSON.stringify(specStore))
+						+ '&img_id_list=' + imgIdList.join(','),
+				success : function(data) {
+					app.tableReload();
+					currentApp.doEdit(data.id);
+					$('input[name="id"]').val(data.id);
+					// $('#editModal').modal('hide');
+				}
+			});
+		};
+
 	app.getImgIdList = function() {
 		var idList = [];
 		$('.kv-file-content img').each(function() {
@@ -108,9 +117,9 @@ var NewsEditAppClass = (function(app) {
 		app.imgIds = [];
 	};
 
-		$('#s_news_style').on('change', function(){
-			app.tableReload();
-		});
+	$('#s_news_style').on('change', function(){
+		app.tableReload();
+	});
 
 		return app;
 	};
