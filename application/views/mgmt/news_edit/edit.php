@@ -160,6 +160,7 @@ $(function() {
 		CKEDITOR.instances['m_content'].on('change', function() {
 			CKEDITOR.instances['m_content'].updateElement()
 		});
+	
 	});
 
 $('#add_news_style').click(function() {
@@ -237,10 +238,7 @@ $(function() {
 					console.info('response', response);
 
 					if (response.id) {
-						$('#hn_img_id').val(response.id);
 
-						$('#preview_img').css('height', '200px');
-						$('#preview_img').attr('src', 'mgmt/images/get/' + response.id + '/thumb');
 					}
 				},
 				beforeSend: function () {
@@ -279,6 +277,67 @@ function do_save() {
 	});
 };
 
+$(function() {
+		reCreateBootstrapValidator();
 
+		$("#file").change(function(event) {
+			// filePreview(this);
+			var data = new FormData();
+			data.append('file', event.target.files[0]);
+
+			$.ajax({
+				url: 'mgmt/images/upload/news',
+				contentType: false,
+				cache: false,
+				processData:false,
+				dataType: 'json',
+				data: data,
+				type: 'POST',
+				success: function (response) {
+					console.info('response', response);
+
+					if (response.id) {
+
+						
+					}
+				},
+				beforeSend: function () {
+				},
+				complete: function () {
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					console.error(xhr.status + ' ' + thrownError);
+				}
+			});
+		});
+
+		changeDataSourceLabel();
+		$(document.body).on('change', '#category_id', function() {
+			changeDataSourceLabel();
+		});
+	});
+
+	function changeDataSourceLabel() {
+		var category_id = $('#app-edit-form #category_id option:selected').val();
+		console.info('xxxx', category_id);
+		if (category_id == 3) {
+			$('#data_source_label').html('頭銜名稱');
+		} else {
+			$('#data_source_label').html('資料來源');
+		}
+	}
+
+	function filePreview(input) {
+		if (input.files && input.files[0]) {
+			var reader = new FileReader();
+		
+			reader.readAsDataURL(input.files[0]);
+		}
+	}
+
+	function upload_img() {
+		$('#file').val('');
+		$('#file').trigger('click');
+	}
 	
 </script>
