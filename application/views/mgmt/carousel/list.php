@@ -133,9 +133,9 @@
             margin-left: -80%;
         }
 
-        /* .s1 {
+        .s1 {
             animation: loop 12s linear infinite;
-        } */
+        }
 
         @keyframes loop {
             0% {
@@ -226,7 +226,7 @@
             <input type="radio" name="r" id="r3">
             <input type="radio" name="r" id="r4">
             <input type="radio" name="r" id="r5">
-            <!-- <div class="slide s1" >
+            <div class="slide s1" >
                 <div class="news_img_1">
                     <?php if(!empty($carousel_id[0]) && $carousel_id[0]): ?>
                         <img src="<?= base_url('api/images/get/'.$carousel_id[0].'/thumb') ?>"  alt="">
@@ -258,11 +258,17 @@
                     <?php endif ?>
                 </div>
 
-            </div> -->
+            </div>
 
             <div class="slide" style="text-align:center;">
                 <span class="news_content" style="color:#FFFFFF;font-size:20px;">
-                    123321
+                    <?= isset($news-> title ) ? $news -> title : '' ?>
+                </span>
+                <span class="news_content" style="color:#FFFFFF;font-size:20px;">
+                    <?= isset($news-> news_style_name) ? $news -> news_style_name : '' ?>
+                </span>
+                <span class="news_content" style="color:#FFFFFF;font-size:20px;">
+                    <?= isset($news -> content) ? $news -> content : '' ?>
                 </span>
             </div>
             <div class="slide">

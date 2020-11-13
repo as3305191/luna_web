@@ -86,5 +86,16 @@ class News_dao extends MY_Model {
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 
+	function find_carousel(){
+		$this -> db -> from("$this->table_name as _m");
+		// $this -> db -> where('status',1);
+		$this -> db -> select('ns.news_style as news_style_name');
+
+		$this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
+
+		$this -> db -> order_by('id', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
 }
 ?>
