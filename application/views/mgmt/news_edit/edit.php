@@ -186,7 +186,8 @@ function do_save() {
 			id: $('#item_id').val(),
 			news_style:$('#news_style').val(),
 			title: $('#title').val(),
-			m_content: $('#m_content').text()
+			m_content: $('input[name="m_content"]').val(),
+			
 		},
 		success : function(data) {
 			if(data.error_msg) {
