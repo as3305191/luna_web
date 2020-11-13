@@ -109,24 +109,32 @@
 <!-- PAGE RELATED PLUGIN(S) -->
 <script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
+
 <script type="text/javascript">
 // ckeditor
-var config = {
-		plugins:'basicstyles,sourcearea,image,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
-		customConfig : '',
-		toolbarCanCollapse : false,
-		colorButton_enableMore : false,
-		// removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
-		extraPlugins : 'imagemaps,autogrow,uploadimage',
-		autoGrow_onStartup : true,
-		height:400,
-		startupFocus: true,
-		allowedContent: true
-	}
-	config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
+$(function() {
+		// ckeditor
+		var config = {
+			plugins: 'basicstyles,sourcearea,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
+			extraPlugins: 'autogrow',
+			autoGrow_onStartup: true,
+			autoGrow_minHeight: 400,
+			//autoGrow_maxHeight: 800,
+			removePlugins: 'resize'
+		}
+		config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
 
-CKEDITOR.replace( "m_content", config);
-CKEDITOR.instances['m_content'].on('change', function() { CKEDITOR.instances['m_content'].updateElement() });
+
+		try {
+			CKEDITOR.instances['m_content'].destroy(true);
+		} catch (e) {
+
+		}
+		CKEDITOR.replace("m_content", config);
+		CKEDITOR.instances['m_content'].on('change', function() {
+			CKEDITOR.instances['m_content'].updateElement()
+		});
+	});
 
 $('#add_news_style').click(function() {
 		layer.open({
