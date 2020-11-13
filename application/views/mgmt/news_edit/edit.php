@@ -117,12 +117,15 @@ news_style='<?= isset($item) ? $item -> news_style_id : 0?>';
 $(function() {
 		// ckeditor
 		var config = {
-			plugins: 'basicstyles,sourcearea,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
+			// plugins: 'basicstyles,sourcearea,button,colorbutton,colordialog,contextmenu,toolbar,font,format,wysiwygarea,justify,menubutton,link,list',
 			extraPlugins: 'autogrow',
 			autoGrow_onStartup: true,
 			autoGrow_minHeight: 400,
-			//autoGrow_maxHeight: 800,
-			removePlugins: 'resize'
+			filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/dm_image',
+			removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
+			extraPlugins : 'imagemaps,autogrow,uploadimage',
+			allowedContent: true
+
 		}
 		config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
 
