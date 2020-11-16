@@ -262,7 +262,7 @@
                     </span>
                 </div>
                 <div class="">
-                    <span class=""   style="color:green;font-size:80px;">
+                    <span class=""  style="color:green;font-size:80px;">
                         <?= isset($news-> title ) ? $news -> title : '' ?>
                     </span>
                 </div>
@@ -327,8 +327,3 @@
 		</section>
 	</div>
 </div>
-
-
-   
-
-
