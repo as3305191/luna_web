@@ -133,9 +133,9 @@
             margin-left: -80%;
         }
 
-        .s1 {
+        /* .s1 {
             animation: loop 12s linear infinite;
-        }
+        } */
 
         @keyframes loop {
             0% {
@@ -258,18 +258,18 @@
             </div>
 
             <div class="slide" style="text-align:center;">
-                <div class="news_content ">
-                    <span class="news_content"  style="color:red;font-size:100px;">
+                <div class="">
+                    <span class=""  style="color:red;font-size:100px;">
                         <?= isset($news-> news_style_name) ? $news -> news_style_name : '' ?>
                     </span>
                 </div>
-                <div class="news_content ">
-                    <span class="news_content"   style="color:green;font-size:80px;">
+                <div class=" ">
+                    <span class=""   style="color:green;font-size:80px;">
                         <?= isset($news-> title ) ? $news -> title : '' ?>
                     </span>
                 </div>
-                <div class="news_content ">
-                    <span class="news_content" style="color:#FFFFFF;font-size:50px;" >
+                <div class=" ">
+                    <span class="" style="text-align:left;color:#FFFFFF;font-size:50px;" >
                      <?= isset($news -> content) ? $news -> content : '' ?>
                     </span>
                 </div>
