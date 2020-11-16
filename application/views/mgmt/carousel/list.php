@@ -261,14 +261,14 @@
                         <?= isset($news-> news_style_name) ? $news -> news_style_name : '' ?>
                     </span>
                 </div>
-                <div class=" ">
+                <div class="">
                     <span class=""   style="color:green;font-size:80px;">
                         <?= isset($news-> title ) ? $news -> title : '' ?>
                     </span>
                 </div>
-                <div class=" ">
+                <div class="">
                     <span class="" style="text-align:left;color:#FFFFFF;font-size:50px;" >
-                     <?= isset($news -> content) ? $news -> content : '' ?>
+                        <?= isset($news -> content) ? $news -> content : '' ?>
                     </span>
                 </div>
             </div>
