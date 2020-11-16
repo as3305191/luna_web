@@ -258,7 +258,6 @@
             </div>
 
             <div class="slide" style="text-align:center;">
-               
                 <div class="news_content ">
                     <span class="news_content"  style="color:red;font-size:100px;">
                         <?= isset($news-> news_style_name) ? $news -> news_style_name : '' ?>
@@ -274,7 +273,6 @@
                      <?= isset($news -> content) ? $news -> content : '' ?>
                     </span>
                 </div>
-               
             </div>
             <div class="slide">
                 <img src="<?= base_url('api/images/get/2/thumb') ?>" alt="">

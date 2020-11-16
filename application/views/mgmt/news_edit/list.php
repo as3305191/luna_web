@@ -24,7 +24,6 @@
 
 						<!-- widget div-->
 						<div>
-
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
