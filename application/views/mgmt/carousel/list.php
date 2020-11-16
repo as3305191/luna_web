@@ -254,9 +254,7 @@
                         <img src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
                     <?php endif ?>
                 </div>
-
             </div>
-
             <div class="slide" style="text-align:center;">
                 <div class="news_content ">
                     <span class="news_content"  style="color:red;font-size:100px;">
