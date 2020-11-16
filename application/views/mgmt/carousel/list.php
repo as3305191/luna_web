@@ -44,32 +44,32 @@
 
                                 <div class="owl-carousel carousel-theme-full " style="background-color:black;">
                                     <div class="slide"  >
-                                        <div class="news_img_1" style="max-width:100vh;max-height:100vh;">
+                                        <div class="news_img_1" style="height:800px;width:800px">
                                             <?php if(!empty($carousel_id[0]) && $carousel_id[0]): ?>
-                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[0].'/thumb') ?>" style="max-height:800px;max-width:800px" alt="">
+                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[0].'/thumb') ?>" style="min-height:100%;min-width:100%" alt="">
                                             <?php else: ?>
                                                 <img  src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
                                             <?php endif ?>
                                         </div>
-                                        <div class="news_img_2">
+                                        <div class="news_img_2" style="height:800px;width:800px">
                                             <?php if(!empty($carousel_id[1]) && $carousel_id[1]): ?>
-                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[1].'/thumb') ?>" style="max-height:800px;max-width:800px" alt="">
+                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[1].'/thumb') ?>" style="min-height:100%;min-width:100%" alt="">
                                             <?php else: ?>
                                                 <img  src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
                                             <?php endif ?>
                                         </div>
                                     </div>
                                     <div class="slide ">
-                                        <div class="news_img_1">
+                                        <div class="news_img_1" style="height:800px;width:800px">
                                             <?php if(!empty($carousel_id[2]) && $carousel_id[2]): ?>
-                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[2].'/thumb') ?>" style="max-height:800px;max-width:800px" alt="">
+                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[2].'/thumb') ?>" style="min-height:100%;min-width:100%" alt="">
                                             <?php else: ?>
                                                 <img  src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
                                             <?php endif ?>
                                         </div>
-                                        <div class="news_img_2">
+                                        <div class="news_img_2" style="height:800px;width:800px">
                                             <?php if(!empty($carousel_id[3]) && $carousel_id[3]): ?>
-                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[3].'/thumb') ?>" style="max-height:800px;max-width:800px" alt="">
+                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[3].'/thumb') ?>" style="min-height:100%;min-width:100%" alt="">
                                             <?php else: ?>
                                                 <img  src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
                                             <?php endif ?>
