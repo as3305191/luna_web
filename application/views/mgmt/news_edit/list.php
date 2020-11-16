@@ -47,7 +47,7 @@
 											<th></th>
 											<th></th>
 											<th>
-												<div class="col-md-6">
+												<div class="min100">
 													<select id="s_news_style" class="form-control">
 														<!-- option from javascript -->
 													</select>
