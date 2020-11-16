@@ -78,8 +78,8 @@
         }
 
         .news_content  {
-            width: 60vh;
-            height: 40vh;
+            width: 100%;
+            height: 100%;
             z-index:9999;
             /* position: absolute; */
             margin-left: auto;
@@ -262,18 +262,18 @@
 
             <div class="slide" style="text-align:center;">
                
-                <div>
-                    <span class="news_content" style="color:red;font-size:100px;">
+                <div class="news_content ">
+                    <span class="news_content"  style="color:red;font-size:100px;">
                         <?= isset($news-> news_style_name) ? $news -> news_style_name : '' ?>
                     </span>
                 </div>
-                <div>
-                    <span class="news_content" style="color:green;font-size:80px;">
+                <div class="news_content ">
+                    <span class="news_content"   style="color:green;font-size:80px;">
                         <?= isset($news-> title ) ? $news -> title : '' ?>
                     </span>
                 </div>
-                <div>
-                    <span class="news_content" style="color:#FFFFFF;font-size:50px;text-align:left" >
+                <div class="news_content ">
+                    <span class="news_content" style="color:#FFFFFF;font-size:50px;" >
                      <?= isset($news -> content) ? $news -> content : '' ?>
                     </span>
                 </div>
