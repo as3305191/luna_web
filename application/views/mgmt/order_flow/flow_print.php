@@ -18,17 +18,17 @@
 
 		<style>
 		@media print {
-        .no-print {
-            display: none;
-        }
+			.no-print {
+				display: none;
+			}
 
-        .print-only{
-            display: block;
-        }
+			.print-only{
+				display: block;
+			}
 
-				table td {
-					border: 1px solid gray;
-				}
+			table td {
+				border: 1px solid gray;
+			}
 		}
 		</style>
 	</head>
