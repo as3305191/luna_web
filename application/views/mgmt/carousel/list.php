@@ -1,7 +1,7 @@
 <head>
     <link rel="stylesheet" type="text/css" href="<?= base_url("vendor/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css") ?>">
     <style>
-       .middle {
+       /* .middle {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -11,20 +11,17 @@
         .slide {
             width: 20%;
             height: 100%;
-            transition: 1s;
+            transition: 1s; */
         }
     </style>
 
 </head>
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
-
 		<!-- widget grid -->
 		<section id="widget-grid" class="">
-
 			<!-- row -->
 			<div class="row">
-
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
