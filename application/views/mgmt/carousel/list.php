@@ -1,7 +1,18 @@
 <head>
     <link rel="stylesheet" type="text/css" href="<?= base_url("vendor/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css") ?>">
     <style>
-      
+       .middle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -45%);
+        }
+
+        .slide {
+            width: 20%;
+            height: 100%;
+            transition: 1s;
+        }
     </style>
 
 </head>
@@ -59,7 +70,8 @@
                                             <?php endif ?>
                                         </div>
                                     </div>
-                                    <div class="slide ">
+                                    
+                                    <div class="slide">
                                         <div class="news_img_1" style="height:800px;width:800px">
                                             <?php if(!empty($carousel_id[2]) && $carousel_id[2]): ?>
                                                 <img  src="<?= base_url('api/images/get/'.$carousel_id[2].'/thumb') ?>" style="min-height:60%;min-width:60%" alt="">
