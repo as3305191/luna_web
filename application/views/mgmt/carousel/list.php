@@ -11,8 +11,8 @@
         .slide {
             width: 20%;
             height: 100%;
-            transition: 1s; */
-        }
+            transition: 1s;
+        } */
     </style>
 
 </head>
