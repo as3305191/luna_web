@@ -1,14 +1,14 @@
 <head>
     <link rel="stylesheet" type="text/css" href="<?= base_url("vendor/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css") ?>">
     <style>
-       /* .middle {
+       .middle {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -45%);
         }
 
-        .slide {
+        /* .slide {
             width: 20%;
             height: 100%;
             transition: 1s;
