@@ -91,6 +91,11 @@ define('PARTNER_ID', "");
 define('HASH_KEY', '');
 define('HASH_IV', '');
 
+// db host
+define('DB_HOST', '127.0.0.1');
+define('DB_NAME', 'ktx');
+
+
 define('IMG_UPLOAD_URL', '');
 define('IMG_URL', '');
 define('IMG_DIR', '/../../../img/article/');
@@ -99,19 +104,12 @@ define('SMS_ACCOUNT', '');
 define('SMS_PASSWORD', '');
 define('VERSION', '1');
 
-define('WIN_TIE', '0');
-define('WIN_DEALER', '1');
-define('WIN_BANKER', '1');
-define('WIN_PLAYER', '2');
-define('WIN_BANKER_PAIR', '3');
-define('WIN_PLAYER_PAIR', '4');
-define('WIN_BANKER_AND_PLAYER_PAIR', '6');
+// 顯示建構中... for 競賽報名、活動訊息、夢想DNA、得將公告
+define('SHOW_CONSTRUCTION', false);
+define('SHOW_QA', true);
 
-define('PLAY_SECONDS', 30);
-define('OPENING_SECONDS', 5);
-define('OPEN_SECONDS', 10);
-define('BONUS_SECONDS', 5);
+// FB 應用程式編號
+define('FB_APP_ID', '567512066988734');
 
-define('RACE_BET_SECONDS', 300);
-define('RACE_RACE_SECONDS', 0);
-define('RACE_OPEN_SECONDS', 50);
+// logo path
+define('LOGO_PATH', 'img/logo/logo1.png');
