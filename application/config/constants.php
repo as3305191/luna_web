@@ -91,10 +91,10 @@ define('PARTNER_ID', "");
 define('HASH_KEY', '');
 define('HASH_IV', '');
 
-
-define('IMG_UPLOAD_URL', 'http://ckstar99.com/mgmt/images/upload/avatar');
-define('IMG_URL', 'http://ckstar99.com/mgmt/images/get/');
-define('IMG_DIR', '../../bd_backend_debug/img/');
+define('IMG_UPLOAD_URL', '');
+define('IMG_URL', '');
+define('IMG_DIR', '/../../../img/article/');
+define('IMG_CKEDITOR_URL', 'img/article/');
 define('SMS_ACCOUNT', '');
 define('SMS_PASSWORD', '');
 define('VERSION', '1');
