@@ -40,13 +40,8 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">類別</label>
 						<div class="col-md-6">
-							<select name="category_id" id="category_id" class="form-control">
-								<?php
-									foreach ($category_list as $category) {
-										$selected = ((isset($item) && isset($item -> category_id) && $item -> category_id == $category -> id) ? 'selected' : '');
-										echo "<option value='{$category -> id}' $selected>{$category -> name}</option>";
-									}
-								?>
+							<select name="news_style" id="news_style" class="form-control">
+								
 							</select>
 						</div>
 					</div>
@@ -62,6 +57,7 @@
 				</fieldset>
 
 
+			
 			</form>
 
 		</div>
@@ -114,17 +110,6 @@
 	}
 
 
-
-	function changeDataSourceLabel() {
-		var category_id = $('#app-edit-form #category_id option:selected').val();
-		console.info('xxxx', category_id);
-		if (category_id == 3) {
-			$('#data_source_label').html('頭銜名稱');
-		} else {
-			$('#data_source_label').html('資料來源');
-		}
-	}
-
 	function filePreview(input) {
 		if (input.files && input.files[0]) {
 			var reader = new FileReader();
@@ -141,6 +126,22 @@
 		$('#file').trigger('click');
 	}
 
+	$(".dt_picker").datetimepicker({
+		format: 'YYYY-MM-DD'
+	// }).on('dp.change',function(event){
+	// 	currentApp.tableReload();
+	});
+
+	// $('#is_url').change(function() {
+	// 	$('#data_source').attr('type', ($(this).is(':checked') ? 'url' : 'text'));
+	// 	$('#data_source').attr('data-bv-uri', $(this).is(':checked'));
+	// 	if ($(this).is(':checked')) {
+	// 		$('#content_panel').hide();
+	// 	} else {
+	// 		$('#content_panel').show();
+	// 	}
+	// 	reCreateBootstrapValidator();
+	// });
 
 	$(function() {
 		// ckeditor
