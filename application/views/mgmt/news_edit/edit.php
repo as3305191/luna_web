@@ -12,7 +12,7 @@
 			</a>
 		</div>
 		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="" onclick="do_save();" class="btn btn-default btn-danger">
+			<a href="javascript:void(0);" id="" onclick="currentApp.doSubmit()" class="btn btn-default btn-danger">
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
@@ -35,29 +35,56 @@
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-				
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">公告類別</label>
+						<label class="col-md-3 control-label">品牌故事/最新訊息</label>
 						<div class="col-md-6">
-							<select id="news_style" class="form-control">
-								<!-- option from javascript -->
+							<select name="style" id="style" class="form-control"  >
+								<option value="0" <?= isset($item) ? ($item -> style == "0" ? 'selected' : '') : 'selected' ?> >品牌故事</option>
+								<option value="1" <?= isset($item) ? ($item -> style == "1" ? 'selected' : '') : 'selected' ?> >最新訊息</option>
 							</select>
 						</div>
-						<div class="col-md-2">
-							<button type="button" class="btn btn-sm btn-primary" id="add_news_style"><i class="fa fa-plus-circle fa-lg"></i></button>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">類別</label>
+						<div class="col-md-6">
+							<select name="category_id" id="category_id" class="form-control">
+								<?php
+									foreach ($category_list as $category) {
+										$selected = ((isset($item) && isset($item -> category_id) && $item -> category_id == $category -> id) ? 'selected' : '');
+										echo "<option value='{$category -> id}' $selected>{$category -> name}</option>";
+									}
+								?>
+							</select>
 						</div>
 					</div>
 				</fieldset>
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">標題</label>
+						<label class="col-md-3 control-label">上方標題</label>
 						<div class="col-md-6">
-							<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
+							<input type="text" class="form-control" required id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
 						</div>
 					</div>
 				</fieldset>
-			
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">左側標題</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" required id="small_title" name="small_title" value="<?= isset($item) ? $item -> title : '' ?>" />
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label" id="data_source_label">資料來源</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" required id="data_source" name="data_source" data-bv-uri="false" value="<?= isset($item) ? $item -> data_source : '' ?>"  />
+						</div>
+					</div>
+				</fieldset>
 				<fieldset id='content_panel'>
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
@@ -67,8 +94,20 @@
 					</div>
 				</fieldset>
 
+				<input type="hidden" class="form-control dt_picker" required id="release_date" name="release_date" value="<?= isset($item) ? $item -> release_date : date('Y-m-d') ?>" />
 
-			
+				<fieldset id="brokering_code_panel">
+					<div class="form-group">
+						<label class="col-md-3 control-label">圖片</label>
+						<div class="col-md-6" data-odd>
+							<img id="preview_img" style="<?php echo (empty($item) || empty($item->hn_img_id) ? '' : 'height: 200px;'); ?>" src="<?php echo (empty($item) || empty($item->hn_img_id) ? '' : "mgmt/images/get/{$item->hn_img_id}/thumb"); ?>" />
+							<input type="hidden" id="hn_img_id" name="hn_img_id" value="<?php echo (empty($item) || empty($item->hn_img_id) ? '' : $item->hn_img_id); ?>" />
+							<a class="btn btn-primary btn-xs" onclick="upload_img();">
+								<i class="fa fa-upload"></i>上傳
+							</a>
+						</div>
+					</div>
+				</fieldset>
 			</form>
 
 		</div>
@@ -101,8 +140,6 @@
 <script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
 <script>
-var news_style = false;
-news_style='<?= isset($item) ? $item -> news_style_id : 0?>';
 	var g_bootstrap_validator = null;
 	function reCreateBootstrapValidator() {
 		if (null != g_bootstrap_validator) {
@@ -122,6 +159,57 @@ news_style='<?= isset($item) ? $item -> news_style_id : 0?>';
 		}).bootstrapValidator('validate');
 	}
 
+	$(function() {
+		reCreateBootstrapValidator();
+
+		$("#file").change(function(event) {
+			// filePreview(this);
+			var data = new FormData();
+			data.append('file', event.target.files[0]);
+
+			$.ajax({
+				url: 'mgmt/images/upload/news',
+				contentType: false,
+				cache: false,
+				processData:false,
+				dataType: 'json',
+				data: data,
+				type: 'POST',
+				success: function (response) {
+					console.info('response', response);
+
+					if (response.id) {
+						$('#hn_img_id').val(response.id);
+
+						$('#preview_img').css('height', '200px');
+						$('#preview_img').attr('src', 'mgmt/images/get/' + response.id + '/thumb');
+					}
+				},
+				beforeSend: function () {
+				},
+				complete: function () {
+				},
+				error: function (xhr, ajaxOptions, thrownError) {
+					console.error(xhr.status + ' ' + thrownError);
+				}
+			});
+		});
+
+		changeDataSourceLabel();
+		$(document.body).on('change', '#category_id', function() {
+			changeDataSourceLabel();
+		});
+	});
+
+	function changeDataSourceLabel() {
+		var category_id = $('#app-edit-form #category_id option:selected').val();
+		console.info('xxxx', category_id);
+		if (category_id == 3) {
+			$('#data_source_label').html('頭銜名稱');
+		} else {
+			$('#data_source_label').html('資料來源');
+		}
+	}
 
 	function filePreview(input) {
 		if (input.files && input.files[0]) {
@@ -162,9 +250,8 @@ news_style='<?= isset($item) ? $item -> news_style_id : 0?>';
 				customConfig : '',
 				toolbarCanCollapse : false,
 				colorButton_enableMore : false,
-				// removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
+				removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
 				extraPlugins : 'imagemaps,autogrow,uploadimage',
-				removePlugins: 'resize',
 				filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/dm_image',
 				autoGrow_onStartup : true,
 				height:400,
@@ -181,71 +268,4 @@ news_style='<?= isset($item) ? $item -> news_style_id : 0?>';
 		CKEDITOR.replace("m_content", config);
 		CKEDITOR.instances['m_content'].on('change', function() { CKEDITOR.instances['m_content'].updateElement() });
 	});
-
-	function load_news_style() {
-	$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/news_edit/find_news_style',
-			type: 'POST',
-			data: {},
-			dataType: 'json',
-			success: function(d) {
-				if(d) {
-			
-					$news_style = $('#news_style').empty();
-					var option = '<option value="0">全部</option>';
-          			$news_style.append(option);
-					$.each(d.news_style, function(){
-						if(news_style>0){
-							if(news_style==this.id){
-								$('<option/>', {
-									'value': this.id,
-									'text': this.news_style
-								}).attr("selected", true).appendTo($news_style);
-							} else{
-								$('<option/>', {
-									'value': this.id,
-									'text': this.news_style
-								}).appendTo($news_style);
-							}
-							
-						} else{
-							$('<option/>', {
-								'value': this.id,
-								'text': this.news_style
-							}).appendTo($news_style);
-						}
-						
-					});
-				}
-			},
-			failure:function(){
-				alert('faialure');
-			}
-		});
-
-}
-load_news_style();
-
-function do_save() {
-	// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
-	var url = baseUrl + 'mgmt/news_edit/insert'; // the script where you handle the form input.
-	$.ajax({
-		type : "POST",
-		url : url,
-		data : {
-			id: $('#item_id').val(),
-			news_style:$('#news_style').val(),
-			title: $('#title').val(),
-			m_content: CKEDITOR.instances.m_content.getData()
-		},
-		success : function(data) {
-			if(data.error_msg) {
-				layer.msg(data.error_msg);
-			} else {
-				currentApp.mDtTable.ajax.reload(null, false);
-				currentApp.backTo();
-			}
-		}
-	});
-};
 </script>
