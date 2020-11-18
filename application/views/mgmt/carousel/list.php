@@ -50,7 +50,7 @@
 							<!-- widget content -->
 							<div class="widget-body no-padding">
 
-                                <div class="owl-carousel carousel-theme-full " style="background-color:black;">
+                                <div class="owl-carousel carousel-theme-full middle" style="background-color:black;">
                                     <div class="slide"  >
                                         <div class="news_img_1" style="height:800px;width:800px">
                                             <?php if(!empty($carousel_id[0]) && $carousel_id[0]): ?>
