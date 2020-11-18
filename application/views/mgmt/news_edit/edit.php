@@ -159,7 +159,6 @@
 			}
 			config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
 
-
 		try {
 			CKEDITOR.instances['m_content'].destroy(true);
 		} catch (e) {
