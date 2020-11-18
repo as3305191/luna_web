@@ -542,8 +542,8 @@ class Images extends MY_Base_Controller {
 	}
 
 
-	//image upload section
 	public function upload_terms($image_path) {
+		$info = '';
 		$f_name = 'file';
 
 		if($image_path == 'dm_image') {
@@ -566,11 +566,11 @@ class Images extends MY_Base_Controller {
 		$i_data['image_path'] = $image_path;
 		$i_data['image_size'] = $size;
 
-		// // set store id
-		// $store_id = $this -> get_post('store_id');
-		// if(!empty($store_id)) {
-		// 	$i_data['store_id'] = $store_id;
-		// }
+		// set store id
+		$store_id = $this -> get_post('store_id');
+		if(!empty($store_id)) {
+			$i_data['store_id'] = $store_id;
+		}
 
 		$image_info = getimagesize($_FILES[$f_name]["tmp_name"]);
 		$image_width = $image_info[0];
@@ -633,12 +633,12 @@ class Images extends MY_Base_Controller {
 				    "id" => $last_id
 				];
 
-				// //可重複上圖
-				// if($image_path == 'product_img' || $image_path == 'store_img') {
-				// 	$res['append'] = TRUE;
-				// } else {
-				// 	$res['append'] = FALSE;
-				// }
+				//可重複上圖
+				if($image_path == 'product_img' || $image_path == 'store_img') {
+					$res['append'] = TRUE;
+				} else {
+					$res['append'] = FALSE;
+				}
 			}
 
 			$this -> to_json($res);
