@@ -762,14 +762,6 @@ class Images extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
-	public function browser(){
-		$data = array();
-
-		// user data setup
-		$data['allow_store_login'] = TRUE;
-		$data = $this -> setup_user_data($data);
-		$this->load->view('layout/browser', $data);
-	}
 
 	public function get_data() {
 		$res = array();
@@ -1044,6 +1036,15 @@ class Images extends MY_Base_Controller {
 				$this -> to_json($res);
 			}
 	
+		}
+
+		public function browser(){
+			$data = array();
+	
+			// user data setup
+			$data['allow_store_login'] = TRUE;
+			$data = $this -> setup_user_data($data);
+			$this->load->view('layout/browser', $data);
 		}
 }
 ?>

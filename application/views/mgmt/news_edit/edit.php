@@ -35,17 +35,7 @@
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">品牌故事/最新訊息</label>
-						<div class="col-md-6">
-							<select name="style" id="style" class="form-control"  >
-								<option value="0" <?= isset($item) ? ($item -> style == "0" ? 'selected' : '') : 'selected' ?> >品牌故事</option>
-								<option value="1" <?= isset($item) ? ($item -> style == "1" ? 'selected' : '') : 'selected' ?> >最新訊息</option>
-							</select>
-						</div>
-					</div>
-				</fieldset>
+				
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">類別</label>
@@ -61,30 +51,7 @@
 						</div>
 					</div>
 				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">上方標題</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control" required id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">左側標題</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control" required id="small_title" name="small_title" value="<?= isset($item) ? $item -> title : '' ?>" />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label" id="data_source_label">資料來源</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control" required id="data_source" name="data_source" data-bv-uri="false" value="<?= isset($item) ? $item -> data_source : '' ?>"  />
-						</div>
-					</div>
-				</fieldset>
+			
 				<fieldset id='content_panel'>
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
@@ -94,20 +61,7 @@
 					</div>
 				</fieldset>
 
-				<input type="hidden" class="form-control dt_picker" required id="release_date" name="release_date" value="<?= isset($item) ? $item -> release_date : date('Y-m-d') ?>" />
 
-				<fieldset id="brokering_code_panel">
-					<div class="form-group">
-						<label class="col-md-3 control-label">圖片</label>
-						<div class="col-md-6" data-odd>
-							<img id="preview_img" style="<?php echo (empty($item) || empty($item->hn_img_id) ? '' : 'height: 200px;'); ?>" src="<?php echo (empty($item) || empty($item->hn_img_id) ? '' : "mgmt/images/get/{$item->hn_img_id}/thumb"); ?>" />
-							<input type="hidden" id="hn_img_id" name="hn_img_id" value="<?php echo (empty($item) || empty($item->hn_img_id) ? '' : $item->hn_img_id); ?>" />
-							<a class="btn btn-primary btn-xs" onclick="upload_img();">
-								<i class="fa fa-upload"></i>上傳
-							</a>
-						</div>
-					</div>
-				</fieldset>
 			</form>
 
 		</div>
@@ -227,11 +181,7 @@
 		$('#file').trigger('click');
 	}
 
-	$(".dt_picker").datetimepicker({
-		format: 'YYYY-MM-DD'
-	// }).on('dp.change',function(event){
-	// 	currentApp.tableReload();
-	});
+
 
 	// $('#is_url').change(function() {
 	// 	$('#data_source').attr('type', ($(this).is(':checked') ? 'url' : 'text'));
