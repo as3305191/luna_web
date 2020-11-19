@@ -32,7 +32,6 @@
 			max-width:100%;
         }
     </style>
-
 </head>
 <div class="news_container owl-carousel carousel-theme-full " style="background-color:black;">
     <div style="padding:0px 0px 0px 0px;text-align:center;" >
