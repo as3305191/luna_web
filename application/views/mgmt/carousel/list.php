@@ -29,8 +29,11 @@
 		}
 		
 		.news_container img {
-			max-height:100%;
-			max-width:100%;
+			max-height:1079px;
+			max-width:809px;
+            myimg:expression(onload=function(){
+                this.style.width=(this.offsetWidth > 600)?"600px":"auto"
+            });
         }
     </style>
 </head>
