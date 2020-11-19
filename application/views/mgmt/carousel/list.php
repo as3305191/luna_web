@@ -51,57 +51,26 @@
 							<div class="widget-body no-padding">
 
                                 <div class="owl-carousel carousel-theme-full" style="background-color:black;">
-                                    <div class="slide">
-                                        <div class="news_img_1" style="height:800px;width:800px">
-                                            <?php if(!empty($carousel_id[0]) && $carousel_id[0]): ?>
-                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[0].'/thumb') ?>" style="min-height:60%;min-width:60%" alt="">
-                                            <?php else: ?>
-                                                <img  src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
-                                            <?php endif ?>
-                                        </div>
-                                        <div class="news_img_2" style="height:800px;width:800px">
-                                            <?php if(!empty($carousel_id[1]) && $carousel_id[1]): ?>
-                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[1].'/thumb') ?>" style="min-height:60%;min-width:60%" alt="">
-                                            <?php else: ?>
-                                                <img  src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
-                                            <?php endif ?>
-                                        </div>
+                                    <div>
+                                        <?= isset($items) ? $items -> news_style_name : '' ?>
                                     </div>
-                                    
-                                    <div class="slide">
-                                        <div class="news_img_1" style="height:800px;width:800px">
-                                            <?php if(!empty($carousel_id[2]) && $carousel_id[2]): ?>
-                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[2].'/thumb') ?>" style="min-height:60%;min-width:60%" alt="">
-                                            <?php else: ?>
-                                                <img  src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
-                                            <?php endif ?>
-                                        </div>
-                                        <div class="news_img_2" style="height:800px;width:800px">
-                                            <?php if(!empty($carousel_id[3]) && $carousel_id[3]): ?>
-                                                <img  src="<?= base_url('api/images/get/'.$carousel_id[3].'/thumb') ?>" style="min-height:60%;min-width:60%" alt="">
-                                            <?php else: ?>
-                                                <img  src="<?= base_url('api/images/get/319/thumb') ?>"  alt="">
-                                            <?php endif ?>
-                                        </div>
+                                    <div>
+                                        <?= isset($items) ? $items -> title : '' ?>
+                                    </div>
+                                    <div>
+                                        <?= isset($items) ? $items -> content : '' ?> 
                                     </div>
                                 </div>
-
 							</div>
 							<!-- end widget content -->
-
 						</div>
 						<!-- end widget div -->
-
 					</div>
 					<!-- end widget -->
-
 				</article>
 				<!-- WIDGET END -->
-
 			</div>
-
 			<!-- end row -->
-
 		</section>
 		<!-- end widget grid -->
 	</div>

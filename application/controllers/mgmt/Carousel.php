@@ -21,12 +21,12 @@ class Carousel extends MY_Mgmt_Controller {
 		// $content = file_get_contents('https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates.php');
 		// $currency = json_decode($content);
 		// $data['currency'] = $currency;
-		$items_img = $this -> img_style_dao -> find_carousel($data);
-		foreach($items_img as $each){
-			$data['carousel_id'][]= $each->id;
-		}
-		$items_news = $this -> news_dao -> find_carousel($data);
-		$data['news']= $items_news[0];
+		// $items_img = $this -> img_style_dao -> find_carousel($data);
+		// foreach($items_img as $each){
+		// 	$data['carousel_id'][]= $each->id;
+		// }
+		$items= $this -> news_dao -> find_carousel($data);
+		$data['items']= $items;
 		// $this -> to_json($data);
 		$this->load->view('mgmt/carousel/list', $data);
 	}
