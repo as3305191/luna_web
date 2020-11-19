@@ -35,12 +35,6 @@
 </head>
 <div class="news_container owl-carousel carousel-theme-full " style="background-color:black;">
     <div style="padding:0px 0px 0px 0px;text-align:center;" >
-        <div>
-            <?= isset($items) ? $items[0] -> news_style_name : '' ?>
-        </div>
-        <div>
-            <?= isset($items) ? $items[0] -> title : '' ?>
-        </div>
         <div style="height:100%;width:100%;">
             <?= isset($items) ? $items[0] -> content : '' ?> 
         </div>
