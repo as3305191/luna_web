@@ -53,13 +53,11 @@
                                 <div class="owl-carousel carousel-theme-full" style="background-color:black;">
                                     <div>
                                         <?= isset($items) ? $items[0] -> news_style_name : '' ?>
-                                    </div>
-                                    <div>
                                         <?= isset($items) ? $items[0] -> title : '' ?>
-                                    </div>
-                                    <div>
                                         <?= isset($items) ? $items[0] -> content : '' ?> 
+
                                     </div>
+                                   
                                 </div>
 							</div>
 							<!-- end widget content -->
