@@ -27,6 +27,10 @@
 			/* background: url(image/login.jpg) no-repeat; */
 			text-align:center;
 		}
+		.news_container img {
+			max-height:100%;
+			max-width:100%;
+        }
     </style>
 
 </head>
@@ -38,7 +42,7 @@
         <div>
             <?= isset($items) ? $items[0] -> title : '' ?>
         </div>
-        <div style="max-height:100%;max-width:100%;">
+        <div style="height:100%;width:100%;">
             <?= isset($items) ? $items[0] -> content : '' ?> 
         </div>
     </div>
