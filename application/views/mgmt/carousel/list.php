@@ -27,6 +27,7 @@
 			/* background: url(image/login.jpg) no-repeat; */
 			text-align:center;
 		}
+		
 		.news_container img {
 			max-height:100%;
 			max-width:100%;
