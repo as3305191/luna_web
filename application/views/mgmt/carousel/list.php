@@ -13,6 +13,10 @@
             height: 100%;
             transition: 1s;
         } */
+		html, body {
+            margin:0;
+            padding:0;
+        }
     </style>
 
 </head>
@@ -51,9 +55,15 @@
 							<div class="widget-body no-padding">
                                 <div class="owl-carousel carousel-theme-full" style="background-color:black;">
                                     <div>
-                                        <?= isset($items) ? $items[0] -> news_style_name : '' ?>
-                                        <?= isset($items) ? $items[0] -> title : '' ?>
-                                        <?= isset($items) ? $items[0] -> content : '' ?> 
+										<div>
+											<?= isset($items) ? $items[0] -> news_style_name : '' ?>
+										</div>
+										<div>
+											<?= isset($items) ? $items[0] -> title : '' ?>
+										</div>
+										<div>
+											<?= isset($items) ? $items[0] -> content : '' ?> 
+										</div>
                                     </div>
                                 </div>
 							</div>
