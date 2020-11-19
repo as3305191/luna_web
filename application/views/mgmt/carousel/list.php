@@ -30,7 +30,7 @@
     </style>
 
 </head>
-<div class="owl-carousel carousel-theme-full news_container" style="background-color:black;">
+<div class="news_container owl-carousel carousel-theme-full " style="background-color:black;">
     <div style="padding:0px 0px 0px 0px;">
         <div>
             <?= isset($items) ? $items[0] -> news_style_name : '' ?>
