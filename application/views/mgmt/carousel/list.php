@@ -25,7 +25,9 @@
 			/* border: 1px solid green; */
 			position:fixed;
 			/* background: url(image/login.jpg) no-repeat; */
-			text-align:center;
+			top: 50%;
+			left: 50%;
+			margin: -50% 0 0 50%;
 		}
 
 		.news_container p img {
