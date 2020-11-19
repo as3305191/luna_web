@@ -13,10 +13,20 @@
             height: 100%;
             transition: 1s;
         } */
-		/* html, body {
-            margin:0;
-            padding:0;
-        } */
+
+		html, body {
+			margin:0;
+			padding:0;
+		}
+
+		.container {
+			height:100%;
+			width:100%;
+			/* border: 1px solid green; */
+			position:fixed;
+			/* background: url(image/login.jpg) no-repeat; */
+			text-align:center;
+		}
     </style>
 
 </head>
