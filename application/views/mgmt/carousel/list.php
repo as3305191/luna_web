@@ -31,15 +31,13 @@
 		.news_container p img {
 			max-height:40%;
 			width:80%;
-            /* myimg:expression(onload=function(){
-                this.style.width=(this.offsetWidth > 600)?"600px":"auto"
-            }); */
+           
         }
 
     </style>
 </head>
 <div class="news_container owl-carousel carousel-theme-full " style="background-color:black;">
-    <div style="padding:0px 0px 0px 0px;height:100vh;width:100vh;" >
+    <div style="padding:0px 0px 0px 0px;height:100vh;width:100vh;margin: 0 auto;" >
 		<?= isset($items) ? $items[0] -> content : '' ?> 
     </div>
 </div>
