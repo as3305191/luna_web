@@ -27,11 +27,14 @@
 			/* background: url(image/login.jpg) no-repeat; */
 			text-align:center;
 		}
-		
+
 		.news_container img {
-			max-height:100%;
-			max-width:100%;
-        }
+			max-width:600px;
+			myimg:expression(onload=function(){
+			this.style.width=(this.offsetWidth > 600)?"600px":"auto"});
+		}
+
+
     </style>
 </head>
 <div class="news_container owl-carousel carousel-theme-full " style="background-color:black;">
