@@ -30,7 +30,7 @@
 
 		.news_container p img {
 			max-height:40%;
-			width:80%;
+			max-width:80%;
            
         }
 
