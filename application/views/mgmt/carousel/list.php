@@ -34,10 +34,8 @@
     </style>
 </head>
 <div class="news_container owl-carousel carousel-theme-full " style="background-color:black;">
-    <div style="padding:0px 0px 0px 0px;text-align:center;" >
-        <div style="height:100%;width:100%;">
-            <?= isset($items) ? $items[0] -> content : '' ?> 
-        </div>
+    <div style="padding:0px 0px 0px 0px;text-align:center;height:100%;width:100%;" >
+		<?= isset($items) ? $items[0] -> content : '' ?> 
     </div>
 </div>
 <script src="<?= base_url('js/libs/jquery-2.1.1.min.js') ?>"></script>
