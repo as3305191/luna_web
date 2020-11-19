@@ -12,7 +12,7 @@
 			</a>
 		</div>
 		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="" onclick="currentApp.doSubmit()" class="btn btn-default btn-danger">
+			<a href="javascript:void(0);" id="" onclick="do_save();" class="btn btn-default btn-danger">
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
@@ -35,14 +35,24 @@
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-				
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">類別</label>
+						<label class="col-md-3 control-label">公告類別</label>
 						<div class="col-md-6">
-							<select name="news_style" id="news_style" class="form-control">
-								
+							<select id="news_style" class="form-control">
+								<!-- option from javascript -->
 							</select>
+						</div>
+						<div class="col-md-2">
+							<button type="button" class="btn btn-sm btn-primary" id="add_news_style"><i class="fa fa-plus-circle fa-lg"></i></button>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">標題</label>
+						<div class="col-md-6">
+							<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
 						</div>
 					</div>
 				</fieldset>
@@ -149,7 +159,7 @@
 				customConfig : '',
 				toolbarCanCollapse : false,
 				colorButton_enableMore : false,
-				removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
+				// removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
 				extraPlugins : 'imagemaps,autogrow,uploadimage',
 				filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/dm_image',
 				autoGrow_onStartup : true,
@@ -166,4 +176,73 @@
 		CKEDITOR.replace("m_content", config);
 		CKEDITOR.instances['m_content'].on('change', function() { CKEDITOR.instances['m_content'].updateElement() });
 	});
+
+
+	function load_news_style() {
+	$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/news_edit/find_news_style',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+			
+					$news_style = $('#news_style').empty();
+					var option = '<option value="0">全部</option>';
+          			$news_style.append(option);
+					$.each(d.news_style, function(){
+						if(news_style>0){
+							if(news_style==this.id){
+								$('<option/>', {
+									'value': this.id,
+									'text': this.news_style
+								}).attr("selected", true).appendTo($news_style);
+							} else{
+								$('<option/>', {
+									'value': this.id,
+									'text': this.news_style
+								}).appendTo($news_style);
+							}
+							
+						} else{
+							$('<option/>', {
+								'value': this.id,
+								'text': this.news_style
+							}).appendTo($news_style);
+						}
+						
+					});
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+
+}
+load_news_style();
+
+function do_save() {
+	// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
+	var url = baseUrl + 'mgmt/news_edit/insert'; // the script where you handle the form input.
+	$.ajax({
+		type : "POST",
+		url : url,
+		data : {
+			id: $('#item_id').val(),
+			news_style:$('#news_style').val(),
+			title: $('#title').val(),
+			m_content: CKEDITOR.instances.m_content.getData()
+		},
+		success : function(data) {
+			if(data.error_msg) {
+				layer.msg(data.error_msg);
+			} else {
+				currentApp.mDtTable.ajax.reload(null, false);
+				currentApp.backTo();
+			}
+		}
+	});
+};
+
 </script>
