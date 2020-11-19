@@ -13,73 +13,25 @@
             height: 100%;
             transition: 1s;
         } */
-		html, body {
+		/* html, body {
             margin:0;
             padding:0;
-        }
+        } */
     </style>
 
 </head>
-<div class="tab-content">
-	<div class="tab-pane active" id="list_page">
-		<!-- widget grid -->
-		<section id="widget-grid" class="">
-			<!-- row -->
-			<div class="row">
-				<!-- NEW WIDGET START -->
-				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget">
-						<header>
-							<div class="widget-toolbar pull-left">
-								<div class="btn-group">
-									<!-- <button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
-										<i class="fa fa-plus"></i>新增
-									</button> -->
-								</div>
-							</div>
-						</header>
-
-						<!-- widget div-->
-						<div>
-
-							<!-- widget edit box -->
-							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
-
-							</div>
-							<!-- end widget edit box -->
-
-							<!-- widget content -->
-							<div class="widget-body no-padding">
-                                <div class="owl-carousel carousel-theme-full" style="background-color:black;">
-                                    <div>
-										<div>
-											<?= isset($items) ? $items[0] -> news_style_name : '' ?>
-										</div>
-										<div>
-											<?= isset($items) ? $items[0] -> title : '' ?>
-										</div>
-										<div>
-											<?= isset($items) ? $items[0] -> content : '' ?> 
-										</div>
-                                    </div>
-                                </div>
-							</div>
-							<!-- end widget content -->
-						</div>
-						<!-- end widget div -->
-					</div>
-					<!-- end widget -->
-				</article>
-				<!-- WIDGET END -->
-			</div>
-			<!-- end row -->
-		</section>
-		<!-- end widget grid -->
-	</div>
-
+<div class="owl-carousel carousel-theme-full" style="background-color:black;">
+    <div style="padding:0px 0px 0px 0px;">
+        <div>
+            <?= isset($items) ? $items[0] -> news_style_name : '' ?>
+        </div>
+        <div>
+            <?= isset($items) ? $items[0] -> title : '' ?>
+        </div>
+        <div>
+            <?= isset($items) ? $items[0] -> content : '' ?> 
+        </div>
+    </div>
 </div>
 <script src="<?= base_url('js/libs/jquery-2.1.1.min.js') ?>"></script>
 <script defer src="<?= base_url("vendor/OwlCarousel2-2.3.4/dist/owl.carousel.min.js") ?>"></script>
@@ -90,7 +42,7 @@ $(document).on('ready', function () {
         // autoplay: true,
         // loop:true,
         center:true,
-        merge:true,
+        // merge:true,
     });
 });
 
