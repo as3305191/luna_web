@@ -100,7 +100,9 @@
 <script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
 <script>
-	var g_bootstrap_validator = null;
+	var news_style = false;
+	news_style='<?= isset($item) ? $item -> news_style_id : 0?>';
+	
 	function reCreateBootstrapValidator() {
 		if (null != g_bootstrap_validator) {
 			$("#app-edit-form").data('bootstrapValidator').destroy();
@@ -120,38 +122,6 @@
 	}
 
 
-	function filePreview(input) {
-		if (input.files && input.files[0]) {
-			var reader = new FileReader();
-			reader.onload = function (e) {
-				$('#preview_img').attr('src', e.target.result);
-				$('#preview_img').css('height', '200px');
-			}
-			reader.readAsDataURL(input.files[0]);
-		}
-	}
-
-	function upload_img() {
-		$('#file').val('');
-		$('#file').trigger('click');
-	}
-
-	$(".dt_picker").datetimepicker({
-		format: 'YYYY-MM-DD'
-	// }).on('dp.change',function(event){
-	// 	currentApp.tableReload();
-	});
-
-	// $('#is_url').change(function() {
-	// 	$('#data_source').attr('type', ($(this).is(':checked') ? 'url' : 'text'));
-	// 	$('#data_source').attr('data-bv-uri', $(this).is(':checked'));
-	// 	if ($(this).is(':checked')) {
-	// 		$('#content_panel').hide();
-	// 	} else {
-	// 		$('#content_panel').show();
-	// 	}
-	// 	reCreateBootstrapValidator();
-	// });
 
 	$(function() {
 		// ckeditor
