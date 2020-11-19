@@ -27,7 +27,7 @@
 			/* background: url(image/login.jpg) no-repeat; */
 			text-align:center;
 		}
-		
+
 		.news_container img {
 			max-height:1079px;
 			max-width:809px;
@@ -35,6 +35,7 @@
                 this.style.width=(this.offsetWidth > 600)?"600px":"auto"
             });
         }
+
     </style>
 </head>
 <div class="news_container owl-carousel carousel-theme-full " style="background-color:black;">
