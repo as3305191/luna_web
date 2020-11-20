@@ -54,13 +54,13 @@
 <script type="text/javascript">
     $(document).on('ready', function () {
         $('.owl-carousel').owlCarousel({
-            items: 4,
+            items: 1,
             autoplay: 5000,
             loop:true,
             center:true,
             merge:true,
-            itemsDesktop : [1199,3],
-            itemsDesktopSmall : [979,3],
+            // itemsDesktop : [1199,3],
+            // itemsDesktopSmall : [979,3],
         });
     
     });
