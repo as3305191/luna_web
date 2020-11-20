@@ -41,15 +41,15 @@
                 <?php else: ?>
                     <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
                         <div style="font-size:30px;color:white;" >
-                            <?= isset($each) ? $each[0] -> news_style_name : '' ?> 
+                            <?= isset($each) ? $each -> news_style_name : '' ?> 
                         </div>
 
                         <div style="font-size:25px;color:white;" >
-                            <?= isset($each) ? $each[0] -> title : '' ?> 
+                            <?= isset($each) ? $each -> title : '' ?> 
                         </div>
 
                         <div style="font-size:20px;color:white;text-align:left" >
-                            <?= isset($each) ? $each[0] -> content : '' ?>
+                            <?= isset($each) ? $each -> content : '' ?>
                         </div>
                     </div>
                 <?php endif?>
