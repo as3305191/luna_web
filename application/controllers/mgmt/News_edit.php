@@ -25,8 +25,7 @@ class News_edit extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			'company_id',
-			'role_id'
+			's_news_style'
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
