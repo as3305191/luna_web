@@ -93,7 +93,7 @@ class News_dao extends MY_Model {
 
 	function find_carousel(){
 		$this -> db -> from("$this->table_name as _m");
-		// $this -> db -> where('status',1);
+		$this -> db -> where('status',1);
 		$this -> db -> select('_m.*');
 
 		$this -> db -> select('ns.news_style as news_style_name');
