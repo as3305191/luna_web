@@ -6,16 +6,17 @@
 			margin:0;
 			padding:0;
             position:relative;
+            background-color:black;
+            overflow: hidden;
 		}
 
 		.news_container {
 			height:100%;
 			width:100%;
 			position:absolute;
-            overflow: hidden;
-            background-color:black;
             text-align:-webkit-center;
-
+            top:50%;
+            transform: translateY(-35%);
 		}
 
 		.news_container p img {
