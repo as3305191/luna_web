@@ -76,7 +76,11 @@ class News_dao extends MY_Model {
 		if(isset($data['s_news_style']) && $data['s_news_style'] > 0) {
 			$this -> db -> where('ns.id', $data['s_news_style']);
 		}
+		if(isset($data['id']) && $data['id'] > 0) {
+			$this -> db -> where('_m.id', $data['id']);
+		}
 	}
+
 
 	function ajax_from_join() {
 		// join
