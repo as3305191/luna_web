@@ -32,8 +32,6 @@
 <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
         <?php if(!empty($items)): ?>
             <?php foreach($items as $each): ?>
-                <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
-
                 <?php if($each->news_style_id =='9'): ?>
                     <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
                         <?= isset($each->content) ? $each->content : '' ?> 
