@@ -1,6 +1,6 @@
 var NewsEditAppClass = (function(app) {
 	app.basePath = "mgmt/news_edit/";
-	app.disableRowClick = true;
+	// app.disableRowClick = true;
 
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click
