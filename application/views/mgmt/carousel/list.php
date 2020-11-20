@@ -28,7 +28,30 @@
 </head>
 <div class="news_container owl-carousel carousel-theme-full ">
     <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
-		<?= isset($items) ? $items[0] -> content : '' ?> 
+    <!-- <?php if(!empty($items)): ?>
+        <?php foreach($items as $each): ?>
+            <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
+
+            <?php if($each->news_style_id =='9'): ?>
+                <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
+
+                    <?= isset($each->content) ? $each->content : '' ?> 
+                </div>
+
+            <?php else: ?>
+                <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
+                    <?= isset($each->content) ? $each->news_style_name : '' ?> 
+                    <?= isset($each->content) ? $each->title : '' ?> 
+                    <?= isset($each->content) ? $each->content : '' ?> 
+                </div>
+
+            <?php endif?>
+        <?php endforeach ?>
+    <?php endif?> -->
+		<?= isset($items) ? $items[1] -> news_style_name : '' ?> 
+        <?= isset($items) ? $items[1] -> title : '' ?> 
+		<?= isset($items) ? $items[1] -> content : '' ?> 
+
     </div>
 </div>
 <script src="<?= base_url('js/libs/jquery-2.1.1.min.js') ?>"></script>
