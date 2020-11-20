@@ -25,9 +25,7 @@
 			/* border: 1px solid green; */
 			position:fixed;
 			/* background: url(image/login.jpg) no-repeat; */
-			top: 50%;
-			left: 50%;
-			margin: -50% 0 0 50%;
+			
 		}
 
 		.news_container p img {
@@ -37,7 +35,9 @@
 
     </style>
 </head>
-<div class="news_container owl-carousel carousel-theme-full " style="background-color:black;">
+<div class="news_container owl-carousel carousel-theme-full " style="background-color:black;top: 50%;
+			left: 50%;
+			transform: translate(-50%, -45%);">
     <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
 		<?= isset($items) ? $items[0] -> content : '' ?> 
     </div>
