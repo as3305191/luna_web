@@ -169,6 +169,9 @@ var NewsimgClass = (function(app) {
 					// + '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>';
 					// }
 					// return html;
+					var html ='<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>';
+					return html;
+
 		    },
 				searchable : false,
 				orderable : false,
