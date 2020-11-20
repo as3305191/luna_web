@@ -37,7 +37,7 @@
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min50"></th>
+											<th class="min100"></th>
 											<th class="min150">標題</th>
 											<th class="min250">類型</th>
 											<th class="min150">建立時間</th>
