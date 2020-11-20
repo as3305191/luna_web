@@ -65,12 +65,15 @@
 <script type="text/javascript">
 $(document).on('ready', function () {
     $('.owl-carousel').owlCarousel({
-        items: 1,
-        autoplay: true,
+        items: 4,
+        autoplay: 5000,
         loop:true,
         center:true,
         merge:true,
+        itemsDesktop : [1199,3],
+        itemsDesktopSmall : [979,3],
     });
+ 
 });
 
 </script>
