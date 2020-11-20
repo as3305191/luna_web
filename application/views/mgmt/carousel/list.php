@@ -27,36 +27,29 @@
     </style>
 </head>
 <div class="news_container owl-carousel carousel-theme-full ">
-
-
-<div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
-        <?php if(!empty($items)): ?>
-            <?php foreach($items as $each): ?>
-                <?php if($each->news_style_id =='9'): ?>
-                    <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
-                        <?= isset($each->content) ? $each->content : '' ?> 
+    <?php if(!empty($items)): ?>
+        <?php foreach($items as $each): ?>
+            <?php if($each->news_style_id =='9'): ?>
+                <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
+                    <?= isset($each->content) ? $each->content : '' ?> 
+                </div>
+            <?php else: ?>
+                <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
+                    <div style="font-size:30px;color:white;" >
+                        <?= isset($each) ? $each -> news_style_name : '' ?> 
                     </div>
-                <?php else: ?>
-                    <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
-                        <div style="font-size:30px;color:white;" >
-                            <?= isset($each) ? $each -> news_style_name : '' ?> 
-                        </div>
 
-                        <div style="font-size:25px;color:white;" >
-                            <?= isset($each) ? $each -> title : '' ?> 
-                        </div>
-
-                        <div style="font-size:20px;color:white;text-align:left" >
-                            <?= isset($each) ? $each -> content : '' ?>
-                        </div>
+                    <div style="font-size:25px;color:white;" >
+                        <?= isset($each) ? $each -> title : '' ?> 
                     </div>
-                <?php endif?>
-            <?php endforeach ?>
-        <?php endif?>
-    </div>
 
-
-
+                    <div style="font-size:20px;color:white;text-align:left" >
+                        <?= isset($each) ? $each -> content : '' ?>
+                    </div>
+                </div>
+            <?php endif?>
+        <?php endforeach ?>
+    <?php endif?>
 </div>
 <script src="<?= base_url('js/libs/jquery-2.1.1.min.js') ?>"></script>
 <script defer src="<?= base_url("vendor/OwlCarousel2-2.3.4/dist/owl.carousel.min.js") ?>"></script>
