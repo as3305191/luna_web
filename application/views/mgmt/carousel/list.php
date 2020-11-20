@@ -28,24 +28,36 @@
 </head>
 <div class="news_container owl-carousel carousel-theme-full ">
 
+
 <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
-        <div style="font-size:30px;color:white;" >
-            <?= isset($news_items) ? $news_items[0] -> news_style_name : '' ?> 
-        </div>
+        <?php if(!empty($items)): ?>
+            <?php foreach($items as $each): ?>
+                <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
 
-        <div style="font-size:25px;color:white;" >
-            <?= isset($news_items) ? $news_items[0] -> title : '' ?> 
-        </div>
+                <?php if($each->news_style_id =='9'): ?>
+                    <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
+                        <?= isset($each->content) ? $each->content : '' ?> 
+                    </div>
+                <?php else: ?>
+                    <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
+                        <div style="font-size:30px;color:white;" >
+                            <?= isset($each) ? $each[0] -> news_style_name : '' ?> 
+                        </div>
 
-        <div style="font-size:20px;color:white;text-align:left" >
-		    <?= isset($news_items) ? $news_items[0] -> content : '' ?>
-        </div>
+                        <div style="font-size:25px;color:white;" >
+                            <?= isset($each) ? $each[0] -> title : '' ?> 
+                        </div>
 
+                        <div style="font-size:20px;color:white;text-align:left" >
+                            <?= isset($each) ? $each[0] -> content : '' ?>
+                        </div>
+                    </div>
+                <?php endif?>
+            <?php endforeach ?>
+        <?php endif?>
     </div>
 
 
-
- 
 
 </div>
 <script src="<?= base_url('js/libs/jquery-2.1.1.min.js') ?>"></script>
@@ -54,10 +66,10 @@
 $(document).on('ready', function () {
     $('.owl-carousel').owlCarousel({
         items: 1,
-        // autoplay: true,
-        // loop:true,
-        // center:true,
-        // merge:true,
+        autoplay: true,
+        loop:true,
+        center:true,
+        merge:true,
     });
 });
 
