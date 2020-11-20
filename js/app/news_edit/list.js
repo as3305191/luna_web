@@ -136,7 +136,7 @@ var NewsEditAppClass = (function(app) {
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
 						+input
 						+'<label class="onoffswitch-label" for="'+row.id+'">'
-							+'<span class="onoffswitch-inner" data-swchon-text="預設" data-swchoff-text="非預設"></span>'
+							+'<span class="onoffswitch-inner" data-swchon-text="輪播" data-swchoff-text="非輪播"></span>'
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
 					+'</span>';
@@ -145,7 +145,7 @@ var NewsEditAppClass = (function(app) {
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
 						+input
 						+'<label class="onoffswitch-label" for="'+row.id+'">'
-							+'<span class="onoffswitch-inner" data-swchon-text="預設" data-swchoff-text="非預設"></span>'
+							+'<span class="onoffswitch-inner" data-swchon-text="輪播" data-swchoff-text="非輪播"></span>'
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
 					+'</span>'
@@ -232,19 +232,19 @@ var NewsEditAppClass = (function(app) {
 		};
 
 
-		// edit
-		app.doEdit = function(id) {
-		    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
-		    	.appendTo($('#edit-modal-body').empty());
-		    $("#btn-submit-edit").prop( "disabled", true);
+		// // edit
+		// app.doEdit = function(id) {
+		//     var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
+		//     	.appendTo($('#edit-modal-body').empty());
+		//     $("#btn-submit-edit").prop( "disabled", true);
 
-			$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
+		// 	$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
 
-			$('#edit-modal-body').load(baseUrl + 'mgmt/news_img/carousel/' + id, function(){
-	        	$("#btn-submit-edit").prop( "disabled", false);
-	        	loading.remove();
-			});
-		};
+		// 	$('#edit-modal-body').load(baseUrl + 'mgmt/news_edit/edit/' + id, function(){
+	    //     	$("#btn-submit-edit").prop( "disabled", false);
+	    //     	loading.remove();
+		// 	});
+		// };
 
 		$('#s_news_style').on('change', function(){
 			app.tableReload();

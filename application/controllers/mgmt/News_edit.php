@@ -162,10 +162,10 @@ class News_edit extends MY_Mgmt_Controller {
 		if(!empty($p)){
 			if($p->status==0){
 				$u_data['status'] = 1;
-				$res['success_msg'] = '變更預設成功';
+				$res['success_msg'] = '變更輪播成功';
 			} else{
 				$u_data['status'] = 0;
-				$res['success_msg'] = '變更非預設成功';
+				$res['success_msg'] = '變更非輪播成功';
 			}
 			$this -> dao -> update($u_data, $news_id);
 		
