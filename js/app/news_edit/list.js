@@ -100,7 +100,7 @@ var NewsEditAppClass = (function(app) {
 				url : baseUrl + app.basePath + 'get_data',
 				data : function(d) {
 					// d.item_id = $('#item_id').val();
-					// d.s_img_style = $('#s_img_style').val();
+					d.s_news_style = $('#s_news_style').val();
 
 					return d;
 				},
