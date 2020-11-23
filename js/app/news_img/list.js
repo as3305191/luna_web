@@ -101,6 +101,7 @@ var NewsimgClass = (function(app) {
 				data : function(d) {
 					d.item_id = $('#item_id').val();
 					d.s_img_style = $('#s_img_style').val();
+					d.not_used = $('#not_used').prop("checked") ? 1 : 0;
 
 					return d;
 				},
@@ -266,7 +267,9 @@ var NewsimgClass = (function(app) {
 		$('#s_img_style').on('change', function(){
 			app.tableReload();
 		});
-
+		$('#not_used').on('change', function(){
+			app.tableReload();
+		});
 		return app;
 	};
 

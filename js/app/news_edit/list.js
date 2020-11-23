@@ -101,7 +101,6 @@ var NewsEditAppClass = (function(app) {
 				data : function(d) {
 					// d.item_id = $('#item_id').val();
 					d.s_news_style = $('#s_news_style').val();
-					d.not_used = $('#not_used').prop("checked") ? 1 : 0;
 					return d;
 				},
 				dataSrc : 'items',
@@ -249,9 +248,7 @@ var NewsEditAppClass = (function(app) {
 		$('#s_news_style').on('change', function(){
 			app.tableReload();
 		});
-		$('#s_multiple').on('change', function(){
-			app.tableReload();
-		});
+	
 		return app;
 	};
 

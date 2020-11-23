@@ -9,7 +9,8 @@ class News_img extends MY_Mgmt_Controller {
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Img_style_dao', 'img_style_dao');
-
+		$this -> load -> model('Img_month_use_dao', 'img_month_use_dao');		
+		$this -> load -> model('Img_month_use_record_dao', 'img_month_use_record_dao');		
 		// $this->load->library('excel');
 	}
 
@@ -66,13 +67,23 @@ class News_img extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			's_img_style'
+			'not_used'
 		));
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$is_used_this_month_list = $this -> img_month_use_record_dao -> find_thid_month_use();
 
-		$res['items'] = $this -> img_dao -> find_place_img($data);
+		$items = $this -> img_dao -> find_place_img($data);
+		if($data['not_this_month']>0){
+			foreach($items as $items_key=>$each_items){
+				foreach($is_used_this_month_list as $each_used_key=>$each_used_this_month){
+					if($each_items->id==$each_used_this_month->img_id)
+					unset($items[$items_key]);
+				}
+			}
+		}
+		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> img_dao -> find_place_img($data,true);
 		$res['recordsTotal'] = $this -> img_dao -> find_place_img($data,true);
 
