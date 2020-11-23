@@ -77,16 +77,13 @@ class News_img extends MY_Mgmt_Controller {
 		if($data['not_used']>0){
 			foreach($is_used_this_month_list as $each_used_this_month){
 				$data['img_data'][]=$each_used_this_month->img_id;
-
 			}
 		} 
 		$items = $this -> img_dao -> find_place_img($data);
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> img_dao -> find_place_img($data,true);
 		$res['recordsTotal'] = $this -> img_dao -> find_place_img($data,true);
-		// $res['img_data'] = $data['img_data'];
 		$res['is_used_this_month_list'] = $is_used_this_month_list ;
-
 		$this -> to_json($res);
 	}
 
