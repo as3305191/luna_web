@@ -173,13 +173,6 @@ class News_edit extends MY_Mgmt_Controller {
 			} else{
 				$u_data['status'] = 0;
 				$res['success_msg'] = '變更非輪播成功';
-				if($p->news_style_id==9){
-					$content_array=explode("</p>",$p->content);
-					foreach($content_array as $each){
-						$img_id = $this->get_between($each, "get/", '/thumb');
-						$res['img_id'][] = $img_id;
-					}
-				}
 			}
 			
 			$this -> dao -> update($u_data, $news_id);
