@@ -72,7 +72,7 @@ class News_img extends MY_Mgmt_Controller {
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
-		$is_used_this_month_list = $this -> img_month_use_record_dao -> find_thid_month_use();
+		$is_used_this_month_list = $this -> img_month_use_record_dao -> find_this_month_use();
 
 		if($data['not_used']>0){
 			foreach($is_used_this_month_list as $each_used_this_month){

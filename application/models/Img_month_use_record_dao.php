@@ -166,12 +166,15 @@ class Img_month_use_record_dao extends MY_Model {
 		return $list[0];
 	}
 
-	public function find_thid_month_use(){
+	public function find_this_month_use(){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 
 		$date = date("Y-m");
-		$this -> db -> where("_m.create_time like '{$date} %'");
+		$next_month =date("Y-m", strtotime('+1 month'));
+		// $this -> db -> where("_m.create_time like '{$date} %'");
+		$this -> db -> where("(_m.create_time >= '{$date}-01 00:00:00' and _m.create_time < '{$next_month}-01 00:00:00' )");
+
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
