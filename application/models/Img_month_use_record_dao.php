@@ -137,25 +137,21 @@ class Img_month_use_record_dao extends MY_Model {
 
 	function find_carousel(){
 		$this -> db -> from("images");
+		$this -> db -> select('_m.*');
+
 		$this -> db -> where('status',1);
-		$this -> db -> order_by('id', 'desc');
+		$this -> db -> order_by('_m.id', 'desc');
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
 
-	function find_by_code($code,$id){
-		$this -> db -> from("$this->table_name");
-		$this -> db -> where('code', $code);
-		$this -> db -> where('id <>',$id);
-		$this -> db -> where('FIN_audit_status','1');
-		$query = $this -> db -> get();
-		$list = $query -> result();
-		return $list;
-	}
+
 
 	function find_row($id){
 		$this -> db -> from("$this->table_name");
-		$this -> db -> where('id', $id);
+		$this -> db -> select('_m.*');
+
+		$this -> db -> where('_m.id', $id);
 		$query = $this -> db -> get();
 		$list = $query -> result();
 		return $list[0];
@@ -163,7 +159,9 @@ class Img_month_use_record_dao extends MY_Model {
 
 	function find_cate($f) {
 		$this -> db -> from("custom_cate");
-		$this -> db -> where('id',$f);
+		$this -> db -> select('_m.*');
+
+		$this -> db -> where('_m.id',$f);
 		$query = $this -> db -> get();
 		$list = $query -> result();
 		return $list[0];
@@ -171,6 +169,8 @@ class Img_month_use_record_dao extends MY_Model {
 
 	public function find_thid_month_use(){
 		$this -> db -> from($this -> table_name);
+		$this -> db -> select('_m.*');
+
 		$date = date("Y-m");
 		$this -> db -> where("_m.create_time like '{$date} %'");
 		$list = $this -> db -> get() -> result();
