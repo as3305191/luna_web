@@ -7,7 +7,10 @@ class News_edit extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('News_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
-		$this -> load -> model('News_style_dao', 'news_style_dao');		
+		$this -> load -> model('News_style_dao', 'news_style_dao');
+		$this -> load -> model('Img_month_use_dao', 'img_month_use_dao');		
+		$this -> load -> model('Img_month_use_record_dao', 'img_month_use_record_dao');		
+
 	}
 
 	public function index()
@@ -157,6 +160,7 @@ class News_edit extends MY_Mgmt_Controller {
 	public function up_carousel(){
 		$news_id = $this -> get_post('news_id');
 		$u_data = array();
+		$i_data = array();
 		$p = $this -> dao -> find_by_id($news_id);
 		if(!empty($p)){
 			if($p->status==0){
@@ -171,9 +175,16 @@ class News_edit extends MY_Mgmt_Controller {
 							if(!is_numeric($each_img_id))
 							unset($img_id_array[$img_id_key]);
 						}
-						$res['img_id_array'] = $img_id_array;
 					}
-					// $res['content_array']= $content_array;
+					$new_img_array = $img_id_array;
+					$res['new_img_array'] = $new_img_array;
+					foreach($new_img_array as $each){
+						$i_data['img_id'] = $each;
+						$this -> img_month_use_dao -> empty_table();
+						$this -> img_month_use_dao -> insert($i_data);
+						$this -> img_month_use_record_dao -> insert($i_data);
+
+					}
 				}
 				
 			} else{
