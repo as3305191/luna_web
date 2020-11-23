@@ -76,10 +76,10 @@ class News_img extends MY_Mgmt_Controller {
 
 		$items = $this -> img_dao -> find_place_img($data);
 		if($data['not_used']>0){
-			foreach($items as $each_items){
+			foreach($items as $key=>$each_items){
 				foreach($is_used_this_month_list as $each_used_this_month){
 					if($each_items->id==$each_used_this_month->img_id)
-					unset($items[$each_items]);
+					unset($items[$key]);
 				}
 			}
 		}
