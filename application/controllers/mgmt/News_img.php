@@ -73,22 +73,17 @@ class News_img extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$is_used_this_month_list = $this -> img_month_use_record_dao -> find_thid_month_use();
-		$find_img_data[]=$is_used_this_month_list->img_id;
 
 		if($data['not_used']>0){
-			$items = $this -> img_dao -> find_place_img($data,$find_img_data);
-			foreach($items as $key=>$each_items){
-				foreach($is_used_this_month_list as $each_used_this_month){
-					if($each_items->id==$each_used_this_month->img_id)
-					unset($items[$key]);
-				}
+			foreach($is_used_this_month_list as $each_used_this_month){
+				$data['img_data'][]=$each_used_this_month->img_id;
+
 			}
-		} else{
-			$items = $this -> img_dao -> find_place_img($data);
-		}
+		} 
+		$items = $this -> img_dao -> find_place_img($data);
 		$res['items'] = $items;
-		$res['recordsFiltered'] = $this -> img_dao -> find_place_img($data,false,true);
-		$res['recordsTotal'] = $this -> img_dao -> find_place_img($data,false,true);
+		$res['recordsFiltered'] = $this -> img_dao -> find_place_img($data,true);
+		$res['recordsTotal'] = $this -> img_dao -> find_place_img($data,true);
 
 		$this -> to_json($res);
 	}

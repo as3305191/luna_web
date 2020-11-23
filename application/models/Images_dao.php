@@ -113,7 +113,7 @@ class Images_dao extends MY_Model {
 		return NULL;
 	}
 
-	function find_place_img($data , $img_data = FALSE , $is_count = FALSE) {
+	function find_place_img($data, $is_count = FALSE) {
 
 		$start = $data['start'];
 		$limit = $data['length'];
@@ -135,8 +135,10 @@ class Images_dao extends MY_Model {
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
 		}
-		if(!$img_data) {
-			
+		if($data['img_data']) {
+			foreach($data['img_data']as $each){
+				$this -> db -> where('_m.id<>',$each);
+			}
 		}
 		if(!empty($data['s_img_style']) && $data['s_img_style']>0){
 			$s_img_style = $data['s_img_style'];
