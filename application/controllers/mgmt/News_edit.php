@@ -163,7 +163,7 @@ class News_edit extends MY_Mgmt_Controller {
 				$u_data['status'] = 1;
 				$res['success_msg'] = '變更輪播成功';
 				if($p->news_style_id==9){
-					// $content_array=explode("</p>",$p->content);
+					$content_array=explode("</p>",$p->content);
 					// foreach($content_array as $each){
 					// 	$img_id = $this->get_between($each, "get/", '/thumb');
 					// 	$res['img_id'][] = $img_id;
