@@ -167,9 +167,9 @@ class News_edit extends MY_Mgmt_Controller {
 					foreach($content_array as $each){
 						$img_id = $this->get_between($each, "get/", '/thumb');
 						$img_id_array[] = $img_id;
-						foreach($img_id_array as $each_img_id){
+						foreach($img_id_array as $img_id_key=>$each_img_id){
 							if(!is_numeric($each_img_id))
-							unset($img_id_array[$each_img_id]);
+							unset($img_id_array[$img_id_key]);
 						}
 						$res['img_id_array'] = $img_id_array;
 					}
