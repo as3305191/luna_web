@@ -29,13 +29,11 @@ class News_edit extends MY_Mgmt_Controller {
 			'search',
 			'order',
 			's_news_style',
-			'not_this_month'
 
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
 
-		$is_used_this_month_list = $this -> img_month_use_record_dao -> find_thid_month_use();
 		
 		$items = $this -> dao -> query_ajax($data);
 		// if($data['not_this_month']>0){
