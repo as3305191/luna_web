@@ -42,7 +42,7 @@
                     <?= isset($each) ? $each -> title : '' ?> 
                 </div>
 
-                <div style="font-size:20px;color:white;text-align:left" >
+                <div style="font-size:20px;color:white;text-align:left;width:80%" >
                     <?= isset($each) ? $each -> content : '' ?>
                 </div>
             </div>
