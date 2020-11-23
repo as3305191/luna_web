@@ -164,10 +164,15 @@ class News_edit extends MY_Mgmt_Controller {
 				$res['success_msg'] = '變更輪播成功';
 				if($p->news_style_id==9){
 					$content_array=explode("</p>",$p->content);
-					// foreach($content_array as $each){
-					// 	$img_id = $this->get_between($each, "get/", '/thumb');
-					// 	$res['img_id'][] = $img_id;
-					// }
+					foreach($content_array as $each){
+						$img_id = $this->get_between($each, "get/", '/thumb');
+						$img_id_array[] = $img_id;
+						foreach($img_id_array as $each_img_id){
+							if(!is_numeric($each_img_id))
+							unset($img_id_array[$each_img_id]);
+						}
+						$res['img_id_array'] = $img_id_array;
+					}
 					$res['content_array']= $content_array;
 				}
 				
