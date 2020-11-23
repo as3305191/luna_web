@@ -169,23 +169,14 @@ class Img_month_use_record_dao extends MY_Model {
 		return $list[0];
 	}
 
-	public function check_code($code){
+	public function find_thid_month_use(){
 		$this -> db -> from($this -> table_name);
-		$this -> db -> where('status',0);
-		$this -> db -> where('code',$code);
+		$date = date("Y-m");
+		$this -> db -> where("_m.create_time like '{$date} %'");
 		$list = $this -> db -> get() -> result();
-
 		return $list;
 	}
 
-	public function find_all_custom_name_by_cate($name,$value){
-		$this -> db -> from($this -> table_name);
-		$this -> db -> where('status',0);
-		$this -> db -> where('FIN_audit_status','1');
-		$this -> db -> where($name,$value);
-		$list = $this -> db -> get() -> result();
 
-		return $list;
-	}
 }
 ?>

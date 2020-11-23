@@ -79,7 +79,6 @@ class News_dao extends MY_Model {
 		if(isset($data['id']) && $data['id'] > 0) {
 			$this -> db -> where('_m.id', $data['id']);
 		}
-		
 	}
 
 
