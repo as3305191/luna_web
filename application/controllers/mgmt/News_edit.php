@@ -178,12 +178,12 @@ class News_edit extends MY_Mgmt_Controller {
 					}
 					$new_img_array = $img_id_array;
 					$res['new_img_array'] = $new_img_array;
+					$this -> img_month_use_dao -> empty_table();
+
 					foreach($new_img_array as $each){
 						$i_data['img_id'] = $each;
-						$this -> img_month_use_dao -> empty_table();
 						$this -> img_month_use_dao -> insert($i_data);
 						$this -> img_month_use_record_dao -> insert($i_data);
-
 					}
 				}
 				
