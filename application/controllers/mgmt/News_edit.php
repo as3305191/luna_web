@@ -173,7 +173,7 @@ class News_edit extends MY_Mgmt_Controller {
 						}
 						$res['img_id_array'] = $img_id_array;
 					}
-					$res['content_array']= $content_array;
+					// $res['content_array']= $content_array;
 				}
 				
 			} else{
