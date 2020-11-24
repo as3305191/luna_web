@@ -19,4 +19,10 @@ class Calendar extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/calendar/list', $data);
 	}
 
+	public function new_work(){
+		$data = array();
+		$this -> load -> view('layout/show_new_work',$data);
+	}
+
+
 }

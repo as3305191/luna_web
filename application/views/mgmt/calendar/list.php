@@ -23,6 +23,16 @@
             userLang    : 'zh-TW',
             americanMode: false,
             editable: true,
+            dayClick: function() { 
+                layer.open({
+                    type:2,
+                    title:'',
+                    closeBtn:0,
+                    area:['400px','200px'],
+                    shadeClose:true,
+                    content:'<?=base_url('mgmt/calendar/new_work')?>'
+                })
+            } 
 
         })
     });
