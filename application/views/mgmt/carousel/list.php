@@ -90,8 +90,8 @@
     //     } 
     // }, 1000); 
 
-    var counter = $('#counter').text();
+    var counter = $('#counter');
     setInterval(function() { 
-        counter+=29.01; 
+        counter.text(counter.text()+=29.01); 
     }, 1000); 
 </script>
