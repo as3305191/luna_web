@@ -44,7 +44,7 @@
                     </div>
 
                     <div style="font-size:20px;color:white;text-align:left;width:80%" id="counter">
-                        <?= isset($each) ? $each -> during_now_s : '' ?>
+                        <?= isset($during_now_s) ? $during_now_s : '' ?>
                     </div>
                 </div>
             <?php else: ?>
@@ -81,21 +81,14 @@
         });
     
         var counter = parseFloat('<?= $during_now_s?>');
-
+        var during_now_s = parseFloat('<?= $during_now_s?>');
+        
         setInterval(function() { 
-            counter
-            var counter_add =  parseFloat(counter+=29.01);
+            var counter_add =  parseFloat(counter+=during_now_s);
             $('#counter').text(counter_add.toFixed(2)); 
         }, 1000); 
     });
-    // var counter = $('#counter').text();
-    // setInterval(function() { 
-    //     counter+29.01; 
-    //     // $('#msg').html('Page will refresh in ' + counter); 
-    //     if (counter == 0) { 
-    //         clearInterval(interval); 
-    //     } 
-    // }, 1000); 
+   
 
   
 </script>
