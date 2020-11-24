@@ -26,8 +26,9 @@ class Carousel extends MY_Mgmt_Controller {
 		$total_weekends = $this -> get_weekend_days($this_year_first_day,$today);
 		foreach($data['items'] as $each){
 			if($each->news_style_id==3){
-				$coat = $each->cost;
-				$data['during_now_s'] = ((($during_now-$total_weekends)*86400)+($today_h*3600)+($today_m*60)+$today_s)*$coat;
+				$cost = $each->cost;
+				$data['during_now_s'] = ((($during_now-$total_weekends)*86400)+($today_h*3600)+($today_m*60)+$today_s)*$cost;
+				$data['cost']  = $cost;
 			}
 		}
 

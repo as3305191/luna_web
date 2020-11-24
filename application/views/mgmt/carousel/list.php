@@ -81,10 +81,10 @@
         });
     
         var counter = parseFloat('<?= $during_now_s?>');
-        var during_now_s = parseFloat('<?= $during_now_s?>');
+        var cost = parseFloat('<?= $cost?>');
         
         setInterval(function() { 
-            var counter_add =  parseFloat(counter+=during_now_s);
+            var counter_add =  parseFloat(counter+=cost);
             $('#counter').text(counter_add.toFixed(2)); 
         }, 1000); 
     });
