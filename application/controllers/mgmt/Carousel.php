@@ -19,7 +19,10 @@ class Carousel extends MY_Mgmt_Controller {
 		
 		$today = date("Y-m-d");
 		$during_now = date('z', strtotime($today)); 
-		$data['during_now']= $during_now;
+		$today_h = date("H");
+		$today_m = date("i");
+		$today_s = date("s");
+		$data['during_now_s']= ($during_now*86400)+($today_h*3600)+($today_m*60)+$today_s;
 		$this -> to_json($data);
 		$this->load->view('mgmt/carousel/list', $data);
 	}
