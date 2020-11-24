@@ -21,9 +21,9 @@ class Calendar extends MY_Mgmt_Controller {
 
 	public function new_work($date){
 		$data = array();
-		// date('Y-m-d',$date);
 		date_default_timezone_set('asia/chongqing');
-		$data['date'] = date('Y-m-d',$date);
+		$click_date = intval($date)/1000;
+		$data['click_date'] = date('Y-m-d',$click_date);
 		$this -> load -> view('layout/show_new_work',$data);
 	}
 
