@@ -81,7 +81,7 @@
         });
     
     });
-    var $counter = $('#counter').text();
+    var counter = $('#counter').text();
     setInterval(function() { 
         counter+29.01; 
         // $('#msg').html('Page will refresh in ' + counter); 
