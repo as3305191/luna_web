@@ -12,11 +12,10 @@
 </style>
 <div class="col-xs-12" style="padding:20px">
     <div class="col-xs-12">
-        <span style="font-size:12pt"><?=$parent -> name?>新增事項</span>
+        <span style="font-size:12pt">新增圖片分類</span>
     </div>
     <hr/>
-    <input type="hidden" name="parent_id" id="parent_id" value="<?=$parent -> id?>" />
-    <input type="text" class="form-control" name="name" id="name" />
+    <input type="text" class="form-control" placeholder="圖片分類" name="name" id="name" />
 
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
@@ -28,23 +27,18 @@
     </div>
     <?php $this->load->view('layout/plugins'); ?>
     <script type="text/javascript">
-	// date-picker
-
-  $( document ).ready(function() {
-    $('#name').focus();
-  })
 
   $('.cancel').click(function() {
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
     parent.layer.close(index);
   })
+
   $('.dosubmit').click(function() {
   		$.ajax({
-  			url: '<?= base_url() ?>' + 'mgmt/patent_category/add_under',
+  			url: '<?= base_url() ?>' + 'mgmt/news_img/add_img_style',
   			type: 'POST',
   			data: {
-  				parent_id:$('#parent_id').val(),
-          new_name : $('#name').val()
+          img_style : $('#name').val()
   			},
   			dataType: 'json',
   			success: function(d) {
@@ -54,7 +48,7 @@
           if(d.success){
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.layer.close(index);
-            parent.location.reload();
+            parent.load_img_style();            
           }
           if(d.error){
             layer.msg(d.error);
@@ -65,7 +59,9 @@
   			}
   		});
   })
+  
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
+
 </script>
