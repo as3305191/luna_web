@@ -29,7 +29,6 @@ class News_edit extends MY_Mgmt_Controller {
 			'search',
 			'order',
 			's_news_style',
-
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
@@ -80,9 +79,12 @@ class News_edit extends MY_Mgmt_Controller {
 		$title = $this -> get_post('title');
 		$m_content = $this -> get_post('m_content');
 		$news_style = $this -> get_post('news_style');
+		$cost = $this -> get_post('cost');
+
 		$data['title'] = $title;
 		$data['content'] = $m_content;
 		$data['news_style_id'] = $news_style;
+		$data['cost'] = $cost;
 
 		if(empty($id)) {
 			// insert

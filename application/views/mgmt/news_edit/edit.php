@@ -2,6 +2,9 @@
 .file-drag-handle {
 	display: none;
 }
+.none {
+	display: none;
+}
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
@@ -56,7 +59,14 @@
 						</div>
 					</div>
 				</fieldset>
-			
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">標題</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control none" id="cost" name="cost" value="<?= isset($item) ? $item ->cost : 0 ?>" />
+						</div>
+					</div>
+				</fieldset>
 				<fieldset id='content_panel'>
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
@@ -202,7 +212,8 @@ function do_save() {
 			id: $('#item_id').val(),
 			news_style:$('#news_style').val(),
 			title: $('#title').val(),
-			m_content: CKEDITOR.instances.m_content.getData()
+			m_content: CKEDITOR.instances.m_content.getData(),
+			cost:$('#cost').val()
 		},
 		success : function(data) {
 			if(data.error_msg) {
@@ -225,4 +236,12 @@ $('#add_news_style').click(function() {
 			content:'<?=base_url('mgmt/news_edit/new_news_style')?>'
 		})
 	})
+
+	$('#news_style').on('change', function(){
+		if($('#news_style').val()==3){
+			$('#cost').removeClass("none");
+		} else{
+			$('#cost').addClass("none");
+		}
+	});
 </script>
