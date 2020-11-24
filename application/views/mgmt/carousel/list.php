@@ -93,6 +93,6 @@
     var counter = '<?= $during_now_s?>';
 
     setInterval(function() { 
-        $('#counter').text(parseFloat(counter_add+=29.01).toFixed(2)); 
+        $('#counter').text(parseFloat(counter+=29.01).toFixed(2)); 
     }, 1000); 
 </script>
