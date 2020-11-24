@@ -18,7 +18,7 @@ class Carousel extends MY_Mgmt_Controller {
 		$data['items']= $items;
 		
 		$today = date("Y-m-d");
-		$this_year_first_day = date("Y")."01-01";
+		$this_year_first_day = date("Y")."-01-01";
 		$during_now = date('z', strtotime($today)); 
 		$today_h = date("H");
 		$today_m = date("i");
