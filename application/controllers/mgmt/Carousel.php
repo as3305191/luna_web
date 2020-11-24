@@ -28,7 +28,7 @@ class Carousel extends MY_Mgmt_Controller {
 
 		// $data['this_year_first_day']= $this_year_first_day;
 		// $data['today']= $today;
-		$this -> to_json($data);
+		// $this -> to_json($data);
 		$this->load->view('mgmt/carousel/list', $data);
 	}
 
