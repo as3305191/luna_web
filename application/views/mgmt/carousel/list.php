@@ -81,12 +81,21 @@
         });
     
     });
-    var counter = $('#counter').text();
-    setInterval(function() { 
-        counter+29.01; 
+    // var counter = $('#counter').text();
+    // setInterval(function() { 
+    //     counter+29.01; 
+    //     // $('#msg').html('Page will refresh in ' + counter); 
+    //     if (counter == 0) { 
+    //         clearInterval(interval); 
+    //     } 
+    // }, 1000); 
+
+    var $counter = $('#counter');
+     setInterval(function() { 
+        counter+=29.01; 
         // $('#msg').html('Page will refresh in ' + counter); 
-        if (counter == 0) { 
-            clearInterval(interval); 
-        } 
+        // if (counter == 0) { 
+        //     clearInterval(interval); 
+        // } 
     }, 1000); 
 </script>
