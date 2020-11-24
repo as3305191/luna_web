@@ -90,7 +90,7 @@
     //     } 
     // }, 1000); 
 
-    var $counter = $('#counter');
+    var counter = $('#counter');
      setInterval(function() { 
         counter+=29.01; 
         // $('#msg').html('Page will refresh in ' + counter); 
