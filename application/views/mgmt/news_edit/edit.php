@@ -60,7 +60,7 @@
 					</div>
 				</fieldset>
 				<fieldset>
-					<div class="form-group none">
+					<div id="cost_div" class="form-group none">
 						<label class="col-md-3 control-label">成本</label>
 						<div class="col-md-6">
 							<input type="text" class="form-control " id="cost" name="cost" value="<?= isset($item) ? $item ->cost : 0 ?>" />
@@ -239,15 +239,15 @@ $('#add_news_style').click(function() {
 
 	$('#news_style').on('change', function(){
 		if($('#news_style').val()==3){
-			$('#cost').removeClass("none");
+			$('#cost_div').removeClass("none");
 		} else{
-			$('#cost').addClass("none");
+			$('#cost_div').addClass("none");
 		}
 	});
 
 	if($('#news_style').val()==3){
-		$('#cost').removeClass("none");
+		$('#cost_div').removeClass("none");
 	} else{
-		$('#cost').addClass("none");
+		$('#cocost_divst').addClass("none");
 	}
 </script>
