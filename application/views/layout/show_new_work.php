@@ -12,7 +12,7 @@
 </style>
 <div class="col-xs-12" style="padding:20px">
     <div class="col-xs-12">
-        <span style="font-size:12pt">新增事項</span>
+        <span style="font-size:12pt"><?=$parent -> name?>新增事項</span>
     </div>
     <hr/>
     <input type="hidden" name="parent_id" id="parent_id" value="<?=$parent -> id?>" />
