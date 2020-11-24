@@ -15,7 +15,7 @@
         <span style="font-size:12pt">新增工作</span>
     </div>
     <hr/>
-    <input type="text" class="form-control" placeholder="圖片分類" name="name" id="name" />
+    <input type="text" class="form-control" placeholder="事項內容" name="name" id="name" />
 
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
