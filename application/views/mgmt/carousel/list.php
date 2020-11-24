@@ -81,14 +81,12 @@
         });
     
     });
-    var $counter = $('#counter');
-    $({countNum: $counter.text()}).animate({
-    countNum: 100},{ duration: 1000, easing:'linear',
-    step: function() {
-        $counter.text(Math.floor(this.countNum));
-    },
-    complete: function() {
-        $counter.text(this.countNum);
-    }
-    });
+    var $counter = $('#counter').text();
+    setInterval(function() { 
+        counter+29.01; 
+        // $('#msg').html('Page will refresh in ' + counter); 
+        if (counter == 0) { 
+            clearInterval(interval); 
+        } 
+    }, 1000); 
 </script>
