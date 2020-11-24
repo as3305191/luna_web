@@ -90,12 +90,8 @@
     //     } 
     // }, 1000); 
 
-    var counter = $('#counter');
-     setInterval(function() { 
+    var counter = $('#counter').text();
+    setInterval(function() { 
         counter+=29.01; 
-        // $('#msg').html('Page will refresh in ' + counter); 
-        // if (counter == 0) { 
-        //     clearInterval(interval); 
-        // } 
     }, 1000); 
 </script>
