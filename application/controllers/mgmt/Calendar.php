@@ -14,7 +14,6 @@ class Calendar extends MY_Mgmt_Controller {
 	public function index()
 	{
 		$data = array();
-		
 		// $this -> to_json($data);
 		$this->load->view('mgmt/calendar/list', $data);
 	}
