@@ -30,7 +30,7 @@
                     closeBtn:0,
                     area:['400px','200px'],
                     shadeClose:true,
-                    content:'<?=base_url('mgmt/calendar/new_work/')?>'+allDay
+                    content:'<?=base_url('mgmt/calendar/new_work/')?>'+date
                 })
             } 
 
