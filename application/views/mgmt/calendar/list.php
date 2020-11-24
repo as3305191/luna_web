@@ -21,7 +21,7 @@
             },
             defaultDate: today,
             userLang    : 'zh-TW',
-            americanMode: false,
+            americanMode: true,
             editable: true,
 
         })
