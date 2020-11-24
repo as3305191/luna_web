@@ -60,10 +60,10 @@
 					</div>
 				</fieldset>
 				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">標題</label>
+					<div class="form-group none">
+						<label class="col-md-3 control-label">成本</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control none" id="cost" name="cost" value="<?= isset($item) ? $item ->cost : 0 ?>" />
+							<input type="text" class="form-control " id="cost" name="cost" value="<?= isset($item) ? $item ->cost : 0 ?>" />
 						</div>
 					</div>
 				</fieldset>
@@ -244,4 +244,10 @@ $('#add_news_style').click(function() {
 			$('#cost').addClass("none");
 		}
 	});
+
+	if($('#news_style').val()==3){
+		$('#cost').removeClass("none");
+	} else{
+		$('#cost').addClass("none");
+	}
 </script>
