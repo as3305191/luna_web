@@ -155,6 +155,12 @@
 		}
 		CKEDITOR.replace("m_content", config);
 		CKEDITOR.instances['m_content'].on('change', function() { CKEDITOR.instances['m_content'].updateElement() });
+
+		if($('#news_style').val()==3){
+			$('#cost_div').removeClass("none");
+		} else{
+			$('#cost_div').addClass("none");
+		}
 	});
 
 
@@ -245,9 +251,5 @@ $('#add_news_style').click(function() {
 		}
 	});
 
-	if($('#news_style').val()==3){
-		$('#cost_div').removeClass("none");
-	} else{
-		$('#cocost_divst').addClass("none");
-	}
+	
 </script>
