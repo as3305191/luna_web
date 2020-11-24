@@ -21,7 +21,8 @@ class Calendar extends MY_Mgmt_Controller {
 
 	public function new_work($date){
 		$data = array();
-		$data['date'] = $date;
+		// date('Y-m-d',$date);
+		$data['date'] = date('Y-m-d',$date);
 		$this -> load -> view('layout/show_new_work',$data);
 	}
 
