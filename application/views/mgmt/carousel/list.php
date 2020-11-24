@@ -79,12 +79,14 @@
             // itemsDesktop : [1199,3],
             // itemsDesktopSmall : [979,3],
         });
-        var counter = '<?= $during_now_s?>';
+    
+        var counter = parseFloat('<?= $during_now_s?>');
 
         setInterval(function() { 
-            $('#counter').text(parseFloat(counter+=29.01).toFixed(2)); 
-        }, 1000);
-    
+            counter
+            var counter_add =  parseFloat(counter+=29.01);
+            $('#counter').text(counter_add.toFixed(2)); 
+        }, 1000); 
     });
     // var counter = $('#counter').text();
     // setInterval(function() { 
@@ -95,5 +97,5 @@
     //     } 
     // }, 1000); 
 
-     
+  
 </script>
