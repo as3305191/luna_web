@@ -24,7 +24,7 @@ class Carousel extends MY_Mgmt_Controller {
 		$today_m = date("i");
 		$today_s = date("s");
 		$total_weekends = $this -> get_weekend_days($this_year_first_day,$today);
-		$data['during_now_s']= (($during_now-$total_weekends)*86400)+($today_h*3600)+($today_m*60)+$today_s;
+		$data['during_now_s']= ((($during_now-$total_weekends)*86400)+($today_h*3600)+($today_m*60)+$today_s)*29.01;
 
 		// $data['this_year_first_day']= $this_year_first_day;
 		// $data['today']= $today;

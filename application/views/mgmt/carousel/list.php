@@ -91,9 +91,8 @@
     // }, 1000); 
 
     var counter = '<?= $during_now_s?>';
-    var counter_add = parseFloat(counter*29.01);
 
     setInterval(function() { 
-        $('#counter').text(counter_add+=29.01); 
+        $('#counter').text(counter+=29.01); 
     }, 1000); 
 </script>
