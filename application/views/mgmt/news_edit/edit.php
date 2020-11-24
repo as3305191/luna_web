@@ -156,11 +156,7 @@
 		CKEDITOR.replace("m_content", config);
 		CKEDITOR.instances['m_content'].on('change', function() { CKEDITOR.instances['m_content'].updateElement() });
 
-		if($('#news_style').val()==3){
-			$('#cost_div').removeClass("none");
-		} else{
-			$('#cost_div').addClass("none");
-		}
+		
 	});
 
 
@@ -189,7 +185,11 @@
 									'text': this.news_style
 								}).appendTo($news_style);
 							}
-							
+							if(news_style==3){
+								$('#cost_div').removeClass("none");
+							} else{
+								$('#cost_div').addClass("none");
+							}
 						} else{
 							$('<option/>', {
 								'value': this.id,
