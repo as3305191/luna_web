@@ -16,11 +16,11 @@
 			position:absolute;
             text-align:-webkit-center;
             top:50%;
-            transform: translateY(-35%);
+            transform: translateY(-45%);
 		}
 
 		.news_container p img {
-			max-height:50%;
+			max-height:45%;
 			width:80%;
         }
 
