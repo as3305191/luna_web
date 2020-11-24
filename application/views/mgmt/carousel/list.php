@@ -44,7 +44,7 @@
                     </div>
 
                     <div style="font-size:20px;color:white;text-align:left;width:80%" id="counter">
-                        <?= isset($during_now_s) ? $during_now_s : '' ?>
+                        <?= isset($each) ? $each -> during_now_s : '' ?>
                     </div>
                 </div>
             <?php else: ?>
