@@ -12,7 +12,7 @@
 </style>
 <div class="col-xs-12" style="padding:20px">
     <div class="col-xs-12">
-        <span style="font-size:12pt">新增工作</span>
+        <span style="font-size:12pt"><?=$date?>-新增工作</span>
     </div>
     <hr/>
     <input type="text" class="form-control" placeholder="事項內容" name="name" id="name" />
