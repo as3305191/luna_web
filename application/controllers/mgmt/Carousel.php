@@ -16,7 +16,11 @@ class Carousel extends MY_Mgmt_Controller {
 		$data = array();
 		$items= $this -> news_dao -> find_carousel();
 		$data['items']= $items;
-		// $this -> to_json($data);
+		
+		$date = date("Y-m-d 00:00:00");
+		$during_now = date('z', strtotime($date)); 
+		$data['during_now']= $during_now;
+		$this -> to_json($data);
 		$this->load->view('mgmt/carousel/list', $data);
 	}
 
