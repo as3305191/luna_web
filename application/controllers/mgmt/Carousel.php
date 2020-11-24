@@ -25,8 +25,10 @@ class Carousel extends MY_Mgmt_Controller {
 		$today_s = date("s");
 		$total_weekends = $this -> get_weekend_days($this_year_first_day,$today);
 		// $data['during_now_s']= ($during_now*86400)+($today_h*3600)+($today_m*60)+$today_s;
-		$data['during_now_s']= $during_now-$total_weekends;
 
+		$data['during_now_s']= $total_weekends;
+		$data['this_year_first_day']= $this_year_first_day;
+		$data['today']= $today;
 		$this -> to_json($data);
 		$this->load->view('mgmt/carousel/list', $data);
 	}
