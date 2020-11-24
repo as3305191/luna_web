@@ -33,21 +33,38 @@
                 <?= isset($each->content) ? $each->content : '' ?> 
             </div>
         <?php else: ?>
-            <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
-                <div style="font-size:30px;color:white;" >
-                    <?= isset($each) ? $each -> news_style_name : '' ?> 
-                </div>
+            <?php if($each->news_style_id =='3'): ?>
+                <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
+                    <div style="font-size:30px;color:white;" >
+                        <?= isset($each) ? $each -> news_style_name : '' ?> 
+                    </div>
 
-                <div style="font-size:25px;color:white;" >
-                    <?= isset($each) ? $each -> title : '' ?> 
-                </div>
+                    <div style="font-size:25px;color:white;" >
+                        <?= isset($each) ? $each -> title : '' ?> 
+                    </div>
 
-                <div style="font-size:20px;color:white;text-align:left;width:80%" >
-                    <?= isset($each) ? $each -> content : '' ?>
+                    <div style="font-size:20px;color:white;text-align:left;width:80%" id="counter">
+                        <?= isset($during_now_s) ? $during_now_s : '' ?>
+                    </div>
                 </div>
-            </div>
+            <?php else: ?>
+                <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
+                    <div style="font-size:30px;color:white;" >
+                        <?= isset($each) ? $each -> news_style_name : '' ?> 
+                    </div>
+
+                    <div style="font-size:25px;color:white;" >
+                        <?= isset($each) ? $each -> title : '' ?> 
+                    </div>
+
+                    <div style="font-size:20px;color:white;text-align:left;width:80%" >
+                        <?= isset($each) ? $each -> content : '' ?>
+                    </div>
+                </div>
+            <?php endif?>
         <?php endif?>
     <?php endforeach ?>
+
 </div>
 <script src="<?= base_url('js/libs/jquery-2.1.1.min.js') ?>"></script>
 <script src="<?= base_url("vendor/OwlCarousel2-2.3.4/dist/owl.carousel.min.js") ?>"></script>
@@ -64,5 +81,14 @@
         });
     
     });
-
+    var $counter = $('#counter');
+    $({countNum: $counter.text()}).animate({
+    countNum: 100},{ duration: 1000, easing:'linear',
+    step: function() {
+        $counter.text(Math.floor(this.countNum));
+    },
+    complete: function() {
+        $counter.text(this.countNum);
+    }
+    });
 </script>
