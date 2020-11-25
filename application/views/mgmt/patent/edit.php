@@ -24,7 +24,7 @@
 		</div>
 		<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
 		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="" onclick="do_save();" class="btn btn-default btn-danger">
+			<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
