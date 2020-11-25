@@ -880,12 +880,13 @@ function do_save() {
 						$(html).appendTo($category);
 						$.each(d.category, function(){
 							var level = this.level;
-								if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
+							if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
+								if(current_app[0]['patnet_status_'+level]){
 									if(current_app[0]['patnet_status_'+level] &&current_app[0]['patnet_status_'+level]==this.id){
-											$('<option />', {
-												'value': this.id,
-												'text': this.name,
-											}).attr("selected", true).appendTo($('#patnet_status_'+level));										
+										$('<option />', {
+											'value': this.id,
+											'text': this.name,
+										}).attr("selected", true).appendTo($('#patnet_status_'+level));										
 									} else{
 										$('<option />', {
 											'value': this.id,
@@ -893,20 +894,26 @@ function do_save() {
 										}).appendTo($('#patnet_status_'+level));
 									}
 								} else{
-									if(current_app[0]['patnet_status_'+level] && current_app[0]['patnet_status_'+level]==this.id){
-											$('<option />', {
-												'value': this.id,
-												'text': this.name,
-											}).attr("selected", true).appendTo($('#patnet_status_'+level));
-									} else{
+									$('<option />', {
+										'value': this.id,
+										'text': this.name,
+									}).appendTo($('#patnet_status_'+level));
+								}
+							} else{
+								if(current_app[0]['patnet_status_'+level] && current_app[0]['patnet_status_'+level]==this.id){
 										$('<option />', {
 											'value': this.id,
 											'text': this.name,
-										}).appendTo($('#patnet_status_'+level));
-									}
-									
-									$('#patnet_status_'+level).attr("disabled",true);
+										}).attr("selected", true).appendTo($('#patnet_status_'+level));
+								} else{
+									$('<option />', {
+										'value': this.id,
+										'text': this.name,
+									}).appendTo($('#patnet_status_'+level));
 								}
+								
+								$('#patnet_status_'+level).attr("disabled",true);
+							}
 								
 						});
 
