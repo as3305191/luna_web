@@ -23,14 +23,13 @@ class Carousel extends MY_Mgmt_Controller {
 		$today_h = date("H");
 		$today_m = date("i");
 		$today_s = date("s");
-		$total_weekends = $this -> get_weekend_days($this_year_first_day,$today);
-		foreach($data['items'] as $each){
-			if($each->news_style_id==3){
-				$cost = $each->cost;
-				$data['during_now_s'] = ((($during_now-$total_weekends)*86400)+($today_h*3600)+($today_m*60)+$today_s)*$cost;
-				$data['cost']  = $cost;
-			}
-		}
+		$total_years_weekends = $this -> get_weekend_days($this_year_first_day,$today);
+		$items= $this -> news_dao -> find_last_cost();
+
+		$cost = $each->cost;
+		$data['cost']  = $cost;
+		$data['during_now_s'] = ((($during_now-$total_years_weekends)*86400)+($today_h*3600)+($today_m*60)+$today_s)*$cost;
+
 
 		// $data['this_year_first_day']= $this_year_first_day;
 		// $data['today']= $today;
