@@ -39,7 +39,7 @@
                         <?= isset($each) ? $each -> news_style_name : '' ?> 
                     </div>
 
-                    <div style="font-size:25px;color:white;" >
+                    <div style="font-size:30px;color:white;" >
                         <span style="color:white;">每秒成本:  </span><span style="color:red;" id="cost"><?= isset($cost) ? $cost : '' ?></span>
                     </div>
 
