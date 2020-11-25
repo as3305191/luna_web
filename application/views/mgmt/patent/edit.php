@@ -373,6 +373,11 @@ $('#app-edit-form').bootstrapValidator({
 						url: baseUrl + 'mgmt/users/check_account/' + ($('#item_id').val().length > 0 ? $('#item_id').val() : '0')
 					}
 				}
+			 },
+			 application_date: {
+				validators: {
+					live: 'enabled',
+				}
 			 }
       	}
 
