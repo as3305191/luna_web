@@ -45,13 +45,13 @@
 
                     <div style="font-size:40px;color:white;width:80%" >
                         <div>
-                            <span style="color:white;">今年累積:  </span><span style="color:red;" id="counter_year"><?= isset($during_now_s) ? $during_now_s : '' ?></span>
+                            <span style="color:white;text-align:left;">今年累積:  </span><span style="color:red;text-align:right;" id="counter_year"><?= isset($during_now_s) ? $during_now_s : '' ?></span>
                         </div>
                         <div>
-                            <span style="color:white;">本月累積:  </span><span style="color:red;" id="counter_month"><?= isset($during_m_now_s) ? $during_m_now_s : '' ?></span>
+                            <span style="color:white;text-align:left;">本月累積:  </span><span style="color:red;text-align:right;" id="counter_month"><?= isset($during_m_now_s) ? $during_m_now_s : '' ?></span>
                         </div>
                         <div>
-                            <span style="color:white;">今日累積:  </span><span style="color:red;" id="counter_today"><?= isset($during_today_now_s) ? $during_today_now_s : '' ?></span>
+                            <span style="color:white;text-align:left;">今日累積:  </span><span style="color:red;text-align:right;" id="counter_today"><?= isset($during_today_now_s) ? $during_today_now_s : '' ?></span>
                         </div>
                     </div>
                 </div>
