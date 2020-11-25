@@ -845,7 +845,6 @@ function do_save() {
 		}
 	});
 
-	var total_edit_category=0;
 	function load_edit_category() {
 		$.ajax({
 				url: '<?= base_url() ?>' + 'mgmt/patent/find_all_category',
@@ -858,7 +857,6 @@ function do_save() {
 						$category = $('#patnet_status').empty();
 						var i=0;
 						var html='';
-						total_edit_category = d.max;
 						for(i;i<=d.max;i++){
 							if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
 							
