@@ -366,19 +366,10 @@ $('#app-edit-form').bootstrapValidator({
 			validating : 'glyphicon glyphicon-refresh'
 		},
 		fields: {
-			account: {
-				validators: {
-					remote: {
-						message: '已經存在',
-						url: baseUrl + 'mgmt/users/check_account/' + ($('#item_id').val().length > 0 ? $('#item_id').val() : '0')
-					}
-				}
-			 },
-			 application_date: {
-				validators: {
-					live: 'enabled',
-				}
-			 }
+			validators: {
+				live: 'enabled',
+
+			}
       	}
 
 	}).bootstrapValidator('validate');
