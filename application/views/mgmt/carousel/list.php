@@ -40,7 +40,7 @@
                     </div>
 
                     <div style="font-size:25px;color:white;" >
-                        <?= isset($each) ? $each -> title : '' ?> 
+                        <span style="color:white;">每秒成本:  </span><span style="color:red;" id="cost"><?= isset($cost) ? $cost : '' ?></span>
                     </div>
 
                     <div style="font-size:40px;color:white;width:80%" >
