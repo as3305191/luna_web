@@ -43,16 +43,16 @@
                         <span style="color:white;">每秒成本:  </span><span style="color:red;" id="cost"><?= isset($cost) ? $cost : '' ?></span>
                     </div>
 
-                    <div style="font-size:40px;color:white;width:80%" >
-                        <div>
-                            <span style="color:white;text-align:left;">今年累積:  </span><span style="color:red;text-align:right;" id="counter_year"><?= isset($during_now_s) ? $during_now_s : '' ?></span>
-                        </div>
-                        <div>
+                    <div style="font-size:40px;color:white;width:80%; text-align:left;transform: translateX(25%)" >
+                        <p>
+                             <span style="color:white;text-align:left;">今年累積:  </span><span style="color:red;text-align:right;" id="counter_year"><?= isset($during_now_s) ? $during_now_s : '' ?></span>
+                        </p>
+                        <p>
                             <span style="color:white;text-align:left;">本月累積:  </span><span style="color:red;text-align:right;" id="counter_month"><?= isset($during_m_now_s) ? $during_m_now_s : '' ?></span>
-                        </div>
-                        <div>
+                        </p>
+                        <p>
                             <span style="color:white;text-align:left;">今日累積:  </span><span style="color:red;text-align:right;" id="counter_today"><?= isset($during_today_now_s) ? $during_today_now_s : '' ?></span>
-                        </div>
+                        </p>
                     </div>
                 </div>
             <?php else: ?>
