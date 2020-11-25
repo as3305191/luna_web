@@ -25,10 +25,10 @@ class Carousel extends MY_Mgmt_Controller {
 		$today_m = date("i");
 		$today_s = date("s");
 		$total_years_weekends = $this -> get_weekend_days($this_year_first_day,$today);
-		$cost= $this -> news_dao -> find_last_cost();
 		$total_month_weekends = $this -> get_weekend_days($this_month_first_day,$today);
+		$cost= $this -> news_dao -> find_last_cost();
 
-		$data['cost']  = $cost;
+		$data['cost']  = floatval($cost);
 		$data['during_now_s'] = ((($during_now-$total_years_weekends)*28800)+(($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
 		$data['during_m_now_s'] =(((round((strtotime($today)-strtotime($this_month_first_day))/3600/24)-$total_month_weekends)*28800)+(($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
 		$data['during_today_now_s'] = ((($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
