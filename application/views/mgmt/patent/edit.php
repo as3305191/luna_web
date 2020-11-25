@@ -204,7 +204,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">申請日</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control dt_picker" name="application_date"  id="application_date" value="<?= isset($item) ? $item -> application_date : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text" class="form-control dt_picker" name="application_date"  id="application_date" value="<?= isset($item) ? $item -> application_date : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
