@@ -335,7 +335,7 @@
 
 </div>
 <!-- end widget -->
-<script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script>
+<!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 
 <style>
 	.kv-file-zoom {
