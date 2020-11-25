@@ -881,7 +881,7 @@ function do_save() {
 						$.each(d.category, function(){
 							var level = this.level;
 							if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
-								if(current_app[0]['patnet_status_'+level]){
+								if($.inArray('patnet_status_'+level,current_app[0])>0){
 									if(current_app[0]['patnet_status_'+level] &&current_app[0]['patnet_status_'+level]==this.id){
 										$('<option />', {
 											'value': this.id,
