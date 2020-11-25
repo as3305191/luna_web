@@ -19,18 +19,19 @@ class Carousel extends MY_Mgmt_Controller {
 		
 		$today = date("Y-m-d");
 		$this_year_first_day = date("Y")."-01-01";
+		$this_month_first_day = date("Y-m")."-01";
 		$during_now = date('z', strtotime($today)); 
 		$today_h = date("H");
 		$today_m = date("i");
 		$today_s = date("s");
 		$total_years_weekends = $this -> get_weekend_days($this_year_first_day,$today);
-		$items= $this -> news_dao -> find_last_cost();
+		$cost= $this -> news_dao -> find_last_cost();
+		$total_month_weekends = $this -> get_weekend_days($this_month_first_day,$today);
 
-		$cost = $each->cost;
 		$data['cost']  = $cost;
-		$data['during_now_s'] = ((($during_now-$total_years_weekends)*86400)+($today_h*3600)+($today_m*60)+$today_s)*$cost;
-
-
+		$data['during_now_s'] = ((($during_now-$total_years_weekends)*28800)+(($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
+		$data['during_m_now_s'] =(((round((strtotime($today)-strtotime($this_month_first_day))/3600/24)-$total_month_weekends)*28800)+(($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
+		$data['during_today_now_s'] = ((($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
 		// $data['this_year_first_day']= $this_year_first_day;
 		// $data['today']= $today;
 		// $this -> to_json($data);

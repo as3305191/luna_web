@@ -45,8 +45,8 @@
 
                     <div style="font-size:20px;color:white;text-align:left;width:80%" >
                         <span>今年累積:</span><span id="counter_year"><?= isset($during_now_s) ? $during_now_s : '' ?></span>
-                        <span> 本月累積:</span><span id="counter_month"><?= isset($during_now_s) ? $during_now_s : '' ?></span>
-                        <span>今日累積:</span><span id="counter_today"><?= isset($during_now_s) ? $during_now_s : '' ?></span>
+                        <span> 本月累積:</span><span id="counter_month"><?= isset($during_m_now_s) ? $during_m_now_s : '' ?></span>
+                        <span>今日累積:</span><span id="counter_today"><?= isset($during_today_now_s) ? $during_today_now_s : '' ?></span>
                     </div>
                 </div>
             <?php else: ?>
@@ -83,13 +83,19 @@
         });
     
         var counter = parseFloat('<?= $during_now_s?>');
+        var counter_m = parseFloat('<?= $during_m_now_s?>');
+        var counter_today = parseFloat('<?= $during_today_now_s?>');
+
         var cost = parseFloat('<?= $cost?>');
         
         setInterval(function() { 
             var counter_add =  parseFloat(counter+=cost);
+            var counter_add_m =  parseFloat(counter_m+=cost);
+            var counter_add_today =  parseFloat(counter_today+=cost);
+
             $('#counter_year').text(counter_add.toFixed(2)); 
-            $('#counter_month').text(counter_add.toFixed(2)); 
-            $('#counter_today').text(counter_add.toFixed(2)); 
+            $('#counter_month').text(counter_add_m.toFixed(2)); 
+            $('#counter_today').text(counter_add_today.toFixed(2)); 
 
         }, 1000); 
     });
