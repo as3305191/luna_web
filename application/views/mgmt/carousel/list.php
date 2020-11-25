@@ -35,7 +35,7 @@
         <?php else: ?>
             <?php if($each->news_style_id =='3'): ?>
                 <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
-                    <div style="font-size:30px;color:red;" >
+                    <div style="font-size:50px;color:red;" >
                         <?= isset($each) ? $each -> news_style_name : '' ?> 
                     </div>
 
@@ -43,10 +43,16 @@
                         <?= isset($each) ? $each -> title : '' ?> 
                     </div>
 
-                    <div style="font-size:20px;color:white;text-align:left;width:80%" >
-                        <span>今年累積:</span><span id="counter_year"><?= isset($during_now_s) ? $during_now_s : '' ?></span>
-                        <span> 本月累積:</span><span id="counter_month"><?= isset($during_m_now_s) ? $during_m_now_s : '' ?></span>
-                        <span>今日累積:</span><span id="counter_today"><?= isset($during_today_now_s) ? $during_today_now_s : '' ?></span>
+                    <div style="font-size:40px;color:white;width:80%" >
+                        <div>
+                            <span style="color:white;">今年累積:  </span><span style="color:red;" id="counter_year"><?= isset($during_now_s) ? $during_now_s : '' ?></span>
+                        </div>
+                        <div>
+                            <span style="color:white;">本月累積:  </span><span style="color:red;" id="counter_month"><?= isset($during_m_now_s) ? $during_m_now_s : '' ?></span>
+                        </div>
+                        <div>
+                            <span style="color:white;">今日累積:  </span><span style="color:red;" id="counter_today"><?= isset($during_today_now_s) ? $during_today_now_s : '' ?></span>
+                        </div>
                     </div>
                 </div>
             <?php else: ?>

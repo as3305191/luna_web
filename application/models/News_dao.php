@@ -105,11 +105,11 @@ class News_dao extends MY_Model {
 
 	function find_last_cost(){
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> select('_m.cost');
+		$this -> db -> select('_m.*');
 		$this -> db -> where('news_style_id',3);
 		$this -> db -> order_by('_m.id', 'desc');
 		$list = $this -> db -> get() -> result();
-		return $list[0];
+		return $list;
 	}
 	
 }
