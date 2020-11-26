@@ -80,12 +80,15 @@ class News_edit extends MY_Mgmt_Controller {
 		$m_content = $this -> get_post('m_content');
 		$news_style = $this -> get_post('news_style');
 		$cost = $this -> get_post('cost');
-
+		
 		$data['title'] = $title;
 		$data['content'] = $m_content;
 		$data['news_style_id'] = $news_style;
-		$data['cost'] = $cost;
-
+		if(empty($cost)){
+			$data['cost'] = 0;
+		} else{
+			$data['cost'] = $cost;
+		}
 		if(empty($id)) {
 			// insert
 			$s_data = $this -> setup_user_data(array());
