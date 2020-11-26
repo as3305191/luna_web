@@ -32,17 +32,7 @@ class News_edit extends MY_Mgmt_Controller {
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
-
-		
 		$items = $this -> dao -> query_ajax($data);
-		// if($data['not_this_month']>0){
-		// 	foreach($items as $items_key=>$each_items){
-		// 		foreach($is_used_this_month_list as $each_used_key=>$each_used_this_month){
-		// 			if($each_items->id==$each_used_this_month->img_id)
-		// 			unset($items[$items_key]);
-		// 		}
-		// 	}
-		// }
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
@@ -69,7 +59,6 @@ class News_edit extends MY_Mgmt_Controller {
 
 			$data['item'] = $item;
 		}
-
 		$this->load->view('mgmt/news_edit/edit', $data);
 	}
 
@@ -80,7 +69,6 @@ class News_edit extends MY_Mgmt_Controller {
 		$m_content = $this -> get_post('m_content');
 		$news_style = $this -> get_post('news_style');
 		$cost = $this -> get_post('cost');
-		
 		$data['title'] = $title;
 		$data['content'] = $m_content;
 		$data['news_style_id'] = $news_style;
@@ -101,50 +89,6 @@ class News_edit extends MY_Mgmt_Controller {
 	public function delete($id) {
 		$res['success'] = TRUE;
 		$this -> dao -> delete($id);
-		$this -> to_json($res);
-	}
-
-	public function check_account($id) {
-		$account = $this -> get_post('account');
-		$list = $this -> dao -> find_all_by('account', $account);
-		$res = array();
-		if(!empty($id)) {
-			if (count($list) > 0) {
-				$item = $list[0];
-				if($item -> id == $id) {
-					$res['valid'] = TRUE;
-				} else {
-					$res['valid'] = FALSE;
-				}
-
-				$res['item'] = $item;
-			} else {
-				$res['valid'] = TRUE;
-			}
-		} else {
-			if (count($list) > 0) {
-				$res['valid'] = FALSE;
-			} else {
-				$res['valid'] = TRUE;
-			}
-		}
-
-		$this -> to_json($res);
-	}
-
-	public function check_code() {
-		$code = $this -> get_post('intro_code');
-		$list = $this -> dao -> find_all_by('code', $code);
-		$res = array();
-		$res['valid'] = (count($list) > 0);
-		$this -> to_json($res);
-	}
-
-	public function chg_user() {
-		$user_id = $this -> get_post('user_id');
-		$this -> session -> set_userdata('user_id', $user_id);
-		$res = array();
-
 		$this -> to_json($res);
 	}
 
