@@ -84,11 +84,8 @@ class News_edit extends MY_Mgmt_Controller {
 		$data['title'] = $title;
 		$data['content'] = $m_content;
 		$data['news_style_id'] = $news_style;
-		if(empty($cost)){
-			$data['cost'] = '0.00';
-		} else{
-			$data['cost'] = $cost;
-		}
+		$data['cost'] = $cost;
+
 		if(empty($id)) {
 			// insert
 			$this -> dao -> insert($data);
