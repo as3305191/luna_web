@@ -91,13 +91,12 @@ class News_edit extends MY_Mgmt_Controller {
 		}
 		if(empty($id)) {
 			// insert
-			$s_data = $this -> setup_user_data(array());
 			$this -> dao -> insert($data);
 		} else {
 			// update
 			$this -> dao -> update($data, $id);
 		}
-
+		$s_data = $this -> setup_user_data(array());
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}

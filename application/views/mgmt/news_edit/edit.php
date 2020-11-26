@@ -63,7 +63,7 @@
 					<div id="cost_div" class="form-group none">
 						<label class="col-md-3 control-label">成本</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control " id="cost" name="cost" value="<?= isset($item) ? $item ->cost : 0 ?>" />
+							<input type="text" class="form-control " id="cost" name="cost" value="<?= isset($item) ? $item ->cost : '' ?>" />
 						</div>
 					</div>
 				</fieldset>
