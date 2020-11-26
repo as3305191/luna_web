@@ -24,6 +24,7 @@ class Calendar extends MY_Mgmt_Controller {
 		$click_date = intval($date)/1000;
 		$data['click_date'] = date('Y-m-d',$click_date);
 		$this -> load -> view('layout/show_new_work',$data);
+		// String, default: "W";
 	}
 
 
