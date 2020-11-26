@@ -11,8 +11,7 @@ class Carousel extends MY_Mgmt_Controller {
 		$this -> load -> model('News_style_dao', 'news_style_dao');		
 	}
 
-	public function index()
-	{
+	public function index(){
 		$data = array();
 		$items= $this -> news_dao -> find_carousel();
 		$data['items']= $items;
@@ -37,7 +36,6 @@ class Carousel extends MY_Mgmt_Controller {
 	}
 
 	public function get_weekend_days($start_date,$end_date){
-
 		if (strtotime($start_date) > strtotime($end_date)) list($start_date, $end_date) = array($end_date, $start_date);
 		$start_reduce = $end_add = 0;
 		$start_N = date('N',strtotime($start_date));
