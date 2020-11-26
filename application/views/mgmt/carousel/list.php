@@ -74,6 +74,8 @@
     <?php endforeach ?>
 
 </div>
+<script src="<?= base_url('js/libs/jquery-2.1.1.min.js') ?>"></script>
+<script src="<?= base_url('js/libs/jquery-ui-1.10.3.min.js') ?>"></script>
 <script src="<?= base_url("vendor/OwlCarousel2-2.3.4/dist/owl.carousel.min.js") ?>"></script>
 <script type="text/javascript">
     $(document).on('ready', function () {
