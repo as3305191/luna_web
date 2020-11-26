@@ -30,7 +30,6 @@ class Carousel extends MY_Mgmt_Controller {
 		$data['during_now_s'] = ((intval($during_now-$total_years_weekends)*28800)+(($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
 		$data['during_m_now_s'] =(((intval(round((strtotime($today)-strtotime($this_month_first_day)))/3600/24)-$total_month_weekends)*28800)+(($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
 		$data['during_today_now_s'] = ((($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
-	
 		// $this -> to_json($data);
 		$this->load->view('mgmt/carousel/list', $data);
 	}
