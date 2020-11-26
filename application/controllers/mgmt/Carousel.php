@@ -28,9 +28,14 @@ class Carousel extends MY_Mgmt_Controller {
 		$cost_list= $this -> news_dao -> find_last_cost();
 		$cost = floatval($cost_list[0]->cost);
 		$data['cost']  = $cost;
-		$data['during_now_s'] = ((($during_now-intval($total_years_weekends))*28800)+(($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
-		$data['during_m_now_s'] =((((intval($this_month_during_today)-1)-intval($total_month_weekends))*28800)+(($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
-		$data['during_today_now_s'] = ((($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
+		if($today_h>12){
+			$not_today=9;
+		} else{
+			$not_today=8;
+		}
+		$data['during_now_s'] = ((($during_now-intval($total_years_weekends))*28800)+(($today_h-$not_today)*3600)+($today_m*60)+$today_s)*$cost;
+		$data['during_m_now_s'] =((((intval($this_month_during_today)-1)-intval($total_month_weekends))*28800)+(($today_h-$not_today)*3600)+($today_m*60)+$today_s)*$cost;
+		$data['during_today_now_s'] = ((($today_h-$not_today)*3600)+($today_m*60)+$today_s)*$cost;
 		// $this -> to_json($data);
 		$this->load->view('mgmt/carousel/list', $data);
 	}
