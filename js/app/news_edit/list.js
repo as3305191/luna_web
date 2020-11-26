@@ -215,7 +215,7 @@ var NewsEditAppClass = (function(app) {
 
 		app.doDelItem = function() {
 			$.ajax({
-				url : baseUrl + app.basePath  + 'delete_img/' + app._delId,
+				url : baseUrl + app.basePath  + 'delete/' + app._delId,
 				success: function(d) {
 					if(d.success){
 						app.mDtTable.ajax.reload();
