@@ -17,7 +17,7 @@ class Carousel extends MY_Mgmt_Controller {
 		$data['items']= $items;
 		$today = date("Y-m-d");
 		$this_year_first_day = date("Y")."-01-01";
-		$this_month_first_day = date("Y-m")."-01";
+		$this_month_during_today = date("d");
 		$during_now = date('z', strtotime($today)); 
 		$today_h = date("H");
 		$today_m = date("i");
@@ -28,7 +28,7 @@ class Carousel extends MY_Mgmt_Controller {
 		$cost = floatval($cost_list[0]->cost);
 		$data['cost']  = $cost;
 		$data['during_now_s'] = ((intval($during_now-$total_years_weekends)*28800)+(($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
-		$data['during_m_now_s'] =(((intval(round((strtotime($today)-strtotime($this_month_first_day)))/3600/24)-$total_month_weekends)*28800)+(($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
+		$data['during_m_now_s'] =((((intval($this_month_during_today)-1)-intval($total_month_weekends))*28800)+(($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
 		$data['during_today_now_s'] = ((($today_h-8)*3600)+($today_m*60)+$today_s)*$cost;
 		// $this -> to_json($data);
 		$this->load->view('mgmt/carousel/list', $data);
