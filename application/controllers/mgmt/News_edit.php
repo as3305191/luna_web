@@ -136,25 +136,19 @@ class News_edit extends MY_Mgmt_Controller {
 					$new_img_array = $img_id_array;
 					$res['new_img_array'] = $new_img_array;
 					$this -> img_month_use_dao -> empty_table();
-
 					foreach($new_img_array as $each){
 						$i_data['img_id'] = $each;
 						$this -> img_month_use_dao -> insert($i_data);
 						$this -> img_month_use_record_dao -> insert($i_data);
 					}
 				}
-				
 			} else{
 				$u_data['status'] = 0;
 				$res['success_msg'] = '變更非輪播成功';
 			}
-			
 			$this -> dao -> update($u_data, $news_id);
-		
 		}
 		$res['success'] = TRUE;
-
-	
 		$this -> to_json($res);
 	}
 
