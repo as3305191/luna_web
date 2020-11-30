@@ -87,9 +87,7 @@
             lazyFollow:true,
             // rewind:true,
         });
-    });
-   
-    $(document).on('ready', function () {
+        
         var counter = parseFloat('<?= $during_now_s?>');
         var counter_m = parseFloat('<?= $during_m_now_s?>');
         var counter_today = parseFloat('<?= $during_today_now_s?>');
@@ -104,5 +102,7 @@
                 $('#counter_today').text(counter_add_today); 
             }, 1000); 
         }
+    // $(document).on('ready', function () {
+       
     });
 </script>
