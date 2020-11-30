@@ -87,15 +87,15 @@ var counter_add_m =  parseFloat(counter_m+=cost);
 var counter_add_today =  parseFloat(counter_today+=cost);
 
 function count_cost(){
-  
     $('#counter_year').text(counter_add.toFixed(2)); 
     $('#counter_month').text(counter_add_m.toFixed(2)); 
     $('#counter_today').text(counter_add_today.toFixed(2)); 
 }
+
     $(document).on('ready', function () {
-        for(var i = 1; i <i+1; i++) {
-            setTimeout(count_cost(), 1000)
-        }
+        setInterval(function() { 
+            count_cost();  
+        }, 1000);
 
         $('.owl-carousel').owlCarousel({
             loop:true,
