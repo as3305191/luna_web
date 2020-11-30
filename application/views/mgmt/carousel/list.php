@@ -78,7 +78,18 @@
 <script src="<?= base_url("vendor/OwlCarousel2-2.3.4/dist/owl.carousel.min.js") ?>"></script>
 <script type="text/javascript">
     $(document).on('ready', function () {
-
+        $('.owl-carousel').owlCarousel({
+            // loop:false,
+            items: 1,
+            autoplay: 1000,
+            center:true,
+            merge:true,
+            lazyFollow:true,
+            // rewind:true,
+        });
+    });
+   
+    $(document).on('ready', function () {
         var counter = parseFloat('<?= $during_now_s?>');
         var counter_m = parseFloat('<?= $during_m_now_s?>');
         var counter_today = parseFloat('<?= $during_today_now_s?>');
@@ -93,18 +104,5 @@
                 $('#counter_today').text(counter_add_today); 
             }, 1000); 
         }
-      
-        
-        $('.owl-carousel').owlCarousel({
-            // loop:false,
-            items: 1,
-            autoplay: 1000,
-            center:true,
-            merge:true,
-            lazyFollow:true,
-            // rewind:true,
-        });
-    
     });
-   
 </script>
