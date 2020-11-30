@@ -97,12 +97,13 @@
                 var counter_add =  parseFloat(counter+=cost);
                 var counter_add_m =  parseFloat(counter_m+=cost);
                 var counter_add_today =  parseFloat(counter_today+=cost);
-                $('#counter_year').text(counter_add); 
-                $('#counter_month').text(counter_add_m); 
-                $('#counter_today').text(counter_add_today); 
+                $('#counter_year').text(counter_add.toFixed(2)); 
+                $('#counter_month').text(counter_add_m.toFixed(2)); 
+                $('#counter_today').text(counter_add_today.toFixed(2)); 
             }, 1000); 
         }
-    // $(document).on('ready', function () {
-       
+        count_cost();       
     });
+
+    
 </script>
