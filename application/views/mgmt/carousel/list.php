@@ -11,7 +11,6 @@
 		}
 
 		.news_container {
-            font:inherit;
 			height:100%;
 			width:100%;
 			position:absolute;
@@ -94,7 +93,7 @@
         }, 1000);
           
         $('.owl-carousel').owlCarousel({
-            rewind:true,
+            rewind:false,
             items: 1,
             autoplay: 10000,
             center:true,
