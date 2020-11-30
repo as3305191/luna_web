@@ -151,7 +151,7 @@ class News_edit extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	function get_between($input, $start, $end) {
+	function get_between($input, $start, $end) {//2字串中間
 		$substr = substr($input, strlen($start)+strpos($input, $start),(strlen($input) - strpos($input, $end))*(-1));
 		return $substr;
 	}
