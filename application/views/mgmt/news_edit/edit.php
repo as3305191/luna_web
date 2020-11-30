@@ -231,23 +231,23 @@ function do_save() {
 };
 
 $('#add_news_style').click(function() {
-		layer.open({
-			type:2,
-			title:'',
-			closeBtn:0,
-			area:['400px','200px'],
-			shadeClose:true,
-			content:'<?=base_url('mgmt/news_edit/new_news_style')?>'
-		})
+	layer.open({
+		type:2,
+		title:'',
+		closeBtn:0,
+		area:['400px','200px'],
+		shadeClose:true,
+		content:'<?=base_url('mgmt/news_edit/new_news_style')?>'
 	})
+})
 
-	$('#news_style').on('change', function(){
-		if($('#news_style').val()==3){
-			$('#cost_div').removeClass("none");
-		} else{
-			$('#cost_div').addClass("none");
-		}
-	});
+$('#news_style').on('change', function(){
+	if($('#news_style').val()==3){
+		$('#cost_div').removeClass("none");
+	} else{
+		$('#cost_div').addClass("none");
+	}
+});
 
 	
 </script>
