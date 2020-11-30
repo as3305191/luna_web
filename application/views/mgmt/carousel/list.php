@@ -98,7 +98,7 @@
             autoplay: 10000,
             center:true,
             merge:true,
-            lazyFollow:true,
+            // lazyFollow:true,
             
         });
     });
