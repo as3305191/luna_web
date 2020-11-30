@@ -38,11 +38,9 @@
                     <div style="font-size:50px;color:red;" >
                         <?= isset($each) ? $each -> news_style_name : '' ?> 
                     </div>
-
                     <div style="font-size:30px;color:white;" >
                         <span style="color:white;">每秒成本:  </span><span style="color:red;" id="cost"><?= isset($cost) ? $cost : '' ?></span>
                     </div>
-
                     <div style="font-size:40px;color:white;width:80%; text-align:left;transform: translateX(25%)" >
                         <p>
                              <span style="color:white;text-align:left;">今年累積:  </span><span style="color:red;margin-left:10px;" id="counter_year"><?= isset($during_now_s) ? $during_now_s : '' ?></span>
