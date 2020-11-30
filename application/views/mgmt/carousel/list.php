@@ -77,36 +77,37 @@
 <script src="<?= base_url('js/libs/jquery-2.1.1.min.js') ?>"></script>
 <script src="<?= base_url("vendor/OwlCarousel2-2.3.4/dist/owl.carousel.min.js") ?>"></script>
 <script type="text/javascript">
-
-var counter = parseFloat('<?= $during_now_s?>');
-var counter_m = parseFloat('<?= $during_m_now_s?>');
-var counter_today = parseFloat('<?= $during_today_now_s?>');
-var cost = parseFloat('<?= $cost?>');
-var counter_add =  parseFloat(counter+=cost);
-var counter_add_m =  parseFloat(counter_m+=cost);
-var counter_add_today =  parseFloat(counter_today+=cost);
-
-function count_cost(){
-    $('#counter_year').text(counter_add.toFixed(2)); 
-    $('#counter_month').text(counter_add_m.toFixed(2)); 
-    $('#counter_today').text(counter_add_today.toFixed(2)); 
-}
-
+  function count_cost(){
+        var counter = parseFloat('<?= $during_now_s?>');
+        var counter_m = parseFloat('<?= $during_m_now_s?>');
+        var counter_today = parseFloat('<?= $during_today_now_s?>');
+        var cost = parseFloat('<?= $cost?>');
+        var counter_add =  parseFloat(counter+=cost);
+        var counter_add_m =  parseFloat(counter_m+=cost);
+        var counter_add_today =  parseFloat(counter_today+=cost);
+        $('#counter_year').text(counter_add.toFixed(2)); 
+        $('#counter_month').text(counter_add_m.toFixed(2)); 
+        $('#counter_today').text(counter_add_today.toFixed(2)); 
+    }
     $(document).on('ready', function () {
         setInterval(function() { 
             count_cost();  
         }, 1000);
-
+          
         $('.owl-carousel').owlCarousel({
-            loop:true,
+            // loop:true,
             items: 1,
-            autoplay: 1000,
+            autoplay: 10000,
             center:true,
             merge:true,
             lazyFollow:true,
-            // rewind:true,
+            rewind:true,
         });
-              
+            
+      
     });
-
+    
+  
+       
+  
 </script>
