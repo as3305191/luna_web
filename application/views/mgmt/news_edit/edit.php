@@ -168,7 +168,6 @@
 			dataType: 'json',
 			success: function(d) {
 				if(d) {
-			
 					$news_style = $('#news_style').empty();
 					var option = '<option value="0">全部</option>';
           			$news_style.append(option);
@@ -196,7 +195,6 @@
 								'text': this.news_style
 							}).appendTo($news_style);
 						}
-						
 					});
 				}
 			},
