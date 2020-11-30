@@ -93,13 +93,13 @@
         }, 1000);
           
         $('.owl-carousel').owlCarousel({
-            // loop:true,
+            rewind:true,
             items: 1,
             autoplay: 10000,
             center:true,
             merge:true,
             lazyFollow:true,
-            rewind:true,
+            
         });
     });
     
