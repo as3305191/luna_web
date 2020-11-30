@@ -101,8 +101,6 @@
             lazyFollow:true,
             rewind:true,
         });
-            
-      
     });
     
   
