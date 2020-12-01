@@ -399,7 +399,6 @@ class Patent extends MY_Mgmt_Controller {
 		// $section = $PHPWord->createSection();
 		$sectionStyle = array('orientation' => null,  'marginLeft' => 2000,  'marginRight' => 2000); //頁面設定
 		$section = $PHPWord->createSection($sectionStyle); //建立一個頁面
-		$section->addTextBreak(2);
 
 		$header_Style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
 		$body_Style = array('borderSize'=>5, 'borderColor'=>'000000', 'cellMargin'=>80);
@@ -424,12 +423,12 @@ class Patent extends MY_Mgmt_Controller {
 		
 		$header_table->addRow();
 		$header_table->addCell(5000,null,5)->addText('專利家族代碼:'.$item->patent_family,array('size'=>10),array('align'=>'right', 'size'=>16));
-		$section->addTextBreak(2);
+		$section->addTextBreak(5000);
 		$img;
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('項目類別',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,3)->addText("1",null);
+		$body_table->addCell(4000,null,4)->addText("1",null);
 
 		$body_table->addRow();
 		$body_table->addCell(1000,array('vMerge' => 'restart'))->addText('1');
