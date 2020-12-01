@@ -412,7 +412,7 @@ class Patent extends MY_Mgmt_Controller {
 		$body_table = $section->addTable('tableStyle');
 		$footer_table = $section->addTable('footer_tableStyle');
 
-		$image_url = 'http://192.168.3.251/api/images/get'.$item->img_id.'/thumb';
+		$image_url = base_url('mgmt/images/get/485');
 
 
 		// $picture_table = $section->addTable();
