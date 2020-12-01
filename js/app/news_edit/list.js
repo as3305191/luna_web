@@ -1,5 +1,3 @@
-const { SSL_OP_DONT_INSERT_EMPTY_FRAGMENTS } = require("constants");
-
 var NewsEditAppClass = (function(app) {
 	app.basePath = "mgmt/news_edit/";
 	// app.disableRowClick = true;
