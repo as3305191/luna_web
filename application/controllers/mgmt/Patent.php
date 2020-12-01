@@ -411,8 +411,10 @@ class Patent extends MY_Mgmt_Controller {
 		$header_table = $section->addTable('white_tableStyle');
 		$body_table = $section->addTable('tableStyle');
 		$footer_table = $section->addTable('footer_tableStyle');
+
 		$image_url = base_url('api/images/get/'.$item->img_id.'/thumb');
-		
+		$img = $section->addImage($image_url, array('width'=>100, 'height'=>100,'align'=>'right'));
+
 
 		// $picture_table = $section->addTable();
 
@@ -421,13 +423,11 @@ class Patent extends MY_Mgmt_Controller {
 		
 		$header_table->addRow();
 		$header_table->addCell(5000,null,5)->addText('專利家族代碼:'.$item->patent_family,array('size'=>10),array('align'=>'right', 'size'=>16));
-		
-		$section->addImage($image_url, array('width'=>100, 'height'=>100,'align'=>'right'));
-
+		$img;
 
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('項目類別',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,4)->addText("1",null);
+		$body_table->addCell(4000,null,3)->addText("1",null);
 
 		$body_table->addRow();
 		$body_table->addCell(1000,array('vMerge' => 'restart'))->addText('1');
