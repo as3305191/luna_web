@@ -412,7 +412,7 @@ class Patent extends MY_Mgmt_Controller {
 		$body_table = $section->addTable('tableStyle');
 		$footer_table = $section->addTable('footer_tableStyle');
 
-		$image_url = base_url('img/ktx_img/logo.jpg');
+		$image_url = 'img/ktx_img/logo.jpg';
 		$img = $section->addImage($image_url, array('width'=>100, 'height'=>100,'align'=>'right'));
 
 
@@ -423,11 +423,13 @@ class Patent extends MY_Mgmt_Controller {
 		
 		$header_table->addRow();
 		$header_table->addCell(5000,null,5)->addText('專利家族代碼:'.$item->patent_family,array('size'=>10),array('align'=>'right', 'size'=>16));
-	
+		
+		$header_table->addRow();
+		$header_table->addCell(5000,null,5)->addImage($image_url, array('width'=>100, 'height'=>100,'align'=>'right'));
+		
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('項目類別',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,3)->addText("1",null);
-		$body_table->addCell(4000,null,3)->addImage($image_url,null,array('width'=>100, 'height'=>100,'align'=>'right'));
+		$body_table->addCell(4000,null,4)->addText("1",null);
 
 		$body_table->addRow();
 		$body_table->addCell(1000,array('vMerge' => 'restart'))->addText('1');
@@ -509,8 +511,6 @@ class Patent extends MY_Mgmt_Controller {
 		
 		$footer_table->addRow();
 		$footer_table->addCell(5000,null,5)->addText('更新日:'.$item->update_date,null);
-
-		
 
 		$date = date('YmdHis');
 		$filename = $date."-專利詳細資訊.docx";
