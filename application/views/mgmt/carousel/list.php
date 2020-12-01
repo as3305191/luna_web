@@ -99,7 +99,6 @@ var cost = parseFloat('<?= $cost?>');
             center:true,
             merge:true,
             // lazyFollow:true,
-            
         });
     });
       
