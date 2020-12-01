@@ -101,7 +101,7 @@
 	});
 
 	function load_s_news_style() {
-	$.ajax({
+		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/news_edit/find_news_style',
 			type: 'POST',
 			data: {},
@@ -111,7 +111,7 @@
 					// console.log(d);
 					$s_news_style = $('#s_news_style').empty();
 					var option = '<option value="0">全部</option>';
-          			$s_news_style.append(option);
+					$s_news_style.append(option);
 					$.each(d.news_style, function(){
 						$('<option/>', {
 							'value': this.id,
@@ -125,6 +125,6 @@
 			}
 		});
 
-}
+	}
 load_s_news_style();
 </script>
