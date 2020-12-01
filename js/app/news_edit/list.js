@@ -93,7 +93,6 @@ var NewsEditAppClass = (function(app) {
 		}
 	};
 
-
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
