@@ -415,8 +415,10 @@ class Patent extends MY_Mgmt_Controller {
 
 		$header_table->addRow();
 		$header_table->addCell(5000,null,5)->addText('專利詳細資訊',array('bold' => true, 'size'=>20),array('align'=>'center'));
-
+		$image_id = $item->img_id;
+		$section->addImage($image_id);
 		$header_table->addRow();
+
 		$header_table->addCell(5000,null,5)->addText('專利家族代碼:'.$item->patent_family,array('size'=>10),array('align'=>'right', 'size'=>16));
 
 		$body_table->addRow();
