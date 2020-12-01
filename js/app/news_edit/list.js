@@ -79,7 +79,6 @@ var NewsEditAppClass = (function(app) {
 		processing : true,
 		serverSide : true,
 		responsive : true,
-
 		deferLoading : 0, // don't reload on init
 		iDisplayLength : 10,
 		sDom: app.sDom,
@@ -106,9 +105,7 @@ var NewsEditAppClass = (function(app) {
 				dataType : 'json',
 				type : 'post'
 			},
-
 			pageLength: 50,
-
 			columns : [null, {
 				data : 'title'
 			}, {
@@ -123,12 +120,6 @@ var NewsEditAppClass = (function(app) {
 				data : null,
 				render:function ( data, type, row ) {
 					var input = '';
-					// if(row.status == 1){
-					// 	input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
-					// }else{
-					// 	input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
-					// }
-
 					if(row.status == 1){
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
@@ -168,12 +159,7 @@ var NewsEditAppClass = (function(app) {
 
 			footerCallback: function (row, data, start, end, display ) {
 				var api = this.api();
-
 			}
-
-
-
-			
 		}));
 
 		// data table actions
@@ -185,7 +171,6 @@ var NewsEditAppClass = (function(app) {
 			}
 			return 0;
 		}
-
 		function setSpanVal(elId, val) {
 			console.log("val: " + val);
 			console.log("elId: " + elId);
@@ -195,7 +180,6 @@ var NewsEditAppClass = (function(app) {
 	    		$('#' + elId).parent().find('span').hide();
 	    	}
 		}
-
 		// get year month list
 		app.tableReload();
 
