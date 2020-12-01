@@ -31,11 +31,11 @@ var NewsEditAppClass = (function(app) {
 					$(nRow).find("a").eq(0).click(function() {
 						app.setDelId(aData.id);
 						$('#modal_do_delete')
-							.prop('onclick',null)
-							.off('click')
-							.on('click', function(){
-								app.doDelItem();
-							});
+						.prop('onclick',null)
+						.off('click')
+						.on('click', function(){
+							app.doDelItem();
+						});
 					});
 
 					//img post
