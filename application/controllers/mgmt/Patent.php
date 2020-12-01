@@ -411,12 +411,13 @@ class Patent extends MY_Mgmt_Controller {
 		$header_table = $section->addTable('white_tableStyle');
 		$body_table = $section->addTable('tableStyle');
 		$footer_table = $section->addTable('footer_tableStyle');
+		$image_id = base_url('api/images/get/'.$item->img_id.'/thumb');
+		$img_cell = $section->addImage($image_id);
+
 		// $picture_table = $section->addTable();
 
 		$header_table->addRow();
 		$header_table->addCell(5000,null,5)->addText('專利詳細資訊',array('bold' => true, 'size'=>20),array('align'=>'center'));
-		$image_id = $item->img_id;
-		$section->addImage($image_id);
 		$header_table->addRow();
 
 		$header_table->addCell(5000,null,5)->addText('專利家族代碼:'.$item->patent_family,array('size'=>10),array('align'=>'right', 'size'=>16));
