@@ -39,12 +39,11 @@
 									<thead>
 										<tr>
 											<th class="min100"></th>
-											<th class="min150">標題</th>
 											<th class="min250">類型</th>
+											<th class="min150">標題</th>
 											<th class="min150">建立時間</th>
 										</tr>
 										<tr class="search_box">
-											<th></th>
 											<th></th>
 											<th>
 												<div class="min100">
@@ -53,6 +52,7 @@
 													</select>
 												</div>
 											</th>
+											<th></th>
 											<th></th>
 										</tr>
 									</thead>

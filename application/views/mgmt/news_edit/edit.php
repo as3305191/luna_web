@@ -67,6 +67,14 @@
 						</div>
 					</div>
 				</fieldset>
+				<fieldset>
+					<div id="cost_div" class="form-group none">
+						<label class="col-md-3 control-label">排序(數字越大越前面)</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control " id="sort" name="sort" value="<?= isset($item) ? $item ->sort : '' ?>" />
+						</div>
+					</div>
+				</fieldset>
 				<fieldset id='content_panel'>
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
@@ -217,7 +225,8 @@ function do_save() {
 			news_style:$('#news_style').val(),
 			title: $('#title').val(),
 			m_content: CKEDITOR.instances.m_content.getData(),
-			cost:$('#cost').val()
+			cost:$('#cost').val(),
+			sort:$('#sort').val()
 		},
 		success : function(data) {
 			if(data.error_msg) {

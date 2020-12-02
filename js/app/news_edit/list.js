@@ -107,9 +107,9 @@ var NewsEditAppClass = (function(app) {
 			},
 			pageLength: 50,
 			columns : [null, {
-				data : 'title'
-			}, {
 				data : 'news_style'
+			}, {
+				data : 'title'
 			}, {
 				data : 'create_time'
 			}],
