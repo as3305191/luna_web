@@ -68,7 +68,7 @@
 					</div>
 				</fieldset>
 				<fieldset>
-					<div id="cost_div" class="form-group none">
+					<div id="cost_div" class="form-group">
 						<label class="col-md-3 control-label">排序(數字越大越前面)</label>
 						<div class="col-md-6">
 							<input type="text" class="form-control " id="sort" name="sort" value="<?= isset($item) ? $item ->sort : '' ?>" />
