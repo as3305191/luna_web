@@ -551,6 +551,7 @@ class Patent extends MY_Mgmt_Controller {
 			}else{
 				$item -> files =array();
 			}
+
 			if(!empty($item -> public_num_file)) {
 				$public_number = explode(",", $item -> public_num_file);				
 				$item -> public_num_input =$public_number;
@@ -560,6 +561,7 @@ class Patent extends MY_Mgmt_Controller {
 			}else{
 				$item -> public_number =array();
 			}
+
 			if(!empty($item -> patnet_num_file)) {
 				$patnet_number = explode(",", $item -> patnet_num_file);
 				$item -> patnet_num_input =$patnet_number;
@@ -569,6 +571,7 @@ class Patent extends MY_Mgmt_Controller {
 			}else{
 				$item -> patnet_number =array();
 			}
+			
 			$data['item'] = $item;
 			$this -> session -> set_userdata('patent_data', $q_data);
 			$u_data = $this -> setup_user_data($u_data);
