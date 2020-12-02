@@ -1,7 +1,6 @@
 <head>
     <link rel="stylesheet" type="text/css" href="<?= base_url("vendor/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css") ?>">
     <style>
-    
 		html, body {
 			margin:0;
 			padding:0;
@@ -9,7 +8,6 @@
             background-color:black;
             overflow: hidden;
 		}
-
 		.news_container {
 			height:100%;
 			width:100%;
@@ -18,12 +16,10 @@
             top:50%;
             transform: translateY(-45%);
 		}
-
 		.news_container p img {
 			max-height:45%;
 			width:80%;
         }
-
     </style>
 </head>
 <div class="news_container owl-carousel carousel-theme-full ">
