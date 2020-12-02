@@ -607,7 +607,7 @@ class Patent extends MY_Mgmt_Controller {
 
 				// ob_clean();
 				// flush();
-				echo $img;
+				return $img;
 				exit ;
 			}
 		}
