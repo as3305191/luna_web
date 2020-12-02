@@ -414,7 +414,6 @@ class Patent extends MY_Mgmt_Controller {
 
 		$image_url = $this->get(485,'thumb');
 
-
 		// $picture_table = $section->addTable();
 
 		$header_table->addRow();
