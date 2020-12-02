@@ -58,11 +58,9 @@
                     <div style="font-size:30px;color:red;" >
                         <?= isset($each) ? $each -> news_style_name : '' ?> 
                     </div>
-
                     <div style="font-size:25px;color:white;" >
                         <?= isset($each) ? $each -> title : '' ?> 
                     </div>
-
                     <div style="font-size:20px;color:white;text-align:left;width:80%" >
                         <?= isset($each) ? $each -> content : '' ?>
                     </div>
@@ -102,5 +100,4 @@ var cost = parseFloat('<?= $cost?>');
         });
     });
       
-  
 </script>
