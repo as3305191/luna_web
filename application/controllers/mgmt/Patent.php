@@ -533,17 +533,10 @@ class Patent extends MY_Mgmt_Controller {
 			$obj = $this -> img_dao -> find_by_id($id);
 			if(!empty($obj)) {
 				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
-				// $download_file_name = IMG_DIR . $img_path;
-				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
-
-
-				// header("Content-type: " . $obj -> mime);
-				// header("Content-Length: " . strlen($img));
-
-
-				// ob_clean();
-				// flush();
-				return preg_replace('/^(.*base64,)/m/','', $img) ;
+				$base64_string = explode(',', $img);
+				
+				// file_put_contents($url, $data);
+				return base64_decode($base64_string[1]);;
 				exit ;
 			}
 		}
