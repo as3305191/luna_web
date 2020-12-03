@@ -12,11 +12,11 @@ class Home extends MY_Base_Controller {
 
 	public function index() {
 		$spreadsheet = new Spreadsheet();
-$sheet = $spreadsheet->getActiveSheet();
-$sheet->setCellValue('A1', '中文');
+		$sheet = $spreadsheet->getActiveSheet();
+		$sheet->setCellValue('A1', '中文');
 
-$writer = new Xlsx($spreadsheet);
-$writer->save('hello world.xlsx');
+		$writer = new Xlsx($spreadsheet);
+		$writer->save('hello world.xlsx');
 	}
 
 
