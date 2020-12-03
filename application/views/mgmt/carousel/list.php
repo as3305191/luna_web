@@ -39,13 +39,13 @@
                     </div>
                     <div style="font-size:40px;color:white;width:80%; text-align:left;transform: translateX(25%)" >
                         <p>
-                             <span style="color:white;text-align:left;">今年累積:  </span><span style="color:red;margin-left:10px;" id="counter_year"><?= isset($during_now_s) ? $during_now_s : '' ?></span>
+                             <span style="color:white;text-align:left;">今年累積:  </span><span style="color:red;margin-left:10px;" id="counter_year"></span>
                         </p>
                         <p>
-                            <span style="color:white;text-align:left;">本月累積:  </span><span style="color:red;margin-left:10px;" id="counter_month"><?= isset($during_m_now_s) ? $during_m_now_s : '' ?></span>
+                            <span style="color:white;text-align:left;">本月累積:  </span><span style="color:red;margin-left:10px;" id="counter_month"></span>
                         </p>
                         <p>
-                            <span style="color:white;text-align:left;">今日累積:  </span><span style="color:red;margin-left:10px;" id="counter_today"><?= isset($during_today_now_s) ? $during_today_now_s : '' ?></span>
+                            <span style="color:white;text-align:left;">今日累積:  </span><span style="color:red;margin-left:10px;" id="counter_today"></span>
                         </p>
                     </div>
                 </div>
@@ -73,13 +73,14 @@ var counter = parseFloat('<?= $during_now_s?>');
 var counter_m = parseFloat('<?= $during_m_now_s?>');
 var counter_today = parseFloat('<?= $during_today_now_s?>');
 var cost = parseFloat('<?= $cost?>');
+
   function count_cost(){
-        var counter_add =  parseFloat(counter+=cost);
-        var counter_add_m =  parseFloat(counter_m+=cost);
-        var counter_add_today =  parseFloat(counter_today+=cost);
-        $('#counter_year').text(counter_add.toFixed(2)); 
-        $('#counter_month').text(counter_add_m.toFixed(2)); 
-        $('#counter_today').text(counter_add_today.toFixed(2)); 
+        parseFloat(counter+=cost);
+        parseFloat(counter_m+=cost);
+        parseFloat(counter_today+=cost);
+        $('#counter_year').text(Math.ceil(counter)); 
+        $('#counter_month').text(Math.ceil(counter_m)); 
+        $('#counter_today').text(Math.ceil(counter_today)); 
     }
     $(document).on('ready', function () {
         setInterval(function() { 
