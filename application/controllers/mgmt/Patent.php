@@ -411,9 +411,7 @@ class Patent extends MY_Mgmt_Controller {
 		$header_table = $section->addTable('white_tableStyle');
 		$body_table = $section->addTable('tableStyle');
 		$footer_table = $section->addTable('footer_tableStyle');
-
-		$image_url =$this->get(485);
-
+		
 		//$picture_table = $section->addTable();
 
 		$header_table->addRow();
@@ -425,8 +423,18 @@ class Patent extends MY_Mgmt_Controller {
 		$body_table->addRow();
 		$body_table->addCell(1000,null,1)->addText('項目類別',null,array('align'=>'center'));
 		$body_table->addCell(4000,null,4)->addText("1",null);
-		$body_table->addCell(4000,null,4)->addImage($image_url, array('width'=>100,null,'height'=>100,'align'=>'right'));;
+		if (!empty($item->img_id)) {
+			$obj = $this -> img_dao -> find_by_id($item->img_id);
+			if(!empty($obj)) {
+				$img = $obj -> img_thumb;
+				$find = strpos($img, ';base64,');
+				if ($find !== false) { 
+					$file_contents= substr($img, $find + 8); 
+					$body_table->addCell(4000,null,4)->addImage(base64_decode($file_contents), array('width'=>100,null,'height'=>100,'align'=>'right'));;
 
+				}
+			}
+		}
 		$body_table->addRow();
 		$body_table->addCell(1000,array('vMerge' => 'restart'))->addText('1');
 		$body_table->addCell(1000,null,1)->addText('專利名稱',null,array('align'=>'center'));
@@ -515,23 +523,6 @@ class Patent extends MY_Mgmt_Controller {
 		header('Cache-Control: max-age=0'); //no cache
 		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2007');
 		$objWriter->save('php://output');
-	}
-
-	public function get($id, $is_thumb = '') {
-		if (!empty($id)) {
-			$obj = $this -> img_dao -> find_by_id($id);
-			if(!empty($obj)) {
-				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
-				$find = strpos($img, ';base64,');
-				if ($find !== false) { 
-					$file_contents= substr($img, $find + 8); 
-					echo base64_decode($file_contents);
-					exit;
-				} else{
-					return false;
-				}
-			}
-		}
 	}
 
 }
