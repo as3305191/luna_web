@@ -522,7 +522,14 @@ class Patent extends MY_Mgmt_Controller {
 			$obj = $this -> img_dao -> find_by_id($id);
 			if(!empty($obj)) {
 				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
-				return $img;
+				$find = strpos($img, ';base64,');
+				if ($find !== false) { 
+					$file_contents= substr($img, $find + 8); 
+					echo base64_decode($file_contents);
+					exit;
+				} else{
+					return false;
+				}
 			}
 		}
 	}
