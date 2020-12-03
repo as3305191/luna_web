@@ -82,6 +82,7 @@ var cost = parseFloat('<?= $cost?>');
         $('#counter_month').text(Math.ceil(counter_m)); 
         $('#counter_today').text(Math.ceil(counter_today)); 
     }
+    
     $(document).on('ready', function () {
         setInterval(function() { 
             count_cost();  
