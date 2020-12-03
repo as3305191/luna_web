@@ -414,7 +414,7 @@ class Patent extends MY_Mgmt_Controller {
 
 		$image_url =$this->get(485);
 
-		// $picture_table = $section->addTable();
+		//$picture_table = $section->addTable();
 
 		$header_table->addRow();
 		$header_table->addCell(5000,null,5)->addText('專利詳細資訊',array('bold' => true, 'size'=>20),array('align'=>'center'));
