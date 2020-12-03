@@ -518,16 +518,11 @@ class Patent extends MY_Mgmt_Controller {
 	}
 
 	public function get($id, $is_thumb = '') {
-		$data = array();
 		if (!empty($id)) {
 			$obj = $this -> img_dao -> find_by_id($id);
 			if(!empty($obj)) {
 				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
-				$base64_string = explode(',', $img);
-				
-				// file_put_contents($url, $data);
-				return base64_decode($base64_string[1]);;
-				
+				return $img;
 			}
 		}
 	}
