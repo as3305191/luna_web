@@ -60,7 +60,6 @@ var NewsEditAppClass = (function(app) {
 									});
 
 									app.tableReload();
-
 								}
 								if(data.message){
 									layer.msg(data.message);
