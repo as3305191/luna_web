@@ -244,7 +244,6 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-
 	public function new_country(){
 		$data = array();
 		$this -> load -> view('layout/show_new_country',$data);
