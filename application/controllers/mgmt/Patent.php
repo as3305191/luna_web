@@ -443,8 +443,6 @@ class Patent extends MY_Mgmt_Controller {
 				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
 				// header("Content-type: " . $obj -> mime);
 				// header("Content-Length: " . strlen($img));
-
-
 				// ob_clean();
 				// flush();
 				// echo ;
