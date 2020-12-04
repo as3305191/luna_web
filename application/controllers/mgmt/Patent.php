@@ -433,14 +433,14 @@ class Patent extends MY_Mgmt_Controller {
 					
 				}
 				$img_thumb_path = $m_dir .$obj -> image_name ;
-				$o_size = $obj -> image_size;
-				$extract = fopen($img_url, 'r');
-				$target = fopen($img_thumb_path, 'w');
-				$image = fread($extract, $o_size);
-				fwrite($target, $image);
-				fclose($extract);
-				fclose($target);
-				$body_table->addCell(4000,null,4)->addImage(base64_decode($m_dir), array('width'=>100,null,'height'=>100,'align'=>'right'));;
+				// $o_size = $obj -> image_size;
+				// $extract = fopen($img_url, 'r');
+				// $target = fopen($img_thumb_path, 'w');
+				// $image = fread($extract, $o_size);
+				// fwrite($target, $image);
+				// fclose($extract);
+				// fclose($target);
+				$body_table->addCell(4000,null,4)->addImage($img_thumb_path, array('width'=>100,null,'height'=>100,'align'=>'right'));
 			}
 		}
 		$body_table->addRow();
