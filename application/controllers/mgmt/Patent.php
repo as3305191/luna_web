@@ -430,7 +430,6 @@ class Patent extends MY_Mgmt_Controller {
 				$m_dir = __DIR__ . IMG_DIR . "$img_url/";
 				if(!file_exists($m_dir)) {
 					mkdir($m_dir);
-					
 				}
 				$img_thumb_path = $m_dir .$obj -> image_name ;
 				// $o_size = $obj -> image_size;
