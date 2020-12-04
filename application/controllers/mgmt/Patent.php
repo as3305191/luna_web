@@ -425,8 +425,8 @@ class Patent extends MY_Mgmt_Controller {
 		if (!empty($item->img_id)) {
 			$obj = $this -> img_dao -> find_by_id($item->img_id);
 			if(!empty($obj)) {
-				$img_url = $obj -> image_thumb_url;
-				$m_dir = __DIR__ . IMG_DIR . "$img_url/";
+				$image_path = $obj -> image_path;
+				$m_dir = __DIR__ . IMG_DIR . "$image_path"."_thumb/";
 				if(!file_exists($m_dir)) {
 					mkdir($m_dir);
 				}
