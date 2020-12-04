@@ -440,7 +440,6 @@ class Patent extends MY_Mgmt_Controller {
 				// fwrite($target, $image);
 				// fclose($extract);
 				// fclose($target);
-				
 				$body_table->addCell(4000,null,4)->addImage($img_thumb_path, array('width'=>100,null,'height'=>100,'align'=>'right'));
 			}
 		}
