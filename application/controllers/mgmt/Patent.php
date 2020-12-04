@@ -427,7 +427,6 @@ class Patent extends MY_Mgmt_Controller {
 			$obj = $this -> img_dao -> find_by_id($item->img_id);
 			if(!empty($obj)) {
 				$img = $obj -> img_thumb;
-					
 				$body_table->addCell(4000,null,4)->addImage(base64_decode($img), array('width'=>100,null,'height'=>100,'align'=>'right'));;
 			}
 		}
