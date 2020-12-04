@@ -425,20 +425,37 @@ class Patent extends MY_Mgmt_Controller {
 		if (!empty($item->img_id)) {
 			$obj = $this -> img_dao -> find_by_id($item->img_id);
 			if(!empty($obj)) {
-				$image_path = $obj -> image_path;
-				$m_dir = __DIR__ . IMG_DIR . "$image_path"."_thumb/";
-				if(!file_exists($m_dir)) {
-					mkdir($m_dir);
-				}
-				$img_thumb_path = $m_dir .$obj -> image_name ;
-				$o_size = $obj -> image_size;
-				$extract = fopen($image_path, 'r');
-				$target = fopen($img_thumb_path, 'w');
-				$image = fread($extract, $o_size);
-				$body_table->addCell(4000,null,4)->addImage(fwrite($target, $image), array('width'=>100,null,'height'=>100,'align'=>'right'));
+				// $image_path = $obj -> image_path;
+				// $m_dir = __DIR__ . IMG_DIR . "$image_path"."_thumb/";
+				// if(!file_exists($m_dir)) {
+				// 	mkdir($m_dir);
+				// }
+				// $img_thumb_path = $m_dir .$obj -> image_name ;
+				// $o_size = $obj -> image_size;
+				// $extract = fopen($image_path, 'r');
+				// $target = fopen($img_thumb_path, 'w');
+				// $image = fread($extract, $o_size);
 				// fwrite($target, $image);
-				fclose($extract);
-				fclose($target);
+				// fclose($extract);
+				// fclose($target);
+
+
+				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
+				// $download_file_name = IMG_DIR . $img_path;
+				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
+
+
+				header("Content-type: " . $obj -> mime);
+				header("Content-Length: " . strlen($img));
+
+
+				// ob_clean();
+				// flush();
+				// echo ;
+				$body_table->addCell(4000,null,4)->addImage($img, array('width'=>100,null,'height'=>100,'align'=>'right'));
+
+				exit ;
+			
 			}
 		}
 		$body_table->addRow();
@@ -531,4 +548,26 @@ class Patent extends MY_Mgmt_Controller {
 		$objWriter->save('php://output');
 	}
 
+	public function get($id, $is_thumb = '') {
+		$data = array();
+		if (!empty($id)) {
+			$obj = $this -> dao -> find_by_id($id);
+			if(!empty($obj)) {
+				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
+				// $download_file_name = IMG_DIR . $img_path;
+				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
+
+
+				header("Content-type: " . $obj -> mime);
+				header("Content-Length: " . strlen($img));
+
+
+				// ob_clean();
+				// flush();
+				echo $img;
+				exit ;
+			}
+		}
+		show_404();
+	}
 }
