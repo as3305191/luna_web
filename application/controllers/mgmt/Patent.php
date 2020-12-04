@@ -432,7 +432,6 @@ class Patent extends MY_Mgmt_Controller {
 					mkdir($m_dir);
 				}
 				$body_table->addCell(4000,null,4)->addImage(base64_decode($m_dir), array('width'=>100,null,'height'=>100,'align'=>'right'));;
-
 			}
 		}
 		$body_table->addRow();
