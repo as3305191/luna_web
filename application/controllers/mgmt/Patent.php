@@ -552,12 +552,8 @@ class Patent extends MY_Mgmt_Controller {
 				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
 				// $download_file_name = IMG_DIR . $img_path;
 				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
-
-
 				header("Content-type: " . $obj -> mime);
 				header("Content-Length: " . strlen($img));
-
-
 				// ob_clean();
 				// flush();
 				echo $img;
