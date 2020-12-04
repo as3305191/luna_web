@@ -438,21 +438,17 @@ class Patent extends MY_Mgmt_Controller {
 				// fwrite($target, $image);
 				// fclose($extract);
 				// fclose($target);
-
-
 				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
-				// $download_file_name = IMG_DIR . $img_path;
+				$download_file_name = IMG_DIR .  $obj -> image_path;
 				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
-
-
-				header("Content-type: " . $obj -> mime);
-				header("Content-Length: " . strlen($img));
+				// header("Content-type: " . $obj -> mime);
+				// header("Content-Length: " . strlen($img));
 
 
 				// ob_clean();
 				// flush();
 				// echo ;
-				$body_table->addCell(4000,null,4)->addImage($img, array('width'=>100,null,'height'=>100,'align'=>'right'));
+				$body_table->addCell(4000,null,4)->addImage($download_file_name.$obj -> image_name, array('width'=>100,null,'height'=>100,'align'=>'right'));
 
 				exit ;
 			
