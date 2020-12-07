@@ -86,10 +86,6 @@ class Plant extends MY_Mgmt_Controller {
  		$this -> to_json($res);
 	}
 
-	public function copy() {
-
-	}
-
 	public function delete($id) {
 		$res['success'] = TRUE;
 		//$this -> dao -> delete_status($id, $this -> session -> userdata('user_id'));
