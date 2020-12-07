@@ -327,9 +327,7 @@ class Patent extends MY_Mgmt_Controller {
 
 	function export_all($id) {
 		$data = $this -> session -> userdata("patent_data");
-		
 		// $id= $this -> get_post('id');
-
 		if($id>0){
 			$data['id'] = $id;
 			$list = $this -> dao -> query_ajax($data);
@@ -446,9 +444,7 @@ class Patent extends MY_Mgmt_Controller {
 				// flush();
 				// echo ;
 				$body_table->addCell(4000,null,4)->addImage($download_file_name.$obj -> image_name, array('width'=>100,null,'height'=>100,'align'=>'right'));
-
 				exit ;
-			
 			}
 		}
 		$body_table->addRow();
