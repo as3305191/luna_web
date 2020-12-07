@@ -435,14 +435,15 @@ class Patent extends MY_Mgmt_Controller {
 				// fwrite($target, $image);
 				// fclose($extract);
 				// fclose($target);
-				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
-				$download_file_name = IMG_DIR .  $obj -> image_path;
 				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
 				// header("Content-type: " . $obj -> mime);
 				// header("Content-Length: " . strlen($img));
 				// ob_clean();
 				// flush();
 				// echo ;
+				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
+				$download_file_name = IMG_DIR .  $obj -> image_path;
+				
 				$body_table->addCell(4000,null,4)->addImage($download_file_name.$obj -> image_name, array('width'=>100,null,'height'=>100,'align'=>'right'));
 				exit ;
 			}
