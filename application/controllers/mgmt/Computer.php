@@ -92,7 +92,6 @@ class Computer extends MY_Mgmt_Controller {
 
 	public function get_fix_record() {
 		$res = array();
-
 		$data = $this -> get_posts(array(
 			'length',
 			'start',
@@ -104,10 +103,10 @@ class Computer extends MY_Mgmt_Controller {
 
 		$res['items'] = $this -> fix_record_dao -> find_compter_fix($data);
 		foreach($res['items'] as $each){
-			$o_h = $each ->old_computer_hard_id;
-			$o_s = $each ->old_computer_soft_id;
-			$n_h = $each ->new_computer_hard_id;
-			$n_s = $each ->new_computer_soft_id;
+			$o_h = $each -> old_computer_hard_id;
+			$o_s = $each -> old_computer_soft_id;
+			$n_h = $each -> new_computer_hard_id;
+			$n_s = $each -> new_computer_soft_id;
 			$o_h_name = $this -> c_h_dao -> find_sh_name($o_h);
 			$o_s_name = $this -> c_s_dao -> find_sh_name($o_s);
 			$n_h_name = $this -> c_h_dao -> find_sh_name($n_h);
