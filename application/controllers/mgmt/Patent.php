@@ -119,7 +119,6 @@ class Patent extends MY_Mgmt_Controller {
 			}
 
 			$data['item'] = $item;
-		
 		}
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
