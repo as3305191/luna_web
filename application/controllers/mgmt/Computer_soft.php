@@ -10,7 +10,6 @@ class Computer_soft extends MY_Mgmt_Controller {
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Ketone_record_dao', 'ketone_record_dao');
-
 	}
 
 	public function index()
