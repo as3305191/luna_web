@@ -424,10 +424,9 @@ class Patent extends MY_Mgmt_Controller {
 			if(!empty($obj)) {
 	
 				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
-				$download_file_name = IMG_DIR .  $obj -> image_path;
-
-				$body_table->addCell(4000,null,4)->addImage($download_file_name.$obj -> image_name, array('width'=>100,null,'height'=>100,'align'=>'right'));
-				exit ;
+				$picture_base_64 = $this -> imgToBase64($img);
+			
+				$body_table->addCell(4000,null,4)->addImage($picture_base_64, array('width'=>100,null,'height'=>100,'align'=>'right'));
 			}
 		}
 		$body_table->addRow();
@@ -520,22 +519,34 @@ class Patent extends MY_Mgmt_Controller {
 		$objWriter->save('php://output');
 	}
 
-	public function get($id, $is_thumb = '') {
-		$data = array();
-		if (!empty($id)) {
-			$obj = $this -> dao -> find_by_id($id);
-			if(!empty($obj)) {
-				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
-				// $download_file_name = IMG_DIR . $img_path;
-				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
-				header("Content-type: " . $obj -> mime);
-				header("Content-Length: " . strlen($img));
-				// ob_clean();
-				// flush();
-				echo $img;
-				exit ;
+	function imgToBase64($img_file) {
+
+		$img_base64 = '';
+		if (file_exists($img_file)) {
+			$app_img_file = $img_file; // 圖片路徑
+			$img_info = getimagesize($app_img_file); // 取得圖片的大小，型別等
+	
+			//echo '<pre>' . print_r($img_info, true) . '</pre><br>';
+			$fp = fopen($app_img_file, "r"); // 圖片是否可讀許可權
+	
+			if ($fp) {
+				$filesize = filesize($app_img_file);
+				$content = fread($fp, $filesize);
+				$file_content = chunk_split(base64_encode($content)); // base64編碼
+				switch ($img_info[2]) {           //判讀圖片型別
+					case 1: $img_type = "gif";
+						break;
+					case 2: $img_type = "jpg";
+						break;
+					case 3: $img_type = "png";
+						break;
+				}
+				$img_base64 = 'data:image/' . $img_type . ';base64,' . $file_content;//合成圖片的base64編碼
+
 			}
+			fclose($fp);
 		}
-		show_404();
+	
+		return $img_base64; 
 	}
 }
