@@ -1,7 +1,7 @@
 <style>
-.file-drag-handle {
+/* .file-drag-handle {
 	display: none;
-}
+} */
 .none {
 	display: none;
 }
@@ -247,6 +247,5 @@ $('#news_style').on('change', function(){
 		$('#cost_div').addClass("none");
 	}
 });
-
 	
 </script>
