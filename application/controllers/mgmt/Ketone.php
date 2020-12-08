@@ -90,7 +90,6 @@ class Ketone extends MY_Mgmt_Controller {
 			'search',
 			'order',
 			'member_id',
-
 		));
 
 		$res['items'] = $this -> records_dao -> find_user_weight_history($data);
