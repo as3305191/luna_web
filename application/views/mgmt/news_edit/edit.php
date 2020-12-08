@@ -83,17 +83,11 @@
 						</div>
 					</div>
 				</fieldset>
-
-
-			
 			</form>
-
 		</div>
 		<!-- end widget content -->
-
 	</div>
 	<!-- end widget div -->
-
 </div>
 <!-- end widget -->
 <style>
