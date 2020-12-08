@@ -422,28 +422,10 @@ class Patent extends MY_Mgmt_Controller {
 		if (!empty($item->img_id)) {
 			$obj = $this -> img_dao -> find_by_id($item->img_id);
 			if(!empty($obj)) {
-				// $image_path = $obj -> image_path;
-				// $m_dir = __DIR__ . IMG_DIR . "$image_path"."_thumb/";
-				// if(!file_exists($m_dir)) {
-				// 	mkdir($m_dir);
-				// }
-				// $img_thumb_path = $m_dir .$obj -> image_name ;
-				// $o_size = $obj -> image_size;
-				// $extract = fopen($image_path, 'r');
-				// $target = fopen($img_thumb_path, 'w');
-				// $image = fread($extract, $o_size);
-				// fwrite($target, $image);
-				// fclose($extract);
-				// fclose($target);
-				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
-				// header("Content-type: " . $obj -> mime);
-				// header("Content-Length: " . strlen($img));
-				// ob_clean();
-				// flush();
-				// echo ;
+	
 				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
 				$download_file_name = IMG_DIR .  $obj -> image_path;
-				
+
 				$body_table->addCell(4000,null,4)->addImage($download_file_name.$obj -> image_name, array('width'=>100,null,'height'=>100,'align'=>'right'));
 				exit ;
 			}
