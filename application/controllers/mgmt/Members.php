@@ -244,29 +244,29 @@ class Members extends MY_Mgmt_Controller {
 	}
 
 	function export_all() {
-			$this->load->dbutil();
-      $this->load->helper('file');
-      $this->load->helper('download');
-      $delimiter = ",";
-      $newline = "\r\n";
-			$date = date('YmdHis');
-      $filename = $date."-user.csv";
+		$this->load->dbutil();
+		$this->load->helper('file');
+		$this->load->helper('download');
+		$delimiter = ",";
+		$newline = "\r\n";
+		$date = date('YmdHis');
+		$filename = $date."-user.csv";
 
-			$corp_list = $this -> corp_dao -> find_all();
+		$corp_list = $this -> corp_dao -> find_all();
 
-			//create a file pointer
-    	$f = fopen('php://memory', 'w');
-			$fields = array(
-				iconv("UTF-8","Big5//IGNORE",'帳號'),
-				iconv("UTF-8","Big5//IGNORE",'會員姓名'),
-				'Email',
-				'LINE ID',
-				iconv("UTF-8","Big5//IGNORE",'公司'),
-				iconv("UTF-8","Big5//IGNORE",'貨幣數量'),
-				'NTD',
-				iconv("UTF-8","Big5//IGNORE",'藍鑽')
-			);
-			fputcsv($f, $fields, $delimiter);
+		//create a file pointer
+		$f = fopen('php://memory', 'w');
+		$fields = array(
+			iconv("UTF-8","Big5//IGNORE",'帳號'),
+			iconv("UTF-8","Big5//IGNORE",'會員姓名'),
+			'Email',
+			'LINE ID',
+			iconv("UTF-8","Big5//IGNORE",'公司'),
+			iconv("UTF-8","Big5//IGNORE",'貨幣數量'),
+			'NTD',
+			iconv("UTF-8","Big5//IGNORE",'藍鑽')
+		);
+		fputcsv($f, $fields, $delimiter);
 
       $query = "SELECT id, account,
 				user_name,
