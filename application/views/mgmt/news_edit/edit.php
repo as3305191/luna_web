@@ -156,9 +156,7 @@
 		CKEDITOR.replace("m_content", config);
 		CKEDITOR.instances['m_content'].on('change', function() { CKEDITOR.instances['m_content'].updateElement() });
 
-		
 	});
-
 
 	function load_news_style() {
 	$.ajax({
