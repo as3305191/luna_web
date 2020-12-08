@@ -139,8 +139,6 @@
 		}).bootstrapValidator('validate');
 	}
 
-
-
 	$(function() {
 		// ckeditor
 		var config = {
