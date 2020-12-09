@@ -430,7 +430,7 @@ class Patent extends MY_Mgmt_Controller {
 				if(!file_exists($path)) {
 					mkdir($path);
 				}
-				file_put_contents($path,base64_decode($obj -> img));
+				file_put_contents($path,$obj -> img);
 
 				// $path = $obj -> img_path;
 				$img_name = $obj -> image_name;
