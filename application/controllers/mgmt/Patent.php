@@ -425,9 +425,15 @@ class Patent extends MY_Mgmt_Controller {
 			if(!empty($obj)) {
 	
 				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
-				$picture_base_64 = $this -> imgToBase64($img);
-			
-				$body_table->addCell(4000,null,4)->addImage($picture_base_64, array('width'=>100,null,'height'=>100,'align'=>'right'));
+				$base64_string = $this -> imgToBase64($img);
+				$base64_string= explode(',', $base64_string); 
+				$data= base64_decode($base64_string[1]);
+				$path = $obj -> img_path;
+				$url = IMG_DIR . $path . "_thumb/";
+				if(!file_exists($url)) {
+					mkdir($url);
+				}
+				$body_table->addCell(4000,null,4)->addImage(file_put_contents($url, $data), array('width'=>100,null,'height'=>100,'align'=>'right'));
 			}
 		}
 		$body_table->addRow();
