@@ -120,7 +120,6 @@ class Patent extends MY_Mgmt_Controller {
 			}
 
 			$data['item'] = $item;
-			$this -> session -> set_userdata('patent_data', $data);
 		}
 		
 		$u_data = $this -> setup_user_data($u_data);
@@ -329,11 +328,10 @@ class Patent extends MY_Mgmt_Controller {
 	}
 
 	function export_all($id) {
-		$data = $this -> session -> userdata("patent_data");
 		// $id= $this -> get_post('id');
 		if($id>0){
 			$data['id'] = $id;
-			$list = $this -> dao -> query_ajax($data);
+			$list = $this -> dao -> query_ajax_export($data);
 			$item = $list[0];
 			if(!empty($item -> img_id)) {
 				$image= explode(",", $item -> img_id);

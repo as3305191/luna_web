@@ -78,9 +78,6 @@ class Patent_dao extends MY_Model {
 	}
 
 	function query_ajax_export($data) {
-		$columns = $data['columns'];
-		$search = $data['search'];
-		$order = $data['order'];
 
 		// select
 		$this -> db -> select('_m.*');
@@ -91,11 +88,7 @@ class Patent_dao extends MY_Model {
 		// search always
 		$this -> search_always($data);
 
-		// search
-		$this -> ajax_column_setup($columns, $search, $this -> alias_map);
-
-		// order
-		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
+	
 		$this -> db -> order_by('id', 'desc');
 
 		// limit
