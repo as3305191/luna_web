@@ -123,6 +123,8 @@ class Patent extends MY_Mgmt_Controller {
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['country'] = $this -> country_dao -> find_all();
+		$this -> session -> set_userdata('patent_data', $data);
+
 		// $this -> to_json($data);
 		$this->load->view('mgmt/patent/edit', $data);
 	}

@@ -77,6 +77,34 @@ class Patent_dao extends MY_Model {
 		return $query -> result();
 	}
 
+	function query_ajax_export($data) {
+		$columns = $data['columns'];
+		$search = $data['search'];
+		$order = $data['order'];
+
+		// select
+		$this -> db -> select('_m.*');
+
+		// join
+		$this -> ajax_from_join();
+
+		// search always
+		$this -> search_always($data);
+
+		// search
+		$this -> ajax_column_setup($columns, $search, $this -> alias_map);
+
+		// order
+		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
+		$this -> db -> order_by('id', 'desc');
+
+		// limit
+
+		// query results
+		$query = $this -> db -> get();
+		return $query -> result();
+	}
+
 	function search_always($data) {
 		if(!empty($data['id'])){
 			$id = $data['id'];
