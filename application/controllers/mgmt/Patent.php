@@ -426,11 +426,18 @@ class Patent extends MY_Mgmt_Controller {
 	
 				// $img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
 				$path = $obj -> img_path;
+				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
+				if(!file_exists($path)) {
+					mkdir($path);
+				}
+				file_put_contents($path,base64_decode($obj -> img));
+
+				// $path = $obj -> img_path;
 				$img_name = $obj -> image_name;
 				$m_dir = IMG_DIR . "$path/";
-				if(!file_exists($m_dir)) {
-					mkdir($m_dir);
-				}
+				// if(!file_exists($m_dir)) {
+				// 	mkdir($m_dir);
+				// }
 				$img_path = $m_dir . $img_name;
 				$body_table->addCell(4000,null,4)->addImage($img_path, array('width'=>100,null,'height'=>100,'align'=>'right'));
 			}
