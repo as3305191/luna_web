@@ -280,7 +280,6 @@ class Members extends MY_Mgmt_Controller {
 
 			if($login_user -> role_id == 99) {
 				// all roles
-
 			} else {
 				$query .= " and corp_id = {$login_user->corp_id} ";
 			}
@@ -288,14 +287,12 @@ class Members extends MY_Mgmt_Controller {
       $result = $this->db->query($query) -> result();
 			foreach($result as $each) {
 				$lineData = array($each -> account, iconv("UTF-8","Big5//IGNORE",$each -> user_name), $each -> email, $each -> line_id);
-
 				$corp_sys_name = '';
 				foreach($corp_list as $corp) {
 					if($each -> corp_id == $corp -> id) {
 						$corp_sys_name = $corp -> sys_name;
 					}
 				}
-
 				$lineData[] = $corp_sys_name;
 				$lineData[] = $this -> wtx_dao -> get_sum_amt($each -> id);
 				$lineData[] = $this -> wtx_ntd_dao -> get_sum_amt($each -> id);
