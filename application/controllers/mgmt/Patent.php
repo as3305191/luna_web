@@ -430,7 +430,7 @@ class Patent extends MY_Mgmt_Controller {
 				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
 				$m_dir = IMG_DIR . "$path/";
 				$img_name = $obj -> image_name;
-				$img_path = $m_dir . $img_name;
+			
 				$base64_string= explode(',', $base64_img);
 				if(!file_exists($m_dir)) {
 					mkdir($m_dir);
@@ -438,7 +438,8 @@ class Patent extends MY_Mgmt_Controller {
 					$data= base64_decode($base64_string[1]);
 					file_put_contents($m_dir, $data);
 				}
-				
+				$img_path = $m_dir . $img_name;
+
 				$body_table->addCell(4000,null,4)->addImage($img_path, array('width'=>100,null,'height'=>100,'align'=>'right'));
 			}
 		}
