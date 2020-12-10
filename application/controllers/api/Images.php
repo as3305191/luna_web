@@ -438,9 +438,7 @@ class Images extends MY_Base_Controller {
 			$json_data['success'] = TRUE;
 			$this -> to_json($json_data);
 		}
-
 	}
-
 
 	public function resizeBlob($image, $width = 400, $height = 400) {
 		// load an image
@@ -460,12 +458,10 @@ class Images extends MY_Base_Controller {
 		    $i->cropImage(ceil($width*$geo['height']/$height), $geo['height'], (($geo['width']-($width*$geo['height']/$height))/2), 0);
 		}
 
-
     	$i->thumbnailImage($width, $height, true);
 		return $i->getImagesBlob();
 		// $i->writeImage(realpath($img_path));
 	}
-
 
 	//image upload
 	public function upload_img_base64() {
@@ -517,12 +513,9 @@ class Images extends MY_Base_Controller {
 			'img_thumb' => $img_content
 		), $last_id);
 
-
 		$this -> to_json($res);
 
   }
-
-
 
 }
 ?>
