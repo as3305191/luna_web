@@ -424,18 +424,19 @@ class Patent extends MY_Mgmt_Controller {
 			$obj = $this -> img_dao -> find_by_id($item->img_id);
 			if(!empty($obj)) {
 	
-				$img = (empty($is_thumb) ? $obj -> img : $obj -> img_thumb);
-				$base64_img = $this -> imgToBase64($img);
+				$img = $obj -> img_thumb;
+				$base64_img = $this -> imgToBase64(base64_decode($img));
 				$path = $obj -> img_path;
 				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
 				$m_dir = IMG_DIR . "$path/";
 				$img_name = $obj -> image_name;
 				$img_path = $m_dir . $img_name;
 				$base64_string= explode(',', $base64_img);
-				if(!file_exists($img_path)) {
+				if(!file_exists($m_dir)) {
+					mkdir($m_dir);
 					$base64_string= explode(',', $base64_string); 
 					$data= base64_decode($base64_string[1]);
-					file_put_contents($img_path, $data);
+					file_put_contents($m_dir, $data);
 				}
 				
 				$body_table->addCell(4000,null,4)->addImage($img_path, array('width'=>100,null,'height'=>100,'align'=>'right'));
