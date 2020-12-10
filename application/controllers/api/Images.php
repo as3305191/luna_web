@@ -512,9 +512,7 @@ class Images extends MY_Base_Controller {
 		$this -> dao -> update(array(
 			'img_thumb' => $img_content
 		), $last_id);
-
 		$this -> to_json($res);
-
   }
 
 }
