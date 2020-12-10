@@ -439,10 +439,6 @@ class Images extends MY_Base_Controller {
 			$this -> to_json($json_data);
 		}
 
-
-
-
-
 	}
 
 
