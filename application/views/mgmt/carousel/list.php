@@ -69,10 +69,10 @@
 <script src="<?= base_url('js/libs/jquery-2.1.1.min.js') ?>"></script>
 <script src="<?= base_url("vendor/OwlCarousel2-2.3.4/dist/owl.carousel.min.js") ?>"></script>
 <script type="text/javascript">
-var counter = parseFloat('<?= $during_now_s?>');
-var counter_m = parseFloat('<?= $during_m_now_s?>');
-var counter_today = parseFloat('<?= $during_today_now_s?>');
-var cost = parseFloat('<?= $cost?>');
+var counter = parseFloat('<?= isset($during_now_s) ? $during_now_s : ''?>');
+var counter_m = parseFloat('<?=isset($during_m_now_s) ? $during_m_now_s : ''?>');
+var counter_today = parseFloat('<?= isset($during_today_now_s) ? $during_today_now_s : ''?>');
+var cost = parseFloat('<?= isset($cost) ? $cost : ''?>');
 
   function count_cost(){
         parseFloat(counter+=cost);

@@ -15,6 +15,7 @@ class Carousel extends MY_Mgmt_Controller {
 		$data = array();
 		$items= $this -> news_dao -> find_carousel();
 		$data['items']= $items;
+
 		$today = date("Y-m-d");
 		$this_year_first_day = date("Y")."-01-01";
 		$this_month_first_day = date("Y-m")."-01";
@@ -50,6 +51,15 @@ class Carousel extends MY_Mgmt_Controller {
 		$data['during_now_s'] = ((($during_now-intval($total_years_weekends))*28800)+$today_total_s)*$cost;
 		$data['during_m_now_s'] =((((intval($this_month_during_today)-1)-intval($total_month_weekends))*28800)+$today_total_s)*$cost;
 		$data['during_today_now_s'] = $today_total_s*$cost;
+		// $this -> to_json($data);
+		$this->load->view('mgmt/carousel/list', $data);
+	}
+
+	public function sales(){
+		$data = array();
+		$items= $this -> news_dao -> find_carousel_sales();
+
+		$data['items']= $items;
 		// $this -> to_json($data);
 		$this->load->view('mgmt/carousel/list', $data);
 	}
