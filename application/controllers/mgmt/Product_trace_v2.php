@@ -54,7 +54,7 @@ class Product_trace_v2 extends MY_Base_Controller {
 			 !empty($data['trace_batch']) ||
 			 !empty($data['container_sn'])||
 			 !empty($data['sn'])
-		 ) {
+		){
 			 	$items = $this -> production_service -> sum_order_record($data);
 				$map  = array();
 		 		foreach($items  as $each) {
@@ -200,17 +200,13 @@ class Product_trace_v2 extends MY_Base_Controller {
 				iconv("UTF-8","Big5//IGNORE","產成率"),
 				$sum_weight_3
 
-
 			);
 			fputcsv($f, $lineData, $delimiter);
-
 			//move back to beginning of file
-    	fseek($f, 0);
-
+    		fseek($f, 0);
 			//set headers to download file rather than displayed
 		  header('Content-Type: text/csv');
 		  header('Content-Disposition: attachment; filename="' . $filename . '";');
-
 			//output all remaining data on a file pointer
 			fpassthru($f);
 	}
