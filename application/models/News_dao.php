@@ -45,7 +45,6 @@ class News_dao extends MY_Model {
 		$columns = $data['columns'];
 		$search = $data['search'];
 		$order = $data['order'];
-
 		// select
 		$this -> db -> select('_m.*');
 		$this -> db -> select('ns.news_style as news_style');
