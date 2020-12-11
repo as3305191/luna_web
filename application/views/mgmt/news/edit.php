@@ -12,7 +12,6 @@
 				<i class="fa fa-arrow-circle-left"></i>返回
 			</a>
 		</div>
-		
 	</header>
 
 	<!-- widget div-->
