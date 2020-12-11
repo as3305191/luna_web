@@ -137,7 +137,7 @@ class Product_trace_v2 extends MY_Base_Controller {
 			fputcsv($f, $fields, $delimiter);
 
 			$data = $this -> session -> userdata("Product_trace_data");
-      $result = $items = $this -> production_service -> sum_order_record($data);
+      		$result = $items = $this -> production_service -> sum_order_record($data);
 			$map  = array();
 			foreach($items  as $each) {
 				$each -> sum_weight_0 = $this -> order_product_dao -> sum_acutal_weight_by_type($each -> order_id, 0);
@@ -147,9 +147,9 @@ class Product_trace_v2 extends MY_Base_Controller {
 					$map[$key] = TRUE;
 					// bypass empty
 				}	else {
-						// empty weight
-						$each-> sum_weight="0";
-					}
+					// empty weight
+					$each-> sum_weight="0";
+				}
 			}
 
 			$sum_weight = 0;
@@ -157,8 +157,6 @@ class Product_trace_v2 extends MY_Base_Controller {
 			$sum_weight_2 = 0;
 			foreach($result as $each) {
 				$lineData = array(
-
-
 					$each -> create_date,
 					iconv("UTF-8","Big5//IGNORE",$each -> type == 2 ? '成品' : '原料'),
 					$each -> container_sn,
@@ -167,7 +165,6 @@ class Product_trace_v2 extends MY_Base_Controller {
 					iconv("UTF-8","Big5//IGNORE",$each -> product_name),
 					$each -> psn,
 					$each -> trace_batch,
-
 					number_format((float)($each -> sum_weight_0 > 0 ? ($each -> sum_weight_2 / $each -> sum_weight_0) : ''), 2, '.', ''),
 					$each -> p_lot_number,
 					iconv("UTF-8","Big5//IGNORE",$each -> p_name),
@@ -176,7 +173,6 @@ class Product_trace_v2 extends MY_Base_Controller {
 					$each -> actual_weight
 
 				);
-
 
 				$sum_weight_0 += floatval($each -> sum_weight);
 				$sum_weight_2 += floatval($each -> actual_weight);
