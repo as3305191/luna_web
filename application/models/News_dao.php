@@ -18,7 +18,6 @@ class News_dao extends MY_Model {
 		// select
 		$this -> db -> select('_m.*');
 
-
 		//	limit
 		if(empty($f['page'])) {
 			$page = 0;

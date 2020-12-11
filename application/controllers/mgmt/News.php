@@ -62,5 +62,4 @@ class News extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/news/edit', $data);
 	}
 
-
 }
