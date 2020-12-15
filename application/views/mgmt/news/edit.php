@@ -25,7 +25,7 @@
 
 		<!-- widget content -->
 		<div class="widget-body">
-			<form id="img-upload-form" method="post" style="display: none;" enctype="multipart/form-data">
+			<form id="img-upload-form" method="post" style="display:none;" enctype="multipart/form-data">
 				<input type="file" name="file" id="file" />
 			</form>
 
