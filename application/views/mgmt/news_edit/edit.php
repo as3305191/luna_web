@@ -114,13 +114,12 @@
 <script>
 	var news_style = false;
 	news_style='<?= isset($item) ? $item -> news_style_id : 0?>';
-	
+
 	function reCreateBootstrapValidator() {
 		if (null != g_bootstrap_validator) {
 			$("#app-edit-form").data('bootstrapValidator').destroy();
 			$('#app-edit-form').data('bootstrapValidator', null);
 		}
-
 		g_bootstrap_validator = $('#app-edit-form').bootstrapValidator({
 			feedbackIcons : {
 				valid : 'glyphicon glyphicon-ok',
