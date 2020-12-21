@@ -10,7 +10,6 @@ class News extends MY_Mgmt_Controller {
 		$this -> load -> model('News_style_dao', 'news_style_dao');
 		$this -> load -> model('Img_month_use_dao', 'img_month_use_dao');		
 		$this -> load -> model('Img_month_use_record_dao', 'img_month_use_record_dao');		
-
 	}
 
 	public function index()
