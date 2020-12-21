@@ -28,10 +28,8 @@
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
-
 							</div>
 							<!-- end widget edit box -->
-
 							<!-- widget content -->
 							<div class="widget-body no-padding">
 
@@ -59,23 +57,16 @@
 									<tbody>
 									</tbody>
 								</table>
-
 							</div>
 							<!-- end widget content -->
-
 						</div>
 						<!-- end widget div -->
-
 					</div>
 					<!-- end widget -->
-
 				</article>
 				<!-- WIDGET END -->
-
 			</div>
-
 			<!-- end row -->
-
 		</section>
 		<!-- end widget grid -->
 	</div>
