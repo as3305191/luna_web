@@ -27,5 +27,4 @@ class Calendar extends MY_Mgmt_Controller {
 		// String, default: "W";
 	}
 
-
 }
