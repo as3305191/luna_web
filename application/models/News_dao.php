@@ -123,5 +123,33 @@ class News_dao extends MY_Model {
 		return $list;
 	}
 	
+	function query_news($data,$is_count = FALSE) {
+		$start = $data['start'];
+		$limit = $data['length'];
+
+		// select
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> select('ns.news_style as news_style');
+
+		$this -> ajax_from_join();
+
+		$this -> search_always($data);
+		// $this -> db -> join("users u", "u.id = _m.fix_user_id", "left");
+		$this -> db -> where("_m.news_style_id <>","3");
+		$this -> db -> where("_m.news_style_id <>","7");
+		$this -> db -> where("_m.news_style_id <>","8");
+		if(!$is_count) {
+			$this -> db -> limit($limit, $start);
+		}
+		// query results
+		if(!$is_count) {
+			$query = $this -> db -> get();
+			return $query -> result();
+		} else {
+			return $this -> db -> count_all_results();
+		}
+	}
+
 }
 ?>

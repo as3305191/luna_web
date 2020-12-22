@@ -29,12 +29,10 @@ class News extends MY_Mgmt_Controller {
 			'order',
 			's_news_style',
 		));
-		// set corp id
-		$s_data = $this -> setup_user_data(array());
-		$items = $this -> dao -> query_ajax($data);
-		$res['items'] = $items;
-		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
-		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
+		$res['items'] = $this -> dao -> query_news($data);
+	
+		$res['recordsFiltered'] = $this -> dao -> query_news($data, TRUE);
+		$res['recordsTotal'] = $this -> dao -> query_news($data, TRUE);
 		$this -> to_json($res);
 	}
 
