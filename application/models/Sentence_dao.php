@@ -13,10 +13,8 @@ class Sentence_dao extends MY_Model {
 
 	}
 
-
 	function find_by_value(){
 		$this -> db -> from("$this->table_name as _m");
-
 		// select
 		$this -> db -> select('_m.*');
 		$this -> db -> order_by('rand()');
@@ -28,10 +26,9 @@ class Sentence_dao extends MY_Model {
 			$row = $query -> row();
 			return $row;
 		}
+
 		return NULL;
 	}
-
-
 
 }
 ?>
