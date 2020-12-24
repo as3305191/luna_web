@@ -20,10 +20,8 @@
 								</div>
 							</div>
 						</header>
-
 						<!-- widget div-->
 						<div>
-
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
@@ -96,7 +94,6 @@
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/news/list.js", function(){
 			currentApp = new newsAppClass(new BaseAppClass({}));
-			// currentApp.doEdit("<?=$id?>");
 		});
 	});
 </script>
