@@ -41,19 +41,25 @@
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">公告類別</label>
-						<?= isset($item) ? $item -> news_style : '' ?>
+						<div class="col-md-6">
+							<?= isset($item) ? $item -> news_style : '' ?>	
+						</div>
 					</div>
 				</fieldset>
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">標題</label>
-						<?= isset($item) ? $item -> title : '' ?>
+						<div class="col-md-6">
+							<?= isset($item) ? $item -> title : '' ?>
+						</div>
 					</div>
 				</fieldset>
 				<fieldset id='content_panel'>
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
-						<?= isset($item) ? $item -> content : '' ?>
+						<div class="col-md-6">
+							<?= isset($item) ? $item -> content : '' ?>
+						</div>
 					</div>
 				</fieldset>
 			</form>
