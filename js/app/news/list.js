@@ -14,9 +14,9 @@ var newsAppClass = (function(app) {
 			},
 
 			columns : [{
-				data : 'article_name'
-			},  {
-				data : 'abstract'
+				data : 'news_style'
+			}, {
+				data : 'title'
 			}, {
 				data : 'create_time'
 			}],
