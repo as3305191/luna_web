@@ -36,27 +36,27 @@ class News extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	// public function edit($id) {
-	// 	$data = array();
-	// 	$data['id'] = $id;
-	// 	if(!empty($id)) {
-	// 		$q_data = $this -> get_posts(array(
-	// 			'length',
-	// 			'start',
-	// 			'columns',
-	// 			'search',
-	// 			'order'
-	// 		));
-	// 		$q_data['id'] = $id;
-	// 		$list = $this -> dao -> query_ajax($q_data);
-	// 		$item = $list[0];
-	// 		if(!empty($item -> image_id)) {
-	// 			$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
-	// 		}
+	public function edit($id) {
+		$data = array();
+		$data['id'] = $id;
+		if(!empty($id)) {
+			$q_data = $this -> get_posts(array(
+				'length',
+				'start',
+				'columns',
+				'search',
+				'order'
+			));
+			$q_data['id'] = $id;
+			$list = $this -> dao -> query_news($q_data);
+			$item = $list[0];
+			// if(!empty($item -> image_id)) {
+			// 	$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
+			// }
 
-	// 		$data['item'] = $item;
-	// 	}
-	// 	$this->load->view('mgmt/news/edit', $data);
-	// }
+			$data['item'] = $item;
+		}
+		$this->load->view('mgmt/news/edit', $data);
+	}
 
 }
