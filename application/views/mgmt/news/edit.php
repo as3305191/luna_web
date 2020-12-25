@@ -35,7 +35,6 @@
 			<form id="img-upload-form" method="post" style="display: none;" enctype="multipart/form-data">
 				<input type="file" name="file" id="file" />
 			</form>
-
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<fieldset>
