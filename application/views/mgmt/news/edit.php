@@ -54,8 +54,6 @@
 						</div>
 					</div>
 				</fieldset>
-			
-			
 				<fieldset id='content_panel'>
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
