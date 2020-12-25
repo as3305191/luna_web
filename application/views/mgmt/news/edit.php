@@ -41,7 +41,7 @@
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">公告類別</label>
-						<div class="col-md-6">
+						<div class="col-md-6 control-label">
 							<?= isset($item) ? $item -> news_style : '' ?>
 						</div>
 					</div>
@@ -49,7 +49,7 @@
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">標題</label>
-						<div class="col-md-6">
+						<div class="col-md-6 control-label">
 							<?= isset($item) ? $item -> title : '' ?>
 						</div>
 					</div>
@@ -57,7 +57,7 @@
 				<fieldset id='content_panel'>
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
-						<div class="col-md-9">
+						<div class="col-md-9 control-label">
 							<?= isset($item) ? $item -> content : '' ?>
 						</div>
 					</div>
