@@ -128,7 +128,6 @@ class News_dao extends MY_Model {
 		$limit = $data['length'];
 
 		// select
-		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> select('ns.news_style as news_style');
 
