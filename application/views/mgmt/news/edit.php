@@ -2,7 +2,9 @@
 /* .file-drag-handle {
 	display: none;
 } */
-
+.none {
+	display: none;
+}
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
@@ -10,6 +12,11 @@
 		<div class="widget-toolbar pull-left">
 			<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo()" class="btn btn-default ">
 				<i class="fa fa-arrow-circle-left"></i>返回
+			</a>
+		</div>
+		<div class="widget-toolbar pull-left">
+			<a href="javascript:void(0);" id="" onclick="do_save();" class="btn btn-default btn-danger">
+				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
 	</header>
@@ -25,7 +32,7 @@
 
 		<!-- widget content -->
 		<div class="widget-body">
-			<form id="img-upload-form" method="post" style="display:none;" enctype="multipart/form-data">
+			<form id="img-upload-form" method="post" style="display: none;" enctype="multipart/form-data">
 				<input type="file" name="file" id="file" />
 			</form>
 
@@ -35,9 +42,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">公告類別</label>
 						<div class="col-md-6">
-							<select id="news_style" class="form-control">
-								<!-- option from javascript -->
-							</select>
+							<?= isset($item) ? $item -> news_style : '' ?>
 						</div>
 					</div>
 				</fieldset>
@@ -49,6 +54,8 @@
 						</div>
 					</div>
 				</fieldset>
+			
+			
 				<fieldset id='content_panel'>
 					<div class="form-group">
 						<label class="col-md-3 control-label">內容</label>
@@ -82,3 +89,4 @@
 		border: 1px solid #BCBCBC;
 	}
 </style>
+
