@@ -39,7 +39,7 @@
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">公告類別</label>
+						<label class="col-md-3">公告類別</label>
 						<div class="col-md-6">
 							<?= isset($item) ? $item -> news_style : '' ?>	
 						</div>
@@ -47,16 +47,15 @@
 				</fieldset>
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">標題
-							<div class="col-md-6">
-								<?= isset($item) ? $item -> title : '' ?>
-							</div>
-						</label>
+						<label class="col-md-3">標題</label>
+						<div class="col-md-6">
+							<?= isset($item) ? $item -> title : '' ?>
+						</div>
 					</div>
 				</fieldset>
 				<fieldset id='content_panel'>
 					<div class="form-group">
-						<label class="col-md-3 control-label">內容</label>
+						<label class="col-md-3">內容</label>
 						<div class="col-md-6">
 							<?= isset($item) ? $item -> content : '' ?>
 						</div>
