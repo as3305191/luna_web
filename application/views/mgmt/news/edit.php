@@ -47,10 +47,11 @@
 				</fieldset>
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">標題</label>
-						<div class="col-md-6">
-							<?= isset($item) ? $item -> title : '' ?>
-						</div>
+						<label class="col-md-3 control-label">標題
+							<div class="col-md-6">
+								<?= isset($item) ? $item -> title : '' ?>
+							</div>
+						</label>
 					</div>
 				</fieldset>
 				<fieldset id='content_panel'>
