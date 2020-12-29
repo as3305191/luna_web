@@ -6,8 +6,8 @@
 	display: none;
 }
 p img{
-	width:600;
-	height:600;
+	width:600 !important; 
+	height:600 !important;
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
