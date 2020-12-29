@@ -6,7 +6,7 @@
 	display: none;
 }
 fieldset img{
-	width:600px !important; 
+	width:800px !important; 
 	height:600px !important;
 }
 </style>
