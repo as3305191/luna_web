@@ -6,8 +6,8 @@
 	display: none;
 }
 fieldset img{
-	width:600 !important; 
-	height:600 !important;
+	width:600px !important; 
+	height:600px !important;
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
