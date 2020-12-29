@@ -5,7 +5,7 @@
 .none {
 	display: none;
 }
-p img{
+fieldset img{
 	width:600 !important; 
 	height:600 !important;
 }
