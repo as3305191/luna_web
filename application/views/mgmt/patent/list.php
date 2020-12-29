@@ -159,7 +159,7 @@
 		data : 'image',
 		render: function(d,t,r){
 			if(d>0){
-				var html = '<img src="'+baseUrl+'api/images/get/'+d+'/thumb" style="max-height:200px;max-width:200px" >';
+				var html = '<img src="'+baseUrl+'api/images/get/'+d+'/thumb" loading="lazy" style="max-height:200px;max-width:200px" >';
 				return html;
 			} else{
 				return '';
