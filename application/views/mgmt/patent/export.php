@@ -21,10 +21,10 @@
 	<table  class="table table-striped table-bordered table-hover" width="70%">
 		<thead>
 			<tr>
-				<th class="min100" style="text-align:center;vertical-align:middle;">專利詳細資訊</th>
+				<th class="min100" colspan="5" style="text-align:center;vertical-align:middle;">專利詳細資訊</th>
 			</tr>
 			<tr>
-				<th class="min100" style="text-align:right">專利家族代碼:<?= isset($item) ? $item -> patent_family : '' ?></th>
+				<th class="min100" colspan="5" style="text-align:right">專利家族代碼:<?= isset($item) ? $item -> patent_family : '' ?></th>
 			</tr>
 		</thead>
 		<tbody>
