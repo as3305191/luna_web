@@ -770,10 +770,10 @@ if (!function_exists('delimiter2br')) {
 if (!function_exists('mail_config')) {
 	function mail_config() {
 		$config = Array('protocol' => 'smtp',
-		'smtp_host' => 'ssl://smtp.googlemail.com',
-		'smtp_port' => 465,
-		'smtp_user' => 'ytc3000000@gmail.com',
-		'smtp_pass' => 'ytcytc0857',
+		'smtp_host' => '192.168.1.246',
+		'smtp_port' => 25,
+		'smtp_user' => 'inf@kwantex.com',
+		'smtp_pass' => '935m4TMw8Q',
 		'mailtype' => 'html',
 		'charset' => 'UTF-8');
 		return $config;
