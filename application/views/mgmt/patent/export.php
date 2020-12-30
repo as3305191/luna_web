@@ -17,8 +17,8 @@
 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div  style="padding:50px 50px 50px 50px">
-	<table id="export_table_list" class="table table-striped table-bordered table-hover" width="70%">
+<div style="padding:50px 50px 50px 50px">
+	<table  class="table table-striped table-bordered table-hover" width="70%">
 		<thead>
 			<tr>
 				<th class="min100" colspan="5" style="text-align:center;vertical-align:middle;">專利詳細資訊</th>
