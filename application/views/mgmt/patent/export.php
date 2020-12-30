@@ -17,7 +17,7 @@
 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false" style="padding:50px 50px 50px 50px">
+<div  style="padding:50px 50px 50px 50px">
 	<table id="export_table_list" class="table table-striped table-bordered table-hover" width="70%">
 		<thead>
 			<tr>
