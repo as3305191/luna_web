@@ -32,11 +32,10 @@
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
-			<tr></tr>
+			<tr rowspan="5"><img src="<?= base_url("api/images/get/2/thumb") ?>" style="max-height:200px;max-width:200px" ></tr>
 		</tbody>
 		<tbody>
 			<tr>專利名稱</tr>
-			<tr></tr>
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
@@ -46,20 +45,17 @@
 			<tr></tr>
 			<tr>專利類別</tr>
 			<tr></tr>
-			<tr></tr>
 		</tbody>
 		<tbody>
 			<tr>申請號</tr>
 			<tr></tr>
 			<tr>申請日</tr>
 			<tr></tr>
-			<tr></tr>
 		</tbody>
 		<tbody>
 			<tr>公開號</tr>
 			<tr></tr>
 			<tr>公開日</tr>
-			<tr></tr>
 			<tr></tr>
 		</tbody>
 		<tbody>
