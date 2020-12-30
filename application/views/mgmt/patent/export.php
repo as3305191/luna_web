@@ -31,7 +31,7 @@
 			<tr>
 				<td>專利項目</td>
 				<td colspan="3"></td>
-				<td rowspan="5"><img src="<?= base_url("api/images/get/".$item->img_id[0]."/thumb") ?>" style="height:100%;width:100%" ></td>
+				<td rowspan="5"><img src="<?= base_url("api/images/get/".$item->img_id[0]."/thumb") ?>" style="height:500%;width:100%" ></td>
 			</tr>
 			<tr>
 				<td>專利名稱</td>
