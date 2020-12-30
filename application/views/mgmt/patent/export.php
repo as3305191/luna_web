@@ -29,7 +29,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td class="min100" >專利項目</td>
+				<td>專利項目</td>
 				<td colspan="3"></td>
 				<td rowspan="5"><img src="<?= base_url("api/images/get/".$item->img_id[0]."/thumb") ?>" style="max-height:600px;max-width:600px" ></td>
 			</tr>
