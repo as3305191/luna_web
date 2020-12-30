@@ -40,71 +40,61 @@
 			</tr>
 			<tr>
 				<td>專利國家</td>
-				<td></td>
+				<td><?= isset($country) ? $country -> country_name : '' ?></td>
 				<td>專利類別</td>
-				<td></td>
+				<td><?= isset($patnet_category) ? $patnet_category -> name : '' ?></td>
 			</tr>
 			<tr>
 				<td>申請號</td>
-				<td></td>
+				<td><?= isset($item) ? $item -> application_num : '' ?></td>
 				<td>申請日</td>
-				<td></td>
+				<td><?= isset($item) ? $item -> application_date : '' ?></td>
 			</tr>	
 			<tr>
 				<td>公開號</td>
-				<td></td>
+				<td><?= isset($item) ? $item -> public_num : '' ?></td>
 				<td>公開日</td>
-				<td></td>
+				<td><?= isset($item) ? $item -> public_date : '' ?></td>
 			</tr>
 			<tr>
 				<td>專利號</td>
-				<td></td>
+				<td><?= isset($item) ? $item -> patnet_num : '' ?></td>
 				<td>公告日</td>
-				<td colspan="2"></td>
+				<td colspan="2"><?= isset($item) ? $item -> announcement_date : '' ?></td>
 			</tr>
 			<tr>
 				<td>申請人</td>
-				<td></td>
+				<td><?= isset($item) ? $item -> applicant : '' ?></td>
 				<td>發明人</td>
-				<td colspan="2"></td>
+				<td colspan="2"><?= isset($item) ? $item -> inventor : '' ?></td>
 			</tr>
 			<tr>
 				<td>受讓人</td>
-				<td></td>
+				<td><?= isset($item) ? $item -> assignee : '' ?></td>
 				<td>專利狀態</td>
-				<td colspan="2"></td>
+				<td colspan="2">
+					<?php if($item -> patnet_status==1): ?>
+						有效
+					<?php elseif($item -> patnet_status==2): ?>
+						無效
+					<?php endif?>
+				</td>	
 			</tr>
 			<tr>
 				<td>專利授權期間</td>
-				<td colspan="2"></td>
+				<td colspan="2"><?= isset($item) ? $item -> patent_start_dt : '' ?>~<?= isset($item) ? $item -> patent_end_dt : '' ?></td>
 				<td>專利截止日</td>
-				<td></td>
+				<td><?= isset($item) ? $item -> patent_finish_date : '' ?></td>
 			</tr>
 			<tr>
 				<td>專利摘要</td>
-				<td colspan="4"></td>
-			
+				<td colspan="4"><?= isset($item) ? $item -> patent_note : '' ?></td>
 			</tr>
 			<tr>
 				<td>專利範圍</td>
-				<td colspan="4"></td>
-			
+				<td colspan="4"><?= isset($item) ? $item -> patent_range : '' ?></td>
 			</tr>
-			<tr>
-				<td>專利分析相關資訊</td>
-				<td colspan="4"></td>
-				
-			</tr>
-			<tr>
-				<td>專利家族</td>
-				<td colspan="4"></td>
-				
-			</tr>
-			<tr>
-				<td>關鍵字</td>
-				<td colspan="4"></td>
-
-			</tr>
+		
 		</tbody>
 	</table>
 </div>

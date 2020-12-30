@@ -622,11 +622,16 @@ class Patent extends MY_Mgmt_Controller {
 			}
 
 			$data['item'] = $item;
+			$data['country'] = $this -> country_dao -> find_by_id($item->patent_country);
+			if(!empty($item -> patnet_category)) {
+				$data['patnet_category'] = $this -> patent_category_dao -> find_by_id($item->patnet_category);
+			}else{
+				$data['patnet_category'] ="";
+			}
 		}
 		
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
-		$data['country'] = $this -> country_dao -> find_all();
 		// $this -> to_json($data);
 		$this->load->view('mgmt/patent/export', $data);
 	}
