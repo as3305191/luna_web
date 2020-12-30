@@ -425,7 +425,7 @@ class Patent extends MY_Mgmt_Controller {
 			if(!empty($obj)) {
 	
 				$img = $obj -> img_thumb;
-				$path = $obj -> img_path;
+				$path = $obj -> image_path;
 				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
 				$m_dir = IMG_DIR . "$path/";
 				$img_name = $obj -> image_name;
