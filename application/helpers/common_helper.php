@@ -770,7 +770,7 @@ if (!function_exists('delimiter2br')) {
 if (!function_exists('mail_config')) {
 	function mail_config() {
 		$config = Array('protocol' => 'smtp',
-		'smtp_host' => 'ssl://192.168.1.246',
+		'smtp_host' => '192.168.1.246',
 		'smtp_port' => 25,
 		'smtp_user' => 'inf@kwantex.com',
 		'smtp_pass' => '935m4TMw8Q',
