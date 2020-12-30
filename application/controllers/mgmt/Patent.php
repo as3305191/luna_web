@@ -327,211 +327,211 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json(array_reverse($res));
 	}
 
-	function export_all($id) {
-		// $id= $this -> get_post('id');
-		if($id>0){
-			$data['id'] = $id;
-			$list = $this -> dao -> query_ajax_export($data);
-			$item = $list[0];
-			if(!empty($item -> img_id)) {
-				$image= explode(",", $item -> img_id);
-				$item -> image_id =$image ;
-				foreach($image as $each){
-					$item -> image[] = $this -> img_dao -> find_by_id($each);
-				}
-			} else{
-				$item -> image='';
-			}
+	// function export_all($id) {
+	// 	// $id= $this -> get_post('id');
+	// 	if($id>0){
+	// 		$data['id'] = $id;
+	// 		$list = $this -> dao -> query_ajax_export($data);
+	// 		$item = $list[0];
+	// 		if(!empty($item -> img_id)) {
+	// 			$image= explode(",", $item -> img_id);
+	// 			$item -> image_id =$image ;
+	// 			foreach($image as $each){
+	// 				$item -> image[] = $this -> img_dao -> find_by_id($each);
+	// 			}
+	// 		} else{
+	// 			$item -> image='';
+	// 		}
 
-			if(!empty($item -> files_id)) {
-				$files = explode(",", $item -> files_id);
-				$item -> pdf_array =$files;
-				foreach($files as $each){
-					$file_list = $this -> file_dao -> find_by_id($each);
-					foreach($file_list as $each_list){
-						$item -> files[] = $each_list->file_name;
-					}
-				}
-			} else{
-				$item -> files='';
-			}
-			if(!empty($item -> public_num_file)) {
-				$public_number = explode(",", $item -> public_num_file);				
-				$item -> public_num_input =$public_number;
-				foreach($public_number as $each){
-					$item -> public_number[] = $this -> file_dao -> find_by_id($each);
-				}
-			}else{
-				$item -> public_number='';
-			}
+	// 		if(!empty($item -> files_id)) {
+	// 			$files = explode(",", $item -> files_id);
+	// 			$item -> pdf_array =$files;
+	// 			foreach($files as $each){
+	// 				$file_list = $this -> file_dao -> find_by_id($each);
+	// 				foreach($file_list as $each_list){
+	// 					$item -> files[] = $each_list->file_name;
+	// 				}
+	// 			}
+	// 		} else{
+	// 			$item -> files='';
+	// 		}
+	// 		if(!empty($item -> public_num_file)) {
+	// 			$public_number = explode(",", $item -> public_num_file);				
+	// 			$item -> public_num_input =$public_number;
+	// 			foreach($public_number as $each){
+	// 				$item -> public_number[] = $this -> file_dao -> find_by_id($each);
+	// 			}
+	// 		}else{
+	// 			$item -> public_number='';
+	// 		}
 
-			if(!empty($item -> patnet_num_file)) {
-				$patnet_number = explode(",", $item -> patnet_num_file);
-				$item -> patnet_num_input =$patnet_number;
-				foreach($patnet_number as $each){
-					$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
-				}
-			}else{
-				$item -> patnet_number='';
-			}
+	// 		if(!empty($item -> patnet_num_file)) {
+	// 			$patnet_number = explode(",", $item -> patnet_num_file);
+	// 			$item -> patnet_num_input =$patnet_number;
+	// 			foreach($patnet_number as $each){
+	// 				$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
+	// 			}
+	// 		}else{
+	// 			$item -> patnet_number='';
+	// 		}
 
-			if(!empty($item -> patent_family)) {
-				$file_list = $this -> dao -> find_by_family($item -> patent_family,$item -> id);
-				foreach($file_list as $each){
-					if(!empty($each->public_num)){
-						$item -> all_family[] = $each->public_num;
-					} else{
-						$item -> all_family[] = $each->patnet_num;
-					}
-				}
+	// 		if(!empty($item -> patent_family)) {
+	// 			$file_list = $this -> dao -> find_by_family($item -> patent_family,$item -> id);
+	// 			foreach($file_list as $each){
+	// 				if(!empty($each->public_num)){
+	// 					$item -> all_family[] = $each->public_num;
+	// 				} else{
+	// 					$item -> all_family[] = $each->patnet_num;
+	// 				}
+	// 			}
 					
-			} else{
-				$item -> all_family='';
-			}
+	// 		} else{
+	// 			$item -> all_family='';
+	// 		}
 
-		} 
+	// 	} 
 	
-		$PHPWord = new PHPWord(); 
-		$PHPWord->setDefaultFontName('華康仿宋體'); 
-		// $section = $PHPWord->createSection();
-		$sectionStyle = array('orientation' => null,  'marginLeft' => 2000,  'marginRight' => 2000); //頁面設定
-		$section = $PHPWord->createSection($sectionStyle); //建立一個頁面
+	// 	$PHPWord = new PHPWord(); 
+	// 	$PHPWord->setDefaultFontName('華康仿宋體'); 
+	// 	// $section = $PHPWord->createSection();
+	// 	$sectionStyle = array('orientation' => null,  'marginLeft' => 2000,  'marginRight' => 2000); //頁面設定
+	// 	$section = $PHPWord->createSection($sectionStyle); //建立一個頁面
 
-		$header_Style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
-		$body_Style = array('borderSize'=>5, 'borderColor'=>'000000', 'cellMargin'=>80);
-		$footer_style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
+	// 	$header_Style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
+	// 	$body_Style = array('borderSize'=>5, 'borderColor'=>'000000', 'cellMargin'=>80);
+	// 	$footer_style = array('borderSize'=>5, 'borderColor'=>'ffffff', 'cellMargin'=>80);
 
-		$PHPWord->addTableStyle('white_tableStyle',$header_Style,null);
-		$PHPWord->addTableStyle('tableStyle',$body_Style,null);
-		$PHPWord->addTableStyle('footer_tableStyle',$footer_style,null);
+	// 	$PHPWord->addTableStyle('white_tableStyle',$header_Style,null);
+	// 	$PHPWord->addTableStyle('tableStyle',$body_Style,null);
+	// 	$PHPWord->addTableStyle('footer_tableStyle',$footer_style,null);
 
-		$header_table = $section->addTable('white_tableStyle');
-		$body_table = $section->addTable('tableStyle');
-		$footer_table = $section->addTable('footer_tableStyle');
+	// 	$header_table = $section->addTable('white_tableStyle');
+	// 	$body_table = $section->addTable('tableStyle');
+	// 	$footer_table = $section->addTable('footer_tableStyle');
 		
-		//$picture_table = $section->addTable();
+	// 	//$picture_table = $section->addTable();
 
-		$header_table->addRow();
-		$header_table->addCell(5000,null,5)->addText('專利詳細資訊',array('bold' => true, 'size'=>20),array('align'=>'center'));
+	// 	$header_table->addRow();
+	// 	$header_table->addCell(5000,null,5)->addText('專利詳細資訊',array('bold' => true, 'size'=>20),array('align'=>'center'));
 		
-		$header_table->addRow();
-		$header_table->addCell(5000,null,5)->addText('專利家族代碼:'.$item->patent_family,array('size'=>10),array('align'=>'right', 'size'=>16));
+	// 	$header_table->addRow();
+	// 	$header_table->addCell(5000,null,5)->addText('專利家族代碼:'.$item->patent_family,array('size'=>10),array('align'=>'right', 'size'=>16));
 		
-		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('項目類別',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,4)->addText("1",null);
-		if (!empty($item->img_id)) {
-			$obj = $this -> img_dao -> find_by_id($item->img_id);
-			if(!empty($obj)) {
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,null,1)->addText('項目類別',null,array('align'=>'center'));
+	// 	$body_table->addCell(4000,null,4)->addText("1",null);
+	// 	if (!empty($item->img_id)) {
+	// 		$obj = $this -> img_dao -> find_by_id($item->img_id);
+	// 		if(!empty($obj)) {
 	
-				$img = $obj -> img_thumb;
-				$base64_img = $this -> imgToBase64(base64_decode($img));
-				$path = $obj -> img_path;
-				// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
-				$m_dir = IMG_DIR . "$path/";
-				$img_name = $obj -> image_name;
+	// 			$img = $obj -> img_thumb;
+	// 			$base64_img = $this -> imgToBase64(base64_decode($img));
+	// 			$path = $obj -> img_path;
+	// 			// header("Content-Disposition: attachment; filename=" . $obj -> image_name);
+	// 			$m_dir = IMG_DIR . "$path/";
+	// 			$img_name = $obj -> image_name;
 			
-				$base64_string= explode(',', $base64_img);
-				if(!file_exists($m_dir)) {
-					mkdir($m_dir);
-					$base64_string= explode(',', $base64_string); 
-					$data= base64_decode($base64_string[1]);
-					file_put_contents($m_dir, $data);
-				}
-				$img_path = $m_dir . $img_name;
+	// 			$base64_string= explode(',', $base64_img);
+	// 			if(!file_exists($m_dir)) {
+	// 				mkdir($m_dir);
+	// 				$base64_string= explode(',', $base64_string); 
+	// 				$data= base64_decode($base64_string[1]);
+	// 				file_put_contents($m_dir, $data);
+	// 			}
+	// 			$img_path = $m_dir . $img_name;
 
-				$body_table->addCell(4000,null,4)->addImage($img_path, array('width'=>100,null,'height'=>100,'align'=>'right'));
-			}
-		}
-		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'restart'))->addText('1');
-		$body_table->addCell(1000,null,1)->addText('專利名稱',null,array('align'=>'center'));
-		$body_table->addCell(3000,null,3)->addText($item->patent_name,null);
+	// 			$body_table->addCell(4000,null,4)->addImage($img_path, array('width'=>100,null,'height'=>100,'align'=>'right'));
+	// 		}
+	// 	}
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,array('vMerge' => 'restart'))->addText('1');
+	// 	$body_table->addCell(1000,null,1)->addText('專利名稱',null,array('align'=>'center'));
+	// 	$body_table->addCell(3000,null,3)->addText($item->patent_name,null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
-		$body_table->addCell(1000,null,1)->addText('專利名稱(英)',null,array('align'=>'center'));
-		$body_table->addCell(3000,null,3)->addText($item->patent_name_eng,null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,array('vMerge' => 'continue'));
+	// 	$body_table->addCell(1000,null,1)->addText('專利名稱(英)',null,array('align'=>'center'));
+	// 	$body_table->addCell(3000,null,3)->addText($item->patent_name_eng,null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
-		$body_table->addCell(1000,null,1)->addText('專利國家',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->patent_country,null);
-		$body_table->addCell(1000,null,1)->addText('專利類別',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->patnet_type,null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,array('vMerge' => 'continue'));
+	// 	$body_table->addCell(1000,null,1)->addText('專利國家',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->patent_country,null);
+	// 	$body_table->addCell(1000,null,1)->addText('專利類別',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->patnet_type,null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
-		$body_table->addCell(1000,null,1)->addText('申請號',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->application_num,null);
-		$body_table->addCell(1000,null,1)->addText('申請日',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->application_date,null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,array('vMerge' => 'continue'));
+	// 	$body_table->addCell(1000,null,1)->addText('申請號',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->application_num,null);
+	// 	$body_table->addCell(1000,null,1)->addText('申請日',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->application_date,null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
-		$body_table->addCell(1000,null,1)->addText('公開號',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->public_num,null);
-		$body_table->addCell(1000,null,1)->addText('公開日',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->public_date,null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,array('vMerge' => 'continue'));
+	// 	$body_table->addCell(1000,null,1)->addText('公開號',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->public_num,null);
+	// 	$body_table->addCell(1000,null,1)->addText('公開日',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->public_date,null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
-		$body_table->addCell(1000,null,1)->addText('專利號',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->patnet_num,null);
-		$body_table->addCell(1000,null,1)->addText('公告日',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->announcement_date,null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,array('vMerge' => 'continue'));
+	// 	$body_table->addCell(1000,null,1)->addText('專利號',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->patnet_num,null);
+	// 	$body_table->addCell(1000,null,1)->addText('公告日',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->announcement_date,null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
-		$body_table->addCell(1000,null,1)->addText('申請人',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->applicant,null);
-		$body_table->addCell(1000,null,1)->addText('發明人',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->inventor,null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,array('vMerge' => 'continue'));
+	// 	$body_table->addCell(1000,null,1)->addText('申請人',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->applicant,null);
+	// 	$body_table->addCell(1000,null,1)->addText('發明人',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->inventor,null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,array('vMerge' => 'continue'));
-		$body_table->addCell(1000,null,1)->addText('受讓人',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->assignee,null);
-		$body_table->addCell(1000,null,1)->addText('專利狀態',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->patnet_status,null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,array('vMerge' => 'continue'));
+	// 	$body_table->addCell(1000,null,1)->addText('受讓人',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->assignee,null);
+	// 	$body_table->addCell(1000,null,1)->addText('專利狀態',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->patnet_status,null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('專利權期間',null,array('align'=>'center'));
-		$body_table->addCell(2000,null,2)->addText($item->patent_start_dt.'~'.$item->patent_end_dt,null);
-		$body_table->addCell(1000,null,1)->addText('專利權止日',null,array('align'=>'center'));
-		$body_table->addCell(1000,null,1)->addText($item->patent_finish_date,null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,null,1)->addText('專利權期間',null,array('align'=>'center'));
+	// 	$body_table->addCell(2000,null,2)->addText($item->patent_start_dt.'~'.$item->patent_end_dt,null);
+	// 	$body_table->addCell(1000,null,1)->addText('專利權止日',null,array('align'=>'center'));
+	// 	$body_table->addCell(1000,null,1)->addText($item->patent_finish_date,null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('專利摘要',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,4)->addText($item->patent_note,null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,null,1)->addText('專利摘要',null,array('align'=>'center'));
+	// 	$body_table->addCell(4000,null,4)->addText($item->patent_note,null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('專利範圍',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,4)->addText($item->patent_range,null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,null,1)->addText('專利範圍',null,array('align'=>'center'));
+	// 	$body_table->addCell(4000,null,4)->addText($item->patent_range,null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('專利分析相關資訊',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,4)->addText(implode(",",$item->files),null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,null,1)->addText('專利分析相關資訊',null,array('align'=>'center'));
+	// 	$body_table->addCell(4000,null,4)->addText(implode(",",$item->files),null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('專利家族',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,4)->addText(implode(",",$item->all_family),null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,null,1)->addText('專利家族',null,array('align'=>'center'));
+	// 	$body_table->addCell(4000,null,4)->addText(implode(",",$item->all_family),null);
 
-		$body_table->addRow();
-		$body_table->addCell(1000,null,1)->addText('關鍵字',null,array('align'=>'center'));
-		$body_table->addCell(4000,null,4)->addText($item->patent_key,null);
+	// 	$body_table->addRow();
+	// 	$body_table->addCell(1000,null,1)->addText('關鍵字',null,array('align'=>'center'));
+	// 	$body_table->addCell(4000,null,4)->addText($item->patent_key,null);
 		
-		$footer_table->addRow();
-		$footer_table->addCell(5000,null,5)->addText('更新日:'.$item->update_date,null);
+	// 	$footer_table->addRow();
+	// 	$footer_table->addCell(5000,null,5)->addText('更新日:'.$item->update_date,null);
 
-		$date = date('YmdHis');
-		$filename = $date."-專利詳細資訊.docx";
-		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
-		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
-		header('Cache-Control: max-age=0'); //no cache
-		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2007');
-		$objWriter->save('php://output');
-	}
+	// 	$date = date('YmdHis');
+	// 	$filename = $date."-專利詳細資訊.docx";
+	// 	header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
+	// 	header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+	// 	header('Cache-Control: max-age=0'); //no cache
+	// 	$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2007');
+	// 	$objWriter->save('php://output');
+	// }
 
 	function imgToBase64($img_file) {
 
@@ -562,5 +562,71 @@ class Patent extends MY_Mgmt_Controller {
 		}
 	
 		return $img_base64; 
+	}
+
+	public function export_all($id) {
+		$data = array();
+		$u_data = array();
+	
+		$data['id'] = $id;
+		if(!empty($id)) {
+			$q_data = $this -> get_posts(array(
+				'length',
+				'start',
+				'columns',
+				'search',
+				'order'
+			));
+			$q_data['id'] = $id;
+			$list = $this -> dao -> query_ajax($q_data);
+			$item = $list[0];
+			if(!empty($item -> img_id)) {
+				$image= explode(",", $item -> img_id);
+				$item -> image_id =$image ;
+				foreach($image as $each){
+					$item -> image[] = $this -> img_dao -> find_by_id($each);
+				}
+			} else{
+				$item -> image =array();
+			}
+
+			if(!empty($item -> files_id)) {
+				$files = explode(",", $item -> files_id);
+				$item -> pdf_array =$files;
+				foreach($files as $each){
+					$item -> files[] = $this -> file_dao -> find_by_id($each);
+				}
+			}else{
+				$item -> files =array();
+			}
+
+			if(!empty($item -> public_num_file)) {
+				$public_number = explode(",", $item -> public_num_file);				
+				$item -> public_num_input =$public_number;
+				foreach($public_number as $each){
+					$item -> public_number[] = $this -> file_dao -> find_by_id($each);
+				}
+			}else{
+				$item -> public_number =array();
+			}
+
+			if(!empty($item -> patnet_num_file)) {
+				$patnet_number = explode(",", $item -> patnet_num_file);
+				$item -> patnet_num_input =$patnet_number;
+				foreach($patnet_number as $each){
+					$item -> patnet_number[] = $this -> file_dao -> find_by_id($each);
+				}
+			}else{
+				$item -> patnet_number =array();
+			}
+
+			$data['item'] = $item;
+		}
+		
+		$u_data = $this -> setup_user_data($u_data);
+		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
+		$data['country'] = $this -> country_dao -> find_all();
+		// $this -> to_json($data);
+		$this->load->view('mgmt/patent/export', $data);
 	}
 }
