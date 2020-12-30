@@ -32,7 +32,7 @@
 			<tr></tr>
 			<tr></tr>
 			<tr></tr>
-			<tr rowspan="5"><img src="<?= base_url("api/images/get/".$item->image."/thumb") ?>" style="max-height:200px;max-width:200px" ></tr>
+			<tr rowspan="5"><img src="<?= base_url("api/images/get/".$item->img_id."/thumb") ?>" style="max-height:200px;max-width:200px" ></tr>
 		</tbody>
 		<tbody>
 			<tr>專利名稱</tr>
