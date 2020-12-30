@@ -439,7 +439,7 @@ class Patent extends MY_Mgmt_Controller {
 				}
 				$img_path = $m_dir . $img_name;
 
-				$body_table->addCell(4000,null,4)->addImage(base64_decode($img_path), array('width'=>100,null,'height'=>100,'align'=>'right'));
+				$body_table->addCell(4000,null,4)->addImage(base64_decode($img), array('width'=>100,null,'height'=>100,'align'=>'right'));
 			}
 		}
 
