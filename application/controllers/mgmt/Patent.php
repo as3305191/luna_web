@@ -584,10 +584,10 @@ class Patent extends MY_Mgmt_Controller {
 				$image= explode(",", $item -> img_id);
 				$item -> image_id =$image ;
 				foreach($image as $each){
-					$item -> image[] = $this -> img_dao -> find_by_id($each);
+					$item -> image[] = $image[0];
 				}
 			} else{
-				$item -> image =array();
+				$item -> image ='';
 			}
 
 			if(!empty($item -> files_id)) {
