@@ -95,7 +95,6 @@
 				<td>專利範圍</td>
 				<td colspan="4"><?= isset($item) ? $item -> patent_range : '' ?></td>
 			</tr>
-		
 		</tbody>
 	</table>
 </div>
