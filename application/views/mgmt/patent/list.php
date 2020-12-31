@@ -18,7 +18,7 @@
 					<div class="jarviswidget">
 						<header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
-							<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+							<?php if($login_user->role_id==52 ||$login_user->role_id==26||$login_user->role_id==24): ?>
 								<div class="widget-toolbar pull-left">
 									<div class="btn-group">
 										<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
@@ -184,7 +184,7 @@
 
 	var mOrderIdx = 5;
 
-	if($('#l_user_id').val()=='52' || $('#l_user_id').val()=='26' ){
+	if($('#l_user_id').val()=='52' || $('#l_user_id').val()=='26'|| $('#l_user_id').val()=='24' ){
 		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 	} else{
 		var defaultContent = '<a role="button" data-toggle="modal" style="margin-right: 5px;" ><i class="fa fa-trash fa-lg"></i></a>';

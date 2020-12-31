@@ -22,14 +22,14 @@
 				<i class="fa fa-arrow-circle-left"></i>返回
 			</a>
 		</div>
-		<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+		<?php if($login_user->role_id==52 ||$login_user->role_id==26||$login_user->role_id==24): ?>
 		<div class="widget-toolbar pull-left">
 			<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
 		<?php endif?>
-		<?php if($login_user->role_id==24): ?>
+		<?php if($login_user->role_id==52 ||$login_user->role_id==26||$login_user->role_id==24): ?>
 			<div class="widget-toolbar pull-right">
 				<div class="btn-group">
 					<button onclick="currentApp.doExportAll(<?=isset($item->id) && $item->id>0? $item -> id : ''?>)" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
@@ -428,7 +428,7 @@ $("#img-input").fileinput({
 			],
         	initialPreviewConfig: [
 			<?php foreach($item -> image as $img): ?>
-				<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+				<?php if($login_user->role_id==52 ||$login_user->role_id==26||$login_user->role_id==24): ?>
 				{
 						'caption' : '<?= $img -> image_name ?>',
 						'size' : <?= $img -> image_size ?>,
@@ -494,7 +494,7 @@ $("#img-input").fileinput({
         	],
         	initialPreviewConfig: [
         	<?php foreach($item -> files as $files): ?>
-			<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+			<?php if($login_user->role_id==52 ||$login_user->role_id==26||$login_user->role_id==24): ?>
 				{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
@@ -556,7 +556,7 @@ $("#img-input").fileinput({
 				<?php foreach($item -> public_number as $files): ?>
     	
 			
-			<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+			<?php if($login_user->role_id==52 ||$login_user->role_id==26||$login_user->role_id==24): ?>
 				{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
@@ -620,7 +620,7 @@ $("#img-input").fileinput({
 				<?php foreach($item -> patnet_number as $files): ?>
 
 			
-			<?php if($login_user->role_id==52 ||$login_user->role_id==26): ?>
+			<?php if($login_user->role_id==52 ||$login_user->role_id==26 ||$login_user->role_id==24): ?>
 				{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
@@ -853,7 +853,7 @@ function do_save() {
 						var i=0;
 						var html='';
 						for(i;i<=d.max;i++){
-							if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
+							if($('#role_id').val()=='52'||$('#role_id').val()=='26'||$('#role_id').val()=='24'){
 							
 
 								html+='<div class="widget-toolbar pull-left">'+
@@ -875,7 +875,7 @@ function do_save() {
 						$(html).appendTo($category);
 						$.each(d.category, function(){
 							var level = this.level;
-							if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
+							if($('#role_id').val()=='52'||$('#role_id').val()=='26'||$('#role_id').val()=='24'){
 								if($.inArray('patnet_status_'+level,current_app[0])>0){
 									if(current_app[0]['patnet_status_'+level] &&current_app[0]['patnet_status_'+level]==this.id){
 										$('<option />', {
@@ -951,7 +951,7 @@ function do_save() {
 										$category.append(category_option);
 										if(d.category){
 											$.each(d.category, function(){
-												if($('#role_id').val()=='52'||$('#role_id').val()=='26'){
+												if($('#role_id').val()=='52'||$('#role_id').val()=='26'||$('#role_id').val()=='24'){
 
 													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
 															$('<option />', {
