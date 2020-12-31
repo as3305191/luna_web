@@ -20,14 +20,15 @@
 <div style="padding:50px 50px 50px 50px">
 	<table  class="table table-striped table-bordered table-hover" width="70%">
 		<thead>
-			<tr>
-				<th class="min100" colspan="5" style="text-align:center;vertical-align:middle;">專利詳細資訊</th>
-			</tr>
-			<tr>
-				<th class="min100" colspan="5" style="text-align:center;vertical-align:middle;">專利家族代碼:<?= isset($item) ? $item -> patent_family : '' ?></th>
-			</tr>
+		
 		</thead>
 		<tbody>
+			<tr>
+				<td class="min100" colspan="5" style="text-align:center;vertical-align:middle;">專利詳細資訊</td>
+			</tr>
+			<tr>
+				<td class="min100" colspan="5" style="text-align:center;vertical-align:middle;">專利家族代碼:<?= isset($item) ? $item -> patent_family : '' ?></td>
+			</tr>
 			<tr>
 				<td class="min200">專利項目</td>
 				<td colspan="3"></td>
