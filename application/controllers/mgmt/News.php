@@ -83,13 +83,13 @@ class News extends MY_Mgmt_Controller {
 		$this->email->subject('歡迎使用本系統');
 		$this->email->message($msg);
 		$this->email->send();
-		if($this->email->send()){
-		    $res = "ok";
-		}else{
-		    $res = "faild";
-		}
+		// if($this->email->send()){
+		//     $res = "ok";
+		// }else{
+		//     $res = "faild";
+		// }
 
-		echo $res;
+		// echo $res;
 	}
 
 }
