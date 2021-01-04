@@ -769,13 +769,17 @@ if (!function_exists('delimiter2br')) {
 // gmail
 if (!function_exists('mail_config')) {
 	function mail_config() {
-		$config = Array('protocol' => 'smtp',
-		'smtp_host' => '192.168.1.246',
-		'smtp_port' => '25',
-		'smtp_user' => 'inf',
-		'smtp_pass' => '935m4TMw8Q',
-		'mailtype' => 'html',
-		'charset' => 'UTF-8');
+		$config = array(
+			'crlf'          => "\r\n",
+			'newline'       => "\r\n",
+			'charset'       => 'utf-8',
+			'protocol'      => 'smtp',
+			'mailtype'      => 'html',
+			'smtp_host'     => '192.168.1.246',
+			'smtp_port'     => '25',
+			'smtp_user'     => 'inf',
+			'smtp_pass'     => '935m4TMw8Q'
+		);
 		return $config;
 	}
 
