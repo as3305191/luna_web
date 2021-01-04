@@ -782,7 +782,6 @@ if (!function_exists('mail_config')) {
 		);
 		return $config;
 	}
-
 }
 
 // trim tel
