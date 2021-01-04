@@ -70,8 +70,8 @@ class News extends MY_Mgmt_Controller {
 		        'protocol'      => 'smtp',
 		        'mailtype'      => 'html',
 		        'smtp_host'     => '192.168.1.246',
-		        'smtp_port'     => '25',
-		        'smtp_user'     => 'inf@kwantex.com',
+		        'smtp_port'     => '900',
+		        'smtp_user'     => 'inf',
 		        'smtp_pass'     => '935m4TMw8Q'
 		);
 
