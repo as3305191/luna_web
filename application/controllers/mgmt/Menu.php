@@ -377,8 +377,6 @@ class Menu extends MY_Mgmt_Controller {
 								$meal_name = $last_meal_name;
 							}
 
-						
-
 							$grain_rhizomes = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 
 							$fish_eggs_l = $worksheet->getCellByColumnAndRow(6, $row)->getValue();//豆魚蛋肉類(低脂)
