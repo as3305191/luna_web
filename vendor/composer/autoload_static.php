@@ -48,6 +48,13 @@ class ComposerStaticInit7898d1a4ce4dc69b078635a4184f3426
     );
 
     public static $prefixesPsr0 = array (
+        'P' => 
+        array (
+            'PHPExcel' => 
+            array (
+                0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
+            ),
+        ),
         'I' => 
         array (
             'Imagick' => 
