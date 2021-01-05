@@ -27,9 +27,9 @@
 								<label>顯示有評分的項目<input id="s_multiple" type="checkbox" class="" value="" /></label>
 							</div>
 						
-							<div class="widget-toolbar pull-right" >
+							<!-- <div class="widget-toolbar pull-right" >
 								<a href="<?=base_url('files/test_menu_2.xlsx')?>" download class="btn btn-info" id="download_btn" >下載菜單範本</a>
-							</div>
+							</div> -->
 							<!-- <div class="widget-toolbar pull-right" >
 								<form method="post" id="import_form" enctype="multipart/form-data">
 									<label for="file" id="w_file" class="btn btn-outline-warning btn-xs" style="background-color:orange;">匯入菜單</label>
