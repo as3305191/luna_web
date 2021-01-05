@@ -63,7 +63,6 @@ class Menu extends MY_Mgmt_Controller {
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
-
 			$data['item'] = $item;
 		}
 
@@ -113,7 +112,6 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> dao -> delete($id);
 		$this -> to_json($res);
 	}
-
 
 	public function check_account($id) {
 		$account = $this -> get_post('account');
