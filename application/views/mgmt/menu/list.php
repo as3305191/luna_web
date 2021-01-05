@@ -70,9 +70,10 @@
 											<th><input class="form-control input-xs min100" type="text" /></th>
 											<th><input class="form-control input-xs min100" type="text" /></th>
 											<th><input class="form-control input-xs min100" type="text" /></th>
-								    </tr>
+								   		 </tr>
 									</thead>
 									<tbody>
+										
 									</tbody>
 								</table>
 
