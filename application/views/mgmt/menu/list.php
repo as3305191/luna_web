@@ -25,7 +25,7 @@
 							<div class="widget-toolbar pull-left">
 								<label>公司：</label>
 							</div>
-							<div class="widget-toolbar pull-left">
+							<!-- <div class="widget-toolbar pull-left">
 								<select name="" id="corp_id" class="">
 									<option value="-1">無</option>
 									<?php foreach($corp_list as $each): ?>
@@ -34,7 +34,7 @@
 								</select>
 								<span style="color:red;display:none" id="waring">請先選擇菜單所屬的公司</span>
 
-							</div>
+							</div> -->
 
 							<?php endif; ?>
 							<div class="widget-toolbar pull-left">
@@ -68,7 +68,7 @@
 
 							</div>
 							<!-- end widget edit box -->
-							<input type="hidden" class="form-control"  name="user_id" value="<?= isset($login_user) ? $login_user->corp_id : '' ?>"  />
+							<!-- <input type="hidden" class="form-control"  name="user_id" value="<?= isset($login_user) ? $login_user->corp_id : '' ?>"  /> -->
 							<input type="hidden" class="form-control" id="user_id" name="user_id" value="<?= isset($login_user) ? $login_user->id : '' ?>"  />
 							<input type="hidden"  id="role_id"  value="<?= isset($login_user) ? $login_user-> role_id : '' ?>"/>
 
@@ -211,80 +211,80 @@
 		});
 	});
 
-	$('#file').on('click', function(){
-    console.log('123');
-		var corp_id = $('#corp_id').val();
-		var role_id = $('#role_id').val();
-		if(role_id==107 && corp_id=='-1' ){
-			$('#waring').show();
-			return false;
-		} else{
-			$('#file').on('change', function(){
-				$('#import_form').submit();
-			})
-		}
-  })
+// 	$('#file').on('click', function(){
+//     console.log('123');
+// 		var corp_id = $('#corp_id').val();
+// 		var role_id = $('#role_id').val();
+// 		if(role_id==107 && corp_id=='-1' ){
+// 			$('#waring').show();
+// 			return false;
+// 		} else{
+// 			$('#file').on('change', function(){
+// 				$('#import_form').submit();
+// 			})
+// 		}
+//   })
 
-	$('#import_form').on('submit', function(event){
-    var url = '<?=base_url()?>';
-		var user_id = $('#user_id').val();
-		var corp_id = $('#corp_id').val();
-	  event.preventDefault();
-  $.ajax({
-   url: url + 'mgmt/menu/import?user_id=' + user_id + '&corp_id=' + corp_id,
-   method:"POST",
-   data:new FormData(this),
-   contentType:false,
-   cache:false,
-   processData:false,
-   success:function(data){
-     if(data.success){
-       $('#file').val('');
-       layer.msg('菜單已上傳');
-			 currentApp.tableReload();
-     }else if(data.err){
-       var err = data.err.toString();
-       layer.alert(err,{
-         btn:['確定'],
-         title:'錯誤!',
-         closeBtn:0
-       },function(index) {
-         layer.close(index);
-       })
-     }
+// 	$('#import_form').on('submit', function(event){
+//     var url = '<?=base_url()?>';
+// 		var user_id = $('#user_id').val();
+// 		var corp_id = $('#corp_id').val();
+// 	  event.preventDefault();
+//   $.ajax({
+//    url: url + 'mgmt/menu/import?user_id=' + user_id + '&corp_id=' + corp_id,
+//    method:"POST",
+//    data:new FormData(this),
+//    contentType:false,
+//    cache:false,
+//    processData:false,
+//    success:function(data){
+//      if(data.success){
+//        $('#file').val('');
+//        layer.msg('菜單已上傳');
+// 			 currentApp.tableReload();
+//      }else if(data.err){
+//        var err = data.err.toString();
+//        layer.alert(err,{
+//          btn:['確定'],
+//          title:'錯誤!',
+//          closeBtn:0
+//        },function(index) {
+//          layer.close(index);
+//        })
+//      }
 
-   }
-  })
- });
+//    }
+//   })
+//  });
 
- function do_update_type_delete() {
- 	 // $('#or1').val(id);
- 	 $('#update_type').modal('show');
-  }
+//  function do_update_type_delete() {
+//  	 // $('#or1').val(id);
+//  	 $('#update_type').modal('show');
+//   }
 
-  function do_delete_action() {
- 	 var url = '<?= base_url() ?>' + 'mgmt/menu/do_update_type_delete';
- 	 $.ajax({
- 		 url : url,
- 		 type: 'POST',
- 		 data: {
- 			 delete_num: $('#delete_num').val(),
- 		 },
- 		 dataType: 'json',
- 		 success: function(d) {
- 			 // Vaildation();
- 			 if(d.success){
- 				 $('#update_type').modal('hide');
-				 currentApp.tableReload();
+//   function do_delete_action() {
+//  	 var url = '<?= base_url() ?>' + 'mgmt/menu/do_update_type_delete';
+//  	 $.ajax({
+//  		 url : url,
+//  		 type: 'POST',
+//  		 data: {
+//  			 delete_num: $('#delete_num').val(),
+//  		 },
+//  		 dataType: 'json',
+//  		 success: function(d) {
+//  			 // Vaildation();
+//  			 if(d.success){
+//  				 $('#update_type').modal('hide');
+// 				 currentApp.tableReload();
 
- 			 }
+//  			 }
 
- 		 },
+//  		 },
 
- 		 failure:function(){
- 			 alert('faialure');
- 		 }
- 	 });
-  }
+//  		 failure:function(){
+//  			 alert('faialure');
+//  		 }
+//  	 });
+//   }
 
 </script>

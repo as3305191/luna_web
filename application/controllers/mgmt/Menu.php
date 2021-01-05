@@ -58,7 +58,7 @@ class Menu extends MY_Mgmt_Controller {
 				'columns',
 				'search',
 				'order',
-				'corp_id',
+				// 'corp_id',
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
