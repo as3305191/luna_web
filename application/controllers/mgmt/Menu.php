@@ -220,8 +220,6 @@ class Menu extends MY_Mgmt_Controller {
 									$meal_name = $last_meal_name;
 								}
 
-							
-
 								$grain_rhizomes = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
 
 								$fish_eggs_l = $worksheet->getCellByColumnAndRow(6, $row)->getValue();//豆魚蛋肉類(低脂)
@@ -265,7 +263,6 @@ class Menu extends MY_Mgmt_Controller {
 								if($menu_code==NULL){
 									$menu_code = '';
 								}
-							
 
 								if($cuisine_type==NULL){
 									$cuisine_type = '';
@@ -294,7 +291,7 @@ class Menu extends MY_Mgmt_Controller {
 								}
 								$new_last_update_type = intval($last_update_type->update_type)+1;
 
-							$data = array(
+								$data = array(
 												'menu_code'		=>	$menu_code,
 												'menu_name'			=>	$menu_name,
 												'meal_name'				=>	$meal_name,
@@ -328,9 +325,9 @@ class Menu extends MY_Mgmt_Controller {
 
 					}
 
-						$res['success'] = TRUE;
+					$res['success'] = TRUE;
 
-						$this -> to_json($res);
+					$this -> to_json($res);
 				}
 			}
 		} else{
