@@ -20,23 +20,9 @@
 									</button>
 								</div>
 							</div>
-
-							<?php if (!empty($login_user) && $login_user-> corp_id ==0): ?>
 							<div class="widget-toolbar pull-left">
 								<label>公司：</label>
 							</div>
-							<!-- <div class="widget-toolbar pull-left">
-								<select name="" id="corp_id" class="">
-									<option value="-1">無</option>
-									<?php foreach($corp_list as $each): ?>
-										<option value="<?= $each -> id?>" ><?=  $each -> corp_name ?></option>
-									<?php endforeach ?>
-								</select>
-								<span style="color:red;display:none" id="waring">請先選擇菜單所屬的公司</span>
-
-							</div> -->
-
-							<?php endif; ?>
 							<div class="widget-toolbar pull-left">
 								<label>顯示有評分的項目<input id="s_multiple" type="checkbox" class="" value="" /></label>
 							</div>
