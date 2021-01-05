@@ -13,6 +13,7 @@
         "phpoffice/phpword": "^0.17.0",
         "laminas/laminas-escaper": "^2.6",
         "lcobucci/jwt": "^3.3",
-        "calcinai/php-imagick": "^0.1.2"
+        "calcinai/php-imagick": "^0.1.2",
+        "phpoffice/phpexcel": "^1.8"
     }
 }
