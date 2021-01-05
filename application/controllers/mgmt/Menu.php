@@ -8,7 +8,7 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> load -> model('Menu_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Menu_rating_dao', 'menu_rating_dao');
+		// $this -> load -> model('Menu_rating_dao', 'menu_rating_dao');
 
 		$this->load->library('excel');
 	}
@@ -39,26 +39,10 @@ class Menu extends MY_Mgmt_Controller {
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
-		if($login_user -> role_id !==107){//如果不是總管理者
-			$data['corp'] = $login_user -> corp_id;
-
-			$items = $this -> dao -> query_ajax($data);
-			foreach($items as $each){
-				$each -> count_rating = $this -> menu_rating_dao -> count_rating($each->id);
-			}
-			$res['items'] = $items;			
-			$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
-			$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
-		} else{
-			$items = $this -> dao -> query_ajax($data);
-			foreach($items as $each){
-				$each -> count_rating = $this -> menu_rating_dao -> count_rating($each->id);
-			}
-			$res['items'] = $items;
-			$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
-			$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
-		}
-
+		$items = $this -> dao -> query_ajax($data);
+		$res['items'] = $items;			
+		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
+		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
 
 		$this -> to_json($res);
 	}
