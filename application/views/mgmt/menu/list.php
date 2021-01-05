@@ -40,9 +40,6 @@
 									<input type="file" name="file" class="btn btn-outline-warning" style="display:none" id="file" accept=".xls, .xlsx" />
 								</form>
 							</div>
-
-
-
 						</header>
 
 						<!-- widget div-->
