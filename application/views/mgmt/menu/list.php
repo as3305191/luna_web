@@ -44,7 +44,6 @@
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
-
 							</div>
 							<!-- end widget edit box -->
 							<!-- <input type="hidden" class="form-control"  name="user_id" value="<?= isset($login_user) ? $login_user->corp_id : '' ?>"  /> -->
@@ -64,7 +63,6 @@
 											<th class="min100">餐別名</th>
 											<th class="min100">菜色類別</th>
 											<th class="min100">評分</th>
-
 											<th class="min100">日期</th>
 											<th class="min100">全穀根莖類</th>
 											<th class="min100">豆魚肉蛋類(全部)</th>
