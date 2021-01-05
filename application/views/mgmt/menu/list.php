@@ -78,7 +78,6 @@
 											<th class="min100">乳製品(低脂)</th>
 											<th class="min100">乳製品(全脂)</th>
 											<th class="min100">總熱量</th>
-
 											<th class="min100">建立時間</th>
 
 										</tr>
