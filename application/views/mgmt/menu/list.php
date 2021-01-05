@@ -62,51 +62,14 @@
 											<th class="min100">名稱</th>
 											<th class="min100">餐別名</th>
 											<th class="min100">菜色類別</th>
-											<th class="min100">評分</th>
-											<th class="min100">日期</th>
-											<th class="min100">全穀根莖類</th>
-											<th class="min100">豆魚肉蛋類(全部)</th>
-											<th class="min100">豆魚肉蛋類(低脂)</th>
-											<th class="min100">豆魚肉蛋類(中脂)</th>
-											<th class="min100">豆魚肉蛋類(高脂)</th>
-											<th class="min150">豆魚肉蛋類(超高脂)</th>
-											<th class="min100">油脂與堅果種子類</th>
-											<th class="min100">蔬菜</th>
-											<th class="min100">水果</th>
-											<th class="min100">乳製品(全部)</th>
-											<th class="min100">乳製品(脫脂)</th>
-											<th class="min100">乳製品(低脂)</th>
-											<th class="min100">乳製品(全脂)</th>
-											<th class="min100">總熱量</th>
-											<th class="min100">建立時間</th>
-
 										</tr>
 										<tr class="search_box">
-									    <th></th>
 											<th></th>
-									    <th><input class="form-control input-xs min100" type="text" /></th>
-									    <th><input class="form-control input-xs min100" type="text" /></th>
+											<th></th>
 											<th><input class="form-control input-xs min100" type="text" /></th>
 											<th><input class="form-control input-xs min100" type="text" /></th>
-											<th></th>
-											<th></th>
-
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-											<th></th>
-
+											<th><input class="form-control input-xs min100" type="text" /></th>
+											<th><input class="form-control input-xs min100" type="text" /></th>
 								    </tr>
 									</thead>
 									<tbody>
