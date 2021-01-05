@@ -58,7 +58,6 @@ class Menu extends MY_Mgmt_Controller {
 				'columns',
 				'search',
 				'order',
-				// 'corp_id',
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
@@ -70,7 +69,6 @@ class Menu extends MY_Mgmt_Controller {
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
 		$data['role_list'] = $this -> dao -> find_all_roles();
-		// $data['corp_list'] = $this -> users_dao -> find_all_corp();
 		// $this -> to_json($data);
 
 		$this->load->view('mgmt/menu/edit', $data);
@@ -124,7 +122,6 @@ class Menu extends MY_Mgmt_Controller {
 				} else {
 					$res['valid'] = FALSE;
 				}
-
 				$res['item'] = $item;
 			} else {
 				$res['valid'] = TRUE;
@@ -162,7 +159,6 @@ class Menu extends MY_Mgmt_Controller {
 		$each_id = $this -> dao -> find_by_each_id($delete_num);
 		foreach ($each_id as $each) {
 			$this -> dao -> delete($each->id);
-
 		}
 		$this -> to_json($res);
 	}
