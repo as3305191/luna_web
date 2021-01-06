@@ -52,7 +52,7 @@ class Order extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function mail()
+	public function test_mail()
 	{
 		$this->send_mail("inf@kwantex.com", "hi..", "測試郵件");
 	}
