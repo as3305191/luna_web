@@ -63,37 +63,6 @@ class News extends MY_Mgmt_Controller {
 
 	public function test() {
 
-		// $msg = "您好，歡迎使用本系統";
-		// $email = "inf@kwantex.com";
-		// $config = array(
-		//         'crlf'          => "\r\n",
-		//         'newline'       => "\r\n",
-		//         'charset'       => 'utf-8',
-		//         'protocol'      => 'smtp',
-		//         'mailtype'      => 'html',
-		//         'smtp_host'     => '192.168.1.246',
-		//         'smtp_port'     => '25',
-		//         'smtp_user'     => 'inf',
-		//         'smtp_pass'     => '935m4TMw8Q'
-		// );
-
-		// $this->load->library('email');
-		// $this->email->initialize($config);
-		// $this->email->from('inf@kwantex.com');
-		// $this->email->to($email);
-
-		// $this->email->subject('歡迎使用本系統');
-		// $this->email->message($msg);
-		// $this->email->send();
-		// if($this->email->send()){
-		//     $res = "ok";
-		// }else{
-		//     $res = "faild";
-		// }
-
-		// echo $res;
-
-
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$this->mail($login_user->role_id,"inf@kwantex.com", "hi..", "測試郵件");
