@@ -9,7 +9,9 @@ class News extends MY_Mgmt_Controller {
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('News_style_dao', 'news_style_dao');
 		$this -> load -> model('Img_month_use_dao', 'img_month_use_dao');		
-		$this -> load -> model('Img_month_use_record_dao', 'img_month_use_record_dao');		
+		$this -> load -> model('Img_month_use_record_dao', 'img_month_use_record_dao');	
+		$this -> load -> model('Users_dao', 'users_dao');
+	
 	}
 
 	public function index()
@@ -93,7 +95,7 @@ class News extends MY_Mgmt_Controller {
 
 
 		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$this->mail($login_user->role_id,"inf@kwantex.com", "hi..", "測試郵件");
 
 	}
