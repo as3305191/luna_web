@@ -62,11 +62,9 @@ class News extends MY_Mgmt_Controller {
 	}
 
 	public function test() {
-
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$this->mail($login_user->role_id,"inf@kwantex.com", "hi..", "測試郵件","adms@kwantex.com");
-
 	}
 
 }
