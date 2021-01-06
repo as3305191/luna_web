@@ -52,7 +52,6 @@
 
 							<!-- widget content -->
 							<div class="widget-body no-padding">
-
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
@@ -76,23 +75,16 @@
 										
 									</tbody>
 								</table>
-
 							</div>
 							<!-- end widget content -->
-
 						</div>
 						<!-- end widget div -->
-
 					</div>
 					<!-- end widget -->
-
 				</article>
 				<!-- WIDGET END -->
-
 			</div>
-
 			<!-- end row -->
-
 		</section>
 		<!-- end widget grid -->
 	</div>
