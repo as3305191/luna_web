@@ -55,7 +55,6 @@ class News extends MY_Mgmt_Controller {
 			// if(!empty($item -> image_id)) {
 			// 	$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
 			// }
-
 			$data['item'] = $item;
 		}
 		$this->load->view('mgmt/news/edit', $data);
