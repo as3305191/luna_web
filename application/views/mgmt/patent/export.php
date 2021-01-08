@@ -32,7 +32,11 @@
 			<tr>
 				<td class="min200">專利項目</td>
 				<td colspan="3"></td>
-				<td rowspan="5"><img src="<?= base_url("api/images/get/".$item->image."/thumb") ?>" style="height:500%;width:100%" ></td>
+				<?php if($item -> patnet_status==1): ?>
+					<td rowspan="5"><img src="<?= base_url("api/images/get/".$item->image[0]."/thumb") ?>" style="height:500%;width:100%" ></td>
+				<?php elseif($item -> patnet_status==2): ?>
+					<td rowspan="5">沒有圖片</td>
+				<?php endif?>
 			</tr>
 			<tr>
 				<td>專利名稱</td>
