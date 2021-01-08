@@ -30,8 +30,8 @@
 				<td class="min100" colspan="5" style="text-align:center;vertical-align:middle;">專利家族代碼:<?= isset($item) ? $item -> patent_family : '' ?></td>
 			</tr>
 			<tr>
-				<td class="min200">專利項目</td>
-				<td colspan="3"></td>
+				<td class="min200">專利類型</td>
+				<td id="patnet_status" colspan="3"></td>
 				<?php if(!empty($item->image) && $item->image !==''): ?>
 					<td rowspan="5"><img src="<?= base_url("api/images/get/".$item->image[0]."/thumb") ?>" style="max-height:100%;max-width:100%" ></td>
 				<?php else : ?>

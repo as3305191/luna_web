@@ -374,7 +374,6 @@ $('#app-edit-form').bootstrapValidator({
 	}).bootstrapValidator('validate');
 
 var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false;
-
 if($('#item_id').val()>0){
 	pdf_array=[];
 	public_num_input=[];
