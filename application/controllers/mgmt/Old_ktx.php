@@ -134,7 +134,6 @@ class Old_ktx extends MY_Mgmt_Controller {
 		}
 
 		$res['success'] = TRUE;
-
  		$this -> to_json($res);
 	}
 
@@ -187,34 +186,33 @@ class Old_ktx extends MY_Mgmt_Controller {
 		// $res['result'] = TRUE;
 		$res['list'] = $this -> users_dao -> find_doctor_by_hospital($hospital_id);
 		$res['list_1'] = $this -> users_dao -> find_manager_by_hospital($hospital_id);
-
 		$this -> to_json($res);
 	}
 
 	function export_all() {
-			$this->load->dbutil();
-      $this->load->helper('file');
-      $this->load->helper('download');
-      $delimiter = ",";
-      $newline = "\r\n";
-			$date = date('YmdHis');
-      $filename = $date."-user.csv";
+		$this->load->dbutil();
+		$this->load->helper('file');
+		$this->load->helper('download');
+		$delimiter = ",";
+		$newline = "\r\n";
+		$date = date('YmdHis');
+		$filename = $date."-user.csv";
 
-			$corp_list = $this -> corp_dao -> find_all();
+		$corp_list = $this -> corp_dao -> find_all();
 
-			//create a file pointer
+		//create a file pointer
     	$f = fopen('php://memory', 'w');
-			$fields = array(
-				iconv("UTF-8","Big5//IGNORE",'帳號'),
-				iconv("UTF-8","Big5//IGNORE",'會員姓名'),
-				'Email',
-				'LINE ID',
-				iconv("UTF-8","Big5//IGNORE",'公司'),
-				iconv("UTF-8","Big5//IGNORE",'貨幣數量'),
-				'NTD',
-				iconv("UTF-8","Big5//IGNORE",'藍鑽')
-			);
-			fputcsv($f, $fields, $delimiter);
+		$fields = array(
+			iconv("UTF-8","Big5//IGNORE",'帳號'),
+			iconv("UTF-8","Big5//IGNORE",'會員姓名'),
+			'Email',
+			'LINE ID',
+			iconv("UTF-8","Big5//IGNORE",'公司'),
+			iconv("UTF-8","Big5//IGNORE",'貨幣數量'),
+			'NTD',
+			iconv("UTF-8","Big5//IGNORE",'藍鑽')
+		);
+		fputcsv($f, $fields, $delimiter);
 
       $query = "SELECT id, account,
 				user_name,
