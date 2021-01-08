@@ -18,7 +18,7 @@
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div style="padding:50px 50px 50px 50px">
-	<table  class="table table-striped table-bordered table-hover" width="70%">
+	<table  class="layui-table" width="70%">
 		<thead>
 		
 		</thead>
@@ -99,5 +99,7 @@
 	</table>
 </div>
 <!-- end widget -->
+
 <script>
+
 </script>
