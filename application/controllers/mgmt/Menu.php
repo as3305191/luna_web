@@ -147,6 +147,10 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function aassccd(){
+
+	}
+	
 	// function import(){
 	// 	$user_id = $this -> get_get('user_id');
 	// 	$login_user = $this -> users_dao -> find_by_id($user_id);
