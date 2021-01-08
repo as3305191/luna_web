@@ -58,15 +58,12 @@
 					<!-- end widget -->
 				</article>
 				<!-- WIDGET END -->
-
 			</div>
 
 			<!-- end row -->
-
 		</section>
 		<!-- end widget grid -->
 	</div>
-
 	<div class="tab-pane animated fadeIn" id="edit_page">
 		<section class="">
 			<!-- row -->
