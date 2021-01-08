@@ -17,7 +17,6 @@ class Menu extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$data['role_list'] = $this -> dao -> find_all_roles();
-		// $data['corp_list'] = $this -> users_dao -> find_all_corp();
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		// $this -> to_json($data);
 
@@ -31,9 +30,6 @@ class Menu extends MY_Mgmt_Controller {
 			'start',
 			'columns',
 			'search',
-			'order',
-			'corp_id',
-			'multiple'
 		));
 
 		$s_data = $this -> setup_user_data(array());
