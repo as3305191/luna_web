@@ -21,7 +21,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-		$data['patent_status'] = $this -> patent_status_dao -> find_all();
+		$data['patent_category'] = $this -> patent_category_dao -> find_all();
 		// $this -> to_json($data);
 
 		$this -> load -> view('mgmt/patent/list', $data);
@@ -287,8 +287,8 @@ class Patent extends MY_Mgmt_Controller {
 
 	public function find_all_category(){
 		$res = array();
-		$category = $this -> patent_category_dao -> find_all();
-		$max= $this -> patent_category_dao -> get_max();
+		$category = $this -> patent_status_dao -> find_all();
+		$max= $this -> patent_status_dao -> get_max();
 		$res['category'] = $category;
 		$res['max'] = $max;
 		$res['success'] = TRUE;
@@ -299,7 +299,7 @@ class Patent extends MY_Mgmt_Controller {
 		$res = array();
 		$next_level= $this -> get_post('next_level');
 		$this_val= $this -> get_post('this_val');
-		$category = $this -> patent_category_dao -> find_next($next_level,$this_val);
+		$category = $this -> patent_status_dao -> find_next($next_level,$this_val);
 		$res['category'] = $category;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
@@ -309,14 +309,14 @@ class Patent extends MY_Mgmt_Controller {
 		$res = array();
 		$item_id= $this -> get_post('item_id');
 		$patent= $this -> dao -> find_by_id($item_id);
-		$last_child_category = $this -> patent_category_dao -> find_by_id($patent->patnet_status);
+		$last_child_category = $this -> patent_status_dao -> find_by_id($patent->patnet_status);
 		if(!empty($last_child_category)){
 			$last_level = $last_child_category->level;
 			for($i=$last_level;$i>=0;$i--){
-				$last_child = $this -> patent_category_dao -> find_by_id($last_child_category->id);
+				$last_child = $this -> patent_status_dao -> find_by_id($last_child_category->id);
 				if($i<$last_level){
 					$j = $i+1;
-					$last_child = $this -> patent_category_dao -> find_by_id($res['patnet_status_'.$j]);
+					$last_child = $this -> patent_status_dao -> find_by_id($res['patnet_status_'.$j]);
 					$res['patnet_status_'.$i] = $last_child->parent_id;
 				} else{
 					$res['patnet_status_'.$i] = $last_child->id;
@@ -624,9 +624,9 @@ class Patent extends MY_Mgmt_Controller {
 			$data['item'] = $item;
 			$data['country'] = $this -> country_dao -> find_by_id($item->patent_country);
 			if(!empty($item -> patnet_category)) {
-				$data['patnet_category'] = $this -> patent_category_dao -> find_by_id($item->patnet_category);
+				$data['patnet_status'] = $this -> patent_status_dao -> find_by_id($item->patnet_status);
 			}else{
-				$data['patnet_category'] ="";
+				$data['patnet_status'] ="";
 			}
 		}
 		
