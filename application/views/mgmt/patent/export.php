@@ -78,9 +78,9 @@
 				<td><?= isset($item) ? $item -> assignee : '' ?></td>
 				<td>專利狀態</td>
 				<td colspan="2">
-					<?php if($item -> patnet_status==1): ?>
+					<?php if($item -> patnet_type==1): ?>
 						有效
-					<?php elseif($item -> patnet_status==2): ?>
+					<?php elseif($item -> patnet_type==2): ?>
 						無效
 					<?php endif?>
 				</td>	
