@@ -26,13 +26,12 @@
 			<input class="form-control" type="text">
 		</div>
 		<!-- end widget edit box -->
-
+	
 		<!-- widget content -->
 		<div class="widget-body">
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">編號</label>
@@ -73,7 +72,6 @@
 						</div>
 					</div>
 				</fieldset>
-
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">全穀根莖類</label>
