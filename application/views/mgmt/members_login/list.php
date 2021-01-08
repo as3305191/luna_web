@@ -46,7 +46,6 @@
 											<th class="min100">登入裝置</th>
 											<th class="min100">建立時間</th>
 										</tr>
-
 									</thead>
 									<tbody>
 									</tbody>
@@ -55,10 +54,8 @@
 							<!-- end widget content -->
 						</div>
 						<!-- end widget div -->
-
 					</div>
 					<!-- end widget -->
-
 				</article>
 				<!-- WIDGET END -->
 
