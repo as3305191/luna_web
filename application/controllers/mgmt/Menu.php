@@ -87,7 +87,6 @@ class Menu extends MY_Mgmt_Controller {
 		} else {
 			$this -> dao -> update($data, $id);
 		}
-
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
@@ -120,7 +119,6 @@ class Menu extends MY_Mgmt_Controller {
 				$res['valid'] = TRUE;
 			}
 		}
-
 		$this -> to_json($res);
 	}
 
@@ -136,7 +134,6 @@ class Menu extends MY_Mgmt_Controller {
 		$res = array();
 		$user_id = $this -> get_post('user_id');
 		$this -> session -> set_userdata('user_id', $user_id);
-
 		$this -> to_json($res);
 	}
 
