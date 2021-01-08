@@ -32,7 +32,7 @@
 			<tr>
 				<td class="min200">專利項目</td>
 				<td colspan="3"></td>
-				<td rowspan="5"><img src="<?= base_url("api/images/get/".$item->img_id[0]."/thumb") ?>" style="height:500%;width:100%" ></td>
+				<td rowspan="5"><img src="<?= base_url("api/images/get/".$item->image."/thumb") ?>" style="height:500%;width:100%" ></td>
 			</tr>
 			<tr>
 				<td>專利名稱</td>
@@ -83,9 +83,9 @@
 			</tr>
 			<tr>
 				<td>專利授權期間</td>
-				<td colspan="2"><?= isset($item) ? $item -> patent_start_dt : '' ?>~<?= isset($item) ? $item -> patent_end_dt : '' ?></td>
+				<td><?= isset($item) ? $item -> patent_start_dt : '' ?>~<?= isset($item) ? $item -> patent_end_dt : '' ?></td>
 				<td>專利截止日</td>
-				<td><?= isset($item) ? $item -> patent_finish_date : '' ?></td>
+				<td colspan="2"><?= isset($item) ? $item -> patent_finish_date : '' ?></td>
 			</tr>
 			<tr>
 				<td>專利摘要</td>
