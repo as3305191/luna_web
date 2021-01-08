@@ -108,8 +108,6 @@
 				</div>
 				<div class="modal-body" id="">
 					<form id="" class="">
-
-
 						<fieldset>
 							<div class="form-group">
 								<label class="col-md-3 control-label">刪除碼</label>
