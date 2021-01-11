@@ -6,7 +6,7 @@ class Mail extends MY_Mgmt_Controller {
 	function __construct() {
 		parent::__construct();
 	
-		$this -> load-> library('word');
+		// $this -> load-> library('word');
 	}
 
 	public function index()
@@ -17,11 +17,11 @@ class Mail extends MY_Mgmt_Controller {
 		$this->load->view('layout/show_mail_window', $data);
 	}
 
-	public function auto_mail()
+	public function auto_mail($to,$subject,$text,$cc = '')
 	{
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
-		$this->mail($login_user->role_id,"inf@kwantex.com", "hi..", "測試郵件","adms@kwantex.com");
+		$this->mail($login_user->role_id, $to, $subject, $text,$cc);
 	}
 
 }
