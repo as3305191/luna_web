@@ -6,7 +6,6 @@ class Mail extends MY_Mgmt_Controller {
 	function __construct() {
 		parent::__construct();
 	
-		// $this -> load-> library('word');
 	}
 
 	public function index()
