@@ -14,7 +14,7 @@ class Mail extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-		$this->load->view('mgmt/mail/list', $data);
+		$this->load->view('layout/show_mail_window', $data);
 	}
 
 	public function auto_mail()
