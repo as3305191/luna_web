@@ -22,5 +22,4 @@ class Mail extends MY_Mgmt_Controller {
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$this->mail($login_user->role_id,$to,$subject,$text,$cc);
 	}
-
 }
