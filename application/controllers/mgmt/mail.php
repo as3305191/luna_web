@@ -24,7 +24,7 @@ class Mail extends MY_Mgmt_Controller {
 	}
 
 	public function load_department_mail(){
-
+		
 	}
 
 }

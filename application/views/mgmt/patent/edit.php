@@ -140,7 +140,7 @@
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">專利狀態</label>
+					<label class="col-md-3 control-label">專利類別</label>
 					<div class="col-md-6">
 						<select name="patnet_category" required id="patnet_category" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
 							<option  value="1"  <?= isset($item) && $item -> patnet_category == 1 ? 'selected' : '' ?>>發明</option>

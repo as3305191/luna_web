@@ -24,7 +24,6 @@ class Message extends MY_Mgmt_Controller {
 		$data['me_id'] = $login_user->id;
 		$data['old_socket'] = $login_user->code;
 		// $this -> to_json($data);
-
 		$this->load->view('mgmt/message/list', $data);
 	}
 
@@ -61,7 +60,6 @@ class Message extends MY_Mgmt_Controller {
 		if(!empty($me_id) && !empty($to_message_id) && !empty($msg)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
-
 		} 
 		$res['last_id'] = $last_id;
 		$res['success'] = TRUE;

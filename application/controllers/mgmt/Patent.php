@@ -21,7 +21,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-		$data['patent_category'] = $this -> patent_category_dao -> find_all();
+		$data['patent_status'] = $this -> patent_category_dao -> find_all();
 		// $this -> to_json($data);
 
 		$this -> load -> view('mgmt/patent/list', $data);
