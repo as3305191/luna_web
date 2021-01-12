@@ -15,8 +15,8 @@
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget" id="select_bar"> 
-						<header>
+					<div class="jarviswidget" > 
+						<header id="header">
 							<?php if($login_user->role_id==52 ||$login_user->role_id==26||$login_user->role_id==24): ?>
 								<div class="widget-toolbar pull-left">
 									<div class="btn-group">
@@ -210,7 +210,7 @@
 			currentApp = new patentAppClass(new BaseAppClass({}));
 		});
 	});
-	
+
 	var total_category=0;
 
 	function load_category() {
@@ -254,7 +254,7 @@
 	load_category();
 	
 	function do_remove() {
-		$('#select_bar input').val('');
+		$('header input').val('');
 		load_category();
 	}
 
