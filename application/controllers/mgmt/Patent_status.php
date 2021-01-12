@@ -8,7 +8,7 @@ class Patent_category extends MY_Base_Controller {
 	function __construct() {
 		parent::__construct();
 	
-		$this -> load -> model('Patent_category_dao', 'dao');
+		$this -> load -> model('Patent_status_dao', 'dao');
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Department_dao','d_dao');
 		$this -> load -> model('Customs_dao','c_dao');
@@ -34,7 +34,7 @@ class Patent_category extends MY_Base_Controller {
 		$t_data = $this -> drawTree($items);
 		$data['t_data'] = $t_data;
 		// $this -> to_json($t_data);
-		$this->load->view('mgmt/Patent_category/list', $data);
+		$this->load->view('mgmt/Patent_status/list', $data);
 	}
 
 	public function re_index()
@@ -211,7 +211,7 @@ class Patent_category extends MY_Base_Controller {
 			$data['menu_list'] = $this -> users_dao -> nav_list();
 		}
 
-		$this->load->view('mgmt/Patent_category/edit', $data);
+		$this->load->view('mgmt/Patent_status/edit', $data);
 	}
 
 	/**

@@ -1,5 +1,5 @@
-var PatentcategoryAppClass = (function(app) {
-	app.basePath = "mgmt/patent_category/";
+var PatentstatusAppClass = (function(app) {
+	app.basePath = "mgmt/patent_status/";
 	app.init = function() {
 		// init add wrapper marker
 		app.addDtWrapper = false;

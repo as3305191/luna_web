@@ -79,8 +79,8 @@
 
 <script type="text/javascript">
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/patent_category/list.js", function(){
-			currentApp = new PatentcategoryAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/patent_status/list.js", function(){
+			currentApp = new PatentstatusAppClass(new BaseAppClass({}));
 		});
 	});
 
@@ -94,7 +94,7 @@
 			closeBtn:0,
 			area:['400px','200px'],
 			shadeClose:true,
-			content:'<?=base_url('mgmt/patent_category/show_role_window/')?>'+$id
+			content:'<?=base_url('mgmt/patent_status/show_role_window/')?>'+$id
 		})
 	}
 
@@ -129,13 +129,13 @@
 		closeBtn:0,
 		area:['400px','200px'],
 		shadeClose:true,
-		content:'<?=base_url('mgmt/patent_category/new_department')?>'
+		content:'<?=base_url('mgmt/patent_status/new_department')?>'
 		})
 	})
 
 	function del_page($id) {
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/patent_category/del_page',
+			url: '<?= base_url() ?>' + 'mgmt/patent_status/del_page',
 			type: 'POST',
 			data: {
 				id:$id
