@@ -37,16 +37,13 @@
 										</tr>
 									</thead>
 									<tbody id="t_data">
-
 									</tbody>
 								</table>
 								</section>
 							</div>
 							<!-- end widget content -->
-
 						</div>
 						<!-- end widget div -->
-
 					</div>
 					<!-- end widget -->
 
