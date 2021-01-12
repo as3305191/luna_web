@@ -15,9 +15,8 @@
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget">
+					<div class="jarviswidget" id="select_bar"> 
 						<header>
-						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 							<?php if($login_user->role_id==52 ||$login_user->role_id==26||$login_user->role_id==24): ?>
 								<div class="widget-toolbar pull-left">
 									<div class="btn-group">
@@ -82,11 +81,14 @@
                                 <?php endforeach ?>
                                 </div>
                             </div>
+							<button onclick="do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
+								<i class="fa fa-plus"></i>一鍵清除
+							</button>
 						</header>
+						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 
 						<!-- widget div-->
 						<div>
-
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
@@ -250,4 +252,9 @@
 	}	
 	load_category();
 	
+	function do_remove() {
+		$('#select_bar input').val('');
+		load_category();
+	}
+
 </script>
