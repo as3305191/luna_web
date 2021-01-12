@@ -210,45 +210,46 @@
 			currentApp = new patentAppClass(new BaseAppClass({}));
 		});
 	});
+	
 	var total_category=0;
+
 	function load_category() {
 		$.ajax({
-				url: '<?= base_url() ?>' + 'mgmt/patent/find_all_category',
-				type: 'POST',
-				data: {},
-				dataType: 'json',
-				success: function(d) {
-					if(d) {
-						// console.log(d);
-						$category = $('#category').empty();
-						var i=0;
-						var html='';
-						total_category = d.max;
-						for(i;i<=d.max;i++){
-							html+='<div class="widget-toolbar pull-left">'+
-									'<select id="category_'+i+'" class="p_category" data-val="'+i+'" >'+
-									'</select>'+
-								'</div>';
-						}
-						$(html).appendTo($category);
-						var category_option = '<option value="all">全部</option>';
-						var $category_0 = $('#category_0').empty();
-						$category_0.append(category_option);
-						$.each(d.category, function(){
-							if(this.level==0){
-								$('<option />', {
-									'value': this.id,
-									'text': this.name,
-								}).appendTo($category_0);
-							}
-						});
+			url: '<?= base_url() ?>' + 'mgmt/patent/find_all_category',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$category = $('#category').empty();
+					var i=0;
+					var html='';
+					total_category = d.max;
+					for(i;i<=d.max;i++){
+						html+='<div class="widget-toolbar pull-left">'+
+								'<select id="category_'+i+'" class="p_category" data-val="'+i+'" >'+
+								'</select>'+
+							'</div>';
 					}
-				},
-				failure:function(){
-					alert('faialure');
+					$(html).appendTo($category);
+					var category_option = '<option value="all">全部</option>';
+					var $category_0 = $('#category_0').empty();
+					$category_0.append(category_option);
+					$.each(d.category, function(){
+						if(this.level==0){
+							$('<option />', {
+								'value': this.id,
+								'text': this.name,
+							}).appendTo($category_0);
+						}
+					});
 				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
 		});
-
 	}	
 	load_category();
 	
