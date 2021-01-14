@@ -1001,4 +1001,9 @@ function do_save() {
 	}	
 	load_edit_category();
 	
+
+	function doSearchfamily_num() {
+		$('#familynumModal').modal('show');
+	}
+
 </script>

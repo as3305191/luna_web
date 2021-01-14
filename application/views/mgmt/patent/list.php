@@ -148,6 +148,54 @@
 		</section>
 	</div>
 </div>
+<!-- Station Serach Modal -->
+<div class="modal fade" id="familynumModal" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="modal-header">
+			</div>
+			<div class="modal-body" id="station-edit-modal-body">
+				<form id="station-add-form">
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3 control-label">搜尋工站名稱</label>
+							<div class="col-md-9">
+								<div class="input-group">
+									<input type="text" class="form-control" id="s-station-name" placeholder="請輸入開始搜尋" />
+			      			<span class="input-group-btn">
+			      				<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+			      			</span>
+			      		</div>
+							</div>
+						</div>
+					</fieldset>
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3 control-label">搜尋結果</label>
+							<div class="col-md-9">
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<td>單位名稱</td>
+										</tr>
+									</thead>
+									<tbody id="station_list_serach_body">
+
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
+					<i class="fa fa-close"></i> 確定
+				</button>
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 	var baseUrl = '<?=base_url('')?>';
@@ -185,7 +233,7 @@
 	}];
 
 	var mOrderIdx = 5;
-
+	
 	if($('#l_user_id').val()=='52' || $('#l_user_id').val()=='26'|| $('#l_user_id').val()=='24' ){
 		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 	} else{
