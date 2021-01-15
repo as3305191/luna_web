@@ -1091,6 +1091,22 @@ function do_save() {
 
 	familyChange();
 
+	var stationListStore = [];
+	function reloadStationList() {
+		var url = baseUrl + currentApp.basePath + 'station_list'; // the script where you handle the form input.
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+				order_id: $('#item_id').val()
+			},
+			success : function(data) {
+				stationListStore = data.list;
+				redrawStationList();
+			}
+		});
+	}
+
 	function redrawStationList() {
 		var $body = $('#station_list_body').empty();
 		var cnt = 0;
