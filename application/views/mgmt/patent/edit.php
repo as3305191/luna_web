@@ -465,12 +465,11 @@ $("#img-input").fileinput({
 		img.push(id);
 		// console.log(img);
 		// $('#image_id').val(id);
-	//    $("#img-input").fileinput('reset');
+		// $("#img-input").fileinput('reset');
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#img-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
 		img.splice($.inArray(data,img),1);
-
 		// console.log(img_array);
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
@@ -539,7 +538,6 @@ $("#img-input").fileinput({
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
 	
-
 	});
 
 	$("#public-num-input").fileinput({
@@ -592,8 +590,8 @@ $("#img-input").fileinput({
     	// upload image
 	   var id = data.response.id;
 	   public_num_input.push(id);
-	//    console.log(public_num_input);
-	//    $("#file-input").fileinput('reset');
+		//console.log(public_num_input);
+		//$("#file-input").fileinput('reset');
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#public-num-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
@@ -603,7 +601,6 @@ $("#img-input").fileinput({
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
 	
-
 	});
 
 	$("#patnet-num-input").fileinput({
@@ -617,7 +614,6 @@ $("#img-input").fileinput({
         	initialPreviewConfig: [
 				<?php foreach($item -> patnet_number as $files): ?>
 
-			
 			<?php if($login_user->role_id==52 ||$login_user->role_id==26 ||$login_user->role_id==24): ?>
 				{
 	        		'caption' : '<?= $files -> file_name ?>',
