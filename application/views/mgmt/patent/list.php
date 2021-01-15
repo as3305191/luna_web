@@ -155,13 +155,13 @@
 			<div class="modal-header">
 			</div>
 			<div class="modal-body" id="station-edit-modal-body">
-				<form id="station-add-form">
+				<form id="family-num-add-form">
 					<fieldset>
 						<div class="form-group">
-							<label class="col-md-3 control-label">搜尋工站名稱</label>
+							<label class="col-md-3 control-label">搜尋專利家族碼</label>
 							<div class="col-md-9">
 								<div class="input-group">
-									<input type="text" class="form-control" id="s-station-name" placeholder="請輸入開始搜尋" />
+									<input type="text" class="form-control" id="s-family-name" placeholder="請輸入開始搜尋" />
 			      			<span class="input-group-btn">
 			      				<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
 			      			</span>
@@ -176,10 +176,10 @@
 								<table class="table table-hover">
 									<thead>
 										<tr>
-											<td>單位名稱</td>
+											<td>申請號</td>
 										</tr>
 									</thead>
-									<tbody id="station_list_serach_body">
+									<tbody id="family_num_serach_body">
 
 									</tbody>
 								</table>
@@ -256,6 +256,12 @@
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/patent/list.js", function(){
 			currentApp = new patentAppClass(new BaseAppClass({}));
+
+			$('#family-num-add-form').submit(function(e){
+				familyChange();
+				e.preventDefault();
+			});
+
 		});
 	});
 
