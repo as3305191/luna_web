@@ -261,7 +261,6 @@
 				familyChange();
 				e.preventDefault();
 			});
-
 		});
 	});
 
