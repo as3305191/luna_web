@@ -612,9 +612,8 @@ $("#img-input").fileinput({
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
-				<?php foreach($item -> patnet_number as $files): ?>
-
-			<?php if($login_user->role_id==52 ||$login_user->role_id==26 ||$login_user->role_id==24): ?>
+			<?php foreach($item -> patnet_number as $files): ?>
+				<?php if($login_user->role_id==52 ||$login_user->role_id==26 ||$login_user->role_id==24): ?>
 				{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
@@ -623,18 +622,17 @@ $("#img-input").fileinput({
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
 	        		'key' : '<?= $files->id  ?>'
-			},
+				},
 				<?php else: ?>
-					{
+				{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 					'width' : '120px',
 					'type': 'pdf',
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 	        		'key' : '<?= $files->id  ?>'
-			},
+				},
 				<?php endif ?>
-
     		<?php endforeach ?>
 
         	],
