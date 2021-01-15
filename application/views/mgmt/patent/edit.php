@@ -320,7 +320,6 @@
 								font-size: 16px;
 								font-weight: bolder;
 							}
-
 						</style>
 		</div>
 
