@@ -26,6 +26,7 @@
 								 	<span>上傳磅秤料號</span>
 								</div>
 							</div>
+							
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">
 									<input id="file-input" name="file" type="file" class="form-control">
