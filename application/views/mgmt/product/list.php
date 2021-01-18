@@ -26,7 +26,7 @@
 								 	<span>上傳磅秤料號</span>
 								</div>
 							</div>
-							
+
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">
 									<input id="file-input" name="file" type="file" class="form-control">
@@ -55,14 +55,14 @@
 											<th class="">建立時間</th>
 										</tr>
 										<tr class="search_box">
-									    <th></th>
-									    <th><input class="form-control input-xs min100" type="text" /></th>
-									    <th><input class="form-control input-xs min100" type="text" /></th>
-									    <th><input class="form-control input-xs min100" type="text" /></th>
-									    <th><input class="form-control input-xs min100" type="text" /></th>
-									    <th></th>
-									    <th></th>
-								    </tr>
+											<th></th>
+											<th><input class="form-control input-xs min100" type="text" /></th>
+											<th><input class="form-control input-xs min100" type="text" /></th>
+											<th><input class="form-control input-xs min100" type="text" /></th>
+											<th><input class="form-control input-xs min100" type="text" /></th>
+											<th></th>
+											<th></th>
+										</tr>
 									</thead>
 									<tbody>
 									</tbody>
