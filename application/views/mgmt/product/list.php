@@ -33,7 +33,6 @@
 								</div>
 							</div>
 						</header>
-
 						<!-- widget div-->
 						<div>
 							<!-- widget edit box -->
