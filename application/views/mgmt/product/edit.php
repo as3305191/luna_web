@@ -32,7 +32,6 @@
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-
 				<!-- <fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">廠牌</label>
@@ -75,6 +74,7 @@
 						</div>
 					</div>
 				</fieldset>
+
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">噸工資代碼（本勞）</label>
@@ -83,6 +83,7 @@
 						</div>
 					</div>
 				</fieldset>
+
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">噸工資代碼（外勞）</label>
@@ -91,7 +92,9 @@
 						</div>
 					</div>
 				</fieldset>
+
 				<hr/>
+
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">本勞點數</label>
@@ -109,7 +112,9 @@
 						</div>
 					</div>
 				</fieldset>
+
 				<hr/>
+
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">分切成本</label>
@@ -118,7 +123,6 @@
 						</div>
 					</div>
 				</fieldset>
-
 
 			</form>
 
