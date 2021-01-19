@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
  * @brief 系統管理->權限管理
  */
-class Patent_category extends MY_Base_Controller {
+class Patent_status extends MY_Base_Controller {
 
 	function __construct() {
 		parent::__construct();
