@@ -16,7 +16,7 @@
 
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
-						<header id="header">
+						<header id="patent_header">
 							<?php if($login_user->role_id==52 ||$login_user->role_id==26||$login_user->role_id==24): ?>
 								<div class="widget-toolbar pull-left">
 									<div class="btn-group">
@@ -307,7 +307,7 @@
 	load_category();
 	
 	function do_remove() {
-		$('header input').val('');
+		$('#patent_header input').val('');
 		load_category();
 	}
 
