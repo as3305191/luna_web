@@ -81,9 +81,13 @@
                                 <?php endforeach ?>
                                 </div>
                             </div>
-							<button onclick="do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
-								<i class="fa fa-refresh"></i>一鍵清除
-							</button>
+							<div class="widget-toolbar pull-left">
+								<div class="btn-group">
+									<button onclick="do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
+										<i class="fa fa-refresh"></i>一鍵清除
+									</button>
+								</div>
+							</div>
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 
