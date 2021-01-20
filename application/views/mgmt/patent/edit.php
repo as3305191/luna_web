@@ -433,7 +433,7 @@ $("#img-input").fileinput({
 						'width' : '120px',
 						'url' : '<?= base_url('mgmt/images/delete/' . $img->id )  ?>',
 						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
-						'validateInitialCount': true,//有效初始化計數
+						'showPreview': true,
 						'key' : <?= $img->id?>
 				},
 				<?php else: ?>
@@ -442,7 +442,7 @@ $("#img-input").fileinput({
 						'size' : <?= $img -> image_size ?>,
 						'width' : '120px',
 						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
-						'validateInitialCount': true,//有效初始化計數
+						'showPreview': true,
 						'key' : <?= $img->id?>
 				},
 				<?php endif ?>
