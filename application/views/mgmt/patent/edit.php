@@ -69,7 +69,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利名稱</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="patnet_name"  id="patnet_name" value="<?= isset($item) ? $item -> patent_name : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text" required class="form-control" name="patnet_name"  id="patnet_name" value="<?= isset($item) ? $item -> patent_name : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
@@ -77,7 +77,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利名稱(英)</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control" name="patent_name_eng"  id="patent_name_eng" value="<?= isset($item) ? $item -> patent_name_eng : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text" class="form-control" name="patent_name_eng"  id="patent_name_eng" value="<?= isset($item) ? $item -> patent_name_eng : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
@@ -85,7 +85,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利家族代碼</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="patent_family"  id="patent_family" value="<?= isset($item) ? $item -> patent_family : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text"  class="form-control" name="patent_family"  id="patent_family" value="<?= isset($item) ? $item -> patent_family : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 					<div class="col-md-2">
 						<button type="button" class="btn btn-sm btn-primary" onclick="check_family()">檢查</button>
@@ -96,8 +96,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利國家</label>
 					<div class="col-md-6">
-					<input type="hidden"  id="p_country" required value="<?= isset($item) ? $item -> patent_country : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
-						<select name="patnet_country" id="patent_country" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
+					<input type="hidden"  id="p_country" required value="<?= isset($item) ? $item -> patent_country : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
+						<select name="patnet_country" id="patent_country" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'disabled' ?>>
 							<!-- option from javascript -->
 						</select>
 					</div>
@@ -110,7 +110,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">發明人</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="3" id="inventor" name="inventor" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> inventor : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="3" id="inventor" name="inventor" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>><?= isset($item) ? $item -> inventor : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -118,7 +118,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">申請人</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="3" id="applicant" name="applicant" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> applicant : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="3" id="applicant" name="applicant" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>><?= isset($item) ? $item -> applicant : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -126,7 +126,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">受讓人</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="3" id="assignee" name="assignee" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> assignee : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="3" id="assignee" name="assignee" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>><?= isset($item) ? $item -> assignee : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -134,7 +134,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">關鍵字</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patent_key : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text"  class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patent_key : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
@@ -142,7 +142,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利類別</label>
 					<div class="col-md-6">
-						<select name="patnet_category" required id="patnet_category" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'disabled' ?>>
+						<select name="patnet_category" required id="patnet_category" class="form-control" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'disabled' ?>>
 							<option  value="1"  <?= isset($item) && $item -> patnet_category == 1 ? 'selected' : '' ?>>發明</option>
 							<option  value="2"  <?= isset($item) && $item -> patnet_category == 2 ? 'selected' : '' ?>>新型</option>
 							<option  value="3"  <?= isset($item) && $item -> patnet_category == 3 ? 'selected' : '' ?>>設計</option>
@@ -154,7 +154,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">申請號</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="application_number" id="application_number"  value="<?= isset($item) ? $item -> application_num : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text" required class="form-control" name="application_number" id="application_number"  value="<?= isset($item) ? $item -> application_num : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
@@ -162,7 +162,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">公開號</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="public_num" id="public_num"  value="<?= isset($item) ? $item -> public_num : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text"  class="form-control" name="public_num" id="public_num"  value="<?= isset($item) ? $item -> public_num : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
@@ -170,8 +170,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">公開號檔案</label>
 					<div class="col-md-6">
-						<input id="public-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
-						<input id="public_num_file"  type="hidden"  value="<?= isset($item) ? $item -> public_num_file : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
+						<input id="public-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>>
+						<input id="public_num_file"  type="hidden"  value="<?= isset($item) ? $item -> public_num_file : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26  || $login_user->role_id==24? '': 'readonly' ?>>
 					</div>
 				</div>
 			</fieldset>
@@ -179,7 +179,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">公告號</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control " name="announcement_num"  id="announcement_num" value="<?= isset($item) ? $item -> announcement_num : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text"  class="form-control " name="announcement_num"  id="announcement_num" value="<?= isset($item) ? $item -> announcement_num : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
@@ -187,7 +187,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利號</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="patnet_num" id="patnet_num"  value="<?= isset($item) ? $item -> patnet_num : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text"  class="form-control" name="patnet_num" id="patnet_num"  value="<?= isset($item) ? $item -> patnet_num : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
@@ -195,8 +195,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利號檔案</label>
 					<div class="col-md-6">
-						<input id="patnet-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
-						<input id="patnet_num_file" type="hidden"  value="<?= isset($item) ? $item -> patnet_num_file : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
+						<input id="patnet-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26  || $login_user->role_id==24? '': 'readonly' ?>>
+						<input id="patnet_num_file" type="hidden"  value="<?= isset($item) ? $item -> patnet_num_file : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26  || $login_user->role_id==24? '': 'readonly' ?>>
 					</div>
 				</div>
 			</fieldset>
@@ -204,7 +204,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">申請日</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control dt_picker" name="application_date"  id="application_date" value="<?= isset($item) ? $item -> application_date : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text" class="form-control dt_picker" name="application_date"  id="application_date" value="<?= isset($item) ? $item -> application_date : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26  || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
@@ -212,7 +212,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">公開日</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control dt_picker" name="public_date"  id="public_date" value="<?= isset($item) ? $item -> public_date : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text"  class="form-control dt_picker" name="public_date"  id="public_date" value="<?= isset($item) ? $item -> public_date : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26  || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
@@ -220,7 +220,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">公告日</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control dt_picker" name="announcement_date"  id="announcement_date" value="<?= isset($item) ? $item -> announcement_date : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text"  class="form-control dt_picker" name="announcement_date"  id="announcement_date" value="<?= isset($item) ? $item -> announcement_date : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
@@ -228,15 +228,15 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利權期間</label>
 					<div class="col-md-2 widget-toolbar pull-left">
-						<input id="s_dt" placeholder="開始日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_start_dt : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input id="s_dt" placeholder="開始日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_start_dt : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26  || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 					
 					<div class="col-md-2 widget-toolbar pull-left">
-						~<input id="e_dt" placeholder="結束日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_end_dt : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						~<input id="e_dt" placeholder="結束日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_end_dt : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26  || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 					<div class="col-md-2 widget-toolbar pull-left">
 						共
-						<input type="text" id="year" value="<?= isset($item) ? $item -> year : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text" id="year" value="<?= isset($item) ? $item -> year : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
 						年						
 					</div>
 				</div>
@@ -245,7 +245,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利權止日</label>
 					<div class="col-md-6">
-						<input type="text" class="dt_picker form-control" name="patent_finish_date"  id="patent_finish_date" value="<?= isset($item) ? $item -> patent_finish_date : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>/>
+						<input type="text" class="dt_picker form-control" name="patent_finish_date"  id="patent_finish_date" value="<?= isset($item) ? $item -> patent_finish_date : '' ?>"  <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
@@ -264,7 +264,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利摘要</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="10" id="patent_note" name="patent_note" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> patent_note : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="10" id="patent_note" name="patent_note" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>><?= isset($item) ? $item -> patent_note : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -272,7 +272,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利備註</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="10" id="patnet_note_for_users" name="patnet_note_for_users" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> patnet_note_for_users : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="10" id="patnet_note_for_users" name="patnet_note_for_users" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>><?= isset($item) ? $item -> patnet_note_for_users : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>	
@@ -280,7 +280,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利範圍</label>
 					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="10" id="patent_range" name="patent_range" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>><?= isset($item) ? $item -> patent_range : '' ?></textarea>
+						<textarea type="text" require class="form-control" rows="10" id="patent_range" name="patent_range" style="resize:none;width:100%" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>><?= isset($item) ? $item -> patent_range : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>		
@@ -288,8 +288,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利代表圖</label>
 					<div class="col-md-6">
-						<input id="img-input" name="file[]" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
-						<input id="img_id" type="hidden"  value="<?= isset($item) ? $item -> img_id : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
+						<input id="img-input" name="file[]" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>>
+						<input id="img_id" type="hidden"  value="<?= isset($item) ? $item -> img_id : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>>
 					</div>
 				</div>
 			</fieldset>
@@ -297,8 +297,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利分析相關文件</label>
 					<div class="col-md-6">
-						<input id="file-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
-						<input id="files_id" type="hidden"  value="<?= isset($item) ? $item -> files_id : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26? '': 'readonly' ?>>
+						<input id="file-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>>
+						<input id="files_id" type="hidden"  value="<?= isset($item) ? $item -> files_id : '' ?>" <?= $login_user->role_id==52 || $login_user->role_id==26 || $login_user->role_id==24? '': 'readonly' ?>>
 					</div>
 				</div>
 			</fieldset>	
