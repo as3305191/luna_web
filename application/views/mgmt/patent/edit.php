@@ -410,7 +410,6 @@ if($('#item_id').val()>0){
 
 $("#img-input").fileinput({
 					language: "zh-TW",
-					showzoom:true,
 		<?php if(!empty($item -> image) && count($item -> image) > 0): ?>
 
         	initialPreview: [
