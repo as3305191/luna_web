@@ -1,6 +1,6 @@
 <style>
 .file-drag-handle {
-	display: none;
+	/* display: none; */
 }
 .btn_1 {
 	background-color: #FFD22F !important;
@@ -337,7 +337,7 @@
 
 <style>
 	.kv-file-zoom {
-		display: none;
+		/* display: none; */
 	}	
 </style>
 
@@ -417,6 +417,7 @@ if($('#item_id').val()>0){
 
 $("#img-input").fileinput({
 					language: "zh-TW",
+					showzoom:true,
 		<?php if(!empty($item -> image) && count($item -> image) > 0): ?>
 
         	initialPreview: [
@@ -433,7 +434,6 @@ $("#img-input").fileinput({
 						'width' : '120px',
 						'url' : '<?= base_url('mgmt/images/delete/' . $img->id )  ?>',
 						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
-						'showPreview': true,
 						'key' : <?= $img->id?>
 				},
 				<?php else: ?>
@@ -442,7 +442,6 @@ $("#img-input").fileinput({
 						'size' : <?= $img -> image_size ?>,
 						'width' : '120px',
 						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
-						'showPreview': true,
 						'key' : <?= $img->id?>
 				},
 				<?php endif ?>
@@ -457,7 +456,8 @@ $("#img-input").fileinput({
         initialPreviewAsData: true,
 		overwriteInitial: false,
 		purifyHtml:true ,
-        maxFileCount: 1,
+		maxFileCount: 1,
+		
         uploadUrl: 'mgmt/images/upload/img',
         uploadExtraData: {
         }
