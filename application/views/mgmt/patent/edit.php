@@ -433,8 +433,7 @@ $("#img-input").fileinput({
 						'width' : '120px',
 						'url' : '<?= base_url('mgmt/images/delete/' . $img->id )  ?>',
 						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
-						'enctype': 'multipart/form-data',
-
+						'validateInitialCount': true,//有效初始化計數
 						'key' : <?= $img->id?>
 				},
 				<?php else: ?>
@@ -443,8 +442,7 @@ $("#img-input").fileinput({
 						'size' : <?= $img -> image_size ?>,
 						'width' : '120px',
 						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
-						'enctype': 'multipart/form-data',
-
+						'validateInitialCount': true,//有效初始化計數
 						'key' : <?= $img->id?>
 				},
 				<?php endif ?>
@@ -503,7 +501,6 @@ $("#img-input").fileinput({
 					'type': 'pdf',
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id)  ?>',
-					'enctype': 'multipart/form-data',
 	        		'key' : <?= $files->id?>
 				},
 				<?php else: ?>
@@ -512,7 +509,6 @@ $("#img-input").fileinput({
 						'size' : <?= $files -> file_size ?>,
 						'width' : '120px',
 						'type': 'pdf',
-						'enctype': 'multipart/form-data',
 						'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 						'key' : <?= $files->id?>
 					},
@@ -565,8 +561,6 @@ $("#img-input").fileinput({
 					'width' : '120px',
 					'type': 'pdf',
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
-					'enctype': 'multipart/form-data',
-
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
 	        		'key' : <?= $files->id?>
 			},
@@ -577,8 +571,6 @@ $("#img-input").fileinput({
 					'width' : '120px',
 					'type': 'pdf',
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
-					'enctype': 'multipart/form-data',
-
 	        		'key' : <?= $files->id?>
 			},
 				<?php endif ?>
@@ -631,8 +623,6 @@ $("#img-input").fileinput({
 					'type': 'pdf',
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 					'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
-					'enctype': 'multipart/form-data',
-
 	        		'key' : '<?= $files->id  ?>'
 				},
 				<?php else: ?>
@@ -642,8 +632,6 @@ $("#img-input").fileinput({
 					'width' : '120px',
 					'type': 'pdf',
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
-					'enctype': 'multipart/form-data',
-
 	        		'key' : '<?= $files->id  ?>'
 				},
 				<?php endif ?>
