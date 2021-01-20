@@ -1,7 +1,5 @@
 <style>
-.file-drag-handle {
-	/* display: none; */
-}
+
 .btn_1 {
 	background-color: #FFD22F !important;
 	color: #F57316 !important;
@@ -335,11 +333,6 @@
 <!-- end widget -->
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 
-<style>
-	.kv-file-zoom {
-		/* display: none; */
-	}	
-</style>
 
 <script>
 var current_app = [];
