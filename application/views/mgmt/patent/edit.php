@@ -914,7 +914,6 @@ function do_save() {
 									$('#in_patnet_status').val($('#patnet_status_'+before_dataVal).val());
 								}else{
 									$('#in_patnet_status').val("0");
-
 								}
 							} else{
 								$('#in_patnet_status').val(select_Val);
@@ -948,7 +947,6 @@ function do_save() {
 															'text': this.name,
 														}).appendTo($category);
 													}
-
 												} else{
 													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
 															$('<option />', {
@@ -963,10 +961,9 @@ function do_save() {
 													}
 													
 													$('#patnet_status_'+next_c).attr("disabled",true);
+													
 												}
-												
 											});
-											
 										}
 									},
 									failure:function(){
