@@ -848,7 +848,6 @@ function do_save() {
 									'</div>';
 								
 							} else{
-							
 								html+='<div class="widget-toolbar pull-left">'+
 											'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" disabled>'+
 												'<option value="all">全部</option>'+
