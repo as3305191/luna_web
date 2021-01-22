@@ -18,7 +18,7 @@ class App extends MY_Base_Controller {
 
 		// group list
 		$data['group_list'] = $this -> users_dao -> find_group_users($user_id);
-
+		
 		// get menu data
 		$role_id = $user -> role_id;
 		$list = $this -> users_dao -> nav_list_by_role_id($role_id);
