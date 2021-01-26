@@ -75,10 +75,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> 'mysql:host=' . DB_HOST .'; dbname=' . DB_NAME . '; charset=utf8;',
-	'username' => 'pony',
-	'password' => '!pony',
-	// 'username' => 'root',
-	// 'password' => 'as09760731',
+	// 'username' => 'pony',
+	// 'password' => '!pony',
+	'username' => 'root',
+	'password' => 'as09760731',
 	'dbdriver' => 'pdo',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
