@@ -500,7 +500,7 @@ class Users_dao extends MY_Model {
 	}
 
 	function find_all_department() {
-		$this -> db -> where('parent_id',20);
+		$this -> db -> where('parent_id',5);
 		return $this -> db -> get('department') -> result();
 	}
 
