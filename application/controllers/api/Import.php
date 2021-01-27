@@ -12,6 +12,7 @@ class Import extends MY_Base_Controller {
 		$this -> load -> model('Images_dao', 'dao');
 		$this -> load -> model('Users_copy_dao', 'users_copy_dao');
 		$this -> load -> model('Patent_dao', 'patent_dao');
+		$this -> load -> model('Users_dao', 'users_dao');
 
 		$this->load->library('excel');
 	}
