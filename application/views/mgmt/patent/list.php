@@ -17,7 +17,7 @@
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
 						<header id="patent_header">
-							<?php if($login_user->role_id==52 ||$login_user->role_id==26||$login_user->role_id==24): ?>
+							<?php if($login_user->role_id==9 ||$login_user->role_id==11||$login_user->role_id==28): ?>
 								<div class="widget-toolbar pull-left">
 									<div class="btn-group">
 										<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
