@@ -29,7 +29,7 @@
                 <?= isset($each->content) ? $each->content : '' ?> 
             </div>
         <?php else: ?>
-            <?php if($each->news_style_id =='3'): ?>
+            <?php if($each->news_style_id =='1'): ?>
                 <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
                     <div style="font-size:50px;color:red;" >
                         <?= isset($each) ? $each -> news_style_name : '' ?> 

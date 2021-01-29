@@ -117,7 +117,7 @@ class News_dao extends MY_Model {
 	function find_last_cost(){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		$this -> db -> where('news_style_id',3);
+		$this -> db -> where('news_style_id',1);
 		$this -> db -> order_by('_m.id', 'desc');
 		$list = $this -> db -> get() -> result();
 		return $list;
@@ -135,7 +135,7 @@ class News_dao extends MY_Model {
 
 		$this -> search_always($data);
 		// $this -> db -> join("users u", "u.id = _m.fix_user_id", "left");
-		$this -> db -> where("_m.news_style_id <>","3");
+		$this -> db -> where("_m.news_style_id <>","1");
 		$this -> db -> where("_m.news_style_id <>","7");
 		$this -> db -> where("_m.news_style_id <>","8");
 		if(!$is_count) {

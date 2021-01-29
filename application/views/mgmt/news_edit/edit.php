@@ -240,7 +240,7 @@ $('#add_news_style').click(function() {
 })
 
 $('#news_style').on('change', function(){
-	if($('#news_style').val()==3){
+	if($('#news_style').val()==1){
 		$('#cost_div').removeClass("none");
 	} else{
 		$('#cost_div').addClass("none");

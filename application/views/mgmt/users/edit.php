@@ -33,7 +33,6 @@
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 
-
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">帳號</label>
