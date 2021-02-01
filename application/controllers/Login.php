@@ -80,6 +80,12 @@ class Login extends MY_Base_Controller {
 			);
 
 		$data['captcha'] = create_captcha($vals);
+		// if(is_null($data['captcha'][0]->word)){
+		// 	$this->session->set_userdata('captcha_word',$random_number);
+
+		// } else{
+		// 	$this->session->set_userdata('captcha_word',$data['captcha']['word']);
+		// }
 		$this->session->set_userdata('captcha_word',$data['captcha']['word']);
 
 		return $data;
