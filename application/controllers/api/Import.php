@@ -128,6 +128,8 @@ class Import extends MY_Base_Controller {
 					'applicant' =>$applicant,
 					'patnet_status' =>'',
 					'patent_country'=>'1'
+					// 'patent_country'=>'4'
+
 				);
 				$this->patent_dao->insert($data);
 			}
