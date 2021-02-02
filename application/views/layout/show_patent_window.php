@@ -40,7 +40,7 @@
   })
   $('.dosubmit').click(function() {
   		$.ajax({
-  			url: '<?= base_url() ?>' + 'mgmt/patent_category/add_under',
+  			url: '<?= base_url() ?>' + 'mgmt/patent_status/add_under',
   			type: 'POST',
   			data: {
   				parent_id:$('#parent_id').val(),
