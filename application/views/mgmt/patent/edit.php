@@ -185,10 +185,11 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利號</label>
 					<div class="col-md-6">
-						<input type="text"  class="form-control" name="patnet_num" id="patnet_num"  value="<?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						<input type="text"  class="form-control" name="patnet_num" id="patnet_num" value="<?= isset($item) ? $item -> patnet_num : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>
+
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利號檔案</label>
