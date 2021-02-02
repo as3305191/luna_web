@@ -132,13 +132,8 @@ class Patent extends MY_Mgmt_Controller {
 	public function new_patent_family() {
 		$res = array();
 		$count_num = $this -> dao -> find_by_all_today_add();
-		if($count_num=='0'){
-			$last_num = $count_num+1;
-			$family_num = date('Ymd').'0'.$last_num;
-		} else{
-			$last_num = $count_num+1;
-			$family_num = date('Ymd').'0'.$last_num;
-		}
+		$last_num = $count_num+1;
+		$family_num = date('Ymd').'0'.$last_num;
 		$res['family_num'] = $family_num;		
 		$res['success'] = TRUE;
 		$this -> to_json($res);
