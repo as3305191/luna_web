@@ -1064,7 +1064,7 @@ function do_save() {
 		});
 	}
 
-	familyChange();
+	// familyChange();
 
 	var stationListStore = [];
 	function reloadStationList() {
