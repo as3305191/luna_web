@@ -101,9 +101,9 @@
 
 		$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
 
-		$('#edit-modal-body').load(baseUrl + 'mgmt/patent_category/edit_page/' + $id, function(){
+		$('#edit-modal-body').load(baseUrl + 'mgmt/patent_status/edit_page/' + $id, function(){
 					$("#btn-submit-edit").prop( "disabled", false);
-					var url = baseUrl + 'mgmt/patent_category/re_index'; 
+					var url = baseUrl + 'mgmt/patent_status/re_index'; 
 					$.ajax({
 						type : "POST",
 						url : url,

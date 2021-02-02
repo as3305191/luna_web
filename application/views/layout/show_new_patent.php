@@ -36,7 +36,7 @@
   })
   $('.dosubmit').click(function() {
   		$.ajax({
-  			url: '<?= base_url() ?>' + 'mgmt/patent_category/add_department',
+  			url: '<?= base_url() ?>' + 'mgmt/patent_status/add_department',
   			type: 'POST',
   			data: {
           new_name : $('#name').val()

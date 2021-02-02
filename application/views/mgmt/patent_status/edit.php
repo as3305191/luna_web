@@ -33,7 +33,7 @@
 				<input type="hidden" name="id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label">角色名稱</label>
+						<label class="col-md-3 control-label">專利項目類別</label>
 						<div class="col-md-6">
 							<input type="text" required class="form-control" name="name" value="<?= isset($item) ? $item -> name : '' ?>" />
 						</div>
