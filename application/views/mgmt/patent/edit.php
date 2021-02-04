@@ -530,7 +530,10 @@ $("#img-input").fileinput({
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	}).on('change', function(event,data,key) {
-		console.log(pdf_array);
+		// console.log(pdf_array);
+		// if(event.length>0){
+
+		// }
 	});
 
 	$("#public-num-input").fileinput({
@@ -544,7 +547,6 @@ $("#img-input").fileinput({
         	initialPreviewConfig: [
 				<?php foreach($item -> public_number as $files): ?>
     	
-			
 			<?php if($login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28): ?>
 				{
 	        		'caption' : '<?= $files -> file_name ?>',
