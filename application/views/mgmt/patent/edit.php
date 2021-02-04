@@ -591,11 +591,9 @@ $("#img-input").fileinput({
     	$("#public-num-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
 		public_num_input.splice($.inArray(data,public_num_input),1);
-
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
-	
 	});
 
 	$("#patnet-num-input").fileinput({
