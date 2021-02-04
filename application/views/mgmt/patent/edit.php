@@ -506,7 +506,6 @@ $("#img-input").fileinput({
 					},
 				<?php endif ?>
     		<?php endforeach ?>
-
         	],
         <?php else: ?>
         	initialPreview: [],
