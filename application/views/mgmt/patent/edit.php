@@ -526,14 +526,11 @@ $("#img-input").fileinput({
     	$("#file-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
 		pdf_array.splice($.inArray(data,pdf_array),1);
-
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	}).on('change', function(event,data,key) {
-		// console.log(pdf_array);
-		// if(event.length>0){
-
-		// }
+		//測試div被拉動後array也要做變動
+	
 	});
 
 	$("#public-num-input").fileinput({
@@ -892,7 +889,6 @@ function do_save() {
 								
 								$('#patnet_status_'+level).attr("disabled",true);
 							}
-								
 						});
 
 						$('.p_patnet_status').on('change', function(){
