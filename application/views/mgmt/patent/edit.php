@@ -530,8 +530,8 @@ $("#img-input").fileinput({
 
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
-	}).on('filedeleted', function(event,data,key) {
-	
+	}).on('change', function(event,data,key) {
+		console.log(pdf_array);
 	});
 
 	$("#public-num-input").fileinput({
