@@ -727,7 +727,6 @@ function load_country() {
 								'text': this.country_name
 							}).appendTo($patnet_country);
 						}
-										
 					});
 				}
 			},
