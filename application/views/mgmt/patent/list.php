@@ -302,56 +302,6 @@
 						}
 					});
 				}
-
-				$('.p_patnet_status').on('change', function(){
-							
-							var me = $(this);
-							var _dataVal = me.data("val");
-							var select_Val = me.val();
-							$.each(current_app[0], function(key,value){
-								var keynum_d_val = $('#'+key).data("val");
-								if(keynum_d_val>_dataVal){
-									$('#patnet_status_'+keynum_d_val).empty();
-									$('<option value="all">全部</option>').appendTo($('#patnet_status_'+keynum_d_val));
-								}
-							});
-							var before_dataVal = _dataVal-1;
-							if(select_Val=='all'){
-								if(_dataVal>0){
-									$('#in_patnet_status').val($('#patnet_status_'+before_dataVal).val());
-								}else{
-									$('#in_patnet_status').val("0");
-								}
-							} else{
-								$('#in_patnet_status').val(select_Val);
-							}
-								var next_c =_dataVal+1;
-								// console.log(next_c);
-								$.ajax({
-									url:  baseUrl + 'mgmt/patent/find_next_category',
-									type: 'POST',
-									data: {
-										next_level:next_c,
-										this_val:select_Val,
-									},
-									dataType: 'json',
-									success: function(d) {
-										var category_option = '<option value="all">全部</option>';
-										var $category = $('#patnet_status_'+next_c).empty();
-										$category.append(category_option);
-										if(d.category){
-											$.each(d.category, function(){
-												$('<option />', {
-													'value': this.id,
-													'text': this.name,
-												}).appendTo($category);
-											});
-										}
-									},
-									failure:function(){
-									}
-								});
-						});
 			},
 			failure:function(){
 				alert('faialure');
