@@ -384,8 +384,8 @@
 	function do_remove() {
 		$('#patent_header input').val('');
 		$("input[name='patent_status[]']:checked").map(function() {
-			return ''
-		}).get();
+			return this.id;
+		}).get().join();
 		load_category();
 	}
 
