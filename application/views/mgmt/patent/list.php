@@ -341,33 +341,10 @@
 										$category.append(category_option);
 										if(d.category){
 											$.each(d.category, function(){
-												if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
-
-													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
-															$('<option />', {
-																'value': this.id,
-																'text': this.name,
-															}).attr("selected", true).appendTo($category);										
-													} else{
-														$('<option />', {
-															'value': this.id,
-															'text': this.name,
-														}).appendTo($category);
-													}
-												} else{
-													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
-															$('<option />', {
-																'value': this.id,
-																'text': this.name,
-															}).attr("selected", true).appendTo($category);									
-													} else{
-														$('<option />', {
-															'value': this.id,
-															'text': this.name,
-														}).appendTo($category);
-													}
-													$('#patnet_status_'+next_c).attr("disabled",true);
-												}
+												$('<option />', {
+													'value': this.id,
+													'text': this.name,
+												}).appendTo($category);
 											});
 										}
 									},
