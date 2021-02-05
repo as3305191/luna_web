@@ -39,18 +39,13 @@
 						</div>
 					</div>
 				</fieldset>
-
 			</form>
-
 		</div>
 		<!-- end widget content -->
-
 	</div>
 	<!-- end widget div -->
-
 </div>
 <!-- end widget -->
-
 <!-- PAGE RELATED PLUGIN(S) -->
 <script>
 $('#app-edit-form').bootstrapValidator({
@@ -78,7 +73,6 @@ $('.menu-chk').on('click', function(){
 			$('#power-table .menu-chk[data-mm=' + me.data('id') + ']').prop('checked', false);
 		}
 	}
-
 	isAllChecked();
 });
 
