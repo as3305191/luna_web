@@ -383,6 +383,7 @@
 	
 	function do_remove() {
 		$('#patent_header input').val('');
+		patent_status.map().get('');
 		load_category();
 	}
 
