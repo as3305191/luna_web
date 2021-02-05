@@ -340,7 +340,6 @@
 										if(d.category){
 											$.each(d.category, function(){
 												if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
-
 													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
 															$('<option />', {
 																'value': this.id,
