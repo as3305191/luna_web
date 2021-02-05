@@ -383,7 +383,7 @@
 	
 	function do_remove() {
 		$('#patent_header input').val('');
-		$("input[name='patent_status[]']").empty();
+		$("input[name='patent_status[]']").removeAttr("checked");
 		load_category();
 	}
 
