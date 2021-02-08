@@ -218,7 +218,6 @@
 						error.insertAfter(element.parent());
 					}
 				});
-
 			});
 
 			function getPic(){
