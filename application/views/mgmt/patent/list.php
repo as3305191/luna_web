@@ -305,8 +305,9 @@
 					$('.p_patnet_status').on('change', function(){
 						var me = $(this);
 						var _dataVal = me.data("val");
-					
-						
+						console.log(me);
+						console.log(_dataVal);
+
 					});
 				}
 			},
