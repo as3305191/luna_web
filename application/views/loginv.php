@@ -196,10 +196,8 @@
 						}
 
 					},
-
 					// Ajax form submition
 					submitHandler : function(form) {
-
 						$.ajax({
 							type: "POST",
 							url: '<?= base_url('login/do_login') ?>',
