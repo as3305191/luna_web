@@ -329,11 +329,10 @@
 	}	
 	load_category();
 	
-	function do_remove() {
+	function do_remove() {//一鍵清除所有篩選
 		$('#patent_header input').val('');
 		$("input[name='patent_status[]']").removeAttr("checked");
 		load_category();
-		//一鍵清除所有篩選
 	}
 
 </script>
