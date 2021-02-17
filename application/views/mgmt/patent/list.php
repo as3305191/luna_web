@@ -301,25 +301,24 @@
 						}
 					});
 
-					// $('.p_patnet_status').on('change', function(){
-					// 	var me = $(this);
-					// 	var _dataVal = me.data("val");
-					// 	console.log(me);
-					// 	console.log(_dataVal);
+					$('.p_patnet_status').on('change', function(){
+						var me = $(this);
+						var _dataVal = me.data("val");
+						console.log(me);
+						console.log(_dataVal);
 
-					// 	$( "select .p_patnet_status" ).each(function(){
-					// 		var other_me = $(this);
-					// 		var other_dataVal = other_me.data("val");
+						// $( "select .p_patnet_status" ).each(function(){
+						// 	var other_me = $(this);
+						// 	var other_dataVal = other_me.data("val");
+						// 	if(other_dataVal>_dataVal){
+						// 		$('<option />', {
+						// 			'value': this.id,
+						// 			'text': this.name,
+						// 		}).appendTo(other_me);
+						// 	}
+						// });
 
-					// 		if(other_dataVal>_dataVal){
-					// 			$('<option />', {
-					// 				'value': this.id,
-					// 				'text': this.name,
-					// 			}).appendTo(other_me);
-					// 		}
-					// 	});
-
-					// });
+					});
 				}
 			},
 			failure:function(){
