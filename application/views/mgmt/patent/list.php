@@ -307,16 +307,17 @@
 						console.log(me);
 						console.log(_dataVal);
 
-						// $( "select .p_patnet_status" ).each(function(){
-						// 	var other_me = $(this);
-						// 	var other_dataVal = other_me.data("val");
-						// 	if(other_dataVal>_dataVal){
-						// 		$('<option />', {
-						// 			'value': this.id,
-						// 			'text': this.name,
-						// 		}).appendTo(other_me);
-						// 	}
-						// });
+						$( "select .p_patnet_status" ).each(function(){
+							var other_me = $(this);
+							var other_dataVal = other_me.data("val");
+							if(other_dataVal!=="all" && other_dataVal>_dataVal){
+								$('<option />', {
+									'value': this.id,
+									'text': this.name,
+								}).appendTo(other_me);
+							}
+
+						});
 
 					});
 				}
@@ -332,6 +333,7 @@
 		$('#patent_header input').val('');
 		$("input[name='patent_status[]']").removeAttr("checked");
 		load_category();
+		//一鍵清除所有篩選
 	}
 
 </script>
