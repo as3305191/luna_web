@@ -284,7 +284,7 @@
 					total_category = d.max;
 					for(i;i<=d.max;i++){
 						html+='<div class="widget-toolbar pull-left">'+
-								'<select id="category_'+i+'" class="p_patnet_status" data-val="'+i+'" >'+
+								'<select id="category_'+i+'" class="p_list_patnet_status" data-val="'+i+'" >'+
 								'</select>'+
 							'</div>';
 					}
@@ -301,25 +301,6 @@
 						}
 					});
 
-					$('.p_patnet_status').on('change', function(){
-						var me = $(this);
-						var _dataVal = me.data("val");
-						console.log(me);
-						console.log(_dataVal);
-
-						$( "select .p_patnet_status" ).each(function(){
-							var other_me = $(this);
-							var other_dataVal = other_me.data("val");
-							if(other_dataVal!=="all" && other_dataVal>_dataVal){
-								$('<option />', {
-									'value': this.id,
-									'text': this.name,
-								}).appendTo(other_me);
-							}
-
-						});
-
-					});
 				}
 			},
 			failure:function(){
@@ -334,5 +315,25 @@
 		$("input[name='patent_status[]']").removeAttr("checked");
 		load_category();
 	}
+
+	$('.p_list_patnet_status').on('change', function(){
+		var me = $(this);
+		var _dataVal = me.data("val");
+		console.log(me);
+		console.log(_dataVal);
+
+		$( "select .p_list_patnet_status" ).each(function(){
+			var other_me = $(this);
+			var other_dataVal = other_me.data("val");
+			if(other_dataVal!=="all" && other_dataVal>_dataVal){
+				$('<option />', {
+					'value': this.id,
+					'text': this.name,
+				}).appendTo(other_me);
+			}
+
+		});
+
+	});
 
 </script>
