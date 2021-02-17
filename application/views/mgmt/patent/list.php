@@ -243,11 +243,6 @@
 		var defaultContent = '<a role="button" data-toggle="modal" style="margin-right: 5px;" ><i class="fa fa-trash fa-lg"></i></a>';
 	}
 
-
-    // protected $ext = array(‘jpg’,’gif’);
-
-
-
 	var mColDefs = [{
 		targets : 0,
 		data : null,
