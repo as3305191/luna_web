@@ -300,7 +300,6 @@
 							}).appendTo($category_0);
 						}
 					});
-
 				}
 			},
 			failure:function(){
@@ -331,9 +330,7 @@
 					'text': this.name,
 				}).appendTo(other_me);
 			}
-
 		});
-
 	});
 
 </script>
