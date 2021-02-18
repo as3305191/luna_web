@@ -506,10 +506,8 @@ if (!function_exists('send_gcm_simple')) {
 		curl_setopt ( $ch, CURLOPT_POSTFIELDS, $fields );
 		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false); // bypass ssl verify
 
-
 		$result = curl_exec ( $ch );
 		//echo $result;
-
 
 		curl_close ( $ch );
 		return $result;
