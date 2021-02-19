@@ -40,10 +40,6 @@
                 }
             ],
             "description": "PHP wrapper for command line ImageMagick utils compatible with PECL::Imagick",
-            "support": {
-                "issues": "https://github.com/calcinai/php-imagick/issues",
-                "source": "https://github.com/calcinai/php-imagick/tree/master"
-            },
             "time": "2016-12-22T15:09:47+00:00"
         },
         {
@@ -77,13 +73,6 @@
             ],
             "description": "The CodeIgniter framework",
             "homepage": "https://codeigniter.com",
-            "support": {
-                "forum": "http://forum.codeigniter.com/",
-                "issues": "https://github.com/bcit-ci/CodeIgniter/issues",
-                "slack": "https://codeigniterchat.slack.com",
-                "source": "https://github.com/bcit-ci/CodeIgniter",
-                "wiki": "https://github.com/bcit-ci/CodeIgniter/wiki"
-            },
             "time": "2019-09-19T12:08:45+00:00"
         },
         {
@@ -195,12 +184,6 @@
                 "laminas",
                 "zf"
             ],
-            "support": {
-                "forum": "https://discourse.laminas.dev/",
-                "issues": "https://github.com/laminas/laminas-zendframework-bridge/issues",
-                "rss": "https://github.com/laminas/laminas-zendframework-bridge/releases.atom",
-                "source": "https://github.com/laminas/laminas-zendframework-bridge"
-            },
             "funding": [
                 {
                     "url": "https://funding.communitybridge.org/projects/laminas-project",
@@ -321,10 +304,6 @@
                 "php",
                 "zip"
             ],
-            "support": {
-                "issues": "https://github.com/ivanlanin/pclzip/issues",
-                "source": "https://github.com/ivanlanin/pclzip/tree/master"
-            },
             "time": "2014-06-05T11:42:24+00:00"
         },
         {
@@ -380,10 +359,6 @@
                 "office",
                 "php"
             ],
-            "support": {
-                "issues": "https://github.com/PHPOffice/Common/issues",
-                "source": "https://github.com/PHPOffice/Common/tree/master"
-            },
             "time": "2018-07-13T14:12:34+00:00"
         },
         {
@@ -446,10 +421,6 @@
                 "xls",
                 "xlsx"
             ],
-            "support": {
-                "issues": "https://github.com/PHPOffice/PHPExcel/issues",
-                "source": "https://github.com/PHPOffice/PHPExcel/tree/master"
-            },
             "abandoned": "phpoffice/phpspreadsheet",
             "time": "2018-11-22T23:07:24+00:00"
         },
@@ -560,10 +531,6 @@
                 "word",
                 "writer"
             ],
-            "support": {
-                "issues": "https://github.com/PHPOffice/PHPWord/issues",
-                "source": "https://github.com/PHPOffice/PHPWord/tree/develop"
-            },
             "time": "2019-10-01T20:43:33+00:00"
         }
     ],
@@ -575,5 +542,5 @@
     "prefer-lowest": false,
     "platform": [],
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "1.1.0"
 }
