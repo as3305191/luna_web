@@ -349,9 +349,6 @@ $(document).ready(function() {
 			}
 		});
 	} 
-	
-	load_edit_category();
-
 });
 
 $('#app-edit-form').bootstrapValidator({
@@ -855,12 +852,11 @@ function do_save() {
 							
 						}
 						$(html).appendTo($category);
-
-						$( "#patnet_status select" ).each(function() {
-							var level = this.data('val');
+						$.each(d.category, function(){
+							var level = this.level;
 							if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
-								if($.inArray('patnet_status_'+level,current_app[0])>0){
-									if(current_app[0]['patnet_status_'+level] && current_app[0]['patnet_status_'+level]==this.id){
+								if(current_app[0].indexOf('patnet_status_'+level)>0){
+									if(current_app[0]['patnet_status_'+level] &&current_app[0]['patnet_status_'+level]==this.id){
 										$('<option />', {
 											'value': this.id,
 											'text': this.name,
@@ -974,8 +970,8 @@ function do_save() {
 		});
 
 	}	
+	load_edit_category();
 	
-
 	function doSearchfamily_num() {
 		familyChange();
 		$('#familynumModal').modal('show');
