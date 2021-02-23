@@ -320,8 +320,8 @@
 	$('.p_list_patnet_status').on('change', function(){
 		var me = $(this);
 		var _dataVal = me.data("val");
-		console.log(me);
-		console.log(_dataVal);
+		// console.log(me);
+		// console.log(_dataVal);
 
 		$( "select .p_list_patnet_status" ).each(function(){
 			var other_me = $(this);
