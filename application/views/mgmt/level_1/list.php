@@ -114,7 +114,6 @@
 	var mColDefs = [{
 		targets : 0,
 		data : null,
-
 		defaultContent : defaultContent,
 		searchable : false,
 		orderable : false,
