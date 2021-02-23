@@ -877,7 +877,7 @@ function do_save() {
 										}).appendTo($('#patnet_status_'+category_level));
 									}
 								} else{
-									if(current_app[0]['patnet_status_'+select_level] && current_app[0]['patnet_status_'+select_level]==this.id){
+									if(current_app[0]['patnet_status_'+select_level]== category_level && current_app[0]['patnet_status_'+select_level]==this.id){
 											$('<option />', {
 												'value': this.id,
 												'text': this.name,
