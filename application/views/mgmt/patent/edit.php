@@ -938,7 +938,7 @@ function do_save() {
 	}	
 	
 	$( "#patnet_status select" ).each(function() {
-		var level = this..data('value');
+		var level = this.data('value');
 		if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
 			if($.inArray('patnet_status_'+level,current_app[0])>0){
 				if(current_app[0]['patnet_status_'+level] && current_app[0]['patnet_status_'+level]==this.id){
