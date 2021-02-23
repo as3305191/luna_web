@@ -853,22 +853,17 @@ function do_save() {
 						}
 						$(html).appendTo($category);
 						$("#patnet_status select").each(function() {
-							var select_level = this.data("val");
+							var select_level = $(this).data("val");
 							$.each(d.category, function(){
-							// console.log(level);
-							if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
-								if($.inArray('patnet_status_'+select_level,current_app[0])>=0){
-									if(current_app[0]['patnet_status_'+select_level]==this.id){
-										$('<option />', {
-											'value': this.id,
-											'text': this.name,
-										}).attr("selected", true).appendTo($('#patnet_status_'+select_level));										
-									} else{
-										$('<option />', {
-											'value': this.id,
-											'text': this.name,
-										}).appendTo($('#patnet_status_'+select_level));
-									}
+					
+						// console.log(level);
+						if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
+							if($.inArray('patnet_status_'+select_level,current_app[0])>=0){
+								if(current_app[0]['patnet_status_'+select_level]==this.id){
+									$('<option />', {
+										'value': this.id,
+										'text': this.name,
+									}).attr("selected", true).appendTo($('#patnet_status_'+select_level));										
 								} else{
 									$('<option />', {
 										'value': this.id,
@@ -876,21 +871,27 @@ function do_save() {
 									}).appendTo($('#patnet_status_'+select_level));
 								}
 							} else{
-								if(current_app[0]['patnet_status_'+select_level]==this.id){
-										$('<option />', {
-											'value': this.id,
-											'text': this.name,
-										}).attr("selected", true).appendTo($('#patnet_status_'+select_level));
-								} else{
+								$('<option />', {
+									'value': this.id,
+									'text': this.name,
+								}).appendTo($('#patnet_status_'+select_level));
+							}
+						} else{
+							if(current_app[0]['patnet_status_'+select_level]==this.id){
 									$('<option />', {
 										'value': this.id,
 										'text': this.name,
-									}).appendTo($('#patnet_status_'+select_level));
-								}
-								
-								$('#patnet_status_'+select_level).attr("disabled",true);
+									}).attr("selected", true).appendTo($('#patnet_status_'+select_level));
+							} else{
+								$('<option />', {
+									'value': this.id,
+									'text': this.name,
+								}).appendTo($('#patnet_status_'+select_level));
 							}
-						});
+							
+							$('#patnet_status_'+select_level).attr("disabled",true);
+						}
+					});
 						})
 				
 
