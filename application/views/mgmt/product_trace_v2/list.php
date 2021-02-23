@@ -52,7 +52,7 @@
 							<div class="widget-toolbar pull-left">
 								<input id="s_lot_number" ondragover="" type="text" class="form-control" autocomplete="off"/>
 							</div>
-
+		
 							<div class="widget-toolbar pull-left">
 								<label>品名</label>
 							</div>
