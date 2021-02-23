@@ -853,7 +853,7 @@ function do_save() {
 						}
 						$(html).appendTo($category);
 						$.each(d.category, function(){
-							category_level = $(this).level;
+							category_level = this.level;
 							if(current_app[0]['patnet_status_'+category_level]==this.id){
 								$('<option />', {
 									'value': this.id,
