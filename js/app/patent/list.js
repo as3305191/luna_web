@@ -112,6 +112,5 @@ var patentAppClass = (function(app) {
 		return app;
 	};
 
-	// return self
 	return app.init();
 });
