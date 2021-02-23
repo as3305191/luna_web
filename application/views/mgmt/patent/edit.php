@@ -854,29 +854,24 @@ function do_save() {
 						$(html).appendTo($category);
 						$.each(d.category, function(){
 							category_level = $(this).level;
-							if(current_app[0]['patnet_status_'+category_level] && current_app[0]['patnet_status_'+category_level]==this.id){
+							if(current_app[0]['patnet_status_'+category_level]==this.id){
 								$('<option />', {
 									'value': this.id,
 									'text': this.name,
-								}).attr("selected", true).appendTo($('#patnet_status_'+category_level));
-								
-								if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
-								}else{
-									$('#patnet_status_'+category_level).attr("disabled",true);
-								}
-								
+								}).attr("selected", true).appendTo($('#patnet_status_'+category_level));							
 							} else{
 								$('<option />', {
 									'value': this.id,
 									'text': this.name,
 								}).appendTo($('#patnet_status_'+category_level));
-								if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
-								}else{
-									$('#patnet_status_'+category_level).attr("disabled",true);
-								}
+
 							}
 						});
 			
+						if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
+						}else{
+							$('#patnet_status_'+category_level).attr("disabled",true);
+						}
 
 						$('.p_patnet_status').on('change', function(){
 							
