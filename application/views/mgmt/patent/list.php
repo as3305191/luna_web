@@ -314,7 +314,6 @@
 		$("input[name='patent_status[]']").removeAttr("checked");
 		load_category();
 		currentApp.tableReload();
-
 	}
 
 	$('.p_list_patnet_status').on('change', function(){
@@ -322,7 +321,6 @@
 		var _dataVal = me.data("val");
 		// console.log(me);
 		// console.log(_dataVal);
-
 		$( "select .p_list_patnet_status" ).each(function(){
 			var other_me = $(this);
 			var other_dataVal = other_me.data("val");
