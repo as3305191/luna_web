@@ -17,7 +17,7 @@ class Message extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
-		$data['socket_url'] = "ws://192.168.3.251:8081/server.php";
+		$data['socket_url'] = "ws://192.168.1.205:8081/server.php";
 		// $data['socket_url'] = "ws://localhost:8081/server.php";
         $data['me'] = $login_user;
 		$data['username'] = $login_user->user_name;

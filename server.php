@@ -4,7 +4,7 @@ ob_implicit_flush();
  
 //地址與接口，即創建socket時需要服務器的IP和端口
 // $sk=new Sock('127.0.0.1',8081);
-$sk=new Sock('192.168.3.251',8081);
+$sk=new Sock('192.168.1.205',8081);
 $sk->run();
 
  
