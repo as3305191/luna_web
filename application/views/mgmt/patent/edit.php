@@ -855,7 +855,7 @@ function do_save() {
 						$.each(d.category, function(){
 							var level = this.level;
 							if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
-								if(current_app[0].indexOf('patnet_status_'+level)>0){
+								if(current_app[0].indexOf('patnet_status_'+level)>=0){
 									if(current_app[0]['patnet_status_'+level] &&current_app[0]['patnet_status_'+level]==this.id){
 										$('<option />', {
 											'value': this.id,
