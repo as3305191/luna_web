@@ -829,7 +829,7 @@ function do_save() {
 				dataType: 'json',
 				success: function(d) {
 					if(d) {
-						console.log(d);
+						// console.log(d);
 						$category = $('#patnet_status').empty();
 						var i=0;
 						var html='';
@@ -855,6 +855,7 @@ function do_save() {
 						$("#patnet_status select").each(function() {
 							var select = $(this);
 							select_level = select.data("val");
+							console.log(select_level);
 							$.each(d.category, function(){
 								category_level = this.level;
 								if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
