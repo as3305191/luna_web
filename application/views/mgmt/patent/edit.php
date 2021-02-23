@@ -875,6 +875,7 @@ function do_save() {
 							}
 						} else{
 							$.each(d.category, function(){
+								category_level = this.level;
 								$('<option />', {
 									'value': this.id,
 									'text': this.name,
