@@ -260,10 +260,10 @@
 		loadScript(baseUrl + "js/app/patent/list.js", function(){
 			currentApp = new patentAppClass(new BaseAppClass({}));
 
-			$('#family-num-add-form').submit(function(e){
-				familyChange();
-				e.preventDefault();
-			});
+			// $('#family-num-add-form').submit(function(e){
+			// 	familyChange();
+			// 	e.preventDefault();
+			// });
 		});
 	});
 
