@@ -265,7 +265,7 @@ class Sock{
          
             $map_all_user = array();
             $key='all';
-            $link=@mysqli_connect('127.0.0.1:8080','pony','!pony','ktx');
+            $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
             if(!$link){
                 echo"Mysql連錯<br/>";
                 echo mysqli_connect_error();
@@ -320,7 +320,7 @@ class Sock{
             $socket=$g['socket'];
             $me_id=$g['me_id'];
             $this->close($socket);
-            $link=@mysqli_connect('127.0.0.1:8080','pony','!pony','ktx');
+            $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
             if(!$link){
                 echo"Mysql連錯<br/>";
                 echo mysqli_connect_error();
@@ -366,7 +366,7 @@ class Sock{
             $ar['is_online']= $is_online;
             $key=$g['key'];
             if( $ar['is_online']==0){//未上限所以未讀
-                $link=@mysqli_connect('127.0.0.1:8080','pony','!pony','ktx');
+                $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
                 if(!$link){
                     echo"Mysql連錯<br/>";
                     echo mysqli_connect_error();
@@ -380,7 +380,7 @@ class Sock{
                 $ar['last_id']=$last_id;
             } else{
                
-                $link=@mysqli_connect('127.0.0.1:8080', 'pony', '!pony', 'ktx');
+                $link=@mysqli_connect('127.0.0.1', 'pony', '!pony', 'ktx');
                 if (!$link) {
                     echo"Mysql連錯<br/>";
                     echo mysqli_connect_error();
@@ -436,7 +436,7 @@ class Sock{
             $users=$this->users;
             //如果是add表示新加的client
             if($ar['type']=='add'){
-                $link=@mysqli_connect('127.0.0.1:8080','pony','!pony','ktx');
+                $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
                 if(!$link){
                     echo"Mysql連錯<br/>";
                     echo mysqli_connect_error();
@@ -474,7 +474,7 @@ class Sock{
     }
      
     function insert_to_user_is_offline_content($ar){
-        $link=@mysqli_connect('127.0.0.1:8080','pony','!pony','ktx');
+        $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
         if(!$link){
             echo"Mysql連錯<br/>";
             echo mysqli_connect_error();
@@ -495,7 +495,7 @@ class Sock{
         $this->close($k);
         $ar['type']='rmove';
         $ar['nrong']=$k;
-        $link=@mysqli_connect('127.0.0.1:8080','pony','!pony','ktx');
+        $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
         if(!$link){
             echo"Mysql連錯<br/>";
             echo mysqli_connect_error();
