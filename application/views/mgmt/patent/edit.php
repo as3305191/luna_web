@@ -829,7 +829,7 @@ function do_save() {
 				dataType: 'json',
 				success: function(d) {
 					if(d) {
-						// console.log(d);
+						console.log(d);
 						$category = $('#patnet_status').empty();
 						var i=0;
 						var html='';
@@ -854,7 +854,7 @@ function do_save() {
 						$(html).appendTo($category);
 						$.each(d.category, function(){
 							var level = this.level;
-							console.log(level);
+							// console.log(level);
 							if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
 								if($.inArray('patnet_status_'+level,current_app[0])>=0){
 									if(current_app[0]['patnet_status_'+level]==this.id){
