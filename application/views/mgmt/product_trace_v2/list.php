@@ -112,7 +112,6 @@
 										<tr>
 											<td class="min100">項目數量</td>
 											<td><span id="sum_orders" class="t_red"></span></td>
-
 											<td class="min100">原料總重量(KG)</td>
 											<td><span id="sum_weight_2" class="t_red"></span></td>
 											<td class="min100">成品總重量(KG)</td>
@@ -142,7 +141,6 @@
 											<th class="min100">工單產出(KG)</th>
 
 										</tr>
-
 									</thead>
 									<tbody>
 									</tbody>
