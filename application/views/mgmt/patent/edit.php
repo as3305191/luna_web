@@ -921,12 +921,11 @@ function do_save() {
 										if(d.category){
 											$.each(d.category, function(){
 												if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
-
 													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
-															$('<option />', {
-																'value': this.id,
-																'text': this.name,
-															}).attr("selected", true).appendTo($category);										
+														$('<option />', {
+															'value': this.id,
+															'text': this.name,
+														}).attr("selected", true).appendTo($category);										
 													} else{
 														$('<option />', {
 															'value': this.id,
@@ -935,10 +934,10 @@ function do_save() {
 													}
 												} else{
 													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
-															$('<option />', {
-																'value': this.id,
-																'text': this.name,
-															}).attr("selected", true).appendTo($category);									
+														$('<option />', {
+															'value': this.id,
+															'text': this.name,
+														}).attr("selected", true).appendTo($category);									
 													} else{
 														$('<option />', {
 															'value': this.id,
