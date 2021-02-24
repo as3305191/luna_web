@@ -60,7 +60,6 @@
 								<input id="s_product_name1"  type="text" class="form-control" style="background:#FFFFFF" value="" readonly/>
 								<input id="s_product_name"  type="button" style="width:171px;position:relative;z-index:300;top:-30px;background-color: transparent; border: 0" class="form-control" autocomplete="off"/>
 							</div>
-
 							<div class="widget-toolbar pull-left">
 								<label>批號</label>
 							</div>
