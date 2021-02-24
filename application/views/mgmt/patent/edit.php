@@ -985,6 +985,7 @@ function do_save() {
 				$.each(data.list, function(){
 					var me = this;
 					var $tr = $('<tr class="pointer"></tr>').appendTo($body);
+
 					var $lb = $("<label></label>");
 					var $input = $("<input type='checkbox' />");
 
@@ -1045,7 +1046,6 @@ function do_save() {
 				})
 			}
 		});
-	
 	}
 
 	// familyChange();
