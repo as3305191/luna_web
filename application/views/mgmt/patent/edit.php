@@ -189,7 +189,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利號檔案</label>
@@ -229,7 +228,6 @@
 					<div class="col-md-2 widget-toolbar pull-left">
 						<input id="s_dt" placeholder="開始日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_start_dt : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
-					
 					<div class="col-md-2 widget-toolbar pull-left">
 						~<input id="e_dt" placeholder="結束日期" type="text" class="dt_picker" value="<?= isset($item) ? $item -> patent_end_dt : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
