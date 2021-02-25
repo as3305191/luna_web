@@ -1086,7 +1086,6 @@ function do_save() {
 				})).appendTo($tr);
 				$body.append($tr);
 			}
-
 		})
 	}
 
