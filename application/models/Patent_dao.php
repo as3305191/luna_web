@@ -135,7 +135,12 @@ class Patent_dao extends MY_Model {
 		// }
 		if(!empty($data['now_category']) && $data['now_category']!=="all"){
 			$category = $data['now_category'];
-			$this -> db -> where("_m.patnet_category",$category);
+			$id = $data['id'];
+			$this_list = $this -> find_this_level($id);
+			for($i=0;$i<=$this_list[0]->level;$this_list++){
+
+			}
+			$this -> db -> where("_m.patnet_status",$category);
 		}
 		
 		// if(!empty($data['key_search'])){
@@ -144,12 +149,22 @@ class Patent_dao extends MY_Model {
 		// }
 	}
 
+	function find_this_level($id) {
+		// join
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where("_m.id",$id);
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
+
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
-
 
 	function find_by_family($patent_family,$id){
 		$this -> db -> from("$this->table_name as _m");
