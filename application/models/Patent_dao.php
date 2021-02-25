@@ -137,9 +137,9 @@ class Patent_dao extends MY_Model {
 			$category = $data['now_category'];
 			$id = $data['id'];
 			$this_list = $this -> find_this_level($id);
-			for($i=0;$i<=$this_list[0]->level;$this_list++){
+			// for($i=0;$i<=$this_list[0]->level;$this_list++){
 
-			}
+			// }
 			$this -> db -> where("_m.patnet_status",$category);
 		}
 		
