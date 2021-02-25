@@ -135,8 +135,8 @@ class Patent_dao extends MY_Model {
 		// }
 		if(!empty($data['now_category']) && $data['now_category']!=="all"){
 			$category = $data['now_category'];
-			$id = $data['id'];
-			$this_list = $this -> find_this_level($id);
+			// $id = $data['id'];
+			// $this_list = $this -> find_this_level($id);
 			// for($i=0;$i<=$this_list[0]->level;$this_list++){
 
 			// }
