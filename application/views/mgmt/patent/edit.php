@@ -771,6 +771,7 @@ function do_save() {
 			inventor: $('#inventor').val(),
 			patnet_type: $('#patnet_type').val(),
 			assignee: $('#assignee').val()
+			
 		},
 		success : function(data) {
 			if(data.error_msg) {
