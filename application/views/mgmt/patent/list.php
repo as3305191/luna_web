@@ -27,7 +27,7 @@
 								</div>
 							<?php endif?>
 							<div class="widget-toolbar pull-left">
-								<label>項目類別</label>
+								<label>專利類型</label>
 							</div>
 							<input id="now_category" type="hidden"/>
 
