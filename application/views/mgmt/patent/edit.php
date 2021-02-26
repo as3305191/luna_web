@@ -61,6 +61,7 @@
 					<div class="col-md-6" id="patnet_status" >
 					</div>
 					<input type="hidden" required class="form-control" id="in_patnet_status" value="<?= isset($item) ? $item -> patnet_status : '0' ?>"/>
+
 				</div>
 			</fieldset>
 			<fieldset>
@@ -335,6 +336,8 @@
 
 <script>
 var current_app = [];
+var now_pateny_status = [];
+
 $(document).ready(function() {
 	if($('#item_id').val()==0){
 		var url = baseUrl + 'mgmt/patent/new_patent_family'; // the script where you handle the form input.
@@ -771,7 +774,7 @@ function do_save() {
 			inventor: $('#inventor').val(),
 			patnet_type: $('#patnet_type').val(),
 			assignee: $('#assignee').val()
-			
+
 		},
 		success : function(data) {
 			if(data.error_msg) {
@@ -889,6 +892,7 @@ function do_save() {
 							var me = $(this);
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
+							now_pateny_status = [];
 							$.each(current_app[0], function(key,value){
 								var keynum_d_val = $('#'+key).data("val");
 								if(keynum_d_val>_dataVal){
@@ -953,6 +957,11 @@ function do_save() {
 									},
 									failure:function(){
 									}
+								});
+
+								$("#patnet_status selected").each(function () {
+									var me = $(this);
+									now_pateny_status.push(me.val());
 								});
 						});
 					}
