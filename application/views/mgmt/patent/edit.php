@@ -929,7 +929,7 @@ function do_save() {
 									success: function(d) {
 										var category_option = '<option value="all">全部</option>';
 										var $category = $('#patnet_status_'+next_c).empty();
-										// $category.append(category_option);
+										$category.append(category_option);
 
 
 										$("#patnet_status selected").each(function () {
