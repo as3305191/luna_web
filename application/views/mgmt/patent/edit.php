@@ -888,7 +888,7 @@ function do_save() {
 					
 
 						$('.p_patnet_status').on('change', function(){
-							
+							now_patent_status = [];
 							var me = $(this);
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
@@ -898,7 +898,6 @@ function do_save() {
 								var me = $(this);
 								me.append(category_option);
 							});
-							now_patent_status = [];
 							$.each(current_app[0], function(key,value){
 								var keynum_d_val = $('#'+key).data("val");
 								if(keynum_d_val>_dataVal){
