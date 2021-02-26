@@ -66,4 +66,5 @@ class News extends MY_Mgmt_Controller {
 		$this->mail($login_user->role_id,"inf@kwantex.com", "hi..", "測試郵件","adms@kwantex.com");
 	}
 
+	
 }
