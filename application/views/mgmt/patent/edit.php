@@ -925,9 +925,11 @@ function do_save() {
 										var category_option = '<option value="all">全部</option>';
 										// var $category = $('#patnet_status_'+next_c).empty();
 										// $category.append(category_option);
+										var $category = $('#patnet_status_'+next_c).empty();
+
 										for(var i=next_c;i<=d.max;i++){
-											var $category = $('#patnet_status_'+i).empty();
-											$category.append(category_option);
+											var $category_b_t_i = $('#patnet_status_'+i).empty();
+											$category_b_t_i.append(category_option);
 										}
 
 										if(d.category){
