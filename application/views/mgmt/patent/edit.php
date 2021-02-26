@@ -894,9 +894,8 @@ function do_save() {
 							var select_Val = me.val();
 							var all_option = '<option value="all">全部</option>';
 							$("#patnet_status selected").each(function () {
-								var me = this;
-								now_patent_status.push(me.val());
-								console.log(me.val());
+								now_patent_status.push(this.val());
+								console.log(this.val());
 							});
 							$.each(current_app[0], function(key,value){
 								var keynum_d_val = $('#'+key).data("val");
