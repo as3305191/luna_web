@@ -894,11 +894,6 @@ function do_save() {
 							var select_Val = me.val();
 							var all_option = '<option value="all">全部</option>';
 
-							$("#patnet_status selected").each(function () {
-								var patnet_status_me = $(this);
-								patnet_status_me.append(all_option);
-							});
-
 							$.each(current_app[0], function(key,value){
 								var keynum_d_val = $('#'+key).data("val");
 								if(keynum_d_val>_dataVal){
@@ -928,15 +923,12 @@ function do_save() {
 									dataType: 'json',
 									success: function(d) {
 										var category_option = '<option value="all">全部</option>';
-										var $category = $('#patnet_status_'+next_c).empty();
-										$category.append(category_option);
-
-
-										$("#patnet_status selected").each(function () {
-											var me = $(this);
-											me.append(category_option);
-										});
-
+										// var $category = $('#patnet_status_'+next_c).empty();
+										// $category.append(category_option);
+										for(var i=next_c;i<=d.max;i++){
+											var $category = $('#patnet_status_'+i).empty();
+											$category.append(category_option);
+										}
 
 										if(d.category){
 											$.each(d.category, function(){
