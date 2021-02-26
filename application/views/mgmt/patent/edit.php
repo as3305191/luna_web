@@ -893,7 +893,11 @@ function do_save() {
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
 							var all_option = '<option value="all">全部</option>';
-
+							$("#patnet_status selected").each(function () {
+								var me = $(this);
+								now_patent_status.push(me.val());
+								console.log(me.val());
+							});
 							$.each(current_app[0], function(key,value){
 								var keynum_d_val = $('#'+key).data("val");
 								if(keynum_d_val>_dataVal){
@@ -967,11 +971,7 @@ function do_save() {
 									}
 								});
 
-								$("#patnet_status selected").each(function () {
-									var me = $(this);
-									now_patent_status.push(me.val());
-									console.log(me.val());
-								});
+								
 						});
 					}
 				},
