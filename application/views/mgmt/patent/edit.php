@@ -892,12 +892,13 @@ function do_save() {
 							var me = $(this);
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
-							var category_option = '<option value="all">全部</option>';
+							var all_option = '<option value="all">全部</option>';
 
 							$("#patnet_status selected").each(function () {
-								var me = $(this);
-								me.append(category_option);
+								var patnet_status_me = $(this);
+								patnet_status_me.append(all_option);
 							});
+
 							$.each(current_app[0], function(key,value){
 								var keynum_d_val = $('#'+key).data("val");
 								if(keynum_d_val>_dataVal){
