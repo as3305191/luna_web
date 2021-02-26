@@ -961,7 +961,9 @@ function do_save() {
 
 								$("#patnet_status selected").each(function () {
 									var me = $(this);
-									now_pateny_status.push(me.val());
+									if($("#patnet_status_0").val()!=="all"){
+										now_pateny_status.push(me.val());
+									}
 								});
 						});
 					}
