@@ -187,6 +187,8 @@ class Patent extends MY_Mgmt_Controller {
 		$inventor = $this -> get_post('inventor');
 		$patnet_type = $this -> get_post('patnet_type');
 		$assignee = $this -> get_post('assignee');
+		$now_patent_status = $this -> get_post('now_patent_status');
+
 		// foreach ($img as $each) {
 		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
 		// }

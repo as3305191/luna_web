@@ -61,7 +61,7 @@
 					<div class="col-md-6" id="patnet_status" >
 					</div>
 					<input type="hidden" required class="form-control" id="in_patnet_status" value="<?= isset($item) ? $item -> patnet_status : '0' ?>"/>
-
+					<input type="hidden" required class="form-control" id="now_patent_status" value="<?= isset($item) ? $item -> now_patent_status : '' ?>"/>
 				</div>
 			</fieldset>
 			<fieldset>
@@ -336,7 +336,6 @@
 
 <script>
 var current_app = [];
-var now_patent_status = [];
 
 $(document).ready(function() {
 	if($('#item_id').val()==0){
@@ -366,14 +365,15 @@ $('#app-edit-form').bootstrapValidator({
       	}
 
 	}).bootstrapValidator('validate');
+	var now_patent_status = [];
 
-var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false;
+var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false,now_patent_status =false;
 if($('#item_id').val()>0){
 	pdf_array=[];
 	public_num_input=[];
 	patnet_num_input=[];
 	img=[];
-
+	now_patent_status = [];
 	if($('#img_id').val().length>0){
 		img.push($('#img_id').val());
 		// pdf_array.splice($.inArray(0,pdf_array),1);
@@ -397,12 +397,17 @@ if($('#item_id').val()>0){
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 
 	}
+	if($('#now_patent_status').val().length>0){
+		now_patent_status.push($('#now_patent_status').val());
+		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
+
+	}
 } else{
 	pdf_array=[];
 	public_num_input=[];
 	patnet_num_input=[];
 	img=[];
-
+	now_patent_status = [];
 }
 
 // console.log(img);
@@ -773,8 +778,8 @@ function do_save() {
 			applicant: $('#applicant').val(),	
 			inventor: $('#inventor').val(),
 			patnet_type: $('#patnet_type').val(),
-			assignee: $('#assignee').val()
-
+			assignee: $('#assignee').val(),
+			now_patent_status: now_patent_status.join(",")
 		},
 		success : function(data) {
 			if(data.error_msg) {
@@ -895,8 +900,6 @@ function do_save() {
 							$("#patnet_status select").each(function (i) {
 								if($(this).val()!=="all"){
 									now_patent_status.push($(this).val());
-									// console.log($(this).val());
-									console.log(now_patent_status);									
 								}
 							});
 							$.each(current_app[0], function(key,value){
