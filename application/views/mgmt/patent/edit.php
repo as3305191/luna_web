@@ -336,7 +336,7 @@
 
 <script>
 var current_app = [];
-var now_pateny_status = [];
+var now_patent_status = [];
 
 $(document).ready(function() {
 	if($('#item_id').val()==0){
@@ -892,7 +892,7 @@ function do_save() {
 							var me = $(this);
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
-							now_pateny_status = [];
+							now_patent_status = [];
 							$.each(current_app[0], function(key,value){
 								var keynum_d_val = $('#'+key).data("val");
 								if(keynum_d_val>_dataVal){
@@ -924,6 +924,14 @@ function do_save() {
 										var category_option = '<option value="all">全部</option>';
 										var $category = $('#patnet_status_'+next_c).empty();
 										$category.append(category_option);
+
+
+										$("#patnet_status selected").each(function () {
+											var me = $(this);
+											me.append(category_option);
+										});
+
+
 										if(d.category){
 											$.each(d.category, function(){
 												if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
@@ -961,9 +969,7 @@ function do_save() {
 
 								$("#patnet_status selected").each(function () {
 									var me = $(this);
-									if($("#patnet_status_0").val()!=="all"){
-										now_pateny_status.push(me.val());
-									}
+										now_patent_status.push(me.val());
 								});
 						});
 					}
