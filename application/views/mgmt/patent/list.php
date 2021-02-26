@@ -349,6 +349,8 @@
 		$('#patent_header input').val('');
 		$("input[name='patent_status[]']").removeAttr("checked");
 		load_category();
+		currentApp.tableReload();
+
 	}
 
 	$('.p_list_patnet_status').on('change', function(){
