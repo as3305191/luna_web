@@ -893,7 +893,7 @@ function do_save() {
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
 							var all_option = '<option value="all">全部</option>';
-							$("#patnet_status selected").each(function () {
+							$("#patnet_status selected").each(function (i) {
 								if(this.val()!=="all"){
 									now_patent_status.push(this.val());
 									console.log(this.val());
