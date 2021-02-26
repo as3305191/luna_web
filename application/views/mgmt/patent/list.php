@@ -309,7 +309,7 @@
 						var next_c =_dataVal+1;
 						console.log(next_c);
 						$.ajax({
-							url:  baseUrl + app.basePath + '/find_next_category',
+							url:  baseUrl + currentApp.basePath + '/find_next_category',
 							type: 'POST',
 							data: {
 								next_level:next_c,
