@@ -888,7 +888,7 @@ function do_save() {
 					
 
 						$('.p_patnet_status').on('change', function(){
-							now_patent_status.empty();
+							now_patent_status = [""];
 							var me = $(this);
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
