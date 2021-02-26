@@ -892,6 +892,12 @@ function do_save() {
 							var me = $(this);
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
+							var category_option = '<option value="all">全部</option>';
+
+							$("#patnet_status selected").each(function () {
+								var me = $(this);
+								me.append(category_option);
+							});
 							now_patent_status = [];
 							$.each(current_app[0], function(key,value){
 								var keynum_d_val = $('#'+key).data("val");
@@ -923,7 +929,7 @@ function do_save() {
 									success: function(d) {
 										var category_option = '<option value="all">全部</option>';
 										var $category = $('#patnet_status_'+next_c).empty();
-										$category.append(category_option);
+										// $category.append(category_option);
 
 
 										$("#patnet_status selected").each(function () {
