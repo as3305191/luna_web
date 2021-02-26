@@ -134,7 +134,16 @@ class Patent_dao extends MY_Model {
 		// 	$this -> db -> where("_m.id",$summary_search);
 		// }
 		if(!empty($data['now_category']) && $data['now_category']!=="all"){
-			
+			$status = $data['now_category'];
+			// $this -> load -> model('Patent_status_dao', 'patent_status_dao');
+			// $max = $this -> patent_status_dao -> get_max();
+			// $this_list = $this -> find_this_list($status);
+			// if($this_list[0]->level>0){
+			// 	$now_parents = $this_list -> id;
+			// 	for($i=0;$i<=$max->level;$i++){
+
+			// 	}
+			// }
 		
 			$this -> db -> where("_m.patnet_status",$status);
 		}
