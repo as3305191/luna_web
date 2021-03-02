@@ -658,7 +658,6 @@ $("#img-input").fileinput({
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
 	
-
 	});
 
 if($('#item_id').val()>0){
