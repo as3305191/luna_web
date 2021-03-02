@@ -98,7 +98,7 @@ class Patent_dao extends MY_Model {
 		return $query -> result();
 	}
 
-	function search_always($data,$patent_status) {
+	function search_always($data,$patent_status=false) {
 		if(!empty($data['id'])){
 			$id = $data['id'];
 			$this -> db -> where("_m.id",$id);
