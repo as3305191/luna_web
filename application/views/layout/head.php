@@ -4,13 +4,14 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name=”google-site-verification” content=”4AWlkYHST6nMramtRF-oITkJO3oojQ5pZLS_YbiocQU” />
+
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-<meta name=”google-site-verification” content=”4AWlkYHST6nMramtRF-oITkJO3oojQ5pZLS_YbiocQU” />
 <meta http-equiv=”Content-Security-Policy” content=”upgrade-insecure-requests”>
+
 
 <!-- #CSS Links -->
 <!-- Basic Styles -->
