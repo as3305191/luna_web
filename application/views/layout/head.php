@@ -8,6 +8,10 @@
 <meta http-equiv="cache-control" content="no-cache">
 <meta http-equiv="expires" content="0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name=”google-site-verification” content=”4AWlkYHST6nMramtRF-oITkJO3oojQ5pZLS_YbiocQU” />
+<meta http-equiv=”Content-Security-Policy” content=”upgrade-insecure-requests”>
+
 <!-- #CSS Links -->
 <!-- Basic Styles -->
 <link rel="stylesheet" type="text/css" media="screen" href="<?= base_url('css/bootstrap.min.css') ?>">
