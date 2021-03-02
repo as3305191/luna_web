@@ -203,9 +203,7 @@
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 	var baseUrl = '<?=base_url('')?>';
-    var patent_status = $("input[name='patent_status[]']:checked").map(function() {
-        return this.value
-    }).get();
+    var patent_status_button = $("input[name='patent_status[]']");
 
 	var mCols = [null,{
 		data : 'patent_name'
@@ -370,7 +368,7 @@
 		});
 	});
 
-	patent_status.on('change', function(){
+	patent_status_button.on('click', function(){
 		currentApp.tableReload();
 	});
 	
