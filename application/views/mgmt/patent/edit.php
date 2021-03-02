@@ -252,9 +252,9 @@
 					<label class="col-md-3 control-label">專利狀態</label>
 					<div class="col-md-6">
 						<select name="patnet_type" id="patnet_type" class="form-control" >
-							<option  value="1" <?= isset($item) && $item -> patnet_type == 1 ? 'selected' : '' ?>>專利已核准</option>
+							<option  value="1" <?= isset($item) && $item -> patnet_type == 1 ? 'selected' : '' ?>>專利仍有效</option>
 							<option  value="2" <?= isset($item) && $item -> patnet_type == 2 ? 'selected' : '' ?>>專利審查中</option>
-							<option  value="2" <?= isset($item) && $item -> patnet_type == 2 ? 'selected' : '' ?>>專利放棄/核駁審定</option>
+							<option  value="3" <?= isset($item) && $item -> patnet_type == 3 ? 'selected' : '' ?>>專利已失效</option>
 
 						</select>	
 					</div>
