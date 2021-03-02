@@ -370,4 +370,9 @@
 		});
 	});
 
+	patent_status.on('change', function(){
+		currentApp.tableReload();
+	});
+	
+
 </script>

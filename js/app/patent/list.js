@@ -19,9 +19,9 @@ var patentAppClass = (function(app) {
 					d.key_search = $('#key_search').val();
 					d.patent_search = $('#patent_search').val();
 					d.summary_search = $('#summary_search').val();
-					d.patent_status = $("input[name='patent_status[]']:checked").map(function() {
-						return this.value
-					}).get();
+					// d.patent_status = $("input[name='patent_status[]']:checked").map(function() {
+					// 	return this.value
+					// }).get();
 				
 
 				},
@@ -80,9 +80,9 @@ var patentAppClass = (function(app) {
 		$('#now_category').on('change', function(){
 			app.tableReload();
 		});
-		$('#patent_status').on('change', function(){
-			app.tableReload();
-		});
+		// $('#patent_status').on('change', function(){
+		// 	app.tableReload();
+		// });
 	
 		return app;
 	};
