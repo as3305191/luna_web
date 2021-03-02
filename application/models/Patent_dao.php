@@ -46,7 +46,7 @@ class Patent_dao extends MY_Model {
 		
 	}
 
-	function query_ajax($data) {
+	function query_ajax($data,$patent_status) {
 		$start = $data['start'];
 		$limit = $data['length'];
 		$columns = $data['columns'];
@@ -60,7 +60,7 @@ class Patent_dao extends MY_Model {
 		$this -> ajax_from_join();
 
 		// search always
-		$this -> search_always($data);
+		$this -> search_always($data,$patent_status);
 
 		// search
 		$this -> ajax_column_setup($columns, $search, $this -> alias_map);
@@ -98,7 +98,7 @@ class Patent_dao extends MY_Model {
 		return $query -> result();
 	}
 
-	function search_always($data) {
+	function search_always($data,$patent_status) {
 		if(!empty($data['id'])){
 			$id = $data['id'];
 			$this -> db -> where("_m.id",$id);
@@ -148,10 +148,13 @@ class Patent_dao extends MY_Model {
 
 		}
 		
-		// if(!empty($data['key_search'])){
-		// 	$key_search = $data['key_search'];
-		// 	$this -> db -> where("_m.id",$key_search);
-		// }
+		if(!empty($patent_status)){
+			foreach($patent_status as $each){
+				$this -> db -> where("_m.patent_category",$each);
+			}
+		}
+
+
 	}
 
 	function find_this_list($status) {
