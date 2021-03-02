@@ -844,7 +844,6 @@ function do_save() {
 						for(i;i<=d.max;i++){
 							if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
 							
-
 								html+='<div class="widget-toolbar pull-left">'+
 										'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" >'+
 											'<option value="all">全部</option>'+
