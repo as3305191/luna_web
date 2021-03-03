@@ -46,7 +46,7 @@ class Patent_dao extends MY_Model {
 		
 	}
 
-	function query_ajax($data,$patent_status) {
+	function query_ajax($data) {
 		$start = $data['start'];
 		$limit = $data['length'];
 		$columns = $data['columns'];
@@ -60,7 +60,7 @@ class Patent_dao extends MY_Model {
 		$this -> ajax_from_join();
 
 		// search always
-		$this -> search_always($data,$patent_status);
+		$this -> search_always($data);
 
 		// search
 		$this -> ajax_column_setup($columns, $search, $this -> alias_map);
