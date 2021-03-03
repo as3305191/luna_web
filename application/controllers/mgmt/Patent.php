@@ -43,12 +43,10 @@ class Patent extends MY_Mgmt_Controller {
 			'patent_search',
 			'summary_search',
 			'now_category',
-			'patent_status[]'
 		));
-		$patent_status = $this->get_post('patent_status');
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
-		$items = $this -> dao -> query_ajax($data,$patent_status);
+		$items = $this -> dao -> query_ajax($data);
 		foreach($items as $each){
 			if(!empty($each -> img_id)) {
 				$image= explode(",", $each -> img_id);
