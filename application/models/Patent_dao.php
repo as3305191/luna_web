@@ -88,7 +88,6 @@ class Patent_dao extends MY_Model {
 		// search always
 		$this -> search_always($data);
 
-	
 		$this -> db -> order_by('id', 'desc');
 
 		// limit
