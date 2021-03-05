@@ -176,7 +176,6 @@ class Patent_dao extends MY_Model {
 		$this -> db -> select('_m.*');
 		$this -> db -> where("_m.patent_family",$patent_family);
 		$this -> db -> where("_m.id<>",$id);
-
 		$query = $this -> db -> get();
 		$list = $query -> result();
 
