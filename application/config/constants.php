@@ -103,7 +103,6 @@ define('IMG_CKEDITOR_URL', 'img/article/');
 define('SMS_ACCOUNT', '');
 define('SMS_PASSWORD', '');
 define('VERSION', '1');
-
 // 顯示建構中... for 競賽報名、活動訊息、夢想DNA、得將公告
 define('SHOW_CONSTRUCTION', false);
 define('SHOW_QA', true);
