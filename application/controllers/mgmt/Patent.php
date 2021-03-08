@@ -192,6 +192,7 @@ class Patent extends MY_Mgmt_Controller {
 		// foreach ($img as $each) {
 		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
 		// }
+		
 		$data['img_id'] = $img;
 		// $data['img_active'] = $img_array[0];
 		$data['assignee'] = $assignee;
