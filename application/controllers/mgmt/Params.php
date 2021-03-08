@@ -96,7 +96,6 @@ class Params extends MY_Mgmt_Controller {
 		$user_id = $this -> get_post('user_id');
 		$this -> session -> set_userdata('user_id', $user_id);
 		$res = array();
-
 		$this -> to_json($res);
 	}
 }

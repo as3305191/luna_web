@@ -81,7 +81,6 @@ class Product_trace_v2 extends MY_Base_Controller {
 		 }
 
 		$res['items'] = $items;
-
 		$this -> to_json($res);
 	}
 
