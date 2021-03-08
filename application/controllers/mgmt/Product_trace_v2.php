@@ -43,15 +43,14 @@ class Product_trace_v2 extends MY_Base_Controller {
 		));
 
 		$data['no_limit'] = TRUE;
-
 		$this -> session -> set_userdata('Product_trace_data', $data);
 		$items = array();
 
 		if(
-			 !empty($data['lot_number']) ||
+			 !empty($data['lot_number'])   ||
 			 !empty($data['product_name']) ||
-			 !empty($data['trace_batch']) ||
-			 !empty($data['container_sn'])||
+			 !empty($data['trace_batch'])  ||
+			 !empty($data['container_sn']) ||
 			 !empty($data['sn'])
 		){
 			 	$items = $this -> production_service -> sum_order_record($data);
