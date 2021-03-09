@@ -269,7 +269,6 @@ class Patent extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
 		$this -> dao -> delete($id);
 		$this -> to_json($res);
-	
 	}
 
 	// public function send_mail() {
