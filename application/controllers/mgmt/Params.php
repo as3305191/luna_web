@@ -80,7 +80,6 @@ class Params extends MY_Mgmt_Controller {
 				$res['valid'] = TRUE;
 			}
 		}
-
 		$this -> to_json($res);
 	}
 
