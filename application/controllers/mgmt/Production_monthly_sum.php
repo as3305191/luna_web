@@ -32,6 +32,7 @@ class Production_monthly_sum extends MY_Base_Controller {
 	}
 
 	public function get_data() {
+		
 		$res = array();
 		$data = $this -> get_posts(array(
 			'length',

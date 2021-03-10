@@ -16,7 +16,6 @@ class Production_daily extends MY_Base_Controller {
 	{
 		$data = array();
 		$this -> setup_user_data($data);
-
 		$data['station_list'] = $this -> station_dao -> find_all();
 
 		$this->load->view('mgmt/production_daily/list', $data);
