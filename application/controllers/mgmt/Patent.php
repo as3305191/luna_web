@@ -636,4 +636,13 @@ class Patent extends MY_Mgmt_Controller {
 		// $this -> to_json($data);
 		$this->load->view('mgmt/patent/export', $data);
 	}
+// 	FindColorEx 1222,550,1333,600,"7BCB9E",1,0.8,intX,intY
+// If intX > 0 And intY > 0 Then
+// MoveTo 1290, 575
+// LeftClick 1
+//     Delay 3500
+//     LeftClick 1
+// End If
+
+
 }
