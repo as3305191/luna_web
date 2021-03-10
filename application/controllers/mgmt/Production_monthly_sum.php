@@ -8,7 +8,6 @@ class Production_monthly_sum extends MY_Base_Controller {
 		$this -> load -> model('Order_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Station_dao', 'station_dao');
-
 		$this -> load -> model('service/Production_service', 'production_service');
 	}
 
@@ -16,23 +15,19 @@ class Production_monthly_sum extends MY_Base_Controller {
 	{
 		$data = array();
 		$this -> setup_user_data($data);
-
 		$data['station_list'] = $this -> station_dao -> find_all();
-
 		$this->load->view('mgmt/production_monthly_sum/list', $data);
 	}
 
 	public function get_user_list() {
-		$station_id = $this -> get_post('station_id');
 		$res = array();
-
+		$station_id = $this -> get_post('station_id');
 		$list = $this -> users_dao -> find_all_by_station($station_id);
 		$res['list'] = $list;
 		$this -> to_json($res);
 	}
 
 	public function get_data() {
-		
 		$res = array();
 		$data = $this -> get_posts(array(
 			'length',
