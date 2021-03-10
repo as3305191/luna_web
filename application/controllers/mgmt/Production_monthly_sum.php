@@ -49,7 +49,6 @@ class Production_monthly_sum extends MY_Base_Controller {
 
 		$data['no_limit'] = TRUE;
 
-
 		$this -> session -> set_userdata('production_daily_last_data', $data);
 
 		$items = $this -> production_service -> list_all_by_date($data);
