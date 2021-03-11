@@ -120,7 +120,6 @@ class Terms_of_service_dao extends MY_Model {
 				$each -> thumb_url = get_thumb_url($each -> image_id);
 			}
 		}
-
 		return $list;
 	}
 
@@ -128,14 +127,12 @@ class Terms_of_service_dao extends MY_Model {
 	//front
 	function count_paging_with_query_and_date($columns) {
 		//$this -> column_setup($columns);
-
 		$this -> db -> from($this -> table_name);
 		return $this -> db -> count_all_results();
 	}
 
 	function find_paging_with_query_and_date($start, $limit, $columns) {
 		//$this -> column_setup($columns);
-
 		$this -> db -> limit($limit, $start);
 		$this -> db -> order_by("id", isset($dir) ? $dir : "desc");
 		$query = $this -> db -> get($this -> table_name);
