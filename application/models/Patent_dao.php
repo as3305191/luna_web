@@ -150,8 +150,8 @@ class Patent_dao extends MY_Model {
 					for($i=0;$i<count($patent_status);$i++){
 						if($i==0){
 							$this->db->where('_m.patnet_type',$patent_status[$i]);
-						}else{
-							$this->db->where('_m.patnet_type',$patent_status[$i]);
+						}else if($i>0){
+							$this->db->or_where('_m.patnet_type',$patent_status[$i]);
 						}
 					}
 				
