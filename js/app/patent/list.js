@@ -14,6 +14,7 @@ var patentAppClass = (function(app) {
 					d.key_search = $('#key_search').val();
 					d.patent_search = $('#patent_search').val();
 					d.summary_search = $('#summary_search').val();
+					d.patent_family = $('#patent_family').val();
 					d.patent_status = $("input[name='patent_status[]']:checked").map(function() {
 						return this.value
 					}).get().join(',');
