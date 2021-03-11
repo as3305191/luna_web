@@ -154,7 +154,6 @@ class Patent_dao extends MY_Model {
 							$this->db->or_where('_m.patnet_type',$patent_status[$i]);
 						}
 					}
-				
 				}
 			}
 		}
