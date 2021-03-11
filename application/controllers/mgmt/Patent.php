@@ -42,6 +42,7 @@ class Patent extends MY_Mgmt_Controller {
 			'key_search',
 			'patent_search',
 			'summary_search',
+			'now_category',
 		));
 
 		$patent_status = $this->get_post('patent_status');

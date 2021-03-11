@@ -132,22 +132,27 @@ class Patent_dao extends MY_Model {
 		// 	$summary_search = $data['summary_search'];
 		// 	$this -> db -> where("_m.id",$summary_search);
 		// }
+		if(!empty($data['now_category']) && $data['now_category']!=="all"){
+			$status = $data['now_category'];
+		
+			$this -> db -> where("_m.now_patent_status like '%#$status#%'");
+
+		}
+		
 		if(!empty($data['patent_status'])){
-			$status = $data['patent_status'];
-			if (count($status)==1) {
-				foreach($status as $each){
-					$this->db->where('_m.patnet_type', $each);
+			$patent_status = $data['patent_status'];
+			if (count($patent_status)==1) {
+				foreach($patent_status as $each){
+					$this->db->where('_m.patnet_type',$each);
 				}
 			} else{
-				if (count($status)>1) {
-					foreach($status as $each){
-						$this->db->or_where('_m.patnet_type', $each);
+				if (count($patent_status)>1) {
+					foreach($patent_status as $each){
+						$this->db->or_where('_m.patnet_type',$each);
 					}
 				}
 			}
-		
 		}
-		
 	}
 
 	function find_this_list($status) {
