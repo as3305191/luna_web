@@ -134,25 +134,22 @@ class Patent_dao extends MY_Model {
 		// }
 		if(!empty($data['now_category']) && $data['now_category']!=="all"){
 			$status = $data['now_category'];
-			// $this -> load -> model('Patent_status_dao', 'patent_status_dao');
-			// $max = $this -> patent_status_dao -> get_max();
-			// $this_list = $this -> find_this_list($status);
-			// if($this_list[0]->level>0){
-			// 	$now_parents = $this_list -> id;
-			// 	for($i=0;$i<=$max->level;$i++){
-
+			// if (count($status)==1) {
+			// 	foreach($status as $each){
+			// 		$this->db->where('patnet_status', $each);
+			// 	}
+			// } else{
+			// 	if (count($status)>1) {
+			// 		foreach($status as $each){
+			// 			$this->db->or_where('patnet_status', $each);
+			// 		}
 			// 	}
 			// }
-			$this -> db -> where("_m.now_patent_status like '%#$status#%'");
-
+			foreach($status as $each){
+				$this->db->where('patnet_status', $each);
+			}
 		}
 		
-		if(!empty($data['patent_status'])){
-			$patent_status = $data['patent_status'];
-			// foreach($patent_status as $each){
-			// 	$this -> db -> where("_m.patent_category",$each);
-			// }
-		}
 	}
 
 	function find_this_list($status) {

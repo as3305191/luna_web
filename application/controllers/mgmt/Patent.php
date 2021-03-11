@@ -42,8 +42,14 @@ class Patent extends MY_Mgmt_Controller {
 			'key_search',
 			'patent_search',
 			'summary_search',
-			'now_category',
 		));
+
+		$now_category = $this->get_post('now_category');
+		if (!empty($now_category)) {
+			$new_now_category = explode(",", str_replace('#', ',', $now_category));
+			$data['now_category'] = $new_now_category;
+		}
+
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
