@@ -136,7 +136,6 @@ class Terms_of_service_dao extends MY_Model {
 	function find_paging_with_query_and_date($start, $limit, $columns) {
 		//$this -> column_setup($columns);
 
-
 		$this -> db -> limit($limit, $start);
 		$this -> db -> order_by("id", isset($dir) ? $dir : "desc");
 		$query = $this -> db -> get($this -> table_name);
@@ -146,16 +145,14 @@ class Terms_of_service_dao extends MY_Model {
 	function find_max_id(){
 		$this->db->select_max('id');
 		$res1 = $this->db->get($this->table_name);
+		$res2 = $res1->result_array();
+		$result = $res2[0]['id'];
 
-    $res2 = $res1->result_array();
-    $result = $res2[0]['id'];
 		if($result){
 			return $result;
 		}else{
 			return 0;
 		}
-
-
 	}
 
 }
