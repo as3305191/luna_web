@@ -134,18 +134,9 @@ class Patent_dao extends MY_Model {
 		// }
 		if(!empty($data['patent_status'])){
 			$status = $data['patent_status'];
-			if (count($status)==1) {
-				foreach($status as $each){
-					$this->db->where('patnet_status', $each);
-				}
-			} else{
-				if (count($status)>1) {
-					foreach($status as $each){
-						$this->db->or_where('patnet_status', $each);
-					}
-				}
+			foreach($status as $each){
+				$this->db->where('patnet_status', $each);
 			}
-		
 		}
 		
 	}
