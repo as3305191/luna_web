@@ -46,7 +46,7 @@ class Patent extends MY_Mgmt_Controller {
 
 		$patent_status = $this->get_post('patent_status');
 
-		if (!empty($now_category)) {
+		if (!empty($patent_status)) {
 			$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
 			$data['patent_status'] = $new_patent_status;
 		}
