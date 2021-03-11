@@ -44,10 +44,11 @@ class Patent extends MY_Mgmt_Controller {
 			'summary_search',
 		));
 
-		$now_category = $this->get_post('now_category');
+		$patent_status = $this->get_post('patent_status');
+
 		if (!empty($now_category)) {
-			$new_now_category = explode(",", str_replace('#', ',', $now_category));
-			$data['now_category'] = $new_now_category;
+			$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
+			$data['patent_status'] = $new_patent_status;
 		}
 
 		$s_data = $this -> setup_user_data(array());
