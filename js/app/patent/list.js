@@ -82,7 +82,7 @@ var patentAppClass = (function(app) {
 		});
 		$("input[name='patent_status[]']").on('click', function(){
 			app.tableReload();
-		});;
+		});
 
 	
 		return app;
