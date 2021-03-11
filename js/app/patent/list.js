@@ -21,7 +21,7 @@ var patentAppClass = (function(app) {
 					d.summary_search = $('#summary_search').val();
 					d.patent_status = $("input[name='patent_status[]']:checked").map(function() {
 						return this.value
-					}).get();
+					}).get().join('#');
 				
 
 				},
