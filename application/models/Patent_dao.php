@@ -147,9 +147,14 @@ class Patent_dao extends MY_Model {
 				}
 			} else{
 				if (count($patent_status)>1) {
-					foreach($patent_status as $each){
-						$this->db->where('_m.patnet_type',$each);
+					for($i=0;$i<count($patent_status);$i++){
+						if($i=0){
+							$this->db->where('_m.patnet_type',$patent_status[$i]);
+						}else{
+							$this->db->where('_m.patnet_type',$patent_status[$i]);
+						}
 					}
+				
 				}
 			}
 		}
