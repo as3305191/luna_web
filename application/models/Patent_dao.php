@@ -182,7 +182,7 @@ class Patent_dao extends MY_Model {
 		$this -> db -> where("_m.id<>",$id);
 		$query = $this -> db -> get();
 		$list = $query -> result();
-
+		
 		return $list;
 	}
 }

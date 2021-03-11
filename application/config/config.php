@@ -375,7 +375,7 @@ $config['encryption_key'] = '';
 |
 */
 $config['sess_driver'] = 'database';
-$config['sess_cookie_name'] = 'ci_sessions_dachan';
+$config['sess_cookie_name'] = 'ci_sessions_ktx';
 $config['sess_expiration'] = 60 * 60 * 24;
 $config['sess_save_path'] = 'ci_sessions';//its your table name name
 $config['sess_match_ip'] = FALSE;
@@ -397,7 +397,7 @@ $config['sess_regenerate_destroy'] = FALSE;
 |       'cookie_httponly') will also affect sessions.
 |
 */
-$config['cookie_prefix']	= 'ci_sessions_dachan';
+$config['cookie_prefix']	= 'ci_sessions_ktx';
 $config['cookie_domain']	= '';
 $config['cookie_path']		= '/';
 $config['cookie_secure']	= FALSE;
