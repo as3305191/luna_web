@@ -5,12 +5,7 @@ var patentAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					// d.type_id = $('#type_id').val();
-					// d.status = $('#s_status').val();
-					// d.start_time = $('#s_start_time').val();
-					// d.station_id = $('#station_id').val();
-					// d.type_1 = $('#1').val();
-					// d.type_2 = $('#2').val();
+			
 					d.now_category = $('#now_category').val();
 					d.application_person = $('#application_person').val();
 					d.application_num = $('#application_num_search').val();
