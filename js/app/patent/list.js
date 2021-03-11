@@ -80,9 +80,10 @@ var patentAppClass = (function(app) {
 		$('#now_category').on('change', function(){
 			app.tableReload();
 		});
-		// $('#patent_status').on('change', function(){
-		// 	app.tableReload();
-		// });
+		$("input[name='patent_status[]']").on('click', function(){
+			app.tableReload();
+		});;
+
 	
 		return app;
 	};
