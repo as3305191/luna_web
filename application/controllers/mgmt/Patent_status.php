@@ -40,15 +40,12 @@ class Patent_status extends MY_Base_Controller {
 	{
 		$data = array();
 		$this -> setup_user_data($data);
-
 		$item = $this -> dao -> find_all_by('parent_id','0');
 		// $data['item'] = $item;
 		$max_level = $this -> dao -> get_max();
 		$data['max_level'] = $max_level;
 		$datas = $this -> dao -> find_all();
-
 		$data['items'] = $items = $this -> generateTree($datas);
-
 		$t_data = $this -> drawTree($items);
 		$data['t_data'] = $t_data;
 		// $this -> to_json($t_data);
