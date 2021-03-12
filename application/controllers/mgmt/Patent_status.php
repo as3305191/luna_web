@@ -26,12 +26,11 @@ class Patent_status extends MY_Base_Controller {
 		$item = $this -> dao -> find_all_by('parent_id','0');
 		// $data['item'] = $item;
 		$max_level = $this -> dao -> get_max();
-		$data['max_level'] = $max_level;
 		$datas = $this -> dao -> find_all();
-
-		$data['items'] = $items = $this -> generateTree($datas);
-
+		$items = $this -> generateTree($datas);
 		$t_data = $this -> drawTree($items);
+		$data['max_level'] = $max_level;
+		$data['items'] = $items;
 		$data['t_data'] = $t_data;
 		// $this -> to_json($t_data);
 		$this->load->view('mgmt/Patent_status/list', $data);
