@@ -307,10 +307,10 @@ class Patent extends MY_Mgmt_Controller {
 		$next_level= $this -> get_post('next_level');
 		$this_val= $this -> get_post('this_val');
 		$category = $this -> patent_status_dao -> find_next($next_level,$this_val);
+		$max= $this -> patent_status_dao -> get_max();
+
 		$res['category'] = $category;
 		$res['success'] = TRUE;
-		$max= $this -> patent_status_dao -> get_max();
-		
 		$res['max'] = $max;
 		$this -> to_json($res);
 	}
