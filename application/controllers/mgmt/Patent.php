@@ -233,7 +233,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data['patent_range'] = $patent_range;
 		$data['update_date'] = date("Y-m-d H:i:s");
 		$data['now_patent_status'] = "#".$now_patent_status."#";	
-			
+
 		if(empty($id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
