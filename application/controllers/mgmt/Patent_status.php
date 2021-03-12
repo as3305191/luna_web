@@ -21,7 +21,6 @@ class Patent_status extends MY_Base_Controller {
 	{
 		$data = array();
 		$this -> setup_user_data($data);
-
 		$item = $this -> dao -> find_all_by('parent_id','0');
 		// $data['item'] = $item;
 		$max_level = $this -> dao -> get_max();
@@ -72,9 +71,9 @@ class Patent_status extends MY_Base_Controller {
 		return $tree;
 	}
 
-	/**
-	 * @brief 畫樹
-	 */
+	/*
+	* @brief 畫樹
+	*/
 
 	public function drawTree($items,$t_data =''){
 		if(!isset($t_data)){
