@@ -17,7 +17,6 @@ class Patent_status extends MY_Base_Controller {
 	/**
 	 * @brief 權限管理列表
 	 */
-
 	public function index()
 	{
 		$data = array();
@@ -55,7 +54,6 @@ class Patent_status extends MY_Base_Controller {
 	/**
 	 * @brief 畫權限管理列表的樹
 	 */
-
 	public function generateTree($data, $pid = 0){
 		$tree = [];
 		if($data && is_array($data)){
