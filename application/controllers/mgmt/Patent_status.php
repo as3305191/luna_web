@@ -88,7 +88,6 @@ class Patent_status extends MY_Base_Controller {
 			$t_data .= '<td class="min300"><button class="btn btn-default role-btn" onclick="add_under('.$each['id'].')">增加下級</button><button class="btn btn-default role-btn" onclick="edit_page('.$each['id'].')">編輯</button><button class="btn btn-default role-btn" onclick="del_page('.$each['id'].')">移除</button></td>';
 			$t_data .= '</tr>';
 			$t_data .= $this -> draw($each['children']);
-
 		}
 		return $t_data;
 	}
