@@ -76,7 +76,7 @@ var patentAppClass = (function(app) {
 		$('#now_category').on('change', function(){
 			app.tableReload();
 		});
-		$('#patent_family_search').on('change', function(){
+		$('#patent_family_search').on('change keyup', function(){
 			app.tableReload();
 		});
 		$("input[name='patent_status[]']").on('click', function(){
