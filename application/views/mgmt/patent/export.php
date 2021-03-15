@@ -31,7 +31,7 @@
 			</tr>
 			<tr>
 				<td class="min200">專利類型</td>
-				<td id="patnet_status" colspan="3"></td>
+				<td id="patnet_status" colspan="3"><?= isset($all_patent_status_name) ? $all_patent_status_name: '' ?></td>
 				<?php if(!empty($item->image) && $item->image !==''): ?>
 					<td rowspan="5"><img src="<?= base_url("api/images/get/".$item->image[0]."/thumb") ?>" style="max-height:100%;max-width:100%" ></td>
 				<?php else : ?>

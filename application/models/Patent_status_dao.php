@@ -195,5 +195,17 @@ class Patent_status_dao extends MY_Model {
 
 		return $list;
 	}	
+
+	// function get_max(){
+	// 	$this -> db -> select('MAX(level) as max_level');
+	// 	$this -> db -> from($this -> table_name);
+	// 	$list = $this -> db -> get() -> result();
+
+	// 	foreach ($list as $row) {
+	// 		return $row -> max_level;
+	// 	}
+	// 	return $list;
+	// }
+
 }
 ?>

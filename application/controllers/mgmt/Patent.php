@@ -638,6 +638,30 @@ class Patent extends MY_Mgmt_Controller {
 			}else{
 				$data['patnet_status'] ="";
 			}
+
+			if(!empty($item -> patnet_status)){
+				$now_level_list = $this -> patent_status_dao -> find_by_id($item -> patnet_status);
+				$now_level = $now_level_list->level;
+				$all_patent_status_name="";
+				for($i=$now_level;$i>=0;$i--){
+					$now_parent=$now_level_list->parent_id;
+					if($i<$now_level){
+						if($i>0){
+							$last_child = $this -> patent_status_dao -> find_by_id($now_parent);	
+							$all_patent_status_name+="-".$last_child->name;	
+							$now_parent=$last_child->parent_id;
+						} else{
+							$last_child = $this -> patent_status_dao -> find_by_id($now_parent);	
+							$all_patent_status_name+=$last_child->name;	
+						}
+					} else{
+						$last_child = $this -> patent_status_dao -> find_by_id($now_level_list->id);	
+						$all_patent_status_name+="-".$last_child->name;	
+					}
+				}
+				$data['all_patent_status_name'] =$all_patent_status_name;
+			}
+
 		}
 		
 		$u_data = $this -> setup_user_data($u_data);
