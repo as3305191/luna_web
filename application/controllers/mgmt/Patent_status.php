@@ -696,8 +696,6 @@ class Patent_status extends MY_Base_Controller {
 			$rowCount ++;
 		}
 
-
-
 		if($items -> view_work_shift_detail == 1){
 			$objPHPExcel->getActiveSheet()->SetCellValue('A' . $rowCount, $items -> name);
 			$objPHPExcel->getActiveSheet()->SetCellValue('B' . $rowCount, '班表管理');
