@@ -42,8 +42,7 @@ class Patent_dao extends MY_Model {
 		} else{
 			return '0';
 		}
-
-		
+	
 	}
 
 	function query_ajax($data) {
