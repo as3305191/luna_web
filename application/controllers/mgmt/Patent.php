@@ -43,6 +43,7 @@ class Patent extends MY_Mgmt_Controller {
 			'patent_search',
 			'summary_search',
 			'now_category',
+			'patent_family_search',
 		));
 
 		$patent_status = $this->get_post('patent_status');
@@ -308,6 +309,7 @@ class Patent extends MY_Mgmt_Controller {
 		$this_val= $this -> get_post('this_val');
 		$category = $this -> patent_status_dao -> find_next($next_level,$this_val);
 		$max= $this -> patent_status_dao -> get_max();
+
 		$res['category'] = $category;
 		$res['success'] = TRUE;
 		$res['max'] = $max;
@@ -321,7 +323,7 @@ class Patent extends MY_Mgmt_Controller {
 		$patent= $this -> dao -> find_by_id($item_id);
 		$last_child_category = $this -> patent_status_dao -> find_by_id($patent->patnet_status);
 		if(!empty($last_child_category)){
-			$last_level = $last_child_category -> level;
+			$last_level = $last_child_category->level;
 			for($i=$last_level;$i>=0;$i--){
 				$last_child = $this -> patent_status_dao -> find_by_id($last_child_category->id);
 				if($i<$last_level){

@@ -14,7 +14,7 @@ var patentAppClass = (function(app) {
 					d.key_search = $('#key_search').val();
 					d.patent_search = $('#patent_search').val();
 					d.summary_search = $('#summary_search').val();
-					d.patent_family = $('#patent_family').val();
+					d.patent_family_search = $('#patent_family_search').val();
 					d.patent_status = $("input[name='patent_status[]']:checked").map(function() {
 						return this.value
 					}).get().join(',');
@@ -74,6 +74,9 @@ var patentAppClass = (function(app) {
 			app.tableReload();
 		});
 		$('#now_category').on('change', function(){
+			app.tableReload();
+		});
+		$('#patent_family_search').on('change', function(){
 			app.tableReload();
 		});
 		$("input[name='patent_status[]']").on('click', function(){

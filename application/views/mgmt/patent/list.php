@@ -70,7 +70,12 @@
                             <div class="widget-toolbar pull-left">
 								<input id="patent_search" type="text" class="form-control"autocomplete="off" />
                             </div>
-
+							<div class="widget-toolbar pull-left">
+								<label>專利家族</label>
+                            </div>
+                            <div class="widget-toolbar pull-left">
+								<input id="patent_family_search" type="text" class="form-control"autocomplete="off" />
+                            </div>
                             <div class="widget-toolbar pull-left" id="patent_status">
                                 <div>
                                 <?php foreach ($patent_status as $each) : ?>
