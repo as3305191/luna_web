@@ -53,7 +53,6 @@ class Orders extends MY_Mgmt_Controller {
 	public function edit($id) {
 		$data = array();
 		$data['id'] = $id;
-
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
@@ -67,22 +66,18 @@ class Orders extends MY_Mgmt_Controller {
 			$q_data['show_closed'] = "YES";
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
-
-
 			$data['item'] = $item;
 		}
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
-
 		$this->load->view('mgmt/orders/edit', $data);
 	}
 
 	public function flow($id) {
 		$data = array();
 		$data['id'] = $id;
-
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
@@ -97,7 +92,6 @@ class Orders extends MY_Mgmt_Controller {
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
 			$data['item'] = $item;
-
 			$order_station_list = $this -> order_station_dao -> find_by_value(array(
 				'order_id' => $item -> id
 			));
@@ -116,14 +110,12 @@ class Orders extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
-
 		$this->load->view('mgmt/orders/flow', $data);
 	}
 
 	public function flow_print($id) {
 		$data = array();
 		$data['id'] = $id;
-
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
@@ -132,13 +124,11 @@ class Orders extends MY_Mgmt_Controller {
 				'search',
 				'order'
 			));
-
 			$q_data['id'] = $id;
 			$q_data['show_closed'] = "YES";
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
 			$data['item'] = $item;
-
 			$order_station_list = $this -> order_station_dao -> find_by_value(array(
 				'order_id' => $item -> id
 			));
@@ -157,14 +147,12 @@ class Orders extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
-
 		$this->load->view('mgmt/orders/flow_print', $data);
 	}
 
 	public function edit_report($id) {
 		$data = array();
 		$data['id'] = $id;
-
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
@@ -173,7 +161,6 @@ class Orders extends MY_Mgmt_Controller {
 				'search',
 				'order'
 			));
-
 			$q_data['id'] = $id;
 			$q_data['show_closed'] = "YES";
 			$list = $this -> dao -> query_ajax($q_data);
