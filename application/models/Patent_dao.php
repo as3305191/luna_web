@@ -141,7 +141,7 @@ class Patent_dao extends MY_Model {
 			$this -> db -> where("_m.now_patent_status like '%#$status#%'");
 
 		}
-		if(!empty($data['patent_status'])){
+		if(!empty($data['patent_status']) && count($data['patent_status'])>0){
 			$patent_status = $data['patent_status'];
 			$new_patent_status = implode(',',$patent_status);
 			$this -> db -> where("_m.patnet_type IN ('$new_patent_status')");
