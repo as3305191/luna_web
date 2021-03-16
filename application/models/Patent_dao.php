@@ -73,7 +73,12 @@ class Patent_dao extends MY_Model {
 
 		// query results
 		$query = $this -> db -> get();
-		return $query -> result();
+		if(!empty($data['patent_status'])){
+			$list = $query -> result();
+			return $this->find_all_by_patent_type($list,$data['patent_status']);
+		} else{
+			return $query -> result();
+		}
 	}
 
 	function query_ajax_export($data) {
@@ -136,7 +141,11 @@ class Patent_dao extends MY_Model {
 			$this -> db -> where("_m.now_patent_status like '%#$status#%'");
 
 		}
-		
+		if(!empty($data['patent_status'])){
+			$patent_status = $data['patent_status'];
+			$new_patent_status = implode(',',$patent_status);
+			$this -> db -> where("_m.patent_type IN ($new_patent_status)");
+		}	
 		
 	}
 
@@ -166,8 +175,6 @@ class Patent_dao extends MY_Model {
 		
 		return $list;
 	}
-
-	
 
 }
 ?>

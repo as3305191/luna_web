@@ -46,48 +46,24 @@ class Patent extends MY_Mgmt_Controller {
 			'patent_family_search',
 		));
 		$patent_status = $this->get_post('patent_status');
-		
-		$s_data = $this -> setup_user_data(array());
+		$data['patent_status'] = explode(",", str_replace('#', ',', $patent_status));
 
+		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
-		if(!empty($patent_status )){
-			$data_patent_status = explode(",", str_replace('#', ',', $patent_status));
-			foreach($data_patent_status as $each_status){
-				foreach($items as $each){
-					if($each->patnet_type==$each_status){
-						$real_item[]=$each;
-					}
-				}	
-			}
 
-
-			foreach($real_item[0] as $each){
-				if(!empty($each -> img_id)) {
-					$image= explode(",", $each -> img_id);
-					$each -> image_id =$image ;
-					$each -> image = $image[0];
-				} else{
-					$each -> image =0;
-				}
+		foreach($items as $each){
+			if(!empty($each -> img_id)) {
+				$image= explode(",", $each -> img_id);
+				$each -> image_id =$image ;
+				$each -> image = $image[0];
+			} else{
+				$each -> image =0;
 			}
-			$res['items'] = $real_item[0];
-		} else{
-			foreach($items as $each){
-				if(!empty($each -> img_id)) {
-					$image= explode(",", $each -> img_id);
-					$each -> image_id =$image ;
-					$each -> image = $image[0];
-				} else{
-					$each -> image =0;
-				}
-			}
-		 
-			
 		}
-
+	 
+		$res['items'] = $items;
 		
-
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
 		$this -> to_json($res);
