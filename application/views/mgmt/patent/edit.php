@@ -61,7 +61,7 @@
 					<div class="col-md-6" id="patnet_status" >
 					</div>
 					<input type="hidden" required class="form-control" id="in_patnet_status" value="<?= isset($item) ? $item -> patnet_status : '0' ?>"/>
-					<input type="hidden" required class="form-control" id="now_patent_status" value="<?= isset($item) ? $item -> now_patent_status : '' ?>"/>
+					<input type="hidden" required class="form-control" id="now_patent_status" value="<?= isset($item) ? $item -> now_patent_status : '0' ?>"/>
 				</div>
 			</fieldset>
 			<fieldset>
@@ -859,7 +859,7 @@ function do_save() {
 							
 						}
 						$(html).appendTo($category);
-						// if($("#item_id").val()>0){
+						if($("#item_id").val()>0){
 							$.each(d.category, function(){
 								category_level = this.level;
 								if(current_app[0].hasOwnProperty('patnet_status_'+category_level) && current_app[0]['patnet_status_'+category_level]==this.id){
@@ -880,15 +880,15 @@ function do_save() {
 							}else{
 								$('#patnet_status_'+category_level).attr("disabled",true);
 							}
-						// } else{
-						// 	$.each(d.category, function(){
-						// 		category_level = this.level;
-						// 		$('<option />', {
-						// 			'value': this.id,
-						// 			'text': this.name,
-						// 		}).appendTo($('#patnet_status_'+category_level));
-						// 	});
-						// }
+						} else{
+							$.each(d.category, function(){
+								category_level = this.level;
+								$('<option />', {
+									'value': this.id,
+									'text': this.name,
+								}).appendTo($('#patnet_status_'+category_level));
+							});
+						}
 					
 						$('.p_patnet_status').on('change', function(){
 							now_patent_status = [];
