@@ -54,7 +54,7 @@ class Patent extends MY_Mgmt_Controller {
 			foreach($items as $each){
 				$item_id[]=$each->id;
 			}
-			$real_item = $this -> dao -> find_all_by_patent_type($data,$item_id,$new_patent_status);
+			$real_item = $this -> dao -> find_all_by_patent_type($item_id,$new_patent_status);
 			foreach($real_item as $each){
 				if(!empty($each -> img_id)) {
 					$image= explode(",", $each -> img_id);

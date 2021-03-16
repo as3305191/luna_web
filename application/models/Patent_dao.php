@@ -167,13 +167,7 @@ class Patent_dao extends MY_Model {
 		return $list;
 	}
 
-	function find_all_by_patent_type($data,$item_id,$new_patent_status) {
-		$start = $data['start'];
-		$limit = $data['length'];
-		$columns = $data['columns'];
-		$search = $data['search'];
-		$order = $data['order'];
-
+	function find_all_by_patent_type($item_id,$new_patent_status) {
 		$this -> db -> from("$this->table_name as _m");
 
 		$this -> db -> select('_m.*');
@@ -202,17 +196,8 @@ class Patent_dao extends MY_Model {
 			}
 		}
 
-		// search
-		$this -> ajax_column_setup($columns, $search, $this -> alias_map);
-
-		// order
-		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
-
 
 		$this -> db -> order_by('id', 'desc');
-
-		// limit
-		$this -> db -> limit($limit, $start);
 
 		// query results
 		$query = $this -> db -> get();
