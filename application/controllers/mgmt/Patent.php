@@ -655,8 +655,12 @@ class Patent extends MY_Mgmt_Controller {
 							$all_patent_status_name = $last_child->name."-".$all_patent_status_name;	
 							$now_parent=$last_child->parent_id;
 						} else{
-							$all_patent_status_name = $last_child->name.$all_patent_status_name;	
-						}
+							if(!empty($last_child)){
+								$all_patent_status_name = $last_child->name.$all_patent_status_name;	
+							} else{
+								$all_patent_status_name = $all_patent_status_name;	
+							}
+						} 
 	
 					}
 					$data['all_patent_status_name'] = $all_patent_status_name;
