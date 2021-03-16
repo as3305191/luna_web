@@ -173,7 +173,7 @@ class Patent_dao extends MY_Model {
 	}
 
 	function find_all_by_patent_type($item,$new_patent_status) {
-		
+		$real_item='';
 		foreach($new_patent_status as $each_status){
 			foreach($item as $each){
 				if($each->patnet_type==$each_status){
