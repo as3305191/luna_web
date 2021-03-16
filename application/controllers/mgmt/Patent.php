@@ -648,17 +648,17 @@ class Patent extends MY_Mgmt_Controller {
 					if($i==$now_level){
 						
 						$last_child = $this -> patent_status_dao -> find_by_id($now_level_list->id);	
-						$all_patent_status_name+="-".$last_child->name;	
+						"-".$last_child->name .= $all_patent_status_name;	
 						
 					} else{
 
 						if($i>0){
 							$last_child = $this -> patent_status_dao -> find_by_id($now_parent);	
-							$all_patent_status_name+="-".$last_child->name;	
+							"-".$last_child->name.= $all_patent_status_name ;	
 							$now_parent=$last_child->parent_id;
 						} else{
 							$last_child = $this -> patent_status_dao -> find_by_id($now_parent);	
-							$all_patent_status_name+=$last_child->name;	
+							$last_child->name.= $all_patent_status_name;	
 						}
 
 					}
