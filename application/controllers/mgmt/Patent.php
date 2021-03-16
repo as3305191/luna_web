@@ -50,7 +50,7 @@ class Patent extends MY_Mgmt_Controller {
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
 		if (!empty($patent_status)) {
-			$new_patent_status = explode(",", str_replace(',', ',', $patent_status));
+			$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
 			foreach($items as $each){
 				$item_id[]=$each->id;
 			}
