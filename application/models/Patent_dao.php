@@ -178,17 +178,15 @@ class Patent_dao extends MY_Model {
 		
 
 		if(!empty($new_patent_status)){
-			$patent_status = $new_patent_status;
-			if (count($patent_status)==1) {
-				$this->db->where('_m.patnet_type',$patent_status[0]);
-
+			if (count($new_patent_status)==1) {
+				$this->db->where('_m.patnet_type',$new_patent_status[0]);
 			} else{
-				if (count($patent_status)>1) {
-					for($i=0;$i<count($patent_status);$i++){
+				if (count($new_patent_status)>1) {
+					for($i=0;$i<count($new_patent_status);$i++){
 						if($i==0){
-							$this->db->where('_m.patnet_type',$patent_status[$i]);
+							$this->db->where('_m.patnet_type',$new_patent_status[$i]);
 						}else if($i>0){
-							$this->db->or_where('_m.patnet_type',$patent_status[$i]);
+							$this->db->or_where('_m.patnet_type',$new_patent_status[$i]);
 						}
 					}
 				}
