@@ -198,7 +198,7 @@ class Patent_dao extends MY_Model {
 		// 	}
 		// }
 
-		return $real_item;
+		return $real_item[0];
 	}
 
 }
