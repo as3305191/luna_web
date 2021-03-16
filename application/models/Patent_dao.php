@@ -173,32 +173,21 @@ class Patent_dao extends MY_Model {
 	}
 
 	function find_all_by_patent_type($item,$new_patent_status) {
-		$real_item=array();
 		foreach($new_patent_status as $each_status){
 			foreach($item as $each){
 				if($each->patnet_type==$each_status){
 					$real_item[]=$each;
+					return $real_item[0];
+
+				} else{
+					return '';
+
 				}
 					
 			} 
 		}  
-		// if(!empty($new_patent_status)){
-		// 	if (count($new_patent_status)==1) {
-		// 		$this->db->where('_m.patnet_type',$new_patent_status[0]);
-		// 	} else{
-		// 		if (count($new_patent_status)>1) {
-		// 			for($i=0;$i<count($new_patent_status);$i++){
-		// 				if($i==0){
-		// 					$this->db->where('_m.patnet_type',$new_patent_status[$i]);
-		// 				}else if($i>0){
-		// 					$this->db->or_where('_m.patnet_type',$new_patent_status[$i]);
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// }
 
-		return $real_item[0];
+
 	}
 
 }
