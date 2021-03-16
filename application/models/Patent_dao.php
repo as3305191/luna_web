@@ -177,7 +177,7 @@ class Patent_dao extends MY_Model {
 			foreach($item as $each){
 				if($each->patnet_type==$each_status){
 					$real_item[]=$each;
-					return $real_item[0];
+					return $real_item;
 
 				} else{
 					return '';
