@@ -73,7 +73,12 @@ class Patent_dao extends MY_Model {
 
 		// query results
 		$query = $this -> db -> get();
-		return $query -> result();
+		if(!empty($data['patent_status'])){
+			$list = $query -> result();
+			return $this->find_all_by_patent_type($list,$data['patent_status']);
+		} else{
+			return $query -> result();
+		}
 	}
 
 	function query_ajax_export($data) {
@@ -167,38 +172,33 @@ class Patent_dao extends MY_Model {
 		return $list;
 	}
 
-	function find_all_by_patent_type($item_id,$new_patent_status) {
-		$this -> db -> from("$this->table_name as _m");
-
-		$this -> db -> select('_m.*');
-		if (count($item_id)>0) {
-			$new_item_id = implode(',',$item_id);
-			$this -> db -> where("_m.id IN ($new_item_id)");
-		}
+	function find_all_by_patent_type($item,$new_patent_status) {
 		
-
-		if(!empty($new_patent_status)){
-			if (count($new_patent_status)==1) {
-				$this->db->where('_m.patnet_type',$new_patent_status[0]);
-			} else{
-				if (count($new_patent_status)>1) {
-					for($i=0;$i<count($new_patent_status);$i++){
-						if($i==0){
-							$this->db->where('_m.patnet_type',$new_patent_status[$i]);
-						}else if($i>0){
-							$this->db->or_where('_m.patnet_type',$new_patent_status[$i]);
-						}
-					}
+		foreach($new_patent_status as $each_status){
+			foreach($item as $each){
+				if($each->patnet_type==$each_status){
+					$real_item[]=$each;
 				}
-			}
-		}
+					
+			} 
+		}  
+		// if(!empty($new_patent_status)){
+		// 	if (count($new_patent_status)==1) {
+		// 		$this->db->where('_m.patnet_type',$new_patent_status[0]);
+		// 	} else{
+		// 		if (count($new_patent_status)>1) {
+		// 			for($i=0;$i<count($new_patent_status);$i++){
+		// 				if($i==0){
+		// 					$this->db->where('_m.patnet_type',$new_patent_status[$i]);
+		// 				}else if($i>0){
+		// 					$this->db->or_where('_m.patnet_type',$new_patent_status[$i]);
+		// 				}
+		// 			}
+		// 		}
+		// 	}
+		// }
 
-
-		$this -> db -> order_by('id', 'desc');
-
-		// query results
-		$query = $this -> db -> get();
-		return $query -> result();
+		return $real_item;
 	}
 
 }
