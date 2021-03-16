@@ -45,8 +45,7 @@ class Patent extends MY_Mgmt_Controller {
 			'now_category',
 			'patent_family_search',
 		));
-
-		$patent_status = $this->get_post('patent_status');
+		$patent_status = '';
 
 		// if (!empty($patent_status)) {
 		// 	$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
@@ -65,6 +64,8 @@ class Patent extends MY_Mgmt_Controller {
 				$each -> image =0;
 			}
 		}
+		$patent_status = $this->get_post('patent_status');
+
 		if (!empty($patent_status)) {
 			$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
 			foreach($new_patent_status as $each_status){
