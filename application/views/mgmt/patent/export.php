@@ -103,7 +103,7 @@
 			</tr>
 			<tr>
 				<td>專利範圍</td>
-				<td colspan="4"><pre style="border-style:none;background-color:transparent;font-size:14px;vertical-align:inherit;"><?= isset($item) ? $item -> patent_range : '' ?></pre></td>
+				<td colspan="4"><pre style="border-style:none;background-color:transparent;font-size:14px;"><?= isset($item) ? $item -> patent_range : '' ?></pre></td>
 			</tr>
 		</tbody>
 	</table>
