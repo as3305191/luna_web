@@ -174,7 +174,8 @@ class Patent_dao extends MY_Model {
 		$search = $data['search'];
 		$order = $data['order'];
 
-		// select
+		$this -> db -> from("$this->table_name as _m");
+
 		$this -> db -> select('_m.*');
 		$new_item_id = implode(',',$item_id);
 		$this -> db -> where("_m.id IN ($new_item_id )");
