@@ -27,65 +27,65 @@
 								</div>
 							<?php endif?>
 							<div id="patent_header">
-							<div class="widget-toolbar pull-left">
-								<label>專利類型</label>
-							</div>
-							<input id="now_category" type="hidden"/>
+								<div class="widget-toolbar pull-left">
+									<label>專利類型</label>
+								</div>
+								<input id="now_category" type="hidden"/>
 
-							<div id="category">
-							</div>
-						
-							<div class="widget-toolbar pull-left">
-								<label>申請人</label>
-							</div>
-							<div class="widget-toolbar pull-left">
-								<input id="application_person" ondragover="" autocomplete="off" type="text" class="form-control" />
-							</div>
-							<div class="widget-toolbar pull-left">
-								<label>申請號</label>
-							</div>
-							<div class="widget-toolbar pull-left">
-								<input id="application_num_search" type="text" class="form-control" autocomplete="off" />
-							</div>
-							<div class="widget-toolbar pull-left">
-								<label>發明人</label>
-							</div>
-							<div class="widget-toolbar pull-left">
-								<input id="invention_person_search" ondragover="" type="text" class="form-control" autocomplete="off"/>
-							</div>
-							<div class="widget-toolbar pull-left">
-								<label>公開號</label>
-							</div>
-							<div class="widget-toolbar pull-left">
-								<input id="public_num_search"  type="text" class="form-control" style="background:#FFFFFF" autocomplete="off"/>
-							</div>
-							<div class="widget-toolbar pull-left">
-								<label>關鍵字</label>
-							</div>
-							<div class="widget-toolbar pull-left">
-								<input id="key_search" type="text" class="form-control"autocomplete="off" />
-                            </div>
-                            <div class="widget-toolbar pull-left">
-								<label>專利號</label>
-                            </div>
-                            <div class="widget-toolbar pull-left">
-								<input id="patent_search" type="text" class="form-control"autocomplete="off" />
-                            </div>
-							<div class="widget-toolbar pull-left">
-								<label>專利家族</label>
-                            </div>
-                            <div class="widget-toolbar pull-left">
-								<input id="patent_family_search" type="text" class="form-control"autocomplete="off" />
-                            </div>
+								<div id="category">
+								</div>
+							
+								<div class="widget-toolbar pull-left">
+									<label>申請人</label>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<input id="application_person" ondragover="" autocomplete="off" type="text" class="form-control" />
+								</div>
+								<div class="widget-toolbar pull-left">
+									<label>申請號</label>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<input id="application_num_search" type="text" class="form-control" autocomplete="off" />
+								</div>
+								<div class="widget-toolbar pull-left">
+									<label>發明人</label>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<input id="invention_person_search" ondragover="" type="text" class="form-control" autocomplete="off"/>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<label>公開號</label>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<input id="public_num_search"  type="text" class="form-control" style="background:#FFFFFF" autocomplete="off"/>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<label>關鍵字</label>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<input id="key_search" type="text" class="form-control"autocomplete="off" />
+								</div>
+								<div class="widget-toolbar pull-left">
+									<label>專利號</label>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<input id="patent_search" type="text" class="form-control"autocomplete="off" />
+								</div>
+								<div class="widget-toolbar pull-left">
+									<label>專利家族</label>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<input id="patent_family_search" type="text" class="form-control"autocomplete="off" />
+								</div>
 							</div>
                             <div class="widget-toolbar pull-left" id="patent_status">
                                 <div>
-                                <?php foreach ($patent_status as $each) : ?>
-                                    <label class="u-check g-pl-0">
-                                        <input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="patent_status[]" type="checkbox" value="<?= $each->id ?>">
-                                        <span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
-                                    </label>
-                                <?php endforeach ?>
+									<?php foreach ($patent_status as $each) : ?>
+										<label class="u-check g-pl-0">
+											<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="patent_status[]" type="checkbox" value="<?= $each->id ?>">
+											<span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
+										</label>
+									<?php endforeach ?>
                                 </div>
                             </div>
 							<div class="widget-toolbar pull-left">
