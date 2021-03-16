@@ -70,7 +70,7 @@ class Patent extends MY_Mgmt_Controller {
 			foreach($new_patent_status as $each_status){
 				foreach($items as $each){
 					if($each->patnet_status ==$each_status){
-						$res['items'] = $each;
+						$res['items'][] = $each;
 					}
 				}
 			}
