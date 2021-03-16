@@ -46,7 +46,7 @@ class Patent extends MY_Mgmt_Controller {
 			'patent_family_search',
 		));
 		$patent_status = $this->get_post('patent_status');
-		$data['patent_status'] = explode(",", str_replace('#', ',', $patent_status));
+		$data_patent_status = explode(",", str_replace('#', ',', $patent_status));
 		$s_data = $this -> setup_user_data(array());
 
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
