@@ -16,7 +16,7 @@
 
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
-						<header id="patent_header">
+						<header >
 							<?php if($login_user->role_id==9 ||$login_user->role_id==11||$login_user->role_id==28): ?>
 								<div class="widget-toolbar pull-left">
 									<div class="btn-group">
@@ -26,6 +26,7 @@
 									</div>
 								</div>
 							<?php endif?>
+							<div id="patent_header">
 							<div class="widget-toolbar pull-left">
 								<label>專利類型</label>
 							</div>
@@ -76,6 +77,7 @@
                             <div class="widget-toolbar pull-left">
 								<input id="patent_family_search" type="text" class="form-control"autocomplete="off" />
                             </div>
+							</div>
                             <div class="widget-toolbar pull-left" id="patent_status">
                                 <div>
                                 <?php foreach ($patent_status as $each) : ?>
