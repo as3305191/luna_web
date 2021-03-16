@@ -45,12 +45,12 @@ class Patent extends MY_Mgmt_Controller {
 			'now_category',
 			'patent_family_search',
 		));
-		$patent_status = '';
+		$patent_status = $this->get_post('patent_status');
 
-		// if (!empty($patent_status)) {
-		// 	$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
-		// 	$data['patent_status'] = $new_patent_status;
-		// }
+		if (!empty($patent_status)) {
+			$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
+			$data['patent_status'] = $new_patent_status;
+		}
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
@@ -64,21 +64,21 @@ class Patent extends MY_Mgmt_Controller {
 				$each -> image =0;
 			}
 		}
-		$patent_status = $this->get_post('patent_status');
+		// if (!empty($patent_status)) {
+		// 	$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
+		// 	foreach($new_patent_status as $each_status){
+		// 		foreach($items as $each){
+		// 			if($each->patnet_status ==$each_status){
+		// 				$items_list[] = $each;
+		// 			}
+		// 		}
+		// 	}
+		// 	$res['items'] = $items_list;
+		// } else{
+		// 	$res['items'] = $items;
+		// }
+		$res['items'] = $items;
 
-		if (!empty($patent_status)) {
-			$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
-			foreach($new_patent_status as $each_status){
-				foreach($items as $each){
-					if($each->patnet_type ==$each_status){
-						$items_list[] = $each;
-					}
-				}
-			}
-			$res['items'] = $items_list;
-		} else{
-			$res['items'] = $items;
-		}
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
 		$this -> to_json($res);
