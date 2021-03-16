@@ -181,7 +181,7 @@ class Patent_dao extends MY_Model {
 			$patent_status = $new_patent_status;
 			if (count($patent_status)==1) {
 				foreach($patent_status as $each){
-					$this->db->where('_m.patnet_type',$each[0]);
+					$this->db->where('_m.patnet_type',$each);
 				}
 			} else{
 				if (count($patent_status)>1) {
