@@ -209,7 +209,7 @@ class Patent_dao extends MY_Model {
 		$this -> db -> order_by('id', 'desc');
 
 		// limit
-		$this -> db -> limit($limit, $start);
+		// $this -> db -> limit($limit, $start);
 
 		// query results
 		$query = $this -> db -> get();
