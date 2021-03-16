@@ -642,7 +642,7 @@ class Patent extends MY_Mgmt_Controller {
 
 			if(!empty($item -> patnet_type)) {
 				$patnet_type_list = $this -> patent_category_dao -> find_by_id($item -> patnet_type);
-				$data['patnet_type_name'] = $patnet_type_list->name
+				$data['patnet_type_name'] = $patnet_type_list->name;
 			}else{
 				$data['patnet_type_name'] ="";
 			}
