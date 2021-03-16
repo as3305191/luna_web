@@ -62,7 +62,7 @@ class Patent extends MY_Mgmt_Controller {
 			}
 
 
-			foreach($real_item as $each){
+			foreach($real_item[0] as $each){
 				if(!empty($each -> img_id)) {
 					$image= explode(",", $each -> img_id);
 					$each -> image_id =$image ;
@@ -71,7 +71,7 @@ class Patent extends MY_Mgmt_Controller {
 					$each -> image =0;
 				}
 			}
-			$res['items'] = $real_item;
+			$res['items'] = $real_item[0];
 		} else{
 			foreach($items as $each){
 				if(!empty($each -> img_id)) {
