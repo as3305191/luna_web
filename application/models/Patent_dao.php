@@ -173,7 +173,7 @@ class Patent_dao extends MY_Model {
 		$this -> db -> select('_m.*');
 		if (count($item_id)>0) {
 			$new_item_id = implode(',',$item_id);
-			$this -> db -> where("_m.id IN $new_item_id");
+			$this -> db -> where("_m.id IN ($new_item_id)");
 		}
 		
 
