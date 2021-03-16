@@ -350,7 +350,7 @@
 	function do_remove() {//一鍵清除所有篩選
 		$('#patent_header input').val('');
 		// $("input[name='patent_status[]']").removeAttr("checked");
-		d.patent_status = $("input[name='patent_status[]']:checked").map(function() {
+		$("input[name='patent_status[]']:checked").map(function() {
 			return ''
 		}).get();
 		load_category();
