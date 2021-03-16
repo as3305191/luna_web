@@ -71,6 +71,8 @@ class Patent extends MY_Mgmt_Controller {
 				foreach($items as $each){
 					if($each->patnet_status ==$each_status){
 						$each=true;
+					} else{
+						$each=false;
 					}
 				}
 			}
