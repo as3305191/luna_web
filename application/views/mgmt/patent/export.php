@@ -41,7 +41,6 @@
 			<tr>
 				<td>專利名稱</td>
 				<td colspan="3"><?= isset($item) ? $item -> patent_name : '' ?></td>
-				
 			</tr>
 			<tr>
 				<td>專利國家</td>
@@ -78,11 +77,7 @@
 				<td><?= isset($item) ? $item -> assignee : '' ?></td>
 				<td>專利狀態</td>
 				<td colspan="2">
-					<?php if($item -> patnet_type==1): ?>
-						有效
-					<?php elseif($item -> patnet_type==2): ?>
-						無效
-					<?php endif?>
+					<?= isset($patnet_type_name) ? $patnet_type_name : '' ?>
 				</td>	
 			</tr>
 			<tr>

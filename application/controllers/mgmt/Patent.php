@@ -633,10 +633,18 @@ class Patent extends MY_Mgmt_Controller {
 
 			$data['item'] = $item;
 			$data['country'] = $this -> country_dao -> find_by_id($item->patent_country);
+
 			if(!empty($item -> patnet_category)) {
 				$data['patnet_status'] = $this -> patent_status_dao -> find_by_id($item->patnet_status);
 			}else{
 				$data['patnet_status'] ="";
+			}
+
+			if(!empty($item -> patnet_type)) {
+				$patnet_type_list = $this -> patent_category_dao -> find_by_id($item -> patnet_type);
+				$data['patnet_type_name'] = $patnet_type_list->name
+			}else{
+				$data['patnet_type_name'] ="";
 			}
 
 			if(!empty($item -> patnet_status)){
