@@ -73,7 +73,7 @@ class Patent_dao extends MY_Model {
 
 		// query results
 		$query = $this -> db -> get();
-		if(!empty($data['patent_status']) && count($data['patent_status'])>0){
+		if(!empty($data['patent_status']) && count($data['patent_status'])>=1){
 			$list = $query -> result();
 			return $this->find_all_by_patent_type($list,$data['patent_status']);
 		} else{
