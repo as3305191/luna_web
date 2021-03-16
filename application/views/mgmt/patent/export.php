@@ -46,7 +46,18 @@
 				<td>專利國家</td>
 				<td><?= isset($country) ? $country -> country_name : '' ?></td>
 				<td>專利類別</td>
-				<td><?= isset($patnet_category) ? $patnet_category -> name : '' ?></td>
+				<td>
+					<?php if(!empty($item->patnet_category)): ?>
+						<?php if($item->patnet_category==1): ?>
+							發明
+						<?php elseif($item->patnet_category==2) : ?>
+							新型
+						<?php elseif($item->patnet_category==3) : ?>
+							設計
+						<?php endif?>
+						
+					<?php endif?>
+				</td>
 			</tr>
 			<tr>
 				<td>申請號</td>
