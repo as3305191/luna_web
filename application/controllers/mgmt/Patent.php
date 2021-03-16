@@ -46,38 +46,43 @@ class Patent extends MY_Mgmt_Controller {
 			'patent_family_search',
 		));
 		$patent_status = $this->get_post('patent_status');
-
-		if (!empty($patent_status)) {
-			$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
-			$data['patent_status'] = $new_patent_status;
-		}
-
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
-		foreach($items as $each){
-			if(!empty($each -> img_id)) {
-				$image= explode(",", $each -> img_id);
-				$each -> image_id =$image ;
-				$each -> image = $image[0];
-			} else{
-				$each -> image =0;
+		if (!empty($patent_status)) {
+			$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
+			foreach($items as $each){
+				$item_id[]=$each->id;
 			}
+			$real_item = $this -> dao -> find_all_by_patent_type($data,$item_id,$new_patent_status);
+			foreach($real_item as $each){
+				if(!empty($each -> img_id)) {
+					$image= explode(",", $each -> img_id);
+					$each -> image_id =$image ;
+					$each -> image = $image[0];
+				} else{
+					$each -> image =0;
+				}
+			}
+			$res['items'] = $real_item;
+		} else{
+			foreach($items as $each){
+				if(!empty($each -> img_id)) {
+					$image= explode(",", $each -> img_id);
+					$each -> image_id =$image ;
+					$each -> image = $image[0];
+				} else{
+					$each -> image =0;
+				}
+			}
+		 
+			$res['items'] = $items;
 		}
-		// if (!empty($patent_status)) {
-		// 	$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
-		// 	foreach($new_patent_status as $each_status){
-		// 		foreach($items as $each){
-		// 			if($each->patnet_status ==$each_status){
-		// 				$items_list[] = $each;
-		// 			}
-		// 		}
-		// 	}
-		// 	$res['items'] = $items_list;
-		// } else{
-		// 	$res['items'] = $items;
-		// }
-		$res['items'] = $items;
+
+	
+
+		
+		
 
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);

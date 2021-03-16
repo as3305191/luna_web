@@ -137,24 +137,7 @@ class Patent_dao extends MY_Model {
 
 		}
 		
-		// if(!empty($data['patent_status'])){
-		// 	$patent_status = $data['patent_status'];
-		// 	if (count($patent_status)==1) {
-		// 		foreach($patent_status as $each){
-		// 			$this->db->where('_m.patnet_type',$each);
-		// 		}
-		// 	} else{
-		// 		if (count($patent_status)>1) {
-		// 			for($i=0;$i<count($patent_status);$i++){
-		// 				if($i==0){
-		// 					$this->db->where('_m.patnet_type',$patent_status[$i]);
-		// 				}else if($i>0){
-		// 					$this->db->or_where('_m.patnet_type',$patent_status[$i]);
-		// 				}
-		// 			}
-		// 		}
-		// 	}
-		// }
+		
 	}
 
 	function find_this_list($status) {
@@ -183,5 +166,54 @@ class Patent_dao extends MY_Model {
 		
 		return $list;
 	}
+
+	function find_all_by_patent_type($data,$item_id,$new_patent_status) {
+		$start = $data['start'];
+		$limit = $data['length'];
+		$columns = $data['columns'];
+		$search = $data['search'];
+		$order = $data['order'];
+
+		// select
+		$this -> db -> select('_m.*');
+
+		$this -> db -> where("_m.id IN",$item_id);
+
+		if(!empty($new_patent_status)){
+			$patent_status = $new_patent_status;
+			if (count($patent_status)==1) {
+				foreach($patent_status as $each){
+					$this->db->where('_m.patnet_type',$each);
+				}
+			} else{
+				if (count($patent_status)>1) {
+					for($i=0;$i<count($patent_status);$i++){
+						if($i==0){
+							$this->db->where('_m.patnet_type',$patent_status[$i]);
+						}else if($i>0){
+							$this->db->or_where('_m.patnet_type',$patent_status[$i]);
+						}
+					}
+				}
+			}
+		}
+
+		// search
+		$this -> ajax_column_setup($columns, $search, $this -> alias_map);
+
+		// order
+		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
+
+
+		$this -> db -> order_by('id', 'desc');
+
+		// limit
+		$this -> db -> limit($limit, $start);
+
+		// query results
+		$query = $this -> db -> get();
+		return $query -> result();
+	}
+
 }
 ?>
