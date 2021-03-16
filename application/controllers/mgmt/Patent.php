@@ -65,8 +65,17 @@ class Patent extends MY_Mgmt_Controller {
 				$each -> image =0;
 			}
 		}
-	
-		$res['items'] = $items;
+		if (!empty($patent_status)) {
+			$new_patent_status = explode(",", str_replace('#', ',', $patent_status));
+			foreach($new_patent_status as $each_status){
+				foreach($items as $each){
+					if($each->patent_status ==$each_status){
+						$each=true;
+					}
+				}
+			}
+		}
+		$res['items'] = $each;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
 		$this -> to_json($res);
