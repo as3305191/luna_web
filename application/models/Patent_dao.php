@@ -176,8 +176,8 @@ class Patent_dao extends MY_Model {
 
 		// select
 		$this -> db -> select('_m.*');
-
-		$this -> db -> where('_m.id IN',implode(',',$item_id));
+		$new_item_id = implode(',',$item_id);
+		$this -> db -> where("_m.id IN '($new_item_id )'");
 
 		if(!empty($new_patent_status)){
 			$patent_status = $new_patent_status;
