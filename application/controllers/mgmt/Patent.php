@@ -74,7 +74,6 @@ class Patent extends MY_Mgmt_Controller {
 					}
 				}
 			}
-			$res['items'] = $each;
 		} else{
 			$res['items'] = $items;
 		}
