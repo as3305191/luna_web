@@ -643,15 +643,12 @@ class Patent extends MY_Mgmt_Controller {
 				$now_level_list = $this -> patent_status_dao -> find_by_id($item -> patnet_status);
 				$now_level = $now_level_list->level;
 				$all_patent_status_name="";
-				for($i=$now_level;$i>=0;$i--){
-					$now_parent=$now_level_list->parent_id;
-					if($i==$now_level){
-						
-						$last_child = $this -> patent_status_dao -> find_by_id($now_level_list->id);	
-						$all_patent_status_name = $all_patent_status_name."-".$last_child->name;	
-						
-					} else{
 
+				if($now_level==0){
+					$data['all_patent_status_name'] = $now_level_list->name;
+				} else{
+					$now_parent=$now_level_list->parent_id;
+					for($i=$now_level;$i>=0;$i--){
 						if($i>0){
 							$last_child = $this -> patent_status_dao -> find_by_id($now_parent);
 							$all_patent_status_name = $all_patent_status_name."-".$last_child->name;	
@@ -661,10 +658,10 @@ class Patent extends MY_Mgmt_Controller {
 							$last_child = $this -> patent_status_dao -> find_by_id($now_parent);	
 							$all_patent_status_name = $all_patent_status_name.$last_child->name;	
 						}
-
+	
 					}
-				}
-				$data['all_patent_status_name'] = $all_patent_status_name;
+					$data['all_patent_status_name'] = $all_patent_status_name;
+				}			
 			}
 
 		}
