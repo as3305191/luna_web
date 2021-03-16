@@ -144,7 +144,7 @@ class Patent_dao extends MY_Model {
 		if(!empty($data['patent_status'])){
 			$patent_status = $data['patent_status'];
 			$new_patent_status = implode(',',$patent_status);
-			$this -> db -> where("_m.patent_type IN ($new_patent_status)");
+			$this -> db -> where("_m.patnet_type IN ($new_patent_status)");
 		}	
 		
 	}
