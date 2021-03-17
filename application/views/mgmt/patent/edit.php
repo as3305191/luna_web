@@ -10,7 +10,10 @@
 .not_ok {
 	background-color:red;
 }
-.fileinput-upload .fileinput-remove{
+.fileinput-upload{
+	display:none !important;
+}
+.fileinput-remove{
 	display:none !important;
 }
 </style>
