@@ -83,7 +83,7 @@ var patentAppClass = (function(app) {
 			app.tableReload();
 		});
 
-	    $(window).trigger("hashchange");
+	    // $(window).trigger("hashchange");
 
 		return app;
 	};
