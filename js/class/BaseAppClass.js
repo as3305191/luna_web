@@ -142,7 +142,6 @@ var BaseAppClass = (function(app) {
 				$("#btn-submit-edit").prop( "disabled", false);
 				loading.remove();
 			});
-
 	};
 
 	// do submit
@@ -193,7 +192,6 @@ var BaseAppClass = (function(app) {
 		$('#currentReturnID').val(id);
 	};
 
-
 	// $(window).trigger("hashchange");
 
 	app.speechRestore = function(){//錄音重置
@@ -202,8 +200,8 @@ var BaseAppClass = (function(app) {
 
 	app.speechStart = function(){//開始錄音
 		Fr.voice.record(false, function(){
-      app.makeWaveform();
-    });
+			app.makeWaveform();
+		});
 	};
 
 	app.speechUpload = function(){
