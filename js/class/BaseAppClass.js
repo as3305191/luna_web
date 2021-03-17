@@ -142,18 +142,14 @@ var BaseAppClass = (function(app) {
 
 		$(window).on("hashchange", function() {
 			var _hash = location.hash;
-
-			if (_hash.indexOf("#mgmt/") == 0) {
+			location.hash = "#mgmt/" + id;
 		
-			  $('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id, function(){
+			$('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id, function(){
 				$("#btn-submit-edit").prop( "disabled", false);
 				loading.remove();
 			});
-			}
 		  });
 
-
-		
 	};
 
 	// do submit
