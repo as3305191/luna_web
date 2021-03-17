@@ -190,7 +190,7 @@ var BaseAppClass = (function(app) {
 	};
 
 
-	$(window).trigger("hashchange");
+	// $(window).trigger("hashchange");
 
 	app.speechRestore = function(){//錄音重置
 		Fr.voice.stop();
