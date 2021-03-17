@@ -901,13 +901,16 @@ function do_save() {
 									now_patent_status.push($(this).val());
 								}
 							});
-							$.each(current_app[0], function(key,value){
-								var keynum_d_val = $('#'+key).data("val");
-								if(keynum_d_val>_dataVal){
-									$('#patnet_status_'+keynum_d_val).empty();
-									$('<option value="all">全部</option>').appendTo($('#patnet_status_'+keynum_d_val));
-								}
-							});
+							if(current_app[0]=true){
+								$.each(current_app[0], function(key,value){
+									var keynum_d_val = $('#'+key).data("val");
+									if(keynum_d_val>_dataVal){
+										$('#patnet_status_'+keynum_d_val).empty();
+										$('<option value="all">全部</option>').appendTo($('#patnet_status_'+keynum_d_val));
+									}
+								});
+							}
+							
 							var before_dataVal = _dataVal-1;
 							if(select_Val=='all'){
 								if(_dataVal>0){
