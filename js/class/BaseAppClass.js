@@ -128,6 +128,9 @@ var BaseAppClass = (function(app) {
 		});
 	};
 
+
+
+	
 	// edit
 	app.doEdit = function(id) {
 	    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
@@ -136,10 +139,21 @@ var BaseAppClass = (function(app) {
 
 		$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
 
-		$('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id, function(){
-        	$("#btn-submit-edit").prop( "disabled", false);
-        	loading.remove();
-		});
+
+		$(window).on("hashchange", function() {
+			var _hash = location.hash;
+
+			if (_hash.indexOf("#mgmt/") == 0) {
+		
+			  $('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id, function(){
+				$("#btn-submit-edit").prop( "disabled", false);
+				loading.remove();
+			});
+			}
+		  });
+
+
+		
 	};
 
 	// do submit
