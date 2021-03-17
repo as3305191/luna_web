@@ -322,8 +322,10 @@
 							}
 						</style>
 		</div>
-		<div class="col-md-12 col-xs-12 col-sm-12 no-padding" style="margin-top:10px">
-			<button style="float:right;border-radius:5px;font-size:14px;padding:10px" onclick="do_save();"  class="btn btn-warning">儲存</button>
+		<div class="widget-toolbar pull-left">
+			<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
+				<i class="fa fa-save"></i>存檔
+			</a>
 		</div>
 		</form>
 
