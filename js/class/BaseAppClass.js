@@ -124,6 +124,7 @@ var BaseAppClass = (function(app) {
 			},
 			failure: function() {
 				alert('Network Error...');
+				
 			}
 		});
 	};
