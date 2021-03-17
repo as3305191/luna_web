@@ -302,7 +302,9 @@
 					</div>
 				</div>
 			</fieldset>	
-			
+			<div class="col-md-12 col-xs-12 col-sm-12 no-padding" style="margin-top:10px">
+				<button style="float:right;border-radius:5px;font-size:14px;padding:10px" onclick="do_save();"  class="btn btn-warning">儲存</button>
+			</div>
 						<style>
 							#product_spec_list {
 							
