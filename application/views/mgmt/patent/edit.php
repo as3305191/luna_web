@@ -320,6 +320,9 @@
 								font-size: 16px;
 								font-weight: bolder;
 							}
+							.fileinput-upload-button .fileinput-remove-button {
+								display:none
+							}
 						
 						</style>
 		</div>
@@ -423,10 +426,7 @@ if($('#item_id').val()>0){
 
 $("#img-input").fileinput({
 					language: "zh-TW",
-					showRemove: "false",
-					showUpload: "false",
-
-
+			
 		<?php if(!empty($item -> image) && count($item -> image) > 0): ?>
 
         	initialPreview: [
