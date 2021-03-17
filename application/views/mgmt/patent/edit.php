@@ -11,7 +11,7 @@
 	background-color:red;
 }
 .fileinput-upload .fileinput-remove{
-	display:none;
+	display:none !important;
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
