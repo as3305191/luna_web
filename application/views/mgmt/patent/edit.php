@@ -10,7 +10,9 @@
 .not_ok {
 	background-color:red;
 }
-  
+.fileinput-upload-button .fileinput-remove-button {
+	display:none;
+}
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
@@ -320,9 +322,7 @@
 								font-size: 16px;
 								font-weight: bolder;
 							}
-							.fileinput-upload-button .fileinput-remove-button {
-								display:none
-							}
+							
 						
 						</style>
 		</div>
