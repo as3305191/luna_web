@@ -142,7 +142,6 @@ class Patent_dao extends MY_Model {
 			$new_patent_status = implode(',',$patent_status);
 			$this -> db -> where("_m.patnet_type IN ($new_patent_status)");
 		}	
-		
 	}
 
 	function find_this_list($status) {
