@@ -140,15 +140,12 @@ var BaseAppClass = (function(app) {
 		$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
 
 
-		$(window).on("hashchange", function() {
-			var _hash = location.hash;
 			location.hash = "#mgmt/" + id;
 		
 			$('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id, function(){
 				$("#btn-submit-edit").prop( "disabled", false);
 				loading.remove();
 			});
-		  });
 
 	};
 
