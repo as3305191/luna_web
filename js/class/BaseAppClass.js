@@ -128,9 +128,6 @@ var BaseAppClass = (function(app) {
 		});
 	};
 
-
-
-	
 	// edit
 	app.doEdit = function(id) {
 	    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
