@@ -125,6 +125,7 @@
 						<textarea type="text" require class="form-control" rows="3" id="applicant" name="applicant" style="resize:none;width:100%" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>><?= isset($item) ? $item -> applicant : '' ?></textarea>
 					</div>
 				</div>
+
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
