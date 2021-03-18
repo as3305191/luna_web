@@ -21,7 +21,6 @@ class Patent_status_dao extends MY_Model {
 
 		// select
 		$this -> db -> select('_m.*');
-
 		// join
 		$this -> ajax_from_join();
 
