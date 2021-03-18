@@ -15,9 +15,12 @@
 	background-color:red;
 }
 
-  .noBreak {
-    break-inside: avoid;
-  }
+@media print  
+{
+    div{
+        page-break-inside: avoid;
+    }
+}
 
 
 @page {
@@ -26,12 +29,12 @@
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="noBreak" style="padding:50px 50px 50px 50px;">
-	<table  class="layui-table noBreak" width="70%">
+<div class="" style="padding:50px 50px 50px 50px;">
+	<table  class="layui-table" width="70%">
 		<thead>
 		
 		</thead>
-		<tbody class="noBreak">
+		<tbody class="">
 			<tr>
 				<td class="min100" colspan="5" style="text-align:center;vertical-align:middle;">專利詳細資訊</td>
 			</tr>
