@@ -22,7 +22,6 @@
     }
 }
 
-
 @page {
   size: A4 portrait;
   margin-top: 1cm;
