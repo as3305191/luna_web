@@ -135,7 +135,8 @@ var BaseAppClass = (function(app) {
 	    	.appendTo($('#edit-modal-body').empty());
 	    $("#btn-submit-edit").prop( "disabled", true);
 
-		$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
+		$('.tab-pane').removeClass('active');
+		$('#edit_page').addClass('active');
 
 			location.hash = app.basePath + 'edit/' + id;
 			$('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id, function(){
