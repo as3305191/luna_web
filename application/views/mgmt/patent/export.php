@@ -28,11 +28,11 @@
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="noBreak" style="padding:50px 50px 50px 50px;">
-	<table  class="layui-table" width="70%">
+	<table  class="layui-table noBreak" width="70%">
 		<thead>
 		
 		</thead>
-		<tbody>
+		<tbody class="noBreak">
 			<tr>
 				<td class="min100" colspan="5" style="text-align:center;vertical-align:middle;">專利詳細資訊</td>
 			</tr>
