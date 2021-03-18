@@ -231,7 +231,16 @@
 	},{
 		data : 'total_country'
 	}, {
-		data : 'patnet_num'
+		data : 'patnet_num',
+		render: function(d,t,r){
+			if(d){
+				var html = '<span style="color:red;">'+d+'</span>';
+				return html;
+			} else{
+				return '';
+			}
+		}
+		
 	}, {
 		data : 'public_num'
 	}, {
