@@ -181,7 +181,7 @@ class Patent_dao extends MY_Model {
 		$query = $this -> db -> get();
 		$list = $query -> result();
 		
-		return $list;
+		return $list->patent_country_name;
 	}
 
 }
