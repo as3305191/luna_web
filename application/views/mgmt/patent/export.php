@@ -15,9 +15,14 @@
 	background-color:red;
 }
 
+@media print{
+  .noBreak {
+    break-inside: avoid;
+  }
+}
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div style="padding:50px 50px 50px 50px">
+<div class="noBreak" style="padding:50px 50px 50px 50px;">
 	<table  class="layui-table" width="70%">
 		<thead>
 		
