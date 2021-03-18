@@ -20,6 +20,11 @@
     break-inside: avoid;
   }
 }
+
+@page {
+  size: A4 portrait;
+  margin-top: 1cm;
+}
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="noBreak" style="padding:50px 50px 50px 50px;">
