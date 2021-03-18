@@ -118,6 +118,7 @@
 											<th class="min100">代表圖</th>
 											<th class="min100">申請人</th>
 											<th class="min100">發明人</th>
+											<th class="min100">已存在國家</th>
 											<th class="min100">專利號</th>
 											<th class="min100">公開號</th>
 											<th class="min100">申請日</th>
@@ -227,6 +228,8 @@
 		data : 'applicant'
 	},{
 		data : 'inventor'
+	},{
+		data : 'total_country'
 	}, {
 		data : 'patnet_num'
 	}, {
@@ -239,7 +242,7 @@
 		data : 'update_date'
 	}];
 
-	var mOrderIdx = 5;
+	var mOrderIdx = 6;
 	
 	if($('#l_user_id').val()=='9' || $('#l_user_id').val()=='28'|| $('#l_user_id').val()=='11' ){
 		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
@@ -256,7 +259,7 @@
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,1,2,3,4,5,6],
+		"targets" : [0,1,2,3,4,5,6,7],
 		"orderable" : false
 	}];
 
