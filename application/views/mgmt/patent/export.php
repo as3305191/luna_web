@@ -15,11 +15,10 @@
 	background-color:red;
 }
 
-@media print{
   .noBreak {
     break-inside: avoid;
   }
-}
+
 
 @page {
   size: A4 portrait;
