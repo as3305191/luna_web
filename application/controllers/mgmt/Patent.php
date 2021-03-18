@@ -61,11 +61,15 @@ class Patent extends MY_Mgmt_Controller {
 			} else{
 				$each -> image =0;
 			}
-			$patent_country_list = $this -> dao -> find_total_country($each -> patent_family);
-			foreach($patent_country_list as $each_country_list){
-				$patent_country_name[] = $each_country_list->patent_country_name;
-			}
-			$each -> total_country = $patent_country_name;
+			if(!empty($each -> patent_family)){
+				$patent_country_list = $this -> dao -> find_total_country($each -> patent_family);
+				foreach($patent_country_list as $each_country_list){
+					$patent_country_name[] = $each_country_list->patent_country_name;
+				}
+				$each -> total_country = $patent_country_name;
+			} else{
+				$each -> total_country = '';
+			}			
 
 		}
 
