@@ -168,8 +168,8 @@ var BaseAppClass = (function(app) {
 			$('#list_page').addClass('active');
 
 			// prevent datable height zero
-			$(window).trigger('resize');
-			// window.history.back();
+			// $(window).trigger('resize');
+			window.history.back();
 		}
 	};
 
