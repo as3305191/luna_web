@@ -93,7 +93,7 @@
 					</div>
 				
 					<?php if(isset($item->id) && $item->id>0): ?>
-						<div class="col-md-2">
+						<div class="col-md-1">
 							<button type="button" class="btn btn-sm btn-primary" onclick="check_family()">檢查</button>
 						</div>
 					<?php endif?>
