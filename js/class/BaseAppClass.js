@@ -169,7 +169,7 @@ var BaseAppClass = (function(app) {
 			// prevent datable height zero
 			// $(window).trigger('resize');
 			// window.history.back();
-			window.history.go(-1);
+			history.go(-1);
 
 		}
 	};
