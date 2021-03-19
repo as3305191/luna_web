@@ -180,7 +180,7 @@ class Patent_dao extends MY_Model {
 		$this -> db -> join("country c", "c.id = _m.patent_country", "left");
 		$query = $this -> db -> get();
 		$list = $query -> result();
-		
+
 		return $list;
 	}
 
@@ -201,7 +201,6 @@ class Patent_dao extends MY_Model {
 	function find_same_family($patent_family){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-
 		$this -> db -> where("_m.patent_family ",$patent_family);
 
 		$query = $this -> db -> get();
