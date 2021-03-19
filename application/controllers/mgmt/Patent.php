@@ -71,11 +71,9 @@ class Patent extends MY_Mgmt_Controller {
 			} else{
 				$each -> total_country = '';
 			}			
-
 		}
 
 		$res['items'] = $items;
-		
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
 		$this -> to_json($res);
@@ -242,7 +240,8 @@ class Patent extends MY_Mgmt_Controller {
 		$data['patent_note'] = $patent_note;
 		$data['patent_range'] = $patent_range;
 		$data['update_date'] = date("Y-m-d H:i:s");
-		$data['now_patent_status'] = "#".$now_patent_status."#";	
+		
+		$data['now_patent_status'] = $now_patent_status;	
 
 		if(empty($id)) {
 			// insert
