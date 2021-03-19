@@ -1063,11 +1063,11 @@ function do_save() {
 		e.preventDefault();
 	});
 	function familyChange(){
-		var url = baseUrl +'mgmt/patent/station_search'; // the script where you handle the form input.
-		if($.stationXhr) {
-			$.stationXhr.abort();
-		}
-		$.stationXhr = $.ajax({
+		var url = baseUrl +'mgmt/patent/patent_family_search'; // the script where you handle the form input.
+		// if($.stationXhr) {
+		// 	$.stationXhr.abort();
+		// }
+		$.ajax({
 			type : "POST",
 			url : url,
 			data : {

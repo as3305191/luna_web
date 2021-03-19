@@ -276,7 +276,7 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function station_search(){
+	public function patent_family_search(){
 		$data = array();
 		$search_item = $this -> get_post('search_item');
 		$item = $this -> dao -> search_by_family_patent($search_item);
