@@ -1064,10 +1064,10 @@ function do_save() {
 	});
 	function familyChange(){
 		var url = baseUrl +'mgmt/patent/patent_family_search'; // the script where you handle the form input.
-		// if($.stationXhr) {
-		// 	$.stationXhr.abort();
-		// }
-		$.ajax({
+		if($.stationXhr) {
+			$.stationXhr.abort();
+		}
+		$.stationXhr = $.ajax({
 			type : "POST",
 			url : url,
 			data : {
