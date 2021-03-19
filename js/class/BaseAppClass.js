@@ -131,7 +131,7 @@ var BaseAppClass = (function(app) {
 
 	// edit
 	app.doEdit = function(id) {
-		location.hash = app.basePath + 'edit/' + id;
+		// location.hash = app.basePath + 'edit/' + id;
 	    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
 	    	.appendTo($('#edit-modal-body').empty());
 	    $("#btn-submit-edit").prop( "disabled", true);
