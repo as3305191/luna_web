@@ -94,10 +94,10 @@
 				
 			
 						<div class="col-md-3">
-							<?php if(isset($item->id) && $item->id>0): ?>
+							<?php if(empty($item)||$item->id==0): ?>
 								<button type="button" class="btn btn-sm btn-primary" onclick="check_family()">檢查</button>
 							<?php endif?>
-							<button type="button" class="btn btn-sm btn-primary" onclick="doSearchfamily_num()">搜尋專利家族</button>
+							<button type="button" class="btn btn-sm btn-primary" onclick="do_search_family()">搜尋專利家族</button>
 						</div>
 				</div>
 			</fieldset>
@@ -1005,7 +1005,7 @@ function do_save() {
 	}	
 	load_edit_category();
 	
-	function doSearchfamily_num() {
+	function do_search_family() {
 		// familyChange();
 		$('#family_search_Modal').modal('show');
 		// $('#s-family-name').val('').trigger("change");
