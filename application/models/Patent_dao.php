@@ -190,7 +190,7 @@ class Patent_dao extends MY_Model {
 
 		$this -> db -> where("_m.public_num like '%$search_item%'");
 		$this -> db -> or_where("_m.patnet_num like '%$search_item%'");
-		$this -> db -> or_where("_m.application_number like '%$search_item%'");
+		$this -> db -> or_where("_m.application_num like '%$search_item%'");
 
 		$query = $this -> db -> get();
 		$list = $query -> result();
