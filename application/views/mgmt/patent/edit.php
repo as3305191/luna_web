@@ -16,7 +16,7 @@
 .fileinput-remove{
 	display:none !important;
 }
-div span:hover{
+#family_span:hover{
     color:#FFD22F;
 }
 </style>
@@ -110,7 +110,7 @@ div span:hover{
 						<?php if(!empty($same_family)): ?>
 							<?php foreach($same_family as $each): ?>
 								<?php if(!empty($each -> patnet_num)||!empty($each -> public_num)): ?>
-									<span style="border:3px black double;" onclick="open_new_window(<?=$each->id?>);">
+									<span id="family_span" style="border:3px black double;" onclick="open_new_window(<?=$each->id?>);">
 										<?= isset($each -> patnet_num) ? $each -> patnet_num : $each -> public_num ?>
 									</span>
 								<?php endif?>
