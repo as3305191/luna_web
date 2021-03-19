@@ -280,7 +280,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data = array();
 		$search_item = $this -> get_post('search_item');
 		$item = $this -> dao -> search_by_family_patent($search_item);
-		$data['item'] = $item;
+		$res['item'] = $item;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
