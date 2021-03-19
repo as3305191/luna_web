@@ -72,7 +72,6 @@ class Patent extends MY_Mgmt_Controller {
 				$each -> total_country = '';
 			}			
 		}
-
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
@@ -133,6 +132,10 @@ class Patent extends MY_Mgmt_Controller {
 				}
 			}else{
 				$item -> patnet_number =array();
+			}
+
+			if(!empty($item -> patent_family)) {
+				$data['same_family'] = $this -> dao -> find_same_family($item->patent_family);
 			}
 
 			$data['item'] = $item;

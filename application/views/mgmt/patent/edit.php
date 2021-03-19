@@ -100,6 +100,21 @@
 							<button type="button" class="btn btn-sm btn-primary" onclick="do_search_family()">搜尋專利家族</button>
 						</div>
 				</div>
+
+				<div class="form-group">
+					<label class="col-md-3 control-label"></label>
+					<div class="col-md-6">
+						<?php if(!empty($same_family)): ?>
+							<?php foreach($same_family as $each): ?>
+								<span onclick="open_new_window(<?=$each->id?>);">
+									<?= isset($each -> patnet_num) ? $each -> patnet_num : $each -> public_num ?>
+								</span>
+							<?php endforeach ?>	
+						<?php endif?>
+					
+					</div>
+				</div>
+
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
@@ -1093,6 +1108,10 @@ function do_save() {
 	}
 	function hideSearchModal() {
 		$('#family_search_Modal').modal('hide');
+	}
+
+	function open_new_window(id) {
+		window.open(baseUrl + 'mgmt/patent/edit/' + id);
 	}
 	// // familyChange();
 

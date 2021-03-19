@@ -190,6 +190,7 @@ class Patent_dao extends MY_Model {
 
 		$this -> db -> where("_m.public_num like '%$search_item%'");
 		$this -> db -> or_where("_m.patnet_num like '%$search_item%'");
+		$this -> db -> or_where("_m.application_number like '%$search_item%'");
 
 		$query = $this -> db -> get();
 		$list = $query -> result();
@@ -197,5 +198,19 @@ class Patent_dao extends MY_Model {
 		return $list;
 	}
 	
+
+	function find_same_family($patent_family){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+
+		$this -> db -> where("_m.patent_family ",$patent_family);
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		
+		return $list;
+	}
+	
+
 }
 ?>
