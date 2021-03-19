@@ -1084,7 +1084,7 @@ function do_save() {
 						// currentApp.tableReload();
 						hideSearchModal();
 					}).appendTo($body);
-					$('<td>').html(me.application_number).appendTo($tr);
+					$('<td>').html(me.application_num).appendTo($tr);
 				})
 			}
 		});
