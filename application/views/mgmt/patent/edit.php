@@ -365,9 +365,9 @@
 							<div class="col-md-9">
 								<div class="input-group">
 									<input type="text" class="form-control" id="s-family-name" placeholder="請輸入公開號或專利號" />
-			      			<span class="input-group-btn">
+			      			<!-- <span class="input-group-btn">
 			      				<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
-			      			</span>
+			      			</span> -->
 			      		</div>
 							</div>
 						</div>
