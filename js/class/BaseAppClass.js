@@ -131,6 +131,7 @@ var BaseAppClass = (function(app) {
 
 	// edit
 	app.doEdit = function(id) {
+		location.hash = app.basePath + 'edit/' + id;
 	    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
 	    	.appendTo($('#edit-modal-body').empty());
 	    $("#btn-submit-edit").prop( "disabled", true);
@@ -139,7 +140,6 @@ var BaseAppClass = (function(app) {
 		$('#edit_page').addClass('active');			
 			$('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id, function(){
 				$("#btn-submit-edit").prop( "disabled", false);
-				location.hash = app.basePath + 'edit/' + id;
 				loading.remove();
 			});
 	};
