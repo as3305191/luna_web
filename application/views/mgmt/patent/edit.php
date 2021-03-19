@@ -393,7 +393,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
-					<i class="fa fa-close"></i> 確定
+					<i class="fa fa-close"></i> 關閉
 				</button>
 			</div>
 		</div><!-- /.modal-content -->
@@ -1053,89 +1053,89 @@ function do_save() {
 	load_edit_category();
 	
 	function do_search_family() {
-		// familyChange();
+		familyChange();
 		$('#family_search_Modal').modal('show');
-		// $('#s-family-name').val('').trigger("change");
+		$('#s-family-name').val('').trigger("change");
 	}
 
-	// function familyChange(){
-	// 	var url = baseUrl +'mgmt/patent/station_search'; // the script where you handle the form input.
-	// 	if($.stationXhr) {
-	// 		$.stationXhr.abort();
-	// 	}
-	// 	$.stationXhr = $.ajax({
-	// 		type : "POST",
-	// 		url : url,
-	// 		data : {
-	// 			q: $('#s-station-name').val()
-	// 		},
-	// 		success : function(data) {
-	// 			var $body = $('#station_list_serach_body').empty();
-	// 			$.each(data.list, function(){
-	// 				var me = this;
-	// 				var $tr = $('<tr class="pointer"></tr>').appendTo($body);
+	function familyChange(){
+		var url = baseUrl +'mgmt/patent/station_search'; // the script where you handle the form input.
+		if($.stationXhr) {
+			$.stationXhr.abort();
+		}
+		$.stationXhr = $.ajax({
+			type : "POST",
+			url : url,
+			data : {
+				search_item: $('#s-family-name').val()
+			},
+			success : function(data) {
+				var $body = $('#family_num_serach_body').empty();
+				$.each(data.list, function(){
+					var me = this;
+					var $tr = $('<tr class="pointer"></tr>').appendTo($body);
 
-	// 				var $lb = $("<label></label>");
-	// 				var $input = $("<input type='checkbox' />");
+					var $lb = $("<label></label>");
+					var $input = $("<input type='checkbox' />");
 
-	// 				$tr.on("click", function(){
-	// 					$input.trigger("click");
-	// 				});
+					$tr.on("click", function(){
+						$input.trigger("click");
+					});
 
-	// 				// hide exists
-	// 				$.each(stationListStore, function(){
-	// 					var station = this;
-	// 					if(!station.is_del && station.station_id == me.station_id) {
-	// 						$input.prop("disabled", true);
-	// 						$lb.addClass("disabled");
-	// 					}
-	// 				})
+					// hide exists
+					$.each(stationListStore, function(){
+						var station = this;
+						if(!station.is_del && station.station_id == me.station_id) {
+							$input.prop("disabled", true);
+							$lb.addClass("disabled");
+						}
+					})
 
-	// 				$input.click(function(){
-	// 					var _isChecked = $input.is(":checked");
-	// 					var _canInsert = true;
-	// 					$.each(stationListStore, function(){
-	// 						var station = this;
-	// 						if(!station.is_del && station.station_id == me.station_id) {
-	// 							_canInsert = false;
-	// 						}
-	// 					})
+					$input.click(function(){
+						var _isChecked = $input.is(":checked");
+						var _canInsert = true;
+						$.each(stationListStore, function(){
+							var station = this;
+							if(!station.is_del && station.station_id == me.station_id) {
+								_canInsert = false;
+							}
+						})
 
-	// 					if(_canInsert) {
-	// 						// $('#stationEditModal').modal('hide');
-	// 						if(_isChecked) {
-	// 							stationListStore.push(me);
-	// 							redrawStationList();
-	// 						}
-	// 					} else {
-	// 						// layui.layer.msg("重複新增");
-	// 						if(!_isChecked) {
-	// 							console.log('remove')
-	// 							// remove checked
-	// 							var cnt = 0;
-	// 							$.each(stationListStore, function(){
-	// 								var aStation = this;
-	// 								aStation._idx = cnt++;
-	// 								if(aStation.station_id == me.station_id) {
-	// 									if(!aStation.is_del) {
-	// 										if(aStation.id > 0) {
-	// 											aStation.is_del = 1; // mark del
-	// 										} else { // remove it
-	// 											stationListStore.splice(aStation._idx, 1);
-	// 										}
-	// 										redrawStationList();
-	// 									}
-	// 								}
-	// 							})
-	// 						}
-	// 					}
-	// 				});
-	// 				$lb.append(me.name);
-	// 				$('<td>').append($input).append($lb).appendTo($tr);
-	// 			})
-	// 		}
-	// 	});
-	// }
+						if(_canInsert) {
+							// $('#stationEditModal').modal('hide');
+							if(_isChecked) {
+								stationListStore.push(me);
+								redrawStationList();
+							}
+						} else {
+							// layui.layer.msg("重複新增");
+							if(!_isChecked) {
+								console.log('remove')
+								// remove checked
+								var cnt = 0;
+								$.each(stationListStore, function(){
+									var aStation = this;
+									aStation._idx = cnt++;
+									if(aStation.station_id == me.station_id) {
+										if(!aStation.is_del) {
+											if(aStation.id > 0) {
+												aStation.is_del = 1; // mark del
+											} else { // remove it
+												stationListStore.splice(aStation._idx, 1);
+											}
+											redrawStationList();
+										}
+									}
+								})
+							}
+						}
+					});
+					$lb.append(me.name);
+					$('<td>').append($input).append($lb).appendTo($tr);
+				})
+			}
+		});
+	}
 
 	// // familyChange();
 
