@@ -1111,7 +1111,7 @@ function do_save() {
 	}
 
 	function open_new_window(id) {
-		window.open('192.168.1.205/app/#mgmt/patent/edit/' + id);
+		window.open('#mgmt/patent/edit/' + id);
 	}
 	// // familyChange();
 
