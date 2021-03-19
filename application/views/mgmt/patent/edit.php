@@ -1066,7 +1066,7 @@ function do_save() {
 		
 		$.ajax({
 			type : "POST",
-			url : url,
+			url : baseUrl +'mgmt/patent/station_search',
 			data : {
 				search_item: $('#s-family-name').val()
 			},
