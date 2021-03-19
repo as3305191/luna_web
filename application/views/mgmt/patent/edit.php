@@ -117,12 +117,9 @@
 										<span id="family_span" style="border:3px blue double;" onclick="open_new_window(<?=$each->id?>);">
 											<?= isset($each -> public_num) ? $each -> public_num : '' ?>
 										</span>
-
 								<?php endif?>
-
 							<?php endforeach ?>	
 						<?php endif?>
-					
 					</div>
 				</div>
 
