@@ -184,5 +184,18 @@ class Patent_dao extends MY_Model {
 		return $list;
 	}
 
+	function search_by_family_patent($search_item){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+
+		$this -> db -> where("_m.public_num like '%$search_item%'");
+		$this -> db -> or_where("_m.patnet_num like '%$search_item%'");
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		
+		return $list;
+	}
+	
 }
 ?>

@@ -365,10 +365,10 @@
 							<div class="col-md-9">
 								<div class="input-group">
 									<input type="text" class="form-control" id="s-family-name" placeholder="請輸入公開號或專利號" />
-			      			<!-- <span class="input-group-btn">
-			      				<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
-			      			</span> -->
-			      		</div>
+									<!-- <span class="input-group-btn">
+										<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+									</span> -->
+								</div>
 							</div>
 						</div>
 					</fieldset>
@@ -1071,72 +1071,23 @@ function do_save() {
 			},
 			success : function(data) {
 				var $body = $('#family_num_serach_body').empty();
-				$.each(data.list, function(){
+				$.each(data.item, function(){
 					var me = this;
-					var $tr = $('<tr class="pointer"></tr>').appendTo($body);
-
-					var $lb = $("<label></label>");
-					var $input = $("<input type='checkbox' />");
-
-					$tr.on("click", function(){
-						$input.trigger("click");
-					});
-
-					// hide exists
-					$.each(stationListStore, function(){
-						var station = this;
-						if(!station.is_del && station.station_id == me.station_id) {
-							$input.prop("disabled", true);
-							$lb.addClass("disabled");
-						}
-					})
-
-					$input.click(function(){
-						var _isChecked = $input.is(":checked");
-						var _canInsert = true;
-						$.each(stationListStore, function(){
-							var station = this;
-							if(!station.is_del && station.station_id == me.station_id) {
-								_canInsert = false;
-							}
-						})
-
-						if(_canInsert) {
-							// $('#stationEditModal').modal('hide');
-							if(_isChecked) {
-								stationListStore.push(me);
-								redrawStationList();
-							}
-						} else {
-							// layui.layer.msg("重複新增");
-							if(!_isChecked) {
-								console.log('remove')
-								// remove checked
-								var cnt = 0;
-								$.each(stationListStore, function(){
-									var aStation = this;
-									aStation._idx = cnt++;
-									if(aStation.station_id == me.station_id) {
-										if(!aStation.is_del) {
-											if(aStation.id > 0) {
-												aStation.is_del = 1; // mark del
-											} else { // remove it
-												stationListStore.splice(aStation._idx, 1);
-											}
-											redrawStationList();
-										}
-									}
-								})
-							}
-						}
-					});
-					$lb.append(me.name);
-					$('<td>').append($input).append($lb).appendTo($tr);
+					var $tr = $('<tr class="pointer">').click(function(){
+						$('#s-family-name').val('');
+						// familyChange();
+						$('#patent_family').val(me.patent_family);
+						// currentApp.tableReload();
+						hideSearchModal();
+					}).appendTo($body);
+					$('<td>').html(me.application_number).appendTo($tr);
 				})
 			}
 		});
 	}
-
+	function hideSearchModal() {
+		$('#family_search_Modal').modal('hide');
+	}
 	// // familyChange();
 
 	// var stationListStore = [];

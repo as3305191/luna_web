@@ -276,6 +276,15 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function station_search(){
+		$data = array();
+		$search_item = $this -> get_post('search_item');
+		$item = $this -> dao -> search_by_family_patent($search_item);
+		$data['item'] = $item;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
 	public function find_country(){
 		$res = array();
 		$country = $this -> country_dao -> find_all();
