@@ -198,7 +198,6 @@ class Patent_dao extends MY_Model {
 		return $list;
 	}
 	
-
 	function find_same_family($patent_family){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
