@@ -1063,11 +1063,8 @@ function do_save() {
 		e.preventDefault();
 	});
 	function familyChange(){
-		var url = baseUrl +'mgmt/patent/patent_family_search'; // the script where you handle the form input.
-		if($.stationXhr) {
-			$.stationXhr.abort();
-		}
-		$.stationXhr = $.ajax({
+		
+		$.ajax({
 			type : "POST",
 			url : url,
 			data : {
@@ -1075,17 +1072,22 @@ function do_save() {
 			},
 			success : function(data) {
 				var $body = $('#family_num_serach_body').empty();
-				$.each(data.item, function(){
-					var me = this;
-					var $tr = $('<tr class="pointer">').click(function(){
-						$('#s-family-name').val('');
-						// familyChange();
-						$('#patent_family').val(me.patent_family);
-						// currentApp.tableReload();
-						hideSearchModal();
-					}).appendTo($body);
-					$('<td>').html(me.application_num).appendTo($tr);
-				})
+				if(data.item){
+					$.each(data.item, function(){
+						var me = this;
+						var $tr = $('<tr class="pointer">').click(function(){
+							$('#s-family-name').val('');
+							// familyChange();
+							$('#patent_family').val(me.patent_family);
+							// currentApp.tableReload();
+							hideSearchModal();
+						}).appendTo($body);
+						$('<td>').html(me.application_num).appendTo($tr);
+					})
+				} else{
+					html('搜尋無結果').appendTo($body);
+				}
+			
 			}
 		});
 	}
