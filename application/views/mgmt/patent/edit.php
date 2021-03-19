@@ -16,6 +16,16 @@
 .fileinput-remove{
 	display:none !important;
 }
+span:hover:after{
+    content:attr(showhints);
+    position:absolute;    margin:0px auto;
+    font-size: 16px; font-family: 微軟正黑體;
+    max-width:400px; height: auto;
+    text-align: left;    background: #EDC200; color: #000;
+    padding-bottom: 6px; padding-top: 6px;
+    border-radius: 6px;
+    z-index: 999;
+}
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
