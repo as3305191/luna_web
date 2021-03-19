@@ -98,7 +98,7 @@
 						</div>
 					<?php endif?>
 						<div class="col-md-2">
-							<button type="button" class="btn btn-sm btn-primary" onclick="find_same_patent_family()">搜尋專利家族</button>
+							<button type="button" class="btn btn-sm btn-primary" onclick="doSearchfamily_num()">搜尋專利家族</button>
 						</div>
 				</div>
 			</fieldset>
