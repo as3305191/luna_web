@@ -16,7 +16,7 @@
 .fileinput-remove{
 	display:none !important;
 }
-span:hover:after{
+span:hover{
     color:#FFD22F;
 }
 </style>
