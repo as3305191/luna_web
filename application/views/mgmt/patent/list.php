@@ -118,7 +118,7 @@
 											<th class="min100">代表圖</th>
 											<th class="min100">申請人</th>
 											<th class="min100">發明人</th>
-											<th class="min100">已存在國家</th>
+											<th class="min100">已申請國家</th>
 											<th class="min100">專利號</th>
 											<th class="min100">公開號</th>
 											<th class="min100">申請日</th>
