@@ -67,11 +67,9 @@ class Patent extends MY_Mgmt_Controller {
 				$map=[];
 				foreach($patent_country_list as $each_country_list){
 					$map[]=$each_country_list->patent_country_name;
-					
-					foreach($map as $each_map){
-						if(empty($patent_country_name[$each_country_list->patent_country_name])){
-							$patent_country_name[] = $each_country_list->patent_country_name;
-						}
+					if(in_array($each_country_list->patent_country_name,$map)){
+					} else{
+						$patent_country_name[] = $each_country_list->patent_country_name;
 					}
 				}
 				$each -> total_country = $patent_country_name;
