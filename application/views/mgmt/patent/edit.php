@@ -109,10 +109,15 @@
 					<div class="col-md-6">
 						<?php if(!empty($same_family)): ?>
 							<?php foreach($same_family as $each): ?>
-								<?php if(!empty($each -> patnet_num)||!empty($each -> public_num)): ?>
+								<?php if(!empty($each -> patnet_num)&& $each -> patnet_num !==""): ?>
 									<span id="family_span" style="border:3px black double;" onclick="open_new_window(<?=$each->id?>);">
-										<?= isset($each -> patnet_num) ? $each -> patnet_num : $each -> public_num ?>
+										<?= isset($each -> patnet_num) ? $each -> patnet_num : ''?>
 									</span>
+									<?php elseif(!empty($each -> public_num)&& $each -> public_num !==""): ?>
+										<span id="family_span" style="border:3px black double;" onclick="open_new_window(<?=$each->id?>);">
+											<?= isset($each -> public_num) ? $each -> public_num : '' ?>
+										</span>
+
 								<?php endif?>
 
 							<?php endforeach ?>	
