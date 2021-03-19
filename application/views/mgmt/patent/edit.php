@@ -1012,7 +1012,7 @@ function do_save() {
 	}
 
 	function familyChange(){
-		var url = baseUrl + currentApp.basePath + 'station_search'; // the script where you handle the form input.
+		var url = baseUrl +'mgmt/patent/station_search'; // the script where you handle the form input.
 		if($.stationXhr) {
 			$.stationXhr.abort();
 		}
@@ -1094,7 +1094,7 @@ function do_save() {
 
 	var stationListStore = [];
 	function reloadStationList() {
-		var url = baseUrl + currentApp.basePath + 'station_list'; // the script where you handle the form input.
+		var url = baseUrl +'mgmt/patent/station_list'; // the script where you handle the form input.
 		$.ajax({
 			type : "POST",
 			url : url,
