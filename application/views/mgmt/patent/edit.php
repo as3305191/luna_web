@@ -358,16 +358,16 @@
 			<div class="modal-header">
 			</div>
 			<div class="modal-body" id="station-edit-modal-body">
-				<form id="family-num-add-form">
+				<form id="family-num-search">
 					<fieldset>
 						<div class="form-group">
 							<label class="col-md-3 control-label">搜尋專利家族碼</label>
 							<div class="col-md-9">
 								<div class="input-group">
 									<input type="text" class="form-control" id="s-family-name" placeholder="請輸入公開號或專利號" />
-									<!-- <span class="input-group-btn">
+									<span class="input-group-btn">
 										<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
-									</span> -->
+									</span>
 								</div>
 							</div>
 						</div>
@@ -1053,11 +1053,15 @@ function do_save() {
 	load_edit_category();
 	
 	function do_search_family() {
-		familyChange();
+		// familyChange();
 		$('#family_search_Modal').modal('show');
-		$('#s-family-name').val('').trigger("change");
+		// $('#s-family-name').val('').trigger("change");
 	}
 
+	$('#family-num-search').submit(function(e){
+		familyChange();
+		e.preventDefault();
+	});
 	function familyChange(){
 		var url = baseUrl +'mgmt/patent/station_search'; // the script where you handle the form input.
 		if($.stationXhr) {
