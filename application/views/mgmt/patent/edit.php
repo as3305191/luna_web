@@ -1085,7 +1085,7 @@ function do_save() {
 						$('<td>').html(me.application_num).appendTo($tr);
 					})
 				} else{
-					html('搜尋無結果').appendTo($body);
+					$('<span>').html('搜尋無結果').appendTo($body);
 				}
 			
 			}
