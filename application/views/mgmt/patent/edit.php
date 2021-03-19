@@ -109,7 +109,7 @@ span:hover{
 					<div class="col-md-6">
 						<?php if(!empty($same_family)): ?>
 							<?php foreach($same_family as $each): ?>
-								<span onclick="open_new_window(<?=$each->id?>);">
+								<span style="border:3px black double;" onclick="open_new_window(<?=$each->id?>);">
 									<?= isset($each -> patnet_num) ? $each -> patnet_num : $each -> public_num ?>
 								</span>
 							<?php endforeach ?>	
