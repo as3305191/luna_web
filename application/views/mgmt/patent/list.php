@@ -173,7 +173,7 @@
 							<label class="col-md-3 control-label">搜尋專利家族碼</label>
 							<div class="col-md-9">
 								<div class="input-group">
-									<input type="text" class="form-control" id="s-family-name" placeholder="請輸入開始搜尋" />
+									<input type="text" class="form-control" id="s-family-name" placeholder="請輸入公開號或專利號" />
 			      			<span class="input-group-btn">
 			      				<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
 			      			</span>
