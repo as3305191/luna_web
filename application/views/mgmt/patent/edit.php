@@ -1007,8 +1007,8 @@ function do_save() {
 	
 	function doSearchfamily_num() {
 		// familyChange();
-		$('#familynumModal').modal('show');
-		$('#s-family-name').val('').trigger("change");
+		$('#family_search_Modal').modal('show');
+		// $('#s-family-name').val('').trigger("change");
 	}
 
 	// function familyChange(){

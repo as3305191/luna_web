@@ -161,7 +161,7 @@
 	</div>
 </div>
 <!-- Station Serach Modal -->
-<div class="modal fade" id="familynumModal" role="dialog" aria-hidden="true">
+<div class="modal fade" id="family_search_Modal" role="dialog" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
