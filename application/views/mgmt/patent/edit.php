@@ -92,12 +92,11 @@
 						<input type="text"  class="form-control" name="patent_family"  id="patent_family" value="<?= isset($item) ? $item -> patent_family : '' ?>"  <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
 				
-					<?php if(isset($item->id) && $item->id>0): ?>
-						<div class="col-md-1">
-							<button type="button" class="btn btn-sm btn-primary" onclick="check_family()">檢查</button>
-						</div>
-					<?php endif?>
-						<div class="col-md-2">
+			
+						<div class="col-md-3">
+							<?php if(isset($item->id) && $item->id>0): ?>
+								<button type="button" class="btn btn-sm btn-primary" onclick="check_family()">檢查</button>
+							<?php endif?>
 							<button type="button" class="btn btn-sm btn-primary" onclick="doSearchfamily_num()">搜尋專利家族</button>
 						</div>
 				</div>
