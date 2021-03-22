@@ -7,7 +7,7 @@ position:sticky;
 top:0; /* 列首永遠固定於上 */
 text-align:center;
 /* background-color:#ddd; */
-FILTER: Alpha(opacity=60);
+opacity:1.0;
 }
 
 </style>
