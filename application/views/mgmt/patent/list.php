@@ -81,6 +81,7 @@ thead tr th {
 								<div class="widget-toolbar pull-left">
 									<input id="patent_family_search" type="text" class="form-control"autocomplete="off" />
 								</div>
+								
 							</div>
                             <div class="widget-toolbar pull-left" id="patent_status">
                                 <div>
