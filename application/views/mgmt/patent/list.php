@@ -4,9 +4,9 @@
 thead tr th {
 
 position:sticky;
-
 top:0; /* 列首永遠固定於上 */
-
+text-align:center;
+background-color:#ddd;
 }
 
 </style>
