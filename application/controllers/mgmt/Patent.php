@@ -458,14 +458,12 @@ class Patent extends MY_Mgmt_Controller {
 								$all_patent_status_name = $all_patent_status_name;	
 							}
 						} 
-	
 					}
 					$data['all_patent_status_name'] = $all_patent_status_name;
-				}			
+				}		
+					
 			}
-
 		}
-		
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		// $this -> to_json($data);
@@ -478,6 +476,5 @@ class Patent extends MY_Mgmt_Controller {
 //     Delay 3500
 //     LeftClick 1
 // End If
-
 
 }
