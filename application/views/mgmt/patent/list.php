@@ -6,8 +6,8 @@ thead tr th {
 
 position:sticky;
 top:0; /* 列首永遠固定於上 */
-background-color:#ddd;
-border:1px solid #ddd;
+/* background-color:#ddd; */
+/* border:1px solid #ddd; */
 text-align:center;
 }
 
