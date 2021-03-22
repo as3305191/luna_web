@@ -1,4 +1,15 @@
 
+
+<style>
+thead tr th {
+
+position:sticky;
+
+top:0; /* 列首永遠固定於上 */
+
+}
+
+</style>
    <!-- CSS Unify Theme -->
    <link rel="stylesheet" href="<?= base_url() ?>assets_co/assets_/css/styles.multipage-real-estate.css">
   
