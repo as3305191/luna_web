@@ -37,10 +37,8 @@ thead tr th {
 									<label>專利類型</label>
 								</div>
 								<input id="now_category" type="hidden"/>
-
 								<div id="category">
 								</div>
-							
 								<div class="widget-toolbar pull-left">
 									<label>申請人</label>
 								</div>
