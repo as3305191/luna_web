@@ -131,7 +131,7 @@ var BaseAppClass = (function(app) {
 
 	// edit
 	app.doEdit = function(id) {
-		window.location.hash = app.basePath + 'edit/' + id;
+		// window.location.hash = app.basePath + 'edit/' + id;
 	    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
 	    	.appendTo($('#edit-modal-body').empty());
 	    $("#btn-submit-edit").prop( "disabled", true);
@@ -168,8 +168,8 @@ var BaseAppClass = (function(app) {
 
 			// prevent datable height zero
 			// $(window).trigger('resize');
-			// window.history.back();
-			history.go(-1);
+			window.history.back();
+			// history.go(-1);
 
 		}
 	};
