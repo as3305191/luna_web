@@ -1,3 +1,11 @@
+<style>
+thead tr th {
+	position:sticky;
+	top:0;
+	background-color:#FFFFFF !important;
+	text-align:center;
+}
+</style>
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
 		<!-- widget grid -->
