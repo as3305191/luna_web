@@ -66,7 +66,6 @@
 						<?php elseif($item->patnet_category==3) : ?>
 							設計
 						<?php endif?>
-						
 					<?php endif?>
 				</td>
 			</tr>
