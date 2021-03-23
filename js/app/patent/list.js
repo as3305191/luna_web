@@ -43,15 +43,6 @@ var patentAppClass = (function(app) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
 		}
 
-		// $('#1').on('change', function(){
-		// 	app.tableReload();
-		// });
-		// $('#2').on('change', function(){
-		// 	app.tableReload();
-		// });
-		// $('#3').on('change', function(){
-		// 	app.tableReload();
-		// });
 		$('#application_person').on('change keyup', function(){
 			app.tableReload();
 		});
