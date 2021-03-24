@@ -6,7 +6,6 @@ var go = (function (app) {
     return app;
   }
 
-
   app.doIt = function() {
     console.log(app.test);
   }
