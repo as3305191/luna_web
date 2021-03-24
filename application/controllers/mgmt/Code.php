@@ -105,5 +105,4 @@ class Code extends MY_Mgmt_Controller {
 		$this -> trans_service -> copy_code();
 		$this -> to_json($res);
 	}
-
 }
