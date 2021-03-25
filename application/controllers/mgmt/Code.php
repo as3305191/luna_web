@@ -35,7 +35,6 @@ class Code extends MY_Mgmt_Controller {
 		$res['items'] = $this -> dao -> query_ajax($data);
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
-
 		$this -> to_json($res);
 	}
 
