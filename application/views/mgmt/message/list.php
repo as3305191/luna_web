@@ -398,7 +398,6 @@
                         if(da.sender==$('#f_chat_id').val()){
                             // obj=A.$$('<div  class="row c3"><p class="c3" style="float:right;padding:3px 15px;"><span>['+da.time+']</span><a>'+users[da.code].innerHTML+'</a>對我說：'+da.nrong+'</p></div></br>');
                             obj=A.$$('<div class="row c3"><div class="col-lg-6" ><p style="padding:3px 15px;float:right;"><div style="word-wrap:break-word;word-break:normal;padding:0px 20px 0px 0px;"><span style="white-space:nowrap;">['+da.time+']</span><a style="white-space:nowrap;">'+users[da.code].innerHTML+':</a><span class="message_row" style="color:#000000;">'+da.nrong+'</span></div></p></div></div></br>');
-
                             c=da.code;
                             var url = baseUrl + 'mgmt/message/insert';
                             $.ajax({
