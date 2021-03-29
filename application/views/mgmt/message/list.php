@@ -273,7 +273,6 @@
                             us_offline.append(html);
                         }
                     
-
                         if(d.online_users!=false){
                             $.each(d.online_users, function(){
                                 var me = this;
@@ -283,11 +282,9 @@
                                 } else{
                                     var notread='';
                                 }
-                                
                                 online_user_sidebar.append(notread);
                             })
                         }
-                       
 
                     },
 
