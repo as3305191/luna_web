@@ -330,13 +330,11 @@
                                 }
                             }
                         },
-
                         failure:function(){
                             alert('faialure');
                         }
                     });
                     // location.reload(); 
-
                 }else if(da.type=='now_rmove'){
                     // console.log(users[da.nrong]);
                     // users[da.nrong].del();
@@ -367,7 +365,6 @@
                                 us_offline.append(html);
                             }
                         },
-
                         failure:function(){
                             alert('faialure');
                         }
@@ -388,7 +385,6 @@
                     //     }
                     // }
        
-                                       
                     // reload_st();
                 } else{
                     if(da.nrong!=null){
