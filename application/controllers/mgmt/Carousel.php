@@ -38,7 +38,6 @@ class Carousel extends MY_Mgmt_Controller {
 		} else{
 			$today_total_s = 0;
 		}
-
 		if($today_h<8 || $today_h==12 || $today_h>17){
 			$cost =1;
 			$data['cost']  = 0;
