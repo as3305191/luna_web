@@ -215,7 +215,6 @@
                                 online_user_sidebar.append(notread);
                             })
                         }
-                      
 
                     },
                     failure:function(){
