@@ -872,7 +872,7 @@ load_country();
 function do_save() {
 	if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
 	var url = baseUrl + 'mgmt/patent/insert'; // the script where you handle the form input.
-	var patent_fail_status = $('input[name="patent_fail_status"]:ckecked').val();
+	var patent_fail_status = $('input[name="patent_fail_status"]:checked').val();
 	$.ajax({
 		type : "POST",
 		url : url,
