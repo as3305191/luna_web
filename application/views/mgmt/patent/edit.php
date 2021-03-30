@@ -293,7 +293,7 @@
 				</div>
 			</fieldset>
 			<fieldset>
-				<div class="form-group">
+				<div class="form-group" id="checkboxGroup">
 					<label class="col-md-3 control-label">失效</label>
 					<div class="col-md-6">
 						<?php foreach ($patent_fail_status as $each) : ?>
@@ -452,6 +452,12 @@ $(document).ready(function() {
 			}
 		});
 	} 
+	$('#checkboxGroup input').click(function(){
+		if($(this).prop('checked')){
+			$('#checkboxGroup input:checkbox').prop('checked',false);
+			$(this).prop('checked',true);
+		}
+	});
 });
 
 $('#app-edit-form').bootstrapValidator({
