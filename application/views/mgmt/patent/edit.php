@@ -295,18 +295,20 @@
 			<fieldset>
 				<div class="form-group" id="checkboxGroup">
 					<label class="col-md-3 control-label">失效</label>
-					<div class="col-md-6">
 						<?php foreach ($patent_fail_status as $each) : ?>
 							<?php if($each->id <5): ?>
-								<input type="checkbox" id="<?= $each->id ?>" value="<?= $each->id ?>">
-								<label for="<?= $each->id ?>"> <?= $each->name ?></label>
+								<div class="col-md-6">
+									<input type="checkbox" id="<?= $each->id ?>" value="<?= $each->id ?>">
+									<label for="<?= $each->id ?>"> <?= $each->name ?></label>
+								</div>
 							<?php else: ?>
-								<input type="checkbox" id="<?= $each->id ?>" value="<?= $each->id ?>">
-								<label for="<?= $each->id ?>"> <?= $each->name ?></label>
-								<input type="text" class="form-control"/>
+								<div class="col-md-6">
+									<input type="checkbox" id="<?= $each->id ?>" value="<?= $each->id ?>">
+									<label for="<?= $each->id ?>"> <?= $each->name ?></label>
+									<input type="text" class="form-control"/>
+								</div>
 							<?php endif?>
 						<?php endforeach ?>
-					</div>
 				</div>
 			</fieldset>
 			<fieldset>
