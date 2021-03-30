@@ -16,6 +16,9 @@
 .fileinput-remove{
 	display:none !important;
 }
+.fail_fieldset{
+	display:none !important;
+}
 #family_span:hover{
     color:#FFD22F;
 }
@@ -292,8 +295,8 @@
 					</div>
 				</div>
 			</fieldset>
-			<fieldset>
-				<div class="form-group" id="checkboxGroup">
+			<fieldset id="checkboxGroup" class="fail_fieldset">
+				<div class="form-group" >
 					<label class="col-md-3 control-label">失效</label>
 					<div class="col-md-6">
 						<?php foreach ($patent_fail_status as $each) : ?>
@@ -460,6 +463,14 @@ $(document).ready(function() {
 		if($(this).prop('checked')){
 			$('#checkboxGroup input:checkbox').prop('checked',false);
 			$(this).prop('checked',true);
+		}
+	});
+
+	$('#patnet_type').on('change', function(){
+		if($('#patnet_type').val()==3){
+			$('#checkboxGroup').removeClass("fail_fieldset");
+		} else{
+			$('#checkboxGroup').addClass("fail_fieldset");
 		}
 	});
 });
