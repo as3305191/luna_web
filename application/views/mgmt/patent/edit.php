@@ -872,6 +872,10 @@ load_country();
 function do_save() {
 	if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
 	var url = baseUrl + 'mgmt/patent/insert'; // the script where you handle the form input.
+	var patent_fail_status = $('input[name="patent_fail_status"]').val();
+	if(patent_fail_status.length<0){
+		patent_fail_status=0;
+	}
 	$.ajax({
 		type : "POST",
 		url : url,
@@ -907,8 +911,8 @@ function do_save() {
 			patnet_type: $('#patnet_type').val(),
 			assignee: $('#assignee').val(),
 			now_patent_status: now_patent_status.join("#"),
-			patent_fail_status:$('input[name="patent_fail_status"]').val(),
-			patent_fail_person: $('#patent_fail_person').val(),			
+			patent_fail_status:	patent_fail_status,
+			patent_fail_person: $('#patent_fail_person').val()		
 		},
 		success : function(data) {
 			if(data.error_msg) {

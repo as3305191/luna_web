@@ -216,9 +216,7 @@ class Patent extends MY_Mgmt_Controller {
 		$now_patent_status = $this -> get_post('now_patent_status');
 		$patent_fail_status = $this -> get_post('patent_fail_status');
 		$patent_fail_person = $this -> get_post('patent_fail_person');
-		if(empty($patent_fail_status)){
-			$patent_fail_status=0;
-		}
+	
 		// foreach ($img as $each) {
 		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
 		// }
