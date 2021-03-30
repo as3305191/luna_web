@@ -585,7 +585,6 @@
             key=code;
             if($('#f_chat_id').val()!==t.getAttribute('me_id')){
                 document.getElementById("ct").innerHTML='';
-                
             }
             $('#rin_send').removeClass('none');
             $('#f_chat_id').val(t.getAttribute('me_id'));
