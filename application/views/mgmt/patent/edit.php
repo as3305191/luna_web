@@ -465,7 +465,10 @@ $(document).ready(function() {
 			$(this).prop('checked',true);
 		}
 	});
-
+	if($('#patnet_type').val()==3){
+		$('#checkboxGroup').removeClass("fail_fieldset");
+	}
+	
 	$('#patnet_type').on('change', function(){
 		if($('#patnet_type').val()==3){
 			$('#checkboxGroup').removeClass("fail_fieldset");
