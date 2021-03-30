@@ -302,12 +302,12 @@
 						<?php foreach ($patent_fail_status as $each) : ?>
 							<?php if($each->id <5): ?>
 								<div class="col-md-6">
-									<input type="checkbox" name="patent_fail_status" value="<?= $each->id ?>" <?= isset($item) && $item->patent_fail_status == $each->id ? 'checked': '' ?> <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
+									<input type="checkbox" name="patent_fail_status" value="<?= $each->id ?>" <?= isset($item) && $item->patent_fail_status_id == $each->id ? 'checked': '' ?> <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
 									<label for="<?= $each->id ?>"> <?= $each->name ?></label>
 								</div>
 							<?php else: ?>
 								<div class="col-md-6">
-									<input type="checkbox" name="patent_fail_status" value="<?= $each->id ?>" <?= isset($item) && $item->patent_fail_status == $each->id ? 'checked': '' ?> <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
+									<input type="checkbox" name="patent_fail_status" value="<?= $each->id ?>" <?= isset($item) && $item->patent_fail_status_id == $each->id ? 'checked': '' ?> <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
 									<label for="<?= $each->id ?>"> <?= $each->name ?></label>
 									<input type="text" id="patent_fail_person" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 								</div>

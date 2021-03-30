@@ -251,7 +251,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data['patent_note'] = $patent_note;
 		$data['patent_range'] = $patent_range;
 		$data['update_date'] = date("Y-m-d H:i:s");
-		$data['patent_fail_status'] = $patent_fail_status;
+		$data['patent_fail_status_id'] = $patent_fail_status;
 		$data['patent_fail_person'] = $patent_fail_person;
 		$data['now_patent_status'] = "#".$now_patent_status."#";	
 		if(empty($id)) {
