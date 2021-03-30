@@ -430,6 +430,7 @@
                                     message:da.nrong,
                                     status: 0//未讀
                                 },
+                                
                                 success : function(data) {
                                     
                                 }
