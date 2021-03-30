@@ -95,7 +95,6 @@
 						<input type="text"  class="form-control" name="patent_family"  id="patent_family" value="<?= isset($item) ? $item -> patent_family : '' ?>"  <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
 				
-			
 						<div class="col-md-3">
 							<?php if(empty($item)||$item->id==0): ?>
 								<button type="button" class="btn btn-sm btn-primary" onclick="check_family()">檢查</button>
@@ -289,8 +288,24 @@
 							<option  value="1" <?= isset($item) && $item -> patnet_type == 1 ? 'selected' : '' ?>>專利仍有效</option>
 							<option  value="2" <?= isset($item) && $item -> patnet_type == 2 ? 'selected' : '' ?>>專利審查中</option>
 							<option  value="3" <?= isset($item) && $item -> patnet_type == 3 ? 'selected' : '' ?>>專利已失效</option>
-
 						</select>	
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">失效</label>
+					<div class="col-md-6">
+						<?php foreach ($patent_fail_status as $each) : ?>
+							<?php if($each->id <5): ?>
+								<input type="checkbox" id="<?= $each->id ?>" value="<?= $each->id ?>">
+								<label for="<?= $each->id ?>"> <?= $each->name ?></label>
+							<?php else: ?>
+								<input type="checkbox" id="<?= $each->id ?>" value="<?= $each->id ?>">
+								<label for="<?= $each->id ?>"> <?= $each->name ?></label>
+								<input type="text" class="form-control"/>
+							<?php endif?>
+						<?php endforeach ?>
 					</div>
 				</div>
 			</fieldset>

@@ -12,6 +12,8 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> load -> model('Country_dao', 'country_dao');
 		$this -> load -> model('Patent_status_dao', 'patent_status_dao');
 		$this -> load -> model('Patent_category_dao', 'patent_category_dao');
+		$this -> load -> model('Patent_fail_status_dao', 'patent_fail_status_dao');
+
 		$this -> load-> library('word');
 
 	}
@@ -137,6 +139,7 @@ class Patent extends MY_Mgmt_Controller {
 			if(!empty($item -> patent_family)) {
 				$data['same_family'] = $this -> dao -> find_same_family($item->patent_family);
 			}
+			$data['patent_fail_status'] = $this -> country_dao -> find_by_id($item->patent_country);
 
 			$data['item'] = $item;
 		}
