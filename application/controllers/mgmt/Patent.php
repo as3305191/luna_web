@@ -214,11 +214,12 @@ class Patent extends MY_Mgmt_Controller {
 		$patnet_type = $this -> get_post('patnet_type');
 		$assignee = $this -> get_post('assignee');
 		$now_patent_status = $this -> get_post('now_patent_status');
+		$patent_fail_status = $this -> get_post('patent_fail_status');
+		$patent_fail_person = $this -> get_post('patent_fail_person');
 
 		// foreach ($img as $each) {
 		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
 		// }
-
 		$data['img_id'] = $img;
 		// $data['img_active'] = $img_array[0];
 		$data['assignee'] = $assignee;
@@ -250,9 +251,9 @@ class Patent extends MY_Mgmt_Controller {
 		$data['patent_note'] = $patent_note;
 		$data['patent_range'] = $patent_range;
 		$data['update_date'] = date("Y-m-d H:i:s");
-		
+		$data['patent_fail_status'] = $patent_fail_status;
+		$data['patent_fail_person'] = $patent_fail_person;
 		$data['now_patent_status'] = "#".$now_patent_status."#";	
-
 		if(empty($id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);

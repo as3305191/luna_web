@@ -302,14 +302,14 @@
 						<?php foreach ($patent_fail_status as $each) : ?>
 							<?php if($each->id <5): ?>
 								<div class="col-md-6">
-									<input type="checkbox" id="<?= $each->id ?>" value="<?= $each->id ?>">
+									<input type="checkbox" name="patent_fail_status" value="<?= $each->id ?>" <?= isset($item) && $item->patent_fail_status == $each->id ? 'checked': '' ?> <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
 									<label for="<?= $each->id ?>"> <?= $each->name ?></label>
 								</div>
 							<?php else: ?>
 								<div class="col-md-6">
-									<input type="checkbox" id="<?= $each->id ?>" value="<?= $each->id ?>">
+									<input type="checkbox" name="patent_fail_status" value="<?= $each->id ?>" <?= isset($item) && $item->patent_fail_status == $each->id ? 'checked': '' ?> <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
 									<label for="<?= $each->id ?>"> <?= $each->name ?></label>
-									<input type="text" />
+									<input type="text" id="patent_fail_person" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 								</div>
 							<?php endif?>
 						<?php endforeach ?>
@@ -468,7 +468,7 @@ $(document).ready(function() {
 	if($('#patnet_type').val()==3){
 		$('#checkboxGroup').removeClass("fail_fieldset");
 	}
-	
+
 	$('#patnet_type').on('change', function(){
 		if($('#patnet_type').val()==3){
 			$('#checkboxGroup').removeClass("fail_fieldset");
@@ -906,7 +906,9 @@ function do_save() {
 			inventor: $('#inventor').val(),
 			patnet_type: $('#patnet_type').val(),
 			assignee: $('#assignee').val(),
-			now_patent_status: now_patent_status.join("#")
+			now_patent_status: now_patent_status.join("#"),
+			patent_fail_status:$('input[name="patent_fail_status"]').val(),
+			patent_fail_person: $('#patent_fail_person').val(),			
 		},
 		success : function(data) {
 			if(data.error_msg) {
