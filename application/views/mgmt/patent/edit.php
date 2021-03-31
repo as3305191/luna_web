@@ -297,7 +297,7 @@
 			</fieldset>
 			<fieldset id="checkboxGroup" class="fail_fieldset">
 				<div class="form-group" >
-					<label class="col-md-3 control-label">失效</label>
+					<label class="col-md-3 control-label">失效原因</label>
 					<div class="col-md-6">
 						<?php foreach ($patent_fail_status as $each) : ?>
 							<?php if($each->id <5): ?>
