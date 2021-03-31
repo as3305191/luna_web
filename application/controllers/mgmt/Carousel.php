@@ -14,7 +14,6 @@ class Carousel extends MY_Mgmt_Controller {
 		$data = array();
 		$items= $this -> news_dao -> find_carousel();
 		$data['items']= $items;
-
 		$today = date("Y-m-d");
 		$this_year_first_day = date("Y")."-01-01";
 		$this_month_first_day = date("Y-m")."-01";
@@ -38,6 +37,7 @@ class Carousel extends MY_Mgmt_Controller {
 		} else{
 			$today_total_s = 0;
 		}
+
 		if($today_h<8 || $today_h==12 || $today_h>17){
 			$cost =1;
 			$data['cost']  = 0;
