@@ -253,7 +253,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data['update_date'] = date("Y-m-d H:i:s");
 		$data['patent_fail_status_id'] = $patent_fail_status;
 		$data['patent_fail_person'] = $patent_fail_person;
-		
+
 		if(substr($now_patent_status,-2)=="#" && substr($now_patent_status,0,2)=="#"){
 			$data['now_patent_status'] = substr(ltrim($now_patent_status,'#'),0,-1);
 		} else{
@@ -263,7 +263,7 @@ class Patent extends MY_Mgmt_Controller {
 				$data['now_patent_status'] = "#".$now_patent_status."#";
 			}
 		}
-		
+
 		if(empty($id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
