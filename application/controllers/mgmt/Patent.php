@@ -263,7 +263,6 @@ class Patent extends MY_Mgmt_Controller {
 				$data['now_patent_status'] = "#".$now_patent_status."#";
 			}
 		}
-
 		if(empty($id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
