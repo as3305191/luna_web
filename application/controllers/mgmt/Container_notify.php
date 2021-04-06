@@ -58,7 +58,6 @@ class Container_notify extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
-
 		$this->load->view('mgmt/container_notify/edit', $data);
 	}
 
@@ -111,7 +110,6 @@ class Container_notify extends MY_Mgmt_Controller {
 		$tmp_name = $_FILES['file']['tmp_name'];
 		$type = $_FILES['file']['type'];
 		$size = $_FILES['file']['size'];
-
 		$ext = pathinfo($name, PATHINFO_EXTENSION);
 
 		$reader = NULL;
