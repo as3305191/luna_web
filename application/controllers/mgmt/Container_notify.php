@@ -40,7 +40,6 @@ class Container_notify extends MY_Mgmt_Controller {
 	public function edit($id) {
 		$data = array();
 		$data['id'] = $id;
-
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
