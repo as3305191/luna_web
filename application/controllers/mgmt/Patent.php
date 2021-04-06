@@ -453,7 +453,6 @@ class Patent extends MY_Mgmt_Controller {
 				$now_level_list = $this -> patent_status_dao -> find_by_id($item -> patnet_status);
 				$now_level = $now_level_list->level;
 				$all_patent_status_name=$now_level_list->name;
-
 				if($now_level==0){
 					$last_child = $this -> patent_status_dao -> find_by_id($item -> patnet_status);
 					$data['all_patent_status_name'] = $last_child->name;
@@ -474,7 +473,6 @@ class Patent extends MY_Mgmt_Controller {
 					}
 					$data['all_patent_status_name'] = $all_patent_status_name;
 				}		
-					
 			}
 		}
 		$u_data = $this -> setup_user_data($u_data);
