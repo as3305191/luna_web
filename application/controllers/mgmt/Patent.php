@@ -402,7 +402,7 @@ class Patent extends MY_Mgmt_Controller {
 			} else{
 				$item -> image ='';
 			}
-			
+
 			if(!empty($item -> files_id)) {
 				$files = explode(",", $item -> files_id);
 				$item -> pdf_array =$files;
