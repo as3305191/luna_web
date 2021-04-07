@@ -335,10 +335,12 @@ class Patent extends MY_Mgmt_Controller {
 
 	public function find_all_category(){
 		$res = array();
+		
 		$category = $this -> patent_status_dao -> find_all();
 		$max= $this -> patent_status_dao -> get_max();
 		$res['category'] = $category;
 		$res['max'] = $max;
+		
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
@@ -402,7 +404,7 @@ class Patent extends MY_Mgmt_Controller {
 			} else{
 				$item -> image ='';
 			}
-
+			
 			if(!empty($item -> files_id)) {
 				$files = explode(",", $item -> files_id);
 				$item -> pdf_array =$files;
