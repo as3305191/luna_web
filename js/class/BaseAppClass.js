@@ -20,10 +20,8 @@ var BaseAppClass = (function(app) {
 					}
 					_rtd.addClass('pointer').on('click', function(){
 						app.doEdit(aData.id);
-
 						// remove all highlight first
 						$(this).parent().parent().find('tr').removeClass('active');
-
 						app._lastPk = aData.id;
 						app._tr = $(this).parent();
 						setTimeout(function(){
@@ -31,7 +29,6 @@ var BaseAppClass = (function(app) {
 						}, 100);
 					});
 				}
-
 				if(app._lastPk && aData.id && app._lastPk == aData.id) {
 					$(nRow).addClass('active');
 				}
