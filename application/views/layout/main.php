@@ -31,6 +31,7 @@
 				<!-- breadcrumb -->
 				<ol class="breadcrumb">
 					<!-- This is auto generated -->
+					
 				</ol>
 				<!-- end breadcrumb -->
 
@@ -73,7 +74,6 @@
 				// if(currentApp && currentApp.dtListId) {
 				// 	currentListElId = currentApp.dtListId;
 				// }
-
 				if($(window).height() < 700) {
 					if($(currentListElId).height() > 0) {
 						// fix zero height in modal
