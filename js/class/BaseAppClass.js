@@ -32,7 +32,6 @@ var BaseAppClass = (function(app) {
 				if(app._lastPk && aData.id && app._lastPk == aData.id) {
 					$(nRow).addClass('active');
 				}
-
 				// delete click
 				$(nRow).find("a").eq(0).click(function() {
 					app.setDelId(aData.id);
@@ -63,7 +62,7 @@ var BaseAppClass = (function(app) {
 		bSortCellsTop : true,
 		fnRowCallback : app.fnRowCallback,
 		footerCallback: function( tfoot, data, start, end, display ) {
-			setTimeout(function(){ $(window).trigger('resize'); }, 300);
+			setTimeout(function(){ $(window).trigger('resize');}, 300);
 		}
 	};
 
