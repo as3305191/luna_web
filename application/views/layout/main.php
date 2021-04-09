@@ -87,6 +87,7 @@
 					$(currentListElId).parent('.t-box').css('min-height', ($(window).height() - 300) + 'px');
 					$(currentListElId).parent('.t-box').css('max-height', ($(window).height() - 300) + 'px');
 				}
+			
 				$('#widget-grid').width($('#content').width() - 13);
 			};
 			$(window).on('resize', wOnResize);
