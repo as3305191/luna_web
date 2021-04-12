@@ -197,7 +197,6 @@ thead tr th {
 										</tr>
 									</thead>
 									<tbody id="family_num_serach_body">
-
 									</tbody>
 								</table>
 							</div>
