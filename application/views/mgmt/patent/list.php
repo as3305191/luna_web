@@ -244,7 +244,6 @@ thead tr th {
 				return '';
 			}
 		}
-		
 	}, {
 		data : 'public_num'
 	}, {
