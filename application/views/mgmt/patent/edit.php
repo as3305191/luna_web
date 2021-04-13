@@ -484,6 +484,7 @@ if($('#item_id').val()>0){
 	public_num_input=[];
 	patnet_num_input=[];
 	img=[];
+	
 	now_patent_status = [];
 }
 
@@ -595,7 +596,6 @@ $("#img-input").fileinput({
         	initialPreview: [],
         	initialPreviewConfig: [],
 		<?php endif ?>
-	
         maxFileCount: 1,
         uploadUrl: 'mgmt/images/upload_img_or_pdf/file',
         uploadExtraData: {
