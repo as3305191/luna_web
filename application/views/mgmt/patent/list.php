@@ -233,15 +233,7 @@ thead tr th {
 	},{
 		data : 'inventor'
 	},{
-		data : 'total_country',
-		render: function(d,t,r){
-			if(d){
-				var html = '<span style="color:red;">'+d+'</span>';
-				return html;
-			} else{
-				return '';
-			}
-		}
+		data : 'total_country'
 	}, {
 		data : 'patnet_num',
 		render: function(d,t,r){
