@@ -467,12 +467,14 @@ if($('#item_id').val()>0){
 	if($('#public_num_file').val().length>0){
 		public_num_input.push($('#public_num_file').val());
 		// public_num_input.splice($.inArray(0,public_num_input),1);
+		
 	}
 	
 	if($('#patnet_num_file').val().length>0){
 		patnet_num_input.push($('#patnet_num_file').val());
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 	}
+
 	if($('#now_patent_status').val().length>0){
 		now_patent_status.push($('#now_patent_status').val());
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
