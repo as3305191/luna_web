@@ -43,31 +43,31 @@ var patentAppClass = (function(app) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
 		}
 
-		$('#application_person').on('change ', function(){
+		$('#application_person').on('keyup change', function(){
 			app.tableReload();
 		});
-		$('#application_num_search').on('change ', function(){
+		$('#application_num_search').on('keyup change', function(){
 			app.tableReload();
 		});
-		$('#invention_person_search').on('change ', function(){
+		$('#invention_person_search').on('keyup change', function(){
 			app.tableReload();
 		});
-		$('#public_num_search').on('change ', function(){
+		$('#public_num_search').on('keyup change', function(){
 			app.tableReload();
 		});
-		$('#key_search').on('change ', function(){
+		$('#key_search').on('keyup change', function(){
 			app.tableReload();
 		});
-		$('#patent_search').on('change ', function(){
+		$('#patent_search').on('keyup change', function(){
 			app.tableReload();
 		});
-		$('#summary_search').on('change ', function(){
+		$('#summary_search').on('keyup change', function(){
 			app.tableReload();
 		});
-		$('#now_category').on('change', function(){
+		$('#now_category').on('keyup change', function(){
 			app.tableReload();
 		});
-		$('#patent_family_search').on('change ', function(){
+		$('#patent_family_search').on('keyup change', function(){
 			app.tableReload();
 		});
 		$("input[name='patent_status[]']").on('click', function(){
