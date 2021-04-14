@@ -625,8 +625,7 @@ $("#img-input").fileinput({
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
-				<?php foreach($item -> public_number as $files): ?>
-    	
+			<?php foreach($item -> public_number as $files): ?>
 			<?php if($login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28): ?>
 				{
 	        		'caption' : '<?= $files -> file_name ?>',
