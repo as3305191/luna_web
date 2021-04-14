@@ -614,7 +614,6 @@ $("#img-input").fileinput({
 		alert('upload error');
 	}).on('change', function(event,data,key) {
 		//測試div被拉動後array也要做變動
-	
 	});
 
 	$("#public-num-input").fileinput({
