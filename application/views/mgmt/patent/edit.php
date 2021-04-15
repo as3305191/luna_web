@@ -636,6 +636,7 @@ $("#img-input").fileinput({
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
 	        		'key' : <?= $files->id?>
 			},
+
 				<?php else: ?>
 					{
 	        		'caption' : '<?= $files -> file_name ?>',
@@ -646,7 +647,6 @@ $("#img-input").fileinput({
 	        		'key' : <?= $files->id?>
 			},
 				<?php endif ?>
-
     		<?php endforeach ?>
 
         	],
