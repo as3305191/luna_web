@@ -680,7 +680,7 @@ $("#img-input").fileinput({
         <?php if(!empty($item -> patnet_number) && count($item -> patnet_number) > 0): ?>
         	initialPreview: [
         		<?php foreach($item -> patnet_number as $files): ?>
-        			'<?=  base_url('mgmt/images/get_pdf/' . $files->id) ?>',
+					'<?=  base_url('mgmt/images/get_pdf/' . $files->id) ?>',
         		<?php endforeach ?>
         	],
         	initialPreviewConfig: [
