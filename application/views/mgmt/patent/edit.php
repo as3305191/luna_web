@@ -687,6 +687,7 @@ $("#img-input").fileinput({
 			<?php foreach($item -> patnet_number as $files): ?>
 				<?php if($login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28): ?>
 				{
+					
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 					'width' : '120px',
