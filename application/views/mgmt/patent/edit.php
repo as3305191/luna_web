@@ -433,12 +433,6 @@ $(document).ready(function() {
 	});
 });
 
-if($('#item_id').val()==0){
-	
-	$('#patnet_status').find('option:nth-child[1]').prop('checked',ture);
-
-} 
-
 $('#app-edit-form').bootstrapValidator({
 		feedbackIcons : {
 			valid : 'glyphicon glyphicon-ok',
@@ -1070,7 +1064,11 @@ function do_save() {
 					alert('faialure');
 				}
 		});
+		if($('#item_id').val()==0){
+			
+			$('#patnet_status').find('option:nth-child[1]').prop('checked',ture);
 
+		} 
 	}	
 	load_edit_category();
 	
