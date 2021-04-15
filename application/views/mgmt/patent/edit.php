@@ -411,7 +411,7 @@ $(document).ready(function() {
 				$('#patent_family').val(d.family_num);
 			}
 		});
-		$('#patnet_status_0').find('option:nth-child[0]').prop('checked','ture');
+		// $('#patnet_status_0').find('option:nth-child[0]').prop('checked','ture');
 
 	} 
 	$('#checkboxGroup input').click(function(){
@@ -1064,11 +1064,11 @@ function do_save() {
 					alert('faialure');
 				}
 		});
-		if($('#item_id').val()==0){
+		// if($('#item_id').val()==0){
 			
-			$('#patnet_status_0').find('option:nth-child[1]').prop('checked','ture');
+		// 	$('#patnet_status_0').find('option:nth-child[1]').prop('checked','ture');
 
-		} 
+		// } 
 	}	
 	load_edit_category();
 	
