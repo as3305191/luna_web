@@ -411,6 +411,8 @@ $(document).ready(function() {
 				$('#patent_family').val(d.family_num);
 			}
 		});
+
+		$('#patnet_status_0').find('option:nth-child('+all+')').prop('selected',true)
 	} 
 	$('#checkboxGroup input').click(function(){
 		if($(this).prop('checked')){
