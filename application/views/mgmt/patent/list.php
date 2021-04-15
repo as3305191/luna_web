@@ -46,28 +46,23 @@ thead tr th {
 									<input id="application_person" ondragover="" autocomplete="off" type="text" class="form-control" />
 								</div>
 								<div class="widget-toolbar pull-left">
-									<label>申請號</label>
-								</div>
-								<div class="widget-toolbar pull-left">
-									<input id="application_num_search" type="text" class="form-control" autocomplete="off" />
-								</div>
-								<div class="widget-toolbar pull-left">
 									<label>發明人</label>
 								</div>
 								<div class="widget-toolbar pull-left">
 									<input id="invention_person_search" ondragover="" type="text" class="form-control" autocomplete="off"/>
 								</div>
 								<div class="widget-toolbar pull-left">
+									<label>申請號</label>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<input id="application_num_search" type="text" class="form-control" autocomplete="off" />
+								</div>
+								
+								<div class="widget-toolbar pull-left">
 									<label>公開號</label>
 								</div>
 								<div class="widget-toolbar pull-left">
 									<input id="public_num_search"  type="text" class="form-control" style="background:#FFFFFF" autocomplete="off"/>
-								</div>
-								<div class="widget-toolbar pull-left">
-									<label>關鍵字</label>
-								</div>
-								<div class="widget-toolbar pull-left">
-									<input id="key_search" type="text" class="form-control"autocomplete="off" />
 								</div>
 								<div class="widget-toolbar pull-left">
 									<label>專利號</label>
@@ -81,7 +76,13 @@ thead tr th {
 								<div class="widget-toolbar pull-left">
 									<input id="patent_family_search" type="text" class="form-control"autocomplete="off" />
 								</div>
-								
+								<div class="widget-toolbar pull-left">
+									<label>關鍵字</label>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<input id="key_search" type="text" class="form-control"autocomplete="off" />
+								</div>
+				
 							</div>
                             <div class="widget-toolbar pull-left" id="patent_status">
                                 <div>
