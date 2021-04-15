@@ -412,7 +412,9 @@ $(document).ready(function() {
 			}
 		});
 
+		$('#patnet_status_0').find('option:nth-child[1]').prop('selected',true);
 		$('#patnet_status_0').find('option:nth-child[0]').prop('selected',true);
+
 	} 
 	$('#checkboxGroup input').click(function(){
 		if($(this).prop('checked')){
