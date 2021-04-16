@@ -502,7 +502,7 @@ class Patent extends MY_Mgmt_Controller {
 						}
 					}
 				}
-				$item -> files =$files;
+				$item -> files[] = $files;
 			}else{
 				$item -> files ='';
 			}
