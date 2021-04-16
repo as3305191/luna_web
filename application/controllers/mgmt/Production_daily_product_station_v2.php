@@ -67,9 +67,9 @@ class Production_daily_product_station_v2 extends MY_Base_Controller {
 	}
 
 	function export_all() {
-			$this->load->dbutil();
-      $this->load->helper('file');
-      $this->load->helper('download');
+	  $this->load->dbutil();
+	  $this->load->helper('file');
+	  $this->load->helper('download');
       $delimiter = ",";
       $newline = "\r\n";
 			$date = date('YmdHis');
