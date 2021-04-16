@@ -98,7 +98,7 @@
 				<td><?= isset($item) ? $item -> assignee : '' ?></td>
 				<td>專利狀態</td>
 				<td colspan="2">
-					<?php if($item -> category=="3"): ?>
+					<?php if($item -> patnet_category=="3"): ?>
 						<?php if($patnet_fail_status->id !=="5"): ?>
 							<?= isset($patnet_type_name) ? $patnet_type_name.'('.$patnet_fail_status->name.')' : '' ?>
 						<?php else: ?>
