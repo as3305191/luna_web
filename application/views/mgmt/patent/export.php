@@ -99,7 +99,11 @@
 				<td>專利狀態</td>
 				<td colspan="2">
 					<?php if($item -> patnet_type==3): ?>
-						123				
+						<?php if($patnet_fail_status->id !==5): ?>
+							<?= isset($patnet_type_name) ? $patnet_type_name.'('.$patnet_fail_status->name.')' : '' ?>
+						<?php else: ?>
+							<?= isset($patnet_type_name) ? $patnet_type_name.'('.$patnet_fail_status->name.'：'.$item->patent_fail_person.')' : '' ?>
+						<?php endif?>					
 					<?php else: ?>
 						<?= isset($patnet_type_name) ? $patnet_type_name : '' ?>
 					<?php endif?>					
