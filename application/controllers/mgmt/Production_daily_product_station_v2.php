@@ -72,11 +72,11 @@ class Production_daily_product_station_v2 extends MY_Base_Controller {
 	  $this->load->helper('download');
       $delimiter = ",";
       $newline = "\r\n";
-			$date = date('YmdHis');
+	  $date = date('YmdHis');
       $filename = $date."-pruduction-daily-product.csv";
 
-			$data = $this -> session -> userdata("Production_daily_product_station_report_data_v2");
-
+		$data = $this -> session -> userdata("Production_daily_product_station_report_data_v2");
+		
 			//create a file pointer
     	$f = fopen('php://memory', 'w');
 			$fields = array(
