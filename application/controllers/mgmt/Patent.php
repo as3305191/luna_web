@@ -487,6 +487,17 @@ class Patent extends MY_Mgmt_Controller {
 					$data['all_patent_status_name'] = $all_patent_status_name;
 				}		
 			}
+
+			if(!empty($item -> files_id) && $item -> files_id !=='') {
+				$files = explode(",", $item -> files_id);
+				$item -> pdf_array =$files;
+				foreach($files as $each){
+					$item -> files[] = $this -> file_dao -> find_by_id($each);
+				}
+			}else{
+				$item -> files ='';
+			}
+
 		}
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
