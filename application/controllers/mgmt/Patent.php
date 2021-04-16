@@ -143,11 +143,11 @@ class Patent extends MY_Mgmt_Controller {
 			if(!empty($item -> patent_family)) {
 				$data['same_family'] = $this -> dao -> find_same_family($item->patent_family);
 			}
-			$data['patent_fail_status'] = $this -> patent_fail_status_dao -> find_all();
 
 			$data['item'] = $item;
 		}
-		
+		$data['patent_fail_status'] = $this -> patent_fail_status_dao -> find_all();
+
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['country'] = $this -> country_dao -> find_all();
