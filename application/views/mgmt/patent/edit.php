@@ -962,12 +962,15 @@ function do_save() {
 								$('#patnet_status_'+category_level).attr("disabled",true);
 							}
 						} else{
+
 							$.each(d.category, function(){
 								category_level = this.level;
-								$('<option />', {
-									'value': this.id,
-									'text': this.name,
-								}).appendTo($('#patnet_status_'+category_level));
+								if(category_level==0){
+									$('<option />', {
+										'value': this.id,
+										'text': this.name,
+									}).appendTo($('#patnet_status_'+category_level));
+								}
 							});
 						}
 					
