@@ -98,7 +98,15 @@
 				<td><?= isset($item) ? $item -> assignee : '' ?></td>
 				<td>專利狀態</td>
 				<td colspan="2">
-					<?= isset($patnet_type_name) ? $patnet_type_name : '' ?>
+					<?php if(!empty($item -> assigne) && $item -> category=="3"): ?>
+						<?php if($patnet_fail_status->id !=="5"): ?>
+							<?= isset($patnet_type_name) ? $patnet_type_name.'('.$patnet_fail_status->name.')' : '' ?>
+						<?php else: ?>
+							<?= isset($patnet_type_name) ? $patnet_type_name.'('.$patnet_fail_status->name.'：'.$item->patent_fail_person.')' : '' ?>
+						<?php endif?>					
+					<?php else: ?>
+						<?= isset($patnet_type_name) ? $patnet_type_name : '' ?>
+					<?php endif?>					
 				</td>	
 			</tr>
 			<tr>
@@ -113,6 +121,10 @@
 			</tr>
 			<tr>
 				<td>專利範圍</td>
+				<td colspan="4"><pre style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;"><?= isset($item) ? $item -> patent_range : '' ?></pre></td>
+			</tr>
+			<tr>
+				<td>專利分析相關文件</td>
 				<td colspan="4"><pre style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;"><?= isset($item) ? $item -> patent_range : '' ?></pre></td>
 			</tr>
 		</tbody>
