@@ -298,8 +298,8 @@ class Patent extends MY_Mgmt_Controller {
 	public function add_country(){
 		$data = array();
 		$country_name = $this -> get_post('country_name');
-		$this -> country_dao -> insert($data);
 		$data['country_name'] = $country_name;
+		$this -> country_dao -> insert($data);
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
