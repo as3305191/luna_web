@@ -134,7 +134,7 @@
 					<div>
 						<?php if(!empty($item->files) && $item->files !==''): ?>
 							<?php foreach ($item->files as $each) : ?>
-									<?= isset($each -> file_name) ? $each -> file_name.'': '' ?>
+									<?= isset($each -> file_name) ? $each -> file_name: '' ?>
 							<?php endforeach ?>
 						<?php endif?>	
 					</div>
