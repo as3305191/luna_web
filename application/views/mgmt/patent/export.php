@@ -130,13 +130,13 @@
 			</tr>
 			<tr>
 				<td>專利分析相關文件</td>
-				<td colspan="4"><pre style="border-style:none;background-color:transparent;color:#666666;font:14px">
+				<td colspan="4" style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;">
 					<?php if(!empty($item->files) && $item->files !==''): ?>
 						<?php foreach ($item->files as $each) : ?>
-							<?= isset($each -> file_name) ? $each -> file_name: '' ?>
+								<?= isset($each -> file_name) ? $each -> file_name: '' ?>
 						<?php endforeach ?>
 					<?php endif?>	
-				</pre></td>
+				</td>
 			</tr>
 		</tbody>
 	</table>
