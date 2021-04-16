@@ -455,7 +455,7 @@ class Patent extends MY_Mgmt_Controller {
 			if(!empty($item -> patnet_type)) {
 				$patnet_type_list = $this -> patent_category_dao -> find_by_id($item -> patnet_type);
 				$data['patnet_type_name'] = $patnet_type_list->name;
-				if($item -> patnet_category==3){
+				if($item -> patnet_type==3){
 					$data['patnet_fail_status'] = $this -> patent_fail_status_dao -> find_by_id($item->patent_fail_status_id);
 				}
 			}else{
