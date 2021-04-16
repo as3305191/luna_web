@@ -490,7 +490,7 @@ class Patent extends MY_Mgmt_Controller {
 
 			if(!empty($item -> files_id) && $item -> files_id !=='') {
 				$files = explode(",", $item -> files_id);
-				$item -> pdf_array =$files;
+				// $item -> pdf_array =$files;
 				foreach($files as $each){
 					$item -> files[] = $this -> file_dao -> find_by_id($each);
 				}
