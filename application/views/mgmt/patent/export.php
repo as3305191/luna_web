@@ -98,11 +98,17 @@
 				<td><?= isset($item) ? $item -> assignee : '' ?></td>
 				<td>專利狀態</td>
 				<td colspan="2">
-					<?php if(!empty($item -> patnet_type) && $item -> patnet_type=='3'): ?>
+					<?php if(!empty($item -> patnet_type) && $item -> patnet_type==3): ?>
 						<?php if(!empty($patnet_fail_status) && $patnet_fail_status->id <>'5'): ?>
-							<?= isset($patnet_type_name) ? $patnet_type_name.'('.$patnet_fail_status->name.')' : '' ?>
-						<?php else: ?>
+
+						<?php if(!empty($patnet_fail_status) && $patnet_fail_status->id =='5'): ?>
 							<?= isset($patnet_type_name) ? $patnet_type_name.'('.$patnet_fail_status->name.'：'.$item->patent_fail_person.')' : '' ?>
+						<?php else: ?>
+							<?php if(!empty($patnet_fail_status) && $patnet_fail_status->id <>'5'): ?>
+								<?= isset($patnet_type_name) ? $patnet_type_name.'('.$patnet_fail_status->name.')' : '' ?>
+							<?php else: ?>
+								<?= isset($patnet_type_name) ? $patnet_type_name : '' ?>
+							<?php endif?>					
 						<?php endif?>					
 					<?php else: ?>
 						<?= isset($patnet_type_name) ? $patnet_type_name : '' ?>
