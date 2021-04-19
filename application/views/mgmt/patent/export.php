@@ -89,9 +89,9 @@
 			</tr>
 			<tr>
 				<td>申請人</td>
-				<td><?= isset($item) ? $item -> applicant : '' ?></td>
+				<td><textarea type="text" require class="form-control" rows="3" id="inventor" name="inventor" style="resize:none;width:100%" ><?= isset($item) ? $item -> applicant : '' ?></textarea></td>
 				<td>發明人</td>
-				<td colspan="2"><?= isset($item) ? $item -> inventor : '' ?></td>
+				<td colspan="2"><textarea type="text" require class="form-control" rows="3" id="inventor" name="inventor" style="resize:none;width:100%" ><?= isset($item) ? $item -> inventor : '' ?></textarea></td>
 			</tr>
 			<tr>
 				<td>受讓人</td>
