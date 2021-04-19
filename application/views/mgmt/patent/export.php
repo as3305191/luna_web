@@ -89,9 +89,9 @@
 			</tr>
 			<tr>
 				<td>申請人</td>
-				<td><textarea type="text" require class="form-control" rows="3" id="inventor" name="inventor" style="resize:none;width:100%;background:transparent;border-style:none;" ><?= isset($item) ? $item -> applicant : '' ?></textarea></td>
+				<td><textarea type="text" require class="form-control" rows="3" style="resize:none;width:100%;background:transparent;border-style:none;" ><?= isset($item) ? $item -> applicant : '' ?></textarea></td>
 				<td>發明人</td>
-				<td colspan="2"><textarea type="text" require class="form-control" rows="3" id="inventor" name="inventor" style="resize:none;width:100%;background:transparent;border-style:none;" ><?= isset($item) ? $item -> inventor : '' ?></textarea></td>
+				<td colspan="2"><textarea type="text" require class="form-control" rows="3" style="resize:none;width:100%;background:transparent;border-style:none;" ><?= isset($item) ? $item -> inventor : '' ?></textarea></td>
 			</tr>
 			<tr>
 				<td>受讓人</td>
@@ -126,7 +126,8 @@
 			</tr>
 			<tr>
 				<td>專利範圍</td>
-				<td colspan="4"><pre style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;"><?= isset($item) ? $item -> patent_range : '' ?></pre></td>
+				<td colspan="4"><pre style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;"><textarea type="text" require class="form-control"style="resize:none;width:100%;background:transparent;border-style:none;" ><?= isset($item) ? $item -> patent_range : '' ?></textarea></pre></td>
+
 			</tr>
 			<tr>
 				<td>專利分析相關文件</td>
