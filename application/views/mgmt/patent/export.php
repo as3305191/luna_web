@@ -134,7 +134,7 @@
 					<?php if(!empty($item->files) && $item->files !==''): ?>
 						<?php foreach ($item->files as $each) : ?>
 								<?= isset($each -> file_name) ? $each -> file_name: '' ?>
-								&nbsp; &nbsp;
+						</br>
 						<?php endforeach ?>
 					<?php endif?>	
 				</td>
