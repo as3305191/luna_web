@@ -230,8 +230,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利號檔案</label>
 					<div class="col-md-6">
-						<input id="patnet-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': '' ?>>
-						<input id="patnet_num_file" type="hidden"  value="<?= isset($item) ? $item -> patnet_num_file : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': '' ?>>
+						<input id="patnet-num-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
+						<input id="patnet_num_file" type="hidden"  value="<?= isset($item) ? $item -> patnet_num_file : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
 					</div>
 				</div>
 			</fieldset>
@@ -344,8 +344,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利代表圖</label>
 					<div class="col-md-6">
-						<input id="img-input" name="file[]" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': '' ?>>
-						<input id="img_id" type="hidden"  value="<?= isset($item) ? $item -> img_id : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': '' ?>>
+						<input id="img-input" name="file[]" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
+						<input id="img_id" type="hidden"  value="<?= isset($item) ? $item -> img_id : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
 					</div>
 				</div>
 			</fieldset>
@@ -353,8 +353,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利分析相關文件</label>
 					<div class="col-md-6">
-						<input id="file-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': '' ?>>
-						<input id="files_id" type="hidden"  value="<?= isset($item) ? $item -> files_id : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': '' ?>>
+						<input id="file-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
+						<input id="files_id" type="hidden"  value="<?= isset($item) ? $item -> files_id : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
 					</div>
 				</div>
 			</fieldset>	
