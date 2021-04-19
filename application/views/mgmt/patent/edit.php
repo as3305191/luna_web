@@ -413,7 +413,7 @@ $(document).ready(function() {
 		});
 		// $('#patnet_status_0').find('option:nth-child[0]').prop('checked','ture');
 
-	} 
+	}
 	$('#checkboxGroup input').click(function(){
 		if($(this).prop('checked')){
 			$('#checkboxGroup input:checkbox').prop('checked',false);
@@ -432,8 +432,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.kv-file-zoom').attr("disabled",'');
-	$('.kv-file-zoom').removeAttr("disabled");
+
 });
 
 $('#app-edit-form').bootstrapValidator({
@@ -1174,5 +1173,6 @@ function do_save() {
 	// 		}
 	// 	})
 	// }
-
+	$('.kv-file-zoom').attr("disabled",'');
+	$('.kv-file-zoom').removeAttr("disabled");
 </script>
