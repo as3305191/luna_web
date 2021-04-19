@@ -131,7 +131,7 @@
 			</tr>
 			<tr>
 				<td>專利分析相關文件</td>
-				<td colspan="4" style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;">
+				<td colspan="4" style="white-space:pre-wrap;border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;">
 					<?php if(!empty($item->files) && $item->files !==''): ?>
 						<?php foreach ($item->files as $each) : ?>
 								<?= isset($each -> file_name) ? $each -> file_name: '' ?>
