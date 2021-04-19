@@ -431,6 +431,10 @@ $(document).ready(function() {
 			$('#checkboxGroup').addClass("fail_fieldset");
 		}
 	});
+
+	if($('#role_id').val()!==9||$('#role_id').val()!==11||$('#role_id').val()!==28){
+		$('.kv-file-remove').attr("readonly");
+	} 
 });
 
 $('#app-edit-form').bootstrapValidator({
