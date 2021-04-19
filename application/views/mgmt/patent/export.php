@@ -74,7 +74,7 @@
 				<td><?= isset($item) ? $item -> application_num : '' ?></td>
 				<td>申請日</td>
 				<td><?= isset($item) ? $item -> application_date : '' ?></td>
-			</tr>	
+			</tr>
 			<tr>
 				<td>公開號</td>
 				<td><?= isset($item) ? $item -> public_num : '' ?></td>

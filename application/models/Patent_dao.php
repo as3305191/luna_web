@@ -134,7 +134,7 @@ class Patent_dao extends MY_Model {
 		}
 		if(!empty($data['now_category']) && $data['now_category']!=="all"){
 			$status = $data['now_category'];
-			$this -> db -> where("_m.now_patent_status like '#%$status%#'");
+			$this -> db -> where("_m.now_patent_status like '%#$status#%'");
 
 		}
 		if(!empty($data['patent_status']) && count($data['patent_status'])>0){
