@@ -344,8 +344,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利代表圖</label>
 					<div class="col-md-6">
-						<input id="img-input" name="file[]" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
-						<input id="img_id" type="hidden"  value="<?= isset($item) ? $item -> img_id : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
+						<input id="img-input" name="file[]" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': '' ?>>
+						<input id="img_id" type="hidden"  value="<?= isset($item) ? $item -> img_id : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': '' ?>>
 					</div>
 				</div>
 			</fieldset>
@@ -521,7 +521,6 @@ $("#img-input").fileinput({
 						'caption' : '<?= $img -> image_name ?>',
 						'size' : <?= $img -> image_size ?>,
 						'width' : '120px',
-						'url' : '<?= base_url('mgmt/images/delete/' . $img->id )  ?>',
 						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
 						'key' : <?= $img->id?>
 				},
