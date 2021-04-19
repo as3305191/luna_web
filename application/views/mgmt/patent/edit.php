@@ -433,7 +433,7 @@ $(document).ready(function() {
 	});
 
 	$('.kv-file-zoom').attr("disabled",'');
-	$('.kv-file-zoom').removeAttr("disabled")
+	$('.kv-file-zoom').removeAttr("disabled");
 });
 
 $('#app-edit-form').bootstrapValidator({
