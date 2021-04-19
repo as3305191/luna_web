@@ -165,7 +165,6 @@ class Patent_dao extends MY_Model {
 		$this -> db -> where("_m.id<>",$id);
 		$query = $this -> db -> get();
 		$list = $query -> result();
-		
 		return $list;
 	}
 
@@ -173,26 +172,21 @@ class Patent_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> select('c.country_name as patent_country_name');
-
 		$this -> db -> where("_m.patent_family",$patent_family);
 		$this -> db -> join("country c", "c.id = _m.patent_country", "left");
 		$query = $this -> db -> get();
 		$list = $query -> result();
-
 		return $list;
 	}
 
 	function search_by_family_patent($search_item){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-
 		$this -> db -> where("_m.public_num like '%$search_item%'");
 		$this -> db -> or_where("_m.patnet_num like '%$search_item%'");
 		$this -> db -> or_where("_m.application_num like '%$search_item%'");
-
 		$query = $this -> db -> get();
 		$list = $query -> result();
-		
 		return $list;
 	}
 	
@@ -200,13 +194,9 @@ class Patent_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> where("_m.patent_family ",$patent_family);
-
 		$query = $this -> db -> get();
 		$list = $query -> result();
-		
 		return $list;
 	}
-	
-
 }
 ?>
