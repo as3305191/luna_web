@@ -432,7 +432,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$('.kv-file-zoom').attr("disabled",false);
+	$('.kv-file-zoom').attr("disabled",'').removeAttr("disabled");
 });
 
 $('#app-edit-form').bootstrapValidator({
