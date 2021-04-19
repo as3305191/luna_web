@@ -521,6 +521,7 @@ $("#img-input").fileinput({
 						'caption' : '<?= $img -> image_name ?>',
 						'size' : <?= $img -> image_size ?>,
 						'width' : '120px',
+						'url' : '<?= base_url('mgmt/images/delete/' . $img->id )  ?>',
 						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
 						'key' : <?= $img->id?>
 				},
