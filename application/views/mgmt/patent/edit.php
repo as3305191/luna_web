@@ -433,7 +433,7 @@ $(document).ready(function() {
 	});
 
 	if($('#role_id').val()!==9||$('#role_id').val()!==11||$('#role_id').val()!==28){
-		$('.kv-file-zoom').removeAttr("disabled","disabled");
+		$('.kv-file-zoom').attr("disabled",false);
 	} 
 });
 
