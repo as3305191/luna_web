@@ -126,12 +126,12 @@
 			</tr>
 			<tr>
 				<td>專利範圍</td>
-				<td colspan="4"><pre style="white-space:pre;border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;"><?= isset($item) ? $item -> patent_range : '' ?></pre></td>
+				<td colspan="4"><pre style="word-wrap:break-word;border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;"><?= isset($item) ? $item -> patent_range : '' ?></pre></td>
 
 			</tr>
 			<tr>
 				<td>專利分析相關文件</td>
-				<td colspan="4" style="word-wrap:break-word;border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;">
+				<td colspan="4" style="background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;">
 					<?php if(!empty($item->files) && $item->files !==''): ?>
 						<?php foreach ($item->files as $each) : ?>
 								<?= isset($each -> file_name) ? $each -> file_name: '' ?>
