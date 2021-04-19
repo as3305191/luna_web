@@ -432,10 +432,7 @@ $(document).ready(function() {
 		}
 	});
 
-	if($('#role_id').val()==9||$('#role_id').val()==11||$('#role_id').val()==28){
-	} else{
-		$('.kv-file-zoom').attr("disabled",false);
-	}
+	$('.kv-file-zoom').attr("disabled",false);
 });
 
 $('#app-edit-form').bootstrapValidator({
