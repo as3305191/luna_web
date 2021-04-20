@@ -89,9 +89,9 @@
 			</tr>
 			<tr>
 				<td>申請人</td>
-				<td><span type="text" require class="form-control" rows="3"style="resize:none;width:100%;background:transparent;border-style:none;" ><?= isset($item) ? $item -> applicant : '' ?></span></td>
+				<td><span style="resize:none;width:100%;background:transparent;border-style:none;" ><?= isset($item) ? $item -> applicant : '' ?></span></td>
 				<td>發明人</td>
-				<td colspan="2"><span type="text" require class="form-control" rows="3" style="resize:none;width:100%;background:transparent;border-style:none;" ><?= isset($item) ? $item -> inventor : '' ?></span></td>
+				<td colspan="2"><span style="resize:none;width:100%;background:transparent;border-style:none;" ><?= isset($item) ? $item -> inventor : '' ?></span></td>
 			</tr>
 			<tr>
 				<td>受讓人</td>
