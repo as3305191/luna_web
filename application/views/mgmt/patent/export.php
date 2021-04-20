@@ -89,9 +89,9 @@
 			</tr>
 			<tr>
 				<td>申請人</td>
-				<td><span style="resize:none;width:100%;background:transparent;border-style:none;" ><?= isset($item) ? $item -> applicant : '' ?></span></td>
+				<td><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> applicant : '' ?></span></td>
 				<td>發明人</td>
-				<td colspan="2"><span style="resize:none;width:100%;background:transparent;border-style:none;" ><?= isset($item) ? $item -> inventor : '' ?></span></td>
+				<td colspan="2"><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> inventor : '' ?></span></td>
 			</tr>
 			<tr>
 				<td>受讓人</td>
@@ -134,8 +134,8 @@
 				<td colspan="4" style="background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;">
 					<?php if(!empty($item->files) && $item->files !==''): ?>
 						<?php foreach ($item->files as $each) : ?>
-								<?= isset($each -> file_name) ? $each -> file_name: '' ?>
-						</br>
+							<?= isset($each -> file_name) ? $each -> file_name: '' ?>
+							</br>
 						<?php endforeach ?>
 					<?php endif?>	
 				</td>
