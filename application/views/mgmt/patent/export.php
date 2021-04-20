@@ -116,7 +116,7 @@
 			</tr>
 			<tr>
 				<td>專利權期間</td>
-				<td><?= isset($item) ? $item -> patent_start_dt : '' ?>~<?= isset($item) ? $item -> patent_end_dt : '' ?></td>
+				<td><?= isset($item) ? $item -> patent_start_dt.'~' : '' ?><?= isset($item) ? $item -> patent_end_dt : '' ?></td>
 				<td>專利權止日</td>
 				<td colspan="2"><?= isset($item) ? $item -> patent_finish_date : '' ?></td>
 			</tr>
