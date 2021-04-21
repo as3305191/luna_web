@@ -133,11 +133,13 @@ class Patent_dao extends MY_Model {
 			$new_key_search= explode(",", str_replace(' ', ',', $key_search));
 
 			$new_key_sql='';
-			for($i=0;$i<count($new_key_search);$i++){
-				if($i>0){
-					$new_key_sql+= "or _m.patent_key like '%$new_key_search[$i]%'";
+			if(count($new_key_search)>1){
+				for($i=0;$i<count($new_key_search);$i++){
+					if($i>0){
+						$new_key_sql+= "or _m.patent_key like '%$new_key_search[$i]%'";
+					}
 				}
-			}
+			} 
 			$this -> db -> where("_m.patent_key like '%$new_key_search[0]%' '$new_key_sql'");
 
 		}
