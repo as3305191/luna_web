@@ -134,17 +134,15 @@ class Patent_dao extends MY_Model {
 
 			$new_key_sql="_m.patent_key like '%$new_key_search[0]%'";
 			if(count($new_key_search)>1){
+				$this -> db -> where("_m.patent_key like '%$new_key_search[0]%'");
 				for($i=0;$i<count($new_key_search);$i++){
 					if($i>0){
-						
-						$this_key = $new_key_search[intval($i)];
-						$new_key_sql += "or _m.patent_key like '%$this_key%'";
+						$this -> db -> or_where("_m.patent_key like '%$new_key_search[$i]%'");
 					}
 				}
-				$this -> db -> where($new_key_sql);
 
 			}  else{
-				$this -> db -> where($new_key_sql);
+				$this -> db -> where("_m.patent_key like '%$new_key_search[0]%'");
 			}
 
 		}
