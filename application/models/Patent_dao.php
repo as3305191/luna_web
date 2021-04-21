@@ -125,7 +125,8 @@ class Patent_dao extends MY_Model {
 		}
 		if(!empty($data['key_search'])){
 			$key_search = $data['key_search'];
-			$this -> db -> where("_m.patent_key like '%$key_search%'");
+			$new_key_search= str_replace(' ', '%', $key_search);
+			$this -> db -> where("_m.patent_key like '%$new_key_search%'");
 		}
 		if(!empty($data['patent_family_search'])){
 			$patent_family_search = $data['patent_family_search'];
