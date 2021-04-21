@@ -230,9 +230,25 @@ thead tr th {
 			}
 		}
 	},{
-		data : 'applicant'
+		data : 'applicant',
+		render: function(d,t,r){
+			if(d){
+				var html = '<span style="word-wrap:break-word;white-space:pre-wrap;">'+d+'</span>';
+				return html;
+			} else{
+				return '';
+			}
+		}
 	},{
-		data : 'inventor'
+		data : 'inventor',
+		render: function(d,t,r){
+			if(d){
+				var html = '<span style="word-wrap:break-word;white-space:pre-wrap;">'+d+'</span>';
+				return html;
+			} else{
+				return '';
+			}
+		}
 	},{
 		data : 'total_country'
 	}, {
