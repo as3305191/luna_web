@@ -72,6 +72,8 @@ class Swot extends MY_Mgmt_Controller {
 
 	public function insert() {
 		$res = array();
+		$s_data = $this -> setup_user_data(array());
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$id = $this -> get_post('id');
 		$title = $this -> get_post('title');
 		$m_swot_s = $this -> get_post('m_swot_s');
@@ -94,8 +96,6 @@ class Swot extends MY_Mgmt_Controller {
 		$data['m_swot_s_t'] = $m_swot_s_t;
 		$data['m_swot_w_t'] = $m_swot_w_t;
 		$data['m_first'] = $m_first;
-		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['role_id'] = $login_user->role_id;
 
 		if(empty($id)) {
