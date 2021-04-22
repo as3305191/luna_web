@@ -187,7 +187,7 @@
 
 	function do_save() {
 		// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
-		var url = baseUrl + 'mgmt/sort/insert'; // the script where you handle the form input.
+		var url = baseUrl + 'mgmt/swot/insert'; // the script where you handle the form input.
 		$.ajax({
 			type : "POST",
 			url : url,
