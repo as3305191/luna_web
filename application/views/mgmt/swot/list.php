@@ -176,8 +176,8 @@ thead tr th {
 	}];
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/patent/list.js", function(){
-			currentApp = new patentAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/swot/list.js", function(){
+			currentApp = new SwotAppClass(new BaseAppClass({}));
 			// $('#family-num-add-form').submit(function(e){
 			// 	familyChange();
 			// 	e.preventDefault();
@@ -185,106 +185,4 @@ thead tr th {
 		});
 	});
 
-	var total_category=0;
-
-	function load_category() {
-		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/patent/find_all_category',
-			type: 'POST',
-			data: {},
-			dataType: 'json',
-			success: function(d) {
-				if(d) {
-					// console.log(d);
-					$category = $('#category').empty();
-					var i=0;
-					var html='';
-					total_category = d.max;
-					for(i;i<=d.max;i++){
-						html+='<div class="widget-toolbar pull-left">'+
-								'<select id="category_'+i+'" class="p_list_patnet_status" data-val="'+i+'" >'+
-								'</select>'+
-							'</div>';
-					}
-					$(html).appendTo($category);
-					var category_option = '<option value="all">全部</option>';
-					var $category_0 = $('#category_0').empty();
-					$category_0.append(category_option);
-					$.each(d.category, function(){
-						if(this.level==0){
-							$('<option />', {
-								'value': this.id,
-								'text': this.name,
-							}).appendTo($category_0);
-						}
-					});
-
-					$('.p_list_patnet_status').on('change', function(){
-						var me = $(this);
-						var _dataVal = me.data("val");
-						var select_Val = me.val();
-						$('#now_category').val(select_Val);
-						var next_c =_dataVal+1;
-						console.log(next_c);
-						$.ajax({
-							url:  baseUrl + currentApp.basePath + '/find_next_category',
-							type: 'POST',
-							data: {
-								next_level:next_c,
-								this_val:select_Val,
-							},
-							dataType: 'json',
-							success: function(d) {
-								var category_option = '<option value="all">全部</option>';
-								var $category = $('#category_'+next_c).empty();
-								$category.append(category_option);
-								if(d.category){
-									$.each(d.category, function(){
-										$('<option />', {
-											'value': this.id,
-											'text': this.name,
-										}).appendTo($category);
-									});
-									currentApp.tableReload();
-
-								}
-							},
-							failure:function(){
-							}
-						});
-					});
-
-				}
-			},
-			failure:function(){
-				alert('faialure');
-			}
-		});
-	}	
-	load_category();
-	
-	function do_remove() {//一鍵清除所有篩選
-		$('#patent_header input').val('');
-		$("input[name='patent_status[]']").removeAttr("checked");
-		load_category();
-		currentApp.tableReload();
-		
-	}
-
-	$('.p_list_patnet_status').on('change', function(){
-		var me = $(this);
-		var _dataVal = me.data("val");
-		// console.log(me);
-		// console.log(_dataVal);
-		$( "select .p_list_patnet_status" ).each(function(){
-			var other_me = $(this);
-			var other_dataVal = other_me.data("val");
-			if(other_dataVal!=="all" && other_dataVal>_dataVal){
-				$('<option />', {
-					'value': this.id,
-					'text': this.name,
-				}).appendTo(other_me);
-			}
-		});
-	});
 </script>

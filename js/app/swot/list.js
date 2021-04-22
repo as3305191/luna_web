@@ -1,5 +1,5 @@
-var patentAppClass = (function(app) {
-	app.basePath = "mgmt/patent/";
+var SwotAppClass = (function(app) {
+	app.basePath = "mgmt/swot/";
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
