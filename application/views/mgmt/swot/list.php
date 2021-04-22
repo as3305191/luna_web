@@ -178,10 +178,7 @@ thead tr th {
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/swot/list.js", function(){
 			currentApp = new SwotAppClass(new BaseAppClass({}));
-			// $('#family-num-add-form').submit(function(e){
-			// 	familyChange();
-			// 	e.preventDefault();
-			// });
+			
 		});
 	});
 
