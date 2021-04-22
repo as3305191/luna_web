@@ -35,7 +35,7 @@ class Swot extends MY_Mgmt_Controller {
 		));
 	
 		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
 
 		$res['items'] = $items;
@@ -70,100 +70,42 @@ class Swot extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/swot/edit', $data);
 	}
 
-	public function insert() {//新增
+	public function insert() {
 		$res = array();
-		$img_array = array();
 		$id = $this -> get_post('id');
-		$patent_name_eng = $this -> get_post('patent_name_eng');
-		$patnet_name = $this -> get_post('patnet_name');
-		$img= $this -> get_post('img');
-		$pdf_array = $this -> get_post('pdf_array');
-		$patent_key = $this -> get_post('patent_key');
-		$patent_country = $this -> get_post('patent_country');
-		$patnet_category = $this -> get_post('patnet_category');
-		$public_num_input = $this -> get_post('public_num_input');
-		$patnet_num_input = $this -> get_post('patnet_num_input');
-		$application_date = $this -> get_post('application_date');
-		$public_date = $this -> get_post('public_date');
-		$announcement_date = $this -> get_post('announcement_date');
-		$s_dt = $this -> get_post('s_dt');
-		$e_dt = $this -> get_post('e_dt');
-		$patent_finish_date = $this -> get_post('patent_finish_date');
-		$patnet_status = $this -> get_post('patnet_status');
-		$patent_note = $this -> get_post('patent_note');
-		$patent_range = $this -> get_post('patent_range');
-		$patent_family = $this -> get_post('patent_family');
-		$application_num = $this -> get_post('application_number');
-		$announcement_num = $this -> get_post('announcement_num');
-		$patnet_note_for_users = $this -> get_post('patnet_note_for_users');
-		$year = $this -> get_post('year');
-		$public_num = $this -> get_post('public_num');
-		$patnet_num = $this -> get_post('patnet_num');
-		$applicant = $this -> get_post('applicant');
-		$inventor = $this -> get_post('inventor');
-		$patnet_type = $this -> get_post('patnet_type');
-		$assignee = $this -> get_post('assignee');
-		$now_patent_status = $this -> get_post('now_patent_status');
-		$patent_fail_status = $this -> get_post('patent_fail_status');
-		$patent_fail_person = $this -> get_post('patent_fail_person');
-	
-		// foreach ($img as $each) {
-		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
-		// }
-		$data['img_id'] = $img;
-		// $data['img_active'] = $img_array[0];
-		$data['assignee'] = $assignee;
-		$data['patnet_type'] = $patnet_type;
-		$data['patent_name_eng'] = $patent_name_eng;
-		$data['year'] = $year;
-		$data['public_num'] = $public_num;
-		$data['patnet_num'] = $patnet_num;
-		$data['applicant'] = $applicant;
-		$data['inventor'] = $inventor;
-		$data['application_num'] = $application_num;
-		$data['announcement_num'] = $announcement_num;
-		$data['patent_family'] = $patent_family;
-		$data['patnet_note_for_users'] = $patnet_note_for_users;
-		$data['patent_country'] = $patent_country;
-		$data['files_id'] = $pdf_array;
-		$data['patent_name'] = $patnet_name;
-		$data['patent_key'] = $patent_key;
-		$data['patnet_category'] = $patnet_category;
-		$data['public_num_file'] = $public_num_input;
-		$data['patnet_num_file'] = $patnet_num_input;
-		$data['application_date'] = $application_date;
-		$data['public_date'] = $public_date;
-		$data['announcement_date'] = $announcement_date;
-		$data['patent_start_dt'] = $s_dt;
-		$data['patent_end_dt'] = $e_dt;
-		$data['patent_finish_date'] = $patent_finish_date;
-		$data['patnet_status'] = $patnet_status;
-		$data['patent_note'] = $patent_note;
-		$data['patent_range'] = $patent_range;
-		$data['update_date'] = date("Y-m-d H:i:s");
-		$data['patent_fail_status_id'] = $patent_fail_status;
-		$data['patent_fail_person'] = $patent_fail_person;
+		$title = $this -> get_post('title');
+		$m_swot_s = $this -> get_post('m_swot_s');
+		$m_swot_w = $this -> get_post('m_swot_w');
+		$m_swot_o = $this -> get_post('m_swot_o');
+		$m_swot_t = $this -> get_post('m_swot_t');
+		$m_swot_s_o = $this -> get_post('m_swot_s_o');
+		$m_swot_w_o = $this -> get_post('m_swot_w_o');
+		$m_swot_s_t = $this -> get_post('m_swot_s_t');
+		$m_swot_w_t = $this -> get_post('m_swot_w_t');
+		$m_first = $this -> get_post('m_first');
+		
+		$data['title'] = $title;
+		$data['m_swot_s'] = $m_swot_s;
+		$data['m_swot_w'] = $m_swot_w;
+		$data['m_swot_o'] = $m_swot_o;
+		$data['m_swot_t'] = $m_swot_t;
+		$data['m_swot_s_o'] = $m_swot_s_o;
+		$data['m_swot_w_o'] = $m_swot_w_o;
+		$data['m_swot_s_t'] = $m_swot_s_t;
+		$data['m_swot_w_t'] = $m_swot_w_t;
+		$data['m_first'] = $m_first;
+		$s_data = $this -> setup_user_data(array());
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$data['role_id'] = $login_user->role_id;
 
-		if($now_patent_status=='##'){
-			$now_patent_status=='';
-		} else{
-			if(substr($now_patent_status,-2)=="#" && substr($now_patent_status,0,2)=="#"){
-				$data['now_patent_status'] = substr(ltrim($now_patent_status,'#'),0,-1);
-			} else{
-				if(substr($now_patent_status,-1)=="#" && substr($now_patent_status,0,1)=="#"){
-					$data['now_patent_status'] = $now_patent_status;
-				} else{
-					$data['now_patent_status'] = "#".$now_patent_status."#";
-				}
-			}
-		}
-	
 		if(empty($id)) {
 			// insert
-			$last_id = $this -> dao -> insert($data);
+			$this -> dao -> insert($data);
 		} else {
+			// update
 			$this -> dao -> update($data, $id);
 		}
+		$s_data = $this -> setup_user_data(array());
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}

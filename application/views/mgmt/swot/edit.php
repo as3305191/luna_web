@@ -185,4 +185,35 @@
 		CKEDITOR.instances['m_first'].on('change', function() { CKEDITOR.instances['m_first'].updateElement() });
 
 	});
+
+	function do_save() {
+		// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
+		var url = baseUrl + 'mgmt/news_edit/insert'; // the script where you handle the form input.
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+				id: $('#item_id').val(),
+				title: $('#title').val(),
+				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
+				m_swot_w: CKEDITOR.instances.m_swot_w.getData(),
+				m_swot_o: CKEDITOR.instances.m_swot_o.getData(),
+				m_swot_t: CKEDITOR.instances.m_swot_t.getData(),
+				m_swot_s_o: CKEDITOR.instances.m_swot_s_o.getData(),
+				m_swot_w_o: CKEDITOR.instances.m_swot_w_o.getData(),
+				m_swot_s_t: CKEDITOR.instances.m_swot_s_t.getData(),
+				m_swot_w_t: CKEDITOR.instances.m_swot_w_t.getData(),
+				m_first: CKEDITOR.instances.m_first.getData(),
+
+			},
+			success : function(data) {
+				if(data.error_msg) {
+					layer.msg(data.error_msg);
+				} else {
+					currentApp.mDtTable.ajax.reload(null, false);
+					currentApp.backTo();
+				}
+			}
+		});
+	};
 </script>
