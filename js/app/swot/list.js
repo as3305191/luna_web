@@ -17,7 +17,7 @@ var SwotAppClass = (function(app) {
 			},
 			iDisplayLength : 50,
 			columns : mCols,
-			order : [[9, "desc"]],
+			order : [[2, "desc"]],
 			columnDefs : mColDefs
 		}));
 
@@ -31,11 +31,6 @@ var SwotAppClass = (function(app) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
 		}
 
-		// $('#application_person').on('keyup', function(){
-		// 	app.tableReload();
-		// });
-	
-	    // $(window).trigger("hashchange");
 
 		return app;
 	};
