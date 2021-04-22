@@ -5,14 +5,10 @@ class Swot extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('Patent_dao', 'dao');
-		$this -> load -> model('Images_dao', 'img_dao');
-		$this -> load -> model('Files_dao','file_dao');
+		$this -> load -> model('Swot_dao', 'dao');
+	
 		$this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Country_dao', 'country_dao');
-		$this -> load -> model('Patent_status_dao', 'patent_status_dao');
-		$this -> load -> model('Patent_category_dao', 'patent_category_dao');
-		$this -> load -> model('Patent_fail_status_dao', 'patent_fail_status_dao');
+	
 
 		$this -> load-> library('word');
 
@@ -37,47 +33,12 @@ class Swot extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			'application_person',
-			'application_num',
-			'invention_person_search',
-			'public_num_search',
-			'key_search',
-			'patent_search',
-			'summary_search',
-			'now_category',
-			'patent_family_search',
 		));
-		$patent_status = $this->get_post('patent_status');
-		if(!empty($patent_status)){
-			$data['patent_status'] = explode(",", str_replace('#', ',', $patent_status));
-		}
+	
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
 
-		foreach($items as $each){
-			if(!empty($each -> img_id)) {
-				$image= explode(",", $each -> img_id);
-				$each -> image_id =$image ;
-				$each -> image = $image[0];
-			} else{
-				$each -> image =0;
-			}
-			if(!empty($each -> patent_family)){
-				$patent_country_list = $this -> dao -> find_total_country($each -> patent_family);
-				$patent_country_name=[];
-				foreach($patent_country_list as $each_country_list){
-					if(!in_array($each_country_list->patent_country_name, $patent_country_name)){
-						$patent_country_name[] = $each_country_list->patent_country_name;
-					}
-				}
-				$each -> total_country = $patent_country_name;
-				// $each -> total_country = array_unique($patent_country_name);
-
-			} else{
-				$each -> total_country = '';
-			}			
-		}
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
