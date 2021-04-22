@@ -33,17 +33,14 @@ var FixlistAppClass = (function(app) {
 		// get year month list
 		app.tableReload();
 
-
 		app.doExportAll = function() {
 			location.href = baseUrl + app.basePath + '/export_all';
 		}
-
 		$('#type').on('change', function(){
 			app.tableReload();
 		});
 		return app;
 	};
-
 	// return self
 	return app.init();
 });
