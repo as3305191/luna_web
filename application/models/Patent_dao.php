@@ -8,7 +8,7 @@ class Patent_dao extends MY_Model {
 		parent::set_table_name('patent');
 
 		$this -> alias_map = array(
-		
+
 		);
 	}
 
@@ -20,7 +20,6 @@ class Patent_dao extends MY_Model {
 		}
 		$query = $this -> db -> get();
 		$list = $query -> result();
-
 		return $list;
 	}
 
@@ -30,7 +29,6 @@ class Patent_dao extends MY_Model {
 		$this -> db -> select('_m.*');
 		$this -> db -> where("_m.create_time like '{$date}%'");
 		$this -> db -> order_by("_m.id","desc");
-
 		$query = $this -> db -> get();
 		$list = $query -> result();
 		if(count($list)>0){
