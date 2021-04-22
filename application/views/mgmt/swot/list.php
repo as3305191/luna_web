@@ -57,7 +57,7 @@ thead tr th {
 									<thead>
 										<tr>
 											<th class="min25"></th>
-											<th class="min100">檔案名稱</th>
+											<th class="min100">標題</th>
 											<th class="min100">建立時間</th>
 										</tr>
 									</thead>
@@ -101,66 +101,12 @@ thead tr th {
 	var baseUrl = '<?=base_url('')?>';
 
 	var mCols = [null,{
-		data : 'patent_name'
-	}, {
-		data : 'image',
-		render: function(d,t,r){
-			if(d>0){
-				var html = '<img src="'+baseUrl+'api/images/get/'+d+'/thumb" loading="lazy" style="max-height:200px;max-width:200px" >';
-				return html;
-			} else{
-				return '';
-			}
-		}
+		data : 'title'
 	},{
-		data : 'applicant',
-		render: function(d,t,r){
-			if(d){
-				var html = '<span style="word-wrap:break-word;white-space:pre-wrap;">'+d+'</span>';
-				return html;
-			} else{
-				return '';
-			}
-		}
-	},{
-		data : 'inventor',
-		render: function(d,t,r){
-			if(d){
-				var html = '<span style="word-wrap:break-word;white-space:pre-wrap;">'+d+'</span>';
-				return html;
-			} else{
-				return '';
-			}
-		}
-	},{
-		data : 'total_country'
-	}, {
-		data : 'patnet_num',
-		render: function(d,t,r){
-			if(d){
-				var html = '<span style="color:red;">'+d+'</span>';
-				return html;
-			} else{
-				return '';
-			}
-		}
-	}, {
-		data : 'public_num'
-	}, {
-		data : 'application_date'
-	}, {
-		data : 'announcement_date'
-	}, {
-		data : 'update_date'
+		data : 'create_time'
 	}];
 
-	var mOrderIdx = 6;
-	
-	if($('#l_user_id').val()=='9' || $('#l_user_id').val()=='28'|| $('#l_user_id').val()=='11' ){
-		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
-	} else{
-		var defaultContent = '<a role="button" data-toggle="modal" style="margin-right: 5px;" ><i class="fa fa-trash fa-lg"></i></a>';
-	}
+	var mOrderIdx = 2;
 
 	var mColDefs = [{
 		targets : 0,
@@ -171,7 +117,7 @@ thead tr th {
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,1,2,3,4,5,6,7],
+		"targets" : [0,1],
 		"orderable" : false
 	}];
 

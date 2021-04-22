@@ -40,6 +40,14 @@
     </div>
     <hr/>
 		<div >
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">標題</label>
+					<div class="col-md-6">
+						<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
+					</div>
+				</div>
+			</fieldset>
 			<fieldset id='swot_s'>
 				<div class="form-group">
 					<label class="col-md-3 control-label">S:優勢</label>
