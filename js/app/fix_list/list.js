@@ -45,7 +45,6 @@ var FixlistAppClass = (function(app) {
 	return app.init();
 });
 
-
 var WeightHistoryClass = (function(app) {
 	app.basePath = "mgmt/members/";
 	app.disableRowClick = true;
