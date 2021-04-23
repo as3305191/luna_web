@@ -64,8 +64,18 @@
         <div class="clearfix"></div>
     </div>
     <hr/>
-		<div >
-		<fieldset>
+		<div>
+			<?php if(!empty($item -> id) && $item -> id>0): ?>
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">網址</label>
+						<div class="col-md-6">
+						<span required class="form-control">192.168.1.205/app/#mgmt/patent/edit/<?= isset($item) ? $item -> id : ''?> </span>
+					</div>
+					</div>
+				</fieldset>
+			<?php endif?>
+			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利類型</label>
 					<div class="col-md-6" id="patnet_status" >
@@ -378,11 +388,13 @@
 						
 						</style>
 		</div>
-		<div class="widget-toolbar pull-right">
-			<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
-				<i class="fa fa-save"></i>存檔
-			</a>
-		</div>
+		<?php if( $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28): ?>
+			<div class="widget-toolbar pull-right">
+				<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
+					<i class="fa fa-save"></i>存檔
+				</a>
+			</div>
+		<?php endif?>
 		</form>
 
 		</div>
