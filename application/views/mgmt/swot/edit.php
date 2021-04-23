@@ -172,6 +172,7 @@
 		CKEDITOR.replace("m_swot_s_t", config);
 		CKEDITOR.replace("m_swot_w_t", config);
 		CKEDITOR.replace("m_first", config);
+		
 
 		CKEDITOR.instances['m_swot_s'].on('change', function() { CKEDITOR.instances['m_swot_s'].updateElement() });
 		CKEDITOR.instances['m_swot_w'].on('change', function() { CKEDITOR.instances['m_swot_w'].updateElement() });
