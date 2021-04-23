@@ -203,7 +203,6 @@
 				m_swot_s_t: CKEDITOR.instances.m_swot_s_t.getData(),
 				m_swot_w_t: CKEDITOR.instances.m_swot_w_t.getData(),
 				m_first: CKEDITOR.instances.m_first.getData(),
-
 			},
 			success : function(data) {
 				if(data.error_msg) {
