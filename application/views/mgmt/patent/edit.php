@@ -70,8 +70,8 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">網址</label>
 						<div class="col-md-6">
-						<span required class="form-control">192.168.1.205/app/#mgmt/patent/edit/<?= isset($item) ? $item -> id : ''?> </span>
-					</div>
+							<span required class="form-control" style="border-style:none">192.168.1.205/app/#mgmt/patent/edit/<?= isset($item) ? $item -> id : ''?> </span>
+						</div>
 					</div>
 				</fieldset>
 			<?php endif?>
