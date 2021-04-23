@@ -67,15 +67,11 @@ class Patent extends MY_Mgmt_Controller {
 				$patent_country_list = $this -> dao -> find_total_country($each -> patent_family);
 				$patent_country_name=[];
 				foreach($patent_country_list as $each_country_list){
-					// if(!in_array($each_country_list->patent_country_name, $patent_country_name)){
-					// 	$patent_country_name[] = $each_country_list->patent_country_name;
-					// }
-					$patent_country_name[$each_country_list->patent_country_name] = $each_country_list->patnet_num;
+					if(!in_array($each_country_list->patent_country_name, $patent_country_name)){
+						$patent_country_name[] = $each_country_list->patent_country_name;
+					}
 				}
-
-				// $new_patent_country_name = implode(",",$patent_country_name);
 				$each -> total_country = $patent_country_name;
-				
 				// $each -> total_country = array_unique($patent_country_name);
 
 			} else{
