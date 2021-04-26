@@ -79,7 +79,7 @@ class Users extends MY_Mgmt_Controller {
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
 		$data['department_list'] = $this -> dao -> find_all_department();
-		$this -> to_json($data);
+		// $this -> to_json($data);
 
 		$this->load->view('mgmt/users/edit', $data);
 	}
