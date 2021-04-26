@@ -67,6 +67,12 @@ class Users extends MY_Mgmt_Controller {
 			} else{
 				$item->department_id = 0;
 			}
+			if(!empty($item->in_department)){
+				$item->in_departments = explode(",", str_replace('#', ',', $item->in_department));
+
+			} else{
+				$item->department_id = 0;
+			}
 			$data['item'] = $item;
 		}
 		$s_data = $this -> setup_user_data(array());
