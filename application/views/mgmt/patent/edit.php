@@ -796,7 +796,7 @@ $('#add_country').click(function() {
 		shadeClose:true,
 		content:'<?=base_url('mgmt/patent/new_country')?>'
     })
-})
+});
 
 function load_country() {
 	$.ajax({

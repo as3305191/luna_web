@@ -42,6 +42,20 @@
 		<div >
 			<fieldset>
 				<div class="form-group">
+					<label class="col-md-3 control-label">文件種類</label>
+					<div class="col-md-6">
+						<input type="hidden"  id="s_style" value="<?= isset($item) ? $item -> swot_style_id : '' ?>"/>
+						<select name="swot_style" id="swot_style" class="form-control" >
+							<!-- option from javascript -->
+						</select>
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-sm btn-primary" id="add_swot"><i class="fa fa-plus-circle fa-lg"></i></button>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
 					<label class="col-md-3 control-label">標題</label>
 					<div class="col-md-6">
 						<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
@@ -195,6 +209,7 @@
 			data : {
 				id: $('#item_id').val(),
 				title: $('#title').val(),
+				swot_style: $('#swot_style').val(),
 				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
 				m_swot_w: CKEDITOR.instances.m_swot_w.getData(),
 				m_swot_o: CKEDITOR.instances.m_swot_o.getData(),
@@ -215,4 +230,49 @@
 			}
 		});
 	};
+
+	$('#add_swot').click(function() {
+		layer.open({
+			type:2,
+			title:'',
+			closeBtn:0,
+			area:['400px','200px'],
+			shadeClose:true,
+			content:'<?=base_url('mgmt/swot/new_swot_style')?>'
+		})
+	});
+
+	function load_swot_style() {
+	$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/swot/find_country',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$swot_style = $('#swot_style').empty();
+					$.each(d.country, function(){
+						if(this.id==$('#s_style').val()){
+							$('<option/>', {
+								'value': this.id,
+								'text': this.swot_name
+							}).attr("selected", true).appendTo($swot_style);
+						}else{
+							$('<option/>', {
+								'value': this.id,
+								'text': this.swot_name
+							}).appendTo($swot_style);
+						}
+					});
+				}
+				
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+
+}
+load_swot_style();
 </script>

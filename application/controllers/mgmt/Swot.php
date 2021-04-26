@@ -6,12 +6,10 @@ class Swot extends MY_Mgmt_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('Swot_dao', 'dao');
-	
 		$this -> load -> model('Users_dao', 'users_dao');
-	
+		$this -> load -> model('Swot_style_dao', 'swot_style_dao');
 
-		$this -> load-> library('word');
-
+		// $this -> load-> library('word');
 	}
 
 	public function index()
@@ -85,8 +83,10 @@ class Swot extends MY_Mgmt_Controller {
 		$m_swot_s_t = $this -> get_post('m_swot_s_t');
 		$m_swot_w_t = $this -> get_post('m_swot_w_t');
 		$m_first = $this -> get_post('m_first');
-		
+		$swot_style = $this -> get_post('swot_style');
+
 		$data['title'] = $title;
+		$data['swot_style_id'] = $swot_style;
 		$data['m_swot_s'] = $m_swot_s;
 		$data['m_swot_w'] = $m_swot_w;
 		$data['m_swot_o'] = $m_swot_o;
@@ -108,6 +108,20 @@ class Swot extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$res['success'] = TRUE;
  		$this -> to_json($res);
+	}
+
+	public function new_swot_style(){
+		$data = array();
+		$this -> load -> view('layout/show_new_swot',$data);
+	}
+
+	public function add_swot(){
+		$data = array();
+		$swot_name = $this -> get_post('swot_name');
+		$data['swot_name'] = $swot_name;
+		$this -> swot_style_dao -> insert($data);
+		$res['success'] = TRUE;
+		$this -> to_json($res);
 	}
 
 	public function export_all($id) {
