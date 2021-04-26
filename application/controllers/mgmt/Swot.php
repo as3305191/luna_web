@@ -35,7 +35,6 @@ class Swot extends MY_Mgmt_Controller {
 		));
 		$data['login_user'] = $login_user;
 		$items = $this -> dao -> query_ajax($data);
-
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
