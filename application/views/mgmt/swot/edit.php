@@ -244,7 +244,7 @@
 
 	function load_swot_style() {
 	$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/swot/find_country',
+			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_style',
 			type: 'POST',
 			data: {},
 			dataType: 'json',
@@ -252,7 +252,7 @@
 				if(d) {
 					// console.log(d);
 					$swot_style = $('#swot_style').empty();
-					$.each(d.country, function(){
+					$.each(d.swot, function(){
 						if(this.id==$('#s_style').val()){
 							$('<option/>', {
 								'value': this.id,
