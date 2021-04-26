@@ -47,9 +47,10 @@
 			</tr>
 			<tr>
 				<td rowspan="4">
-					<div class="out" style="font-size:27px">
+					<!-- <div class="out" style="font-size:27px">
 						<b>SW</b> <em>OT</em>
-					</div>
+					</div> -->
+					123
 				</td>
 				<td rowspan="4">123</td>
 				<td rowspan="4">123</td>
