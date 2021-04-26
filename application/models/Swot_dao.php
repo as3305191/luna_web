@@ -69,11 +69,11 @@ class Swot_dao extends MY_Model {
 			$id = $data['id'];
 			$this -> db -> where("_m.id",$id);
 		}
-		if(!empty($data['login_user'])){
-			$login_user_item = $data['login_user'];
-			if($login_user_item->role_id!==9 && $login_user_item->role_id!==6 )
-			$this -> db -> where("_m.id",$id);
-		}
+		// if(!empty($data['login_user'])){
+		// 	$login_user_item = $data['login_user'];
+		// 	if($login_user_item->role_id!==9 && $login_user_item->role_id!==6 )
+		// 	$this -> db -> where("_m.id",$id);
+		// }
 	}
 
 	function ajax_from_join() {
