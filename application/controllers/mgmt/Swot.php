@@ -126,7 +126,7 @@ class Swot extends MY_Mgmt_Controller {
 
 	public function find_swot_style(){
 		$res = array();
-		$country = $this -> swot_style_dao -> find_all();
+		$swot = $this -> swot_style_dao -> find_all();
 		$res['swot'] = $swot;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
