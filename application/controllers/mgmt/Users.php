@@ -93,7 +93,22 @@ class Users extends MY_Mgmt_Controller {
 		));
 		$role_id = $this -> get_post('role_id');
 		$div_id = $this -> get_post('div_id');
-
+		$department = $this -> get_post('department');
+		if(!empty($department)){
+			if($department=='##'){
+				$department=='';
+			} else{
+				if(substr($department,-2)=="#" && substr($department,0,2)=="#"){
+					$data['in_department'] = substr(ltrim($department,'#'),0,-1);
+				} else{
+					if(substr($department,-1)=="#" && substr($department,0,1)=="#"){
+						$data['in_department'] = $department;
+					} else{
+						$data['in_department'] = "#".$department."#";
+					}
+				}
+			}
+		}
 		if(empty($id)) {
 			// insert
 			if(!empty($div_id)){

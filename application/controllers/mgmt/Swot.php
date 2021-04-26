@@ -33,7 +33,7 @@ class Swot extends MY_Mgmt_Controller {
 			'search',
 			'order',
 		));
-	
+		$data['login_user'] = $login_user;
 		$items = $this -> dao -> query_ajax($data);
 
 		$res['items'] = $items;

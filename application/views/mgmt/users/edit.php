@@ -99,7 +99,23 @@
 						</div>
 					</div>
 				</fieldset>
-
+				<fieldset>
+					<div class="form-group">
+						<label class="col-md-3 control-label">隸屬部門</label>
+						<div class="widget-toolbar pull-left" id="patent_status">
+							<div>
+								<?php foreach ($department_list as $each) : ?>
+									<?php if(!empty($each->level==3)): ?>
+										<label class="u-check g-pl-0">
+											<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="department[]" type="checkbox" value="<?= $each->id ?>">
+											<span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
+										</label>
+									<?php endif ?>
+								<?php endforeach ?>
+							</div>
+						</div>
+					</div>
+				</fieldset>
 			</form>
 
 		</div>
