@@ -51,18 +51,18 @@
 						<b>SW</b> <em>OT</em>
 					</div>
 				</td>
-				<td rowspan="4">沒有圖片</td>
-				<td rowspan="4">沒有圖片</td>
+				<td rowspan="4">123</td>
+				<td rowspan="4">123</td>
 			</tr>
 			<tr>
-				<td rowspan="4">沒有圖片</td>
-				<td rowspan="4">沒有圖片</td>
-				<td rowspan="4">沒有圖片</td>
+				<td rowspan="4">123</td>
+				<td rowspan="4">123</td>
+				<td rowspan="4">123</td>
 			</tr>
 			<tr>
-				<td rowspan="4">沒有圖片</td>
-				<td rowspan="4">沒有圖片</td>
-				<td rowspan="4">沒有圖片</td>
+				<td rowspan="4">123</td>
+				<td rowspan="4">123</td>
+				<td rowspan="4">123</td>
 			</tr>
 		</tbody>
 	</table>
