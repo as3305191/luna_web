@@ -40,10 +40,10 @@
 		</thead>
 		<tbody class="">
 			<tr>
-				<td class="min100" colspan="6" style="text-align:center;vertical-align:middle;">寬仕工業股份有限公司</td>
+				<td class="min100" colspan="12" style="text-align:center;vertical-align:middle;">寬仕工業股份有限公司</td>
 			</tr>
 			<tr>
-				<td class="min100" colspan="6" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
+				<td class="min100" colspan="12" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
 			</tr>
 			<tr>
 				<td rowspan="4">
