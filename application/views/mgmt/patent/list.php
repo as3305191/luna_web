@@ -101,9 +101,11 @@ thead tr th {
 									</button>
 								</div>
 							</div>
-							<span style="color:red;">TW:台灣 US:美國 JP:日本 CN:大陸 CA:加拿大 EP:歐洲 AU:澳洲</span>
+							<div class="widget-toolbar pull-left">
+								專利號國家說明：<span style="color:red;">TW:台灣 US:美國 JP:日本 CN:大陸 CA:加拿大 EP:歐洲 AU:澳洲</span>
+							</div>
 						</header>
-						專利號國家說明：<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
+						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 
 						<!-- widget div-->
 						<div>
