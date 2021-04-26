@@ -99,7 +99,7 @@ class Users extends MY_Mgmt_Controller {
 		$div_id = $this -> get_post('div_id');
 		$department = $this -> get_post('department');
 		if(!empty($department)){
-			$new_department = str_replace(',', '#', $department);
+			$new_department = str_replace(',', '#',implode(',',$department));
 			if($new_department=='##'){
 				$new_department=='';
 			} else{
