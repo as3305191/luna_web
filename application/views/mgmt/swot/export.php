@@ -1,9 +1,5 @@
 
-<?php
-
-use Illuminate\Support\Facades\Date;
-
-$this->load->view('layout/head'); ?>
+<?php $this->load->view('layout/head'); ?>
 <style>
 .file-drag-handle {
 	display: none;
@@ -52,7 +48,7 @@ $this->load->view('layout/head'); ?>
 			<tr>
 				<td rowspan="2">
 					<div class="out" style="font-size:27px">
-						<b>消費類型</b> <em>通話類型</em>
+						<b>SW</b> <em>OT</em>
 					</div>
 				</td>
 				<td rowspan="2">沒有圖片</td>
