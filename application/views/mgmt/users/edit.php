@@ -106,7 +106,7 @@
 							<div>
 								<?php foreach ($department_list as $each) : ?>
 									<?php if(!empty($each->level==3)): ?>
-										<?php if(!empty($item -> in_departants)): ?>
+										<?php if(!empty($item -> in_departments)): ?>
 											<?php foreach ($item -> in_departments as $each_department) : ?>
 												<label class="u-check g-pl-0">
 													<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="department[]" type="checkbox" value="<?= $each->id ?>" <?= isset($each_department) && $each_department == $each->id ? 'checked': '' ?> >
