@@ -46,24 +46,24 @@
 				<td class="min100" colspan="12" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
 			</tr>
 			<tr>
-				<td rowspan="4">
+				<td >
 					<!-- <div class="out" style="font-size:27px">
 						<b>SW</b> <em>OT</em>
 					</div> -->
 					123
 				</td>
-				<td rowspan="4">123</td>
-				<td rowspan="4">123</td>
+				<td >123</td>
+				<td >123</td>
 			</tr>
 			<tr>
-				<td rowspan="4">123</td>
-				<td rowspan="4">123</td>
-				<td rowspan="4">123</td>
+				<td >123</td>
+				<td >123</td>
+				<td >123</td>
 			</tr>
 			<tr>
-				<td rowspan="4">123</td>
-				<td rowspan="4">123</td>
-				<td rowspan="4">123</td>
+				<td >123</td>
+				<td >123</td>
+				<td >123</td>
 			</tr>
 		</tbody>
 	</table>
