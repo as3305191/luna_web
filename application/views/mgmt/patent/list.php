@@ -117,7 +117,7 @@ thead tr th {
 							<!-- widget content -->
 							<div class="widget-body no-padding">
 								<div >
-									專利號國家說明：<span style="color:red;">TW:台灣 US:美國 JP:日本 CN:大陸 CA:加拿大 EP:歐洲 AU:澳洲</span>
+									專利申請國家代號說明：<span style="color:red;">TW:台灣 US:美國 JP:日本 CN:大陸 CA:加拿大 EP:歐洲 AU:澳洲</span>
 								</div>
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
