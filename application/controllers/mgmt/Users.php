@@ -68,7 +68,7 @@ class Users extends MY_Mgmt_Controller {
 				$item->department_id = 0;
 			}
 			if(!empty($item->in_department)){
-				$item->in_departments = explode(",", str_replace('#', ',', trim(" $item->in_department", "#")));
+				$item->in_departments = explode(",", str_replace('#', ',', trim($item->in_department, "#")));
 
 			} else{
 				$item->department_id = 0;
