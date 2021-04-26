@@ -26,6 +26,8 @@ class Swot extends MY_Mgmt_Controller {
 
 	public function get_data() {
 		$res = array();
+		$s_data = $this -> setup_user_data(array());
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data = $this -> get_posts(array(
 			'length',
 			'start',
@@ -34,8 +36,6 @@ class Swot extends MY_Mgmt_Controller {
 			'order',
 		));
 	
-		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
 
 		$res['items'] = $items;
