@@ -253,13 +253,11 @@
 						}
 					});
 				}
-				
 			},
 			failure:function(){
 				alert('faialure');
 			}
 		});
-
 }
 load_swot_style();
 </script>
