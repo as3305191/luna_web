@@ -126,16 +126,8 @@
 					</div>
 				</div>
 			</fieldset>
-			<fieldset id='first'>
-				<div class="form-group">
-					<label class="col-md-3 control-label">首要目標</label>
-					<div class="col-md-9">
-						<textarea required class="form-control" id="m_first" name="m_first"><?= isset($item) ? $item -> m_first : '' ?></textarea>
-					</div>
-				</div>
-			</fieldset>
+		
 		</div>
-	
 		</form>
 
 		</div>
@@ -173,7 +165,6 @@
 			CKEDITOR.instances['m_swot_w_o'].destroy(true);
 			CKEDITOR.instances['m_swot_s_t'].destroy(true);
 			CKEDITOR.instances['m_swot_s'].destroy(true);
-			CKEDITOR.instances['m_first'].destroy(true);
 
 		} catch (e) {
 		}
@@ -185,8 +176,6 @@
 		CKEDITOR.replace("m_swot_w_o", config);
 		CKEDITOR.replace("m_swot_s_t", config);
 		CKEDITOR.replace("m_swot_w_t", config);
-		CKEDITOR.replace("m_first", config);
-		
 
 		CKEDITOR.instances['m_swot_s'].on('change', function() { CKEDITOR.instances['m_swot_s'].updateElement() });
 		CKEDITOR.instances['m_swot_w'].on('change', function() { CKEDITOR.instances['m_swot_w'].updateElement() });
@@ -196,7 +185,6 @@
 		CKEDITOR.instances['m_swot_w_o'].on('change', function() { CKEDITOR.instances['m_swot_w_o'].updateElement() });
 		CKEDITOR.instances['m_swot_s_t'].on('change', function() { CKEDITOR.instances['m_swot_s_t'].updateElement() });
 		CKEDITOR.instances['m_swot_w_t'].on('change', function() { CKEDITOR.instances['m_swot_w_t'].updateElement() });
-		CKEDITOR.instances['m_first'].on('change', function() { CKEDITOR.instances['m_first'].updateElement() });
 
 	});
 
@@ -218,7 +206,6 @@
 				m_swot_w_o: CKEDITOR.instances.m_swot_w_o.getData(),
 				m_swot_s_t: CKEDITOR.instances.m_swot_s_t.getData(),
 				m_swot_w_t: CKEDITOR.instances.m_swot_w_t.getData(),
-				m_first: CKEDITOR.instances.m_first.getData(),
 			},
 			success : function(data) {
 				if(data.error_msg) {
