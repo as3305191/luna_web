@@ -41,14 +41,16 @@
     <hr/>
 		<div >
 			<?php if(empty($item -> id) || $item -> id==0): ?>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">選擇部門</label>
-						<div class="col-md-6">
-							<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
+				<?php if(!empty($login_user_role_array)&& count($login_user_role_array)>1): ?>
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3 control-label">選擇部門</label>
+							<div class="col-md-6">
+								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
+							</div>
 						</div>
-					</div>
-				</fieldset>
+					</fieldset>
+				<?php endif?>
 			<?php endif?>
 			<fieldset>
 				<div class="form-group">
