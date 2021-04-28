@@ -55,8 +55,8 @@ function line(header,line_width,line_color,line_number){
 	var ypos = table.clientHeight;
 	var canvas = document.getElementById('line');
 	if(canvas.getContext){
-		var ctx = canvas.getContext('4d');
-		ctx.clearRect(0,0,xpos,ypos); 
+		var ctx = canvas.getContext('2d');
+		// ctx.clearRect(0,0,xpos,ypos); 
 		ctx.fill();
 		ctx.lineWidth = line_width;
 		ctx.strokeStyle = line_color;
