@@ -86,6 +86,7 @@ class Swot extends MY_Mgmt_Controller {
 		$m_swot_w_t = $this -> get_post('m_swot_w_t');
 		$m_first = $this -> get_post('m_first');
 		$swot_style = $this -> get_post('swot_style');
+		$department = $this -> get_post('department');
 
 		$data['title'] = $title;
 		$data['swot_style_id'] = $swot_style;
@@ -103,7 +104,7 @@ class Swot extends MY_Mgmt_Controller {
 			// insert
 			$role_array= explode(",", str_replace('#', ',', trim($login_user->in_department, "#")));
 
-			$data['role_id'] = $login_user->role_id;
+			$data['role_id'] = $department;
 			$this -> dao -> insert($data);
 		} else {
 			// update

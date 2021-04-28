@@ -222,6 +222,7 @@
 				id: $('#item_id').val(),
 				title: $('#title').val(),
 				swot_style: $('#swot_style').val(),
+				department: $('#department').val(),
 				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
 				m_swot_w: CKEDITOR.instances.m_swot_w.getData(),
 				m_swot_o: CKEDITOR.instances.m_swot_o.getData(),
