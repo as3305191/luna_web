@@ -39,10 +39,10 @@
 		</thead>
 		<tbody class="">
 			<tr>
-				<td class="min100" colspan="12" style="text-align:center;vertical-align:middle;">寬仕工業股份有限公司</td>
+				<td class="min100"  style="text-align:center;vertical-align:middle;">寬仕工業股份有限公司</td>
 			</tr>
 			<tr>
-				<td class="min100" colspan="12" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
+				<td class="min100"  style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
 			</tr>
 			<tr>
 				<td id="header"  align='left'>
@@ -84,7 +84,7 @@ function line(header,line_width,line_color,line_number){//该方法不用动
 		switch(line_number){
 			case 1:
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos/4);
+				ctx.lineTo(xpos,ypos);
 				break;
 			case 2:
 				ctx.moveTo(0,0);
