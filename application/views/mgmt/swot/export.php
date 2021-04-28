@@ -44,9 +44,9 @@
 			</tr>
 			<tr>
 				<td id="header"  align='left'>
-					<div style="font-size:27px" >
+					<!-- <div style="font-size:27px" >
 						<span>SW</span> <span>OT</span>
-					</div>
+					</div> -->
 				</td>
 				<td >123</td>
 				<td >123</td>
