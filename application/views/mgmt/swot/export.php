@@ -39,14 +39,16 @@
 		</thead>
 		<tbody class="">
 			<tr>
-				<td class="min100"  style="text-align:center;vertical-align:middle;">寬仕工業股份有限公司</td>
+				<td class="min100" colspan="12" style="text-align:center;vertical-align:middle;">寬仕工業股份有限公司</td>
 			</tr>
 			<tr>
-				<td class="min100"  style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
+				<td class="min100" colspan="12" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
 			</tr>
 			<tr>
 				<td id="header"  align='left'>
-				
+					<!-- <div style="font-size:27px" >
+						<span>SW</span> <span>OT</span>
+					</div> -->
 				</td>
 				<td >123</td>
 				<td >123</td>
@@ -67,7 +69,7 @@
 <!-- end widget -->
 
 <script>
-function line(header,line_width,line_color,line_number){//该方法不用动
+function line(header,line_width,line_color,line_number=1){//该方法不用动
 	var table = document.getElementById(header); 
 	var xpos = table.clientWidth;
 	var ypos = table.clientHeight;
@@ -86,17 +88,17 @@ function line(header,line_width,line_color,line_number){//该方法不用动
 				break;
 			case 2:
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
+				ctx.lineTo(xpos/2,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
+				ctx.lineTo(xpos,ypos/2);
 				break;
 			case 3:
 				ctx.moveTo(0,0);
 				ctx.lineTo(xpos,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
+				ctx.lineTo(xpos/2,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
+				ctx.lineTo(xpos,ypos/2);
 				break;
 			default:
 			return 0;	
