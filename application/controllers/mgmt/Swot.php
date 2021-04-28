@@ -136,6 +136,12 @@ class Swot extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function delete($id) {
+		$res['success'] = TRUE;
+		$this -> dao -> delete($id);
+		$this -> to_json($res);
+	}
+	
 	public function export_all($id) {
 		$data = array();
 		$u_data = array();
