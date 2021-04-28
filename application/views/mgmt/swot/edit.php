@@ -70,7 +70,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label" style="color:red;">目前正在使用人員</label>
 						<div class="col-md-6">
-							<span type="text" value=" <?= isset($user_name) ? $user_name : '' ?>" ></span>
+							<span type="text" ><?= isset($user_name) ? $user_name : '' ?></span>
 						</div>
 					</div>
 				</fieldset>
