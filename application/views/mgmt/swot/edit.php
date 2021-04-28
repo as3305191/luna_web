@@ -218,8 +218,9 @@
 				$('#edit_div textarea').attr('readonly', true);
 				$('#edit_div button').attr('readonly', true);
 				
+			} else{
+				currentApp.isUse($('#item_id').val());
 			}
-			currentApp.isUse($('#item_id').val());
 		}
 	});
 
