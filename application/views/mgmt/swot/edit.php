@@ -49,7 +49,7 @@
 								<select name="department" id="department" class="form-control" >
 									<?php foreach ($department_list as $each) : ?>
 										<?php foreach ($login_user_role_array as $each_role) : ?>
-											<?php if($each==$each_role): ?>
+											<?php if($each->id==$each_role): ?>
 												<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
 											<?php endif?>
 										<?php endforeach ?>	
