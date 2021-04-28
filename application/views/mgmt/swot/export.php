@@ -86,6 +86,20 @@ function line(header,line_width,line_color,line_number){
 				ctx.moveTo(0,0);
 				ctx.lineTo(xpos,ypos);
 				break;
+			case 2:
+				ctx.moveTo(0,0);
+				ctx.lineTo(xpos/2,ypos);
+				ctx.moveTo(0,0);
+				ctx.lineTo(xpos,ypos/2);
+				break;
+			case 3:
+				ctx.moveTo(0,0);
+				ctx.lineTo(xpos,ypos);
+				ctx.moveTo(0,0);
+				ctx.lineTo(xpos/2,ypos);
+				ctx.moveTo(0,0);
+				ctx.lineTo(xpos,ypos/2);
+				break;
 			default:
 			return 0;	
 		}
@@ -97,11 +111,11 @@ function line(header,line_width,line_color,line_number){
 	}
 }
 window.onload = function (){ 
-	line('header',1,'black',1);
+	line('header',2,'black',1);
 	
 }
 window.onresize = function(){
-	line('header',1,'black',1);
+	line('header',2,'black',1);
 
 }
 </script>
