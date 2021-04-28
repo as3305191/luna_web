@@ -46,18 +46,18 @@
 			</tr>
 			<tr>
 				<td id="header" colspan="1" align='left'></td>
-				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_s : '' ?></span></td>
-				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_w : '' ?></span></td>
+				<td ><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_s : '' ?></span></td>
+				<td ><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_w : '' ?></span></td>
 			</tr>
 			<tr>
-				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_o : '' ?></span></td>
-				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_s_o : '' ?></span></td>
-				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_w_o : '' ?></span></td>
+				<td ><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_o : '' ?></span></td>
+				<td ><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_s_o : '' ?></span></td>
+				<td ><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_w_o : '' ?></span></td>
 			</tr>
 			<tr>
-				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_t : '' ?></span></td>
-				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_s_t : '' ?></span></td>
-				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_w_t : '' ?></span></td>
+				<td ><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_t : '' ?></span></td>
+				<td ><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_s_t : '' ?></span></td>
+				<td ><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_w_t : '' ?></span></td>
 			</tr>
 		</tbody>
 	</table>
