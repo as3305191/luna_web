@@ -98,8 +98,21 @@ var SwotAppClass = (function(app) {
 			});
 		};
 
-		app.backTo = function(id) {
+		app.back= function(id) {
 			if(id) {
+				$.ajax({
+					url : baseUrl + app.basePath  + 'not_use/' + id,
+					success: function() {
+						app.backTo();
+					},
+					failure: function() {
+					}
+				});
+			}
+		};
+
+		app.backTo = function(target) {
+			if(!target) {
 				$('#edit-modal-body').empty();
 	
 				$('.tab-pane').removeClass('active');
@@ -109,16 +122,9 @@ var SwotAppClass = (function(app) {
 				$(window).trigger('resize');
 				// window.history.back();
 				// history.go(-1);
-				$.ajax({
-					url : baseUrl + app.basePath  + 'not_use/' + id,
-					success: function() {
-					},
-					failure: function() {
-					}
-				});
+	
 			}
 		};
-
 		return app;
 	};
 
