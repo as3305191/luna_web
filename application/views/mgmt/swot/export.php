@@ -39,29 +39,25 @@
 		</thead>
 		<tbody class="">
 			<tr>
-				<td class="min100" colspan="3" style="text-align:center;vertical-align:middle;">寬仕工業股份有限公司</td>
+				<td class="min100"  style="text-align:center;vertical-align:middle;">寬仕工業股份有限公司</td>
 			</tr>
 			<tr>
-				<td class="min100" colspan="3" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
+				<td class="min100" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
 			</tr>
 			<tr>
-				<td id="header" colspan="1" align='left'>
-					<!-- <div style="font-size:27px" >
-						<span>SW</span> <span>OT</span>
-					</div> -->
-				</td>
-				<td colspan="1"><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_s : '' ?></span></td>
-				<td colspan="1"><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_w : '' ?></span></td>
+				<td id="header" colspan="1" align='left'></td>
+				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_s : '' ?></span></td>
+				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_w : '' ?></span></td>
 			</tr>
 			<tr>
-				<td colspan="1"><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_o : '' ?></span></td>
-				<td colspan="1"><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_s_o : '' ?></span></td>
-				<td colspan="1"><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_w_o : '' ?></span></td>
+				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_o : '' ?></span></td>
+				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_s_o : '' ?></span></td>
+				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_w_o : '' ?></span></td>
 			</tr>
 			<tr>
-				<td colspan="1"><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_t : '' ?></span></td>
-				<td colspan="1"><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_s_t : '' ?></span></td>
-				<td colspan="1"><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_w_t : '' ?></span></td>
+				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_t : '' ?></span></td>
+				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_s_t : '' ?></span></td>
+				<td ><span style="word-wrap:break-word;white-space:pre-wrap;" ><?= isset($item) ? $item -> m_swot_w_t : '' ?></span></td>
 			</tr>
 		</tbody>
 	</table>

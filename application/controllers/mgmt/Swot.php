@@ -203,8 +203,8 @@ class Swot extends MY_Mgmt_Controller {
 	public function export_all($id) {
 		$data = array();
 		$u_data = array();
-	
-		$data['id'] = $id;
+		$u_data = $this -> setup_user_data($u_data);
+		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
@@ -217,10 +217,7 @@ class Swot extends MY_Mgmt_Controller {
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
 			$data['item'] = $item;
-
 		}
-		$u_data = $this -> setup_user_data($u_data);
-		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		// $this -> to_json($data);
 		$this->load->view('mgmt/swot/export', $data);
 	}
