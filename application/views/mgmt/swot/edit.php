@@ -65,7 +65,7 @@
 			<?php else: ?>
 				<input type="hidden" id="department" value=" <?= isset($item) ? $item -> role_id : '' ?>" />
 			<?php endif?>
-			<?php if($item -> id && $item -> is_use==1 ): ?>
+			<?php if(!empty($item) && $item -> id && $item -> is_use==1 ): ?>
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label" style="color:red;">目前正在使用人員</label>
