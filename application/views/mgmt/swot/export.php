@@ -108,6 +108,7 @@ function line(header,line_width,line_color,line_number){//该方法不用动
 		//document.getElementById(header).style.background-attachment= 'fixed';
 	}
 }
+<canvas id="line" style="display:none;"></canvas>
 window.onload = function (){ 
 	line('header',1,'black',1);
 	
