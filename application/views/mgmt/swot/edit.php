@@ -60,7 +60,7 @@
 						</div>
 					</fieldset>
 				<?php else: ?>
-					<input type="hidden" value="0" />
+					<input type="hidden" id="department" value="0" />
 				<?php endif?>
 			<?php endif?>
 			<fieldset>
