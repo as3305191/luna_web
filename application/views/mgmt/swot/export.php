@@ -47,7 +47,7 @@
 			</tr>
 			<tr>
 				<td >
-					<div class="out" style="font-size:27px">
+					<div style="font-size:27px">
 						<b>SW</b> <em>OT</em>
 					</div>
 				</td>
