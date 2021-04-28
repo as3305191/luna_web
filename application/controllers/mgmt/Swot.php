@@ -57,15 +57,17 @@ class Swot extends MY_Mgmt_Controller {
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
-			
+	
 			$data['item'] = $item;
+			$is_use_user = $this -> users_dao -> find_by_id($item->is_use_user_id);
+			$data['user_name'] = $is_use_user->user_name;
 		}
 
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['login_user_role_array'] =  explode(",", str_replace('#', ',', trim($data['login_user']->in_department, "#")));
 		$data['department_list'] = $this -> users_dao -> find_all_department();
-
+		
 		// $this -> to_json($data);
 		$this->load->view('mgmt/swot/edit', $data);
 	}
@@ -172,6 +174,7 @@ class Swot extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
 		$item= $this -> dao -> find_by_id($id);	
 		$res['is_use'] = $item->is_use;
+		
 		$this -> to_json($res);
 	}
 

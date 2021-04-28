@@ -216,8 +216,8 @@
 				$('#edit_div input').attr('readonly', true);
 				$('#edit_div select').attr('readonly', true);
 				$('#edit_div textarea').attr('readonly', true);
-				$('#edit_div button').attr('readonly', true);
-				
+				// $('#edit_div button').attr('readonly', true);
+				alert('目前檔案使用人員：'<?= isset($user_name) ? $user_name : ''?>);
 			} else{
 				currentApp.isUse($('#item_id').val());
 			}
