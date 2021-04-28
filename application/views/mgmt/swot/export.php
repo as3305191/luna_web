@@ -56,14 +56,14 @@ function line(header,line_width,line_color,line_number){
 	var canvas = document.getElementById('line');
 	if(canvas.getContext){
 		var ctx = canvas.getContext('2d');
-		// ctx.clearRect(0,0,xpos,ypos); 
-		// ctx.fill();
+		ctx.clearRect(0,0,xpos,ypos); 
+		ctx.fill();
 		ctx.lineWidth = line_width;
 		ctx.strokeStyle = line_color;
-		// ctx.beginPath();
+		ctx.beginPath();
 		switch(line_number){
 			case 1:
-				ctx.moveTo(0,ypos);
+				ctx.moveTo(0,0);
 				ctx.lineTo(xpos,ypos);
 				break;
 			default:
