@@ -50,7 +50,7 @@
 									<?php foreach ($department_list as $each) : ?>
 										<?php foreach ($login_user_role_array as $each_role) : ?>
 											<?php if($each->id==$each_role): ?>
-												<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
+												<option value="<?= $each -> id?>" <?= isset($item) && $item -> role_id == $each -> id ? 'selected' : '' ?>><?=  $each -> name ?></option>
 											<?php endif?>
 										<?php endforeach ?>	
 									<?php endforeach ?>
@@ -62,9 +62,7 @@
 					<input type="hidden" id="department" value="<?= $login_user_role_array[0] ?>" />
 				<?php endif?>
 			<?php else: ?>
-
 				<input type="hidden" id="department" value="0" />
-
 			<?php endif?>
 			<fieldset>
 				<div class="form-group">
