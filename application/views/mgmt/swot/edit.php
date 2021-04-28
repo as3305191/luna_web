@@ -212,11 +212,10 @@
 		CKEDITOR.instances['m_swot_w_t'].on('change', function() { CKEDITOR.instances['m_swot_w_t'].updateElement() });
 
 		if(item_id.val()>0){
-			if($('#is_use').val()==0){
-				// $('#edit_div input').attr('readonly');
-				// $('#edit_div select').attr('readonly');
-				// $('#edit_div textarea').attr('readonly');
-
+			if($('#is_use').val()==1){
+				$('#edit_div input').attr('readonly');
+				$('#edit_div select').attr('readonly');
+				$('#edit_div textarea').attr('readonly');
 			}
 		}
 
