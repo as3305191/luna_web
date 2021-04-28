@@ -80,7 +80,7 @@ function line(header,line_width,line_color,line_number){
 		switch(line_number){
 			case 1:
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos/2,ypos);
+				ctx.lineTo(xpos/2,ypos*2);
 				break;
 			default:
 			return 0;	
