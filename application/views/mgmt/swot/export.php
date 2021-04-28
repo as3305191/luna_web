@@ -31,6 +31,8 @@
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="" style="padding:50px 50px 50px 50px;">
+<canvas id="line" style="display:none;"></canvas>
+
 	<table  class="layui-table" width="70%">
 		<thead>
 		
@@ -42,7 +44,6 @@
 			<tr>
 				<td class="min100" colspan="12" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
 			</tr>
-			<canvas id="line" style="display:none;"></canvas>
 			<tr>
 				<td id="header"  align='left'>
 					<!-- <div style="font-size:27px" >
