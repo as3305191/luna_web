@@ -39,29 +39,29 @@
 		</thead>
 		<tbody class="">
 			<tr>
-				<td class="min100" colspan="12" style="text-align:center;vertical-align:middle;">寬仕工業股份有限公司</td>
+				<td class="min100" colspan="3" style="text-align:center;vertical-align:middle;">寬仕工業股份有限公司</td>
 			</tr>
 			<tr>
-				<td class="min100" colspan="12" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
+				<td class="min100" colspan="3" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
 			</tr>
 			<tr>
-				<td id="header"  align='left'>
+				<td id="header" colspan="1" align='left'>
 					<!-- <div style="font-size:27px" >
 						<span>SW</span> <span>OT</span>
 					</div> -->
 				</td>
-				<td >123</td>
-				<td >123</td>
+				<td colspan="1">123</td>
+				<td colspan="1">123</td>
 			</tr>
 			<tr>
-				<td >123</td>
-				<td >123</td>
-				<td >123</td>
+				<td colspan="1">123</td>
+				<td colspan="1">123</td>
+				<td colspan="1">123</td>
 			</tr>
 			<tr>
-				<td >123</td>
-				<td >123</td>
-				<td >123</td>
+				<td colspan="1">123</td>
+				<td colspan="1">123</td>
+				<td colspan="1">123</td>
 			</tr>
 		</tbody>
 	</table>
