@@ -46,9 +46,7 @@
 			</tr>
 			<tr>
 				<td id="header"  align='left'>
-					<!-- <div style="font-size:27px" >
-						<span>SW</span> <span>OT</span>
-					</div> -->
+				
 				</td>
 				<td >123</td>
 				<td >123</td>
@@ -88,17 +86,17 @@ function line(header,line_width,line_color,line_number){//该方法不用动
 				break;
 			case 2:
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos/2,ypos);
+				ctx.lineTo(xpos,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos/2);
+				ctx.lineTo(xpos,ypos);
 				break;
 			case 3:
 				ctx.moveTo(0,0);
 				ctx.lineTo(xpos,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos/2,ypos);
+				ctx.lineTo(xpos,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos/2);
+				ctx.lineTo(xpos,ypos);
 				break;
 			default:
 			return 0;	
