@@ -5,7 +5,7 @@
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
 	<header>
 		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo()" class="btn btn-default">
+			<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo(<?= isset($item) ? $item -> id : '0' ?>)" class="btn btn-default">
 				<i class="fa fa-arrow-circle-left"></i>返回
 			</a>
 		</div>
@@ -237,7 +237,7 @@
 					layer.msg(data.error_msg);
 				} else {
 					currentApp.mDtTable.ajax.reload(null, false);
-					currentApp.backTo();
+					currentApp.backTo(<?= isset($item) ? $item -> id : '0' ?>);
 				}
 			}
 		});

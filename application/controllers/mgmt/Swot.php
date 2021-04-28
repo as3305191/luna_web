@@ -84,7 +84,6 @@ class Swot extends MY_Mgmt_Controller {
 		$m_swot_w_o = $this -> get_post('m_swot_w_o');
 		$m_swot_s_t = $this -> get_post('m_swot_s_t');
 		$m_swot_w_t = $this -> get_post('m_swot_w_t');
-		$m_first = $this -> get_post('m_first');
 		$swot_style = $this -> get_post('swot_style');
 		$department = $this -> get_post('department');
 
@@ -98,7 +97,7 @@ class Swot extends MY_Mgmt_Controller {
 		$data['m_swot_w_o'] = $m_swot_w_o;
 		$data['m_swot_s_t'] = $m_swot_s_t;
 		$data['m_swot_w_t'] = $m_swot_w_t;
-		$data['m_first'] = $m_first;
+
 
 		if(empty($id)) {
 			// insert
@@ -142,7 +141,21 @@ class Swot extends MY_Mgmt_Controller {
 		$this -> dao -> delete($id);
 		$this -> to_json($res);
 	}
-	
+
+	public function is_use($id) {
+		$res['success'] = TRUE;
+		$data['is_use'] = '1';
+		$this -> dao -> update($data, $id);	
+		$this -> to_json($res);
+	}
+
+	public function not_use($id) {
+		$res['success'] = TRUE;
+		$data['is_use'] = '0';
+		$this -> dao -> update($data, $id);	
+		$this -> to_json($res);
+	}
+
 	public function export_all($id) {
 		$data = array();
 		$u_data = array();
