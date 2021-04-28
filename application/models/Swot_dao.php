@@ -82,5 +82,11 @@ class Swot_dao extends MY_Model {
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 
+	function find_all_by_me($user_id){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> where('_m.is_use_user_id',$user_id);
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
 }
 ?>

@@ -143,6 +143,22 @@ class Swot extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function do_remove(){
+		$res = array();
+		$s_data = $this -> setup_user_data(array());
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$all_files_by_me = $this -> dao -> find_all_by_me($login_user->id);
+		if(count($all_files_by_me)>0){
+			foreach($all_files_by_me as $each){
+				$data['is_use_user_id'] = '0';
+				$data['is_use'] = '0';
+				$this -> dao -> update($data, $each->id);	
+			}
+			$res['success'] = TRUE;
+		}
+		$this -> to_json($res);
+	}
+
 	public function delete($id) {
 		$res['success'] = TRUE;
 		$this -> dao -> delete($id);

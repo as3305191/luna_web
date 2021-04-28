@@ -30,13 +30,12 @@ thead tr th {
 									</button>
 								</div>
 							</div>
-							<div>
-							
-								<!-- <div class="widget-toolbar pull-left">
-									<label>申請人</label>
+							<div class="widget-toolbar pull-left">
+								<div class="btn-group">
+									<button onclick="do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
+										<i class="fa fa-refresh"></i>一鍵清除自己使用中檔案
+									</button>
 								</div>
-							 -->
-				
 							</div>
                            
 						</header>
@@ -130,5 +129,21 @@ thead tr th {
 			
 		});
 	});
-
+	function do_remove() {
+		var url = baseUrl + 'mgmt/swot/do_remove'; 
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+			
+			},
+			success : function(d) {
+				if(d.success) {
+					alert('已成功清除');
+				} else {
+				}
+			}
+		});
+		
+	}
 </script>
