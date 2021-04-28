@@ -69,14 +69,14 @@
 <!-- end widget -->
 
 <script>
-function line(header,line_width,line_color,line_number=1){//该方法不用动
+function line(header,line_width,line_color,line_number){
 	var table = document.getElementById(header); 
 	var xpos = table.clientWidth;
 	var ypos = table.clientHeight;
 	var canvas = document.getElementById('line');
 	if(canvas.getContext){
 		var ctx = canvas.getContext('2d');
-		ctx.clearRect(0,0,xpos,ypos); //清空画布，多个表格时使用
+		ctx.clearRect(0,0,xpos,ypos); 
 		ctx.fill();
 		ctx.lineWidth = line_width;
 		ctx.strokeStyle = line_color;
@@ -85,20 +85,6 @@ function line(header,line_width,line_color,line_number=1){//该方法不用动
 			case 1:
 				ctx.moveTo(0,0);
 				ctx.lineTo(xpos,ypos);
-				break;
-			case 2:
-				ctx.moveTo(0,0);
-				ctx.lineTo(xpos/2,ypos);
-				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos/2);
-				break;
-			case 3:
-				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
-				ctx.moveTo(0,0);
-				ctx.lineTo(xpos/2,ypos);
-				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos/2);
 				break;
 			default:
 			return 0;	
