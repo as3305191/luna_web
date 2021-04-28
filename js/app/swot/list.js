@@ -33,45 +33,54 @@ var SwotAppClass = (function(app) {
 		}
 
 		app.fnRowCallback = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-			// edit click
-			if(aData.is_use==0){
-				if(!app.disableRowClick) {
-					var _rtd = $(nRow).find('td');
-					if(!app.enableFirstClickable) {
-						_rtd = _rtd.not(':first')
-					}
-					_rtd.addClass('pointer').on('click', function(){
-						app.doEdit(aData.id);
-						// remove all highlight first
-						$(this).parent().parent().find('tr').removeClass('active');
-						app._lastPk = aData.id;
-						app._tr = $(this).parent();
-						setTimeout(function(){
-							app._tr.addClass('active');
-						}, 100);
-					});
-				}
-				if(app._lastPk && aData.id && app._lastPk == aData.id) {
-					$(nRow).addClass('active');
-				}
-				// delete click
-				$(nRow).find("a").eq(0).click(function() {
-					app.setDelId(aData.id);
-	
-					$('#modal_do_delete')
-						.prop('onclick',null)
-						.off('click')
-						.on('click', function(){
-							app.doDelItem();
+			// edit click	
+			$.ajax({
+				url : baseUrl + app.basePath  + 'find_is_use/' + aData.id,
+				success: function(d) {
+					if(d.is_use==0){
+						if(!app.disableRowClick) {
+							var _rtd = $(nRow).find('td');
+							if(!app.enableFirstClickable) {
+								_rtd = _rtd.not(':first')
+							}
+							_rtd.addClass('pointer').on('click', function(){
+								app.doEdit(aData.id);
+								// remove all highlight first
+								$(this).parent().parent().find('tr').removeClass('active');
+								app._lastPk = aData.id;
+								app._tr = $(this).parent();
+								setTimeout(function(){
+									app._tr.addClass('active');
+								}, 100);
+							});
+						}
+						if(app._lastPk && aData.id && app._lastPk == aData.id) {
+							$(nRow).addClass('active');
+						}
+						// delete click
+						$(nRow).find("a").eq(0).click(function() {
+							app.setDelId(aData.id);
+			
+							$('#modal_do_delete')
+								.prop('onclick',null)
+								.off('click')
+								.on('click', function(){
+									app.doDelItem();
+								});
 						});
-				});
-	
-				if(app.fnRowCallbackExt) {
-					app.fnRowCallbackExt(nRow, aData, iDisplayIndex, iDisplayIndexFull, this);
+			
+						if(app.fnRowCallbackExt) {
+							app.fnRowCallbackExt(nRow, aData, iDisplayIndex, iDisplayIndexFull, this);
+						}
+					}else{
+						app.disableRowClick = true;
+					}
+				},
+				failure: function() {
 				}
-			} else{
-					app.disableRowClick = true;
-			}
+			});
+
+		
 			
 		};
 

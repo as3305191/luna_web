@@ -156,6 +156,13 @@ class Swot extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function find_is_use($id) {
+		$res['success'] = TRUE;
+		$item= $this -> dao -> find_by_id($id);	
+		$res['is_use'] = $item->is_use;
+		$this -> to_json($res);
+	}
+
 	public function export_all($id) {
 		$data = array();
 		$u_data = array();
