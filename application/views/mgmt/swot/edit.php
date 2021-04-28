@@ -211,7 +211,7 @@
 		CKEDITOR.instances['m_swot_s_t'].on('change', function() { CKEDITOR.instances['m_swot_s_t'].updateElement() });
 		CKEDITOR.instances['m_swot_w_t'].on('change', function() { CKEDITOR.instances['m_swot_w_t'].updateElement() });
 
-		if($('#is_use').val()>0){
+		if($('#item_id').val()>0){
 			if($('#is_use').val()==1){
 				$('#edit_div input').attr('readonly', true);
 				$('#edit_div select').attr('readonly', true);
