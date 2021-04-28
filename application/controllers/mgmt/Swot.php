@@ -33,7 +33,7 @@ class Swot extends MY_Mgmt_Controller {
 			'search',
 			'order',
 		));
-		$data['login_user_array'] = explode(",", str_replace('#', ',', trim($login_user->in_department, "#")));
+		$data['login_user_array'] = str_replace('#', ',', trim($login_user->in_department, "#"));
 		$items = $this -> dao -> query_ajax($data);
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
