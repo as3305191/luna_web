@@ -216,6 +216,7 @@ class Swot extends MY_Mgmt_Controller {
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
+			$data['item'] = $item;
 
 		}
 		$u_data = $this -> setup_user_data($u_data);
