@@ -46,7 +46,7 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label">選擇部門</label>
 							<div class="col-md-6">
-								<select name="swot_style" id="swot_style" class="form-control" >
+								<select name="department" id="department" class="form-control" >
 									<?php foreach ($department_list as $each) : ?>
 										<?php foreach ($login_user_role_array as $each_role) : ?>
 										<?php endforeach ?>	
@@ -59,6 +59,8 @@
 							</div>
 						</div>
 					</fieldset>
+				<?php else: ?>
+					<input type="hidden" value="0" />
 				<?php endif?>
 			<?php endif?>
 			<fieldset>
