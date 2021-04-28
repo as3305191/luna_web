@@ -88,17 +88,17 @@ function line(header,line_width,line_color,line_number){//该方法不用动
 				break;
 			case 2:
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos/2,ypos);
+				ctx.lineTo(xpos,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos/2);
+				ctx.lineTo(xpos,ypos);
 				break;
 			case 3:
 				ctx.moveTo(0,0);
 				ctx.lineTo(xpos,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos/2,ypos);
+				ctx.lineTo(xpos,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos/2);
+				ctx.lineTo(xpos,ypos);
 				break;
 			default:
 			return 0;	
@@ -111,11 +111,11 @@ function line(header,line_width,line_color,line_number){//该方法不用动
 	}
 }
 window.onload = function (){ 
-	line('header',0.5,'black',0.5);
+	line('header',1,'black',1);
 	
 }
 window.onresize = function(){
-	line('header',0.5,'black',0.5);
+	line('header',1,'black',1);
 
 }
 </script>
