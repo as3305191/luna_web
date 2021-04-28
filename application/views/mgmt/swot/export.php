@@ -111,11 +111,11 @@ function line(header,line_width,line_color,line_number){//该方法不用动
 	}
 }
 window.onload = function (){ 
-	line('header',1,'black',1);
+	line('header',2,'black',2);
 	
 }
 window.onresize = function(){
-	line('header',1,'black',1);
+	line('header',2,'black',2);
 
 }
 </script>
