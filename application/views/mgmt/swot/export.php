@@ -50,18 +50,18 @@
 						<span>SW</span> <span>OT</span>
 					</div> -->
 				</td>
-				<td colspan="1">123</td>
-				<td colspan="1">123</td>
+				<td colspan="1"><?= isset($item) ? $item -> m_swot_s : '' ?></td>
+				<td colspan="1"><?= isset($item) ? $item -> m_swot_w : '' ?></td>
 			</tr>
 			<tr>
-				<td colspan="1">123</td>
-				<td colspan="1">123</td>
-				<td colspan="1">123</td>
+				<td colspan="1"><?= isset($item) ? $item -> m_swot_o : '' ?></td>
+				<td colspan="1"><?= isset($item) ? $item -> m_swot_s_o : '' ?></td>
+				<td colspan="1"><?= isset($item) ? $item -> m_swot_w_o : '' ?></td>
 			</tr>
 			<tr>
-				<td colspan="1">123</td>
-				<td colspan="1">123</td>
-				<td colspan="1">123</td>
+				<td colspan="1"><?= isset($item) ? $item -> m_swot_t : '' ?></td>
+				<td colspan="1"><?= isset($item) ? $item -> m_swot_s_t : '' ?></td>
+				<td colspan="1"><?= isset($item) ? $item -> m_swot_w_t : '' ?></td>
 			</tr>
 		</tbody>
 	</table>
