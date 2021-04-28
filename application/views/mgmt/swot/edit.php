@@ -53,16 +53,18 @@
 												<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
 											<?php endif?>
 										<?php endforeach ?>	
-									
-
 									<?php endforeach ?>
 								</select>
 							</div>
 						</div>
 					</fieldset>
 				<?php else: ?>
-					<input type="hidden" id="department" value="0" />
+					<input type="hidden" id="department" value="<?= $login_user_role_array[0] ?>" />
 				<?php endif?>
+			<?php else: ?>
+
+				<input type="hidden" id="department" value="0" />
+
 			<?php endif?>
 			<fieldset>
 				<div class="form-group">
