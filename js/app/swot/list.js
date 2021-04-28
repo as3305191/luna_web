@@ -1,5 +1,6 @@
 var SwotAppClass = (function(app) {
 	app.basePath = "mgmt/swot/";
+	app.disableRowClick = true;
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
@@ -69,7 +70,7 @@ var SwotAppClass = (function(app) {
 					app.fnRowCallbackExt(nRow, aData, iDisplayIndex, iDisplayIndexFull, this);
 				}
 			} else{
-				app.disableRowClick = true;
+				
 			}
 			
 		};
