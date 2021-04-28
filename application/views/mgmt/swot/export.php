@@ -1,24 +1,9 @@
 
 <?php $this->load->view('layout/head'); ?>
 <style>
-.file-drag-handle {
-	display: none;
-}
-.btn_1 {
-	background-color: #FFD22F !important;
-	color: #F57316 !important;
-}
-.is_ok {
-	background-color:lightgreen;
-}
-.not_ok {
-	background-color:red;
-}
-.out {
-	border-top: 5em #199fff solid; 
-	border-left: 200px #ff8838 solid; 
-	position: relative;
-	color:white;
+#header { 
+	width: 300px;
+	height: 300px;
 }
 @media print  
 {
@@ -80,7 +65,7 @@ function line(header,line_width,line_color,line_number){
 		switch(line_number){
 			case 1:
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos/2,ypos/2);
+				ctx.lineTo(xpos+xpos/2,ypos+ypos/2);
 				break;
 			default:
 			return 0;	
