@@ -71,7 +71,7 @@ class Swot_dao extends MY_Model {
 		}
 		if(!empty($data['login_user'])){
 			
-			$this -> db -> where("_m.role_id",$data['login_user']->id);
+			// $this -> db -> where("_m.role_id like",$data['login_user']->id);
 		}
 	}
 
