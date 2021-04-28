@@ -63,7 +63,7 @@ function line(header,line_width,line_color,line_number){
 		// ctx.beginPath();
 		switch(line_number){
 			case 1:
-				ctx.moveTo(0,0);
+				ctx.moveTo(xpos,xpos);
 				ctx.lineTo(xpos,ypos);
 				break;
 			default:
