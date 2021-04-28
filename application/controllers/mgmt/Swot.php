@@ -59,8 +59,13 @@ class Swot extends MY_Mgmt_Controller {
 			$item = $list[0];
 	
 			$data['item'] = $item;
-			$is_use_user = $this -> users_dao -> find_by_id($item->is_use_user_id);
-			$data['user_name'] = $is_use_user->user_name;
+			if(!empty($item->is_use_user_id) && $item->is_use_user_id>0){
+				$is_use_user = $this -> users_dao -> find_by_id($item->is_use_user_id);
+				$data['user_name'] = $is_use_user->user_name;
+			} else{
+				$data['user_name'] = '';
+			}
+			
 		}
 
 		$u_data = $this -> setup_user_data($u_data);
