@@ -64,7 +64,7 @@ function line(header,line_width,line_color,line_number){
 		switch(line_number){
 			case 1:
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos*2);
+				ctx.lineTo(xpos,ypos*1.5);
 				break;
 			default:
 			return 0;	
