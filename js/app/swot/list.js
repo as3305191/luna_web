@@ -42,7 +42,6 @@ var SwotAppClass = (function(app) {
 					// window.location.hash = app.basePath + 'edit/' + id;
 					$("#btn-submit-edit").prop( "disabled", false);
 					loading.remove();
-					app.isUse(id);
 
 				});
 		};

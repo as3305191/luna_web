@@ -216,6 +216,7 @@
 				$('#edit_div input').attr('readonly', true);
 				$('#edit_div select').attr('readonly', true);
 				$('#edit_div textarea').attr('readonly', true);
+				currentApp.isUse(id);
 			}
 		}
 	});
