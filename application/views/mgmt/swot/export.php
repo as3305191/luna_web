@@ -65,9 +65,9 @@ function line(header,line_width,line_color,line_number){
 			case 1:
 				ctx.moveTo(0,0);
 				ctx.lineTo(xpos,ypos);
-				ctx.moveTo(0,0);
+				ctx.moveTo(xpos,ypos);
 				ctx.lineTo(xpos/2,ypos);
-				ctx.moveTo(0,0);
+				ctx.moveTo(xpos/2,ypos);
 				ctx.lineTo(xpos,ypos/2);
 
 				break;
