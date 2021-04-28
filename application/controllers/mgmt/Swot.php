@@ -158,6 +158,7 @@ class Swot extends MY_Mgmt_Controller {
 	public function not_use($id) {
 		$res['success'] = TRUE;
 		$data['is_use'] = '0';
+		$data['is_use_user_id'] = '0';
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$item = $this -> dao -> find_by_id($id);
