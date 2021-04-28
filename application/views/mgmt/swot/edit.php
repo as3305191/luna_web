@@ -35,11 +35,12 @@
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<input type="hidden" id="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
+				<input type="hidden" id="is_use" value="<?= isset($item) ? $item -> is_use : ''?>" />
 				<div class="form-group" style="padding:0px 26px">
         <div class="clearfix"></div>
     </div>
     <hr/>
-		<div >
+		<div id="edit_div">
 			<?php if(empty($item -> id) || $item -> id==0): ?>
 				<?php if(!empty($login_user_role_array)&& count($login_user_role_array)>1): ?>
 					<fieldset>
@@ -209,6 +210,15 @@
 		CKEDITOR.instances['m_swot_w_o'].on('change', function() { CKEDITOR.instances['m_swot_w_o'].updateElement() });
 		CKEDITOR.instances['m_swot_s_t'].on('change', function() { CKEDITOR.instances['m_swot_s_t'].updateElement() });
 		CKEDITOR.instances['m_swot_w_t'].on('change', function() { CKEDITOR.instances['m_swot_w_t'].updateElement() });
+
+		if(item_id.val()>0){
+			if($('#is_use').val()==0){
+				$('#edit_div input').attr('readonly');
+				$('#edit_div select').attr('readonly');
+				$('#edit_div textarea').attr('readonly');
+
+			}
+		}
 
 	});
 

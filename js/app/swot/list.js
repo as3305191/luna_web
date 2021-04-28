@@ -32,61 +32,6 @@ var SwotAppClass = (function(app) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
 		}
 
-		app.fnRowCallback = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-			// edit click	
-		
-
-				if(!app.disableRowClick) {
-					var _rtd = $(nRow).find('td');
-					if(!app.enableFirstClickable) {
-						_rtd = _rtd.not(':first')
-					}
-					_rtd.addClass('pointer').on('click', function(){
-					
-						$.ajax({
-							url : baseUrl + app.basePath  + 'find_is_use/' + aData.id,
-							success: function(d) {
-								if(d.is_use==0){
-									app.doEdit(aData.id);
-									// remove all highlight first
-									$(this).parent().parent().find('tr').removeClass('active');
-									app._lastPk = aData.id;
-									app._tr = $(this).parent();
-									setTimeout(function(){
-										app._tr.addClass('active');
-									}, 100);
-								}else{
-									app.disableRowClick = true;
-								}
-
-							},
-							failure: function() {
-							}
-						});
-
-					});
-				}
-				if(app._lastPk && aData.id && app._lastPk == aData.id) {
-					$(nRow).addClass('active');
-				}
-				// delete click
-				$(nRow).find("a").eq(0).click(function() {
-					app.setDelId(aData.id);
-	
-					$('#modal_do_delete')
-						.prop('onclick',null)
-						.off('click')
-						.on('click', function(){
-							app.doDelItem();
-						});
-				});
-	
-				if(app.fnRowCallbackExt) {
-					app.fnRowCallbackExt(nRow, aData, iDisplayIndex, iDisplayIndexFull, this);
-				}
-			
-		};
-
 		app.doEdit = function(id) {
 			var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
 				.appendTo($('#edit-modal-body').empty());
