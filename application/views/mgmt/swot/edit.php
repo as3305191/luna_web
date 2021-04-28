@@ -65,6 +65,16 @@
 			<?php else: ?>
 				<input type="hidden" id="department" value=" <?= isset($item) ? $item -> role_id : '' ?>" />
 			<?php endif?>
+			<?php if($item -> id && $item -> is_use==1 ): ?>
+				<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label" style="color:red;">目前正在使用人員</label>
+					<div class="col-md-6">
+						<span type="text" value=" <?= isset($user_name) ? $user_name : '' ?>" ></span>
+					</div>
+				</div>
+			</fieldset>
+			<?php endif?>
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">文件種類</label>
@@ -217,7 +227,6 @@
 				$('#edit_div select').attr('readonly', true);
 				$('#edit_div textarea').attr('readonly', true);
 				// $('#edit_div button').attr('readonly', true);
-				alert('目前檔案使用人員：'+'<?=$user_name ?>');
 			} else{
 				currentApp.isUse($('#item_id').val());
 			}
