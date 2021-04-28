@@ -84,21 +84,21 @@ function line(header,line_width,line_color,line_number){//该方法不用动
 		switch(line_number){
 			case 1:
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
+				ctx.lineTo(xpos,ypos/2);
 				break;
 			case 2:
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
+				ctx.lineTo(xpos/2,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
+				ctx.lineTo(xpos,ypos/2);
 				break;
 			case 3:
 				ctx.moveTo(0,0);
 				ctx.lineTo(xpos,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
+				ctx.lineTo(xpos/2,ypos);
 				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
+				ctx.lineTo(xpos,ypos/2);
 				break;
 			default:
 			return 0;	
