@@ -49,10 +49,11 @@
 								<select name="department" id="department" class="form-control" >
 									<?php foreach ($department_list as $each) : ?>
 										<?php foreach ($login_user_role_array as $each_role) : ?>
+											<?php if($each==$each_role): ?>
+												<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
+											<?php endif?>
 										<?php endforeach ?>	
-										<?php if($each==$each_role): ?>
-											<option value="<?= $each -> id?>" <?= isset($item) && $item -> department_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
-										<?php endif?>
+									
 
 									<?php endforeach ?>
 								</select>
