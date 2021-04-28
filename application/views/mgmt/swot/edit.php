@@ -46,7 +46,16 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label">選擇部門</label>
 							<div class="col-md-6">
-								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
+								<select name="swot_style" id="swot_style" class="form-control" >
+									<?php foreach ($department_list as $each) : ?>
+										<?php foreach ($login_user_role_array as $each_role) : ?>
+										<?php endforeach ?>	
+										<?php if($each==$each_role): ?>
+											<option value="<?= $each -> id?>" <?= isset($item) && $item -> department_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
+										<?php endif?>
+
+									<?php endforeach ?>
+								</select>
 							</div>
 						</div>
 					</fieldset>
@@ -242,7 +251,7 @@
 	});
 
 	function load_swot_style() {
-	$.ajax({
+		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_style',
 			type: 'POST',
 			data: {},
