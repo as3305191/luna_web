@@ -213,9 +213,9 @@
 
 		if($('#is_use').val()>0){
 			if($('#is_use').val()==1){
-				$('#edit_div input').attr('readonly');
-				$('#edit_div select').attr('readonly');
-				$('#edit_div textarea').attr('readonly');
+				$('#edit_div input').attr('readonly', true);
+				$('#edit_div select').attr('readonly', true);
+				$('#edit_div textarea').attr('readonly', true);
 			}
 		}
 	});
