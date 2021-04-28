@@ -33,7 +33,7 @@
 		<!-- widget content -->
 		<div class="widget-body">
 			<form id="app-edit-form" method="post" class="form-horizontal">
-				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
+				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '0' ?>" />
 				<input type="hidden" id="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
 				<input type="hidden" id="is_use" value="<?= isset($item) ? $item -> is_use : ''?>" />
 				<div class="form-group" style="padding:0px 26px">
