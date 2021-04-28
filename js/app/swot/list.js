@@ -122,7 +122,6 @@ var SwotAppClass = (function(app) {
 				$(window).trigger('resize');
 				// window.history.back();
 				// history.go(-1);
-	
 			}
 		};
 		return app;
