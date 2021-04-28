@@ -42,6 +42,7 @@
 			<tr>
 				<td class="min100" colspan="12" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
 			</tr>
+			<canvas id="line" style="display:none;"></canvas>
 			<tr>
 				<td id="header"  align='left'>
 					<!-- <div style="font-size:27px" >
@@ -105,10 +106,9 @@ function line(header,line_width,line_color,line_number){//该方法不用动
 		ctx.stroke();
 		ctx.closePath();
 		document.getElementById(header).style.backgroundImage = 'url("' + ctx.canvas.toDataURL() + '")';
-		//document.getElementById(header).style.background-attachment= 'fixed';
+		// document.getElementById(header).style.background-attachment = 'fixed';
 	}
 }
-<canvas id="line" style="display:none;"></canvas>
 window.onload = function (){ 
 	line('header',1,'black',1);
 	
