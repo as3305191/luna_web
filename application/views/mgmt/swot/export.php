@@ -49,53 +49,56 @@
 <!-- end widget -->
 
 <script>
-function line(header,line_width,line_color,line_number){
-	var table = document.getElementById(header); 
-	var xpos = table.clientWidth;
-	var ypos = table.clientHeight;
-	var canvas = document.getElementById('line');
-	if(canvas.getContext){
-		var ctx = canvas.getContext('2d');
-		ctx.clearRect(0,0,xpos,ypos); 
-		ctx.fill();
-		ctx.lineWidth = line_width;
-		ctx.strokeStyle = line_color;
-		ctx.beginPath();
-		switch(line_number){
-			case 1:
-				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
-				break;
-			case 2:
-				ctx.moveTo(0,0);
-				ctx.lineTo(xpos/2,ypos);
-				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos/2);
-				break;
-			case 3:
-				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos);
-				ctx.moveTo(0,0);
-				ctx.lineTo(xpos/2,ypos);
-				ctx.moveTo(0,0);
-				ctx.lineTo(xpos,ypos/2);
-				break;
-			default:
-			return 0;	
-		}
-				
-		ctx.stroke();
-		ctx.closePath();
-		document.getElementById(header).style.backgroundImage = 'url("' + ctx.canvas.toDataURL() + '")';
-		// document.getElementById(header).style.background-attachment = 'fixed';
-	}
-}
-window.onload = function (){ 
-	line('header',2,'black',1);
-	
-}
-window.onresize = function(){
-	line('header',2,'black',1);
 
-}
+$(function() {
+	function line(header,line_width,line_color,line_number){
+		var table = document.getElementById(header); 
+		var xpos = table.clientWidth;
+		var ypos = table.clientHeight;
+		var canvas = document.getElementById('line');
+		if(canvas.getContext){
+			var ctx = canvas.getContext('2d');
+			ctx.clearRect(0,0,xpos,ypos); 
+			ctx.fill();
+			ctx.lineWidth = line_width;
+			ctx.strokeStyle = line_color;
+			ctx.beginPath();
+			switch(line_number){
+				case 1:
+					ctx.moveTo(0,0);
+					ctx.lineTo(xpos,ypos);
+					break;
+				case 2:
+					ctx.moveTo(0,0);
+					ctx.lineTo(xpos/2,ypos);
+					ctx.moveTo(0,0);
+					ctx.lineTo(xpos,ypos/2);
+					break;
+				case 3:
+					ctx.moveTo(0,0);
+					ctx.lineTo(xpos,ypos);
+					ctx.moveTo(0,0);
+					ctx.lineTo(xpos/2,ypos);
+					ctx.moveTo(0,0);
+					ctx.lineTo(xpos,ypos/2);
+					break;
+				default:
+				return 0;	
+			}
+					
+			ctx.stroke();
+			ctx.closePath();
+			document.getElementById(header).style.backgroundImage = 'url("' + ctx.canvas.toDataURL() + '")';
+			// document.getElementById(header).style.background-attachment = 'fixed';
+		}
+	}
+	window.onload = function (){ 
+		line('header',2,'black',1);
+		
+	}
+	window.onresize = function(){
+		line('header',2,'black',1);
+
+	}
+});
 </script>
