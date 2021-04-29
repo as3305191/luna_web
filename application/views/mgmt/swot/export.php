@@ -87,8 +87,8 @@
 			ctx.lineTo(xpos,ypos);
 			ctx.stroke();
 			ctx.closePath();
-			document.getElementById(header).style.backgroundImage = 'url("' + ctx.canvas.toDataURL() + '")';
-			// document.getElementById(header).style.background-attachment = 'fixed';
+			document.getElementById('header').style.backgroundImage = 'url("' + ctx.canvas.toDataURL() + '")';
+			document.getElementById(header).style.background-attachment == 'fixed';
 		}
 	}
 	window.onload = function (){ 
