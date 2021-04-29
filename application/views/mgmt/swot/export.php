@@ -61,16 +61,30 @@
 			ctx.lineWidth = line_width;
 			ctx.strokeStyle = line_color;
 			ctx.beginPath();
-			switch(line_number){
-				case 1:
-					ctx.moveTo(0,0);
-					ctx.lineTo(xpos,ypos);
-					break;
-			
-				default:
-				return 0;	
-			}
-					
+			// switch(line_number){
+			// 	case 1:
+			// 		ctx.moveTo(0,0);
+			// 		ctx.lineTo(xpos,ypos);
+			// 		break;
+			// 	case 2:
+			// 		ctx.moveTo(0,0);
+			// 		ctx.lineTo(xpos/2,ypos);
+			// 		ctx.moveTo(0,0);
+			// 		ctx.lineTo(xpos,ypos/2);
+			// 		break;
+			// 	case 3:
+			// 		ctx.moveTo(0,0);
+			// 		ctx.lineTo(xpos,ypos);
+			// 		ctx.moveTo(0,0);
+			// 		ctx.lineTo(xpos/2,ypos);
+			// 		ctx.moveTo(0,0);
+			// 		ctx.lineTo(xpos,ypos/2);
+			// 		break;
+			// 	default:
+			// 	return 0;	
+			// }
+			ctx.moveTo(0,0);
+			ctx.lineTo(xpos,ypos);	
 			ctx.stroke();
 			ctx.closePath();
 			document.getElementById(header).style.backgroundImage = 'url("' + ctx.canvas.toDataURL() + '")';
