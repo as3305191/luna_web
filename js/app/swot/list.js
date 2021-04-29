@@ -6,9 +6,7 @@ var SwotAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-			
 					// d.now_category = $('#now_category').val();
-				
 				},
 				dataSrc : 'items',
 				dataType : 'json',
@@ -31,7 +29,6 @@ var SwotAppClass = (function(app) {
 				type : "POST",
 				url : url,
 				data : {
-				
 				},
 				success : function(d) {
 					if(d.success) {
@@ -40,7 +37,6 @@ var SwotAppClass = (function(app) {
 					}
 				}
 			});
-			
 		}
 
 		app.tableReload = function() {
@@ -58,7 +54,15 @@ var SwotAppClass = (function(app) {
 		// get year month list
 		app.tableReload();
 
-	
+		app.isUse = function(id) {
+			$.ajax({
+				url : baseUrl + app.basePath  + 'is_use/' + id,
+				success: function() {
+				},
+				failure: function() {
+				}
+			});
+		};
 
 		app.doExportAll = function(id) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
@@ -78,15 +82,7 @@ var SwotAppClass = (function(app) {
 				});
 		};
 
-		app.isUse = function(id) {
-			$.ajax({
-				url : baseUrl + app.basePath  + 'is_use/' + id,
-				success: function() {
-				},
-				failure: function() {
-				}
-			});
-		};
+	
 
 		app.back= function(id) {
 			if(id) {
