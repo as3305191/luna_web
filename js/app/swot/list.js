@@ -24,20 +24,6 @@ var SwotAppClass = (function(app) {
 
 		// data table actions
 		app.dtActions();
-		app.tableReload = function() {
-			if(app.mDtTable.settings()[0].jqXHR) {
-				app.mDtTable.settings()[0].jqXHR.abort();
-			}
-	
-			app.mDtTable.ajax.reload(function(){
-				if(typeof wOnResize != undefined) {
-					wOnResize();
-				}
-			}, false);
-			app.do_remove();
-		};
-		// get year month list
-		app.tableReload();
 
 		app.do_remove = function() {
 			var url = baseUrl + 'mgmt/swot/do_remove'; 
@@ -56,6 +42,23 @@ var SwotAppClass = (function(app) {
 			});
 			
 		}
+
+		app.tableReload = function() {
+			if(app.mDtTable.settings()[0].jqXHR) {
+				app.mDtTable.settings()[0].jqXHR.abort();
+			}
+	
+			app.mDtTable.ajax.reload(function(){
+				if(typeof wOnResize != undefined) {
+					wOnResize();
+				}
+			}, false);
+			app.do_remove();
+		};
+		// get year month list
+		app.tableReload();
+
+	
 
 		app.doExportAll = function(id) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
@@ -98,19 +101,7 @@ var SwotAppClass = (function(app) {
 			}
 		};
 
-		app.backTo = function(target) {
-			if(!target) {
-				$('#edit-modal-body').empty();
-	
-				$('.tab-pane').removeClass('active');
-				$('#list_page').addClass('active');
-	
-				// prevent datable height zero
-				$(window).trigger('resize');
-				// window.history.back();
-				// history.go(-1);
-			}
-		};
+
 		return app;
 	};
 
