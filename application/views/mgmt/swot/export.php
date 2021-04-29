@@ -47,9 +47,7 @@
 	</table>
 </div>
 <!-- end widget -->
-
 <script>
-
 	function line(header,line_width,line_color,line_number){
 		var table = document.getElementById(header); 
 		var xpos = table.clientWidth;
