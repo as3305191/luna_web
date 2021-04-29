@@ -232,12 +232,19 @@
 		CKEDITOR.instances['m_swot_w_o'].on('change', function() { CKEDITOR.instances['m_swot_w_o'].updateElement() });
 		CKEDITOR.instances['m_swot_s_t'].on('change', function() { CKEDITOR.instances['m_swot_s_t'].updateElement() });
 		CKEDITOR.instances['m_swot_w_t'].on('change', function() { CKEDITOR.instances['m_swot_w_t'].updateElement() });
-
+		var is_use_user_id=false,login_user_id=false
 		if($('#item_id').val()>0){
 			if($('#is_use').val()==1){
-				$('#edit_div input').attr('readonly', true);
-				$('#edit_div select').attr('readonly', true);
-				$('#edit_div textarea').attr('readonly', true);
+				is_use_user_id=<?= $item->is_use_user_id ?>;
+				login_user_id=<?= $login_user->id ?>;
+				if(!empty(is_use_user_id) && !empty(login_user_id) && is_use_user_id!==login_user_id){
+					$('#edit_div input').attr('readonly', true);
+					$('#edit_div select').attr('readonly', true);
+					$('#edit_div textarea').attr('readonly', true);
+				} 
+				// $('#edit_div input').attr('readonly', true);
+				// $('#edit_div select').attr('readonly', true);
+				// $('#edit_div textarea').attr('readonly', true);
 				// $('#edit_div button').attr('readonly', true);
 			} else{
 				currentApp.isUse($('#item_id').val());
