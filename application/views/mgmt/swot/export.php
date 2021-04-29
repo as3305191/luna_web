@@ -84,9 +84,7 @@
 			// 	return 0;	
 			// }
 			ctx.moveTo(0,0);
-			ctx.lineTo(xpos/2,ypos);
-			ctx.moveTo(0,0);
-			ctx.lineTo(xpos,ypos/2);
+			ctx.lineTo(xpos,ypos);
 			ctx.stroke();
 			ctx.closePath();
 			document.getElementById(header).style.backgroundImage = 'url("' + ctx.canvas.toDataURL() + '")';
