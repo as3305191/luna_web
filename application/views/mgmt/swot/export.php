@@ -50,7 +50,6 @@
 
 <script>
 
-$(document).ready(function() {
 	function line(header,line_width,line_color,line_number){
 		var table = document.getElementById(header); 
 		var xpos = table.clientWidth;
@@ -94,11 +93,10 @@ $(document).ready(function() {
 	}
 	window.onload = function (){ 
 		line('header',2,'black',1);
-		
+		window.onresize = function(){
+			line('header',2,'black',1);
+		}
 	}
-	window.onresize = function(){
-		line('header',2,'black',1);
 
-	}
-});
+
 </script>
