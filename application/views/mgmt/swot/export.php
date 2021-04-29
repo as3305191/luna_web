@@ -52,8 +52,8 @@
 
 	function line(header,line_width,line_color,line_number){
 		var table = document.getElementById(header); 
-		var xpos = table.clientWidth;
-		var ypos = table.clientHeight;
+		var xpos = document.table.clientWidth;
+		var ypos = document.table.clientHeight;
 		var canvas = document.getElementById('line');
 		if(canvas.getContext){
 			var ctx = canvas.getContext('2d');
@@ -93,10 +93,10 @@
 	}
 	window.onload = function (){ 
 		line('header',2,'black',1);
-		window.onresize = function(){
-			line('header',2,'black',1);
-		}
+	
 	}
-
+	window.onresize = function(){
+		line('header',2,'black',1);
+	}
 
 </script>
