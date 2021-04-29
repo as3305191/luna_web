@@ -24,9 +24,38 @@ var SwotAppClass = (function(app) {
 
 		// data table actions
 		app.dtActions();
-
+		app.tableReload = function() {
+			if(app.mDtTable.settings()[0].jqXHR) {
+				app.mDtTable.settings()[0].jqXHR.abort();
+			}
+	
+			app.mDtTable.ajax.reload(function(){
+				if(typeof wOnResize != undefined) {
+					wOnResize();
+				}
+			}, false);
+			app.do_remove();
+		};
 		// get year month list
 		app.tableReload();
+
+		app.do_remove = function() {
+			var url = baseUrl + 'mgmt/swot/do_remove'; 
+			$.ajax({
+				type : "POST",
+				url : url,
+				data : {
+				
+				},
+				success : function(d) {
+					if(d.success) {
+						alert('已成功清除');
+					} else {
+					}
+				}
+			});
+			
+		}
 
 		app.doExportAll = function(id) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);

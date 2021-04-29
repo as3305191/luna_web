@@ -1,9 +1,9 @@
 
 <?php $this->load->view('layout/head'); ?>
 <style>
-#header { 
-	/* width: 300px;height: 300px  !important; */
-}
+/* #header { 
+	width: 300px;height: 300px  !important;
+} */
 @media print  
 {
     div{

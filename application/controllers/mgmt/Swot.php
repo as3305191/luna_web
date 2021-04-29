@@ -106,11 +106,9 @@ class Swot extends MY_Mgmt_Controller {
 		$data['m_swot_s_t'] = $m_swot_s_t;
 		$data['m_swot_w_t'] = $m_swot_w_t;
 
-
 		if(empty($id)) {
 			// insert
-			$role_array= explode(",", str_replace('#', ',', trim($login_user->in_department, "#")));
-
+			// $role_array= explode(",", str_replace('#', ',', trim($login_user->in_department, "#")));
 			$data['role_id'] = $department;
 			$this -> dao -> insert($data);
 		} else {
