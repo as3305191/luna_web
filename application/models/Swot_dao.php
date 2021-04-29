@@ -69,6 +69,7 @@ class Swot_dao extends MY_Model {
 			$id = $data['id'];
 			$this -> db -> where("_m.id",$id);
 		}
+		
 		if(!empty($data['login_user'])){
 			if( $data['login_user']->role_id==6 || $data['login_user']->role_id==13 || $data['login_user']->role_id==14 ||
 				$data['login_user']->role_id==15 || $data['login_user']->role_id==16 ||
