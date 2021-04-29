@@ -50,7 +50,7 @@
 
 <script>
 
-$(function() {
+$(document).ready(function() {
 	function line(header,line_width,line_color,line_number){
 		var table = document.getElementById(header); 
 		var xpos = table.clientWidth;
