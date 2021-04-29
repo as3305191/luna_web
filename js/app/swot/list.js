@@ -35,7 +35,7 @@ var SwotAppClass = (function(app) {
 				},
 				success : function(d) {
 					if(d.success) {
-						alert('已成功清除');
+						// alert('已成功清除');
 					} else {
 					}
 				}
