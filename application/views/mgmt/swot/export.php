@@ -83,8 +83,8 @@
 			// 	default:
 			// 	return 0;	
 			// }
-			ctx.moveTo(xpos,xpos);
-			ctx.lineTo(0,0);
+			ctx.moveTo(0,0);
+			ctx.lineTo(xpos,ypos);
 			ctx.stroke();
 			ctx.closePath();
 			document.getElementById(header).style.backgroundImage = 'url("' + ctx.canvas.toDataURL() + '")';
