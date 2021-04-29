@@ -7,7 +7,7 @@
 	
 		<?php if(!empty($item) && $item -> id>0): ?>
 			<div class="widget-toolbar pull-left">
-				<a href="javascript:void(0);" id="back_parent" onclick="currentApp.back(<?= isset($item) ? $item -> id : '0' ?>)" class="btn btn-default">
+				<a href="javascript:void(0);" id="back_parent" onclick="currentApp.back('<?= isset($item) ? $item -> id : 0 ?>')" class="btn btn-default">
 					<i class="fa fa-arrow-circle-left"></i>返回
 				</a>
 			</div>
