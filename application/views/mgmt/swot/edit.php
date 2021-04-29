@@ -237,7 +237,7 @@
 			if($('#is_use').val()==1){
 				is_use_user_id=<?= $item->is_use_user_id ?>;
 				login_user_id=<?= $login_user->id ?>;
-				if(!empty(is_use_user_id) && !empty(login_user_id) && is_use_user_id!==login_user_id){
+				if(is_use_user_id!==login_user_id){
 					$('#edit_div input').attr('readonly', true);
 					$('#edit_div select').attr('readonly', true);
 					$('#edit_div textarea').attr('readonly', true);
