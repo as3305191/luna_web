@@ -92,11 +92,11 @@
 		}
 	}
 	window.onload = function (){ 
-		line('header',2,'black',1);
+		line('header',1,'black',1);
 	
 	}
 	window.onresize = function(){
-		line('header',2,'black',1);
+		line('header',1,'black',1);
 	}
 
 </script>
