@@ -153,8 +153,8 @@ class Swot extends MY_Mgmt_Controller {
 				$data['is_use'] = '0';
 				$this -> dao -> update($data, $each->id);	
 			}
-			$res['success'] = TRUE;
 		}
+		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
 

@@ -235,8 +235,8 @@
 		var is_use_user_id=false,login_user_id=false
 		if($('#item_id').val()>0){
 			if($('#is_use').val()==1){
-				is_use_user_id=<?= $item->is_use_user_id ?>;
-				login_user_id=<?= $login_user->id ?>;
+				is_use_user_id=<?= isset($item->is_use_user_id) ? $item->is_use_user_id : '0' ?>;
+				login_user_id=<?= isset($login_user->id) ? $login_user->id : '0' ?>;
 				if(is_use_user_id!==login_user_id){
 					$('#edit_div input').attr('readonly', true);
 					$('#edit_div select').attr('readonly', true);
