@@ -51,8 +51,9 @@
 <script>
 function line(header,line_width,line_color,line_number){
 		var table = document.getElementById(header); 
-		var xpos = table.Width;
-		var ypos = table.Height;
+		// var xpos = false;var ypos = false;
+		var xpos = table.cliectWidth;
+		var ypos = table.cliectHeight;
 		var canvas = document.getElementById('line');
 		if(canvas.getContext){
 			var ctx = canvas.getContext('2d');
@@ -86,10 +87,10 @@ function line(header,line_width,line_color,line_number){
 			ctx.stroke();
 			ctx.closePath();
 			document.getElementById(header).style.backgroundImage = 'url("' + ctx.canvas.toDataURL() + '")';
-			// document.getElementById(header).style.background-attachment == 'fixed';
+			// document.getElementById(header).style.background-attachment ='fixed';
 		}
 	}
-	
+
 	window.onload = function (){ 
 		line('header',1,'black',1);
 	
