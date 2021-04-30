@@ -275,7 +275,6 @@
 			success : function(data) {
 				if(data.error_msg) {
 					layer.msg(data.error_msg);
-					
 				} else {
 					currentApp.mDtTable.ajax.reload(null, false);
 					currentApp.back(<?= isset($item) ? $item -> id : '0' ?>);
