@@ -49,16 +49,7 @@
 
 <!-- end widget -->
 <script>
-
-	window.onload = function (){ 
-		line('header',1,'black',1);
-	
-	}
-	window.onresize = function(){
-		line('header',1,'black',1);
-	}
-
-	function line(header,line_width,line_color,line_number){
+function line(header,line_width,line_color,line_number){
 		var table = document.getElementById(header); 
 		var xpos = table.Width;
 		var ypos = table.Height;
@@ -98,4 +89,13 @@
 			// document.getElementById(header).style.background-attachment == 'fixed';
 		}
 	}
+	
+	window.onload = function (){ 
+		line('header',1,'black',1);
+	
+	}
+	window.onresize = function(){
+		line('header',1,'black',1);
+	}
+
 </script>
