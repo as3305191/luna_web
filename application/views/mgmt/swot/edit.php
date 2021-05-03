@@ -277,7 +277,7 @@
 					layer.msg(data.error_msg);
 				} else {
 					var this_id = <?= isset($item) ? $item -> id : '0' ?>;
-					
+
 					if(this_id>0){
 						currentApp.mDtTable.ajax.reload(null, false);
 						currentApp.back(<?= isset($item) ? $item -> id : '0' ?>);
@@ -289,6 +289,7 @@
 				}
 			}
 		});
+		
 	};
 
 	$('#add_swot').click(function() {
