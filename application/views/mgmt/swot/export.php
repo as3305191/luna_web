@@ -89,12 +89,11 @@
 // 		}
 // 	}
 
-// 	window.onload = function (){ 
-// 		line('header',1,'black',1);
-	
-// 	}
-// 	window.onresize = function(){
-// 		line('header',1,'black',1);
-// 	}
+	// window.onload = function (){ 
+	// 	line('header',1,'black',1);
+	// }
+	// window.onresize = function(){
+	// 	line('header',1,'black',1);
+	// }
 
 </script>
