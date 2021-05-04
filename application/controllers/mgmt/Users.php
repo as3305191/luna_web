@@ -109,16 +109,12 @@ class Users extends MY_Mgmt_Controller {
 		if(!empty($department)){
 			$new_department = str_replace(',', '#',implode(',',$department));
 			if($new_department=='##'){
-				$new_department=='';
+				$new_department=='0';
 			} else{
-				if(substr($new_department,-2)=="#" && substr($new_department,0,2)=="#"){
-					$data['in_department'] = substr(ltrim($new_department,'#'),0,-1);
+				if(substr($new_department,-1)=="#" && substr($new_department,0,1)=="#"){
+					$data['in_department'] = $new_department;
 				} else{
-					if(substr($new_department,-1)=="#" && substr($new_department,0,1)=="#"){
-						$data['in_department'] = $new_department;
-					} else{
-						$data['in_department'] = "#".$new_department."#";
-					}
+					$data['in_department'] = "#".$new_department."#";
 				}
 			}
 		}
