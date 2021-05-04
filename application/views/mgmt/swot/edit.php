@@ -23,7 +23,6 @@
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
-	
 		<?php if(!empty($item) && $item -> id>0): ?>
 			<div class="widget-toolbar pull-right">
 			<div class="btn-group">
