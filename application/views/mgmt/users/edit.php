@@ -109,7 +109,7 @@
 										<?php if(!empty($item -> in_departments)): ?>
 										
 											<label class="u-check g-pl-0">
-												<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="department[]" type="checkbox" value="<?= $each->id ?>"
+												<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="in_department[]" type="checkbox" value="<?= $each->id ?>"
 													<?php foreach ($item -> in_departments as $each_department) : ?>
 														<?= isset($each_department) && $each_department == $each->id ? 'checked': '' ?> 
 													<?php endforeach ?>
@@ -118,7 +118,7 @@
 											</label>
 										<?php else: ?>
 											<label class="u-check g-pl-0">
-												<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="department[]" type="checkbox" value="<?= $each->id ?>" <?= isset($each_department) && $each_department == $each->id ? 'checked': '' ?> >
+												<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="in_department[]" type="checkbox" value="<?= $each->id ?>" <?= isset($each_department) && $each_department == $each->id ? 'checked': '' ?> >
 												<span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
 											</label>
 										<?php endif ?>

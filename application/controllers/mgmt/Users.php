@@ -105,7 +105,7 @@ class Users extends MY_Mgmt_Controller {
 		));
 		$role_id = $this -> get_post('role_id');
 		$div_id = $this -> get_post('div_id');
-		$department = $this -> get_post('department');
+		$department = $this -> get_post('in_department');
 		if(!empty($department)){
 			$new_department = str_replace(',', '#',implode(',',$department));
 			if($new_department=='##'){
