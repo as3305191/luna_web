@@ -30,7 +30,7 @@
 			<tr>
 				<td ><div style="padding:0;"><div style="position: absolute; top: 0; right: 0">sw</div><div style="position: absolute; bottom: 0; left: 0">ot</div></td>
 				<td valign="top">
-					<table width="100%" height="100%" border="0" align="center">
+					<table width="100%" height="100%"  align="center">
 						<tr >
 							<td style="text-align:center;vertical-align:middle;">s</td>
 						</tr>
@@ -40,7 +40,7 @@
 					</table>
 				</td>
 				<td  valign="top">
-					<table width="100%" height="100%" border="0" align="center">
+					<table width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">w</td>
 						</tr>
@@ -52,7 +52,7 @@
 			</tr>
 			<tr>
 				<td valign="top">
-					<table width="100%" height="100%" border="0" align="center">
+					<table width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">o</td>
 						</tr>
@@ -62,7 +62,7 @@
 					</table>
 				</td>
 				<td valign="top">
-					<table width="100%" height="100%" border="0" align="center">
+					<table width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">so</td>
 						</tr>
@@ -72,7 +72,7 @@
 					</table>
 				</td>
 				<td valign="top">
-					<table width="100%" height="100%" border="0" align="center">
+					<table width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">wo</td>
 						</tr>
@@ -85,7 +85,7 @@
 			</tr>
 			<tr>
 				<td valign="top">
-					<table width="100%" height="100%" border="0" align="center">
+					<table width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">t</td>
 						</tr>
@@ -95,7 +95,7 @@
 					</table>
 				</td>
 				<td valign="top">
-					<table width="100%" height="100%" border="0" align="center">
+					<table width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">st</td>
 						</tr>
@@ -105,7 +105,7 @@
 					</table>
 				</td>
 				<td valign="top">
-					<table width="100%" height="100%" border="0" align="center">
+					<table width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">wt</td>
 						</tr>
