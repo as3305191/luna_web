@@ -21,7 +21,7 @@ tbody tr td {
 <div class="" style="padding:50px 50px 50px 50px;">
 <canvas id="line" style="display:none;"></canvas>
 
-	<table  class="layui-table" width="70%">
+	<table   width="70%">
 		<thead>
 		</thead>
 		<tbody class="">
