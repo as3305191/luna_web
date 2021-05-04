@@ -6,7 +6,7 @@
 } */
 
 tbody tr td {
- 	padding: 0px 0px 0px 0px ;
+ 	padding: 0px 0px 0px 0px !important;
 }
 @media print  
 {
