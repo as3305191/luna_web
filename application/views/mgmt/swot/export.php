@@ -7,6 +7,8 @@
 
 tbody tr td {
  	padding: 0px 0px 0px 0px !important;
+}
+tbody tr td table{
 	border-style:none !important;
 }
 @media print  
