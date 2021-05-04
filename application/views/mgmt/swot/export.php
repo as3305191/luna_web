@@ -8,9 +8,7 @@
 tbody tr td {
  	padding: 0px 0px 0px 0px !important;
 }
-tbody tr td table{
-	border-style:none !important;
-}
+
 @media print  
 {
     /* div{
@@ -41,7 +39,7 @@ tbody tr td table{
 						<tr >
 							<td style="text-align:center;vertical-align:middle;">s</td>
 						</tr>
-						<tr>
+						<tr css="border-style:none">
 							<td><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_s : '' ?></div></td>
 						</tr>
 					</table>
@@ -51,7 +49,7 @@ tbody tr td table{
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">w</td>
 						</tr>
-						<tr>
+						<tr css="border-style:none">
 							<td><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_w : '' ?></div></td>
 						</tr>
 					</table>
@@ -63,7 +61,7 @@ tbody tr td table{
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">o</td>
 						</tr>
-						<tr>
+						<tr css="border-style:none">
 							<td><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_o : '' ?></div></td>
 						</tr>
 					</table>
@@ -73,7 +71,7 @@ tbody tr td table{
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">so</td>
 						</tr>
-						<tr>
+						<tr css="border-style:none">
 							<td><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_s_o : '' ?></div></td>
 						</tr>
 					</table>
@@ -83,7 +81,7 @@ tbody tr td table{
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">wo</td>
 						</tr>
-						<tr>
+						<tr css="border-style:none">
 							<td><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_w_o : '' ?></div></td>
 						</tr>
 					</table>
@@ -96,7 +94,7 @@ tbody tr td table{
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">t</td>
 						</tr>
-						<tr>
+						<tr css="border-style:none">
 							<td><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_t : '' ?></div></td>
 						</tr>
 					</table>
@@ -106,7 +104,7 @@ tbody tr td table{
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">st</td>
 						</tr>
-						<tr>
+						<tr css="border-style:none">
 							<td><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_s_t : '' ?></div></td>
 						</tr>
 					</table>
@@ -116,7 +114,7 @@ tbody tr td table{
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">wt</td>
 						</tr>
-						<tr>
+						<tr css="border-style:none">
 							<td><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_w_t : '' ?></div></td>
 						</tr>
 					</table>
