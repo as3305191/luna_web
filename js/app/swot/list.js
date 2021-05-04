@@ -23,6 +23,20 @@ var SwotAppClass = (function(app) {
 		// data table actions
 		app.dtActions();
 
+		app.doEdit = function(id) {
+			var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
+				.appendTo($('#edit-modal-body').empty());
+			$("#btn-submit-edit").prop( "disabled", true);
+			$('.tab-pane').removeClass('active');
+			$('#edit_page').addClass('active');	
+				$('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id, function(){
+					// window.location.hash = app.basePath + 'edit/' + id;
+					$("#btn-submit-edit").prop( "disabled", false);
+					loading.remove();
+
+				});
+		};
+
 		app.do_remove = function() {
 			var url = baseUrl + 'mgmt/swot/do_remove'; 
 			$.ajax({
@@ -67,22 +81,6 @@ var SwotAppClass = (function(app) {
 		app.doExportAll = function(id) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
 		}
-
-		app.doEdit = function(id) {
-			var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
-				.appendTo($('#edit-modal-body').empty());
-			$("#btn-submit-edit").prop( "disabled", true);
-			$('.tab-pane').removeClass('active');
-			$('#edit_page').addClass('active');	
-				$('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id, function(){
-					// window.location.hash = app.basePath + 'edit/' + id;
-					$("#btn-submit-edit").prop( "disabled", false);
-					loading.remove();
-
-				});
-		};
-
-	
 
 		app.back= function(id) {
 			if(id) {
