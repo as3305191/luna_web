@@ -29,8 +29,8 @@
 			</tr>
 			<tr>
 				<td ><div style="position: absolute; top: 0; right: 0">sw</div><div style="position: absolute; bottom: 0; left: 0">ot</div></td>
-				<td ><div style="position: absolute; top: 0; vertical-align:middle;">s</div><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_s : '' ?></span></td>
-				<td ><div style="position: absolute; top: 0; vertical-align:middle;">w</div><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_w : '' ?></span></td>
+				<td ><div style="position: absolute; top: 0; right: 50%">s</div><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_s : '' ?></span></td>
+				<td ><div style="position: absolute; top: 0; right: 50%">w</div><span style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_w : '' ?></span></td>
 			</tr>
 
 			<tr>
