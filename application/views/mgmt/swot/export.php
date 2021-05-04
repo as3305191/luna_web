@@ -29,7 +29,24 @@
 			</tr>
 			<tr>
 				<td ><div style="padding:0;"><div style="position: absolute; top: 0; right: 0">sw</div><div style="position: absolute; bottom: 0; left: 0">ot</div></td>
-				<td ><div style="padding:0;"><div style="padding:0;vertical-align:text-top;text-align:center;">s</div><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_s : '' ?></div></div></td>
+				<td >
+				<table width="100" height="200" border="1" align="center">
+
+					<tr>
+
+						<td>s</td>
+
+					</tr>
+					<tr>
+						<td><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_s : '' ?></div></td>
+
+					</tr>
+
+				</table>
+				
+				
+				
+				<!-- <div style="padding:0;"><div style="padding:0;vertical-align:text-top;text-align:center;">s</div><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_s : '' ?></div></div></td> -->
 				<td ><div style="padding:0;"><div style="padding:0;vertical-align:text-top;text-align:center;">w</div><div style="border-style:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? $item -> m_swot_w : '' ?></div></div></td>
 			</tr>
 
