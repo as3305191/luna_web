@@ -121,14 +121,14 @@ class Users extends MY_Mgmt_Controller {
 		}
 		if(empty($id)) {
 			// insert
-			if(!empty($div_id)){
+			if(!empty($div_id)&&$div_id>0){
 				$data['role_id'] = $div_id;
 			} else{
 				$data['role_id'] = $role_id;
 			}
 			$this -> dao -> insert($data);
 		} else {
-			if(!empty($div_id)){
+			if(!empty($div_id)&&$div_id>0){
 				$data['role_id'] = $div_id;
 			} else{
 				$data['role_id'] = $role_id;
