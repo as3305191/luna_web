@@ -104,14 +104,19 @@
 					<?php endif?>
 				</div>
 			</fieldset>
-			<fieldset>
-				<div class="form-group">
-					<label class="col-md-3 control-label">標題</label>
-					<div class="col-md-6">
-						<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
-					</div>
-				</div>
-			</fieldset>
+			<?php if(!empty($login_user) ): ?>
+				<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3 control-label">標題</label>
+							<div class="col-md-6">
+								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
+							</div>
+						</div>
+					</fieldset>
+				<?php endif?>
+			<?php endif?>
+		
 			<fieldset id='swot_s'>
 				<div class="form-group">
 					<label class="col-md-3 control-label">S:優勢</label>
