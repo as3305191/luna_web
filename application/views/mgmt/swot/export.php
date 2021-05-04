@@ -1,13 +1,13 @@
 
 <?php $this->load->view('layout/head'); ?>
 <style>
-.swot_table{ 
+/* .swot_table{ 
 	border-style:none !important;
-}
-
-/* td {
- 	
 } */
+
+tbody tr td {
+ 	padding: 0px 0px 0px 0px ;
+}
 @media print  
 {
     /* div{
