@@ -96,7 +96,7 @@
 						</select>
 					</div>
 					<?php if(!empty($login_user) ): ?>
-						<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16): ?>
+						<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
 							<div class="col-md-2">
 								<button type="button" class="btn btn-sm btn-primary" id="add_swot"><i class="fa fa-plus-circle fa-lg"></i></button>
 							</div>
