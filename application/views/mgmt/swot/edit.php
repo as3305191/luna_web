@@ -274,13 +274,13 @@
 				m_swot_w_o: CKEDITOR.instances.m_swot_w_o.getData(),
 				m_swot_s_t: CKEDITOR.instances.m_swot_s_t.getData(),
 				m_swot_w_t: CKEDITOR.instances.m_swot_w_t.getData(),
+				
 			},
 			success : function(data) {
 				if(data.error_msg) {
 					layer.msg(data.error_msg);
 				} else {
 					var this_id = <?= isset($item) ? $item -> id : '0' ?>;
-
 					if(this_id>0){
 						currentApp.mDtTable.ajax.reload(null, false);
 						currentApp.back(<?= isset($item) ? $item -> id : '0' ?>);
@@ -288,7 +288,6 @@
 						currentApp.mDtTable.ajax.reload(null, false);
 						currentApp.backTo();
 					}
-				
 				}
 			}
 		});
