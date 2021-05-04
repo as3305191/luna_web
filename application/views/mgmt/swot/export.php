@@ -30,7 +30,7 @@
 			<tr>
 				<td ><div style="padding:0;"><div style="position: absolute; top: 0; right: 0">sw</div><div style="position: absolute; bottom: 0; left: 0">ot</div></td>
 				<td >
-				<table width="100" height="200" border="1" align="center">
+				<table width="100%" height="100%" border="1" align="center">
 
 					<tr>
 
