@@ -110,6 +110,8 @@ class Swot extends MY_Mgmt_Controller {
 			// insert
 			// $role_array= explode(",", str_replace('#', ',', trim($login_user->in_department, "#")));
 			$data['role_id'] = $department;
+			$data['class_id'] = $login_user->role_id;
+
 			$this -> dao -> insert($data);
 		} else {
 			// update
