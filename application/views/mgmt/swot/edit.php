@@ -53,7 +53,7 @@
     <hr/>
 		<div id="edit_div">
 			<?php if(empty($item -> id) || $item -> id==0): ?>
-				<?php if(!empty($login_user_role_array)&& count($login_user_role_array)>1): ?>
+				<?php if(!empty($login_user_role_array) && count($login_user_role_array)>1): ?>
 					<fieldset>
 						<div class="form-group">
 							<label class="col-md-3 control-label">選擇部門</label>
