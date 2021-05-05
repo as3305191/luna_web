@@ -67,7 +67,6 @@ class Swot extends MY_Mgmt_Controller {
 			} else{
 				$data['user_name'] = '';
 			}
-			
 			if(!empty($item->class_id) && $item->class_id>0){
 				$swot_class= $this -> d_dao -> find_by_id($item->class_id);
 				$data['swot_class'] = $is_use_user->user_name;
@@ -76,13 +75,11 @@ class Swot extends MY_Mgmt_Controller {
 			}
 			
 		}
-
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['swot_class_for_0'] = $this -> d_dao -> find_by_id($data['login_user']->role_id);
 		$data['login_user_role_array'] =  explode(",", str_replace('#', ',', trim($data['login_user']->in_department, "#")));
 		$data['department_list'] = $this -> users_dao -> find_all_department();
-		
 		// $this -> to_json($data);
 		$this->load->view('mgmt/swot/edit', $data);
 	}
@@ -103,7 +100,6 @@ class Swot extends MY_Mgmt_Controller {
 		$m_swot_w_t = $this -> get_post('m_swot_w_t');
 		$swot_style = $this -> get_post('swot_style');
 		$department = $this -> get_post('department');
-
 		$data['title'] = $title;
 		$data['swot_style_id'] = $swot_style;
 		$data['m_swot_s'] = $m_swot_s;
@@ -114,7 +110,6 @@ class Swot extends MY_Mgmt_Controller {
 		$data['m_swot_w_o'] = $m_swot_w_o;
 		$data['m_swot_s_t'] = $m_swot_s_t;
 		$data['m_swot_w_t'] = $m_swot_w_t;
-
 		if(empty($id)) {
 			// insert
 			// $role_array= explode(",", str_replace('#', ',', trim($login_user->in_department, "#")));
