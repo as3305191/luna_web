@@ -114,16 +114,16 @@
 							</div>
 						</div>
 					</fieldset>
-				<?php endif?>
-			<?php else: ?>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">標題</label>
-						<div class="col-md-6">
-							<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>"  readonly/>
+				<?php else: ?>
+					<fieldset>
+						<div class="form-group">
+							<label class="col-md-3 control-label">標題</label>
+							<div class="col-md-6">
+								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($swot_class) ? $swot_class -> $swot_class_for_0->name : '' ?>"  readonly/>
+							</div>
 						</div>
-					</div>
-				</fieldset>
+					</fieldset>
+				<?php endif?>
 			<?php endif?>
 		
 			<fieldset id='swot_s'>

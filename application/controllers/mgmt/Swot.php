@@ -70,8 +70,6 @@ class Swot extends MY_Mgmt_Controller {
 			if(!empty($item->class_id) && $item->class_id>0){
 				$swot_class= $this -> d_dao -> find_by_id($item->class_id);
 				$data['swot_class'] = $swot_class->name;
-			} else{
-				$data['swot_class'] = '';
 			}
 			
 		}
