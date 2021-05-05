@@ -110,7 +110,7 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label">標題</label>
 							<div class="col-md-6">
-								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $swot_class : $swot_class_for_0 ?>" />
+								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $swot_class : $swot_class_for_0->name?>" />
 							</div>
 						</div>
 					</fieldset>
