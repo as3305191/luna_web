@@ -8,8 +8,8 @@ class Swot extends MY_Mgmt_Controller {
 		$this -> load -> model('Swot_dao', 'dao');
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Swot_style_dao', 'swot_style_dao');
+		$this -> load -> model('Swot_title_dao','swot_title_dao');
 		$this -> load -> model('Department_dao','d_dao');
-
 		// $this -> load-> library('word');
 	}
 
@@ -142,6 +142,28 @@ class Swot extends MY_Mgmt_Controller {
 	public function find_swot_style(){
 		$res = array();
 		$swot = $this -> swot_style_dao -> find_all();
+		$res['swot'] = $swot;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function new_swot_title(){
+		$data = array();
+		$this -> load -> view('layout/show_new_title',$data);
+	}
+
+	public function add_title(){
+		$data = array();
+		$swot_title = $this -> get_post('swot_title');
+		$data['swot_title'] = $swot_title;
+		$this -> swot_title_dao -> insert($data);
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function find_swot_title(){
+		$res = array();
+		$swot = $this -> swot_title_dao -> find_all();
 		$res['swot'] = $swot;
 		$res['success'] = TRUE;
 		$this -> to_json($res);

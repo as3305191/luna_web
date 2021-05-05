@@ -104,27 +104,24 @@
 					<?php endif?>
 				</div>
 			</fieldset>
-			<?php if(!empty($login_user) ): ?>
-				<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">標題</label>
-							<div class="col-md-6">
-								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $swot_class.'-SWOT分析表' : $swot_class_for_0->name.'-SWOT分析表'?>" />
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">標題</label>
+					<div class="col-md-6">
+						<input type="hidden"  id="s_title" value="<?= isset($item) ? $item -> title : '' ?>"/>
+						<select name="swot_title" id="swot_title" class="form-control" >
+							<!-- option from javascript -->
+						</select>
+					</div>
+					<?php if(!empty($login_user) ): ?>
+						<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
+							<div class="col-md-2">
+								<button type="button" class="btn btn-sm btn-primary" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
 							</div>
-						</div>
-					</fieldset>
-				<?php else: ?>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">標題</label>
-							<div class="col-md-6">
-								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $swot_class.'-SWOT分析表' : $swot_class_for_0->name.'-SWOT分析表' ?>"  readonly/>
-							</div>
-						</div>
-					</fieldset>
-				<?php endif?>
-			<?php endif?>
+						<?php endif?>
+					<?php endif?>
+				</div>
+			</fieldset>
 			<fieldset id='swot_s'>
 				<div class="form-group">
 					<label class="col-md-3 control-label">S:優勢</label>
@@ -318,6 +315,17 @@
 		})
 	});
 
+	$('#add_title').click(function() {
+		layer.open({
+			type:2,
+			title:'',
+			closeBtn:0,
+			area:['400px','200px'],
+			shadeClose:true,
+			content:'<?=base_url('mgmt/swot/new_swot_title')?>'
+		})
+	});
+
 	function load_swot_style() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_style',
@@ -339,6 +347,38 @@
 								'value': this.id,
 								'text': this.swot_name
 							}).appendTo($swot_style);
+						}
+					});
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+	load_swot_style();
+
+	function load_swot_title() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$swot_title = $('#swot_title').empty();
+					$.each(d.swot, function(){
+						if(this.id==$('#s_title').val()){
+							$('<option/>', {
+								'value': this.id,
+								'text': this.swot_title
+							}).attr("selected", true).appendTo($swot_title);
+						}else{
+							$('<option/>', {
+								'value': this.id,
+								'text': this.swot_title
+							}).appendTo($swot_title);
 						}
 					});
 				}
