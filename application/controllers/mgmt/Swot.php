@@ -8,6 +8,7 @@ class Swot extends MY_Mgmt_Controller {
 		$this -> load -> model('Swot_dao', 'dao');
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Swot_style_dao', 'swot_style_dao');
+		$this -> load -> model('Department_dao','d_dao');
 
 		// $this -> load-> library('word');
 	}
@@ -67,10 +68,18 @@ class Swot extends MY_Mgmt_Controller {
 				$data['user_name'] = '';
 			}
 			
+			if(!empty($item->class_id) && $item->class_id>0){
+				$swot_class= $this -> d_dao -> find_by_id($item->class_id);
+				$data['swot_class'] = $is_use_user->user_name;
+			} else{
+				$data['swot_class'] = '';
+			}
+			
 		}
 
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
+		$data['swot_class_for_0'] = $this -> d_dao -> find_by_id($data['login_user']->role_id);
 		$data['login_user_role_array'] =  explode(",", str_replace('#', ',', trim($data['login_user']->in_department, "#")));
 		$data['department_list'] = $this -> users_dao -> find_all_department();
 		
