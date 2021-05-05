@@ -110,7 +110,7 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label">標題</label>
 							<div class="col-md-6">
-								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $swot_class : $swot_class_for_0->name?>" />
+								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $swot_class.'SWOT分析表' : $swot_class_for_0->name.'SWOT分析表'?>" />
 							</div>
 						</div>
 					</fieldset>
@@ -119,13 +119,12 @@
 						<div class="form-group">
 							<label class="col-md-3 control-label">標題</label>
 							<div class="col-md-6">
-								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $swot_class : $swot_class_for_0->name ?>"  readonly/>
+								<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $swot_class.'SWOT分析表' : $swot_class_for_0->name.'SWOT分析表' ?>"  readonly/>
 							</div>
 						</div>
 					</fieldset>
 				<?php endif?>
 			<?php endif?>
-		
 			<fieldset id='swot_s'>
 				<div class="form-group">
 					<label class="col-md-3 control-label">S:優勢</label>
