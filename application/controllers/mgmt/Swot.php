@@ -49,68 +49,67 @@ class Swot extends MY_Mgmt_Controller {
 		$data['id'] = $id;
 		$data['title'] = $this -> get_get('title');
 		if(!empty($id)) {
-			if(!empty($title) && $title>0){
-				$item = array();
-				$q_data = $this -> get_posts(array(
-					'length',
-					'start',
-					'columns',
-					'search',
-					'order'
-				));
-				$q_data['title'] = $title;
-				$list = $this -> dao -> query_ajax($q_data);
-				$s='';
-				$w='';
-				$o='';
-				$t='';
-				$s_o='';
-				$w_o='';
-				$s_t='';
-				$w_t='';
-				foreach($list as $each){
-					$s+= substr_replace($each->m_swot_s,$each->d_or_c_name ,'</p>', -1);
-					$w+=$each->m_swot_w;
-					$o+=$each->m_swot_o;
-					$t+=$each->m_swot_t;
-					$s_o+=$each->m_swot_s_o;
-					$w_o+=$each->m_swot_w_o;
-					$s_t+=$each->m_swot_s_t;
-					$w_t+=$each->m_swot_w_t;
-				}
-				$item['s'] = $s;
-				$item['w'] = $w;
-				$item['o'] = $o;
-				$item['t'] = $t;
-				$item['s_o'] = $s_o;
-				$item['w_o'] = $w_o;
-				$item['s_t'] = $s_t;
-				$item['w_t'] = $w_t;
-				$data['item'] = $item;
+			$q_data = $this -> get_posts(array(
+				'length',
+				'start',
+				'columns',
+				'search',
+				'order'
+			));
+			$q_data['id'] = $id;
+			$list = $this -> dao -> query_ajax($q_data);
+			$item = $list[0];
+			$data['item'] = $item;
+			if(!empty($item->is_use_user_id) && $item->is_use_user_id>0){
+				$is_use_user = $this -> users_dao -> find_by_id($item->is_use_user_id);
+				$data['user_name'] = $is_use_user->user_name;
 			} else{
-				$q_data = $this -> get_posts(array(
-					'length',
-					'start',
-					'columns',
-					'search',
-					'order'
-				));
-				$q_data['id'] = $id;
-				$list = $this -> dao -> query_ajax($q_data);
-				$item = $list[0];
-				$data['item'] = $item;
-				if(!empty($item->is_use_user_id) && $item->is_use_user_id>0){
-					$is_use_user = $this -> users_dao -> find_by_id($item->is_use_user_id);
-					$data['user_name'] = $is_use_user->user_name;
-				} else{
-					$data['user_name'] = '';
-				}
-				if(!empty($item->class_id) && $item->class_id>0){
-					$swot_class= $this -> d_dao -> find_by_id($item->class_id);
-					$data['swot_class'] = $swot_class->name;
-				}
+				$data['user_name'] = '';
+			}
+			if(!empty($item->class_id) && $item->class_id>0){
+				$swot_class= $this -> d_dao -> find_by_id($item->class_id);
+				$data['swot_class'] = $swot_class->name;
 			}
 		}
+		if(!empty($title) && $title>0){
+			$item = array();
+			$q_data = $this -> get_posts(array(
+				'length',
+				'start',
+				'columns',
+				'search',
+				'order'
+			));
+			$q_data['title'] = $title;
+			$list = $this -> dao -> query_ajax($q_data);
+			$s='';
+			$w='';
+			$o='';
+			$t='';
+			$s_o='';
+			$w_o='';
+			$s_t='';
+			$w_t='';
+			foreach($list as $each){
+				$s+= substr_replace($each->m_swot_s,$each->d_or_c_name ,'</p>', -1);
+				$w+=$each->m_swot_w;
+				$o+=$each->m_swot_o;
+				$t+=$each->m_swot_t;
+				$s_o+=$each->m_swot_s_o;
+				$w_o+=$each->m_swot_w_o;
+				$s_t+=$each->m_swot_s_t;
+				$w_t+=$each->m_swot_w_t;
+			}
+			$item['s'] = $s;
+			$item['w'] = $w;
+			$item['o'] = $o;
+			$item['t'] = $t;
+			$item['s_o'] = $s_o;
+			$item['w_o'] = $w_o;
+			$item['s_t'] = $s_t;
+			$item['w_t'] = $w_t;
+			$data['item'] = $item;
+		} 
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['swot_class_for_0'] = $this -> d_dao -> find_by_id($data['login_user']->role_id);
