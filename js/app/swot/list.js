@@ -16,7 +16,7 @@ var SwotAppClass = (function(app) {
 			},
 			iDisplayLength : 50,
 			columns : mCols,
-			order : [[2, "desc"]],
+			order : [[3, "desc"]],
 			columnDefs : mColDefs
 		}));
 
