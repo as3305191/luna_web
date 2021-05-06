@@ -187,8 +187,9 @@
 							'value': this.id,
 							'text': this.name
 						}).appendTo($div);
-						$("#div_id").prepend("<option value='0'>沒有課</option>");
 					});
+					$("#div_id").prepend("<option value='0'>沒有課</option>");
+
 				}
 			},
 			failure:function(){
