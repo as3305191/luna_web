@@ -120,7 +120,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">S:優勢</label>
 					<div class="col-md-9">
-						<textarea required class="form-control" id="m_swot_s" name="m_swot_s"><?= isset($item['m_swot_s']) ? $item['m_swot_s'] : '' ?></textarea>
+						<textarea required class="form-control" id="m_swot_s" name="m_swot_s"><?= isset($item['m_swot_s'])||isset($item->m_swot_s) ? $item['m_swot_s']||$item->m_swot_s : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
