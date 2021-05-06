@@ -90,7 +90,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">文件種類</label>
 					<div class="col-md-6">
-						<input type="hidden"  id="s_style" value="<?= isset($item -> swot_style_id) ? $item -> swot_style_id : '' ?>"/>
+						<input type="hidden"  id="s_style" value="<?= isset($item['swot_style_id'] ) ? $item['swot_style_id']  : '' ?>"/>
 						<select name="swot_style" id="swot_style" class="form-control" >
 							<!-- option from javascript -->
 						</select>
