@@ -47,8 +47,7 @@ class Swot extends MY_Mgmt_Controller {
 		$data = array();
 		$u_data = array();
 		$data['id'] = $id;
-		$data['title'] = $this -> get_get('title');
-		if(!empty($id)) {
+		if(!empty($id) && $id>0 ) {
 			$q_data = $this -> get_posts(array(
 				'length',
 				'start',
@@ -80,7 +79,7 @@ class Swot extends MY_Mgmt_Controller {
 					'search',
 					'order'
 				));
-				$q_data['title'] = $data['title'];
+				$q_data['title'] =  $this -> get_get('title');
 				$list = $this -> dao -> query_ajax($q_data);
 				$s='';
 				$w='';
