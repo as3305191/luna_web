@@ -72,6 +72,7 @@ class Swot extends MY_Mgmt_Controller {
 			}
 		} else{
 			if($title>0){
+				$item = array();
 				$q_data = $this -> get_posts(array(
 					'length',
 					'start',
@@ -99,17 +100,28 @@ class Swot extends MY_Mgmt_Controller {
 					$s_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_s_t);
 					$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_w_t);
 				}
-				$item['s'] = $s;
-				$item['w'] = $w;
-				$item['o'] = $o;
-				$item['t'] = $t;
-				$item['s_o'] = $s_o;
-				$item['w_o'] = $w_o;
-				$item['s_t'] = $s_t;
-				$item['w_t'] = $w_t;
-				$item['id'] = 0;
+				foreach($item as $each_item){
+					$each_item->id = 0;
+					$each_item->s = $s;
+					$each_item->w = $w;
+					$each_item->o = $o;
+					$each_item->t = $t;
+					$each_item->s_o = $s_o;
+					$each_item->w_o = $w_o;
+					$each_item->s_t = $s_t;
+					$each_item->w_t = $w_t;
+				}
+				// $item['s'] = $s;
+				// $item['w'] = $w;
+				// $item['o'] = $o;
+				// $item['t'] = $t;
+				// $item['s_o'] = $s_o;
+				// $item['w_o'] = $w_o;
+				// $item['s_t'] = $s_t;
+				// $item['w_t'] = $w_t;
+				// $item['id'] = 0;
 
-				$p['item'] = $item;
+				$p['item'] = $item[0];
 			} 
 		}
 		
