@@ -49,29 +49,33 @@ class Swot extends MY_Mgmt_Controller {
 	
 		$data['id'] = $id;
 		if(!empty($id)) {
-			$q_data = $this -> get_posts(array(
-				'length',
-				'start',
-				'columns',
-				'search',
-				'order'
-			));
-			$q_data['id'] = $id;
-			$list = $this -> dao -> query_ajax($q_data);
-			$item = $list[0];
-	
-			$data['item'] = $item;
-			if(!empty($item->is_use_user_id) && $item->is_use_user_id>0){
-				$is_use_user = $this -> users_dao -> find_by_id($item->is_use_user_id);
-				$data['user_name'] = $is_use_user->user_name;
+			if($id>=0){
+				$q_data = $this -> get_posts(array(
+					'length',
+					'start',
+					'columns',
+					'search',
+					'order'
+				));
+				$q_data['id'] = $id;
+				$list = $this -> dao -> query_ajax($q_data);
+				$item = $list[0];
+		
+				$data['item'] = $item;
+				if(!empty($item->is_use_user_id) && $item->is_use_user_id>0){
+					$is_use_user = $this -> users_dao -> find_by_id($item->is_use_user_id);
+					$data['user_name'] = $is_use_user->user_name;
+				} else{
+					$data['user_name'] = '';
+				}
+				if(!empty($item->class_id) && $item->class_id>0){
+					$swot_class= $this -> d_dao -> find_by_id($item->class_id);
+					$data['swot_class'] = $swot_class->name;
+				}
 			} else{
-				$data['user_name'] = '';
+
 			}
-			if(!empty($item->class_id) && $item->class_id>0){
-				$swot_class= $this -> d_dao -> find_by_id($item->class_id);
-				$data['swot_class'] = $swot_class->name;
-			}
-			
+		
 		}
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);

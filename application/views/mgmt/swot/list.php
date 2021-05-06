@@ -32,6 +32,13 @@ thead tr th {
 							</div>
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">
+									<button onclick="currentApp.doEdit(-1)" class="btn btn-xs btn-success" data-toggle="dropdown">
+										整合全公司
+									</button>
+								</div>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<div class="btn-group">
 									<button onclick="currentApp.do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
 										<i class="fa fa-refresh"></i>一鍵清除自己使用中檔案
 									</button>
