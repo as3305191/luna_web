@@ -5,7 +5,7 @@
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
 	<header>
 	
-		<?php if(!empty($item) && $item -> id>0): ?>
+		<?php if(!empty($item -> id) && $item -> id>0): ?>
 			<div class="widget-toolbar pull-left">
 				<a href="javascript:void(0);" id="back_parent" onclick="currentApp.back('<?= isset($item) ? $item -> id : 0 ?>')" class="btn btn-default">
 					<i class="fa fa-arrow-circle-left"></i>返回
@@ -90,7 +90,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">文件種類</label>
 					<div class="col-md-6">
-						<input type="hidden"  id="s_style" value="<?= isset($item) ? $item -> swot_style_id : '' ?>"/>
+						<input type="hidden"  id="s_style" value="<?= isset($item -> swot_style_id) ? $item -> swot_style_id : '' ?>"/>
 						<select name="swot_style" id="swot_style" class="form-control" >
 							<!-- option from javascript -->
 						</select>
@@ -108,7 +108,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">標題</label>
 					<div class="col-md-6">
-						<input type="hidden"  id="s_title" value="<?= isset($item) ? $item -> title : '' ?>"/>
+						<input type="hidden"  id="s_title" value="<?= isset($item -> title) ? $item -> title : '' ?>"/>
 						<select name="title" id="swot_title" class="form-control" >
 							<!-- option from javascript -->
 						</select>
