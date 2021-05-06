@@ -101,7 +101,6 @@ class Swot extends MY_Mgmt_Controller {
 					$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_w_t);
 				}
 				$item['id'] = 0;
-				$item['role_id'] = 0;
 				$item['class_id'] = 0;
 				$item['swot_style_id'] = $list[0]->swot_style_id;
 				$item['title'] = $title;
