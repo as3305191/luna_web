@@ -50,8 +50,34 @@ class Swot extends MY_Mgmt_Controller {
 		$data['id'] = $id;
 		if(!empty($id)) {
 			if(!empty($title) && $title>0){
+				$q_data = $this -> get_posts(array(
+					'length',
+					'start',
+					'columns',
+					'search',
+					'order'
+				));
 				$q_data['title'] = $title;
 				$list = $this -> dao -> query_ajax($q_data);
+				$s='';
+				$w='';
+				$o='';
+				$t='';
+				$s_o='';
+				$w_o='';
+				$s_t='';
+				$w_t='';
+				foreach($list as $each){
+					$s+= substr_replace($each->m_swot_s,$each->d_or_c_name ,'</p>', -1);
+					$w+=$each->m_swot_w;
+					$o+=$each->m_swot_o;
+					$t+=$each->m_swot_t;
+					$s_o+=$each->m_swot_s_o;
+					$w_o+=$each->m_swot_w_o;
+					$s_t+=$each->m_swot_s_t;
+					$w_t+=$each->m_swot_w_t;
+				}
+
 			} else{
 				$q_data = $this -> get_posts(array(
 					'length',
