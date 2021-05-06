@@ -49,6 +49,10 @@ class Swot extends MY_Mgmt_Controller {
 	
 		$data['id'] = $id;
 		if(!empty($id)) {
+			if(!empty($title) && $title>0){
+				$q_data['title'] = $title;
+				$list = $this -> dao -> query_ajax($q_data);
+			} else{
 				$q_data = $this -> get_posts(array(
 					'length',
 					'start',
@@ -70,6 +74,7 @@ class Swot extends MY_Mgmt_Controller {
 					$swot_class= $this -> d_dao -> find_by_id($item->class_id);
 					$data['swot_class'] = $swot_class->name;
 				}
+			}
 		}
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);

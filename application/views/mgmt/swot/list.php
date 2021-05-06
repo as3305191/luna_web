@@ -176,7 +176,7 @@ thead tr th {
 
 	function unify() {
 		var title=$('#list_title').val();
-		currentApp.doEdit(-1,title);
+		currentApp.doEdit(0,title);
 	}
 
 </script>
