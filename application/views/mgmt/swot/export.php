@@ -33,7 +33,7 @@ tbody tr td {
 				<td class="min100" colspan="3" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
 			</tr>
 			<tr>
-				<td style="position:relative;overflow:hidden;"><img src="<?= base_url("api/images/get/603")?>" style="position: absolute;top: 50%;left: 50%;display: block;min-width:100%;min-height: 100%;transform:translate(-50%,-50%);" ></td>
+				<td style=""><img src="<?= base_url("api/images/get/603")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
 				<td valign="top">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr >
