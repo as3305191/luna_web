@@ -47,7 +47,7 @@ class Swot extends MY_Mgmt_Controller {
 		$data = array();
 		$u_data = array();
 		$data['id'] = $id;
-		if(!empty($id) && $id>0 ) {
+		if($id>0 ) {
 			$q_data = $this -> get_posts(array(
 				'length',
 				'start',
@@ -70,7 +70,7 @@ class Swot extends MY_Mgmt_Controller {
 				$data['swot_class'] = $swot_class->name;
 			}
 		} else{
-			if(!empty($title) && $title>0){
+			if($title>0){
 				$q_data = $this -> get_posts(array(
 					'length',
 					'start',
