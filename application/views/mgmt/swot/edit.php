@@ -136,7 +136,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">S+T</label>
 					<div class="col-md-9">
-						<textarea required class="form-control" id="m_swot_s_t" name="m_swot_s_t"><?= isset($$item['m_swot_s_t'] ) ? $item['m_swot_s_t'] : '' ?></textarea>
+						<textarea required class="form-control" id="m_swot_s_t" name="m_swot_s_t"><?= isset($item['m_swot_s_t'] ) ? $item['m_swot_s_t'] : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
