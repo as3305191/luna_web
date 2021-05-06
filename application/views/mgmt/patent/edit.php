@@ -994,7 +994,6 @@ function do_save() {
 									}).appendTo($('#patnet_status_'+category_level));
 								}
 							});
-							$('#patnet_status_'+category_level).select2();
 
 						}
 						$('.p_patnet_status').on('change', function(){
@@ -1078,7 +1077,6 @@ function do_save() {
 													$('#patnet_status_'+next_c).attr("disabled",true);
 												}
 											});
-											$('#patnet_status_'+next_c).select2();
 
 										}
 									},
