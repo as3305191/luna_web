@@ -67,7 +67,7 @@
 							<select name="role_id" id="department_id" class="form-control" onchange="department_change();">
 							<option value="0">請選擇</option>
 								<?php foreach($department_list as $each): ?>
-									<option value="<?= $each -> id?>" <?= isset($item) && $item -> department_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
+									<option value="<?= $each -> id?>" <?= isset($item) && $item -> role_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
 								<?php endforeach ?>
 							</select>
 						</div>
@@ -144,6 +144,14 @@
 	}
 </style>
 <script>
+$(document).ready(function() {
+	if($('#item_id').val()>0){
+	
+	}
+});
+
+
+
 	$('#app-edit-form').bootstrapValidator({
 		feedbackIcons : {
 			valid : 'glyphicon glyphicon-ok',
