@@ -80,7 +80,7 @@ class Swot extends MY_Mgmt_Controller {
 				'search',
 				'order'
 			));
-			$q_data['title'] = $title;
+			$q_data['title'] = $data['title'];
 			$list = $this -> dao -> query_ajax($q_data);
 			$s='';
 			$w='';
