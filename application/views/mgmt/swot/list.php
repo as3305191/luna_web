@@ -56,6 +56,7 @@ thead tr th {
 									<thead>
 										<tr>
 											<th class="min25"></th>
+											<th class="min100">部/課</th>
 											<th class="min100">標題</th>
 											<th class="min100">建立時間</th>
 										</tr>
@@ -100,7 +101,9 @@ thead tr th {
 	var baseUrl = '<?=base_url('')?>';
 
 	var mCols = [null,{
-		data : 'title'
+		data : 'd_or_c_name'
+	},{
+		data : 's_title_name'
 	},{
 		data : 'create_time'
 	}];
