@@ -107,7 +107,7 @@ class Swot extends MY_Mgmt_Controller {
 				$item['w_o'] = $w_o;
 				$item['s_t'] = $s_t;
 				$item['w_t'] = $w_t;
-				$p_data['item'] = $item;
+				$data['item'] = $item;
 			} 
 		}
 		
@@ -117,7 +117,7 @@ class Swot extends MY_Mgmt_Controller {
 		$data['login_user_role_array'] =  explode(",", str_replace('#', ',', trim($data['login_user']->in_department, "#")));
 		$data['department_list'] = $this -> users_dao -> find_all_department();
 
-		$this -> to_json($p_data);
+		$this -> to_json($data);
 		$this->load->view('mgmt/swot/edit', $data);
 	}
 
