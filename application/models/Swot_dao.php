@@ -21,7 +21,7 @@ class Swot_dao extends MY_Model {
 
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('s_s.name as s_style_name');
+		$this -> db -> select('s_s.swot_name as s_style_name');
 		$this -> db -> select('s_t.name as s_title_name');
 		$this -> db -> select('d.name as d_or_c_name');
 		// join
@@ -50,7 +50,7 @@ class Swot_dao extends MY_Model {
 
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('s_s.name as s_style_name');
+		$this -> db -> select('s_s.swot_name as s_style_name');
 		$this -> db -> select('s_t.name as s_title_name');
 		$this -> db -> select('d.name as d_or_c_name');
 		// join
