@@ -23,7 +23,7 @@
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
-		<?php if(!empty($item) && $item -> id>0): ?>
+		<?php if(!empty($item -> id) && $item -> id>0): ?>
 			<div class="widget-toolbar pull-right">
 			<div class="btn-group">
 				<button onclick="currentApp.doExportAll(<?=isset($item->id) && $item->id>0? $item -> id : ''?>)" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
