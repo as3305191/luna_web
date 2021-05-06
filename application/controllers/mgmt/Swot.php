@@ -111,17 +111,16 @@ class Swot extends MY_Mgmt_Controller {
 				// 	$each_item->s_t = $s_t;
 				// 	$each_item->w_t = $w_t;
 				// }
-				$item['id'] = 0;
-				$item['s'] = $s;
-				$item['w'] = $w;
-				$item['o'] = $o;
-				$item['t'] = $t;
-				$item['s_o'] = $s_o;
-				$item['w_o'] = $w_o;
-				$item['s_t'] = $s_t;
-				$item['w_t'] = $w_t;
+				$data['item']['id'] = 0;
+				$data['item']['s'] = $s;
+				$data['item']['w'] = $w;
+				$data['item']['o'] = $o;
+				$data['item']['t'] = $t;
+				$data['item']['s_o'] = $s_o;
+				$data['item']['w_o'] = $w_o;
+				$data['item']['s_t'] = $s_t;
+				$data['item']['w_t'] = $w_t;
 
-				$data['item'] = $item;
 			} 
 		}
 		
