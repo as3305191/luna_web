@@ -149,7 +149,7 @@ class Swot extends MY_Mgmt_Controller {
 
 	public function new_swot_title(){
 		$data = array();
-		$this -> load -> view('layout/show_new_title',$data);
+		$this -> load -> view('layout/show_new_swot_title',$data);
 	}
 
 	public function add_title(){
