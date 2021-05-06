@@ -273,7 +273,7 @@
 			url : url,
 			data : {
 				id: $('#item_id').val(),
-				title: $('#title').val(),
+				title: $('#swot_title').val(),
 				swot_style: $('#swot_style').val(),
 				department: $('#department').val(),
 				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
