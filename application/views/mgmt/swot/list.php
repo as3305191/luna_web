@@ -33,16 +33,17 @@ thead tr th {
 							<div class="widget-toolbar pull-left">
 							<?php if(!empty($login_user) ): ?>
 								<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
-									<div class="col-md-2">
+									<label class="col-md-3 control-label">選擇要合併標題</label>
+										<select id="list_title"  >
+											<!-- option from javascript -->
+										</select>
 										<button type="button" class="btn btn-sm btn-primary" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
-									</div>
 								<?php endif?>
 							<?php endif?>
-								<div class="btn-group">
 									<button onclick="unify();" class="btn btn-xs btn-success" data-toggle="dropdown">
 										整合全公司
 									</button>
-								</div>
+							
 							</div>
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">
@@ -146,7 +147,7 @@ thead tr th {
 			
 		});
 	});
-	function load_swot_title() {
+	function load_list_title() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
 			type: 'POST',
@@ -155,21 +156,14 @@ thead tr th {
 			success: function(d) {
 				if(d) {
 					// console.log(d);
-					$swot_title = $('#swot_title').empty();
+					$swot_title = $('#list_title').empty();
 					$.each(d.swot, function(){
-						if(this.id==$('#s_title').val()){
-							$('<option/>', {
-								'value': this.id,
-								'text': this.swot_title
-							}).attr("selected", true).appendTo($swot_title);
-						}else{
-							$('<option/>', {
-								'value': this.id,
-								'text': this.swot_title
-							}).appendTo($swot_title);
-						}
+						$('<option/>', {
+							'value': this.id,
+							'text': this.swot_title
+						}).appendTo($swot_title);
 					});
-					$('#swot_title').select2();
+					$('#list_title').select2();
 
 				}
 			},
@@ -178,7 +172,7 @@ thead tr th {
 			}
 		});
 	}
-	load_swot_title();
+	load_list_title();
 
 
 	function unify() {

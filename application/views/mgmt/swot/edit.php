@@ -355,5 +355,37 @@
 	}
 	load_swot_style();
 
+	function load_swot_title() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$swot_title = $('#swot_title').empty();
+					$.each(d.swot, function(){
+						if(this.id==$('#s_title').val()){
+							$('<option/>', {
+								'value': this.id,
+								'text': this.swot_title
+							}).attr("selected", true).appendTo($swot_title);
+						}else{
+							$('<option/>', {
+								'value': this.id,
+								'text': this.swot_title
+							}).appendTo($swot_title);
+						}
+					});
+					$('#swot_title').select2();
 
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+	load_swot_title();
 </script>
