@@ -50,6 +50,7 @@ class Swot extends MY_Mgmt_Controller {
 		$data['id'] = $id;
 		if(!empty($id)) {
 			if(!empty($title) && $title>0){
+				$item = array();
 				$q_data = $this -> get_posts(array(
 					'length',
 					'start',
@@ -77,7 +78,15 @@ class Swot extends MY_Mgmt_Controller {
 					$s_t+=$each->m_swot_s_t;
 					$w_t+=$each->m_swot_w_t;
 				}
-
+				$item['s'] = $s;
+				$item['w'] = $w;
+				$item['o'] = $o;
+				$item['t'] = $t;
+				$item['s_o'] = $s_o;
+				$item['w_o'] = $w_o;
+				$item['s_t'] = $s_t;
+				$item['w_t'] = $w_t;
+				$data['item'] = $item;
 			} else{
 				$q_data = $this -> get_posts(array(
 					'length',
