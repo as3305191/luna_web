@@ -108,7 +108,7 @@ thead tr th {
 		data : 'create_time'
 	}];
 
-	var mOrderIdx = 2;
+	var mOrderIdx = 3;
 	
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 
@@ -122,7 +122,7 @@ thead tr th {
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,1],
+		"targets" : [0,1,2],
 		"orderable" : false
 	}];
 
