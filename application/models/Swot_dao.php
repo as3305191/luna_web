@@ -76,24 +76,22 @@ class Swot_dao extends MY_Model {
 		$this -> db -> join("department d", "d.id = _m.class_id", "left");
 
 	}
-	
+
 	function search_always($data) {
 		if(!empty($data['title'])){
 			$title = $data['title'];
 			$this -> db -> where("_m.title",$title);
-		} else{
-			if(!empty($data['id'])){
-				$id = $data['id'];
-				$this -> db -> where("_m.id",$id);
-			}
-			
-			if(!empty($data['login_user'])){
-				if( $data['login_user']->role_id==6 || $data['login_user']->role_id==9 || 
-					$data['login_user']->role_id==16 || $data['login_user']->role_id==17 ){
-				} else{
-					$login_user_array = $data['login_user_array'];
-					$this -> db -> where("_m.role_id IN ($login_user_array)");
-				}
+		} 
+		if(!empty($data['id'])){
+			$id = $data['id'];
+			$this -> db -> where("_m.id",$id);
+		}
+		if(!empty($data['login_user'])){
+			if( $data['login_user']->role_id==6 || $data['login_user']->role_id==9 || 
+				$data['login_user']->role_id==16 || $data['login_user']->role_id==17 ){
+			} else{
+				$login_user_array = $data['login_user_array'];
+				$this -> db -> where("_m.role_id IN ($login_user_array)");
 			}
 		}
 	}
