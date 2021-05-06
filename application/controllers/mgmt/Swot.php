@@ -90,14 +90,14 @@ class Swot extends MY_Mgmt_Controller {
 				$s_t='';
 				$w_t='';
 				foreach($list as $each){
-					$s.= substr_replace($each->m_swot_s,$each->d_or_c_name ,'</p>', -1);
-					$w.=$each->m_swot_w;
-					$o.=$each->m_swot_o;
-					$t.=$each->m_swot_t;
-					$s_o.=$each->m_swot_s_o;
-					$w_o.=$each->m_swot_w_o;
-					$s_t.=$each->m_swot_s_t;
-					$w_t.=$each->m_swot_w_t;
+					$s.= str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_s);
+					$w.=str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_w);
+					$o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_o);
+					$t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_t);
+					$s_o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_s_o);
+					$w_o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_w_o);
+					$s_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_s_t);
+					$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_w_t);
 				}
 				$item['s'] = $s;
 				$item['w'] = $w;
