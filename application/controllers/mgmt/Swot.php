@@ -43,10 +43,11 @@ class Swot extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function edit($id,$title=false) {
+	public function edit($id) {
 		$data = array();
 		$u_data = array();
 		$data['id'] = $id;
+		$title = $this -> get_get('title');
 		if($id>0 ) {
 			$q_data = $this -> get_posts(array(
 				'length',
@@ -78,7 +79,7 @@ class Swot extends MY_Mgmt_Controller {
 					'search',
 					'order'
 				));
-				$q_data['title'] =  $this -> get_get('title');
+				$q_data['title'] =  $title;
 				$list = $this -> dao -> query_ajax($q_data);
 				$s='';
 				$w='';
