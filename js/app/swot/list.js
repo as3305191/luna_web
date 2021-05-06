@@ -23,7 +23,7 @@ var SwotAppClass = (function(app) {
 		// data table actions
 		app.dtActions();
 
-		app.doEdit = function(id,title=false) {
+		app.doEdit = function(id,title=0) {
 			var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
 				.appendTo($('#edit-modal-body').empty());
 			$("#btn-submit-edit").prop( "disabled", true);
