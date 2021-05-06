@@ -31,8 +31,15 @@ thead tr th {
 								</div>
 							</div>
 							<div class="widget-toolbar pull-left">
+							<?php if(!empty($login_user) ): ?>
+								<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
+									<div class="col-md-2">
+										<button type="button" class="btn btn-sm btn-primary" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
+									</div>
+								<?php endif?>
+							<?php endif?>
 								<div class="btn-group">
-									<button onclick="currentApp.doEdit(-1)" class="btn btn-xs btn-success" data-toggle="dropdown">
+									<button onclick="unify();" class="btn btn-xs btn-success" data-toggle="dropdown">
 										整合全公司
 									</button>
 								</div>
@@ -139,5 +146,44 @@ thead tr th {
 			
 		});
 	});
+	function load_swot_title() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$swot_title = $('#swot_title').empty();
+					$.each(d.swot, function(){
+						if(this.id==$('#s_title').val()){
+							$('<option/>', {
+								'value': this.id,
+								'text': this.swot_title
+							}).attr("selected", true).appendTo($swot_title);
+						}else{
+							$('<option/>', {
+								'value': this.id,
+								'text': this.swot_title
+							}).appendTo($swot_title);
+						}
+					});
+					$('#swot_title').select2();
+
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+	load_swot_title();
+
+
+	function unify() {
+		var title=$('#list_title').val();
+		currentApp.doEdit(-1,title);
+	}
 
 </script>

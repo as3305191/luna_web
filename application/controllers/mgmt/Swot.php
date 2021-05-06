@@ -43,13 +43,12 @@ class Swot extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function edit($id) {
+	public function edit($id,$title=false) {
 		$data = array();
 		$u_data = array();
 	
 		$data['id'] = $id;
 		if(!empty($id)) {
-			if($id>=0){
 				$q_data = $this -> get_posts(array(
 					'length',
 					'start',
@@ -60,7 +59,6 @@ class Swot extends MY_Mgmt_Controller {
 				$q_data['id'] = $id;
 				$list = $this -> dao -> query_ajax($q_data);
 				$item = $list[0];
-		
 				$data['item'] = $item;
 				if(!empty($item->is_use_user_id) && $item->is_use_user_id>0){
 					$is_use_user = $this -> users_dao -> find_by_id($item->is_use_user_id);
@@ -72,10 +70,6 @@ class Swot extends MY_Mgmt_Controller {
 					$swot_class= $this -> d_dao -> find_by_id($item->class_id);
 					$data['swot_class'] = $swot_class->name;
 				}
-			} else{
-
-			}
-		
 		}
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
@@ -122,8 +116,14 @@ class Swot extends MY_Mgmt_Controller {
 
 			$this -> dao -> insert($data);
 		} else {
-			// update
-			$this -> dao -> update($data, $id);
+			if($id=='-1') {
+				$data['role_id'] = $department;
+				$data['class_id'] = $login_user->role_id;
+				$this -> dao -> insert($data);
+			} else{
+				// update
+				$this -> dao -> update($data, $id);
+			}
 		}
 		$s_data = $this -> setup_user_data(array());
 		$res['success'] = TRUE;
