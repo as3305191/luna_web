@@ -48,6 +48,7 @@ class Swot extends MY_Mgmt_Controller {
 		$u_data = array();
 	
 		$data['id'] = $id;
+		$data['id'] = $id;
 		if(!empty($id)) {
 			if(!empty($title) && $title>0){
 				$item = array();
