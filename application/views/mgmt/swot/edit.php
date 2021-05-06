@@ -204,7 +204,6 @@
 	$(function() {
 		// $('#c_h_name').select2();
 		// $('#c_s_name').select2();
-		// $('#admin_user').select2();	
 		// ckeditor
 		var config = {
 				customConfig : '',
@@ -344,14 +343,15 @@
 							$('<option/>', {
 								'value': this.id,
 								'text': this.swot_name
-							}).attr("selected", true).select2().appendTo($swot_style);
+							}).attr("selected", true).appendTo($swot_style);
 						}else{
 							$('<option/>', {
 								'value': this.id,
 								'text': this.swot_name
-							}).select2().appendTo($swot_style);
+							}).appendTo($swot_style);
 						}
 					});
+					$('#swot_style').select2();
 				}
 			},
 			failure:function(){
@@ -376,14 +376,16 @@
 							$('<option/>', {
 								'value': this.id,
 								'text': this.swot_title
-							}).attr("selected", true).select2().appendTo($swot_title);
+							}).attr("selected", true).appendTo($swot_title);
 						}else{
 							$('<option/>', {
 								'value': this.id,
 								'text': this.swot_title
-							}).select2().appendTo($swot_title);
+							}).appendTo($swot_title);
 						}
 					});
+					$('#swot_title').select2();
+
 				}
 			},
 			failure:function(){
