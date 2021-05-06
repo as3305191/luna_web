@@ -286,10 +286,10 @@
 				if(data.error_msg) {
 					layer.msg(data.error_msg);
 				} else {
-					var this_id = <?= isset($item) ? $item -> id : '0' ?>;
+					var this_id = <?= isset($item -> id) ? $item -> id : '0' ?>;
 					if(this_id>0){
 						currentApp.mDtTable.ajax.reload(null, false);
-						currentApp.back(<?= isset($item) ? $item -> id : '0' ?>);
+						currentApp.back(<?= isset($item -> id ) ? $item -> id : '0' ?>);
 					} else{
 						currentApp.mDtTable.ajax.reload(null, false);
 						currentApp.backTo();
