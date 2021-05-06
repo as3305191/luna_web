@@ -57,7 +57,7 @@ tbody tr td {
 			</tr>
 			<tr>
 				<td valign="top">
-					<table class="swot_table" width="100%" height="100%"  align="center">
+					<table class="swot_table" width="100%" height="100%"  border-size="none" align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">o</td>
 						</tr>
