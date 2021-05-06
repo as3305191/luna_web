@@ -43,12 +43,11 @@ class Swot extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function edit($id,$title='0') {
+	public function edit($id,$title=false) {
 		$data = array();
 		$u_data = array();
-	
 		$data['id'] = $id;
-		$data['id'] = $id;
+		$data['title'] = get_get('title');
 		if(!empty($id)) {
 			if(!empty($title) && $title>0){
 				$item = array();
