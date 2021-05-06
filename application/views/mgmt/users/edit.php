@@ -182,13 +182,13 @@
 				if(d) {
 					// console.log(d);
 					$div = $('#div_id').empty();
+					$("#div_id").prepend("<option value='0'>沒有課</option>");
 					$.each(d.div_list, function(){
 						$('<option/>', {
 							'value': this.id,
 							'text': this.name
 						}).appendTo($div);
 					});
-					$("#div_id").prepend("<option value='0'>沒有課</option>");
 
 				}
 			},
