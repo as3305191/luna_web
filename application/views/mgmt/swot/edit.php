@@ -356,9 +356,9 @@
 			}
 		});
 	}
-	load_swot_style();
+	
 
-	function load_swot_title() {
+	function () {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
 			type: 'POST',
@@ -389,4 +389,5 @@
 		});
 }
 load_swot_style();
+load_swot_title();
 </script>
