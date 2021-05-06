@@ -23,7 +23,7 @@
 				<i class="fa fa-save"></i>存檔
 			</a>
 		</div>
-		<?php if(!empty($item -> id) && $item -> id>0): ?>
+		<?php if(!empty( $item -> id) && $item -> id>0): ?>
 			<div class="widget-toolbar pull-right">
 			<div class="btn-group">
 				<button onclick="currentApp.doExportAll(<?=isset($item->id) && $item->id>0? $item -> id : ''?>)" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
@@ -51,6 +51,106 @@
         <div class="clearfix"></div>
     </div>
     <hr/>
+	<?php if(!empty($unify) && $unify==1): ?>
+		<div id="edit_div">
+		
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">文件種類</label>
+					<div class="col-md-6">
+						<input type="hidden"  id="s_style" value="<?= isset($item['swot_style_id']) ? $item['swot_style_id']: '' ?>"/>
+						<select name="swot_style" id="swot_style" class="form-control" >
+							<!-- option from javascript -->
+						</select>
+					</div>
+					<?php if(!empty($login_user) ): ?>
+						<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
+							<div class="col-md-2">
+								<button type="button" class="btn btn-sm btn-primary" id="add_swot"><i class="fa fa-plus-circle fa-lg"></i></button>
+							</div>
+						<?php endif?>
+					<?php endif?>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">標題</label>
+					<div class="col-md-6">
+						<input type="hidden"  id="s_title" value="<?= isset($item['title']) ? $item['title'] : '' ?>"/>
+						<select name="title" id="swot_title" class="form-control" >
+							<!-- option from javascript -->
+						</select>
+					</div>
+				
+				</div>
+			</fieldset>
+			<fieldset id='swot_s'>
+				<div class="form-group">
+					<label class="col-md-3 control-label">S:優勢</label>
+					<div class="col-md-9">
+						<textarea required class="form-control" id="m_swot_s" name="m_swot_s"><?= isset($item['m_swot_s']) ? $item['m_swot_s']: '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset id='swot_w'>
+				<div class="form-group">
+					<label class="col-md-3 control-label">W:弱勢</label>
+					<div class="col-md-9">
+						<textarea required class="form-control" id="m_swot_w" name="m_swot_w"><?= isset($item['m_swot_w']) ? $item['m_swot_w']: '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset id='swot_o'>
+				<div class="form-group">
+					<label class="col-md-3 control-label">O:機會</label>
+					<div class="col-md-9">
+						<textarea required class="form-control" id="m_swot_o" name="m_swot_o"><?= isset($item['m_swot_o']) ? $item['m_swot_o'] : '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset id='swot_t'>
+				<div class="form-group">
+					<label class="col-md-3 control-label">T:威脅</label>
+					<div class="col-md-9">
+						<textarea required class="form-control" id="m_swot_t" name="m_swot_t"><?= isset($item['m_swot_t']) ? $item['m_swot_t']: '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset id='swot_s_o'>
+				<div class="form-group">
+					<label class="col-md-3 control-label">S+O</label>
+					<div class="col-md-9">
+						<textarea required class="form-control" id="m_swot_s_o" name="m_swot_s_o"><?= isset($item['m_swot_s_o']) ? $item['m_swot_s_o'] : '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset id='swot_w_o'>
+				<div class="form-group">
+					<label class="col-md-3 control-label">W+O</label>
+					<div class="col-md-9">
+						<textarea required class="form-control" id="m_swot_w_o" name="m_swot_w_o"><?= isset($item['m_swot_w_o']) ? $item['m_swot_w_o'] : '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset id='swot_s_t'>
+				<div class="form-group">
+					<label class="col-md-3 control-label">S+T</label>
+					<div class="col-md-9">
+						<textarea required class="form-control" id="m_swot_s_t" name="m_swot_s_t"><?= isset($$item['m_swot_s_t'] ) ? $item['m_swot_s_t'] : '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset id='swot_w_t'>
+				<div class="form-group">
+					<label class="col-md-3 control-label">W+T</label>
+					<div class="col-md-9">
+						<textarea required class="form-control" id="m_swot_w_t" name="m_swot_w_t"><?= isset($item['m_swot_w_t']) ? $item['m_swot_w_t'] : '' ?></textarea>
+					</div>
+				</div>
+			</fieldset>
+		
+		</div>
+	<?php else: ?>
 		<div id="edit_div">
 			<?php if(empty($item -> id) || $item -> id==0): ?>
 				<?php if(!empty($login_user_role_array) && count($login_user_role_array)>1): ?>
@@ -120,7 +220,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">S:優勢</label>
 					<div class="col-md-9">
-						<textarea required class="form-control" id="m_swot_s" name="m_swot_s"><?= isset($item['m_swot_s'])||isset($item->m_swot_s) ? $item['m_swot_s']||$item->m_swot_s : '' ?></textarea>
+						<textarea required class="form-control" id="m_swot_s" name="m_swot_s"><?= isset($item -> m_swot_s) ? $item -> m_swot_s : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -181,7 +281,9 @@
 				</div>
 			</fieldset>
 		
-		</div>
+		</div>		
+	<?php endif?>
+
 		</form>
 
 		</div>
