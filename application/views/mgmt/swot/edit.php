@@ -44,9 +44,9 @@
 		<!-- widget content -->
 		<div class="widget-body">
 			<form id="app-edit-form" method="post" class="form-horizontal">
-				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '0' ?>" />
+				<input type="hidden" name="id" id="item_id" value="<?= isset($item -> id) ?  : '0' ?>" />
 				<input type="hidden" id="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
-				<input type="hidden" id="is_use" value="<?= isset($item) ? $item -> is_use : ''?>" />
+				<input type="hidden" id="is_use" value="<?= isset($item -> is_use) ? $item -> is_use : ''?>" />
 				<div class="form-group" style="padding:0px 26px">
         <div class="clearfix"></div>
     </div>
@@ -62,7 +62,7 @@
 									<?php foreach ($department_list as $each) : ?>
 										<?php foreach ($login_user_role_array as $each_role) : ?>
 											<?php if($each->id==$each_role): ?>
-												<option value="<?= $each -> id?>" <?= isset($item) && $item -> role_id == $each -> id ? 'selected' : '' ?>><?=  $each -> name ?></option>
+												<option value="<?= $each -> id?>" <?= isset($item -> role_id) && $item -> role_id == $each -> id ? 'selected' : '' ?>><?=  $each -> name ?></option>
 											<?php endif?>
 										<?php endforeach ?>	
 									<?php endforeach ?>
@@ -74,9 +74,9 @@
 					<input type="hidden" id="department" value="<?= $login_user_role_array[0] ?>" />
 				<?php endif?>
 			<?php else: ?>
-				<input type="hidden" id="department" value=" <?= isset($item) ? $item -> role_id : '' ?>" />
+				<input type="hidden" id="department" value=" <?= isset($item -> role_id) ? $item -> role_id : '' ?>" />
 			<?php endif?>
-			<?php if(!empty($item) && $item -> id && $item -> is_use==1 ): ?>
+			<?php if(!empty($item -> id) && $item -> id && $item -> is_use==1 ): ?>
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label" style="color:red;">目前正在使用人員</label>
