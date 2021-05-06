@@ -33,8 +33,8 @@ thead tr th {
 							<div class="widget-toolbar pull-left">
 							<?php if(!empty($login_user) ): ?>
 								<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
-									<label class="col-md-3 control-label">選擇合併標題：</label>
-									<select class="col-md-5 control-label"id="list_title"  >
+									<label class="col-md-2 control-label">選擇合併標題：</label>
+									<select class="col-md-6 control-label"id="list_title"  >
 										<!-- option from javascript -->
 									</select>
 									<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
