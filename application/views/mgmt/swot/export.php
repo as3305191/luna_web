@@ -35,7 +35,7 @@ tbody tr td {
 			<tr>
 				<td style=""><img src="<?= base_url("api/images/get/603")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
 				<td valign="top">
-					<table class="swot_table" width="100%" height="100%"  align="center">
+					<table class="swot_table" width="100%" height="100%"  align="center" border-size="none">
 						<tr >
 							<td style="text-align:center;vertical-align:middle;">s</td>
 						</tr>
