@@ -107,6 +107,8 @@ class Swot extends MY_Mgmt_Controller {
 				$item['w_o'] = $w_o;
 				$item['s_t'] = $s_t;
 				$item['w_t'] = $w_t;
+				$item['id'] = 0;
+
 				$data['item'] = $item;
 			} 
 		}
