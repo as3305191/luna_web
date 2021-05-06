@@ -71,7 +71,6 @@ class Swot extends MY_Mgmt_Controller {
 			}
 		} else{
 			if(!empty($title) && $title>0){
-				$item = array();
 				$q_data = $this -> get_posts(array(
 					'length',
 					'start',

@@ -68,6 +68,15 @@ class Swot_dao extends MY_Model {
 		return $query -> result();
 	}
 
+	function ajax_from_join() {
+		// join
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> join("swot_style s_s", "s_s.id = _m.swot_style_id", "left");
+		$this -> db -> join("swot_title s_t", "s_t.id = _m.title", "left");
+		$this -> db -> join("department d", "d.id = _m.class_id", "left");
+
+	}
+	
 	function search_always($data) {
 		if(!empty($data['title'])){
 			$title = $data['title'];
@@ -89,14 +98,6 @@ class Swot_dao extends MY_Model {
 		}
 	}
 
-	function ajax_from_join() {
-		// join
-		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("swot_style s_s", "s_s.id = _m.swot_style_id", "left");
-		$this -> db -> join("swot_title s_t", "s_t.id = _m.title", "left");
-		$this -> db -> join("department d", "d.id = _m.class_id", "left");
-
-	}
 
 	function find_all_by_me($user_id){
 		$this -> db -> from("$this->table_name as _m");
