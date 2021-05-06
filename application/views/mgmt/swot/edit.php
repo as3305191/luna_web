@@ -109,7 +109,7 @@
 					<label class="col-md-3 control-label">標題</label>
 					<div class="col-md-6">
 						<input type="hidden"  id="s_title" value="<?= isset($item) ? $item -> title : '' ?>"/>
-						<select name="swot_title" id="swot_title" class="form-control" >
+						<select name="title" id="swot_title" class="form-control" >
 							<!-- option from javascript -->
 						</select>
 					</div>
