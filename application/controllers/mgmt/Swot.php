@@ -101,17 +101,16 @@ class Swot extends MY_Mgmt_Controller {
 					$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",$each->m_swot_w_t);
 				}
 			
-				
-				$item['s'] = $s;
-				$item['w'] = $w;
-				$item['o'] = $o;
-				$item['t'] = $t;
-				$item['s_o'] = $s_o;
-				$item['w_o'] = $w_o;
-				$item['s_t'] = $s_t;
-				$item['w_t'] = $w_t;
+				$item['m_swot_s'] = $s;
+				$item['m_swot_w'] = $w;
+				$item['m_swot_o'] = $o;
+				$item['m_swot_t'] = $t;
+				$item['m_swot_s_o'] = $s_o;
+				$item['m_swot_w_o'] = $w_o;
+				$item['m_swot_s_t'] = $s_t;
+				$item['m_swot_w_t'] = $w_t;
 
-				$data['item'][]= $item;
+				$data['item']= $item;
 
 			} 
 		}
