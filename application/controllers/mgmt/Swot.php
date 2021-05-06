@@ -91,7 +91,7 @@ class Swot extends MY_Mgmt_Controller {
 			$s_t='';
 			$w_t='';
 			foreach($list as $each){
-				$s+= substr_replace($each->m_swot_s,$each->d_or_c_name ,'</p>', -1);
+				// $s+= substr_replace($each->m_swot_s,$each->d_or_c_name ,'</p>', -1);
 				$w+=$each->m_swot_w;
 				$o+=$each->m_swot_o;
 				$t+=$each->m_swot_t;
@@ -100,7 +100,7 @@ class Swot extends MY_Mgmt_Controller {
 				$s_t+=$each->m_swot_s_t;
 				$w_t+=$each->m_swot_w_t;
 			}
-			$item['s'] = $s;
+			// $item['s'] = $s;
 			$item['w'] = $w;
 			$item['o'] = $o;
 			$item['t'] = $t;
