@@ -120,7 +120,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">S:優勢</label>
 					<div class="col-md-9">
-						<textarea required class="form-control" id="m_swot_s" name="m_swot_s"><?= isset($item) ? $item -> m_swot_s : '' ?></textarea>
+						<textarea required class="form-control" id="m_swot_s" name="m_swot_s"><?= isset($item -> m_swot_s) ? $item -> m_swot_s : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -128,7 +128,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">W:弱勢</label>
 					<div class="col-md-9">
-						<textarea required class="form-control" id="m_swot_w" name="m_swot_w"><?= isset($item) ? $item -> m_swot_w : '' ?></textarea>
+						<textarea required class="form-control" id="m_swot_w" name="m_swot_w"><?= isset($item -> m_swot_w) ? $item -> m_swot_w : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -136,7 +136,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">O:機會</label>
 					<div class="col-md-9">
-						<textarea required class="form-control" id="m_swot_o" name="m_swot_o"><?= isset($item) ? $item -> m_swot_o : '' ?></textarea>
+						<textarea required class="form-control" id="m_swot_o" name="m_swot_o"><?= isset($item -> m_swot_o) ? $item -> m_swot_o : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -144,7 +144,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">T:威脅</label>
 					<div class="col-md-9">
-						<textarea required class="form-control" id="m_swot_t" name="m_swot_t"><?= isset($item) ? $item -> m_swot_t : '' ?></textarea>
+						<textarea required class="form-control" id="m_swot_t" name="m_swot_t"><?= isset($item -> m_swot_t) ? $item -> m_swot_t : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -152,7 +152,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">S+O</label>
 					<div class="col-md-9">
-						<textarea required class="form-control" id="m_swot_s_o" name="m_swot_s_o"><?= isset($item) ? $item -> m_swot_s_o : '' ?></textarea>
+						<textarea required class="form-control" id="m_swot_s_o" name="m_swot_s_o"><?= isset($item-> m_swot_s_o) ? $item -> m_swot_s_o : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -160,7 +160,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">W+O</label>
 					<div class="col-md-9">
-						<textarea required class="form-control" id="m_swot_w_o" name="m_swot_w_o"><?= isset($item) ? $item -> m_swot_w_o : '' ?></textarea>
+						<textarea required class="form-control" id="m_swot_w_o" name="m_swot_w_o"><?= isset($item-> m_swot_w_o) ? $item -> m_swot_w_o : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -168,7 +168,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">S+T</label>
 					<div class="col-md-9">
-						<textarea required class="form-control" id="m_swot_s_t" name="m_swot_s_t"><?= isset($item) ? $item -> m_swot_s_t : '' ?></textarea>
+						<textarea required class="form-control" id="m_swot_s_t" name="m_swot_s_t"><?= isset($item-> m_swot_s_t) ? $item -> m_swot_s_t : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
@@ -176,7 +176,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">W+T</label>
 					<div class="col-md-9">
-						<textarea required class="form-control" id="m_swot_w_t" name="m_swot_w_t"><?= isset($item) ? $item -> m_swot_w_t : '' ?></textarea>
+						<textarea required class="form-control" id="m_swot_w_t" name="m_swot_w_t"><?= isset($item-> m_swot_w_t) ? $item -> m_swot_w_t : '' ?></textarea>
 					</div>
 				</div>
 			</fieldset>
