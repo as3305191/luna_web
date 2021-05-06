@@ -37,8 +37,8 @@ thead tr th {
 									<select class="col-md-5 control-label"id="list_title"  >
 										<!-- option from javascript -->
 									</select>
-									<button type="button" class="col-md-2 btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
-									<button onclick="unify();" class="col-md-2 btn btn-xs btn-success btn-group" data-toggle="dropdown">
+									<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
+									<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 										整合公司
 									</button>
 								<?php endif?>
