@@ -75,6 +75,7 @@ class Users extends MY_Mgmt_Controller {
 			}
 			$data['item'] = $item;
 		}
+		
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;

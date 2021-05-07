@@ -144,14 +144,6 @@
 	}
 </style>
 <script>
-$(document).ready(function() {
-	if($('#item_id').val()>0){
-	
-	}
-});
-
-
-
 	$('#app-edit-form').bootstrapValidator({
 		feedbackIcons : {
 			valid : 'glyphicon glyphicon-ok',
