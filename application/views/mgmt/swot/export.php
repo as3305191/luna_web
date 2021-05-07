@@ -28,7 +28,7 @@ tbody tr td {
 			</tr>
 			<tr>
 				<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
-					<span style="text-align:center;vertical-align:middle;font-weight:bold;font-size:120%;"><?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></span>
+					<span style="text-align:center;vertical-align:middle;font-weight:bold;font-size:120%;padding:50px 50px 50px 50px;"><?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></span>
 					<div style="text-align:right;">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
 				</td>
 			</tr>
