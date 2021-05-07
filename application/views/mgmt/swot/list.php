@@ -117,7 +117,7 @@ thead tr th {
 	var mCols = [null,{
 		data : 'd_or_c_name',
 		render: function(d,t,r){
-			if(!empty(r.department_list)){
+			if(r.department_list){
 				return r.department_list.name+'+'+html;
 			} else{
 				return d;
