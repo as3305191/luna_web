@@ -34,7 +34,7 @@ tbody tr td table{
 			</tr>
 			<tr>
 				<td style=""><img src="<?= base_url("api/images/get/603")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
-				<td valign="top">
+				<td valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr >
 							<td style="text-align:center;vertical-align:middle;">s(優勢)</td>
@@ -44,7 +44,7 @@ tbody tr td table{
 						</tr>
 					</table>
 				</td>
-				<td  valign="top">
+				<td  valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">w(弱勢)</td>
@@ -56,7 +56,7 @@ tbody tr td table{
 				</td>
 			</tr>
 			<tr>
-				<td valign="top">
+				<td valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">o(機會)</td>
@@ -66,7 +66,7 @@ tbody tr td table{
 						</tr>
 					</table>
 				</td>
-				<td valign="top">
+				<td valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">so(優勢+機會)</td>
@@ -76,7 +76,7 @@ tbody tr td table{
 						</tr>
 					</table>
 				</td>
-				<td valign="top">
+				<td valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">wo(弱勢+機會)</td>
@@ -89,7 +89,7 @@ tbody tr td table{
 				
 			</tr>
 			<tr>
-				<td valign="top">
+				<td valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">t(威脅)</td>
@@ -99,7 +99,7 @@ tbody tr td table{
 						</tr>
 					</table>
 				</td>
-				<td valign="top">
+				<td valign="top"class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">st(優勢+威脅)</td>
@@ -109,7 +109,7 @@ tbody tr td table{
 						</tr>
 					</table>
 				</td>
-				<td valign="top">
+				<td valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">wt(弱勢+威脅)</td>
