@@ -118,7 +118,7 @@ thead tr th {
 		data : 'd_or_c_name',
 		render: function(d,t,r){
 			if(r.department_list){
-				return r.department_list.name+'+'+html;
+				return r.department_list.name+'+'+d;
 			} else{
 				return d;
 			}
