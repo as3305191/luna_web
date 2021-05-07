@@ -59,7 +59,7 @@ thead tr th {
 							</div>
 							<div class="widget-toolbar pull-right">
 
-								<div class=" pull-left">
+								<div class=" ">
 								<button onclick="currentApp.do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
 									<i class="fa fa-refresh"></i>一鍵清除自己使用中檔案
 								</button>
