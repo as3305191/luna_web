@@ -16,12 +16,9 @@ tbody tr td {
     } */
 }
 
-
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="" style="padding:50px 50px 50px 50px;">
-<canvas id="line" style="display:none;"></canvas>
-
 	<table  class="layui-table" width="70%">
 		<thead>
 		</thead>
