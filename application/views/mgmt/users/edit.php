@@ -67,7 +67,7 @@
 							<select name="role_id" id="department_id" class="form-control" onchange="department_change();">
 							<option value="0">請選擇</option>
 								<?php foreach($department_list as $each): ?>
-									<?php if(!empty( $item->div_id)): ?>
+									<?php if(!empty( $div_list)): ?>
 										<option value="<?= $each -> id?>" <?= isset($item) && $item -> department_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
 									<?php else: ?>
 										<option value="<?= $each -> id?>" <?= isset($item) && $item -> role_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
@@ -84,7 +84,7 @@
 						<div class="col-md-6">
 						<?php if(!empty($item)): ?>
 							<select name="div_id" id="div_id" class="form-control">
-								<?php if(!empty( $item -> div_id)): ?>
+								<?php if(!empty( $div_list)): ?>
 									
 									<?php foreach($div_list as $each): ?>
 										<option value="<?= $each -> id?>" <?= isset($item) && $item -> div_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
