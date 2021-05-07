@@ -24,10 +24,10 @@ tbody tr td {
 		</thead>
 		<tbody class="">
 			<tr>
-				<td class="" colspan="3" style="text-align:center;vertical-align:middle;font-weight:bold;font-size:200%;">寬仕工業股份有限公司</td>
+				<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:200%;">寬仕工業股份有限公司</td>
 			</tr>
 			<tr>
-				<td class="" colspan="3" style="text-align:center;vertical-align:middle;">
+				<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
 					<span style="text-align:center;vertical-align:middle;font-weight:bold;font-size:120%;"><?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></span>
 					<div style="text-align:right;">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
 				</td>
@@ -122,7 +122,7 @@ tbody tr td {
 			</tr>
 		</tbody>
 	</table>
-	<div class="col-sm-12">
+	<div class="col-sm-12" style="padding:50px 50px 50px 50px;">
 		<div class="col-sm-6" style="position:absolute;right:0;"> 
 			<div class="col-sm-6" style="position:absolute;left:0;">
 				<span class="col-sm-4" style="text-align:left;">管理代表：</span>
