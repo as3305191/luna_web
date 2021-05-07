@@ -100,6 +100,16 @@ var BaseAppClass = (function(app) {
 			}
 		}, false);
 	};
+	
+	app.isUse = function(id) {
+		$.ajax({
+			url : baseUrl + app.basePath  + 'is_use/' + id,
+			success: function() {
+			},
+			failure: function() {
+			}
+		});
+	};
 
 	$(app.dtListId).on( 'draw.dt', function () {
 		if(typeof wOnResize != undefined) {

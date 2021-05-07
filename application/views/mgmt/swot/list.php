@@ -163,6 +163,7 @@ thead tr th {
 				if(d) {
 					// console.log(d);
 					$swot_title = $('#list_title').empty();
+					$("#list_title").prepend("<option value='0'>請選擇</option>");
 					$.each(d.swot, function(){
 						$('<option/>', {
 							'value': this.id,

@@ -68,16 +68,6 @@ var SwotAppClass = (function(app) {
 		// get year month list
 		app.tableReload();
 
-		app.isUse = function(id) {
-			$.ajax({
-				url : baseUrl + app.basePath  + 'is_use/' + id,
-				success: function() {
-				},
-				failure: function() {
-				}
-			});
-		};
-
 		app.doExportAll = function(id) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
 		}
