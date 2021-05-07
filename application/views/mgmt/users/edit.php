@@ -87,7 +87,7 @@
 								<?php if(!empty( $item -> div_id)): ?>
 									
 									<?php foreach($div_list as $each): ?>
-										<option value="<?= $each -> id?>" <?= isset($item) && $item -> department_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
+										<option value="<?= $each -> id?>" <?= isset($item) && $item -> div_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
 									<?php endforeach ?>
 								<?php else: ?>
 									<option disabled="disabled" >部門沒有課</option>
