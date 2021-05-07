@@ -128,7 +128,7 @@
 					
 				</td>
 				<td valign="top" class="td_table" style="text-align:right;border:none;" >
-					<span  style="text-align:left;">製表：</span>
+					<div  style="text-align:left;">製表：</div>
 					<div style="text-align:right;">RA2602-1</div>
 				</td>
 			</tr>
