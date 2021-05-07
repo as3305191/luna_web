@@ -124,12 +124,12 @@
 				<td valign="top" class="td_table" style="border:none;" >
 				</td>
 				<td valign="top" class="td_table" style="border:none;" >
-					<span class="col-sm-4" style="text-align:right;">管理代表：</span>
+					<span style="text-align:right;">管理代表：</span>
 					
 				</td>
 				<td valign="top" class="td_table" style="text-align:right;border:none;" >
-					<span class="col-sm-4" style="text-align:left;">製表：</span>
-					<div class="col-sm-4" style="text-align:right;">RA2602-1</div>
+					<span  style="text-align:left;">製表：</span>
+					<div style="text-align:right;">RA2602-1</div>
 				</td>
 			</tr>
 		</tbody>
