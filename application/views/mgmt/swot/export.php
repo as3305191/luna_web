@@ -125,10 +125,11 @@
 				</td>
 				<td valign="top" class="td_table" style="border:none;" >
 					<span class="col-sm-4" style="text-align:right;">管理代表：</span>
-					<span class="col-sm-4" style="text-align:left;">製表：</span>
+					
 				</td>
 				<td valign="top" class="td_table" style="text-align:right;border:none;" >
-					RA2602-1
+					<span class="col-sm-4" style="text-align:left;">製表：</span>
+					<span class="col-sm-4" style="text-align:right;">RA2602-1</span>
 				</td>
 			</tr>
 		</tbody>
