@@ -30,7 +30,10 @@ tbody tr td {
 				<td class="min100" colspan="3" style="text-align:center;vertical-align:middle;">寬仕工業股份有限公司</td>
 			</tr>
 			<tr>
-				<td class="min100" colspan="3" style="text-align:center;vertical-align:middle;">SWOT分析表-<?= date('Ymd')?></td>
+				<td class="min100" colspan="3" style="text-align:center;vertical-align:middle;">
+					<?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?>
+					<span>文件種類：<?= isset($item) ? $item -> s_style_name : ''?></span>
+				</td>
 			</tr>
 			<tr>
 				<td style=""><img src="<?= base_url("api/images/get/603")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
@@ -120,6 +123,20 @@ tbody tr td {
 					</table>
 				</td>
 			</tr>
+			<div class="col-sm-12">
+				<div class="col-sm-6" style="position:absolute;right:0;"> 
+					<div class="col-sm-6" style="position:absolute;right:0;">
+						<span class="col-sm-4" style="text-align:left;">管理代表：</span>
+					</div>
+
+					<div class="col-sm-6" style="position:absolute;right:0;">
+						<span class="col-sm-4" style="text-align:left;">製表：</span>
+					</div>
+				</div>
+			 </div>
+			 <div class="col-sm-12" style="text-align:right;">
+				RA2602-1
+			 </div>
 		</tbody>
 	</table>
 </div>
