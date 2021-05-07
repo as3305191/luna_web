@@ -33,6 +33,7 @@ class Swot extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
+			'list_title',
 		));
 		$data['login_user'] = $login_user;
 		$data['login_user_array'] = str_replace('#', ',', trim($login_user->in_department, "#"));

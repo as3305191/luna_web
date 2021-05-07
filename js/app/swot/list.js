@@ -6,7 +6,7 @@ var SwotAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					// d.now_category = $('#now_category').val();
+					d.list_title = $('#list_title').val();
 				},
 				dataSrc : 'items',
 				dataType : 'json',
@@ -85,6 +85,9 @@ var SwotAppClass = (function(app) {
 			}
 		};
 
+		$('#list_title').on('change', function(){
+			app.tableReload();
+		});
 
 		return app;
 	};

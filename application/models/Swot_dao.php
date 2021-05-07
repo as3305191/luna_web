@@ -94,8 +94,12 @@ class Swot_dao extends MY_Model {
 				$this -> db -> where("_m.role_id IN ($login_user_array)");
 			}
 		}
+		if(!empty($data['list_title'])){
+			$title = $data['title'];
+			$this -> db -> where("_m.title",$title);
+		}
+		
 	}
-
 
 	function find_all_by_me($user_id){
 		$this -> db -> from("$this->table_name as _m");
