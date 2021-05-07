@@ -185,6 +185,7 @@ thead tr th {
 						}).appendTo($swot_title);
 					});
 					$('#list_title').select2();
+					$('#d_or_c').select2();
 
 				}
 			},
