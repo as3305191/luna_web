@@ -5,9 +5,9 @@
 	border-style:none !important;
 } */
 
-/* tbody tr td {
+tbody tr td table{
  	padding: 0px 0px 0px 0px !important;
-} */
+}
 
 @media print  
 {
