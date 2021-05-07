@@ -41,7 +41,7 @@ class Swot extends MY_Mgmt_Controller {
 			if(!empty($each->class_id)){
 				$d_or_c_level = $this-> d_dao-> find_by_id($each->class_id);
 				if($d_or_c_level -> level==4){
-					$each->department_list = $this-> d_dao-> find_by_id($d_or_c_level->id);
+					$each->department_list = $this-> d_dao-> find_by_id($d_or_c_level->parent_id);
 				}
 			}
 
