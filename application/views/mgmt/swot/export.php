@@ -120,7 +120,6 @@ tbody tr td {
 					</table>
 				</td>
 			</tr>
-		
 		</tbody>
 	</table>
 	<div class="col-sm-12">
