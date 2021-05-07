@@ -29,7 +29,8 @@ tbody tr td {
 			<tr>
 				<td class="min100" colspan="3" style="text-align:center;vertical-align:middle;">
 					<?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?>
-					<span  style="text-align:right;">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></span>
+					<div style="text-align:right;"><span >文件種類：<?= isset($item) ? $item -> s_style_name : ''?></span></div>
+					
 				</td>
 			</tr>
 			<tr>
