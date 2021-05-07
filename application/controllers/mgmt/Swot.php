@@ -92,10 +92,10 @@ class Swot extends MY_Mgmt_Controller {
 				$s_t='';
 				$w_t='';
 				foreach($list as $each){			
-					$s.= str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",trim($each->m_swot_s));
-					$w.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",trim($each->m_swot_w));
-					$o.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",trim($each->m_swot_o));
-					$t.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",trim($each->m_swot_t));
+					$s.= str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",preg_replace('/\s(?=)/', '',$each->m_swot_s));
+					$w.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",preg_replace('/\s(?=)/', '',$each->m_swot_w));
+					$o.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",preg_replace('/\s(?=)/', '',$each->m_swot_o));
+					$t.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",preg_replace('/\s(?=)/', '',$each->m_swot_t));
 					$s_o.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",trim($each->m_swot_s_o));
 					$w_o.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",trim($each->m_swot_w_o));
 					$s_t.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",trim($each->m_swot_s_t));
