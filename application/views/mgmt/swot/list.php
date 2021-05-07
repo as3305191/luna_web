@@ -57,11 +57,7 @@ thead tr th {
 									<?php endif?>
 								<?php endif?>
 							</div>
-							<div class=" pull-left">
-								<button onclick="currentApp.do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
-									<i class="fa fa-refresh"></i>一鍵清除自己使用中檔案
-								</button>
-							</div>
+							
                            
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
@@ -71,7 +67,11 @@ thead tr th {
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
-
+								<div class=" pull-left">
+									<button onclick="currentApp.do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
+										<i class="fa fa-refresh"></i>一鍵清除自己使用中檔案
+									</button>
+								</div>
 							</div>
 							<!-- end widget edit box -->
 
