@@ -37,6 +37,15 @@ class Swot extends MY_Mgmt_Controller {
 		$data['login_user'] = $login_user;
 		$data['login_user_array'] = str_replace('#', ',', trim($login_user->in_department, "#"));
 		$items = $this -> dao -> query_ajax($data);
+		foreach($items as $each){
+			if(!empty($each->role_id)){
+				$d_or_c_level = $this-> d_dao-> find_by_id($each->role_id);
+				if($d_or_c_level -> level==4){
+					$each->department_list = $this-> d_dao-> find_by_id($d_or_c_level->id);
+				}
+			}
+
+		}
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
@@ -148,7 +157,6 @@ class Swot extends MY_Mgmt_Controller {
 		$department = $this -> get_post('department');
 		$class_id = $this -> get_post('class_id');
 
-		
 		$data['title'] = $title;
 		$data['swot_style_id'] = $swot_style;
 		$data['m_swot_s'] = $m_swot_s;

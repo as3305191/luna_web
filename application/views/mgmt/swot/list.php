@@ -115,7 +115,14 @@ thead tr th {
 	var baseUrl = '<?=base_url('')?>';
 
 	var mCols = [null,{
-		data : 'd_or_c_name'
+		data : 'd_or_c_name',
+		render: function(d,t,r){
+			if(!empty(r.department_list)){
+				return r.department_list.name+html;
+			} else{
+				return d;
+			}
+		}
 	},{
 		data : 's_title_name'
 	},{
