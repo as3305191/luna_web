@@ -53,7 +53,7 @@
     <hr/>
 	<?php if(!empty($unify) && $unify==1): ?>
 		<div id="edit_div">
-		
+			<input type="hidden" id="class_id" value="3" />
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">文件種類</label>
@@ -151,6 +151,8 @@
 		
 		</div>
 	<?php else: ?>
+		<input type="hidden" id="class_id" value="0" />
+
 		<div id="edit_div">
 			<?php if(empty($item -> id) || $item -> id==0): ?>
 				<?php if(!empty($login_user_role_array) && count($login_user_role_array)>1): ?>
@@ -371,6 +373,7 @@
 			url : url,
 			data : {
 				id: $('#item_id').val(),
+				class_id: $('#class_id').val(),	
 				title: $('#swot_title').val(),
 				swot_style: $('#swot_style').val(),
 				department: $('#department').val(),
