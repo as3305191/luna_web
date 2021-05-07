@@ -31,18 +31,32 @@ thead tr th {
 								</div>
 							</div>
 							<div class="widget-toolbar pull-left">
-							<?php if(!empty($login_user) ): ?>
-								<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
-									<label class="col-md-3 control-label">合併標題：</label>
-									<select class="col-md-6 control-label" id="list_title"  >
-										<!-- option from javascript -->
-									</select>
-									<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
-									<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
-										整合公司
-									</button>
+								<?php if(!empty($login_user) ): ?>
+									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
+										<label class="col-md-3 control-label">部門/課</label>
+										<select class="col-md-6 control-label" id="d_or_c"  >
+											<option value="0">請選擇</option>
+											<option value="3">寬仕</option>
+											<?php foreach ($all_department_list as $each) : ?>
+													<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
+											<?php endforeach ?>	
+										</select>
+									<?php endif?>
 								<?php endif?>
-							<?php endif?>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<?php if(!empty($login_user) ): ?>
+									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
+										<label class="col-md-3 control-label">合併標題：</label>
+										<select class="col-md-6 control-label" id="list_title"  >
+											<!-- option from javascript -->
+										</select>
+										<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
+										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
+											整合公司
+										</button>
+									<?php endif?>
+								<?php endif?>
 							</div>
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">

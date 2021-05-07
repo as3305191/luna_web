@@ -18,6 +18,8 @@ class Swot extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+		$data['all_department_list'] = $this -> d_dao -> find_all_d_or_c();
+
 		// $this -> to_json($data);
 
 		$this -> load -> view('mgmt/swot/list', $data);
@@ -34,6 +36,7 @@ class Swot extends MY_Mgmt_Controller {
 			'search',
 			'order',
 			'list_title',
+			'd_or_c'
 		));
 		$data['login_user'] = $login_user;
 		$data['login_user_array'] = str_replace('#', ',', trim($login_user->in_department, "#"));
