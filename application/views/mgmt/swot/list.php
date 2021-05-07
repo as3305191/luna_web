@@ -33,8 +33,8 @@ thead tr th {
 							<div class="widget-toolbar pull-left">
 								<?php if(!empty($login_user) ): ?>
 									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
-										<label class="col-md-5 control-label">部門:</label>
-										<select class="col-md-6 control-label" id="d_or_c"  >
+										<label class="col-md-3 control-label">部門</label>
+										<select class="col-md-9 control-label" id="d_or_c" >
 											<option value="0">請選擇</option>
 											<option value="3">寬仕</option>
 											<?php foreach ($all_department_list as $each) : ?>
