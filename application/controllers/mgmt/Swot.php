@@ -91,28 +91,29 @@ class Swot extends MY_Mgmt_Controller {
 				$w_o='';
 				$s_t='';
 				$w_t='';
-				foreach($list as $each){			
-					$s.= str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",preg_replace('/\s(?=)/', '',$each->m_swot_s));
-					$w.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",preg_replace('/\s(?=)/', '',$each->m_swot_w));
-					$o.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",preg_replace('/\s(?=)/', '',$each->m_swot_o));
-					$t.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",preg_replace('/\s(?=)/', '',$each->m_swot_t));
-					$s_o.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",trim($each->m_swot_s_o));
-					$w_o.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",trim($each->m_swot_w_o));
-					$s_t.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",trim($each->m_swot_s_t));
-					$w_t.=str_replace("</p><p>","(".$each->d_or_c_name.")<br/>",trim($each->m_swot_w_t));
+				foreach($list as $each){	
+
+					$s.= str_replace("</p>","(".$each->d_or_c_name.")<br/>",str_replace("<p>","",trim($each->m_swot_s)));
+					$w.=str_replace("</p>","(".$each->d_or_c_name.")<br/>",str_replace("<p>","",trim($each->m_swot_w)));
+					$o.=str_replace("</p>","(".$each->d_or_c_name.")<br/>",str_replace("<p>","",trim($each->m_swot_o)));
+					$t.=str_replace("</p>","(".$each->d_or_c_name.")<br/>",str_replace("<p>","",trim($each->m_swot_t)));
+					$s_o.=str_replace("</p>","(".$each->d_or_c_name.")<br/>",str_replace("<p>","",trim($each->m_swot_s_o)));
+					$w_o.=str_replace("</p>","(".$each->d_or_c_name.")<br/>",str_replace("<p>","",trim($each->m_swot_w_o)));
+					$s_t.=str_replace("</p>","(".$each->d_or_c_name.")<br/>",str_replace("<p>","",trim($each->m_swot_s_t)));
+					$w_t.=str_replace("</p>","(".$each->d_or_c_name.")<br/>",str_replace("<p>","",trim($each->m_swot_w_t)));
 				}
 				$item['id'] = 0;
 				$item['class_id'] = 0;
 				$item['swot_style_id'] = $list[0]->swot_style_id;
 				$item['title'] = $title;
-				$item['m_swot_s'] = $s;
-				$item['m_swot_w'] = $w;
-				$item['m_swot_o'] = $o;
-				$item['m_swot_t'] = $t;
-				$item['m_swot_s_o'] = $s_o;
-				$item['m_swot_w_o'] = $w_o;
-				$item['m_swot_s_t'] = $s_t;
-				$item['m_swot_w_t'] = $w_t;
+				$item['m_swot_s'] = '<p>'.$s.'</p>';
+				$item['m_swot_w'] = '<p>'.$w.'</p>';
+				$item['m_swot_o'] = '<p>'.$o.'</p>';
+				$item['m_swot_t'] = '<p>'.$t.'</p>';
+				$item['m_swot_s_o'] = '<p>'.$s_o.'</p>';
+				$item['m_swot_w_o'] = '<p>'.$w_o.'</p>';
+				$item['m_swot_s_t'] = '<p>'.$s_t.'</p>';
+				$item['m_swot_w_t'] ='<p>'. $w_t.'</p>';
 
 				$data['item']= $item;
 				$data['unify'] = 1;
