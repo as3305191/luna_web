@@ -24,10 +24,10 @@ tbody tr td {
 		</thead>
 		<tbody class="">
 			<tr>
-				<td class="min100" colspan="3" style="text-align:center;vertical-align:middle;font-weight:bold;font-size:2em;">寬仕工業股份有限公司</td>
+				<td class="" colspan="3" style="text-align:center;vertical-align:middle;font-weight:bold;font-size:2em;">寬仕工業股份有限公司</td>
 			</tr>
 			<tr>
-				<td class="min100" colspan="3" style="text-align:center;vertical-align:middle;">
+				<td class="" colspan="3" style="text-align:center;vertical-align:middle;">
 					<span style="text-align:center;vertical-align:middle;font-weight:bold;font-size:60px;"><?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></span>
 					<div style="text-align:right;">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
 				</td>
