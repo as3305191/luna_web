@@ -37,7 +37,7 @@ tbody tr td {
 				<td valign="top">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr >
-							<td style="text-align:center;vertical-align:middle;">s</td>
+							<td style="text-align:center;vertical-align:middle;">s(優勢)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;object-fit:cover;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_s)) : '' ?></div></td>
@@ -47,7 +47,7 @@ tbody tr td {
 				<td  valign="top">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;">w</td>
+							<td style="text-align:center;vertical-align:middle;">w(弱勢)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_w)) : '' ?></div></td>
@@ -59,7 +59,7 @@ tbody tr td {
 				<td valign="top">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;">o</td>
+							<td style="text-align:center;vertical-align:middle;">o(機會)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_o)) : '' ?></div></td>
@@ -69,7 +69,7 @@ tbody tr td {
 				<td valign="top">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;">so</td>
+							<td style="text-align:center;vertical-align:middle;">so(優勢+機會)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_s_o)) : '' ?></div></td>
@@ -79,7 +79,7 @@ tbody tr td {
 				<td valign="top">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;">wo</td>
+							<td style="text-align:center;vertical-align:middle;">wo(弱勢+機會)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_w_o)) : '' ?></div></td>
@@ -92,7 +92,7 @@ tbody tr td {
 				<td valign="top">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;">t</td>
+							<td style="text-align:center;vertical-align:middle;">t(威脅)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_t)) : '' ?></div></td>
@@ -102,7 +102,7 @@ tbody tr td {
 				<td valign="top">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;">st</td>
+							<td style="text-align:center;vertical-align:middle;">st(優勢+威脅)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_s_t)) : '' ?></div></td>
@@ -112,7 +112,7 @@ tbody tr td {
 				<td valign="top">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;">wt</td>
+							<td style="text-align:center;vertical-align:middle;">wt(弱勢+威脅)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_w_t)) : '' ?></div></td>
