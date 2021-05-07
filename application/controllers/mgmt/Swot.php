@@ -94,13 +94,13 @@ class Swot extends MY_Mgmt_Controller {
 				foreach($list as $each){	
 					
 					$s.= str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_s))));
-					$w.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_s))));
-					$o.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_s))));
-					$t.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_s))));
-					$s_o.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_s))));
-					$w_o.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_s))));
-					$s_t.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_s))));
-					$w_t.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_s))));
+					$w.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_w))));
+					$o.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_o))));
+					$t.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_t))));
+					$s_o.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_s_o))));
+					$w_o.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_w_o))));
+					$s_t.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_s_t))));
+					$w_t.=str_replace("<br/>","(".$each->d_or_c_name.")<br/>",str_replace("</p>","",str_replace("<p>","",trim($each->m_swot_s_t))));
 				}
 				$item['id'] = 0;
 				$item['class_id'] = 0;
