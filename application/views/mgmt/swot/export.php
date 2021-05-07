@@ -5,7 +5,7 @@
 	border-style:none !important;
 } */
 
-tbody tr td table{
+.td_table{
  	padding: 0px 0px 0px 0px !important;
 }
 
