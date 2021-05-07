@@ -151,14 +151,14 @@ class Swot extends MY_Mgmt_Controller {
 
 		$data['title'] = $title;
 		$data['swot_style_id'] = $swot_style;
-		$data['m_swot_s'] = '<p>'.str_replace("</p>","",str_replace("<p>","",trim($m_swot_s))).'</p>';
-		$data['m_swot_w'] = '<p>'.str_replace("</p>","",str_replace("<p>","",trim($m_swot_w))).'</p>';
-		$data['m_swot_o'] = '<p>'.str_replace("</p>","",str_replace("<p>","",trim($m_swot_o))).'</p>';
-		$data['m_swot_t'] = '<p>'.str_replace("</p>","",str_replace("<p>","",trim($m_swot_t))).'</p>';
-		$data['m_swot_s_o'] = '<p>'.str_replace("</p>","",str_replace("<p>","",trim($m_swot_s_o))).'</p>';
-		$data['m_swot_w_o'] = '<p>'.str_replace("</p>","",str_replace("<p>","",trim($m_swot_w_o))).'</p>';
-		$data['m_swot_s_t'] = '<p>'.str_replace("</p>","",str_replace("<p>","",trim($m_swot_s_t))).'</p>';
-		$data['m_swot_w_t'] = '<p>'.str_replace("</p>","",str_replace("<p>","",trim($m_swot_w_t))).'</p>';
+		$data['m_swot_s'] = '<p>'.str_replace("</p>","<br/>",str_replace("<p>","",trim($m_swot_s))).'</p>';
+		$data['m_swot_w'] = '<p>'.str_replace("</p>","<br/>",str_replace("<p>","",trim($m_swot_w))).'</p>';
+		$data['m_swot_o'] = '<p>'.str_replace("</p>","<br/>",str_replace("<p>","",trim($m_swot_o))).'</p>';
+		$data['m_swot_t'] = '<p>'.str_replace("</p>","<br/>",str_replace("<p>","",trim($m_swot_t))).'</p>';
+		$data['m_swot_s_o'] = '<p>'.str_replace("</p>","<br/>",str_replace("<p>","",trim($m_swot_s_o))).'</p>';
+		$data['m_swot_w_o'] = '<p>'.str_replace("</p>","<br/>",str_replace("<p>","",trim($m_swot_w_o))).'</p>';
+		$data['m_swot_s_t'] = '<p>'.str_replace("</p>","<br/>",str_replace("<p>","",trim($m_swot_s_t))).'</p>';
+		$data['m_swot_w_t'] = '<p>'.str_replace("</p>","<br/>",str_replace("<p>","",trim($m_swot_w_t))).'</p>';
 		if(empty($id)) {
 			// insert
 			// $role_array= explode(",", str_replace('#', ',', trim($login_user->in_department, "#")));
