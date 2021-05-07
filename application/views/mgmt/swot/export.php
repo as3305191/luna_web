@@ -121,7 +121,7 @@
 				</td>
 			</tr>
 			<tr style="border:none;" >
-				<td valign="top" class="td_table" style="border:none;">
+				<td valign="top" class="td_table" style="border:none;" colspan="3" >
 					<div class="col-sm-12" style="padding:50px 50px 50px 50px;">
 						<div class="col-sm-6" style="position:absolute;right:0;"> 
 							<div class="col-sm-6" style="position:absolute;left:0;">
