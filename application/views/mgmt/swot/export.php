@@ -119,8 +119,7 @@
 						</tr>
 					</table>
 				</td>
-			</tr>
-				<tr>
+			</tr style="border:none;">
 				<div class="col-sm-12" style="padding:50px 50px 50px 50px;">
 					<div class="col-sm-6" style="position:absolute;right:0;"> 
 						<div class="col-sm-6" style="position:absolute;left:0;">
