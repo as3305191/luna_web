@@ -95,8 +95,8 @@ class Swot_dao extends MY_Model {
 			}
 		}
 		if(!empty($data['list_title'])){
-			$title = $data['list_title'];
-			$this -> db -> where("_m.title",$title);
+			$list_title = $data['list_title'];
+			$this -> db -> where("_m.title",$list_title);
 		}
 		
 	}
