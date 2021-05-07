@@ -68,7 +68,7 @@
 							<option value="0">請選擇</option>
 								<?php foreach($department_list as $each): ?>
 									<?php if(!empty( $div_list)): ?>
-										<option value="<?= $each -> id?>" <?= isset($item) && $item -> department_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
+										<option value="<?= $each -> id?>" <?= isset($item) && $item -> new_department_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
 									<?php else: ?>
 										<option value="<?= $each -> id?>" <?= isset($item) && $item -> role_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
 									<?php endif ?>

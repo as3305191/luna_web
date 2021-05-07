@@ -58,7 +58,7 @@ class Users extends MY_Mgmt_Controller {
 			if($item->role_id>0){
 				$department = $this -> d_dao -> find_by_id($item->role_id);
 				if($department->level==4){
-					$item->department_id = $department->parent_id;
+					$item->new_department_id = $department->parent_id;
 					$item->div_id = $department->id;
 					$data['div_list'] = $this -> dao -> find_all_div($department->parent_id);
 				} else{
