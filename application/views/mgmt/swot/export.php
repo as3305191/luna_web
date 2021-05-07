@@ -120,21 +120,24 @@
 					</table>
 				</td>
 			</tr>
+				<tr>
+				<div class="col-sm-12" style="padding:50px 50px 50px 50px;">
+					<div class="col-sm-6" style="position:absolute;right:0;"> 
+						<div class="col-sm-6" style="position:absolute;left:0;">
+							<span class="col-sm-4" style="text-align:left;">管理代表：</span>
+						</div>
+						<div class="col-sm-6" style="position:absolute;right:0;">
+							<span class="col-sm-4" style="text-align:left;">製表：</span>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-12" style="text-align:right;">
+					RA2602-1
+				</div>	
+			</tr>
 		</tbody>
 	</table>
-	<div class="col-sm-12" style="padding:50px 50px 50px 50px;">
-		<div class="col-sm-6" style="position:absolute;right:0;"> 
-			<div class="col-sm-6" style="position:absolute;left:0;">
-				<span class="col-sm-4" style="text-align:left;">管理代表：</span>
-			</div>
-			<div class="col-sm-6" style="position:absolute;right:0;">
-				<span class="col-sm-4" style="text-align:left;">製表：</span>
-			</div>
-		</div>
-	</div>
-	<div class="col-sm-12" style="text-align:right;">
-		RA2602-1
-	</div>
+
 </div>
 <!-- end widget -->
 <script>
