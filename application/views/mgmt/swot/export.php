@@ -121,20 +121,14 @@
 				</td>
 			</tr>
 			<tr style="border:none;" >
-				<td valign="top" class="td_table" style="border:none;" colspan="3" >
-					<div class="col-sm-12" style="padding:50px 50px 50px 50px;">
-						<div class="col-sm-6" style="position:absolute;right:0;"> 
-							<div class="col-sm-6" style="position:absolute;left:0;">
-								<span class="col-sm-4" style="text-align:left;">管理代表：</span>
-							</div>
-							<div class="col-sm-6" style="position:absolute;right:0;">
-								<span class="col-sm-4" style="text-align:left;">製表：</span>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12" style="text-align:right;">
-						RA2602-1
-					</div>	
+				<td valign="top" class="td_table" style="border:none;" >
+					<span class="col-sm-4" style="text-align:left;">管理代表：</span>
+				</td>
+				<td valign="top" class="td_table" style="border:none;" >
+					<span class="col-sm-4" style="text-align:left;">製表：</span>
+				</td>
+				<td valign="top" class="td_table" style="border:none;" >
+					RA2602-1
 				</td>
 			</tr>
 		</tbody>
