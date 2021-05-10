@@ -1,4 +1,9 @@
 <style>
+span{
+	font-family: Times New Roman;
+	font-family: Times;
+	font-family: serif;
+}
 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->

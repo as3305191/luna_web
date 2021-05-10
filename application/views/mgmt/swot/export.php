@@ -9,6 +9,7 @@
  	padding: 0px 0px 0px 0px !important;
 }
 
+
 @media print  
 {
     .ex_page{
