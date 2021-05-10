@@ -29,7 +29,7 @@
     <script type="text/javascript">
 
   $('.cancel').click(function() {
-    var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+    var index = parent.layer.getFrameIndex(window.name); 
     parent.layer.close(index);
   })
 
@@ -46,7 +46,7 @@
   					console.log(d);
   				}
           if(d.success){
-            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            var index = parent.layer.getFrameIndex(window.name); 
             parent.layer.close(index);
             parent.load_list_title();            
           }
