@@ -85,13 +85,7 @@
 							<!-- option from javascript -->
 						</select>
 					</div>
-					<?php if(!empty($login_user) ): ?>
-						<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
-							<div class="col-md-2">
-								<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
-							</div>
-						<?php endif?>
-					<?php endif?>
+				
 				</div>
 			</fieldset>
 			<fieldset id='swot_s'>
@@ -225,13 +219,7 @@
 							<!-- option from javascript -->
 						</select>
 					</div>
-					<?php if(!empty($login_user) ): ?>
-						<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
-							<div class="col-md-2">
-								<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
-							</div>
-						<?php endif?>
-					<?php endif?>
+				
 				</div>
 			</fieldset>
 			<fieldset id='swot_s'>
@@ -429,17 +417,6 @@
 			area:['400px','200px'],
 			shadeClose:true,
 			content:'<?=base_url('mgmt/swot/new_swot_style')?>'
-		})
-	});
-
-	$('#add_title').click(function() {
-		layer.open({
-			type:2,
-			title:'',
-			closeBtn:0,
-			area:['400px','200px'],
-			shadeClose:true,
-			content:'<?=base_url('mgmt/swot/new_swot_title')?>'
 		})
 	});
 

@@ -50,6 +50,7 @@ thead tr th {
 										<select class="col-md-6 control-label" id="list_title"  >
 											<!-- option from javascript -->
 										</select>
+										<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
 										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合公司
 										</button>
@@ -196,5 +197,15 @@ thead tr th {
 		var title=$('#list_title').val();
 		currentApp.doEdit(0,title);
 	}
-
+	
+	$('#add_title').click(function() {
+		layer.open({
+			type:2,
+			title:'',
+			closeBtn:0,
+			area:['400px','200px'],
+			shadeClose:true,
+			content:'<?=base_url('mgmt/swot/new_swot_title')?>'
+		})
+	});
 </script>
