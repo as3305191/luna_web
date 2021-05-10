@@ -11,14 +11,14 @@
 
 @media print  
 {
-    /* div{
+    .ex_page{
         page-break-inside: avoid;
-    } */
+    }
 }
 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="" style="padding:50px 50px 50px 50px;">
+<div class="ex_page" style="padding:50px 50px 50px 50px;">
 	<table  class="layui-table" width="70%">
 		<thead>
 		</thead>
