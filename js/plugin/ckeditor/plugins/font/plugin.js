@@ -235,7 +235,7 @@ CKEDITOR.config.font_names = 'Arial/Arial, Helvetica, sans-serif;' +
  * @cfg {String} [font_defaultLabel='']
  * @member CKEDITOR.config
  */
-CKEDITOR.config.font_defaultLabel = 'Times New Roman';
+CKEDITOR.config.font_defaultLabel = '';
 
 /**
  * The style definition to be used to apply the font in the text.

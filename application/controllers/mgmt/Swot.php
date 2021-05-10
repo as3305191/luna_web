@@ -160,11 +160,13 @@ class Swot extends MY_Mgmt_Controller {
 		$swot_style = $this -> get_post('swot_style');
 		$department = $this -> get_post('department');
 		$class_id = $this -> get_post('class_id');
+		$make_user = $this -> get_post('make_user');
 
 		$data['title'] = $title;
 		$data['swot_style_id'] = $swot_style;
 		$data['m_swot_s'] = $m_swot_s;
 		$data['m_swot_w'] = $m_swot_w;
+		$data['make_user'] = $make_user;
 		$data['m_swot_o'] = $m_swot_o;
 		$data['m_swot_t'] = $m_swot_t;
 		$data['m_swot_s_o'] = $m_swot_s_o;

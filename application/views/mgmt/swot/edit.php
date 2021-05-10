@@ -1,9 +1,4 @@
 <style>
-span{
-	font-family: Times New Roman;
-	font-family: Times;
-	font-family: serif;
-}
 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
@@ -91,6 +86,14 @@ span{
 						</select>
 					</div>
 				
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">製表人</label>
+					<div class="col-md-6">
+						<input type=""  id="make_user" value="<?= isset($item['make_user']) ? $item['make_user'] : '' ?>"/>
+					</div>
 				</div>
 			</fieldset>
 			<fieldset id='swot_s'>
@@ -227,6 +230,14 @@ span{
 				
 				</div>
 			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">製表人</label>
+					<div class="col-md-6">
+						<input type=""  id="make_user" value="<?= isset($item['make_user']) ? $item['make_user'] : '' ?>"/>
+					</div>
+				</div>
+			</fieldset>
 			<fieldset id='swot_s'>
 				<div class="form-group">
 					<label class="col-md-3 control-label">內部議題-S:優勢</label>
@@ -322,6 +333,7 @@ span{
 				autoGrow_onStartup : true,
 				height:400,
 				allowedContent: true,
+				
 			}
 			config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
 
@@ -386,6 +398,7 @@ span{
 				title: $('#swot_title').val(),
 				swot_style: $('#swot_style').val(),
 				department: $('#department').val(),
+				make_user: $('#make_user').val(),
 				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
 				m_swot_w: CKEDITOR.instances.m_swot_w.getData(),
 				m_swot_o: CKEDITOR.instances.m_swot_o.getData(),
