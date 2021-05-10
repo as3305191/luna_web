@@ -52,6 +52,7 @@
           }
           if(d.error){
             layer.msg(d.error);
+
           }
   			},
   			failure:function(){
@@ -59,7 +60,7 @@
   			}
   		});
   })
-  
+
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
