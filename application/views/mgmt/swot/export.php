@@ -128,7 +128,7 @@
 					<span style="text-align:right;">管理代表：</span>
 				</td>
 				<td valign="top" class="td_table" style="text-align:right;border:none;" >
-					<div  style="text-align:left;">製表：</div>
+					<div  style="text-align:left;">製表：<?= isset($item) ? str_replace("<br>"," ",trim($item -> make_user)) : '' ?></div>
 					<div style="text-align:right;">RA2602-1</div>
 				</td>
 			</tr>

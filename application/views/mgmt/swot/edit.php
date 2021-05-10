@@ -234,7 +234,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">製表人</label>
 					<div class="col-md-6">
-						<input type=""  id="make_user" value="<?= isset($item['make_user']) ? $item['make_user'] : '' ?>"/>
+						<input type=""  id="make_user" value="<?= isset($item->make_user) ? $item->make_user: '' ?>"/>
 					</div>
 				</div>
 			</fieldset>
