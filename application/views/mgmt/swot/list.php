@@ -182,7 +182,6 @@ thead tr th {
 					});
 					$('#list_title').select2();
 					$('#d_or_c').select2();
-
 				}
 			},
 			failure:function(){
@@ -191,7 +190,6 @@ thead tr th {
 		});
 	}
 	load_list_title();
-
 
 	function unify() {
 		var title=$('#list_title').val();
