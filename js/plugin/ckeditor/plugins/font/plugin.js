@@ -235,7 +235,7 @@ CKEDITOR.config.font_names = 'Arial/Arial, Helvetica, sans-serif;' +
  * @cfg {String} [font_defaultLabel='']
  * @member CKEDITOR.config
  */
-CKEDITOR.config.font_defaultLabel = '';
+CKEDITOR.config.font_defaultLabel = 'Verdana/Verdana';
 
 /**
  * The style definition to be used to apply the font in the text.
