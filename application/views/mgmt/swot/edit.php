@@ -316,7 +316,8 @@
 				filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/dm_image',
 				autoGrow_onStartup : true,
 				height:400,
-				allowedContent: true
+				allowedContent: true,
+				language = 'zh'
 			}
 			config.removeButtons = 'Save,NewPage,Preview,Print,Templates,Cut,Copy,Paste,PasteText,PasteFromWord,Find,SelectAll,Scayt,About';
 
