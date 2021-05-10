@@ -64,20 +64,17 @@ thead tr th {
 									<i class="fa fa-refresh"></i>一鍵清除自己使用中檔案
 								</button>
 							</div>
-
 						</div>
 						</header>
-						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 						
+						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 						<!-- widget div-->
 						<div>
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
-								
 							</div>
 							<!-- end widget edit box -->
-
 							<!-- widget content -->
 							<div class="widget-body no-padding">
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
