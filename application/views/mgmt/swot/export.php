@@ -33,7 +33,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td style=""><img src="<?= base_url("api/images/get/603")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
+				<td class="td_table"><img src="<?= base_url("api/images/get/603")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
 				<td valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr >
