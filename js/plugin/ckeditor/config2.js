@@ -12,7 +12,6 @@ CKEDITOR.editorConfig = function( config ) {
 	config.format_tags = 'p;h1;h2;h3;pre';
 	// %REMOVE_END%
 	config.height = '100px';
-	config.font_defaultLabel = 'Calibri';
 	// Define changes to default configuration here. For example:
 	// config.language = 'zh';
 	// config.uiColor = '#AADC6E';
