@@ -50,7 +50,6 @@ thead tr th {
 										<select class="col-md-6 control-label" id="list_title"  >
 											<!-- option from javascript -->
 										</select>
-										<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
 										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合公司
 										</button>
@@ -58,7 +57,6 @@ thead tr th {
 								<?php endif?>
 							</div>
 							<div class="widget-toolbar pull-right">
-
 								<div class=" ">
 								<button onclick="currentApp.do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
 									<i class="fa fa-refresh"></i>一鍵清除自己使用中檔案
