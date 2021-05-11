@@ -2,7 +2,7 @@
 <?php $this->load->view('layout/head'); ?>
 <style>
 .layui-table{ 
-	border-style:groove !important;
+	/* border-style:groove !important; */
 }
 
 .td_table{
