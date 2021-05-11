@@ -10,11 +10,13 @@
 }
 
 
-@media print  
-{
-    .ex_page{
-        page-break-inside: avoid;
-    }
+@page {
+  size: portrait; /* 直向 */
+  size: landscape; /* 橫向 */
+  size: A4; /* 紙張大小 */
+  size: A4 portrait; /* 混合使用 */
+  
+  margin: 0; /* 邊界與內容的距離 */
 }
 
 </style>
