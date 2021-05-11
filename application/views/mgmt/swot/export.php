@@ -5,11 +5,6 @@
 	border-style:none !important;
 }
 
-.td_table{
-	border-style:groove ;
-}
-
-
 @page {
   size: portrait; /* 直向 */
   size: landscape; /* 橫向 */
