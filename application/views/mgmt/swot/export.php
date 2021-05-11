@@ -6,7 +6,7 @@
 }
 
 .td_table{
-	border-style:groove !important;
+	border-style:groove ;
 }
 
 
