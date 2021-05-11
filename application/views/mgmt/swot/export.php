@@ -3,6 +3,7 @@
 <style>
 .layui-table{ 
 	/* border-style:groove !important; */
+	margin: 0;
 }
 
 .td_table{
