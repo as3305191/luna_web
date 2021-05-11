@@ -1,12 +1,12 @@
 
 <?php $this->load->view('layout/head'); ?>
 <style>
-/* .swot_table{ 
+.layui-table{ 
 	border-style:none !important;
-} */
+}
 
 .td_table{
- 	padding: 0px 0px 0px 0px !important;
+	border-style:groove !important;
 }
 
 
