@@ -2,8 +2,13 @@
 <?php $this->load->view('layout/head'); ?>
 <style>
 .layui-table{ 
-	border-style:none !important;
+	border-style:groove !important;
 }
+
+.td_table{
+ 	padding: 0px 0px 0px 0px !important;
+}
+
 
 @page {
   size: portrait; /* 直向 */
