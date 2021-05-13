@@ -33,7 +33,7 @@ class News_img extends MY_Mgmt_Controller {
 		}
 		$this->load->view('mgmt/carousel/list', $data);
 	}
-	
+
 	public function get_data() {
 		$res = array();
 		$data = $this -> get_posts(array(
@@ -43,12 +43,10 @@ class News_img extends MY_Mgmt_Controller {
 			'search',
 			'order',
 			'corp_id',
-
 		));
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
-
 		$res['items'] = $this -> img_dao -> query_ajax($data);
 		$res['recordsFiltered'] = $this -> img_dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> img_dao -> count_all_ajax($data);
