@@ -16,7 +16,6 @@ class News_img extends MY_Mgmt_Controller {
 
 	public function index()
 	{
-
 		$data = array();
 		// $data = $this -> setup_user_data($data);
 		// $data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
@@ -27,13 +26,11 @@ class News_img extends MY_Mgmt_Controller {
 
 	public function carousel($reload=0)
 	{
-	
 		$data = array();
 		$items = $this -> img_style_dao -> find_carousel($data);
 		foreach($items as $each){
 			$data['carousel_id'][]= $each->id;
 		}
-	
 		$this->load->view('mgmt/carousel/list', $data);
 	}
 
