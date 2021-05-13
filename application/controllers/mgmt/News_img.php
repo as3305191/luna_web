@@ -21,7 +21,6 @@ class News_img extends MY_Mgmt_Controller {
 		// $data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		// $this -> to_json($data);
 		$this->load->view('mgmt/news_img/list', $data);
-		
 	}
 
 	public function carousel($reload=0)
