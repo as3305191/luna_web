@@ -31,7 +31,7 @@ thead tr th {
 								</div>
 							</div>
 							<div class="widget-toolbar pull-left">
-								<?php if(!empty($login_user) ): ?>
+								<?php if(isset($login_user) ): ?>
 									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
 										<label class="col-md-3 control-label">部:</label>
 										<select class="col-md-8 control-label" id="d_or_c" >
@@ -41,20 +41,22 @@ thead tr th {
 													<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
 											<?php endforeach ?>	
 										</select>
-										<div class="widget-toolbar pull-left">
-								
-											<select class="col-md-6 control-label" id="list_title"  >
-												<!-- option from javascript -->
-											</select>
-											<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
-											<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
-												整合公司
-											</button>
-										</div>
 									<?php endif?>
 								<?php endif?>
 							</div>
-	
+							<div class="widget-toolbar pull-left">
+								<?php if(isset($login_user)): ?>
+									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id=9): ?>
+										<select class="col-md-6 control-label" id="list_title"  >
+											<!-- option from javascript -->
+										</select>
+										<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
+										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
+											整合公司
+										</button>
+									<?php endif?>
+								<?php endif?>
+							</div>
 							<div class="widget-toolbar pull-right">
 								<div class=" ">
 								<button onclick="currentApp.do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
