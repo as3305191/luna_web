@@ -11,7 +11,7 @@
 }
 
 @page {
-  size: portrait; /*直向*/
+  /*size: portrait; /*直向*/
   size: landscape; /*橫向*/
   /*size: A4; /*紙張大小*/
   /*size: A4 portrait; /*混合使用*/
