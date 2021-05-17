@@ -15,6 +15,7 @@
         background-repeat:no-repeat;
         background-position: center;
         page-break-after: always;  
+		page-break-inside: avoid;
     }
 .pageDiv:last-of-type{ 
 	page-break-after: auto; 
@@ -30,7 +31,7 @@
 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page" style="padding:10px 10px 10px 10px;">
+<div class="ex_page pageDiv" style="padding:10px 10px 10px 10px;">
 	<table  class="layui-table" width="70%">
 		<thead>
 		</thead>
