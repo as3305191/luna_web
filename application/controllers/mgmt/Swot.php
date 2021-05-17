@@ -131,7 +131,6 @@ class Swot extends MY_Mgmt_Controller {
 				$data['unify'] = 1;
 			} 
 		}
-		
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['swot_class_for_0'] = $this -> d_dao -> find_by_id($data['login_user']->role_id);
