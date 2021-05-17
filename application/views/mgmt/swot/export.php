@@ -9,13 +9,15 @@
 .td_table{
  	padding: 0px 0px 0px 0px !important;
 }
+
 .pageDiv{
-        /* position:relative;
-        background-position: center; */
-        page-break-after: auto;  
-    }
+	/* position:relative;
+	background-position: center; */
+	/* page-break-after: auto;   */
+}
+
 .pageDiv:last-of-type{ 
-	page-break-after: auto; 
+	/* page-break-after: auto;  */
 }
 @page {
   /*size: portrait; /*直向*/
