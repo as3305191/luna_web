@@ -139,7 +139,7 @@
 				</td>
 				<td valign="top" class="td_table" style="text-align:right;border:none;" >
 					<div  style="text-align:left;">製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
-					<div style="text-align:right;padding:0px 0px 0px 0px">RA2602-1</div>
+					<div style="text-align:right;padding:0px 40px 0px 0px">RA2602-1</div>
 				</td>
 			</tr>
 		</tbody>
