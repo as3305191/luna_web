@@ -14,8 +14,8 @@
 
 <!-- #CSS Links -->
 <!-- Basic Styles -->
-<link rel="stylesheet" type="text/css" media="screen" href="<?= base_url('css/bootstrap.min.css') ?>">
-<link rel="stylesheet" type="text/css" media="screen" href="<?= base_url('css/font-awesome.min.css') ?>">
+<link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/bootstrap.min.css') ?>">
+<link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/font-awesome.min.css') ?>">
 
 <!-- bootstrap fileinput -->
 <link href="<?= base_url('js/plugin/bootstrap-fileinput/css/fileinput.css') ?>" media="all" rel="stylesheet" type="text/css" />
@@ -27,9 +27,9 @@
 <link href="<?= base_url('js/plugin/datatable-scroller/css/scroller.bootstrap.min.css') ?>" media="all" rel="stylesheet" type="text/css" />
 
 <!-- SmartAdmin Styles : Caution! DO NOT change the order -->
-<link rel="stylesheet" type="text/css" media="screen" href="<?= base_url('css/smartadmin-production-plugins.min.css') ?>">
-<link rel="stylesheet" type="text/css" media="screen" href="<?= base_url('css/smartadmin-production.min.css') ?>">
-<link rel="stylesheet" type="text/css" media="screen" href="<?= base_url('css/smartadmin-skins.min.css') ?>">
+<link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/smartadmin-production-plugins.min.css') ?>">
+<link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/smartadmin-production.min.css') ?>">
+<link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/smartadmin-skins.min.css') ?>">
 
 <!-- DEV links : turn this on when you like to develop directly -->
 <!--<link rel="stylesheet" type="text/css" media="screen" href="../Source_UNMINIFIED_CSS/smartadmin-production.css') ?>">-->
