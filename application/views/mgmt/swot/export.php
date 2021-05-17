@@ -9,13 +9,13 @@
 .td_table{
  	padding: 0px 0px 0px 0px !important;
 }
-
 .pageDiv{
-	position:relative;
-	background-position: center;
-	page-break-after: auto;  
-}
-
+        display:block;
+        position:relative;
+        background-repeat:no-repeat;
+        background-position: center;
+        page-break-after: always;  
+    }
 .pageDiv:last-of-type{ 
 	page-break-after: auto; 
 }
