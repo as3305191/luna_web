@@ -45,8 +45,8 @@
 				</td>
 			</tr>
 			<tr>
-				<td class="td_table"><img src="<?= base_url("api/images/get/603")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
-				<td valign="top" class="td_table">
+				<td colspan="1" class="td_table"><img src="<?= base_url("api/images/get/603")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
+				<td colspan="1" valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr >
 							<td style="text-align:center;vertical-align:middle;">內部議題-s(優勢)</td>
@@ -56,7 +56,7 @@
 						</tr>
 					</table>
 				</td>
-				<td  valign="top" class="td_table">
+				<td colspan="1" valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">內部議題-w(劣勢)</td>
@@ -68,7 +68,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td valign="top" class="td_table">
+				<td colspan="1" valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">外部議題-o(機會)</td>
@@ -78,7 +78,7 @@
 						</tr>
 					</table>
 				</td>
-				<td valign="top" class="td_table">
+				<td colspan="1" valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">so策略(優勢+機會)</td>
@@ -88,7 +88,7 @@
 						</tr>
 					</table>
 				</td>
-				<td valign="top" class="td_table">
+				<td colspan="1" valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">wo策略(劣勢+機會)</td>
@@ -100,7 +100,7 @@
 				</td>
 			</tr>
 			<tr>
-				<td valign="top" class="td_table">
+				<td colspan="1" valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">外部議題-t(威脅)</td>
@@ -110,7 +110,7 @@
 						</tr>
 					</table>
 				</td>
-				<td valign="top"class="td_table">
+				<td colspan="1" valign="top"class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">st策略(優勢+威脅)</td>
@@ -120,7 +120,7 @@
 						</tr>
 					</table>
 				</td>
-				<td valign="top" class="td_table">
+				<td colspan="1" valign="top" class="td_table">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;">wt策略(劣勢+威脅)</td>
@@ -132,12 +132,12 @@
 				</td>
 			</tr>
 			<tr style="border:none;" >
-				<td valign="top" class="td_table" style="border:none;" >
+				<td colspan="1" valign="top" class="td_table" style="border:none;" >
 				</td>
-				<td valign="top" class="td_table" style="border:none;" >
+				<td colspan="1" valign="top" class="td_table" style="border:none;" >
 					<span style="text-align:right;">管理代表：</span>
 				</td>
-				<td valign="top" class="td_table" style="text-align:right;border:none;" >
+				<td colspan="1" valign="top" class="td_table" style="text-align:right;border:none;" >
 					<div  style="text-align:left;">製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
 					<div style="text-align:right;padding:0px 40px 0px 0px">RA2602-1</div>
 				</td>
