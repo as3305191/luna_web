@@ -30,7 +30,7 @@
 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page td_table" style="padding:50px 50px 50px 50px;">
+<div class="ex_page" style="padding:5px 5px 5px 5px;">
 	<table  class="layui-table" width="70%">
 		<thead>
 		</thead>
