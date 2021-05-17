@@ -16,7 +16,7 @@
   /* size: A4; 紙張大小 */
   /* size: A4 portrait; 混合使用 */
   
-  margin: 0; /* 邊界與內容的距離 */
+  /* margin: 0; 邊界與內容的距離 */
 }
 
 </style>
