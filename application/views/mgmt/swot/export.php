@@ -10,9 +10,7 @@
  	padding: 0px 0px 0px 0px !important;
 }
 .pageDiv{
-        display:block;
         position:relative;
-        background-repeat:no-repeat;
         background-position: center;
         page-break-after: always;  
     }
