@@ -43,7 +43,7 @@
 							<td style="text-align:center;vertical-align:middle;">內部議題-s(優勢)</td>
 						</tr>
 						<tr style="border:none">
-							<td style="border:none"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;object-fit:cover;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_s)) : '' ?></div></td>
+							<td style="border:none"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;object-fit:cover;"><?= isset($item) ? trim($item -> m_swot_s) : '' ?></div></td>
 						</tr>
 					</table>
 				</td>
@@ -53,7 +53,7 @@
 							<td style="text-align:center;vertical-align:middle;">內部議題-w(劣勢)</td>
 						</tr>
 						<tr style="border:none">
-							<td style="border:none"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_w)) : '' ?></div></td>
+							<td style="border:none"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? trim($item -> m_swot_w) : '' ?></div></td>
 						</tr>
 					</table>
 				</td>
@@ -65,7 +65,7 @@
 							<td style="text-align:center;vertical-align:middle;">外部議題-o(機會)</td>
 						</tr>
 						<tr style="border:none">
-							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_o)) : '' ?></div></td>
+							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? trim($item -> m_swot_o): '' ?></div></td>
 						</tr>
 					</table>
 				</td>
@@ -75,7 +75,7 @@
 							<td style="text-align:center;vertical-align:middle;">so策略(優勢+機會)</td>
 						</tr>
 						<tr style="border:none">
-							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_s_o)) : '' ?></div></td>
+							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? trim($item -> m_swot_s_o) : '' ?></div></td>
 						</tr>
 					</table>
 				</td>
@@ -85,7 +85,7 @@
 							<td style="text-align:center;vertical-align:middle;">wo策略(劣勢+機會)</td>
 						</tr>
 						<tr style="border:none">
-							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_w_o)) : '' ?></div></td>
+							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? trim($item -> m_swot_w_o): '' ?></div></td>
 						</tr>
 					</table>
 				</td>
@@ -97,7 +97,7 @@
 							<td style="text-align:center;vertical-align:middle;">外部議題-t(威脅)</td>
 						</tr>
 						<tr style="border:none">
-							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_t)) : '' ?></div></td>
+							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? trim($item -> m_swot_t) : '' ?></div></td>
 						</tr>
 					</table>
 				</td>
@@ -107,7 +107,7 @@
 							<td style="text-align:center;vertical-align:middle;">st策略(優勢+威脅)</td>
 						</tr>
 						<tr style="border:none">
-							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_s_t)) : '' ?></div></td>
+							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? trim($item -> m_swot_s_t) : '' ?></div></td>
 						</tr>
 					</table>
 				</td>
@@ -117,7 +117,7 @@
 							<td style="text-align:center;vertical-align:middle;">wt策略(劣勢+威脅)</td>
 						</tr>
 						<tr style="border:none">
-							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? str_replace("<br>"," ",trim($item -> m_swot_w_t)) : '' ?></div></td>
+							<td style="border:none;"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;white-space:pre-wrap;"><?= isset($item) ? trim($item -> m_swot_w_t): '' ?></div></td>
 						</tr>
 					</table>
 				</td>
@@ -129,7 +129,7 @@
 					<span style="text-align:right;">管理代表：</span>
 				</td>
 				<td valign="top" class="td_table" style="text-align:right;border:none;" >
-					<div  style="text-align:left;">製表：<?= isset($item) ? str_replace("<br>"," ",trim($item -> make_user)) : '' ?></div>
+					<div  style="text-align:left;">製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
 					<div style="text-align:right;">RA2602-1</div>
 				</td>
 			</tr>

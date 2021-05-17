@@ -119,14 +119,14 @@ class Swot extends MY_Mgmt_Controller {
 				$item['class_id'] = 0;
 				$item['swot_style_id'] = $list[0]->swot_style_id;
 				$item['title'] = $title;
-				$item['m_swot_s'] = '<p>'.$s.'</p>';
-				$item['m_swot_w'] = '<p>'.$w.'</p>';
-				$item['m_swot_o'] = '<p>'.$o.'</p>';
-				$item['m_swot_t'] = '<p>'.$t.'</p>';
-				$item['m_swot_s_o'] = '<p>'.$s_o.'</p>';
-				$item['m_swot_w_o'] = '<p>'.$w_o.'</p>';
-				$item['m_swot_s_t'] = '<p>'.$s_t.'</p>';
-				$item['m_swot_w_t'] ='<p>'. $w_t.'</p>';
+				$item['m_swot_s'] = $s;
+				$item['m_swot_w'] = $w;
+				$item['m_swot_o'] = $o;
+				$item['m_swot_t'] = $t;
+				$item['m_swot_s_o'] = $s_o;
+				$item['m_swot_w_o'] = $w_o;
+				$item['m_swot_s_t'] = $s_t;
+				$item['m_swot_w_t'] = $w_t;
 
 				$data['item']= $item;
 				$data['unify'] = 1;
