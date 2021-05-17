@@ -9,7 +9,16 @@
 .td_table{
  	padding: 0px 0px 0px 0px !important;
 }
-
+.pageDiv{
+        display:block;
+        position:relative;
+        background-repeat:no-repeat;
+        background-position: center;
+        page-break-after: always;  
+    }
+.pageDiv:last-of-type{ 
+	page-break-after: auto; 
+}
 @page {
   /*size: portrait; /*直向*/
   /*size: landscape; /*橫向*/
@@ -21,7 +30,7 @@
 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page" style="padding:50px 50px 50px 50px;">
+<div class="ex_page pageDiv" style="padding:50px 50px 50px 50px;">
 	<table  class="layui-table" width="70%">
 		<thead>
 		</thead>
