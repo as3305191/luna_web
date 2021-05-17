@@ -10,8 +10,8 @@
  	padding: 0px 0px 0px 0px !important;
 }
 .pageDiv{
-        position:relative;
-        background-position: center;
+        /* position:relative;
+        background-position: center; */
         page-break-after: always;  
     }
 .pageDiv:last-of-type{ 
