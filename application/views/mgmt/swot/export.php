@@ -52,7 +52,7 @@
 							<td style="text-align:center;vertical-align:middle;">內部議題-s(優勢)</td>
 						</tr>
 						<tr style="border:none">
-							<td style="border:none"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;object-fit:cover;"><?= isset($item) ? trim($item -> m_swot_s) : '' ?></div></td>
+							<td style="border:none"><div style="border:none;background-color:transparent;color:#666666;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s) : '' ?></div></td>
 						</tr>
 					</table>
 				</td>
