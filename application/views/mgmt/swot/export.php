@@ -31,7 +31,7 @@
 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page pageDiv" style="padding:10px 10px 10px 10px;">
+<div class="ex_page " style="padding:10px 10px 10px 10px;">
 	<table  class="layui-table" width="70%">
 		<thead>
 		</thead>
@@ -45,7 +45,7 @@
 					<div style="text-align:right;">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
 				</td>
 			</tr>
-			<tr class="">
+			<tr class="pageDiv">
 				<td colspan="1" class="td_table col-xs-4"><img src="<?= base_url("api/images/get/603")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
@@ -68,7 +68,7 @@
 					</table>
 				</td>
 			</tr>
-			<tr>
+			<tr class="pageDiv">
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
@@ -100,7 +100,7 @@
 					</table>
 				</td>
 			</tr>
-			<tr>
+			<tr class="pageDiv">
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
