@@ -12,7 +12,7 @@
 .pageDiv{
         /* position:relative;
         background-position: center; */
-        page-break-after: always;  
+        page-break-after: auto;  
     }
 .pageDiv:last-of-type{ 
 	page-break-after: auto; 
