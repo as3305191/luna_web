@@ -105,7 +105,7 @@ class Swot extends MY_Mgmt_Controller {
 				$s_t='';
 				$w_t='';
 				foreach($list as $each){	
-					$s.= str_replace("</p>","(".$each->d_or_c_name.")</p>",trim($each->m_swot_s));
+					$s.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim($each->m_swot_s));
 					$w.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim($each->m_swot_w));
 					$o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim($each->m_swot_o));
 					$t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim($each->m_swot_t));
@@ -118,14 +118,14 @@ class Swot extends MY_Mgmt_Controller {
 				$item['class_id'] = 0;
 				$item['swot_style_id'] = $list[0]->swot_style_id;
 				$item['title'] = $title;
-				$item['m_swot_s'] = $s;
-				$item['m_swot_w'] = $w;
-				$item['m_swot_o'] = $o;
-				$item['m_swot_t'] = $t;
-				$item['m_swot_s_o'] = $s_o;
-				$item['m_swot_w_o'] = $w_o;
-				$item['m_swot_s_t'] = $s_t;
-				$item['m_swot_w_t'] = $w_t;
+				$item['m_swot_s'] = str_replace("<p><br></p>","",trim($s));
+				$item['m_swot_w'] = str_replace("<p><br></p>","",trim($w));
+				$item['m_swot_o'] = str_replace("<p><br></p>","",trim($o));
+				$item['m_swot_t'] = str_replace("<p><br></p>","",trim($t));
+				$item['m_swot_s_o'] = str_replace("<p><br></p>","",trim($s_o));
+				$item['m_swot_w_o'] = str_replace("<p><br></p>","",trim($w_o));
+				$item['m_swot_s_t'] = str_replace("<p><br></p>","",trim($s_t));
+				$item['m_swot_w_t'] = str_replace("<p><br></p>","",trim($w_t));
 
 				$data['item']= $item;
 				$data['unify'] = 1;
