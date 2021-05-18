@@ -20,19 +20,16 @@
 		<?php endif?>
 
 			<?php if(!empty($item -> id)): ?>
-				<?php if($item -> is_use==1 ): ?>
-
-					<?php if($item -> is_use_user_id== $login_user->id): ?>
-						<?php if($item -> s_t_is_lock !== 1 ): ?>
+				<?php if($item -> s_t_is_lock !== 1 ): ?>
+					<?php if($item -> is_use==1 ): ?>
+						<?php if($item -> is_use_user_id== $login_user->id): ?>
 							<div class="widget-toolbar pull-left">
 								<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
 									<i class="fa fa-save"></i>存檔
 								</a>
 							</div>
 						<?php endif?>
-					<?php endif?>
-				<?php else:?>
-					<?php if($item -> s_t_is_lock !== 1 ): ?>
+					<?php else:?>
 						<div class="widget-toolbar pull-left">
 							<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
 								<i class="fa fa-save"></i>存檔
