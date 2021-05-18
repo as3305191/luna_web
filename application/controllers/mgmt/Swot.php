@@ -87,7 +87,7 @@ class Swot extends MY_Mgmt_Controller {
 			}
 			$data['unify'] = 0;
 		} else{
-			if($title>=0||$style>=0){
+			if($title>0||$style>0){
 				$item = array();
 				$q_data = $this -> get_posts(array(
 					'length',
