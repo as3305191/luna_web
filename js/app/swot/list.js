@@ -8,6 +8,7 @@ var SwotAppClass = (function(app) {
 				data : function(d) {
 					d.list_title = $('#list_title').val();
 					d.d_or_c = $('#d_or_c').val();
+					d.list_style = $('#list_style').val();
 
 				},
 				dataSrc : 'items',

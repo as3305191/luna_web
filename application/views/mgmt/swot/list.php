@@ -31,16 +31,16 @@ thead tr th {
 								</div>
 							</div>
 							<div class="widget-toolbar pull-left">
-									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
-										<label class="col-md-3 control-label">部:</label>
-										<select class="col-md-8 control-label" id="d_or_c" >
-											<option value="0">請選擇</option>
-											<option value="3">寬仕</option>
-											<?php foreach ($all_department_list as $each) : ?>
-													<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
-											<?php endforeach ?>	
-										</select>
-									<?php endif?>
+								<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
+									<label class="col-md-3 control-label">部:</label>
+									<select class="col-md-8 control-label" id="d_or_c" >
+										<option value="0">請選擇</option>
+										<option value="3">寬仕</option>
+										<?php foreach ($all_department_list as $each) : ?>
+												<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
+										<?php endforeach ?>	
+									</select>
+								<?php endif?>
 							</div>
 							<div class="widget-toolbar pull-left">
 								<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
@@ -48,6 +48,14 @@ thead tr th {
 										<!-- option from javascript -->
 									</select>
 									<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
+								<?php endif?>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
+									<select class="col-md-6 control-label" id="list_style"  >
+										<!-- option from javascript -->
+									</select>
+									<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_swot"><i class="fa fa-plus-circle fa-lg"></i></button>
 									<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 										整合公司
 									</button>
@@ -176,8 +184,10 @@ thead tr th {
 							'text': this.swot_title
 						}).appendTo($swot_title);
 					});
+					load_list_style();
 					$('#list_title').select2();
 					$('#d_or_c').select2();
+
 				}
 			},
 			failure:function(){
@@ -187,6 +197,31 @@ thead tr th {
 	}
 	load_list_title();
 
+	function load_list_style() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_style',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$swot_style = $('#list_style').empty();
+					$.each(d.swot, function(){
+						$('<option/>', {
+							'value': this.id,
+							'text': this.swot_name
+						}).appendTo($swot_style);
+					});
+					$('#list_style').select2();
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+	
 	function unify() {
 		var title=$('#list_title').val();
 		currentApp.doEdit(0,title);
@@ -200,6 +235,17 @@ thead tr th {
 			area:['400px','200px'],
 			shadeClose:true,
 			content:'<?=base_url('mgmt/swot/new_swot_title')?>'
+		})
+	});
+
+	$('#add_swot').click(function() {
+		layer.open({
+			type:2,
+			title:'',
+			closeBtn:0,
+			area:['400px','200px'],
+			shadeClose:true,
+			content:'<?=base_url('mgmt/swot/new_swot_style')?>'
 		})
 	});
 </script>

@@ -95,6 +95,7 @@ class Swot extends MY_Mgmt_Controller {
 					'order'
 				));
 				$q_data['title'] =  $title;
+				$q_data['list_style'] =  $this -> get_posts('list_style');;
 				$list = $this -> dao -> query_ajax($q_data);
 				$s='';
 				$w='';
@@ -118,7 +119,6 @@ class Swot extends MY_Mgmt_Controller {
 				$item['class_id'] = 0;
 				$item['swot_style_id'] = $list[0]->swot_style_id;
 				$item['title'] = $title;
-				// replace_num_title
 				$m_swot_s = str_replace("<p><br></p>","",trim($s));
 				$m_swot_w = str_replace("<p><br></p>","",trim($w));
 				$m_swot_o = str_replace("<p><br></p>","",trim($o));

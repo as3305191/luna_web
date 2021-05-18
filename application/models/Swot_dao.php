@@ -104,6 +104,10 @@ class Swot_dao extends MY_Model {
 			$this -> db -> or_where("_m.class_id",$d_or_c);
 
 		}
+		if(!empty($data['list_style'])){
+			$list_style = $data['list_style'];
+			$this -> db -> where("_m.swot_style_id",$list_style);
+		}
 		
 	}
 
