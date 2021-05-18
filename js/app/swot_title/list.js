@@ -117,7 +117,7 @@ var SwotTitleAppClass = (function(app) {
 				data : null,
 				render:function ( data, type, row ) {
 					var input = '';
-					if(row.is_lock == 1){
+					if(row.is_lock == 0){
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
 						+input
