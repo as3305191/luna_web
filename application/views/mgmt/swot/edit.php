@@ -20,7 +20,7 @@
 		<?php endif?>
 
 			<?php if(!empty($item -> id)): ?>
-				<?php if($item -> s_t_is_lock !== 1 ): ?>
+				<?php if($item -> s_t_is_lock == 0 ): ?>
 					<?php if($item -> is_use==1 ): ?>
 						<?php if($item -> is_use_user_id== $login_user->id): ?>
 							<div class="widget-toolbar pull-left">
