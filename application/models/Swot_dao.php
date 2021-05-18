@@ -81,11 +81,11 @@ class Swot_dao extends MY_Model {
 		if(!empty($data['title'])){
 			$title = $data['title'];
 			$this -> db -> where("_m.title",$title);
-			if(!empty($data['style'])){
-				$list_style = $data['style'];
-				$this -> db -> where("_m.swot_style_id",$list_style);
-			}
 		} 
+		if(!empty($data['style'])){
+			$list_style = $data['style'];
+			$this -> db -> where("_m.swot_style_id",$list_style);
+		}
 		if(!empty($data['id'])){
 			$id = $data['id'];
 			$this -> db -> where("_m.id",$id);
