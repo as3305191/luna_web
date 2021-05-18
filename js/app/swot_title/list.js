@@ -122,7 +122,7 @@ var SwotTitleAppClass = (function(app) {
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
 						+input
 						+'<label class="onoffswitch-label" for="'+row.id+'">'
-							+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="鎖定"></span>'
+							+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="編輯"></span>'
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
 					+'</span>';
@@ -131,7 +131,7 @@ var SwotTitleAppClass = (function(app) {
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
 						+input
 						+'<label class="onoffswitch-label" for="'+row.id+'">'
-							+'<span class="onoffswitch-inner" data-swchon-text="鎖定" data-swchoff-text="編輯"></span>'
+							+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="編輯"></span>'
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
 					+'</span>'
