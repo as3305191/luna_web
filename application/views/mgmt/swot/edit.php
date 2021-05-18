@@ -19,18 +19,15 @@
 			</div>
 		<?php endif?>
 
-			<?php if(!empty($item -> id) && $item -> id>0 ): ?>
-				<?php if(!empty($item -> is_use) && $item -> is_use==1 ): ?>
-					<?php if($item -> is_use_user_id== $login_user->id): ?>
-						<?php if(!empty($item -> is_lock) && $item -> is_lock!==1 ): ?>
-							<div class="widget-toolbar pull-left">
-								<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
-									<i class="fa fa-save"></i>存檔
-								</a>
-							</div>
-						<?php endif?>
+			<?php if(!empty($item -> id) && $item -> is_use==1 ): ?>
+				<?php if($item -> is_use_user_id== $login_user->id): ?>
+					<?php if(!empty($item -> is_lock) && $item -> is_lock!==1 ): ?>
+						<div class="widget-toolbar pull-left">
+							<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
+								<i class="fa fa-save"></i>存檔
+							</a>
+						</div>
 					<?php endif?>
-			
 				<?php endif?>
 			<?php else: ?>
 				<div class="widget-toolbar pull-left">
