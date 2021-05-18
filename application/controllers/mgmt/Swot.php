@@ -117,6 +117,7 @@ class Swot extends MY_Mgmt_Controller {
 					$s_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim($each->m_swot_s_t));
 					$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim($each->m_swot_w_t));
 				}
+			
 				$item['id'] = 0;
 				$item['class_id'] = 0;
 				$item['swot_style_id'] = $style;
@@ -336,7 +337,8 @@ class Swot extends MY_Mgmt_Controller {
 		for($i=0;$i<=$total_num;$i++){
 			$strbetween_p_p = $total_array[$i];
 			$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '.');
-			$new_str.=str_replace($the_num_in_p_p,$i+1,trim($strbetween_p_p));
+			$j=$i+1;
+			$new_str.=str_replace($the_num_in_p_p.'.',$j.'.',trim($strbetween_p_p));
 		}
 		return $new_str;
 	}
