@@ -31,7 +31,7 @@
 
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page " style="padding:10px 10px 10px 10px;">
+<div class="ex_page " style="padding:20px 20px 20px 20px;">
 	<table class="layui-table pageDiv" width="70%">
 		<thead>
 		</thead>
