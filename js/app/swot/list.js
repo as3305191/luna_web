@@ -94,7 +94,9 @@ var SwotAppClass = (function(app) {
 		$('#d_or_c').on('change', function(){
 			app.tableReload();
 		});
-
+		$('#list_style').on('change', function(){
+			app.tableReload();
+		});
 		return app;
 	};
 
