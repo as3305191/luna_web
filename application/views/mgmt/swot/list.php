@@ -32,9 +32,8 @@ thead tr th {
 							</div>
 							<div class="widget-toolbar pull-left">
 								<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
-									<label class="col-md-3 control-label">部:</label>
 									<select class="col-md-8 control-label" id="d_or_c" >
-										<option value="0">請選擇</option>
+										<option value="0">請選擇部門</option>
 										<option value="3">寬仕</option>
 										<?php foreach ($all_department_list as $each) : ?>
 												<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
@@ -47,6 +46,10 @@ thead tr th {
 									<select class="col-md-6 control-label" id="list_title"  >
 										<!-- option from javascript -->
 									</select>
+								<?php endif?>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
 									<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
 								<?php endif?>
 							</div>
@@ -55,14 +58,21 @@ thead tr th {
 									<select class="col-md-6 control-label" id="list_style"  >
 										<!-- option from javascript -->
 									</select>
+								<?php endif?>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
 									<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_swot"><i class="fa fa-plus-circle fa-lg"></i></button>
+								<?php endif?>
+							</div>
+							<div class="widget-toolbar pull-left">
+								<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
 									<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 										整合公司
 									</button>
 								<?php endif?>
 							</div>
 							<div class="widget-toolbar pull-right">
-								<div class=" ">
 								<button onclick="currentApp.do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
 									<i class="fa fa-refresh"></i>一鍵清除自己使用中檔案
 								</button>
@@ -149,7 +159,6 @@ thead tr th {
 	var mOrderIdx = 4;
 	
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
-
 
 	var mColDefs = [{
 		targets : 0,
