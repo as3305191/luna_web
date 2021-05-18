@@ -118,15 +118,24 @@ class Swot extends MY_Mgmt_Controller {
 				$item['class_id'] = 0;
 				$item['swot_style_id'] = $list[0]->swot_style_id;
 				$item['title'] = $title;
-				$item['m_swot_s'] = str_replace("<p><br></p>","",trim($s));
-				$item['m_swot_w'] = str_replace("<p><br></p>","",trim($w));
-				$item['m_swot_o'] = str_replace("<p><br></p>","",trim($o));
-				$item['m_swot_t'] = str_replace("<p><br></p>","",trim($t));
-				$item['m_swot_s_o'] = str_replace("<p><br></p>","",trim($s_o));
-				$item['m_swot_w_o'] = str_replace("<p><br></p>","",trim($w_o));
-				$item['m_swot_s_t'] = str_replace("<p><br></p>","",trim($s_t));
-				$item['m_swot_w_t'] = str_replace("<p><br></p>","",trim($w_t));
+				// replace_num_title
+				$m_swot_s = str_replace("<p><br></p>","",trim($s));
+				$m_swot_w = str_replace("<p><br></p>","",trim($w));
+				$m_swot_o = str_replace("<p><br></p>","",trim($o));
+				$m_swot_t = str_replace("<p><br></p>","",trim($t));
+				$m_swot_s_o = str_replace("<p><br></p>","",trim($s_o));
+				$m_swot_w_o = str_replace("<p><br></p>","",trim($w_o));
+				$m_swot_s_t = str_replace("<p><br></p>","",trim($s_t));
+				$m_swot_w_t = str_replace("<p><br></p>","",trim($w_t));
 
+				$item['m_swot_s'] = $this->replace_num_title($m_swot_s);
+				$item['m_swot_w'] = $this->replace_num_title($m_swot_w);
+				$item['m_swot_o'] = $this->replace_num_title($m_swot_o);
+				$item['m_swot_t'] = $this->replace_num_title($m_swot_t);
+				$item['m_swot_s_o'] = $this->replace_num_title($m_swot_s_o);
+				$item['m_swot_w_o'] = $this->replace_num_title($m_swot_w_o);
+				$item['m_swot_s_t'] = $this->replace_num_title($m_swot_s_t);
+				$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
 				$data['item']= $item;
 				$data['unify'] = 1;
 			} 
@@ -318,4 +327,20 @@ class Swot extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/swot/export', $data);
 	}
 
+	public function replace_num_title($str) {
+		$total_num = substr_count($str,'<p>');
+		$total_array = explode("</p>",$str);
+		$new_str='';
+		for($i=0;$i<=$total_num;$i++){
+			$strbetween_p_p = $total_array[$i];
+			$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '.');
+			$new_str.=str_replace($the_num_in_p_p,$i+1,trim($strbetween_p_p));
+		}
+		return $new_str;
+	}
+
+	function get_between($input, $start, $end) {
+		$substr = substr($input, strlen($start)+strpos($input, $start),(strlen($input) - strpos($input, $end))*(-1));
+		return $substr;
+	}
 }
