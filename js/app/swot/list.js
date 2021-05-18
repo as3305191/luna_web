@@ -32,7 +32,7 @@ var SwotAppClass = (function(app) {
 			$("#btn-submit-edit").prop( "disabled", true);
 			$('.tab-pane').removeClass('active');
 			$('#edit_page').addClass('active');	
-				$('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id+'?title='+title+'style='+style, function(){
+				$('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id+'?title='+title+'&style='+style, function(){
 					// window.location.hash = app.basePath + 'edit/' + id;
 					$("#btn-submit-edit").prop( "disabled", false);
 					loading.remove();
