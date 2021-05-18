@@ -44,16 +44,12 @@ thead tr th {
 									<select class="col-md-6 control-label" id="list_title"  >
 										<!-- option from javascript -->
 									</select>
-								</div>
-								<div class="pull-left ">
 									<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
 								</div>
 								<div class="pull-left " style="width:150px;line-height:32px">
 									<select class="col-md-6 control-label" id="list_style"  >
 										<!-- option from javascript -->
 									</select>
-								</div>
-								<div class="pull-left ">
 									<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_swot"><i class="fa fa-plus-circle fa-lg"></i></button>
 								</div>
 								<div class="pull-left ">
