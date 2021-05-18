@@ -207,6 +207,7 @@ thead tr th {
 				if(d) {
 					// console.log(d);
 					$swot_style = $('#list_style').empty();
+					$("#list_style").prepend("<option value='0'>請選擇類型</option>");
 					$.each(d.swot, function(){
 						$('<option/>', {
 							'value': this.id,
@@ -221,10 +222,12 @@ thead tr th {
 			}
 		});
 	}
-	
+
 	function unify() {
 		var title=$('#list_title').val();
-		currentApp.doEdit(0,title);
+		var style=$('#list_style').val();
+
+		currentApp.doEdit(0,title,style);
 	}
 	
 	$('#add_title').click(function() {
