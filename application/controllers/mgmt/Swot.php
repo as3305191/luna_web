@@ -36,7 +36,8 @@ class Swot extends MY_Mgmt_Controller {
 			'search',
 			'order',
 			'list_title',
-			'd_or_c'
+			'd_or_c',
+			'list_style'
 		));
 		$data['login_user'] = $login_user;
 		$data['login_user_array'] = str_replace('#', ',', trim($login_user->in_department, "#"));
@@ -95,7 +96,6 @@ class Swot extends MY_Mgmt_Controller {
 					'order'
 				));
 				$q_data['title'] =  $title;
-				$q_data['list_style'] =  $this -> get_posts('list_style');;
 				$list = $this -> dao -> query_ajax($q_data);
 				$s='';
 				$w='';
