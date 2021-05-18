@@ -97,7 +97,7 @@ var SwotTitleAppClass = (function(app) {
 				url : baseUrl + app.basePath + 'get_data',
 				data : function(d) {
 					// d.item_id = $('#item_id').val();
-					d.s_news_style = $('#s_news_style').val();
+					// d.s_news_style = $('#s_news_style').val();
 					return d;
 				},
 				dataSrc : 'items',

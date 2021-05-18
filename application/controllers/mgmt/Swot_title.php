@@ -13,7 +13,7 @@ class Swot_title extends MY_Mgmt_Controller {
 	{
 		$data = array();
 		$data = $this -> setup_user_data($data);
-		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+		// $data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		
 		// $this -> to_json($data);
 		$this -> load -> view('mgmt/swot_title/list', $data);
@@ -21,8 +21,8 @@ class Swot_title extends MY_Mgmt_Controller {
 
 	public function get_data() {
 		$res = array();
-		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		// $s_data = $this -> setup_user_data(array());
+		// $login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data = $this -> get_posts(array(
 			'length',
 			'start',
