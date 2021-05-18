@@ -31,7 +31,7 @@ thead tr th {
 								</div>
 							</div>
 							<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
-								<div class="pull-left " style="width:200px;">
+								<div class="pull-left " style="width:200px;line-height:32px">
 									<select class="col-md-8 control-label" id="d_or_c" >
 										<option value="0">請選擇部門</option>
 										<option value="3">寬仕</option>
