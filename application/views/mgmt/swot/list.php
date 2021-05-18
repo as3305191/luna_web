@@ -40,23 +40,23 @@ thead tr th {
 										<?php endforeach ?>	
 									</select>
 								</div>
-								<div class="pull-left " style="width:150px;">
+								<div class="pull-left " style="width:150px;line-height:32px">
 									<select class="col-md-6 control-label" id="list_title"  >
 										<!-- option from javascript -->
 									</select>
 								</div>
-								<div class="widget-toolbar pull-left ">
+								<div class="pull-left ">
 									<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
 								</div>
-								<div class="pull-left " style="width:150px;">
+								<div class="pull-left " style="width:150px;line-height:32px">
 									<select class="col-md-6 control-label" id="list_style"  >
 										<!-- option from javascript -->
 									</select>
 								</div>
-								<div class="widget-toolbar pull-left ">
+								<div class="pull-left ">
 									<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_swot"><i class="fa fa-plus-circle fa-lg"></i></button>
 								</div>
-								<div class="widget-toolbar pull-left ">
+								<div class="pull-left ">
 									<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 										整合公司
 									</button>
