@@ -32,7 +32,7 @@
 					<?php endif?>
 			
 				<?php endif?>
-
+			<?php else: ?>
 				<div class="widget-toolbar pull-left">
 					<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
 						<i class="fa fa-save"></i>存檔
