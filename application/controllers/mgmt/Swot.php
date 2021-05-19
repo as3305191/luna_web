@@ -330,6 +330,39 @@ class Swot extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/swot/export', $data);
 	}
 
+	public function replace_num_title_after_del() {
+		$res = array();
+		$m_swot_s = $this -> get_post('m_swot_s');
+		$m_swot_w = $this -> get_post('m_swot_w');
+		$m_swot_o = $this -> get_post('m_swot_o');
+		$m_swot_t = $this -> get_post('m_swot_t');
+		$m_swot_s_o = $this -> get_post('m_swot_s_o');
+		$m_swot_w_o = $this -> get_post('m_swot_w_o');
+		$m_swot_s_t = $this -> get_post('m_swot_s_t');
+		$m_swot_w_t = $this -> get_post('m_swot_w_t');
+
+		$new_swot_s = $this->replace_num_title($m_swot_s);
+		$new_swot_w = $this->replace_num_title($m_swot_w);
+		$new_swot_o = $this->replace_num_title($m_swot_o);
+		$new_swot_t = $this->replace_num_title($m_swot_t);
+		$new_swot_s_o = $this->replace_num_title($m_swot_s_o);
+		$new_swot_w_o = $this->replace_num_title($m_swot_w_o);
+		$new_swot_s_t = $this->replace_num_title($m_swot_s_t);
+		$new_swot_w_t = $this->replace_num_title($m_swot_w_t);
+		$res['new_swot_s'] = $new_swot_s;
+		$res['new_swot_w'] = $new_swot_w;
+		$res['new_swot_o'] = $new_swot_o;
+		$res['new_swot_t'] = $new_swot_t;
+		$res['new_swot_s_o'] = $new_swot_s_o;
+		$res['new_swot_w_o'] = $new_swot_w_o;
+		$res['new_swot_s_t'] = $new_swot_s_t;
+		$res['new_swot_w_t'] = $new_swot_w_t;
+
+
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
 	public function replace_num_title($str) {
 		$total_num = substr_count($str,'<p>');
 		$total_array = explode("</p>",$str);
@@ -338,7 +371,7 @@ class Swot extends MY_Mgmt_Controller {
 			$strbetween_p_p = $total_array[$i];
 			$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '.');
 			$j=$i+1;
-			$new_str.=str_replace('<p>'.$the_num_in_p_p.'.','<p>'.$j.'.',trim($strbetween_p_p));
+			$new_str.=str_replace('>'.$the_num_in_p_p.'.','>'.$j.'.',trim($strbetween_p_p));
 		}
 		return $new_str;
 	}

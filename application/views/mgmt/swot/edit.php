@@ -52,6 +52,11 @@
 			</div>
 		</div>
 		<?php endif?>
+		<div class="btn-group">
+			<button onclick="re_num();" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
+				<i class="fa fa-save"></i>全部重新編碼
+			</button>
+		</div>
 	</header>
 	<!-- widget div-->
 	<div>
@@ -495,4 +500,39 @@
 		});
 	}
 	load_swot_title();
+
+
+	function re_num() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/swot/replace_num_title_after_del',
+			type: 'POST',
+			data: {
+				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
+				m_swot_w: CKEDITOR.instances.m_swot_w.getData(),
+				m_swot_o: CKEDITOR.instances.m_swot_o.getData(),
+				m_swot_t: CKEDITOR.instances.m_swot_t.getData(),
+				m_swot_s_o: CKEDITOR.instances.m_swot_s_o.getData(),
+				m_swot_w_o: CKEDITOR.instances.m_swot_w_o.getData(),
+				m_swot_s_t: CKEDITOR.instances.m_swot_s_t.getData(),
+				m_swot_w_t: CKEDITOR.instances.m_swot_w_t.getData()
+			},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					$('#m_swot_s').empty();
+					$('#m_swot_w').empty();
+					$('#m_swot_o').empty();
+					$('#m_swot_t').empty();
+					$('#m_swot_s_o').empty();
+					$('#m_swot_w_o').empty();
+					$('#m_swot_s_t').empty();
+					$('#m_swot_w_t').empty();
+
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
 </script>
