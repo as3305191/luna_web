@@ -520,23 +520,23 @@
 			success: function(d) {
 				if(d) {
 				
-					CKEDITOR.instances.m_swot_s.empty();
-					CKEDITOR.instances.m_swot_w.empty();
-					CKEDITOR.instances.m_swot_o.empty();
-					CKEDITOR.instances.m_swot_t.empty();
-					CKEDITOR.instances.m_swot_s_o.empty();
-					CKEDITOR.instances.m_swot_w_o.empty();
-					CKEDITOR.instances.m_swot_s_t.empty();
-					CKEDITOR.instances.m_swot_w_t.empty();
+					CKEDITOR.instances.m_swot_s.setData('');
+					CKEDITOR.instances.m_swot_w.setData('');
+					CKEDITOR.instances.m_swot_o.setData('');
+					CKEDITOR.instances.m_swot_t.setData('');
+					CKEDITOR.instances.m_swot_s_o.setData('');
+					CKEDITOR.instances.m_swot_w_o.setData('');
+					CKEDITOR.instances.m_swot_s_t.setData('');
+					CKEDITOR.instances.m_swot_w_t.setData('');
 
-					CKEDITOR.instances.m_swot_s.text(d.new_swot_s);
-					CKEDITOR.instances.m_swot_w.text(d.new_swot_w);
-					CKEDITOR.instances.m_swot_o.text(d.new_swot_o);
-					CKEDITOR.instances.m_swot_t.text(d.new_swot_t);
-					CKEDITOR.instances.m_swot_s_o.text(d.new_swot_s_o);
-					CKEDITOR.instances.m_swot_w_o.text(d.new_swot_w_o);
-					CKEDITOR.instances.m_swot_s_t.text(d.new_swot_s_t);
-					CKEDITOR.instances.m_swot_w_t.text(d.new_swot_w_t);
+					CKEDITOR.instances.m_swot_s.setData(d.new_swot_s);
+					CKEDITOR.instances.m_swot_w.setData(d.new_swot_w);
+					CKEDITOR.instances.m_swot_o.setData(d.new_swot_o);
+					CKEDITOR.instances.m_swot_t.setData(d.new_swot_t);
+					CKEDITOR.instances.m_swot_s_o.setData(d.new_swot_s_o);
+					CKEDITOR.instances.m_swot_w_o.setData(d.new_swot_w_o);
+					CKEDITOR.instances.m_swot_s_t.setData(d.new_swot_s_t);
+					CKEDITOR.instances.m_swot_w_t.setData(d.new_swot_w_t);
 	
 				}
 			},
