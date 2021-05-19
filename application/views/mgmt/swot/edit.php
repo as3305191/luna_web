@@ -528,6 +528,15 @@
 					$('#m_swot_s_t').empty();
 					$('#m_swot_w_t').empty();
 
+					$('#m_swot_s').val(d.new_swot_s);
+					$('#m_swot_w').val(d.new_swot_w);
+					$('#m_swot_o').val(d.new_swot_o);
+					$('#m_swot_t').val(d.new_swot_t);
+					$('#m_swot_s_o').val(d.new_swot_s_o);
+					$('#m_swot_w_o').val(d.new_swot_w_o);
+					$('#m_swot_s_t').val(d.new_swot_s_t);
+					$('#m_swot_w_t').val(d.new_swot_w_t);
+	
 				}
 			},
 			failure:function(){
