@@ -365,7 +365,7 @@ class Swot extends MY_Mgmt_Controller {
 
 	public function replace_num_title($str) {
 		$total_num = substr_count($str,'<p>');
-		$total_array = explode("</p>",$str);
+		$total_array = explode("</p>",str_replace('<p>&nbsp;</p>','',$str));
 		$new_str='';
 		for($i=0;$i<=$total_num;$i++){
 			$strbetween_p_p = $total_array[$i];
@@ -374,10 +374,10 @@ class Swot extends MY_Mgmt_Controller {
 
 			if($check){
 				$the_num_in_p_p = $this->get_between($strbetween_p_p, 'style', '.');
-				$new_str.=str_replace('<p>&nbsp;</p>','',str_replace('>'.$the_num_in_p_p.'.','>'.$j.'.',trim($strbetween_p_p)));
+				$new_str.=str_replace('&nbsp;','',str_replace('>'.$the_num_in_p_p.'.','>'.$j.'.',trim($strbetween_p_p)));
 			}else{
 				$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '.');
-				$new_str.=str_replace('<p>&nbsp;</p>','',str_replace('<p>'.$the_num_in_p_p.'.','<p>'.$j.'.',trim($strbetween_p_p)));
+				$new_str.=str_replace('&nbsp;','',str_replace('<p>'.$the_num_in_p_p.'.','<p>'.$j.'.',trim($strbetween_p_p)));
 			}
 			
 		}
