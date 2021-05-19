@@ -373,7 +373,7 @@ class Swot extends MY_Mgmt_Controller {
 			$j=$i+1;
 
 			if($check){
-				$the_num_in_p_p = $this->get_between($strbetween_p_p, ';">', '.');
+				$the_num_in_p_p = $this->get_between($strbetween_p_p, '">', '.');
 				$new_str.=str_replace('&nbsp;','',str_replace('>'.$the_num_in_p_p.'.','>'.$j.'.',trim($strbetween_p_p)));
 			}else{
 				$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '.');
