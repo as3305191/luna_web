@@ -364,8 +364,8 @@ class Swot extends MY_Mgmt_Controller {
 	}
 
 	public function replace_num_title($str) {
-		$total_num = substr_count($str,'<p>');
 		$total_array = explode("</p>",str_replace('<p>&nbsp;</p>','',$str));
+		$total_num = substr_count($total_array,'<p>');
 		$new_str='';
 		for($i=0;$i<=$total_num;$i++){
 			$strbetween_p_p = $total_array[$i];
