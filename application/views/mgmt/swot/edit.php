@@ -52,7 +52,7 @@
 			</div>
 		</div>
 		<?php endif?>
-		<div class="btn-group">
+		<div class="widget-toolbar pull-left">
 			<button onclick="re_num();" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
 				<i class="fa fa-save"></i>全部重新編碼
 			</button>
