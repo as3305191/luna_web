@@ -176,7 +176,6 @@
 		</div>
 	<?php else: ?>
 		<input type="hidden" id="class_id" value="0" />
-
 		<div id="edit_div">
 			<?php if(empty($item -> id) || $item -> id==0): ?>
 				<?php if(!empty($login_user_role_array) && count($login_user_role_array)>1): ?>
