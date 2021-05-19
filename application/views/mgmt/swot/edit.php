@@ -520,14 +520,14 @@
 			success: function(d) {
 				if(d) {
 				
-					CKEDITOR.instances.m_swot_s.setData('');
-					CKEDITOR.instances.m_swot_w.setData('');
-					CKEDITOR.instances.m_swot_o.setData('');
-					CKEDITOR.instances.m_swot_t.setData('');
-					CKEDITOR.instances.m_swot_s_o.setData('');
-					CKEDITOR.instances.m_swot_w_o.setData('');
-					CKEDITOR.instances.m_swot_s_t.setData('');
-					CKEDITOR.instances.m_swot_w_t.setData('');
+					// CKEDITOR.instances.m_swot_s.setData('');
+					// CKEDITOR.instances.m_swot_w.setData('');
+					// CKEDITOR.instances.m_swot_o.setData('');
+					// CKEDITOR.instances.m_swot_t.setData('');
+					// CKEDITOR.instances.m_swot_s_o.setData('');
+					// CKEDITOR.instances.m_swot_w_o.setData('');
+					// CKEDITOR.instances.m_swot_s_t.setData('');
+					// CKEDITOR.instances.m_swot_w_t.setData('');
 
 					CKEDITOR.instances.m_swot_s.setData(d.new_swot_s);
 					CKEDITOR.instances.m_swot_w.setData(d.new_swot_w);
