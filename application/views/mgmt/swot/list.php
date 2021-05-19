@@ -155,7 +155,7 @@ thead tr th {
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,1,2,3],
+		"targets" : [0,1,2],
 		"orderable" : false
 	}];
 

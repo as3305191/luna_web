@@ -18,7 +18,6 @@
 				</a>
 			</div>
 		<?php endif?>
-
 			<?php if(!empty($item -> id)): ?>
 				<?php if($item -> s_t_is_lock == 0 ): ?>
 					<?php if($item -> is_use==1 ): ?>
@@ -44,9 +43,6 @@
 					</a>
 				</div>
 			<?php endif?>
-
-
-
 		<?php if(!empty( $item -> id) && $item -> id>0): ?>
 			<div class="widget-toolbar pull-right">
 			<div class="btn-group">
