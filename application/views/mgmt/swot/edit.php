@@ -232,7 +232,6 @@
 							<!-- option from javascript -->
 						</select>
 					</div>
-				
 				</div>
 			</fieldset>
 			<fieldset>
