@@ -53,7 +53,6 @@
 	.ex_page{ 
 		-webkit-print-color-adjust: exact; 
 	} 
-
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
