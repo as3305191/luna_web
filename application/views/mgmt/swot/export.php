@@ -25,9 +25,6 @@
 }
 
 @media print{
-	body { 
-		-webkit-print-color-adjust: exact; 
-	} 
 
 	.layui-table{ 
 		/* border-style:groove !important; */
@@ -50,6 +47,11 @@
 	.pageDiv:last-of-type{ 
 		page-break-after: auto; 
 	}	
+
+	.ex_page{ 
+		-webkit-print-color-adjust: exact; 
+	} 
+
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
