@@ -4,9 +4,7 @@
 .layui-table{ 
 	/* border-style:groove !important; */
 	margin: 0;
-	border-color:#000 !important;
-
-}
+	border-color:#000 }
 .td_table{
  	padding: 0px 0px 0px 0px !important;
 
@@ -32,7 +30,6 @@
 	.layui-table{ 
 		/* border-style:groove !important; */
 		margin: 0;
-		border-color:#000 !important;
 	}
 
 	.td_table{
@@ -60,7 +57,7 @@
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="ex_page " style="padding:20px 20px 20px 20px;">
-	<table class="layui-table pageDiv" width="70%">
+	<table class="layui-table pageDiv" width="70%"  style="border-color:#000" >
 		<thead>
 		</thead>
 		<tbody class="">
