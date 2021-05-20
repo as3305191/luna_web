@@ -1,7 +1,7 @@
 
 <?php $this->load->view('layout/head'); ?>
 <style>
-.layui-table{ 
+.layui-table1{ 
 	/* border-style:groove !important; */
 	margin: 0;
 	border-color:#000;
@@ -28,7 +28,7 @@
 
 @media print{
 
-	.layui-table{ 
+	.layui-table1{ 
 		/* border-style:groove !important; */
 		margin: 0;
 		border-color:#000;
@@ -59,7 +59,7 @@
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="ex_page " style="padding:20px 20px 20px 20px;">
-	<table class="layui-table pageDiv" width="70%"  style="border-color:#000;" >
+	<table class="layui-table pageDiv layui-table1" width="70%"  style="border-color:#000;" >
 		<thead>
 		</thead>
 		<tbody class="">
