@@ -25,15 +25,20 @@
 }
 
 @media print{
+	body { 
+		-webkit-print-color-adjust: exact; 
+	} 
+	
 	.layui-table{ 
-	/* border-style:groove !important; */
-	margin: 0;
-}
+		/* border-style:groove !important; */
+		margin: 0;
+	}
 
-.td_table{
- 	padding: 0px 0px 0px 0px !important;
-}
-.pageDiv{
+	.td_table{
+		padding: 0px 0px 0px 0px !important;
+	}
+
+	.pageDiv{
         display:block;
         position:relative;
         background-repeat:no-repeat;
@@ -41,8 +46,10 @@
         page-break-after: always;  
 		page-break-inside: avoid;
     }
-.pageDiv:last-of-type{ 
-	
+
+	.pageDiv:last-of-type{ 
+		page-break-after: auto; 
+	}	
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
