@@ -7,6 +7,8 @@
 }
 .td_table{
  	padding: 0px 0px 0px 0px !important;
+	 border-color:#000;
+
 }
 .pageDiv{
         display:block;
@@ -35,6 +37,8 @@
 
 	.td_table{
 		padding: 0px 0px 0px 0px !important;
+		border-color:#000;
+
 	}
 
 	.pageDiv{
