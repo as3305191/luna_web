@@ -5,7 +5,6 @@
 	margin: 0;
 	border-color:#000 ;
 	background-color:#fff;
-	width: 100%;
 }
 
 .td_table{
@@ -34,7 +33,6 @@
 		margin: 0;
 		border-color:#000 ;
 		background-color:#fff;
-		width: 100%;
 	}
 
 	.td_table{
