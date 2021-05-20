@@ -25,10 +25,10 @@
 }
 
 @media print{
-	body { 
+	div { 
 		-webkit-print-color-adjust: exact; 
 	} 
-	
+
 	.layui-table{ 
 		/* border-style:groove !important; */
 		margin: 0;
