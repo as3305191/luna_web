@@ -21,14 +21,29 @@
 	page-break-after: auto; 
 }
 @page {
-  /*size: portrait; /*直向*/
-  /*size: landscape; /*橫向*/
-  /*size: A4; /*紙張大小*/
-  /* size: A4 portrait; /*混合使用 */
-  
   margin: 0; /*邊界與內容的距離*/
 }
 
+@media print{
+	.layui-table{ 
+	/* border-style:groove !important; */
+	margin: 0;
+}
+
+.td_table{
+ 	padding: 0px 0px 0px 0px !important;
+}
+.pageDiv{
+        display:block;
+        position:relative;
+        background-repeat:no-repeat;
+        background-position: center;
+        page-break-after: always;  
+		page-break-inside: avoid;
+    }
+.pageDiv:last-of-type{ 
+	
+}
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="ex_page " style="padding:20px 20px 20px 20px;">
