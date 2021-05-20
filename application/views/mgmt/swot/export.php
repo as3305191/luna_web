@@ -4,10 +4,11 @@
 .layui-table{ 
 	/* border-style:groove !important; */
 	margin: 0;
+	border-color:#000 !important;
+
 }
 .td_table{
  	padding: 0px 0px 0px 0px !important;
-	 border-color:#000;
 
 }
 .pageDiv{
@@ -21,9 +22,7 @@
 .pageDiv:last-of-type{ 
 	page-break-after: auto; 
 }
-.ex_page{ 
-	border-color:#000;
-} 
+
 @page {
   margin: 0; /*邊界與內容的距離*/
 }
@@ -37,8 +36,6 @@
 
 	.td_table{
 		padding: 0px 0px 0px 0px !important;
-		border-color:#000;
-
 	}
 
 	.pageDiv{
@@ -56,8 +53,7 @@
 
 	.ex_page{ 
 		-webkit-print-color-adjust: exact; 
-		border-color:#000;
-	} 
+		!important	} 
 
 }
 </style>
