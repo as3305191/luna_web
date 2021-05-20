@@ -83,8 +83,13 @@ class Swot extends MY_Mgmt_Controller {
 			}
 			if(!empty($item->class_id) && $item->class_id>0){
 				$swot_class= $this -> d_dao -> find_by_id($item->class_id);
-				$data['swot_class'] = $swot_class->name;
-			}
+				if($swot_class==3){
+					$data['swot_class'] = $swot_class->name;
+				} else{
+					$swot_dep= $this -> d_dao -> find_by_id($item->role_id);
+					$data['swot_class'] =$swot_dep->name.$swot_class->name;
+				}
+			} 
 			$data['unify'] = 0;
 		} else{
 			if($title>0||$style>0){
@@ -140,6 +145,7 @@ class Swot extends MY_Mgmt_Controller {
 				$item['m_swot_s_t'] = $this->replace_num_title($m_swot_s_t);
 				$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
 				$data['item']= $item;
+				$data['swot_class'] = '寬仕';
 				$data['unify'] = 1;
 			} 
 		}
