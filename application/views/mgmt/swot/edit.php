@@ -43,26 +43,26 @@
 					</a>
 				</div>
 			<?php endif?>
-			<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
-				<div class="widget-toolbar pull-left">
-					<?= isset($swot_class) ? $swot_class: '' ?>
-				</div>
-			<?php endif?>
-
-		<?php if(!empty( $item -> id) && $item -> id>0): ?>
-			<div class="widget-toolbar pull-right">
-			<div class="btn-group">
-				<button onclick="currentApp.doExportAll(<?=isset($item->id) && $item->id>0? $item -> id : ''?>)" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
-					<i class="fa fa-save"></i>匯出
-				</button>
-			</div>
-		</div>
-		<?php endif?>
+		
 		<div class="widget-toolbar pull-left">
 			<button onclick="re_num();" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
 				<i class="fa fa-save"></i>全部重新編碼
 			</button>
 		</div>
+		<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
+			<div class="widget-toolbar pull-left">
+				<?= isset($swot_class) ? $swot_class: '' ?>
+			</div>
+		<?php endif?>
+		<?php if(!empty( $item -> id) && $item -> id>0): ?>
+			<div class="widget-toolbar pull-right">
+				<div class="btn-group">
+					<button onclick="currentApp.doExportAll(<?=isset($item->id) && $item->id>0? $item -> id : ''?>)" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
+						<i class="fa fa-save"></i>匯出
+					</button>
+				</div>
+			</div>
+		<?php endif?>
 	</header>
 	<!-- widget div-->
 	<div>
