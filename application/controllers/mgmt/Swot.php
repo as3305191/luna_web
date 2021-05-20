@@ -83,7 +83,7 @@ class Swot extends MY_Mgmt_Controller {
 			}
 			if(!empty($item->class_id) && $item->class_id>0){
 				$swot_class= $this -> d_dao -> find_by_id($item->class_id);
-				if($swot_class==3){
+				if($swot_class->level==3){
 					$data['swot_class'] = $swot_class->name;
 				} else{
 					$swot_dep= $this -> d_dao -> find_by_id($item->role_id);
