@@ -32,6 +32,7 @@
 	.layui-table{ 
 		/* border-style:groove !important; */
 		margin: 0;
+		border-color:#000 !important;
 	}
 
 	.td_table{
