@@ -4,11 +4,10 @@
 .layui-table1{ 
 	/* border-style:groove !important; */
 	margin: 0;
-	border-color:#000;
 }
 .td_table{
  	padding: 0px 0px 0px 0px !important;
-
+	border-color:#000 !important;
 }
 .pageDiv{
         display:block;
@@ -31,11 +30,12 @@
 	.layui-table1{ 
 		/* border-style:groove !important; */
 		margin: 0;
-		border-color:#000;
 	}
 
 	.td_table{
 		padding: 0px 0px 0px 0px !important;
+		border-color:#000 !important;
+
 	}
 
 	.pageDiv{
