@@ -5,7 +5,6 @@
 	/* border-style:groove !important; */
 	margin: 0;
 }
-
 .td_table{
  	padding: 0px 0px 0px 0px !important;
 }
