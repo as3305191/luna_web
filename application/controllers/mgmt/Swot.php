@@ -87,7 +87,7 @@ class Swot extends MY_Mgmt_Controller {
 					$data['swot_class'] = $swot_class->name;
 				} else{
 					$swot_dep= $this -> d_dao -> find_by_id($item->role_id);
-					$data['swot_class'] =$swot_dep->name.$swot_class->name;
+					$data['swot_class'] =$swot_dep->name.'+'.$swot_class->name;
 				}
 			} 
 			$data['unify'] = 0;
