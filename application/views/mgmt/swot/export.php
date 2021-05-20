@@ -19,6 +19,9 @@
 .pageDiv:last-of-type{ 
 	page-break-after: auto; 
 }
+.ex_page{ 
+	border-color:#000;
+} 
 @page {
   margin: 0; /*邊界與內容的距離*/
 }
@@ -49,6 +52,7 @@
 
 	.ex_page{ 
 		-webkit-print-color-adjust: exact; 
+		border-color:#000;
 	} 
 
 }
