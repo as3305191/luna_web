@@ -77,7 +77,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr >
-							<td style="text-align:center;vertical-align:middle;border-color:#000;">內部議題-s(優勢)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-s(優勢)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s) : '' ?></div></td>
@@ -87,7 +87,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#000;">內部議題-w(劣勢)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-w(劣勢)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w) : '' ?></div></td>
@@ -99,7 +99,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#000;">外部議題-o(機會)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-o(機會)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_o): '' ?></div></td>
@@ -109,7 +109,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#000;">so策略(優勢+機會)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">so策略(優勢+機會)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_o) : '' ?></div></td>
@@ -119,7 +119,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#000;">wo策略(劣勢+機會)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">wo策略(劣勢+機會)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_o): '' ?></div></td>
@@ -131,7 +131,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#000;">外部議題-t(威脅)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-t(威脅)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_t) : '' ?></div></td>
@@ -141,7 +141,7 @@
 				<td colspan="1" valign="top"class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#000;">st策略(優勢+威脅)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">st策略(優勢+威脅)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_t) : '' ?></div></td>
@@ -151,7 +151,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#000;">wt策略(劣勢+威脅)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">wt策略(劣勢+威脅)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_t): '' ?></div></td>
