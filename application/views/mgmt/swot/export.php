@@ -25,7 +25,7 @@
 }
 
 @media print{
-	div { 
+	body { 
 		-webkit-print-color-adjust: exact; 
 	} 
 
