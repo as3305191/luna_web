@@ -66,13 +66,9 @@ var MenuAppClass = (function(app) {
 		// get year month list
 		app.tableReload();
 
-		$('#corp_id').on('change', function(){
-			$('#waring').hide();
-			app.tableReload();
-		});
-		$('#s_multiple').on('change', function(){
-			app.tableReload();
-		});
+		// $('#s_multiple').on('change', function(){
+		// 	app.tableReload();
+		// });
 		return app;
 	};
 
