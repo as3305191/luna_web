@@ -45,7 +45,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">菜色類別</label>
 						<div class="col-md-6">
-							<input type="text" class="form-control"  name="cuisine_type" value="<?= isset($item) ? $item -> cuisine_type : '' ?>"  />
+							<input type="text" class="form-control"  name="cuisine_type" value=""  />
 						</div>
 					</div>
 				</fieldset>
@@ -53,7 +53,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label"></label>
 						<div class="col-md-6">
-							<input type="text" class="form-control"  name="meal_name" value="<?= isset($item) ? $item -> meal_name : '' ?>"  />
+							<input type="text" class="form-control"  name="meal_name" value=""  />
 						</div>
 					</div>
 				</fieldset>

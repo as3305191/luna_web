@@ -8,8 +8,7 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> load -> model('Menu_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
-		// $this -> load -> model('Menu_rating_dao', 'menu_rating_dao');
-		// $this->load->library('excel');
+
 	}
 
 	public function index()
