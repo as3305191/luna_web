@@ -83,6 +83,7 @@ thead tr th {
 											<th class="min100">部/課</th>
 											<th class="min100">標題</th>
 											<th class="min100">文件種類</th>
+											<th class="min100">更新時間</th>
 											<th class="min100">建立時間</th>
 										</tr>
 									</thead>
@@ -139,6 +140,8 @@ thead tr th {
 	},{
 		data : 's_style_name'
 	},{
+		data : 'update_date'
+	},{
 		data : 'create_time'
 	}];
 
@@ -155,7 +158,7 @@ thead tr th {
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,2],
+		"targets" : [0,2,4],
 		"orderable" : false
 	}];
 
