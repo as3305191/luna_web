@@ -192,6 +192,7 @@ class Swot extends MY_Mgmt_Controller {
 		$data['m_swot_w_o'] = $m_swot_w_o;
 		$data['m_swot_s_t'] = $m_swot_s_t;
 		$data['m_swot_w_t'] = $m_swot_w_t;
+		$data['update_date'] = date("Y-m-d H:i:s");
 		if(empty($id)) {
 			// insert
 			// $role_array= explode(",", str_replace('#', ',', trim($login_user->in_department, "#")));
