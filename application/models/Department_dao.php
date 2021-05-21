@@ -186,7 +186,9 @@ class Department_dao extends MY_Model {
 
 	function find_all_d_or_c(){
 		$this -> db -> from($this -> table_name);
-		$this -> db -> where('level >=','3');
+		$this -> db -> where('level =','3');
+		$this -> db -> where('id <>','35');
+
 		$this -> db -> order_by('pos','asc');
 		$list = $this -> db -> get() -> result();
 
