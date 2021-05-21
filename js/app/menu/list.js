@@ -15,58 +15,7 @@ var MenuAppClass = (function(app) {
 				type : 'post'
 			},
 
-			columns : [null, {
-				data : 'menu_code'
-			},{
-				data : 'update_type'
-			},{
-				data : 'menu_name'
-			},{
-				data : 'meal_name'
-			},{
-				data : 'cuisine_type'
-			},{
-				data : 'rating',
-				render: function(d,t,r) {
-					if(r.count_rating>=0){
-						return d+'('+r.count_rating+')筆';
-					} else{
-						return d;
-					}
-				}
-			}, {
-				data : 'date'
-			}, {
-				data : 'grain_rhizomes'
-			}, {
-				data : 'fish_eggs'
-			}, {
-				data : 'fish_eggs_l'
-			},{
-				data : 'fish_eggs_m'
-			},{
-				data : 'fish_eggs_h'
-			},{
-				data : 'fish_eggs_vh'
-			},{
-				data : 'oils_nuts'
-			}, {
-				data : 'vegetables'
-			}, {
-				data : 'fruit'
-			}, {
-				data : 'dairy_products'
-			}, {
-				data : 'dairy_products_off'
-			}, {
-				data : 'dairy_products_low'
-			}, {
-				data : 'dairy_products_all'
-			}, {
-				data : 'total_calories'
-			}, {
-				data : 'create_time'
-			}],
+			columns : [null],
 
 			order : [[7, "desc"]],
 			columnDefs : [{
@@ -78,7 +27,7 @@ var MenuAppClass = (function(app) {
 				width : "5%",
 				className : ''
 			},{
-				"targets" : [0,1,2,3,4,5,6,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22],
+				"targets" : [0],
 				"orderable" : false
 			}]
 		}));

@@ -20,22 +20,8 @@
 									</button>
 								</div>
 							</div>
-							<div class="widget-toolbar pull-left">
-								<label>公司：</label>
-							</div>
-							<div class="widget-toolbar pull-left">
-								<label>顯示有評分的項目<input id="s_multiple" type="checkbox" class="" value="" /></label>
-							</div>
 						
-							<!-- <div class="widget-toolbar pull-right" >
-								<a href="<?=base_url('files/test_menu_2.xlsx')?>" download class="btn btn-info" id="download_btn" >下載菜單範本</a>
-							</div> -->
-							<!-- <div class="widget-toolbar pull-right" >
-								<form method="post" id="import_form" enctype="multipart/form-data">
-									<label for="file" id="w_file" class="btn btn-outline-warning btn-xs" style="background-color:orange;">匯入菜單</label>
-									<input type="file" name="file" class="btn btn-outline-warning" style="display:none" id="file" accept=".xls, .xlsx" />
-								</form>
-							</div> -->
+						
 						</header>
 
 						<!-- widget div-->
@@ -45,8 +31,7 @@
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
 							</div>
-							<!-- end widget edit box -->
-							<!-- <input type="hidden" class="form-control"  name="user_id" value="<?= isset($login_user) ? $login_user->corp_id : '' ?>"  /> -->
+							
 							<input type="hidden" class="form-control" id="user_id" name="user_id" value="<?= isset($login_user) ? $login_user->id : '' ?>"  />
 							<input type="hidden"  id="role_id"  value="<?= isset($login_user) ? $login_user-> role_id : '' ?>"/>
 
