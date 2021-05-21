@@ -32,14 +32,7 @@
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">編號</label>
-						<div class="col-md-6">
-							<input type="text"  class="form-control"  name="menu_code" value="<?= isset($item) ? $item -> menu_code : '' ?>" <?= isset($item) ? 'readonly' : '' ?> />
-						</div>
-					</div>
-				</fieldset>
+			
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">菜單名稱</label>
@@ -64,80 +57,7 @@
 						</div>
 					</div>
 				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">日期</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control"  name="date" value="<?= isset($item) ? $item -> date : '' ?>"  />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">全穀根莖類</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control"  name="grain_rhizomes" value="<?= isset($item) ? $item -> grain_rhizomes : '' ?>"  />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">豆魚肉蛋類</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control"  name="fish_eggs" value="<?= isset($item) ? $item -> fish_eggs : '' ?>"  />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">油脂與堅果種子類</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control"  name="oils_nuts" value="<?= isset($item) ? $item -> oils_nuts : '' ?>"  />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">蔬菜</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control"  name="vegetables" value="<?= isset($item) ? $item -> vegetables : '' ?>"  />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">水果</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control"  name="fruit" value="<?= isset($item) ? $item -> fruit : '' ?>"  />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">乳製品</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control"  name="dairy_products" value="<?= isset($item) ? $item -> dairy_products : '' ?>"  />
-						</div>
-					</div>
-				</fieldset>
-				<?php if ($login_user->corp_id==0): ?>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">公司</label>
-							<div class="col-md-6">
-								<select name="corp_id" id="corp_id" class="form-control">
-									<option value="-1">無</option>
-									<?php foreach($corp_list as $each): ?>
-										<option value="<?= $each -> id?>" ><?=  $each -> corp_name ?></option>
-									<?php endforeach ?>
-								</select>
-							</div>
-						</div>
-					</fieldset>
-				<?php else: ?>
-					<input type="hidden" class="form-control"  name="crop_id" value="<?= isset($login_user) ? $login_user->corp_id : '' ?>"  />
-
-				<?php endif; ?>
+				
 
 			</form>
 
