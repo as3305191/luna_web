@@ -126,12 +126,12 @@ thead tr th {
 	var baseUrl = '<?=base_url('')?>';
 
 	var mCols = [null,{
-		data : 'd_or_c_name',
+		data : 'swot_pos',
 		render: function(d,t,r){
 			if(r.department_list){
-				return r.department_list.name+'+'+d;
+				return r.department_list.name+'+'+r.d_or_c_name;
 			} else{
-				return d;
+				return r.d_or_c_name;
 			}
 		}
 	},{
@@ -155,7 +155,7 @@ thead tr th {
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,1,2],
+		"targets" : [0,2],
 		"orderable" : false
 	}];
 

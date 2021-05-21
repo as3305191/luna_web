@@ -24,6 +24,8 @@ class Swot_dao extends MY_Model {
 		$this -> db -> select('s_s.swot_name as s_style_name');
 		$this -> db -> select('s_t.swot_title as s_title_name');
 		$this -> db -> select('d.name as d_or_c_name');
+		$this -> db -> select('d.swot_pos as swot_pos');
+
 		$this -> db -> select('s_t.is_lock as s_t_is_lock');
 
 		// join
