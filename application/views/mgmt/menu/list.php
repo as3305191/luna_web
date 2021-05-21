@@ -86,38 +86,7 @@
 	</div>
 </div>
 <?php $this -> load -> view('general/delete_modal'); ?>
-<div class="modal fade" id="update_type" role="dialog" aria-hidden="true">
-		<div class="modal-dialog modal-lg">
-			<div class="modal-content">
-				<div class="modal-header">
-				</div>
-				<div class="modal-body" id="">
-					<form id="" class="">
-						<fieldset>
-							<div class="form-group">
-								<label class="col-md-3 control-label">刪除碼</label>
-								<div class="col-md-9">
-									<div class="col-md-9">
-										<input type="text" class="form-control required" id="delete_num" value=""  />
-									</div>
-								</div>
-							</div>
-						</fieldset>
 
-					<div class="modal-footer">
-						<button type="button" class="btn btn-danger btn-sm" onclick="do_delete_action()">
-							<i class="fa fa-save"></i> 存檔
-						</button>
-						<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
-							<i class="fa fa-close"></i> 關閉
-						</button>
-					</div>
-					</form>
-				</div>
-
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div>
 <script type="text/javascript">
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/menu/list.js", function(){

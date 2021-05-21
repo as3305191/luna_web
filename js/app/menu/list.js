@@ -7,7 +7,7 @@ var MenuAppClass = (function(app) {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
 					d.corp_id = $('#corp_id').val();
-					d.multiple = $('#s_multiple').prop("checked") ? 1 : 0;
+					// d.multiple = $('#s_multiple').prop("checked") ? 1 : 0;
 
 				},
 				dataSrc : 'items',
@@ -31,34 +31,6 @@ var MenuAppClass = (function(app) {
 				"orderable" : false
 			}]
 		}));
-
-		app.doSubmit = function() {
-			if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
-
-			$('#lang').val($('#sys_lang').val());
-
-			var url = baseUrl + app.basePath + 'insert'; // the script where you handle the form input.
-			$.ajax({
-				type : "POST",
-				url : url,
-				data : $("#app-edit-form").serialize(),
-				success : function(data) {
-					app.mDtTable.ajax.reload(null, false);
-					app.backTo();
-
-					if($('#l_user_role').val() != '99') {
-						app.doEdit($('#l_corp_id').val());
-					} else {
-						app.backTo();
-					}
-
-				}
-			});
-		};
-
-		app.doPay = function() {
-			doPay();
-		}
 
 		// data table actions
 		app.dtActions();
