@@ -1,35 +1,22 @@
-var MenuAppClass = (function(app) {
+var patentAppClass = (function(app) {
 	app.basePath = "mgmt/menu/";
-
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					d.corp_id = $('#corp_id').val();
-					// d.multiple = $('#s_multiple').prop("checked") ? 1 : 0;
-
+					d.now_category = $('#now_category').val();
 				},
 				dataSrc : 'items',
 				dataType : 'json',
-				type : 'post'
+				type : 'post',
+				complete:function(data){
+				}
 			},
-
-			columns : [null],
-
-			order : [[7, "desc"]],
-			columnDefs : [{
-				targets : 0,
-				data : null,
-				defaultContent : app.defaultContent,
-				searchable : false,
-				orderable : false,
-				width : "5%",
-				className : ''
-			},{
-				"targets" : [0],
-				"orderable" : false
-			}]
+			iDisplayLength : 50,
+			columns : mCols,
+			order : [[0, "desc"]],
+			columnDefs : mColDefs
 		}));
 
 		// data table actions
@@ -38,12 +25,18 @@ var MenuAppClass = (function(app) {
 		// get year month list
 		app.tableReload();
 
-		// $('#s_multiple').on('change', function(){
+		// app.doExportAll = function(id) {
+		// 	window.open(baseUrl + app.basePath + 'export_all/' + id);
+		// }
+
+		// $('#application_person').on('keyup', function(){
 		// 	app.tableReload();
 		// });
+	
+	    // $(window).trigger("hashchange");
+
 		return app;
 	};
 
-	// return self
 	return app.init();
 });

@@ -88,6 +88,25 @@
 <?php $this -> load -> view('general/delete_modal'); ?>
 
 <script type="text/javascript">
+	var mCols = [null,{
+		data : 'user_name'
+	}];
+
+	var mOrderIdx = 0;
+
+	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
+	var mColDefs = [{
+		targets : 0,
+		data : null,
+		defaultContent : defaultContent,
+		searchable : false,
+		orderable : false,
+		width : "5%",
+		className : ''
+	}, {
+		"targets" : [1,2],
+		"orderable" : false
+	}];
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/menu/list.js", function(){
 			currentApp = new MenuAppClass(new BaseAppClass({}));

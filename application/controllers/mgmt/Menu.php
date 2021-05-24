@@ -64,7 +64,6 @@ class Menu extends MY_Mgmt_Controller {
 		$data['login_user'] = $login_user;
 		$data['role_list'] = $this -> dao -> find_all_roles();
 		// $this -> to_json($data);
-
 		$this->load->view('mgmt/menu/edit', $data);
 	}
 
@@ -77,7 +76,6 @@ class Menu extends MY_Mgmt_Controller {
 			'menu_name',
 			'meal_name',
 			'date',
-
 		));
 
 		if(empty($id)) {
