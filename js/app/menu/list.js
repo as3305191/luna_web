@@ -1,11 +1,11 @@
-var patentAppClass = (function(app) {
+var MenuAppClass = (function(app) {
 	app.basePath = "mgmt/menu/";
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					d.now_category = $('#now_category').val();
+					// d.now_category = $('#now_category').val();
 				},
 				dataSrc : 'items',
 				dataType : 'json',
