@@ -97,6 +97,8 @@ var SwotAppClass = (function(app) {
 		$('#list_style').on('change', function(){
 			app.tableReload();
 		});
+		$(window).trigger("hashchange");
+
 		return app;
 	};
 
