@@ -29,10 +29,8 @@
 	
 		<!-- widget content -->
 		<div class="widget-body">
-
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-			
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">菜單名稱</label>
@@ -57,16 +55,11 @@
 						</div>
 					</div>
 				</fieldset>
-				
-
 			</form>
-
 		</div>
 		<!-- end widget content -->
-
 	</div>
 	<!-- end widget div -->
-
 </div>
 <!-- end widget -->
 <style>
@@ -91,12 +84,10 @@
             }
          }
       }
-
 	})
 	.bootstrapValidator('validate');
 	$(".dt_picker").datetimepicker({
 		format : 'YYYY-MM-DD'
 	}).on('dp.change',function(event){
-
 	});
 </script>
