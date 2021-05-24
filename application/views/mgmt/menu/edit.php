@@ -49,7 +49,7 @@
 				</fieldset>
 				<fieldset>
 					<div class="form-group">
-						<label class="col-md-3 control-label"></label>
+					<label class="col-md-3 control-label">菜色類別</label>
 						<div class="col-md-6">
 							<input type="text" class="form-control"  name="meal_name" value=""  />
 						</div>
@@ -86,7 +86,7 @@
       }
 	})
 	.bootstrapValidator('validate');
-	
+
 	$(".dt_picker").datetimepicker({
 		format : 'YYYY-MM-DD'
 	}).on('dp.change',function(event){
