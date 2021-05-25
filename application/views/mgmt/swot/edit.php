@@ -7,13 +7,13 @@
 	
 		<?php if(!empty($item -> id) && $item -> id>0): ?>
 			<div class="widget-toolbar pull-left">
-				<a href="javascript:void(0);" id="back_parent" onclick="currentApp.back('<?= isset($item) ? $item -> id : 0 ?>')" class="btn btn-default" style="border-color:gray;">
+				<a href="javascript:void(0);" id="back_parent" onclick="currentApp.back('<?= isset($item) ? $item -> id : 0 ?>')" class="btn btn-default" style="border-color:gray;background-color:#3276B1;">
 					<i class="fa fa-arrow-circle-left"></i>返回
 				</a>
 			</div>
 		<?php else: ?>
 			<div class="widget-toolbar pull-left">
-				<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo()" class="btn btn-default" style="border-color:gray;">
+				<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo()" class="btn btn-default" style="border-color:gray;background-color:#3276B1;">
 					<i class="fa fa-arrow-circle-left"></i>返回
 				</a>
 			</div>

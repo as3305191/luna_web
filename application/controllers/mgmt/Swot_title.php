@@ -14,7 +14,6 @@ class Swot_title extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		// $data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-		
 		// $this -> to_json($data);
 		$this -> load -> view('mgmt/swot_title/list', $data);
 	}
@@ -29,7 +28,6 @@ class Swot_title extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-		
 		));
 		$items = $this -> dao -> query_ajax($data);
 	
