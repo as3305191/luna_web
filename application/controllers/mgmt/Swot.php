@@ -379,7 +379,7 @@ class Swot extends MY_Mgmt_Controller {
 		$new_str='';
 		for($i=0;$i<=$total_num;$i++){
 			$strbetween_p_p = $total_array[$i];
-			$check = strstr($strbetween_p_p,'style');
+			$check = strstr($strbetween_p_p,'<p><span style');
 			$j=$i+1;
 
 			if($check){
