@@ -373,9 +373,10 @@ class Swot extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function replace_num_title($str) {
-		$total_array = explode("</p>",str_replace('<p>&nbsp;</p>','',$str));
-		$total_num = substr_count(str_replace('<p>&nbsp;</p>','',$str),'<p>');
+	public function replace_num_title($str_old) {
+		$str = str_replace('<p>&nbsp;</p>','',$str_old);
+		$total_array = explode("</p>",$str);
+		$total_num = substr_count($str,'<p>');
 		$new_str='';
 		for($i=0;$i<=$total_num;$i++){
 			$strbetween_p_p = $total_array[$i];
