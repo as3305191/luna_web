@@ -85,7 +85,7 @@
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item -> id) ?  $item -> id: '0' ?>" />
 				<input type="hidden" id="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
 				<input type="hidden" id="is_use" value="<?= isset($item -> is_use) ? $item -> is_use : ''?>" />
-				<input type="hidden" id="unify" value="<?= isset($unify) ? $unify : 0?>" />
+				<input type="hidden" id="unify" value="<?= isset($item -> unify) ? $item -> unify : 0?>" />
 				<div class="form-group" style="padding:0px 26px">
         <div class="clearfix"></div>
     </div>
@@ -97,7 +97,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">文件種類</label>
 					<div class="col-md-6">
-						<input type="hidden"  id="s_style" value="<?= isset($item->swot_style_id) ? $item->swot_style_id: '' ?>"/>
+						<input type="hidden"  id="s_style" value="<?= isset($item['swot_style_id']) ? $item['swot_style_id']: '' ?>"/>
 						<select name="swot_style" id="swot_style" class="form-control" >
 							<!-- option from javascript -->
 						</select>
