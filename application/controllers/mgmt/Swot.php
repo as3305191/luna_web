@@ -109,6 +109,8 @@ class Swot extends MY_Mgmt_Controller {
 				$q_data['title'] =  $title;
 				$q_data['style'] =  $style;
 				$q_data['dep'] =  $dep;
+				$q_data['unify'] =  1;
+
 				$list = $this -> dao -> query_ajax($q_data);
 				$s='';
 				$w='';
