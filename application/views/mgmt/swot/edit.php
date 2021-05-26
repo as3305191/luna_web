@@ -92,7 +92,7 @@
     <hr/>
 	<?php if(!empty($unify) && $unify==1): ?>
 		<div id="edit_div">
-			<input type="hidden" id="class_id" value="<?= isset($item['class_id']) ? $item['class_id']: '' ?>" />
+			<input type="hidden" id="class_id" value="<?= isset($class_id) ? $class_id: '' ?>" />
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">文件種類</label>
