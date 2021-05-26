@@ -66,9 +66,9 @@
 			</tr> -->
 			<tr>
 				<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
-					<div style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:200%;padding:50px 50px 50px 50px;">寬仕工業股份有限公司</div>
+					<div style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:200%;padding:50px 50px 50px 50px;color:#000">寬仕工業股份有限公司</div>
 					<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;"><?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
-					<div style="text-align:right;">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
+					<div style="text-align:right;color:#000">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
 				</td>
 			</tr>
 			<tr >
