@@ -72,7 +72,7 @@
 					<?php else: ?>
 						<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;color:#000"><?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
 					<?php endif?>
-					<div style="text-align:right;color:#000;font:30px;">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
+					<div style="text-align:right;color:#000;font-size:100%">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
 				</td>
 			</tr>
 			<tr >
@@ -166,11 +166,11 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
 				</td>
 				<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
-					<span style="text-align:right;font:30px;color:#000;">管理代表：</span>
+					<span style="text-align:right;font-size:100%;color:#000;">管理代表：</span>
 				</td>
 				<td colspan="1" valign="top" class="td_table col-xs-4" style="text-align:right;border:none;" >
-					<div  style="text-align:left;font-family:PMingLiU;font:30px;color:#000;" >製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
-					<div style="text-align:right;padding:0px 40px 0px 0px;font:30px;color:#000;">RA2602-A</div>
+					<div  style="text-align:left;font-family:PMingLiU;font-size:100%;color:#000;" >製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
+					<div style="text-align:right;padding:0px 40px 0px 0px;font-size:100%;color:#000;">RA2602-A</div>
 				</td>
 			</tr>
 		</tbody>
