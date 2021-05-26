@@ -86,6 +86,8 @@
 				<input type="hidden" id="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
 				<input type="hidden" id="is_use" value="<?= isset($item -> is_use) ? $item -> is_use : ''?>" />
 				<input type="hidden" id="unify" value="<?= isset($item -> unify) ? $item -> unify : 0?>" />
+				<input type="hidden" id="unify_for_0" value="<?= isset($unify) ? $unify: 0?>" />
+
 				<div class="form-group" style="padding:0px 26px">
         <div class="clearfix"></div>
     </div>
@@ -406,17 +408,24 @@
 	function do_save() {
 		// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
 		var url = baseUrl + 'mgmt/swot/insert'; // the script where you handle the form input.
+		if($('#item_id').val()==0){
+			var unify = $('#unify_for_0').val();
+		} else{
+			var unify = $('#unify').val();
+		}
+
 		$.ajax({
 			type : "POST",
 			url : url,
 			data : {
+				
 				id: $('#item_id').val(),
 				class_id: $('#class_id').val(),	
 				title: $('#swot_title').val(),
 				swot_style: $('#swot_style').val(),
 				department: $('#department').val(),
 				make_user: $('#make_user').val(),
-				unify:$('#unify').val(),
+				unify:unify,
 				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
 				m_swot_w: CKEDITOR.instances.m_swot_w.getData(),
 				m_swot_o: CKEDITOR.instances.m_swot_o.getData(),
