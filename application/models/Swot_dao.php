@@ -119,6 +119,10 @@ class Swot_dao extends MY_Model {
 			$list_style = $data['list_style'];
 			$this -> db -> where("_m.swot_style_id",$list_style);
 		}
+		if(!empty($data['dep'])){
+			$dep = $data['dep'];
+			$this -> db -> where("_m.role_id",$dep);
+		}
 		
 	}
 

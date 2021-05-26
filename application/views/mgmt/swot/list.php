@@ -227,8 +227,9 @@ thead tr th {
 	function unify() {
 		var title=$('#list_title').val();
 		var style=$('#list_style').val();
+		var dep=$('#d_or_c').val();
 
-		currentApp.doEdit(0,title,style);
+		currentApp.doEdit(0,title,style,dep);
 	}
 	
 	$('#add_title').click(function() {
