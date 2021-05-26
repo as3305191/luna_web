@@ -152,7 +152,14 @@ class Swot extends MY_Mgmt_Controller {
 				$item['m_swot_s_t'] = $this->replace_num_title($m_swot_s_t);
 				$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
 				$data['item']= $item;
-				$data['swot_class'] = '寬仕';
+				if($dep==0||$dep==0){
+					$data['swot_class'] = '寬仕';
+					$data['class_id'] = 3;
+				} else{
+					$dep_item = $this -> d_dao -> find_by_id($dep);
+					$data['swot_class'] = $dep_item->name;
+					$data['class_id'] = $dep;
+				}
 				$data['unify'] = 1;
 			} 
 		}
@@ -184,8 +191,10 @@ class Swot extends MY_Mgmt_Controller {
 		$department = $this -> get_post('department');
 		$class_id = $this -> get_post('class_id');
 		$make_user = $this -> get_post('make_user');
+		$unify = $this -> get_post('unify');
 
 		$data['title'] = $title;
+		$data['unify'] = $unify;
 		$data['swot_style_id'] = $swot_style;
 		$data['m_swot_s'] = $m_swot_s;
 		$data['m_swot_w'] = $m_swot_w;

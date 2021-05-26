@@ -49,9 +49,17 @@
 			</button>
 		</div>
 		<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
+			<?php if(!empty($unify)&&$unify==1): ?>
+
 			<div class="pull-left">
-				<?= isset($swot_class) ? $swot_class: '' ?>
+				<?= isset($swot_class) ? $swot_class.'(整合)': '' ?>
 			</div>
+			<?php else: ?>
+				<div class="pull-left">
+					<?= isset($swot_class) ? $swot_class: '' ?>
+				</div>
+			<?php endif?>
+
 		<?php endif?>
 		<?php if(!empty( $item -> id) && $item -> id>0): ?>
 			<div class="widget-toolbar pull-right">
@@ -77,13 +85,14 @@
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item -> id) ?  $item -> id: '0' ?>" />
 				<input type="hidden" id="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
 				<input type="hidden" id="is_use" value="<?= isset($item -> is_use) ? $item -> is_use : ''?>" />
+				<input type="hidden" id="unify" value="<?= isset($unify) ? $unify : 0?>" />
 				<div class="form-group" style="padding:0px 26px">
         <div class="clearfix"></div>
     </div>
     <hr/>
 	<?php if(!empty($unify) && $unify==1): ?>
 		<div id="edit_div">
-			<input type="hidden" id="class_id" value="3" />
+			<input type="hidden" id="class_id" value="<?= isset($item['class_id']) ? $item['class_id']: '' ?>" />
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">文件種類</label>
@@ -99,7 +108,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">標題</label>
 					<div class="col-md-6">
-						<input type="hidden"  id="s_title" value="<?= isset($item['title']) ? $item['title'].'(整合)': '' ?>"/>
+						<input type="hidden"  id="s_title" value="<?= isset($item['title']) ? $item['title'] : '' ?>"/>
 						<select name="title" id="swot_title" class="form-control" >
 							<!-- option from javascript -->
 						</select>
@@ -407,6 +416,7 @@
 				swot_style: $('#swot_style').val(),
 				department: $('#department').val(),
 				make_user: $('#make_user').val(),
+				unify:$('#unify').val(),
 				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
 				m_swot_w: CKEDITOR.instances.m_swot_w.getData(),
 				m_swot_o: CKEDITOR.instances.m_swot_o.getData(),
