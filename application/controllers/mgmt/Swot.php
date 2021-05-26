@@ -95,7 +95,11 @@ class Swot extends MY_Mgmt_Controller {
 					$data['swot_class'] =$swot_dep->name.'+'.$swot_class->name;
 				}
 			} 
-			$data['unify'] = $item->unify;
+			if(!empty($item -> unify)){
+				$data['unify'] = $item -> unify;
+			} else{
+				$data['unify'] = 0;
+			}
 		} else{
 			if($title>0||$style>0){
 				$item = array();
