@@ -49,7 +49,7 @@
 			</button>
 		</div>
 		<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
-			<?php if(!empty($unify)&&$unify==1): ?>
+			<?php if(!empty($item -> unify) && $item -> unify==1): ?>
 
 			<div class="pull-left">
 				<?= isset($swot_class) ? $swot_class.'(整合)': '' ?>
