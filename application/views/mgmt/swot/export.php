@@ -76,7 +76,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr >
-							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-s(優勢)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-S(優勢)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s) : '' ?></div></td>
@@ -86,7 +86,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-w(劣勢)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-W(劣勢)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w) : '' ?></div></td>
@@ -98,7 +98,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-o(機會)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-O(機會)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_o): '' ?></div></td>
@@ -108,7 +108,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">so策略(優勢+機會)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">SO策略(優勢+機會)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_o) : '' ?></div></td>
@@ -118,7 +118,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">wo策略(劣勢+機會)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">WO策略(劣勢+機會)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_o): '' ?></div></td>
@@ -130,7 +130,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-t(威脅)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-T(威脅)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_t) : '' ?></div></td>
@@ -140,7 +140,7 @@
 				<td colspan="1" valign="top"class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">st策略(優勢+威脅)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">ST策略(優勢+威脅)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_t) : '' ?></div></td>
@@ -150,7 +150,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
-							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">wt策略(劣勢+威脅)</td>
+							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">WT策略(劣勢+威脅)</td>
 						</tr>
 						<tr style="border:none">
 							<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_t): '' ?></div></td>
@@ -162,11 +162,11 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
 				</td>
 				<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
-					<span style="text-align:right;">管理代表：</span>
+					<span style="text-align:right;font:14px;">管理代表：</span>
 				</td>
 				<td colspan="1" valign="top" class="td_table col-xs-4" style="text-align:right;border:none;" >
-					<div  style="text-align:left;font-family:PMingLiU;" >製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
-					<div style="text-align:right;padding:0px 40px 0px 0px">RA2602-1</div>
+					<div  style="text-align:left;font-family:PMingLiU;font:14px;" >製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
+					<div style="text-align:right;padding:0px 40px 0px 0px;font:14px;">RA2602-A</div>
 				</td>
 			</tr>
 		</tbody>
