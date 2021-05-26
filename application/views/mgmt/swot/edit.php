@@ -99,7 +99,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">標題</label>
 					<div class="col-md-6">
-						<input type="hidden"  id="s_title" value="<?= isset($item['title']) ? $item['title'] : '' ?>"/>
+						<input type="hidden"  id="s_title" value="<?= isset($item['title']) ? $item['title'].'(整合)': '' ?>"/>
 						<select name="title" id="swot_title" class="form-control" >
 							<!-- option from javascript -->
 						</select>
