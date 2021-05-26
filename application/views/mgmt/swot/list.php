@@ -130,9 +130,17 @@ thead tr th {
 		data : 'swot_pos',
 		render: function(d,t,r){
 			if(r.department_list){
-				return r.department_list.name+'+'+r.d_or_c_name;
+				if(r.unify==1){
+					return r.department_list.name+'+'+r.d_or_c_name+'(整合)';
+				}else{
+					return r.department_list.name+'+'+r.d_or_c_name;
+				}
 			} else{
-				return r.d_or_c_name;
+				if(r.unify==1){
+					return r.d_or_c_name+'(整合)';
+				}else{
+					return r.d_or_c_name;
+				}
 			}
 		}
 	},{
