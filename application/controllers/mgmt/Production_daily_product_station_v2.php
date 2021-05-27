@@ -71,9 +71,7 @@ class Production_daily_product_station_v2 extends MY_Base_Controller {
       $newline = "\r\n";
 	  $date = date('YmdHis');
       $filename = $date."-pruduction-daily-product.csv";
-
 		$data = $this -> session -> userdata("Production_daily_product_station_report_data_v2");
-		
 			//create a file pointer
     	$f = fopen('php://memory', 'w');
 			$fields = array(
@@ -93,7 +91,6 @@ class Production_daily_product_station_v2 extends MY_Base_Controller {
 				iconv("UTF-8","Big5//IGNORE",'重量(KG)'),
 				iconv("UTF-8","Big5//IGNORE",'日期'),
 				iconv("UTF-8","Big5//IGNORE",'barcode製造日期'),
-
 			);
 			fputcsv($f, $fields, $delimiter);
 
