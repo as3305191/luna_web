@@ -384,7 +384,6 @@ class Swot extends MY_Mgmt_Controller {
 		$res['new_swot_s_t'] = $new_swot_s_t;
 		$res['new_swot_w_t'] = $new_swot_w_t;
 
-
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
@@ -398,7 +397,6 @@ class Swot extends MY_Mgmt_Controller {
 			$strbetween_p_p = $total_array[$i];
 			$check = strstr($strbetween_p_p,'<p><span style');
 			$j=$i+1;
-
 			if($check){
 				$the_num_in_p_p = $this->get_between($strbetween_p_p, '">', '.');
 				$new_str.=str_replace('&nbsp;','',str_replace('>'.$the_num_in_p_p.'.','>'.$j.'.',trim($strbetween_p_p)));

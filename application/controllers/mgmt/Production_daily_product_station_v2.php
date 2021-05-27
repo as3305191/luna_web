@@ -10,16 +10,13 @@ class Production_daily_product_station_v2 extends MY_Base_Controller {
 		$this -> load -> model('Station_dao', 'station_dao');
 		$this -> load -> model('service/Production_service', 'production_service');
 		$this -> load -> model('service/Production_service_v2', 'production_service_v2');
-
 	}
 
 	public function index()
 	{
 		$data = array();
 		$this -> setup_user_data($data);
-
 		$data['station_list'] = $this -> station_dao -> find_all();
-
 		$this->load->view('mgmt/production_daily_product_station_v2/list', $data);
 	}
 
