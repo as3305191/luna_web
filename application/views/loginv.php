@@ -54,7 +54,7 @@
 			}
 
 			body {
-				background: url(<?= base_url('img/ktx_img/logo.jpg')  ?>) no-repeat center center fixed!important;				
+				background: url(<?= base_url('img/ktx_img/login_img/login_img_'.$num.'.jpg')  ?>) no-repeat center center fixed!important;				
 				-webkit-background-size: cover!important;
 				-moz-background-size: cover!important;
 				-o-background-size: cover!important;
