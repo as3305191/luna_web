@@ -42,7 +42,6 @@ class Login extends MY_Base_Controller {
 				$find_status = $this -> users_dao -> find_by_status1($account);
 				if (!empty($user) && $user -> password == $password && $find_status[0]-> status==0) {
 					$this -> session -> set_userdata('user_id', $user -> id);
-
 					$uniqueId = uniqid(rand(), TRUE);
 					$s_uid = md5($uniqueId);
 					$this -> session -> set_userdata("s_uid", $s_uid);
