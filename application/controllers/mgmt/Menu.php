@@ -18,7 +18,6 @@ class Menu extends MY_Mgmt_Controller {
 		$data['role_list'] = $this -> dao -> find_all_roles();
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		// $this -> to_json($data);
-
 		$this->load->view('mgmt/menu/list', $data);
 	}
 
@@ -30,21 +29,18 @@ class Menu extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 		));
-
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
 		$res['items'] = $items;			
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
-
 		$this -> to_json($res);
 	}
 
 	public function edit($id) {
 		$data = array();
 		$data['id'] = $id;
-
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
