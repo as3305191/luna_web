@@ -162,7 +162,7 @@
 					</table>
 				</td>
 			</tr>
-			
+
 			<tr style="border:none;" >
 				<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
 				</td>
