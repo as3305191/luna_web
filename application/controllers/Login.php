@@ -55,7 +55,6 @@ class Login extends MY_Base_Controller {
 		} else {
 			$res['msg'] = "請輸入必填資料";
 		}
-
 		$this -> to_json($res);
 	}
 
