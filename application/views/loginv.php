@@ -54,7 +54,6 @@
 			}
 
 			body {
-				/* background: url(<?= base_url('mgmt/images/get/' . $corp -> bg_image_id)  ?>) no-repeat center center fixed!important; */
 				background: url(<?= base_url('img/ktx_img/logo.jpg')  ?>) no-repeat center center fixed!important;				
 				-webkit-background-size: cover!important;
 				-moz-background-size: cover!important;
