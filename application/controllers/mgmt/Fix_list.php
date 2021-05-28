@@ -10,8 +10,6 @@ class Fix_list extends MY_Mgmt_Controller {
 		$this -> load -> model('Computer_hard_dao', 'c_h_dao');
 		$this -> load -> model('Computer_soft_dao', 'c_s_dao');
 		$this -> load -> model('C_s_h_join_list_dao', 'c_s_h_join_list_dao');
-
-		
 		$this -> load -> model('Members_log_dao', 'members_log_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
