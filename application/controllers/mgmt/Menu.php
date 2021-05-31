@@ -28,6 +28,7 @@ class Menu extends MY_Mgmt_Controller {
 			'start',
 			'columns',
 			'search',
+			'order',
 		));
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
