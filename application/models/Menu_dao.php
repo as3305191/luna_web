@@ -392,7 +392,6 @@ class Menu_dao extends MY_Model {
 
 		// join
 		$this -> ajax_from_join();
-
 		// search always
 		$this -> search_always($data);
 
@@ -413,9 +412,9 @@ class Menu_dao extends MY_Model {
 		return $query -> result();
 	}
 
-	function export_all() {
+	// function export_all() {
 
-	}
+	// }
 
 	function search_always($data) {
 		if(isset($data['corp_id']) && $data['corp_id'] > -1) {
