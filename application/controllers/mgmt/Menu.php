@@ -55,7 +55,6 @@ class Menu extends MY_Mgmt_Controller {
 			$item = $list[0];
 			$data['item'] = $item;
 		}
-
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
@@ -74,7 +73,6 @@ class Menu extends MY_Mgmt_Controller {
 			'meal_name',
 			'date',
 		));
-
 		if(empty($id)) {
 			// insert
 			$this -> dao -> insert($data);
