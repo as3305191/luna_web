@@ -90,7 +90,6 @@
 	var mCols = [null,{
 		data : 'user_name'
 	}];
-
 	var mOrderIdx = 0;
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 	var mColDefs = [{
@@ -100,7 +99,7 @@
 		searchable : false,
 		orderable : false,
 		width : "5%",
-		className : ''
+		className : '',
 	}, {
 		"targets" : [1,2],
 		"orderable" : false
