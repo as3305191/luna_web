@@ -328,7 +328,6 @@
 
 		</div>
 		<!-- end widget content -->
-
 	</div>
 	<!-- end widget div -->
 
@@ -343,9 +342,8 @@
 		// ckeditor
 		pushHistory(); 
 		window.addEventListener("popstate", function(e) { 
-			var $itemid=$('#item_id').val();
-			if($itemid>0){
-				currentApp.back($itemid);
+			if($('#item_id').val()>0){
+				currentApp.back($('#item_id').val());
 			} else{
 				currentApp.backTo();
 			}
