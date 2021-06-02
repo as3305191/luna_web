@@ -404,7 +404,14 @@
 				currentApp.isUse($('#item_id').val());
 			}
 		}
-		
+
+		function pushHistory() { 
+			var state = { 
+				title: "title", 
+				url: "#"
+			};
+			window.history.pushState(state, "title", "#"); 
+		} 
 		pushHistory(); 
 		window.addEventListener("popstate", function(e) { 
 			var $itemid=$('#item_id').val();
@@ -414,13 +421,7 @@
 				currentApp.backTo();
 			}
 		}, false); 
-		function pushHistory() { 
-			var state = { 
-				title: "title", 
-				url: "#"
-			};
-			window.history.pushState(state, "title", "#"); 
-		} 
+		
 	});
 
 	function do_save() {
