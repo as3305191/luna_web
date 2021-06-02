@@ -340,8 +340,19 @@
 <script>
 	
 	$(function() {
-		// $('#c_h_name').select2();
-		// $('#c_s_name').select2();
+		window.addEventListener("popstate", function(e) { 
+			var $$item=false;
+			currentApp.backTo($$item);
+		}, false);
+		function pushHistory() { 
+			var state = { 
+				title: "title", 
+				url: "#"
+			}; 
+			window.history.pushState(state, "title", "#"); 
+		}
+		pushHistory(); 
+
 		// ckeditor
 		var config = {
 				customConfig : '',
@@ -404,18 +415,7 @@
 				currentApp.isUse($('#item_id').val());
 			}
 		}
-		pushHistory(); 
-		window.addEventListener("popstate", function(e) { 
-			var $$item=false;
-			currentApp.backTo($$item);
-		}, false);
-		function pushHistory() { 
-			var state = { 
-				title: "title", 
-				url: "#"
-			}; 
-			window.history.pushState(state, "title", "#"); 
-		}
+		
 	});
 
 	function do_save() {
