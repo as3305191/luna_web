@@ -410,12 +410,12 @@
 			currentApp.backTo($$item);
 		}, false);
 		function pushHistory() { 
-		var state = { 
-			title: "title", 
-			url: "#"
-		}; 
-		window.history.pushState(state, "title", "#"); 
-}
+			var state = { 
+				title: "title", 
+				url: "#"
+			}; 
+			window.history.pushState(state, "title", "#"); 
+		}
 	});
 
 	function do_save() {
