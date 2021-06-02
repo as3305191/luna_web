@@ -342,6 +342,8 @@
 		// $('#c_h_name').select2();
 		// $('#c_s_name').select2();
 		// ckeditor
+		onunload="if(event.clientY<0) document.location=document.location.href";
+		
 		var config = {
 				customConfig : '',
 				toolbarCanCollapse : false,
