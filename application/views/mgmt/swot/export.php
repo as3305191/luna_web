@@ -22,7 +22,7 @@
 }
 
 @page {
-  margin: 0; /*邊界與內容的距離*/
+	margin: 50px 50px 50px 50px !important;
 }
 
 @media print{
