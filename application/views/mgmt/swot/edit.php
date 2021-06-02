@@ -404,7 +404,8 @@
 				currentApp.isUse($('#item_id').val());
 			}
 		}
-	
+		
+		pushHistory(); 
 		window.addEventListener("popstate", function(e) { 
 			var $itemid=$('#item_id').val();
 			if($itemid>0){
@@ -420,7 +421,6 @@
 			};
 			window.history.pushState(state, "title", "#"); 
 		} 
-		pushHistory(); 
 	});
 
 	function do_save() {
