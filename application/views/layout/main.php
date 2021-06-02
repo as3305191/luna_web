@@ -102,26 +102,38 @@
 	    });
 	    //Ajax 結束後，要做的事情
 	    $(document).ajaxStop(function () {
-				var notifyConfig = {
-					body: '\\ ^o^ /', // 設定內容
-					icon: '<?= base_url('img/ktx_img/logo_1.png') ?>', // 設定 icon
-					tag: 'newArrival' // 設定標籤
-				};
-				layui.layer.close(window._ajaxLoading);
-				if (!('Notification' in window)) {
-					console.log('This browser does not support notification');
-				} else{
-					Notification.requestPermission(function(permission) {
-						if (permission === 'granted') {// 使用者同意授權
-							var notification = new Notification('Hi there!', notifyConfig); // 建立通知
-						}
-					});
-				}
+				// var notifyConfig = {
+				// 	body: '\\ ^o^ /', // 設定內容
+				// 	icon: '<?= base_url('img/ktx_img/logo_1.png') ?>', // 設定 icon
+				// 	tag: 'newArrival' // 設定標籤
+				// };
+				// layui.layer.close(window._ajaxLoading);
+				// if (!('Notification' in window)) {
+				// 	console.log('This browser does not support notification');
+				// } else{
+				// 	
+				// }
 				
 
 				// if (Notification.permission === 'default' || Notification.permission === 'undefined') {
-				
+					// Notification.requestPermission(function(permission) {
+				// 		if (permission === 'granted') {// 使用者同意授權
+				// 			var notification = new Notification('Hi there!', notifyConfig); // 建立通知
+				// 		}
+				// 	});
 				// }
+
+				$('#add_swot').click(function() {
+					layer.open({
+						type:2,
+						title:'',
+						closeBtn:0,
+						area:['1000px','500px'],
+						shadeClose:true,
+						content:'<?=base_url('mgmt/message')?>'
+					})
+				});
+
 	    });
 	    //Ajax 發生例外時，要做的事情
 	    $(document).ajaxError(function () {
