@@ -3,7 +3,7 @@
 <style>
 .layui-table1{ 
 	/* border-style:groove !important; */
-	margin: 50px 50px 50px 50px !important;
+	margin: 50px 100px 50px 50px !important;
 }
 .td_table{
  	padding: 0 !important;
@@ -22,14 +22,14 @@
 }
 
 @page {
-	margin: 50px 50px 50px 50px !important;
+	margin: 50px 100px 50px 50px !important;
 }
 
 @media print{
 
 	.layui-table1{ 
 		/* border-style:groove !important; */
-		margin: 50px 50px 50px 50px !important;
+		margin: 50px 100px 50px 50px !important;
 	}
 
 	.td_table{
