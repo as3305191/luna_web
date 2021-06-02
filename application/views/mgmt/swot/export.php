@@ -174,7 +174,7 @@
 				<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
 				</td>
 				<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
-					<span style="text-align:right;font-size:125%;color:#000;">管理代表：</span>
+					<span style="text-align:right;font-size:125%;color:#000;">管理代表：<?= isset($item) ? trim($item -> swot_leader) : '' ?></span>
 				</td>
 				<td colspan="1" valign="top" class="td_table col-xs-4" style="text-align:right;border:none;" >
 					<div  style="text-align:left;font-size:125%;color:#000;" >製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>

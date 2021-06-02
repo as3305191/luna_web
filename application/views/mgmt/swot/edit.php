@@ -125,6 +125,14 @@
 					</div>
 				</div>
 			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">管理代表</label>
+					<div class="col-md-6">
+						<input type="text"  style="font-family:PMingLiU;"  class="form-control"  id="swot_leader" value="<?= isset($item['swot_leader']) ? $item['swot_leader'] : '' ?>" />
+					</div>
+				</div>
+			</fieldset>
 			<fieldset id='swot_s'>
 				<div class="form-group">
 					<label class="col-md-3 control-label">內部議題-S:優勢</label>
@@ -254,6 +262,14 @@
 					<label class="col-md-3 control-label">製表人</label>
 					<div class="col-md-6">
 						<input type="text" style="font-family:PMingLiU;" class="form-control"  id="make_user" value="<?= isset($item->make_user) ? $item->make_user: '' ?>" />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">管理代表</label>
+					<div class="col-md-6">
+						<input type="text"  style="font-family:PMingLiU;"  class="form-control"  id="swot_leader" value="<?= isset($item->swot_leader) ? $item->swot_leader: '' ?>" />
 					</div>
 				</div>
 			</fieldset>
@@ -437,6 +453,7 @@
 				swot_style: $('#swot_style').val(),
 				department: $('#department').val(),
 				make_user: $('#make_user').val(),
+				swot_leader:$('#swot_leader').val(),
 				unify:unify,
 				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
 				m_swot_w: CKEDITOR.instances.m_swot_w.getData(),
