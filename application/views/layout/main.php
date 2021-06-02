@@ -69,7 +69,6 @@
 		<script>
 		
 			var wOnResize = function(){
-
 				var currentListElId = "#dt_list";
 				// if(currentApp && currentApp.dtListId) {
 				// 	currentListElId = currentApp.dtListId;
@@ -87,7 +86,6 @@
 					$(currentListElId).parent('.t-box').css('min-height', ($(window).height() - 300) + 'px');
 					$(currentListElId).parent('.t-box').css('max-height', ($(window).height() - 300) + 'px');
 				}
-			
 				$('#widget-grid').width($('#content').width() - 13);
 			};
 			$(window).on('resize', wOnResize);
@@ -101,7 +99,6 @@
 			//Ajax 開始後，要做的事情
 	    $(document).ajaxStart(function () {
 				window._ajaxLoading = layui.layer.load(2);
-			
 	    });
 	    //Ajax 結束後，要做的事情
 	    $(document).ajaxStop(function () {
@@ -109,7 +106,6 @@
 				if (!('Notification' in window)) {
 					console.log('This browser does not support notification');
 				}
-
 				var notifyConfig = {
 					body: '\\ ^o^ /', // 設定內容
 					icon: '<?= base_url('img/ktx_img/logo_1.png') ?>', // 設定 icon
@@ -118,9 +114,8 @@
 
 				if (Notification.permission === 'default' || Notification.permission === 'undefined') {
 					Notification.requestPermission(function(permission) {
-						if (permission === 'granted') {
-						// 使用者同意授權
-						var notification = new Notification('Hi there!', notifyConfig); // 建立通知
+						if (permission === 'granted') {// 使用者同意授權
+							var notification = new Notification('Hi there!', notifyConfig); // 建立通知
 						}
 					});
 				}
