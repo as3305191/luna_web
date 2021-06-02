@@ -404,7 +404,7 @@
 				currentApp.isUse($('#item_id').val());
 			}
 		}
-
+		pushHistory(); 
 		window.addEventListener("popstate", function(e) { 
 			var $$item=false;
 			currentApp.backTo($$item);
