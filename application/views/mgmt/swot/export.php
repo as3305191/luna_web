@@ -75,7 +75,7 @@
 					<div style="text-align:right;color:#000;font-size:125%">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
 				</td>
 			</tr>
-			<tr >
+			<tr class="noBreak">
 				<td colspan="1" class="td_table col-xs-4"><img src="<?= base_url("api/images/get/947")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
@@ -98,7 +98,7 @@
 					</table>
 				</td>
 			</tr>
-			<tr >
+			<tr class="noBreak">
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
@@ -130,7 +130,7 @@
 					</table>
 				</td>
 			</tr>
-			<tr >
+			<tr class="noBreak">
 				<td colspan="1" valign="top" class="td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>

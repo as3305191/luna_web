@@ -146,7 +146,6 @@ class Images extends MY_Base_Controller {
 		}
 		
 		$img_content = file_get_contents($tmp_name);
-
 		$image_info = getimagesize($tmp_name);
 		$image_width = $image_info[0];
 		$image_height = $image_info[1];

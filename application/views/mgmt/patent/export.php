@@ -20,6 +20,9 @@
     div{
         page-break-inside: avoid;
     }
+	.noBreak {
+		break-inside: avoid;
+	}
 }
 
 @page {
