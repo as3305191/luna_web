@@ -53,6 +53,9 @@
 	.ex_page{ 
 		-webkit-print-color-adjust: exact; 
 	} 
+	.noBreak {
+		break-inside: avoid;
+	}
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
