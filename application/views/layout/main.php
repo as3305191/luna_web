@@ -102,23 +102,26 @@
 	    });
 	    //Ajax 結束後，要做的事情
 	    $(document).ajaxStop(function () {
-				layui.layer.close(window._ajaxLoading);
-				if (!('Notification' in window)) {
-					console.log('This browser does not support notification');
-				}
 				var notifyConfig = {
 					body: '\\ ^o^ /', // 設定內容
 					icon: '<?= base_url('img/ktx_img/logo_1.png') ?>', // 設定 icon
 					tag: 'newArrival' // 設定標籤
 				};
-
-				if (Notification.permission === 'default' || Notification.permission === 'undefined') {
+				layui.layer.close(window._ajaxLoading);
+				if (!('Notification' in window)) {
+					console.log('This browser does not support notification');
+				} else{
 					Notification.requestPermission(function(permission) {
 						if (permission === 'granted') {// 使用者同意授權
 							var notification = new Notification('Hi there!', notifyConfig); // 建立通知
 						}
 					});
 				}
+				
+
+				// if (Notification.permission === 'default' || Notification.permission === 'undefined') {
+				
+				// }
 	    });
 	    //Ajax 發生例外時，要做的事情
 	    $(document).ajaxError(function () {
