@@ -338,15 +338,14 @@
 <script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
 <script>
-	$(function() {
-		// $('#c_h_name').select2();
-		// $('#c_s_name').select2();
-		// ckeditor
 		window.addEventListener("popstate", function(e) { 
 			var $$item=false;
 			currentApp.backTo($$item);
 		}, false);
-
+	$(function() {
+		// $('#c_h_name').select2();
+		// $('#c_s_name').select2();
+		// ckeditor
 		var config = {
 				customConfig : '',
 				toolbarCanCollapse : false,
