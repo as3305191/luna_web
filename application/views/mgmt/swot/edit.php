@@ -416,7 +416,7 @@
 		window.addEventListener("popstate", function(e) { 
 			var $itemid=$('#item_id').val();
 			if($itemid>0){
-				currentApp.backTo($itemid);
+				currentApp.back($itemid);
 			} else{
 				currentApp.backTo();
 			}
