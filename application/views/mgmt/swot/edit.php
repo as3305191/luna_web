@@ -342,7 +342,22 @@
 		// $('#c_h_name').select2();
 		// $('#c_s_name').select2();
 		// ckeditor
-
+		pushHistory(); 
+		window.addEventListener("popstate", function(e) { 
+			var $itemid=$('#item_id').val();
+			if($itemid>0){
+				currentApp.back($itemid);
+			} else{
+				currentApp.backTo();
+			}
+		}, false); 
+		function pushHistory() { 
+			var state = { 
+				title: "title", 
+				url: "#"
+			};
+			window.history.pushState(state, "title", "#"); 
+		} 
 		var config = {
 				customConfig : '',
 				toolbarCanCollapse : false,
@@ -404,22 +419,7 @@
 				currentApp.isUse($('#item_id').val());
 			}
 		}
-		pushHistory(); 
-		window.addEventListener("popstate", function(e) { 
-			var $itemid=$('#item_id').val();
-			if($itemid>0){
-				currentApp.back($itemid);
-			} else{
-				currentApp.backTo();
-			}
-		}, false); 
-		function pushHistory() { 
-			var state = { 
-				title: "title", 
-				url: "#"
-			};
-			window.history.pushState(state, "title", "#"); 
-		} 
+		
 	
 		
 	});
