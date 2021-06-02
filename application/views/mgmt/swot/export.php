@@ -3,10 +3,10 @@
 <style>
 .layui-table1{ 
 	/* border-style:groove !important; */
-	margin: 0;
+	margin: 50px 50px 50px 50px !important;
 }
 .td_table{
- 	padding: 0px 0px 0px 0px !important;
+ 	padding: 50px 50px 50px 50px !important;
 	border-color:#000 !important;
 }
 .pageDiv{
@@ -33,7 +33,7 @@
 	}
 
 	.td_table{
-		padding: 0px 0px 0px 0px!important;
+		padding: 50px 50px 50px 50px !important;
 		border-color:#000 !important;
 	}
 
