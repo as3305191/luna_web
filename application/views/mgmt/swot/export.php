@@ -79,8 +79,8 @@
 				</td>
 			</tr>
 			<tr class="noBreak">
-				<td colspan="1" class="td_table col-xs-4"><img src="<?= base_url("api/images/get/947")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
-				<td colspan="1" valign="top" class="td_table col-xs-4">
+				<td colspan="1" class="noBreak td_table col-xs-4"><img src="<?= base_url("api/images/get/947")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
+				<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr >
 							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-S(優勢)</td>
@@ -90,7 +90,7 @@
 						</tr>
 					</table>
 				</td>
-				<td colspan="1" valign="top" class="td_table col-xs-4">
+				<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-W(劣勢)</td>
@@ -102,7 +102,7 @@
 				</td>
 			</tr>
 			<tr class="noBreak">
-				<td colspan="1" valign="top" class="td_table col-xs-4">
+				<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-O(機會)</td>
@@ -112,7 +112,7 @@
 						</tr>
 					</table>
 				</td>
-				<td colspan="1" valign="top" class="td_table col-xs-4">
+				<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">SO策略(優勢+機會)</td>
@@ -122,7 +122,7 @@
 						</tr>
 					</table>
 				</td>
-				<td colspan="1" valign="top" class="td_table col-xs-4">
+				<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">WO策略(劣勢+機會)</td>
@@ -134,7 +134,7 @@
 				</td>
 			</tr>
 			<tr class="noBreak">
-				<td colspan="1" valign="top" class="td_table col-xs-4">
+				<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-T(威脅)</td>
@@ -144,7 +144,7 @@
 						</tr>
 					</table>
 				</td>
-				<td colspan="1" valign="top"class="td_table col-xs-4">
+				<td colspan="1" valign="top"class="noBreak td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">ST策略(優勢+威脅)</td>
@@ -154,7 +154,7 @@
 						</tr>
 					</table>
 				</td>
-				<td colspan="1" valign="top" class="td_table col-xs-4">
+				<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
 					<table class="swot_table" width="100%" height="100%"  align="center">
 						<tr>
 							<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">WT策略(劣勢+威脅)</td>
