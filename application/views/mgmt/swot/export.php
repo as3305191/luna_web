@@ -1,6 +1,14 @@
 
 <?php $this->load->view('layout/head'); ?>
 <style>
+.layui-table1{ 
+	/* border-style:groove !important; */
+	margin: 0px 100px 0px 10px !important;
+}
+.td_table{
+ 	padding: 0 !important;
+	border-color:#000 !important;
+}
 .pageDiv{
         display:block;
         position:relative;
