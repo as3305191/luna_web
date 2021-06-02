@@ -442,7 +442,17 @@ $(document).ready(function() {
 		}
 	});
 
-
+	function pushHistory() { 
+			var state = { 
+				title: "title", 
+				url: "#"
+			};
+			window.history.pushState(state, "title", "#"); 
+		} 
+		pushHistory(); 
+		window.addEventListener("popstate", function(e) { 
+			currentApp.backTo();
+		}, false); 
 });
 
 $('#app-edit-form').bootstrapValidator({
