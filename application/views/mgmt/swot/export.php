@@ -51,7 +51,7 @@
 	}	
 
 	.ex_page{ 
-		-webkit-print-color-adjust: exact; 
+		-webkit-print-color-adjust: exact !important; 
 	} 
 	.noBreak {
 		break-inside: avoid;
