@@ -321,7 +321,6 @@
 					</div>
 				</div>
 			</fieldset>
-		
 		</div>		
 	<?php endif?>
 
