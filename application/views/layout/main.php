@@ -126,17 +126,6 @@
 				// 	});
 				// }
 
-				// $('#messqge').click(function() {
-				// 	layer.open({
-				// 		type:2,
-				// 		title:'',
-				// 		closeBtn:0,
-				// 		area:['1000px','500px'],
-				// 		shadeClose:true,
-				// 		content:'<?=base_url('mgmt/message')?>'
-				// 	})
-				// });
-
 	    });
 	    //Ajax 發生例外時，要做的事情
 	    $(document).ajaxError(function () {

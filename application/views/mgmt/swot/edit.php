@@ -404,7 +404,18 @@
 				currentApp.isUse($('#item_id').val());
 			}
 		}
-		
+		// window.addEventListener("popstate", function(e) { 
+		// 	var $$item=false;
+		// 	currentApp.backTo($$item);
+		// }, false);
+		// function pushHistory() { 
+		// 	var state = { 
+		// 		title: "title", 
+		// 		url: "#"
+		// 	}; 
+		// 	window.history.pushState(state, "title", "#"); 
+		// }
+		// pushHistory(); 
 	});
 
 	function do_save() {
