@@ -29,11 +29,11 @@
 
 	.layui-table1{ 
 		/* border-style:groove !important; */
-		margin: 20px 100px 10px 10px !important;
+		margin: 20px 100px 15px 10px !important;
 	}
 
 	.td_table{
-		padding: 10px 10px 10px 10px !important;
+		padding: 0px 0px 0px 0px!important;
 		border-color:#000 !important;
 	}
 
