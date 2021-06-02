@@ -33,7 +33,7 @@
 	}
 
 	.td_table{
-		padding: 0 !important;
+		padding: 10px 10px 10px 10px !important;
 		border-color:#000 !important;
 	}
 
