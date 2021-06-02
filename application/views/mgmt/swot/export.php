@@ -6,7 +6,7 @@
 	margin: 0px 100px 0px 10px !important;
 }
 .td_table{
- 	padding: 0 !important;
+ 	padding: 0px!important;
 	border-color:#000 !important;
 }
 .pageDiv{
@@ -33,7 +33,7 @@
 	}
 
 	.td_table{
-		padding: 10px 10px 10px 0px !important;
+		padding: 0px!important;
 		border-color:#000 !important;
 	}
 
