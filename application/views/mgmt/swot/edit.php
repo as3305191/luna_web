@@ -406,9 +406,12 @@
 		}
 	
 		window.addEventListener("popstate", function(e) { 
-			var $itemid=false;
-			currentApp.backTo($itemid);
-			// alert("我监听到了浏览器的返回按钮事件啦");
+			var $itemid=$('#item_id').val();
+			if($itemid>0){
+				currentApp.backTo($itemid);
+			} else{
+				currentApp.backTo();
+			}
 		}, false); 
 		function pushHistory() { 
 			var state = { 
