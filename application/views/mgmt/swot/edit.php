@@ -342,9 +342,10 @@
 		// $('#c_h_name').select2();
 		// $('#c_s_name').select2();
 		// ckeditor
-		if(event.clientY<0){
-			document.location=document.location.href;
-		} 
+		window.addEventListener("popstate", function(e) { 
+			var $$item=false;
+			currentApp.backTo($$item);
+		}, false);
 
 		var config = {
 				customConfig : '',
