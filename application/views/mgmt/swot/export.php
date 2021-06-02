@@ -22,7 +22,7 @@
 }
 
 @page {
-	margin: 0px 100px 0px 0px !important;
+	margin: 10px 100px 0px 0px !important;
 }
 
 @media print{
