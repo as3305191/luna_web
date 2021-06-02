@@ -29,7 +29,7 @@
 
 	.layui-table1{ 
 		/* border-style:groove !important; */
-		margin: 10px 100px 10px 10px !important;
+		margin: 20px 100px 10px 10px !important;
 	}
 
 	.td_table{
