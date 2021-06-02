@@ -55,7 +55,10 @@
 			</div>
 
 			<!-- END #MAIN CONTENT -->
-
+			<div class="pull-left " style="width:200px;line-height:32px">
+								
+				<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
+			</div>
 		</div>
 		<!-- END #MAIN PANEL -->
 
@@ -123,7 +126,7 @@
 				// 	});
 				// }
 
-				$('#add_swot').click(function() {
+				$('#messqge').click(function() {
 					layer.open({
 						type:2,
 						title:'',
