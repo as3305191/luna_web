@@ -70,12 +70,10 @@ class Images extends MY_Base_Controller {
 	//image upload section
 	public function upload_file($file_path) {
 		$info = '';
-
 		$name = $_FILES['video_file']['name'];
 		$tmp_name = $_FILES['video_file']['tmp_name'];
 		$type = $_FILES['video_file']['type'];
 		$size = $_FILES['video_file']['size'];
-
 		// open up the file and extract the data/content from it
 		$i_data['file_name'] = $name;
 		$i_data['mime'] = $type;
@@ -94,7 +92,6 @@ class Images extends MY_Base_Controller {
 			$file_name = $last_id . '.' . $ext;
 			$extract = fopen($tmp_name, 'r');
 			$target = fopen($m_dir . $name, 'w');
-
 			// save image
 			$file = fread($extract, $size);
 			fwrite($target, $file);
@@ -129,29 +126,25 @@ class Images extends MY_Base_Controller {
 	//image upload section
 	public function upload($image_path) {
 		$info = '';
-
 		$name = $_FILES['file']['name'][0];
 		$tmp_name = $_FILES['file']['tmp_name'][0];
 		$type = $_FILES['file']['type'][0];
 		$size = $_FILES['file']['size'][0];
-
 		if (!($type == 'image/jpeg' || $type == 'image/png' || $type == 'image/gif' || $type =='image/jpg')) {
 			$info = "非支援上傳格式(jpeg/jpg/png/gif)";
 			$success = FALSE;
 		}
-
 		// open up the file and extract the data/content from it
 		$i_data['image_name'] = $name;
 		$i_data['mime'] = $type;
 		$i_data['image_path'] = $image_path;
 		$i_data['image_size'] = $size;
-
 		// set store id
 		$store_id = $this -> get_post('store_id');
 		if(!empty($store_id)) {
 			$i_data['store_id'] = $store_id;
 		}
-
+		
 		$img_content = file_get_contents($tmp_name);
 
 		$image_info = getimagesize($tmp_name);
