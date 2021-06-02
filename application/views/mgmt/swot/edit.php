@@ -404,10 +404,11 @@
 				currentApp.isUse($('#item_id').val());
 			}
 		}
-		pushHistory(); 
+	
 		window.addEventListener("popstate", function(e) { 
-			var $itemid=false;
-			currentApp.backTo($itemid);
+			// var $itemid=false;
+			// currentApp.backTo($itemid);
+			alert("我监听到了浏览器的返回按钮事件啦");
 		}, false); 
 		function pushHistory() { 
 			var state = { 
@@ -416,7 +417,7 @@
 			};
 			window.history.pushState(state, "title", "#"); 
 		} 
-
+		pushHistory(); 
 	});
 
 	function do_save() {
