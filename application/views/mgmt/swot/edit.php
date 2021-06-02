@@ -501,7 +501,7 @@
 		});
 	}
 	load_swot_style();
-
+	
 	function load_swot_title() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
