@@ -60,7 +60,7 @@
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="ex_page " style="padding:20px 20px 20px 20px;">
-	<table class="layui-table pageDiv layui-table1" width="70%"  style="border-color:#000;padding:30px 30px 30px 30px;" >
+	<table class="noBreak layui-table pageDiv layui-table1" width="70%"  style="border-color:#000;padding:30px 30px 30px 30px;" >
 		<tbody class="">
 			<!-- <tr>
 				<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:200%;padding:50px 50px 50px 50px;">寬仕工業股份有限公司</td>
@@ -100,7 +100,7 @@
 				</td>
 			</tr>
 		</table>
-		<table class="layui-table pageDiv layui-table1" width="70%"  style="border-color:#000;padding:30px 30px 30px 30px;" >
+		<table class="noBreak layui-table pageDiv layui-table1" width="70%"  style="border-color:#000;padding:30px 30px 30px 30px;" >
 
 			<tr class="noBreak">
 				<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
@@ -136,7 +136,7 @@
 			</tr>
 		</table>
 
-		<table class="layui-table pageDiv layui-table1" width="70%"  style="border-color:#000;padding:30px 30px 30px 30px;" >
+		<table class="noBreak layui-table pageDiv layui-table1" width="70%"  style="border-color:#000;padding:30px 30px 30px 30px;" >
 
 			<tr class="noBreak">
 				<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
