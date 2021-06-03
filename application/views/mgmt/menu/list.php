@@ -20,13 +20,9 @@
 									</button>
 								</div>
 							</div>
-						
-						
 						</header>
-
 						<!-- widget div-->
 						<div>
-
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
@@ -41,18 +37,12 @@
 									<thead>
 										<tr>
 											<th class="min25"></th>
-											<th class="min100">編號</th>
-											<th class="min100">刪除碼</th>
-											<th class="min100">名稱</th>
-											<th class="min100">餐別名</th>
-											<th class="min100">菜色類別</th>
+											<th class="min100">圖片</th>
+											<th class="min100">店名</th>
 										</tr>
 										<tr class="search_box">
 											<th></th>
 											<th></th>
-											<th><input class="form-control input-xs min100" type="text" /></th>
-											<th><input class="form-control input-xs min100" type="text" /></th>
-											<th><input class="form-control input-xs min100" type="text" /></th>
 											<th><input class="form-control input-xs min100" type="text" /></th>
 								   		 </tr>
 									</thead>
@@ -88,8 +78,19 @@
 
 <script type="text/javascript">
 	var mCols = [null,{
-		data : 'user_name'
-	}];
+		data : 'img_id',
+		render: function(d,t,r){
+			if(d>0){
+				var html = '<img src="'+baseUrl+'api/images/get/'+d+'/thumb" loading="lazy" style="max-height:200px;max-width:200px" >';
+				return html;
+			} else{
+				return '';
+			}
+		}
+	},{
+		data : 'menu_name'
+	},];
+	
 	var mOrderIdx = 0;
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 	var mColDefs = [{
