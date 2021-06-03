@@ -57,6 +57,8 @@
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="ex_page " style="padding:20px 20px 20px 20px;" width="70%">
+<?php if(!empty( $item -> unify) && $item -> unify>0): ?>
+
 	<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
 			<tbody class="" width="100%">
 				<tr>
@@ -190,6 +192,127 @@
 				</tr>
 		</tbody>
 	</table>
+	<?php else: ?>
+		<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
+			<tbody class="" width="100%">
+				<tr>
+					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
+						<div style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:250%;padding:50px 50px 30px 50px;color:#000">寬仕工業股份有限公司</div>
+						<?php if(!empty( $item -> unify) && $item -> unify>0): ?>
+							<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;color:#000"><?= isset($item) ? $item -> d_or_c_name.'(整合)' : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
+						<?php else: ?>
+							<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;color:#000"><?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
+						<?php endif?>
+						<div style="text-align:right;color:#000;font-size:125%">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
+					</td>
+				</tr>
+				<tr class="noBreak">
+					<td colspan="1" class="noBreak td_table col-xs-4">
+						<table class="swot_table" width="100%" height="100%"  align="center">
+							<tr >
+								<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
+							</tr>
+						</table>
+					</td>
+					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
+						<table class="swot_table" width="100%" height="100%"  align="center">
+							<tr >
+								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-S(優勢)</td>
+							</tr>
+							<tr style="border:none">
+								<td style="border:none"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s) : '' ?></div></td>
+							</tr>
+						</table>
+					</td>
+					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
+						<table class="swot_table" width="100%" height="100%"  align="center">
+							<tr>
+								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-W(劣勢)</td>
+							</tr>
+							<tr style="border:none">
+								<td style="border:none"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w) : '' ?></div></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr class="noBreak">
+					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
+						<table class="swot_table" width="100%" height="100%"  align="center">
+							<tr>
+								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-O(機會)</td>
+							</tr>
+							<tr style="border:none">
+								<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_o): '' ?></div></td>
+							</tr>
+						</table>
+					</td>
+					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
+						<table class="swot_table" width="100%" height="100%"  align="center">
+							<tr>
+								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">SO策略(優勢+機會)</td>
+							</tr>
+							<tr style="border:none">
+								<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_o) : '' ?></div></td>
+							</tr>
+						</table>
+					</td>
+					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
+						<table class="swot_table" width="100%" height="100%"  align="center">
+							<tr>
+								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">WO策略(劣勢+機會)</td>
+							</tr>
+							<tr style="border:none">
+								<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_o): '' ?></div></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+		
+
+				<tr class="noBreak">
+					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
+						<table class="swot_table" width="100%" height="100%"  align="center">
+							<tr>
+								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-T(威脅)</td>
+							</tr>
+							<tr style="border:none">
+								<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_t) : '' ?></div></td>
+							</tr>
+						</table>
+					</td>
+					<td colspan="1" valign="top"class="noBreak td_table col-xs-4">
+						<table class="swot_table" width="100%" height="100%"  align="center">
+							<tr>
+								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">ST策略(優勢+威脅)</td>
+							</tr>
+							<tr style="border:none">
+								<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_t) : '' ?></div></td>
+							</tr>
+						</table>
+					</td>
+					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
+						<table class="swot_table" width="100%" height="100%"  align="center">
+							<tr>
+								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">WT策略(劣勢+威脅)</td>
+							</tr>
+							<tr style="border:none">
+								<td style="border:none;"><div style="border:none;background-color:transparent;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_t): '' ?></div></td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+				<tr style="border:none;" >
+					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
+					</td>
+					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
+						<span style="text-align:right;font-size:125%;color:#000;">管理代表：<?= isset($item) ? trim($item -> swot_leader) : '' ?></span>
+					</td>
+					<td colspan="1" valign="top" class="td_table col-xs-4" style="text-align:right;border:none;" >
+						<div  style="text-align:left;font-size:125%;color:#000;" >製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
+						<div style="text-align:right;padding:0px 40px 0px 0px;font-size:125%;color:#000;">RA2602-A</div>
+					</td>
+				</tr>
+		</tbody>
+	</table>
+	<?php endif?>
 </div>
-<script>
-</script>
