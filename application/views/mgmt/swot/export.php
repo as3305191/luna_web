@@ -59,9 +59,6 @@
 <div class="ex_page " style="padding:20px 20px 20px 20px;" width="70%">
 	<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
 			<tbody class="" width="100%">
-				<!-- <tr>
-					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:200%;padding:50px 50px 50px 50px;">寬仕工業股份有限公司</td>
-				</tr> -->
 				<tr>
 					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
 						<div style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:250%;padding:50px 50px 30px 50px;color:#000">寬仕工業股份有限公司</div>
@@ -77,7 +74,7 @@
 					<td colspan="1" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
-								<td style="text-align:center;vertical-align:middle;border-color:#000 #FFF #FFF #FFF;"><img src="<?= base_url("api/images/get/947")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
+								<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
 							</tr>
 								
 						</table>
