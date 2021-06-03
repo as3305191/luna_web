@@ -10,7 +10,6 @@
 	border-color:#000 !important;
 }
 .pageDiv{
-        display:block;
         position:relative;
         background-repeat:no-repeat;
         background-position: center;
@@ -24,7 +23,6 @@
 @page {
 	margin: 10px 100px 0px 0px !important;
 }
-
 @media print{
 
 	.layui-table1{ 
@@ -38,7 +36,6 @@
 	}
 
 	.pageDiv{
-        display:block;
         position:relative;
         background-repeat:no-repeat;
         background-position: center;
