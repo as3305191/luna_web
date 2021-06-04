@@ -69,6 +69,7 @@
 
 		<?php $this->load->view('layout/plugins'); ?>
 		<!-- Scripts -->
+		<?php $this -> load -> view('mgmt/message/message_script'); ?>
 		<script>
 		
 			var wOnResize = function(){
@@ -124,6 +125,14 @@
 				// 		}
 				// 	});
 				// }
+				var key='all',mkey;
+				var users={};
+				var url='<?= $socket_url?>';
+				var so=false,n=false,me_id=false,socket=false;
+				var lus=A.$('us_online'),lct=A.$('ct');
+				n='<?= $username?>';
+				me_id='<?= $me_id?>';
+				socket='<?= $old_socket?>'; 
 				layui.layer.close(window._ajaxLoading);
 	    });
 	    //Ajax 發生例外時，要做的事情

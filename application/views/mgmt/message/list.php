@@ -65,7 +65,7 @@
     <p id="send">傳送資料</p> -->
 </div>
 </body>
-<?php $this -> load -> view('mgmt/message/message_script'); ?>
+<!-- <?php $this -> load -> view('mgmt/message/message_script'); ?> -->
 <script>
 // if(location.href.indexOf('#reloaded')==-1){
 //     location.href=location.href+"#reloaded";
@@ -73,18 +73,18 @@
 // }
 
 (function(){
-    var key='all',mkey;
-    var users={};
-    var url='<?= $socket_url?>';
-    var so=false,n=false,me_id=false,socket=false;
-    var lus=A.$('us_online'),lct=A.$('ct');
+    // var key='all',mkey;
+    // var users={};
+    // var url='<?= $socket_url?>';
+    // var so=false,n=false,me_id=false,socket=false;
+    // var lus=A.$('us_online'),lct=A.$('ct');
     // console.log(users);
     function st(){
       
         // n=prompt('取個名子');
-        n='<?= $username?>';
-        me_id='<?= $me_id?>';
-        socket='<?= $old_socket?>';        
+        // n='<?= $username?>';
+        // me_id='<?= $me_id?>';
+        // socket='<?= $old_socket?>';        
         if(!n){
             return ;   
         }
