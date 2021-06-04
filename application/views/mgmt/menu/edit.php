@@ -17,7 +17,6 @@
 			</a>
 		</div>
 	</header>
-
 	<!-- widget div-->
 	<div>
 		<!-- widget edit box -->
@@ -26,7 +25,7 @@
 			<input class="form-control" type="text">
 		</div>
 		<!-- end widget edit box -->
-	
+		
 		<!-- widget content -->
 		<div class="widget-body">
 			<form id="app-edit-form" method="post" class="form-horizontal">
