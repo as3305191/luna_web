@@ -34,7 +34,6 @@ class Params extends MY_Mgmt_Controller {
 
 	public function insert() {
 		$res = array();
-
 		$id = $this -> get_post('id');
 		$data = $this -> get_posts(array(
 			'total_amt_0',
@@ -43,7 +42,6 @@ class Params extends MY_Mgmt_Controller {
 			'online_amt_1'
 		));
 		$this -> dao -> update($data, $id);
-
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
