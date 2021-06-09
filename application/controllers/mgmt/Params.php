@@ -18,11 +18,9 @@ class Params extends MY_Mgmt_Controller {
 
 	public function get_data() {
 		$res = array();
-
 		$res['items'] = array();
 		$res['recordsFiltered'] = array();
 		$res['recordsTotal'] = array();
-
 		$this -> to_json($res);
 	}
 
