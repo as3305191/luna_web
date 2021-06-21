@@ -19,9 +19,7 @@ class Old_ktx extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-
 		// $this -> to_json($data);
-
 		$this->load->view('mgmt/old_ktx/list', $data);
 	}
 
@@ -45,6 +43,7 @@ class Old_ktx extends MY_Mgmt_Controller {
 	}
 
 	public function edit($id) {
+		
 		$data = array();
 		$data['id'] = $id;
 		if(!empty($id)) {
@@ -90,7 +89,6 @@ class Old_ktx extends MY_Mgmt_Controller {
 			// update
 			$this -> dao -> update($data, $id);
 		}
-
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
@@ -101,7 +99,6 @@ class Old_ktx extends MY_Mgmt_Controller {
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['is_delete'] = 1;
 		$data['delete_userid'] = $login_user->id;
-
 		$this -> dao -> update($data, $id);
 		$this -> to_json($res);
 	}
