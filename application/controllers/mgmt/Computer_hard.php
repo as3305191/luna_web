@@ -166,9 +166,9 @@ class Computer_hard extends MY_Mgmt_Controller {
 	}
 
 	public function check_code() {
+		$res = array();
 		$code = $this -> get_post('intro_code');
 		$list = $this -> dao -> find_all_by('code', $code);
-		$res = array();
 		$res['valid'] = (count($list) > 0);
 		$this -> to_json($res);
 	}
