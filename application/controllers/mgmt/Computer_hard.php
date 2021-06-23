@@ -123,7 +123,6 @@ class Computer_hard extends MY_Mgmt_Controller {
 		if(!empty($id)) {
 			// insert
 			$this -> dao -> update($data, $id);
-
 			if (!empty($login_count)) {
 				$u_data['login_count'] = $login_count;
 				$u_data['last_login_time'] = $the_day_before;
@@ -136,7 +135,6 @@ class Computer_hard extends MY_Mgmt_Controller {
 		}
 
 		$res['success'] = TRUE;
-
  		$this -> to_json($res);
 	}
 
