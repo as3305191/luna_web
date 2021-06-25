@@ -26,7 +26,7 @@
 @media print{
 	*{
 		-webkit-print-color-adjust: exact !important;
-		color-adjust: exact !important;;
+		color-adjust: exact !important;
 	}
 
 	.layui-table1{ 
