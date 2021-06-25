@@ -47,9 +47,9 @@
 		page-break-after: auto; 
 	}	
 
-	.ex_page{ 
-		-webkit-print-color-adjust: exact !important; 
-	} 
+	* {
+		-webkit-print-color-adjust: exact !important;
+	}
 	.noBreak {
 		break-inside: avoid;
 	}
