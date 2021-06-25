@@ -6777,7 +6777,7 @@ button.bg-dark:focus {
 }
 
 .bg-transparent {
-  background-color: transparent !important;
+  /* background-color: transparent !important; */
 }
 
 .border {
