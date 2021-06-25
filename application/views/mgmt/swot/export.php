@@ -10,7 +10,7 @@
 <meta http-equiv="expires" content="0">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<!-- <link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/bootstrap.min.css') ?>"> -->
+<link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/bootstrap.min.css') ?>">
 <link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/font-awesome.min.css') ?>">
 
 <!-- bootstrap fileinput -->
