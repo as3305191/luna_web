@@ -24,6 +24,10 @@
 	margin: 10px 100px 0px 0px !important;
 }
 @media print{
+	*{
+		-webkit-print-color-adjust: exact !important;
+		color-adjust: exact !important;;
+	}
 
 	.layui-table1{ 
 		/* border-style:groove !important; */
@@ -47,9 +51,7 @@
 		page-break-after: auto; 
 	}	
 
-	* {
-		-webkit-print-color-adjust: exact !important;
-	}
+
 	.noBreak {
 		break-inside: avoid;
 	}
