@@ -21,7 +21,6 @@
 			</a>
 		</div>
 	</header>
-
 	<!-- widget div-->
 	<div>
 		<!-- widget edit box -->
@@ -30,19 +29,17 @@
 			<input class="form-control" type="text">
 		</div>
 		<!-- end widget edit box -->
-
 		<!-- widget content -->
 		<div class="widget-body">
-
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<input type="hidden" name="role_id"  value="1" />
 				<div class="form-group" style="padding:0px 26px">
-	        <div class="col-md-12 col-xs-12 col-sm-12 no-padding" >
+	            <div class="col-md-12 col-xs-12 col-sm-12 no-padding" >
 		        <button type="button" class="basic_information btn_roles btn_1" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('basic_information')">基本資料</button>
 		        <button type="button" class="weight_history btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('weight_history')">上秤歷史紀錄</button>
 		        <button type="button" class="health_report btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('health_report')">健康報告</button>
-						<button type="button" class="ketone_record btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('ketone_record')">尿酮紀錄</button>
+				<button type="button" class="ketone_record btn_roles" style="margin:7px;border-radius:5px;border:1.5px solid #ccc;background-color:#FFFFFF;color:#A5A4A4;width:200px;height:50px" onclick="showmetable('ketone_record')">尿酮紀錄</button>
 
 	        </div>
         <div class="clearfix"></div>
@@ -83,7 +80,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">密碼</label>
@@ -92,7 +88,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">性別</label>
@@ -104,7 +99,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">年齡</label>
@@ -134,7 +128,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">所屬教練</label>
@@ -153,6 +146,7 @@
 			<table id="weight_history_list" class="table table-striped table-bordered table-hover" width="100%">
 				<thead>
 					<tr>
+						<!-- <th class="min100"></th> -->
 						<th class="min100">體重</th>
 						<th class="min100">脂肪重</th>
 						<th class="min100">體脂率</th>
