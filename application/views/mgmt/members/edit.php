@@ -226,7 +226,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">肌肉率</label>
@@ -235,7 +234,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">骨骼肌率</label>
@@ -253,7 +251,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">皮下脂肪率</label>
@@ -263,17 +260,14 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">肥胖等級</label>
 					<div class="col-md-6">
 						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> fat_info : '' ?>" readonly/>
-
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">BMR</label>
@@ -282,7 +276,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">健康指數</label>
@@ -291,7 +284,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">身體年齡</label>
@@ -300,7 +292,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">身體類型</label>
@@ -310,7 +301,6 @@
 				</div>
 			</fieldset>
 		</div>
-
 		<div class="table_1" id="ketone_record" style="display:none">
 			<table id="ketone_record_list" class="table table-striped table-bordered table-hover" width="100%">
 				<thead>
@@ -323,11 +313,7 @@
 				</tbody>
 			</table>
 		</div>
-
-
-
-			</form>
-
+		</form>
 		</div>
 		<!-- end widget content -->
 
