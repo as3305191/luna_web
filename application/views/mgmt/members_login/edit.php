@@ -118,8 +118,7 @@ function hospital(){
       success: function(d) {
         if(d) {
 			var html = '<option value="all">無</option>';
-
-			console.log(d);
+			//console.log(d);
 			$doctor_id= $('#f_doctor').empty();
 			$manager_id= $('#f_manager').empty();
 			$doctor_id.append(html);
@@ -131,7 +130,6 @@ function hospital(){
 					'text': this.user_name
 				}).appendTo($doctor_id);
 			});
-
 			$.each(d.list_1, function(){
 				$('<option/>', {
 						'value': this.id,
