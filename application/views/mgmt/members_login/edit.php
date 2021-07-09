@@ -17,7 +17,6 @@
 			</a>
 		</div>
 	</header>
-
 	<!-- widget div-->
 	<div>
 		<!-- widget edit box -->
@@ -26,15 +25,11 @@
 			<input class="form-control" type="text">
 		</div>
 		<!-- end widget edit box -->
-
 		<!-- widget content -->
 		<div class="widget-body">
-
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<input type="hidden" name="role_id"  value="1" />
-
-
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">帳號</label>
@@ -51,7 +46,6 @@
 						</div>
 					</div>
 				</fieldset>
-
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">密碼</label>
@@ -60,7 +54,6 @@
 						</div>
 					</div>
 				</fieldset>
-
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">醫院</label>
@@ -74,7 +67,7 @@
 						</div>
 					</div>
 				</fieldset>
-
+				
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">醫生</label>
@@ -102,13 +95,10 @@
 					</div>
 				</fieldset>
 			</form>
-
 		</div>
 		<!-- end widget content -->
-
 	</div>
 	<!-- end widget div -->
-
 </div>
 <!-- end widget -->
 <style>
@@ -127,26 +117,26 @@ function hospital(){
       dataType: 'json',
       success: function(d) {
         if(d) {
-          console.log(d);
-          $doctor_id= $('#f_doctor').empty();
-					$manager_id= $('#f_manager').empty();
+			var html = '<option value="all">無</option>';
 
-          var html = '<option value="all">無</option>';
-          $doctor_id.append(html);
-					$manager_id.append(html);
+			console.log(d);
+			$doctor_id= $('#f_doctor').empty();
+			$manager_id= $('#f_manager').empty();
+			$doctor_id.append(html);
+			$manager_id.append(html);
 
-          $.each(d.list, function(){
-            $('<option/>', {
-                'value': this.id,
-                'text': this.user_name
-            }).appendTo($doctor_id);
-        });
+			$.each(d.list, function(){
+				$('<option/>', {
+					'value': this.id,
+					'text': this.user_name
+				}).appendTo($doctor_id);
+			});
 
-				$.each(d.list_1, function(){
-					$('<option/>', {
-							'value': this.id,
-							'text': this.user_name
-					}).appendTo($manager_id);
+			$.each(d.list_1, function(){
+				$('<option/>', {
+						'value': this.id,
+						'text': this.user_name
+				}).appendTo($manager_id);
 			});
         }
       },
@@ -155,6 +145,5 @@ function hospital(){
       }
     });
   }
-
 
 </script>
