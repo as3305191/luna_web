@@ -331,7 +331,6 @@
 $(".dt_picker_").datetimepicker({
 		format : 'YYYY-MM-DD'
 	}).on('dp.change',function(event){
-
 	});
 
 $('#app-edit-form').bootstrapValidator({
@@ -342,38 +341,37 @@ $('#app-edit-form').bootstrapValidator({
 	},
 	fields: {
 		account: {
-					validators: {
-						remote: {
-							message: '已經存在',
-							url: baseUrl + 'mgmt/users/check_account/' + ($('#item_id').val().length > 0 ? $('#item_id').val() : '0')
-						}
-					}
-			 }
+			validators: {
+				remote: {
+					message: '已經存在',
+					url: baseUrl + 'mgmt/users/check_account/' + ($('#item_id').val().length > 0 ? $('#item_id').val() : '0')
+				}
+			}
+		}
 	}
 
-})
-.bootstrapValidator('validate');
+}).bootstrapValidator('validate');
 
-			function update_here() {
-					$.ajax({
-						url: '<?= base_url() ?>' + 'mgmt/members/update_here',
-						type: 'POST',
-						data: {
-							id: $('#item_id').val(),
-							login_count: $('#login_count').val(),
-							seed: $('#seed').val(),
-							level_status: $('#level_status').val()
-						},
-						dataType: 'json',
-						success: function(d) {
-							// alert('更新狀態成功');
-							currentApp.doEdit($('#item_id').val());
-						},
-						failure:function(){
-							alert('faialure');
-						}
-					});
+function update_here() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/members/update_here',
+			type: 'POST',
+			data: {
+				id: $('#item_id').val(),
+				login_count: $('#login_count').val(),
+				seed: $('#seed').val(),
+				level_status: $('#level_status').val()
+			},
+			dataType: 'json',
+			success: function(d) {
+				// alert('更新狀態成功');
+				currentApp.doEdit($('#item_id').val());
+			},
+			failure:function(){
+				alert('faialure');
 			}
+		});
+}
 
 	function showmetable(id) {
 		//   document.getElementById(id).show();

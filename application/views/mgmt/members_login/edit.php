@@ -54,6 +54,7 @@
 						</div>
 					</div>
 				</fieldset>
+
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">醫院</label>
@@ -67,7 +68,6 @@
 						</div>
 					</div>
 				</fieldset>
-				
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">醫生</label>
@@ -123,7 +123,6 @@ function hospital(){
 			$manager_id= $('#f_manager').empty();
 			$doctor_id.append(html);
 			$manager_id.append(html);
-
 			$.each(d.list, function(){
 				$('<option/>', {
 					'value': this.id,
@@ -143,5 +142,4 @@ function hospital(){
       }
     });
   }
-
 </script>
