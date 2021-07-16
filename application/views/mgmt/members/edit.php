@@ -256,7 +256,6 @@
 					<label class="col-md-3 control-label">皮下脂肪率</label>
 					<div class="col-md-6">
 						<input type="text" class="form-control" value="<?= isset($health_report) ? $health_report -> subcutaneous_fat_rate : '' ?>" readonly/>
-
 					</div>
 				</div>
 			</fieldset>
@@ -316,10 +315,8 @@
 		</form>
 		</div>
 		<!-- end widget content -->
-
 	</div>
 	<!-- end widget div -->
-
 </div>
 <!-- end widget -->
 <style>

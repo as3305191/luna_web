@@ -1,19 +1,14 @@
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
-
 		<!-- widget grid -->
 		<section id="widget-grid" class="">
-
 			<!-- row -->
 			<div class="row">
-
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget">
 						<header>
-
 							<div class="widget-toolbar pull-left">
 								<input id="s_dt" placeholder="請輸入日期" type="text" class="dt_picker" value="<?= date('Y-m-d') ?>" />
 							</div>
@@ -27,20 +22,15 @@
 								<input id="user_name" class="form-control input-xs min100" type="text" />
 							</div>
 						</header>
-
 						<!-- widget div-->
 						<div>
-
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
-
 							</div>
 							<!-- end widget edit box -->
-
 							<!-- widget content -->
 							<div class="widget-body no-padding">
-
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
@@ -52,41 +42,30 @@
 									</thead>
 									<tbody>
 									</tbody>
-
 								</table>
-
 							</div>
 							<!-- end widget content -->
-
 						</div>
 						<!-- end widget div -->
-
 					</div>
 					<!-- end widget -->
-
 				</article>
 				<!-- WIDGET END -->
-
 			</div>
-
 			<!-- end row -->
-
 		</section>
 		<!-- end widget grid -->
 	</div>
-
 	<div class="tab-pane animated fadeIn" id="edit_page">
 		<section class="">
 			<!-- row -->
 			<div class="row">
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="edit-modal-body">
-
 				</article>
 			</div>
 		</section>
 	</div>
 </div>
-
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 	var mCols = [{
@@ -100,17 +79,14 @@
 				if(d == 1 ) {
 					return "壓力橡皮擦";
 				}
-			}
+			}	
 	},{
 		data : 'score'
 	},{
 		data : 'create_time'
 	}];
-
 	var mOrderIdx = 0;
-
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
-
 	var mColDefs = [{
 		targets : 0,
 		data : null,
@@ -119,11 +95,11 @@
 		orderable : false,
 		width : "5%",
 		className : ''
+		
 	}, {
 		"targets" : [1,2],
 		"orderable" : false
 	}];
-
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/level_1/list.js", function(){
 			currentApp = new Level1AppClass(new BaseAppClass({}));
