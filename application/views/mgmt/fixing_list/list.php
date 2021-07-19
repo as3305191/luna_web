@@ -1,12 +1,9 @@
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
-
 		<!-- widget grid -->
 		<section id="widget-grid" class="">
-
 			<!-- row -->
 			<div class="row">
-
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
@@ -21,20 +18,15 @@
 								</div>
 							</div>
 						</header>
-
 						<!-- widget div-->
 						<div>
-
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
-
 							</div>
 							<!-- end widget edit box -->
-
 							<!-- widget content -->
 							<div class="widget-body no-padding">
-
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
@@ -57,21 +49,15 @@
 							<!-- end widget content -->
 						</div>
 						<!-- end widget div -->
-
 					</div>
 					<!-- end widget -->
-
 				</article>
 				<!-- WIDGET END -->
-
 			</div>
-
 			<!-- end row -->
-
 		</section>
 		<!-- end widget grid -->
 	</div>
-
 	<div class="tab-pane animated fadeIn" id="edit_page">
 		<section class="">
 			<!-- row -->
