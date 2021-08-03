@@ -341,7 +341,7 @@ function do_save() {
 		var c_s_id = $c_s_id.val();
 		if(c_s_id<1){
 			alert('請選擇要使用軟體');
-			return
+			return;
 		}
 		$.ajax({
 			url: baseUrl + 'mgmt/computer/add_useful',
