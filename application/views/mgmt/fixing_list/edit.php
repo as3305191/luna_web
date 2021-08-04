@@ -134,25 +134,23 @@
 					</div>
 				</div>
 			</fieldset>
-						<style>
-							#product_spec_list {
-							
-								margin-top: 10px;
-								margin-bottom: 10px;
-							}
+			<style>
+				#product_spec_list {
+				
+					margin-top: 10px;
+					margin-bottom: 10px;
+				}
+				#product_spec_list div {
+					margin-top: 5px!important;
+					margin-bottom: 5px!important;
+				}
+				#product_spec_list > div.row {
+					background-color: #EEEEEE;
+					font-size: 16px;
+					font-weight: bolder;
+				}
 
-							#product_spec_list div {
-								margin-top: 5px!important;
-								margin-bottom: 5px!important;
-							}
-
-							#product_spec_list > div.row {
-								background-color: #EEEEEE;
-								font-size: 16px;
-								font-weight: bolder;
-							}
-
-						</style>
+			</style>
 		</div>
 		<div class="fieldset1" id="2" style="display:none">
 			<div>
@@ -174,9 +172,7 @@
 					</tbody>
 				</table>
 			</div>
-
 			</hr>
-			
 			<div>
 				<label class="col-md-3" style="font-weight:bold;font-size:large;">維修中:</label>
 				<table id="fix_listing" class="table table-striped table-bordered table-hover" width="100%">
