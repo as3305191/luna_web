@@ -239,13 +239,13 @@ $('#app-edit-form').bootstrapValidator({
 	},
 	fields: {
 		account: {
-					validators: {
-						remote: {
-							message: '已經存在',
-							url: baseUrl + 'mgmt/users/check_account/' + ($('#item_id').val().length > 0 ? $('#item_id').val() : '0')
-						}
-					}
-			 }
+			validators: {
+				remote: {
+					message: '已經存在',
+					url: baseUrl + 'mgmt/users/check_account/' + ($('#item_id').val().length > 0 ? $('#item_id').val() : '0')
+				}
+			}
+		}
 	}
 
 }).bootstrapValidator('validate');
@@ -275,6 +275,7 @@ function do_save() {
 					if(data.error_msg) {
 						layer.msg(data.error_msg);
 					} else {
+					
 						currentApp.mDtTable.ajax.reload(null, false);
 						currentApp.backTo();
 					}
@@ -324,9 +325,7 @@ function do_save() {
 						hard_name: d.hard_name,
 						hard_num: d.hard_num,
 					});
-				
 					hard_id_array.push(d.last_hard_id);
-
 					redraw();
 				}
 			},
