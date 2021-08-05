@@ -100,7 +100,7 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> load -> view('layout/show_new_menu_style',$data);
 	}
 
-	public function add_menu_style(){
+	public function add_img_style(){
 		$data = array();
 		$menu_style = $this -> get_post('menu_style');
 		$data['menu_style'] = $menu_style;
