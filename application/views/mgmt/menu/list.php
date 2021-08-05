@@ -274,6 +274,6 @@
 		});
 
 }
-load_img_style();
+load_menu_style();
 
 </script>
