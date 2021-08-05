@@ -181,7 +181,6 @@
 			}
 		}).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
 
-
 	// currentApp.doSubmit = function() {
 	// 	if (!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
 
@@ -212,18 +211,13 @@
 	// 		success: function(data) {
 	// 			// app.mDtTable.ajax.reload(null, false);
 	// 			// app.backTo();
-
-
 	// 		}
 	// 	});
 	// };
 
-
-
 	function doGetCityAndArea() {
 		var lng = $("#lng").val();
 		var lat = $("#lat").val();
-
 		$.ajax({
 			type: "POST",
 			url: '<?= base_url('api/parser/check_loc_test') ?>',
@@ -241,7 +235,7 @@
 	}
 
 	function load_menu_style() {
-	$.ajax({
+		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu/find_img_style',
 			type: 'POST',
 			data: {},
@@ -259,7 +253,7 @@
 					$s_img_style = $('#s_img_style').empty();
 
 					var option = '<option value="0">全部</option>';
-          			$s_img_style.append(option);
+					$s_img_style.append(option);
 					$.each(d.img_style, function(){
 						$('<option/>', {
 							'value': this.id,
@@ -272,8 +266,6 @@
 				alert('faialure');
 			}
 		});
-
-}
+	}
 load_menu_style();
-
 </script>
