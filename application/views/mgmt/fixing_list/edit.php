@@ -36,7 +36,6 @@
 			<input class="form-control" type="text">
 		</div>
 		<!-- end widget edit box -->
-
 		<!-- widget content -->
 		<div class="widget-body">
 
@@ -136,7 +135,6 @@
 			</fieldset>
 			<style>
 				#product_spec_list {
-				
 					margin-top: 10px;
 					margin-bottom: 10px;
 				}
@@ -149,7 +147,6 @@
 					font-size: 16px;
 					font-weight: bolder;
 				}
-
 			</style>
 		</div>
 		<div class="fieldset1" id="2" style="display:none">
@@ -252,196 +249,194 @@ var soft_id_array = [];//只存取軟體新的id
 var hard_id_array = [];//只存取硬體新的id
 var computer_old_h = [];//存取舊有硬體id
 var computer_old_s = [];//存取舊有軟體id
-
 function do_save() {
-			var url = baseUrl + 'mgmt/computer/insert'; // the script where you handle the form input.
-			$.ajax({
-				type : "POST",
-				url : url,
-				data : {
-					id: $('#item_id').val(),
-					computer_name: $('#computer_name').val(),
-					computer_num: $('#computer_num').val(),
-					computer_property_num: $('#computer_property_num').val(),
-					admin_user: $('#admin_user').val(),
-					hard_id_array: hard_id_array.join(","),
-					soft_id_array: soft_id_array.join(","),
-				},
-				success : function(data) {
-					if(data.error_msg) {
-						layer.msg(data.error_msg);
-					} else {
-					
-						currentApp.mDtTable.ajax.reload(null, false);
-						currentApp.backTo();
-					}
-				}
-			});
-		};
-
-	function update_here() {
-			$.ajax({
-				url: '<?= base_url() ?>' + 'mgmt/members/update_here',
-				type: 'POST',
-				data: {
-					id: $('#item_id').val(),
-					login_count: $('#login_count').val(),
-					seed: $('#seed').val(),
-					level_status: $('#level_status').val()
-				},
-				dataType: 'json',
-				success: function(d) {
-					// alert('更新狀態成功');
-					currentApp.doEdit($('#item_id').val());
-				},
-				failure:function(){
-					alert('faialure');
-				}
-			});
-	}
-
-	function select_h() {
-		var $c_h_id = $('#c_h_name');
-		var c_h_id = $c_h_id.val();
-		if(c_h_id<1){
-			alert('請選擇要使用硬體');
-			return
-		}
-		$.ajax({
-			url: baseUrl + 'mgmt/computer/add_useful',
-			type: 'POST',
-			data: {
-				c_h_id: c_h_id
-			},
-			dataType: 'json',
-			success: function(d) {
-				if(d) {
-					computer_hard_id_array.push({
-						id: d.last_hard_id,
-						hard_name: d.hard_name,
-						hard_num: d.hard_num,
-					});
-					hard_id_array.push(d.last_hard_id);
-					redraw();
-				}
-			},
-			failure:function(){
-				alert('faialure');
+	var url = baseUrl + 'mgmt/computer/insert'; // the script where you handle the form input.
+	$.ajax({
+		type : "POST",
+		url : url,
+		data : {
+			id: $('#item_id').val(),
+			computer_name: $('#computer_name').val(),
+			computer_num: $('#computer_num').val(),
+			computer_property_num: $('#computer_property_num').val(),
+			admin_user: $('#admin_user').val(),
+			hard_id_array: hard_id_array.join(","),
+			soft_id_array: soft_id_array.join(","),
+		},
+		success : function(data) {
+			if(data.error_msg) {
+				layer.msg(data.error_msg);
+			} else {
+			
+				currentApp.mDtTable.ajax.reload(null, false);
+				currentApp.backTo();
 			}
-		});
-	}
-
-	function select_s() {
-		var $c_s_id= $('#c_s_name');
-		var c_s_id = $c_s_id.val();
-		if(c_s_id<1){
-			alert('請選擇要使用軟體');
-			return;
 		}
-		$.ajax({
-			url: baseUrl + 'mgmt/computer/add_useful',
-			type: 'POST',
-			data: {
-				c_s_id: c_s_id
-			},
-			dataType: 'json',
-			success: function(d) {
-				if(d) {
-					computer_soft_id_array.push({
-						id: d.last_soft_id,
-						soft_name: d.soft_name,
-						soft_num: d.soft_num,
-					});
-					soft_id_array.push(d.last_soft_id);
-					redraw();
-				}
-			},
-			failure:function(){
-				alert('faialure');
-			}
-		});
-	}
+	});
+};
 
-	function redraw() {
-		// console.log(computer_num_array);
-		var $hard_list = $('#hard_list').empty();
-		var $soft_list = $('#soft_list').empty();
-
-		$.each(computer_hard_id_array, function(){
-			var me = this;
-			var $now_hard_list = $('<div><span style="color:red;" computer_hard_id="'+me.id+'">'+me.hard_name+'</span><button onclick="do_del_h('+me.id+');"><i class="fa fa-trash fa-lg"></i></button><div>').appendTo($hard_list);
-		});
-		$.each(computer_soft_id_array, function(){
-			var me = this;
-			var $now_soft_list = $('<div><span style="color:red;" computer_soft_id="'+me.id+'">'+me.soft_name+'</span><button onclick="do_del_s('+me.id+');"><i class="fa fa-trash fa-lg"></i></button><div>').appendTo($soft_list);
-		});
-	}
-
-	function drawfirst() {
-		var $hard_list = $('#hard_list').empty();
-		var $soft_list = $('#soft_list').empty();
-		var $item_id = $('#item_id').val();
-		if($item_id===''){
-			return;
+function update_here() {
+	$.ajax({
+		url: '<?= base_url() ?>' + 'mgmt/members/update_here',
+		type: 'POST',
+		data: {
+			id: $('#item_id').val(),
+			login_count: $('#login_count').val(),
+			seed: $('#seed').val(),
+			level_status: $('#level_status').val()
+		},
+		dataType: 'json',
+		success: function(d) {
+			// alert('更新狀態成功');
+			currentApp.doEdit($('#item_id').val());
+		},
+		failure:function(){
+			alert('faialure');
 		}
-		$.ajax({
-			url: baseUrl + 'mgmt/computer/find_now_s_h_list',
-			type: 'POST',
-			data: {
-				computer_id: $('#item_id').val(),
-			},
-			dataType: 'json',
-			success: function(d) {
-				if(d) {
-					$.each(d.hard_list, function(){
-						var me = this;
-						computer_old_h.push(me.id);
-						var $now_hard_list = $('<div><span computer_hard_id="'+me.id+'">'+me.hard_name+'</span><button onclick="do_del_h('+me.id+');"><i class="fa fa-trash fa-lg"></i></button><div>').appendTo($hard_list);
-					});
-					$.each(d.soft_list, function(){
-						var me = this;
-						computer_old_s.push(me.id);
-						var $now_soft_list = $('<div><span computer_soft_id="'+me.id+'">'+me.soft_name+'</span><button onclick="do_del_s('+me.id+');"><i class="fa fa-trash fa-lg"></i></button><div>').appendTo($soft_list);
-					});
-				}
-			},
-			failure:function(){
-				alert('faialure');
+	});
+}
+
+function select_h() {
+	var $c_h_id = $('#c_h_name');
+	var c_h_id = $c_h_id.val();
+	if(c_h_id<1){
+		alert('請選擇要使用硬體');
+		return
+	}
+	$.ajax({
+		url: baseUrl + 'mgmt/computer/add_useful',
+		type: 'POST',
+		data: {
+			c_h_id: c_h_id
+		},
+		dataType: 'json',
+		success: function(d) {
+			if(d) {
+				computer_hard_id_array.push({
+					id: d.last_hard_id,
+					hard_name: d.hard_name,
+					hard_num: d.hard_num,
+				});
+				hard_id_array.push(d.last_hard_id);
+				redraw();
 			}
-		});
-	
+		},
+		failure:function(){
+			alert('faialure');
+		}
+	});
+}
+
+function select_s() {
+	var $c_s_id= $('#c_s_name');
+	var c_s_id = $c_s_id.val();
+	if(c_s_id<1){
+		alert('請選擇要使用軟體');
+		return;
 	}
+	$.ajax({
+		url: baseUrl + 'mgmt/computer/add_useful',
+		type: 'POST',
+		data: {
+			c_s_id: c_s_id
+		},
+		dataType: 'json',
+		success: function(d) {
+			if(d) {
+				computer_soft_id_array.push({
+					id: d.last_soft_id,
+					soft_name: d.soft_name,
+					soft_num: d.soft_num,
+				});
+				soft_id_array.push(d.last_soft_id);
+				redraw();
+			}
+		},
+		failure:function(){
+			alert('faialure');
+		}
+	});
+}
 
-	drawfirst();
+function redraw() {
+	// console.log(computer_num_array);
+	var $hard_list = $('#hard_list').empty();
+	var $soft_list = $('#soft_list').empty();
 
-	currentApp.fixrecord = new FixrecordAppClass(new BaseAppClass({}));
-	currentApp.fixrecording = new FixrecordingAppClass(new BaseAppClass({}));
+	$.each(computer_hard_id_array, function(){
+		var me = this;
+		var $now_hard_list = $('<div><span style="color:red;" computer_hard_id="'+me.id+'">'+me.hard_name+'</span><button onclick="do_del_h('+me.id+');"><i class="fa fa-trash fa-lg"></i></button><div>').appendTo($hard_list);
+	});
+	$.each(computer_soft_id_array, function(){
+		var me = this;
+		var $now_soft_list = $('<div><span style="color:red;" computer_soft_id="'+me.id+'">'+me.soft_name+'</span><button onclick="do_del_s('+me.id+');"><i class="fa fa-trash fa-lg"></i></button><div>').appendTo($soft_list);
+	});
+}
 
-	function save_fix(){
-        $.ajax({
-            url: '<?= base_url() ?>' + 'mgmt/computer/update_fix_type',
-            type: 'POST',
-            data: {
-				fix_record_id: $('#fix_record_id').val(),
-                fix_type: $('#fix_type').val(),
-                fix_date: $('#fix_date').val(),
-                done_fix_date: $('#done_fix_date').val(),
-				fix_way: $('#fix_way').val(),
-                fix_reason: $('#fix_reason').val(),
-
-            },
-            dataType: 'json',
-            success: function(d) {
-                if(d.success) {
-					currentApp.fixrecord.tableReload();
-					currentApp.fixrecording.tableReload();
-					$('#fixModal').modal('hide');
-                }
-            },
-            failure:function(){
-                alert('faialure');
-            }
-        });
+function drawfirst() {
+	var $hard_list = $('#hard_list').empty();
+	var $soft_list = $('#soft_list').empty();
+	var $item_id = $('#item_id').val();
+	if($item_id===''){
+		return;
 	}
+	$.ajax({
+		url: baseUrl + 'mgmt/computer/find_now_s_h_list',
+		type: 'POST',
+		data: {
+			computer_id: $('#item_id').val(),
+		},
+		dataType: 'json',
+		success: function(d) {
+			if(d) {
+				$.each(d.hard_list, function(){
+					var me = this;
+					computer_old_h.push(me.id);
+					var $now_hard_list = $('<div><span computer_hard_id="'+me.id+'">'+me.hard_name+'</span><button onclick="do_del_h('+me.id+');"><i class="fa fa-trash fa-lg"></i></button><div>').appendTo($hard_list);
+				});
+				$.each(d.soft_list, function(){
+					var me = this;
+					computer_old_s.push(me.id);
+					var $now_soft_list = $('<div><span computer_soft_id="'+me.id+'">'+me.soft_name+'</span><button onclick="do_del_s('+me.id+');"><i class="fa fa-trash fa-lg"></i></button><div>').appendTo($soft_list);
+				});
+			}
+		},
+		failure:function(){
+			alert('faialure');
+		}
+	});
+}
+
+drawfirst();
+
+currentApp.fixrecord = new FixrecordAppClass(new BaseAppClass({}));
+currentApp.fixrecording = new FixrecordingAppClass(new BaseAppClass({}));
+
+function save_fix(){
+	$.ajax({
+		url: '<?= base_url() ?>' + 'mgmt/computer/update_fix_type',
+		type: 'POST',
+		data: {
+			fix_record_id: $('#fix_record_id').val(),
+			fix_type: $('#fix_type').val(),
+			fix_date: $('#fix_date').val(),
+			done_fix_date: $('#done_fix_date').val(),
+			fix_way: $('#fix_way').val(),
+			fix_reason: $('#fix_reason').val(),
+
+		},
+		dataType: 'json',
+		success: function(d) {
+			if(d.success) {
+				currentApp.fixrecord.tableReload();
+				currentApp.fixrecording.tableReload();
+				$('#fixModal').modal('hide');
+			}
+		},
+		failure:function(){
+			alert('faialure');
+		}
+	});
+}
 
 </script>
