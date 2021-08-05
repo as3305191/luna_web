@@ -235,7 +235,6 @@
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu/find_menu_style',
 			type: 'POST',
-			data: {},
 			dataType: 'json',
 			success: function(d) {
 				if(d) {
