@@ -176,14 +176,11 @@
 				);
 			},
 			success: function(data) {
-				
-
 			}
 		}).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
 
 	// currentApp.doSubmit = function() {
 	// 	if (!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
-
 	// 	$('#lang').val($('#sys_lang').val());
 	// 	var sAttr = $("input[name='s_attr[]']:checked").map(function() {
 	// 		return this.value
