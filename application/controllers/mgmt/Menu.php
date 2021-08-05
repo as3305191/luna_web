@@ -100,7 +100,7 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> load -> view('layout/show_new_menu_style',$data);
 	}
 
-	public function add_img_style(){
+	public function add_menu_style(){
 		$data = array();
 		$menu_style = $this -> get_post('menu_style');
 		$data['menu_style'] = $menu_style;
@@ -109,10 +109,10 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function find_news_style(){
+	public function find_menu_style(){
 		$res = array();
-		$news_style_list = $this -> news_style_dao -> find_all();
-		$res['news_style'] = $news_style_list;
+		$menu_style_list = $this -> menu_style_dao -> find_all();
+		$res['menu_style'] = $menu_style_list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}

@@ -233,7 +233,7 @@
 
 	function load_menu_style() {
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/menu/find_img_style',
+			url: '<?= base_url() ?>' + 'mgmt/menu/find_menu_style',
 			type: 'POST',
 			data: {},
 			dataType: 'json',
