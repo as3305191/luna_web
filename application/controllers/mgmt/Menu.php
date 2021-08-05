@@ -7,18 +7,17 @@ class Menu extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('Menu_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
-		$this -> load -> model('Users_dao', 'users_dao');
+		$this -> load -> model('News_style_dao', 'news_style_dao');
+		$this -> load -> model('Img_month_use_dao', 'img_month_use_dao');		
+		$this -> load -> model('Img_month_use_record_dao', 'img_month_use_record_dao');		
 
 	}
 
 	public function index()
 	{
 		$data = array();
-		$data = $this -> setup_user_data($data);
-		$data['role_list'] = $this -> dao -> find_all_roles();
-		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-		// $this -> to_json($data);
-		$this->load->view('mgmt/menu/list', $data);
+		$this -> setup_user_data($data);
+		$this -> load -> view('mgmt/menu/list', $data);
 	}
 
 	public function get_data() {
@@ -29,11 +28,12 @@ class Menu extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
+			's_news_style',
 		));
+		// set corp id
 		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
-		$res['items'] = $items;			
+		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
 		$this -> to_json($res);
@@ -48,37 +48,43 @@ class Menu extends MY_Mgmt_Controller {
 				'start',
 				'columns',
 				'search',
-				'order',
+				'order'
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
+			if(!empty($item -> image_id)) {
+				$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
+			}
+
 			$data['item'] = $item;
 		}
-		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
-		$data['login_user'] = $login_user;
-		$data['role_list'] = $this -> dao -> find_all_roles();
-		// $this -> to_json($data);
 		$this->load->view('mgmt/menu/edit', $data);
 	}
 
 	public function insert() {
 		$res = array();
 		$id = $this -> get_post('id');
-		$data = $this -> get_posts(array(
-			'menu_code',
-			'corp_id',
-			'menu_name',
-			'meal_name',
-			'date',
-		));
+		$title = $this -> get_post('title');
+		$m_content = $this -> get_post('m_content');
+		$news_style = $this -> get_post('news_style');
+		$cost = $this -> get_post('cost');
+		$sort = $this -> get_post('sort');
+		
+		$data['title'] = $title;
+		$data['content'] = $m_content;
+		$data['news_style_id'] = $news_style;
+		$data['cost'] = $cost;
+		$data['sort'] = $sort;
+
 		if(empty($id)) {
 			// insert
 			$this -> dao -> insert($data);
 		} else {
+			// update
 			$this -> dao -> update($data, $id);
 		}
+		$s_data = $this -> setup_user_data(array());
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
@@ -89,36 +95,68 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function test() {
+	public function new_news_style(){
+		$data = array();
+		$this -> load -> view('layout/show_new_menu_style',$data);
+	}
 
-		$msg = "您好，歡迎使用本系統";
-		$email = "inf@kwantex.com";
-		$config = array(
-		        'crlf'          => "\r\n",
-		        'newline'       => "\r\n",
-		        'charset'       => 'utf-8',
-		        'protocol'      => 'smtp',
-		        'mailtype'      => 'html',
-		        'smtp_host'     => '192.168.1.246',
-		        'smtp_port'     => '25',
-		        'smtp_user'     => 'inf@kwantex.com',
-		        'smtp_pass'     => '935m4TMw8Q'
-		);
+	public function add_menu_style(){
+		$data = array();
+		$menu_style = $this -> get_post('menu_style');
+		$data['menu_style'] = $menu_style;
+		$this -> menu_style_dao -> insert($data);
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
 
-		$this->load->library('email');
-		$this->email->initialize($config);
-		$this->email->from('inf@kwantex.com');
-		$this->email->to($email);
+	public function find_news_style(){
+		$res = array();
+		$news_style_list = $this -> news_style_dao -> find_all();
+		$res['news_style'] = $news_style_list;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
 
-		$this->email->subject('歡迎使用本系統');
-		$this->email->message($msg);
-
-		if($this->email->send()){
-		    $res = "ok";
-		}else{
-		    $res = "faild";
+	public function up_carousel(){
+		$news_id = $this -> get_post('news_id');
+		$u_data = array();
+		$i_data = array();
+		$p = $this -> dao -> find_by_id($news_id);
+		if(!empty($p)){
+			if($p->status==0){
+				$u_data['status'] = 1;
+				$res['success_msg'] = '變更輪播成功';
+				if($p->news_style_id==9){
+					$content_array=explode("</p>",$p->content);
+					foreach($content_array as $each){
+						$img_id = $this->get_between($each, "get/", '/thumb');
+						$img_id_array[] = $img_id;
+						foreach($img_id_array as $img_id_key=>$each_img_id){
+							if(!is_numeric($each_img_id))
+							unset($img_id_array[$img_id_key]);
+						}
+					}
+					$new_img_array = $img_id_array;
+					$res['new_img_array'] = $new_img_array;
+					$this -> img_month_use_dao -> empty_table();
+					foreach($new_img_array as $each){
+						$i_data['img_id'] = $each;
+						$this -> img_month_use_dao -> insert($i_data);
+						$this -> img_month_use_record_dao -> insert($i_data);
+					}
+				}
+			} else{
+				$u_data['status'] = 0;
+				$res['success_msg'] = '變更非輪播成功';
+			}
+			$this -> dao -> update($u_data, $news_id);
 		}
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
 
-		echo $res;
+	function get_between($input, $start, $end) {//2字串中間
+		$substr = substr($input, strlen($start)+strpos($input, $start),(strlen($input) - strpos($input, $end))*(-1));
+		return $substr;
 	}
 }

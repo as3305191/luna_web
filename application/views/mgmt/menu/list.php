@@ -240,9 +240,9 @@
 		});
 	}
 
-	function load_img_style() {
+	function load_menu_style() {
 	$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/news_img/find_img_style',
+			url: '<?= base_url() ?>' + 'mgmt/menu/find_img_style',
 			type: 'POST',
 			data: {},
 			dataType: 'json',
