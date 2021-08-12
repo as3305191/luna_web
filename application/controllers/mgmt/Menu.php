@@ -10,7 +10,6 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> load -> model('News_style_dao', 'news_style_dao');
 		$this -> load -> model('Img_month_use_dao', 'img_month_use_dao');		
 		$this -> load -> model('Img_month_use_record_dao', 'img_month_use_record_dao');		
-
 	}
 
 	public function index()
@@ -56,7 +55,6 @@ class Menu extends MY_Mgmt_Controller {
 			if(!empty($item -> image_id)) {
 				$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
 			}
-
 			$data['item'] = $item;
 		}
 		$this->load->view('mgmt/menu/edit', $data);
@@ -70,13 +68,11 @@ class Menu extends MY_Mgmt_Controller {
 		$news_style = $this -> get_post('news_style');
 		$cost = $this -> get_post('cost');
 		$sort = $this -> get_post('sort');
-		
 		$data['title'] = $title;
 		$data['content'] = $m_content;
 		$data['news_style_id'] = $news_style;
 		$data['cost'] = $cost;
 		$data['sort'] = $sort;
-
 		if(empty($id)) {
 			// insert
 			$this -> dao -> insert($data);
@@ -102,6 +98,7 @@ class Menu extends MY_Mgmt_Controller {
 
 	public function add_menu_style(){
 		$data = array();
+		$res = array();
 		$menu_style = $this -> get_post('menu_style');
 		$data['menu_style'] = $menu_style;
 		$this -> menu_style_dao -> insert($data);
