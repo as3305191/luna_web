@@ -53,7 +53,6 @@
 											<th class="min100">是否預設</th>
 											<th class="min100">分類</th>
 											<th class="min100">照片</th>
-											<th class="min100">網址</th>
 											<th>日期</th>
 										</tr>
 										<tr class="search_box">
@@ -62,10 +61,10 @@
 												<div class="col-md-6">
 													<select id="s_img_style" class="form-control">
 														<!-- option from javascript -->
+														
 													</select>
 												</div>
 											</th>
-											<th></th>
 											<th></th>
 											<th></th>
 										</tr>
