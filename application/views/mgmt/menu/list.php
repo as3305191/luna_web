@@ -36,9 +36,6 @@
 								</div>
 							</div>
 
-							<div class="widget-toolbar pull-left">
-								<label>只顯示這個月未被使用圖片 <input id="not_used" type="checkbox" class="" value="" /></label>
-							</div>
 						</header>
 
 						<!-- widget div-->
