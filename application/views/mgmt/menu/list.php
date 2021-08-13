@@ -36,14 +36,11 @@
 								</div>
 							</div>
 						</header>
-
 						<!-- widget div-->
 						<div>
-
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
-								
 							</div>
 							<!-- end widget edit box -->
 							<input type="hidden" class="form-control" id="user_id" name="user_id" value="<?= isset($login_user) ? $login_user->id : '' ?>"  />
