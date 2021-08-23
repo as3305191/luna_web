@@ -31,9 +31,9 @@ var MembersloginAppClass = (function(app) {
 			order : [[mOrderIdx, "desc"]],
 			columnDefs : mColDefs,
 			"footerCallback": function ( row, data, start, end, display ) {
-            var api = this.api(), data;
-						window.mApi = api;
-      }
+            	var api = this.api(), data;
+				window.mApi = api;
+      		}
 		}));
 
 		// data table actions
@@ -45,7 +45,7 @@ var MembersloginAppClass = (function(app) {
 		app.doExportAll = function() {
 			location.href = baseUrl + app.basePath + '/export_all';
 		}
-		
+
 		$('#hospital_id').on('change', function(){
 			app.tableReload();
 		});
