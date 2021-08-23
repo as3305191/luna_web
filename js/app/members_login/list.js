@@ -16,18 +16,16 @@ var MembersloginAppClass = (function(app) {
 					d.dt = $('#s_dt').val();
 					d.e_dt = $('#e_dt').val();
 					d.user_name = $('#user_name').val();
-
 				},
 				dataSrc : 'items',
 				dataType : 'json',
 				type : 'post',
 				complete:function(data){
 					$('#s_total').html('推薦會員數:' + data.responseJSON.recordsTotal);
+				
 				}
 			},
-
 			columns : mCols,
-
 			order : [[mOrderIdx, "desc"]],
 			columnDefs : mColDefs,
 			"footerCallback": function ( row, data, start, end, display ) {
@@ -65,10 +63,10 @@ var MembersloginAppClass = (function(app) {
 			app.tableReload();
 		});
 		$(".dt_picker").datetimepicker({
-				format: 'YYYY-MM-DD'
-			}).on('dp.change',function(event){
-				currentApp.tableReload();
-			});
+			format: 'YYYY-MM-DD'
+		}).on('dp.change',function(event){
+			currentApp.tableReload();
+		});
 		return app;
 	};
 
