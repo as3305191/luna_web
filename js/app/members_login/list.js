@@ -36,7 +36,6 @@ var MembersloginAppClass = (function(app) {
 
 		// data table actions
 		app.dtActions();
-
 		// get year month list
 		app.tableReload();
 
