@@ -42,10 +42,10 @@ var MembersloginAppClass = (function(app) {
 		// get year month list
 		app.tableReload();
 
-
 		app.doExportAll = function() {
 			location.href = baseUrl + app.basePath + '/export_all';
 		}
+		
 		$('#hospital_id').on('change', function(){
 			app.tableReload();
 		});
