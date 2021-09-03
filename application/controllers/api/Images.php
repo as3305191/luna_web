@@ -277,10 +277,8 @@ class Images extends MY_Base_Controller {
 			$i_data['mime'] = $mime;
 			$i_data['image_path'] = $path;
 			$last_id = $this -> dao -> insert_image_data($i_data);
-
 			$ext = $this -> get_ext($mime);
 			$img_name = $last_id . '.' . $ext;
-
 			// save file
 			$m_dir = IMG_DIR . "$path/";
 			if(!file_exists($m_dir)) {
