@@ -20,13 +20,12 @@ var MembersBodyRecordsClass = (function(app) {
 			},
 
 			columns : mCols,
-
 			order : [[mOrderIdx, "desc"]],
 			columnDefs : mColDefs,
 			"footerCallback": function ( row, data, start, end, display ) {
             var api = this.api(), data;
-						window.mApi = api;
-      }
+				window.mApi = api;
+     		}
 		}));
 
 		// data table actions
