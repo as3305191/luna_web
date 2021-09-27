@@ -32,7 +32,6 @@ class News extends MY_Mgmt_Controller {
 			's_news_style',
 		));
 		$res['items'] = $this -> dao -> query_news($data);
-	
 		$res['recordsFiltered'] = $this -> dao -> query_news($data, TRUE);
 		$res['recordsTotal'] = $this -> dao -> query_news($data, TRUE);
 		$this -> to_json($res);
