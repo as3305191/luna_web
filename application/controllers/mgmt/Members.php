@@ -55,7 +55,6 @@ class Members extends MY_Mgmt_Controller {
 				'columns',
 				'search',
 				'order',
-
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
@@ -65,18 +64,14 @@ class Members extends MY_Mgmt_Controller {
 				$item = 0;
 			}
 			$health_report = $this -> records_dao -> find_record($q_data['id']);
-
 			$data['item'] = $item;
 			$data['health_report'] = $health_report[0];
 		}
-
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
-
 		$data['coach'] = $this -> dao -> find_all_coach();
 		// $this -> to_json($data);
-
 		$this->load->view('mgmt/members/edit', $data);
 	}
 
