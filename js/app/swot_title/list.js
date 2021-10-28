@@ -300,7 +300,7 @@ var swotstyleAppClass = (function(app) {
 	app.init = function() {
 		app.mDtTable = $('#swot_style_table').DataTable($.extend(app.dtConfig,{
 			ajax : {
-				url : baseUrl + app.basePath + '/edit',
+				url : baseUrl + app.basePath + '/swot_title_get_data',
 				data : function(d) {
 					//d.computer = $('#item_id').val();
 					// d.lottery_no = $('#lottery_select').val();
