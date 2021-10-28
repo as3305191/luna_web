@@ -37,13 +37,11 @@
 					<?php endif?>
 				<?php endif?>
 			<?php else:?>
-				<?php if($item -> is_lock== 0): ?>
 				<div class="widget-toolbar pull-left">
 					<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
 						<i class="fa fa-save"></i>存檔
 					</a>
 				</div>
-				<?php endif?>
 			<?php endif?>
 		<div class="widget-toolbar pull-left">
 			<button onclick="re_num();" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
