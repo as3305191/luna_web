@@ -55,11 +55,13 @@ class Swot_title extends MY_Mgmt_Controller {
 			$list = $this -> swot_style_dao -> find_all();
 			
 			$data['item'] = $list;
+			$data['item'] = $id;
 		}
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
+		$this -> to_json($data);
 
 		$this->load->view('mgmt/swot_title/edit', $data);
 	}
