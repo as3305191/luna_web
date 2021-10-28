@@ -43,7 +43,7 @@
 					<thead>
 						<tr>
 							<th class="min100"></th>
-							<th class="min100">文件種類</th>
+							<th class="min500">文件種類</th>
 						</tr>
 					</thead>
 					<tbody>

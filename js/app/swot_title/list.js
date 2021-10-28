@@ -244,7 +244,7 @@ var swotstyleAppClass = (function(app) {
 		if(!app.disableRowClick) {
 			var _rtd = $(nRow).find('td');
 			if(!app.enableFirstClickable) {
-				_rtd = _rtd.not(':first').not(':last')
+				_rtd = _rtd.not(':first')
 			}
 			_rtd.addClass('pointer').on('click', function(){
 				app.doEdit(aData.id);
@@ -264,22 +264,52 @@ var swotstyleAppClass = (function(app) {
 			$(nRow).addClass('active');
 		}
 
-		// delete click
-		$(nRow).find("a").eq(0).click(function() {
-			app.setDelId(aData.id);
+			// delete click
+			// $(nRow).find("a").eq(0).click(function() {
+			// 	app.setDelId(aData.id);
+			// 	$('#modal_do_delete')
+			// 	.prop('onclick',null)
+			// 	.off('click')
+			// 	.on('click', function(){
+			// 		app.doDelItem();
+			// 	});
+			// });
 
-			$('#modal_do_delete')
-				.prop('onclick',null)
-				.off('click')
-				.on('click', function(){
-					app.doDelItem();
-				});
-		});
+			//img post
+			$(nRow).find('.product-post').eq(0).click(function(){
+				var me = $(this).attr('id');
+				$.ajax({
+					url: baseUrl + app.basePath + '/up_lock_swot_style',
+					data: {
+					  'id': $('#swot_title_id').val()
+					},
+					error: function() {
+					},
+					dataType: 'json',
+					success: function(data) {
+						if(data.success_msg){
+							$.smallBox({
+								title: data.success_msg,
+								content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+								color: "#5F895F",
+								iconSmall: "fa fa-check bounce animated",
+								timeout: 4000
+							});
+
+							app.tableReload();
+						}
+						if(data.message){
+							layer.msg(data.message);
+						}
+					},
+					type: 'POST'
+				})
+			})
 
 		if(app.fnRowCallbackExt) {
 			app.fnRowCallbackExt(nRow, aData, iDisplayIndex, iDisplayIndexFull);
 		}
-	};
+};
 
 	app.dtConfig = {
 		processing : true,
@@ -343,8 +373,7 @@ var swotstyleAppClass = (function(app) {
 							+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="編輯"></span>'
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
-					+'</span>'
-					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>';
+					+'</span>';
 					}
 					return html;
 		    },
