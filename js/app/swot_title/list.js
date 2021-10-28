@@ -334,8 +334,7 @@ var swotstyleAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/swot_title_get_data',
 				data : function(d) {
-					//d.computer = $('#item_id').val();
-					// d.lottery_no = $('#lottery_select').val();
+					d.swot_title_id = $('#swot_title_id').val();
 					return d;
 				},
 				dataSrc : 'items',
@@ -357,7 +356,7 @@ var swotstyleAppClass = (function(app) {
 				data : null,
 				render:function ( data, type, row ) {
 					var input = '';
-					if(row.is_lock == 0){
+					if(row.now_is_lock == 0){
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
 						+input

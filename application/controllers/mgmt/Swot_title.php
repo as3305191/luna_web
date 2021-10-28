@@ -53,6 +53,7 @@ class Swot_title extends MY_Mgmt_Controller {
 
 	public function swot_title_get_data() {
 		$res = array();
+		$swot_title_id =$this -> get_posts('swot_title_id');
 		$data = $this -> get_posts(array(
 			'length',
 			'start',
@@ -61,7 +62,18 @@ class Swot_title extends MY_Mgmt_Controller {
 			'order',
 		));
 		$data = array();
-		$res['items'] = $this -> swot_style_dao -> find_all_style();
+		$items= $this -> swot_style_dao -> find_all_style();
+
+		foreach($items as $each){
+			$list = $this -> swot_dao -> find_is_lock($swot_title_id,$each->id);
+			if(!empty($list) && $list->is_lock==1){
+				$list->now_is_lock = 1;
+			} else{
+				$list->now_is_lock = 0;
+			}
+		}
+
+		$res['items'] = $items;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}

@@ -200,9 +200,6 @@ class Swot_style_dao extends MY_Model {
 		$this -> db -> select('_m.*');
 
 
-		// $this -> db -> join("computer c", "c.id = _m.computer_id", "left");
-
-
 		$query = $this -> db -> get();
 		return $query -> result();
 	}
