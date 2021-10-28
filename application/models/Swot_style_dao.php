@@ -193,5 +193,29 @@ class Swot_style_dao extends MY_Model {
 
 		return $list;
 	}
+
+	function find_compter_fixing($data,$is_count = FALSE) {
+		$start = $data['start'];
+		$limit = $data['length'];
+
+		// select
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+
+
+		// $this -> db -> join("computer c", "c.id = _m.computer_id", "left");
+
+
+		if(!$is_count) {
+			$this -> db -> limit($limit, $start);
+		}
+		// query results
+		if(!$is_count) {
+			$query = $this -> db -> get();
+			return $query -> result();
+		} else {
+			return $this -> db -> count_all_results();
+		}
+	}
 }
 ?>

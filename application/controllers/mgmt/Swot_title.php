@@ -61,7 +61,7 @@ class Swot_title extends MY_Mgmt_Controller {
 			'order',
 		));
 		$data = array();
-		$res['items'] = $this -> swot_style_dao -> query_ajax($data);
+		$res['items'] = $this -> swot_style_dao -> find_all_style($$data, TRUE);
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
