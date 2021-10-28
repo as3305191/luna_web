@@ -322,7 +322,7 @@ var swotstyleAppClass = (function(app) {
 			ordering: false,
 			order : [[0, "desc"]],
 			columnDefs : [{
-				"targets" : [0,1,2],
+				"targets" : [0,1],
 				"orderable" : false
 			}],
 
@@ -343,25 +343,10 @@ var swotstyleAppClass = (function(app) {
 			return 0;
 		}
 
-		function setSpanVal(elId, val) {
-			console.log("val: " + val);
-			console.log("elId: " + elId);
-			if(val > 0) {
-	    		$('#' + elId).parent().find('span').show().text(val);
-	    	} else {
-	    		$('#' + elId).parent().find('span').hide();
-	    	}
-		}
 
 		app.mDtTable.on( 'xhr', function () {
 		    var json = app.mDtTable.ajax.json();
-				// $('#sum_orders').html(numberWithCommas(json.items.length));
-
-				// var sumWeight = 0;
-				// $.each(json.items, function(){
-				// 	sumWeight += parseFloat(this.sum_weight);
-				// });
-				// $('#sum_weight').html(numberWithCommas(sumWeight.toFixed(1)));
+			
 		});
 
 		// get year month list
