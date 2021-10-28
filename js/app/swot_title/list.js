@@ -302,7 +302,7 @@ var swotstyleAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/edit',
 				data : function(d) {
-					d.computer = $('#item_id').val();
+					//d.computer = $('#item_id').val();
 					// d.lottery_no = $('#lottery_select').val();
 					return d;
 				},

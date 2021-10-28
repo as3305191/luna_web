@@ -53,7 +53,7 @@ class Swot_title extends MY_Mgmt_Controller {
 			));
 			$list = $this -> swot_style_dao -> find_all();
 			
-			$data['item'] = $list;
+			$data['items'] = $list;
 		}
 
 		$s_data = $this -> setup_user_data(array());
