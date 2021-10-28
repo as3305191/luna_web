@@ -1,6 +1,6 @@
 var SwotTitleAppClass = (function(app) {
 	app.basePath = "mgmt/swot_title/";
-	app.disableRowClick = true;
+	app.disableRowClick = false;
 
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click

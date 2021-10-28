@@ -37,6 +37,33 @@ class Swot_title extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function edit($id) {
+		$data = array();
+		$data['id'] = $id;
+
+		if(!empty($id)) {
+			$q_data = $this -> get_posts(array(
+				'length',
+				'start',
+				'columns',
+				'search',
+				'order'
+			));
+			$q_data['id'] = $id;
+			$list = $this -> dao -> query_ajax($q_data);
+			$item = $list[0];
+
+			$data['item'] = $item;
+		}
+
+		$s_data = $this -> setup_user_data(array());
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$data['login_user'] = $login_user;
+		
+
+		$this->load->view('mgmt/swot_title/edit', $data);
+	}
+
 	public function up_lock(){
 		$swot_id = $this -> get_post('id');
 		$u_data = array();
