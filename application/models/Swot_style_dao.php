@@ -194,7 +194,7 @@ class Swot_style_dao extends MY_Model {
 		return $list;
 	}
 
-	function find_compter_fixing($data,$is_count = FALSE) {
+	function find_all_style($data,$is_count = FALSE) {
 		$start = $data['start'];
 		$limit = $data['length'];
 
