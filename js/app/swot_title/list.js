@@ -322,33 +322,41 @@ var swotstyleAppClass = (function(app) {
 			ordering: false,
 			order : [[0, "desc"]],
 			columnDefs : [{
-					targets : 0,
-					data : null,
-					render:function ( data, type, row ) {
-						var input = '';
-						if(row.is_lock == 0){
-							input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
-							var html = '<span class="onoffswitch" style="margin-top: 10px;">'
-							+input
-							+'<label class="onoffswitch-label" for="'+row.id+'">'
-								+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="編輯"></span>'
-								+'<span class="onoffswitch-switch"></span>'
-							+'</label>'
-						+'</span>';
-						}else{
-							input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
-							var html = '<span class="onoffswitch" style="margin-top: 10px;">'
-							+input
-							+'<label class="onoffswitch-label" for="'+row.id+'">'
-								+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="編輯"></span>'
-								+'<span class="onoffswitch-switch"></span>'
-							+'</label>'
-						+'</span>'
-						+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>';
-						}
-						return html;
-				},
-				"targets" : [0,1],
+				targets : 0,
+				data : null,
+				render:function ( data, type, row ) {
+					var input = '';
+					if(row.is_lock == 0){
+						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
+						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
+						+input
+						+'<label class="onoffswitch-label" for="'+row.id+'">'
+							+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="編輯"></span>'
+							+'<span class="onoffswitch-switch"></span>'
+						+'</label>'
+					+'</span>';
+					}else{
+						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
+						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
+						+input
+						+'<label class="onoffswitch-label" for="'+row.id+'">'
+							+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="編輯"></span>'
+							+'<span class="onoffswitch-switch"></span>'
+						+'</label>'
+					+'</span>'
+					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>';
+					}
+					return html;
+		    },
+				searchable : false,
+				orderable : false,
+				width : "8%",
+				className: ''
+			},{
+				"targets" : 0,
+				"orderable" : false
+			},{
+				"targets" : 1,
 				"orderable" : false
 			}],
 
