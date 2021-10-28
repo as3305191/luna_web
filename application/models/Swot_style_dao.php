@@ -194,9 +194,7 @@ class Swot_style_dao extends MY_Model {
 		return $list;
 	}
 
-	function find_all_style($data) {
-		$start = $data['start'];
-		$limit = $data['length'];
+	function find_all_style() {
 		// select
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');

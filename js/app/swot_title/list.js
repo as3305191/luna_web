@@ -327,10 +327,9 @@ var swotstyleAppClass = (function(app) {
 			}],
 
 			footerCallback: function (row, data, start, end, display ) {
-        var api = this.api();
+				var api = this.api();
 
-      }
-
+			}
 		}));
 
 		// data table actions
