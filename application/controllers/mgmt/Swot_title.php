@@ -41,7 +41,7 @@ class Swot_title extends MY_Mgmt_Controller {
 
 	public function edit($id) {
 		$data = array();
-		$data['id'] = $id;
+		$data['swot_title_id'] =$id;
 
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
@@ -54,7 +54,6 @@ class Swot_title extends MY_Mgmt_Controller {
 			$list = $this -> swot_style_dao -> find_all();
 			
 			$data['item'] = $list;
-			$data['swot_title_id'] = $id;
 		}
 
 		$s_data = $this -> setup_user_data(array());
