@@ -51,11 +51,10 @@ class Swot_title extends MY_Mgmt_Controller {
 				'search',
 				'order'
 			));
-			$q_data['id'] = $id;
 			$list = $this -> swot_style_dao -> find_all();
 			
 			$data['item'] = $list;
-			$data['item'] = $id;
+			$data['id'] = $id;
 		}
 
 		$s_data = $this -> setup_user_data(array());
