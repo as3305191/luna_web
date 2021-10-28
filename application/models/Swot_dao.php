@@ -152,7 +152,12 @@ class Swot_dao extends MY_Model {
 		$this -> db -> where('_m.swot_style_id',$swot_style_id);
 
 		$list = $this -> db -> get() -> result();
-		return $list;
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return null;
+		}
+		
 	}
 	
 }
