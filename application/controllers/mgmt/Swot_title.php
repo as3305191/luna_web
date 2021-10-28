@@ -52,7 +52,6 @@ class Swot_title extends MY_Mgmt_Controller {
 
 	public function swot_title_get_data() {
 		$res = array();
-
 		$data = $this -> get_posts(array(
 			'length',
 			'start',
