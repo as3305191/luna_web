@@ -164,22 +164,20 @@ class Swot_style_dao extends MY_Model {
 					$mul_cate_val = explode(',',$col['search']['value']);
 					foreach($mul_cate_val as $each){
 						//** key step
-							$this -> db -> where("FIND_IN_SET('$each',_m.main_cate) <>", 0);
+						$this -> db -> where("FIND_IN_SET('$each',_m.main_cate) <>", 0);
 					}
-
 				}else{
 					$col_name = $col['data'];
 					$this -> db -> like($this -> get_alias_val($alias_map, $col_name), $col['search']['value']);
 				}
-
 			}
-		}
+		} 
 	}
 
 	//複製商品 檔名用
 	function find_copy($product_name){
 		$this -> db -> like('product_name',$product_name,'after');
-		$this -> db -> order_by('create_time','desc');
+		$this -> db -> order_by('create_time','desc'); 
 		return $this -> find_exists_all();
 	}
 
@@ -188,7 +186,6 @@ class Swot_style_dao extends MY_Model {
 		$this -> db -> where('status',0);
 		$this -> db -> where('FIN_audit_status','1');
 		$list = $this -> db -> get() -> result();
-
 		return $list;
 	}
 

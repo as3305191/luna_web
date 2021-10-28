@@ -18,8 +18,8 @@ class Swot_title_dao extends MY_Model {
 		$columns = $data['columns'];
 		$search = $data['search'];
 		$order = $data['order'];
-
 		// select
+		
 		$this -> db -> select('_m.*');
 		// $this -> db -> select('st.store_name as store_name');
 
@@ -28,7 +28,7 @@ class Swot_title_dao extends MY_Model {
 
 		// search always
 		$this -> search_always($data);
-
+		
 		// search
 		$this -> ajax_column_setup($columns, $search, $this -> alias_map);
 
@@ -48,8 +48,6 @@ class Swot_title_dao extends MY_Model {
 		// $this -> db -> where('_m.status', 0);
 		// $this -> db -> select('_m.*,cc.cate_name as cate_name,u.user_name as applicant_name,u1.user_name as principal_name');
 		// $this -> db -> where('_m.corp_id',$data['corp_id']);
-
-		
 	}
 
 	function ajax_from_join() {
@@ -59,8 +57,7 @@ class Swot_title_dao extends MY_Model {
 		// $this -> db -> join('users as u','u.id = _m.applicant','left');
 		// $this -> db -> join('users as u1','u1.id = _m.principal','left');
 		// $this -> db -> join("corp as co", 'st.id = _m.store_id', 'left');
-	}
+ 	}
 
-	
 }
 ?>
