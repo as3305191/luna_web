@@ -137,5 +137,15 @@ class Swot_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
+
+	function find_all_by_p($swot_title_id,$swot_style_id){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> where('_m.title',$swot_title_id);
+		$this -> db -> where('_m.swot_style_id',$swot_style_id);
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+
+	
 }
 ?>

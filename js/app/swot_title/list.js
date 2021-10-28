@@ -281,7 +281,8 @@ var swotstyleAppClass = (function(app) {
 				$.ajax({
 					url: baseUrl + app.basePath + '/up_lock_swot_style',
 					data: {
-					  'id': $('#swot_title_id').val()
+					  'swot_title_id': $('#swot_title_id').val(),
+					  'swot_style_id': me
 					},
 					error: function() {
 					},

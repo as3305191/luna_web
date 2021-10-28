@@ -7,6 +7,7 @@ class Swot_title extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('Swot_title_dao', 'dao');
 		$this -> load -> model('Swot_style_dao', 'swot_style_dao');
+		$this -> load -> model('Swot_dao', 'swot_dao');
 
 		// $this -> load-> library('word');
 	}
@@ -79,6 +80,29 @@ class Swot_title extends MY_Mgmt_Controller {
 			}
 			$this -> dao -> update($u_data, $swot_id);
 		}
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function up_lock_swot_style(){
+		$swot_title_id = $this -> get_post('swot_title_id');
+		$swot_style_id = $this -> get_post('swot_style_id');
+
+		$u_data = array();
+		$p = $this -> swot_dao -> find_all_by_p($swot_title_id,$swot_style_id);
+		foreach($p as $each){
+			if(!empty($each)){
+				if($each->is_lock==0){
+					$u_data['is_lock'] = 1;
+					$res['success_msg'] = '變更已鎖定成功';
+				} else{
+					$u_data['is_lock'] = 0;
+					$res['success_msg'] = '變更可編輯成功';
+				}
+				$this -> dao -> update($u_data, $each->id);
+			}
+		}
+		
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
