@@ -237,7 +237,7 @@ var SwotTitleAppClass = (function(app) {
 });
 
 var swotstyleAppClass = (function(app) {
-	app.basePath = "mgmt/swot/";
+	app.basePath = "mgmt/swot_title/";
 	app.disableRowClick = true;
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click
