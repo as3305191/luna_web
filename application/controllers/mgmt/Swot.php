@@ -298,7 +298,8 @@ class Swot extends MY_Mgmt_Controller {
 
 	public function delete($id) {
 		$res['success'] = TRUE;
-		$this -> dao -> delete($id);
+		$i_data['is_delete'] = 1;
+		$this-> dao ->update_by($i_data,'id',$id);
 		$this -> to_json($res);
 	}
 

@@ -6,6 +6,8 @@ class Swot_title extends MY_Mgmt_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('Swot_title_dao', 'dao');
+		$this -> load -> model('Swot_style_dao', 'swot_style_dao');
+
 		// $this -> load-> library('word');
 	}
 
@@ -50,16 +52,14 @@ class Swot_title extends MY_Mgmt_Controller {
 				'order'
 			));
 			$q_data['id'] = $id;
-			$list = $this -> dao -> query_ajax($q_data);
-			$item = $list[0];
-
-			$data['item'] = $item;
+			$list = $this -> swot_style_dao -> find_all();
+			
+			$data['item'] = $list;
 		}
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
-		
 
 		$this->load->view('mgmt/swot_title/edit', $data);
 	}

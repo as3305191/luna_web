@@ -81,32 +81,4 @@
 			currentApp = new SwotTitleAppClass(new BaseAppClass({}));
 		});
 	});
-
-// 	function load_s_news_style() {
-// 		$.ajax({
-// 			url: '<?= base_url() ?>' + 'mgmt/news_edit/find_news_style',
-// 			type: 'POST',
-// 			data: {},
-// 			dataType: 'json',
-// 			success: function(d) {
-// 				if(d) {
-// 					// console.log(d);
-// 					$s_news_style = $('#s_news_style').empty();
-// 					var option = '<option value="0">全部</option>';
-// 					$s_news_style.append(option);
-// 					$.each(d.news_style, function(){
-// 						$('<option/>', {
-// 							'value': this.id,
-// 							'text': this.news_style
-// 						}).appendTo($s_news_style);
-// 					});
-// 				}
-// 			},
-// 			failure:function(){
-// 				alert('faialure');
-// 			}
-// 		});
-
-// 	}
-// load_s_news_style();
 </script>

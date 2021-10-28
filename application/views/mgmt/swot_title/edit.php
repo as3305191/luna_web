@@ -38,51 +38,18 @@
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">公告類別</label>
-						<div class="col-md-6">
-							<select id="news_style" class="form-control">
-								<!-- option from javascript -->
-							</select>
-						</div>
-						<div class="col-md-2">
-							<button type="button" class="btn btn-sm btn-primary" id="add_news_style"><i class="fa fa-plus-circle fa-lg"></i></button>
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div class="form-group">
-						<label class="col-md-3 control-label">標題</label>
-						<div class="col-md-6">
-							<input type="text" required class="form-control" id="title" name="title" value="<?= isset($item) ? $item -> title : '' ?>" />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div id="cost_div" class="form-group none">
-						<label class="col-md-3 control-label">成本</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control " id="cost" name="cost" value="<?= isset($item) ? $item ->cost : '' ?>" />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset>
-					<div id="cost_div" class="form-group">
-						<label class="col-md-3 control-label">排序(數字越大越前面)</label>
-						<div class="col-md-6">
-							<input type="text" class="form-control " id="sort" name="sort" value="<?= isset($item) ? $item ->sort : '' ?>" />
-						</div>
-					</div>
-				</fieldset>
-				<fieldset id='content_panel'>
-					<div class="form-group">
-						<label class="col-md-3 control-label">內容</label>
-						<div class="col-md-9">
-							<textarea required class="form-control" id="m_content" name="content"><?= isset($item) ? $item -> content : '' ?></textarea>
-						</div>
-					</div>
-				</fieldset>
+				<div>
+				<table id="swot_style" class="table table-striped table-bordered table-hover" width="100%">
+					<thead>
+						<tr>
+							<th class="min100"></th>
+							<th class="min100">文件種類</th>
+						</tr>
+					</thead>
+					<tbody>
+					</tbody>
+				</table>
+			</div>
 			</form>
 		</div>
 		<!-- end widget content -->
@@ -90,6 +57,7 @@
 	<!-- end widget div -->
 </div>
 <!-- end widget -->
-
+<script>
+	currentApp.swot_style = new swotstyleAppClass(new BaseAppClass({}));
 	
 </script>

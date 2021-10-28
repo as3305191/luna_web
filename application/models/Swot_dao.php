@@ -128,7 +128,7 @@ class Swot_dao extends MY_Model {
 			$this -> db -> where("_m.unify<>",$unify);
 		}
 		
-		
+		$this -> db -> where("_m.is_delete",'0');
 	}
 
 	function find_all_by_me($user_id){
