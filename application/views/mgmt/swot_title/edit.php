@@ -39,7 +39,7 @@
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<div>
-				<table id="swot_style" class="table table-striped table-bordered table-hover" width="100%">
+				<table id="swot_style_table" class="table table-striped table-bordered table-hover" width="100%">
 					<thead>
 						<tr>
 							<th class="min100"></th>

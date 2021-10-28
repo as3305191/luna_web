@@ -298,7 +298,7 @@ var swotstyleAppClass = (function(app) {
 	};
 
 	app.init = function() {
-		app.mDtTable = $('#swot_style').DataTable($.extend(app.dtConfig,{
+		app.mDtTable = $('#swot_style_table').DataTable($.extend(app.dtConfig,{
 			ajax : {
 				url : baseUrl + app.basePath + '/edit',
 				data : function(d) {
