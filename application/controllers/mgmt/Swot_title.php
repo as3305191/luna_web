@@ -68,12 +68,12 @@ class Swot_title extends MY_Mgmt_Controller {
 			$list = $this -> swot_dao -> find_is_lock($swot_title_id,$each->id);
 			if(!empty($list)){
 				if($list->is_lock==1){
-					$res['now_is_lock'] =  1;
+					$each->now_is_lock =  1;
 				} else{
-					$res['now_is_lock'] =  0;
+					$each->now_is_lock =  0;
 				}
 			} else {
-				$res['now_is_lock'] = 0;
+				$each->now_is_lock= 0;
 			} 
 		} 
 		$res['items'] = $items;
