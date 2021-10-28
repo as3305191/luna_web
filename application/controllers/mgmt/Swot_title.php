@@ -42,20 +42,7 @@ class Swot_title extends MY_Mgmt_Controller {
 	public function edit($id) {
 		$data = array();
 		$data['swot_title_id'] =$id;
-
-		if(!empty($id)) {
-			$q_data = $this -> get_posts(array(
-				'length',
-				'start',
-				'columns',
-				'search',
-				'order'
-			));
-			$list = $this -> swot_style_dao -> find_all();
-			
-			$data['items'] = $list;
-		}
-
+ 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
@@ -64,11 +51,19 @@ class Swot_title extends MY_Mgmt_Controller {
 	}
 
 	public function swot_title_get_data() {
+		$res = array();
+
+		$data = $this -> get_posts(array(
+			'length',
+			'start',
+			'columns',
+			'search',
+			'order',
+		));
 		$data = array();
-		$list = $this -> swot_style_dao -> find_all();
-		$data['items'] = $list;
-		$data['success'] = TRUE;
-		$this -> to_json($data);
+		$res['items'] = $this -> swot_style_dao -> query_ajax($data);
+		$res['success'] = TRUE;
+		$this -> to_json($res);
 	}
 
 	public function up_lock(){

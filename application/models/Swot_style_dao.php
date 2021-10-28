@@ -46,53 +46,13 @@ class Swot_style_dao extends MY_Model {
 
 	function search_always($data) {
 		// $this -> db -> where('_m.status', 0);
-		$this -> db -> select('_m.*,cc.cate_name as cate_name,u.user_name as applicant_name,u1.user_name as principal_name');
-		// $this -> db -> where('_m.corp_id',$data['corp_id']);
-
-		if(isset($data['custom_cate'])){
-			if(!empty($data['custom_cate'])){
-				if($data['custom_cate'] == 'all'){
-
-				}else{
-					$this -> db -> where('_m.cate',$data['custom_cate']);
-				}
-			}
-		}
-
-		if(isset($data['fin_audit_status'])){
-				if($data['fin_audit_status'] == 'all'){
-
-				}else{
-					$this -> db -> where('_m.fin_audit_status',$data['fin_audit_status']);
-				}
-		}
-
-		if(isset($data['key_word'])){
-			if(!empty($data['key_word'])){
-				if($data['key_word_type'] == 1){
-					$this -> db -> like('_m.code',$data['key_word']);
-				}else if($data['key_word_type'] == 2){
-					$this -> db -> like('_m.name_cn',$data['key_word']);
-					$this -> db -> or_like('_m.name_en',$data['key_word']);
-				}else if($data['key_word_type'] == 3){
-					$this -> db -> like('u.user_name',$data['key_word']);
-				}else if($data['key_word_type'] == 4){
-					$this -> db -> like('u1.user_name',$data['key_word']);
-				}else{
-					$this -> db -> like('_m.code',$data['key_word']);
-				}
-			}
-		}
-
 
 	}
 
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join('custom_cate as cc','_m.cate = cc.id','left');
-		$this -> db -> join('users as u','u.id = _m.applicant','left');
-		$this -> db -> join('users as u1','u1.id = _m.principal','left');
+		
 		// $this -> db -> join("corp as co", 'st.id = _m.store_id', 'left');
 	}
 
