@@ -219,7 +219,7 @@ var SwotTitleAppClass = (function(app) {
 
 			$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
 
-			$('#edit-modal-body').load(baseUrl + 'mgmt/news_edit/edit/' + id, function(){
+			$('#edit-modal-body').load(baseUrl + 'mgmt/swot_title/edit/' + id, function(){
 	        	$("#btn-submit-edit").prop( "disabled", false);
 	        	loading.remove();
 			});
