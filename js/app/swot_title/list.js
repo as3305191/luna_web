@@ -353,10 +353,7 @@ var swotstyleAppClass = (function(app) {
 				width : "8%",
 				className: ''
 			},{
-				"targets" : 0,
-				"orderable" : false
-			},{
-				"targets" : 1,
+				"targets" : [0,1],
 				"orderable" : false
 			}],
 
