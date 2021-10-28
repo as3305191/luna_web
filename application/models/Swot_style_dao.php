@@ -194,7 +194,7 @@ class Swot_style_dao extends MY_Model {
 		return $list;
 	}
 
-	function find_all_style($data,$is_count = FALSE) {
+	function find_all_style($data) {
 		$start = $data['start'];
 		$limit = $data['length'];
 		// select
@@ -205,16 +205,8 @@ class Swot_style_dao extends MY_Model {
 		// $this -> db -> join("computer c", "c.id = _m.computer_id", "left");
 
 
-		if(!$is_count) {
-			$this -> db -> limit($limit, $start);
-		}
-		// query results
-		if(!$is_count) {
-			$query = $this -> db -> get();
-			return $query -> result();
-		} else {
-			return $this -> db -> count_all_results();
-		}
+		$query = $this -> db -> get();
+		return $query -> result();
 	}
 }
 ?>
