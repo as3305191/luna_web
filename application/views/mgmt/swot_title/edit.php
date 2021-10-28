@@ -14,11 +14,7 @@
 				<i class="fa fa-arrow-circle-left"></i>返回
 			</a>
 		</div>
-		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="" onclick="do_save();" class="btn btn-default btn-danger">
-				<i class="fa fa-save"></i>存檔
-			</a>
-		</div>
+
 	</header>
 
 	<!-- widget div-->
