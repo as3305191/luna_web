@@ -109,11 +109,13 @@ class Swot_title extends MY_Mgmt_Controller {
 			if($each->is_lock==0){
 				$u_data['is_lock'] = 1;
 				$res['success_msg'] = '變更已鎖定成功';
+				$this -> dao -> update($u_data, $each->id);
 			} else{
 				$u_data['is_lock'] = 0;
 				$res['success_msg'] = '變更可編輯成功';
+				$this -> dao -> update($u_data, $each->id);
 			}
-			$this -> dao -> update($u_data, $each->id);
+			
 		}
 		
 		$res['success'] = TRUE;
