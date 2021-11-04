@@ -75,7 +75,11 @@ class Swot extends MY_Mgmt_Controller {
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
-			$item = $list[0];
+			if(!empty($list)){
+				$item = $list[0];
+			} else{
+				$item = $list;
+			}
 			$data['item'] = $item;
 			if(!empty($item->is_use_user_id) && $item->is_use_user_id>0){
 				$is_use_user = $this -> users_dao -> find_by_id($item->is_use_user_id);
@@ -231,7 +235,7 @@ class Swot extends MY_Mgmt_Controller {
 			}
 		}
 		$s_data = $this -> setup_user_data(array());
-		
+
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
