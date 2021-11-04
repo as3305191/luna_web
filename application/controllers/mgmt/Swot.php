@@ -221,14 +221,17 @@ class Swot extends MY_Mgmt_Controller {
 			}
 			$data['role_id'] = $department;
 			$this -> dao -> insert($data);
+			$this->do_remove();
 		} else {
 			if($id=='-1') {
 				$data['role_id'] = $department;
 				$data['class_id'] = $login_user->role_id;
 				$this -> dao -> insert($data);
+				$this->do_remove();
 			} else{
 				// update
 				$this -> dao -> update($data, $id);
+				$this->do_remove();
 			}
 		}
 		$s_data = $this -> setup_user_data(array());
