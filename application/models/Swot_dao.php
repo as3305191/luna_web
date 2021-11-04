@@ -46,7 +46,11 @@ class Swot_dao extends MY_Model {
 
 		// query results
 		$query = $this -> db -> get();
-		return $query -> result();
+		if(count($query)>0){
+			return $query -> result();
+		} else{
+			return null;
+		}
 
 	}
 
@@ -89,6 +93,8 @@ class Swot_dao extends MY_Model {
 	}
 
 	function search_always($data) {
+		$this -> db -> where("_m.is_delete <", 1);
+
 		if(!empty($data['title'])){
 			$title = $data['title'];
 			$this -> db -> where("_m.title",$title);
@@ -132,7 +138,6 @@ class Swot_dao extends MY_Model {
 			$this -> db -> where("_m.unify<>",$unify);
 		}
 		
-		$this -> db -> where("_m.is_delete <", 1);
 	}
 
 	function find_all_by_me($user_id){
