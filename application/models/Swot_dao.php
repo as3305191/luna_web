@@ -71,8 +71,11 @@ class Swot_dao extends MY_Model {
 		// limit
 
 		// query results
-		$query = $this -> db -> get();
-		return $query -> result();
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return null;
+		}
 	}
 
 	function ajax_from_join() {
