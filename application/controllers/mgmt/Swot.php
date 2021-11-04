@@ -201,19 +201,19 @@ class Swot extends MY_Mgmt_Controller {
 		$unify = $this -> get_post('unify');
 		$swot_leader = $this -> get_post('swot_leader');
 		
-		$data['title'] = str_replace("<br>","</p><p>",trim($title));
-		$data['unify'] = str_replace("<br>","</p><p>",trim($unify));$unify;
-		$data['swot_leader'] = str_replace("<br>","</p><p>",trim($swot_leader));
-		$data['swot_style_id'] = str_replace("<br>","</p><p>",trim($swot_style));
-		$data['m_swot_s'] = str_replace("<br>","</p><p>",trim($m_swot_s));
-		$data['m_swot_w'] = str_replace("<br>","</p><p>",trim($m_swot_w));
-		$data['make_user'] = str_replace("<br>","</p><p>",trim($make_user));
-		$data['m_swot_o'] = str_replace("<br>","</p><p>",trim($m_swot_o));
-		$data['m_swot_t'] = str_replace("<br>","</p><p>",trim($m_swot_t));
-		$data['m_swot_s_o'] = str_replace("<br>","</p><p>",trim($m_swot_s_o));
-		$data['m_swot_w_o'] = str_replace("<br>","</p><p>",trim($m_swot_w_o));
-		$data['m_swot_s_t'] = str_replace("<br>","</p><p>",trim($m_swot_s_t));
-		$data['m_swot_w_t'] = str_replace("<br>","</p><p>",trim($m_swot_w_t));
+		$data['title'] = str_replace("<br />","</p><p>",trim($title));
+		$data['unify'] = str_replace("<br />","</p><p>",trim($unify));$unify;
+		$data['swot_leader'] = str_replace("<br />","</p><p>",trim($swot_leader));
+		$data['swot_style_id'] = str_replace("<br />","</p><p>",trim($swot_style));
+		$data['m_swot_s'] = str_replace("<br />","</p><p>",trim($m_swot_s));
+		$data['m_swot_w'] = str_replace("<br />","</p><p>",trim($m_swot_w));
+		$data['make_user'] = str_replace("<br />","</p><p>",trim($make_user));
+		$data['m_swot_o'] = str_replace("<br />","</p><p>",trim($m_swot_o));
+		$data['m_swot_t'] = str_replace("<br />","</p><p>",trim($m_swot_t));
+		$data['m_swot_s_o'] = str_replace("<br />","</p><p>",trim($m_swot_s_o));
+		$data['m_swot_w_o'] = str_replace("<br />","</p><p>",trim($m_swot_w_o));
+		$data['m_swot_s_t'] = str_replace("<br />","</p><p>",trim($m_swot_s_t));
+		$data['m_swot_w_t'] = str_replace("<br />","</p><p>",trim($m_swot_w_t));
 		$data['update_date'] = date("Y-m-d H:i:s");
 		if(empty($id)||$id==0) {
 			// insert
