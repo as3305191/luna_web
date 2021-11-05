@@ -233,6 +233,8 @@ class Swot extends MY_Mgmt_Controller {
 				$this -> dao -> insert($data);
 			} else{
 				// update
+				$data['is_use_user_id'] = '0';
+				$data['is_use'] = '0';
 				$this -> dao -> update($data, $id);
 			}
 		}
