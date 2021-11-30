@@ -74,17 +74,15 @@ class Production_monthly_sum extends MY_Base_Controller {
 	}
 
 	function export_all() {
-			$this->load->dbutil();
-      $this->load->helper('file');
-      $this->load->helper('download');
-      $delimiter = ",";
-      $newline = "\r\n";
-			$date = date('YmdHis');
-      $filename = $date."-pruduction-daily.csv";
-
-			$data = $this -> session -> userdata("production_daily_last_data");
-
-			//create a file pointer
+		$this->load->dbutil();
+		$this->load->helper('file');
+		$this->load->helper('download');
+		$delimiter = ",";
+		$newline = "\r\n";
+		$date = date('YmdHis');
+		$filename = $date."-pruduction-daily.csv";
+		$data = $this -> session -> userdata("production_daily_last_data");
+		//create a file pointer
     	$f = fopen('php://memory', 'w');
 			$fields = array(
 				iconv("UTF-8","Big5//IGNORE",'開始時間'),
