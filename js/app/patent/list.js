@@ -5,7 +5,7 @@ var patentAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-			
+					d.patent_name = $('#s_patent_name').val();
 					d.now_category = $('#now_category').val();
 					d.application_person = $('#application_person').val();
 					d.application_num = $('#application_num_search').val();
@@ -42,7 +42,9 @@ var patentAppClass = (function(app) {
 		app.doExportAll = function(id) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
 		}
-
+		$('#s_patent_name').on('keyup', function(){
+			app.tableReload();
+		});
 		$('#application_person').on('keyup', function(){
 			app.tableReload();
 		});

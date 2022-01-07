@@ -46,6 +46,7 @@ class Patent extends MY_Mgmt_Controller {
 			'summary_search',
 			'now_category',
 			'patent_family_search',
+			'patent_name'
 		));
 		$patent_status = $this->get_post('patent_status');
 		if(!empty($patent_status)){

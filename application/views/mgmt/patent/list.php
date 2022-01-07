@@ -40,6 +40,12 @@ thead tr th {
 								<div id="category">
 								</div>
 								<div class="widget-toolbar pull-left">
+									<label>專利名稱</label>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<input id="s_patent_name" ondragover="" autocomplete="off" type="text" class="form-control" />
+								</div>
+								<div class="widget-toolbar pull-left">
 									<label>申請人</label>
 								</div>
 								<div class="widget-toolbar pull-left">
