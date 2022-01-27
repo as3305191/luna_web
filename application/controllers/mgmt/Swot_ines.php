@@ -22,7 +22,7 @@ class Swot_ines extends MY_Mgmt_Controller {
 
 		// $this -> to_json($data);
 
-		$this -> load -> view('mgmt/swot/list', $data);
+		$this -> load -> view('mgmt/swot_ines/list', $data);
 	}
 
 	public function get_data() {
@@ -177,7 +177,7 @@ class Swot_ines extends MY_Mgmt_Controller {
 		$data['department_list'] = $this -> users_dao -> find_all_department();
 
 		// $this -> to_json($data);
-		$this->load->view('mgmt/swot/edit', $data);
+		$this->load->view('mgmt/swot_ines/edit', $data);
 	}
 
 	public function insert() {
@@ -363,7 +363,7 @@ class Swot_ines extends MY_Mgmt_Controller {
 			$data['item'] = $item;
 		}
 		// $this -> to_json($data);
-		$this->load->view('mgmt/swot/export', $data);
+		$this->load->view('mgmt/swot_ines/export', $data);
 	}
 
 	public function replace_num_title_after_del() {
