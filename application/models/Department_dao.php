@@ -196,7 +196,7 @@ class Department_dao extends MY_Model {
 	}
 	function find_bfl_d_or_c(){
 		$this -> db -> from($this -> table_name);
-		$this -> db -> where('level =','5');
+		$this -> db -> where('level =','1');
 		$this -> db -> where('id >=44');
 		$this -> db -> order_by('pos','asc');
 		$list = $this -> db -> get() -> result();
