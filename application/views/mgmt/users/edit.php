@@ -105,7 +105,7 @@
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">隸屬部門</label>
-						<div class="col-md-9 widget-toolbar pull-left" id="patent_status">
+						<div class="col-md-9 pull-left" id="patent_status">
 							
 							<?php foreach ($department_list as $each) : ?>
 								<?php if(!empty($item -> in_departments)): ?>
