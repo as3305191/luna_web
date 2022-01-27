@@ -5,10 +5,10 @@ class Swot_ines extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('Swot_dao', 'dao');
+		$this -> load -> model('Swot_ines_dao', 'dao');
 		$this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Swot_style_dao', 'swot_style_dao');
-		$this -> load -> model('Swot_title_dao','swot_title_dao');
+		$this -> load -> model('Swot_style_ines_dao', 'swot_style_dao');
+		$this -> load -> model('Swot_title_ines_dao','swot_title_dao');
 		$this -> load -> model('Department_dao','d_dao');
 		// $this -> load-> library('word');
 	}

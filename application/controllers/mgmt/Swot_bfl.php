@@ -9,6 +9,7 @@ class Swot_bfl extends MY_Mgmt_Controller {
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Swot_style_bfl_dao', 'swot_style_dao');
 		$this -> load -> model('Swot_title_bfl_dao','swot_title_dao');
+		$this -> load -> model('Department_dao','d_dao');
 	}
 
 	public function index()
