@@ -501,7 +501,7 @@ class Users_dao extends MY_Model {
 
 	function find_all_department() {
 		$this -> db -> where('parent_id',5);
-		$this -> db -> or_where('parent_id',43);
+		$this -> db -> or_where('id',2);
 		$this -> db -> or_where('id',52);
 		return $this -> db -> get('department') -> result();
 	}
