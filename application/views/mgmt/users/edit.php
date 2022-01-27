@@ -107,24 +107,27 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">隸屬部門</label>
 						<div class="widget-toolbar pull-left" id="patent_status">
-							<div>
+							<div > 
 								<?php foreach ($department_list as $each) : ?>
-										<?php if(!empty($item -> in_departments)): ?>
-										
+									<?php if(!empty($item -> in_departments)): ?>
+										<div > 
 											<label class="u-check g-pl-0">
 												<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="in_department[]" type="checkbox" value="<?= $each->id ?>"
 													<?php foreach ($item -> in_departments as $each_department) : ?>
 														<?= isset($each_department) && $each_department == $each->id ? 'checked': '' ?> 
 													<?php endforeach ?>
-												 >
+												>
 												<span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
 											</label>
-										<?php else: ?>
+										</div > 
+									<?php else: ?>
+										<div > 
 											<label class="u-check g-pl-0">
 												<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="in_department[]" type="checkbox" value="<?= $each->id ?>" <?= isset($each_department) && $each_department == $each->id ? 'checked': '' ?> >
 												<span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
 											</label>
-										<?php endif ?>
+										</div > 
+									<?php endif ?>
 								<?php endforeach ?>
 							</div>
 						</div>
