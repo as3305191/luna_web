@@ -435,7 +435,7 @@
 
 	function do_save() {
 		// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
-		var url = baseUrl + 'mgmt/swot/insert'; // the script where you handle the form input.
+		var url = baseUrl + 'mgmt/swot_ines/insert'; // the script where you handle the form input.
 		if($('#item_id').val()==0){
 			var unify = $('#unify_for_0').val();
 		} else{
@@ -485,7 +485,7 @@
 
 	function load_swot_style() {
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_style',
+			url: '<?= base_url() ?>' + 'mgmt/swot_ines/find_swot_style',
 			type: 'POST',
 			data: {},
 			dataType: 'json',
@@ -518,7 +518,7 @@
 	
 	function load_swot_title() {
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
+			url: '<?= base_url() ?>' + 'mgmt/swot_ines/find_swot_title',
 			type: 'POST',
 			data: {},
 			dataType: 'json',
@@ -553,7 +553,7 @@
 
 	function re_num() {
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/swot/replace_num_title_after_del',
+			url: '<?= base_url() ?>' + 'mgmt/swot_ines/replace_num_title_after_del',
 			type: 'POST',
 			data: {
 				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
