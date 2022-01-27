@@ -43,33 +43,27 @@ thead tr th {
 									<select class="col-md-9 control-label" id="list_title"  >
 										<!-- option from javascript -->
 									</select>
-									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
 
 										<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
-									<?php endif?>
 
 								</div>
 								<div class="pull-left " style="width:200px;line-height:32px">
 									<select class="col-md-9 control-label" id="list_style"  >
 										<!-- option from javascript -->
 									</select>
-									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
 										<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_swot"><i class="fa fa-plus-circle fa-lg"></i></button>
-									<?php endif?>
 
 								</div>
-								<div class="pull-left ">
-									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
+								<!-- <div class="pull-left ">
 										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合公司
 										</button>
-									<?php endif?>
-								</div>
-							<div class="widget-toolbar pull-right">
+								</div> -->
+							<!-- <div class="widget-toolbar pull-right">
 								<button onclick="currentApp.do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
 									<i class="fa fa-refresh"></i>一鍵清除自己使用中檔案
 								</button>
-							</div>
+							</div> -->
 						</header>
 
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />

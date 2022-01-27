@@ -43,7 +43,7 @@ thead tr th {
 									<select class="col-md-9 control-label" id="list_title"  >
 										<!-- option from javascript -->
 									</select>
-									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
+									<?php if($login_user->role_id==9||$login_user->role_id==45): ?>
 
 										<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
 									<?php endif?>
@@ -53,13 +53,13 @@ thead tr th {
 									<select class="col-md-9 control-label" id="list_style"  >
 										<!-- option from javascript -->
 									</select>
-									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
+									<?php if($login_user->role_id==9||$login_user->role_id==45): ?>
 										<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_swot"><i class="fa fa-plus-circle fa-lg"></i></button>
 									<?php endif?>
 
 								</div>
 								<div class="pull-left ">
-									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9): ?>
+									<?php if($login_user->role_id==9||$login_user->role_id==45): ?>
 										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合公司
 										</button>
