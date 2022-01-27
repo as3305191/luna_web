@@ -89,7 +89,7 @@ class Swot_bfl extends MY_Mgmt_Controller {
 			}
 			if(!empty($item->class_id) && $item->class_id>0){
 				$swot_class= $this -> d_dao -> find_by_id($item->class_id);
-				if($swot_class->level==3){
+				if($swot_class->level==2){
 					$data['swot_class'] = $swot_class->name;
 				} else if($swot_class->level==0){
 					$data['swot_class'] = '深緣及水';
@@ -159,9 +159,9 @@ class Swot_bfl extends MY_Mgmt_Controller {
 				$item['m_swot_s_t'] = $this->replace_num_title($m_swot_s_t);
 				$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
 				$data['item']= $item;
-				if($dep==0||$dep==3){
-					$data['swot_class'] = '寬仕';
-					$data['new_class_id'] = 3;
+				if($dep==0||$dep==2){
+					$data['swot_class'] = '深緣及水';
+					$data['new_class_id'] = 2;
 				} else{
 					$dep_item = $this -> d_dao -> find_by_id($dep);
 					$data['swot_class'] = $dep_item->name;

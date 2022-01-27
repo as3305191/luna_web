@@ -33,7 +33,7 @@ thead tr th {
 								<div class="pull-left " style="width:150px;line-height:32px">
 									<select class="col-md-11 control-label" id="d_or_c" >
 										<option value="0">請選擇部門</option>
-										<option value="3">寬仕</option>
+										<option value="2">深緣及水</option>
 										<?php foreach ($all_department_list as $each) : ?>
 												<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
 										<?php endforeach ?>	
