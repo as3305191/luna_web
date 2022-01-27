@@ -178,14 +178,14 @@ thead tr th {
 	}];
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/swot/list.js", function(){
-			currentApp = new SwotAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/swot_ines/list.js", function(){
+			currentApp = new SwotinesAppClass(new BaseAppClass({}));
 			
 		});
 	});
 	function load_list_title() {
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
+			url: '<?= base_url() ?>' + 'mgmt/swot_ines/find_swot_title',
 			type: 'POST',
 			data: {},
 			dataType: 'json',
@@ -215,7 +215,7 @@ thead tr th {
 
 	function load_list_style() {
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_style',
+			url: '<?= base_url() ?>' + 'mgmt/swot_ines/find_swot_style',
 			type: 'POST',
 			data: {},
 			dataType: 'json',
@@ -254,7 +254,7 @@ thead tr th {
 			closeBtn:0,
 			area:['400px','200px'],
 			shadeClose:true,
-			content:'<?=base_url('mgmt/swot/new_swot_title')?>'
+			content:'<?=base_url('mgmt/swot_ines/new_swot_title')?>'
 		})
 	});
 
@@ -265,7 +265,7 @@ thead tr th {
 			closeBtn:0,
 			area:['400px','200px'],
 			shadeClose:true,
-			content:'<?=base_url('mgmt/swot/new_swot_style')?>'
+			content:'<?=base_url('mgmt/swot_ines/new_swot_style')?>'
 		})
 	});
 </script>
