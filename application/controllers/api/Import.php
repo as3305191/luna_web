@@ -145,10 +145,10 @@ class Import extends MY_Base_Controller {
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
 			for($row=2; $row<=$highestRow; $row++){
-				$account = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-				$password = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-				$user_name = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-				$depname = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
+				$account = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+				$password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+				$user_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+				$depname = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
 				// $depmail = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
 				// $personalmail = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
 	
