@@ -207,7 +207,7 @@ class Department_dao extends MY_Model {
 	function find_ines_d_or_c(){
 		$this -> db -> from($this -> table_name);
 		$this -> db -> where('level =','0');
-		$this -> db -> where('id = 52 ');
+		$this -> db -> where('id = ',"52");
 		$this -> db -> order_by('pos','asc');
 		$list = $this -> db -> get() -> result();
 
