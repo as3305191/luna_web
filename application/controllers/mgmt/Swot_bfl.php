@@ -10,6 +10,7 @@ class Swot_bfl extends MY_Mgmt_Controller {
 		$this -> load -> model('Swot_style_bfl_dao', 'swot_style_dao');
 		$this -> load -> model('Swot_title_bfl_dao','swot_title_dao');
 		$this -> load -> model('Department_dao','d_dao');
+		// $this -> load-> library('word');
 	}
 
 	public function index()
@@ -91,7 +92,7 @@ class Swot_bfl extends MY_Mgmt_Controller {
 				if($swot_class->level==3){
 					$data['swot_class'] = $swot_class->name;
 				} else if($swot_class->level==0){
-					$data['swot_class'] = '寬仕';
+					$data['swot_class'] = '深緣及水';
 				} else{
 					$swot_dep= $this -> d_dao -> find_by_id($swot_class->parent_id);
 					$data['swot_class'] =$swot_dep->name.'+'.$swot_class->name;

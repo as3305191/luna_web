@@ -92,7 +92,7 @@ class Swot_ines extends MY_Mgmt_Controller {
 				if($swot_class->level==3){
 					$data['swot_class'] = $swot_class->name;
 				} else if($swot_class->level==0){
-					$data['swot_class'] = '寬仕';
+					$data['swot_class'] = 'INES';
 				} else{
 					$swot_dep= $this -> d_dao -> find_by_id($swot_class->parent_id);
 					$data['swot_class'] =$swot_dep->name.'+'.$swot_class->name;
