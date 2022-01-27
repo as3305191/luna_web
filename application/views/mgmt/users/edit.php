@@ -107,7 +107,7 @@
 						<label class="col-md-3 control-label">隸屬部門</label>
 						<div class="col-md-9 pull-left" id="patent_status">
 							
-							<?php foreach ($department_list as $each) : ?>
+							<?php foreach ($department_list_1 as $each) : ?>
 								<?php if(!empty($item -> in_departments)): ?>
 									<label class="u-check g-pl-0">
 										<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="in_department[]" type="checkbox" value="<?= $each->id ?>"
