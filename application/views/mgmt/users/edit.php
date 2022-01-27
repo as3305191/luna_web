@@ -107,7 +107,7 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">隸屬部門</label>
 						<div class="widget-toolbar pull-left" id="patent_status">
-							<div class="col-md-9 control-label"> 
+							<div class="col-md-9 "> 
 								<?php foreach ($department_list as $each) : ?>
 									<?php if(!empty($item -> in_departments)): ?>
 										<label class="u-check g-pl-0">
