@@ -246,7 +246,7 @@ class Swot_ines extends MY_Mgmt_Controller {
 
 	public function new_swot_style(){
 		$data = array();
-		$this -> load -> view('layout/show_new_swot',$data);
+		$this -> load -> view('layout/show_new_swot_ines',$data);
 	}
 
 	public function add_swot(){
@@ -268,7 +268,7 @@ class Swot_ines extends MY_Mgmt_Controller {
 
 	public function new_swot_title(){
 		$data = array();
-		$this -> load -> view('layout/show_new_swot_title',$data);
+		$this -> load -> view('layout/show_new_swot_title_ines',$data);
 	}
 
 	public function add_title(){
