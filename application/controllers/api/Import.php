@@ -139,34 +139,34 @@ class Import extends MY_Base_Controller {
 		// $this -> to_json($res);
 	}
 
-	// function import1(){
-	// 	$object = PHPExcel_IOFactory::load("123.xlsx");
-	// 	foreach($object->getWorksheetIterator() as $worksheet){
-	// 		$highestRow = $worksheet->getHighestRow();
-	// 		$highestColumn = $worksheet->getHighestColumn();
-	// 		for($row=2; $row<=$highestRow; $row++){
-	// 			$account = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-	// 			$password = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-	// 			$user_name = $worksheet->getCellByColumnAndRow(5, $row)->getValue();
-	// 			$depname = $worksheet->getCellByColumnAndRow(11, $row)->getValue();
-	// 			$depmail = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
-	// 			$personalmail = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
+	function import1(){
+		$object = PHPExcel_IOFactory::load("1123.xlsx");
+		foreach($object->getWorksheetIterator() as $worksheet){
+			$highestRow = $worksheet->getHighestRow();
+			$highestColumn = $worksheet->getHighestColumn();
+			for($row=2; $row<=$highestRow; $row++){
+				$account = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+				$password = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+				$user_name = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+				$depname = $worksheet->getCellByColumnAndRow(9, $row)->getValue();
+				// $depmail = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
+				// $personalmail = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
 	
-	// 				$data = array(
-	// 					'account' =>$account,
-	// 					'password' =>$password,
-	// 					'user_name' =>$user_name,
-	// 					'depname' =>$depname,
-	// 					'email' =>$depmail,
-	// 					'personalmail' =>$personalmail,
-	// 				);
-	// 				// $this->users_dao->update_by($data,'empid',$empid);
-	// 				$this->users_dao->insert($data);
-	// 		}
-	// 	}
-	// 	// $res['success'] = TRUE;
-	// 	// $this -> to_json($res);
-	// }
+					$data = array(
+						'account' =>$account,
+						'password' =>$password,
+						'user_name' =>$user_name,
+						'depname' =>$depname,
+						// 'email' =>$depmail,
+						// 'personalmail' =>$personalmail,
+					);
+					// $this->users_dao->update_by($data,'empid',$empid);
+					$this->users_dao->insert($data);
+			}
+		}
+		// $res['success'] = TRUE;
+		// $this -> to_json($res);
+	}
 
 }
 ?>
