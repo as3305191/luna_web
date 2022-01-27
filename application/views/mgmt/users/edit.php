@@ -109,7 +109,6 @@
 						<div class="widget-toolbar pull-left" id="patent_status">
 							<div>
 								<?php foreach ($department_list as $each) : ?>
-									<?php if(!empty($each->level==3)): ?>
 										<?php if(!empty($item -> in_departments)): ?>
 										
 											<label class="u-check g-pl-0">
@@ -126,7 +125,6 @@
 												<span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
 											</label>
 										<?php endif ?>
-									<?php endif ?>
 								<?php endforeach ?>
 							</div>
 						</div>
