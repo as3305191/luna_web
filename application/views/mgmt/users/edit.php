@@ -82,50 +82,48 @@
 					<div class="form-group">
 						<label class="col-md-3 control-label">課</label>
 						<div class="col-md-6">
-						<?php if(!empty($item)): ?>
-							<select name="div_id" id="div_id" class="form-control">
-								<?php if(!empty( $div_list)): ?>
-									
-									<?php foreach($div_list as $each): ?>
-										<option value="<?= $each -> id?>" <?= isset($item) && $item -> div_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
-									<?php endforeach ?>
-								<?php else: ?>
-									<option disabled="disabled" >部門沒有課</option>
-								<?php endif ?>
-							</select>
+							<?php if(!empty($item)): ?>
+								<select name="div_id" id="div_id" class="form-control">
+									<?php if(!empty( $div_list)): ?>
+										
+										<?php foreach($div_list as $each): ?>
+											<option value="<?= $each -> id?>" <?= isset($item) && $item -> div_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
+										<?php endforeach ?>
+									<?php else: ?>
+										<option disabled="disabled" >部門沒有課</option>
+									<?php endif ?>
+								</select>
 
-						<?php else: ?>
-							<select name="div_id" id="div_id" class="form-control" >
-								<option disabled="disabled">請先選擇部門</option>
-							</select>
-						<?php endif ?>
-							
+							<?php else: ?>
+								<select name="div_id" id="div_id" class="form-control" >
+									<option disabled="disabled">請先選擇部門</option>
+								</select>
+							<?php endif ?>
 						</div>
 					</div>
 				</fieldset>
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">隸屬部門</label>
-						<div class="widget-toolbar pull-left" id="patent_status">
-							<div class="col-md-9 "> 
-								<?php foreach ($department_list as $each) : ?>
-									<?php if(!empty($item -> in_departments)): ?>
-										<label class="u-check g-pl-0">
-											<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="in_department[]" type="checkbox" value="<?= $each->id ?>"
-												<?php foreach ($item -> in_departments as $each_department) : ?>
-													<?= isset($each_department) && $each_department == $each->id ? 'checked': '' ?> 
-												<?php endforeach ?>
-											>
-											<span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
-										</label>
-									<?php else: ?>
-										<label class="u-check g-pl-0">
-											<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="in_department[]" type="checkbox" value="<?= $each->id ?>" <?= isset($each_department) && $each_department == $each->id ? 'checked': '' ?> >
-											<span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
-										</label>
-									<?php endif ?>
-								<?php endforeach ?>
-							</div>
+						<div class="col-md-9 widget-toolbar pull-left" id="patent_status">
+							
+							<?php foreach ($department_list as $each) : ?>
+								<?php if(!empty($item -> in_departments)): ?>
+									<label class="u-check g-pl-0">
+										<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="in_department[]" type="checkbox" value="<?= $each->id ?>"
+											<?php foreach ($item -> in_departments as $each_department) : ?>
+												<?= isset($each_department) && $each_department == $each->id ? 'checked': '' ?> 
+											<?php endforeach ?>
+										>
+										<span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
+									</label>
+								<?php else: ?>
+									<label class="u-check g-pl-0">
+										<input class="g-hidden-xs-up g-pos-abs g-top-0 g-left-0" name="in_department[]" type="checkbox" value="<?= $each->id ?>" <?= isset($each_department) && $each_department == $each->id ? 'checked': '' ?> >
+										<span class="btn btn-md btn-block u-btn-outline-lightgray g-color-white--checked g-bg-primary--checked rounded-0"><?= $each->name ?></span>
+									</label>
+								<?php endif ?>
+							<?php endforeach ?>
 						</div>
 					</div>
 				</fieldset>
