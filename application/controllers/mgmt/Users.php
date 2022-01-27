@@ -89,7 +89,7 @@ class Users extends MY_Mgmt_Controller {
 		$data['department_list'] = $this -> dao -> find_all_k_b_i_department();
 		$data['department_list_1'] = $this -> dao -> find_all_k_b_i_department_div();
 		
-		// $this -> to_json($data);
+		$this -> to_json($data);
 
 		$this->load->view('mgmt/users/edit', $data);
 	}
