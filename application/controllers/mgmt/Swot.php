@@ -116,9 +116,15 @@ class Swot extends MY_Mgmt_Controller {
 				));
 				$q_data['title'] =  $title;
 				$q_data['list_style'] =  $style;
-				$q_data['dep'] =  $dep;
+				
 				$q_data['unify'] =  1;
 
+				
+				if($dep==0){
+					$q_data['dep'] = $s_data['login_user']->role_id;
+				} else{
+					$q_data['dep'] =  $dep;
+				}
 				$list = $this -> dao -> query_ajax($q_data);
 				$s='';
 				$w='';
