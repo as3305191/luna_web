@@ -17,7 +17,6 @@
 			</a>
 		</div>
 	</header>
-
 	<!-- widget div-->
 	<div>
 		<!-- widget edit box -->
@@ -32,7 +31,6 @@
 
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">帳號</label>
@@ -49,7 +47,6 @@
 						</div>
 					</div>
 				</fieldset>
-
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">密碼</label>
@@ -58,7 +55,6 @@
 						</div>
 					</div>
 				</fieldset>
-			
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">部門</label>
