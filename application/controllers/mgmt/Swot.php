@@ -165,7 +165,7 @@ class Swot extends MY_Mgmt_Controller {
 						$u_data = array();
 						$u_data = $this -> setup_user_data($data);
 						$u_data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-						$dep_item = $this -> d_dao -> find_by_id($$u_data['login_user']->role_id);
+						$dep_item = $this -> d_dao -> find_by_id($u_data['login_user']->role_id);
 						$data['swot_class'] = '寬仕';
 						$data['new_class_id'] = 3;
 					} else{
