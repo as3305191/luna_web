@@ -261,7 +261,7 @@ thead tr th {
 		if(style=="8"){
 			var title=$('#list_title').val();
 			var dep=$('#d_or_c').val();
-			currentApp.doEdit1(0,title,8,dep);
+			currentApp.doEdit1(0,title,8,dep=0);
 		} else{
 			alert("請選擇總檢");
 		}
