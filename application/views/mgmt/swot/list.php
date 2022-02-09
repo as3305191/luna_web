@@ -254,10 +254,16 @@ thead tr th {
 		
 	}
 	function unify_all_inspection() {
-		var title=$('#list_title').val();
-		var dep=$('#d_or_c').val();
+		var style=$('#list_style').val();
+		if(style=="8"){
+			var title=$('#list_title').val();
+			var dep=$('#d_or_c').val();
+			currentApp.doEdit1(0,title,8,dep);
+		} else{
+			alert("請選擇總檢");
+		}
+		
 
-		currentApp.doEdit1(0,title,8,dep);
 	}
 	$('#add_title').click(function() {
 		layer.open({
