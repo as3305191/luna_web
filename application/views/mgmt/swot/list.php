@@ -250,7 +250,7 @@ thead tr th {
 		if(style!=="8"){
 			var title=$('#list_title').val();
 			var dep=$('#d_or_c').val();
-			currentApp.doEdit(0,title,style,dep);
+			currentApp.doEdit(0,title,style,dep=0);
 		} else{
 			alert("總檢無法使用整合公司");
 		}
