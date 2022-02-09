@@ -76,7 +76,6 @@
 						</div>
 					</div>
 				</fieldset>
-
 				<fieldset>
 					<div class="form-group">
 						<label class="col-md-3 control-label">課</label>
@@ -84,7 +83,6 @@
 							<?php if(!empty($item)): ?>
 								<select name="div_id" id="div_id" class="form-control">
 									<?php if(!empty( $div_list)): ?>
-										
 										<?php foreach($div_list as $each): ?>
 											<option value="<?= $each -> id?>" <?= isset($item) && $item -> div_id == $each -> id ? 'selected' : '' ?> ><?=  $each -> name ?></option>
 										<?php endforeach ?>
@@ -92,7 +90,6 @@
 										<option disabled="disabled" >部門沒有課</option>
 									<?php endif ?>
 								</select>
-
 							<?php else: ?>
 								<select name="div_id" id="div_id" class="form-control" >
 									<option disabled="disabled">請先選擇部門</option>
