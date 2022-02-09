@@ -103,65 +103,69 @@ class Swot extends MY_Mgmt_Controller {
 
 		} else{
 			if($title>0||$style>0){
-				if($style==8){
+				$item = array();
+				$q_data = $this -> get_posts(array(
+					'length',
+					'start',
+					'columns',
+					'search',
+					'order'
+				));
+				$q_data['title'] =  $title;
+				$q_data['style'] =  $style;
+				$q_data['dep'] =  $dep;
+				$q_data['unify'] =  1;
 
+				$list = $this -> dao -> query_ajax($q_data);
+				$s='';
+				$w='';
+				$o='';
+				$t='';
+				$s_o='';
+				$w_o='';
+				$s_t='';
+				$w_t='';
+				foreach($list as $each){	
+
+					$s.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s)));
+					$w.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w)));
+					$o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_o)));
+					$t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_t)));
+					$s_o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_o)));
+					$w_o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_o)));
+					$s_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_t)));
+					$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
+				}
+			
+				$item['id'] = 0;
+				$item['class_id'] = 0;
+				$item['swot_style_id'] = $style;
+				$item['title'] = $title;
+				$m_swot_s = str_replace("<p><br></p>","",trim($s));
+				$m_swot_w = str_replace("<p><br></p>","",trim($w));
+				$m_swot_o = str_replace("<p><br></p>","",trim($o));
+				$m_swot_t = str_replace("<p><br></p>","",trim($t));
+				$m_swot_s_o = str_replace("<p><br></p>","",trim($s_o));
+				$m_swot_w_o = str_replace("<p><br></p>","",trim($w_o));
+				$m_swot_s_t = str_replace("<p><br></p>","",trim($s_t));
+				$m_swot_w_t = str_replace("<p><br></p>","",trim($w_t));
+
+				$item['m_swot_s'] = $this->replace_num_title($m_swot_s);
+				$item['m_swot_w'] = $this->replace_num_title($m_swot_w);
+				$item['m_swot_o'] = $this->replace_num_title($m_swot_o);
+				$item['m_swot_t'] = $this->replace_num_title($m_swot_t);
+				$item['m_swot_s_o'] = $this->replace_num_title($m_swot_s_o);
+				$item['m_swot_w_o'] = $this->replace_num_title($m_swot_w_o);
+				$item['m_swot_s_t'] = $this->replace_num_title($m_swot_s_t);
+				$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
+				$data['item']= $item;
+
+				if($style==8){
+					$dep_item = $this -> d_dao -> find_by_id($dep);
+					$data['swot_class'] = $dep_item->name;
+					$data['new_class_id'] = $dep;
 				} else{
-					$item = array();
-					$q_data = $this -> get_posts(array(
-						'length',
-						'start',
-						'columns',
-						'search',
-						'order'
-					));
-					$q_data['title'] =  $title;
-					$q_data['style'] =  $style;
-					$q_data['dep'] =  $dep;
-					$q_data['unify'] =  1;
-	
-					$list = $this -> dao -> query_ajax($q_data);
-					$s='';
-					$w='';
-					$o='';
-					$t='';
-					$s_o='';
-					$w_o='';
-					$s_t='';
-					$w_t='';
-					foreach($list as $each){	
-	
-						$s.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s)));
-						$w.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w)));
-						$o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_o)));
-						$t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_t)));
-						$s_o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_o)));
-						$w_o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_o)));
-						$s_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_t)));
-						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
-					}
-				
-					$item['id'] = 0;
-					$item['class_id'] = 0;
-					$item['swot_style_id'] = $style;
-					$item['title'] = $title;
-					$m_swot_s = str_replace("<p><br></p>","",trim($s));
-					$m_swot_w = str_replace("<p><br></p>","",trim($w));
-					$m_swot_o = str_replace("<p><br></p>","",trim($o));
-					$m_swot_t = str_replace("<p><br></p>","",trim($t));
-					$m_swot_s_o = str_replace("<p><br></p>","",trim($s_o));
-					$m_swot_w_o = str_replace("<p><br></p>","",trim($w_o));
-					$m_swot_s_t = str_replace("<p><br></p>","",trim($s_t));
-					$m_swot_w_t = str_replace("<p><br></p>","",trim($w_t));
-	
-					$item['m_swot_s'] = $this->replace_num_title($m_swot_s);
-					$item['m_swot_w'] = $this->replace_num_title($m_swot_w);
-					$item['m_swot_o'] = $this->replace_num_title($m_swot_o);
-					$item['m_swot_t'] = $this->replace_num_title($m_swot_t);
-					$item['m_swot_s_o'] = $this->replace_num_title($m_swot_s_o);
-					$item['m_swot_w_o'] = $this->replace_num_title($m_swot_w_o);
-					$item['m_swot_s_t'] = $this->replace_num_title($m_swot_s_t);
-					$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
-					$data['item']= $item;
+					
 					if($dep==0||$dep==3){
 						$data['swot_class'] = '寬仕';
 						$data['new_class_id'] = 3;
@@ -170,9 +174,9 @@ class Swot extends MY_Mgmt_Controller {
 						$data['swot_class'] = $dep_item->name;
 						$data['new_class_id'] = $dep;
 					}
-					$data['unify'] = 1;
+					
 				}
-			
+				$data['unify'] = 1;
 			} 
 		}
 		$u_data = $this -> setup_user_data($u_data);
