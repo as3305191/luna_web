@@ -60,6 +60,9 @@ class Swot extends MY_Mgmt_Controller {
 	public function edit($id) {
 		$data = array();
 		$u_data = array();
+		$s_data = array();
+		$s_data = $this -> setup_user_data($s_data);
+		$s_data['login_user'] = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['id'] = $id;
 		$title = $this -> get_get('title');
 		$style = $this -> get_get('style');
@@ -162,12 +165,9 @@ class Swot extends MY_Mgmt_Controller {
 
 				if($style==8){
 					if($dep==0){
-						$u_data = array();
-						$u_data = $this -> setup_user_data($data);
-						$u_data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-						$dep_item = $this -> d_dao -> find_by_id($u_data['login_user']->role_id);
-						$data['swot_class'] = '寬仕';
-						$data['new_class_id'] = 3;
+						$dep_item = $this -> d_dao -> find_by_id($s_data['login_user']->role_id);
+						$data['swot_class'] = $dep_item->name;;
+						$data['new_class_id'] = $dep;
 					} else{
 						$dep_item = $this -> d_dao -> find_by_id($dep);
 						$data['swot_class'] = $dep_item->name;
