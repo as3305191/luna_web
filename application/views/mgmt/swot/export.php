@@ -361,7 +361,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 					</td>
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="text-align:right;border:none;" >
 						<div  style="text-align:left;font-size:125%;color:#000;" >製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
-						<div style="text-align:right;padding:0px 50px 0px 0px;font-size:125%;color:#000;">RA2602-A</div>
+						<div style="text-align:right;padding:20px 40px 0px 0px;font-size:125%;color:#000;">RA2602-A</div>
 					</td>
 				</tr>
 		</tbody>
