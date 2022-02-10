@@ -106,7 +106,6 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 		page-break-after: auto; 
 	}	
 
-
 	.noBreak {
 		break-inside: avoid;
 	}
@@ -118,7 +117,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 
 	<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
 			<tbody class="" width="100%">
-				<tr>
+				<tr style="pointer-events: none;">
 					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
 						<div style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:250%;padding:50px 50px 30px 50px;color:#000">寬仕工業股份有限公司</div>
 						<?php if(!empty( $item -> unify) && $item -> unify>0): ?>
@@ -129,7 +128,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 						<div style="text-align:right;color:#000;font-size:125%">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
 					</td>
 				</tr>
-				<tr class="noBreak">
+				<tr class="noBreak" style="pointer-events: none;">
 					<td colspan="1" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
@@ -138,7 +137,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								
 						</table>
 					</td>
-					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
+					<td colspan="1" valign="top" class="noBreak td_table col-xs-4" >
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-S(優勢)</td>
@@ -204,7 +203,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 		<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
 			<tbody class="" width="100%">
 
-				<tr class="noBreak">
+				<tr class="noBreak" style="pointer-events: none;">
 					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr>
@@ -236,7 +235,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 						</table>
 					</td>
 				</tr>
-				<tr style="border:none;" >
+				<tr style="border:none;pointer-events: none;">
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
 					</td>
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
@@ -252,7 +251,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	<?php else: ?>
 		<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
 			<tbody class="" width="100%">
-				<tr>
+				<tr style="pointer-events: none;">
 					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
 						<div style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:250%;padding:50px 50px 30px 50px;color:#000">寬仕工業股份有限公司</div>
 						<?php if(!empty( $item -> unify) && $item -> unify>0): ?>
@@ -263,7 +262,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 						<div style="text-align:right;color:#000;font-size:125%">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
 					</td>
 				</tr>
-				<tr class="noBreak">
+				<tr class="noBreak" style="pointer-events: none;">
 					<td colspan="1" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
@@ -292,7 +291,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 						</table>
 					</td>
 				</tr>
-				<tr class="noBreak">
+				<tr class="noBreak" style="pointer-events: none;">
 					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr>
@@ -326,7 +325,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 				</tr>
 		
 
-				<tr class="noBreak">
+				<tr class="noBreak" style="pointer-events: none;">
 					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr>
@@ -358,7 +357,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 						</table>
 					</td>
 				</tr>
-				<tr style="border:none;" >
+				<tr style="border:none; pointer-events: none;" >
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
 					</td>
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
