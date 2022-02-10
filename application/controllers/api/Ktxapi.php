@@ -9,7 +9,7 @@ class Ktxapi extends MY_Base_Controller {
 	public function test() {
 		header("Content-Type:text/html;charset=utf-8");
 		$link=@mysqli_connect(
-		'192.168.1.248/MSSQL104EHRMS','pony','!pony','97238228');
+		'192.168.1.248\MSSQL104EHRMS','pony','!pony','97238228');
 		if(!$link){echo"Mysql連錯<br/>";
 		echo mysqli_connect_error();
 		exit();
