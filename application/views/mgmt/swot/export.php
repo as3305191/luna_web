@@ -76,11 +76,12 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 
 @page {
-	margin: 10px 100px 0px 0px !important;
+	/* margin: 10px 100px 0px 0px !important; */
 }
 @media print{
 	*{
 		-webkit-print-color-adjust: exact !important;
+		background-color: #fff !important;
 	}
 
 	.layui-table1{ 
