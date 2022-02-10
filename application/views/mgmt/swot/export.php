@@ -51,8 +51,8 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 
 <link rel="stylesheet" href="<?= base_url('js/layui/dist/css/layui.css') ?>">
 <style>
-	
-.ex_page{
+
+body{
 	border-color:#000 !important;
 }
 
@@ -374,5 +374,4 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 </div>
 <script type="text/javascript">
 
-	$('table').removeClass('hover');
 </script>
