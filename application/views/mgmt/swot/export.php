@@ -52,13 +52,17 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 <link rel="stylesheet" href="<?= base_url('js/layui/dist/css/layui.css') ?>">
 <style>
 
-body{
-	padding: 0px!important;
+.ex_page{
+	padding: 0;
+    margin: 0;
 }
 
 .layui-table1{ 
 	/* border-style:groove !important; */
-	margin: 0px 100px 0px 10px !important;
+	/* margin: 0px 100px 0px 10px !important; */
+	width: 100%;
+	height: 100%;
+	position: relative;
 }
 .td_table{
  	padding: 0px!important;
