@@ -14,8 +14,9 @@ class Ktxapi extends MY_Base_Controller {
 		// $msg = "test";
 
 		$res = $this -> curl -> simple_post("http://192.168.1.248/vwZZ_ASK_LEAVE");
-				$txt = iconv("big5","UTF-8", $res);
-				echo $txt;
+		$txt = iconv("big5","UTF-8", $res);
+		// echo $txt;
+		$this -> to_json($txt);
 	}
 }
 ?>
