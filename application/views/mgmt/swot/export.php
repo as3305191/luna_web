@@ -53,7 +53,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 <style>
 
 body{
-	border-color:#000 !important;
+	color:#fff !important;
 }
 
 .layui-table1{ 
