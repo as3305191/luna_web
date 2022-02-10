@@ -372,3 +372,6 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	</table>
 	<?php endif?>
 </div>
+<script>
+	document.getElementsByTagName("html")[0].style.backgroundColor="#fff";
+</script>
