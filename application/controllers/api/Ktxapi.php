@@ -9,14 +9,14 @@ class Ktxapi extends MY_Base_Controller {
 	public function test() {
 		header("Content-Type:text/html;charset=utf-8");
 		$link=@mysqli_connect(
-		'192.168.1.248','pony','!pony','MSSQL104EHRMS');
+		'192.168.1.248\MSSQL104EHRMS','pony','!pony','97238228');
 		if(!$link){echo"Mysql連錯<br/>";
 		echo mysqli_connect_error();
 		exit();
 		}
 
 		mysqli_query($link,"set names utf8");
-		$sql="SELECT * FROM `97238228.dbo.HRMST_NOTIFY_MANUAL` ";
+		$sql="SELECT * FROM `dbo.HRMST_NOTIFY_MANUAL` ";
 
 		$list=mysqli_query($link,$sql);
 		while($r = mysqli_fetch_assoc($list)) {
