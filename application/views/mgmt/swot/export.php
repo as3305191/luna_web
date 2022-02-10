@@ -377,6 +377,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 
 ( document ).ready(function() {
 	document.getElementsByTagName("body")[0].style.backgroundColor="";
+	document.getElementsByTagName("body")[0].style.backgroundColor="#fff";
 
 });
 </script>
