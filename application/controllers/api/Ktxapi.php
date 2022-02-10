@@ -16,7 +16,7 @@ class Ktxapi extends MY_Base_Controller {
 		}
 
 		mysqli_query($link,"set names utf8");
-		$sql="SELECT now_online FROM `user_online` WHERE id='1'";
+		$sql="SELECT * FROM `dbo.HRMST_NOTIFY_MANUAL` ";
 
 		$list=mysqli_query($link,$sql);
 		while($r = mysqli_fetch_assoc($list)) {
