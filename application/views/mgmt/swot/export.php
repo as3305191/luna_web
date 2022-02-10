@@ -367,3 +367,9 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	</table>
 	<?php endif?>
 </div>
+<script type="text/javascript">
+	$( document ).ready(function() {
+		$(element).removeClass('hover');
+	});
+
+</script>
