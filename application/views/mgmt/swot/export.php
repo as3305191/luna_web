@@ -76,7 +76,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 
 @page {
-	/* margin: 10px 100px 0px 0px !important; */
+	margin: 10px 100px 0px 10px !important;
 }
 @media print{
 	*{
