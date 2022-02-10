@@ -57,12 +57,15 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
     margin: 0;
 }
 
-.layui-table1{ 
-	/* border-style:groove !important; */
-	/* margin: 0px 100px 0px 10px !important; */
+table{
 	width: 100%;
 	height: 100%;
 	position: relative;
+}
+
+.layui-table1{ 
+	/* border-style:groove !important; */
+	margin: 0px 100px 0px 10px !important;
 }
 .td_table{
  	padding: 0px!important;
