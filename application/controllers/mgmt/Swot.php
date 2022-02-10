@@ -116,7 +116,6 @@ class Swot extends MY_Mgmt_Controller {
 				));
 				$q_data['title'] =  $title;
 				$q_data['list_style'] =  $style;
-				
 				$q_data['unify'] =  1;
 
 				
@@ -142,7 +141,6 @@ class Swot extends MY_Mgmt_Controller {
 				$s_t='';
 				$w_t='';
 				foreach($list as $each){	
-
 					$s.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s)));
 					$w.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w)));
 					$o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_o)));
