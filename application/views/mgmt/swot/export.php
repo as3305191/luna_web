@@ -53,14 +53,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 <style>
 
 .ex_page{
-	padding: 0;
-    margin: 0;
-}
-
-table{
-	width: 100%;
-	height: 100%;
-	position: relative;
+	border-color:#000 !important;
 }
 
 .layui-table1{ 
@@ -379,6 +372,3 @@ table{
 	</table>
 	<?php endif?>
 </div>
-<script type="text/javascript">
-
-</script>
