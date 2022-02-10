@@ -7,16 +7,24 @@ class Ktxapi extends MY_Base_Controller {
 	}
 
 	public function test() {
-		// echo "sms123";
-		// $m_acc = "0970632144";
-		// $m_pwd = "aaa123";
-		// $mobile = "0925815921";
-		// $msg = "test";
+		header("Content-Type:text/html;charset=utf-8");
+		$link=@mysqli_connect(
+		'192.168.1.248/MSSQL104EHRMS','pony','!pony','97238228');
+		if(!$link){echo"Mysql連錯<br/>";
+		echo mysqli_connect_error();
+		exit();
+		}
 
-		$res = $this -> curl -> simple_post("http://192.168.1.248/vwZZ_ASK_LEAVE");
-		$txt = iconv("big5","UTF-8", $res);
-		// echo $txt;
-		$this -> to_json($txt);
+		mysqli_query($link,"set names utf8");
+		$sql="SELECT now_online FROM `user_online` WHERE id='1'";
+
+		$list=mysqli_query($link,$sql);
+		while($r = mysqli_fetch_assoc($list)) {
+			$rows[] = $r;
+		}
+		
+		$now_all_online_user = json_encode($rows[0]);
+		echo($now_all_online_user);
 	}
 }
 ?>
