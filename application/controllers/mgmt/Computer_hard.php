@@ -11,7 +11,6 @@ class Computer_hard extends MY_Mgmt_Controller {
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Ketone_record_dao', 'ketone_record_dao');
-
 	}
 
 	public function index()
@@ -23,7 +22,6 @@ class Computer_hard extends MY_Mgmt_Controller {
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 
 				// $this -> to_json($data);
-
 		$this->load->view('mgmt/computer_hard/list', $data);
 	}
 
@@ -65,7 +63,6 @@ class Computer_hard extends MY_Mgmt_Controller {
 				$item = 0;
 			}
 			$data['item'] = $item;
-			
 		}
 
 		$s_data = $this -> setup_user_data(array());
@@ -84,7 +81,6 @@ class Computer_hard extends MY_Mgmt_Controller {
 			'computer_num',
 			'computer_property_num'
 		));
-
 		if(empty($id)) {
 			// insert
 			$this -> dao -> insert($data);
@@ -92,7 +88,6 @@ class Computer_hard extends MY_Mgmt_Controller {
 			// update
 			$this -> dao -> update($data, $id);
 		}
-
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
