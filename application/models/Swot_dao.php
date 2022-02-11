@@ -85,7 +85,7 @@ class Swot_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		$this -> db -> where("_m.is_delete", "0");
+		$this -> db -> where("_m.is_del", "0");
 
 		if(!empty($data['title'])){
 			$title = $data['title'];
