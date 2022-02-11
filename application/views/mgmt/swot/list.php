@@ -250,7 +250,7 @@ thead tr th {
 		if(style!=="8"){
 			var title=$('#list_title').val();
 			var dep=$('#d_or_c').val();
-			currentApp.doEdit(0,title,style,dep=0);
+			currentApp.doEdit(0,title,style,dep);
 		} else{
 			alert("總檢無法使用整合公司");
 		}
@@ -261,7 +261,7 @@ thead tr th {
 		if(style=="8"){
 			var title=$('#list_title').val();
 			var dep=$('#d_or_c').val();
-			currentApp.doEdit1(0,title,8,dep=0);
+			currentApp.doEdit1(0,title,8,dep);
 		} else{
 			alert("請選擇總檢");
 		}
