@@ -98,7 +98,6 @@ class Computer_hard extends MY_Mgmt_Controller {
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$data['is_delete'] = 1;
 		$data['delete_userid'] = $login_user->id;
-
 		$this -> dao -> update($data, $id);
 		$this -> to_json($res);
 	}
