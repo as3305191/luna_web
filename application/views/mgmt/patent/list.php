@@ -252,7 +252,7 @@ thead tr th {
 								<table class="table table-hover">
 									<thead>
 										<tr>
-											<td></td>
+											<td>勾選</td>
 											<td>關鍵字</td>
 									
 										</tr>
