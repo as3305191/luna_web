@@ -514,12 +514,46 @@ class Patent extends MY_Mgmt_Controller {
 		// $this -> to_json($data);
 		$this->load->view('mgmt/patent/export', $data);
 	}
-// 	FindColorEx 1222,550,1333,600,"7BCB9E",1,0.8,intX,intY
-// If intX > 0 And intY > 0 Then
-// MoveTo 1290, 575
-// LeftClick 1
-//     Delay 3500
-//     LeftClick 1
-// End If
+	function export_all_11() {
+		$this->load->dbutil();
+  $this->load->helper('file');
+  $this->load->helper('download');
+  $delimiter = ",";
+  $newline = "\r\n";
+		$date = date('YmdHis');
+  $filename = $date."-pruduction-daily-product.csv";
 
+		$data = $this -> session -> userdata("Production_daily_product_station_report_data_v2");
+
+		//create a file pointer
+	$f = fopen('php://memory', 'w');
+	
+		$fields = array(
+			iconv("UTF-8","Big5//IGNORE",'申請號'),
+			iconv("UTF-8","Big5//IGNORE",'關鍵字'),
+		);
+		fputcsv($f, $fields, $delimiter);
+
+  		$items = $this -> dao -> find_all();
+	
+		foreach($items as $each) {
+			$lineData = array(
+				iconv("UTF-8","Big5//IGNORE",$each -> application_num),
+				iconv("UTF-8","Big5//IGNORE",$each -> patent_key)
+			);
+		
+			fputcsv($f, $lineData, $delimiter);
+		}
+	
+
+		//move back to beginning of file
+	fseek($f, 0);
+
+		//set headers to download file rather than displayed
+	  header('Content-Type: text/csv');
+	  header('Content-Disposition: attachment; filename="' . $filename . '";');
+
+		//output all remaining data on a file pointer
+		fpassthru($f);
+}
 }
