@@ -514,16 +514,16 @@ class Patent extends MY_Mgmt_Controller {
 		// $this -> to_json($data);
 		$this->load->view('mgmt/patent/export', $data);
 	}
+
 	function export_all_11() {
-		$this->load->dbutil();
+		
   $this->load->helper('file');
   $this->load->helper('download');
   $delimiter = ",";
   $newline = "\r\n";
 		$date = date('YmdHis');
-  $filename = $date."-pruduction-daily-product.csv";
+  $filename = $date."-patent.csv";
 
-		$data = $this -> session -> userdata("Production_daily_product_station_report_data_v2");
 
 		//create a file pointer
 	$f = fopen('php://memory', 'w');
