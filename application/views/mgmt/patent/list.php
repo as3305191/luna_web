@@ -231,7 +231,7 @@ thead tr th {
 			<div class="modal-header">
 			</div>
 			<div class="modal-body" id="key-edit-modal-body">
-				<form id="product-seach-form" class="">
+				<form id="key-seach-form" class="">
 					<fieldset>
 						<div class="form-group">
 							<label class="col-md-3 control-label">搜尋關鍵字</label>
@@ -268,7 +268,7 @@ thead tr th {
 				</form>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-danger btn-sm" onclick="saveProductItem()">
+				<button type="button" class="btn btn-danger btn-sm" onclick="savekeyitem()">
 					<i class="fa fa-save"></i> 存擋
 				</button>
 				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
@@ -361,10 +361,10 @@ thead tr th {
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/patent/list.js", function(){
 			currentApp = new patentAppClass(new BaseAppClass({}));
-			// $('#family-num-add-form').submit(function(e){
-			// 	familyChange();
-			// 	e.preventDefault();
-			// });
+			$('#key-seach-form').submit(function(e){
+				keyChange();
+				e.preventDefault();
+			});
 		});
 	});
 

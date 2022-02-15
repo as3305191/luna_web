@@ -1212,5 +1212,59 @@ function do_save() {
 		$('#s_key_all').modal('show');
 	}
 	
+	function savekeyitem(){
+		var url = '<?= base_url() ?>' + 'mgmt/patent/save_key';
+		$.ajax({
+			url : url,
+			type: 'POST',
+			data: {
+				order_id: $('#order_id_m').val(),
+				product_id: $('#product_id_m').val(),
+				
+			},
+			dataType: 'json',
+			success: function(d) {
+				Vaildation();
+				if(d.success=="true"){
+					$('#s_key_all').modal('hide');
+					window.location.reload();
+				}
+
+			},
+
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+
+	function keyChange() {
+		var url = '<?= base_url() ?>' + 'mgmt/patent/key_search';
+
+		$.ajax({
+			url : url,
+			type: 'POST',
+			data: {
+				key: $('#s-key-patent').val(),
+
+			},
+			dataType: 'json',
+			success: function(d) {
+
+				if(d) {
+					var me = d.list;
+					$('#product_lot_number').val(me[0].lot_number);
+				 	$('#product_name').val(me[0].name);
+					$('#product_id_1').val(me[0].id);
+					$('#order_id_1').val();
+					$('#trace_batch_number').val(d.trace_batch_number);
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+	
 
 </script>
