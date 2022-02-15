@@ -252,8 +252,9 @@ thead tr th {
 								<table class="table table-hover">
 									<thead>
 										<tr>
-											<td>料號</td>
-											<td>品名</td>
+											<td></td>
+											<td>關鍵字</td>
+									
 										</tr>
 									</thead>
 									<tbody id="all_key_list_serach_body">
