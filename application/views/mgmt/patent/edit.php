@@ -177,6 +177,15 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">關鍵字</label>
 					<div class="col-md-6">
+						<input type="text"  class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patent_key : '' ?>"  <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>
+						/>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">關鍵字(測試勿動)</label>
+					<div class="col-md-6">
 						<input type="text" onclick="s_key_all();" class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patent_key : '' ?>"  <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>
 						/>
 					</div>
@@ -1200,7 +1209,8 @@ function do_save() {
 
 
 	function s_key_all() {
-		window.open('#mgmt/patent/edit/' + id);
+		$('#s_key_all').modal('show');
 	}
 	
+
 </script>

@@ -230,18 +230,18 @@ thead tr th {
 		<div class="modal-content">
 			<div class="modal-header">
 			</div>
-			<div class="modal-body" id="station-edit-modal-body">
+			<div class="modal-body" id="key-edit-modal-body">
 				<form id="product-seach-form" class="">
 					<fieldset>
 						<div class="form-group">
 							<label class="col-md-3 control-label">搜尋關鍵字</label>
 							<div class="col-md-9">
 								<div class="input-group">
-									<input type="text" class="form-control" id="s-type-product-name"  value="" placeholder="請輸入開始搜尋" />
-			      			<span class="input-group-btn">
-			      				<button type="submit" onclick="" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
-			      			</span>
-			      		</div>
+									<input type="text" class="form-control" id="s-key-patent"  value="" placeholder="請輸入開始搜尋" />
+									<span class="input-group-btn">
+										<button type="submit" onclick="" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
+									</span>
+			      				</div>
 							</div>
 						</div>
 					</fieldset>
@@ -256,7 +256,7 @@ thead tr th {
 											<td>品名</td>
 										</tr>
 									</thead>
-									<tbody id="product_list_serach_body">
+									<tbody id="all_key_list_serach_body">
 
 									</tbody>
 								</table>
@@ -264,91 +264,6 @@ thead tr th {
 						</div>
 					</fieldset>
 
-					<hr/>
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">料號</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="product_lot_number" name="lot_number"  value="" readonly />
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">品名</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="product_name" name="name" value="" readonly />
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">批號</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="product_batch" name="trace_batch" value=""  />
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">櫃號</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="product_container_sn" name="container_sn"  value=""  />
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">儲位</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="product_sloc" name="sloc"  value=""  />
-							</div>
-						</div>
-					</fieldset>
-
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">需求重量</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="product_weight" name="weight" value=""  />
-							</div>
-						</div>
-					</fieldset>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">實際重量</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control" id="product_actual_weight" name="actual_weight" value=""  readonly/>
-							</div>
-						</div>
-					</fieldset>
-					<hr/>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">解凍方式</label>
-							<div class="col-md-9">
-								<select id="product_thaw_id" class="from-control col-md-6" name="thaw_id">
-									<option value="0">-</option>
-									<?php foreach($thaw_list as $each): ?>
-										<option value="<?= $each -> id ?>"><?= $each -> name ?></option>
-									<?php endforeach ?>
-								</select>
-							</div>
-						</div>
-					</fieldset>
-					<fieldset>
-						<div class="form-group">
-							<label class="col-md-3 control-label">解凍日期</label>
-							<div class="col-md-9">
-								<input type="text" class="form-control dt_picker" id="product_thaw_date" name="thaw_date"  value="" placeholder="解凍日期"  />
-							</div>
-						</div>
-					</fieldset>
 				</form>
 			</div>
 			<div class="modal-footer">
