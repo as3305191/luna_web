@@ -121,11 +121,15 @@ class Swot_dao extends MY_Model {
 		if(!empty($data['dep'])){
 			$dep = $data['dep'];
 			$this -> db -> where("_m.role_id",$dep);
+			if($dep==11){
+				if(!empty($data['type'])&&$data['type']==1){
+					$this -> db -> where("_m.id <> 34");
+				}
+			}
 		}
 		if(!empty($data['unify'])&&$data['unify']==1){
 			$unify = $data['unify'];
 			$this -> db -> where("_m.unify<>",$unify);
-			$this -> db -> where("_m.id<>",34);
 		}
 
 	}
