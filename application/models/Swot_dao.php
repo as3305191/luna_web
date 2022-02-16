@@ -82,7 +82,7 @@ class Swot_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		
+		$this -> db -> where("_m.is_delete<", 1);
 
 		if(!empty($data['title'])){
 			$title = $data['title'];
@@ -126,7 +126,6 @@ class Swot_dao extends MY_Model {
 			$unify = $data['unify'];
 			$this -> db -> where("_m.unify<>",$unify);
 		}
-		$this -> db -> where("_m.is_delete<", 1);
 
 	}
 
