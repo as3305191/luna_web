@@ -38,8 +38,8 @@ class Swot_dao extends MY_Model {
 
 		// order
 		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
-		// $this -> db -> order_by('id', 'desc');
-		$this -> db -> order_by('swot_pos', 'asc');
+		$this -> db -> order_by('id', 'desc');
+		// $this -> db -> order_by('swot_pos', 'asc');
 
 		// limit
 		$this -> db -> limit($limit, $start);
