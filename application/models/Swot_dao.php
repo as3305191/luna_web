@@ -134,6 +134,7 @@ class Swot_dao extends MY_Model {
 			$unify = $data['unify'];
 			$this -> db -> where("_m.unify<> 1");
 		}
+		$this -> db -> where("_m.is_delete<", 1);
 
 	}
 
