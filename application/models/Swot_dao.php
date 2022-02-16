@@ -125,6 +125,7 @@ class Swot_dao extends MY_Model {
 		if(!empty($data['unify'])&&$data['unify']==1){
 			$unify = $data['unify'];
 			$this -> db -> where("_m.unify<>",$unify);
+			$this -> db -> where("_m.id",34);
 		}
 
 	}
