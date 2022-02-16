@@ -102,6 +102,7 @@ class Swot_dao extends MY_Model {
 			} else{
 				$login_user_array = $data['login_user_array'];
 				$this -> db -> where("_m.role_id IN ($login_user_array)");
+				$this -> db -> or_where("_m.class_id IN ($login_user_array)");
 			}
 		}
 		if(!empty($data['list_title'])){
