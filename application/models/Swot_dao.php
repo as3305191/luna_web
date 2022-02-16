@@ -40,8 +40,6 @@ class Swot_dao extends MY_Model {
 		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
 		$this -> db -> order_by('id', 'desc');
 		// $this -> db -> order_by('swot_pos', 'asc');
-		$this -> db -> where("_m.is_delete", "0");
-
 		// limit
 		$this -> db -> limit($limit, $start);
 
@@ -68,9 +66,6 @@ class Swot_dao extends MY_Model {
 		$this -> search_always($data);
 
 		$this -> db -> order_by('id', 'desc');
-
-		$this -> db -> where("_m.is_delete", "0");
-
 
 		// query results
 		$query = $this -> db -> get();
@@ -131,6 +126,7 @@ class Swot_dao extends MY_Model {
 			$unify = $data['unify'];
 			$this -> db -> where("_m.unify<>",$unify);
 		}
+		$this -> db -> where("_m.is_delete<", 1);
 
 	}
 
