@@ -108,7 +108,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page " style="padding:20px 40px 280px 20px;background-color:#fff;" width="70%">
+<div class="ex_page " style="padding:20px 40px 260px 20px;background-color:#fff;" width="70%">
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
 	<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
