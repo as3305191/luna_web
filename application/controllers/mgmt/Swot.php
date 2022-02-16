@@ -100,7 +100,7 @@ class Swot extends MY_Mgmt_Controller {
 					$data['swot_class'] = '寬仕';
 				} else{
 					$swot_dep= $this -> d_dao -> find_by_id($swot_class->parent_id);
-					$data['swot_class'] =$swot_dep->name.'+'.$swot_class->name;
+					$data['swot_class'] =$swot_dep->name;
 				}
 			} 
 		
