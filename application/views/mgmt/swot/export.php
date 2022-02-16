@@ -108,7 +108,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page " style="padding:20px 40px 500px 20px;background-color:#fff;" width="70%">
+<div class="ex_page " style="padding:20px 40px 100px 20px;background-color:#fff;" width="70%">
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
 	<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
@@ -130,7 +130,6 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 							<tr >
 								<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
 							</tr>
-								
 						</table>
 					</td>
 					<td colspan="1" valign="top" class="noBreak td_table col-xs-4" >

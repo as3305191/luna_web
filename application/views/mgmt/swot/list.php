@@ -67,7 +67,7 @@ thead tr th {
 											整合公司
 										</button>
 										<button onclick="unify_all_inspection();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
-											整合部門總檢
+											整合部門總檢 
 										</button>
 									<?php else:?>
 										<button onclick="unify_all_inspection();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
