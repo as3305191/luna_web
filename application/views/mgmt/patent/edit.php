@@ -182,15 +182,22 @@
 					</div>
 				</div>
 			</fieldset>
+
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">關鍵字(測試勿動)</label>
 					<div class="col-md-6">
-						<input type="text" onclick="s_key_all();" class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patent_key : '' ?>"  <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>
-						/>
+						<select id="patent_key_array" name="patent_key[]" class="form-control" multiple>
+							<?php foreach($main_cates as $each): ?>
+								<option value="<?= $each -> id ?>" <?= isset($patent_key) && in_array($each->id,$patent_key)  ? 'selected="selected"' : '' ?>>
+									<?= $each -> cate_name ?>
+								</option>
+							<?php endforeach ?>
+						</select>
 					</div>
 				</div>
 			</fieldset>
+
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利類別</label>
@@ -1207,64 +1214,7 @@ function do_save() {
 	$('.kv-file-zoom').attr("disabled",'');
 	$('.kv-file-zoom').removeAttr("disabled");
 
-
-	function s_key_all() {
-		$('#s_key_all').modal('show');
-	}
 	
-	function savekeyitem(){
-		var url = '<?= base_url() ?>' + 'mgmt/patent/save_key';
-		$.ajax({
-			url : url,
-			type: 'POST',
-			data: {
-				order_id: $('#order_id_m').val(),
-				product_id: $('#product_id_m').val(),
-				
-			},
-			dataType: 'json',
-			success: function(d) {
-				Vaildation();
-				if(d.success=="true"){
-					$('#s_key_all').modal('hide');
-					window.location.reload();
-				}
-
-			},
-
-			failure:function(){
-				alert('faialure');
-			}
-		});
-	}
-
-	function keyChange() {
-		var url = '<?= base_url() ?>' + 'mgmt/patent/key_search';
-
-		$.ajax({
-			url : url,
-			type: 'POST',
-			data: {
-				key: $('#s-key-patent').val(),
-
-			},
-			dataType: 'json',
-			success: function(d) {
-
-				if(d) {
-					var me = d.list;
-					$('#product_lot_number').val(me[0].lot_number);
-				 	$('#product_name').val(me[0].name);
-					$('#product_id_1').val(me[0].id);
-					$('#order_id_1').val();
-					$('#trace_batch_number').val(d.trace_batch_number);
-				}
-			},
-			failure:function(){
-				alert('faialure');
-			}
-		});
-	}
-	
+	$('#patent_key_array').select2();
 
 </script>
