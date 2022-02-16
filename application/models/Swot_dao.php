@@ -123,7 +123,7 @@ class Swot_dao extends MY_Model {
 			$this -> db -> where("_m.role_id",$dep);
 			if($dep==11){
 				if(!empty($data['type'])&&$data['type']==1){
-					$this -> db -> where("_m.class_id <> 34");
+					$this -> db -> where("_m.class_id <> 37");
 				}
 			}
 		}
