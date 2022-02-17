@@ -401,7 +401,7 @@ class Swot extends MY_Mgmt_Controller {
 			$item = $list[0];
 			$data['item'] = $item;
 		}
-		$this -> to_json($data);
+		// $this -> to_json($data);
 		$this->load->view('mgmt/swot/export', $data);
 	}
 
