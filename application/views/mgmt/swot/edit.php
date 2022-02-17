@@ -432,7 +432,7 @@
 		
 	});
 
-	$('#s_style').on('change', function(){
+	$('#swot_style').on('change', function(){
 		if($('#s_style').val()=='8'){
 			$('.swot_leader').removeClass('hide');
 		} else{
