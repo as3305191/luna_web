@@ -111,7 +111,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
 	<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
-			<tbody class="" width="100%"  height="50%" > 
+			<tbody class="" width="100%"> 
 				<tr style="pointer-events: none;">
 					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
 						<div style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:250%;padding:50px 50px 30px 50px;color:#000">寬仕工業股份有限公司</div>
@@ -125,9 +125,9 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 				</tr>
 				<tr class="noBreak" style="pointer-events: none;">
 					<td colspan="1" class="noBreak td_table col-xs-4">
-						<table class="swot_table" width="100%" height="100%"  align="center">
+						<table class="swot_table" width="100%" height="50%"  align="center">
 							<tr >
-								<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="min-width:50%;height: 50%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
+								<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="min-width:50%;min-height:50%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
 							</tr>
 						</table>
 					</td>
