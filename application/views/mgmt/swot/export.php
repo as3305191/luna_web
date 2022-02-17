@@ -234,7 +234,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
 					</td>
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
-						<?php if(!empty( $item -> swot_title_id) && $item -> swot_title_id!==8): ?>
+						<?php if(!empty( $item -> swot_title_id) && $item -> swot_title_id<>8): ?>
 							<span style="text-align:right;font-size:125%;color:#000;">管理代表：<?= isset($item) ? trim($item -> swot_leader) : '' ?></span>
 						<?php endif?>
 					</td>
@@ -358,9 +358,10 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
 					</td>
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
-						<?php if(!empty( $item -> swot_title_id) && $item -> swot_title_id!==8): ?>
+						<?php if(!empty( $item -> swot_title_id) && $item -> swot_title_id<>8): ?>
 							<span style="text-align:right;font-size:125%;color:#000;">管理代表：<?= isset($item) ? trim($item -> swot_leader) : '' ?></span>
-						<?php endif?>					</td>
+						<?php endif?>				
+					</td>
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="text-align:right;border:none;" >
 						<div  style="text-align:left;font-size:125%;color:#000;" >製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
 						<div style="text-align:right;padding:20px 40px 0px 0px;font-size:125%;color:#000;">RA2602-A</div>
