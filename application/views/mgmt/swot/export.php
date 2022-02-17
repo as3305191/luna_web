@@ -125,7 +125,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 				</tr>
 				<tr class="noBreak" style="pointer-events: none;">
 					<td colspan="1" class="noBreak td_table col-xs-4">
-						<table class="swot_table" width="100%" height="100%"  align="center">
+						<table class="swot_table" width="100%" height="40%"  align="center">
 							<tr >
 								<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="min-width:50%;height: 50%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
 							</tr>
