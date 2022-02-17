@@ -355,9 +355,9 @@
 	$(function() {
 		$('#s_style').on('change', function(){
 			if(this.value==8){
-				$('#swot_leader').addclass('hide');
+				$('#swot_leader').addClass('hide');
 			} else{
-				$('#swot_leader').removeclass('hide');
+				$('#swot_leader').removeClass('hide');
 			}
 		})
 		// $('#c_h_name').select2();
