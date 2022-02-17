@@ -129,7 +129,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">管理代表</label>
 					<div class="col-md-6">
-						<input type="text"  style="font-family:PMingLiU;"  class="form-control"  id="swot_leader" value="<?= isset($item['swot_leader']) ? $item['swot_leader'] : '' ?>" />
+						<input type="text"  style="font-family:PMingLiU;"  class="swot_leader form-control"  id="swot_leader" value="<?= isset($item['swot_leader']) ? $item['swot_leader'] : '' ?>" />
 					</div>
 				</div>
 			</fieldset>
@@ -269,7 +269,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">管理代表</label>
 					<div class="col-md-6">
-						<input type="text"  style="font-family:PMingLiU;"  class="form-control"  id="swot_leader" value="<?= isset($item->swot_leader) ? $item->swot_leader: '' ?>" />
+						<input type="text"  style="font-family:PMingLiU;"  class="swot_leader form-control"  id="swot_leader" value="<?= isset($item->swot_leader) ? $item->swot_leader: '' ?>" />
 					</div>
 				</div>
 			</fieldset>
@@ -435,9 +435,9 @@
 
 	$('#s_style').on('change', function(){
 		if($('#s_style').val()=='8'){
-			$('#swot_leader').removeClass('hide');
+			$('.swot_leader').removeClass('hide');
 		} else{
-			$('#swot_leader').addClass('hide');
+			$('.swot_leader').addClass('hide');
 		}
 	})
 
