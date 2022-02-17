@@ -51,7 +51,13 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 
 <link rel="stylesheet" href="<?= base_url('js/layui/dist/css/layui.css') ?>">
 <style>
-
+.container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
 .layui-table1{ 
 	/* border-style:groove !important; */
 	margin: 0px 100px 0px 10px !important;
@@ -108,7 +114,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page " style="padding:20px 40px 260px 20px;background-color:#fff;" width="100%">
+<div class="ex_page " style="padding:20px 40px 0px 20px;background-color:#fff;" width="100%">
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
 	<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
