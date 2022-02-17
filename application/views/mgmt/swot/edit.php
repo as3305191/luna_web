@@ -353,7 +353,7 @@
 <script>
 	$(function() {
 	
-		if($('#swot_style').val()=='8'){
+		if($('#s_style').val()=='8'){
 			$('.swot_leader').addClass('hide');
 		}
 
