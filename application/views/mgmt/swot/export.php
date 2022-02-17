@@ -78,10 +78,11 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	*{
 		-webkit-print-color-adjust: exact !important;
 		/* background-color: #fff !important; */
-		top: 0;
+		/* top: 0;
 		right: 0;
+		
+		left: 0; */
 		bottom: 0;
-		left: 0;
 	}
 
 	.layui-table1{ 
