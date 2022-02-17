@@ -352,6 +352,12 @@
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
 <script>
 	$(function() {
+		if($('#s_style').val()=='8'){
+			$('.swot_leader').removeClass('hide');
+		} else{
+			$('.swot_leader').addClass('hide');
+		}
+
 		// $('#c_h_name').select2();
 		// $('#c_s_name').select2();
 		// ckeditor
@@ -432,12 +438,7 @@
 		
 	});
 
-	if($('#s_style').val()=='8'){
-		$('.swot_leader').removeClass('hide');
-	} else{
-		$('.swot_leader').addClass('hide');
-	}
-
+	
 	$('#swot_style').on('change', function(){
 		if(this.val=='8'){
 			$('.swot_leader').removeClass('hide');
