@@ -357,13 +357,7 @@
 			$('.swot_leader').addClass('hide');
 		}
 
-		$('#swot_style').on('change', function(){
-			if(this.val=='8'){
-				$('.swot_leader').addClass('hide');
-			} else{
-				$('.swot_leader').removeClass('hide');
-			}
-		})
+	
 		// $('#c_h_name').select2();
 		// $('#c_s_name').select2();
 		// ckeditor
@@ -444,6 +438,13 @@
 		
 	});
 
+	$('#swot_style').on('change', function(){
+		if(this.val=='8'){
+			$('.swot_leader').addClass('hide');
+		} else{
+			$('.swot_leader').removeClass('hide');
+		}
+	})
 
 	function do_save() {
 		// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
