@@ -353,6 +353,13 @@
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
 <script>
 	$(function() {
+		$('#s_style').on('change', function(){
+			if(this.value==8){
+				$('#swot_leader').addclass('hide');
+			} else{
+				$('#swot_leader').removeclass('hide');
+			}
+		})
 		// $('#c_h_name').select2();
 		// $('#c_s_name').select2();
 		// ckeditor

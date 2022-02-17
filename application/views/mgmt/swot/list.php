@@ -5,6 +5,10 @@ thead tr th {
 	background-color:#FFFFFF !important;
 	text-align:center;
 }
+
+.hide {
+	display: none;
+}
 </style>
 
 <!-- CSS Unify Theme -->
