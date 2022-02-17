@@ -82,7 +82,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 		right: 0;
 		
 		left: 0; */
-		bottom: 0;
+		/* bottom: 0; */
 	}
 
 	.layui-table1{ 
