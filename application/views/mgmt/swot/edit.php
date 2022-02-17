@@ -358,7 +358,7 @@
 		}
 
 		$('#swot_style').on('change', function(){
-			if(this.val=='8'){
+			if($('#s_style').val()=="8"){
 				$('.swot_leader').addClass('hide');
 			} else{
 				$('.swot_leader').removeClass('hide');
