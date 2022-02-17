@@ -118,6 +118,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 						<?php if(!empty( $item -> unify) && $item -> unify>0): ?>
 							<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;color:#000"><?= isset($item) ? $item -> d_or_c_name.'(整合)' : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
 						<?php else: ?>
+
 							<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;color:#000"><?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
 						<?php endif?>
 						<div style="text-align:right;color:#000;font-size:125%">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
@@ -233,7 +234,9 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
 					</td>
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
-						<span style="text-align:right;font-size:125%;color:#000;">管理代表：<?= isset($item) ? trim($item -> swot_leader) : '' ?></span>
+						<?php if(!empty( $item -> swot_title_id) && $item -> swot_title_id!==8): ?>
+							<span style="text-align:right;font-size:125%;color:#000;">管理代表：<?= isset($item) ? trim($item -> swot_leader) : '' ?></span>
+						<?php endif?>
 					</td>
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="text-align:right;border:none;" >
 						<div  style="text-align:left;font-size:125%;color:#000;" >製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
@@ -355,8 +358,9 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
 					</td>
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="border:none;" >
-						<span style="text-align:right;font-size:125%;color:#000;">管理代表：<?= isset($item) ? trim($item -> swot_leader) : '' ?></span>
-					</td>
+						<?php if(!empty( $item -> swot_title_id) && $item -> swot_title_id!==8): ?>
+							<span style="text-align:right;font-size:125%;color:#000;">管理代表：<?= isset($item) ? trim($item -> swot_leader) : '' ?></span>
+						<?php endif?>					</td>
 					<td colspan="1" valign="top" class="td_table col-xs-4" style="text-align:right;border:none;" >
 						<div  style="text-align:left;font-size:125%;color:#000;" >製表：<?= isset($item) ? trim($item -> make_user) : '' ?></div>
 						<div style="text-align:right;padding:20px 40px 0px 0px;font-size:125%;color:#000;">RA2602-A</div>
