@@ -58,7 +58,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 .td_table{
  	padding: 0px!important;
-	/* border-color:#000 !important; */
+	border-color:#000 !important;
 }
 .pageDiv{
         position:relative;
@@ -89,21 +89,21 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 		border-color:#000 !important;
 	}
 
-	.pageDiv{
+	/* .pageDiv{
         position:relative;
         background-repeat:no-repeat;
         background-position: center;
         page-break-after: always;  
 		page-break-inside: avoid;
-    }
+    } */
 
-	.pageDiv:last-of-type{ 
+	/* .pageDiv:last-of-type{ 
 		page-break-after: auto; 
 	}	
 
 	.noBreak {
 		break-inside: avoid;
-	}
+	} */
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
