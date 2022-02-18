@@ -80,7 +80,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	margin: 0px 0px 0px 0px !important;
 }
 	*{
-		/* -webkit-print-color-adjust: exact !important; */
+		-webkit-print-color-adjust: exact !important;
 		/* background-color:#fff; */
 	}
 
@@ -112,7 +112,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page" style="padding:20px 40px 0px 20px;background-color:#fff;" width="90%">
+<div class="ex_page" style="padding:20px 40px 0px 20px;background-color:#fff;" height="100%" width="80%">
 
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
