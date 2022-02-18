@@ -375,6 +375,6 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 <script>
 const content = document.querySelector(".ex_page").innerHTML;
 // const newPage = window.open("", "", "width=100%,height=100%");
-content.document.write(content);
-content.print();
+window.document.write(content);
+// content.print();
 </script>
