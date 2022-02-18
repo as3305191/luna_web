@@ -373,5 +373,5 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	<?php endif?>
 </div>
 <script>
-
+ window.style.backgroundColor = '#FFF';
 </script>
