@@ -13,6 +13,7 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> load -> model('Patent_status_dao', 'patent_status_dao');
 		$this -> load -> model('Patent_category_dao', 'patent_category_dao');
 		$this -> load -> model('Patent_fail_status_dao', 'patent_fail_status_dao');
+		$this -> load -> model('Patent_key_dao', 'patent_key_dao');
 
 		$this -> load-> library('word');
 
@@ -305,6 +306,36 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function find_country(){
+		$res = array();
+		$country = $this -> country_dao -> find_all();
+		$res['country'] = $country;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function new_key(){
+		$data = array();
+		$this -> load -> view('layout/show_new_key',$data);
+	}
+
+	public function add_key(){
+		$data = array();
+		$key_name = $this -> get_post('key');
+		$data['key'] = $key_name;
+		$this -> patent_key_dao -> insert($data);
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function find_key(){
+		$res = array();
+		$key = $this -> patent_key_dao -> find_all();
+		$res['key'] = $key;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
 	public function patent_family_search(){
 		$data = array();
 		$search_item = $this -> get_post('search_item');
@@ -317,13 +348,7 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function find_country(){
-		$res = array();
-		$country = $this -> country_dao -> find_all();
-		$res['country'] = $country;
-		$res['success'] = TRUE;
-		$this -> to_json($res);
-	}
+
 
 	public function delete($id) {
 		$res['success'] = TRUE;

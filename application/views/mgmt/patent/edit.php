@@ -182,22 +182,21 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">關鍵字(測試勿動)</label>
 					<div class="col-md-6">
 						<select id="patent_key_array" name="patent_key[]" class="form-control" multiple>
-							<?php foreach($main_cates as $each): ?>
+							<?php foreach($key as $each): ?>
 								<option value="<?= $each -> id ?>" <?= isset($patent_key) && in_array($each->id,$patent_key)  ? 'selected="selected"' : '' ?>>
-									<?= $each -> cate_name ?>
+									<?= $each -> key ?>
 								</option>
 							<?php endforeach ?>
 						</select>
+						<button type="button" class="btn btn-sm btn-primary" id="add_key"><i class="fa fa-plus-circle fa-lg"></i></button>
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利類別</label>
@@ -206,13 +205,14 @@
 							<option  value="1"  <?= isset($item) && $item -> patnet_category == 1 ? 'selected' : '' ?>>發明</option>
 							<option  value="2"  <?= isset($item) && $item -> patnet_category == 2 ? 'selected' : '' ?>>新型</option>
 							<option  value="3"  <?= isset($item) && $item -> patnet_category == 3 ? 'selected' : '' ?>>設計</option>
-						</select>	
+						</select> 
 					</div>
 				</div>
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">申請號</label>
+					
 					<div class="col-md-6">
 						<input type="text" required class="form-control" name="application_number" id="application_number"  value="<?= isset($item) ? $item -> application_num : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
@@ -814,6 +814,17 @@ function check_family(){
 	});
 }
 
+$('#add_key').click(function() {
+	layer.open({
+		type:2,
+		title:'',
+		closeBtn:0,
+		area:['400px','200px'],
+		shadeClose:true,
+		content:'<?=base_url('mgmt/patent/add_key')?>'
+    })
+});
+
 $('#add_country').click(function() {
 	layer.open({
 		type:2,
@@ -1164,6 +1175,7 @@ function do_save() {
 			}
 		});
 	}
+
 	function hideSearchModal() {
 		$('#family_search_Modal').modal('hide');
 	}
