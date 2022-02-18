@@ -375,21 +375,8 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	<?php endif?>
 </div>
 <script>
-
-
-
-function printDiv(){
-  var newWin=window.open('','列印視窗');
-  newWin.document.open();
-  newWin.document.write('<html>'+
-    '<head>'+
-      '<link rel="stylesheet" href="css/style.css">'+
-    '</head>'+
-    '<body onload="window.print()">'+
-      $('.ex_page').html()+
-    '</body>'+
-  '</html>');
-  newWin.document.close();
-  setTimeout(function(){newWin.close();},10);
-}
+const content = document.querySelector(".ex_page").innerHTML;
+const newPage = window.open("", "", "width=100%,height=100%");
+newPage.document.write(content);
+newPage.print();
 </script>
