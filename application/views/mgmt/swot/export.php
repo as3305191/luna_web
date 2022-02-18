@@ -107,7 +107,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page" style="" width="100%">
+<div class="ex_page" style="" width="90%">
 
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
