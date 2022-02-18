@@ -374,4 +374,5 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 </div>
 <script>
  window.style.backgroundColor = '#FFF';
+ window.body.style.backgroundColor = '#FFF';
 </script>
