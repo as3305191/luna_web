@@ -60,12 +60,14 @@
 
 @page {
 	margin: 0px 0px 0px 0px !important;
+	size: landscape;
 }
 @media print{
 
 	@page {
-	margin: 0px 0px 0px 0px !important;
-}
+		margin: 0px 0px 0px 0px !important;
+		size: landscape;
+	}
 	*{
 		-webkit-print-color-adjust: exact !important;
 		/* background-color:#fff; */
