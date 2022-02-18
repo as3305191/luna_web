@@ -362,6 +362,6 @@
 	<?php endif?>
 </div>
 <script>
- window.style.backgroundColor = '#FFF';
- window.body.style.backgroundColor = '#FFF';
+ window.style.height = '100%';
+ window.body.style.height = '100%';
 </script>
