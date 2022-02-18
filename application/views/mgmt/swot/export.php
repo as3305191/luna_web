@@ -100,11 +100,11 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 
 	/* .pageDiv:last-of-type{ 
 		page-break-after: auto; 
-	}	
+	}	 */
 
 	.noBreak {
 		break-inside: avoid;
-	} */
+	}
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
