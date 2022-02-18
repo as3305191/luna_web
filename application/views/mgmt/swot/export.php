@@ -377,5 +377,5 @@ const content = document.querySelector(".ex_page").innerHTML;
 // const newPage = window.open("", "", "width=100%,height=100%");
 window.empty().document.write(content);
 // document.querySelector(".ex_page").remove();
-content.print();
+// content.print();
 </script>
