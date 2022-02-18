@@ -58,7 +58,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 .td_table{
  	padding: 0px!important;
-	border-color:#000 !important;
+	/* border-color:#000 !important; */
 }
 .pageDiv{
         position:relative;
