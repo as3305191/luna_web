@@ -77,7 +77,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 @media print{
 	*{
 		-webkit-print-color-adjust: exact !important;
-		background-color:#fff;
+		/* background-color:#fff; */
 	}
 
 	.layui-table1{ 
