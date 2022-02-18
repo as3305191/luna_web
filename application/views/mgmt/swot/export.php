@@ -107,7 +107,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page" style="padding:20px 40px 0px 20px;background-color:#fff;" width="100%">
+<div class="ex_page" style="padding:20px 40px 0px 20px;background-color:#fff;z-index:-100;position: relative;" width="100%">
 
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
@@ -375,6 +375,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 <script>
 const content = document.querySelector(".ex_page").innerHTML;
 // const newPage = window.open("", "", "width=100%,height=100%");
+
 content.remove().document.write(content);
 // document.querySelector(".ex_page").remove();
 // content.print();
