@@ -32,22 +32,6 @@
 
 <link rel="stylesheet" type="text/css" media="screen" href="<?= base_url('css/my.css') ?>">
 
-<!-- #FAVICONS -->
-<link rel="icon" type="image/png" href="<?= base_url('img/ktx_img/logo_1.png')  ?>" />
-
-<!-- #APP SCREEN / ICONS -->
-<!-- Specifying a Webpage Icon for Web Clip
-Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html -->
-<link rel="apple-touch-icon" href="<?= base_url('img/splash/sptouch-icon-iphone.png')?>">
-<link rel="apple-touch-icon" sizes="76x76" href="<?= base_url('img/splash/touch-icon-ipad.png') ?>">
-<link rel="apple-touch-icon" sizes="120x120" href="<?= base_url('img/splash/touch-icon-iphone-retina.png') ?>">
-<link rel="apple-touch-icon" sizes="152x152" href="<?= base_url('img/splash/touch-icon-ipad-retina.png') ?>">
-
-
-<!-- iOS web-app metas : hides Safari UI Components and Changes Status Bar Appearance -->
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
-
 
 <link rel="stylesheet" href="<?= base_url('js/layui/dist/css/layui.css') ?>">
 <style>
