@@ -75,6 +75,9 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	margin: 0px 0px 0px 0px !important;
 }
 @media print{
+	@page {
+	margin: 0px 0px 0px 0px !important;
+}
 	*{
 		-webkit-print-color-adjust: exact !important;
 		/* background-color:#fff; */
