@@ -90,17 +90,17 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 		border-color:#000 !important;
 	}
 
-	/* .pageDiv{
+	.pageDiv{
         position:relative;
         background-repeat:no-repeat;
         background-position: center;
         page-break-after: always;  
 		page-break-inside: avoid;
-    } */
+    }
 
-	/* .pageDiv:last-of-type{ 
+	.pageDiv:last-of-type{ 
 		page-break-after: auto; 
-	}	 */
+	}	
 
 	.noBreak {
 		break-inside: avoid;
