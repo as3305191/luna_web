@@ -86,7 +86,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 
 	.layui-table1{ 
 		/* border-style:groove !important; */
-		margin: 20px 100px 10px 10px !important;
+		margin: 0px 100px 10px 10px !important;
 	}
 
 	.td_table{
@@ -112,7 +112,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page" style="padding:20px 40px 0px 20px;background-color:#fff;" height="100%" width="80%">
+<div class="ex_page" style="padding:0px 40px 0px 20px;background-color:#fff;" height="100%" width="80%">
 
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
