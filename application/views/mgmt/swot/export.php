@@ -32,6 +32,9 @@
 
 <link rel="stylesheet" type="text/css" media="screen" href="<?= base_url('css/my.css') ?>">
 
+<!-- #FAVICONS -->
+<link rel="icon" type="image/png" href="<?= base_url('img/ktx_img/logo_1.png')  ?>" />
+
 
 <link rel="stylesheet" href="<?= base_url('js/layui/dist/css/layui.css') ?>">
 <style>
@@ -96,7 +99,7 @@
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page" style="padding:0px 40px 0px 20px;background-color:#fff;margin: 0; overflow: auto;" height="100%" width="80%">
+<div class="ex_page" style="padding:0px 40px 0px 20px;background-color:#fff;overflow: auto;" height="100%" width="80%">
 
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
@@ -104,7 +107,7 @@
 			<tbody class="" width="100%"> 
 				<tr style="pointer-events: none;">
 					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
-						<div style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:250%;padding:30px 50px 30px 50px;color:#000">寬仕工業股份有限公司</div>
+						<div style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:250%;padding:50px 50px 30px 50px;color:#000">寬仕工業股份有限公司</div>
 						<?php if(!empty( $item -> unify) && $item -> unify>0): ?>
 							<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;color:#000"><?= isset($item) ? $item -> d_or_c_name.'(整合)' : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
 						<?php else: ?>
@@ -362,5 +365,6 @@
 	<?php endif?>
 </div>
 <script>
-
+ window.style.backgroundColor = '#FFF';
+ window.body.style.backgroundColor = '#FFF';
 </script>
