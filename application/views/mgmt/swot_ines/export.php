@@ -84,7 +84,7 @@ td > div{
 	top:0;
 	right:0;
 	z-index:300;}
-	em{font-style:normal;display:block;position:absolute;bottom:0;left:0;width:55x;}
+	em{font-style:normal;display:block;position:absolute;bottom:90%;left:0;width:55x;}
 
 @page {
 	margin: 10px 100px 0px 0px !important;
