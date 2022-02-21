@@ -85,7 +85,7 @@ td > div{
 		position:relative;/*讓裡面的兩個子容器絕對定位*/
 		top:120px;
 		background:
-    linear-gradient(21deg,#000, transparent 49.5%, deeppink 49.5%, deeppink 50.5%, transparent 50.5% );	
+    linear-gradient(21deg, transparent 49.5%, black 49.5%, black 50.5%, transparent 50.5% );	
 	}
 	b{font-style:normal;display:block;position:absolute;width:35px;
 	top:0;
