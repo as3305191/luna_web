@@ -69,7 +69,15 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 .pageDiv:last-of-type{ 
 	page-break-after: auto; 
 }
-
+.out{
+	border-top:40px #D6D3D6 solid;/*上邊框寬度等於表格第一行行高*/
+	width:0px;/*讓容器寬度為0*/
+	height:0px;/*讓容器高度為0*/
+	border-left:80px #BDBABD solid;/*左邊框寬度等於表格第一行第一格寬度*/
+	position:relative;/*讓裡面的兩個子容器絕對定位*/
+}
+b{font-style:normal;display:block;position:absolute;top:-40px;left:-40px;width:35px;}
+em{font-style:normal;display:block;position:absolute;top:-25px;left:-70px;width:55x;}
 @page {
 	margin: 10px 100px 0px 0px !important;
 }
@@ -127,7 +135,11 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 					<td colspan="1" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
-								<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
+							<div class="out">
+									<b>SW</b>
+									<em>OT</em>
+								</div>
+								<!-- <td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="width:100%;height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td> -->
 							</tr>
 								
 						</table>

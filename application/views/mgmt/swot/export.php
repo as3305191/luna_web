@@ -57,7 +57,15 @@
 .pageDiv:last-of-type{ 
 	page-break-after: auto; 
 }
-
+.out{
+	border-top:40px #D6D3D6 solid;/*上邊框寬度等於表格第一行行高*/
+	width:0px;/*讓容器寬度為0*/
+	height:0px;/*讓容器高度為0*/
+	border-left:80px #BDBABD solid;/*左邊框寬度等於表格第一行第一格寬度*/
+	position:relative;/*讓裡面的兩個子容器絕對定位*/
+}
+b{font-style:normal;display:block;position:absolute;top:-40px;left:-40px;width:35px;}
+em{font-style:normal;display:block;position:absolute;top:-25px;left:-70px;width:55x;}
 @page {
 	margin: 0px 0px 0px 0px !important;
 	size: landscape;
