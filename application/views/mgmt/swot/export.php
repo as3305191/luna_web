@@ -57,8 +57,13 @@
 .pageDiv:last-of-type{ 
 	page-break-after: auto; 
 }
+td{
+	height:1px;
+}
+td > div{
+	height: 100%!important;
 
-
+}
   /*模擬對角線*/
   .out{
 		border-top:#fff solid;/*上邊框寬度等於表格第一行行高*/
@@ -118,7 +123,13 @@
 	.noBreak {
 		break-inside: avoid;
 	}
+	td{
+	height:1px;
+}
+td > div{
+	height: 100%!important;
 
+}
   /*模擬對角線*/
   .out{
 		border-top:#fff solid;/*上邊框寬度等於表格第一行行高*/
