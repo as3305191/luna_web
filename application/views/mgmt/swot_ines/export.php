@@ -102,6 +102,9 @@ td > div{
 	margin: 10px 100px 0px 0px !important;
 }
 @media print{
+	td{
+	height:1px;
+}
 	*{
 		-webkit-print-color-adjust: exact !important;
 	}
@@ -132,6 +135,29 @@ td > div{
 	.noBreak {
 		break-inside: avoid;
 	}
+	td > div{
+	height: 100%!important;
+
+}
+  /*模擬對角線*/
+  .out{
+		border-top:#fff solid;/*上邊框寬度等於表格第一行行高*/
+		border-left: #fff solid;/*左邊框寬度等於表格第一行第一格寬度*/
+		position:relative;/*讓裡面的兩個子容器絕對定位*/
+		top:120px;
+		padding:0;
+		background:
+    linear-gradient(18deg, transparent 49.5%, black 49.5%, black 50.5%, transparent 50.5% );	
+	}
+	.b{font-style:normal;display:block;position:absolute;width:130px;
+	top:10px;
+	right:10px;
+	z-index:300;
+	font-size:70px;
+	padding:40px 0px 0px 0px}
+	.em{font-style:normal;display:block;position:absolute;bottom:10px;left:10px;width:55x;
+		font-size:70px;
+		padding:0px 0px 40px 0px}
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
