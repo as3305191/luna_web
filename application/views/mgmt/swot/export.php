@@ -123,8 +123,7 @@
 					<td colspan="1" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="50%"  align="center">
 							<tr >
-								<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="max-width:100%;height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
-
+							<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="max-width:100%;max-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
 							</tr>
 						</table>
 					</td>
@@ -259,7 +258,7 @@
 					<td colspan="1" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
-								<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="max-width:100%;height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
+							<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="max-width:100%;max-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
 
 							</tr>
 						</table>
