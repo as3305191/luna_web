@@ -71,8 +71,8 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 .out{
 	border-top:40px #D6D3D6 solid;/*上邊框寬度等於表格第一行行高*/
-	width:0px;/*讓容器寬度為0*/
-	height:0px;/*讓容器高度為0*/
+	width:100%;
+	height:100%;
 	border-left:80px #BDBABD solid;/*左邊框寬度等於表格第一行第一格寬度*/
 	position:relative;/*讓裡面的兩個子容器絕對定位*/
 }
@@ -135,13 +135,11 @@ em{font-style:normal;display:block;position:absolute;top:-25px;left:-70px;width:
 					<td colspan="1" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
-								<th style="width:80px;">
 
 									<div class="out">
 										<b>類別</b>
 										<em>姓名</em>
 									</div>	
-								</th>
 					
 							</tr>
 
