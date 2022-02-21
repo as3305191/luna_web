@@ -51,6 +51,10 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 
 <link rel="stylesheet" href="<?= base_url('js/layui/dist/css/layui.css') ?>">
 <style>
+td{
+	height:1px;
+}
+
 .layui-table1{ 
 	/* border-style:groove !important; */
 	margin: 0px 100px 0px 10px !important;
