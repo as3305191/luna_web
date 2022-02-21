@@ -70,10 +70,10 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	page-break-after: auto; 
 }
 .out{
-	border-top:40px ;/*上邊框寬度等於表格第一行行高*/
+	border-top:40px solid;/*上邊框寬度等於表格第一行行高*/
 	width:100%;
 	height:100%;
-	border-left:80px ;/*左邊框寬度等於表格第一行第一格寬度*/
+	border-left:80px solid;/*左邊框寬度等於表格第一行第一格寬度*/
 	position:relative;/*讓裡面的兩個子容器絕對定位*/
 }
 b{font-style:normal;display:block;position:absolute;top:-40px;left:-40px;width:35px;border-color:#000 !important;}
