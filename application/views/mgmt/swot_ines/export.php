@@ -83,13 +83,13 @@ td > div{
 		border-top:#fff solid;/*上邊框寬度等於表格第一行行高*/
 		border-left: #fff solid;/*左邊框寬度等於表格第一行第一格寬度*/
 		position:relative;/*讓裡面的兩個子容器絕對定位*/
-		top:10px
+		top:120px
 	}
 	b{font-style:normal;display:block;position:absolute;width:35px;
 	top:0;
 	right:0;
 	z-index:300;}
-	em{font-style:normal;display:block;position:absolute;bottom:90%;left:0;width:55x;}
+	em{font-style:normal;display:block;position:absolute;bottom:0px;left:0;width:55x;}
 
 @page {
 	margin: 10px 100px 0px 0px !important;
