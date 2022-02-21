@@ -20,7 +20,7 @@ class Swot_ines extends MY_Mgmt_Controller {
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$data['all_department_list'] = $this -> d_dao -> find_ines_d_or_c();
 
-		$this -> to_json($data);
+		// $this -> to_json($data);
 
 		$this -> load -> view('mgmt/swot_ines/list', $data);
 	}
