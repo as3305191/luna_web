@@ -139,7 +139,6 @@ em{font-style:normal;display:block;position:absolute;top:-25px;left:-70px;width:
 									<b>SW</b>
 									<em>OT</em>
 								</div>
-								<!-- <td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="width:100%;height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td> -->
 							</tr>
 								
 						</table>
