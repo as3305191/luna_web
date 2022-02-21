@@ -276,16 +276,13 @@ em{font-style:normal;display:block;position:absolute;top:-25px;left:-70px;width:
 					<td colspan="1" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
-							<tr >
-								<th style="width:80px;">
 
-									<div class="out">
-										<b>類別</b>
-										<em>姓名</em>
-									</div>	
-								</th>
-					
-							</tr>							</tr>
+								<div class="out">
+									<b>類別</b>
+									<em>姓名</em>
+								</div>	
+				
+							</tr>					
 						</table>
 					</td>
 					<td colspan="1" valign="top" class="noBreak td_table col-xs-4">
