@@ -88,15 +88,15 @@ td > div{
 		background:
     linear-gradient(18deg, transparent 49.5%, black 49.5%, black 50.5%, transparent 50.5% );	
 	}
-	.b{font-style:normal;display:block;position:absolute;width:35px;
+	.b{font-style:normal;display:block;position:absolute;width:130px;
 	top:10px;
 	right:10px;
 	z-index:300;
 	font-size:70px;
-	padding:0px 0px 0px 0px}
+	padding:40px 0px 0px 0px}
 	.em{font-style:normal;display:block;position:absolute;bottom:10px;left:10px;width:55x;
 		font-size:70px;
-		padding:0px 0px 0px 0px}
+		padding:0px 0px 40px 0px}
 
 @page {
 	margin: 10px 100px 0px 0px !important;
