@@ -69,7 +69,32 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 .pageDiv:last-of-type{ 
 	page-break-after: auto; 
 }
+td{
+	height:1px;
+}
+td > div{
+	height: 100%!important;
 
+}
+  /*模擬對角線*/
+  .out{
+		border-top:#fff solid;/*上邊框寬度等於表格第一行行高*/
+		border-left: #fff solid;/*左邊框寬度等於表格第一行第一格寬度*/
+		position:relative;/*讓裡面的兩個子容器絕對定位*/
+		top:120px;
+		padding:0;
+		background:
+    linear-gradient(18deg, transparent 49.5%, black 49.5%, black 50.5%, transparent 50.5% );	
+	}
+	.b{font-style:normal;display:block;position:absolute;width:130px;
+	top:10px;
+	right:10px;
+	z-index:300;
+	font-size:70px;
+	padding:40px 0px 0px 0px}
+	.em{font-style:normal;display:block;position:absolute;bottom:10px;left:10px;width:55x;
+		font-size:70px;
+		padding:0px 0px 40px 0px}
 @page {
 	margin: 10px 100px 0px 0px !important;
 }
@@ -104,6 +129,32 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	.noBreak {
 		break-inside: avoid;
 	}
+	td{
+	height:1px;
+}
+td > div{
+	height: 100%!important;
+
+}
+  /*模擬對角線*/
+  .out{
+		border-top:#fff solid;/*上邊框寬度等於表格第一行行高*/
+		border-left: #fff solid;/*左邊框寬度等於表格第一行第一格寬度*/
+		position:relative;/*讓裡面的兩個子容器絕對定位*/
+		top:120px;
+		padding:0;
+		background:
+    linear-gradient(18deg, transparent 49.5%, black 49.5%, black 50.5%, transparent 50.5% );	
+	}
+	.b{font-style:normal;display:block;position:absolute;width:130px;
+	top:10px;
+	right:10px;
+	z-index:300;
+	font-size:70px;
+	padding:40px 0px 0px 0px}
+	.em{font-style:normal;display:block;position:absolute;bottom:10px;left:10px;width:55x;
+		font-size:70px;
+		padding:0px 0px 40px 0px}
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
@@ -127,7 +178,10 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 					<td colspan="1" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
-								<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="width:100%;height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
+								<div class="out">
+									<b class="b">SW</b>
+									<b class="em">OT</em>
+								</div>	
 							</tr>
 								
 						</table>
@@ -261,7 +315,10 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 					<td colspan="1" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
-								<td style="border:none"><img src="<?= base_url("api/images/get/947")?>" style="min-width:100%;min-height: 100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
+								<div class="out">
+									<b class="b">SW</b>
+									<b class="em">OT</em>
+								</div>	
 							</tr>
 						</table>
 					</td>

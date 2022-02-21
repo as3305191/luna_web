@@ -174,7 +174,7 @@ td > div{
 						<?php else: ?>
 							<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;color:#000"><?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
 						<?php endif?>
-						<div style="text-align:right;color:#000;font-size:125%">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
+						<div style="text-align:right;color:#000;font-size:125%;height: 80px;">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
 					</td>
 				</tr>
 				<tr class="noBreak">
@@ -311,7 +311,7 @@ td > div{
 						<?php else: ?>
 							<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;color:#000"><?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
 						<?php endif?>
-						<div style="text-align:right;color:#000;font-size:125%">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
+						<div style="text-align:right;color:#000;font-size:125%;height: 80px;">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
 					</td>
 				</tr>
 				<tr class="noBreak">
