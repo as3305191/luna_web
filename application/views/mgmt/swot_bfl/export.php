@@ -110,7 +110,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 <div class="ex_page " style="padding:20px 20px 20px 20px;" width="70%">
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
-	<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
+	<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;pointer-events: none;" >
 			<tbody class="" width="100%">
 				<tr>
 					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
@@ -244,7 +244,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 		</tbody>
 	</table>
 	<?php else: ?>
-		<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
+		<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;pointer-events: none;" >
 			<tbody class="" width="100%">
 				<tr>
 					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
