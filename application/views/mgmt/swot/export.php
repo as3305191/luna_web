@@ -105,7 +105,7 @@
 
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
-	<table class="noBreak layui-table pageDiv layui-table1"   style="border-color:#000;padding:0px 30px 0px 30px;" >
+	<table class="noBreak layui-table pageDiv layui-table1"  style="border-color:#000;padding:0px 30px 0px 30px;" >
 			<tbody class="" width="100%"> 
 				<tr style="pointer-events: none;">
 					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
@@ -113,7 +113,6 @@
 						<?php if(!empty( $item -> unify) && $item -> unify>0): ?>
 							<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;color:#000"><?= isset($item) ? $item -> d_or_c_name.'(整合)' : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
 						<?php else: ?>
-
 							<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;color:#000"><?= isset($item) ? $item -> d_or_c_name : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
 						<?php endif?>
 						<div style="text-align:right;color:#000;font-size:125%">文件種類：<?= isset($item) ? $item -> s_style_name : ''?></div>
