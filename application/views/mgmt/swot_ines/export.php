@@ -87,11 +87,13 @@ td > div{
 		background:
     linear-gradient(21deg, transparent 49.5%, black 49.5%, black 50.5%, transparent 50.5% );	
 	}
-	b{font-style:normal;display:block;position:absolute;width:35px;
+	.b{font-style:normal;display:block;position:absolute;width:35px;
 	top:0;
 	right:0;
-	z-index:300;}
-	em{font-style:normal;display:block;position:absolute;bottom:0px;left:0;width:55x;}
+	z-index:300;
+	font-size:25px;}
+	.em{font-style:normal;display:block;position:absolute;bottom:0px;left:0;width:55x;
+		font-size:25px;}
 
 @page {
 	margin: 10px 100px 0px 0px !important;
@@ -152,8 +154,8 @@ td > div{
 							<tr >
 
 									<div class="out">
-										<b>類別</b>
-										<em>姓名</em>
+										<b class="b">SW</b>
+										<b class="em">OT</em>
 									</div>	
 					
 							</tr>
