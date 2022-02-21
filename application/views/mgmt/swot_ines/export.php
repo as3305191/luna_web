@@ -75,7 +75,11 @@ td > div{
 
 }
   /*模擬對角線*/
-  
+  .out{
+		border-top:#fff solid;/*上邊框寬度等於表格第一行行高*/
+		border-left: #fff solid;/*左邊框寬度等於表格第一行第一格寬度*/
+		position:relative;/*讓裡面的兩個子容器絕對定位*/
+	}
 	b{font-style:normal;display:block;position:absolute;width:35px;
 	top:0;
 	right:0;
