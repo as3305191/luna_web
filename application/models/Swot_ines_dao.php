@@ -78,8 +78,8 @@ class Swot_ines_dao extends MY_Model {
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("swot_style s_s", "s_s.id = _m.swot_style_id", "left");
-		$this -> db -> join("swot_title s_t", "s_t.id = _m.title", "left");
+		$this -> db -> join("swot_style_ines s_s", "s_s.id = _m.swot_style_id", "left");
+		$this -> db -> join("swot_title_ines s_t", "s_t.id = _m.title", "left");
 		$this -> db -> join("department d", "d.id = _m.class_id", "left");
 
 	}
