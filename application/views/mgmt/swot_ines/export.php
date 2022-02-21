@@ -291,12 +291,10 @@ td > div{
 					<td colspan="1" class="noBreak td_table col-xs-4">
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
-
 								<div class="out">
-									<b>類別</b>
-									<em>姓名</em>
-								</div>	
-				
+										<b class="b">SW</b>
+										<b class="em">OT</em>
+									</div>					
 							</tr>					
 						</table>
 					</td>
