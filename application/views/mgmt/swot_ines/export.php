@@ -84,6 +84,7 @@ td > div{
 		border-left: #fff solid;/*左邊框寬度等於表格第一行第一格寬度*/
 		position:relative;/*讓裡面的兩個子容器絕對定位*/
 		top:120px;
+		padding:0;
 		background:
     linear-gradient(18deg, transparent 49.5%, black 49.5%, black 50.5%, transparent 50.5% );	
 	}
