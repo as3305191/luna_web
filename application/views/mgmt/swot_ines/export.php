@@ -102,9 +102,7 @@ td > div{
 	margin: 10px 100px 0px 0px !important;
 }
 @media print{
-	td{
-	height:1px;
-}
+
 	*{
 		-webkit-print-color-adjust: exact !important;
 	}
@@ -135,10 +133,7 @@ td > div{
 	.noBreak {
 		break-inside: avoid;
 	}
-	td > div{
-	height: 100%!important;
 
-}
   /*模擬對角線*/
   .out{
 		border-top:#fff solid;/*上邊框寬度等於表格第一行行高*/
