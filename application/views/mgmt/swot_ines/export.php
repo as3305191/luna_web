@@ -76,8 +76,8 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	border-left:80px #fff solid;/*左邊框寬度等於表格第一行第一格寬度*/
 	position:relative;/*讓裡面的兩個子容器絕對定位*/
 }
-b{font-style:normal;display:block;position:absolute;top:-40px;left:-40px;width:35px;border-color:#000 !important;}
-em{font-style:normal;display:block;position:absolute;top:-25px;left:-70px;width:55x;}
+b{font-style:normal;display:block;position:absolute;top:-90%;left:-40px;width:35px;border-color:#000 !important;}
+em{font-style:normal;display:block;position:absolute;top:-10%;left:-70px;width:55x;}
 @page {
 	margin: 10px 100px 0px 0px !important;
 }
