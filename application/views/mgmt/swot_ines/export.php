@@ -92,10 +92,10 @@ td > div{
 	top:10px;
 	right:10px;
 	z-index:300;
-	font-size:100px;
+	font-size:70px;
 	padding:0px 0px 0px 0px}
 	.em{font-style:normal;display:block;position:absolute;bottom:10px;left:10px;width:55x;
-		font-size:100px;
+		font-size:70px;
 		padding:0px 0px 0px 0px}
 
 @page {
