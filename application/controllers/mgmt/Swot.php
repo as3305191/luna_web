@@ -287,7 +287,7 @@ class Swot extends MY_Mgmt_Controller {
 		$new_text='';
 		$test_s1 =str_replace("</span></span></span></p>","</p>",trim($text));
 		$test_s2 =str_replace('<p style="margin-top:0cm; margin-right:0cm; margin-bottom:0cm"><span style="font-size:12.0pt"><span style="line-height:115%"><span style="font-family:華康仿宋體W4">',"<p>",trim($test_s1));
-		$new_text = str_replace("<br />","</p><p>",trim($test_s2));
+		$new_text = str_replace("</p><br /><p>","</p><p>",trim($test_s2));
 		return $new_text;
 	}
 
