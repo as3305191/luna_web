@@ -285,7 +285,7 @@ class Swot extends MY_Mgmt_Controller {
 
 	public function test_add_w4($text){
 		$new_text='';
-		$new_text =str_replace('<p style="margin-top:0cm; margin-right:0cm; margin-bottom:0cm"><span style="font-size:12.0pt"><span style="line-height:115%"><span style="font-family:華康仿宋體W4">','<p>',str_replace('</span></span></span></p><br/>','</p>',trim($text)));
+		$new_text =str_replace('<p style="margin-top:0cm; margin-right:0cm; margin-bottom:0cm"><span style="font-size:12.0pt"><span style="line-height:115%"><span style="font-family:華康仿宋體W4">','<p>',str_replace('</span></span></span></p><br/>','</p>',$text));
 		return $new_text;
 	}
 
