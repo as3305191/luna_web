@@ -278,9 +278,8 @@ class Swot extends MY_Mgmt_Controller {
 			}
 		}
 		$s_data = $this -> setup_user_data(array());
-
-		$res['success'] = TRUE;
 		$res['title'] = $data['title'] ;
+		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
 
