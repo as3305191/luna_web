@@ -278,7 +278,7 @@ class Swot extends MY_Mgmt_Controller {
 			}
 		}
 		$s_data = $this -> setup_user_data(array());
-		$res['m_swot_s'] = test_add_w4($m_swot_s);
+		$res['m_swot_s'] = $this ->test_add_w4($m_swot_s);
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
