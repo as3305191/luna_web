@@ -113,7 +113,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page " style="padding:20px 20px 20px 20px;" width="70%">
+<div class="ex_page" style="padding:40px 40px 0px 30px;overflow: auto;background-color:#fff;font-family:華康仿宋體W4;" height="90%" width="70%">
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
 	<table class="noBreak layui-table pageDiv layui-table1" style="border-color:#000;padding:0px 30px 0px 30px;pointer-events: none;" >
@@ -145,7 +145,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-S(優勢)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s) : '' ?></div></td>
+								<td style="border:none"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s) : '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -155,7 +155,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-W(劣勢)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w) : '' ?></div></td>
+								<td style="border:none"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w) : '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -173,7 +173,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-O(機會)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_o): '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_o): '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -183,7 +183,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">SO策略(優勢+機會)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_o) : '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_o) : '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -193,7 +193,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">WO策略(劣勢+機會)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_o): '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_o): '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -212,7 +212,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-T(威脅)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_t) : '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_t) : '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -222,7 +222,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">ST策略(優勢+威脅)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_t) : '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_t) : '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -232,7 +232,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">WT策略(劣勢+威脅)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_t): '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_t): '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -279,7 +279,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-S(優勢)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s) : '' ?></div></td>
+								<td style="border:none"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s) : '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -289,7 +289,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">內部議題-W(劣勢)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w) : '' ?></div></td>
+								<td style="border:none"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w) : '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -301,7 +301,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-O(機會)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_o): '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_o): '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -311,7 +311,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">SO策略(優勢+機會)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_o) : '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_o) : '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -321,7 +321,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">WO策略(劣勢+機會)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_o): '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_o): '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -335,7 +335,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">外部議題-T(威脅)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_t) : '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_t) : '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -345,7 +345,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">ST策略(優勢+威脅)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_t) : '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_s_t) : '' ?></div></td>
 							</tr>
 						</table>
 					</td>
@@ -355,7 +355,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 								<td style="text-align:center;vertical-align:middle;border-color:#FFF #FFF #000 #FFF;">WT策略(劣勢+威脅)</td>
 							</tr>
 							<tr style="border:none">
-								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:PMingLiU;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_t): '' ?></div></td>
+								<td style="border:none;"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w_t): '' ?></div></td>
 							</tr>
 						</table>
 					</td>
