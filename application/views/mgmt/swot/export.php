@@ -102,7 +102,7 @@
 }
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
-<div class="ex_page" style="padding:40px 40px 0px 30px;overflow: auto;background-color:#fff;" height="90%" width="70%">
+<div class="ex_page" style="padding:40px 40px 0px 30px;overflow: auto;background-color:#fff;font-family:華康仿宋體W4;" height="90%" width="70%">
 
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
