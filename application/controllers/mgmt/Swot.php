@@ -152,7 +152,7 @@ class Swot extends MY_Mgmt_Controller {
 					$s_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_t)));
 					$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 				}
-			
+
 				$item['id'] = 0;
 				$item['class_id'] = 0;
 				$item['swot_style_id'] = $style;
@@ -278,16 +278,17 @@ class Swot extends MY_Mgmt_Controller {
 			}
 		}
 		$s_data = $this -> setup_user_data(array());
-		$res['m_swot_s'] = $this ->test_add_w4($m_swot_s); 
+		// $res['m_swot_s'] = $this ->test_add_w4($m_swot_s); 
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
 
-	public function test_add_w4($text){
+	 function test_add_w4($text){
 		$new_text='';
-		$new_text =str_replace('<p style="margin-top:0cm; margin-right:0cm; margin-bottom:0cm"><span style="font-size:12.0pt"><span style="line-height:115%"><span style="font-family:華康仿宋體W4">','<p>',str_replace('</span></span></span></p><br/>','</p>',$text));
+		$new_text =str_replace("<br/>","</p><p>",trim($text));
 		return $new_text;
 	}
+
 
 	public function new_swot_style(){
 		$data = array();
@@ -443,7 +444,7 @@ class Swot extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function replace_num_title($str_old) {
+	 function replace_num_title($str_old) {
 		$str = str_replace('<p>&nbsp;</p>','',$str_old);
 		$total_array = explode("</p>",$str);
 		$total_num = substr_count($str,'<p>');
