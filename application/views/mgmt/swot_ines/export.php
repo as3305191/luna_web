@@ -134,7 +134,6 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 						<table class="swot_table" width="100%" height="100%"  align="center">
 							<tr >
 								<td style="border:none"><img src="<?= base_url("api/images/get/3241")?>" style="max-width:100%;-webkit-background-size:cover;-moz-background-size: cover;-o-background-size: cover;background-size: cover;" ></td>
-
 							</tr>
 
 						</table>
