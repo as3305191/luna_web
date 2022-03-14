@@ -86,8 +86,8 @@ class Swot_dao extends MY_Model {
 	function search_always($data) {
 		
 		
-		$this -> db -> where("s_t.is_lock",0);
-		
+		// $this -> db -> where("s_t.is_lock",0);
+
 		if(!empty($data['title'])){
 			$title = $data['title'];
 			$this -> db -> where("_m.title",$title);
