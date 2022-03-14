@@ -16,12 +16,8 @@ class Swot_title_ines_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> where('_m.is_lock',0);
 	
-		$list = $this -> db -> get() -> result();
-		if(count($list)>0){
-			return $list[0];
-		} else{
-			return null;
-		}
+		$query = $this -> db -> get();
+		return $query -> result();
 		
 	}
 
