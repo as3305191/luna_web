@@ -12,6 +12,19 @@ class Swot_title_bfl_dao extends MY_Model {
 		);
 	}
 
+	function find_all_not_lock(){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> where('_m.is_lock',0);
+	
+		$list = $this -> db -> get() -> result();
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return null;
+		}
+		
+	}
+	
 	function query_ajax($data) {
 		$start = $data['start'];
 		$limit = $data['length'];

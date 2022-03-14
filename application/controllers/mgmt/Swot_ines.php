@@ -282,7 +282,7 @@ class Swot_ines extends MY_Mgmt_Controller {
 
 	public function find_swot_title(){
 		$res = array();
-		$swot = $this -> swot_title_dao -> find_all();
+		$swot = $this -> swot_title_dao -> find_all_not_lock();
 		$res['swot'] = $swot;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
