@@ -333,6 +333,14 @@ class Swot extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
+	
+	public function find_swot_title_list(){
+		$res = array();
+		$swot = $this -> swot_title_dao -> find_all();
+		$res['swot'] = $swot;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
 
 	public function do_remove(){//by user
 		$res = array();

@@ -288,6 +288,14 @@ class Swot_bfl extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function find_swot_title_list(){
+		$res = array();
+		$swot = $this -> swot_title_dao -> find_all();
+		$res['swot'] = $swot;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
 	public function do_remove(){//by user
 		$res = array();
 		$s_data = $this -> setup_user_data(array());

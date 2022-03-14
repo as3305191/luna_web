@@ -200,7 +200,7 @@ thead tr th {
 	});
 	function load_list_title() {
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
+			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title_list',
 			type: 'POST',
 			data: {},
 			dataType: 'json',
