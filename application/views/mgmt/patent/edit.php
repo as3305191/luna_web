@@ -524,7 +524,7 @@ if($('#item_id').val()>0){
 		now_patent_status.push($('#now_patent_status').val());
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 	}
-	if(typeof $('#patent_key_array').val().length !=='undefined'){
+	if(typeof $('#patent_key_array').val() !=='undefined'){
 		patent_key_array.push($('#patent_key_array').val());
 	}
 	
