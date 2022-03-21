@@ -491,7 +491,7 @@ $('#app-edit-form').bootstrapValidator({
 	}).bootstrapValidator('validate');
 	var now_patent_status = [];
 	var patent_key_array =[];
-	var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false,now_patent_status =false,patent_key_array =false;
+	var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false,now_patent_status =false;
 
 if($('#item_id').val()>0){
 	pdf_array=[];
@@ -499,7 +499,6 @@ if($('#item_id').val()>0){
 	patnet_num_input=[];
 	img=[];
 	now_patent_status = [];
-	patent_key_array =[];
 	if($('#img_id').val().length>0){
 		img.push($('#img_id').val());
 		// pdf_array.splice($.inArray(0,pdf_array),1);
@@ -525,7 +524,7 @@ if($('#item_id').val()>0){
 		now_patent_status.push($('#now_patent_status').val());
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 	}
-	if($('#patent_key_array').val()[0]!==null){
+	if(typeof $('#patent_key_array').val().length !=='undefined'){
 		patent_key_array.push($('#patent_key_array').val());
 	}
 	
