@@ -193,7 +193,9 @@
 								</option>
 							<?php endforeach ?>
 						</select>
-						<button type="button" class="btn btn-sm btn-primary" id="add_key"><i class="fa fa-plus-circle fa-lg"></i></button>
+						<div class="col-md-2">
+							<button type="button" class="btn btn-sm btn-primary" id="add_key"><i class="fa fa-plus-circle fa-lg"></i></button>
+						</div>
 					</div>
 				</div>
 			</fieldset>
@@ -276,6 +278,7 @@
 					</div>
 				</div>
 			</fieldset>
+
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">公告日</label>
@@ -489,12 +492,15 @@ $('#app-edit-form').bootstrapValidator({
 	var now_patent_status = [];
 
 var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false,now_patent_status =false;
+
 if($('#item_id').val()>0){
 	pdf_array=[];
 	public_num_input=[];
 	patnet_num_input=[];
 	img=[];
 	now_patent_status = [];
+	patent_key_array = [];
+
 	if($('#img_id').val().length>0){
 		img.push($('#img_id').val());
 		// pdf_array.splice($.inArray(0,pdf_array),1);
@@ -520,12 +526,17 @@ if($('#item_id').val()>0){
 		now_patent_status.push($('#now_patent_status').val());
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 	}
+	if($('#patent_key_array').val().length>0){
+		patent_key_array.push($('#patent_key_array').val());
+		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
+	}
+	
 } else{
 	pdf_array=[];
 	public_num_input=[];
 	patnet_num_input=[];
 	img=[];
-	
+	patent_key_array=[];
 	now_patent_status = [];
 }
 
