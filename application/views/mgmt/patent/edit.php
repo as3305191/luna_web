@@ -829,7 +829,7 @@ $('#add_key').click(function() {
 		closeBtn:0,
 		area:['400px','200px'],
 		shadeClose:true,
-		content:'<?=base_url('mgmt/patent/add_key')?>'
+		content:'<?=base_url('mgmt/patent/new_key')?>'
     })
 });
 
