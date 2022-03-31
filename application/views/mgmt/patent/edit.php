@@ -193,9 +193,10 @@
 								</option>
 							<?php endforeach ?>
 						</select>
-						<div class="col-md-2">
-							<button type="button" class="btn btn-sm btn-primary" id="add_key"><i class="fa fa-plus-circle fa-lg"></i></button>
-						</div>
+						
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-sm btn-primary" id="add_key"><i class="fa fa-plus-circle fa-lg"></i></button>
 					</div>
 				</div>
 			</fieldset>
