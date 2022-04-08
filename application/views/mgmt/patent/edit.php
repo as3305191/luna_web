@@ -182,8 +182,8 @@
 					</div>
 				</div>
 			</fieldset>
-			<fieldset >
-				<div class="form-group" type="hidden">
+			<fieldset style="display:none">
+				<div class="form-group" >
 					<label class="col-md-3 control-label">關鍵字(測試勿動)</label>
 					<div class="col-md-6">
 						<select id="patent_key_array" name="patent_key[]" class="form-control" multiple>
