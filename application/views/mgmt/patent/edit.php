@@ -182,7 +182,7 @@
 					</div>
 				</div>
 			</fieldset>
-			<fieldset>
+			<fieldset type="hidden">
 				<div class="form-group">
 					<label class="col-md-3 control-label">關鍵字(測試勿動)</label>
 					<div class="col-md-6">
