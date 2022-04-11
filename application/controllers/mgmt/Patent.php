@@ -338,10 +338,13 @@ class Patent extends MY_Mgmt_Controller {
 	public function del_key(){
 		$data = array();
 		$id = $this -> get_post('key');
-		$data['id'] = $id[0];
-		$this -> patent_key_dao -> delete($data);
+		foreach ($id as $each){
+			$data['id'] = $each;
+			$this -> patent_key_dao -> delete($data);
+		}
+		
 		$res['success'] = TRUE;
-		$this -> to_json($data);
+		$this -> to_json($res);
 	}
 
 	public function find_key(){
