@@ -43,7 +43,7 @@
   			url: '<?= base_url() ?>' + 'mgmt/patent/del_key',
   			type: 'POST',
   			data: {
-          key : $('#key').val()[0]
+          key : $('#key').val()
   			},
   			dataType: 'json',
   			success: function(d) {
