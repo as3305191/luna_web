@@ -331,7 +331,7 @@ class Patent extends MY_Mgmt_Controller {
 	public function minus_key(){
 		$data = array();
 		$key = $this -> patent_key_dao -> find_all();
-
+		$data['key'] = $key;
 		$this -> load -> view('layout/minus_key',$data);
 	}
 
