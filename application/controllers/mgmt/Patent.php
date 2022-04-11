@@ -341,7 +341,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data['id'] = $id[0];
 		$this -> patent_key_dao -> delete($data);
 		$res['success'] = TRUE;
-		$this -> to_json($res);
+		$this -> to_json($data);
 	}
 
 	public function find_key(){
