@@ -1191,46 +1191,42 @@ function do_save() {
 	function open_new_window(id) {
 		window.open('#mgmt/patent/edit/' + id);
 	}
-	// // familyChange();
+	
+	function find_key() {
+		
+	$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/patent/find_key',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$patent_key = $('#patent_key_array').empty();
+					$.each(d.key, function(){
+						if(this.id==$('#patent_key_array').val()){
+							$('<option/>', {
+								'value': this.id,
+								'text': this.key
+							}).attr("selected", true).appendTo($patent_key);
+						}else{
+							$('<option/>', {
+								'value': this.id,
+								'text': this.key
+							}).appendTo($patent_key);
+						}
+					});
+				}
+				
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
 
-	// var stationListStore = [];
-	// function reloadStationList() {
-	// 	var url = baseUrl +'mgmt/patent/station_list'; // the script where you handle the form input.
-	// 	$.ajax({
-	// 		type : "POST",
-	// 		url : url,
-	// 		data : {
-	// 			order_id: $('#item_id').val()
-	// 		},
-	// 		success : function(data) {
-	// 			stationListStore = data.list;
-	// 			redrawStationList();
-	// 		}
-	// 	});
-	// }
+}
+find_key();
 
-	// function redrawStationList() {
-	// 	var $body = $('#station_list_body').empty();
-	// 	var cnt = 0;
-	// 	$.each(stationListStore, function(){
-	// 		var me = this;
-	// 		me._idx = cnt++;
-
-	// 		if(!me.is_del) {
-	// 			var $tr = $('<tr />');
-	// 			$td = $("<td></td>").text(me.name).appendTo($tr);
-	// 			$td = $("<td></td>").append($('<button class="btn btn-danger btn-xs"><i class="fa fa-minus"></i></button>').click(function(){
-	// 				if(me.id > 0) {
-	// 					me.is_del = 1; // mark del
-	// 				} else { // remove it
-	// 					stationListStore.splice(me._idx, 1);
-	// 				}
-	// 				redrawStationList();
-	// 			})).appendTo($tr);
-	// 			$body.append($tr);
-	// 		}
-	// 	})
-	// }
 	$('.kv-file-zoom').attr("disabled",'');
 	$('.kv-file-zoom').removeAttr("disabled");
 
