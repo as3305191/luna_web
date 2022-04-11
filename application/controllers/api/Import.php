@@ -175,7 +175,7 @@ class Import extends MY_Base_Controller {
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
-			for($row=0; $row<=$highestRow; $row++){
+			for($row=1; $row<=$highestRow; $row++){
 				$keyword = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
 
 					$data = array(
