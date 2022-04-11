@@ -15,7 +15,7 @@
         <span style="font-size:12pt">刪除關鍵字</span>
     </div>
     <hr/>
-    <select id="key" name="key" class="form-control" >
+    <select id="key" class="form-control" >
       <?php foreach($key as $each): ?>
         <option value="<?= $each -> id ?>" >
           <?= $each -> key ?>
