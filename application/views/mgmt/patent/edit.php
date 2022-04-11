@@ -198,7 +198,7 @@
 					<div class="col-md-1">
 						<button type="button" class="btn btn-sm btn-primary" id="add_key"><i class="fa fa-plus-circle fa-lg"></i></button>
 					</div>
-					<div class="col-md-1" style="color:red">
+					<div class="col-md-1" style="color:red;padding:0px 0px 0px 0px">
 						<button type="button" class="btn btn-sm btn-primary" id="minus_key" ><i class="fa fa-minus-circle fa-lg"></i></button>
 					</div>
 				</div>
