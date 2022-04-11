@@ -68,5 +68,6 @@
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
+	$('#key').select2();
 
 </script>
