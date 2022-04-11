@@ -13,6 +13,8 @@ class Import extends MY_Base_Controller {
 		$this -> load -> model('Users_copy_dao', 'users_copy_dao');
 		$this -> load -> model('Patent_dao', 'patent_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
+		$this -> load -> model('Patent_key_dao', 'p_k_dao');
+		
 
 		$this->load->library('excel');
 	}
@@ -168,5 +170,24 @@ class Import extends MY_Base_Controller {
 		// $this -> to_json($res);
 	}
 
+	function import2(){
+		$object = PHPExcel_IOFactory::load("專利系統-關鍵字2022.4.6以前.xlsx");
+		foreach($object->getWorksheetIterator() as $worksheet){
+			$highestRow = $worksheet->getHighestRow();
+			$highestColumn = $worksheet->getHighestColumn();
+			for($row=0; $row<=$highestRow; $row++){
+				$keyword = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+
+					$data = array(
+						'key' =>$keyword,
+						
+					);
+					// $this->users_dao->update_by($data,'empid',$empid);
+					$this->p_k_dao->insert($data);
+			}
+		}
+		// $res['success'] = TRUE;
+		// $this -> to_json($res);
+	}
 }
 ?>
