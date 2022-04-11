@@ -835,6 +835,18 @@ $('#add_key').click(function() {
     })
 });
 
+$('#minus_key').click(function() {
+	layer.open({
+		type:2,
+		title:'',
+		closeBtn:0,
+		area:['400px','200px'],
+		shadeClose:true,
+		content:'<?=base_url('mgmt/patent/minus_key')?>'
+    })
+});
+
+
 $('#add_country').click(function() {
 	layer.open({
 		type:2,

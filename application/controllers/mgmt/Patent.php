@@ -328,6 +328,22 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function minus_key(){
+		$data = array();
+		$key = $this -> patent_key_dao -> find_all();
+
+		$this -> load -> view('layout/minus_key',$data);
+	}
+
+	public function del_key(){
+		$data = array();
+		$id = $this -> get_post('id');
+		$data['id'] = $id;
+		$this -> patent_key_dao -> delete($data);
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
 	public function find_key(){
 		$res = array();
 		$key = $this -> patent_key_dao -> find_all();
