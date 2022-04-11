@@ -339,7 +339,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data = array();
 		$id = array();
 		$id= $this -> get_post('key');
-		foreach ($id as $each){
+		foreach ($id[0] as $each){
 			$data['id'] = $each;
 			$this -> patent_key_dao -> delete($data);
 		}
