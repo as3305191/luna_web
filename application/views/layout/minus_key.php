@@ -32,13 +32,14 @@
     </div>
     <?php $this->load->view('layout/plugins'); ?>
     <script type="text/javascript">
+	$('#key').select2();
 
   $('.cancel').click(function() {
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
     parent.layer.close(index);
   })
 
-  $('.dosubmit').click(function() {
+  $('.dosubmit').click(function() { 
   		$.ajax({
   			url: '<?= base_url() ?>' + 'mgmt/patent/del_key',
   			type: 'POST',
@@ -53,7 +54,7 @@
           if(d.success){
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.layer.close(index);
-            parent.load_key();            
+            parent.find_key();            
           }
           if(d.error){
             layer.msg(d.error);
@@ -64,10 +65,38 @@
   			}
   		});
   })
+
+  function load_key() {
+		
+    $.ajax({
+        url: '<?= base_url() ?>' + 'mgmt/patent/find_key',
+        type: 'POST',
+        data: {},
+        dataType: 'json',
+        success: function(d) {
+          if(d) {
+            // console.log(d);
+            $patent_key = $('#key').empty();
+            $.each(d.key, function(){
+              $('<option/>', {
+                  'value': this.id,
+                  'text': this.key
+                }).appendTo($patent_key);
+            });
+          }
+          
+        },
+        failure:function(){
+          alert('faialure');
+        }
+      });
+  
+  }
+  load_key();
   
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
-	$('#key').select2();
+
 
 </script>
