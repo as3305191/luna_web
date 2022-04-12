@@ -16,11 +16,7 @@
     </div>
     <hr/>
     <select id="key" class="form-control" multiple>
-      <?php foreach($key as $each): ?>
-        <option value="<?= $each -> id ?>" >
-          <?= $each -> key ?>
-        </option>
-      <?php endforeach ?>
+    
     </select>
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
