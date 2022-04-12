@@ -840,7 +840,7 @@ $('#minus_key').click(function() {
 		type:2,
 		title:'',
 		closeBtn:0,
-		area:['400px','200px'],
+		area:['600px','400px'],
 		shadeClose:true,
 		content:'<?=base_url('mgmt/patent/minus_key')?>'
     })
