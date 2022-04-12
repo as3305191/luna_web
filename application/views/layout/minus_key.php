@@ -10,7 +10,7 @@
     color:white;
   }
 </style>
-<div class="col-xs-12" style="padding:20px">
+  <div class="col-xs-12" style="padding:20px">
     <div class="col-xs-12">
         <span style="font-size:12pt">刪除關鍵字</span>
     </div>
@@ -26,9 +26,13 @@
             <button type="button" class="btn btn-success dosubmit" style="width:120px;height:40px;float:right">送出</button>
         </div>
     </div>
+    </div>
     <?php $this->load->view('layout/plugins'); ?>
     <script type="text/javascript">
-	$('#key').select2();
+      $(document).ready(function() {
+        $('#key').select2();
+
+      })
 
   $('.cancel').click(function() {
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
