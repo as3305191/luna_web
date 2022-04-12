@@ -15,7 +15,7 @@
         <span style="font-size:12pt">刪除關鍵字</span>
     </div>
     <hr/>
-    <select id="key" class="form-control" multiple>
+    <select id="key_l" class="form-control" multiple>
     
     </select>
     <div class="col-xs-12 no-padding" style="margin-top:20px">
@@ -30,7 +30,7 @@
     <?php $this->load->view('layout/plugins'); ?>
     <script type="text/javascript">
       $(document).ready(function() {
-        $('#key').select2();
+        $('#key_l').select2();
 
       })
 
@@ -44,7 +44,7 @@
   			url: '<?= base_url() ?>' + 'mgmt/patent/del_key',
   			type: 'POST',
   			data: {
-          key : $('#key').val()
+          key : $('#key_l').val()
   			},
   			dataType: 'json',
   			success: function(d) {
@@ -76,7 +76,7 @@
         success: function(d) {
           if(d) {
             // console.log(d);
-            $patent_key = $('#key').empty();
+            $patent_key = $('#key_l').empty();
             $.each(d.key, function(){
               $('<option/>', {
                   'value': this.id,
