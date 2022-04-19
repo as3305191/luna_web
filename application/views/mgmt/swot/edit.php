@@ -507,6 +507,56 @@
 		
 	};
 
+	function do_save_new() {
+		// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
+		var url = baseUrl + 'mgmt/swot/insert_new'; // the script where you handle the form input.
+		if($('#item_id').val()==0){
+			var unify = $('#unify_for_0').val();
+		} else{
+			var unify = $('#unify').val();
+		}
+
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+				
+				id: $('#item_id').val(),
+				class_id: $('#class_id').val(),	
+				title: $('#swot_title').val(),
+				swot_style: $('#swot_style').val(),
+				department: $('#department').val(),
+				make_user: $('#make_user').val(),
+				swot_leader:$('#swot_leader').val(),
+				unify:unify,
+				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
+				m_swot_w: CKEDITOR.instances.m_swot_w.getData(),
+				m_swot_o: CKEDITOR.instances.m_swot_o.getData(),
+				m_swot_t: CKEDITOR.instances.m_swot_t.getData(),
+				m_swot_s_o: CKEDITOR.instances.m_swot_s_o.getData(),
+				m_swot_w_o: CKEDITOR.instances.m_swot_w_o.getData(),
+				m_swot_s_t: CKEDITOR.instances.m_swot_s_t.getData(),
+				m_swot_w_t: CKEDITOR.instances.m_swot_w_t.getData(),
+				
+			},
+			success : function(data) {
+				if(data.error_msg) {
+					layer.msg(data.error_msg);
+				} else {
+					var this_id = $('#item_id').val;
+					if(this_id>0){
+						currentApp.mDtTable.ajax.reload(null, false);
+						currentApp.back(this_id);
+					} else{
+						currentApp.mDtTable.ajax.reload(null, false);
+						currentApp.backTo();
+					}
+				}
+			}
+		});
+		
+	};
+
 	function load_swot_style() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_style',
@@ -544,7 +594,9 @@
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
 			type: 'POST',
-			data: {},
+			data: {
+				id: $('#item_id').val(),
+			},
 			dataType: 'json',
 			success: function(d) {
 				if(d) {
