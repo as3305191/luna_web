@@ -27,11 +27,6 @@
 									<i class="fa fa-save"></i>存檔
 								</a>
 							</div>
-							<div class="widget-toolbar pull-left">
-								<a href="javascript:void(0);"  onclick="do_save_new();" class="btn btn-default btn-danger">
-									<i class="fa fa-save"></i>另存新檔
-								</a>
-							</div>
 						<?php endif?>
 					<?php else:?>
 						<div class="widget-toolbar pull-left">
@@ -39,13 +34,13 @@
 								<i class="fa fa-save"></i>存檔
 							</a>
 						</div>
-						<div class="widget-toolbar pull-left">
-							<a href="javascript:void(0);"  onclick="do_save_new();" class="btn btn-default btn-danger">
-								<i class="fa fa-save"></i>另存新檔
-							</a>
-						</div>
 					<?php endif?>
 				<?php endif?>
+				<div class="widget-toolbar pull-left">
+					<a href="javascript:void(0);"  onclick="do_save_new();" class="btn btn-default btn-danger">
+						<i class="fa fa-save"></i>另存新檔
+					</a>
+				</div>
 			<?php else:?>
 				<div class="widget-toolbar pull-left">
 					<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
@@ -508,22 +503,13 @@
 	};
 
 	function do_save_new() {
-		// if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
 		var url = baseUrl + 'mgmt/swot/insert_new'; // the script where you handle the form input.
-		if($('#item_id').val()==0){
-			var unify = $('#unify_for_0').val();
-		} else{
-			var unify = $('#unify').val();
-		}
-
+	
 		$.ajax({
 			type : "POST",
 			url : url,
 			data : {
-				
-				id: $('#item_id').val(),
 				class_id: $('#class_id').val(),	
-				title: $('#swot_title').val(),
 				swot_style: $('#swot_style').val(),
 				department: $('#department').val(),
 				make_user: $('#make_user').val(),
@@ -543,14 +529,8 @@
 				if(data.error_msg) {
 					layer.msg(data.error_msg);
 				} else {
-					var this_id = $('#item_id').val;
-					if(this_id>0){
-						currentApp.mDtTable.ajax.reload(null, false);
-						currentApp.back(this_id);
-					} else{
-						currentApp.mDtTable.ajax.reload(null, false);
-						currentApp.backTo();
-					}
+					currentApp.mDtTable.ajax.reload(null, false);
+					currentApp.backTo();
 				}
 			}
 		});
