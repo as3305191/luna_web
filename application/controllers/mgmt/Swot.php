@@ -287,7 +287,7 @@ class Swot extends MY_Mgmt_Controller {
 		$res = array();
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
-		$title = $this -> swot_title_dao -> find_all_not_lock('2');
+		$title = $this -> swot_title_dao -> find_all_not_lock('0');
 
 		$m_swot_s = $this -> get_post('m_swot_s');
 		$m_swot_w = $this -> get_post('m_swot_w');
