@@ -130,7 +130,7 @@
 					</div>
 				</div>
 			</fieldset>
-			<fieldset>
+			<fieldset display:none>
 				<div class="form-group">
 					<label class="col-md-3 control-label">管理代表</label>
 					<div class="col-md-6">
