@@ -12,10 +12,11 @@ class Swot_title_ines_dao extends MY_Model {
 		);
 	}
 
-	function find_all_not_lock(){
+	function find_all_not_lock($id){
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> where('_m.is_lock',0);
-	
+		if($id==0){
+			$this -> db -> where('_m.is_lock',0);
+		}
 		$query = $this -> db -> get();
 		return $query -> result();
 		

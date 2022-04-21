@@ -36,6 +36,11 @@
 						</div>
 					<?php endif?>
 				<?php endif?>
+				<div class="widget-toolbar pull-left">
+					<a href="javascript:void(0);"  onclick="do_save_new();" class="btn btn-default btn-danger">
+						<i class="fa fa-save"></i>另存新檔
+					</a>
+				</div>
 			<?php else:?>
 				<div class="widget-toolbar pull-left">
 					<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
@@ -520,7 +525,9 @@
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/swot_bfl/find_swot_title',
 			type: 'POST',
-			data: {},
+			data: {
+				id: $('#item_id').val(),
+			},
 			dataType: 'json',
 			success: function(d) {
 				if(d) {
@@ -594,4 +601,45 @@
 			}
 		});
 	}
+
+	function do_save_new() {
+		var url = baseUrl + 'mgmt/swot_bfl/insert_new'; // the script where you handle the form input.
+	
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+				class_id: $('#class_id').val(),	
+				swot_style: $('#swot_style').val(),
+				department: $('#department').val(),
+				make_user: $('#make_user').val(),
+				swot_leader:$('#swot_leader').val(),
+				unify:unify,
+				m_swot_s: CKEDITOR.instances.m_swot_s.getData(),
+				m_swot_w: CKEDITOR.instances.m_swot_w.getData(),
+				m_swot_o: CKEDITOR.instances.m_swot_o.getData(),
+				m_swot_t: CKEDITOR.instances.m_swot_t.getData(),
+				m_swot_s_o: CKEDITOR.instances.m_swot_s_o.getData(),
+				m_swot_w_o: CKEDITOR.instances.m_swot_w_o.getData(),
+				m_swot_s_t: CKEDITOR.instances.m_swot_s_t.getData(),
+				m_swot_w_t: CKEDITOR.instances.m_swot_w_t.getData(),
+				
+			},
+			success : function(data) {
+				if(data.error_msg) {
+					layer.msg(data.error_msg);
+				} else {
+					var this_id = $('#item_id').val;
+					if(this_id>0){
+						currentApp.mDtTable.ajax.reload(null, false);
+						currentApp.back(this_id);
+					} else{
+						currentApp.mDtTable.ajax.reload(null, false);
+						currentApp.backTo();
+					}
+				}
+			}
+		});
+		
+	};
 </script>
