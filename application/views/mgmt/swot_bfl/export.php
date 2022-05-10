@@ -248,7 +248,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 			<tbody class="" width="100%">
 				<tr>
 					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
-						<div style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:250%;padding:50px 50px 30px 50px;color:#000">寬仕工業股份有限公司</div>
+						<div style="border:none;text-align:center;vertical-align:middle;font-weight:bold;font-size:250%;padding:50px 50px 30px 50px;color:#000">深緣及水有限公司</div>
 						<?php if(!empty( $item -> unify) && $item -> unify>0): ?>
 							<div style="text-align:center;vertical-align:middle;font-weight:bold;font-size:150%;padding:0px 0px 0px 0px;color:#000"><?= isset($item) ? $item -> d_or_c_name.'(整合)' : '' ?>-<?= isset($item) ? $item -> s_title_name : '' ?>-<?= date('Ymd')?></div>
 						<?php else: ?>
