@@ -26,7 +26,7 @@ class Swot_bfl_dao extends MY_Model {
 		$this -> db -> select('d.name as d_or_c_name');
 		$this -> db -> select('d.swot_pos as swot_pos');
 		$this -> db -> select('s_t.is_lock as s_t_is_lock');
-
+		$this -> db -> where("_m.is_delete<", 1);
 		// join
 		$this -> ajax_from_join();
 
@@ -60,6 +60,7 @@ class Swot_bfl_dao extends MY_Model {
 		$this -> db -> select('d.swot_pos as swot_pos');
 
 		$this -> db -> select('d.name as d_or_c_name');
+		$this -> db -> where("_m.is_delete<", 1);
 		// join
 		$this -> ajax_from_join();
 
@@ -85,7 +86,6 @@ class Swot_bfl_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		$this -> db -> where("_m.is_delete ", 0);
 		// $this -> db -> where("s_t.is_lock",0);
 
 		if(!empty($data['title'])){
@@ -101,8 +101,7 @@ class Swot_bfl_dao extends MY_Model {
 			$this -> db -> where("_m.id",$id);
 		}
 		if(!empty($data['login_user'])){
-			if( $data['login_user']->role_id==6 || $data['login_user']->role_id==9 || 
-				$data['login_user']->role_id==16 || $data['login_user']->role_id==17 ){
+			if( $data['login_user']->role_id==45 || $data['login_user']->role_id==9){
 			} else{
 				$login_user_array = $data['login_user_array'];
 				$this -> db -> where("_m.role_id IN ($login_user_array)");
@@ -130,7 +129,7 @@ class Swot_bfl_dao extends MY_Model {
 			$unify = $data['unify'];
 			$this -> db -> where("_m.unify<>",$unify);
 		}
-		
+		$this -> db -> where("_m.is_delete<", 1);
 	}
 
 	function find_all_by_me($user_id){
