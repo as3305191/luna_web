@@ -98,11 +98,12 @@ var cost = parseFloat('<?= isset($cost) ? $cost : ''?>');
             loop:true,
             items: 1,
             margin:5,
-            autoplay: true,
-            autoplaytimeout:20000,
+            autoplay:true,
+            autoplaySpeed:100,
+            autoplayTimeout:10000,
             center:true,
             merge:true,
-            // lazyFollow:true
+            lazyFollow:true
         });
     });
       
