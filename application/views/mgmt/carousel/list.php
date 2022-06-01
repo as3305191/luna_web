@@ -7,25 +7,29 @@
             position:relative;
             background-color:black;
             overflow: hidden;
+           
 		}
 		.news_container {
-			height:100%;
-			width:100%;
-			position:absolute;
+			height:100vh !important;
+			width:100vw !important;
+
+			position:fixed;
             text-align:-webkit-center;
-            top:50%;
+            top:45%;
             transform: translateY(-45%);
 		}
 		.news_container p img {
 			max-height:45%;
-			width:80%;
+			width:100%;
         }
     </style>
 </head>
 <div class="news_container owl-carousel carousel-theme-full ">
     <?php foreach($items as $each): ?>
         <?php if($each->news_style_id =='9'): ?>
-            <div style="padding:0px 0px 0px 0px;height:100vh;width:100vw;margin: 0 auto;" >
+            <div style="padding:0px 0px 0px 0px;width: 98%;
+            height: 90%;;-webkit-background-size:cover;-moz-background-size: cover;
+            -o-background-size: cover;background-size: cover;" >
                 <?= isset($each->content) ? $each->content : '' ?> 
             </div>
         <?php else: ?>
@@ -57,7 +61,9 @@
                     <div style="font-size:25px;color:white;" >
                         <?= isset($each) ? $each -> title : '' ?> 
                     </div>
-                    <div style="font-size:20px;color:white;text-align:left;width:80%" >
+                    <div style="font-size:20px;color:white;text-align:left;padding:0px 0px 0px 0px;width: 98%;
+            height: 90%;;-webkit-background-size:cover;-moz-background-size: cover;
+            -o-background-size: cover;background-size: cover;" >
                         <?= isset($each) ? $each -> content : '' ?>
                     </div>
                 </div>
@@ -91,10 +97,12 @@ var cost = parseFloat('<?= isset($cost) ? $cost : ''?>');
         $('.owl-carousel').owlCarousel({
             loop:true,
             items: 1,
-            autoplay: 10000,
+            margin:5,
+            autoplay: true,
+            autoplaytimeout:20000,
             center:true,
             merge:true,
-            lazyFollow:true
+            // lazyFollow:true
         });
     });
       
