@@ -400,6 +400,16 @@ class Swot extends MY_Mgmt_Controller {
 				$this -> dao -> update($data, $each->id);	
 			}
 		}
+
+		$all_swot_list = $this -> dao -> find_all_is_use();
+		if(!empty($all_swot_list)){
+			foreach($all_swot_list as $each){
+				$data['is_use_user_id'] = '0';
+				$data['is_use'] = '0';
+				$this -> dao -> update($data, $each->id);	
+			}
+		}
+		
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
@@ -414,6 +424,7 @@ class Swot extends MY_Mgmt_Controller {
 	public function is_use($id) {
 		$res['success'] = TRUE;
 		$data['is_use'] = '1';
+		$data['use_time'] = date('Y-m-d H:i:s');
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$item = $this -> dao -> find_by_id($id);

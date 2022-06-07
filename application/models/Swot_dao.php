@@ -169,5 +169,19 @@ class Swot_dao extends MY_Model {
 		
 	}
 	
+	function find_all_is_use(){
+		$before_a_day = date('Y-m-d H:i:s',strtotime('-1 day'));
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> where('_m.is_use',1);
+		$this -> db -> where("_m.use_time <= '{$before_a_day}'");
+		$list = $this -> db -> get() -> result();
+		if(count($list)>0){
+			return $list;
+		} else{
+			return null;
+		}
+		
+	}
+
 }
 ?>
