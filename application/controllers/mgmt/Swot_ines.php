@@ -159,7 +159,7 @@ class Swot_ines extends MY_Mgmt_Controller {
 				$item['m_swot_s_t'] = $this->replace_num_title($m_swot_s_t);
 				$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
 				$data['item']= $item;
-				if($dep==0||$dep==3){
+				if($dep=0||$dep=3){
 					$data['swot_class'] = '寬仕';
 					$data['new_class_id'] = 3;
 				} else{

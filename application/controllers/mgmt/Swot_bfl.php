@@ -159,7 +159,7 @@ class Swot_bfl extends MY_Mgmt_Controller {
 				$item['m_swot_s_t'] = $this->replace_num_title($m_swot_s_t);
 				$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
 				$data['item']= $item;
-				if($dep==0||$dep==2){
+				if($dep=0||$dep=2){
 					$data['swot_class'] = '深緣及水';
 					$data['new_class_id'] = 2;
 				} else{
