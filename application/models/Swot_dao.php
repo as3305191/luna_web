@@ -135,6 +135,7 @@ class Swot_dao extends MY_Model {
 		if(!empty($data['unify'])&&$data['unify']==1){
 			$unify = $data['unify'];
 			$this -> db -> where("_m.unify<> 1");
+			$this -> db -> order_by('d.parent_id', 'desc');
 		}
 		$this -> db -> where("_m.is_delete<", 1);
 
