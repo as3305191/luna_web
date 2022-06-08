@@ -174,6 +174,7 @@ class Swot_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> where('_m.is_use',1);
 		$this -> db -> where("_m.use_time <= '{$before_a_day}'");
+		$this -> db -> or_where("_m.use_time",null);
 		$list = $this -> db -> get() -> result();
 		if(count($list)>0){
 			return $list;
