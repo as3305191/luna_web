@@ -123,20 +123,23 @@ class Swot_dao extends MY_Model {
 			$list_style = $data['list_style'];
 			$this -> db -> where("_m.swot_style_id",$list_style);
 		}
-		if(!empty($data['dep'])){
-			$dep = $data['dep'];
-			$this -> db -> where("_m.role_id",$dep);
-			if($dep==11){
-				if(!empty($data['type'])&&$data['type']==1){
-					$this -> db -> where("_m.class_id <> 37");
-				}
-			}
-		}
+		
 		if(!empty($data['unify'])&&$data['unify']==1){
 			$unify = $data['unify'];
 			$this -> db -> where("_m.unify<> 1");
 			$this -> db -> order_by('d.parent_id', 'desc');
+		} else{
+			if(!empty($data['dep'])){
+				$dep = $data['dep'];
+				$this -> db -> where("_m.role_id",$dep);
+				if($dep==11){
+					if(!empty($data['type'])&&$data['type']==1){
+						$this -> db -> where("_m.class_id <> 37");
+					}
+				}
+			}
 		}
+
 		$this -> db -> where("_m.is_delete<", 1);
 
 	}
