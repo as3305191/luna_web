@@ -175,7 +175,7 @@ class Swot extends MY_Mgmt_Controller {
 				$data['item']= $item;
 
 				if($style=8){
-					if($dep=0){
+					if($dep==0){
 						
 						$dep_item = $this -> d_dao -> find_by_id($s_data['login_user']->role_id);
 						if($dep_item->level==3){
@@ -194,7 +194,7 @@ class Swot extends MY_Mgmt_Controller {
 					
 				} else{
 					
-					if($dep=0||$dep=3){
+					if($dep==0||$dep==3){
 						$data['swot_class'] = '寬仕';
 						$data['new_class_id'] = 3;
 					} else{
