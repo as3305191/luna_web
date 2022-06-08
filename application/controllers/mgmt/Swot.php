@@ -119,7 +119,7 @@ class Swot extends MY_Mgmt_Controller {
 				$q_data['unify'] =  1;
 				$q_data['type'] =  $type;
 
-				if($dep==0){
+				if($dep!==0){
 					
 					$dep_item = $this -> d_dao -> find_by_id($s_data['login_user']->role_id);
 					if($dep_item->level==3){
