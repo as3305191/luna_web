@@ -174,7 +174,7 @@ class Swot extends MY_Mgmt_Controller {
 				$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
 				$data['item']= $item;
 
-				if($style=8){
+				if($style==8){
 					if($dep==0){
 						
 						$dep_item = $this -> d_dao -> find_by_id($s_data['login_user']->role_id);
