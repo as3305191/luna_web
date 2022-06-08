@@ -407,7 +407,7 @@ class Swot extends MY_Mgmt_Controller {
 				$this -> dao -> update($data, $each->id);	
 			}
 		}
-		
+		$res['all_list'] = $all_swot_list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
