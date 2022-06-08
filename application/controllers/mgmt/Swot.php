@@ -119,8 +119,6 @@ class Swot extends MY_Mgmt_Controller {
 				$q_data['unify'] =  1;
 				$q_data['type'] =  $type;
 
-				
-				
 				if($dep=0){
 					
 					$dep_item = $this -> d_dao -> find_by_id($s_data['login_user']->role_id);
@@ -189,7 +187,7 @@ class Swot extends MY_Mgmt_Controller {
 							$data['new_class_id'] = $class_dep_item->id;
 						}
 					} else{
-						$dep_item = $this -> d_dao -> find_by_id($dep);
+						$dep_item = $this -> d_dao -> find_by_id(3);
 						$data['swot_class'] = $dep_item->name;
 						$data['new_class_id'] = $dep;
 					}
