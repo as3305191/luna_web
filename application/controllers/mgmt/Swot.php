@@ -119,19 +119,19 @@ class Swot extends MY_Mgmt_Controller {
 				$q_data['unify'] =  1;
 				$q_data['type'] =  $type;
 
-				if($dep==0){
+				// if($dep==0){
 					
-					$dep_item = $this -> d_dao -> find_by_id($s_data['login_user']->role_id);
-					// if($dep_item->level==3){
-					// 	$q_data['dep'] = $s_data['login_user']->role_id;
-					// } else{
+				// 	$dep_item = $this -> d_dao -> find_by_id($s_data['login_user']->role_id);
+				// 	// if($dep_item->level==3){
+				// 	// 	$q_data['dep'] = $s_data['login_user']->role_id;
+				// 	// } else{
 
-					// 	$q_data['dep'] = $dep_item->parent_id;
-					// }
-					$q_data['dep'] = $dep_item->parent_id;
-				} else{
-					$q_data['dep'] =  $dep;
-				}
+				// 	// 	$q_data['dep'] = $dep_item->parent_id;
+				// 	// }
+				// 	$q_data['dep'] = $dep_item->parent_id;
+				// } else{
+				// 	$q_data['dep'] =  $dep;
+				// }
 				$list = $this -> dao -> query_ajax($q_data);
 				$s='';
 				$w='';
