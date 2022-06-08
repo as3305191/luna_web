@@ -122,7 +122,7 @@ class Swot extends MY_Mgmt_Controller {
 				if($dep==0){
 					
 					$dep_item = $this -> d_dao -> find_by_id($s_data['login_user']->role_id);
-					if($dep_item->level==11){
+					if($dep_item->id==11){
 						$q_data['dep'] = $s_data['login_user']->role_id;
 					} 
 					// else{
