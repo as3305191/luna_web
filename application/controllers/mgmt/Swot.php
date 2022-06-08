@@ -214,7 +214,7 @@ class Swot extends MY_Mgmt_Controller {
 		$data['login_user_role_array'] =  explode(",", str_replace('#', ',', trim($data['login_user']->in_department, "#")));
 		$data['department_list'] = $this -> users_dao -> find_all_department();
 
-		// $this -> to_json($data);
+		$this -> to_json($data);
 		$this->load->view('mgmt/swot/edit', $data);
 	}
 
