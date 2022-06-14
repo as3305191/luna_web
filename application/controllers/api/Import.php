@@ -171,19 +171,22 @@ class Import extends MY_Base_Controller {
 	}
 
 	function import2(){
-		$object = PHPExcel_IOFactory::load("專利系統-關鍵字2022.4.6以前.xlsx");
+		$object = PHPExcel_IOFactory::load("專利系統-申請號及關鍵字2022.4.6以前 - 1.xlsx");
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
-			for($row=1; $row<=$highestRow; $row++){
-				$keyword = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-
+			for($row=2; $row<=$highestRow; $row++){
+				$application_num = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+				$key= $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+				
+				$key_new = '#'.preg_replace('/\s+/', '#',$key).'#';
+			
 					$data = array(
-						'key' =>$keyword,
+						'patent_key_id_array' =>$key_new,
 						
 					);
-					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->p_k_dao->insert($data);
+					$this->patent_dao->update_by($data,'application_num',$application_num);
+					// $this->p_k_dao->insert($data);
 			}
 		}
 		// $res['success'] = TRUE;
