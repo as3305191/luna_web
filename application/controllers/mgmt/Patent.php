@@ -229,7 +229,7 @@ class Patent extends MY_Mgmt_Controller {
 		$now_patent_status = $this -> get_post('now_patent_status');
 		$patent_fail_status = $this -> get_post('patent_fail_status');
 		$patent_fail_person = $this -> get_post('patent_fail_person');
-	
+		$patent_key_id_array= $this -> get_post('patent_key_id_array');
 		// foreach ($img as $each) {
 		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
 		// }
@@ -266,6 +266,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data['update_date'] = date("Y-m-d H:i:s");
 		$data['patent_fail_status_id'] = $patent_fail_status;
 		$data['patent_fail_person'] = $patent_fail_person;
+		$data['patent_key_id_array'] = '#'.preg_replace(',', '#',$patent_key_id_array).'#';
 
 		if($now_patent_status=='##'){
 			$now_patent_status=='';
