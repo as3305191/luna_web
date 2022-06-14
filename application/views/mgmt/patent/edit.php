@@ -1218,7 +1218,8 @@ function do_save() {
 					$patent_key = $('#patent_key_array').empty();
 					$.each(d.key, function(){
 						key_id = this.id 
-						$.each(patent_key_array, function(){
+						$.each(patent_key_array.split(","), function(){
+							console.log(this);
 							if(key_id==this){
 								$('<option/>', {
 									'value': key_id.id,
