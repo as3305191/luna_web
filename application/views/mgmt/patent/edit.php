@@ -1217,19 +1217,20 @@ function do_save() {
 					// console.log(d);
 					$patent_key = $('#patent_key_array').empty();
 					$.each(d.key, function(){
-						key_id = this.id 
+						this_key = this
+
 						$new_key_array = patent_key_array[0].split(",");
 						$.each($new_key_array, function(){
-							console.log(this);
-							if(key_id==this){
+							// console.log(this);
+							if(this_key.id==this){
 								$('<option/>', {
-									'value': key_id.id,
-									'text': key_id.key
+									'value': this_key.id,
+									'text': this_key.key
 								}).attr("selected", true).appendTo($patent_key);
 							}else{
 								$('<option/>', {
-									'value': key_id.id,
-									'text': key_id.key
+									'value': this_key.id,
+									'text': this_key.key
 								}).appendTo($patent_key);
 							}
 						});
