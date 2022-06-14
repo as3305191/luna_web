@@ -150,7 +150,7 @@ class Patent extends MY_Mgmt_Controller {
 				$patent_key_array = $item -> patent_key_id_array;
 				
 				$key_array = substr(substr($patent_key_array,0,-1),1);
-				$data['patent_key_array'] = explode(",", str_replace('#', ',', $key_array));
+				$data['patent_key_array'] = str_replace('#', ',', $key_array);
 			}
 			
 			$data['item'] = $item;
@@ -160,7 +160,7 @@ class Patent extends MY_Mgmt_Controller {
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['country'] = $this -> country_dao -> find_all();
-		$this -> to_json($data['patent_key_array'] );
+		// $this -> to_json($data['patent_key_array'] );
 		$this->load->view('mgmt/patent/edit', $data);
 	}
 

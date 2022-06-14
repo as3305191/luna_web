@@ -61,7 +61,6 @@
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<input type="hidden" id="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
 				<input type="hidden" id="key_array" value="<?= isset($patent_key_array) ? $patent_key_array : '' ?>" />
-
 				<div class="form-group" style="padding:0px 26px">
         <div class="clearfix"></div>
     </div>
