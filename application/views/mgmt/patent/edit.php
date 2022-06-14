@@ -537,7 +537,6 @@ if($('#item_id').val()>0){
 	patnet_num_input=[];
 	img=[];
 	now_patent_status = [];
-	patent_key_array =[];
 }
 
 // console.log(img);
@@ -933,7 +932,8 @@ function do_save() {
 			assignee: $('#assignee').val(),
 			now_patent_status: now_patent_status.join("#"),
 			patent_fail_status:	patent_fail_status,
-			patent_fail_person: $('#patent_fail_person').val()		
+			patent_fail_person: $('#patent_fail_person').val(),
+			patent_key_id_array:$('#key_array').val(),		
 		},
 		success : function(data) {
 			if(data.error_msg) {
@@ -1221,7 +1221,11 @@ function do_save() {
 					// console.log(d);
 					$patent_key = $('#patent_key_array').empty();
 					option ='';
-					$new_key_array = patent_key_array[0].split(",");
+					if($new_key_array.length>0){
+						$new_key_array = patent_key_array[0].split(",");
+					} else{
+						$new_key_array =[''];
+					}
 					$.each(d.key, function(){
 						if($new_key_array.indexOf(this.id)>=0){
 							option +='<option value="'+this.id+'"  selected="selected">'+this.key+'</option>';
