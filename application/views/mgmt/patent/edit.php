@@ -476,37 +476,7 @@ $(document).ready(function() {
 			currentApp.backTo();
 		}, false); 
 
-		function find_key() {	
 		
-			$.ajax({
-				url: '<?= base_url() ?>' + 'mgmt/patent/find_key',
-				type: 'POST',
-				data: {},
-				dataType: 'json',
-				success: function(d) {
-					if(d) {
-						// console.log(d);
-						$patent_key = $('#patent_key_array').empty().select2();
-						option ='';
-						$.each(d.key, function(){
-							$new_key_array = patent_key_array[0].split(",");
-							if($new_key_array.indexOf(this.id)>=0){
-								option +='<option value="'+this.id+'"  selected="selected">'+this.key+'</option>';
-							} else{
-								option +='<option value="'+this.id+'">'+this.key+'</option>';
-							}
-
-						});
-						$patent_key.html(option).appendTo($patent_key);
-					}	
-				},
-				failure:function(){
-					alert('faialure');
-				}
-			});
-
-		}
-		find_key();
 });
 
 $('#app-edit-form').bootstrapValidator({
@@ -1240,6 +1210,36 @@ function do_save() {
 	$('.kv-file-zoom').attr("disabled",'');
 	$('.kv-file-zoom').removeAttr("disabled");
 	
+	function find_key() {	
+		
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/patent/find_key',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$patent_key = $('#patent_key_array').empty().select2();
+					option ='';
+					$.each(d.key, function(){
+						$new_key_array = patent_key_array[0].split(",");
+						if($new_key_array.indexOf(this.id)>=0){
+							option +='<option value="'+this.id+'"  selected="selected">'+this.key+'</option>';
+						} else{
+							option +='<option value="'+this.id+'">'+this.key+'</option>';
+						}
 
+					});
+					$patent_key.html(option).appendTo($patent_key);
+				}	
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+
+	}
+	find_key();
 
 </script>
