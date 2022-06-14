@@ -1221,7 +1221,7 @@ function do_save() {
 					// console.log(d);
 					$patent_key = $('#patent_key_array').empty();
 					option ='';
-					if(isObjEmpty(patent_key_array)){
+					if(object.keys(patent_key_array).length()<0){
 						$new_key_array =[];
 					} else{
 						$new_key_array = patent_key_array[0].split(",");
