@@ -185,8 +185,7 @@
 			<fieldset >
 				<div class="form-group" >
 					<label class="col-md-3 control-label">關鍵字(測試勿動)</label>
-					<input type="" id="key_array" value="<?= isset($patent_key_array) ? $patent_key_array : '' ?>" />
-					
+					<input type="hidden" id="key_array" value="<?= isset($patent_key_array) ? $patent_key_array : '' ?>" />
 					<div class="col-md-6">
 
 						<select id="patent_key_array" name="patent_key[]" class="form-control" multiple>
