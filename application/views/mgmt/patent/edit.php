@@ -1221,16 +1221,14 @@ function do_save() {
 						this_key = this;
 
 						$new_key_array = patent_key_array[0].split(",");
-						$.each($new_key_array, function(){
-							// console.log(this);
-							this_new_key_array = this;
-							if(this_key.id==this_new_key_array){
-								html +='<option value="'+this_new_key_array.id+'" selected="selected">'+this_key.key+'</option>';
-							}else{
-								html +='<option value="'+this_new_key_array.id+'">'+this_key.key+'</option>';
+					
+						if($new_key_array.includes(this_key.id)){
+							html +='<option value="'+this_key.id+'" selected="selected">'+this_key.key+'</option>';
+						} else{
+							html +='<option value="'+this_key.id+'">'+this_key.key+'</option>';
+						}
 
-							}
-						});
+
 					});
 					$patent_key.html(html).appendTo($patent_key);
 				}
