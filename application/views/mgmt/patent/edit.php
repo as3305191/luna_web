@@ -542,7 +542,7 @@ if($('#item_id').val()>0){
 // console.log(pdf_array);
 // console.log(public_num_input);
 // console.log(patnet_num_input);
-console.log(patent_key_array);
+// console.log(patent_key_array);
 $("#img-input").fileinput({
 					language: "zh-TW",
 			
