@@ -474,6 +474,7 @@ $(document).ready(function() {
 		window.addEventListener("popstate", function(e) { 
 			currentApp.backTo();
 		}, false); 
+		find_key();
 });
 
 $('#app-edit-form').bootstrapValidator({
@@ -1240,7 +1241,7 @@ function do_save() {
 		});
 
 }
-find_key();
+
 
 
 
