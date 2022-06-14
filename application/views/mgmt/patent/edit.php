@@ -1219,17 +1219,10 @@ function do_save() {
 					option ='';
 					$.each(d.key, function(){
 						$new_key_array = patent_key_array[0].split(",");
-						console.log($new_key_array);
 						if($new_key_array.indexOf(this.id)>0){
-							$('<option />', {
-								'value': this.id,
-								'text': this.key,
-							}).attr("selected", true).appendTo($patent_key);	
+							option +='<option value="'+this_key.id+'" selected>'+this_key.key+'</option>';
 						} else{
-							$('<option />', {
-								'value': this.id,
-								'text': this.key,
-							}).appendTo($patent_key);	
+							option +='<option value="'+this_key.id+'">'+this_key.key+'</option>';
 						}
 
 					});
