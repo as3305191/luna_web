@@ -1216,21 +1216,19 @@ function do_save() {
 				if(d) {
 					// console.log(d);
 					$patent_key = $('#patent_key_array').empty();
-					html ='';
 					$.each(d.key, function(){
+						html ='';
 						this_key = this;
-
 						$new_key_array = patent_key_array[0].split(",");
 					
 						if($new_key_array.includes(this_key.id)){
-							html +='<option value="'+this_key.id+'" selected>'+this_key.key+'</option>';
+							html ='<option value="'+this_key.id+'" selected>'+this_key.key+'</option>';
 						} else{
-							html +='<option value="'+this_key.id+'">'+this_key.key+'</option>';
+							html ='<option value="'+this_key.id+'">'+this_key.key+'</option>';
 						}
-
+						$patent_key.html(html).appendTo($patent_key);
 
 					});
-					$patent_key.html(html).appendTo($patent_key);
 				}
 				
 			},
