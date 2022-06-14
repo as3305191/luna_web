@@ -1223,7 +1223,7 @@ function do_save() {
 					option ='';
 					$.each(d.key, function(){
 						$new_key_array = patent_key_array[0].split(",");
-						if($new_key_array.indexOf(this.id)>0){
+						if($new_key_array.indexOf(this.id)>=0){
 							option +='<option value="'+this.id+'"  selected="selected">'+this.key+'11223'+'</option>';
 						} else{
 							option +='<option value="'+this.id+'">'+this.key+'</option>';
