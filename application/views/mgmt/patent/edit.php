@@ -485,7 +485,7 @@ $(document).ready(function() {
 				success: function(d) {
 					if(d) {
 						// console.log(d);
-						$patent_key = $('#patent_key_array').empty();
+						$patent_key = $('#patent_key_array').empty().select2();
 						option ='';
 						$.each(d.key, function(){
 							$new_key_array = patent_key_array[0].split(",");
@@ -1238,7 +1238,7 @@ function do_save() {
 	}
 	$('.kv-file-zoom').attr("disabled",'');
 	$('.kv-file-zoom').removeAttr("disabled");
-	$('#patent_key_array').select2();
+	
 
 
 </script>
