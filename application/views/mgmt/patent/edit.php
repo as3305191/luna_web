@@ -1223,7 +1223,7 @@ function do_save() {
 						$new_key_array = patent_key_array[0].split(",");
 					
 						if($new_key_array.includes(this_key.id)){
-							html +='<option value="'+this_key.id+'" selected="selected">'+this_key.key+'</option>';
+							html +='<option value="'+this_key.id+'" selected>'+this_key.key+'</option>';
 						} else{
 							html +='<option value="'+this_key.id+'">'+this_key.key+'</option>';
 						}
