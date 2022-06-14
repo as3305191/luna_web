@@ -1231,7 +1231,7 @@ function do_save() {
 						}
 
 					});
-					$patent_key.html(option).appendTo($patent_key);
+					$patent_key.append(option);
 				}	
 			},
 			failure:function(){
