@@ -1221,11 +1221,14 @@ function do_save() {
 					// console.log(d);
 					$patent_key = $('#patent_key_array').empty();
 					option ='';
-					if(object.keys(patent_key_array).length()<0){
-						$new_key_array =[];
-					} else{
+					if(patent_key_array.length>0){
 						$new_key_array = patent_key_array[0].split(",");
+
+					} else{
+						$new_key_array = [];
+
 					}
+
 					$.each(d.key, function(){
 						if($new_key_array.indexOf(this.id)>=0){
 							option +='<option value="'+this.id+'"  selected="selected">'+this.key+'</option>';
