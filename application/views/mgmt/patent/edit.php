@@ -1220,9 +1220,9 @@ function do_save() {
 					$.each(d.key, function(){
 						$new_key_array = patent_key_array[0].split(",");
 						if($new_key_array.indexOf(this.id)>0){
-							option +='<option value="'+this_key.id+'" selected>'+this_key.key+'</option>';
+							option +='<option value="'+this.id+'" selected>'+this.key+'</option>';
 						} else{
-							option +='<option value="'+this_key.id+'">'+this_key.key+'</option>';
+							option +='<option value="'+this.id+'">'+this.key+'</option>';
 						}
 
 					});
