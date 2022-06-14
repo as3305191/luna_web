@@ -1219,7 +1219,7 @@ function do_save() {
 					option ='';
 					$.each(d.key, function(){
 						$new_key_array = patent_key_array[0].split(",");
-						console.log(this);
+						console.log($new_key_array);
 						if($new_key_array.indexOf(this.id)>0){
 							$('<option />', {
 								'value': this.id,
