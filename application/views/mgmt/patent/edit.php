@@ -525,7 +525,7 @@ if($('#item_id').val()>0){
 		now_patent_status.push($('#now_patent_status').val());
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 	}
-	if(typeof $('#key_array').val() .length>0){
+	if(typeof $('#key_array').val().length>0){
 		patent_key_array.push($('#key_array').val());
 	}
 	
@@ -541,7 +541,7 @@ if($('#item_id').val()>0){
 // console.log(pdf_array);
 // console.log(public_num_input);
 // console.log(patnet_num_input);
-// console.log(patent_key_array);
+console.log(patent_key_array);
 $("#img-input").fileinput({
 					language: "zh-TW",
 			
