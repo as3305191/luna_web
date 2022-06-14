@@ -1218,20 +1218,22 @@ function do_save() {
 					$patent_key = $('#patent_key_array').empty();
 					$.each(d.key, function(){
 						key_id = this.id 
-						$.each(patent_key_array.split(","), function(){
-							console.log(this);
-							if(key_id==this){
-								$('<option/>', {
-									'value': key_id.id,
-									'text': key_id.key
-								}).attr("selected", true).appendTo($patent_key);
-							}else{
-								$('<option/>', {
-									'value': key_id.id,
-									'text': key_id.key
-								}).appendTo($patent_key);
-							}
-						});
+						$new_key_array = patent_key_array.split(",");
+						console.log(new_key_array);
+						// $.each($new_key_array, function(){
+							
+						// 	if(key_id==this){
+						// 		$('<option/>', {
+						// 			'value': key_id.id,
+						// 			'text': key_id.key
+						// 		}).attr("selected", true).appendTo($patent_key);
+						// 	}else{
+						// 		$('<option/>', {
+						// 			'value': key_id.id,
+						// 			'text': key_id.key
+						// 		}).appendTo($patent_key);
+						// 	}
+						// });
 						
 					});
 				}
