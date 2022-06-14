@@ -188,7 +188,7 @@
 					<div class="col-md-6">
 						<select id="patent_key_array" name="patent_key[]" class="form-control" multiple>
 							<?php foreach($key as $each): ?>
-								<option value="<?= $each -> id ?>" <?= isset($patent_key) && in_array($each->id,$patent_key)  ? 'selected="selected"' : '' ?>>
+								<option value="<?= $each -> id ?>" <?= isset($patent_key_array) && in_array($each->id,$patent_key_array)  ? 'selected="selected"' : '' ?>>
 									<?= $each -> key ?>
 								</option>
 							<?php endforeach ?>

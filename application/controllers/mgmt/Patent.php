@@ -53,6 +53,7 @@ class Patent extends MY_Mgmt_Controller {
 		if(!empty($patent_status)){
 			$data['patent_status'] = explode(",", str_replace('#', ',', $patent_status));
 		}
+		
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
@@ -145,7 +146,13 @@ class Patent extends MY_Mgmt_Controller {
 			if(!empty($item -> patent_family)) {
 				$data['same_family'] = $this -> dao -> find_same_family($item->patent_family);
 			}
-
+			if(!empty($item -> patent_key_array)){
+				$patent_key_array = $item -> patent_key_array;
+				
+				$patent_status = substr(substr($patent_key_array,0,-1),1);
+				$data['patent_key_array'] = explode(",", str_replace('#', ',', $patent_status));
+			}
+			
 			$data['item'] = $item;
 		}
 		$data['patent_fail_status'] = $this -> patent_fail_status_dao -> find_all();
