@@ -1220,7 +1220,7 @@ function do_save() {
 			success: function(d) {
 				if(d) {
 					// console.log(d);
-					$patent_key = $('#patent_key_array').empty().select2();
+					$patent_key = $('#patent_key_array').empty();
 					option ='';
 					$new_key_array = patent_key_array[0].split(",");
 					$.each(d.key, function(){
@@ -1231,7 +1231,7 @@ function do_save() {
 						}
 
 					});
-					$patent_key.append(option);
+					$patent_key.select2().append(option);
 				}	
 			},
 			failure:function(){
