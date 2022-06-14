@@ -535,13 +535,14 @@ if($('#item_id').val()>0){
 	patnet_num_input=[];
 	img=[];
 	now_patent_status = [];
+	patent_key_array =[];
 }
 
 // console.log(img);
 // console.log(pdf_array);
 // console.log(public_num_input);
 // console.log(patnet_num_input);
-console.log(patent_key_array);
+// console.log(patent_key_array);
 $("#img-input").fileinput({
 					language: "zh-TW",
 			
@@ -1216,17 +1217,21 @@ function do_save() {
 					// console.log(d);
 					$patent_key = $('#patent_key_array').empty();
 					$.each(d.key, function(){
-						if(this.id==$('#patent_key_array').val()){
-							$('<option/>', {
-								'value': this.id,
-								'text': this.key
-							}).attr("selected", true).appendTo($patent_key);
-						}else{
-							$('<option/>', {
-								'value': this.id,
-								'text': this.key
-							}).appendTo($patent_key);
-						}
+						key_id = this.id 
+						$.each(patent_key_array, function(){
+							if(key_id==this){
+								$('<option/>', {
+									'value': key_id.id,
+									'text': key_id.key
+								}).attr("selected", true).appendTo($patent_key);
+							}else{
+								$('<option/>', {
+									'value': key_id.id,
+									'text': key_id.key
+								}).appendTo($patent_key);
+							}
+						});
+						
 					});
 				}
 				
