@@ -1222,8 +1222,8 @@ function do_save() {
 					// console.log(d);
 					$patent_key = $('#patent_key_array').empty().select2();
 					option ='';
+					$new_key_array = patent_key_array[0].split(",");
 					$.each(d.key, function(){
-						$new_key_array = patent_key_array[0].split(",");
 						if($new_key_array.indexOf(this.id)>=0){
 							option +='<option value="'+this.id+'"  selected="selected">'+this.key+'</option>';
 						} else{
