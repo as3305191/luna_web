@@ -60,6 +60,8 @@
 			<form id="app-edit-form" method="post" class="form-horizontal">
 				<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 				<input type="hidden" id="role_id" value="<?= isset($login_user->role_id) ? $login_user->role_id : '' ?>" />
+				<input type="hidden" id="key_array" value="<?= isset($patent_key_array) ? $patent_key_array : '' ?>" />
+
 				<div class="form-group" style="padding:0px 26px">
         <div class="clearfix"></div>
     </div>
@@ -523,8 +525,8 @@ if($('#item_id').val()>0){
 		now_patent_status.push($('#now_patent_status').val());
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 	}
-	if(typeof $('#patent_key_array').val() !=='undefined'){
-		patent_key_array.push($('#patent_key_array').val());
+	if(typeof $('#key_array').val() !=='undefined'){
+		patent_key_array.push($('#key_array').val());
 	}
 	
 } else{
