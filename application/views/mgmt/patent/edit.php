@@ -1204,7 +1204,10 @@ function do_save() {
 	function open_new_window(id) {
 		window.open('#mgmt/patent/edit/' + id);
 	}
-	
+	$('.kv-file-zoom').attr("disabled",'');
+	$('.kv-file-zoom').removeAttr("disabled");
+	$('#patent_key_array').select2();
+
 	function find_key() {
 		
 	$.ajax({
@@ -1239,10 +1242,9 @@ function do_save() {
 }
 find_key();
 
-	$('.kv-file-zoom').attr("disabled",'');
-	$('.kv-file-zoom').removeAttr("disabled");
+
 
 	
-	$('#patent_key_array').select2();
+	
 
 </script>
