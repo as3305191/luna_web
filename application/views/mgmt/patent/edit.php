@@ -1220,7 +1220,7 @@ function do_save() {
 					$.each(d.key, function(){
 						$new_key_array = patent_key_array[0].split(",");
 						console.log(this);
-						if($new_key_array.includes(this.id)){
+						if($new_key_array.indexOf(this.id)>0){
 							$('<option />', {
 								'value': this.id,
 								'text': this.key,
