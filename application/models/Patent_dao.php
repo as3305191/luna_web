@@ -105,7 +105,7 @@ class Patent_dao extends MY_Model {
 			$key_search_array = $data['key_search_array'];
 			// $new_key_search_array = explode(",", $key_search_array);
 			
-			if($or_and_type==1){
+			if($or_and_type>0){
 				foreach($key_search_array as $each){
 					$this -> db -> where("_m.patent_key_id_array like '%#$each#%'");
 				}
