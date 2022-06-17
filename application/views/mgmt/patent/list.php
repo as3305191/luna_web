@@ -83,10 +83,15 @@ thead tr th {
 									<input id="patent_family_search" type="text" class="form-control"autocomplete="off" />
 								</div>
 								<div class="widget-toolbar pull-left">
+									<label>或＆和：<input id="or_and_type" type="checkbox" class="" value="" /></label>
+								</div> 
+								<div class="widget-toolbar pull-left">
 									<label>關鍵字</label>
 								</div>
 								<div class="widget-toolbar pull-left">
-									<input id="key_search" type="text" class="form-control"autocomplete="off" />
+									<!-- <input id="key_search" type="text" class="form-control"autocomplete="off" /> -->
+									<select id="key_search_array" class="form-control" multiple>
+									</select>
 								</div>
 				
 							</div>
@@ -420,7 +425,7 @@ thead tr th {
 							success: function(d) {
 								var category_option = '<option value="all">全部</option>';
 								var $category = $('#category_'+next_c).empty();
-								$category.append(category_option);
+								$category.append(category_option); 
 								if(d.category){
 									$.each(d.category, function(){
 										$('<option />', {
@@ -470,4 +475,34 @@ thead tr th {
 			}
 		});
 	});
+
+
+
+	function find_s_key() {	
+		
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/patent/find_key',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$patent_s_key = $('#key_search_array').empty();
+					option ='';
+					$.each(d.key, function(){
+						option +='<option value="'+this.id+'">'+this.key+'</option>';
+					});
+					$patent_s_key.append(option).select2();
+					// select2()
+				}	
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+
+	}
+	find_s_key();
+
 </script>

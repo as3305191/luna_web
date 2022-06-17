@@ -100,6 +100,35 @@ class Patent_dao extends MY_Model {
 			$patent_name = $data['patent_name'];
 			$this -> db -> where("_m.patent_name like '%$patent_name%'");
 		}
+		if(!empty($data['or_and_type'])&&!empty($data['key_search_array'])){
+			$or_and_type = $data['or_and_type'];
+			$key_search_array = $data['key_search_array'];
+			$new_key_search_array = explode(",", $key_search_array);
+			
+			if($or_and_type==1){
+				foreach($new_key_search_array as $each){
+					$this -> db -> where("_m.patent_key_id_array like '%#$each#%'");
+				}
+			} else{
+				if(count($new_key_search_array)>1){
+					$this -> db -> where("_m.patent_key_id_array like '%#$new_key_search_array[0]#%'");
+					foreach($new_key_search_array as $each){
+					}
+					for($i=0;$i<count($new_key_search_array);$i++){
+						if($i>0){
+							$this -> db -> or_where("_m.patent_key_id_array like '%#$new_key_search_array[$i]#%'");
+						}
+					}
+					$this -> db -> where("_m.patent_key_id_array like '%#$new_key_search_array[0]#%'");
+				} else{
+					
+					$this -> db -> where("_m.patent_key_id_array like '%#$new_key_search_array[0]#%'");
+				}
+				
+			}
+			$this -> db -> group_by("_m.id");
+		}
+		
 		if(!empty($data['id'])){
 			$id = $data['id'];
 			$this -> db -> where("_m.id",$id);

@@ -47,13 +47,15 @@ class Patent extends MY_Mgmt_Controller {
 			'summary_search',
 			'now_category',
 			'patent_family_search',
-			'patent_name'
+			'patent_name',
+			'or_and_type',
+			'key_search_array'
 		));
 		$patent_status = $this->get_post('patent_status');
 		if(!empty($patent_status)){
-			$data['patent_status'] = explode(",", str_replace('#', ',', $patent_status));
+			$data['patent_status'] = explode(",", str_replace('#', ' ,', $patent_status));
 		}
-		
+
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$items = $this -> dao -> query_ajax($data);
@@ -361,7 +363,7 @@ class Patent extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
-
+	
 	public function patent_family_search(){
 		$data = array();
 		$search_item = $this -> get_post('search_item');

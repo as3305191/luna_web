@@ -18,7 +18,8 @@ var patentAppClass = (function(app) {
 					d.patent_status = $("input[name='patent_status[]']:checked").map(function() {
 						return this.value
 					}).get().join('#');
-				
+					d.or_and_type = $('#or_and_type').prop("checked") ? 1 : 0;
+					d.key_search_array = $('#key_search_array').val();
 
 				},
 				dataSrc : 'items',
@@ -76,6 +77,13 @@ var patentAppClass = (function(app) {
 			app.tableReload();
 		});
 
+		$('#or_and_type').on('change', function(){
+			app.tableReload();
+		});
+
+		$('#key_search_array').on('change', function(){
+			app.tableReload();
+		});
 	    // $(window).trigger("hashchange");
 
 		return app;
