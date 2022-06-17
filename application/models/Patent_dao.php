@@ -99,7 +99,7 @@ class Patent_dao extends MY_Model {
 			$patent_name = $data['patent_name'];
 			$this -> db -> where("_m.patent_name like '%$patent_name%'");
 		}
-		if(!empty($data['or_and_type'])&&!empty($data['key_search_array'])){
+		if(!empty($data['key_search_array'])){
 			$or_and_type = $data['or_and_type'];
 			$key_search_array = $data['key_search_array'];
 			// $new_key_search_array = explode(",", $key_search_array);
