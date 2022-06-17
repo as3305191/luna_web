@@ -112,10 +112,8 @@ class Patent_dao extends MY_Model {
 			} else{
 				if(count($key_search_array)>1){
 					$this -> db -> where("_m.patent_key_id_array like '%#$key_search_array[0]#%'");
-					for($i=0;$i<count($key_search_array);$i++){
-						if($i>0){
-							$this -> db -> or_where("_m.patent_key_id_array like '%#$key_search_array[$i]#%'");
-						}
+					for($i=1;$i<count($key_search_array);$i++){
+						$this -> db -> or_where("_m.patent_key_id_array like '%#$key_search_array[$i]#%'");
 					}
 				} else{	
 					$this -> db -> where("_m.patent_key_id_array like '%#$key_search_array[0]#%'");
