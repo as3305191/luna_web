@@ -120,7 +120,7 @@ class Patent_dao extends MY_Model {
 				}
 				
 			}
-			$this -> db -> group_by("_m.id");
+			// $this -> db -> group_by("_m.id");
 		}
 		
 		if(!empty($data['id'])){
