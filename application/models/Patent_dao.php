@@ -71,8 +71,8 @@ class Patent_dao extends MY_Model {
 
 		// query results
 		$query = $this -> db -> get();
-		return $query -> result();
-
+		// return $query -> result();
+		return $query ;
 	}
 
 	function query_ajax_export($data) {
