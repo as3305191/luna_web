@@ -175,7 +175,7 @@
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">關鍵字</label>
+					<label class="col-md-3 control-label">old關鍵字</label>
 					<div class="col-md-6">
 						<input type="text"  class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patent_key : '' ?>"  <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>
 						/>
@@ -184,7 +184,7 @@
 			</fieldset>
 			<fieldset >
 				<div class="form-group" >
-					<label class="col-md-3 control-label">關鍵字(測試勿動)</label>
+					<label class="col-md-3 control-label">關鍵字</label>
 					<input type="hidden" id="key_array" value="<?= isset($patent_key_array) ? $patent_key_array : '' ?>" />
 					<div class="col-md-6">
 
