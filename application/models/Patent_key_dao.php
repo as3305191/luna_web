@@ -50,8 +50,7 @@ class Patent_key_dao extends MY_Model {
 
 		if(!empty($data['key'])){
 			$key = $data['key'];
-			$this -> db -> where("_m.key like %$key%");
-
+			$this -> db -> where("_m.key like '%$key%'");
 		}
 
 	}
