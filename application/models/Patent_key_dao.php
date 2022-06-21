@@ -46,7 +46,6 @@ class Patent_key_dao extends MY_Model {
 
 	function search_always($data) {
 		// $this -> db -> where('_m.status', 0);
-		$this -> db -> select('_m.*,cc.cate_name as cate_name,u.user_name as applicant_name,u1.user_name as principal_name');
 		// $this -> db -> where('_m.corp_id',$data['corp_id']);
 
 		if(isset($data['key_s'])){
