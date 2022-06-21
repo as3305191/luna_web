@@ -58,13 +58,13 @@ thead tr th {
 									<?php endif?>
 
 								</div>
-								<div class="pull-left ">
+								<!-- <div class="pull-left ">
 									<?php if($login_user->role_id==9||$login_user->role_id==45): ?>
 										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合公司
 										</button>
 									<?php endif?>
-								</div>
+								</div> -->
 							<div class="widget-toolbar pull-right">
 								<button onclick="currentApp.do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
 									<i class="fa fa-refresh"></i>一鍵清除自己使用中檔案
