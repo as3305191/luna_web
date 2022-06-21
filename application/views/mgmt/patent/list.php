@@ -83,10 +83,10 @@ thead tr th {
 									<input id="patent_family_search" type="text" class="form-control"autocomplete="off" />
 								</div>
 								<div class="widget-toolbar pull-left">
-									<label>或＆和(default和)：<input id="or_and_type" type="checkbox" class="" value="" /></label>
+									<label>和：<input id="or_and_type" type="checkbox" class="" value="" /></label>
 								</div> 
 								<div class="widget-toolbar pull-left">
-									<label>關鍵字</label>
+									<label>關鍵字(或)</label>
 								</div>
 								<div class="widget-toolbar pull-left">
 									<!-- <input id="key_search" type="text" class="form-control"autocomplete="off" /> -->
