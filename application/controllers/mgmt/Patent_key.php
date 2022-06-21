@@ -6,7 +6,7 @@ class Patent_key extends MY_Mgmt_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('Patent_key_dao', 'dao');
-
+		$this -> load -> model('Users_dao', 'users_dao');
 
 		// $this -> load-> library('word');
 
@@ -17,7 +17,6 @@ class Patent_key extends MY_Mgmt_Controller {
 		$data = array();
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-		$data['patent_status'] = $this -> patent_category_dao -> find_all();
 		// $this -> to_json($data);
 
 		$this -> load -> view('mgmt/patent_key/list', $data);
