@@ -367,3 +367,7 @@ Ref: https://developer.apple.com/library/ios/documentation/AppleApplications/Ref
 	</table>
 	<?php endif?>
 </div>
+<script>
+ window.style.backgroundColor = '#FFF';
+ window.body.style.backgroundColor = '#FFF';
+</script>
