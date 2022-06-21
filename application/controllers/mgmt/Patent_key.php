@@ -82,7 +82,7 @@ class Patent_key extends MY_Mgmt_Controller {
 		$res = array();
 		$id = $this -> get_post('id');
 		$data = $this -> get_posts(array(
-			'computer_hard_name',
+			'key',
 		));
 
 		if(empty($id)) {
