@@ -30,7 +30,7 @@ class Patent_key extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			'key_s',
+			'key',
 		));
 	
 
@@ -55,7 +55,7 @@ class Patent_key extends MY_Mgmt_Controller {
 				'columns',
 				'search',
 				'order',
-				'key_s',
+				'key',
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
