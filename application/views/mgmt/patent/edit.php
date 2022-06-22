@@ -1255,11 +1255,7 @@ function do_save() {
 
 	}
 	find_key();
-	$('#patent_key_array').on('select2-removed', function(){
-		$('#key_array').val('');
-		$('#key_array').val($('#patent_key_array').val());
-	});
-	$('#patent_key_array').on('select2-selecting', function(){
+	$('#patent_key_array').on('select2-focus', function(){
 		$('#key_array').val('');
 		$('#key_array').val($('#patent_key_array').val());
 	});
