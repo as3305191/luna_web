@@ -269,7 +269,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data['patent_fail_status_id'] = $patent_fail_status;
 		$data['patent_fail_person'] = $patent_fail_person;
 		if(explode(',',$patent_key_id_array)>1){
-			$data['patent_key_id_array'] = '#'.preg_replace(',', '#',$patent_key_id_array).'#';
+			$data['patent_key_id_array'] = '#'.str_replace(',', '#',$patent_key_id_array).'#';
 		} else{
 			$data['patent_key_id_array'] = '#'.$patent_key_id_array.'#';
 		}
