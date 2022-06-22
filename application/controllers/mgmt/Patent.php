@@ -268,7 +268,11 @@ class Patent extends MY_Mgmt_Controller {
 		$data['update_date'] = date("Y-m-d H:i:s");
 		$data['patent_fail_status_id'] = $patent_fail_status;
 		$data['patent_fail_person'] = $patent_fail_person;
-		$data['patent_key_id_array'] = '#'.preg_replace(',', '#',$patent_key_id_array).'#';
+		if(explode(',',$patent_key_id_array)>1){
+			$data['patent_key_id_array'] = '#'.preg_replace(',', '#',$patent_key_id_array).'#';
+		} else{
+			$data['patent_key_id_array'] = '#'.$patent_key_id_array.'#';
+		}
 
 		if($now_patent_status=='##'){
 			$now_patent_status=='';
