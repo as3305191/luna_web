@@ -427,7 +427,7 @@ class Users_dao extends MY_Model {
 		if (count($new_role_id)>1){
 			$sql = "select * from role_power where role_id = {$new_role_id[0]}";
 			for($i=1;$i<count($new_role_id);$i++){
-				$sql .= " AND where role_id = {$new_role_id[$i]}";
+				$sql .= " AND  role_id = {$new_role_id[$i]}";
 			}
 		} else{
 			$sql = "select * from role_power where role_id = {$role_id}";
