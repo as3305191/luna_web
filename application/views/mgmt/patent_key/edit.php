@@ -6,12 +6,14 @@
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
 	<header>
+		<?php if($login_user->role_id==9 ||$login_user->role_id==11||$login_user->role_id==28): ?>
+			<div class="widget-toolbar pull-left">
+				<a href="javascript:void(0);" id="" onclick="currentApp.doSubmit()" class="btn btn-default btn-danger">
+					<i class="fa fa-save"></i>存檔
+				</a>
+			</div>
+		<?php endif?>
 		
-		<div class="widget-toolbar pull-left">
-			<a href="javascript:void(0);" id="" onclick="currentApp.doSubmit()" class="btn btn-default btn-danger">
-				<i class="fa fa-save"></i>存檔
-			</a>
-		</div>
 	</header>
 
 	<!-- widget div-->
