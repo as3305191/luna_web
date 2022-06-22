@@ -429,8 +429,8 @@ class Users_dao extends MY_Model {
 			// for($i=1;$i<count($new_role_id);$i++){
 			// 	$sql .= " AND role_id = {$new_role_id[$i]}";
 			// }
-			$rp_list = $this -> db -> query($sql) -> row();
-			$rp_list = array_unique($rp_list);
+			$rp_list = $this -> db -> query($sql) -> result();
+			$rp_list = array_flip($rp_list);
 		} else{
 			$sql = "select * from role_power where role_id = {$role_id}";
 			$rp_list = $this -> db -> query($sql) -> result();
