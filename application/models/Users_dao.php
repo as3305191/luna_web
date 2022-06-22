@@ -427,9 +427,6 @@ class Users_dao extends MY_Model {
 		$sql = "select * from role_power where role_id = {$role_id}";
 		$rp_list = $this -> db -> query($sql) -> result();
 
-
-		
-
 		$map = array();
 		foreach($lv1_list as $each) {
 			foreach($rp_list as $rp) {

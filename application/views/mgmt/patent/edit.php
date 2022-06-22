@@ -144,9 +144,12 @@
 							<!-- option from javascript -->
 						</select>
 					</div>
-					<div class="col-md-2">
-						<button type="button" class="btn btn-sm btn-primary" id="add_country"><i class="fa fa-plus-circle fa-lg"></i></button>
-					</div>
+					<?php if($login_user->role_id==9 ||$login_user->role_id==11||$login_user->role_id==28): ?>
+						<div class="col-md-2">
+							<button type="button" class="btn btn-sm btn-primary" id="add_country"><i class="fa fa-plus-circle fa-lg"></i></button>
+						</div>
+					<?php endif?>
+					
 				</div>
 			</fieldset>
 			<fieldset>
@@ -193,10 +196,14 @@
 						</select>
 						
 					</div>
-					<div class="col-md-1">
-						<button type="button" class="btn btn-sm btn-primary" id="add_key"><i class="fa fa-plus-circle fa-lg"></i></button>
-						<button type="button" class="btn btn-sm btn-primary" id="minus_key" ><i class="fa fa-minus-circle fa-lg"></i></button>
-					</div>
+
+					<?php if($login_user->role_id==9 ||$login_user->role_id==11||$login_user->role_id==28): ?>
+						<div class="col-md-1">
+							<button type="button" class="btn btn-sm btn-primary" id="add_key"><i class="fa fa-plus-circle fa-lg"></i></button>
+							<button type="button" class="btn btn-sm btn-primary" id="minus_key" ><i class="fa fa-minus-circle fa-lg"></i></button>
+						</div>
+					<?php endif?>
+					
 				
 				</div>
 			</fieldset>
