@@ -81,10 +81,8 @@ class Patent_key extends MY_Mgmt_Controller {
 	public function insert() {//新增
 		$res = array();
 		$id = $this -> get_post('id');
-		$data = $this -> get_posts(array(
-			'key',
-		));
-
+		
+		$data['key'] = $this -> get_post('key');
 		if(empty($id)) {
 			// insert
 			$this -> dao -> insert($data);
