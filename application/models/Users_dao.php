@@ -425,10 +425,7 @@ class Users_dao extends MY_Model {
 		$sub_list = $this -> nav_dao -> find_all_not_lv1();
 		$new_role_id = explode(",", $role_id);
 		if (count($new_role_id)>1){
-			$sql = "select * from role_power where role_id = {$new_role_id[0]}";
-			for($i=1;$i<count($new_role_id);$i++){
-				$sql .= " AND  role_id = {$new_role_id[$i]}";
-			}
+			$sql = "select * from role_power where role_id = in($new_role_id)";
 		} else{
 			$sql = "select * from role_power where role_id = {$role_id}";
 		}
