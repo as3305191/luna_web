@@ -81,7 +81,7 @@ var patentAppClass = (function(app) {
 			app.tableReload();
 		});
 
-		$('#key_search_array').on('change', function(){
+		$('#key_search_array').on("option:selected", function(){
 			app.tableReload();
 		});
 	    // $(window).trigger("hashchange");
