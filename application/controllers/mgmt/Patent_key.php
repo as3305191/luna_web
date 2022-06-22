@@ -68,9 +68,9 @@ class Patent_key extends MY_Mgmt_Controller {
 			
 		}
 
-		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
-		$data['login_user'] = $login_user;
+		$data = array();
+		$data = $this -> setup_user_data($data);
+		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		// $this -> to_json($data);
 
 		// $this -> to_json($data['patent_key_array'] );
