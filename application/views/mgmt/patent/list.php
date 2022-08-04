@@ -289,7 +289,15 @@ thead tr th {
 	var baseUrl = '<?=base_url('')?>';
 
 	var mCols = [null,{
-		data : 'patent_name'
+		data : 'patent_name',
+		render: function(d,t,r){
+			if(r.patent_key_id_array!==""){
+				var html = '<span style="color:red;">'+d+'</span>';
+				return html;
+			} else{
+				return d;
+			}
+		}
 	}, {
 		data : 'image',
 		render: function(d,t,r){
