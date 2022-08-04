@@ -291,11 +291,12 @@ thead tr th {
 	var mCols = [null,{
 		data : 'patent_name',
 		render: function(d,t,r){
-			if(r.patent_key_id_array!==""){
+			if(r.patent_key_id_array==""){
+				return d;
+				
+			} else{
 				var html = '<span style="color:red;">'+d+'</span>';
 				return html;
-			} else{
-				return d;
 			}
 		}
 	}, {
