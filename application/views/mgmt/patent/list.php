@@ -90,7 +90,7 @@ thead tr th {
 								</div>
 								<div class="widget-toolbar pull-left">
 									<!-- <input id="key_search" type="text" class="form-control"autocomplete="off" /> -->
-									<select id="key_search_array" class="form-control" style="z-index: auto;" multiple>
+									<select id="key_search_array" class="form-control" style="z-index: 9999;" multiple>
 									</select>
 								</div>
 				
