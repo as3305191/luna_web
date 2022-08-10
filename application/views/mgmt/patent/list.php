@@ -88,9 +88,9 @@ thead tr th {
 								<div class="widget-toolbar pull-left">
 									<label>關鍵字(或)</label>
 								</div>
-								<div class="widget-toolbar pull-left">
+								<div class="widget-toolbar pull-left" style="z-index: 9999;">
 									<!-- <input id="key_search" type="text" class="form-control"autocomplete="off" /> -->
-									<select id="key_search_array" class="form-control" style="z-index: 9999;" multiple>
+									<select id="key_search_array" class="form-control"  multiple>
 									</select>
 								</div>
 				
