@@ -10092,7 +10092,7 @@ img.u-block-hover__main--magnifier-top-left {
 }
 
 [class*="input-group-"] > * {
-  white-space: normal;
+  white-space: nowrap;
 }
 
 [class*="input-group-"] i {
