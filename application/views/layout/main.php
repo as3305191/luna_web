@@ -124,7 +124,8 @@
 						}
 					});
 				}
-
+				new Notification('訂閱成功！！！');
+				
 				var key='all',mkey;
 				var users={};
 				var url='<?= $socket_url?>';
