@@ -107,7 +107,7 @@
 	    //Ajax 結束後，要做的事情
 	    $(document).ajaxStop(function () {
 				var notifyConfig = {
-					body: '\\ ^o^ /', // 設定內容
+					body: '~~~test~~~', // 設定內容
 					icon: '<?= base_url('img/ktx_img/logo_1.png') ?>', // 設定 icon
 					tag: 'newArrival' // 設定標籤
 				};
