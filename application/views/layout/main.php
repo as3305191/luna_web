@@ -114,7 +114,7 @@
 				if (!('Notification' in window)) {
 					console.log('本瀏覽器不支援推播通知');
 				} else{
-					console.log('本瀏覽器有推波');
+					console.log('本瀏覽器有推播');
 				}				
 
 				if (Notification.permission === 'default' || Notification.permission === 'undefined') {
