@@ -2036,3 +2036,24 @@ var calc_navbar_height = function() {
 	        return results[1];
 	}
 /* ~ END: HELPFUL FUNCTIONS */
+if (!('Notification' in window)) {
+    console.log('本瀏覽器不支援推播通知');
+}
+
+
+if ("Notification" in window)
+{
+    let ask = Notification.requestPermission();
+    ask.then(permission=> {
+        if(permission == "granted")
+        {
+            let msg = new Notification("推播主旨", {
+                body: "推播測試",
+                // icon: "http://180.176.8.137:8080/neit_official/Content/images/1.png"
+            });
+            msg.addEventListener("click", event=> {
+                alert("點擊接受");
+            });
+        }
+    });
+}
