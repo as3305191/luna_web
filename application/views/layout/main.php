@@ -106,26 +106,26 @@
 	    });
 	    //Ajax 結束後，要做的事情
 	    $(document).ajaxStop(function () {
-			if (!('Notification' in window)) {
-					console.log('本瀏覽器不支援推播通知');
-				} else{
-					console.log('本瀏覽器有推播');
-				}	
+			// if (!('Notification' in window)) {
+			// 		console.log('本瀏覽器不支援推播通知');
+			// 	} else{
+			// 		console.log('本瀏覽器有推播');
+			// 	}	
 
-				var notifyConfig = {
-					body: '~~~test~~~', // 設定內容
-					icon: '<?= base_url('img/ktx_img/logo_1.png') ?>', // 設定 icon
-					tag: 'newArrival' // 設定標籤
-				};
+			// 	var notifyConfig = {
+			// 		body: '~~~test~~~', // 設定內容
+			// 		icon: '<?= base_url('img/ktx_img/logo_1.png') ?>', // 設定 icon
+			// 		tag: 'newArrival' // 設定標籤
+			// 	};
 							
 
-				if (Notification.permission === 'default' || Notification.permission === 'undefined') {
-					Notification.requestPermission(function(permission) {
-						if (permission === 'granted') {// 使用者同意授權
-							var notification = new Notification('通知測試!', notifyConfig); // 建立通知
-						}
-					});
-				}
+			// 	if (Notification.permission === 'default' || Notification.permission === 'undefined') {
+			// 		Notification.requestPermission(function(permission) {
+			// 			if (permission === 'granted') {// 使用者同意授權
+			// 				var notification = new Notification('通知測試!', notifyConfig); // 建立通知
+			// 			}
+			// 		});
+			// 	}
 				
 				var key='all',mkey;
 				var users={};
