@@ -52,7 +52,7 @@
 		<link rel="apple-touch-startup-image" href="<?= base_url() ?>img/splash/iphone.png" media="screen and (max-device-width: 320px)">
 		<style>
 			/* #extr-page #main {
-				/* background-image: url('<?= base_url() ?>img/demo/login/login_bg.jpg'); */
+				 background-image: url('<?= base_url() ?>img/demo/login/login_bg.jpg'); 
 			} */
 			label.error {
 				color: red;
