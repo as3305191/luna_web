@@ -109,7 +109,7 @@
 									<section>
 										<label class="label">驗證碼</label>
 										<label class="input"> <i class="icon-append fa fa-lock"></i>
-											<input type="text" required name="captcha">
+											<input type="text" required name="captcha" autocomplete="off">
 											<b class="tooltip tooltip-top-right"><i class="fa fa-lock txt-color-teal"></i> 請輸入驗證碼</b> </label>
 											<div id="c_img"><?php echo $captcha['image']; ?></div>
 											<a class="blurry" id="newPic" onclick="getPic();">看不清楚，換一張</a>
