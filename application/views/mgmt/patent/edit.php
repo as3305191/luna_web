@@ -511,6 +511,8 @@ if($('#item_id').val()>0){
 	now_patent_status = [];
 	same_family ='<?php $same_family?>';
 	console.log(same_family);
+	console.log(123);
+	console.log('<?php $same_family?>');
 	if($('#img_id').val().length>0){
 		img.push($('#img_id').val());
 		// pdf_array.splice($.inArray(0,pdf_array),1);
