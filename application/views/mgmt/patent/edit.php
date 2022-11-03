@@ -510,7 +510,7 @@ if($('#item_id').val()>0){
 	patnet_num_input=[];
 	img=[];
 	now_patent_status = [];
-	same_family =$same_family;
+	same_family =<?php $same_family?>
 	console.log(same_family);
 	if($('#img_id').val().length>0){
 		img.push($('#img_id').val());
