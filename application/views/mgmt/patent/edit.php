@@ -119,6 +119,8 @@
 					<label class="col-md-3 control-label"></label>
 					<div class="col-md-6">
 						<?php if(!empty($same_family)): ?>
+							<input type=""  id="same_family_val" value="<?php $same_family?> " />
+
 							<?php foreach($same_family as $each): ?>
 								<?php if(!empty($each -> patnet_num)&& $each -> patnet_num !==""): ?>
 									<span id="family_span" style="border:3px blue double;" onclick="open_new_window(<?=$each->id?>);" patent_id="<?=$each->id?>">
