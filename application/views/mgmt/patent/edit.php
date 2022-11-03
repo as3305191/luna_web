@@ -119,8 +119,6 @@
 					<label class="col-md-3 control-label"></label>
 					<div class="col-md-6">
 						<?php if(!empty($same_family)): ?>
-							<input type=""  id="same_family_val" value="<?php $same_family?> " />
-
 							<?php foreach($same_family as $each): ?>
 								<?php if(!empty($each -> patnet_num)&& $each -> patnet_num !==""): ?>
 									<span id="family_span" style="border:3px blue double;" onclick="open_new_window(<?=$each->id?>);" patent_id="<?=$each->id?>">
@@ -511,10 +509,11 @@ if($('#item_id').val()>0){
 	patnet_num_input=[];
 	img=[];
 	now_patent_status = [];
-	same_family ='<?php $same_family?>';
+	same_family =[];
+	$.each(<?php $same_family?>, function(){
+		same_family.push(this.id);	
+	});
 	console.log(same_family);
-	console.log(123);
-	console.log('<?php $same_family?>');
 	if($('#img_id').val().length>0){
 		img.push($('#img_id').val());
 		// pdf_array.splice($.inArray(0,pdf_array),1);
