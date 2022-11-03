@@ -121,11 +121,11 @@
 						<?php if(!empty($same_family)): ?>
 							<?php foreach($same_family as $each): ?>
 								<?php if(!empty($each -> patnet_num)&& $each -> patnet_num !==""): ?>
-									<span id="family_span" style="border:3px blue double;" onclick="open_new_window(<?=$each->id?>);">
+									<span id="family_span" style="border:3px blue double;" onclick="open_new_window(<?=$each->id?>);" patent_id="<?=$each->id?>">
 										<?= isset($each -> patnet_num) ? $each -> patnet_num : ''?>
 									</span>
 									<?php elseif(!empty($each -> public_num)&& $each -> public_num !==""): ?>
-										<span id="family_span" style="border:3px blue double;" onclick="open_new_window(<?=$each->id?>);">
+										<span id="family_span" style="border:3px blue double;" onclick="open_new_window(<?=$each->id?>);" patent_id="<?=$each->id?>">
 											<?= isset($each -> public_num) ? $each -> public_num : '' ?>
 										</span>
 								<?php endif?>
@@ -187,7 +187,7 @@
 			</fieldset>
 			<fieldset >
 				<div class="form-group" >
-					<label class="col-md-3 control-label">關鍵字</label>
+					<label class="col-md-3 control-label">全部<input id="together" type="checkbox" class="" value="" />關鍵字</label>
 					<input type="hidden" id="key_array" value="<?= isset($patent_key_array) ? $patent_key_array : '' ?>" />
 					<div class="col-md-6">
 
@@ -501,6 +501,7 @@ $('#app-edit-form').bootstrapValidator({
 	}).bootstrapValidator('validate');
 	var now_patent_status = [];
 	var patent_key_array =[];
+	var same_family =[];
 	var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false,now_patent_status =false;
 
 if($('#item_id').val()>0){
@@ -509,6 +510,8 @@ if($('#item_id').val()>0){
 	patnet_num_input=[];
 	img=[];
 	now_patent_status = [];
+	same_family =$same_family;
+	console.log(same_family);
 	if($('#img_id').val().length>0){
 		img.push($('#img_id').val());
 		// pdf_array.splice($.inArray(0,pdf_array),1);
@@ -940,7 +943,8 @@ function do_save() {
 			now_patent_status: now_patent_status.join("#"),
 			patent_fail_status:	patent_fail_status,
 			patent_fail_person: $('#patent_fail_person').val(),
-			patent_key_id_array:$('#key_array').val(),		
+			patent_key_id_array:$('#key_array').val(),
+			together = $('#together').prop("checked") ? 1 : 0		
 		},
 		success : function(data) {
 			if(data.error_msg) {

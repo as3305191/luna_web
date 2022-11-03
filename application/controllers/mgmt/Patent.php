@@ -232,6 +232,8 @@ class Patent extends MY_Mgmt_Controller {
 		$patent_fail_status = $this -> get_post('patent_fail_status');
 		$patent_fail_person = $this -> get_post('patent_fail_person');
 		$patent_key_id_array= $this -> get_post('patent_key_id_array');
+		$together= $this -> get_post('together');
+		
 		// foreach ($img as $each) {
 		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
 		// }
@@ -293,6 +295,9 @@ class Patent extends MY_Mgmt_Controller {
 			$last_id = $this -> dao -> insert($data);
 		} else {
 			$this -> dao -> update($data, $id);
+			if($together==1){
+				
+			}
 		}
 		$res['success'] = TRUE;
  		$this -> to_json($res);
