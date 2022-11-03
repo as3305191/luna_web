@@ -162,7 +162,7 @@ class Patent extends MY_Mgmt_Controller {
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['country'] = $this -> country_dao -> find_all();
-		// $this -> to_json($data['patent_key_array'] );
+		$this -> to_json($data['same_family'] );
 		$this->load->view('mgmt/patent/edit', $data);
 	}
 
@@ -296,7 +296,7 @@ class Patent extends MY_Mgmt_Controller {
 		} else {
 			$this -> dao -> update($data, $id);
 			if($together==1){
-				
+
 			}
 		}
 		$res['success'] = TRUE;
