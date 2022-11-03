@@ -944,7 +944,7 @@ function do_save() {
 			patent_fail_status:	patent_fail_status,
 			patent_fail_person: $('#patent_fail_person').val(),
 			patent_key_id_array:$('#key_array').val(),
-			together = $('#together').prop("checked") ? 1 : 0		
+			together : $('#together').prop("checked") ? 1 : 0		
 		},
 		success : function(data) {
 			if(data.error_msg) {
