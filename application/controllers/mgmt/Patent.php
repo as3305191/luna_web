@@ -166,7 +166,8 @@ class Patent extends MY_Mgmt_Controller {
 		$u_data = $this -> setup_user_data($u_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['country'] = $this -> country_dao -> find_all();
-		$this -> to_json($data['same_family_id'] );
+		$this -> to_json($data['same_family'] );
+		$this -> to_json($data['same_family_id']);
 		$this->load->view('mgmt/patent/edit', $data);
 	}
 
