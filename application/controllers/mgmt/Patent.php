@@ -146,7 +146,11 @@ class Patent extends MY_Mgmt_Controller {
 			}
 
 			if(!empty($item -> patent_family)) {
-				$data['same_family'] = $this -> dao -> find_same_family($item->patent_family);
+				$same_family = $this -> dao -> find_same_family($item->patent_family);
+				$data['same_family'] = $same_family;
+				foreach($same_family as $each){
+					$data['same_family_id'][] = $each->id;
+				}
 			}
 			if(!empty($item -> patent_key_id_array)){
 				$patent_key_array = $item -> patent_key_id_array;
