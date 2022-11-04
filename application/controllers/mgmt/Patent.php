@@ -148,7 +148,7 @@ class Patent extends MY_Mgmt_Controller {
 			if(!empty($item -> patent_family)) {
 				$same_family = $this -> dao -> find_same_family($item->patent_family);
 				$data['same_family'] = $same_family;
-				foreach($same_family[0] as $each){
+				foreach($same_family as $each){
 					$data['same_family_id'][] = $each->id;
 				}
 			}
