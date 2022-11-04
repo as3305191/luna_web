@@ -306,7 +306,7 @@ class Patent extends MY_Mgmt_Controller {
 			$same_family_id = explode(',',$same_family_id);
 			if($together==1){
 				foreach($same_family_id as $each){
-					$this->dao->update_by($data['patent_key_id_array'],'id',$each);
+					$this->dao->update_by(array('patent_key_id_array' =>$data['patent_key_id_array']),'id',$each);
 				}
 			}
 		}
