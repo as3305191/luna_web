@@ -149,8 +149,9 @@ class Patent extends MY_Mgmt_Controller {
 				$same_family = $this -> dao -> find_same_family($item->patent_family);
 				$data['same_family'] = $same_family;
 				foreach($same_family as $each){
-					$data['same_family_id'][] = $each->id;
+					$same_family_id_array[] = $each->id;
 				}
+				$data['same_family_id'] = implode(",",$same_family_id_array);
 			}
 			if(!empty($item -> patent_key_id_array)){
 				$patent_key_array = $item -> patent_key_id_array;
@@ -167,7 +168,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['country'] = $this -> country_dao -> find_all();
 		// $this -> to_json($data['same_family'] );
-		$this -> to_json($data['same_family_id']);
+		// $this -> to_json($data['same_family_id']);
 		$this->load->view('mgmt/patent/edit', $data);
 	}
 
