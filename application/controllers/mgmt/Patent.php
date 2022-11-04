@@ -239,6 +239,8 @@ class Patent extends MY_Mgmt_Controller {
 		$patent_fail_person = $this -> get_post('patent_fail_person');
 		$patent_key_id_array= $this -> get_post('patent_key_id_array');
 		$together= $this -> get_post('together');
+		$same_family_id= $this -> get_post('same_family_id');
+
 		
 		// foreach ($img as $each) {
 		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
@@ -301,8 +303,11 @@ class Patent extends MY_Mgmt_Controller {
 			$last_id = $this -> dao -> insert($data);
 		} else {
 			$this -> dao -> update($data, $id);
+			$same_family_id = explode(',',$same_family_id);
 			if($together==1){
-
+				foreach($same_family_id as $each){
+					$this->users_dao->update_by($data['patent_key_id_array'],'id',$each);
+				}
 			}
 		}
 		$res['success'] = TRUE;
