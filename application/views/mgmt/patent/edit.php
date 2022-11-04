@@ -118,8 +118,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label"></label>
 					<div class="col-md-6">
-					<input type="text"  class="form-control" name="same_family_id"  id="same_family_id" value="<?= isset($same_family_id) ? $same_family_id: '0' ?>"/>
-
+					<input type="hidden"  class="form-control" name="same_family_id"  id="same_family_id" value="<?= isset($same_family_id) ? $same_family_id: '0' ?>"/>
 						<?php if(!empty($same_family)): ?>
 							<?php foreach($same_family as $each): ?>
 								<?php if(!empty($each -> patnet_num)&& $each -> patnet_num !==""): ?>
