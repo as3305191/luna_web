@@ -511,7 +511,7 @@ if($('#item_id').val()>0){
 	img=[];
 	now_patent_status = [];
 	same_family_id =$('#same_family_id').val();
-	console.log(same_family_id);
+	// console.log(same_family_id);
 	if($('#img_id').val().length>0){
 		img.push($('#img_id').val());
 		// pdf_array.splice($.inArray(0,pdf_array),1);
@@ -944,7 +944,8 @@ function do_save() {
 			patent_fail_status:	patent_fail_status,
 			patent_fail_person: $('#patent_fail_person').val(),
 			patent_key_id_array:$('#key_array').val(),
-			together : $('#together').prop("checked") ? 1 : 0		
+			together : $('#together').prop("checked") ? 1 : 0,
+			same_family_id : same_family_id
 		},
 		success : function(data) {
 			if(data.error_msg) {
