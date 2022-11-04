@@ -509,7 +509,7 @@ if($('#item_id').val()>0){
 	patnet_num_input=[];
 	img=[];
 	now_patent_status = [];
-	same_family_id =[];
+	same_family_id = '<?php $same_family_id?>';
 	// $.each(<?php $same_family_id?>, function(){
 	// 	same_family_id.push(this.id);	
 	// });
