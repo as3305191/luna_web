@@ -61,6 +61,11 @@ class Patent extends MY_Mgmt_Controller {
 		$items = $this -> dao -> query_ajax($data);
 
 		foreach($items as $each){
+			if(!empty($each -> patent_country)){
+				$my_patent_country = $this -> country_dao -> find_by_id($each -> patent_country);
+				$each -> my_patent_country = $my_patent_country -> country_name ;
+			} 
+
 			if(!empty($each -> img_id)) {
 				$image= explode(",", $each -> img_id);
 				$each -> image_id =$image ;

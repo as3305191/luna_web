@@ -329,7 +329,17 @@ thead tr th {
 			}
 		}
 	},{
-		data : 'total_country'
+		data : 'total_country',
+		render: function(d,t,r){
+			if(d){
+				return d;
+			} else{
+				if(r.my_patent_country){
+					var html = '<span style="word-wrap:break-word;white-space:pre-wrap;">'+r.my_patent_country+'</span>';
+					return html;
+				}
+			}
+		}
 	}, {
 		data : 'patnet_num',
 		render: function(d,t,r){
