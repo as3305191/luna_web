@@ -335,7 +335,7 @@ thead tr th {
 				return d;
 			} else{
 				if(r.my_patent_country){
-					var html = '<span style="word-wrap:break-word;white-space:pre-wrap;">'+r.my_patent_country+'</span>';
+					var html = '<span style="word-wrap:break-word;white-space:pre-wrap;color:red;">'+r.my_patent_country+'</span>';
 					return html;
 				}
 			}
