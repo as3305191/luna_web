@@ -395,7 +395,46 @@
 					</div>
 				</div>
 			</fieldset>	
-			
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">優先權</label>
+					<div class="col-md-6">
+						<select name="p_id_for_priority" id="p_id_for_priority" class="form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'disabled' ?>>
+							<!-- option from javascript -->
+						</select>
+					</div>
+				</div>
+			</fieldset>	
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">連續案</label>
+					<div class="col-md-6">
+						<select name="p_id_for_continuous_cases" id="p_id_for_continuous_cases" class="form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'disabled' ?>>
+							<!-- option from javascript -->
+						</select>
+					</div>
+				</div>
+			</fieldset>	
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">部分連續案</label>
+					<div class="col-md-6">
+						<select name="p_id_for_part_continuous_cases" id="p_id_for_part_continuous_cases" class="form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'disabled' ?>>
+							<!-- option from javascript -->
+						</select>
+					</div>
+				</div>
+			</fieldset>	
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">分割案</label>
+					<div class="col-md-6">
+						<select name="p_id_for_split_case" id="p_id_for_split_case" class="form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'disabled' ?>>
+							<!-- option from javascript -->
+						</select>
+					</div>
+				</div>
+			</fieldset>	
 						<style>
 							#product_spec_list {
 							
