@@ -1275,55 +1275,55 @@ function do_save() {
 							// $('#patent_family').val(me.patent_family);
 							switch ($mode) {
 								case 1:
-									if(typeof me.patnet_num !== "undefined"){
+									if(me.patnet_num){
 										$('#p_id_for_priority').val(me.patnet_num);
 										break;
 									}else
-									if(typeof me.public_num !== "undefined"){
+									if(me.public_num){
 										$('#p_id_for_priority').val(me.public_num);
 										break;
 									}else
-									if(typeof me.application_num !== "undefined"){
+									if(me.application_num){
 										$('#p_id_for_priority').val(me.application_num);
 										break;
 									}
 									
 								case 2:
-									if(typeof me.patnet_num !== "undefined"){
+									if(me.patnet_num){
 										$('#p_id_for_continuous_cases').val(me.patnet_num);
 										break;
 									}else
-									if(typeof me.public_num !== "undefined"){
+									if(me.public_num){
 										$('#p_id_for_continuous_cases').val(me.public_num);
 										break;
 									}else
-									if(typeof me.application_num !== "undefined"){
+									if(me.application_num){
 										$('#p_id_for_continuous_cases').val(me.application_num);
 										break;
 									}
 								case 3:
-									if(typeof me.patnet_num !== "undefined"){
+									if(me.patnet_num){
 										$('#p_id_for_part_continuous_cases').val(me.patnet_num);
 										break;
 									}else
-									if(typeof me.public_num !== "undefined"){
+									if(me.public_num){
 										$('#p_id_for_part_continuous_cases').val(me.public_num);
 										break;
 									}else
-									if(typeof me.application_num !== "undefined"){
+									if(me.application_num){
 										$('#p_id_for_part_continuous_cases').val(me.application_num);
 										break;
 									}
 								case 4:
-									if(typeof me.patnet_num !== "undefined"){
+									if(me.patnet_num){
 										$('#p_id_for_split_case').val(me.patnet_num);
 										break;
 									}else
-									if(typeof me.public_num !== "undefined"){
+									if(me.public_num){
 										$('#p_id_for_split_case').val(me.public_num);
 										break;
 									}else
-									if(typeof me.application_num !== "undefined"){
+									if(me.application_num){
 										$('#p_id_for_split_case').val(me.application_num);
 										break;
 									}
