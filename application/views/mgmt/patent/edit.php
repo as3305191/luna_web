@@ -19,7 +19,7 @@
 .fail_fieldset{
 	display:none !important;
 }
-#family_span:hover{
+.family_span:hover{
     color:#FFD22F;
 }
 </style>
@@ -122,11 +122,11 @@
 						<?php if(!empty($same_family)): ?>
 							<?php foreach($same_family as $each): ?>
 								<?php if(!empty($each -> patnet_num)&& $each -> patnet_num !==""): ?>
-									<span id="family_span" style="border:3px blue double;" onclick="open_new_window(<?=$each->id?>);" patent_id="<?=$each->id?>">
+									<span class="family_span" style="border:3px blue double;" onclick="open_new_window(<?=$each->id?>);" patent_id="<?=$each->id?>">
 										<?= isset($each -> patnet_num) ? $each -> patnet_num : ''?>
 									</span>
 									<?php elseif(!empty($each -> public_num)&& $each -> public_num !==""): ?>
-										<span id="family_span" style="border:3px blue double;" onclick="open_new_window(<?=$each->id?>);" patent_id="<?=$each->id?>">
+										<span class="family_span" style="border:3px blue double;" onclick="open_new_window(<?=$each->id?>);" patent_id="<?=$each->id?>">
 											<?= isset($each -> public_num) ? $each -> public_num : '' ?>
 										</span>
 								<?php endif?>
@@ -1253,6 +1253,10 @@ function do_save() {
 		e.preventDefault();
 	});
 
+	function hideSearchModal() {
+		$('#family_search_Modal').modal('hide');
+	}
+
 	function patentnumChange(){
 		
 		$.ajax({
@@ -1263,15 +1267,26 @@ function do_save() {
 			},
 			success : function(data) {
 				var $body = $('#patent_num_serach_body').empty();
+		
 				if(data.item){
 					$.each(data.item, function(){
 						var me = this;
 						var $tr = $('<tr class="pointer">').click(function(){
-							$('#s-family-name').val('');
-							// familyChange();
-							$('#patent_family').val(me.patent_family);
-							// currentApp.tableReload();
-							hideSearchModal();
+							// $('#s-family-name').val('');
+							// $('#patent_family').val(me.patent_family);
+							switch ($mode) {
+								case '1':
+									p_id_for_priority
+									break;
+								case '2':
+									p_id_for_continuous_cases
+								case '3':
+									p_id_for_part_continuous_cases
+									break;
+								case '4':
+									p_id_for_split_case
+									break;
+							}
 						}).appendTo($body);
 						$('<td>').html(me.application_num).appendTo($tr);
 					})
@@ -1283,10 +1298,7 @@ function do_save() {
 		});
 	}
 
-	function hideSearchModal() {
-		$('#family_search_Modal').modal('hide');
-	}
-
+	
 	function open_new_window(id) {
 		window.open('#mgmt/patent/edit/' + id);
 	}
