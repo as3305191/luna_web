@@ -401,18 +401,13 @@
 					<div class="col-md-6">
 						<input type="button" class="form-control" name="p_id_for_priority"  id="p_id_for_priority" onclick="do_search_patent_num()" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
-					<!-- <div class="col-md-3">
-						<button type="button" class="btn btn-sm btn-primary" >搜尋申請號</button>
-					</div> -->
 				</div>
 			</fieldset>	
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">連續案</label>
 					<div class="col-md-6">
-						<select name="p_id_for_continuous_cases" id="p_id_for_continuous_cases" class="form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'disabled' ?>>
-							<!-- option from javascript -->
-						</select>
+						<input type="button" class="form-control" name="p_id_for_continuous_cases"  id="p_id_for_continuous_cases" onclick="do_search_patent_num()" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>	
@@ -420,9 +415,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">部分連續案</label>
 					<div class="col-md-6">
-						<select name="p_id_for_part_continuous_cases" id="p_id_for_part_continuous_cases" class="form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'disabled' ?>>
-							<!-- option from javascript -->
-						</select>
+						<input type="button" class="form-control" name="p_id_for_part_continuous_cases"  id="p_id_for_part_continuous_cases" onclick="do_search_patent_num()" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>	
@@ -430,9 +423,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">分割案</label>
 					<div class="col-md-6">
-						<select name="p_id_for_split_case" id="p_id_for_split_case" class="form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'disabled' ?>>
-							<!-- option from javascript -->
-						</select>
+						<input type="button" class="form-control" name="p_id_for_split_case"  id="p_id_for_split_case" onclick="do_search_patent_num()" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>	
