@@ -401,8 +401,18 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-
-
+	public function patent_application_number_search(){
+		$data = array();
+		$search_item = $this -> get_post('search_item');
+		if(!empty($search_item)){
+			$item = $this -> dao -> find_by_application_number($search_item);
+			$res['item'] = $item;
+		}
+		
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+	
 	public function delete($id) {
 		$res['success'] = TRUE;
 		$this -> dao -> delete($id);

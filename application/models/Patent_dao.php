@@ -241,5 +241,15 @@ class Patent_dao extends MY_Model {
 		$list = $query -> result();
 		return $list;
 	}
+
+	function find_by_application_number($application_number){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where("_m.application_num",$application_number);
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		return $list;
+	}
+	
 }
 ?>

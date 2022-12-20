@@ -1261,13 +1261,12 @@ function do_save() {
 		
 		$.ajax({
 			type : "POST",
-			url : baseUrl +'mgmt/patent/patent_family_search',
+			url : baseUrl +'mgmt/patent/patent_application_number_search',
 			data : {
 				search_item: $('#s-patent-num-name').val()
 			},
 			success : function(data) {
 				var $body = $('#patent_num_serach_body').empty();
-		
 				if(data.item){
 					$.each(data.item, function(){
 						var me = this;
@@ -1276,15 +1275,16 @@ function do_save() {
 							// $('#patent_family').val(me.patent_family);
 							switch ($mode) {
 								case '1':
-									p_id_for_priority
+									console.log('p_id_for_priority 1');
 									break;
 								case '2':
-									p_id_for_continuous_cases
+									console.log('p_id_for_continuous_cases 2');
+									break;
 								case '3':
-									p_id_for_part_continuous_cases
+									console.log('p_id_for_part_continuous_cases 3');
 									break;
 								case '4':
-									p_id_for_split_case
+									console.log('p_id_for_split_case 4');
 									break;
 							}
 						}).appendTo($body);
