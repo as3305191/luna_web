@@ -257,7 +257,7 @@ thead tr th {
 								<table class="table table-hover">
 									<thead>
 										<tr>
-											<td>申請號</td>
+											<td>結果</td>
 										</tr>
 									</thead>
 									<tbody id="patent_num_serach_body">
