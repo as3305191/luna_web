@@ -1275,37 +1275,64 @@ function do_save() {
 							// $('#patent_family').val(me.patent_family);
 							switch ($mode) {
 								case 1:
-									console.log('p_id_for_priority 1');
-									break;
+									if(typeof me.patnet_num !== "undefined"){
+										$('#p_id_for_priority').val(me.patnet_num);
+										break;
+									}else
+									if(typeof me.public_num !== "undefined"){
+										$('#p_id_for_priority').val(me.public_num);
+										break;
+									}else
+									if(typeof me.application_num !== "undefined"){
+										$('#p_id_for_priority').val(me.application_num);
+										break;
+									}
+									
 								case 2:
-									console.log('p_id_for_continuous_cases 2');
-									break;
+									if(typeof me.patnet_num !== "undefined"){
+										$('#p_id_for_continuous_cases').val(me.patnet_num);
+										break;
+									}else
+									if(typeof me.public_num !== "undefined"){
+										$('#p_id_for_continuous_cases').val(me.public_num);
+										break;
+									}else
+									if(typeof me.application_num !== "undefined"){
+										$('#p_id_for_continuous_cases').val(me.application_num);
+										break;
+									}
 								case 3:
-									console.log('p_id_for_part_continuous_cases 3');
-									break;
+									if(typeof me.patnet_num !== "undefined"){
+										$('#p_id_for_part_continuous_cases').val(me.patnet_num);
+										break;
+									}else
+									if(typeof me.public_num !== "undefined"){
+										$('#p_id_for_part_continuous_cases').val(me.public_num);
+										break;
+									}else
+									if(typeof me.application_num !== "undefined"){
+										$('#p_id_for_part_continuous_cases').val(me.application_num);
+										break;
+									}
 								case 4:
-									console.log('p_id_for_split_case 4');
-									break;
+									if(typeof me.patnet_num !== "undefined"){
+										$('#p_id_for_split_case').val(me.patnet_num);
+										break;
+									}else
+									if(typeof me.public_num !== "undefined"){
+										$('#p_id_for_split_case').val(me.public_num);
+										break;
+									}else
+									if(typeof me.application_num !== "undefined"){
+										$('#p_id_for_split_case').val(me.application_num);
+										break;
+									}
 							}
 						}).appendTo($body);
 						$('<td>').html(me.application_num).appendTo($tr);
 					})
 				} else{
 					$('<td>').html('搜尋無結果').appendTo($body);
-					switch ($mode) {
-								case 1:
-									console.log('p_id_for_priority 1');
-									break;
-								case 2:
-									console.log('p_id_for_continuous_cases 2');
-									break;
-								case 3:
-									console.log('p_id_for_part_continuous_cases 3');
-									break;
-								case 4:
-									console.log('p_id_for_split_case 4');
-									break;
-							}
 				}
 			
 			}
