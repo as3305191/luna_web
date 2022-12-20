@@ -239,7 +239,7 @@ thead tr th {
 				<form id="patent-num-search">
 					<fieldset>
 						<div class="form-group">
-							<label class="col-md-3 control-label">搜尋/label>
+							<label class="col-md-3 control-label">搜尋</label>
 							<div class="col-md-9">
 								<div class="input-group">
 									<input type="text" class="form-control" id="s-patent-num-name" placeholder="請輸入公開號或專利號或申請號" />
