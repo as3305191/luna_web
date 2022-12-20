@@ -234,6 +234,7 @@ thead tr th {
 		<div class="modal-content">
 			<div class="modal-header">
 			</div>
+
 			<div class="modal-body" id="station-edit-modal-body">
 				<form id="patent-num-search">
 					<fieldset>

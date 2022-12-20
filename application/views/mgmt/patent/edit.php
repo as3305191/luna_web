@@ -399,7 +399,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">優先權</label>
 					<div class="col-md-6">
-						<input type="button" class="form-control" name="p_id_for_priority"  id="p_id_for_priority" onclick="do_search_patent_num()" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						<input type="button" class="form-control" name="p_id_for_priority"  id="p_id_for_priority" onclick="do_search_patent_num(1)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>	
@@ -407,7 +407,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">連續案</label>
 					<div class="col-md-6">
-						<input type="button" class="form-control" name="p_id_for_continuous_cases"  id="p_id_for_continuous_cases" onclick="do_search_patent_num()" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						<input type="button" class="form-control" name="p_id_for_continuous_cases"  id="p_id_for_continuous_cases" onclick="do_search_patent_num(2)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>	
@@ -415,7 +415,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">部分連續案</label>
 					<div class="col-md-6">
-						<input type="button" class="form-control" name="p_id_for_part_continuous_cases"  id="p_id_for_part_continuous_cases" onclick="do_search_patent_num()" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						<input type="button" class="form-control" name="p_id_for_part_continuous_cases"  id="p_id_for_part_continuous_cases" onclick="do_search_patent_num(3)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>	
@@ -423,7 +423,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">分割案</label>
 					<div class="col-md-6">
-						<input type="button" class="form-control" name="p_id_for_split_case"  id="p_id_for_split_case" onclick="do_search_patent_num()" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						<input type="button" class="form-control" name="p_id_for_split_case"  id="p_id_for_split_case" onclick="do_search_patent_num(4)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
 					</div>
 				</div>
 			</fieldset>	
@@ -469,7 +469,7 @@
 
 <script>
 var current_app = [];
-
+var $mode = "";
 $(document).ready(function() {
 	if($('#item_id').val()==0){
 		var url = baseUrl + 'mgmt/patent/new_patent_family'; // the script where you handle the form input.
@@ -534,7 +534,7 @@ $('#app-edit-form').bootstrapValidator({
 	var now_patent_status = [];
 	var patent_key_array =[];
 	var img=false,pdf_array=false,public_num_input=false,patnet_num_input=false,now_patent_status =false,same_family_id =false;
-
+	
 if($('#item_id').val()>0){
 	pdf_array=[];
 	public_num_input=[];
@@ -1208,10 +1208,6 @@ function do_save() {
 		// $('#s-family-name').val('').trigger("change");
 	}
 
-	function do_search_patent_num(){
-		$('#patent_num_search_Modal').modal('show');
-	}
-
 	$('#family-num-search').submit(function(e){
 		familyChange();
 		e.preventDefault();
@@ -1245,6 +1241,13 @@ function do_save() {
 			}
 		});
 	}
+
+	function do_search_patent_num(mode){
+		$mode = mode;
+		$('#patent_num_search_Modal').modal('show');
+		console.log($mode);
+	}
+
 	$('#patent-num-search').submit(function(e){
 		patentnumChange();
 		e.preventDefault();
