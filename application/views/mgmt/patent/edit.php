@@ -1235,7 +1235,7 @@ function do_save() {
 						$('<td>').html(me.application_num).appendTo($tr);
 					})
 				} else{
-					html('搜尋無結果').appendTo($body);
+					$('<td>').html('搜尋無結果').appendTo($body);
 				}
 			
 			}
@@ -1291,7 +1291,7 @@ function do_save() {
 						$('<td>').html(me.application_num).appendTo($tr);
 					})
 				} else{
-					html('搜尋無結果').appendTo($body);
+					$('<td>').html('搜尋無結果').appendTo($body);
 				}
 			
 			}
