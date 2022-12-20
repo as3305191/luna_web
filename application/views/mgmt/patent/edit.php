@@ -399,9 +399,10 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">優先權</label>
 					<div class="col-md-6">
-						<select name="p_id_for_priority" id="p_id_for_priority" class="form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'disabled' ?>>
-							<!-- option from javascript -->
-						</select>
+						<input type="text"  class="form-control" name="p_id_for_priority"  id="p_id_for_priority" value="<?= isset($item) ? $item -> patent_family : '' ?>"  <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+					</div>
+					<div class="col-md-3">
+						<button type="button" class="btn btn-sm btn-primary" onclick="do_search_patent_num()">搜尋申請號</button>
 					</div>
 				</div>
 			</fieldset>	
@@ -1214,6 +1215,10 @@ function do_save() {
 		// familyChange();
 		$('#family_search_Modal').modal('show');
 		// $('#s-family-name').val('').trigger("change");
+	}
+
+	function do_search_patent_num(){
+		$('#patent_num_search_Modal').modal('show');
 	}
 
 	$('#family-num-search').submit(function(e){
