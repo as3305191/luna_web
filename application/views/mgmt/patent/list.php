@@ -235,13 +235,13 @@ thead tr th {
 			<div class="modal-header">
 			</div>
 			<div class="modal-body" id="station-edit-modal-body">
-				<form id="family-num-search">
+				<form id="patent-num-search">
 					<fieldset>
 						<div class="form-group">
 							<label class="col-md-3 control-label">搜尋申請號</label>
 							<div class="col-md-9">
 								<div class="input-group">
-									<input type="text" class="form-control" id="s-family-name" placeholder="請輸入公開號或專利號或申請號" />
+									<input type="text" class="form-control" id="s-patent-num-name" placeholder="請輸入公開號或專利號或申請號" />
 									<span class="input-group-btn">
 										<button type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-search"></i></button>
 									</span>
@@ -259,7 +259,7 @@ thead tr th {
 											<td>申請號</td>
 										</tr>
 									</thead>
-									<tbody id="family_num_serach_body">
+									<tbody id="patent_num_serach_body">
 									</tbody>
 								</table>
 							</div>
@@ -435,6 +435,7 @@ thead tr th {
 				keyChange();
 				e.preventDefault();
 			});
+			
 		});
 	});
 

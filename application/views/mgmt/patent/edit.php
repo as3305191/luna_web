@@ -1254,6 +1254,40 @@ function do_save() {
 			}
 		});
 	}
+	$('#patent-num-search').submit(function(e){
+		patentnumChange();
+		e.preventDefault();
+	});
+
+	function patentnumChange(){
+		
+		$.ajax({
+			type : "POST",
+			url : baseUrl +'mgmt/patent/patent_family_search',
+			data : {
+				search_item: $('#s-patent-num-name').val()
+			},
+			success : function(data) {
+				var $body = $('#patent_num_serach_body').empty();
+				if(data.item){
+					$.each(data.item, function(){
+						var me = this;
+						var $tr = $('<tr class="pointer">').click(function(){
+							$('#s-family-name').val('');
+							// familyChange();
+							$('#patent_family').val(me.patent_family);
+							// currentApp.tableReload();
+							hideSearchModal();
+						}).appendTo($body);
+						$('<td>').html(me.application_num).appendTo($tr);
+					})
+				} else{
+					html('搜尋無結果').appendTo($body);
+				}
+			
+			}
+		});
+	}
 
 	function hideSearchModal() {
 		$('#family_search_Modal').modal('hide');
