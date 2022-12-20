@@ -1305,7 +1305,7 @@ function do_save() {
 								case 2:
 									if(me.patnet_num){
 										if($('#p_id_for_continuous_cases').val().length>0){
-											$('#p_id_for_continuous_cases').val('、'+me.patnet_num);
+											$('#p_id_for_continuous_cases').val($('#p_id_for_continuous_cases').val()+'、'+me.patnet_num);
 											break;
 										}else{
 											$('#p_id_for_continuous_cases').val(me.patnet_num);
@@ -1314,7 +1314,7 @@ function do_save() {
 									}else
 									if(me.public_num){
 										if($('#p_id_for_continuous_cases').val().length>0){
-											$('#p_id_for_continuous_cases').val('、'+me.public_num);
+											$('#p_id_for_continuous_cases').val($('#p_id_for_continuous_cases').val()+'、'+me.public_num);
 											break;
 										}else{
 											$('#p_id_for_continuous_cases').val(me.public_num);
@@ -1323,7 +1323,7 @@ function do_save() {
 									}else
 									if(me.application_num){
 										if($('#p_id_for_continuous_cases').val().length>0){
-											$('#p_id_for_continuous_cases').val('、'+me.application_num);
+											$('#p_id_for_continuous_cases').val($('#p_id_for_continuous_cases').val()+'、'+me.application_num);
 											break;
 										}else{
 											$('#p_id_for_continuous_cases').val(me.application_num);
@@ -1333,7 +1333,7 @@ function do_save() {
 								case 3:
 									if(me.patnet_num){
 										if($('#p_id_for_part_continuous_cases').val().length>0){
-											$('#p_id_for_part_continuous_cases').val('、'+me.patnet_num);
+											$('#p_id_for_part_continuous_cases').val($('#p_id_for_part_continuous_cases').val()+'、'+me.patnet_num);
 											break;
 										}else{
 											$('#p_id_for_part_continuous_cases').val(me.patnet_num);
@@ -1342,7 +1342,7 @@ function do_save() {
 									}else
 									if(me.public_num){
 										if($('#p_id_for_part_continuous_cases').val().length>0){
-											$('#p_id_for_part_continuous_cases').val('、'+me.public_num);
+											$('#p_id_for_part_continuous_cases').val($('#p_id_for_part_continuous_cases').val()+'、'+me.public_num);
 											break;
 										}else{
 											$('#p_id_for_part_continuous_cases').val(me.public_num);
@@ -1351,7 +1351,7 @@ function do_save() {
 									}else
 									if(me.application_num){
 										if($('#p_id_for_part_continuous_cases').val().length>0){
-											$('#p_id_for_part_continuous_cases').val('、'+me.application_num);
+											$('#p_id_for_part_continuous_cases').val($('#p_id_for_part_continuous_cases').val()+'、'+me.application_num);
 											break;
 										}else{
 											$('#p_id_for_part_continuous_cases').val(me.application_num);
@@ -1361,7 +1361,7 @@ function do_save() {
 								case 4:
 									if(me.patnet_num){
 										if($('#p_id_for_split_case').val().length>0){
-											$('#p_id_for_split_case').val('、'+me.patnet_num);
+											$('#p_id_for_split_case').val($('#p_id_for_split_case').val()+'、'+me.patnet_num);
 											break;
 										}else{
 											$('#p_id_for_split_case').val(me.patnet_num);
@@ -1370,7 +1370,7 @@ function do_save() {
 									}else
 									if(me.public_num){
 										if($('#p_id_for_split_case').val().length>0){
-											$('#p_id_for_split_case').val('、'+me.public_num);
+											$('#p_id_for_split_case').val($('#p_id_for_split_case').val()+'、'+me.public_num);
 											break;
 										}else{
 											$('#p_id_for_split_case').val(me.public_num);
@@ -1379,7 +1379,7 @@ function do_save() {
 									}else
 									if(me.application_num){
 										if($('#p_id_for_split_case').val().length>0){
-											$('#p_id_for_split_case').val('、'+me.application_num);
+											$('#p_id_for_split_case').val($('#p_id_for_split_case').val()+'、'+me.application_num);
 											break;
 										}else{
 											$('#p_id_for_split_case').val(me.application_num);
