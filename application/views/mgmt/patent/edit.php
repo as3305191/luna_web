@@ -1245,7 +1245,7 @@ function do_save() {
 	function do_search_patent_num(mode){
 		$mode = mode;
 		$('#patent_num_search_Modal').modal('show');
-		console.log($mode);
+		// console.log($mode);
 	}
 
 	$('#patent-num-search').submit(function(e){
@@ -1274,16 +1274,16 @@ function do_save() {
 							// $('#s-family-name').val('');
 							// $('#patent_family').val(me.patent_family);
 							switch ($mode) {
-								case '1':
+								case 1:
 									console.log('p_id_for_priority 1');
 									break;
-								case '2':
+								case 2:
 									console.log('p_id_for_continuous_cases 2');
 									break;
-								case '3':
+								case 3:
 									console.log('p_id_for_part_continuous_cases 3');
 									break;
-								case '4':
+								case 4:
 									console.log('p_id_for_split_case 4');
 									break;
 							}
