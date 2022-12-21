@@ -1277,13 +1277,13 @@ function do_save() {
 						var $tr = $('<tr class="pointer">').click(function(){
 							// $('#s-family-name').val('');
 							// $('#patent_family').val(me.patent_family);
-							var contenteditable = document.querySelector('[contenteditable]'),
-    						text = contenteditable.textContent;
+							// var contenteditable = document.querySelector('[contenteditable]'),
+    						// text = contenteditable.textContent;
 							switch ($mode) {
 								case 1:
 	
 									if(me.patnet_num){
-										if($('#p_id_for_priority').text==''){
+										if($('#p_id_for_priority').textContent==''){
 											$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.patnet_num);
 											break;
 										}else{
@@ -1292,7 +1292,7 @@ function do_save() {
 										}										
 									}else
 									if(me.public_num){
-										if($('#p_id_for_priority').text==''){
+										if($('#p_id_for_priority').textContent==''){
 											$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.public_num);
 											break;
 										}else{
@@ -1301,7 +1301,7 @@ function do_save() {
 										}
 									}else
 									if(me.application_num){
-										if($('#p_id_for_priority').text==''){
+										if($('#p_id_for_priority').textContent==''){
 											$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.application_num);
 											break;
 										}else{
