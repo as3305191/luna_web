@@ -399,7 +399,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">優先權</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control" name="p_id_for_priority"  id="p_id_for_priority" onclick="do_search_patent_num(1)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						<div type="text" contenteditable="true" class="form-control" name="p_id_for_priority"  id="p_id_for_priority" onclick="do_search_patent_num(1)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						</div>
 					</div>
 				</div>
 			</fieldset>	
@@ -407,7 +408,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">連續案</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control" name="p_id_for_continuous_cases"  id="p_id_for_continuous_cases" onclick="do_search_patent_num(2)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						<div type="text" contenteditable="true" class="form-control" name="p_id_for_continuous_cases"  id="p_id_for_continuous_cases" onclick="do_search_patent_num(2)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						</div>
 					</div>
 				</div>
 			</fieldset>	
@@ -415,7 +417,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">部分連續案</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control" name="p_id_for_part_continuous_cases"  id="p_id_for_part_continuous_cases" onclick="do_search_patent_num(3)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						<div type="text" contenteditable="true" class="form-control" name="p_id_for_part_continuous_cases"  id="p_id_for_part_continuous_cases" onclick="do_search_patent_num(3)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						</div>
 					</div>
 				</div>
 			</fieldset>	
@@ -423,7 +426,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">分割案</label>
 					<div class="col-md-6">
-						<input type="text" class="form-control" name="p_id_for_split_case"  id="p_id_for_split_case" onclick="do_search_patent_num(4)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						<div type="text" contenteditable="true" class="form-control" name="p_id_for_split_case"  id="p_id_for_split_case" onclick="do_search_patent_num(4)" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						</div>
 					</div>
 				</div>
 			</fieldset>	
