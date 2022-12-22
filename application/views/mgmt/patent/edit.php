@@ -22,6 +22,10 @@
 .family_span:hover{
     color:#FFD22F;
 }
+.remove_pa:hover{
+    color:#F57316;
+}
+
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
@@ -1297,7 +1301,7 @@ function do_save() {
 										}else
 										if(me.public_num){
 											// if($p_id_for_priority.length){
-												item ='<span class="family_span" onclick="open_new_window('+me.id+');"> <i class="fa fa-remove"></i> <span class="">'+me.public_num+'</span> </span>'
+												item ='<span class="family_span" onclick="open_new_window('+me.id+');"> <span class="">'+me.public_num+'</span> <i class="fa fa-remove remove_pa" class="" onclick=""></i> </span>'
 
 
 												$('#p_id_for_priority').append(item);
