@@ -1278,32 +1278,41 @@ function do_save() {
 					$.each(data.item, function(){
 						var me = this;
 						var $tr = $('<tr class="pointer">').click(function(){
-							// $('#s-family-name').val('');
-							// $('#patent_family').val(me.patent_family);
-							// var contenteditable = document.querySelector('[contenteditable]'),
-    						// text = contenteditable.textContent;
+						var item = '';
 							switch ($mode) {
 								case 1:
 									if(me.patnet_num||me.public_num ||me.application_num){
 										if(me.patnet_num){
 											if($p_id_for_priority.length>0){
-												$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.patnet_num);
-											}else{
-												$('#p_id_for_priority').text(me.patnet_num);
+												// $('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.patnet_num);
+												item ='<li class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');">'+me.patnet_num+'<span class="select2-selection__choice__remove" role="presentation">×</span</li>'
+
+												$('#p_id_for_priority').append(item);
+											// }else{
+												// $('#p_id_for_priority').text(me.patnet_num);
+												
+												// item ='<li class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');">'+me.patnet_num+'<span class="select2-selection__choice__remove" role="presentation">×</span</li>'
+												// $('#p_id_for_priority').append(item);
 											}		
 										}else
 										if(me.public_num){
 											if($p_id_for_priority.length>0){
-												$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.public_num);
-											}else{
-												$('#p_id_for_priority').text(me.public_num);
+												item ='<li class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');">'+me.public_num+'<span class="select2-selection__choice__remove" role="presentation">×</span</li>'
+
+												$('#p_id_for_priority').append(item);
+												// $('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.public_num);
+											// }else{
+											// 	$('#p_id_for_priority').text(me.public_num);
 											}
 										}else
 										if(me.application_num){
 											if($p_id_for_priority.length>0){
-												$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.application_num);
-											}else{
-												$('#p_id_for_priority').text(me.application_num);
+												item ='<li class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');">'+me.application_num+'<span class="select2-selection__choice__remove" role="presentation">×</span</li>'
+
+												$('#p_id_for_priority').append(item);
+											// 	$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.application_num);
+											// }else{
+											// 	$('#p_id_for_priority').text(me.application_num);
 											}
 										}
 										$p_id_for_priority.push(me.id);	
