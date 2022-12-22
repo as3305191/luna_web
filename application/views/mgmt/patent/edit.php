@@ -1414,12 +1414,12 @@ function do_save() {
 	});
 
 	function open_new_p_window(id) {
-		$('#patent_num_search_Modal').modal('hide');
 		window.open('#mgmt/patent/edit/' + id);
+		$('#patent_num_search_Modal').modal('hide');
 	}
 
 	function del_pat(id) {
-		$('#patent_num_search_Modal').modal('hide');
 		alert('真的很抱歉尚無功能！');
+		$('#patent_num_search_Modal').modal('hide');
 	}
 </script>
