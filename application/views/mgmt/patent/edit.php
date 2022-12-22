@@ -470,9 +470,12 @@
 </div>
 <!-- end widget -->
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
-
 <script>
 var current_app = [];
+var $p_id_for_priority = [];
+var $p_id_for_continuous_cases = [];
+var $p_id_for_part_continuous_cases = [];
+var $p_id_for_split_case = [];
 var $mode = "";
 $(document).ready(function() {
 	if($('#item_id').val()==0){
@@ -1281,118 +1284,116 @@ function do_save() {
     						// text = contenteditable.textContent;
 							switch ($mode) {
 								case 1:
-	
-									if(me.patnet_num){
-										if($('#p_id_for_priority').html()==''){
-											$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.patnet_num);
-											break;
-										}else{
-											$('#p_id_for_priority').text(me.patnet_num);
-											break;w
-										}										
-									}else
-									if(me.public_num){
-										if($('#p_id_for_priority').html()==''){
-											$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.public_num);
-											break;
-										}else{
-											$('#p_id_for_priority').text(me.public_num);
-											break;
+									if(me.patnet_num||me.public_num ||me.application_num){
+										if(me.patnet_num){
+											if($p_id_for_priority.length>0){
+												$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.patnet_num);
+											}else{
+												$('#p_id_for_priority').text(me.patnet_num);
+											}		
+										}else
+										if(me.public_num){
+											if($p_id_for_priority.length>0){
+												$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.public_num);
+											}else{
+												$('#p_id_for_priority').text(me.public_num);
+											}
+										}else
+										if(me.application_num){
+											if($p_id_for_priority.length>0){
+												$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.application_num);
+											}else{
+												$('#p_id_for_priority').text(me.application_num);
+											}
 										}
-									}else
-									if(me.application_num){
-										if($('#p_id_for_priority').html()==''){
-											$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.application_num);
-											break;
-										}else{
-											$('#p_id_for_priority').text(me.application_num);
-											break;
-										}
+										$p_id_for_priority.push(me.id);	
+
 									}
+									break;
+
 								case 2:
-									if(me.patnet_num){
-										if($('#p_id_for_continuous_cases').val().length>0){
-											$('#p_id_for_continuous_cases').val($('#p_id_for_continuous_cases').val()+'、'+me.patnet_num);
-											break;
-										}else{
-											$('#p_id_for_continuous_cases').val(me.patnet_num);
-											break;
+									if(me.patnet_num||me.public_num ||me.application_num){
+										if(me.patnet_num){
+											if($p_id_for_continuous_cases.length>0){
+												$('#p_id_for_continuous_cases').val($('#p_id_for_continuous_cases').val()+'、'+me.patnet_num);
+											}else{
+												$('#p_id_for_continuous_cases').val(me.patnet_num);
+											}
+										}else
+										if(me.public_num){
+											if($p_id_for_continuous_cases.length>0){
+												$('#p_id_for_continuous_cases').val($('#p_id_for_continuous_cases').val()+'、'+me.public_num);
+											}else{
+												$('#p_id_for_continuous_cases').val(me.public_num);
+											}
+										}else
+										if(me.application_num){
+											if($p_id_for_continuous_cases.length>0){
+												$('#p_id_for_continuous_cases').val($('#p_id_for_continuous_cases').val()+'、'+me.application_num);
+											}else{
+												$('#p_id_for_continuous_cases').val(me.application_num);
+											}
 										}
-									}else
-									if(me.public_num){
-										if($('#p_id_for_continuous_cases').val().length>0){
-											$('#p_id_for_continuous_cases').val($('#p_id_for_continuous_cases').val()+'、'+me.public_num);
-											break;
-										}else{
-											$('#p_id_for_continuous_cases').val(me.public_num);
-											break;
-										}
-									}else
-									if(me.application_num){
-										if($('#p_id_for_continuous_cases').val().length>0){
-											$('#p_id_for_continuous_cases').val($('#p_id_for_continuous_cases').val()+'、'+me.application_num);
-											break;
-										}else{
-											$('#p_id_for_continuous_cases').val(me.application_num);
-											break;
-										}
+										$p_id_for_continuous_cases.push(me.id);
+
 									}
+									
+									break;
+
 								case 3:
-									if(me.patnet_num){
-										if($('#p_id_for_part_continuous_cases').val().length>0){
-											$('#p_id_for_part_continuous_cases').val($('#p_id_for_part_continuous_cases').val()+'、'+me.patnet_num);
-											break;
-										}else{
-											$('#p_id_for_part_continuous_cases').val(me.patnet_num);
-											break;
+									if(me.patnet_num||me.public_num ||me.application_num){
+										if(me.patnet_num){
+											if($p_id_for_part_continuous_cases.length>0){
+												$('#p_id_for_part_continuous_cases').val($('#p_id_for_part_continuous_cases').val()+'、'+me.patnet_num);
+											}else{
+												$('#p_id_for_part_continuous_cases').val(me.patnet_num);
+											}
+										}else
+										if(me.public_num){
+											if($p_id_for_part_continuous_cases.length>0){
+												$('#p_id_for_part_continuous_cases').val($('#p_id_for_part_continuous_cases').val()+'、'+me.public_num);
+											}else{
+												$('#p_id_for_part_continuous_cases').val(me.public_num);
+											}
+										}else
+										if(me.application_num){
+											if($p_id_for_part_continuous_cases.length>0){
+												$('#p_id_for_part_continuous_cases').val($('#p_id_for_part_continuous_cases').val()+'、'+me.application_num);
+											}else{
+												$('#p_id_for_part_continuous_cases').val(me.application_num);
+											}
 										}
-									}else
-									if(me.public_num){
-										if($('#p_id_for_part_continuous_cases').val().length>0){
-											$('#p_id_for_part_continuous_cases').val($('#p_id_for_part_continuous_cases').val()+'、'+me.public_num);
-											break;
-										}else{
-											$('#p_id_for_part_continuous_cases').val(me.public_num);
-											break;
-										}
-									}else
-									if(me.application_num){
-										if($('#p_id_for_part_continuous_cases').val().length>0){
-											$('#p_id_for_part_continuous_cases').val($('#p_id_for_part_continuous_cases').val()+'、'+me.application_num);
-											break;
-										}else{
-											$('#p_id_for_part_continuous_cases').val(me.application_num);
-											break;
-										}
+										$p_id_for_part_continuous_cases.push(me.id);
 									}
+
+									break;
 								case 4:
-									if(me.patnet_num){
-										if($('#p_id_for_split_case').val().length>0){
-											$('#p_id_for_split_case').val($('#p_id_for_split_case').val()+'、'+me.patnet_num);
-											break;
-										}else{
-											$('#p_id_for_split_case').val(me.patnet_num);
-											break;
+									if(me.patnet_num||me.public_num ||me.application_num){
+										if(me.patnet_num){
+											if($p_id_for_split_case.length>0){
+												$('#p_id_for_split_case').val($('#p_id_for_split_case').val()+'、'+me.patnet_num);
+											}else{
+												$('#p_id_for_split_case').val(me.patnet_num);
+											}
+										}else
+										if(me.public_num){
+											if($p_id_for_split_case.length>0){
+												$('#p_id_for_split_case').val($('#p_id_for_split_case').val()+'、'+me.public_num);
+											}else{
+												$('#p_id_for_split_case').val(me.public_num);
+											}
+										}else
+										if(me.application_num){
+											if($p_id_for_split_case.length>0){
+												$('#p_id_for_split_case').val($('#p_id_for_split_case').val()+'、'+me.application_num);
+											}else{
+												$('#p_id_for_split_case').val(me.application_num);
+											}
 										}
-									}else
-									if(me.public_num){
-										if($('#p_id_for_split_case').val().length>0){
-											$('#p_id_for_split_case').val($('#p_id_for_split_case').val()+'、'+me.public_num);
-											break;
-										}else{
-											$('#p_id_for_split_case').val(me.public_num);
-											break;
-										}
-									}else
-									if(me.application_num){
-										if($('#p_id_for_split_case').val().length>0){
-											$('#p_id_for_split_case').val($('#p_id_for_split_case').val()+'、'+me.application_num);
-											break;
-										}else{
-											$('#p_id_for_split_case').val(me.application_num);
-											break;
-										}
+										$p_id_for_split_case.push(me.id);
 									}
+
+									break;
 							}
 						}).appendTo($body);
 						$('<td>').html(me.application_num).appendTo($tr);
