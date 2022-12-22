@@ -1285,7 +1285,7 @@ function do_save() {
 										if(me.patnet_num){
 											if($p_id_for_priority.length>0){
 												// $('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.patnet_num);
-												item ='<li class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');">'+me.patnet_num+'<span class="select2-selection__choice__remove" role="presentation">×</span</li>'
+												item ='<span class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');">'+me.patnet_num+'<span class="select2-selection__choice__remove" role="presentation">×</span</span>'
 
 												$('#p_id_for_priority').append(item);
 											// }else{
@@ -1297,7 +1297,7 @@ function do_save() {
 										}else
 										if(me.public_num){
 											if($p_id_for_priority.length>0){
-												item ='<li class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');">'+me.public_num+'<span class="select2-selection__choice__remove" role="presentation">×</span</li>'
+												item ='<span class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');">'+me.public_num+'<span class="select2-selection__choice__remove" role="presentation">×</span</span>'
 
 												$('#p_id_for_priority').append(item);
 												// $('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.public_num);
@@ -1307,7 +1307,7 @@ function do_save() {
 										}else
 										if(me.application_num){
 											if($p_id_for_priority.length>0){
-												item ='<li class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');">'+me.application_num+'<span class="select2-selection__choice__remove" role="presentation">×</span</li>'
+												item ='<span class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');">'+me.application_num+'<span class="select2-selection__choice__remove" role="presentation">×</span</span>'
 
 												$('#p_id_for_priority').append(item);
 											// 	$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.application_num);
