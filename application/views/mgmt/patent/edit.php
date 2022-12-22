@@ -1283,7 +1283,7 @@ function do_save() {
 								case 1:
 									if(me.patnet_num||me.public_num ||me.application_num){
 										if(me.patnet_num){
-											if($p_id_for_priority.length){
+											// if($p_id_for_priority.length){
 												// $('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.patnet_num);
 												item ='<div class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');"><label>'+me.patnet_num+'</label><span class="select2-selection__choice__remove" role="presentation">×</span></div>'
 
@@ -1293,27 +1293,27 @@ function do_save() {
 												
 												// item ='<li class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');">'+me.patnet_num+'<span class="select2-selection__choice__remove" role="presentation">×</span</li>'
 												// $('#p_id_for_priority').append(item);
-											}		
+											// }		
 										}else
 										if(me.public_num){
-											if($p_id_for_priority.length){
+											// if($p_id_for_priority.length){
 												item ='<div class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');"><label>'+me.public_num+'</label><span class="select2-selection__choice__remove" role="presentation">×</span></div>'
 
 												$('#p_id_for_priority').append(item);
 												// $('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.public_num);
 											// }else{
 											// 	$('#p_id_for_priority').text(me.public_num);
-											}
+											// }
 										}else
 										if(me.application_num){
-											if($p_id_for_priority.length){
+											// if($p_id_for_priority.length){
 												item ='<div class="family_span" style="border:3px blue double;" onclick="open_new_window('+me.id+');"><label>'+me.public_num+'</label><span class="select2-selection__choice__remove" role="presentation">×</span></div>'
 
 												$('#p_id_for_priority').append(item);
 											// 	$('#p_id_for_priority').text($('#p_id_for_priority').text()+'、'+me.application_num);
 											// }else{
 											// 	$('#p_id_for_priority').text(me.application_num);
-											}
+											// }
 										}
 										$p_id_for_priority.push(me.id);	
 
