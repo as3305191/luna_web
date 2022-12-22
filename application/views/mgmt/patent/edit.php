@@ -23,7 +23,7 @@
     color:#FFD22F;
 }
 .remove_pa:hover{
-    color:#F57316;
+    color:#9AFF02;
 }
 
 </style>
