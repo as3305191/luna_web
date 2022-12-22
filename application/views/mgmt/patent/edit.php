@@ -407,7 +407,7 @@
 						</div>
 					</div>
 					<div class="col-md-3">
-						<button type="button" class="btn btn-sm btn-primary" onclick="do_search_patent_num(1)">搜尋專利家族</button>
+						<button type="button" class="btn btn-sm btn-primary" onclick="do_search_patent_num(1)"><i class="fa fa-plus-circle fa-lg"></i></button>
 					</div>
 				</div>
 			</fieldset>	
@@ -419,7 +419,7 @@
 						</div>
 					</div>
 					<div class="col-md-3">
-						<button type="button" class="btn btn-sm btn-primary" onclick="do_search_patent_num(2)">搜尋專利家族</button>
+						<button type="button" class="btn btn-sm btn-primary" onclick="do_search_patent_num(2)"><i class="fa fa-plus-circle fa-lg"></i></button>
 					</div>
 				</div>
 			</fieldset>	
@@ -431,7 +431,7 @@
 						</div>
 					</div>
 					<div class="col-md-3">
-						<button type="button" class="btn btn-sm btn-primary" onclick="do_search_patent_num(3)">搜尋專利家族</button>
+						<button type="button" class="btn btn-sm btn-primary" onclick="do_search_patent_num(3)"><i class="fa fa-plus-circle fa-lg"></i></button>
 					</div>
 				</div>
 			</fieldset>	
@@ -443,7 +443,7 @@
 						</div>
 					</div>
 					<div class="col-md-3">
-						<button type="button" class="btn btn-sm btn-primary" onclick="do_search_patent_num(4)">搜尋專利家族</button>
+						<button type="button" class="btn btn-sm btn-primary" onclick="do_search_patent_num(4)"><i class="fa fa-plus-circle fa-lg"></i></button>
 					</div>
 				</div>
 			</fieldset>	
