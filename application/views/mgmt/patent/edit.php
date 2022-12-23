@@ -1508,10 +1508,10 @@ function do_save() {
 					// 	item ='<label class="p_s_4_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
 
 					// });
-					$p_id_for_priority.push(d.item.p_id_for_priority);	
-					$p_id_for_continuous_cases.push(d.item.p_id_for_continuous_cases);	
-					$p_id_for_part_continuous_cases.push(d.item.p_id_for_part_continuous_cases);	
-					$p_id_for_split_case.push(d.item.p_id_for_split_case);	
+					$p_id_for_priority.push(d.item['p_id_for_priority']);	
+					$p_id_for_continuous_cases.push(d.item['p_id_for_continuous_cases']);	
+					$p_id_for_part_continuous_cases.push(d.item['p_id_for_part_continuous_cases']);	
+					$p_id_for_split_case.push(d.item['p_id_for_split_case']);	
 console.log($p_id_for_priority);
 console.log($p_id_for_continuous_cases);
 console.log($p_id_for_part_continuous_cases);
