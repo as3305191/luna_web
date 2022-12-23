@@ -1506,13 +1506,13 @@ function do_save() {
 						$.each(d.continuous_cases_item, function(){
 							var me = this;
 							if(me.patnet_num!=''){
-								item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+								item ='<label class="p_s_2_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_2('+me.id+');"></i>&nbsp;</label>'
 							}else
 							if(me.public_num!=''){
-								item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+								item ='<label class="p_s_2_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_2('+me.id+');"></i>&nbsp;</label>'
 							}else
 							if(me.application_num!=''){
-								item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+								item ='<label class="p_s_2_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_2('+me.id+');"></i>&nbsp;</label>'
 							}
 							$('#p_id_for_continuous_cases').append(item);
 						});
@@ -1521,13 +1521,13 @@ function do_save() {
 						$.each(d.part_continuous_cases_item, function(){
 							var me = this;
 							if(me.patnet_num!=''){
-								item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+								item ='<label class="p_s_3_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_3('+me.id+');"></i>&nbsp;</label>'
 							}else
 							if(me.public_num!=''){
-								item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+								item ='<label class="p_s_3_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_3('+me.id+');"></i>&nbsp;</label>'
 							}else
 							if(me.application_num!=''){
-								item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+								item ='<label class="p_s_3_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_3('+me.id+');"></i>&nbsp;</label>'
 							}
 							$('#p_id_for_part_continuous_cases').append(item);
 						});
@@ -1536,13 +1536,13 @@ function do_save() {
 						$.each(d.split_case_item, function(){
 							var me = this;
 							if(me.patnet_num!=''){
-								item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+								item ='<label class="p_s_4_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_4('+me.id+');"></i>&nbsp;</label>'
 							}else
 							if(me.public_num!=''){
-								item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+								item ='<label class="p_s_4_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_4('+me.id+');"></i>&nbsp;</label>'
 							}else
 							if(me.application_num!=''){
-								item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+								item ='<label class="p_s_4_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_4('+me.id+');"></i>&nbsp;</label>'
 							}
 							$('#p_id_for_split_case').append(item);
 						});
