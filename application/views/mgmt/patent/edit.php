@@ -1444,6 +1444,7 @@ function do_save() {
 	function del_pat_1(id) {
 		var obj = $(".p_s_1_"+id);
 	    obj.remove();
+		console.log(id);
 		console.log($p_id_for_priority.indexOf(id));
 		$p_id_for_priority.splice($p_id_for_priority.indexOf(id), 0);
 		console.log($p_id_for_priority);
