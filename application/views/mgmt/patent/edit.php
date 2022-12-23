@@ -1380,7 +1380,7 @@ function do_save() {
 											if(me.application_num){
 												item ='<label class="p_s_2_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_2('+me.id+');"></i>&nbsp;</label>'
 											}
-											$('#p_id_for_part_continuous_cases').append(item);
+											$('#p_id_for_continuous_cases').append(item);
 											$p_id_for_continuous_cases.push(me.id);
 										}
 									} else{
