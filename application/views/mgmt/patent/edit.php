@@ -1487,7 +1487,7 @@ function do_save() {
 					$p_id_for_continuous_cases = d.item[0]['p_id_for_continuous_cases'].split(',');	
 					$p_id_for_part_continuous_cases = d.item[0]['p_id_for_part_continuous_cases'].split(',');	
 					$p_id_for_split_case = d.item[0]['p_id_for_split_case'].split(',');	
-					$.each(d.p_id_for_priority, function(){
+					$.each(d.p_id_for_priority[0], function(){
 						var me = this;
 						if(me.patnet_num){
 							item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
@@ -1500,15 +1500,15 @@ function do_save() {
 						}
 						$('#p_id_for_priority').append(item);
 					});
-					// $.each(d.p_id_for_continuous_cases, function(){
+					// $.each(d.p_id_for_continuous_cases[0], function(){
 					// 	item ='<label class="p_s_2_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
 
 					// });
-					// $.each(d.p_id_for_part_continuous_cases, function(){
+					// $.each(d.p_id_for_part_continuous_cases[0], function(){
 					// 	item ='<label class="p_s_3_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
 
 					// });
-					// $.each(d.p_id_for_split_case, function(){
+					// $.each(d.p_id_for_split_case[0], function(){
 					// 	item ='<label class="p_s_4_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
 
 					// });
