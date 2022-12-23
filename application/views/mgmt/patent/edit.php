@@ -1300,13 +1300,13 @@ function do_save() {
 									if($p_id_for_priority.indexOf(me.id)<0){
 										if(me.patnet_num||me.public_num ||me.application_num){
 											if(me.patnet_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}else
 											if(me.public_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}else
 											if(me.application_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}
 											$('#p_id_for_priority').append(item);
 											$p_id_for_priority.push(me.id);	
@@ -1320,13 +1320,13 @@ function do_save() {
 									if($p_id_for_continuous_cases.indexOf(me.id)<0){
 										if(me.patnet_num||me.public_num ||me.application_num){
 											if(me.patnet_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}else
 											if(me.public_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}else
 											if(me.application_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}
 											$('#p_id_for_part_continuous_cases').append(item);
 											$p_id_for_continuous_cases.push(me.id);
@@ -1340,13 +1340,13 @@ function do_save() {
 									if($p_id_for_part_continuous_cases.indexOf(me.id)<0){
 										if(me.patnet_num||me.public_num ||me.application_num){
 											if(me.patnet_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}else
 											if(me.public_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}else
 											if(me.application_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}
 											$('#p_id_for_part_continuous_cases').append(item);
 											$p_id_for_part_continuous_cases.push(me.id);
@@ -1359,13 +1359,13 @@ function do_save() {
 									if($p_id_for_split_case.indexOf(me.id)<0){
 										if(me.patnet_num||me.public_num ||me.application_num){
 											if(me.patnet_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}else
 											if(me.public_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}else
 											if(me.application_num){
-												item ='<span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp; '
+												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</div>'
 											}
 											$('#p_id_for_split_case').append(item);
 											$p_id_for_split_case.push(me.id);
@@ -1439,11 +1439,12 @@ function do_save() {
 
 	function open_new_p_window(id) {
 		window.open('#mgmt/patent/edit/' + id);
-		$('#patent_num_search_Modal').modal('hide');
 	}
 
 	function del_pat(id) {
+		var obj = document.getElementById("p_s");
+	    var impParent = obj.parentNode;//獲取img的父對象
+		impParent.removeChild(obj);
 		alert('真的很抱歉尚無功能！');
-		$('#patent_num_search_Modal').modal('hide');
 	}
 </script>
