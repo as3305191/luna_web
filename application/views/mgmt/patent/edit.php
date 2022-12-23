@@ -509,7 +509,7 @@ $(document).ready(function() {
 	} else{
 		find_mode_4();
 	}
-	
+
 	$('#checkboxGroup input').click(function(){
 		if($(this).prop('checked')){
 			$('#checkboxGroup input:checkbox').prop('checked',false);
@@ -1512,7 +1512,10 @@ function do_save() {
 					$p_id_for_continuous_cases.push(d.item.p_id_for_continuous_cases);	
 					$p_id_for_part_continuous_cases.push(d.item.p_id_for_part_continuous_cases);	
 					$p_id_for_split_case.push(d.item.p_id_for_split_case);	
-
+console.log($p_id_for_priority);
+console.log($p_id_for_continuous_cases);
+console.log($p_id_for_part_continuous_cases);
+console.log($p_id_for_split_case);
 				}
 				
 			}
