@@ -1300,13 +1300,13 @@ function do_save() {
 									if($p_id_for_priority.indexOf(me.id)<0){
 										if(me.patnet_num||me.public_num ||me.application_num){
 											if(me.patnet_num){
-												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</li>'
+												item ='<li><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</li>'
 											}else
 											if(me.public_num){
-												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</li>'
+												item ='<li><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</li>'
 											}else
 											if(me.application_num){
-												item ='<div><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</li>'
+												item ='<li><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</li>'
 											}
 											$('#p_id_for_priority').append(item);
 											$p_id_for_priority.push(me.id);	
