@@ -1481,7 +1481,7 @@ function do_save() {
 			dataType: 'json',
 			success: function(d) {
 				if(d) {
-					console.log(d);
+					// console.log(d);
 					var item ='';
 					if(d.item[0]['p_id_for_priority']){
 						$p_id_for_priority = d.item[0]['p_id_for_priority'].split(',');	
