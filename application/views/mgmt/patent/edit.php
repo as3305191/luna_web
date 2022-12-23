@@ -866,6 +866,54 @@ if($('#item_id').val()>0){
 			}
 		}
 	});
+
+
+
+
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/patent/find_mode_4',
+			type: 'POST',
+			data : {
+				item_id:$('#item_id').val(),
+			},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					console.log(d);
+					// $.each(d.p_id_for_priority, function(){
+					// 	var me = this;
+					// 	if(me.patnet_num){
+					// 		item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+					// 	}else
+					// 	if(me.public_num){
+					// 		item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+					// 	}else
+					// 	if(me.application_num){
+					// 		item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+					// 	}
+					// 	$('#p_id_for_priority').append(item);
+					// });
+					// $.each(d.p_id_for_continuous_cases, function(){
+					// 	item ='<label class="p_s_2_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+
+					// });
+					// $.each(d.p_id_for_part_continuous_cases, function(){
+					// 	item ='<label class="p_s_3_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+
+					// });
+					// $.each(d.p_id_for_split_case, function(){
+					// 	item ='<label class="p_s_4_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+
+					// });
+					$p_id_for_priority.push(d.item.p_id_for_priority);	
+					$p_id_for_continuous_cases.push(d.item.p_id_for_continuous_cases);	
+					$p_id_for_part_continuous_cases.push(d.item.p_id_for_part_continuous_cases);	
+					$p_id_for_split_case.push(d.item.p_id_for_split_case);	
+
+				}
+				
+			}
+		});
 } 
 
 function check_family(){
@@ -999,7 +1047,11 @@ function do_save() {
 			patent_fail_person: $('#patent_fail_person').val(),
 			patent_key_id_array:$('#key_array').val(),
 			together : $('#together').prop("checked") ? 1 : 0,
-			same_family_id : same_family_id
+			same_family_id : same_family_id,
+			p_id_for_priority: $p_id_for_priority,
+			p_id_for_continuous_cases : $p_id_for_continuous_cases,
+			p_id_for_part_continuous_cases : $p_id_for_part_continuous_cases,
+			p_id_for_split_case : $p_id_for_split_case,
 		},
 		success : function(data) {
 			if(data.error_msg) {
@@ -1294,7 +1346,7 @@ function do_save() {
 					$.each(data.item, function(){
 						var me = this;
 						var $tr = $('<tr class="pointer">').click(function(){
-						var item = '';
+							var item = '';
 							switch ($mode) {
 								case 1:
 									if($p_id_for_priority.indexOf(me.id)<0){

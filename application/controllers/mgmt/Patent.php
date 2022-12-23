@@ -245,7 +245,10 @@ class Patent extends MY_Mgmt_Controller {
 		$patent_key_id_array= $this -> get_post('patent_key_id_array');
 		$together= $this -> get_post('together');
 		$same_family_id= $this -> get_post('same_family_id');
-
+		$p_id_for_priority= $this -> get_post('p_id_for_priority');
+		$p_id_for_continuous_cases= $this -> get_post('p_id_for_continuous_cases');
+		$p_id_for_part_continuous_cases= $this -> get_post('p_id_for_part_continuous_cases');
+		$p_id_for_split_case= $this -> get_post('samep_id_for_split_case_family_id');
 		
 		// foreach ($img as $each) {
 		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
@@ -283,6 +286,11 @@ class Patent extends MY_Mgmt_Controller {
 		$data['update_date'] = date("Y-m-d H:i:s");
 		$data['patent_fail_status_id'] = $patent_fail_status;
 		$data['patent_fail_person'] = $patent_fail_person;
+		$data['p_id_for_priority'] = $p_id_for_priority;
+		$data['p_id_for_continuous_cases'] = $p_id_for_continuous_cases;
+		$data['p_id_for_part_continuous_cases'] = $p_id_for_part_continuous_cases;
+		$data['p_id_for_split_case'] = $p_id_for_split_case;
+
 		if(explode(',',$patent_key_id_array)>1){
 			$data['patent_key_id_array'] = '#'.str_replace(',', '#',$patent_key_id_array).'#';
 		} else{
@@ -402,10 +410,38 @@ class Patent extends MY_Mgmt_Controller {
 	}
 
 	public function patent_application_number_search(){
-		$data = array();
+		$res = array();
 		$search_item = $this -> get_post('search_item');
 		if(!empty($search_item)){
 			$item = $this -> dao -> find_by_application_number($search_item);
+			$res['item'] = $item;
+		}
+		
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+	
+	public function find_mode_4(){
+		$res = array();
+		$item_id = $this -> get_post('item_id');
+		if(!empty($item_id)){
+			$item = $this -> dao -> find_each_mode4_by_id($item_id);
+			foreach($item->p_id_for_priority as $each){
+				$priority_item = $this -> dao -> find_by_id($each);
+				$res['priority_item'][] = $priority_item;
+			}
+			foreach($item->p_id_for_continuous_cases as $each){
+				$continuous_cases_item = $this -> dao -> find_by_id($each);
+				$res['continuous_cases_item'][] = $continuous_cases_item;
+			}
+			foreach($item->p_id_for_part_continuous_cases as $each){
+				$part_continuous_cases_item = $this -> dao -> find_by_id($each);
+				$res['part_continuous_cases_item'][] = $part_continuous_cases_item;
+			}
+			foreach($item->p_id_for_split_case as $each){
+				$split_case_item = $this -> dao -> find_by_id($each);
+				$res['split_case_item'][] = $split_case_item;
+			}
 			$res['item'] = $item;
 		}
 		

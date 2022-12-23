@@ -252,6 +252,16 @@ class Patent_dao extends MY_Model {
 		$list = $query -> result();
 		return $list;
 	}
+
+	function find_each_mode4_by_id($item_id){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where("_m.id ",$item_id);
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		return $list;
+	}
 	
 }
 ?>
