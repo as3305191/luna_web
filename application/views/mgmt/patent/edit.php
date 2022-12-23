@@ -1443,7 +1443,7 @@ function do_save() {
 
 	function del_pat_1(id) {
 		var obj = $(".p_s_1_"+id);
-	    obj.remove(bj);
+	    obj.remove();
 		let index = $p_id_for_priority.indexOf(id)
 		if (index > -1) {
 			$p_id_for_priority.splice(index, 1)
@@ -1451,7 +1451,7 @@ function do_save() {
 	}
 	function del_pat_2(id) {
 		var obj = $(".p_s_2_"+id);
-	    obj.remove(bj);
+	    obj.remove();
 		let index = $p_id_for_continuous_cases.indexOf(id)
 		if (index > -1) {
 			$p_id_for_continuous_cases.splice(index, 1)
@@ -1459,7 +1459,7 @@ function do_save() {
 	}
 	function del_pat_3(id) {
 		var obj = $(".p_s_3_"+id);
-		obj.remove(bj);
+	    obj.remove();
 		let index = $p_id_for_part_continuous_cases.indexOf(id)
 		if (index > -1) {
 			$p_id_for_part_continuous_cases.splice(index, 1)
@@ -1468,7 +1468,7 @@ function do_save() {
 	}
 	function del_pat_4(id) {
 		var obj = $(".p_s_4_"+id);
-	    obj.remove(bj);
+	    obj.remove();
 		let index = $p_id_for_split_case.indexOf(id)
 		if (index > -1) {
 			$p_id_for_split_case.splice(index, 1)
