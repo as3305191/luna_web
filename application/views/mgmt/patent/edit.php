@@ -1446,7 +1446,6 @@ function do_save() {
 	    obj.remove();
 		$p_id_for_priority.indexOf(String(id));
 		$p_id_for_priority.splice($p_id_for_priority.indexOf(String(id)), 1);
-		console.log($p_id_for_priority);
 	}
 	function del_pat_2(id) {
 		var obj = $(".p_s_2_"+id);
