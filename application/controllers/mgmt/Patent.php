@@ -426,19 +426,19 @@ class Patent extends MY_Mgmt_Controller {
 		$item_id = $this -> get_post('item_id');
 		if(!empty($item_id)){
 			$item = $this -> dao -> find_each_mode4_by_id($item_id);
-			foreach($item->p_id_for_priority as $each){
+			foreach(explode(',',$item->p_id_for_priority) as $each){
 				$priority_item = $this -> dao -> find_by_id($each);
 				$res['priority_item'][] = $priority_item;
 			}
-			foreach($item->p_id_for_continuous_cases as $each){
+			foreach(explode(',',$item->p_id_for_continuous_cases) as $each){
 				$continuous_cases_item = $this -> dao -> find_by_id($each);
 				$res['continuous_cases_item'][] = $continuous_cases_item;
 			}
-			foreach($item->p_id_for_part_continuous_cases as $each){
+			foreach(explode(',',$item->p_id_for_part_continuous_cases) as $each){
 				$part_continuous_cases_item = $this -> dao -> find_by_id($each);
 				$res['part_continuous_cases_item'][] = $part_continuous_cases_item;
 			}
-			foreach($item->p_id_for_split_case as $each){
+			foreach(explode(',',$item->p_id_for_split_case) as $each){
 				$split_case_item = $this -> dao -> find_by_id($each);
 				$res['split_case_item'][] = $split_case_item;
 			}
