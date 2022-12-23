@@ -1483,19 +1483,23 @@ function do_save() {
 			success: function(d) {
 				if(d) {
 					console.log(d);
-					// $.each(d.p_id_for_priority, function(){
-					// 	var me = this;
-					// 	if(me.patnet_num){
-					// 		item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
-					// 	}else
-					// 	if(me.public_num){
-					// 		item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
-					// 	}else
-					// 	if(me.application_num){
-					// 		item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
-					// 	}
-					// 	$('#p_id_for_priority').append(item);
-					// });
+					$p_id_for_priority = d.item[0]['p_id_for_priority'].split(',');	
+					$p_id_for_continuous_cases = d.item[0]['p_id_for_continuous_cases'].split(',');	
+					$p_id_for_part_continuous_cases = d.item[0]['p_id_for_part_continuous_cases'].split(',');	
+					$p_id_for_split_case = d.item[0]['p_id_for_split_case'].split(',');	
+					$.each(d.p_id_for_priority, function(){
+						var me = this;
+						if(me.patnet_num){
+							item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+						}else
+						if(me.public_num){
+							item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+						}else
+						if(me.application_num){
+							item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
+						}
+						$('#p_id_for_priority').append(item);
+					});
 					// $.each(d.p_id_for_continuous_cases, function(){
 					// 	item ='<label class="p_s_2_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
 
@@ -1508,14 +1512,7 @@ function do_save() {
 					// 	item ='<label class="p_s_4_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
 
 					// });
-					$p_id_for_priority = d.item[0]['p_id_for_priority'].split(',');	
-					$p_id_for_continuous_cases = d.item[0]['p_id_for_continuous_cases'].split(',');	
-					$p_id_for_part_continuous_cases = d.item[0]['p_id_for_part_continuous_cases'].split(',');	
-					$p_id_for_split_case = d.item[0]['p_id_for_split_case'].split(',');	
-console.log($p_id_for_priority);
-console.log($p_id_for_continuous_cases);
-console.log($p_id_for_part_continuous_cases);
-console.log($p_id_for_split_case);
+					
 				}
 				
 			}
