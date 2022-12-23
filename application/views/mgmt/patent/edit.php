@@ -1300,13 +1300,13 @@ function do_save() {
 									if($p_id_for_priority.indexOf(me.id)<0){
 										if(me.patnet_num||me.public_num ||me.application_num){
 											if(me.patnet_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
 											}else
 											if(me.public_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
 											}else
 											if(me.application_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_1_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_1('+me.id+');"></i>&nbsp;</label>'
 											}
 											$('#p_id_for_priority').append(item);
 											$p_id_for_priority.push(me.id);	
@@ -1320,13 +1320,13 @@ function do_save() {
 									if($p_id_for_continuous_cases.indexOf(me.id)<0){
 										if(me.patnet_num||me.public_num ||me.application_num){
 											if(me.patnet_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_2_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_2('+me.id+');"></i>&nbsp;</label>'
 											}else
 											if(me.public_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_2_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_2('+me.id+');"></i>&nbsp;</label>'
 											}else
 											if(me.application_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_2_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_2('+me.id+');"></i>&nbsp;</label>'
 											}
 											$('#p_id_for_part_continuous_cases').append(item);
 											$p_id_for_continuous_cases.push(me.id);
@@ -1340,13 +1340,13 @@ function do_save() {
 									if($p_id_for_part_continuous_cases.indexOf(me.id)<0){
 										if(me.patnet_num||me.public_num ||me.application_num){
 											if(me.patnet_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_3_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_3('+me.id+');"></i>&nbsp;</label>'
 											}else
 											if(me.public_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_3_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_3('+me.id+');"></i>&nbsp;</label>'
 											}else
 											if(me.application_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_3_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_3('+me.id+');"></i>&nbsp;</label>'
 											}
 											$('#p_id_for_part_continuous_cases').append(item);
 											$p_id_for_part_continuous_cases.push(me.id);
@@ -1359,13 +1359,13 @@ function do_save() {
 									if($p_id_for_split_case.indexOf(me.id)<0){
 										if(me.patnet_num||me.public_num ||me.application_num){
 											if(me.patnet_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_4_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_4('+me.id+');"></i>&nbsp;</label>'
 											}else
 											if(me.public_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_4_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.public_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_4('+me.id+');"></i>&nbsp;</label>'
 											}else
 											if(me.application_num){
-												item ='<label><span class="family_span p_s'+me.id+'" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat('+me.id+');"></i>&nbsp;</label>'
+												item ='<label class="p_s_4_'+me.id+'"><span class="family_span" onclick="open_new_p_window('+me.id+');"><span class="">'+me.patnet_num+'</span></span><i class="fa fa-remove remove_pa" onclick="del_pat_4('+me.id+');"></i>&nbsp;</label>'
 											}
 											$('#p_id_for_split_case').append(item);
 											$p_id_for_split_case.push(me.id);
@@ -1441,10 +1441,44 @@ function do_save() {
 		window.open('#mgmt/patent/edit/' + id);
 	}
 
-	function del_pat(id) {
-		var obj = document.getElementById("p_s");
+	function del_pat_1(id) {
+		var obj = document.getElementsByName("p_s_1_"+id);
 	    var impParent = obj.parentNode;//獲取img的父對象
 		impParent.removeChild(obj);
-		alert('真的很抱歉尚無功能！');
+		let index = $p_id_for_priority.indexOf(id)
+		if (index > -1) {
+			$p_id_for_priority.splice(index, 1)
+		}
+		// alert('真的很抱歉尚無功能！');
+	}
+	function del_pat_2(id) {
+		var obj = document.getElementsByName("p_s_2_"+id);
+	    var impParent = obj.parentNode;//獲取img的父對象
+		impParent.removeChild(obj);
+		let index = $p_id_for_continuous_cases.indexOf(id)
+		if (index > -1) {
+			$p_id_for_continuous_cases.splice(index, 1)
+		}
+		// alert('真的很抱歉尚無功能！');
+	}
+	function del_pat_3(id) {
+		var obj = document.getElementsByName("p_s_3_"+id);
+	    var impParent = obj.parentNode;//獲取img的父對象
+		impParent.removeChild(obj);
+		let index = $p_id_for_part_continuous_cases.indexOf(id)
+		if (index > -1) {
+			$p_id_for_part_continuous_cases.splice(index, 1)
+		}
+		// alert('真的很抱歉尚無功能！');
+	}
+	function del_pat_4(id) {
+		var obj = document.getElementsByName("p_s_4_"+id);
+	    var impParent = obj.parentNode;//獲取img的父對象
+		impParent.removeChild(obj);
+		let index = $p_id_for_split_case.indexOf(id)
+		if (index > -1) {
+			$p_id_for_split_case.splice(index, 1)
+		}
+		// alert('真的很抱歉尚無功能！');
 	}
 </script>
