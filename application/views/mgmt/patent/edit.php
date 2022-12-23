@@ -1483,16 +1483,16 @@ function do_save() {
 				if(d) {
 					console.log(d);
 					var item ='';
-					if(d.item[0]['p_id_for_priority'].length>0){
+					if(d.item[0]['p_id_for_priority']){
 						$p_id_for_priority = d.item[0]['p_id_for_priority'].split(',');	
 					}
-					if(d.item[0]['p_id_for_continuous_cases'].length>0){
+					if(d.item[0]['p_id_for_continuous_cases']){
 						$p_id_for_continuous_cases = d.item[0]['p_id_for_continuous_cases'].split(',');	
 					}
-					if(d.item[0]['p_id_for_part_continuous_cases'].length>0){
+					if(d.item[0]['p_id_for_part_continuous_cases']){
 						$p_id_for_part_continuous_cases = d.item[0]['p_id_for_part_continuous_cases'].split(',');	
 					}
-					if(d.item[0]['p_id_for_split_case'].length>0){
+					if(d.item[0]['p_id_for_split_case']){
 						$p_id_for_split_case = d.item[0]['p_id_for_split_case'].split(',');	
 					}
 					if(d.priority_item){
