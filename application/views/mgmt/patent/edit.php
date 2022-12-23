@@ -1444,10 +1444,11 @@ function do_save() {
 	function del_pat_1(id) {
 		var obj = $(".p_s_1_"+id);
 	    obj.remove();
-		let index = $p_id_for_priority.indexOf(id)
-		if (index > -1) {
-			$p_id_for_priority.splice(index, 1)
-		}
+		console.log($p_id_for_priority);
+		$p_id_for_priority = $p_id_for_priority.filter(function(item) {
+			return item !== id
+		})
+		console.log($p_id_for_priority);
 	}
 	function del_pat_2(id) {
 		var obj = $(".p_s_2_"+id);
