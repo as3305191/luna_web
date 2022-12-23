@@ -1483,6 +1483,7 @@ function do_save() {
 			success: function(d) {
 				if(d) {
 					console.log(d);
+					var item ='';
 					$p_id_for_priority = d.item[0]['p_id_for_priority'].split(',');	
 					$p_id_for_continuous_cases = d.item[0]['p_id_for_continuous_cases'].split(',');	
 					$p_id_for_part_continuous_cases = d.item[0]['p_id_for_part_continuous_cases'].split(',');	
