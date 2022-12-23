@@ -248,7 +248,7 @@ class Patent extends MY_Mgmt_Controller {
 		$p_id_for_priority= $this -> get_post('p_id_for_priority');
 		$p_id_for_continuous_cases= $this -> get_post('p_id_for_continuous_cases');
 		$p_id_for_part_continuous_cases= $this -> get_post('p_id_for_part_continuous_cases');
-		$p_id_for_split_case= $this -> get_post('samep_id_for_split_case_family_id');
+		$p_id_for_split_case= $this -> get_post('p_id_for_split_case');
 		
 		// foreach ($img as $each) {
 		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
