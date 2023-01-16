@@ -286,10 +286,18 @@ class Patent extends MY_Mgmt_Controller {
 		$data['update_date'] = date("Y-m-d H:i:s");
 		$data['patent_fail_status_id'] = $patent_fail_status;
 		$data['patent_fail_person'] = $patent_fail_person;
-		$data['p_id_for_priority'] = implode(',',$p_id_for_priority);
-		$data['p_id_for_continuous_cases'] = implode(',',$p_id_for_continuous_cases);
-		$data['p_id_for_part_continuous_cases'] = implode(',',$p_id_for_part_continuous_cases);
-		$data['p_id_for_split_case'] = implode(',',$p_id_for_split_case);
+		if(!empty($p_id_for_priority)){
+			$data['p_id_for_priority'] = implode(',',$p_id_for_priority);
+		}
+		if(!empty($p_id_for_continuous_cases)){
+			$data['p_id_for_continuous_cases'] = implode(',',$p_id_for_continuous_cases);
+		}
+		if(!empty($p_id_for_part_continuous_cases)){
+			$data['p_id_for_part_continuous_cases'] = implode(',',$p_id_for_part_continuous_cases);
+		}
+		if(!empty($p_id_for_split_case)){
+			$data['p_id_for_split_case'] = implode(',',$p_id_for_split_case);
+		}
 		
 		if(explode(',',$patent_key_id_array)>1){
 			$data['patent_key_id_array'] = '#'.str_replace(',', '#',$patent_key_id_array).'#';
