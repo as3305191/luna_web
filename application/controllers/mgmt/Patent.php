@@ -286,15 +286,26 @@ class Patent extends MY_Mgmt_Controller {
 		$data['patent_fail_person'] = $patent_fail_person;
 		if(!empty($p_id_for_priority)){
 			$data['p_id_for_priority'] = implode(',',$p_id_for_priority);
+		} else{
+			$data['p_id_for_priority'] = NULL;
 		}
+
 		if(!empty($p_id_for_continuous_cases)){
 			$data['p_id_for_continuous_cases'] = implode(',',$p_id_for_continuous_cases);
+		} else{
+			$data['p_id_for_continuous_cases'] = NULL;
 		}
+
 		if(!empty($p_id_for_part_continuous_cases)){
 			$data['p_id_for_part_continuous_cases'] = implode(',',$p_id_for_part_continuous_cases);
+		}else{
+			$data['p_id_for_part_continuous_cases'] = NULL;
 		}
+
 		if(!empty($p_id_for_split_case)){
 			$data['p_id_for_split_case'] = implode(',',$p_id_for_split_case);
+		} else{
+			$data['p_id_for_split_case'] = NULL;
 		}
 		
 		if(explode(',',$patent_key_id_array)>1){
