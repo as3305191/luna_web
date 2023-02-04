@@ -1453,21 +1453,28 @@ function do_save() {
 		var obj = $(".p_s_1_"+id);
 	    obj.remove();
 		$p_id_for_priority.splice($p_id_for_priority.indexOf(String(id)), 1);
+		console.log($p_id_for_priority);
 	}
 	function del_pat_2(id) {
 		var obj = $(".p_s_2_"+id);
 	    obj.remove();
 		$p_id_for_continuous_cases.splice($p_id_for_continuous_cases.indexOf(String(id)), 1);
+		console.log($p_id_for_continuous_cases);
+
 	}
 	function del_pat_3(id) {
 		var obj = $(".p_s_3_"+id);
 	    obj.remove();
 		$p_id_for_part_continuous_cases.splice($p_id_for_part_continuous_cases.indexOf(String(id)), 1);
+		console.log($p_id_for_part_continuous_cases);
+
 	}
 	function del_pat_4(id) {
 		var obj = $(".p_s_4_"+id);
 	    obj.remove();
 		$p_id_for_split_case.splice($p_id_for_split_case.indexOf(String(id)), 1);
+		console.log($p_id_for_split_case);
+
 	}
 
 

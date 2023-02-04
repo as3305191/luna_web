@@ -14,9 +14,7 @@ class Patent extends MY_Mgmt_Controller {
 		$this -> load -> model('Patent_category_dao', 'patent_category_dao');
 		$this -> load -> model('Patent_fail_status_dao', 'patent_fail_status_dao');
 		$this -> load -> model('Patent_key_dao', 'patent_key_dao');
-
 		$this -> load-> library('word');
-
 	}
 
 	public function index()
@@ -25,7 +23,7 @@ class Patent extends MY_Mgmt_Controller {
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$data['patent_status'] = $this -> patent_category_dao -> find_all();
-		// $this -> to_json($data);
+		// $this -> to_json($data)
 
 		$this -> load -> view('mgmt/patent/list', $data);
 	}
