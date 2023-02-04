@@ -1003,11 +1003,11 @@ function do_save() {
 			patent_fail_person: $('#patent_fail_person').val(),
 			patent_key_id_array:$('#key_array').val(),
 			together : $('#together').prop("checked") ? 1 : 0,
-			same_family_id : same_family_id,
 			p_id_for_priority: $p_id_for_priority,
 			p_id_for_continuous_cases : $p_id_for_continuous_cases,
 			p_id_for_part_continuous_cases : $p_id_for_part_continuous_cases,
 			p_id_for_split_case : $p_id_for_split_case,
+			same_family_id : same_family_id,
 		},
 		success : function(data) {
 			if(data.error_msg) {
