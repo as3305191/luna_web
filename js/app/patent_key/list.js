@@ -14,7 +14,7 @@ var patentkeyAppClass = (function(app) {
 				complete:function(data){
 				}
 			},
-			iDisplayLength : 50,
+			iDisplayLength : 30,
 			columns : mCols,
 			order :false,
 			columnDefs : mColDefs
