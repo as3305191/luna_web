@@ -61,8 +61,8 @@ thead tr th {
 									<thead>
 										<tr>
 											
-											<th class="min30"></th>
-											<th class="min100">關鍵字</th>
+											<th ></th>
+											<th >關鍵字</th>
 										
 										</tr>
 									</thead>
