@@ -39,7 +39,7 @@
 				<?php endif?>
 				<div class="widget-toolbar pull-left">
 					<button onclick="do_save_new();" class="fa fa-save" data-toggle="dropdown" style="background-color:red;">
-						<p style="background-color:white;">另存新檔</p>
+						<i class="fa fa-save"></i>另存新檔
 					</button>
 				</div>
 			<?php else:?>
