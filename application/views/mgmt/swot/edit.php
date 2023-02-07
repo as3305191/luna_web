@@ -533,7 +533,7 @@
 			success : function(data) {
 				if(data.error_msg) {
 					layer.msg(data.error_msg);
-					currentApp.mDtTable.ajax.reload(null, false);
+					// currentApp.mDtTable.ajax.reload(null, false);
 				} else {
 					var this_id = $('#item_id').val();
 					if(this_id>0){
