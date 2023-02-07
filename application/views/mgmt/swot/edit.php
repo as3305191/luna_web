@@ -38,8 +38,8 @@
 					<?php endif?>
 				<?php endif?>
 				<div class="widget-toolbar pull-left">
-					<button onclick="do_save_new();" class="fa fa-save" data-toggle="dropdown" style="background-color:crimson">
-						另存新檔
+					<button onclick="do_save_new();" class="fa fa-save" data-toggle="dropdown" style="background-color:red;">
+						<p style="background-color:white;">另存新檔</p>
 					</button>
 				</div>
 			<?php else:?>
