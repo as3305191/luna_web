@@ -287,7 +287,7 @@ class Swot extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$title = $this -> swot_title_dao -> find_all_not_lock(0);
-
+		
 		$m_swot_s = $this -> get_post('m_swot_s');
 		$m_swot_w = $this -> get_post('m_swot_w');
 		$m_swot_o = $this -> get_post('m_swot_o');
@@ -320,9 +320,15 @@ class Swot extends MY_Mgmt_Controller {
 			$data['class_id'] = $login_user->role_id;
 		}
 		$data['role_id'] = $department;
-		$this -> dao -> insert($data);
+		if(!empty($title)){
+			$this -> dao -> insert($data);
+			$res['success'] = TRUE;
+		} else{
+			$res['error_msg'] = '請洽企劃課開啟存取權限';
+		}
+		
 		$s_data = $this -> setup_user_data(array());
-		$res['success'] = TRUE;
+		
  		$this -> to_json($res);
 	}
 
