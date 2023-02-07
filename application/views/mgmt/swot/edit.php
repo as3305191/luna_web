@@ -530,16 +530,20 @@
 				if(data.error_msg) {
 					layer.msg(data.error_msg);
 					currentApp.back($('#item_id').val());
-				} else {
-					var this_id = $('#item_id').val();
-					if(this_id>0){
-						currentApp.mDtTable.ajax.reload(null, false);
-						currentApp.back(this_id);
-					} else{
-						currentApp.mDtTable.ajax.reload(null, false);
-						currentApp.backTo();
-					}
-				}
+				} 
+				// else {
+				// 	var this_id = $('#item_id').val();
+				// 	if(this_id>0){
+				// 		currentApp.mDtTable.ajax.reload(null, false);
+				// 		currentApp.back(this_id);
+				// 	} else{
+				// 		currentApp.mDtTable.ajax.reload(null, false);
+				// 		currentApp.backTo();
+				// 	}
+				// }
+			},
+			failure:function(){
+				alert('faialure');
 			}
 		});
 		
