@@ -38,7 +38,7 @@
 					<?php endif?>
 				<?php endif?>
 				<div class="widget-toolbar pull-left">
-					<a href="javascript:void(0);"  onclick="do_save_new();" class="btn btn-default btn-danger">
+					<a  onclick="do_save_new();" class="btn btn-default btn-danger">
 						<i class="fa fa-save"></i>另存新檔
 					</a>
 				</div>
