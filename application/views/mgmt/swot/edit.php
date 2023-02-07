@@ -528,7 +528,6 @@
 			},
 			success : function(data) {
 				if(data.error_msg) {
-					
 					// currentApp.mDtTable.ajax.reload();
 					layer.msg(data.error_msg);
 				} else {

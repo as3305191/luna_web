@@ -261,7 +261,7 @@ thead tr th {
 			var dep=$('#d_or_c').val();
 			currentApp.doEdit(0,title,style,dep);
 		} else{
-			alert("總檢無法使用整合公司");
+			// alert("總檢無法使用整合公司");
 		}
 		
 	}
