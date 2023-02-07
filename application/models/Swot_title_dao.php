@@ -14,7 +14,7 @@ class Swot_title_dao extends MY_Model {
 
 	function find_all_not_lock($id){
 		$this -> db -> from("$this->table_name as _m");
-		if($id=='0'){
+		if($id<1){
 			$this -> db -> where('_m.is_lock',0);
 		}
 		$query = $this -> db -> get();
