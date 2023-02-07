@@ -505,7 +505,11 @@
 
 	function do_save_new() {
 		var url = baseUrl + 'mgmt/swot/insert_new'; // the script where you handle the form input.
-	
+		if($('#item_id').val()==0){
+			var unify = $('#unify_for_0').val();
+		} else{
+			var unify = $('#unify').val();
+		}
 		$.ajax({
 			type : "POST",
 			url : url,
