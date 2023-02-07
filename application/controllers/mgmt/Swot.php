@@ -288,39 +288,40 @@ class Swot extends MY_Mgmt_Controller {
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$title = $this -> swot_title_dao -> find_all_not_lock(0);
 		
-		$m_swot_s = $this -> get_post('m_swot_s');
-		$m_swot_w = $this -> get_post('m_swot_w');
-		$m_swot_o = $this -> get_post('m_swot_o');
-		$m_swot_t = $this -> get_post('m_swot_t');
-		$m_swot_s_o = $this -> get_post('m_swot_s_o');
-		$m_swot_w_o = $this -> get_post('m_swot_w_o');
-		$m_swot_s_t = $this -> get_post('m_swot_s_t');
-		$m_swot_w_t = $this -> get_post('m_swot_w_t');
-		$swot_style = $this -> get_post('swot_style');
-		$department = $this -> get_post('department');
-		$class_id = $this -> get_post('class_id');
-		$make_user = $this -> get_post('make_user');
-		$swot_leader = $this -> get_post('swot_leader');
-		$data['title'] = $title[0]->id;
-		$data['swot_leader'] =$this ->test_add_w4($swot_leader);
-		$data['swot_style_id'] =$this ->test_add_w4($swot_style);
-		$data['m_swot_s'] =$this ->test_add_w4($m_swot_s);
-		$data['m_swot_w'] =$this ->test_add_w4($m_swot_w);
-		$data['make_user'] =$this ->test_add_w4($make_user);
-		$data['m_swot_o'] =$this ->test_add_w4($m_swot_o);
-		$data['m_swot_t'] =$this ->test_add_w4($m_swot_t);
-		$data['m_swot_s_o'] =$this ->test_add_w4($m_swot_s_o);
-		$data['m_swot_w_o'] =$this ->test_add_w4($m_swot_w_o);
-		$data['m_swot_s_t'] =$this ->test_add_w4($m_swot_s_t);
-		$data['m_swot_w_t'] =$this ->test_add_w4($m_swot_w_t);
-		$data['update_date'] = date("Y-m-d H:i:s");
-		if($class_id>0){
-			$data['class_id'] = $class_id;
-		} else{
-			$data['class_id'] = $login_user->role_id;
-		}
-		$data['role_id'] = $department;
+		
 		if(!empty($title)){
+			$m_swot_s = $this -> get_post('m_swot_s');
+			$m_swot_w = $this -> get_post('m_swot_w');
+			$m_swot_o = $this -> get_post('m_swot_o');
+			$m_swot_t = $this -> get_post('m_swot_t');
+			$m_swot_s_o = $this -> get_post('m_swot_s_o');
+			$m_swot_w_o = $this -> get_post('m_swot_w_o');
+			$m_swot_s_t = $this -> get_post('m_swot_s_t');
+			$m_swot_w_t = $this -> get_post('m_swot_w_t');
+			$swot_style = $this -> get_post('swot_style');
+			$department = $this -> get_post('department');
+			$class_id = $this -> get_post('class_id');
+			$make_user = $this -> get_post('make_user');
+			$swot_leader = $this -> get_post('swot_leader');
+			$data['title'] = $title[0]->id;
+			$data['swot_leader'] =$this ->test_add_w4($swot_leader);
+			$data['swot_style_id'] =$this ->test_add_w4($swot_style);
+			$data['m_swot_s'] =$this ->test_add_w4($m_swot_s);
+			$data['m_swot_w'] =$this ->test_add_w4($m_swot_w);
+			$data['make_user'] =$this ->test_add_w4($make_user);
+			$data['m_swot_o'] =$this ->test_add_w4($m_swot_o);
+			$data['m_swot_t'] =$this ->test_add_w4($m_swot_t);
+			$data['m_swot_s_o'] =$this ->test_add_w4($m_swot_s_o);
+			$data['m_swot_w_o'] =$this ->test_add_w4($m_swot_w_o);
+			$data['m_swot_s_t'] =$this ->test_add_w4($m_swot_s_t);
+			$data['m_swot_w_t'] =$this ->test_add_w4($m_swot_w_t);
+			$data['update_date'] = date("Y-m-d H:i:s");
+			if($class_id>0){
+				$data['class_id'] = $class_id;
+			} else{
+				$data['class_id'] = $login_user->role_id;
+			}
+			$data['role_id'] = $department;
 			$this -> dao -> insert($data);
 			$res['success'] = TRUE;
 		} else{
