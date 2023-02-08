@@ -144,6 +144,7 @@ class Swot_dao extends MY_Model {
 
 	function find_all_by_me($user_id){
 		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
 		$this -> db -> where('_m.is_use_user_id',$user_id);
 		$list = $this -> db -> get() -> result();
 		return $list;
@@ -151,6 +152,8 @@ class Swot_dao extends MY_Model {
 
 	function find_all_by_p($swot_title_id,$swot_style_id){
 		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.id');
+
 		$this -> db -> where('_m.title',$swot_title_id);
 		$this -> db -> where('_m.swot_style_id',$swot_style_id);
 		$this -> db -> where('_m.is_delete',0);
@@ -161,6 +164,8 @@ class Swot_dao extends MY_Model {
 
 	function find_is_lock($swot_title_id,$swot_style_id){
 		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+
 		$this -> db -> where('_m.title',$swot_title_id);
 		$this -> db -> where('_m.swot_style_id',$swot_style_id);
 
@@ -176,6 +181,8 @@ class Swot_dao extends MY_Model {
 	function find_all_is_use(){
 		$before_a_day = date('Y-m-d H:i:s',strtotime('-1 day'));
 		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+
 		$this -> db -> where('_m.is_use',1);
 		$this -> db -> where("_m.use_time <= '{$before_a_day}'");
 		// $this -> db -> or_where("_m.use_time",null);
