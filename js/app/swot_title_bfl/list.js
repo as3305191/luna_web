@@ -236,7 +236,7 @@ var SwotTitlebflAppClass = (function(app) {
 	return app.init();
 });
 
-var swotstyleAppClass = (function(app) {
+var swotbflstyleAppClass = (function(app) {
 	app.basePath = "mgmt/swot_title_bfl/";
 	app.disableRowClick = true;
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {

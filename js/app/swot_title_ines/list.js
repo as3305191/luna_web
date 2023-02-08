@@ -236,7 +236,7 @@ var SwotTitleinesAppClass = (function(app) {
 	return app.init();
 });
 
-var swotstyleAppClass = (function(app) {
+var swotinesstyleAppClass = (function(app) {
 	app.basePath = "mgmt/swot_title_ines/";
 	app.disableRowClick = true;
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {

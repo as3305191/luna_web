@@ -54,6 +54,6 @@
 </div>
 <!-- end widget -->
 <script>
-	currentApp.swot_style = new swotstyleAppClass(new BaseAppClass({}));
+	currentApp.swot_style = new swotbflstyleAppClass(new BaseAppClass({}));
 	
 </script>
