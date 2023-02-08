@@ -38,9 +38,9 @@
 					<?php endif?>
 				<?php endif?>
 				<div class="widget-toolbar pull-right">
-					<button onclick="do_save_new();" data-toggle="dropdown" style="background-color:red;">
-						<i class="fa fa-save" style="color:white;"></i>另存新檔
-					</button>
+					<a href="javascript:void(0);"  onclick="do_save_new();" class="btn btn-default btn-danger">
+						<i class="fa fa-save"></i>引用
+					</a>
 				</div>
 			<?php else:?>
 				<div class="widget-toolbar pull-left">
@@ -539,6 +539,7 @@
 					if(this_id>0){
 						currentApp.mDtTable.ajax.reload(null, false);
 						currentApp.back(this_id);
+						layer.msg('另存成功');
 					} else{
 						currentApp.mDtTable.ajax.reload(null, false);
 						currentApp.backTo();
