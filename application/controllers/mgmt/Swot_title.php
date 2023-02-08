@@ -105,17 +105,26 @@ class Swot_title extends MY_Mgmt_Controller {
 
 		$u_data = array();
 		$up_lock_each_id = $this -> swot_dao -> find_all_by_p($swot_title_id,$swot_style_id);
+		$up_lock_swot_style_id = $this -> swot_style_dao -> find_by_id($swot_style_id);
+
 		foreach($up_lock_each_id as $each){
 			if($each->is_lock<1){
 				$u_data['is_lock'] = 1;
-				$res['success_msg'] = '變更已鎖定成功';
 				$this -> swot_dao -> update($u_data, $each->id);
 			} else{
 				$u_data['is_lock'] = 0;
-				$res['success_msg'] = '變更可編輯成功';
 				$this -> swot_dao -> update($u_data, $each->id);
 			}
 			
+		}
+		if($up_lock_swot_style_id->is_lock<1){
+			$u_data['is_lock'] = 1;
+			$res['success_msg'] = '變更已鎖定成功';
+			$this -> swot_style_dao -> update($u_data, $swot_style_id);
+		} else{
+			$u_data['is_lock'] = 0;
+			$res['success_msg'] = '變更可編輯成功';
+			$this -> swot_style_dao -> update($u_data, $swot_style_id);
 		}
 		
 		$res['success'] = TRUE;
