@@ -153,6 +153,8 @@ class Swot_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> where('_m.title',$swot_title_id);
 		$this -> db -> where('_m.swot_style_id',$swot_style_id);
+		$this -> db -> where('_m.is_delete',0);
+
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
