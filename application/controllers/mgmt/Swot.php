@@ -288,8 +288,8 @@ class Swot extends MY_Mgmt_Controller {
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$title = $this -> swot_title_dao -> find_all_not_lock(0);
 		$swot_style = $this -> get_post('swot_style');
-		$swot_style_list = $this -> swot_style_dao -> find_by_id($swot_style);
-		if(!empty($title) && $swot_style_list->is_lock<1){			
+		$swot_style_list_is_lock = $this -> swot_dao -> find_if_is_lock($swot_style,$title[0]->id);
+		if(!empty($title) && $swot_style_list_is_lock->is_lock<1){			
 			$m_swot_s = $this -> get_post('m_swot_s');
 			$m_swot_w = $this -> get_post('m_swot_w');
 			$m_swot_o = $this -> get_post('m_swot_o');

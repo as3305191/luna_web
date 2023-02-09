@@ -175,5 +175,19 @@ class Swot_bfl_dao extends MY_Model {
 		}
 		
 	}
+	function find_if_is_lock($swot_style,$title){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.swot_style_id',$swot_style);
+		$this -> db -> where("_m.title",$title);
+		// $this -> db -> or_where("_m.use_time",null);
+		$list = $this -> db -> get() -> result();
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return null;
+		}
+		
+	}
 }
 ?>
