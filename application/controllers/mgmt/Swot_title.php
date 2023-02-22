@@ -114,7 +114,7 @@ class Swot_title extends MY_Mgmt_Controller {
 			$u_data['iso_id_'.$swot_style_id] = 0;
 			$res['success_msg'] = '變更可編輯成功';
 		}
-			$this -> dao -> update($u_data, $swot_style_id);
+			$this -> dao -> update($u_data, $swot_title_id);
 
 		
 		$res['success'] = TRUE;
