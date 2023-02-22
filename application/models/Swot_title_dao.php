@@ -69,11 +69,11 @@ class Swot_title_dao extends MY_Model {
 		// $this -> db -> join("corp as co", 'st.id = _m.store_id', 'left');
  	}
 
-	 function find_each_is_lock($swot_style_id) {
+	 function find_each_is_lock($swot_title_id) {
 		// select
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select("_m.*");
-		$this -> db -> where('_m.id',$swot_style_id);
+		$this -> db -> where('_m.id',$swot_title_id);
 
 
 		$query = $this -> db -> get()-> result();

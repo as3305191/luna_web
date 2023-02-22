@@ -105,7 +105,7 @@ class Swot_title extends MY_Mgmt_Controller {
 
 		$u_data = array();
 		$column = "iso_id_".$swot_style_id;
-		$find_each_id_is_lock = $this -> dao -> find_each_is_lock($swot_style_id);
+		$find_each_id_is_lock = $this -> dao -> find_each_is_lock($swot_title_id);
 
 		if($find_each_id_is_lock[0]->$column<1){
 			$u_data['iso_id_'.$swot_style_id] = 1;
