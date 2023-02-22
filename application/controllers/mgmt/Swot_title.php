@@ -118,7 +118,7 @@ class Swot_title extends MY_Mgmt_Controller {
 
 		
 		$res['success'] = TRUE;
-		// $res['up_lock_each_id'] = $up_lock_each_id;
+		$res['123'] = $find_each_id_is_lock[0]->$column;
 		$this -> to_json($res);
 	}
 
