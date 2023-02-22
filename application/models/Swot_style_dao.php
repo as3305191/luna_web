@@ -203,5 +203,17 @@ class Swot_style_dao extends MY_Model {
 		$query = $this -> db -> get();
 		return $query -> result();
 	}
+
+
+	function find_each_is_lock($swot_style_id,$column) {
+		// select
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select("_m.$column");
+		$this -> db -> where('_m.id',$swot_style_id);
+
+
+		$query = $this -> db -> get()-> result();
+		return $query[0];
+	}
 }
 ?>

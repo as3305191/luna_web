@@ -104,36 +104,20 @@ class Swot_title extends MY_Mgmt_Controller {
 		$swot_style_id = $this -> get_post('swot_style_id');
 
 		$u_data = array();
-		$up_lock_each_id = $this -> swot_dao -> find_all_by_p($swot_title_id,$swot_style_id);
-		$up_lock_swot_style_id = $this -> swot_style_dao -> find_by_id($swot_style_id);
+		$find_each_id_is_lock = $this -> dao -> find_each_is_lock($swot_style_id,"iso_id_".$swot_style_id);
 
-		foreach($up_lock_each_id as $each){
-			if($each->is_lock<1){
-				$u_data['is_lock'] = 1;
-				$this -> swot_dao -> update($u_data, $each->id);
-			} else{
-				$u_data['is_lock'] = 0;
-				$this -> swot_dao -> update($u_data, $each->id);
-			}
-			
-		}
-		if($up_lock_each_id[0]->is_lock<1){
+		if($find_each_id_is_lock<1){
+			$u_data['iso_id_'.$swot_style_id] = 1;
 			$res['success_msg'] = '變更已鎖定成功';
 		} else{
+			$u_data['iso_id_'.$swot_style_id] = 0;
 			$res['success_msg'] = '變更可編輯成功';
-
 		}
+			$this -> dao -> update($u_data, $swot_style_id);
 
-		// if($up_lock_swot_style_id->is_lock<1){
-		// 	$u_data['is_lock'] = 1;
-		// 	$this -> swot_style_dao -> update($u_data, $swot_style_id);
-		// } else{
-		// 	$u_data['is_lock'] = 0;
-		// 	$this -> swot_style_dao -> update($u_data, $swot_style_id);
-		// }
 		
 		$res['success'] = TRUE;
-		$res['up_lock_each_id'] = $up_lock_each_id;
+		// $res['up_lock_each_id'] = $up_lock_each_id;
 		$this -> to_json($res);
 	}
 
