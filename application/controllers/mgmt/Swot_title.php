@@ -117,15 +117,20 @@ class Swot_title extends MY_Mgmt_Controller {
 			}
 			
 		}
-		if($up_lock_swot_style_id->is_lock<1){
-			$u_data['is_lock'] = 1;
+		if($up_lock_each_id[0]->is_lock<1){
 			$res['success_msg'] = '變更已鎖定成功';
-			$this -> swot_style_dao -> update($u_data, $swot_style_id);
 		} else{
-			$u_data['is_lock'] = 0;
 			$res['success_msg'] = '變更可編輯成功';
-			$this -> swot_style_dao -> update($u_data, $swot_style_id);
+
 		}
+
+		// if($up_lock_swot_style_id->is_lock<1){
+		// 	$u_data['is_lock'] = 1;
+		// 	$this -> swot_style_dao -> update($u_data, $swot_style_id);
+		// } else{
+		// 	$u_data['is_lock'] = 0;
+		// 	$this -> swot_style_dao -> update($u_data, $swot_style_id);
+		// }
 		
 		$res['success'] = TRUE;
 		$res['up_lock_each_id'] = $up_lock_each_id;
