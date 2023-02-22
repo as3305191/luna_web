@@ -104,9 +104,10 @@ class Swot_title extends MY_Mgmt_Controller {
 		$swot_style_id = $this -> get_post('swot_style_id');
 
 		$u_data = array();
-		$find_each_id_is_lock = $this -> dao -> find_each_is_lock($swot_style_id,"iso_id_".$swot_style_id);
+		$column = "iso_id_".$swot_style_id;
+		$find_each_id_is_lock = $this -> dao -> find_each_is_lock($swot_style_id);
 
-		if($find_each_id_is_lock<1){
+		if($find_each_id_is_lock->$column<1){
 			$u_data['iso_id_'.$swot_style_id] = 1;
 			$res['success_msg'] = '變更已鎖定成功';
 		} else{
