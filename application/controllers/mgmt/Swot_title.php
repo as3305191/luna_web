@@ -65,17 +65,21 @@ class Swot_title extends MY_Mgmt_Controller {
 		$items= $this -> swot_style_dao -> find_all_style();
 
 		foreach($items as $each){
-			$list = $this -> swot_dao -> find_is_lock($swot_title_id,$each->id);
-			if(!empty($list)){
-				if($list->is_lock==1){
-					$each->now_is_lock =  1;
-				} else{
-					$each->now_is_lock =  0;
-				}
-			} else {
-				$each->now_is_lock= 0;
-			} 
+			$list = $this -> dao -> find_by_id($swot_title_id);
+			// if(!empty($list)){
+			// 	if($list->is_lock==1){
+			// 		$each->now_is_lock =  1;
+			// 	} else{
+			// 		$each->now_is_lock =  0;
+			// 	}
+			// } else {
+			// 	$each->now_is_lock= 0;
+			// } 
+			$column = "iso_id_".$each ->id;
+			$each->now_is_lock =  $list->$column;
+			
 		} 
+
 		$res['items'] = $items;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
@@ -118,7 +122,7 @@ class Swot_title extends MY_Mgmt_Controller {
 
 		
 		$res['success'] = TRUE;
-		$res['123'] = $find_each_id_is_lock[0]->$column;
+		// $res['123'] = $find_each_id_is_lock[0]->$column;
 		$this -> to_json($res);
 	}
 
