@@ -109,10 +109,7 @@ class Swot_dao extends MY_Model {
 				$this -> db -> or_where("_m.class_id IN ($login_user_array)");
 			}
 		}
-		if(!empty($data['list_title'])){
-			$list_title = $data['list_title'];
-			$this -> db -> where("_m.title",$list_title);
-		}
+		
 		if(!empty($data['d_or_c'])){
 			$d_or_c = $data['d_or_c'];
 			$this -> db -> where("_m.role_id",$d_or_c);
@@ -122,6 +119,10 @@ class Swot_dao extends MY_Model {
 		if(!empty($data['list_style'])){
 			$list_style = $data['list_style'];
 			$this -> db -> where("_m.swot_style_id",$list_style);
+		}
+		if(!empty($data['list_title'])){
+			$list_title = $data['list_title'];
+			$this -> db -> where("_m.title",$list_title);
 		}
 		if(!empty($data['dep'])){
 			$dep = $data['dep'];
