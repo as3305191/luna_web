@@ -114,7 +114,7 @@ class Swot extends MY_Mgmt_Controller {
 					'search',
 					'order'
 				));
-				$q_data['title'] =  $title;
+				$q_data['list_title'] =  $title;
 				$q_data['list_style'] =  $style;
 				$q_data['unify'] =  1;
 				$q_data['type'] =  $type;
