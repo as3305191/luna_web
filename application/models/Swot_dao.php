@@ -123,7 +123,7 @@ class Swot_dao extends MY_Model {
 			$d_or_c = $data['d_or_c'];
 			$this -> db -> where("_m.role_id",$d_or_c);
 			$this -> db -> or_where("_m.class_id",$d_or_c);
-			$this -> db -> where("_m.class_id<>",0);
+			$this -> db -> where("_m.class_id>",0);
 
 		}
 		if(!empty($data['dep'])){
