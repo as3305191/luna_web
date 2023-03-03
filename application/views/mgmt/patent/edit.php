@@ -1567,6 +1567,8 @@ function do_save() {
 		});
 	}	
 
+	$('#img-input').on('change', function(){
+		alert('改變');
+	});
 	
-
 </script>
