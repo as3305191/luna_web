@@ -672,6 +672,8 @@ $("#img-input").fileinput({
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
 
+	}).on('change', function(){
+		alert('改變');
 	});
 
 	$("#file-input").fileinput({
@@ -731,7 +733,7 @@ $("#img-input").fileinput({
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	}).on('change', function(event,data,key) {
-		//測試div被拉動後array也要做變動
+		alert('改變');
 	});
 
 	$("#public-num-input").fileinput({
@@ -791,7 +793,9 @@ $("#img-input").fileinput({
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
-	});
+	}).on('change', function(){
+		alert('改變');
+	});;
 
 	$("#patnet-num-input").fileinput({
 					language: "zh-TW",
@@ -852,7 +856,10 @@ $("#img-input").fileinput({
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
 	
+	}).on('change', function(){
+		alert('改變');
 	});
+	;
 
 if($('#item_id').val()>0){
 	var url = baseUrl + 'mgmt/patent/find_each_category_val'; // the script where you handle the form input.
@@ -1567,8 +1574,4 @@ function do_save() {
 		});
 	}	
 
-	$('#img-input').on('change', function(){
-		alert('改變');
-	});
-	
 </script>
