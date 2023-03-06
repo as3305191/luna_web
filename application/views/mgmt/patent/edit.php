@@ -667,8 +667,6 @@ $("#img-input").fileinput({
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
-	}).on('move', function(event,data,key) {
-		console.log('112');
 	});
 
 	$("#file-input").fileinput({
