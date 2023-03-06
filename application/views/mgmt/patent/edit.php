@@ -659,23 +659,16 @@ $("#img-input").fileinput({
     }).on('fileuploaded', function(event, data, previewId, index) {
 		// upload image
 		var id = data.response.id;
-		img.push(id);
-		console.log('1');
-		
+		img.push(id);		
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#img-input").fileinput('upload');
-		console.log('2');
-
 	}).on('filedeleted', function(event,data,key) {
 		img.splice($.inArray(data,img),1);
-		console.log('3');
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
-		console.log('4');
-
 	}).on('filedeleted', function(event,data,key) {
-		console.log('5');
-
+	}).on('move', function(event,data,key) {
+		console.log('112');
 	});
 
 	$("#file-input").fileinput({
