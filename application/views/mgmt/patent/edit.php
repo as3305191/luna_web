@@ -660,20 +660,22 @@ $("#img-input").fileinput({
 		// upload image
 		var id = data.response.id;
 		img.push(id);
-		// console.log(img);
-		// $('#image_id').val(id);
-		// $("#img-input").fileinput('reset');
+		console.log('1');
+		
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#img-input").fileinput('upload');
+		console.log('2');
+
 	}).on('filedeleted', function(event,data,key) {
 		img.splice($.inArray(data,img),1);
-		// console.log(img_array);
+		console.log('3');
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
-	}).on('filedeleted', function(event,data,key) {
+		console.log('4');
 
-	}).on('change', function(){
-		alert('改變');
+	}).on('filedeleted', function(event,data,key) {
+		console.log('5');
+
 	});
 
 	$("#file-input").fileinput({
@@ -732,8 +734,6 @@ $("#img-input").fileinput({
 		pdf_array.splice($.inArray(data,pdf_array),1);
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
-	}).on('change', function(event,data,key) {
-		alert('改變');
 	});
 
 	$("#public-num-input").fileinput({
@@ -793,9 +793,7 @@ $("#img-input").fileinput({
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
-	}).on('change', function(){
-		alert('改變');
-	});;
+	});
 
 	$("#patnet-num-input").fileinput({
 					language: "zh-TW",
@@ -856,10 +854,8 @@ $("#img-input").fileinput({
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
 	
-	}).on('change', function(){
-		alert('改變');
 	});
-	;
+	
 
 if($('#item_id').val()>0){
 	var url = baseUrl + 'mgmt/patent/find_each_category_val'; // the script where you handle the form input.
