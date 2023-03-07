@@ -44,6 +44,8 @@ thead tr th {
 										<?php endforeach ?>	
 									</select>
 								</div>
+							<?php else:?>
+								<input id="d_or_c" type="hidden" value="<?= $login_user->role_id?>">
 							<?php endif?>
 							
 								<div class="pull-left " style="width:200px;line-height:32px">
