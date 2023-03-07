@@ -87,7 +87,14 @@ class Swot_dao extends MY_Model {
 		
 		
 		// $this -> db -> where("s_t.is_lock",0);
-
+		if(!empty($data['list_style'])){
+			$list_style = $data['list_style'];
+			$this -> db -> where("_m.swot_style_id",$list_style);
+		}
+		if(!empty($data['list_title'])){
+			$list_title = $data['list_title'];
+			$this -> db -> where("_m.title",$list_title);
+		}
 		if(!empty($data['title'])){
 			$title = $data['title'];
 			$this -> db -> where("_m.title",$title);
@@ -111,14 +118,7 @@ class Swot_dao extends MY_Model {
 		}
 		
 		
-		if(!empty($data['list_style'])){
-			$list_style = $data['list_style'];
-			$this -> db -> where("_m.swot_style_id",$list_style);
-		}
-		if(!empty($data['list_title'])){
-			$list_title = $data['list_title'];
-			$this -> db -> where("_m.title",$list_title);
-		}
+		
 		
 		if(!empty($data['dep'])){
 			$dep = $data['dep'];
