@@ -119,13 +119,7 @@ class Swot_dao extends MY_Model {
 			$list_title = $data['list_title'];
 			$this -> db -> where("_m.title",$list_title);
 		}
-		if(!empty($data['d_or_c'])){
-			$d_or_c = $data['d_or_c'];
-			$this -> db -> where("_m.role_id",$d_or_c);
-			$this -> db -> or_where("_m.class_id",$d_or_c);
-			$this -> db -> where("_m.role_id<>",0);
-
-		}
+		
 		if(!empty($data['dep'])){
 			$dep = $data['dep'];
 			$this -> db -> where("_m.role_id",$dep);
@@ -140,7 +134,13 @@ class Swot_dao extends MY_Model {
 			$this -> db -> where("_m.unify<> 1");
 			$this -> db -> order_by('d.parent_id', 'desc');
 		}
+		if(!empty($data['d_or_c'])){
+			$d_or_c = $data['d_or_c'];
+			$this -> db -> where("_m.role_id",$d_or_c);
+			$this -> db -> or_where("_m.class_id",$d_or_c);
+			$this -> db -> where("_m.role_id<>",0);
 
+		}
 		$this -> db -> where("_m.is_delete<", 1);
 
 	}
