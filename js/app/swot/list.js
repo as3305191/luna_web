@@ -7,7 +7,12 @@ var SwotAppClass = (function(app) {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
 					d.list_title = $('#list_title').val();
-					d.d_or_c = $('#d_or_c').val();
+					if($('#d_or_c1').val()==17 || $('#d_or_c1').val()==6 || $('#d_or_c1').val()==16 || $('#d_or_c1').val()==9){
+						d.d_or_c = $('#d_or_c').val();
+
+					} else{
+						d.d_or_c = $('#d_or_c1').val();
+					}
 					d.list_style = $('#list_style').val();
 
 				},
