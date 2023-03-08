@@ -112,7 +112,7 @@ class Swot_dao extends MY_Model {
 		
 
 		
-		if(!empty($data['d_or_c']) ){
+		if(!empty($data['d_or_c']) && $data['d_or_c']>0){
 			$d_or_c = $data['d_or_c'];
 			if(!empty($data['list_style']) && !empty($data['list_title']) && $data['list_style']>0&& $data['list_title']>0){
 				$list_style = $data['list_style'];
