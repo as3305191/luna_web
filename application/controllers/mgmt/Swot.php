@@ -82,9 +82,9 @@ class Swot extends MY_Mgmt_Controller {
 				'start',
 				'columns',
 				'search',
-				'order',
+				'order'
 			));
-		
+			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
 			if(!empty($list)){
 				$item = $list[0];
