@@ -35,8 +35,8 @@ class Swot extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			'list_title',
 			'd_or_c',
+			'list_title',
 			'list_style'
 		));
 		$data['login_user'] = $login_user;
