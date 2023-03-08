@@ -44,9 +44,9 @@ thead tr th {
 										<?php endforeach ?>	
 									</select>
 								</div>
-								<input id="d_or_c1" type="" value="<?= $login_user->role_id?>">
 							<?php endif?>
-							
+							<input id="d_or_c1" type="" value="<?= $login_user->role_id?>">
+
 								<div class="pull-left " style="width:200px;line-height:32px">
 									<select class="col-md-9 control-label" id="list_title"  >
 										<!-- option from javascript -->
