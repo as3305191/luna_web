@@ -117,36 +117,103 @@ class Swot_dao extends MY_Model {
 			if(!empty($data['list_style']) && !empty($data['list_title']) && $data['list_style']>0&& $data['list_title']>0){
 				$list_style = $data['list_style'];
 				$list_title = $data['list_title'];
-				$this -> db -> group_start();
-				$this -> db -> where("_m.role_id",$d_or_c);
-				$this -> db -> where("_m.swot_style_id",$list_style);
-				$this -> db -> where("_m.title",$list_title);
-				$this -> db -> or_group_start();
-				$this -> db -> where("_m.class_id",$d_or_c);
-				$this -> db -> where("_m.swot_style_id",$list_style);
-				$this -> db -> where("_m.title",$list_title);
-				$this -> db -> group_end();
-				$this -> db -> group_end();
+				if(!empty($data['parent_id'])){
+					$parent_id = $data['parent_id'];
+					$this -> db -> group_start();
+					$this -> db -> where("_m.role_id",$d_or_c);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.class_id",$d_or_c);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.role_id",$parent_id);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.class_id",$parent_id);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+				}  else{
+					$this -> db -> group_start();
+					$this -> db -> where("_m.role_id",$d_or_c);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.class_id",$d_or_c);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+				}
+				
 			} else if(!empty($data['list_style']) && $data['list_style']>0 && $data['list_title']==0){
 				$list_style = $data['list_style'];
-				$this -> db -> group_start();
-				$this -> db -> where("_m.role_id",$d_or_c);
-				$this -> db -> where("_m.swot_style_id",$list_style);
-				$this -> db -> or_group_start();
-				$this -> db -> where("_m.class_id",$d_or_c);
-				$this -> db -> where("_m.swot_style_id",$list_style);
-				$this -> db -> group_end();
-				$this -> db -> group_end();
+				if(!empty($data['parent_id'])){
+					$parent_id = $data['parent_id'];
+					$this -> db -> group_start();
+					$this -> db -> where("_m.role_id",$d_or_c);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.class_id",$d_or_c);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.role_id",$parent_id);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.class_id",$parent_id);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+				} else{
+					$this -> db -> group_start();
+					$this -> db -> where("_m.role_id",$d_or_c);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.class_id",$d_or_c);
+					$this -> db -> where("_m.swot_style_id",$list_style);
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+				}
+				
 			} else if(!empty($data['list_title'])&& $data['list_title']>0 && $data['list_style']==0){
 				$list_title = $data['list_title'];
-				$this -> db -> group_start();
-				$this -> db -> where("_m.role_id",$d_or_c);
-				$this -> db -> where("_m.title",$list_title);
-				$this -> db -> or_group_start();
-				$this -> db -> where("_m.class_id",$d_or_c);
-				$this -> db -> where("_m.title",$list_title);
-				$this -> db -> group_end();
-				$this -> db -> group_end();
+				if(!empty($data['parent_id'])){
+					$parent_id = $data['parent_id'];
+					$this -> db -> group_start();
+					$this -> db -> where("_m.role_id",$d_or_c);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.class_id",$d_or_c);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.role_id",$parent_id);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.class_id",$parent_id);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+				} else{
+					$this -> db -> group_start();
+					$this -> db -> where("_m.role_id",$d_or_c);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> or_group_start();
+					$this -> db -> where("_m.class_id",$d_or_c);
+					$this -> db -> where("_m.title",$list_title);
+					$this -> db -> group_end();
+					$this -> db -> group_end();
+				}
+				
 			} else{
 				if($data['list_style']==0 && $data['list_title']==0){
 					// $this -> db -> where("_m.role_id",$d_or_c);
