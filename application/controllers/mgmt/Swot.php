@@ -42,11 +42,7 @@ class Swot extends MY_Mgmt_Controller {
 		if($d_or_c >0){
 			$d_lv = $this-> d_dao-> find_by_id($d_or_c);
 			if($d_lv->parent_id>5){
-				$data['role_id'] = $d_lv->parent_id;
-				$data['class_id'] = $d_lv->id;
-			} else{
-				$data['role_id'] = $d_lv->parent_id;
-				$data['class_id'] = $d_lv->id;
+				$data['parent_id'] = $d_lv->parent_id;
 			}
 		} 
 		$data['login_user'] = $login_user;

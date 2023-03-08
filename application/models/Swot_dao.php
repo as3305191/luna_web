@@ -114,8 +114,6 @@ class Swot_dao extends MY_Model {
 		
 		if(!empty($data['d_or_c']) ){
 			$d_or_c = $data['d_or_c'];
-			$role_id = $data['role_id'];
-			$class_id = $data['class_id'];
 			if(!empty($data['list_style']) && !empty($data['list_title']) && $data['list_style']>0&& $data['list_title']>0){
 				$list_style = $data['list_style'];
 				$list_title = $data['list_title'];
@@ -150,12 +148,26 @@ class Swot_dao extends MY_Model {
 				$this -> db -> group_end();
 				$this -> db -> group_end();
 			} else{
-				if($data['list_style']==0 && $data['list_title']==0)
-				$this -> db -> where("_m.role_id",$role_id);
-				$this -> db -> or_where("_m.class_id",$role_id);
-				$this -> db -> or_where("_m.role_id",$class_id);
-				$this -> db -> or_where("_m.class_id",$class_id);
+				if($data['list_style']==0 && $data['list_title']==0){
+					if(!empty($data['parent_id'])){
+						$parent_id = $data['parent_id'];
+						$this -> db -> group_start();
+						$this -> db -> where("_m.role_id",$d_or_c);
+						$this -> db -> or_where("_m.class_id",$d_or_c);
+						$this -> db -> or_group_start();
+						$this -> db -> where("_m.role_id",$parent_id);
+						$this -> db -> or_where("_m.class_id",$parent_id);
+						$this -> db -> group_end();
+						$this -> db -> group_end();
+					} else{
+						$this -> db -> where("_m.role_id",$d_or_c);
+						$this -> db -> or_where("_m.class_id",$d_or_c);
+					}
+					
+				}
+				
 			}
+			
 
 		} else{
 			if(!empty($data['list_style']) && $data['list_style']>0){
