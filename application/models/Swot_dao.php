@@ -156,6 +156,8 @@ class Swot_dao extends MY_Model {
 						$this -> db -> where("_m.role_id",$d_or_c);
 						$this -> db -> or_where("_m.class_id",$d_or_c);
 						$this -> db -> or_where("_m.class_id",$parent_id);
+						$this -> db -> or_where("_m.role_id",$parent_id);
+
 					} else{
 						$this -> db -> where("_m.role_id",$d_or_c);
 						$this -> db -> or_where("_m.class_id",$d_or_c);
