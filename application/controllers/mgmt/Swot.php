@@ -82,9 +82,20 @@ class Swot extends MY_Mgmt_Controller {
 				'start',
 				'columns',
 				'search',
-				'order'
+				'order',
 			));
+			$q_data['list_title'] =  $title;
+			$q_data['list_style'] =  $style;
 			$q_data['id'] = $id;
+			$d_or_c = $this -> get_post('d_or_c');
+		
+			if($d_or_c >0){
+				$d_lv = $this-> d_dao-> find_by_id($d_or_c);
+				if($d_lv->parent_id>5){
+					$data['parent_id'] = $d_lv->parent_id;
+				}
+			} 
+			$data['d_or_c'] = $d_or_c ;
 			$list = $this -> dao -> query_ajax($q_data);
 			if(!empty($list)){
 				$item = $list[0];
@@ -128,18 +139,6 @@ class Swot extends MY_Mgmt_Controller {
 				$q_data['type'] =  $type;
 				$q_data['d_or_c'] =  $dep;
 
-				// if($dep==0){
-					
-				// 	$dep_item = $this -> d_dao -> find_by_id($s_data['login_user']->role_id);
-				// 	if($dep_item->level==11){
-				// 		$q_data['dep'] = $s_data['login_user']->role_id;
-				// 	} else{
-
-				// 		$q_data['dep'] = $dep_item->parent_id;
-				// 	}
-				// } else{
-				// 	$q_data['dep'] =  $dep;
-				// }
 				$list = $this -> dao -> query_ajax($q_data);
 				$s='';
 				$w='';
