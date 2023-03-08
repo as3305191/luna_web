@@ -100,20 +100,22 @@ class Swot_dao extends MY_Model {
 			$id = $data['id'];
 			$this -> db -> where("_m.id",$id);
 		}
-		if(!empty($data['login_user'])){
-			if( $data['login_user']->role_id==6 || $data['login_user']->role_id==9 || 
-				$data['login_user']->role_id==16 || $data['login_user']->role_id==17 ){
-			} else{
-				$login_user_array = $data['login_user_array'];
-				$this -> db -> where("_m.role_id IN ($login_user_array)");
-				$this -> db -> or_where("_m.class_id IN ($login_user_array)");
-			}
-		}
+		// if(!empty($data['login_user'])){
+		// 	if( $data['login_user']->role_id==6 || $data['login_user']->role_id==9 || 
+		// 		$data['login_user']->role_id==16 || $data['login_user']->role_id==17 ){
+		// 	} else{
+		// 		$login_user_array = $data['login_user_array'];
+		// 		$this -> db -> where("_m.role_id IN ($login_user_array)");
+		// 		$this -> db -> or_where("_m.class_id IN ($login_user_array)");
+		// 	}
+		// }
 		
 
 		
 		if(!empty($data['d_or_c']) ){
 			$d_or_c = $data['d_or_c'];
+			$role_id = $data['role_id'];
+			$class_id = $data['class_id'];
 			if(!empty($data['list_style']) && !empty($data['list_title']) && $data['list_style']>0&& $data['list_title']>0){
 				$list_style = $data['list_style'];
 				$list_title = $data['list_title'];
@@ -149,8 +151,10 @@ class Swot_dao extends MY_Model {
 				$this -> db -> group_end();
 			} else{
 				if($data['list_style']==0 && $data['list_title']==0)
-				$this -> db -> where("_m.role_id",$d_or_c);
-				$this -> db -> or_where("_m.class_id",$d_or_c);
+				$this -> db -> where("_m.role_id",$role_id);
+				$this -> db -> or_where("_m.class_id",$role_id);
+				$this -> db -> or_where("_m.role_id",$class_id);
+				$this -> db -> or_where("_m.class_id",$class_id);
 			}
 
 		} else{
