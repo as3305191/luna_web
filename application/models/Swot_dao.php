@@ -111,45 +111,46 @@ class Swot_dao extends MY_Model {
 		}
 		
 
-	// if(!empty($data['list_style'])){
-	// 	$list_style = $data['list_style'];
-	// 	$this -> db -> where("_m.swot_style_id",$list_style);
-	// }
-	// if(!empty($data['list_title'])){
-	// 	$list_title = $data['list_title'];
-	// 	$this -> db -> where("_m.title",$list_title);
-	// }
-		if(!empty($data['d_or_c']) || !empty($data['list_style']) || !empty($data['list_title'])){
-	
-			$this -> db -> group_start();
-			if(!empty($data['d_or_c'])){
+		
+		if(!empty($data['d_or_c']) ){
+			if(!empty($data['list_style']) || !empty($data['list_title'])){
+				$d_or_c = $data['d_or_c'];
+				$list_style = $data['list_style'];
+				$list_title = $data['list_title'];
+				$this -> db -> group_start();
+				$this -> db -> where("_m.role_id",$d_or_c);
+				if(!empty($data['list_style'])){
+					$this -> db -> where("_m.swot_style_id",$list_style);
+				}
+				if(!empty($data['list_title'])){
+					$this -> db -> where("_m.title",$list_title);
+				}
+				$this -> db -> or_group_start();
+				$this -> db -> where("_m.class_id",$d_or_c);
+				if(!empty($data['list_style'])){
+					$this -> db -> where("_m.swot_style_id",$list_style);
+				}
+				if(!empty($data['list_title'])){
+					$this -> db -> where("_m.title",$list_title);
+				}
+				$this -> db -> group_end();
+				$this -> db -> group_end();
+
+			} else{
 				$d_or_c = $data['d_or_c'];
 				$this -> db -> where("_m.role_id",$d_or_c);
+				$this -> db -> or_where("_m.class_id",$d_or_c);
 			}
-			if(!empty($data['list_style'])){
-				$list_style = $data['list_style'];
-				$this -> db -> where("_m.swot_style_id",$list_style);
-			}
-			if(!empty($data['list_title'])){
-				$list_title = $data['list_title'];
-				$this -> db -> where("_m.title",$list_title);
-			}
-			$this -> db -> or_group_start();
-			if(!empty($data['d_or_c'])){
-				$d_or_c = $data['d_or_c'];
-				$this -> db -> where("_m.class_id",$d_or_c);
-			}
-			if(!empty($data['list_style'])){
-				$list_style = $data['list_style'];
-				$this -> db -> where("_m.swot_style_id",$list_style);
-			}
-			if(!empty($data['list_title'])){
-				$list_title = $data['list_title'];
-				$this -> db -> where("_m.title",$list_title);
-			}
-			$this -> db -> group_end();
-			$this -> db -> group_end();
 
+		} else{
+			if(!empty($data['list_style'])){
+				$list_style = $data['list_style'];
+				$this -> db -> where("_m.swot_style_id",$list_style);
+			}
+			if(!empty($data['list_title'])){
+				$list_title = $data['list_title'];
+				$this -> db -> where("_m.title",$list_title);
+			}
 		}
 		if(!empty($data['dep'])){
 			$dep = $data['dep'];
