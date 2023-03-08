@@ -127,7 +127,12 @@ class Swot extends MY_Mgmt_Controller {
 				$q_data['unify'] =  1;
 				$q_data['type'] =  $type;
 				$q_data['d_or_c'] =  $dep;
-
+				if($q_data['d_or_c']  >0){
+					$d_lv = $this-> d_dao-> find_by_id($q_data['d_or_c'] );
+					if($d_lv->parent_id>5){
+						$q_data['parent_id'] = $d_lv->parent_id;
+					}
+				} 
 				$list = $this -> dao -> query_ajax($q_data);
 				$s='';
 				$w='';
