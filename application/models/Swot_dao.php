@@ -149,20 +149,11 @@ class Swot_dao extends MY_Model {
 				$this -> db -> group_end();
 			} else{
 				if($data['list_style']==0 && $data['list_title']==0){
-					// if(!empty($data['parent_id'])){
-					// 	$parent_id = $data['parent_id'];
-					// 	$this -> db -> where("_m.role_id",$d_or_c);
-					// 	$this -> db -> or_where("_m.class_id",$d_or_c);
-					// 	$this -> db -> or_where("_m.class_id",$parent_id);
-					// } else{
-						
-					// }
 					$this -> db -> where("_m.role_id",$d_or_c);
 					$this -> db -> or_where("_m.class_id",$d_or_c);
 				}
 				
 			}
-			
 
 		} else{
 			if(!empty($data['list_style']) && $data['list_style']>0){
