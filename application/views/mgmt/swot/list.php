@@ -44,7 +44,7 @@ thead tr th {
 										<?php endforeach ?>	
 									</select>
 								</div>
-								<input id="d_or_c1"type="hidden" value="<?= $login_user->role_id?>">
+								<input id="d_or_c1" type="" value="<?= $login_user->role_id?>">
 							<?php endif?>
 							
 								<div class="pull-left " style="width:200px;line-height:32px">
