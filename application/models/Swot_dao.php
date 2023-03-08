@@ -175,7 +175,6 @@ class Swot_dao extends MY_Model {
 						$this -> db ->or_where("_m.class_id",$d_or_c);
 					}
 				}
-				}
 			}
 		}
 		if(!empty($data['dep'])){
