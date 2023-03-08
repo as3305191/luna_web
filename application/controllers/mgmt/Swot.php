@@ -39,12 +39,14 @@ class Swot extends MY_Mgmt_Controller {
 			'list_style'
 		));
 		$d_or_c = $this -> get_post('d_or_c');
+		
 		if($d_or_c >0){
 			$d_lv = $this-> d_dao-> find_by_id($d_or_c);
 			if($d_lv->parent_id>5){
 				$data['parent_id'] = $d_lv->parent_id;
 			}
 		} 
+		$data['d_or_c'] = $d_or_c ;
 		$data['login_user'] = $login_user;
 		// $data['login_user_array'] = str_replace('#', ',', trim($login_user->in_department, "#"));
 		$items = $this -> dao -> query_ajax($data);
