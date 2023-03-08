@@ -38,7 +38,7 @@ class Swot extends MY_Mgmt_Controller {
 			'list_title',
 			'list_style'
 		));
-		$d_or_c = $this -> get_posts('d_or_c');
+		$d_or_c = $this -> get_post('d_or_c');
 		if($d_or_c >0){
 			$d_lv = $this-> d_dao-> find_by_id($d_or_c);
 			if($d_lv->parent_id>5){
