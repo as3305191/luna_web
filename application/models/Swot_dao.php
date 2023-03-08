@@ -100,15 +100,14 @@ class Swot_dao extends MY_Model {
 			$id = $data['id'];
 			$this -> db -> where("_m.id",$id);
 		}
-		// if(!empty($data['login_user'])){
-		// 	if( $data['login_user']->role_id==6 || $data['login_user']->role_id==9 || 
-		// 		$data['login_user']->role_id==16 || $data['login_user']->role_id==17 ){
-		// 	} else{
-		// 		$login_user_array = $data['login_user_array'];
-		// 		$this -> db -> where("_m.role_id IN ($login_user_array)");
-		// 		$this -> db -> or_where("_m.class_id IN ($login_user_array)");
-		// 	}
-		// }
+		if(!empty($data['login_user'])){
+			if( $data['login_user']->role_id!==6 &&  $data['login_user']->role_id!==9 &&  
+				$data['login_user']->role_id!==16 &&  $data['login_user']->role_id!==17 ){
+				$login_user_array = $data['login_user_array'];
+				$this -> db -> where("_m.role_id IN ($login_user_array)");
+				$this -> db -> or_where("_m.class_id IN ($login_user_array)");
+			} 
+		}
 		
 
 		
