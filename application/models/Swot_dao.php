@@ -148,6 +148,7 @@ class Swot_dao extends MY_Model {
 				$this -> db -> group_end();
 				$this -> db -> group_end();
 			} else{
+				if($data['list_style']<=0 && $data['list_title']<=0)
 				$this -> db -> where("_m.role_id",$d_or_c);
 				$this -> db -> or_where("_m.class_id",$d_or_c);
 			}
