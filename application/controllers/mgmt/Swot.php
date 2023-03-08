@@ -84,18 +84,7 @@ class Swot extends MY_Mgmt_Controller {
 				'search',
 				'order',
 			));
-			$q_data['list_title'] =  $title;
-			$q_data['list_style'] =  $style;
-			$q_data['id'] = $id;
-			$d_or_c = $this -> get_post('d_or_c');
 		
-			if($d_or_c >0){
-				$d_lv = $this-> d_dao-> find_by_id($d_or_c);
-				if($d_lv->parent_id>5){
-					$q_data['parent_id'] = $d_lv->parent_id;
-				}
-			} 
-			$q_data['d_or_c'] = $d_or_c ;
 			$list = $this -> dao -> query_ajax($q_data);
 			if(!empty($list)){
 				$item = $list[0];
