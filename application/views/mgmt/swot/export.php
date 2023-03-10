@@ -106,7 +106,7 @@
 
 <?php if(!empty( $item -> unify) && $item -> unify>0 && $item -> class_id==3): ?>
 
-	<table class="noBreak layui-table pageDiv layui-table1"  style="border-color:#000;padding:0px 30px 0px 30px;" >
+	<table class="noBreak layui-table pageDiv layui-table1"  style="border-color:#000;padding:0px 30px 0px 30px;overflow: hidden;" >
 			<tbody class="" width="90%"> 
 				<tr style="pointer-events: none;">
 					<td class="" colspan="3" style="border:none;text-align:center;vertical-align:middle;">
