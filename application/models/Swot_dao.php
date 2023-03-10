@@ -221,17 +221,25 @@ class Swot_dao extends MY_Model {
 					// $this -> db -> or_where("_m.class_id",$d_or_c);
 					if(!empty($data['parent_id'])){
 						$parent_id = $data['parent_id'];
+						$this -> db -> group_start();
 						$this -> db -> where("_m.role_id",$d_or_c);
-						$this -> db -> or_where("_m.class_id",$d_or_c);
-						$this -> db -> or_where("_m.class_id",$parent_id);
-						$this -> db -> or_where("_m.role_id",$parent_id);
-						$this -> db -> where("_m.is_delete<", 1);
-
+						$this -> db -> or_group_start();
+						$this -> db -> where("_m.class_id",$d_or_c);
+						$this -> db -> or_group_start();
+						$this -> db -> where("_m.class_id",$parent_id);
+						$this -> db -> or_group_start();
+						$this -> db -> where("_m.role_id",$parent_id);
+						$this -> db -> group_end();
+						$this -> db -> group_end();
+						$this -> db -> group_end();
+						$this -> db -> group_end();
 					} else{
+						$this -> db -> group_start();
 						$this -> db -> where("_m.role_id",$d_or_c);
-						$this -> db -> or_where("_m.class_id",$d_or_c);
-						$this -> db -> where("_m.is_delete<", 1);
-
+						$this -> db -> or_group_start();
+						$this -> db -> where("_m.class_id",$d_or_c);
+						$this -> db -> group_end();
+						$this -> db -> group_end();
 					}
 				}
 				
