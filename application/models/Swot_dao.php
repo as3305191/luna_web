@@ -111,7 +111,8 @@ class Swot_dao extends MY_Model {
 		// }
 		
 
-		
+		$this -> db -> where("_m.is_delete<", 1);
+
 		if(!empty($data['d_or_c']) && $data['d_or_c']>0){
 			$d_or_c = $data['d_or_c'];
 			if(!empty($data['list_style']) && !empty($data['list_title']) && $data['list_style']>0&& $data['list_title']>0){
@@ -258,7 +259,6 @@ class Swot_dao extends MY_Model {
 			$this -> db -> order_by('d.parent_id', 'desc');
 		}
 
-		$this -> db -> where("_m.is_delete<", 1);
 
 	}
 
