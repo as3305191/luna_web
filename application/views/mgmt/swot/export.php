@@ -146,6 +146,7 @@
 								<td style="border:none"><div style="border:none;color:#000;font:14px Helvetica Neue,Helvetica,PingFang SC,\5FAE\8F6F\96C5\9ED1,Tahoma,Arial,sans-serif;font-family:華康仿宋體W4;word-wrap:break-word;"><?= isset($item) ? trim($item -> m_swot_w) : '' ?></div></td>
 							</tr>
 						</table>
+
 					</td>
 				</tr>
 			</tbody>
