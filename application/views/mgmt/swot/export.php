@@ -24,7 +24,7 @@
 
 <!--  -->
 <link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/smartadmin-production-plugins.min.css') ?>">
-<link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/smartadmin-production.min.css') ?>">
+<!-- <link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/smartadmin-production.min.css') ?>"> -->
 <link rel="stylesheet" type="text/css" media="all" href="<?= base_url('css/smartadmin-skins.min.css') ?>">
 
 <!-- SmartAdmin RTL Support -->
