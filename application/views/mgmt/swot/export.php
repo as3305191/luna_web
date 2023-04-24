@@ -367,7 +367,7 @@
 	</table>
 	<?php endif?>
 </div>
-<script>
+<!-- <script>
  window.style.backgroundColor = '#FFF';
  window.body.style.backgroundColor = '#FFF';
-</script>
+</script> -->
