@@ -14,6 +14,9 @@
 .not_ok {
 	background-color:red;
 }
+.pageDiv:last-of-type{ 
+	page-break-after: auto; 
+}
 
 @media print  
 {
