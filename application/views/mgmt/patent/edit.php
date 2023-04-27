@@ -742,7 +742,7 @@ $("#img-input").fileinput({
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 					'width' : '120px',
-					// 'type': 'pdf',
+					'type': 'pdf',
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id )  ?>',
 	        		'key' : <?= $files->id?>
@@ -753,7 +753,7 @@ $("#img-input").fileinput({
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
 					'width' : '120px',
-					// 'type': 'pdf',
+					'type': 'pdf',
 					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
 	        		'key' : <?= $files->id?>
 			},
