@@ -394,7 +394,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">專利分析相關文件</label>
 					<div class="col-md-6">
-						<input id="file-input" name="file[]" type="file" accept=".pdf" multiple class="file-loading form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
+						<input id="file-input" name="file[]" type="file" accept="image/*,.pdf" multiple class="file-loading form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
 						<input id="files_id" type="hidden"  value="<?= isset($item) ? $item -> files_id : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
 					</div>
 				</div>
