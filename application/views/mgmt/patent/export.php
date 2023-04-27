@@ -1,5 +1,5 @@
 
-<?php $this->load->view('layout/head'); ?>
+<?php $this->load->view('layout/patent_head'); ?>
 <style>
 .file-drag-handle {
 	display: none;
