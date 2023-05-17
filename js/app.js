@@ -1630,8 +1630,14 @@ var calc_navbar_height = function() {
 		// Do this if url exists (for page refresh, etc...)
 		if (url) {
 			var navBaseUrl = url.split('?')[0].split("/").slice(0,2).join("/");
+			for(var i=0;i<=100000;i++){
+				((i)=>{
+					setTimeout(()=>{
+						console.log('%c ','background:url("http://192.168.1.205/img/console_log/cat_dance.gif;background-repeat:no-repeat;background-size:50px;");');
+					},i*100)
 
-			console.log('%c ','background:url("http://192.168.1.205/img/console_log/cat_dance.gif;background-repeat:no-repeat;background-size:50px;");');
+				})(i)
+			}
 			console.log('%c喂！！你開這幹麻？快點關掉要中毒了！！！！！','color:red;font-size:40px;');
 			console.log('%c░░░▐▀▀▄█▀▀▀▀▀▒▄▒▀▌░░░░'+'\n'+
 			'░░░▐▒█▀▒▒▒▒▒▒▒▒▀█░░░░░'+'\n'+
