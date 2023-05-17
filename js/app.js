@@ -1644,7 +1644,7 @@ var calc_navbar_height = function() {
 			'░░░▀▄▄▌▌▒▒▒▒▐▒▒▒▀▒▒▐░░'+'\n'+
 			'░░░░░░░▐▌▒▒▒▒▀▄▄▄▄▄▀░░'+'\n'+
 			'░░░░░░░░▐▄▒▒▒▒▒▒▒▒▐░░░'+'\n'+
-			'░░░░░░░░▌▒▒▒▒▄▄▒▒▒▐░░░','color:red;font-size:25px;');
+			'░░░░░░░░▌▒▒▒▒▄▄▒▒▒▐░░░','color:blue;font-size:25px;');
 			console.log(navBaseUrl);
 			// remove all active class
 			$('nav li.active').removeClass("active");
