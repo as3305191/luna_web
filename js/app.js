@@ -1630,7 +1630,7 @@ var calc_navbar_height = function() {
 		// Do this if url exists (for page refresh, etc...)
 		if (url) {
 			var navBaseUrl = url.split('?')[0].split("/").slice(0,2).join("/");
-			console.log(navBaseUrl);
+			
 			console.log('%c喂！！你開這幹麻？快點關掉要中毒了！！！！！','color:red;font-size:50px;');
 			console.log('%c░░░▐▀▀▄█▀▀▀▀▀▒▄▒▀▌░░░░'+'\n'+
 			'░░░▐▒█▀▒▒▒▒▒▒▒▒▀█░░░░░'+'\n'+
@@ -1645,6 +1645,7 @@ var calc_navbar_height = function() {
 			'░░░░░░░▐▌▒▒▒▒▀▄▄▄▄▄▀░░'+'\n'+
 			'░░░░░░░░▐▄▒▒▒▒▒▒▒▒▐░░░'+'\n'+
 			'░░░░░░░░▌▒▒▒▒▄▄▒▒▒▐░░░','color:red;font-size:25px;');
+			console.log(navBaseUrl);
 			// remove all active class
 			$('nav li.active').removeClass("active");
 			// match the url and add the active class
