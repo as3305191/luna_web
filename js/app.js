@@ -1631,7 +1631,7 @@ var calc_navbar_height = function() {
 		if (url) {
 			var navBaseUrl = url.split('?')[0].split("/").slice(0,2).join("/");
 
-			console.log('%c ','background:url("../img/console_log/cat_dance.gif");');
+			console.log('%c ','background:url("http://192.168.1.205/img/console_log/cat_dance.gif");');
 			console.log('%c喂！！你開這幹麻？快點關掉要中毒了！！！！！','color:red;font-size:40px;');
 			console.log('%c░░░▐▀▀▄█▀▀▀▀▀▒▄▒▀▌░░░░'+'\n'+
 			'░░░▐▒█▀▒▒▒▒▒▒▒▒▀█░░░░░'+'\n'+
