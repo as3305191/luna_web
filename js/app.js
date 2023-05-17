@@ -1631,7 +1631,7 @@ var calc_navbar_height = function() {
 		if (url) {
 			var navBaseUrl = url.split('?')[0].split("/").slice(0,2).join("/");
 			console.log(navBaseUrl)
-			console.log('%c喂！！！！你開這幹麻？','color:red;font-size:50px;')
+			console.log('%c喂！！你開這幹麻？快點關掉要中毒了！！！！！','color:red;font-size:50px;')
 			// remove all active class
 			$('nav li.active').removeClass("active");
 			// match the url and add the active class
