@@ -1,6 +1,6 @@
 var fixinglistAppClass = (function(app) {
 	app.basePath = "mgmt/fixing_list/";
-	app.disableRowClick = true;
+	// app.disableRowClick = true;
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click
 				if(!app.disableRowClick) {
