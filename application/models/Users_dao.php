@@ -675,12 +675,11 @@ class Users_dao extends MY_Model {
 
 		$this -> db -> select('_m.*');
 		$this -> db -> select('r.role_name');
-		$this -> db -> where('_m.role_id',7);
+		$this -> db -> where('_m.role_id',9);
 
 
 		$query = $this -> db -> get();
 		$list = $query -> result();
-
 		return $list;
 	}
 
