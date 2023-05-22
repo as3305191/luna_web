@@ -181,18 +181,18 @@ var fixinglistAppClass = (function(app) {
 
 
 		// edit
-		app.doEdit = function(id,fix_status) {
-			// 直接導入電腦管理的維修表
-			if(fix_status==1){//電腦
+		// app.doEdit = function(id,fix_status) {
+		// 	// 直接導入電腦管理的維修表
+		// 	if(fix_status==1){//電腦
 
-			}
-			if(fix_status==2){//軟體
+		// 	}
+		// 	if(fix_status==2){//軟體
 				
-			}
-			if(fix_status==3){//硬體
+		// 	}
+		// 	if(fix_status==3){//硬體
 				
-			}
-		};
+		// 	}
+		// };
 
 		app.doFlow = function(id) {
 			$('#edit_page_id').val(id);
