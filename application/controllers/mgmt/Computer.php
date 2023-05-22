@@ -439,7 +439,7 @@ class Computer extends MY_Mgmt_Controller {
 		// 	$table->addCell(3000)->addText($each->fix_way,$fontStyle,$centered); 
 		// 	$table->addCell(1500)->addText($each->user_name,$fontStyle,$centered); 
 		// } 
-		$tableStyle = array('borderSize'=>6, 'borderColor'=>'006699', 'cellMargin'=>80);
+		$tableStyle = array('borderSize'=>6, 'borderColor'=>'ffffff', 'cellMargin'=>80);
 		$whitetableStyle = array('borderSize'=>6, 'borderColor'=>'ffffff', 'cellMargin'=>80);
 		$footer_style = array('borderSize'=>6, 'borderColor'=>'ffffff', 'cellMargin'=>80);
 
