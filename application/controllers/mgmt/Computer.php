@@ -504,7 +504,7 @@ class Computer extends MY_Mgmt_Controller {
 		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
 		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
 		header('Cache-Control: max-age=0'); //no cache
-		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2007');
+		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2021');
 		$objWriter->save('php://output');
 	}
 
