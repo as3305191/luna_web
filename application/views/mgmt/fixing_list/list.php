@@ -114,8 +114,8 @@
 	}];
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/patent/list.js", function(){
-			currentApp = new patentAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/fixing_list/list.js", function(){
+			currentApp = new fixinglistAppClass(new BaseAppClass({}));
 		});
 	});
 
