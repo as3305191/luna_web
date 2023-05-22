@@ -409,34 +409,34 @@ function drawfirst() {
 
 drawfirst();
 
-currentApp.fixrecord = new FixrecordAppClass(new BaseAppClass({}));
-currentApp.fixrecording = new FixrecordingAppClass(new BaseAppClass({}));
+// currentApp.fixrecord = new FixrecordAppClass(new BaseAppClass({}));
+// currentApp.fixrecording = new FixrecordingAppClass(new BaseAppClass({}));
 
-function save_fix(){
-	$.ajax({
-		url: '<?= base_url() ?>' + 'mgmt/computer/update_fix_type',
-		type: 'POST',
-		data: {
-			fix_record_id: $('#fix_record_id').val(),
-			fix_type: $('#fix_type').val(),
-			fix_date: $('#fix_date').val(),
-			done_fix_date: $('#done_fix_date').val(),
-			fix_way: $('#fix_way').val(),
-			fix_reason: $('#fix_reason').val(),
+// function save_fix(){
+// 	$.ajax({
+// 		url: '<?= base_url() ?>' + 'mgmt/computer/update_fix_type',
+// 		type: 'POST',
+// 		data: {
+// 			fix_record_id: $('#fix_record_id').val(),
+// 			fix_type: $('#fix_type').val(),
+// 			fix_date: $('#fix_date').val(),
+// 			done_fix_date: $('#done_fix_date').val(),
+// 			fix_way: $('#fix_way').val(),
+// 			fix_reason: $('#fix_reason').val(),
 
-		},
-		dataType: 'json',
-		success: function(d) {
-			if(d.success) {
-				currentApp.fixrecord.tableReload();
-				currentApp.fixrecording.tableReload();
-				$('#fixModal').modal('hide');
-			}
-		},
-		failure:function(){
-			alert('faialure');
-		}
-	});
-}
+// 		},
+// 		dataType: 'json',
+// 		success: function(d) {
+// 			if(d.success) {
+// 				currentApp.fixrecord.tableReload();
+// 				currentApp.fixrecording.tableReload();
+// 				$('#fixModal').modal('hide');
+// 			}
+// 		},
+// 		failure:function(){
+// 			alert('faialure');
+// 		}
+// 	});
+// }
 
 </script>
