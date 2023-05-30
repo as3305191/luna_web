@@ -65,12 +65,12 @@ class Menu extends MY_Mgmt_Controller {
 		$id = $this -> get_post('id');
 		$title = $this -> get_post('title');
 		$m_content = $this -> get_post('m_content');
-		$news_style = $this -> get_post('news_style');
+		$menu_style = $this -> get_post('menu_style');
 		$cost = $this -> get_post('cost');
 		$sort = $this -> get_post('sort');
 		$data['title'] = $title;
 		$data['content'] = $m_content;
-		$data['news_style_id'] = $news_style;
+		$data['menu_style_id'] = $menu_style;
 		$data['cost'] = $cost;
 		$data['sort'] = $sort;
 		if(empty($id)) {
@@ -112,6 +112,17 @@ class Menu extends MY_Mgmt_Controller {
 		$menu_style_list = $this -> menu_style_dao -> find_all();
 		$res['menu_style'] = $menu_style_list;
 		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function update_menu_style() {
+		$res = array();
+		$last_id = $this -> get_post('last_id');
+		$img_style = $this -> get_post('menu_style');
+		$this -> img_dao -> update(array(
+			'img_style' => $img_style
+		), $last_id);
+
 		$this -> to_json($res);
 	}
 

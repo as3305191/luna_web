@@ -121,18 +121,18 @@
 
 	$('#img-input').fileupload({
 			
-			url: '<?= base_url('mgmt/images/upload_news/news_img') ?>',
+			url: '<?= base_url('mgmt/images/upload_news/menu_img') ?>',
 			dataType: 'json',
 			done: function(e, data) {
 				// $('#file-input-win-img').prop('src', data.result.initialPreview[0]).show();
 				$('#image_id').val(data.result.id).attr('uid', data.result.id);
 				// $('#file-input-progress-win-img').hide();
 				$.ajax({
-					url: '<?= base_url() ?>' + 'mgmt/news_img/update_img_style',
+					url: '<?= base_url() ?>' + 'mgmt/menu/update_menu_style',
 					type: 'POST',
 					data: {
 						last_id:data.result.id,
-						img_style:$('#img_style').val()
+						menu_style:$('#img_style').val()
 					},
 					dataType: 'json',
 					success: function(d) {
