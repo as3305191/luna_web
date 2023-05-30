@@ -102,14 +102,14 @@ class Menu extends MY_Mgmt_Controller {
 		$res = array();
 		$menu_style = $this -> get_post('menu_style');
 		$data['menu_style'] = $menu_style;
-		$this -> menu_style_dao -> insert($data);
+		$this -> dao -> insert($data);
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
 
 	public function find_menu_style(){
 		$res = array();
-		$menu_style_list = $this -> menu_style_dao -> find_all();
+		$menu_style_list = $this -> dao -> find_all();
 		$res['menu_style'] = $menu_style_list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
