@@ -130,7 +130,6 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> img_dao -> update(array(
 			'img_style' => $img_style
 		), $last_id);
-		$this -> dao -> insert($data);
 
 		$this -> to_json($res);
 	}
