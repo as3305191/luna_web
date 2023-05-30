@@ -167,11 +167,11 @@ class Images_dao extends MY_Model {
 
 		$this -> db -> select('_m.id');
 		$this -> db -> select('_m.img_style');
-		$this -> db -> select('i_s.img_style as style_name');
+		$this -> db -> select('ms.menu_style as style_name');
 		
 		$this -> db -> order_by('_m.id','desc');
 
-		$this -> db -> join("img_style i_s", "i_s.id = _m.img_style", "left");
+		$this -> db -> join("menu_style ms", "ms.id = _m.img_style", "left");
 
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
