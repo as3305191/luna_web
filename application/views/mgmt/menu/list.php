@@ -232,10 +232,10 @@
 				if(d) {
 					// console.log(d);
 					$img_style = $('#img_style').empty();
-					$.each(d.img_style, function(){
+					$.each(d.menu_style, function(){
 						$('<option/>', {
 							'value': this.id,
-							'text': this.img_style
+							'text': this.menu_style
 						}).appendTo($img_style);
 					});
 					$s_img_style = $('#s_img_style').empty();
