@@ -99,33 +99,15 @@
 <script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/jquery.fileupload.js"></script>
 
 <script type="text/javascript">
-	var baseUrl = '<?=base_url('')?>';
+var baseUrl = '<?=base_url('')?>';
 
 var mCols = [null,{
-	data : 'patent_name',
-	render: function(d,t,r){
-		if(r.patent_key_id_array.length == 0){
-			var html = '<span style="color:red;">'+d+'</span>';
-			return html;
-		} else{
-			return d;
-		}
-	}
-}, {
-	data : 'image',
+	data : 'menu_style_id'
+},{
+	data : 'img_id',
 	render: function(d,t,r){
 		if(d>0){
 			var html = '<img src="'+baseUrl+'api/images/get/'+d+'/thumb" loading="lazy" style="max-height:200px;max-width:200px" >';
-			return html;
-		} else{
-			return '';
-		}
-	}
-},{
-	data : 'applicant',
-	render: function(d,t,r){
-		if(d){
-			var html = '<span style="word-wrap:break-word;white-space:pre-wrap;">'+d+'</span>';
 			return html;
 		} else{
 			return '';
