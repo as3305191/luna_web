@@ -99,37 +99,6 @@
 <script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/jquery.fileupload.js"></script>
 
 <script type="text/javascript">
-var baseUrl = '<?=base_url('')?>';
-
-var mCols = [null,{
-	data : 'menu_style_id'
-},{
-	data : 'img_id',
-	render: function(d,t,r){
-		if(d>0){
-			var html = '<img src="'+baseUrl+'api/images/get/'+d+'/thumb" loading="lazy" style="max-height:200px;max-width:200px" >';
-			return html;
-		} else{
-			return '';
-		}
-	}
-}];
-
-var mOrderIdx = 0;
-
-
-var mColDefs = [{
-	targets : 0,
-	data : null,
-	// defaultContent : defaultContent,
-	searchable : false,
-	orderable : false,
-	width : "5%",
-	className : ''
-}, {
-	"targets" : [0,1,2],
-	"orderable" : false
-}];
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/menu/list.js", function(){
 			currentApp = new MenuClass(new BaseAppClass({}));

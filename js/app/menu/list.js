@@ -91,25 +91,111 @@ var MenuClass = (function(app) {
 		}
 	};
 
-	app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
-		ajax : {
-			url : baseUrl + app.basePath + '/get_data',
-			data : function(d) {
-				d.patent_name = $('#s_patent_name').val();
-				
-
+	app.init = function() {
+		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
+			ajax : {
+				url : baseUrl + app.basePath + 'get_data',
+				data : function(d) {
+					// d.item_id = $('#item_id').val();
+					d.s_news_style = $('#s_news_style').val();
+					return d;
+				},
+				dataSrc : 'items',
+				dataType : 'json',
+				type : 'post'
 			},
-			dataSrc : 'items',
-			dataType : 'json',
-			type : 'post',
-			complete:function(data){
+			pageLength: 50,
+			columns : [null,{
+				data : 'menu_style_id'
+			},{
+				data : 'img_id',
+				render: function(d,t,r){
+					if(d>0){
+						var html = '<img src="'+baseUrl+'api/images/get/'+d+'/thumb" loading="lazy" style="max-height:200px;max-width:200px" >';
+						return html;
+					} else{
+						return '';
+					}
+				}
+			}],
+
+			footerCallback: function (row, data, start, end, display ) {
+				var api = this.api();
 			}
-		},
-		iDisplayLength : 50,
-		columns : mCols,
-		order : [[0, "desc"]],
-		columnDefs : mColDefs
-	}));
+		}));
+
+		// data table actions
+		app.dtActions();
+
+		function getCoVal(co, key) {
+			if(co[key]) {
+				return parseInt(co[key]);
+			}
+			return 0;
+		}
+		function setSpanVal(elId, val) {
+			console.log("val: " + val);
+			console.log("elId: " + elId);
+			if(val > 0) {
+	    		$('#' + elId).parent().find('span').show().text(val);
+	    	} else {
+	    		$('#' + elId).parent().find('span').hide();
+	    	}
+		}
+		// get year month list
+		app.tableReload();
+
+	
+
+		$('#status_filter > label > span').hide();
+
+		// set pay status filter
+		$('#pay_status_filter label').on('click', function(){
+			$(this).find('input').prop('checked', true);
+			app.tableReload();
+		});
+		$('#pay_status_filter > label > span').hide();
+
+
+
+		app.doDelItem = function() {
+			$.ajax({
+				url : baseUrl + app.basePath  + 'delete/' + app._delId,
+				success: function(d) {
+					if(d.success){
+						app.mDtTable.ajax.reload();
+					}
+					if(d.message){
+						layer.msg(d.message);
+					}
+				},
+				failure: function() {
+					alert('Network Error...');
+				}
+			});
+		};
+
+
+		// edit
+		app.doEdit = function(id) {
+		    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
+		    	.appendTo($('#edit-modal-body').empty());
+		    $("#btn-submit-edit").prop( "disabled", true);
+
+			$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
+
+			$('#edit-modal-body').load(baseUrl + 'mgmt/news_edit/edit/' + id, function(){
+	        	$("#btn-submit-edit").prop( "disabled", false);
+	        	loading.remove();
+			});
+		};
+
+		$('#s_news_style').on('change', function(){
+			app.tableReload();
+		});
+	
+		return app;
+	};
 
 	// return self
 	return app.init();
