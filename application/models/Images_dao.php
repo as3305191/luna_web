@@ -156,5 +156,48 @@ class Images_dao extends MY_Model {
 		}
 
 	}
+	function find_menu_img($data, $is_count = FALSE) {
+
+		$start = $data['start'];
+		$limit = $data['length'];
+	
+		
+		// select
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select('_m.id');
+		$this -> db -> select('_m.upload_time');
+		$this -> db -> select('_m.status');
+		$this -> db -> select('_m.img_style');
+		$this -> db -> select('i_s.img_style as style_name');
+		
+		$this -> db -> order_by('_m.id','desc');
+
+		$this -> db -> join("img_style i_s", "i_s.id = _m.img_style", "left");
+
+		if(!$is_count) {
+			$this -> db -> limit($limit, $start);
+		}
+		if(!empty($data['img_data'])) {
+			foreach($data['img_data']as $each){
+				$this -> db -> where('_m.id<>',$each);
+			}
+		}
+		if(!empty($data['s_img_style']) && $data['s_img_style']>0){
+			$s_img_style = $data['s_img_style'];
+			$this -> db -> where('_m.img_style',$s_img_style);
+		}
+		// $this -> db -> where('_m.status',0);
+		$this -> db -> where('_m.image_path','menu_img');
+
+		// query results
+		if(!$is_count) {
+			$query = $this -> db -> get();
+			return $query -> result();
+		} else {
+			return $this -> db -> count_all_results();
+		}
+
+	}
 }
 ?>

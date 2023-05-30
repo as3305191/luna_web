@@ -31,7 +31,7 @@ class Menu extends MY_Mgmt_Controller {
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
-		$items = $this -> dao -> query_ajax($data);
+		$items = $this -> img_dao -> find_menu_img($data);
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
@@ -89,6 +89,14 @@ class Menu extends MY_Mgmt_Controller {
 		$res = array();
 		$res['success'] = TRUE;
 		$this -> dao -> delete($id);
+		$this -> to_json($res);
+	}
+
+	public function find_img_style(){
+		$res = array();
+		$img_style_list = $this -> img_style_dao -> find_all();
+		$res['img_style'] = $img_style_list;
+		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
 
