@@ -7,7 +7,7 @@ class Menu extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('Menu_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
-		$this -> load -> model('News_style_dao', 'news_style_dao');
+		$this -> load -> model('Menu_style_dao', 'menu_style');
 		$this -> load -> model('Img_month_use_dao', 'img_month_use_dao');		
 		$this -> load -> model('Img_month_use_record_dao', 'img_month_use_record_dao');		
 	}
@@ -102,14 +102,14 @@ class Menu extends MY_Mgmt_Controller {
 		$res = array();
 		$menu_style = $this -> get_post('menu_style');
 		$data['menu_style'] = $menu_style;
-		$this -> dao -> insert($data);
+		$this -> menu_style_dao -> insert($data);
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
 
 	public function find_menu_style(){
 		$res = array();
-		$menu_style_list = $this -> dao -> find_all();
+		$menu_style_list = $this -> menu_style_dao -> find_all();
 		$res['menu_style'] = $menu_style_list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
