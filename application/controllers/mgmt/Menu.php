@@ -27,7 +27,7 @@ class Menu extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			's_news_style',
+			's_menu_style',
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
@@ -130,6 +130,7 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> img_dao -> update(array(
 			'img_style' => $img_style
 		), $last_id);
+		$this -> dao -> insert($data);
 
 		$this -> to_json($res);
 	}

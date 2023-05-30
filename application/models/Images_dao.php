@@ -166,8 +166,6 @@ class Images_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 
 		$this -> db -> select('_m.id');
-		$this -> db -> select('_m.upload_time');
-		$this -> db -> select('_m.status');
 		$this -> db -> select('_m.img_style');
 		$this -> db -> select('i_s.img_style as style_name');
 		

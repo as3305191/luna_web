@@ -100,7 +100,7 @@ var MenuClass = (function(app) {
 					url : baseUrl + app.basePath + 'get_data',
 					data : function(d) {
 						d.item_id = $('#item_id').val();
-						d.s_img_style = $('#s_img_style').val();
+						d.s_menu_style = $('#s_img_style').val();
 	
 						return d;
 					},
@@ -114,7 +114,7 @@ var MenuClass = (function(app) {
 				columns : [null,{
 					data : 'style_name'
 				},{
-					data : 'menu_style_id',
+					data : 'id',
 					render: function (data) {
 						if(data>0){
 							return (data && data > 0 ? '<div class="img_con" style="width:150px;height:150px;background-image:url(' + baseUrl + 'api/images/get/' + data + '/thumb)" />' : "");
