@@ -91,148 +91,25 @@ var MenuClass = (function(app) {
 		}
 	};
 
-	app.init = function() {
-		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
-			ajax : {
-				url : baseUrl + app.basePath + 'get_data',
-				data : function(d) {
-					// d.item_id = $('#item_id').val();
-					d.s_news_style = $('#s_news_style').val();
-					return d;
-				},
-				dataSrc : 'items',
-				dataType : 'json',
-				type : 'post'
+	app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
+		ajax : {
+			url : baseUrl + app.basePath + '/get_data',
+			data : function(d) {
+				d.patent_name = $('#s_patent_name').val();
+				
+
 			},
-			pageLength: 50,
-			columns : [null, {
-				data : 'news_style'
-			}, {
-				data : 'title'
-			}, {
-				data : 'create_time'
-			}],
-			ordering: false,
-			order : [[3, "desc"]],
-			columnDefs : [{
-				targets : 0,
-				data : null,
-				render:function ( data, type, row ) {
-					var input = '';
-					if(row.status == 1){
-						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
-						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
-						+input
-						+'<label class="onoffswitch-label" for="'+row.id+'">'
-							+'<span class="onoffswitch-inner" data-swchon-text="輪播" data-swchoff-text="非輪播"></span>'
-							+'<span class="onoffswitch-switch"></span>'
-						+'</label>'
-					+'</span>';
-					}else{
-						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
-						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
-						+input
-						+'<label class="onoffswitch-label" for="'+row.id+'">'
-							+'<span class="onoffswitch-inner" data-swchon-text="輪播" data-swchoff-text="非輪播"></span>'
-							+'<span class="onoffswitch-switch"></span>'
-						+'</label>'
-					+'</span>'
-					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>';
-					}
-					return html;
-		    },
-				searchable : false,
-				orderable : false,
-				width : "8%",
-				className: ''
-			}, {
-				"targets" : 0,
-				"orderable" : false
-			}, {
-				"targets" : 1,
-				"orderable" : false
-			}, {
-				"targets" : 2,
-				"orderable" : false
-			}],
-
-			footerCallback: function (row, data, start, end, display ) {
-				var api = this.api();
+			dataSrc : 'items',
+			dataType : 'json',
+			type : 'post',
+			complete:function(data){
 			}
-		}));
-
-		// data table actions
-		app.dtActions();
-
-		function getCoVal(co, key) {
-			if(co[key]) {
-				return parseInt(co[key]);
-			}
-			return 0;
-		}
-		function setSpanVal(elId, val) {
-			console.log("val: " + val);
-			console.log("elId: " + elId);
-			if(val > 0) {
-	    		$('#' + elId).parent().find('span').show().text(val);
-	    	} else {
-	    		$('#' + elId).parent().find('span').hide();
-	    	}
-		}
-		// get year month list
-		app.tableReload();
-
-	
-
-		$('#status_filter > label > span').hide();
-
-		// set pay status filter
-		$('#pay_status_filter label').on('click', function(){
-			$(this).find('input').prop('checked', true);
-			app.tableReload();
-		});
-		$('#pay_status_filter > label > span').hide();
-
-
-
-		app.doDelItem = function() {
-			$.ajax({
-				url : baseUrl + app.basePath  + 'delete/' + app._delId,
-				success: function(d) {
-					if(d.success){
-						app.mDtTable.ajax.reload();
-					}
-					if(d.message){
-						layer.msg(d.message);
-					}
-				},
-				failure: function() {
-					alert('Network Error...');
-				}
-			});
-		};
-
-
-		// edit
-		app.doEdit = function(id) {
-		    var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
-		    	.appendTo($('#edit-modal-body').empty());
-		    $("#btn-submit-edit").prop( "disabled", true);
-
-			$('.tab-pane').removeClass('active'); $('#edit_page').addClass('active');
-
-			$('#edit-modal-body').load(baseUrl + 'mgmt/news_edit/edit/' + id, function(){
-	        	$("#btn-submit-edit").prop( "disabled", false);
-	        	loading.remove();
-			});
-		};
-
-		$('#s_news_style').on('change', function(){
-			app.tableReload();
-		});
-	
-		return app;
-	};
+		},
+		iDisplayLength : 50,
+		columns : mCols,
+		order : [[0, "desc"]],
+		columnDefs : mColDefs
+	}));
 
 	// return self
 	return app.init();
