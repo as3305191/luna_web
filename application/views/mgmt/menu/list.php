@@ -121,7 +121,7 @@ var mOrderIdx = 0;
 var mColDefs = [{
 	targets : 0,
 	data : null,
-	defaultContent : defaultContent,
+	// defaultContent : defaultContent,
 	searchable : false,
 	orderable : false,
 	width : "5%",
