@@ -53,21 +53,8 @@
 											<th class="min100">是否預設</th>
 											<th class="min100">分類</th>
 											<th class="min100">照片</th>
-											<th>日期</th>
+											<!-- <th>日期</th> -->
 										</tr>
-										<!-- <tr class="search_box">
-											<th></th>
-											<th>
-												<div class="col-md-6">
-													<select id="s_img_style" class="form-control">
-														
-														
-													</select>
-												</div>
-											</th>
-											<th></th>
-											<th></th>
-										</tr> -->
 									</thead>
 									<tbody>
 									</tbody>
@@ -112,7 +99,55 @@
 <script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/jquery.fileupload.js"></script>
 
 <script type="text/javascript">
+	var baseUrl = '<?=base_url('')?>';
 
+var mCols = [null,{
+	data : 'patent_name',
+	render: function(d,t,r){
+		if(r.patent_key_id_array.length == 0){
+			var html = '<span style="color:red;">'+d+'</span>';
+			return html;
+		} else{
+			return d;
+		}
+	}
+}, {
+	data : 'image',
+	render: function(d,t,r){
+		if(d>0){
+			var html = '<img src="'+baseUrl+'api/images/get/'+d+'/thumb" loading="lazy" style="max-height:200px;max-width:200px" >';
+			return html;
+		} else{
+			return '';
+		}
+	}
+},{
+	data : 'applicant',
+	render: function(d,t,r){
+		if(d){
+			var html = '<span style="word-wrap:break-word;white-space:pre-wrap;">'+d+'</span>';
+			return html;
+		} else{
+			return '';
+		}
+	}
+}];
+
+var mOrderIdx = 0;
+
+
+var mColDefs = [{
+	targets : 0,
+	data : null,
+	defaultContent : defaultContent,
+	searchable : false,
+	orderable : false,
+	width : "5%",
+	className : ''
+}, {
+	"targets" : [0,1,2],
+	"orderable" : false
+}];
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/menu/list.js", function(){
 			currentApp = new MenuClass(new BaseAppClass({}));
