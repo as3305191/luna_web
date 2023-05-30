@@ -92,7 +92,7 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function new_news_style(){
+	public function new_menu_style(){
 		$data = array();
 		$this -> load -> view('layout/show_new_menu_style',$data);
 	}

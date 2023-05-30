@@ -127,7 +127,7 @@
 			closeBtn:0,
 			area:['400px','200px'],
 			shadeClose:true,
-			content:'<?=base_url('mgmt/news_img/new_img_style')?>'
+			content:'<?=base_url('mgmt/menu/new_menu_style')?>'
 		})
 	})
 
