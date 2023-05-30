@@ -97,7 +97,7 @@ var NewsimgClass = (function(app) {
 	app.init = function() {
 		app.mDtTable = $('#pic_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
-				url : baseUrl + app.basePath + 'get_data_image',
+				url : baseUrl + app.basePath + 'get_data',
 				data : function(d) {
 					d.item_id = $('#item_id').val();
 					d.s_img_style = $('#s_img_style').val();
