@@ -21,7 +21,7 @@ class Menu_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('ms.menu_style as menu_name');
+		$this -> db -> select('ms.menu_style as style_name');
 
 		// join
 		$this -> ajax_from_join();
