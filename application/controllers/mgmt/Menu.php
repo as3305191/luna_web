@@ -162,10 +162,10 @@ class Menu extends MY_Mgmt_Controller {
 		if(!empty($list)){
 			if($list->status==0){
 				$u_data['status'] = 1;
-				$res['success_msg'] = '變更菜單成功';
+				$res['success_msg'] = '菜單開放成功';
 			} else{
 				$u_data['status'] = 0;
-				$res['success_msg'] = '變更非輪播成功';
+				$res['success_msg'] = '菜單變更不開放';
 			}
 			$this -> dao -> update($u_data, $news_id);
 		}
