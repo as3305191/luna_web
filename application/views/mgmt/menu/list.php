@@ -1,10 +1,10 @@
 <style>
-thead tr th {
+/* thead tr th {
 	position:sticky;
 	top:0;
 	background-color:#FFFFFF !important;
 	text-align:center;
-}
+} */
 </style>
 
 <!-- CSS Unify Theme -->
