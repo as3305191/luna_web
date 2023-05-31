@@ -83,7 +83,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">分類</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="s_menu_style_id"  id="s_menu_style_id" value="<?= isset($item) ? $item -> menu_style_id : 0 ?>"  />
+						<input type="hidden" required class="form-control" name="s_menu_style_id"  id="s_menu_style_id" value="<?= isset($item) ? $item -> menu_style_id : 0 ?>"  />
 						<select id="menu_style_id" class="form-control">
 											<!-- option from javascript -->
 						</select>
