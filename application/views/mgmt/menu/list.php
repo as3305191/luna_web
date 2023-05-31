@@ -8,7 +8,7 @@ thead tr th {
 </style>
 
 <!-- CSS Unify Theme -->
-<link rel="stylesheet" href="<?= base_url() ?>assets_co/assets_/css/styles.multipage-real-estate.css">
+<!-- <link rel="stylesheet" href="<?= base_url() ?>assets_co/assets_/css/styles.multipage-real-estate.css"> -->
   
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
@@ -23,13 +23,13 @@ thead tr th {
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
 						<header >
-								<div class="widget-toolbar pull-left">
-									<div class="btn-group">
-										<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
-											<i class="fa fa-plus"></i>新增
-										</button>
-									</div>
+							<div class="widget-toolbar pull-left">
+								<div class="btn-group">
+									<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
+										<i class="fa fa-plus"></i>新增
+									</button>
 								</div>
+							</div>
 							
                                
                             </div>
@@ -55,7 +55,6 @@ thead tr th {
 
 							<!-- widget content -->
 							<div class="widget-body no-padding">
-								
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 								
 									<thead>
