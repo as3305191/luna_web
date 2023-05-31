@@ -1,4 +1,4 @@
-var menuAppClass = (function(app) {
+var listmenuAppClass = (function(app) {
 	app.basePath = "mgmt/menu/";
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{

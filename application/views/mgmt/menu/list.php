@@ -114,12 +114,9 @@
 		"targets" : [0,1,2],
 		"orderable" : false
 	}];
-
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/menu/list.js", function(){
-			currentApp = new menuAppClass(new BaseAppClass({}));
-			
+			currentApp = new listmenuAppClass(new BaseAppClass({}));
 		});
 	});
-
 </script>
