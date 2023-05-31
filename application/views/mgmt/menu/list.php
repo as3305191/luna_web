@@ -50,9 +50,9 @@ thead tr th {
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min25">是否預設</th>
-											<th class="min100">分類</th>
-											<th class="min100">照片</th>
+											<th class="">是否預設</th>
+											<th class="">分類</th>
+											<th class="">照片</th>
 										</tr>
 									</thead>
 									<tbody>
