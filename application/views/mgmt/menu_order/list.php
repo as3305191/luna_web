@@ -93,7 +93,7 @@
 					$menu_name = $('#menu_name').empty();
 					// var option = '<option value="0">全部</option>';
 					// $img_style.append(option);
-					$.each(d.menu_style, function(){
+					$.each(d.list, function(){
 						$('<option/>', {
 							'value': this.id,
 							'text': this.menu_name
@@ -106,7 +106,7 @@
 			}
 		});
 	}
-	load_menu_style();
+	load_menu();
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
 		var fix_date = $('#menu_name').val();
 		var fix_reason = $('#amount').val();
@@ -128,8 +128,8 @@
 			dataType: 'json',
 			success: function(d) {
 				if(d) {
-					var $now_fix_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-12"><span fix_id="">  維修原因:  '+fix_reason+'  處置情形:  '+fix_way+'  維修者:  '+$('#fix_user option:selected').text()+'</span></div></div></hr>').appendTo($('#now_fix'));
-					now_fix_record.push(d.last_id);
+					// var $now_fix_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-12"><span fix_id="">  維修原因:  '+fix_reason+'  處置情形:  '+fix_way+'  維修者:  '+$('#fix_user option:selected').text()+'</span></div></div></hr>').appendTo($('#now_fix'));
+					// now_fix_record.push(d.last_id);
 				}
 			},
 			failure:function(){

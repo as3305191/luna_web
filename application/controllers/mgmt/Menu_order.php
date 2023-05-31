@@ -136,11 +136,11 @@ class Menu_order extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function find_menu_style(){
+	public function find_all_menu(){
 		$res = array();
 		$id = $this -> get_post('id');
-		$menu_style_list = $this -> menu_style_dao -> find_all();
-		$res['menu_style'] = $menu_style_list;
+		$list = $this -> menu_dao -> find_all_open();
+		$res['list'] = $list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
