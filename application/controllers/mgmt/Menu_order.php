@@ -150,7 +150,7 @@ class Menu_order extends MY_Mgmt_Controller {
 	public function find_all_open_menu(){
 		$res = array();
 		$id = $this -> get_post('id');
-		$list = $this -> menu_dao -> find_all_open($id);
+		$list = $this -> menu_dao -> find_all_open_menu($id);
 		if(!empty($list -> img_id)) {
 			$image= explode(",", $list -> img_id);
 			$list -> image_id =$image ;
