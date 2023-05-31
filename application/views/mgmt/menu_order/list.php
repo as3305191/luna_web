@@ -23,6 +23,7 @@
 			<table class="table table-bordered order">
 				<thead>
 					<tr>
+						<th></th>
 						<th>選擇店家</th>
 						<th>品項</th>
 						<th>金額</th>
@@ -30,7 +31,7 @@
 						<th></th>
 					</tr>
 					<tr>
-						
+						<td class="min50" style="border-right:none;"></td>
 						<td class="min120" style="border-right:none;">
 							<div class="input-group col-md-12">
 									<select id="fix_user" class="form-control">
@@ -41,24 +42,24 @@
 								</select> 
 							</div>
 						</td>
-						<td class="min150" style="border-right:none;">
+						<td style="border-right:none;">
 							<div class="input-group col-md-12">
-								<input type="text" class="form-control dt_picker" id="fix_date" placeholder="品項">
+								<input type="text" class="form-control" id="menu_name" placeholder="品項">
 							</div>
 						</td>
 						<td style="border-right:none;">
 							<div class="input-group col-md-12">
-								<input type="text" class="form-control" id="fix_reason" placeholder="金錢總額">
+								<input type="text" class="form-control" id="amount" placeholder="金錢總額">
 							</div>
 						</td>
 						<td style="border-right:none;">
 							<div class="input-group col-md-12">
-								<input type="text" class="form-control" id="fix_way_" placeholder="備注">
+								<input type="text" class="form-control" id="note" placeholder="備注">
 							</div>
 						</td>
 						
 						<td style="border-right:none;">
-							<button type="button" class="btn btn-sm btn-primary" onclick="add_ㄙㄧ()"><i class="fa fa-plus-circle fa-lg"></i></button>
+							<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
 						</td>
 					</tr>
 				</thead>
@@ -81,6 +82,60 @@
 			
 		});
 	});
+	function load_menu() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_menu',
+			type: 'POST',
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$menu_name = $('#menu_name').empty();
+					// var option = '<option value="0">全部</option>';
+					// $img_style.append(option);
+					$.each(d.menu_style, function(){
+						$('<option/>', {
+							'value': this.id,
+							'text': this.menu_name
+						}).appendTo($menu_name);
+					});
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+	load_menu_style();
+	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
+		var fix_date = $('#menu_name').val();
+		var fix_reason = $('#amount').val();
+		var fix_way = $('#note').val();
+		
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/fix_list/fix_record_insert',
+			type: 'POST',
+			data: {
+				fix_type: $('#fix_type').val(),
+				fix_way: $('#fix_way').val(),
+				fix_reason: fix_reason,//維修原因
+				fix_way_: fix_way,//處置方式
+				fix_user: fix_user,//維修的人
+				fix_date: fix_date,
+				computer_id: now_sh_list[0]['computer_id'],
 
-	
+			},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					var $now_fix_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-12"><span fix_id="">  維修原因:  '+fix_reason+'  處置情形:  '+fix_way+'  維修者:  '+$('#fix_user option:selected').text()+'</span></div></div></hr>').appendTo($('#now_fix'));
+					now_fix_record.push(d.last_id);
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+
+	}
 </script>

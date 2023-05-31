@@ -154,34 +154,15 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function up_carousel(){
-		$news_id = $this -> get_post('news_id');
+	public function up_lock_menu(){
+		$menu_id = $this -> get_post('id');
 		$u_data = array();
 		$i_data = array();
-		$p = $this -> dao -> find_by_id($news_id);
-		if(!empty($p)){
-			if($p->status==0){
+		$list = $this -> dao -> find_by_id($menu_id);
+		if(!empty($list)){
+			if($list->status==0){
 				$u_data['status'] = 1;
-				$res['success_msg'] = '變更輪播成功';
-				if($p->news_style_id==9){
-					$content_array=explode("</p>",$p->content);
-					foreach($content_array as $each){
-						$img_id = $this->get_between($each, "get/", '/thumb');
-						$img_id_array[] = $img_id;
-						foreach($img_id_array as $img_id_key=>$each_img_id){
-							if(!is_numeric($each_img_id))
-							unset($img_id_array[$img_id_key]);
-						}
-					}
-					$new_img_array = $img_id_array;
-					$res['new_img_array'] = $new_img_array;
-					$this -> img_month_use_dao -> empty_table();
-					foreach($new_img_array as $each){
-						$i_data['img_id'] = $each;
-						$this -> img_month_use_dao -> insert($i_data);
-						$this -> img_month_use_record_dao -> insert($i_data);
-					}
-				}
+				$res['success_msg'] = '變更菜單成功';
 			} else{
 				$u_data['status'] = 0;
 				$res['success_msg'] = '變更非輪播成功';

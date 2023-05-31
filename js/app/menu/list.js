@@ -29,7 +29,37 @@ var listmenuAppClass = (function(app) {
 		app.doExportAll = function(id) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
 		}
-		
+
+		$(nRow).find('.product-post').eq(0).click(function(){
+			var me = $(this).attr('id');
+			$.ajax({
+				url: baseUrl + app.basePath + '/up_lock_menu',
+				data: {
+				//   'swot_title_id': $('#swot_title_id').val(),
+				  'id': me
+				},
+				error: function() {
+				},
+				dataType: 'json',
+				success: function(data) {
+					if(data.success_msg){
+						$.smallBox({
+							title: data.success_msg,
+							content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+							color: "#5F895F",
+							iconSmall: "fa fa-check bounce animated",
+							timeout: 4000
+						});
+
+						app.tableReload();
+					}
+					if(data.message){
+						layer.msg(data.message);
+					}
+				},
+				type: 'POST'
+			})
+		})
 
 		$('#s_menu_name').on('change', function(){
 			app.tableReload();
