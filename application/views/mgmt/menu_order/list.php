@@ -153,8 +153,8 @@ var mColDefs = [{
 	}
 	load_menu();
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
-		var menu_name = $('#menu_name').val();
-		var order_name = $('#menorder_nameorder_nameu_name').val();
+		var menu_id = $('#menu_name').val();
+		var order_name = $('#order_name').val();
 		var amount = $('#amount').val();
 		var note = $('#note').val();
 		
@@ -162,16 +162,17 @@ var mColDefs = [{
 			url: '<?= base_url() ?>' + 'mgmt/menu_order/insert',
 			type: 'POST',
 			data: {
-				menu_name : menu_name,
+				menu_id : menu_id,
 				order_name :order_name,
 				amount :amount,
 				note:note
 			},
 			dataType: 'json',
 			success: function(d) {
-				if(d) {
+				if(d.success) {
 					// var $now_fix_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-12"><span fix_id="">  維修原因:  '+fix_reason+'  處置情形:  '+fix_way+'  維修者:  '+$('#fix_user option:selected').text()+'</span></div></div></hr>').appendTo($('#now_fix'));
 					// now_fix_record.push(d.last_id);
+					currentApp.tableReload();
 				}
 			},
 			failure:function(){
