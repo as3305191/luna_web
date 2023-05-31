@@ -215,8 +215,8 @@ function load_style() {
 					var menu_style_id=$('#s_menu_style_id').val();
 					// console.log(d);
 					$img_style = $('#menu_style_id').empty();
-					// var option = '<option value="0">全部</option>';
-					// $img_style.append(option);
+					var option = '<option value="0">無</option>';
+					$img_style.append(option);
 					if(menu_style_id>0 ){ 
 						$.each(d.menu_style, function(){
 							if(this.id==menu_style_id){
