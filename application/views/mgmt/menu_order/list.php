@@ -33,6 +33,17 @@
 							<?php endfor ?>
 						<?php endif?>
 					<?php endif?>
+
+					<?php if($open_menu_count>0): ?>
+						<?php if($open_menu_count==1): ?>
+							<div class="text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;background-image: url(<?= base_url('mgmt/images/get/'.$menu_list[0]->img_id) ?>)" ></div>
+						<?php else: ?>		
+							<div class="text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;background-image: url(<?= base_url('mgmt/images/get/'.$menu_list[0]->img_id) ?>)" ></div>
+							<?php for ($i=1;$i<count($menu_list);$i++) : ?>
+								<div class="menu_img_unsuccess btn-light text-light  menu_img menu_img_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;background-image: url(<?= base_url('mgmt/images/get/'.$menu_list[$i]->img_id) ?>)"></div>
+							<?php endfor ?>
+						<?php endif?>
+					<?php endif?>
 					
 					<!-- <button class="btn-success text-light btn_active menu_1" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="backStep1()">菜單1</button>
 					<button class="btn-light text-light btn_unsuccess menu_3" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;">菜單3</button> -->
