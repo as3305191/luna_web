@@ -18,33 +18,67 @@
        
         <hr/>
     </div>
-    <form role="form" id="menu_1" action="" name="step-1" method="post" autocomplete="off" style="padding:0px 13px">
-			<fieldset>
-				<div class="form-group">
-					<label class="col-md-3 control-label">品項</label>
-					<div class="col-md-6" id="patnet_status" >
-						<textarea type="text" require class="form-control" rows="3" id="inventor" name="inventor" style="resize:none;width:100%" ><?= isset($item) ? $item -> inventor : '' ?></textarea>
-					</div>
-				</div>
-			</fieldset>
-			<fieldset>
-				<div class="form-group">
-					<label class="col-md-3 control-label">備注</label>
-					<div class="col-md-6">
-						<textarea type="text" require class="form-control" rows="3" id="inventor" name="inventor" style="resize:none;width:100%" ><?= isset($item) ? $item -> inventor : '' ?></textarea>
-					</div>
-				</div>
-			</fieldset>
-		
-			<fieldset>
-				<div class="form-group">
-					<label class="col-md-3 control-label">總金額</label>
-					<div class="col-md-6">
-						<input type="text" required class="form-control" name="s_menu_style_id"  id="s_menu_style_id" value="<?= isset($item) ? $item -> menu_style_id : 0 ?>"  />
-					</div>
-				</div>
-			</fieldset>
-    </form>
+	<div class="card-body">
+		<div class="product-list">
+			<table class="table table-bordered order">
+				<thead>
+					<tr>
+						<th>選擇店家</th>
+						<th>品項</th>
+						<th>金額</th>
+						<th>備注</th>
+						<th></th>
+					</tr>
+					<tr>
+						
+						<td class="min120" style="border-right:none;">
+							<div class="input-group col-md-12">
+									<select id="fix_user" class="form-control">
+									<option selected disabled style="display:none">請選擇</option>
+									<?php foreach($engineer as $each): ?>
+										<option value="<?= $each -> id?>"><?=  $each -> user_name ?></option>
+									<?php endforeach ?>
+								</select> 
+							</div>
+						</td>
+						<td class="min150" style="border-right:none;">
+							<div class="input-group col-md-12">
+								<input type="text" class="form-control dt_picker" id="fix_date" placeholder="選擇店家">
+							</div>
+						</td>
+						<td style="border-right:none;">
+							<div class="input-group col-md-12">
+								<input type="text" class="form-control" id="fix_reason" placeholder="品項">
+							</div>
+						</td>
+						<td style="border-right:none;">
+							<div class="input-group col-md-12">
+								<input type="text" class="form-control" id="fix_way_" placeholder="金額">
+							</div>
+						</td>
+						<td class="min120" style="border-right:none;">
+							<div class="input-group col-md-12">
+									<select id="fix_user" class="form-control">
+									<option selected disabled style="display:none">請選擇</option>
+									<?php foreach($engineer as $each): ?>
+										<option value="<?= $each -> id?>"><?=  $each -> user_name ?></option>
+									<?php endforeach ?>
+								</select> 
+							</div>
+						</td>
+						<td style="border-right:none;">
+							<button type="button" class="btn btn-sm btn-primary" onclick="add_fix()"><i class="fa fa-plus-circle fa-lg"></i></button>
+						</td>
+					</tr>
+				</thead>
+				<tbody>
+					
+				</tbody>
+			</table>
+
+
+		</div>
+	</div>
 
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
