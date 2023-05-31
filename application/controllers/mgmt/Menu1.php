@@ -27,6 +27,7 @@ class Menu extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
+			's_menu_style',
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());

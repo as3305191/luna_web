@@ -1,53 +1,62 @@
+<style>
+thead tr th {
+	position:sticky;
+	top:0;
+	background-color:#FFFFFF !important;
+	text-align:center;
+}
+</style>
+
+<!-- CSS Unify Theme -->
+<link rel="stylesheet" href="<?= base_url() ?>assets_co/assets_/css/styles.multipage-real-estate.css">
+  
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
 
 		<!-- widget grid -->
 		<section id="widget-grid" class="">
-
 			<!-- row -->
 			<div class="row">
-
 				<!-- NEW WIDGET START -->
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget">
-						<header>
-							<div class="widget-toolbar pull-left">
-								<label class="col-md-3 control-label">圖片類別</label>
-								<div class="col-md-6">
-									<select id="img_style" class="form-control">
-										<!-- option from javascript -->
-									</select>
-								</div>
-								<div class="col-md-2">
-									<button type="button" class="btn btn-sm btn-primary" id="add_img_style"><i class="fa fa-plus-circle fa-lg"></i></button>
-								</div>
-							</div>
-							<div class="widget-toolbar pull-left">
-								<label class="col-md-3 control-label">上傳照片</label>
-								<div class="col-md-6">
-									<input id="image_id" name="image_id" type="hidden" value="<?= isset($item) ? $item->image_id : '' ?>">
-									<img id="file-input-win-img" style="max-width:80%;position: relative;z-index: 100;<?= isset($item) && !empty($item->image_id) ? " " : 'display:none;' ?>" />
-									<input id="img-input" name="file" type="file" accept="image/*" class="form-control">
-									<div id="file-input-progress-win-img" class="progress" style="display:none">
-										<div class="progress-bar progress-bar-success"></div>
+					<div class="jarviswidget" > 
+						<header >
+								<div class="widget-toolbar pull-left">
+									<div class="btn-group">
+										<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
+											<i class="fa fa-plus"></i>新增
+										</button>
 									</div>
 								</div>
-							</div>
+							
+                               
+                            </div>
+							<!-- <div class="widget-toolbar pull-left">
+								<div class="btn-group">
+									<button onclick="do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
+										<i class="fa fa-refresh"></i>一鍵清除
+									</button>
+								</div>
+							</div> -->
+							
 						</header>
+						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
+
 						<!-- widget div-->
 						<div>
 							<!-- widget edit box -->
 							<div class="jarviswidget-editbox">
 								<!-- This area used as dropdown edit box -->
+
 							</div>
 							<!-- end widget edit box -->
-							<input type="hidden" class="form-control" id="user_id" name="user_id" value="<?= isset($login_user) ? $login_user->id : '' ?>"  />
 
 							<!-- widget content -->
 							<div class="widget-body no-padding">
-								<table id="pic_list" class="table table-striped table-bordered table-hover" width="100%">
+								
+								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
 											<th class="min100">是否預設</th>
@@ -59,7 +68,6 @@
 									<tbody>
 									</tbody>
 								</table>
-
 							</div>
 							<!-- end widget content -->
 
@@ -85,153 +93,82 @@
 			<!-- row -->
 			<div class="row">
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="edit-modal-body">
-
+									
 				</article>
 			</div>
 		</section>
 	</div>
 </div>
-<?php $this -> load -> view('general/delete_modal'); ?>
-<script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
-<script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
-<script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/vendor/jquery.ui.widget.js"></script>
-<script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/jquery.iframe-transport.js"></script>
-<script src="<?= base_url() ?>js/plugin/jquery-file-upload/js/jquery.fileupload.js"></script>
 
+<?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
+	var baseUrl = '<?=base_url('')?>';
+
+	var mCols = [null,{
+		data : 'menu_name',
+		render: function(d,t,r){
+			if(r.patent_key_id_array.length == 0){
+				var html = '<span style="color:red;">'+d+'</span>';
+				return html;
+			} else{
+				return d;
+			}
+		}
+	}, {
+		data : 'style_name'
+	},{
+		data : 'img_id',
+		render: function (data) {
+			if(data>0){
+				return (data && data > 0 ? '<div class="img_con" style="width:150px;height:150px;background-image:url(' + baseUrl + 'api/images/get/' + data + '/thumb)" />' : "");
+			} else{
+				return '';
+			}
+		} 
+	}];
+
+	var mOrderIdx = 6;
+	
+	if($('#l_user_id').val()=='9' || $('#l_user_id').val()=='28'|| $('#l_user_id').val()=='11' ){
+		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
+	} else{
+		var defaultContent = '<a role="button" data-toggle="modal" style="margin-right: 5px;" ><i class="fa fa-trash fa-lg"></i></a>';
+	}
+
+	var mColDefs = [{
+		targets : 0,
+		data : null,
+		defaultContent : defaultContent,
+		searchable : false,
+		orderable : false,
+		width : "5%",
+		className : ''
+	}, {
+		"targets" : [0,1,2,3,4,5,6,7],
+		"orderable" : false
+	}];
+
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/menu/list.js", function(){
-			currentApp = new MenuClass(new BaseAppClass({}));
-			// currentApp.doEdit();
+		loadScript(baseUrl + "js/app/patent/list.js", function(){
+			currentApp = new patentAppClass(new BaseAppClass({}));
+			$('#key-seach-form').submit(function(e){
+				keyChange();
+				e.preventDefault();
+			});
+			
 		});
 	});
 
-	$('#add_img_style').click(function() {
-		layer.open({
-			type:2,
-			title:'',
-			closeBtn:0,
-			area:['400px','200px'],
-			shadeClose:true,
-			content:'<?=base_url('mgmt/menu/new_menu_style')?>'
-		})
-	})
+	var total_category=0;
 
-	$("#m_bulletin_type").val($("#bulletin_type").val());
-
-	$('#img-input').fileupload({
-			
-			url: '<?= base_url('mgmt/images/upload_news/menu_img') ?>',
-			dataType: 'json',
-			done: function(e, data) {
-				// $('#file-input-win-img').prop('src', data.result.initialPreview[0]).show();
-				$('#image_id').val(data.result.id).attr('uid', data.result.id);
-				// $('#file-input-progress-win-img').hide();
-				$.ajax({
-					url: '<?= base_url() ?>' + 'mgmt/menu/update_menu_style',
-					type: 'POST',
-					data: {
-						last_id:data.result.id,
-						menu_style:$('#img_style').val()
-					},
-					dataType: 'json',
-					success: function(d) {
-						layer.msg("圖片上傳成功")
-						layer.closeAll();
-						currentApp.tableReload();
-					},
-					failure:function(){
-						alert('faialure');
-					}
-				});
-			},
-			progressall: function(e, data) {
-				var progress = parseInt(data.loaded / data.total * 100, 10);
-				$('#file-input-progress-win-img').show();
-				$('#file-input-progress-win-img .progress-bar').show().css(
-					'width',
-					progress + '%'
-				);
-			},
-			success: function(data) {
-			}
-		}).prop('disabled', !$.support.fileInput).parent().addClass($.support.fileInput ? undefined : 'disabled');
-
-	// currentApp.doSubmit = function() {
-	// 	if (!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
-	// 	$('#lang').val($('#sys_lang').val());
-	// 	var sAttr = $("input[name='s_attr[]']:checked").map(function() {
-	// 		return this.value
-	// 	}).get();
-
-	// 	var url = baseUrl + 'mgmt/place_mark/insert'; // the script where you handle the form input.
-	// 	$.ajax({
-	// 		type: "POST",
-	// 		url: url,
-	// 		data: {
-	// 			sAttr: sAttr.join('#'),
-	// 			id: $('#item_id').val(),
-	// 			place_mark_name: $('input[name="place_mark_name"]').val(),
-	// 			lng: $('input[name="lng"]').val(),
-	// 			lat: $('input[name="lat"]').val(),
-	// 			description: $('input[name="description"]').val(),
-	// 			full_address: $('input[name="full_address"]').val(),
-	// 			country: $('input[name="country"]').val(),
-	// 			city: $('input[name="city"]').val(),
-	// 			district: $('input[name="district"]').val(),
-	// 			web_url: $('input[name="web_url"]').val(),
-	// 			facebook_url: $('input[name="facebook_url"]').val(),
-
-	// 		},
-	// 		success: function(data) {
-	// 			// app.mDtTable.ajax.reload(null, false);
-	// 			// app.backTo();
-	// 		}
-	// 	});
-	// };
-
-	function doGetCityAndArea() {
-		var lng = $("#lng").val();
-		var lat = $("#lat").val();
-		$.ajax({
-			type: "POST",
-			url: '<?= base_url('api/parser/check_loc_test') ?>',
-			data: {
-				lng: lng,
-				lat: lat
-			},
-			success: function(data) {
-				if (data.county_name) {
-					$('input[name="city"]').val(data.county_name);
-					$('input[name="district"]').val(data.town_name);
-				}
-			}
-		});
+	
+	
+	function do_remove() {//一鍵清除所有篩選
+		$('#patent_header input').val('');
+		$("input[name='patent_status[]']").removeAttr("checked");
+		load_category();
+		currentApp.tableReload();
+		
 	}
 
-	function load_menu_style() {
-		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/menu/find_menu_style',
-			type: 'POST',
-			dataType: 'json',
-			success: function(d) {
-				if(d) {
-					// console.log(d);
-					$img_style = $('#img_style').empty();
-					var option = '<option value="0">全部</option>';
-					$img_style.append(option);
-					$.each(d.menu_style, function(){
-						$('<option/>', {
-							'value': this.id,
-							'text': this.menu_style
-						}).appendTo($img_style);
-					});
-				}
-			},
-			failure:function(){
-				alert('faialure');
-			}
-		});
-	}
-load_menu_style();
 </script>
