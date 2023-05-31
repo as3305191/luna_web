@@ -108,17 +108,18 @@
 	}, {
 		data : 'menu_style'
 	},{
-		data : 'img_id',
-		render: function (data) {
-			if(data>0){
-				return (data && data > 0 ? '<div class="img_con" style="width:150px;height:150px;background-image:url(' + baseUrl + 'api/images/get/' + data + '/thumb)" />' : "");
-			} else{
-				return '';
-			}
-		} 
+		data : 'img_id'
+		// ,
+		// render: function (data) {
+		// 	if(data>0){
+		// 		return (data && data > 0 ? '<div class="img_con" style="width:150px;height:150px;background-image:url(' + baseUrl + 'api/images/get/' + data + '/thumb)" />' : "");
+		// 	} else{
+		// 		return '';
+		// 	}
+		// } 
 	}];
 
-	var mOrderIdx = 6;
+	var mOrderIdx = 0;
 	
 	if($('#l_user_id').val()=='9' || $('#l_user_id').val()=='28'|| $('#l_user_id').val()=='11' ){
 		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
