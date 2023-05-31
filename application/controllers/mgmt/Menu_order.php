@@ -20,7 +20,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 
-		$this -> load -> view('mgmt/menu/list', $data);
+		$this -> load -> view('mgmt/menu_order/list', $data);
 	}
 
 	public function get_data() {
@@ -76,7 +76,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		
 
 		}
-		$this->load->view('mgmt/menu/edit', $data);
+		$this->load->view('mgmt/menu_order/edit', $data);
 	}
 
 
