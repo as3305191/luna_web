@@ -6,7 +6,7 @@ var listmenuAppClass = (function(app) {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
 					d.s_menu_name = $('#s_menu_name').val();
-
+					
 				},
 				dataSrc : 'items',
 				dataType : 'json',
@@ -14,11 +14,12 @@ var listmenuAppClass = (function(app) {
 				complete:function(data){
 				}
 			},
-			iDisplayLength : 30,
+			iDisplayLength : 50,
 			columns : mCols,
-			order :false,
+			order : [[9, "desc"]],
 			columnDefs : mColDefs
 		}));
+
 		// data table actions
 		app.dtActions();
 
@@ -28,7 +29,12 @@ var listmenuAppClass = (function(app) {
 		app.doExportAll = function(id) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
 		}
-	
+		
+
+		$('#s_menu_name').on('change', function(){
+			app.tableReload();
+		});
+	    // $(window).trigger("hashchange");
 
 		return app;
 	};
