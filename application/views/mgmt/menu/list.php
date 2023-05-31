@@ -148,12 +148,8 @@
 	}];
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/patent/list.js", function(){
-			currentApp = new patentAppClass(new BaseAppClass({}));
-			$('#key-seach-form').submit(function(e){
-				keyChange();
-				e.preventDefault();
-			});
+		loadScript(baseUrl + "js/app/menu/list.js", function(){
+			currentApp = new menuAppClass(new BaseAppClass({}));
 			
 		});
 	});
