@@ -23,7 +23,6 @@ thead tr th {
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
 						<header >
-							<?php if($login_user->role_id==9 ||$login_user->role_id==11||$login_user->role_id==28): ?>
 								<div class="widget-toolbar pull-left">
 									<div class="btn-group">
 										<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
@@ -31,18 +30,12 @@ thead tr th {
 										</button>
 									</div>
 								</div>
-							<?php endif?>
-							<div id="patent_header">
-								
-								<div class="widget-toolbar pull-left">
-									<label>店名</label>
+								<label class="col-md-3 control-label">店家分類</label>
+								<div class="col-md-6">
+									<select id="img_style" class="form-control">
+										<!-- option from javascript -->
+									</select>
 								</div>
-								<div class="widget-toolbar pull-left">
-									<input id="s_menu_name" ondragover="" autocomplete="off" type="text" class="form-control" />
-								</div>
-								
-				
-							</div>
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 
@@ -137,5 +130,29 @@ thead tr th {
 		});
 	});
 
-
+	function load_menu_style() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/menu/find_menu_style',
+			type: 'POST',
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$img_style = $('#img_style').empty();
+					var option = '<option value="0">全部</option>';
+					$img_style.append(option);
+					$.each(d.menu_style, function(){
+						$('<option/>', {
+							'value': this.id,
+							'text': this.menu_style
+						}).appendTo($img_style);
+					});
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+load_menu_style();
 </script>
