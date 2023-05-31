@@ -56,16 +56,7 @@
 								<input type="text" class="form-control" id="fix_way_" placeholder="金額">
 							</div>
 						</td>
-						<td class="min120" style="border-right:none;">
-							<div class="input-group col-md-12">
-									<select id="fix_user" class="form-control">
-									<option selected disabled style="display:none">請選擇</option>
-									<?php foreach($engineer as $each): ?>
-										<option value="<?= $each -> id?>"><?=  $each -> user_name ?></option>
-									<?php endforeach ?>
-								</select> 
-							</div>
-						</td>
+						
 						<td style="border-right:none;">
 							<button type="button" class="btn btn-sm btn-primary" onclick="add_fix()"><i class="fa fa-plus-circle fa-lg"></i></button>
 						</td>
