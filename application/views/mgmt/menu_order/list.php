@@ -43,22 +43,22 @@
 						</td>
 						<td class="min150" style="border-right:none;">
 							<div class="input-group col-md-12">
-								<input type="text" class="form-control dt_picker" id="fix_date" placeholder="選擇店家">
+								<input type="text" class="form-control dt_picker" id="fix_date" placeholder="品項">
 							</div>
 						</td>
 						<td style="border-right:none;">
 							<div class="input-group col-md-12">
-								<input type="text" class="form-control" id="fix_reason" placeholder="品項">
+								<input type="text" class="form-control" id="fix_reason" placeholder="金錢總額">
 							</div>
 						</td>
 						<td style="border-right:none;">
 							<div class="input-group col-md-12">
-								<input type="text" class="form-control" id="fix_way_" placeholder="金額">
+								<input type="text" class="form-control" id="fix_way_" placeholder="備注">
 							</div>
 						</td>
 						
 						<td style="border-right:none;">
-							<button type="button" class="btn btn-sm btn-primary" onclick="add_fix()"><i class="fa fa-plus-circle fa-lg"></i></button>
+							<button type="button" class="btn btn-sm btn-primary" onclick="add_ㄙㄧ()"><i class="fa fa-plus-circle fa-lg"></i></button>
 						</td>
 					</tr>
 				</thead>
