@@ -8,7 +8,7 @@
 </style>
 
 <!-- CSS Unify Theme -->
-<!-- <link rel="stylesheet" href="<?= base_url() ?>assets_co/assets_/css/styles.multipage-real-estate.css"> -->
+<link rel="stylesheet" href="<?= base_url() ?>assets_co/assets_/css/styles.multipage-real-estate.css">
   
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
@@ -32,7 +32,6 @@
 							</div>
 							
                                
-                            </div>
 							<!-- <div class="widget-toolbar pull-left">
 								<div class="btn-group">
 									<button onclick="do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
