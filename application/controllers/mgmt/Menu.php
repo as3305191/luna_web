@@ -30,10 +30,10 @@ class Menu extends MY_Mgmt_Controller {
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
-		$items = $this -> img_dao -> find_menu_img($data);
+		$items = $this -> dao -> query_ajax($data);
 		$res['items'] = $items;
-		$res['recordsFiltered'] = $this -> img_dao -> find_menu_img($data,true);
-		$res['recordsTotal'] = $this -> img_dao -> find_menu_img($data,true);
+		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
+		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
 		$this -> to_json($res);
 	}
 
