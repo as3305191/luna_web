@@ -192,7 +192,7 @@ var mColDefs = [{
 
         $('#img_album').append(img_album_html);
 
-        $.each(data.image, function() {
+        $.each(data.list_image, function() {
           var me = this;
           var img_html =
           '<div class="js-slide g-px-3">'+
