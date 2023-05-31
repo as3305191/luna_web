@@ -85,22 +85,18 @@ class Menu_order extends MY_Mgmt_Controller {
 		$res = array();
 		$s_data = array();
 		$data = array();
-		$img= $this -> get_post('img');
 		$menu_id = $this -> get_post('menu_id');
 		$order_name = $this -> get_post('order_name');
 		$amount = $this -> get_post('amount');
 		$note = $this -> get_post('note');
-		// foreach ($img as $each) {
-		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
-		// }
-		
+	
 		$s_data = $this -> setup_user_data($s_data);
 		$data['user_id'] = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['menu_id'] = $menu_id;
 		$data['order_name'] = $order_name;
 		$data['amount'] = $amount;
 		$data['note'] = $note;
-		if(empty($id)) {
+		if(!empty($menu_id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
 			$res['success'] = TRUE;
