@@ -44,6 +44,8 @@ class Menu extends MY_Mgmt_Controller {
 	public function edit($id) {
 		$data = array();
 		$data['id'] = $id;
+		$u_data = $this -> setup_user_data($u_data);
+		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
@@ -59,8 +61,7 @@ class Menu extends MY_Mgmt_Controller {
 				$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
 			}
 			$data['item'] = $item;
-			$u_data = $this -> setup_user_data($u_data);
-			$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
+		
 
 		}
 		$this->load->view('mgmt/menu/edit', $data);

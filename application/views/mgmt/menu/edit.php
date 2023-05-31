@@ -81,7 +81,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">分類</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="patnet_name"  id="patnet_name" value="<?= isset($item) ? $item -> patent_name : '' ?>"  <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>/>
+						<input type="text" required class="form-control" name="patnet_name"  id="patnet_name" value="<?= isset($item) ? $item -> patent_name : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -90,8 +90,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">圖片</label>
 					<div class="col-md-6">
-						<input id="img-input" name="file[]" type="file" accept="image/*" multiple class="file-loading form-control" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
-						<input id="img_id" type="hidden"  value="<?= isset($item) ? $item -> img_id : '' ?>" <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>>
+						<input id="img-input" name="file[]" type="file" accept="image/*" multiple class="file-loading form-control" >
+						<input id="img_id" type="hidden"  value="<?= isset($item) ? $item -> img_id : '' ?>" >
 					</div>
 				</div>
 			</fieldset>
@@ -166,64 +166,6 @@ $("#img-input").fileinput({
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
-	});
-
-	$("#file-input").fileinput({
-		language: "zh-TW",
-		initialPreviewAsData: true,
-		overwriteInitial: false,
-		purifyHtml:true ,
-		 
-        <?php if(!empty($item -> files) && count($item -> files) > 0): ?>
-        	initialPreview: [
-        		<?php foreach($item -> files as $files): ?>
-        			'<?=  base_url('mgmt/images/get_pdf/' . $files->id) ?>',
-        		<?php endforeach ?>
-        	],
-        	initialPreviewConfig: [
-        	<?php foreach($item -> files as $files): ?>
-			<?php if($login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28): ?>
-				{
-	        		'caption' : '<?= $files -> file_name ?>',
-	        		'size' : <?= $files -> file_size ?>,
-					'width' : '120px',
-					'type': 'pdf',
-					'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
-	        		'url' : '<?= base_url('mgmt/images/delete_file/' . $files->id)  ?>',
-	        		'key' : <?= $files->id?>
-				},
-				<?php else: ?>
-					{
-						'caption' : '<?= $files -> file_name ?>',
-						'size' : <?= $files -> file_size ?>,
-						'width' : '120px',
-						'type': 'pdf',
-						'downloadUrl': '<?=base_url('mgmt/images/get_pdf/' . $files->id)?>',
-						'key' : <?= $files->id?>
-					},
-				<?php endif ?>
-    		<?php endforeach ?>
-        	],
-        <?php else: ?>
-        	initialPreview: [],
-        	initialPreviewConfig: [],
-		<?php endif ?>
-        maxFileCount: 1,
-        uploadUrl: 'mgmt/images/upload_img_or_pdf/file',
-        uploadExtraData: {
-        }
-    }).on('fileuploaded', function(event, data, previewId, index) {
-    	// upload image
-	   var id = data.response.id;
-	   pdf_array.push(id);
-	//    console.log(pdf_array);
-	//    $("#file-input").fileinput('reset');
-	}).on('fileselect', function(event, numFiles, label) {
-    	$("#file-input").fileinput('upload');
-	}).on('filedeleted', function(event,data,key) {
-		pdf_array.splice($.inArray(data,pdf_array),1);
-	}).on('fileuploaderror', function(event, data, previewId, index) {
-		alert('upload error');
 	});
 
 	
