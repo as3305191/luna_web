@@ -1,10 +1,10 @@
 <style>
-/* thead tr th {
+thead tr th {
 	position:sticky;
 	top:0;
 	background-color:#FFFFFF !important;
 	text-align:center;
-} */
+}
 </style>
 
 <!-- CSS Unify Theme -->
@@ -23,22 +23,22 @@
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
 						<header >
-							<div class="widget-toolbar pull-left">
-								<div class="btn-group">
-									<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
-										<i class="fa fa-plus"></i>新增
-									</button>
+								<div class="widget-toolbar pull-left">
+									<div class="btn-group">
+										<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
+											<i class="fa fa-plus"></i>新增
+										</button>
+									</div>
 								</div>
-							</div>
 							
-                               
-							<!-- <div class="widget-toolbar pull-left">
+                          
+							<div class="widget-toolbar pull-left">
 								<div class="btn-group">
 									<button onclick="do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
 										<i class="fa fa-refresh"></i>一鍵清除
 									</button>
 								</div>
-							</div> -->
+							</div>
 							
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
@@ -54,11 +54,10 @@
 
 							<!-- widget content -->
 							<div class="widget-body no-padding">
-								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 								
+								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											
 											<th class="min25">是否預設</th>
 											<th class="min100">分類</th>
 											<th class="min100">照片</th>
@@ -150,12 +149,12 @@
 
 	
 	
-	function do_remove() {//一鍵清除所有篩選
-		$('#patent_header input').val('');
-		$("input[name='patent_status[]']").removeAttr("checked");
-		load_category();
-		currentApp.tableReload();
+	// function do_remove() {//一鍵清除所有篩選
+	// 	$('#patent_header input').val('');
+	// 	$("input[name='patent_status[]']").removeAttr("checked");
+	// 	load_category();
+	// 	currentApp.tableReload();
 		
-	}
+	// }
 
 </script>
