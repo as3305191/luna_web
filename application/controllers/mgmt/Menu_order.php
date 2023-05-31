@@ -91,7 +91,8 @@ class Menu_order extends MY_Mgmt_Controller {
 		$note = $this -> get_post('note');
 	
 		$s_data = $this -> setup_user_data($s_data);
-		$data['user_id'] = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$user_list = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$data['user_id'] = $user_list->id;
 		$data['menu_id'] = $menu_id;
 		$data['order_name'] = $order_name;
 		$data['amount'] = $amount;
