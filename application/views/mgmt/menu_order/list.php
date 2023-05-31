@@ -39,12 +39,23 @@
 					<div class="row" style="padding:0px 0px 6px 12px;">
 						<?php if($open_menu_count>0): ?>
 							<?php if($open_menu_count==1): ?>
-								<img class ="text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" loading="lazy" style="max-height:200px;max-width:200px" >
-							<?php else: ?>		
-								<img class ="text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" loading="lazy" style="max-height:200px;max-width:200px" >
+								<div class="js-slide g-px-3">
+									<a class="js-fancybox d-block text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">'+
+										<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" alt="Image Description">'+
+									</a>
+								</div>
+							<?php else: ?>	
+								<div class="js-slide g-px-3">
+									<a class="js-fancybox d-block text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">'+
+										<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" alt="Image Description">'+
+									</a>
+								</div>
 								<?php for ($i=1;$i<count($menu_list);$i++) : ?>
-									<img class ="menu_img_unsuccess btn-light text-light  menu_img menu_img_<?= $menu_list[$i]->id ?>" src="<?= base_url('mgmt/images/get/'.$menu_list[$i]->img_id) ?>" loading="lazy" style="max-height:200px;max-width:200px" >
-
+									<div class="js-slide g-px-3">
+										<a class="js-fancybox d-block menu_img_unsuccess btn-light text-light  menu_img menu_img_<?= $menu_list[$i]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[$i]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">'+
+											<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[$i]->img_id?>" alt="Image Description">'+
+										</a>
+									</div>
 								<?php endfor ?>
 							<?php endif?>
 						<?php endif?>
