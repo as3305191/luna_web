@@ -5,7 +5,7 @@ class Menu_order extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('Menu_otder_dao', 'dao');
+		$this -> load -> model('Menu_order_dao', 'dao');
 		$this -> load -> model('Menu_dao', 'menu_dao');
 
 		$this -> load -> model('Images_dao', 'img_dao');
