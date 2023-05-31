@@ -61,6 +61,15 @@ class Menu extends MY_Mgmt_Controller {
 			// if(!empty($item -> image_id)) {
 			// 	$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
 			// }
+			if(!empty($item -> img_id)) {
+				$image= explode(",", $item -> img_id);
+				$item -> image_id =$image ;
+				foreach($image as $each){
+					$item -> image[] = $this -> img_dao -> find_by_id($each);
+				}
+			} else{
+				$item -> image =array();
+			}
 			$data['item'] = $item;
 		
 
