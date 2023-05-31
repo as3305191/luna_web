@@ -39,11 +39,11 @@
 					<div class="row" style="padding:0px 0px 6px 12px;">
 						<?php if($open_menu_count>0): ?>
 							<?php if($open_menu_count==1): ?>
-								<div class="text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" style="background-image: url(<?= base_url('mgmt/images/get/'.$menu_list[0]->img_id) ?>)" ></div>
+								<div class="text-light  menu_img menu_img_<?= $menu_list[0]->id ?>"  ><?= base_url('mgmt/images/get/'.$menu_list[0]->img_id) ?></div>
 							<?php else: ?>		
-								<div class="text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" style="background-image: url(<?= base_url('mgmt/images/get/'.$menu_list[0]->img_id) ?>)" ></div>
+								<div class="text-light  menu_img menu_img_<?= $menu_list[0]->id ?>"  ><?= base_url('mgmt/images/get/'.$menu_list[0]->img_id) ?></div>
 								<?php for ($i=1;$i<count($menu_list);$i++) : ?>
-									<div class="menu_img_unsuccess btn-light text-light  menu_img menu_img_<?= $menu_list[$i]->id ?>" style="background-image: url(<?= base_url('mgmt/images/get/'.$menu_list[$i]->img_id) ?>)"></div>
+									<div class="menu_img_unsuccess btn-light text-light  menu_img menu_img_<?= $menu_list[$i]->id ?>" ><?= base_url('mgmt/images/get/'.$menu_list[$i]->img_id) ?></div>
 								<?php endfor ?>
 							<?php endif?>
 						<?php endif?>
