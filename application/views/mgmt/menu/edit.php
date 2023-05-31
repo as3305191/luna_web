@@ -172,7 +172,8 @@ $("#img-input").fileinput({
     }).on('fileuploaded', function(event, data, previewId, index) {
 		// upload image
 		var id = data.response.id;
-		img.push(id);		
+		img.push(id);	
+		console.log(img);
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#img-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {

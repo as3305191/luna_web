@@ -105,6 +105,8 @@ thead tr th {
 	var baseUrl = '<?=base_url('')?>';
 
 	var mCols = [null,{
+		data : 'menu_name'
+	},{
 		data : 'style_name'
 	}];
 
@@ -125,7 +127,7 @@ thead tr th {
 		width : "5%",
 		className : ''
 	}, {
-		"targets" : [0,1],
+		"targets" : [0,1,2],
 		"orderable" : false
 	}];
 

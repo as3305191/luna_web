@@ -75,12 +75,15 @@ class Menu extends MY_Mgmt_Controller {
 		$data = array();
 		$id = $this -> get_post('id');
 		$img= $this -> get_post('img');
-		
+		$menu_style_id= $this -> get_post('menu_style_id');
+		$menu_name= $this -> get_post('menu_name');
 		// foreach ($img as $each) {
 		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
 		// }
 		$data['img_id'] = $img;
 		
+		$data['menu_style_id'] = $menu_style_id;
+		$data['menu_name'] = $menu_name;
 	
 		if(empty($id)) {
 			// insert
