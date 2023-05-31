@@ -41,20 +41,20 @@
 						<?php if($open_menu_count>0): ?>
 							<?php if($open_menu_count==1): ?>
 								<div class="js-slide g-px-3">
-									<a class="js-fancybox d-block text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">'+
-										<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>/thumb" alt="Image Description">'+
+									<a class="js-fancybox d-block text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">
+										<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>/thumb" alt="Image Description">
 									</a>
 								</div>
 							<?php else: ?>	
 								<div class="js-slide g-px-3">
-									<a class="js-fancybox d-block text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">'+
-										<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>/thumb" alt="Image Description">'+
+									<a class="js-fancybox d-block text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">
+										<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>/thumb" alt="Image Description">
 									</a>
 								</div>
 								<?php for ($i=1;$i<count($menu_list);$i++) : ?>
 									<div class="js-slide g-px-3">
-										<a class="js-fancybox d-block menu_img_unsuccess btn-light text-light  menu_img menu_img_<?= $menu_list[$i]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[$i]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">'+
-											<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[$i]->img_id?>/thumb" alt="Image Description">'+
+										<a class="js-fancybox d-block menu_img_unsuccess btn-light text-light  menu_img menu_img_<?= $menu_list[$i]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[$i]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">
+											<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[$i]->img_id?>/thumb" alt="Image Description">
 										</a>
 									</div>
 								<?php endfor ?>
