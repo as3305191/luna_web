@@ -2,6 +2,9 @@
   .s_sum {
   	display: none;
   }
+  .menu_img_unsuccess {
+  	display: none;
+  }
 </style>
 <div>
     <header>
@@ -177,8 +180,8 @@ var mColDefs = [{
 	menu_click
 	function menu_click(id) {
 		//   document.getElementById(id).show();
-		$('.menu_').hide();
-		$('#'+id).show();
+		$('.menu_img').addClass('menu_img_unsuccess');
+		$('.menu_img_'+id).removeClass('menu_img_unsuccess');
 		// $('.menu_btn').removeClass('btn_active');
 		$('.menu_btn').removeClass('btn_active btn-success ');
 		$('.menu_btn').addClass('btn_unsuccess');
