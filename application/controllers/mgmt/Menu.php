@@ -8,14 +8,16 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> load -> model('Menu_dao', 'dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Menu_style_dao', 'menu_style_dao');
-		$this -> load -> model('Img_month_use_dao', 'img_month_use_dao');		
-		$this -> load -> model('Img_month_use_record_dao', 'img_month_use_record_dao');		
+		$this -> load -> model('Users_dao', 'users_dao');
+
 	}
 
 	public function index()
 	{
 		$data = array();
-		$this -> setup_user_data($data);
+		$data = $this -> setup_user_data($data);
+		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+
 		$this -> load -> view('mgmt/menu/list', $data);
 	}
 
