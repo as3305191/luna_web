@@ -106,9 +106,9 @@ thead tr th {
 	var baseUrl = '<?=base_url('')?>';
 
 	var mCols = [null,{
-		data : 'menu_name'
-	},{
 		data : 'style_name'
+	},{
+		data : 'menu_name'
 	}];
 
 	var mOrderIdx = 6;
