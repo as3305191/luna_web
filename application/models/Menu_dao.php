@@ -83,7 +83,7 @@ class Menu_dao extends MY_Model {
 		// join
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> join("menu_style ms", "ms.id = _m.menu_style_id", "left");
-		// $this -> db -> join("users iu", "iu.id = _m.intro_id", "left");
+		$this -> db -> join("images img", "img.id = _m.img_id", "left");
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 

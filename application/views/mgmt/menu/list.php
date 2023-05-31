@@ -114,7 +114,7 @@
 			}
 		}
 	}, {
-		data : 'style_name'
+		data : 'menu_style'
 	},{
 		data : 'img_id',
 		render: function (data) {
