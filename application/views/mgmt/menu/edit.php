@@ -119,7 +119,6 @@
 		img=[];
 		if($('#img_id').val().length>0){
 			img.push($('#img_id').val());
-			// pdf_array.splice($.inArray(0,pdf_array),1);
 		}
 	} else{
 		img=[];
@@ -136,7 +135,6 @@ $("#img-input").fileinput({
 			],
         	initialPreviewConfig: [
 			<?php foreach($item -> image as $img): ?>
-				<?php if($login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28): ?>
 				{
 						'caption' : '<?= $img -> image_name ?>',
 						'size' : <?= $img -> image_size ?>,
@@ -145,16 +143,7 @@ $("#img-input").fileinput({
 						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
 						'key' : <?= $img->id?>
 				},
-				<?php else: ?>
-				{
-						'caption' : '<?= $img -> image_name ?>',
-						'size' : <?= $img -> image_size ?>,
-						'width' : '120px',
-						'downloadUrl': '<?=base_url('mgmt/images/get/' . $img->id)?>',
-						'key' : <?= $img->id?>
-				},
-				<?php endif ?>
-
+				
     		<?php endforeach ?>
         	],
         <?php else: ?>

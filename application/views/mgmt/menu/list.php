@@ -59,7 +59,7 @@ thead tr th {
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min100">開放</th>
+											<th class="min25">開放</th>
 											<th class="min100">分類</th>
 											<th class="min100">店名</th>
 										</tr>
@@ -113,12 +113,8 @@ thead tr th {
 
 	var mOrderIdx = 6;
 	
-	if($('#l_user_id').val()=='9' || $('#l_user_id').val()=='28'|| $('#l_user_id').val()=='11' ){
-		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
-	} else{
-		var defaultContent = '<a role="button" data-toggle="modal" style="margin-right: 5px;" ><i class="fa fa-trash fa-lg"></i></a>';
-	}
-
+	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
+	
 	var mColDefs = [{
 		targets : 0,
 		data : null,
