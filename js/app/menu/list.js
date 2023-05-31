@@ -16,7 +16,7 @@ var listmenuAppClass = (function(app) {
 			},
 			iDisplayLength : 50,
 			columns : mCols,
-			order : [[9, "desc"]],
+			order : false,
 			columnDefs : mColDefs
 		}));
 
