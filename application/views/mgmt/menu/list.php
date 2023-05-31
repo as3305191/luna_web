@@ -57,12 +57,13 @@ thead tr th {
 							<div class="widget-body no-padding">
 								
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
+								
 									<thead>
 										<tr>
-											<td class="min100">是否預設</th>
-											<td class="min100">分類</th>
-											<td class="min100">照片</th>
-											<!-- <th>日期</th> -->
+											
+											<th class="min25">是否預設</th>
+											<th class="min100">分類</th>
+											<th class="min100">照片</th>
 										</tr>
 									</thead>
 									<tbody>
