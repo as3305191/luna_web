@@ -1,5 +1,80 @@
 var listmenuAppClass = (function(app) {
 	app.basePath = "mgmt/menu/";
+
+
+	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+		// edit click
+		if(!app.disableRowClick) {
+			var _rtd = $(nRow).find('td');
+			if(!app.enableFirstClickable) {
+				_rtd = _rtd.not(':first')
+			}
+			_rtd.addClass('pointer').on('click', function(){
+				app.doEdit(aData.id);
+
+				// remove all highlight first
+				$(this).parent().parent().find('tr').removeClass('active');
+
+				app._lastPk = aData.id;
+				app._tr = $(this).parent();
+				setTimeout(function(){
+					app._tr.addClass('active');
+				}, 100);
+			});
+		}
+
+		if(app._lastPk && aData.id && app._lastPk == aData.id) {
+			$(nRow).addClass('active');
+		}
+
+			// delete click
+			$(nRow).find("a").eq(0).click(function() {
+				app.setDelId(aData.id);
+				$('#modal_do_delete')
+				.prop('onclick',null)
+				.off('click')
+				.on('click', function(){
+					app.doDelItem();
+				});
+			});
+
+			//img post
+			$(nRow).find('.product-post').eq(0).click(function(){
+				var me = $(this).attr('id');
+				$.ajax({
+					url: baseUrl + app.basePath + '/up_lock_menu',
+					data: {
+					  'id': me
+					},
+					error: function() {
+					},
+					dataType: 'json',
+					success: function(data) {
+						if(data.success_msg){
+							$.smallBox({
+								title: data.success_msg,
+								content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
+								color: "#5F895F",
+								iconSmall: "fa fa-check bounce animated",
+								timeout: 4000
+							});
+
+							app.tableReload();
+						}
+						if(data.message){
+							layer.msg(data.message);
+						}
+					},
+					type: 'POST'
+				})
+			})
+
+		if(app.fnRowCallbackExt) {
+			app.fnRowCallbackExt(nRow, aData, iDisplayIndex, iDisplayIndexFull);
+		}
+};
+
+
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
@@ -30,37 +105,7 @@ var listmenuAppClass = (function(app) {
 			window.open(baseUrl + app.basePath + 'export_all/' + id);
 		}
 
-		$(nRow).find('.product-post').eq(0).click(function(){
-			var me = $(this).attr('id');
-			$.ajax({
-				url: baseUrl + app.basePath + '/up_lock_menu',
-				data: {
-				//   'swot_title_id': $('#swot_title_id').val(),
-				  'id': me
-				},
-				error: function() {
-				},
-				dataType: 'json',
-				success: function(data) {
-					if(data.success_msg){
-						$.smallBox({
-							title: data.success_msg,
-							content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
-							color: "#5F895F",
-							iconSmall: "fa fa-check bounce animated",
-							timeout: 4000
-						});
-
-						app.tableReload();
-					}
-					if(data.message){
-						layer.msg(data.message);
-					}
-				},
-				type: 'POST'
-			})
-		})
-
+		
 		$('#s_menu_name').on('change', function(){
 			app.tableReload();
 		});
