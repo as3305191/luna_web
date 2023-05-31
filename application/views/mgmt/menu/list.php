@@ -31,11 +31,14 @@ thead tr th {
 									</div>
 								</div>
 								<div class="widget-toolbar pull-left">
-									<label class="col-md-3 control-label">店家分類</label>
+									<label class="col-md-3 control-label">圖片類別</label>
 									<div class="col-md-6">
 										<select id="img_style" class="form-control">
 											<!-- option from javascript -->
 										</select>
+									</div>
+									<div class="col-md-2">
+										<button type="button" class="btn btn-sm btn-primary" id="add_img_style"><i class="fa fa-plus-circle fa-lg"></i></button>
 									</div>
 								</div>
 
@@ -158,4 +161,14 @@ thead tr th {
 		});
 	}
 load_menu_style();
+$('#add_img_style').click(function() {
+		layer.open({
+			type:2,
+			title:'',
+			closeBtn:0,
+			area:['400px','200px'],
+			shadeClose:true,
+			content:'<?=base_url('mgmt/menu/new_menu_style')?>'
+		})
+	})
 </script>
