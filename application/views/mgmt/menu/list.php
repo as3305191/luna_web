@@ -30,12 +30,15 @@ thead tr th {
 										</button>
 									</div>
 								</div>
-								<label class="col-md-3 control-label">店家分類</label>
-								<div class="col-md-6">
-									<select id="img_style" class="form-control">
-										<!-- option from javascript -->
-									</select>
+								<div class="widget-toolbar pull-left">
+									<label class="col-md-3 control-label">店家分類</label>
+									<div class="col-md-6">
+										<select id="img_style" class="form-control">
+											<!-- option from javascript -->
+										</select>
+									</div>
 								</div>
+
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 
