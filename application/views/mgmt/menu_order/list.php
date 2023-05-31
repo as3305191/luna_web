@@ -34,17 +34,14 @@
 						<td class="min50" style="border-right:none;"></td>
 						<td class="min120" style="border-right:none;">
 							<div class="input-group col-md-12">
-									<select id="fix_user" class="form-control">
-									<option selected disabled style="display:none">請選擇</option>
-									<?php foreach($engineer as $each): ?>
-										<option value="<?= $each -> id?>"><?=  $each -> user_name ?></option>
-									<?php endforeach ?>
+								<select id="menu_name" class="form-control">
+									
 								</select> 
 							</div>
 						</td>
 						<td style="border-right:none;">
 							<div class="input-group col-md-12">
-								<input type="text" class="form-control" id="menu_name" placeholder="品項">
+								<input type="text" class="form-control" id="order_name" placeholder="品項">
 							</div>
 						</td>
 						<td style="border-right:none;">
@@ -108,22 +105,19 @@
 	}
 	load_menu();
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
-		var fix_date = $('#menu_name').val();
-		var fix_reason = $('#amount').val();
-		var fix_way = $('#note').val();
+		var menu_name = $('#menu_name').val();
+		var order_name = $('#menorder_nameorder_nameu_name').val();
+		var amount = $('#amount').val();
+		var note = $('#note').val();
 		
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/fix_list/fix_record_insert',
+			url: '<?= base_url() ?>' + 'mgmt/menu_order/insert',
 			type: 'POST',
 			data: {
-				fix_type: $('#fix_type').val(),
-				fix_way: $('#fix_way').val(),
-				fix_reason: fix_reason,//維修原因
-				fix_way_: fix_way,//處置方式
-				fix_user: fix_user,//維修的人
-				fix_date: fix_date,
-				computer_id: now_sh_list[0]['computer_id'],
-
+				menu_name : menu_name,
+				order_name :order_name,
+				amount :amount,
+				note:note
 			},
 			dataType: 'json',
 			success: function(d) {
