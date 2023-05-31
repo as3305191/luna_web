@@ -37,6 +37,7 @@
 						<?php endif?>
 					<?php endif?>
 					<div class="row" style="padding:0px 0px 6px 12px;">
+					<div id="album" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive='[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]'>
 						<?php if($open_menu_count>0): ?>
 							<?php if($open_menu_count==1): ?>
 								<div class="js-slide g-px-3">
@@ -59,6 +60,7 @@
 								<?php endfor ?>
 							<?php endif?>
 						<?php endif?>
+					</div>
 					</div>
 
 					<!-- <button class="btn-success text-light btn_active menu_1" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="backStep1()">菜單1</button>
