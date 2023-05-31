@@ -60,6 +60,7 @@ thead tr th {
 									<thead>
 										<tr>
 											<th class="min100">開放</th>
+											<th class="min100">分類</th>
 											<th class="min100">店名</th>
 										</tr>
 									</thead>
