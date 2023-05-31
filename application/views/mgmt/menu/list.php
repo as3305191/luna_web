@@ -131,8 +131,8 @@ thead tr th {
 	}];
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/patent_key/list.js", function(){
-			currentApp = new patentkeyAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/menu/list.js", function(){
+			currentApp = new listmenuAppClass(new BaseAppClass({}));
 			
 		});
 	});
