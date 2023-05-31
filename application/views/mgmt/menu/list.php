@@ -23,14 +23,6 @@ thead tr th {
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
 						<header >
-								<div class="widget-toolbar pull-left">
-									<div class="btn-group">
-										<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
-											<i class="fa fa-plus"></i>新增
-										</button>
-									</div>
-								</div>
-							
                           
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">
@@ -107,24 +99,20 @@ thead tr th {
 	}, {
 		data : 'menu_style'
 	},{
-		data : 'img_id'
-		// ,
-		// render: function (data) {
-		// 	if(data>0){
-		// 		return (data && data > 0 ? '<div class="img_con" style="width:150px;height:150px;background-image:url(' + baseUrl + 'api/images/get/' + data + '/thumb)" />' : "");
-		// 	} else{
-		// 		return '';
-		// 	}
-		// } 
+		data : 'img_id',
+		render: function (data) {
+			if(data>0){
+				return (data && data > 0 ? '<div class="img_con" style="width:150px;height:150px;background-image:url(' + baseUrl + 'api/images/get/' + data + '/thumb)" />' : "");
+			} else{
+				return '';
+			}
+		} 
 	}];
 
 	var mOrderIdx = 0;
 	
-	if($('#l_user_id').val()=='9' || $('#l_user_id').val()=='28'|| $('#l_user_id').val()=='11' ){
-		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
-	} else{
-		var defaultContent = '<a role="button" data-toggle="modal" style="margin-right: 5px;" ><i class="fa fa-trash fa-lg"></i></a>';
-	}
+	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
+
 
 	var mColDefs = [{
 		targets : 0,
@@ -145,16 +133,5 @@ thead tr th {
 			
 		});
 	});
-
-
-	
-	
-	// function do_remove() {//一鍵清除所有篩選
-	// 	$('#patent_header input').val('');
-	// 	$("input[name='patent_status[]']").removeAttr("checked");
-	// 	load_category();
-	// 	currentApp.tableReload();
-		
-	// }
 
 </script>
