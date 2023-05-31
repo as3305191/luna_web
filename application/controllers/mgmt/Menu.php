@@ -33,7 +33,7 @@ class Menu extends MY_Mgmt_Controller {
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
-		$u_data = $this -> setup_user_data($u_data);
+
 		$items = $this -> dao -> query_ajax($data);
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
