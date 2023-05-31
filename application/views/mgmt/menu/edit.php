@@ -183,7 +183,6 @@ $("#img-input").fileinput({
 	});
 
 	function do_save() {
-	if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
 	var url = baseUrl + 'mgmt/menu/insert'; // the script where you handle the form input.
 	$.ajax({
 		type : "POST",
