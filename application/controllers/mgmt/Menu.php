@@ -29,9 +29,11 @@ class Menu extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
+			's_menu_name'
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
+		$u_data = $this -> setup_user_data($u_data);
 		$items = $this -> dao -> query_ajax($data);
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
@@ -57,6 +59,9 @@ class Menu extends MY_Mgmt_Controller {
 				$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
 			}
 			$data['item'] = $item;
+			$u_data = $this -> setup_user_data($u_data);
+			$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
+
 		}
 		$this->load->view('mgmt/menu/edit', $data);
 	}

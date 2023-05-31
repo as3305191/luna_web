@@ -35,10 +35,10 @@ thead tr th {
 							<div id="patent_header">
 								
 								<div class="widget-toolbar pull-left">
-									<label>關鍵字</label>
+									<label>店名</label>
 								</div>
 								<div class="widget-toolbar pull-left">
-									<input id="key_s" ondragover="" autocomplete="off" type="text" class="form-control" />
+									<input id="s_menu_name" ondragover="" autocomplete="off" type="text" class="form-control" />
 								</div>
 								
 				

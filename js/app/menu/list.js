@@ -5,7 +5,7 @@ var listmenuAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					d.key = $('#key_s').val();
+					d.s_menu_name = $('#s_menu_name').val();
 
 				},
 				dataSrc : 'items',
