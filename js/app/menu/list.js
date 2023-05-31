@@ -5,21 +5,7 @@ var menuAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					d.patent_name = $('#s_patent_name').val();
-					d.now_category = $('#now_category').val();
-					d.application_person = $('#application_person').val();
-					d.application_num = $('#application_num_search').val();
-					d.invention_person_search = $('#invention_person_search').val();
-					d.public_num_search = $('#public_num_search').val();
-					d.key_search = $('#key_search').val();
-					d.patent_search = $('#patent_search').val();
-					d.summary_search = $('#summary_search').val();
-					d.patent_family_search = $('#patent_family_search').val();
-					d.patent_status = $("input[name='patent_status[]']:checked").map(function() {
-						return this.value
-					}).get().join('#');
-					d.or_and_type = $('#or_and_type').prop("checked") ? 1 : 0;
-					d.key_search_array = $('#key_search_array').val();
+					
 
 				},
 				dataSrc : 'items',
