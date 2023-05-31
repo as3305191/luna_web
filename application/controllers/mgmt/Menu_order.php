@@ -21,7 +21,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		$list = $this -> menu_dao -> find_all_open();
 		$data['menu_list'] = $list;
 		$data['open_menu_count'] = count($list);
-		$this -> to_json($data);
+		// $this -> to_json($data);
 		$this -> load -> view('mgmt/menu_order/list', $data);
 	}
 
