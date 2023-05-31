@@ -249,4 +249,7 @@ function load_style() {
 		});
 	}
 	load_style();
+	$('#menu_style_id').on('change', function(){
+		$('#s_menu_style_id').val($('#menu_style_id').val()) ;
+	});
 </script>
