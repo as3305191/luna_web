@@ -12,32 +12,6 @@ class Menu_dao extends MY_Model {
 		);
 	}
 
-	function find_by_parameter($f){
-		$this -> db -> from("$this->table_name as _m");
-
-		// select
-		$this -> db -> select('_m.*');
-
-		//	limit
-		if(empty($f['page'])) {
-			$page = 0;
-		} else {
-			$page = intval($f['page']);
-		}
-		if(empty($f['limit'])) {
-			// default is 10
-			$limit = 10;
-		} else {
-			$limit = intval($f['limit']);
-		}
-		$start = $page * $limit;
-		$this -> db -> limit($limit, $start);
-
-		$query = $this -> db -> get();
-		$list = $query -> result();
-
-		return $list;
-	}
 
 	function query_ajax($data) {
 		$start = $data['start'];
@@ -47,7 +21,7 @@ class Menu_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('ms.menu_style as menu_style');
+		$this -> db -> select('ms.menu_style as menu_name');
 
 		// join
 		$this -> ajax_from_join();
@@ -101,54 +75,6 @@ class Menu_dao extends MY_Model {
 		return $list;
 	}
 
-	// function find_carousel_sales(){
-	// 	$this -> db -> from("$this->table_name as _m");
-	// 	$this -> db -> select('_m.*');
-	// 	$this -> db -> select('ns.news_style as news_style_name');
-	// 	$this -> db -> where('status',1);
-	// 	$this -> db -> where('_m.news_style_id',7);
-	// 	$this -> db -> or_where('_m.news_style_id',8);
-	// 	$this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
-	// 	$this -> db -> order_by('_m.id', 'desc');
-	// 	$list = $this -> db -> get() -> result();
-	// 	return $list;
-	// }
-
-	// function find_last_cost(){
-	// 	$this -> db -> from("$this->table_name as _m");
-	// 	$this -> db -> select('_m.*');
-	// 	$this -> db -> where('news_style_id',1);
-	// 	$this -> db -> order_by('_m.id', 'desc');
-	// 	$list = $this -> db -> get() -> result();
-	// 	return $list;
-	// }
-	
-	function query_news($data,$is_count = FALSE) {
-		$start = $data['start'];
-		$limit = $data['length'];
-
-		// select
-		$this -> db -> select('_m.*');
-		$this -> db -> select('ms.menu_style as menu_style');
-
-		$this -> ajax_from_join();
-
-		$this -> search_always($data);
-		// $this -> db -> join("users u", "u.id = _m.fix_user_id", "left");
-		// $this -> db -> where("_m.news_style_id <>","1");
-		// $this -> db -> where("_m.news_style_id <>","7");
-		// $this -> db -> where("_m.news_style_id <>","8");
-		if(!$is_count) {
-			$this -> db -> limit($limit, $start);
-		}
-		// query results
-		if(!$is_count) {
-			$query = $this -> db -> get();
-			return $query -> result();
-		} else {
-			return $this -> db -> count_all_results();
-		}
-	}
 
 }
 ?>

@@ -104,15 +104,7 @@
 	var baseUrl = '<?=base_url('')?>';
 
 	var mCols = [null,{
-		data : 'menu_name',
-		render: function(d,t,r){
-			if(r.patent_key_id_array.length == 0){
-				var html = '<span style="color:red;">'+d+'</span>';
-				return html;
-			} else{
-				return d;
-			}
-		}
+		data : 'menu_name'
 	}, {
 		data : 'menu_style'
 	},{
