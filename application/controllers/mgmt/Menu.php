@@ -96,10 +96,9 @@ class Menu extends MY_Mgmt_Controller {
  		$this -> to_json($res);
 	}
 
-	public function delete_img($id) {
-		$res = array();
+	public function delete($id) {
 		$res['success'] = TRUE;
-		$this -> img_dao -> delete($id);
+		$this -> dao -> delete($id);
 		$this -> to_json($res);
 	}
 
