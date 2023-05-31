@@ -208,9 +208,7 @@ $("#img-input").fileinput({
 function load_style() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu/find_menu_style',
-			data : {
-				id: $('#item_id').val(),
-			},
+		
 			type: 'POST',
 			dataType: 'json',
 			success: function(d) {
@@ -221,7 +219,7 @@ function load_style() {
 					// var option = '<option value="0">全部</option>';
 					// $img_style.append(option);
 					if(menu_style_id>0 ){ 
-						$.each(d.menu_style, function(){
+						$.each(d, function(){
 							if(this.id==menu_style_id){
 								$('<option/>', {
 									'value': this.id,
@@ -235,7 +233,7 @@ function load_style() {
 							}
 						});
 					} else{
-						$.each(d.menu_style, function(){
+						$.each(d, function(){
 							$('<option/>', {
 								'value': this.id,
 								'text': this.menu_style
