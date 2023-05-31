@@ -74,6 +74,8 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">店名</label>
 					<div class="col-md-6" id="patnet_status" >
+					<input type="text" required class="form-control" name="menu_name"  id="menu_name" value="<?= isset($item) ? $item -> menu_name : '' ?>"  />
+
 					</div>
 				</div>
 			</fieldset>
@@ -81,7 +83,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">分類</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="patnet_name"  id="patnet_name" value="<?= isset($item) ? $item -> patent_name : '' ?>"  />
+						<input type="text" required class="form-control" name="patnet_name"  id="style" value="<?= isset($item) ? $item -> patent_name : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -109,7 +111,16 @@
 <!-- end widget -->
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 <script>
-
+	var img=false
+	if($('#item_id').val()>0){
+		img=[];
+		if($('#img_id').val().length>0){
+			img.push($('#img_id').val());
+			// pdf_array.splice($.inArray(0,pdf_array),1);
+		}
+	} else{
+		img=[];
+	}
 $("#img-input").fileinput({
 					language: "zh-TW",
 			
