@@ -38,7 +38,7 @@
 							<?php endfor ?>
 						<?php endif?>
 					<?php endif?>
-					<div id="img_album" style="padding:0px 0px 6px 12px;width: 288px; height:288px;">
+					<div id="img_album" class="g-pos-rel" style="padding:0px 0px 6px 12px;">
 					
 					</div>
 
