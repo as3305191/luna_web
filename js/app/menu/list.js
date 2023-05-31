@@ -2,7 +2,7 @@ var listmenuAppClass = (function(app) {
 	app.basePath = "mgmt/menu/";
 
 
-	app.fnRowCallback = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 		// edit click
 		if(!app.disableRowClick) {
 			var _rtd = $(nRow).find('td');
@@ -73,7 +73,22 @@ var listmenuAppClass = (function(app) {
 			app.fnRowCallbackExt(nRow, aData, iDisplayIndex, iDisplayIndexFull);
 		}
 };
-
+app.dtConfig = {
+	processing : true,
+	serverSide : true,
+	responsive : true,
+	deferLoading : 0, // don't reload on init
+	iDisplayLength : 10,
+	sDom: app.sDom,
+	language : {
+		url : baseUrl + "js/datatables-lang/zh-TW.json"
+	},
+	bSortCellsTop : true,
+	fnRowCallback : app.fnRowCallback1,
+	footerCallback: function( tfoot, data, start, end, display ) {
+		setTimeout(function(){ $(window).trigger('resize'); }, 300);
+	}
+};
 
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
