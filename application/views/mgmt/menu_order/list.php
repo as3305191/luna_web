@@ -62,10 +62,8 @@
 								<div class="input-group col-md-10">
 									<input type="text" class="form-control" id="note" placeholder="備注">
 								</div>
-								<div class="input-group col-md-2">
 
 									<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
-								</div>
 
 							</td>
 							
