@@ -1,15 +1,3 @@
-<!-- <style>
-thead tr th {
-	position:sticky;
-	top:0;
-	background-color:#FFFFFF !important;
-	text-align:center;
-}
-</style> -->
-
-<!-- CSS Unify Theme -->
-<!-- <link rel="stylesheet" href="<?= base_url() ?>assets_co/assets_/css/styles.multipage-real-estate.css"> -->
-  
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
 
