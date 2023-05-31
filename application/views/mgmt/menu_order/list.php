@@ -20,9 +20,6 @@
 			<div class="row">
 				<!-- NEW WIDGET START -->
 			<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-			
-
-
 				<div class="row" style="padding:0px 0px 6px 12px;">
 
 					<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
@@ -31,38 +28,19 @@
 					<?php if($open_menu_count>0): ?>
 						<?php if($open_menu_count==1): ?>
 							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
+							<input type="text" class="form-control" id="menu_id"value="<?= $menu_list[0]->id ?>">
+
 						<?php else: ?>		
 							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
+							<input type="text" class="form-control" id="menu_id" value="<?= $menu_list[0]->id ?>">
+
 							<?php for ($i=1;$i<count($menu_list);$i++) : ?>
 								<button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>)"><?= $menu_list[$i]->menu_name ?></button>
 							<?php endfor ?>
 						<?php endif?>
 					<?php endif?>
-					<div class="row" style="padding:0px 0px 6px 12px;">
-					<div id="album" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive='[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]'>
-						<?php if($open_menu_count>0): ?>
-							<?php if($open_menu_count==1): ?>
-								<div class="js-slide g-px-3">
-									<a class="js-fancybox d-block text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">
-										<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>/thumb" alt="Image Description">
-									</a>
-								</div>
-							<?php else: ?>	
-								<div class="js-slide g-px-3">
-									<a class="js-fancybox d-block text-light  menu_img menu_img_<?= $menu_list[0]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">
-										<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[0]->img_id?>/thumb" alt="Image Description">
-									</a>
-								</div>
-								<?php for ($i=1;$i<count($menu_list);$i++) : ?>
-									<div class="js-slide g-px-3">
-										<a class="js-fancybox d-block menu_img_unsuccess btn-light text-light  menu_img menu_img_<?= $menu_list[$i]->id ?>" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url().'mgmt/images/get/'.$menu_list[$i]->img_id?>" data-speed="350" data-caption="Lightbox Gallery">
-											<img class="img-fluid" src="<?= base_url().'mgmt/images/get/'.$menu_list[$i]->img_id?>/thumb" alt="Image Description">
-										</a>
-									</div>
-								<?php endfor ?>
-							<?php endif?>
-						<?php endif?>
-					</div>
+					<div id="img_album" style="padding:0px 0px 6px 12px;">
+					
 					</div>
 
 					<!-- <button class="btn-success text-light btn_active menu_1" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="backStep1()">菜單1</button>
@@ -72,6 +50,7 @@
 					<!-- widget content -->
 				</hr>
 						<table id="dt_list" class="table table-striped table-bordered table-hover" >
+
 						<thead>
 						<tr>
 							<th></th>
@@ -196,7 +175,43 @@ var mColDefs = [{
 	}
 	load_menu();
 
-	menu_click
+	function img_album() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_open_menu',
+			type: "POST",
+			data: {
+				id: $('#menu_id').val()
+			},
+			success: function(data) {
+
+        $('#img_album').empty();
+
+        var img_album_html =
+        '<div id="album" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive=\'[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]\'>'+
+        '</div>';
+
+        $('#img_album').append(img_album_html);
+
+        $.each(data.each_id, function() {
+          var me = this;
+          var img_html =
+          '<div class="js-slide g-px-3">'+
+            '<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url() ?>api/images/get/'+me+'" data-speed="350" data-caption="Lightbox Gallery">'+
+              '<img class="img-fluid" src="<?= base_url() ?>api/images/get/'+me+'/thumb" alt="Image Description">'+
+            '</a>'+
+          '</div>';
+          $('#album').append(img_html);
+
+        });
+        
+        // render carousel
+        $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
+
+			}
+		});
+	}
+  img_album();
+
 	function menu_click(id) {
 		//   document.getElementById(id).show();
 		$('.menu_img').addClass('menu_img_unsuccess');
@@ -206,6 +221,7 @@ var mColDefs = [{
 		$('.menu_btn').addClass('btn_unsuccess');
 		$('.menu_'+id).removeClass('btn_unsuccess');
 		$('.menu_'+id).addClass('btn_active btn-success ');
+		$('#menu_id').val(id);
 	}
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
 		var menu_id = $('#menu_name').val();
