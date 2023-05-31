@@ -38,7 +38,6 @@
 							<th>品項</th>
 							<th>金額</th>
 							<th>備注</th>
-							<th></th>
 						</tr>
 						<tr>
 							<td class="min50" style="border-right:none;"></td>
@@ -63,11 +62,12 @@
 								<div class="input-group col-md-12">
 									<input type="text" class="form-control" id="note" placeholder="備注">
 								</div>
+								<td style="border-right:none;">
+									<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
+								</td>
 							</td>
 							
-							<td style="border-right:none;">
-								<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
-							</td>
+							
 						</tr>
 					</thead>
 							<tbody>
@@ -102,7 +102,7 @@ var mCols = [null,{
 	data : 'amount'
 },{
 	data : 'note'
-},null];
+}];
 
 var mOrderIdx = 6;
 
@@ -117,7 +117,7 @@ var mColDefs = [{
 	width : "5%",
 	className : ''
 }, {
-	"targets" : [0,1,2,3,4,5],
+	"targets" : [0,1,2,3,4],
 	"orderable" : false
 }];
 
