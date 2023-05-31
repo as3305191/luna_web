@@ -23,17 +23,17 @@ thead tr th {
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
 						<header >
-                          
-							<div class="widget-toolbar pull-left">
-								<div class="btn-group">
-									<button onclick="do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">
-										<i class="fa fa-refresh"></i>一鍵清除
-									</button>
+								<div class="widget-toolbar pull-left">
+									<div class="btn-group">
+										<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
+											<i class="fa fa-plus"></i>新增
+										</button>
+									</div>
 								</div>
-							</div>
+							
 							
 						</header>
-						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
+						<!-- <input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" /> -->
 
 						<!-- widget div-->
 						<div>
@@ -109,7 +109,7 @@ thead tr th {
 		} 
 	}];
 
-	// var mOrderIdx = 0;
+	var mOrderIdx = 0;
 	
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 
