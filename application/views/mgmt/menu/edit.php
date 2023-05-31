@@ -219,7 +219,7 @@ function load_style() {
 					// console.log(d);
 					$img_style = $('#img_style').empty();
 					// var option = '<option value="0">全部</option>';
-					$img_style.append(option);
+					// $img_style.append(option);
 					$.each(d.menu_style, function(){
 						if(menu_style_id>0 && this.id == menu_style_id){
 						$('<option />', {
