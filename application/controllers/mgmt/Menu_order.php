@@ -155,12 +155,11 @@ class Menu_order extends MY_Mgmt_Controller {
 			$image= explode(",", $list -> img_id);
 			$list -> image_id =$image ;
 			foreach($image as $each){
-				$list -> image[] = $this -> img_dao -> find_by_id($each);
+				$res['list_image'][] = $each;
 			}
 		} else{
-			$list -> image =array();
+			$res['list_image'] =array();
 		}
-		$res['list_image'][]= $list -> image;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
