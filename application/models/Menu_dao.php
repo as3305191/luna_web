@@ -84,5 +84,6 @@ class Menu_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
+
 }
 ?>
