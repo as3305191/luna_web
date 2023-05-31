@@ -83,7 +83,10 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">分類</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="patnet_name"  id="style" value="<?= isset($item) ? $item -> patent_name : '' ?>"  />
+						<input type="text" required class="form-control" name="s_menu_style_id"  id="s_menu_style_id" value="<?= isset($item) ? $item -> menu_style_id : 0 ?>"  />
+						<select id="menu_style_id" class="form-control">
+											<!-- option from javascript -->
+						</select>
 					</div>
 				</div>
 			</fieldset>
@@ -179,6 +182,64 @@ $("#img-input").fileinput({
 	}).on('filedeleted', function(event,data,key) {
 	});
 
-	
+	function do_save() {
+	if(!$('#app-edit-form').data('bootstrapValidator').validate().isValid()) return;
+	var url = baseUrl + 'mgmt/menu/insert'; // the script where you handle the form input.
+	$.ajax({
+		type : "POST",
+		url : url,
+		data : {
+			id: $('#item_id').val(),
+			menu_style_id:$('#menu_style_id').val(),
+			menu_name: $('#menu_name').val(),
+			img: img.join(","),
+		},
+		success : function(data) {
+			if(data.error_msg) {
+				layer.msg(data.error_msg);
+			} else {
+				currentApp.mDtTable.ajax.reload(null, false);
+				currentApp.backTo();
+			}
+		}
+	});
+};
 
+function load_style() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/menu/find_menu_style',
+			data : {
+				id: $('#item_id').val(),
+			},
+			type: 'POST',
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					var menu_style_id=$('#s_menu_style_id').val();
+					// console.log(d);
+					$img_style = $('#img_style').empty();
+					// var option = '<option value="0">全部</option>';
+					$img_style.append(option);
+					$.each(d.menu_style, function(){
+						if(menu_style_id>0 && this.id == menu_style_id){
+						$('<option />', {
+								'value': this.id,
+								'text': this.img_style,
+							}).attr("selected", true).appendTo($img_style);	
+						} else{
+							$('<option/>', {
+								'value': this.id,
+								'text': this.menu_style
+							}).appendTo($img_style);
+						}
+						
+					});
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+	load_style();
 </script>

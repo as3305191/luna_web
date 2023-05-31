@@ -68,27 +68,27 @@ class Menu extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/menu/edit', $data);
 	}
 
-	public function insert() {
+
+
+	public function insert() {//新增
 		$res = array();
+		$data = array();
 		$id = $this -> get_post('id');
-		$title = $this -> get_post('title');
-		$m_content = $this -> get_post('m_content');
-		$menu_style = $this -> get_post('menu_style');
-		$cost = $this -> get_post('cost');
-		$sort = $this -> get_post('sort');
-		$data['title'] = $title;
-		$data['content'] = $m_content;
-		$data['menu_style_id'] = $menu_style;
-		$data['cost'] = $cost;
-		$data['sort'] = $sort;
+		$img= $this -> get_post('img');
+		
+		// foreach ($img as $each) {
+		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
+		// }
+		$data['img_id'] = $img;
+		
+	
 		if(empty($id)) {
 			// insert
-			$this -> dao -> insert($data);
+			$last_id = $this -> dao -> insert($data);
 		} else {
-			// update
 			$this -> dao -> update($data, $id);
+			
 		}
-		$s_data = $this -> setup_user_data(array());
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
@@ -125,6 +125,7 @@ class Menu extends MY_Mgmt_Controller {
 
 	public function find_menu_style(){
 		$res = array();
+		$id = $this -> get_post('id');
 		$menu_style_list = $this -> menu_style_dao -> find_all();
 		$res['menu_style'] = $menu_style_list;
 		$res['success'] = TRUE;
