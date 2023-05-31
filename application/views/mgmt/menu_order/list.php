@@ -23,9 +23,18 @@
 					<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
 						<span style="font-size: 16pt;color:#0d0d56">開放的菜單</span>
 					</div>
+					<?php if($open_menu_count>0): ?>
+						<?php if($open_menu_count==1): ?>
+							<button class="btn-success text-light btn_active menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
+						<?php else: ?>		
+							<button class="btn-success text-light btn_active menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
+							<?php for ($i=1;$i<=count($menu_list);$i++) : ?>
+								<button class="btn-light text-light btn_unsuccess menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>)"><?= $menu_list[$i]->menu_name ?></button>
+							<?php endfor ?>
+						<?php endif?>
+					<?php endif?>
 					
 					<button class="btn-success text-light btn_active menu_1" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="backStep1()">菜單1</button>
-					<button class="btn-light text-light btn_unsuccess menu_2" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;">菜單2</button>
 					<button class="btn-light text-light btn_unsuccess menu_3" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;">菜單3</button>
 				</div>
 
