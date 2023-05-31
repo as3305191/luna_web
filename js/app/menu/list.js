@@ -2,7 +2,7 @@ var listmenuAppClass = (function(app) {
 	app.basePath = "mgmt/menu/";
 
 
-	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+	app.fnRowCallback_new = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 		// edit click
 		if(!app.disableRowClick) {
 			var _rtd = $(nRow).find('td');
@@ -84,7 +84,7 @@ app.dtConfig = {
 		url : baseUrl + "js/datatables-lang/zh-TW.json"
 	},
 	bSortCellsTop : true,
-	fnRowCallback : app.fnRowCallback1,
+	fnRowCallback : app.fnRowCallback_new,
 	footerCallback: function( tfoot, data, start, end, display ) {
 		setTimeout(function(){ $(window).trigger('resize'); }, 300);
 	}
