@@ -160,7 +160,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		} else{
 			$list -> image =array();
 		}
-		$res['list_image'] = $list -> image;
+		$res['list_image'][]= $list -> image;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
