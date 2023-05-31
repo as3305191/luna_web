@@ -30,7 +30,7 @@ var menuAppClass = (function(app) {
 			},
 			iDisplayLength : 50,
 			columns : mCols,
-			order : [[9, "desc"]],
+			order : [[0, "desc"]],
 			columnDefs : mColDefs
 		}));
 
