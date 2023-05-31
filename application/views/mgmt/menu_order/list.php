@@ -34,7 +34,7 @@
 
 					</div>
 					<div class="widget-body no-padding">
-						<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
+						<table id="dt_list" class="table table-striped table-bordered table-hover" >
 							<thead>
 								<tr>
 									<th></th>
