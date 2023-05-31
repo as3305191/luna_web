@@ -109,7 +109,7 @@ thead tr th {
 		} 
 	}];
 
-	var mOrderIdx = 0;
+	// var mOrderIdx = 0;
 	
 	var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 
