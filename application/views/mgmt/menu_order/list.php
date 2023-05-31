@@ -18,8 +18,13 @@
        
         <hr/>
     </div>
-	
-	<div class="widget-body no-padding">
+	<div>
+		<!-- widget edit box -->
+		<div class="jarviswidget-editbox">
+			<!-- This area used as dropdown edit box -->
+
+		</div>
+		<div class="widget-body no-padding">
 			<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 				<thead>
 					<tr>
@@ -65,7 +70,7 @@
 				</tbody>
 			</table>
 
-
+		</div>
 	</div>
 
 <?php $this -> load -> view('general/delete_modal'); ?>
