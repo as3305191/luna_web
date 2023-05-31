@@ -106,7 +106,7 @@ var mCols = [null,{
 	data : 'amount'
 },{
 	data : 'note'
-}];
+},null];
 
 var mOrderIdx = 6;
 
@@ -121,7 +121,7 @@ var mColDefs = [{
 	width : "5%",
 	className : ''
 }, {
-	"targets" : [0,1,2,3,4],
+	"targets" : [0,1,2,3,4,5],
 	"orderable" : false
 }];
 
