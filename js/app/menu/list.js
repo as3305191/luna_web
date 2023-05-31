@@ -5,7 +5,7 @@ var menuAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					
+					d.key = $('#key_s').val();
 
 				},
 				dataSrc : 'items',
@@ -14,12 +14,11 @@ var menuAppClass = (function(app) {
 				complete:function(data){
 				}
 			},
-			iDisplayLength : 50,
+			iDisplayLength : 30,
 			columns : mCols,
-			order : [[0, "desc"]],
+			order :false,
 			columnDefs : mColDefs
 		}));
-
 		// data table actions
 		app.dtActions();
 
