@@ -70,7 +70,6 @@
 
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
-	var baseUrl = '<?=base_url('')?>';
 
 var mCols = [null,{
 	data : 'menu_name'
