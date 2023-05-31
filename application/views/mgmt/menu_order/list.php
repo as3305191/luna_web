@@ -18,7 +18,7 @@
 			
 
 
-				<div class="row">
+				<div class="row" style="padding:0px 0px 6px 0px;">
 
 					<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
 						<span style="font-size: 16pt;color:#0d0d56">開放的菜單</span>
