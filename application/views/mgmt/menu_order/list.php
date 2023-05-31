@@ -18,9 +18,9 @@
        
         <hr/>
     </div>
-	<div class="card-body">
-		<div class="product-list">
-			<table class="table table-bordered order">
+	
+	<div class="widget-body no-padding">
+			<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 				<thead>
 					<tr>
 						<th></th>
@@ -66,7 +66,6 @@
 			</table>
 
 
-		</div>
 	</div>
 
 <?php $this -> load -> view('general/delete_modal'); ?>
