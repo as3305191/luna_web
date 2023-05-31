@@ -8,8 +8,7 @@
 </style>
 <div>
 <header>
-<!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/unify-components.css"> -->
-
+<link rel="stylesheet" href="<?= base_url() ?>assets/vendor/fancybox/jquery.fancybox.min.css">
 </header>
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
