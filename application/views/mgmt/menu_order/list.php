@@ -28,80 +28,60 @@
 				<button class="btn-light text-light btn_unsuccess menu_3" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;">菜單3</button>
 
 
-
-
-
-					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget" > 
-						<header >
-							
-						</header>
-						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
-
-						<!-- widget div-->
-						<div>
-							<!-- widget edit box -->
-							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
-
-							</div>
-							<!-- end widget edit box -->
-
-							<!-- widget content -->
-							<div class="widget-body no-padding">
-								<div >
-									<!-- 專利申請國家代號說明：<span style="color:red;">TW:台灣 US:美國 JP:日本 CN:大陸 CA:加拿大 EP:歐洲 AU:澳洲</span> -->
-								</div>
-								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
-								<thead>
-								<tr>
-									<th></th>
-									<th>選擇店家</th>
-									<th>品項</th>
-									<th>金額</th>
-									<th>備注</th>
-									<th></th>
-								</tr>
-								<tr>
-									<td class="min50" style="border-right:none;"></td>
-									<td class="min120" style="border-right:none;">
-										<div class="input-group col-md-12">
-											<select id="menu_name" class="form-control">
-												
-											</select> 
-										</div>
-									</td>
-									<td style="border-right:none;">
-										<div class="input-group col-md-12">
-											<input type="text" class="form-control" id="order_name" placeholder="品項">
-										</div>
-									</td>
-									<td style="border-right:none;">
-										<div class="input-group col-md-12">
-											<input type="text" class="form-control" id="amount" placeholder="金錢總額">
-										</div>
-									</td>
-									<td style="border-right:none;">
-										<div class="input-group col-md-12">
-											<input type="text" class="form-control" id="note" placeholder="備注">
-										</div>
-									</td>
-									
-									<td style="border-right:none;">
-										<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
-									</td>
-								</tr>
-							</thead>
-									<tbody>
-									</tbody>
-								</table>
-							</div>
-							<!-- end widget content -->
-
+					<!-- widget content -->
+					<div class="widget-body no-padding">
+						<div >
+							<!-- 專利申請國家代號說明：<span style="color:red;">TW:台灣 US:美國 JP:日本 CN:大陸 CA:加拿大 EP:歐洲 AU:澳洲</span> -->
 						</div>
-						<!-- end widget div -->
-
+						<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
+						<thead>
+						<tr>
+							<th></th>
+							<th>選擇店家</th>
+							<th>品項</th>
+							<th>金額</th>
+							<th>備注</th>
+							<th></th>
+						</tr>
+						<tr>
+							<td class="min50" style="border-right:none;"></td>
+							<td class="min120" style="border-right:none;">
+								<div class="input-group col-md-12">
+									<select id="menu_name" class="form-control">
+										
+									</select> 
+								</div>
+							</td>
+							<td style="border-right:none;">
+								<div class="input-group col-md-12">
+									<input type="text" class="form-control" id="order_name" placeholder="品項">
+								</div>
+							</td>
+							<td style="border-right:none;">
+								<div class="input-group col-md-12">
+									<input type="text" class="form-control" id="amount" placeholder="金錢總額">
+								</div>
+							</td>
+							<td style="border-right:none;">
+								<div class="input-group col-md-12">
+									<input type="text" class="form-control" id="note" placeholder="備注">
+								</div>
+							</td>
+							
+							<td style="border-right:none;">
+								<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
+							</td>
+						</tr>
+					</thead>
+							<tbody>
+							</tbody>
+						</table>
 					</div>
+					<!-- end widget content -->
+
+				</div>
+				<!-- end widget div -->
+
 
 				</article>
 				<!-- WIDGET END -->
