@@ -205,7 +205,7 @@ var mColDefs = [{
         });
         
         // render carousel
-        $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
+        // $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
 
 			}
 		});
