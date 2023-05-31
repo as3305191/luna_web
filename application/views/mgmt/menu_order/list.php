@@ -14,7 +14,7 @@
 			<!-- row -->
 			<div class="row">
 				<!-- NEW WIDGET START -->
-				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+			<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 				<div class="col-md-12 col-xs-12 col-sm-12" style="padding:10px 20px 10px 13px;">
 					<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
 						<span style="font-size: 16pt;color:#0d0d56">開放的菜單</span>
@@ -92,16 +92,16 @@
 		<!-- end widget grid -->
 	</div>
 
-	<div class="tab-pane animated fadeIn" id="edit_page">
+	<!-- <div class="tab-pane animated fadeIn" id="edit_page">
 		<section class="">
-			<!-- row -->
+		
 			<div class="row">
 				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="edit-modal-body">
 									
 				</article>
 			</div>
 		</section>
-	</div>
+	</div> -->
 </div>
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
