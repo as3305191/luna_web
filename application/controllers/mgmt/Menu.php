@@ -43,9 +43,10 @@ class Menu extends MY_Mgmt_Controller {
 
 	public function edit($id) {
 		$data = array();
+		$s_data = array();
 		$data['id'] = $id;
-		$u_data = $this -> setup_user_data($u_data);
-		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
+		$s_data = $this -> setup_user_data($s_data);
+		$data['login_user'] = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
@@ -57,9 +58,9 @@ class Menu extends MY_Mgmt_Controller {
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
 			$item = $list[0];
-			if(!empty($item -> image_id)) {
-				$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
-			}
+			// if(!empty($item -> image_id)) {
+			// 	$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
+			// }
 			$data['item'] = $item;
 		
 
