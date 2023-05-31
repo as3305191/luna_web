@@ -14,8 +14,8 @@
 					<div class="jarviswidget">
 						<header>
 							<div class="widget-toolbar pull-left">
-								<label class="col-md-3 control-label">圖片類別</label>
-								<div class="col-md-6">
+								<label class="col-md-5 control-label">店家類別</label>
+								<div class="col-md-3">
 									<select id="img_style" class="form-control">
 										<!-- option from javascript -->
 									</select>
