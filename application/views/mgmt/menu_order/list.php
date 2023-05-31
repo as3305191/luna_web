@@ -19,7 +19,7 @@
         <hr/>
     </div>
     <form role="form" id="menu_1" action="" name="step-1" method="post" autocomplete="off" style="padding:0px 13px">
-		<fieldset>
+			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">品項</label>
 					<div class="col-md-6" id="patnet_status" >
@@ -46,7 +46,6 @@
 			</fieldset>
     </form>
 
-</div>
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 	
