@@ -157,7 +157,6 @@ class Menu extends MY_Mgmt_Controller {
 	public function up_lock_menu(){
 		$menu_id = $this -> get_post('id');
 		$u_data = array();
-		$i_data = array();
 		$list = $this -> dao -> find_by_id($menu_id);
 		if(!empty($list)){
 			if($list->status==0){
@@ -167,7 +166,7 @@ class Menu extends MY_Mgmt_Controller {
 				$u_data['status'] = 0;
 				$res['success_msg'] = '菜單變更不開放';
 			}
-			$this -> dao -> update($u_data, $news_id);
+			$this -> dao -> update($u_data, $menu_id);
 		}
 		$res['success'] = TRUE;
 		$this -> to_json($res);
