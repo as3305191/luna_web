@@ -75,7 +75,7 @@ class Menu_dao extends MY_Model {
 		return $list;
 	}
 
-	function find_all_menu(){
+	function find_all_open(){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> where('status',1);
