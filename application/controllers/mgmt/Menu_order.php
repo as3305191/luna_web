@@ -151,7 +151,16 @@ class Menu_order extends MY_Mgmt_Controller {
 		$res = array();
 		$id = $this -> get_post('id');
 		$list = $this -> menu_dao -> find_all_open_menu($id);
-		$res['list'] = $list;
+		if(!empty($list -> img_id)) {
+			$image= explode(",", $list -> img_id);
+			$list -> image_id =$image ;
+			foreach($image as $each){
+				$list -> image[] = $this -> img_dao -> find_by_id($each);
+			}
+		} else{
+			$list -> image =array();
+		}
+		$res['list'] = $list->img_id;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
