@@ -21,7 +21,8 @@ class Menu_order_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('ms.menu_style as style_name');
+		$this -> db -> select('m.menu_name as menu_name');
+		$this -> db -> select('u.user_name as user_name');
 
 		// join
 		$this -> ajax_from_join();
@@ -45,19 +46,14 @@ class Menu_order_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		// if(isset($data['s_menu_style']) && $data['s_news_style'] > 0) {
-		// 	$this -> db -> where('ns.id', $data['s_news_style']);
-		// }
-		if(isset($data['id']) && $data['id'] > 0) {
-			$this -> db -> where('_m.id', $data['id']);
-		}
+
 	}
 
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("menu_style ms", "ms.id = _m.menu_style_id", "left");
-		// $this -> db -> join("images img", "img.id = _m.img_id", "left");
+		$this -> db -> join("menu m", "m.id = _m.menu_id", "left");
+		$this -> db -> join("users u", "u.id = _m.user_id", "left");
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 

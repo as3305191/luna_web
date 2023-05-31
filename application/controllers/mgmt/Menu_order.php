@@ -7,7 +7,6 @@ class Menu_order extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('Menu_order_dao', 'dao');
 		$this -> load -> model('Menu_dao', 'menu_dao');
-
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Menu_style_dao', 'menu_style_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
@@ -25,16 +24,17 @@ class Menu_order extends MY_Mgmt_Controller {
 
 	public function get_data() {
 		$res = array();
+		$data = array();
+		$data = $this -> setup_user_data($data);
+		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$data = $this -> get_posts(array(
 			'length',
 			'start',
 			'columns',
 			'search',
 			'order',
-			's_menu_name'
 		));
 		// set corp id
-		$s_data = $this -> setup_user_data(array());
 
 		$items = $this -> dao -> query_ajax($data);
 		$res['items'] = $items;
