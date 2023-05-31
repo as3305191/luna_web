@@ -25,11 +25,11 @@
 					</div>
 					<?php if($open_menu_count>0): ?>
 						<?php if($open_menu_count==1): ?>
-							<button class="btn-success text-light btn_active menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
+							<button class="btn-success text-light btn_active menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
 						<?php else: ?>		
-							<button class="btn-success text-light btn_active menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
+							<button class="btn-success text-light btn_active menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
 							<?php for ($i=1;$i<count($menu_list);$i++) : ?>
-								<button class="btn-light text-light btn_unsuccess menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>)"><?= $menu_list[$i]->menu_name ?></button>
+								<button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>)"><?= $menu_list[$i]->menu_name ?></button>
 							<?php endfor ?>
 						<?php endif?>
 					<?php endif?>
@@ -162,6 +162,17 @@ var mColDefs = [{
 		});
 	}
 	load_menu();
+
+	menu_click
+	function menu_click(id) {
+		//   document.getElementById(id).show();
+		$('.menu_').hide();
+		$('#'+id).show();
+		$('.menu_btn').removeClass('btn_success');
+		$('.menu_btn').addClass('btn_unsuccess');
+		$('.menu_'+id).removeClass('btn_unsuccess');
+		$('.menu_'+id).addClass('btn_success');
+	}
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
 		var menu_id = $('#menu_name').val();
 		var order_name = $('#order_name').val();
