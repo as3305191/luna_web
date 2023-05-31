@@ -2,7 +2,7 @@ var listmenuAppClass = (function(app) {
 	app.basePath = "mgmt/menu/";
 
 
-	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+	app.fnRowCallback = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 		// edit click
 		if(!app.disableRowClick) {
 			var _rtd = $(nRow).find('td');
