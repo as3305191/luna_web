@@ -8,7 +8,7 @@
 </style>
 <div>
 <header>
-<link rel="stylesheet" href="<?= base_url() ?>assets/css/unify-components.css">
+<!-- <link rel="stylesheet" href="<?= base_url() ?>assets/css/unify-components.css"> -->
 
 </header>
 <div class="tab-content">
@@ -133,6 +133,8 @@
 
 </div>
 <?php $this -> load -> view('general/delete_modal'); ?>
+<script src="<?= base_url() ?>assets/vendor/fancybox1/jquery.fancybox.min.js"></script>
+
 <script type="text/javascript">
 
 var mCols = [null,{
