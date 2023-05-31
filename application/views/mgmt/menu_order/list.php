@@ -20,24 +20,20 @@
 
 
 
+				<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
+					<span style="font-size: 16pt;color:#0d0d56">開放的菜單</span>
+				</div>
+				<button class="btn-success text-light btn_active menu_1" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="backStep1()">菜單1</button>
+				<button class="btn-light text-light btn_unsuccess menu_2" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;">菜單2</button>
+				<button class="btn-light text-light btn_unsuccess menu_3" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;">菜單3</button>
 
 
 
 
 
-
-	<!-- Widget ID (each widget will need unique ID)-->
-	<div class="jarviswidget" > 
+					<!-- Widget ID (each widget will need unique ID)-->
+					<div class="jarviswidget" > 
 						<header >
-							<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
-								<span style="font-size: 16pt;color:#0d0d56">開放的菜單</span>
-							</div>
-							<button class="btn-success text-light btn_active menu_1" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="backStep1()">菜單1</button>
-							<button class="btn-light text-light btn_unsuccess menu_2" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;">菜單2</button>
-							<button class="btn-light text-light btn_unsuccess menu_3" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;">菜單3</button>
-
-				
-							
 							
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
@@ -107,37 +103,6 @@
 
 					</div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				<div>
-					
-					<div class="jarviswidget-editbox">
-						<!-- This area used as dropdown edit box -->
-						
-					</div>
-					<hr/>
-					<div class="widget-body no-padding">
-						<table id="dt_list" class="table table-striped table-bordered table-hover" >
-							
-							<tbody>
-								
-							</tbody>
-						</table>
-
-					</div>
-				</div>
 				</article>
 				<!-- WIDGET END -->
 
