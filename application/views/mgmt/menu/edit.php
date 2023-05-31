@@ -219,7 +219,7 @@ function load_style() {
 					// var option = '<option value="0">全部</option>';
 					// $img_style.append(option);
 					if(menu_style_id>0 ){ 
-						$.each(d, function(){
+						$.each(d.menu_style, function(){
 							if(this.id==menu_style_id){
 								$('<option/>', {
 									'value': this.id,
@@ -233,7 +233,7 @@ function load_style() {
 							}
 						});
 					} else{
-						$.each(d, function(){
+						$.each(d.menu_style, function(){
 							$('<option/>', {
 								'value': this.id,
 								'text': this.menu_style
