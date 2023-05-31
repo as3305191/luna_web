@@ -220,20 +220,29 @@ function load_style() {
 					$img_style = $('#img_style').empty();
 					// var option = '<option value="0">全部</option>';
 					// $img_style.append(option);
-					$.each(d.menu_style, function(){
-						if(menu_style_id>0 && this.id == menu_style_id){
-						$('<option />', {
-								'value': this.id,
-								'text': this.img_style,
-							}).attr("selected", true).appendTo($img_style);	
-						} else{
+					if(menu_style_id>0 ){ 
+						$.each(d.menu_style, function(){
+							if(this.id==menu_style_id){
+								$('<option/>', {
+									'value': this.id,
+									'text': this.menu_style
+								}).attr("selected", true).appendTo($img_style);	
+							} else{
+								$('<option/>', {
+									'value': this.id,
+									'text': this.menu_style
+								}).appendTo($img_style);
+							}
+						});
+					} else{
+						$.each(d.menu_style, function(){
 							$('<option/>', {
 								'value': this.id,
 								'text': this.menu_style
 							}).appendTo($img_style);
-						}
-						
-					});
+						});
+					}
+					
 				}
 			},
 			failure:function(){
