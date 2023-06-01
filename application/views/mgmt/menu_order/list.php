@@ -196,7 +196,7 @@ var mColDefs = [{
           var img_html =
           '<div class="js-slide g-px-3">'+
             '<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url() ?>api/images/get/'+me+'" data-speed="350" data-caption="Lightbox Gallery">'+
-              '<img class="img-fluid" src="<?= base_url() ?>api/images/get/'+me+'/thumb" alt="Image Description">'+
+              '<img class="img-fluid" width="200" height="200" src="<?= base_url() ?>api/images/get/'+me+'/thumb" alt="Image Description">'+
             '</a>'+
           '</div>';
           $('#album').append(img_html);
