@@ -118,7 +118,9 @@ thead tr th {
 							+'<span class="onoffswitch-inner" data-swchon-text="開放" data-swchoff-text="開放"></span>'
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
-					+'</span>';
+					+'</span>'
+					+'<button type="button" class="btn btn-sm btn-primary pull-right" onclick="finish_menu('+row.id+')">完成</button>';
+;
 					}else{
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
