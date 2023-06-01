@@ -74,6 +74,20 @@ class Menu_order_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_order_by_menu($id){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.menu_id',$id);
+		$this -> db -> where('_m.is_done<',1);
+		$this -> db -> select('u.user_name as user_name');
+
+		$this -> db -> join("users u", "u.id = _m.user_id", "left");
+		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
+		$this -> db -> order_by('_m.id', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+
 	function find_by_all_this_menu($id){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
@@ -85,7 +99,6 @@ class Menu_order_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
-
 
 	function find_all_order_list($data, $is_count = FALSE) {
 

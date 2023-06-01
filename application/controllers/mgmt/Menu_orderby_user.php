@@ -198,10 +198,18 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		  $objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
 	
 		  //Write cells
-		  $objWorkSheet->setCellValue('A1', 'Hello'.$i)
-					   ->setCellValue('B1', 'world!')
-					   ->setCellValue('C1', 'Hello')
-					   ->setCellValue('D1', 'world!');
+		  $objWorkSheet->setCellValue('A1', '名字')
+					   ->setCellValue('B1', '品項')
+					   ->setCellValue('C1', '金額')
+					   ->setCellValue('D1', '備注');
+		  $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
+		  for ($j=0;$j<count($items_order);$j++) {
+			$objWorkSheet->setCellValue('A'.$j+2, $items_order[$j]->user_name)
+						 ->setCellValue('B'.$j+2, $items_order[$j]->order_name)
+						 ->setCellValue('C'.$j+2, $items_order[$j]->amount)
+						 ->setCellValue('D'.$j+2, $items_order[$j]->note);
+		  }
+
 	
 		  // Rename sheet
 		  $objWorkSheet->setTitle($items[$i]->menu_name);
