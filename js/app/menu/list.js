@@ -93,7 +93,7 @@ app.dtConfig = {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					d.s_menu_name = $('#s_menu_name').val();
+					d.s_menu_style = $('#s_menu_style').val();
 					
 				},
 				dataSrc : 'items',
@@ -119,7 +119,7 @@ app.dtConfig = {
 		}
 
 		
-		$('#s_menu_name').on('change', function(){
+		$('#s_menu_style').on('change', function(){
 			app.tableReload();
 		});
 	    // $(window).trigger("hashchange");

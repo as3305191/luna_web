@@ -33,7 +33,7 @@ thead tr th {
 								<div class="widget-toolbar pull-left">
 									<label class="col-md-6 control-label">類型</label>
 									<div class="col-md-4">
-										<select id="s_menu_name" class="form-control">
+										<select id="s_menu_style" class="form-control">
 											<!-- option from javascript -->
 										</select>
 									</div>
@@ -196,7 +196,7 @@ thead tr th {
 			success: function(d) {
 				if(d) {
 					// console.log(d);
-					$img_style = $('#s_menu_name').empty();
+					$img_style = $('#s_menu_style').empty();
 					var option = '<option value="0">全部</option>';
 					$img_style.append(option);
 					$.each(d.menu_style, function(){

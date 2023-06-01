@@ -45,11 +45,13 @@ class Menu_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		// if(isset($data['s_menu_style']) && $data['s_news_style'] > 0) {
-		// 	$this -> db -> where('ns.id', $data['s_news_style']);
-		// }
-		if(isset($data['id']) && $data['id'] > 0) {
-			$this -> db -> where('_m.id', $data['id']);
+
+		if(!empty($data['s_menu_style'])){
+			$this -> db -> where("_m.menu_style_id", $data['s_menu_style']);
+		}
+
+		if(!empty($data['s_menu_name'])){
+			$this -> db -> where("_m.menu_style_id", $data['s_menu_name']);
 		}
 	}
 
