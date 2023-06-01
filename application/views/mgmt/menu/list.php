@@ -180,10 +180,8 @@ thead tr th {
 			},
 			dataType: 'json',
 			success: function(d) {
-				if(d) {
 					// console.log(d);
-					currentApp.tableReload();
-				}
+				currentApp.tableReload();
 			},
 			failure:function(){
 				alert('faialure');
