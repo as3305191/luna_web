@@ -175,6 +175,24 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function order_set() {
+		$res = array();
+		$u_data = array();
+		$id = $this -> get_post('id');
+		$list = $this -> dao -> find_by_id($id);
+		if($list->is_stop==1){
+			$u_data['is_stop'] = 0;
+			
+		} else{
+			$u_data['is_stop'] = 0;
+		}
+		
+		$this -> dao -> update($u_data, $id);
+		
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
 	public function up_lock_menu(){
 		$menu_id = $this -> get_post('id');
 		$u_data = array();

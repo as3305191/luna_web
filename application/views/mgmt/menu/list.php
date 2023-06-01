@@ -113,7 +113,13 @@ thead tr th {
 				data : null,
 				render:function ( data, type, row ) {
 					var input = '';
+					var is_stop_html ='';
 					if(row.status >0){//開放
+						if(row.is_stop==0){//可以點
+							is_stop_html  = '<button type="button" color="red" class="btn btn-sm  pull-right" onclick="order_set('+row.id+')">暫停點餐</button>';
+						} else{
+							is_stop_html  = '<button type="button" color="green" class="btn btn-sm  pull-right" onclick="order_set('+row.id+')">重啟點餐</button>';
+						}
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
 						+input
@@ -122,6 +128,7 @@ thead tr th {
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
 					+'</span>'
+					+is_stop_html
 					+'<button type="button" class="btn btn-sm btn-primary pull-right" onclick="finish_menu('+row.id+')">完成</button>';
 ;
 					}else{
@@ -175,6 +182,24 @@ thead tr th {
 			
 		});
 	});
+	function order_set(id) {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/menu/order_set',
+			type: 'POST',
+			data: {
+				id: id
+			},
+			dataType: 'json',
+			success: function(d) {
+					// console.log(d);
+				currentApp.tableReload();
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+
 	function finish_menu(id) {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu/finish_menu',
@@ -192,6 +217,7 @@ thead tr th {
 			}
 		});
 	}
+
 	function load_menu_style() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu/find_menu_style',
