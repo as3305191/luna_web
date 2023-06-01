@@ -96,5 +96,7 @@ class Menu_dao extends MY_Model {
 		return $list[0];
 	}
 
+
+	
 }
 ?>

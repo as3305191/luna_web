@@ -6,6 +6,7 @@ class Menu extends MY_Mgmt_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('Menu_dao', 'dao');
+		$this -> load -> model('Menu_order_dao', 'menu_order_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Menu_style_dao', 'menu_style_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
@@ -165,6 +166,12 @@ class Menu extends MY_Mgmt_Controller {
 			} else{
 				$u_data['status'] = 0;
 				$res['success_msg'] = '菜單變更不開放';
+				$menu_order_list = $this -> menu_order_dao -> find_by_all_this_menu($menu_id);
+				foreach($menu_order_list as $each){
+					$up_d_data['is_delete'] = 1;
+					$this -> menu_order_dao -> update($up_d_data, $each->id);
+				}
+
 			}
 			$this -> dao -> update($u_data, $menu_id);
 		}

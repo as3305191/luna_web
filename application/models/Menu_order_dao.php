@@ -21,6 +21,7 @@ class Menu_order_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
+
 		$this -> db -> select('m.menu_name as menu_name');
 		$this -> db -> select('u.user_name as user_name');
 
@@ -46,7 +47,7 @@ class Menu_order_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-
+		$this -> db -> where('_m.is_delete<',1);
 	}
 
 	function ajax_from_join() {
@@ -71,6 +72,15 @@ class Menu_order_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_by_all_this_menu($id){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.menu_id',$id);
 
+		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
+		$this -> db -> order_by('_m.id', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
 }
 ?>
