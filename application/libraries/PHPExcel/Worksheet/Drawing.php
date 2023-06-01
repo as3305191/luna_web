@@ -100,8 +100,7 @@ class PHPExcel_Worksheet_Drawing extends PHPExcel_Worksheet_BaseDrawing implemen
     public function setPath($pValue = '', $pVerifyFile = true)
     {
         if ($pVerifyFile) {
-            // if (file_exists($pValue)) {
-            if (file_get_contents($pValue)) {
+            if (file_exists($pValue)) {
                 $this->path = $pValue;
 
                 if ($this->width == 0 && $this->height == 0) {
