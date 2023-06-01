@@ -28,7 +28,7 @@ var menuorderuserAppClass = (function(app) {
 		app.tableReload();
 
 		app.doExportAll = function() {
-			window.open(baseUrl + app.basePath + 'export_all/' );
+			window.open(baseUrl + app.basePath + 'export_excel/' );
 		}
 		
 
