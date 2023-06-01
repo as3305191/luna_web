@@ -164,7 +164,7 @@ class Menu extends MY_Mgmt_Controller {
 			), $each->id);
 		}
 		$list = $this -> dao -> find_by_id($id);
-		if($list->status==0){
+		if($list->status==1){
 			$u_data['status'] = 0;
 			$res['success_msg'] = '菜單變更不開放';
 			$this -> dao -> update($u_data, $id);
