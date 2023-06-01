@@ -45,7 +45,9 @@ class Menu_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-
+		if(!empty($data['id'])){
+			$this -> db -> where("_m.id", $data['id']);
+		}
 		if(!empty($data['s_menu_style'])){
 			$this -> db -> where("_m.menu_style_id", $data['s_menu_style']);
 		}
