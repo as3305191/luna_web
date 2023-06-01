@@ -240,13 +240,33 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$fileName = '點餐表'.date('Y-m-d H:i:s').'.xls';
 
 		$objPHPExcel = new PHPExcel();
-		$objPHPExcel->setActiveSheetIndex(0);
-		$objPHPExcel->getActiveSheet()->SetCellValue('A1', '部門名稱');
-		$objPHPExcel->getActiveSheet()->SetCellValue('B1', '主功能');
-		$objPHPExcel->getActiveSheet()->SetCellValue('C1', '權限項目');
-		$objPHPExcel->getActiveSheet()->SetCellValue('D1', '其他設定');
+		
 
+		$i=0;
 
+		while ($i < 2) {
+		
+		// Add new sheet
+		$objWorkSheet = $objPHPExcel->createSheet();
+		
+		//  Attach the newly-cloned sheet to the $objPHPExcel workbook
+		$objPHPExcel->addSheet($objWorkSheet);
+		
+		// Add some data
+		$objPHPExcel->setActiveSheetIndex($i);
+		
+		$sheet = $objPHPExcel->getActiveSheet();
+		
+		$sheet->setCellValue('A1', 'Hello'.$i)
+				->setCellValue('B2', 'world!')
+				->setCellValue('C1', 'Hello')
+				->setCellValue('D2', 'world!');
+		
+		// Rename sheet
+		$sheet->setTitle($i);
+		
+		$i++;
+		}
 
 	
 		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
