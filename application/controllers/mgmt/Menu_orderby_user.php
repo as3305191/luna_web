@@ -251,7 +251,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 
 		//Start adding next sheets
 		$i=0;
-		while ($i < 10) {
+		while ($i < 2) {
 	
 		  // Add new sheet
 		  $objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
@@ -263,7 +263,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 					   ->setCellValue('D2', 'world!');
 	
 		  // Rename sheet
-		  $objWorkSheet->setTitle("$i");
+		  $objWorkSheet->setTitle("哈哈".$i);
 	
 		  $i++;
 		}
