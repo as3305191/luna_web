@@ -91,7 +91,7 @@ thead tr th {
 	var baseUrl = '<?=base_url('')?>';
 
 	var mCols = [null,{
-		data : 'order_user_name'
+		data : 'user_name'
 	},{
 		data : 'order_name'
 	},{
