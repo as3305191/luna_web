@@ -33,6 +33,8 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 			// 's_menu_style',
 		));
 		// set corp id
+		$this -> session -> set_userdata('order_menu', $data);
+
 		$s_data = $this -> setup_user_data(array());
 		$items = $this -> menu_order_dao -> find_all_order_list($data);
 		$res['items'] = $items;
@@ -175,67 +177,6 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function export_excel1(){
-	  $this->load->dbutil();
-	  $this->load->helper('file');
-	  $this->load->helper('download');
-      $delimiter = ",";
-      $newline = "\r\n";
-	  $date = date('YmdHis');
-      $filename = $date."-點餐表.csv";
-
-			// $id = $this -> session -> userdata("daily_report_data_by_id");
-			
-    		$f = fopen('php://memory', 'w');
-	
-			
-			$fields = array(
-				iconv("UTF-8","Big5//IGNORE",'工單編號SAP'),
-				"",
-				"",
-				isset($item) ? $item -> sn_sap : '',
-			);
-			fputcsv($f, $fields, $delimiter);
-
-			$fields = array(
-				iconv("UTF-8","Big5//IGNORE",'工單執行日期'),
-				"",
-				"",
-				isset($item) ? $item -> start_time : '',
-			);
-			fputcsv($f, $fields, $delimiter);
-
-			
-			$fields = array(
-				iconv("UTF-8","Big5//IGNORE",'原料列表'),
-				"",
-				"",
-				"",
-			);
-			fputcsv($f, $fields, $delimiter);
-				
-
-			$fields = array(
-				iconv("UTF-8","Big5//IGNORE",'料號'),
-				iconv("UTF-8","Big5//IGNORE",'品名'),
-				iconv("UTF-8","Big5//IGNORE",'櫃號'),
-				iconv("UTF-8","Big5//IGNORE",'批號'),
-				iconv("UTF-8","Big5//IGNORE",'需求重量'),
-				iconv("UTF-8","Big5//IGNORE",'實際重量'),
-
-			);
-			fputcsv($f, $fields, $delimiter);
-
-			
-    		fseek($f, 0);
-			//  create_sheet('工作表3') ;
-		  header('Content-Type: text/csv');
-		  header('Content-Disposition: attachment; filename="' . $filename . '";');
-
-		fpassthru($f);
-	}
-
-
 	public function export_excel(){
 		$fileName = '點餐表'.date('Y-m-d H:i:s').'.xls';
 
@@ -249,23 +190,22 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 	
 		$sheet = $objPHPExcel->getActiveSheet();
 
+		$items = $this -> menu_dao -> find_all_open();
 		//Start adding next sheets
-		$i=0;
-		while ($i < 2) {
+		
+		for ($i=0;$i<count($items);$i++) {
 	
 		  // Add new sheet
 		  $objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
 	
 		  //Write cells
 		  $objWorkSheet->setCellValue('A1', 'Hello'.$i)
-					   ->setCellValue('B2', 'world!')
+					   ->setCellValue('B1', 'world!')
 					   ->setCellValue('C1', 'Hello')
-					   ->setCellValue('D2', 'world!');
+					   ->setCellValue('D1', 'world!');
 	
 		  // Rename sheet
-		  $objWorkSheet->setTitle("哈哈".$i);
-	
-		  $i++;
+		  $objWorkSheet->setTitle($items[$i]->menu_name);
 		}
 	
 		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
