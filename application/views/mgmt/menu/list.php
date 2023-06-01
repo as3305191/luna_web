@@ -141,7 +141,7 @@ thead tr th {
 	},{
 		data : 'menu_name',
 		render:function ( data, type, row ) {
-			var html ='<span class="">'+data+'</span><div><button type="button" class="btn btn-sm btn-primary" onclick="finish_menu('+row.id+')">完成</button></div>';
+			var html ='<div><span class="">'+data+'</span><button type="button" class="btn btn-sm btn-primary" onclick="finish_menu('+row.id+')">完成</button></div>';
 			return html;
 		}
 	}];
