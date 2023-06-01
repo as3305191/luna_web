@@ -10,9 +10,8 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$this -> load -> model('Menu_order_dao', 'menu_order_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Menu_style_dao', 'menu_style_dao');
-		$this -> load -> model('Img_month_use_dao', 'img_month_use_dao');		
-		$this -> load -> model('Img_month_use_record_dao', 'img_month_use_record_dao');	
-		$this->load->library('excel');
+	
+		// $this->load->library('excel');
 	
 	}
 
