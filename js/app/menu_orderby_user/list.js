@@ -1,5 +1,5 @@
 var menuorderuserAppClass = (function(app) {
-	app.basePath = "mgmt/menu_order/";
+	app.basePath = "mgmt/menu_orderby_user/";
 	app.disableRowClick = true;
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
