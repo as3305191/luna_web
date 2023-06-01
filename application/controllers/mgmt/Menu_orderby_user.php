@@ -189,7 +189,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 	
 		$sheet = $objPHPExcel->getActiveSheet();
 
-		$items = $this -> menu_dao -> find_all_open();
+		$items = $this -> menu_dao -> find_all_open_without_stop();
 		//Start adding next sheets
 		
 		for ($i=0;$i<count($items);$i++) {

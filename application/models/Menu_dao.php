@@ -102,8 +102,17 @@ class Menu_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list[0];
 	}
+	function find_all_open_without_stop(){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.status',1);
 
-
+		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
+		$this -> db -> order_by('_m.id', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+	
 	
 }
 ?>
