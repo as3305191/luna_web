@@ -84,7 +84,16 @@
 					</div>
 				</div>
 			</fieldset>
-		
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">分類</label>
+					<div class="col-md-6">
+						<input type="text" required class="form-control" name="note"  id="note" value="<?= isset($item) ? $item -> note : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			
+
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">圖片</label>
@@ -176,6 +185,7 @@ $("#img-input").fileinput({
 			menu_style_id:$('#menu_style_id').val(),
 			menu_name: $('#menu_name').val(),
 			img: img.join(","),
+			note: $('#note').val(),
 		},
 		success : function(data) {
 			if(data.error_msg) {
