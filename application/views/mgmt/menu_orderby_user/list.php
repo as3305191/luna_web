@@ -91,7 +91,7 @@ thead tr th {
 	// var baseUrl = '<?=base_url('')?>';
 
 	var mCols = [null,{
-		data : 'order_name'
+		data : 'user_name'
 	},{
 		data : 'order_name'
 	},{
@@ -119,8 +119,8 @@ thead tr th {
 	}];
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/menu/list.js", function(){
-			currentApp = new listmenuAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/menu_orderby_user/list.js", function(){
+			currentApp = new menuorderuserAppClass(new BaseAppClass({}));
 			
 		});
 	});
