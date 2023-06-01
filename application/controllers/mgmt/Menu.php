@@ -163,6 +163,11 @@ class Menu extends MY_Mgmt_Controller {
 			if($list->status==0){
 				$u_data['status'] = 1;
 				$res['success_msg'] = '菜單開放成功';
+				$menu_order_list = $this -> menu_order_dao -> find_by_all_this_menu($menu_id);
+				foreach($menu_order_list as $each){
+					$up_d_data['is_delete'] = 0;
+					$this -> menu_order_dao -> update($up_d_data, $each->id);
+				}
 			} else{
 				$u_data['status'] = 0;
 				$res['success_msg'] = '菜單變更不開放';
