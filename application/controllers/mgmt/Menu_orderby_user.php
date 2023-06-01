@@ -236,7 +236,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 	}
 
 
-	public function export_excel1(){
+	public function export_excel(){
 		$fileName = '點餐表'.date('Y-m-d H:i:s').'.xls';
 
 		$objPHPExcel = new PHPExcel();
