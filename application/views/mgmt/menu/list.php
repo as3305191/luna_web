@@ -124,9 +124,9 @@ thead tr th {
 					var is_stop_html ='';
 					if(row.status >0){//開放
 						if(row.is_stop==0){//可以點
-							is_stop_html  = '<button type="button" color="red" class="btn btn-sm  pull-right" onclick="order_set('+row.id+')">暫停點餐</button>';
+							is_stop_html  = '<button type="button" style="color:red;" class="btn btn-sm  pull-right" onclick="order_set('+row.id+')">暫停點餐</button>';
 						} else{
-							is_stop_html  = '<button type="button" color="green" class="btn btn-sm  pull-right" onclick="order_set('+row.id+')">重啟點餐</button>';
+							is_stop_html  = '<button type="button" style="color:green;" class="btn btn-sm  pull-right" onclick="order_set('+row.id+')">重啟點餐</button>';
 						}
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
