@@ -181,8 +181,8 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 	  $this->load->helper('download');
       $delimiter = ",";
       $newline = "\r\n";
-			$date = date('YmdHis');
-      $filename = $date."-點餐表.xls";
+	  $date = date('YmdHis');
+      $filename = $date."-點餐表.csv";
 
 			// $id = $this -> session -> userdata("daily_report_data_by_id");
 			
@@ -227,9 +227,9 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 			fputcsv($f, $fields, $delimiter);
 
 			
-    	fseek($f, 0);
-
-		  header('Content-Type: text/xls');
+    		fseek($f, 0);
+			//  create_sheet('工作表3') ;
+		  header('Content-Type: text/csv');
 		  header('Content-Disposition: attachment; filename="' . $filename . '";');
 
 		fpassthru($f);
