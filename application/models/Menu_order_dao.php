@@ -78,6 +78,7 @@ class Menu_order_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> where('_m.menu_id',$id);
+		$this -> db -> where('_m.is_done<',1);
 
 		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
 		$this -> db -> order_by('_m.id', 'desc');
