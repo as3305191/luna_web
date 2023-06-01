@@ -176,28 +176,63 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 	}
 
 	public function export_excel(){
-		$fileName = '點餐紀錄'.date('Y-m-d H:i:s').'.xls';
-		// load excel library
-		$objPHPExcel = new PHPExcel();
+	  $this->load->dbutil();
+	  $this->load->helper('file');
+	  $this->load->helper('download');
+      $delimiter = ",";
+      $newline = "\r\n";
+			$date = date('YmdHis');
+      $filename = $date."-點餐表.xls";
 
-		$objPHPExcel->setActiveSheetIndex(0);
-		$rowCount = 2;
-
-		$objPHPExcel->getActiveSheet()->SetCellValue('A1', '部門名稱');
-		$objPHPExcel->getActiveSheet()->SetCellValue('B1', '主功能');
-		$objPHPExcel->getActiveSheet()->SetCellValue('C1', '權限項目');
-		$objPHPExcel->getActiveSheet()->SetCellValue('D1', '其他設定');
-		
-		$objPHPExcel->getActiveSheet()->getStyle('A1:D'.$rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-		$objPHPExcel->getActiveSheet()->getStyle('A1:D'.$rowCount)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-		$objPHPExcel->getActiveSheet()->getStyle('A1:D'.$rowCount)->getAlignment()->setWrapText(true);
+			// $id = $this -> session -> userdata("daily_report_data_by_id");
+			
+    		$f = fopen('php://memory', 'w');
 	
-		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+			
+			$fields = array(
+				iconv("UTF-8","Big5//IGNORE",'工單編號SAP'),
+				"",
+				"",
+				isset($item) ? $item -> sn_sap : '',
+			);
+			fputcsv($f, $fields, $delimiter);
 
-		// download file
-		header("Content-Type: application/vnd.ms-excel");
-		header('Content-Disposition: attachment; filename="'.$fileName.'"');
-		$objWriter->save('php://output');
+			$fields = array(
+				iconv("UTF-8","Big5//IGNORE",'工單執行日期'),
+				"",
+				"",
+				isset($item) ? $item -> start_time : '',
+			);
+			fputcsv($f, $fields, $delimiter);
+
+			
+			$fields = array(
+				iconv("UTF-8","Big5//IGNORE",'原料列表'),
+				"",
+				"",
+				"",
+			);
+			fputcsv($f, $fields, $delimiter);
+				
+
+			$fields = array(
+				iconv("UTF-8","Big5//IGNORE",'料號'),
+				iconv("UTF-8","Big5//IGNORE",'品名'),
+				iconv("UTF-8","Big5//IGNORE",'櫃號'),
+				iconv("UTF-8","Big5//IGNORE",'批號'),
+				iconv("UTF-8","Big5//IGNORE",'需求重量'),
+				iconv("UTF-8","Big5//IGNORE",'實際重量'),
+
+			);
+			fputcsv($f, $fields, $delimiter);
+
+			
+    	fseek($f, 0);
+
+		  header('Content-Type: text/xls');
+		  header('Content-Disposition: attachment; filename="' . $filename . '";');
+
+		fpassthru($f);
 	}
 
 }
