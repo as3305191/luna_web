@@ -184,7 +184,7 @@ class Menu extends MY_Mgmt_Controller {
 			$u_data['is_stop'] = 0;
 			
 		} else{
-			$u_data['is_stop'] = 0;
+			$u_data['is_stop'] = 1;
 		}
 		
 		$this -> dao -> update($u_data, $id);
