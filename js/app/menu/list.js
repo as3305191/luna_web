@@ -115,7 +115,7 @@ app.dtConfig = {
 		app.tableReload();
 
 		app.doExportAll = function(id) {
-			window.open(baseUrl + app.basePath + 'export_all/' + id);
+			window.open(baseUrl + 'mgmt/menu_orderby_user/export_excel/' + id);
 		}
 
 		
