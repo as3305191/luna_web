@@ -128,7 +128,8 @@ thead tr th {
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
 					+'</span>'
-					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>';
+					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>'
+					+'<button type="button" class="btn btn-sm btn-primary pull-right" onclick="finish_menu('+row.id+')">完成</button>';
 					}
 					return html;
 		    },
@@ -141,7 +142,7 @@ thead tr th {
 	},{
 		data : 'menu_name',
 		render:function ( data, type, row ) {
-			var html ='<div><span class="">'+data+'</span><button type="button" class="btn btn-sm btn-primary pull-right" onclick="finish_menu('+row.id+')">完成</button></div>';
+			var html =data;
 			return html;
 		}
 	}];
