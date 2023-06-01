@@ -1,11 +1,12 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Menu extends MY_Mgmt_Controller {
+class Menu_orderby_user extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('Menu_dao', 'dao');
+		$this -> load -> model('Menu_orderby_user_dao', 'dao');
+		$this -> load -> model('Menu_dao', 'menu_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Menu_style_dao', 'menu_style_dao');
 		$this -> load -> model('Img_month_use_dao', 'img_month_use_dao');		
@@ -16,7 +17,7 @@ class Menu extends MY_Mgmt_Controller {
 	{
 		$data = array();
 		$this -> setup_user_data($data);
-		$this -> load -> view('mgmt/menu/list', $data);
+		$this -> load -> view('mgmt/menu_orderby_user/list', $data);
 	}
 
 	public function get_data() {
@@ -57,7 +58,7 @@ class Menu extends MY_Mgmt_Controller {
 			}
 			$data['item'] = $item;
 		}
-		$this->load->view('mgmt/menu/edit', $data);
+		$this->load->view('mgmt/menu_orderby_user/edit', $data);
 	}
 
 	public function insert() {

@@ -1,5 +1,6 @@
 var menuorderAppClass = (function(app) {
 	app.basePath = "mgmt/menu_order/";
+	app.disableRowClick = true;
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
 			ajax : {

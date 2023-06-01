@@ -1,7 +1,5 @@
 var listmenuAppClass = (function(app) {
 	app.basePath = "mgmt/menu/";
-
-
 	app.fnRowCallback_new = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 		// edit click
 		if(!app.disableRowClick) {
