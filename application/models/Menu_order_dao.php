@@ -97,8 +97,8 @@ class Menu_order_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 
 		$this -> db -> select('_m.*');
-		// $this -> db -> select('u.user_name as user_name');
-		// $this -> db -> join("users u", "u.id = _m.user_id", "left");
+		$this -> db -> select('u.user_name as user_name');
+		$this -> db -> join("users u", "u.id = _m.user_id", "left");
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
 		}
