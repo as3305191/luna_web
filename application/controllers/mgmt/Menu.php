@@ -78,8 +78,6 @@ class Menu extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/menu/edit', $data);
 	}
 
-
-
 	public function insert() {//新增
 		$res = array();
 		$data = array();
@@ -152,6 +150,20 @@ class Menu extends MY_Mgmt_Controller {
 			'img_style' => $img_style
 		), $last_id);
 
+		$this -> to_json($res);
+	}
+
+	public function finish_menu() {
+		$res = array();
+		$id = $this -> get_post('id');
+		$order_list = $this -> menu_order_dao -> find_by_all_this_menu($id);
+		foreach($order_list as $each){
+			$this -> menu_order_dao -> update(array(
+				'is_done' => 1
+			), $each->id);
+		}
+		
+		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
 

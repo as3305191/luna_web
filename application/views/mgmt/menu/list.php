@@ -169,7 +169,25 @@ thead tr th {
 			
 		});
 	});
-
+	function finish_menu(id) {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/menu/finish_menu',
+			type: 'POST',
+			data: {
+				id: id
+			},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
 	function load_menu_style() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu/find_menu_style',
