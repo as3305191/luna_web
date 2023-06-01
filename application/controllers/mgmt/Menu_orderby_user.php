@@ -174,8 +174,24 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	function get_between($input, $start, $end) {//2字串中間
-		$substr = substr($input, strlen($start)+strpos($input, $start),(strlen($input) - strpos($input, $end))*(-1));
-		return $substr;
+	public function export_excel(){
+		$fileName = '點餐紀錄'.date('Y-m-d H:i:s').'.xls';
+		// load excel library
+		$objPHPExcel = new PHPExcel();
+
+		
+		$objPHPExcel->getActiveSheet()->getStyle('A1:D1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+		$objPHPExcel->getActiveSheet()->getStyle('A1:D2')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+		$objPHPExcel->getActiveSheet()->getStyle('A1:D3')->getAlignment()->setWrapText(true);
+	
+		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+
+		// download file
+		header("Content-Type: application/vnd.ms-excel");
+		header('Content-Disposition: attachment; filename="'.$fileName.'"');
+		// $writer = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+		$objWriter->save('php://output');
+		// $this -> to_json($data);
 	}
+
 }

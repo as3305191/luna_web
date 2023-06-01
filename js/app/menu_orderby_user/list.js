@@ -27,8 +27,8 @@ var menuorderuserAppClass = (function(app) {
 		// get year month list
 		app.tableReload();
 
-		app.doExportAll = function(id) {
-			window.open(baseUrl + app.basePath + 'export_all/' + id);
+		app.doExportAll = function() {
+			window.open(baseUrl + app.basePath + 'export_all/' );
 		}
 		
 
