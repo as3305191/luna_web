@@ -163,7 +163,7 @@ class Menu extends MY_Mgmt_Controller {
 				'is_delete' => 1
 			), $each->id);
 		}
-		$list = $this -> dao -> find_by_id($menu_id);
+		$list = $this -> dao -> find_by_id($id);
 		if($list->status==0){
 			$u_data['status'] = 0;
 			$res['success_msg'] = '菜單變更不開放';
