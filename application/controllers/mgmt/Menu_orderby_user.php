@@ -179,19 +179,24 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		// load excel library
 		$objPHPExcel = new PHPExcel();
 
+		$objPHPExcel->setActiveSheetIndex(0);
+		$rowCount = 2;
+
+		$objPHPExcel->getActiveSheet()->SetCellValue('A1', '部門名稱');
+		$objPHPExcel->getActiveSheet()->SetCellValue('B1', '主功能');
+		$objPHPExcel->getActiveSheet()->SetCellValue('C1', '權限項目');
+		$objPHPExcel->getActiveSheet()->SetCellValue('D1', '其他設定');
 		
-		$objPHPExcel->getActiveSheet()->getStyle('A1:D1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-		$objPHPExcel->getActiveSheet()->getStyle('A1:D2')->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
-		$objPHPExcel->getActiveSheet()->getStyle('A1:D3')->getAlignment()->setWrapText(true);
+		$objPHPExcel->getActiveSheet()->getStyle('A1:D'.$rowCount)->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+		$objPHPExcel->getActiveSheet()->getStyle('A1:D'.$rowCount)->getAlignment()->setVertical(PHPExcel_Style_Alignment::VERTICAL_CENTER);
+		$objPHPExcel->getActiveSheet()->getStyle('A1:D'.$rowCount)->getAlignment()->setWrapText(true);
 	
 		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
 
 		// download file
 		header("Content-Type: application/vnd.ms-excel");
 		header('Content-Disposition: attachment; filename="'.$fileName.'"');
-		// $writer = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 		$objWriter->save('php://output');
-		// $this -> to_json($data);
 	}
 
 }
