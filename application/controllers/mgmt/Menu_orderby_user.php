@@ -1,6 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
-
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
 class Menu_orderby_user extends MY_Mgmt_Controller {
 
 	function __construct() {
@@ -10,8 +11,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$this -> load -> model('Menu_order_dao', 'menu_order_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Menu_style_dao', 'menu_style_dao');
-	
-		// $this->load->library('excel');
+		$this->load->library('excel');
 	
 	}
 
@@ -235,4 +235,26 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		fpassthru($f);
 	}
 
+
+	public function excel(){
+		$fileName = '點餐表'.date('Y-m-d H:i:s').'.xls';
+
+		$objPHPExcel = new PHPExcel();
+		$objPHPExcel->setActiveSheetIndex(0);
+		$objPHPExcel->getActiveSheet()->SetCellValue('A1', '部門名稱');
+		$objPHPExcel->getActiveSheet()->SetCellValue('B1', '主功能');
+		$objPHPExcel->getActiveSheet()->SetCellValue('C1', '權限項目');
+		$objPHPExcel->getActiveSheet()->SetCellValue('D1', '其他設定');
+
+
+
+	
+		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+
+		// download file
+		header("Content-Type: application/vnd.ms-excel");
+		header('Content-Disposition: attachment; filename="'.$fileName.'"');
+		// $writer = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+		$objWriter->save('php://output');
+	}
 }
