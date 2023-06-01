@@ -53,7 +53,7 @@ thead tr th {
 											<th class="min100">名字</th>
 											<th class="min100">品項</th>
 											<th class="min100">金額</th>
-											<th class="min100">備注</th>
+											<th class="min100">備註</th>
 										</tr>
 									</thead>
 									<tbody>

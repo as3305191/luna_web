@@ -200,7 +200,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		  //Write cells
 		  $objWorkSheet->setCellValue('A1', '名字')
 					   ->setCellValue('B1', '品項')
-					   ->setCellValue('C1', '備注')
+					   ->setCellValue('C1', '備註')
 					   ->setCellValue('D1', '金額');
 		  $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
 		  $total = 0;

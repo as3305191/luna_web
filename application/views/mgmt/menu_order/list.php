@@ -56,7 +56,7 @@
 							<th>選擇店家</th>
 							<th>品項</th>
 							<th>金額</th>
-							<th>備注</th>
+							<th>備註</th>
 						</tr>
 						<tr>
 							<td class="min50" style="border-right:none;"></td>
@@ -79,7 +79,7 @@
 							</td>
 							<td style="border-right:none;">
 								<div class="input-group col-md-10">
-									<input type="text" class="form-control" id="note" placeholder="備注">
+									<input type="text" class="form-control" id="note" placeholder="備註">
 								</div>
 
 									<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
