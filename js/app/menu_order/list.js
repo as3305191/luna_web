@@ -1,4 +1,4 @@
-var menuorderuserAppClass = (function(app) {
+var menuorderAppClass = (function(app) {
 	app.basePath = "mgmt/menu_orderby_user/";
 	app.disableRowClick = true;
 	app.init = function() {
