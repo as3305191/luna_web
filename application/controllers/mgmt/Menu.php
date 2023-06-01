@@ -159,7 +159,8 @@ class Menu extends MY_Mgmt_Controller {
 		$order_list = $this -> menu_order_dao -> find_by_all_this_menu($id);
 		foreach($order_list as $each){
 			$this -> menu_order_dao -> update(array(
-				'is_done' => 1
+				'is_done' => 1,
+				'is_delete' => 1
 			), $each->id);
 		}
 		
