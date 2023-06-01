@@ -59,7 +59,7 @@ class Menu extends MY_Mgmt_Controller {
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
-			$item = $list;
+			$item = $list[0];
 			// if(!empty($item -> image_id)) {
 			// 	$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
 			// }
