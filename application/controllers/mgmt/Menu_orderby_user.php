@@ -200,18 +200,24 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		  //Write cells
 		  $objWorkSheet->setCellValue('A1', '名字')
 					   ->setCellValue('B1', '品項')
-					   ->setCellValue('C1', '金額')
-					   ->setCellValue('D1', '備注');
+					   ->setCellValue('C1', '備注')
+					   ->setCellValue('D1', '金額');
 		  $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
+		  $total = 0;
 		  for ($j=0;$j<count($items_order);$j++) {
 			$k = $j+2;
+			$total+=$items_order[$j]->amount;
 			$objWorkSheet->setCellValue('A'.$k , $items_order[$j]->user_name)
 						 ->setCellValue('B'.$k , $items_order[$j]->order_name)
-						 ->setCellValue('C'.$k , $items_order[$j]->amount)
-						 ->setCellValue('D'.$k , $items_order[$j]->note);
+						 ->setCellValue('C'.$k , $items_order[$j]->note)
+						 ->setCellValue('D'.$k , $items_order[$j]->amount);
 		  }
-
-	
+		  $last = count($items_order)+2;
+		  $objWorkSheet->setCellValue('A'.$last , '')
+						->setCellValue('B'.$last , '')
+						->setCellValue('C'.$last, '')
+						->setCellValue('D'.$last , '總金額')
+						->setCellValue('E'.$last ,  $total);
 		  // Rename sheet
 		  $objWorkSheet->setTitle($items[$i]->menu_name);
 		}
