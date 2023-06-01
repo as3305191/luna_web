@@ -31,8 +31,8 @@ thead tr th {
 									</div>
 								</div>
 								<div class="widget-toolbar pull-left">
-									<label class="col-md-3 control-label">類型</label>
-									<div class="col-md-6">
+									<label class="col-md-6 control-label">類型</label>
+									<div class="col-md-4">
 										<select id="s_menu_name" class="form-control">
 											<!-- option from javascript -->
 										</select>
