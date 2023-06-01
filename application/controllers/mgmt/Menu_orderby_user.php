@@ -204,10 +204,11 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 					   ->setCellValue('D1', '備注');
 		  $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
 		  for ($j=0;$j<count($items_order);$j++) {
-			$objWorkSheet->setCellValue('A'.$j+2, $items_order[$j]->user_name)
-						 ->setCellValue('B'.$j+2, $items_order[$j]->order_name)
-						 ->setCellValue('C'.$j+2, $items_order[$j]->amount)
-						 ->setCellValue('D'.$j+2, $items_order[$j]->note);
+			$k = $j+2;
+			$objWorkSheet->setCellValue('A'.$k , $items_order[$j]->user_name)
+						 ->setCellValue('B'.$k , $items_order[$j]->order_name)
+						 ->setCellValue('C'.$k , $items_order[$j]->amount)
+						 ->setCellValue('D'.$k , $items_order[$j]->note);
 		  }
 
 	
