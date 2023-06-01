@@ -88,10 +88,10 @@ thead tr th {
 
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
-	var baseUrl = '<?=base_url('')?>';
+	// var baseUrl = '<?=base_url('')?>';
 
 	var mCols = [null,{
-		data : 'user_name'
+		data : 'order_name'
 	},{
 		data : 'order_name'
 	},{
