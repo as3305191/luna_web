@@ -43,13 +43,7 @@
 		</div>
 
 	
-		<div class="widget-toolbar pull-right">
-			<div class="btn-group">
-				<button onclick="currentApp.doExportAll(<?=isset($item->id) && $item->id>0? $item -> id : ''?>)" class="btn dropdown-toggle btn-xs btn-warning" data-toggle="dropdown">
-					<i class="fa fa-save"></i>匯出
-				</button>
-			</div>
-		</div>
+		
 	</header>
 	<!-- widget div-->
 	<div>
