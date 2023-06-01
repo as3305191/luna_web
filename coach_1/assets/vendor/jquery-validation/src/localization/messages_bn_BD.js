@@ -14,10 +14,10 @@ $.extend( $.validator.messages, {
 	creditcard: "অনুগ্রহ করে একটি ক্রেডিট কার্ডের সঠিক নম্বর লিখুন।",
 	equalTo: "একই মান আবার লিখুন।",
 	extension: "সঠিক ধরনের ফাইল আপলোড করুন।",
-	maxlength: $.validator.format( "{0}টির বেশি অক্ষর লেখা যাবে না।" ),
-	minlength: $.validator.format( "{0}টির কম অক্ষর লেখা যাবে না।" ),
-	rangelength: $.validator.format( "{0} থেকে {1} টি অক্ষর সম্বলিত মান লিখুন।" ),
-	range: $.validator.format( "{0} থেকে {1} এর মধ্যে একটি মান ব্যবহার করুন।" ),
-	max: $.validator.format( "অনুগ্রহ করে {0} বা তার চাইতে কম মান ব্যবহার করুন।" ),
-	min: $.validator.format( "অনুগ্রহ করে {0} বা তার চাইতে বেশি মান ব্যবহার করুন।" )
+	maxlength: $.validator.format( "[0]টির বেশি অক্ষর লেখা যাবে না।" ),
+	minlength: $.validator.format( "[0]টির কম অক্ষর লেখা যাবে না।" ),
+	rangelength: $.validator.format( "[0] থেকে {1} টি অক্ষর সম্বলিত মান লিখুন।" ),
+	range: $.validator.format( "[0] থেকে {1} এর মধ্যে একটি মান ব্যবহার করুন।" ),
+	max: $.validator.format( "অনুগ্রহ করে [0] বা তার চাইতে কম মান ব্যবহার করুন।" ),
+	min: $.validator.format( "অনুগ্রহ করে [0] বা তার চাইতে বেশি মান ব্যবহার করুন।" )
 } );

@@ -551,7 +551,7 @@ set f3 [::math::polynomials::divPolyn $f1 $f2]
 set coeffs [::math::polynomials::allCoeffsPolyn $f3]
 puts "Coefficients: $coeffs"
 set f1 [::math::polynomials::polynomial {1 2 3}]
-set f2 [::math::polynomials::polynomial {0}]
+set f2 [::math::polynomials::polynomial [0]]
 set f3 [::math::polynomials::divPolyn $f2 $f1]
 set coeffs [::math::polynomials::allCoeffsPolyn $f3]
 puts "Coefficients: $coeffs"

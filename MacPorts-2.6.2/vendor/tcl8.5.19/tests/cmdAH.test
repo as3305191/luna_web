@@ -213,7 +213,7 @@ test cmdAH-6.2 {Tcl_FileObjCmd: volumes} {
 test cmdAH-6.3 {Tcl_FileObjCmd: volumes} {unix} {
     set volumeList [file volumes]
     catch [list glob -nocomplain [lindex $volumeList 0]*]
-} {0}
+} [0]
 test cmdAH-6.4 {Tcl_FileObjCmd: volumes} win {
     set volumeList [string tolower [file volumes]]
     list [catch {lsearch $volumeList "c:/"} element] [expr $element != -1] [catch {list glob -nocomplain [lindex $volumeList $element]*}]
@@ -237,7 +237,7 @@ test cmdAH-7.1 {Tcl_FileObjCmd - file attrs} {
     # We used [makeFile] so we undo with [removeFile]
     removeFile $foofile
     set res
-} {0}
+} [0]
 
 # dirname
 

@@ -14,10 +14,10 @@ $.extend( $.validator.messages, {
 	creditcard: "درج کیا گیا کارڈ نمبر درست نہیں ہے",
 	equalTo: "اندراج کا موازنہ درست نہیں ہے",
 	extension: "اندراج درست نہیں ہے",
-	maxlength: $.validator.format( "زیادہ سے زیادہ {0} کا اندراج کر سکتے ہیں" ),
-	minlength: $.validator.format( "کم سے کم {0} کا اندراج کرنا ضروری ہے" ),
-	rangelength: $.validator.format( "اندراج کا {0} اور {1}کے درمیان ہونا ضروری ہے" ),
-	range: $.validator.format( "اندراج کا {0} اور {1} کے درمیان ہونا ضروری ہے" ),
-	max: $.validator.format( "زیادہ سے زیادہ {0} کا اندراج کر سکتے ہیں" ),
-	min: $.validator.format( "کم سے کم {0} کا اندراج کرنا ضروری ہے" )
+	maxlength: $.validator.format( "زیادہ سے زیادہ [0] کا اندراج کر سکتے ہیں" ),
+	minlength: $.validator.format( "کم سے کم [0] کا اندراج کرنا ضروری ہے" ),
+	rangelength: $.validator.format( "اندراج کا [0] اور {1}کے درمیان ہونا ضروری ہے" ),
+	range: $.validator.format( "اندراج کا [0] اور {1} کے درمیان ہونا ضروری ہے" ),
+	max: $.validator.format( "زیادہ سے زیادہ [0] کا اندراج کر سکتے ہیں" ),
+	min: $.validator.format( "کم سے کم [0] کا اندراج کرنا ضروری ہے" )
 } );

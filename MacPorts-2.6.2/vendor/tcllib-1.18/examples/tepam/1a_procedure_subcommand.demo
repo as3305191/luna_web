@@ -15,7 +15,7 @@
 #### Initialization ####
 
 DemoControl(Initialization) 1
-DemoControl(IsExecutable) {0}
+DemoControl(IsExecutable) [0]
 
 # This demo shows how procedure sub commands can be created and called
 # using TEPAM.

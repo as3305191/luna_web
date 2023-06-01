@@ -18533,7 +18533,7 @@ test clock-6.3 {input of seconds} {
 } -1
 
 test clock-6.4 {input of seconds} {
-    clock scan {0} -format %s -gmt true
+    clock scan [0] -format %s -gmt true
 } 0
 
 test clock-6.5 {input of seconds} {
@@ -35871,7 +35871,7 @@ test clock-37.1 {%s gmt testing} {
     # %s, being the difference between local and Greenwich, does not
     # depend on the time zone.
     set c [expr {$b-$a}]
-} {0}
+} [0]
 
 test clock-38.1 {regression - convertUTCToLocalViaC - east of Greenwich} \
     -setup {

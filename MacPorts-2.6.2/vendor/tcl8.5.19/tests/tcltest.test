@@ -31,10 +31,10 @@ makeFile {
     namespace import ::tcltest::test
     test a-1.0 {test a} {
 	list 0
-    } {0}
+    } [0]
     test b-1.0 {test b} {
 	list 1
-    } {0}
+    } [0]
     test c-1.0 {test c} {knownBug} {
     } {}
     test d-1.0 {test d} {
@@ -466,7 +466,7 @@ test tcltest-6.8 {tcltest::outputFile (implicit outputFile)} {
 test tcltest-7.1 {tcltest test.tcl -debug 0} {unixOrPc} {
     catch {exec [interpreter] test.tcl -debug 0} msg
     regexp "Flags passed into tcltest" $msg
-} {0}
+} [0]
 test tcltest-7.2 {tcltest test.tcl -debug 1} {unixOrPc} {
     catch {exec [interpreter] test.tcl -debug 1 -skip b*} msg
     list [regexp userSpecifiedSkip $msg] \
@@ -807,7 +807,7 @@ test tcltest-10.1 {-preservecore 0} {unixOrPc} {
     slave msg $mc -preservecore 0
     file delete core
     regexp "Core file produced" $msg
-} {0}
+} [0]
 test tcltest-10.2 {-preservecore 1} {unixOrPc} {
     slave msg $mc -preservecore 1
     file delete core

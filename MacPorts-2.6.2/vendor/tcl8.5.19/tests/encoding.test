@@ -129,7 +129,7 @@ test encoding-5.2 {Tcl_SetSystemEncoding: test ref count} {
     set old [encoding system]
     encoding system $old
     string compare $old [encoding system]
-} {0}
+} [0]
 
 test encoding-6.1 {Tcl_CreateEncoding: new} {testencoding} {
     testencoding create foo [namespace code {toutf 1}] \

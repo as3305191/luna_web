@@ -352,7 +352,7 @@ proc ::math::bignum::kmul {a b} {
     set x1 [concat [list bignum 0] [lrange $a [expr {$m+2}] end]]
     set y1 [concat [list bignum 0] [lrange $b [expr {$m+2}] end]]
 
-    if {0} {
+    if [0] {
     puts "m: $m"
     puts "x0: $x0"
     puts "x1: $x1"

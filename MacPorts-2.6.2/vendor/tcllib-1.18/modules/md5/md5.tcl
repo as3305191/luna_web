@@ -327,7 +327,7 @@ if {![catch {package require Trf 2.0}] && ![catch {::md5 -- test}]} {
 	regsub -all -- {\[ *I +(\$.) +(\$.) +(\$.) *\]} $md5body {(\2 ^ (\1 | (~\3)))} md5body
 
 	# bitwise left-rotate
-	if {0} {
+	if [0] {
 	    proc md5pure::<<< {x i} {
 		# This works by bitwise-ORing together right piece and left
 		# piece so that the (original) right piece becomes the left

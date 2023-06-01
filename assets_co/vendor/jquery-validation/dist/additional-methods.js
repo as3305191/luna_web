@@ -29,17 +29,17 @@
 
 	$.validator.addMethod( "maxWords", function( value, element, params ) {
 		return this.optional( element ) || stripHtml( value ).match( /\b\w+\b/g ).length <= params;
-	}, $.validator.format( "Please enter {0} words or less." ) );
+	}, $.validator.format( "Please enter [0] words or less." ) );
 
 	$.validator.addMethod( "minWords", function( value, element, params ) {
 		return this.optional( element ) || stripHtml( value ).match( /\b\w+\b/g ).length >= params;
-	}, $.validator.format( "Please enter at least {0} words." ) );
+	}, $.validator.format( "Please enter at least [0] words." ) );
 
 	$.validator.addMethod( "rangeWords", function( value, element, params ) {
 		var valueStripped = stripHtml( value ),
 			regex = /\b\w+\b/g;
 		return this.optional( element ) || valueStripped.match( regex ).length >= params[ 0 ] && valueStripped.match( regex ).length <= params[ 1 ];
-	}, $.validator.format( "Please enter between {0} and {1} words." ) );
+	}, $.validator.format( "Please enter between [0] and {1} words." ) );
 
 }() );
 
@@ -937,7 +937,7 @@ $.validator.addMethod( "require_from_group", function( value, element, options )
 		$fields.data( "being_validated", false );
 	}
 	return isValid;
-}, $.validator.format( "Please fill at least {0} of these fields." ) );
+}, $.validator.format( "Please fill at least [0] of these fields." ) );
 
 /*
  * Lets you say "either at least X inputs that match selector Y must be filled,
@@ -981,7 +981,7 @@ $.validator.addMethod( "skip_or_fill_minimum", function( value, element, options
 		$fields.data( "being_validated", false );
 	}
 	return isValid;
-}, $.validator.format( "Please either skip these fields or fill at least {0} of them." ) );
+}, $.validator.format( "Please either skip these fields or fill at least [0] of them." ) );
 
 /* Validates US States and/or Territories by @jdforsythe
  * Can be case insensitive or require capitalization - default is case insensitive
@@ -1041,7 +1041,7 @@ $.validator.addMethod( "stateUS", function( value, element, options ) {
 // TODO check if value starts with <, otherwise don't try stripping anything
 $.validator.addMethod( "strippedminlength", function( value, element, param ) {
 	return $( value ).text().length >= param;
-}, $.validator.format( "Please enter at least {0} characters" ) );
+}, $.validator.format( "Please enter at least [0] characters" ) );
 
 $.validator.addMethod( "time", function( value, element ) {
 	return this.optional( element ) || /^([01]\d|2[0-3]|[0-9])(:[0-5]\d){1,2}$/.test( value );

@@ -270,12 +270,12 @@ test parse-6.8 {ParseTokens procedure, error in command substitution} {
 } {1}
 test parse-6.9 {ParseTokens procedure, error in command substitution} {
     info complete {a [b "c d}
-} {0}
+} [0]
 test parse-6.10 {ParseTokens procedure, incomplete sub-command} {
     info complete {puts [
 	expr 1+1
 	#this is a comment ]}
-} {0}
+} [0]
 test parse-6.11 {ParseTokens procedure, memory allocation for big nested command} testparser {
     testparser {[$a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b)]} 0
 } {- {[$a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b)]} 1 word {[$a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b)]} 1 command {[$a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b) $a(b)]} 0 {}}

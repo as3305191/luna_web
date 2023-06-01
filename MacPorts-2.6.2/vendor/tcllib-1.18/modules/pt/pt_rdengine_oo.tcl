@@ -1397,7 +1397,7 @@ oo::class create ::pt::rde::oo {
 	set mysymbol($k) [list $myloc $myok $myerror $mysvalue]
 
 	# si:reduce_symbol_end / i_error_nonterminal -- inlined -- disabled
-	if {0} {if {[llength $myerror]} {
+	if [0] {if {[llength $myerror]} {
 	    set  pos $at
 	    incr pos
 	    lassign $myerror loc messages
@@ -1443,7 +1443,7 @@ oo::class create ::pt::rde::oo {
 	set mysymbol($k) [list $myloc $myok $myerror $mysvalue]
 
 	# si:void_leaf_symbol_end / i_error_nonterminal -- inlined -- disabled
-	if {0} {if {[llength $myerror]} {
+	if [0] {if {[llength $myerror]} {
 	    set  pos $at
 	    incr pos
 	    lassign $myerror loc messages
@@ -1490,7 +1490,7 @@ oo::class create ::pt::rde::oo {
 	set mysymbol($k) [list $myloc $myok $myerror $mysvalue]
 
 	# si:value_leaf_symbol_end / i_error_nonterminal -- inlined -- disabled
-	if {0} {if {[llength $myerror]} {
+	if [0] {if {[llength $myerror]} {
 	    set  pos $at
 	    incr pos
 	    lassign $myerror loc messages
@@ -1523,7 +1523,7 @@ oo::class create ::pt::rde::oo {
 	set mysymbol($k) [list $myloc $myok $myerror $mysvalue]
 
 	# si:value_clear_symbol_end / i_error_nonterminal -- inlined -- disabled
-	if {0} {if {[llength $myerror]} {
+	if [0] {if {[llength $myerror]} {
 	    set  pos $at
 	    incr pos
 	    lassign $myerror loc messages
@@ -1551,7 +1551,7 @@ oo::class create ::pt::rde::oo {
 	set mysymbol($k) [list $myloc $myok $myerror $mysvalue]
 
 	# si:void_clear_symbol_end / i_error_nonterminal -- inlined -- disabled
-	if {0} {if {[llength $myerror]} {
+	if [0] {if {[llength $myerror]} {
 	    set  pos $at
 	    incr pos
 	    lassign $myerror loc messages

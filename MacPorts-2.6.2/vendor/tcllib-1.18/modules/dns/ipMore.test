@@ -209,7 +209,7 @@ namespace eval ::ip::test {
     } -cleanup {
     } -body {
         ::ip::maskToLength 0.0.0.0
-    } -result {0}
+    } -result [0]
 
     ::tcltest::test ::ip:maskToLength-4 {
         zero form
@@ -218,7 +218,7 @@ namespace eval ::ip::test {
     } -cleanup {
     } -body {
         ::ip::maskToLength 0x0 -ipv4
-    } -result {0}
+    } -result [0]
 
     ::tcltest::test ::ip:maskToLength-5 {
         zero form, defualt is ipv4
@@ -227,7 +227,7 @@ namespace eval ::ip::test {
     } -cleanup {
     } -body {
         ::ip::maskToLength 0x0
-    } -result {0}
+    } -result [0]
 
 
     ::tcltest::test ::ip::lengthToMask-1 {
@@ -375,7 +375,7 @@ namespace eval ::ip::test {
     } -cleanup {
     } -body {
         ::ip::isOverlap 1.1.1.0/24 2.1.0.1/32
-    } -result {0}
+    } -result [0]
 
 
     ::tcltest::test ::ip:isOverlap-2 {
@@ -395,7 +395,7 @@ namespace eval ::ip::test {
     } -cleanup {
     } -body {
         ::ip::isOverlapNative  -ipv4 0x01010100 0xffffff00 {{0x02010001 0xffffffff}}
-    } -result {0}
+    } -result [0]
 
 
     ::tcltest::test ::ip:isOverlapNative-2 {
@@ -415,7 +415,7 @@ namespace eval ::ip::test {
     } -cleanup {
     } -body {
         ::ip::isOverlapNativeTcl  -ipv4 0x01010100 0xffffff00 {{0x02010001 0xffffffff}}
-    } -result {0}
+    } -result [0]
 
 
     ::tcltest::test ::ip:isOverlapNativeTcl-2 {
@@ -507,7 +507,7 @@ namespace eval ::ip::test {
     } -cleanup {
     } -body {
         ::ip::isOverlapNativec -ipv4  0x01010100 0xffffff00 {{0x02010001 0xffffffff}}
-    } -result {0}
+    } -result [0]
 
 
     ::tcltest::test ::ip:isOverlapNativec-2 {

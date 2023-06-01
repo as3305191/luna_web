@@ -231,7 +231,7 @@ test foreach-7.1 {delayed substitution of body} {
        set x
     }
     foo
-} {0}
+} [0]
 
 # Test for [Bug 1189274]; crash on failure
 test foreach-8.1 {empty list handling} {

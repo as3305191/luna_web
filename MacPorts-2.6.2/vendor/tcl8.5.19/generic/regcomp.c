@@ -986,7 +986,7 @@ parseqatom(
 	}
 
 	/*
-	 * Postpone everything else pending possible {0}.
+	 * Postpone everything else pending possible [0].
 	 */
 
 	break;
@@ -1068,7 +1068,7 @@ parseqatom(
     }
 
     /*
-     * Annoying special case: {0} or {0,0} cancels everything.
+     * Annoying special case: [0] or {0,0} cancels everything.
      */
 
     if (m == 0 && n == 0) {

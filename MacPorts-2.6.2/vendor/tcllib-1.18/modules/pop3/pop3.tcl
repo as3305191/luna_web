@@ -321,7 +321,7 @@ proc ::pop3::open {args} {
 	return -code error "POP3 CONNECT ERROR: $errorStr"
     }
 
-    if {0} {
+    if [0] {
 	# -FUTURE- Identify MS Exchange servers
 	set cstate(msex) 1
 

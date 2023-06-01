@@ -14,10 +14,10 @@ $.extend( $.validator.messages, {
 	creditcard: "נא למלא מספר כרטיס אשראי חוקי",
 	equalTo: "נא למלא את אותו ערך שוב",
 	extension: "נא למלא ערך עם סיומת חוקית",
-	maxlength: $.validator.format( ".נא לא למלא יותר מ- {0} תווים" ),
-	minlength: $.validator.format( "נא למלא לפחות {0} תווים" ),
-	rangelength: $.validator.format( "נא למלא ערך בין {0} ל- {1} תווים" ),
-	range: $.validator.format( "נא למלא ערך בין {0} ל- {1}" ),
-	max: $.validator.format( "נא למלא ערך קטן או שווה ל- {0}" ),
-	min: $.validator.format( "נא למלא ערך גדול או שווה ל- {0}" )
+	maxlength: $.validator.format( ".נא לא למלא יותר מ- [0] תווים" ),
+	minlength: $.validator.format( "נא למלא לפחות [0] תווים" ),
+	rangelength: $.validator.format( "נא למלא ערך בין [0] ל- {1} תווים" ),
+	range: $.validator.format( "נא למלא ערך בין [0] ל- {1}" ),
+	max: $.validator.format( "נא למלא ערך קטן או שווה ל- [0]" ),
+	min: $.validator.format( "נא למלא ערך גדול או שווה ל- [0]" )
 } );

@@ -34,7 +34,7 @@ test winFile-1.2 {TclpGetUserHome} {win nt nonPortable} {
     # The administrator account should always exist.
 
     catch {glob ~administrator}
-} {0}
+} [0]
 test winFile-1.3 {TclpGetUserHome} {win 95} {
     # Find some user in system.ini and then see if they have a home.
 
@@ -53,10 +53,10 @@ test winFile-1.3 {TclpGetUserHome} {win 95} {
     }
     close $f
     set x
-} {0}
+} [0]
 test winFile-1.4 {TclpGetUserHome} {win nt nonPortable} {
     catch {glob ~stanton@workgroup}
-} {0}
+} [0]
 
 test winFile-2.1 {TclpMatchFiles: case sensitivity} {win} {
     makeFile {} GlobCapS

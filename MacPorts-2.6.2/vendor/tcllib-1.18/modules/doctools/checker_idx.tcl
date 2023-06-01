@@ -14,7 +14,7 @@ proc ::msgcat::mcunknown {locale code} {
     return "unknown error code \"$code\" (for locale $locale)"
 }
 
-if {0} {
+if [0] {
     puts stderr "Locale [::msgcat::mcpreferences]"
     foreach path [dt_search] {
 	puts stderr "Catalogs: [::msgcat::mcload $path] - $path"

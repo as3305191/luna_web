@@ -489,7 +489,7 @@ test regexp-15.5 {regexp -start, over end of string} {
 } {0 0}
 test regexp-15.6 {regexp -start, loss of ^$ behavior} {
     list [regexp -start 2 {^$} {}]
-} {0}
+} [0]
 test regexp-15.7 {regexp -start, double option} {
     regexp -start 2 -start 0 a abc
 } 1
@@ -648,7 +648,7 @@ test regexp-21.7 {regexp works with empty string} {
 } {1}
 test regexp-21.8 {regexp works with empty string offset} {
     regexp -start 3 -- ^ {123}
-} {0}
+} [0]
 test regexp-21.9 {regexp works with empty string offset} {
     regexp -start 3 -- \$ {123}
 } {1}

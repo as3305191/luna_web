@@ -267,7 +267,7 @@ proc ::rest::create_interface {name} {
     set ::${name}::static_args {}
     
     # print the contents of all the dynamic generated procs
-    if {0} {
+    if [0] {
         foreach x [info commands ::${name}::*] {
             puts "proc $x \{[info args $x]\} \{\n[info body $x]\n\}\n"
         }

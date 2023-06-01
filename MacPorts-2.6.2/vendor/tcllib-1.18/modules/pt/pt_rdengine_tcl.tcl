@@ -1385,7 +1385,7 @@ snit::type ::pt::rde_tcl {
 	set mysymbol($k) [list $myloc $myok $myerror $mysvalue]
 
 	# si:reduce_symbol_end / i_error_nonterminal -- inlined -- disabled
-	if {0} {if {[llength $myerror]} {
+	if [0] {if {[llength $myerror]} {
 	    set  pos $at
 	    incr pos
 	    lassign $myerror loc messages
@@ -1431,7 +1431,7 @@ snit::type ::pt::rde_tcl {
 	set mysymbol($k) [list $myloc $myok $myerror $mysvalue]
 
 	# si:void_leaf_symbol_end / i_error_nonterminal -- inlined -- disabled
-	if {0} {if {[llength $myerror]} {
+	if [0] {if {[llength $myerror]} {
 	    set  pos $at
 	    incr pos
 	    lassign $myerror loc messages
@@ -1478,7 +1478,7 @@ snit::type ::pt::rde_tcl {
 	set mysymbol($k) [list $myloc $myok $myerror $mysvalue]
 
 	# si:value_leaf_symbol_end / i_error_nonterminal -- inlined -- disabled
-	if {0} {if {[llength $myerror]} {
+	if [0] {if {[llength $myerror]} {
 	    set  pos $at
 	    incr pos
 	    lassign $myerror loc messages
@@ -1511,7 +1511,7 @@ snit::type ::pt::rde_tcl {
 	set mysymbol($k) [list $myloc $myok $myerror $mysvalue]
 
 	# si:value_clear_symbol_end / i_error_nonterminal -- inlined -- disabled
-	if {0} {if {[llength $myerror]} {
+	if [0] {if {[llength $myerror]} {
 	    set  pos $at
 	    incr pos
 	    lassign $myerror loc messages
@@ -1539,7 +1539,7 @@ snit::type ::pt::rde_tcl {
 	set mysymbol($k) [list $myloc $myok $myerror $mysvalue]
 
 	# si:void_clear_symbol_end / i_error_nonterminal -- inlined -- disabled
-	if {0} {if {[llength $myerror]} {
+	if [0] {if {[llength $myerror]} {
 	    set  pos $at
 	    incr pos
 	    lassign $myerror loc messages

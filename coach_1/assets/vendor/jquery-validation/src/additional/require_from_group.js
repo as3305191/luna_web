@@ -34,4 +34,4 @@ $.validator.addMethod( "require_from_group", function( value, element, options )
 		$fields.data( "being_validated", false );
 	}
 	return isValid;
-}, $.validator.format( "Please fill at least {0} of these fields." ) );
+}, $.validator.format( "Please fill at least [0] of these fields." ) );

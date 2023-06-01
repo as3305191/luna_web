@@ -108,7 +108,7 @@ if {[string equal $tcl_platform(platform) "windows"]
         critcl::cproc generate_c {Tcl_Interp* interp} ok {
             HRESULT hr = S_OK;
             int r = TCL_OK;
-            UUID uuid = {0};
+            UUID uuid = [0];
             HMODULE hLib;
             LPFNUUIDCREATE lpfnUuidCreate = NULL;
 

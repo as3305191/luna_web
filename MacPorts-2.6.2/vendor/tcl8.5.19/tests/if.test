@@ -1065,7 +1065,7 @@ test if-10.4 {delayed substitution of else body} {
        set result $j
     "
     set result
-} {0}
+} [0]
 test if-10.5 {substituted control words} {
     set then then; proc then {} {return badthen}
     set else else; proc else {} {return badelse}

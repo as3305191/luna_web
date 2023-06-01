@@ -14,10 +14,10 @@ $.extend( $.validator.messages, {
 	creditcard: "Унесите исправан број кредитне картице.",
 	equalTo: "Унесите исту вредност поново.",
 	extension: "Унесите вредност са одговарајућом екстензијом.",
-	maxlength: $.validator.format( "Унесите мање од {0} карактера." ),
-	minlength: $.validator.format( "Унесите барем {0} карактера." ),
-	rangelength: $.validator.format( "Унесите вредност дугачку између {0} и {1} карактера." ),
-	range: $.validator.format( "Унесите вредност између {0} и {1}." ),
-	max: $.validator.format( "Унесите вредност мању или једнаку {0}." ),
-	min: $.validator.format( "Унесите вредност већу или једнаку {0}." )
+	maxlength: $.validator.format( "Унесите мање од [0] карактера." ),
+	minlength: $.validator.format( "Унесите барем [0] карактера." ),
+	rangelength: $.validator.format( "Унесите вредност дугачку између [0] и {1} карактера." ),
+	range: $.validator.format( "Унесите вредност између [0] и {1}." ),
+	max: $.validator.format( "Унесите вредност мању или једнаку [0]." ),
+	min: $.validator.format( "Унесите вредност већу или једнаку [0]." )
 } );

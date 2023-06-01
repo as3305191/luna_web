@@ -82,7 +82,7 @@ function(hljs) {
             },
             {
                 // highlight map keys and named parameters as strings
-                className: 'string', begin: /[^\?]{0}[A-Za-z0-9_$]+ *:/
+                className: 'string', begin: /[^\?][0][A-Za-z0-9_$]+ *:/
             },
             {
                 // catch middle element of the ternary operator

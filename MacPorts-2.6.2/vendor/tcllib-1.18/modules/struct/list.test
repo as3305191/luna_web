@@ -618,7 +618,7 @@ test iota-4.1 {iota command} {
 
 test iota-4.2 {iota command} {
     iota 1
-} {0}
+} [0]
 
 test iota-4.3 {iota command} {
     iota 11

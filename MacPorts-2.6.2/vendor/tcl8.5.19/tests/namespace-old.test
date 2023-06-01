@@ -174,7 +174,7 @@ test namespace-old-2.5 {querying:  info locals} {
 
 test namespace-old-2.6 {querying:  info exists} {
     test_ns_simple::_backdoor {info exists test_ns_x}
-} {0}
+} [0]
 
 test namespace-old-2.7 {querying:  info exists} {
     test_ns_simple::_backdoor {info exists cmd}

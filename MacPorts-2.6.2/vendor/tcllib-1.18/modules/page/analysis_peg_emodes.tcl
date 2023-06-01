@@ -205,7 +205,7 @@ proc ::page::analysis::peg::emodes::compute {t} {
 	    #puts -nonewline stderr "-a"
 	}
 
-	if {0} {
+	if [0] {
 	    if {[$t keyexists $n symbol]} {
 		#puts -nonewline stderr \t\ DEF\t[$t get $n symbol]\t[$t get $n mode]
 	    } else {

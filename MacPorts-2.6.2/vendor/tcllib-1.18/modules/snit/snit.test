@@ -102,7 +102,7 @@ proc tkbide {{msg "tkbide"} {msec 500}} {
     set ::bideError ""
     set ::bideErrorInfo ""
     # It looks like update idletasks does the job.
-    if {0} {
+    if [0] {
         after $msec {set ::bideVar 1}
         tkwait variable ::bideVar
     }
@@ -288,7 +288,7 @@ test Contains-1.2 {does not contain element} -constraints {
     snit::Contains quux $mylist
 } -cleanup {
     unset mylist
-} -result {0}
+} -result [0]
 
 #-----------------------------------------------------------------------
 # type compilation
@@ -326,7 +326,7 @@ test typedestruction-1.3 {type namespace is deleted} -body {
     type dog { }
     dog destroy
     namespace exists ::dog
-} -result {0}
+} -result [0]
 
 test typedestruction-1.4 {type proc is destroyed on error} -body {
     catch {type dog {
@@ -5280,7 +5280,7 @@ test iinfo-6.1 {info options with no options} -body {
     llength [spot info options]
 } -cleanup {
     dog destroy
-} -result {0}
+} -result [0]
 
 test iinfo-6.2 {info options with only local options} -body {
     type dog {
@@ -7245,7 +7245,7 @@ test optionsyntax-3.6 {option -readonly defaults to 0} -body {
     set ::dog::Snit_optionInfo(readonly--foo)
 } -cleanup {
     dog destroy
-} -result {0}
+} -result [0]
 
 test optionsyntax-3.7 {option -readonly can be any boolean} -body {
     type dog {
@@ -7313,7 +7313,7 @@ test delegateoptionsyntax-1.3 {'islocal' is set to 0} -body {
     set ::dog::Snit_optionInfo(islocal--foo)
 } -cleanup {
     dog destroy
-} -result {0}
+} -result [0]
 
 test delegateoptionsyntax-1.4 {'islocal' is not set for '*'} -body {
     type dog {
@@ -7323,7 +7323,7 @@ test delegateoptionsyntax-1.4 {'islocal' is not set for '*'} -body {
     info exists ::dog::Snit_optionInfo(islocal-*)
 } -cleanup {
     dog destroy
-} -result {0}
+} -result [0]
 
 test delegateoptionsyntax-1.5 {'delegated-$comp' lists options for the component} -body {
     type dog {

@@ -88,7 +88,7 @@ namespace eval ::comm {
     #	$ch,result,$serial	result value set here to wake up sender
     #	$ch,return,$serial	return codes to go along with result
 
-    if {0} {
+    if [0] {
 	# Propagate result, code, and errorCode.  Can't just eval
 	# otherwise TCL_BREAK gets turned into TCL_ERROR.
 	global errorInfo errorCode

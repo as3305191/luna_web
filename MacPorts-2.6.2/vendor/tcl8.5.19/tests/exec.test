@@ -681,7 +681,7 @@ test exec-18.1 { exec cat deals with weird file names} {exec tempNotWin} {
 test exec-19.1 {exec >> uses O_APPEND} {
     -constraints {exec unix}
     -setup {
-	set tmpfile [makeFile {0} tmpfile.exec-19.1]
+	set tmpfile [makeFile [0] tmpfile.exec-19.1]
     }
     -body {
 	# Note that we have to allow for the current contents of the

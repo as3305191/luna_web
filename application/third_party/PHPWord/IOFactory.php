@@ -41,7 +41,7 @@ class PHPWord_IOFactory {
 	 * @var array
 	 */
 	private static $_searchLocations = array(
-		array('type' => 'IWriter', 'path' => 'PHPWord/Writer/{0}.php', 'class' => 'PHPWord_Writer_{0}')
+		array('type' => 'IWriter', 'path' => 'PHPWord/Writer/[0].php', 'class' => 'PHPWord_Writer_[0]')
 	);
 	
 	/**
@@ -85,8 +85,8 @@ class PHPWord_IOFactory {
 	 * Add search location
 	 * 
 	 * @param string $type            Example: IWriter
-	 * @param string $location        Example: PHPWord/Writer/{0}.php
-	 * @param string $classname     Example: PHPWord_Writer_{0}
+	 * @param string $location        Example: PHPWord/Writer/[0].php
+	 * @param string $classname     Example: PHPWord_Writer_[0]
 	 */
 	public static function addSearchLocation($type = '', $location = '', $classname = '') {
 		self::$_searchLocations[] = array( 'type' => $type, 'path' => $location, 'class' => $classname );
@@ -104,8 +104,8 @@ class PHPWord_IOFactory {
 		
 		foreach (self::$_searchLocations as $searchLocation) {
 			if ($searchLocation['type'] == $searchType) {
-				$className = str_replace('{0}', $writerType, $searchLocation['class']);
-				$classFile = str_replace('{0}', $writerType, $searchLocation['path']);
+				$className = str_replace('[0]', $writerType, $searchLocation['class']);
+				$classFile = str_replace('[0]', $writerType, $searchLocation['path']);
 				
 				$instance = new $className($PHPWord);
 				if(!is_null($instance)) {

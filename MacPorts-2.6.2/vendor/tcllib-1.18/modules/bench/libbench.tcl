@@ -527,7 +527,7 @@ if {$BENCH(THREADS)} {
 	if {$val} {
 	    after $delay [info level 0]
 	} else {
-	    if {0} {foreach desc [array names bench] {
+	    if [0] {foreach desc [array names bench] {
 		RESULT $desc $bench($desc)
 	    }}
 	    if {$BENCH(EXIT)} {
@@ -551,7 +551,7 @@ if {$BENCH(THREADS)} {
 	}
     }
 
-    if {0} {foreach desc [array names bench] {
+    if [0] {foreach desc [array names bench] {
 	RESULT $desc $bench($desc)
     }}
 

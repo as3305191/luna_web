@@ -216,7 +216,7 @@ test "Polynomials-4.11" "Arithmetical operations - divide (3)" \
 test "Polynomials-4.12" "Arithmetical operations - divide (4)" \
    -match glob -body {
    set f1 [::math::polynomials::polynomial {1 2 3}]
-   set f2 [::math::polynomials::polynomial {0}]
+   set f2 [::math::polynomials::polynomial [0]]
    set f3 [::math::polynomials::divPolyn $f1 $f2]
    set coeffs [::math::polynomials::allCoeffsPolyn $f3]
 } -result "Denominator*" -returnCodes 1
@@ -247,7 +247,7 @@ test "Polynomials-4.15" "Arithmetical operations - remainder (3)" \
 test "Polynomials-4.16" "Arithmetical operations - remainder (4)" \
    -match glob -body {
    set f1 [::math::polynomials::polynomial {1 2 3}]
-   set f2 [::math::polynomials::polynomial {0}]
+   set f2 [::math::polynomials::polynomial [0]]
    set f3 [::math::polynomials::remainderPolyn $f1 $f2]
    set coeffs [::math::polynomials::allCoeffsPolyn $f3]
 } -result "Denominator*" -returnCodes 1

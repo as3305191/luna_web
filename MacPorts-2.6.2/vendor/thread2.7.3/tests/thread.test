@@ -98,7 +98,7 @@ test thread-4.4 {thread::create - create joinable thread} {
     set c [thread::join $tid]
     ThreadReap
     set c
-} {0}
+} [0]
 
 test thread-4.5 {thread::create - join detached thread} {
     ThreadReap
@@ -162,7 +162,7 @@ test thread-8.1 {thread::exists - false} {
     set c [thread::exists $tid]
     ThreadReap
     set c
-} {0}
+} [0]
 
 test thread-9.0 {thread::id} {
     expr {[thread::id] == $::tcltest::mainThread}
@@ -348,7 +348,7 @@ test thread-15.3 {thread::configure - read all configure options} {
     set opts [thread::configure $tid]
     ThreadReap
     expr {[llength $opts] % 2}
-} {0}
+} [0]
 
 test thread-15.4 {thread::configure - check configure option names} {
     ThreadReap

@@ -667,7 +667,7 @@ proc ldap::ProcessMessage {handle response} {
 
     # handle unsolicited server responses
 
-    if {0} {
+    if [0] {
         asnGetApplication response appNum
         #if { $appNum != 24 } {
         #     error "unexpected application number ($appNum != 24)"

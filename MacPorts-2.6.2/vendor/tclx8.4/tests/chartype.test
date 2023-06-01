@@ -235,7 +235,7 @@ test chartype-1.36 {ctype ord tests} {
 
 test chartype-1.37 {ctype ord tests} {
     ctype ord ""
-} {0}
+} [0]
 
 test chartype-1.38 {ctype ord tests} {
     ctype ord \377

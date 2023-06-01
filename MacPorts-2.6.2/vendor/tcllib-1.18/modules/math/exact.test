@@ -2151,7 +2151,7 @@ namespace eval math::exact::test {
     test math::exact-54.1 {abs1, signum1} {
 	-setup leakBaseline
 	-body {
-	    set p [[exactexpr {0}] ref]
+	    set p [[exactexpr [0]] ref]
 	    set q [[exactexpr {2}] ref]
 	    while 1 {
 		set t [[exactexpr {($q-$p) * 10**36}] ref]

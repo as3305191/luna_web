@@ -6894,7 +6894,7 @@ test io-52.1 {TclCopyChannel} {fcopy} {
     close $f1
     close $f2
     string compare $msg "channel \"$f1\" is busy"
-} {0}
+} [0]
 test io-52.2 {TclCopyChannel} {fcopy} {
     file delete $path(test1)
     set f1 [open $thisScript]
@@ -6906,7 +6906,7 @@ test io-52.2 {TclCopyChannel} {fcopy} {
     close $f2
     close $f3
     string compare $msg "channel \"$f2\" is busy"
-} {0}
+} [0]
 test io-52.3 {TclCopyChannel} {fcopy} {
     file delete $path(test1)
     set f1 [open $thisScript]
@@ -7455,7 +7455,7 @@ test io-53.6 {CopyData: error during fcopy} {stdio openpipe fcopy} {
     catch {close $in}
     close $out
     set fcopyTestDone	;# 0 for plain end of file
-} {0}
+} [0]
 proc doFcopy {in out {bytes 0} {error {}}} {
     variable fcopyTestDone
     variable fcopyTestCount

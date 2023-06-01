@@ -107,7 +107,7 @@ test graph1-2.2 {arc delete} {
     set result [mygraph arc exists arc0]
     mygraph destroy
     set result
-} {0}
+} [0]
 
 # ---------------------------------------------------
 
@@ -232,7 +232,7 @@ test graph1-5.6 {arc insert generates arc name when none is given} {
     set result
 } [list arc1 arc2 arc4]
 
-if {0} {
+if [0] {
     # if feature used, fix this test...
     test graph1-5.6 {arc insert generates arc name when none is given} {
 	struct::graph mygraph
@@ -633,7 +633,7 @@ test graph1-12.2 {node delete} {
     set result [mygraph node exists node0]
     mygraph destroy
     set result
-} {0}
+} [0]
 
 test graph1-12.3 {node delete} {
     struct::graph mygraph
@@ -747,7 +747,7 @@ test graph1-15.3 {node insert generates node name when none is given} {
     set result
 } [list node1 node2 node4]
 
-if {0} {
+if [0] {
     # fix if this feature is used ...
     test graph1-15.x {node insert generates node name when none is given} {
 	struct::graph mygraph

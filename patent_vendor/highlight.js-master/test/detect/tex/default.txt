@@ -12,6 +12,6 @@ $\frac 12\, + \, \frac 1{x^3}\text{Hello \! world}$ & \textbf{Goodbye\~ world} \
 Ch\'erie, \c{c}a ne me pla\^\i t pas! % comment \b
 G\"otterd\"ammerung~45\%=34.
 $$
-    \int\limits_{0}^{\pi}\frac{4}{x-7}=3
+    \int\limits_[0]^{\pi}\frac{4}{x-7}=3
 $$
 \end{document}

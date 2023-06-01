@@ -147,7 +147,7 @@ tcltest::test xsxp-5.10 {only} -setup $setup_two -body {
 
 
 
-if {0} {
+if [0] {
     foreach file [glob -directory xml *] {
 	puts $file
 	if {".xml" != [string range $file end-3 end]} continue

@@ -708,7 +708,7 @@ test pkg-3.40 {Tcl_PackageCmd procedure, "vcompare" option} {
 } {-1}
 test pkg-3.41 {Tcl_PackageCmd procedure, "vcompare" option} {
     package vc 2.2.4 2.2.4
-} {0}
+} [0]
 test pkg-3.42 {Tcl_PackageCmd procedure, "versions" option} {
     list [catch {package versions} msg] $msg
 } {1 {wrong # args: should be "package versions package"}}
@@ -745,7 +745,7 @@ test pkg-3.51 {Tcl_PackageCmd procedure, "vsatisfies" option} {
 } {1}
 test pkg-3.52 {Tcl_PackageCmd procedure, "vsatisfies" option} {
     package vs 2.3 1.2
-} {0}
+} [0]
 test pkg-3.53 {Tcl_PackageCmd procedure, "versions" option} {
     list [catch {package foo} msg] $msg
 } {1 {bad option "foo": must be forget, ifneeded, names, prefer, present, provide, require, unknown, vcompare, versions, or vsatisfies}}
@@ -813,7 +813,7 @@ test pkg-6.1 {ComparePkgVersions procedure} {
 } {1}
 test pkg-6.2 {ComparePkgVersions procedure} {
     package vcompare 1.22.1.2.3 1.22.1.2.3
-} {0}
+} [0]
 test pkg-6.3 {ComparePkgVersions procedure} {
     package vcompare 1.21 1.22
 } {-1}
@@ -828,13 +828,13 @@ test pkg-6.6 {ComparePkgVersions procedure} {
 } {1}
 test pkg-6.7 {ComparePkgVersions procedure} {
     package vsatisfies 2.22.3 1.21
-} {0}
+} [0]
 test pkg-6.8 {ComparePkgVersions procedure} {
     package vsatisfies 1 1
 } {1}
 test pkg-6.9 {ComparePkgVersions procedure} {
     package vsatisfies 2 1
-} {0}
+} [0]
 
 test pkg-7.1 {Tcl_PkgPresent procedure, any version} {
     package forget t

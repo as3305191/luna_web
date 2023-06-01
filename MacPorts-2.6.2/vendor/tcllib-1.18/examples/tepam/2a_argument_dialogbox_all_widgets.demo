@@ -15,7 +15,7 @@
 #### Initialization ####
 
 DemoControl(Initialization) 1
-DemoControl(IsExecutable) {0}
+DemoControl(IsExecutable) [0]
 
 # This demo contains an example for each of the available entry widgets of the 
 # argument_dialogbox.

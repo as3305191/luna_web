@@ -147,7 +147,7 @@ foreach scanInfo $scanList {
     set matchType [keylget scanInfo matchType]
     set cmd "global matchInfo; ValMatch [list $scanInfo] 1.1" 
     case $matchType in {
-      {0} {scanmatch -nocase $testCH [string toupper $key] $cmd}
+      [0] {scanmatch -nocase $testCH [string toupper $key] $cmd}
       {1} {scanmatch $testCH ^$key  $cmd}
       {2} {scanmatch $testCH $key\$ $cmd}
       {3} {scanmatch $testCH $key   $cmd}

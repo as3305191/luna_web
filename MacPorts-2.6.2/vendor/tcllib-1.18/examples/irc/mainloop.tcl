@@ -30,7 +30,7 @@ $cn registerevent PRIVMSG {
 # If you uncomment this, you can change this file and reload it
 # without shutting down the network connection.
 
-if {0} {
+if [0] {
     $cn registerevent PRIVMSG {
 	puts "[who] says to [target] [msg]"
 	if { [msg] == "RELOAD" && [target] == $::ircclient::nick } {

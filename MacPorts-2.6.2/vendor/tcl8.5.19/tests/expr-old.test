@@ -613,7 +613,7 @@ test expr-old-28.1 {Tcl_ExprBoolean usage} {
 } 2
 test expr-old-28.2 {Tcl_ExprBoolean usage} {
     set a 1
-    if {0} {set a 2}
+    if [0] {set a 2}
     set a
 } 1
 test expr-old-28.3 {Tcl_ExprBoolean usage} {

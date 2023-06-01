@@ -337,7 +337,7 @@ test upvar-8.10 {upvar will create element alias for new array element} {
     catch {unset upvarArray}
     array set upvarArray {}
     catch {upvar 0 upvarArray(elem) upvarArrayElemAlias}
-} {0}
+} [0]
 test upvar-8.11 {upvar will not create a variable that looks like an array} -body {
     catch {unset upvarArray}
     array set upvarArray {}

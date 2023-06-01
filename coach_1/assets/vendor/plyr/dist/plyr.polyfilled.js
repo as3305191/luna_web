@@ -5956,12 +5956,12 @@ typeof navigator === "object" && (function (global, factory) {
       download: null,
       vimeo: {
         sdk: 'https://player.vimeo.com/api/player.js',
-        iframe: 'https://player.vimeo.com/video/{0}?{1}',
-        api: 'https://vimeo.com/api/v2/video/{0}.json'
+        iframe: 'https://player.vimeo.com/video/[0]?{1}',
+        api: 'https://vimeo.com/api/v2/video/[0].json'
       },
       youtube: {
         sdk: 'https://www.youtube.com/iframe_api',
-        api: 'https://www.googleapis.com/youtube/v3/videos?id={0}&key={1}&fields=items(snippet(title))&part=snippet'
+        api: 'https://www.googleapis.com/youtube/v3/videos?id=[0]&key={1}&fields=items(snippet(title))&part=snippet'
       },
       googleIMA: {
         sdk: 'https://imasdk.googleapis.com/js/sdkloader/ima3.js'
@@ -6044,8 +6044,8 @@ typeof navigator === "object" && (function (global, factory) {
     },
     // Class hooks added to the player in different states
     classNames: {
-      type: 'plyr--{0}',
-      provider: 'plyr--{0}',
+      type: 'plyr--[0]',
+      provider: 'plyr--[0]',
       video: 'plyr__video-wrapper',
       embed: 'plyr__video-embed',
       embedContainer: 'plyr__video-embed__container',
@@ -8497,13 +8497,13 @@ typeof navigator === "object" && (function (global, factory) {
       } // Add type class
 
 
-      toggleClass(this.elements.container, this.config.classNames.type.replace('{0}', this.type), true); // Add provider class
+      toggleClass(this.elements.container, this.config.classNames.type.replace('[0]', this.type), true); // Add provider class
 
-      toggleClass(this.elements.container, this.config.classNames.provider.replace('{0}', this.provider), true); // Add video class for embeds
+      toggleClass(this.elements.container, this.config.classNames.provider.replace('[0]', this.provider), true); // Add video class for embeds
       // This will require changes if audio embeds are added
 
       if (this.isEmbed) {
-        toggleClass(this.elements.container, this.config.classNames.type.replace('{0}', 'video'), true);
+        toggleClass(this.elements.container, this.config.classNames.type.replace('[0]', 'video'), true);
       } // Inject the player wrapper
 
 

@@ -521,19 +521,19 @@ test parseOld-15.1 {TclScriptEnd procedure} {
     info complete {puts [
 	expr 1+1
 	#this is a comment ]}
-} {0}
+} [0]
 test parseOld-15.2 {TclScriptEnd procedure} {
     info complete "abc\\\n"
-} {0}
+} [0]
 test parseOld-15.3 {TclScriptEnd procedure} {
     info complete "abc\\\\\n"
 } {1}
 test parseOld-15.4 {TclScriptEnd procedure} {
     info complete "xyz \[abc \{abc\]"
-} {0}
+} [0]
 test parseOld-15.5 {TclScriptEnd procedure} {
     info complete "xyz \[abc"
-} {0}
+} [0]
 
 # cleanup
 set argv $savedArgv

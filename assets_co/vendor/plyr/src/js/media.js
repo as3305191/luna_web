@@ -17,15 +17,15 @@ const media = {
         }
 
         // Add type class
-        toggleClass(this.elements.container, this.config.classNames.type.replace('{0}', this.type), true);
+        toggleClass(this.elements.container, this.config.classNames.type.replace('[0]', this.type), true);
 
         // Add provider class
-        toggleClass(this.elements.container, this.config.classNames.provider.replace('{0}', this.provider), true);
+        toggleClass(this.elements.container, this.config.classNames.provider.replace('[0]', this.provider), true);
 
         // Add video class for embeds
         // This will require changes if audio embeds are added
         if (this.isEmbed) {
-            toggleClass(this.elements.container, this.config.classNames.type.replace('{0}', 'video'), true);
+            toggleClass(this.elements.container, this.config.classNames.type.replace('[0]', 'video'), true);
         }
 
         // Inject the player wrapper

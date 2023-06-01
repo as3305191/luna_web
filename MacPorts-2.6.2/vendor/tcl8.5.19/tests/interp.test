@@ -3538,7 +3538,7 @@ test interp-38.4 {interp debug basic setup} -body {
 } -result {-frame 0}
 test interp-38.5 {interp debug basic setup} -body {
     interp debug {} -f
-} -result {0}
+} -result [0]
 test interp-38.6 {interp debug basic setup} -body {
     interp debug -frames
 } -returnCodes error -result {could not find interpreter "-frames"}

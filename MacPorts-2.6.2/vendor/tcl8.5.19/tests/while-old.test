@@ -107,7 +107,7 @@ test while-old-4.6 {errors in while loops} {
 "error "loop aborted""}}
 
 test while-old-5.1 {while return result} {
-    while {0} {set a 400}
+    while [0] {set a 400}
 } {}
 test while-old-5.2 {while return result} {
     set x 1

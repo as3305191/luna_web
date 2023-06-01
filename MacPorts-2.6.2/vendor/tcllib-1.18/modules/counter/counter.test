@@ -72,7 +72,7 @@ test counter-avg-1.0 {counter::count} {
 test counter-avg-1.1 {counter::count} {
     counter::init avg
     counter::get avg -avg
-} {0}
+} [0]
 
 test counter-lastn-1.0 {averge over lastn} {
     counter::init lastn -lastn 4
@@ -229,7 +229,7 @@ test counter-countReset {counter::reset} {
     counter::count simple 1
     counter::reset simple
     counter::get simple
-} {0}
+} [0]
 
 
 testsuiteCleanup

@@ -156,7 +156,7 @@ test lindex-7.4 {quoted elements} {
 test lindex-8.1 {data reuse} testevalex {
     set x 0
     testevalex {lindex $x $x}
-} {0}
+} [0]
 test lindex-8.2 {data reuse} testevalex {
     set a 0
     testevalex {lindex $a $a $a}
@@ -168,11 +168,11 @@ test lindex-8.3 {data reuse} testevalex {
 test lindex-8.4 {data reuse} testevalex {
     set x [list 0 0]
     testevalex {lindex $x $x}
-} {0}
+} [0]
 test lindex-8.5 {data reuse} testevalex {
     set x 0
     testevalex {lindex $x [list $x $x]}
-} {0}
+} [0]
 test lindex-8.6 {data reuse} testevalex {
     set x [list 1 1]
     testevalex {lindex $x $x}
@@ -382,7 +382,7 @@ test lindex-16.1 {data reuse} {
 	lindex $x $x
     } result
     set result
-} {0}
+} [0]
 test lindex-16.2 {data reuse} {
     set a 0
     catch {
@@ -403,14 +403,14 @@ test lindex-16.4 {data reuse} {
 	lindex $x $x
     } result
     set result
-} {0}
+} [0]
 test lindex-16.5 {data reuse} {
     set x 0
     catch {
 	lindex $x [list $x $x]
     } result
     set result
-} {0}
+} [0]
 test lindex-16.6 {data reuse} {
     set x [list 1 1]
     catch {

@@ -10,7 +10,7 @@ package require ftp
 # Should eventually add a command line argument to toggle verbose
 #set ftp::VERBOSE 1
 
-if {0} {
+if [0] {
     proc ftp::DisplayMsg {s msg {state ""}} {
 	upvar ::ftp::ftp$s ftp
 	variable VERBOSE

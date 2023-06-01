@@ -80,14 +80,14 @@ test thread-1.7 {Tcl_ThreadObjCmd: thread id args} {testthread} {
 } {1 {wrong # args: should be "testthread id"}}
 test thread-1.8 {Tcl_ThreadObjCmd: thread id} {testthread} {
     string compare [testthread id] $::tcltest::mainThread
-} {0}
+} [0]
 test thread-1.9 {Tcl_ThreadObjCmd: thread names args} {testthread} {
     set x [catch {testthread names x} msg]
     list $x $msg
 } {1 {wrong # args: should be "testthread names"}}
 test thread-1.10 {Tcl_ThreadObjCmd: thread id} {testthread} {
     string compare [testthread names] $::tcltest::mainThread
-} {0}
+} [0]
 test thread-1.11 {Tcl_ThreadObjCmd: send args} {testthread} {
     set x [catch {testthread send} msg]
     list $x $msg
@@ -218,7 +218,7 @@ test thread-5.0 {Joining threads} {testthread} {
     set res [testthread join $serverthread]
     threadReap
     set res
-} {0}
+} [0]
 test thread-5.1 {Joining threads after the fact} {testthread} {
     threadReap
     set serverthread [testthread create -joinable]
@@ -227,7 +227,7 @@ test thread-5.1 {Joining threads after the fact} {testthread} {
     set res [testthread join $serverthread]
     threadReap
     set res
-} {0}
+} [0]
 test thread-5.2 {Try to join a detached thread} {testthread} {
     threadReap
     set serverthread [testthread create]
@@ -252,7 +252,7 @@ test thread-6.1 {freeing very large object trees in a thread} testthread {
     catch {set res [testthread join $serverthread]} msg
     threadReap
     set res
-} {0}
+} [0]
 
 test thread-8.1 {threaded fork stress} -constraints {thread} -setup {
     unset -nocomplain ::threadCount ::execCount ::threads ::thread

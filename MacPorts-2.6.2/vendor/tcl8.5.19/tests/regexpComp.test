@@ -681,7 +681,7 @@ test regexpComp-15.5 {regexp -start, over end of string} {
 } {0 0}
 test regexpComp-15.6 {regexp -start, loss of ^$ behavior} {
     list [regexp -start 2 {^$} {}]
-} {0}
+} [0]
 
 test regexpComp-16.1 {regsub -start} {
     catch {unset x}

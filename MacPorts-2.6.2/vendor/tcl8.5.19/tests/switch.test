@@ -637,7 +637,7 @@ test switch-14.3 {-regexp -- compilation [Bug 1854399]} {
 test switch-14.4 {-regexp -- compilation [Bug 1854399]} {
     proc foo {} {
 	switch -regexp -- 0 {
-	    {0} {return yes}
+	    [0] {return yes}
 	    default  {return no}
 	}
     }

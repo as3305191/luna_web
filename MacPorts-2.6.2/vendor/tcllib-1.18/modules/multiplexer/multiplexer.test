@@ -59,7 +59,7 @@ test multiplexer-2.2 {start & destroy multiplexer} {tcl8.3plus} {
     ${mp}::destroy
     set chans [lsort [file channels]]
     string compare $chans $startchans
-} {0}
+} [0]
 
 
 

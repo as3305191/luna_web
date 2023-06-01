@@ -227,7 +227,7 @@ test append-7.5 {append var does not trigger read trace} {
     proc foo {args} {append ::result $args}
     append myvar a
     info exists ::result
-} {0}
+} [0]
 
 # New tests for bug 3057639 to show off the more consistent behaviour
 # of lappend in both direct-eval and bytecompiled code paths (see

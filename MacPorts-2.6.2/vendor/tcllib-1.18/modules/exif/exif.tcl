@@ -925,7 +925,7 @@ proc ::exif::fieldnames {} {
 # 17 Sep 2001
 # v1.5 Incorporated D30 improvements from Jim Leonard
 
-if {0} {
+if [0] {
     # Trivial usage example
     set x [exif::fieldnames]
     puts "fieldnames = $x"

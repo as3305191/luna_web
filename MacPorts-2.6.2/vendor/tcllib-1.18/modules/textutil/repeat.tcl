@@ -24,7 +24,7 @@ namespace eval ::textutil::repeat {
     variable HaveBuiltin [expr {![catch {string repeat a 1}]}]
 }
 
-if {0} {
+if [0] {
     # Problems with the deactivated code:
     # - Linear in 'num'.
     # - Tests for 'string repeat' in every call!

@@ -210,7 +210,7 @@ proc ::struct::set::S_difference {A B} {
     return [array names tmp]
 }
 
-if {0} {
+if [0] {
     # Tcllib SF Bug 1002143. We cannot use the implementation below.
     # It will treat set elements containing '(' and ')' as array
     # elements, and this screws up the storage of elements as the name

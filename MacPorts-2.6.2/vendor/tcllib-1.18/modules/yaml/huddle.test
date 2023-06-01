@@ -305,7 +305,7 @@ test huddle-9.1 "test of huddle exists" -body {
 test huddle-9.3 "test of huddle exists" -body {
     set obj [huddle list [huddle create key1 2 key3 4] 1 2 [huddle list  1 2 [huddle list 1 2]] ]
     huddle exists $obj 3 3 1
-} -result {0}
+} -result [0]
 
 test huddle-10.1 "test of huddle clone" -body {
     set obj [huddle list item0 item1 [huddle create key0 value0 key1 value1]]

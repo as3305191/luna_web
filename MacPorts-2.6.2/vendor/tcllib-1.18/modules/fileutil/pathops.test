@@ -134,14 +134,14 @@ test fu-normalize-1.0 {link normalisation} {unixOnly} {
     string equal \
 	    [::fileutil::Normalize $gorpfile] \
 	    [::fileutil::Normalize $linkfile]
-} {0}
+} [0]
 
 test fu-normalize-1.1 {link normalisation} {unixOnly} {
     # Symlink of last path element is not resolved.
     string equal \
 	    [::fileutil::Normalize $dirfile] \
 	    [::fileutil::Normalize $dirlink]
-} {0}
+} [0]
 
 test fu-normalize-1.2 {link normalisation} {unixOnly} {
     # Link higher in path is resolved (File!, non-existing last component).
@@ -176,7 +176,7 @@ test fu-normalize-1.6 {link normalisation} {unixOnly} {
     string equal \
 	    [::fileutil::Normalize $linkinsidefile] \
 	    [::fileutil::Normalize [file join $dirlink inside.file]]
-} {0}
+} [0]
 
 test fu-normalize-1.7 {link normalisation} {unixOnly} {
     # Double link, both higher up, second is file!, both resolved
@@ -190,7 +190,7 @@ test fu-normalize-1.8 {link normalisation} {unixOnly} {
     string equal \
 	    [::fileutil::Normalize ${linkinsidefile}foo] \
 	    [::fileutil::Normalize [file join $dirlink inside.filefoo]]
-} {0}
+} [0]
 
 if 0 {
     test fu-normalize-1.9 {link normalisation} {unixOnly} {
@@ -305,7 +305,7 @@ test fu-fullnormalize-1.8 {link normalisation} {unixOnly} {
     string equal \
 	    [::fileutil::fullnormalize ${linkinsidefile}foo] \
 	    [::fileutil::fullnormalize [file join $dirlink inside.filefoo]]
-} {0}
+} [0]
 
 test fu-fullnormalize-1.10 {link normalisation: double link} {unixOnly} {
     # Double symlink in one component.

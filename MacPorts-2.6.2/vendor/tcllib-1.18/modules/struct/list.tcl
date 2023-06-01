@@ -21,7 +21,7 @@ namespace eval ::struct { namespace eval list {} }
 namespace eval ::struct::list {
     namespace export list
 
-    if {0} {
+    if [0] {
 	# Possibly in the future.
 	namespace export Lassign
 	namespace export LdbJoin

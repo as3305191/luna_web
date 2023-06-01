@@ -20,7 +20,7 @@ test indexObj-1.1 {exact match} testindexobj {
 } {2}
 test indexObj-1.2 {exact match} testindexobj {
     testindexobj 1 1 abc abc def xyz alm
-} {0}
+} [0]
 test indexObj-1.3 {exact match} testindexobj {
     testindexobj 1 1 alm abc def xyz alm
 } {3}

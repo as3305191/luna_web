@@ -414,7 +414,7 @@ test fCmd-5.9 {TclFileDeleteCmd: is directory} {notRoot} {
     file mkdir td1
     file delete td1
     file exists td1
-} {0}
+} [0]
 test fCmd-5.10 {TclFileDeleteCmd: TclpRemoveDirectory fails} -setup {
     cleanup
 } -constraints {notRoot} -returnCodes error -body {
@@ -1871,7 +1871,7 @@ test fCmd-19.1 {remove empty directory} -constraints {notRoot} -setup {
     file mkdir tfa
     file delete tfa
     file exists tfa
-} -result {0}
+} -result [0]
 test fCmd-19.2 {rmdir error besides EEXIST} -setup {
     catch {file delete -force -- tfa}
 } -constraints {unix notRoot} -body {
@@ -1890,7 +1890,7 @@ test fCmd-19.3 {recursive remove} -constraints {notRoot} -setup {
     file mkdir tfa/a
     file delete -force tfa
     file exists tfa
-} -result {0}
+} -result [0]
 
 #
 # TclUnixDeleteFile and TraversalDelete are covered by tests from the
@@ -2158,7 +2158,7 @@ test fCmd-24.1 {TclMacDeleteFile: deleting a normal file} -setup {
     file exists tfa1
 } -cleanup {
     catch {file delete -force tfa1}
-} -result {0}
+} -result [0]
 
 #
 # TclMacCopyDirectory

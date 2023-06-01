@@ -424,7 +424,7 @@ proc ::page::gen::peg::canon::AttrFieldLength {modeset} {
     return  $ms($modeset,*)
 }
 
-if {0} {
+if [0] {
     proc ::page::gen::peg::canon::SHOW {text w h} {
 	set wl $w ; incr wl -1
 	puts stderr "\t/$h"

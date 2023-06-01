@@ -332,8 +332,8 @@ set DefaultFont [list [font actual $DefaultFontOrig -family] \
             radiobx0   radiobox    {bold}       {uline}     {uline}     {-choices {bold ital uline}}
             radiobx1   radiobox    {ital}       {uline}     {uline}     {-choices {bold ital uline} -default ital}
 
-            chkbttn0   checkbutton {0}          {1}         {1}         {-type none}
-            chkbttn1   checkbutton {1}          {0}         {0}         {-type none -default 1}
+            chkbttn0   checkbutton [0]          {1}         {1}         {-type none}
+            chkbttn1   checkbutton {1}          [0]         [0]         {-type none -default 1}
 
             listbx0    listbox     {1}          {4}         {4}         {-choices {1 2 3 4 5 6 7 8}}
             listbx1    listbox     {5}          {4}         {4}         {-choices {1 2 3 4 5 6 7 8} -default 5}

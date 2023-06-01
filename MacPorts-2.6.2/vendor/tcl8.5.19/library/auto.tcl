@@ -115,7 +115,7 @@ proc tcl_findLibrary {basename version patch initScript enVarName varName} {
         lappend dirs [file join $parentDir lib $basename$version]
         lappend dirs [file join $grandParentDir lib $basename$version]
         lappend dirs [file join $parentDir library]
-	if {0} {
+	if [0] {
 	    lappend dirs [file join $grandParentDir library]
 	    lappend dirs [file join $grandParentDir $basename$patch library]
 	    lappend dirs [file join [file dirname $grandParentDir] \

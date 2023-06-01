@@ -46,7 +46,7 @@ Test id-2.2 {id convert arg checking} {
 
 Test id-3.1 {id convert} {
     id convert user root
-} 0 {0}
+} 0 [0]
 
 Test id-4.2 {id convert} {
     id convert userid 0

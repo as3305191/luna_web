@@ -354,7 +354,7 @@ set f3 [::math::rationalfunctions::divRatio $f1 $f2]
 set coeffs [::math::rationalfunctions::coeffsNumerator $f3]
 puts "Coefficients: $coeffs"
 set f1 [::math::rationalfunctions::rationalFunction {1 2 3} {1 2}]
-set f2 [::math::rationalfunctions::rationalFunction {0} {1}]
+set f2 [::math::rationalfunctions::rationalFunction [0] {1}]
 set f3 [::math::rationalfunctions::divRatio $f2 $f1]
 set coeffs [::math::rationalfunctions::coeffsNumerator $f3]
 puts "Coefficients: $coeffs"

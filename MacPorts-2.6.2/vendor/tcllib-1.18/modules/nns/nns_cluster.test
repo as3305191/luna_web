@@ -75,7 +75,7 @@ test cluster-comm-1.0 {Publish service - NNS} {
 
 test cluster-comm-1.1 {Check that non-existant service does not exist} {
   dict exists $data foo@bar
-} {0}
+} [0]
 
 ###
 # Create a phony service
@@ -181,7 +181,7 @@ test cluster-comm-4.0 {Publish service - NNS} {
 } {1}
 test cluster-comm-4.1 {Check that service is closed} {
   dict exists $data foo@bar
-} {0}
+} [0]
 
 ###
 # Have a non-existant service fail

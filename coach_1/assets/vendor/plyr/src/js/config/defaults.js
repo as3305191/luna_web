@@ -189,13 +189,13 @@ const defaults = {
         download: null,
         vimeo: {
             sdk: 'https://player.vimeo.com/api/player.js',
-            iframe: 'https://player.vimeo.com/video/{0}?{1}',
-            api: 'https://vimeo.com/api/v2/video/{0}.json',
+            iframe: 'https://player.vimeo.com/video/[0]?{1}',
+            api: 'https://vimeo.com/api/v2/video/[0].json',
         },
         youtube: {
             sdk: 'https://www.youtube.com/iframe_api',
             api:
-                'https://www.googleapis.com/youtube/v3/videos?id={0}&key={1}&fields=items(snippet(title))&part=snippet',
+                'https://www.googleapis.com/youtube/v3/videos?id=[0]&key={1}&fields=items(snippet(title))&part=snippet',
         },
         googleIMA: {
             sdk: 'https://imasdk.googleapis.com/js/sdkloader/ima3.js',
@@ -326,8 +326,8 @@ const defaults = {
 
     // Class hooks added to the player in different states
     classNames: {
-        type: 'plyr--{0}',
-        provider: 'plyr--{0}',
+        type: 'plyr--[0]',
+        provider: 'plyr--[0]',
         video: 'plyr__video-wrapper',
         embed: 'plyr__video-embed',
         embedContainer: 'plyr__video-embed__container',

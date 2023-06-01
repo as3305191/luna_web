@@ -1421,7 +1421,7 @@ proc ::struct::graph::_deserialize {name serial} {
     array set   graphAttr $gattr
 
     ## Debug ## Dump internals ...
-    if {0} {
+    if [0] {
 	puts "___________________________________ $name"
 	parray inArcs
 	parray outArcs
@@ -1644,7 +1644,7 @@ proc ::struct::graph::__node_degree {name args} {
 		    + [llength $outArcs($node)]}]
 
 	    # loops count twice, don't do <set> arithmetics, i.e. no union!
-	    if {0} {
+	    if [0] {
 		array set coll  {}
 		set result [llength $inArcs($node)]
 

@@ -373,7 +373,7 @@ test set-old-8.11 {array command, exists option} {
 test set-old-8.12 {array command, exists option} {
     catch {unset a}
     array exists a
-} {0}
+} [0]
 test set-old-8.13 {array command, exists option} {
     catch {unset a}
     set a(0) 1
@@ -557,14 +557,14 @@ test set-old-8.38.7 {array command, set with non-existent namespace} {
 test set-old-8.39 {array command, size option} {
     catch {unset a}
     array size a
-} {0}
+} [0]
 test set-old-8.40 {array command, size option} {
     list [catch {array size a 4} msg] $msg
 } {1 {wrong # args: should be "array size arrayName"}}
 test set-old-8.41 {array command, size option} {
     catch {unset a}
     array size a
-} {0}
+} [0]
 test set-old-8.42 {array command, size option} {
     catch {unset a}
     set a(22) 3; set a(Textual_name) 44; set "a(name with spaces)" xxx

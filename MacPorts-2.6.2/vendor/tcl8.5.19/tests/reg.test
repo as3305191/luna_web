@@ -450,7 +450,7 @@ expectMatch	8.10 BS		"a{"		"a\{"	"a\{"
 expectMatch	8.11 bQ		"a\\{0,1\\}b"	cb	b
 expectError	8.12 b		"a\\{0,1"	EBRACE
 expectError	8.13 -		"a{0,1\\"	BADBR
-expectMatch	8.14 Q		"a{0}b"		ab	b
+expectMatch	8.14 Q		"a[0]b"		ab	b
 expectMatch	8.15 Q		"a{0,0}b"	ab	b
 expectMatch	8.16 Q		"a{0,1}b"	ab	ab
 expectMatch	8.17 Q		"a{0,2}b"	b	b
@@ -756,7 +756,7 @@ expectMatch	21.3  -		a((b))c		xabcy	abc	b	b
 expectMatch	21.4  P		a(?:(b))c	abcy	abc	b
 expectMatch	21.5  P		a((?:b))c	abc	abc	b
 expectMatch	21.6  P		a(?:(?:b))c	abc	abc
-expectIndices	21.7  Q		"a(b){0}c"	ac	{0 1}	{-1 -1}
+expectIndices	21.7  Q		"a(b)[0]c"	ac	{0 1}	{-1 -1}
 expectMatch	21.8  -		a(b)c(d)e	abcde	abcde	b	d
 expectMatch	21.9  -		(b)c(d)e	bcde	bcde	b	d
 expectMatch	21.10 -		a(b)(d)e	abde	abde	b	d

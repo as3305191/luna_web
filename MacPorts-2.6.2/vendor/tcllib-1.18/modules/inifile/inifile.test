@@ -89,7 +89,7 @@ test inifile-1.10 {ini::exists} {
     set res [ini::exists $hdl section]
     ini::close $hdl
     set res
-} {0}
+} [0]
 
 test inifile-1.11 {ini::exists} {
     set hdl [ini::open $testini r]
@@ -103,7 +103,7 @@ test inifile-1.12 {ini:::exists} {
     set res [ini::exists $hdl section1 blah]
     ini::close $hdl
     set res
-} {0}
+} [0]
 
 test inifile-1.13 {ini:::exists} {
     set hdl [ini::open $testini r]

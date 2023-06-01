@@ -41,7 +41,7 @@ package require Thread 2.5
 # Per default, the C-level threadpool is used.
 #
 
-if {0} {
+if [0] {
     eval [set TCL_TPOOL {source ../tpool/tpool.tcl}]
 }
 

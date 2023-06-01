@@ -15,7 +15,7 @@
 #### Initialization ####
 
 DemoControl(Initialization) 1
-DemoControl(IsExecutable) {0}
+DemoControl(IsExecutable) [0]
 
 # TEPAM provides the flexible entry form generator argument_dialogbox. A first 
 # example of this demo shows the simplicity of building composed entry forms with

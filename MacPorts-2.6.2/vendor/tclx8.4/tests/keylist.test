@@ -50,7 +50,7 @@ Test keylist-1.4 {keylget tests} {
 
 Test keylist-1.6 {keylget tests} {
     keylget list2 keyC value
-} 0 {0}
+} 0 [0]
 
 Test keylist-1.7 {keylget tests} {
     keylget list2 keyB
@@ -63,7 +63,7 @@ Test keylist-1.8 {keylget tests} {
 Test keylist-1.9 {keylget tests} {
     set keyedlist {}
     keylget keyedlist keyC value
-} 0 {0}
+} 0 [0]
 
 Test keylist-1.10 {keylget tests} {
     set keyedlist {}

@@ -1850,8 +1850,8 @@ static swig_method swig_macho_handle_methods[] = {
 static swig_attribute swig_macho_handle_attributes[] = {
     {0,0,0}
 };
-static swig_class *swig_macho_handle_bases[] = {0};
-static const char * swig_macho_handle_base_names[] = {0};
+static swig_class *swig_macho_handle_bases[] = [0];
+static const char * swig_macho_handle_base_names[] = [0];
 static swig_class _wrap_class_macho_handle = { "macho_handle", &SWIGTYPE_p_macho_handle,0,0, swig_macho_handle_methods, swig_macho_handle_attributes, swig_macho_handle_bases,swig_macho_handle_base_names, &swig_module };
 SWIGINTERN int
 _wrap_macho_loadcmd_mlt_install_name_get(ClientData clientData SWIGUNUSED, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[]) {
@@ -1969,8 +1969,8 @@ static swig_attribute swig_macho_loadcmd_attributes[] = {
     { "-next",_wrap_macho_loadcmd_next_get, 0 },
     {0,0,0}
 };
-static swig_class *swig_macho_loadcmd_bases[] = {0};
-static const char * swig_macho_loadcmd_base_names[] = {0};
+static swig_class *swig_macho_loadcmd_bases[] = [0];
+static const char * swig_macho_loadcmd_base_names[] = [0];
 static swig_class _wrap_class_macho_loadcmd = { "macho_loadcmd", &SWIGTYPE_p_macho_loadcmd,0,0, swig_macho_loadcmd_methods, swig_macho_loadcmd_attributes, swig_macho_loadcmd_bases,swig_macho_loadcmd_base_names, &swig_module };
 SWIGINTERN int
 _wrap_macho_arch_mat_install_name_get(ClientData clientData SWIGUNUSED, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[]) {
@@ -2132,8 +2132,8 @@ static swig_attribute swig_macho_arch_attributes[] = {
     { "-next",_wrap_macho_arch_next_get, 0 },
     {0,0,0}
 };
-static swig_class *swig_macho_arch_bases[] = {0};
-static const char * swig_macho_arch_base_names[] = {0};
+static swig_class *swig_macho_arch_bases[] = [0];
+static const char * swig_macho_arch_base_names[] = [0];
 static swig_class _wrap_class_macho_arch = { "macho_arch", &SWIGTYPE_p_macho_arch,0,0, swig_macho_arch_methods, swig_macho_arch_attributes, swig_macho_arch_bases,swig_macho_arch_base_names, &swig_module };
 SWIGINTERN int
 _wrap_macho_mt_archs_get(ClientData clientData SWIGUNUSED, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[]) {
@@ -2163,8 +2163,8 @@ static swig_attribute swig_macho_attributes[] = {
     { "-mt_archs",_wrap_macho_mt_archs_get, 0 },
     {0,0,0}
 };
-static swig_class *swig_macho_bases[] = {0};
-static const char * swig_macho_base_names[] = {0};
+static swig_class *swig_macho_bases[] = [0];
+static const char * swig_macho_base_names[] = [0];
 static swig_class _wrap_class_macho = { "macho", &SWIGTYPE_p_macho,0,0, swig_macho_methods, swig_macho_attributes, swig_macho_bases,swig_macho_base_names, &swig_module };
 SWIGINTERN int
 _wrap_create_handle(ClientData clientData SWIGUNUSED, Tcl_Interp *interp, int objc, Tcl_Obj *CONST objv[]) {

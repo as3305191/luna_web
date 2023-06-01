@@ -4,7 +4,7 @@ class Device {
     [string]$VendorSku
 
     [string]ToString(){
-        return ("{0}|{1}|{2}" -f $this.Brand, $this.Model, $this.VendorSku)
+        return ("[0]|{1}|{2}" -f $this.Brand, $this.Model, $this.VendorSku)
     }
 }
 

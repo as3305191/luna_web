@@ -426,7 +426,7 @@ proc ::struct::tree::_deserialize {name serial} {
     set rootname $rn
 
     ## Debug ## Dump internals ...
-    if {0} {
+    if [0] {
 	puts "___________________________________ $name"
 	puts $rootname
 	parray children
