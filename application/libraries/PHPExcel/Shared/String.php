@@ -523,7 +523,7 @@ class PHPExcel_Shared_String
         if (strlen($str) < 2) {
             return $str;
         }
-        $c0 = ord($str{0});
+        $c0 = ord($str[0]);
         $c1 = ord($str{1});
         if ($c0 == 0xfe && $c1 == 0xff) {
             $str = substr($str, 2);
