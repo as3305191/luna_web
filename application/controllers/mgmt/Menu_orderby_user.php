@@ -7,6 +7,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('Menu_orderby_user_dao', 'dao');
 		$this -> load -> model('Menu_dao', 'menu_dao');
+		$this -> load -> model('Menu_order_dao', 'menu_order_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Menu_style_dao', 'menu_style_dao');
 		$this -> load -> model('Img_month_use_dao', 'img_month_use_dao');		
@@ -28,14 +29,14 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			's_menu_style',
+			// 's_menu_style',
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
-		$items = $this -> img_dao -> find_menu_img($data);
+		$items = $this -> menu_order_dao -> find_all_order_list($data);
 		$res['items'] = $items;
-		$res['recordsFiltered'] = $this -> img_dao -> find_menu_img($data,true);
-		$res['recordsTotal'] = $this -> img_dao -> find_menu_img($data,true);
+		$res['recordsFiltered'] = $this -> menu_order_dao -> find_all_order_list($data,true);
+		$res['recordsTotal'] = $this -> menu_order_dao -> find_all_order_list($data,true);
 		$this -> to_json($res);
 	}
 
