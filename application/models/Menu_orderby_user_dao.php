@@ -1,5 +1,5 @@
 <?php
-class Menu_dao extends MY_Model {
+class Menu_orderby_user_dao extends MY_Model {
 
 	function __construct() {
 		parent::__construct();
