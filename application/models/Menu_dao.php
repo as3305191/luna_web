@@ -51,7 +51,8 @@ class Menu_dao extends MY_Model {
 		}
 
 		if(!empty($data['s_menu_name'])){
-			$this -> db -> where("_m.menu_style_id", $data['s_menu_name']);
+			$s_menu_name = $data['s_menu_name'];
+			$this -> db -> where("_m.menu_style_id like", "%$s_menu_name%");
 		}
 	}
 

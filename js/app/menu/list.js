@@ -94,7 +94,7 @@ app.dtConfig = {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
 					d.s_menu_style = $('#s_menu_style').val();
-					
+					d.s_menu_name = $('#s_menu_name').val();
 				},
 				dataSrc : 'items',
 				dataType : 'json',
@@ -120,6 +120,9 @@ app.dtConfig = {
 
 		
 		$('#s_menu_style').on('change', function(){
+			app.tableReload();
+		});
+		$('#s_menu_name').on('keyup', function(){
 			app.tableReload();
 		});
 	    // $(window).trigger("hashchange");

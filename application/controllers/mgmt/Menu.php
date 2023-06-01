@@ -31,6 +31,7 @@ class Menu extends MY_Mgmt_Controller {
 			'search',
 			'order',
 			's_menu_style',
+			's_menu_name'
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
@@ -58,7 +59,7 @@ class Menu extends MY_Mgmt_Controller {
 			));
 			$q_data['id'] = $id;
 			$list = $this -> dao -> query_ajax($q_data);
-			$item = $list[0];
+			$item = $list;
 			// if(!empty($item -> image_id)) {
 			// 	$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
 			// }

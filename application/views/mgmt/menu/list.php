@@ -31,17 +31,20 @@ thead tr th {
 									</div>
 								</div>
 								<div class="widget-toolbar pull-left">
-									<label class="col-md-6 control-label">類型</label>
-									<div class="col-md-4">
-										<select id="s_menu_style" class="form-control">
-											<!-- option from javascript -->
-										</select>
-									</div>
-									<div class="col-md-2">
-										<button type="button" class="btn btn-sm btn-primary" id="add_img_style"><i class="fa fa-plus-circle fa-lg"></i></button>
-									</div>
+									<label>類型:</label>
 								</div>
-
+								<div class="widget-toolbar pull-left">
+									<select id="s_menu_style" class="form-control">
+										<!-- option from javascript -->
+									</select>
+								</div>
+									
+								<div class="widget-toolbar pull-left">
+									<label>店名:</label>
+								</div>
+								<div class="widget-toolbar pull-left">
+									<input id="s_menu_name" type="text" class="form-control"autocomplete="off" />
+								</div>
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 
