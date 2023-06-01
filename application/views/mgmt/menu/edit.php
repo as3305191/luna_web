@@ -86,7 +86,7 @@
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">分類</label>
+					<label class="col-md-3 control-label">備註</label>
 					<div class="col-md-6">
 						<input type="text" required class="form-control" name="note"  id="note" value="<?= isset($item) ? $item -> note : '' ?>"  />
 					</div>
