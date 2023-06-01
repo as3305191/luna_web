@@ -206,7 +206,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		  $total = 0;
 		  for ($j=0;$j<count($items_order);$j++) {
 			$k = $j+2;
-			$total+=$items_order[$j]->amount;
+			$total+=intval($items_order[$j]->amount);
 			$objWorkSheet->setCellValue('A'.$k , $items_order[$j]->user_name)
 						 ->setCellValue('B'.$k , $items_order[$j]->order_name)
 						 ->setCellValue('C'.$k , $items_order[$j]->note)
