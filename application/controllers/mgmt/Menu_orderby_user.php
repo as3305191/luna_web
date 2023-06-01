@@ -175,7 +175,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function export_excel(){
+	public function export_excel1(){
 	  $this->load->dbutil();
 	  $this->load->helper('file');
 	  $this->load->helper('download');
@@ -236,7 +236,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 	}
 
 
-	public function excel(){
+	public function export_excel1(){
 		$fileName = '點餐表'.date('Y-m-d H:i:s').'.xls';
 
 		$objPHPExcel = new PHPExcel();
