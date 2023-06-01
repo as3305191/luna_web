@@ -100,8 +100,8 @@
 
 <script type="text/javascript">
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/menu/list.js", function(){
-			currentApp = new MenuClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/menu_orderby_user/list.js", function(){
+			currentApp = new menuorderuserAppClass(new BaseAppClass({}));
 			// currentApp.doEdit();
 		});
 	});
