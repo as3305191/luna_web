@@ -118,7 +118,7 @@ thead tr th {
 
 	var mCols = [{
 				targets : 0,
-				data : null,
+				data : 'status',
 				render:function ( data, type, row ) {
 					var input = '';
 					var is_stop_html ='';

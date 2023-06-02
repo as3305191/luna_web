@@ -104,7 +104,7 @@ app.dtConfig = {
 			},
 			iDisplayLength : 50,
 			columns : mCols,
-			order : false,
+			order : [[0, "desc"]],
 			columnDefs : mColDefs
 		}));
 
