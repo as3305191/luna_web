@@ -35,7 +35,7 @@ class Menu_dao extends MY_Model {
 		// order
 		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
 		$this -> db -> order_by('id', 'desc');
-
+		$this -> db -> order_by('status', 'desc');
 		// limit
 		$this -> db -> limit($limit, $start);
 
@@ -112,7 +112,6 @@ class Menu_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
-	
 	
 }
 ?>
