@@ -115,7 +115,6 @@ thead tr th {
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 	var baseUrl = '<?=base_url('')?>';
-
 	var mCols = [{
 				targets : 0,
 				data : 'status',
@@ -138,7 +137,6 @@ thead tr th {
 					+'</span>'
 					+is_stop_html
 					+'<button type="button" class="btn btn-sm btn-primary pull-right" onclick="finish_menu('+row.id+')">完成</button>';
-;
 					}else{
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
