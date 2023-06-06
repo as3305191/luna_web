@@ -135,6 +135,31 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function menu_name_check(){
+		$data = array();
+		$res = array();
+		$menu_name = $this -> get_post('menu_name');
+		$data['menu_name'] = $menu_name;
+		$same_menu_name = $this -> dao -> find_same_menu_name($data);
+		$count_same_menu_name = count($same_menu_name);
+		$res['count_same_menu_name'] = $count_same_menu_name;
+		$res['same_name_list'] = '';
+		if($count_same_menu_name>0){
+			if($count_same_menu_name>1){
+				$res['same_name_list'] = $same_menu_name[0]->menu_name;
+				for($i=1;$i<$count_same_menu_name;$i++){
+					$res['same_name_list'] .= ','.$same_menu_name[$i]->menu_name;
+				}
+			} else{
+				$res['same_name_list'] = $same_menu_name[0]->menu_name;
+			}
+			
+		}
+		
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
 	public function find_menu_style(){
 		$res = array();
 		$id = $this -> get_post('id');

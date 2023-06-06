@@ -112,6 +112,17 @@ class Menu_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
+
+	function find_same_menu_name($data){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$menu_name = $data['menu_name'];
+		$this -> db -> where("_m.menu_name like", "%$menu_name%");
+		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
+		$this -> db -> order_by('_m.id', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
 	
 }
 ?>

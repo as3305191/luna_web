@@ -72,6 +72,9 @@
 
 					</div>
 				</div>
+				<div id="same_name">
+					
+				</div>
 			</fieldset>
 			<fieldset>
 				<div class="form-group">
@@ -175,6 +178,26 @@ $("#img-input").fileinput({
 	}).on('filedeleted', function(event,data,key) {
 	});
 
+
+	$('#menu_name').on('keyup', function(){
+		var url = baseUrl + 'mgmt/menu/menu_name_check'; // the script where you handle the form input.
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+				menu_name: $('#menu_name').val(),
+			},
+			success : function(data) {
+				var same_name_list = '';
+				var same_name_div=$('#same_name').text();
+				$same_name_div.append(same_name_list);
+				if(data.count_same_menu_name>0) {
+					same_name
+				} 
+				data.count_same_menu_name.same_name_list.appendTo($same_name_div);
+			}
+		});
+	});
 	function do_save() {
 	var url = baseUrl + 'mgmt/menu/insert'; // the script where you handle the form input.
 	$.ajax({
