@@ -188,8 +188,12 @@ $("#img-input").fileinput({
 				menu_name: $('#menu_name').val(),
 			},
 			success : function(data) {
-
-				$('#same_name').text(data.same_name_list);
+				if(data.count_same_menu_name>0){
+					$('#same_name').text(data.same_name_list);
+				} else{
+					$('#same_name').text('');
+				}
+				
 			}
 		});
 	});
