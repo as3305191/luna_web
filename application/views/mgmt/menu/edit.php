@@ -72,7 +72,7 @@
 
 					</div>
 				</div>
-				<div id="same_name">
+				<div class="col-md-6" id="same_name">
 					
 				</div>
 			</fieldset>
@@ -188,13 +188,8 @@ $("#img-input").fileinput({
 				menu_name: $('#menu_name').val(),
 			},
 			success : function(data) {
-				var same_name_list = '';
-				var same_name_div=$('#same_name').text();
-				$same_name_div.append(same_name_list);
-				if(data.count_same_menu_name>0) {
-					same_name
-				} 
-				data.count_same_menu_name.same_name_list.appendTo($same_name_div);
+
+				$('#same_name').text(data.count_same_menu_name);
 			}
 		});
 	});
