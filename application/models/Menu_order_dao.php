@@ -48,9 +48,9 @@ class Menu_order_dao extends MY_Model {
 
 	function search_always($data) {
 		
-		$this -> db -> where('_m.user_id',$data['login_user_id']);
 		$this -> db -> where('_m.is_delete<',1);
 		$this -> db -> where('_m.is_done<',1);
+		$this -> db -> where('_m.user_id',$data['login_user_id']);
 
 	}
 
