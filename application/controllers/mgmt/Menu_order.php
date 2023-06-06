@@ -31,7 +31,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		$u_data = array();
 		$u_data = $this -> setup_user_data($u_data);
 		$user_list = $this -> users_dao -> find_by_id($u_data['login_user_id']);
-		$data['login_user_id'] = $user_list->id;
+		
 		$data = $this -> get_posts(array(
 			'length',
 			'start',
@@ -40,7 +40,7 @@ class Menu_order extends MY_Mgmt_Controller {
 			'order',
 		));
 		// set corp id
-
+		$data['login_user_id'] = $user_list->id;
 		$items = $this -> dao -> query_ajax($data);
 		$res['items'] = $items;
 		// $res['user_list'] = $user_list;
