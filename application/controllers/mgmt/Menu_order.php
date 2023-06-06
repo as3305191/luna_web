@@ -29,7 +29,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		$res = array();
 		$data = array();
 		$u_data = array();
-		$data = $this -> setup_user_data($u_data);
+		$u_data = $this -> setup_user_data($u_data);
 		$user_list = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['login_user_id'] = $user_list->id;
 		$data = $this -> get_posts(array(
