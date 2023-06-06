@@ -69,7 +69,7 @@
 					<label class="col-md-3 control-label">店名</label>
 					<div class="col-md-6" id="patnet_status" >
 					<input type="text" required class="form-control" name="menu_name"  id="menu_name" value="<?= isset($item) ? $item -> menu_name : '' ?>"  />
-					<div class="form-control" id="same_name">
+					<div class="" id="same_name">
 					</div>
 				</div>
 				
