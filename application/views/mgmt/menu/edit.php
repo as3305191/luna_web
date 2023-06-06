@@ -189,7 +189,7 @@ $("#img-input").fileinput({
 			},
 			success : function(data) {
 
-				$('#same_name').text(data.count_same_menu_name);
+				$('#same_name').text(data.same_name_list);
 			}
 		});
 	});
