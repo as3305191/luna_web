@@ -69,7 +69,7 @@
 					<label class="col-md-3 control-label">店名</label>
 					<div class="col-md-6" id="patnet_status" >
 					<input type="text" required class="form-control" name="menu_name"  id="menu_name" value="<?= isset($item) ? $item -> menu_name : '' ?>"  />
-					<div class="" id="same_name">
+					<div class="" color="#930000" id="same_name">
 					</div>
 				</div>
 				
@@ -189,7 +189,7 @@ $("#img-input").fileinput({
 			},
 			success : function(data) {
 				if(data.count_same_menu_name>0){
-					$('#same_name').text(data.same_name_list);
+					$('#same_name').text('已有相似店家： '+data.same_name_list);
 				} else{
 					$('#same_name').text('');
 				}
