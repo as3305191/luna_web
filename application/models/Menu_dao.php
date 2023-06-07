@@ -100,7 +100,12 @@ class Menu_dao extends MY_Model {
 		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
 		$this -> db -> order_by('_m.id', 'desc');
 		$list = $this -> db -> get() -> result();
-		return $list[0];
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return null;
+		}
+		
 	}
 	function find_all_open_without_stop(){
 		$this -> db -> from("$this->table_name as _m");
