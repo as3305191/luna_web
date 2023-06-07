@@ -1,40 +1,48 @@
 var menuorderAppClass = (function(app) {
 	app.basePath = "mgmt/menu_order/";
 	app.disableRowClick = true;
-	if(!app.disableRowClick) {
-		var _rtd = $(nRow).find('td');
-		if(!app.enableFirstClickable) {
-			_rtd = _rtd.not(':first').not(':last')
-		}
-		_rtd.addClass('pointer').on('click', function(){
-			app.doEdit(aData.id);
+	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+				// edit click
+				if(!app.disableRowClick) {
+					var _rtd = $(nRow).find('td');
+					if(!app.enableFirstClickable) {
+						_rtd = _rtd.not(':first').not(':last')
+					}
+					_rtd.addClass('pointer').on('click', function(){
+						app.doEdit(aData.id);
 
-			// remove all highlight first
-			$(this).parent().parent().find('tr').removeClass('active');
+						// remove all highlight first
+						$(this).parent().parent().find('tr').removeClass('active');
 
-			app._lastPk = aData.id;
-			app._tr = $(this).parent();
-			setTimeout(function(){
-				app._tr.addClass('active');
-			}, 100);
-		});
-	}
+						app._lastPk = aData.id;
+						app._tr = $(this).parent();
+						setTimeout(function(){
+							app._tr.addClass('active');
+						}, 100);
+					});
+				}
 
-	if(app._lastPk && aData.id && app._lastPk == aData.id) {
-		$(nRow).addClass('active');
-	}
+				$(nRow).find("a").eq(0).click(function() {
+					app.setDelId(aData.id);
+					$('#modal_do_delete')
+					.prop('onclick',null)
+					.off('click')
+					.on('click', function(){
+						app.doDelItem();
+					});
+				});
 
-	// delete click
-	$(nRow).find("a").eq(0).click(function() {
-		app.setDelId(aData.id);
+				if(app._lastPk && aData.id && app._lastPk == aData.id) {
+					$(nRow).addClass('active');
+				}
 
-		$('#modal_do_delete')
-			.prop('onclick',null)
-			.off('click')
-			.on('click', function(){
-				app.doDelItem();
-			});
-	});
+			
+
+				if(app.fnRowCallbackExt) {
+					app.fnRowCallbackExt(nRow, aData, iDisplayIndex, iDisplayIndexFull);
+				}
+		};
+
 	app.dtConfig = {
 		processing : true,
 		serverSide : true,
@@ -83,7 +91,7 @@ var menuorderAppClass = (function(app) {
 				"targets" : [0,1,2,3,4],
 				"orderable" : false
 			}],
-
+	
 			footerCallback: function (row, data, start, end, display ) {
 				var api = this.api();
 			}
@@ -112,6 +120,8 @@ var menuorderAppClass = (function(app) {
 	// return self
 	return app.init();
 });
+
+
 
 var menu_otherAppClass = (function(app) {
 	app.basePath = "mgmt/menu_order/";
