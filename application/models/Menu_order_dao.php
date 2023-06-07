@@ -13,7 +13,7 @@ class Menu_order_dao extends MY_Model {
 	}
 
 
-	function query_ajax($data) {
+	function query_ajax($data,$is_count = FALSE) {
 		$start = $data['start'];
 		$limit = $data['length'];
 		$columns = $data['columns'];
@@ -39,11 +39,17 @@ class Menu_order_dao extends MY_Model {
 		$this -> db -> order_by('id', 'desc');
 
 		// limit
-		$this -> db -> limit($limit, $start);
-
-		// query results
-		$query = $this -> db -> get();
-		return $query -> result();
+		// $this -> db -> limit($limit, $start);
+		if(!$is_count) {
+			$this -> db -> limit($limit, $start);
+		}
+		
+		if(!$is_count) {
+			$query = $this -> db -> get();
+			return $query -> result();
+		} else {
+			return $this -> db -> count_all_results();
+		}
 	}
 
 	function search_always($data) {

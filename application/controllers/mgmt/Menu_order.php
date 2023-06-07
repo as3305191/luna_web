@@ -44,8 +44,8 @@ class Menu_order extends MY_Mgmt_Controller {
 		$items = $this -> dao -> query_ajax($data);
 		$res['items'] = $items;
 		// $res['user_list'] = $user_list;
-		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
-		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
+		$res['recordsFiltered'] = $this -> dao -> count_ajax($data,true);
+		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data,true);
 		$this -> to_json($res);
 	}
 
