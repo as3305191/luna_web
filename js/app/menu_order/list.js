@@ -95,7 +95,7 @@ var menu_otherAppClass = (function(app) {
 	};
 
 	app.init = function() {
-		app.mDtTable = $('#fix_list').DataTable($.extend(app.dtConfig,{
+		app.mDtTable = $('#dt_list_other').DataTable($.extend(app.dtConfig,{
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data_other',
 				data : function(d) {
