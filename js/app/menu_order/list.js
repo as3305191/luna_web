@@ -1,47 +1,7 @@
 var menuorderAppClass = (function(app) {
 	app.basePath = "mgmt/menu_order/";
 	app.disableRowClick = true;
-	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-				// edit click
-				if(!app.disableRowClick) {
-					var _rtd = $(nRow).find('td');
-					if(!app.enableFirstClickable) {
-						_rtd = _rtd.not(':first').not(':last')
-					}
-					_rtd.addClass('pointer').on('click', function(){
-						app.doEdit(aData.id);
 
-						// remove all highlight first
-						$(this).parent().parent().find('tr').removeClass('active');
-
-						app._lastPk = aData.id;
-						app._tr = $(this).parent();
-						setTimeout(function(){
-							app._tr.addClass('active');
-						}, 100);
-					});
-				}
-
-				$(nRow).find("a").eq(0).click(function() {
-					app.setDelId(aData.id);
-					$('#modal_do_delete')
-					.prop('onclick',null)
-					.off('click')
-					.on('click', function(){
-						app.doDelItem();
-					});
-				});
-
-				if(app._lastPk && aData.id && app._lastPk == aData.id) {
-					$(nRow).addClass('active');
-				}
-
-			
-
-				if(app.fnRowCallbackExt) {
-					app.fnRowCallbackExt(nRow, aData, iDisplayIndex, iDisplayIndexFull);
-				}
-		};
 
 	app.dtConfig = {
 		processing : true,
