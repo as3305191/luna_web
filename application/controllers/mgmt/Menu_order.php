@@ -49,6 +49,31 @@ class Menu_order extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+
+	public function get_data_other() {
+		$res = array();
+		$data = array();
+		$u_data = array();
+		$u_data = $this -> setup_user_data($u_data);
+		$user_list = $this -> users_dao -> find_by_id($u_data['login_user_id']);
+		
+		$data = $this -> get_posts(array(
+			'length',
+			'start',
+			'columns',
+			'search',
+			'order',
+		));
+		// set corp id
+		$data['login_user_id'] = $user_list->id;
+		$items = $this -> dao -> query_ajax($data);
+		$res['items'] = $items;
+		// $res['user_list'] = $user_list;
+		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
+		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
+		$this -> to_json($res);
+	}
+
 	public function edit($id) {
 		$data = array();
 		$s_data = array();

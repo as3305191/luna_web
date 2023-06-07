@@ -48,53 +48,68 @@
 
 					<!-- widget content -->
 				</hr>
+					<div class="widget-body no-padding">
 						<table id="dt_list" class="table table-striped table-bordered table-hover" >
 
-						<thead>
-						<tr>
-							<th></th>
-							<th>選擇店家</th>
-							<th>品項</th>
-							<th>金額</th>
-							<th>備註</th>
-						</tr>
-						<tr>
-							<td class="min50" style="border-right:none;"></td>
-							<td class="min120" style="border-right:none;">
-								<div class="input-group col-md-12">
-									<select id="menu_name" class="form-control">
-										
-									</select> 
-								</div>
-							</td>
-							<td style="border-right:none;">
-								<div class="input-group col-md-12">
-									<input type="text" class="form-control" id="order_name" placeholder="品項">
-								</div>
-							</td>
-							<td style="border-right:none;">
-								<div class="input-group col-md-12">
-									<input type="text" class="form-control" id="amount" placeholder="金錢總額">
-								</div>
-							</td>
-							<td style="border-right:none;">
-								<div class="input-group col-md-10">
-									<input type="text" class="form-control" id="note" placeholder="備註">
-								</div>
+							<thead>
+								<tr>
+									<th></th>
+									<th>選擇店家</th>
+									<th>品項</th>
+									<th>金額</th>
+									<th>備註</th>
+								</tr>
+								<tr>
+									<td class="min50" style="border-right:none;"></td>
+									<td class="min120" style="border-right:none;">
+										<div class="input-group col-md-12">
+											<select id="menu_name" class="form-control">
+												
+											</select> 
+										</div>
+									</td>
+									<td style="border-right:none;">
+										<div class="input-group col-md-12">
+											<input type="text" class="form-control" id="order_name" placeholder="品項">
+										</div>
+									</td>
+									<td style="border-right:none;">
+										<div class="input-group col-md-12">
+											<input type="text" class="form-control" id="amount" placeholder="金錢總額">
+										</div>
+									</td>
+									<td style="border-right:none;">
+										<div class="input-group col-md-10">
+											<input type="text" class="form-control" id="note" placeholder="備註">
+										</div>
 
-									<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
+											<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
 
-							</td>
-							
-							
-						</tr>
-					</thead>
+									</td>
+									
+									
+								</tr>
+							</thead>
 							<tbody>
 							</tbody>
 						</table>
 					</div>
 					<!-- end widget content -->
-
+					<div class="widget-body no-padding">
+						<table id="dt_list_other" class="table table-striped table-bordered table-hover" width="100%">
+							<thead>
+								<tr>
+									<th class="min100">店名</th>
+									<th class="min100">名字</th>
+									<th class="min100">品項</th>
+									<th class="min100">金額</th>
+									<th class="min100">備註</th>
+								</tr>
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>
 				<!-- end widget div -->
 
 
@@ -145,7 +160,7 @@ var mColDefs = [{
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/menu_order/list.js", function(){
 			currentApp = new menuorderAppClass(new BaseAppClass({}));
-			
+			currentApp_other = new menu_otherAppClass(new BaseAppClass({}));
 		});
 	});
 	function load_menu() {

@@ -79,6 +79,7 @@ thead tr th {
 									</tbody>
 								</table>
 							</div>
+							
 							<!-- end widget content -->
 
 						</div>
