@@ -52,21 +52,20 @@ thead tr th {
 										</button>
 									</div>
 								</div>
+								<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 
 						</header>
-						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
+					<!-- widget div-->
+					<div>
 
-						<!-- widget div-->
-						<div>
-							<!-- widget edit box -->
-							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
+						<!-- widget edit box -->
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
 
-							</div>
-							<!-- end widget edit box -->
+						</div>
+						<!-- end widget edit box -->
 
-							<!-- widget content -->
-							<div class="widget-body no-padding">
+						<div class="widget-body no-padding">
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
@@ -79,12 +78,10 @@ thead tr th {
 									</tbody>
 								</table>
 							</div>
-							
-							<!-- end widget content -->
 
 						</div>
-						<!-- end widget div -->
-
+					
+						</div>
 					</div>
 					<!-- end widget -->
 
