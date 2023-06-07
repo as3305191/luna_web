@@ -52,7 +52,7 @@ thead tr th {
 										</button>
 									</div>
 								</div>
-						</div>
+
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 
