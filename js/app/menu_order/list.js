@@ -134,6 +134,16 @@ var menu_otherAppClass = (function(app) {
 						}, 100);
 					});
 				}
+				
+				$(nRow).find("a").eq(0).click(function() {
+					app.setDelId(aData.id);
+					$('#modal_do_delete')
+					.prop('onclick',null)
+					.off('click')
+					.on('click', function(){
+						app.doDelItem();
+					});
+				});
 
 				if(app._lastPk && aData.id && app._lastPk == aData.id) {
 					$(nRow).addClass('active');
