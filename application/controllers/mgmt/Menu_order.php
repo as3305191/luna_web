@@ -66,11 +66,10 @@ class Menu_order extends MY_Mgmt_Controller {
 		));
 		// set corp id
 		$data['login_user_id'] = $user_list->id;
-		$items = $this -> dao -> query_ajax($data);
+		$items = $this -> dao -> find_all_order_list_other($data);
 		$res['items'] = $items;
-		// $res['user_list'] = $user_list;
-		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
-		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
+		$res['recordsFiltered'] = $this -> dao -> find_all_order_list_other($data,true);
+		$res['recordsTotal'] = $this -> dao -> find_all_order_list_other($data,true);
 		$this -> to_json($res);
 	}
 

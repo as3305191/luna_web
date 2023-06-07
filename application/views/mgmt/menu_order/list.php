@@ -95,6 +95,7 @@
 						</table>
 					</div>
 					<!-- end widget content -->
+					</hr>
 					<div class="widget-body no-padding">
 						<table id="dt_list_other" class="table table-striped table-bordered table-hover" width="100%">
 							<thead>
