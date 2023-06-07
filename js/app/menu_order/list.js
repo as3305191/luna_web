@@ -43,7 +43,7 @@ var menuorderAppClass = (function(app) {
 	return app.init();
 });
 var menu_otherAppClass = (function(app) {
-	app.basePath = "mgmt/menu_order_other/";
+	app.basePath = "mgmt/menu_order/";
 	app.disableRowClick = true;
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click
