@@ -130,7 +130,7 @@
 					// console.log(d);
 					$menu_name = $('#menu_name').empty();
 					var option = '';
-					$img_style.append(option);
+					$menu_name.append(option);
 					if(count(d.list)>0){
 						$.each(d.list, function(){
 							$('<option/>', {
