@@ -11,7 +11,6 @@
 <link rel="stylesheet" href="<?= base_url() ?>assets/vendor/fancybox/jquery.fancybox.min.css">
 </header>
 <div class="tab-content">
-	<div class="tab-pane active" id="list_page">
 
 	
 				<div class="row" style="padding:0px 0px 6px 12px;">
@@ -108,7 +107,6 @@
 						</table>
 					</div>
 	
-	</div>
 
 </div>
 <?php $this -> load -> view('general/delete_modal'); ?>
