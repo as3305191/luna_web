@@ -131,7 +131,7 @@
 					$menu_name = $('#menu_name').empty();
 					var option = '';
 					$menu_name.append(option);
-					if(count(d.list)>0){
+					if(d.list.length>0){
 						$.each(d.list, function(){
 							$('<option/>', {
 								'value': this.id,
