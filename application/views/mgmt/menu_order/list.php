@@ -129,14 +129,17 @@
 				if(d) {
 					// console.log(d);
 					$menu_name = $('#menu_name').empty();
-					// var option = '<option value="0">全部</option>';
-					// $img_style.append(option);
-					$.each(d.list, function(){
-						$('<option/>', {
-							'value': this.id,
-							'text': this.menu_name
-						}).appendTo($menu_name);
-					});
+					var option = '';
+					$img_style.append(option);
+					if(count(d.list)>0){
+						$.each(d.list, function(){
+							$('<option/>', {
+								'value': this.id,
+								'text': this.menu_name
+							}).appendTo($menu_name);
+						});
+					}
+					
 				}
 			},
 			failure:function(){
