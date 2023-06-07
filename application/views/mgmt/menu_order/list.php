@@ -49,7 +49,7 @@
 					<!-- widget content -->
 				</hr>
 					<div class="widget-body no-padding">
-						<table id="dt_list" class="table table-striped table-bordered table-hover" >
+						<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 
 							<thead>
 								<tr>
