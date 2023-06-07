@@ -48,7 +48,7 @@
 
 					<!-- widget content -->
 				</hr>
-					<div class="widget-body no-padding">
+					<div >
 						<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 
 							<thead>
@@ -96,7 +96,7 @@
 					</div>
 					<!-- end widget content -->
 					</hr>
-					<div class="widget-body no-padding">
+					<div >
 						<table id="dt_list_other" class="table table-striped table-bordered table-hover" width="100%">
 							<thead>
 								<tr>
