@@ -13,12 +13,7 @@
 <div class="tab-content">
 	<div class="tab-pane active" id="list_page">
 
-		<!-- widget grid -->
-		<section id="widget-grid" class="">
-			<!-- row -->
-			<div class="row">
-				<!-- NEW WIDGET START -->
-			<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+	
 				<div class="row" style="padding:0px 0px 6px 12px;">
 
 					<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
@@ -97,6 +92,7 @@
 					<!-- end widget content -->
 					</hr>
 					<div >
+						<label class="col-md-3" style="font-weight:bold;font-size:large;">別人點的:</label>
 						<table id="dt_list_other" class="table table-striped table-bordered table-hover" width="100%">
 							<thead>
 								<tr>
@@ -111,18 +107,7 @@
 							</tbody>
 						</table>
 					</div>
-				<!-- end widget div -->
-
-
-				</article>
-				<!-- WIDGET END -->
-
-			</div>
-
-			<!-- end row -->
-
-		</section>
-		<!-- end widget grid -->
+	
 	</div>
 
 </div>
