@@ -1,86 +1,47 @@
 var menuorderAppClass = (function(app) {
 	app.basePath = "mgmt/menu_order/";
 	app.disableRowClick = true;
-
-
-	app.dtConfig = {
-		processing : true,
-		serverSide : true,
-		responsive : true,
-		deferLoading : 0, // don't reload on init
-		iDisplayLength : 10,
-		sDom: app.sDom,
-		language : {
-			url : baseUrl + "js/datatables-lang/zh-TW.json"
-		},
-		bSortCellsTop : true,
-		fnRowCallback : app.fnRowCallback1,
-		footerCallback: function( tfoot, data, start, end, display ) {
-			setTimeout(function(){ $(window).trigger('resize'); }, 300);
-		}
-	};
-
 	app.init = function() {
 		app.mDtTable = $('#dt_list').DataTable($.extend(app.dtConfig,{
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					// d.computer = $('#item_id').val();
-					// d.lottery_no = $('#lottery_select').val();
-					return d;
+					// d.s_menu_name = $('#s_menu_name').val();
+					
 				},
 				dataSrc : 'items',
 				dataType : 'json',
-				type : 'post'
+				type : 'post',
+				complete:function(data){
+				}
 			},
-
-			pageLength: 10,
-
-			columns : [null,{
-				data : 'menu_name'
-			},{
-				data : 'order_name'
-			},{
-				data : 'amount'
-			},{
-				data : 'note'
-			}],
-			ordering: false,
-			order : [[0, "desc"]],
-			columnDefs : [{
-				"targets" : [0,1,2,3,4],
-				"orderable" : false
-			}],
-	
-			footerCallback: function (row, data, start, end, display ) {
-				var api = this.api();
-			}
-
+			iDisplayLength : 10,
+			columns : mCols,
+			order : false,
+			columnDefs : mColDefs
 		}));
 
 		// data table actions
 		app.dtActions();
 
-		app.mDtTable.on( 'xhr', function () {
-		    var json = app.mDtTable.ajax.json();
-	
-		});
-
 		// get year month list
 		app.tableReload();
 
-	
+		app.doExportAll = function(id) {
+			window.open(baseUrl + app.basePath + 'export_all/' + id);
+		}
+		
 
+		$('#s_menu_name').on('change', function(){
+			app.tableReload();
+		});
+	    // $(window).trigger("hashchange");
 
-		// do submit
-	
 		return app;
 	};
 
-	// return self
 	return app.init();
 });
-
 
 
 var menu_otherAppClass = (function(app) {
