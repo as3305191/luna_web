@@ -141,8 +141,7 @@
 			
 		});
 	});
-	$(document).ready(function() {
-		$('#menu_name').on('change', function(){
+	$('#menu_name').on('change', function(){
 		// menu_click($('#menu_name').val());
 	
 		$.ajax({
@@ -167,7 +166,6 @@
 		});
 
 
-	});
 	});
 	function load_menu() {
 		$.ajax({
