@@ -196,9 +196,11 @@ var mColDefs = [{
 				'</div>';
 				$('#img_album').append(img_album_html);
 				var menu_note ='';
-				if(data.note.length>0){
-					
-					menu_note='<div class="" style="color:#a90329;">'+data.note+'</div>';
+				if(data.note.length!==null){
+					if(data.note.length>0){
+						
+						menu_note='<div class="" style="color:#a90329;">'+data.note+'</div>';
+					}
 				}
 				$('#img_album').append(menu_note);
 				
