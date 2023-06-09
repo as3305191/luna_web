@@ -118,6 +118,10 @@
 									<th class="min100">店名</th>
 									<th class="min100">名字</th>
 									<th class="min100">品項</th>
+									<div class="s_i">
+										<th class="min100">糖</th>
+										<th class="min100">冰</th>
+									</div>
 									<th class="min100">金額</th>
 									<th class="min100">備註</th>
 								</tr>
@@ -141,6 +145,10 @@ var mCols = [null,{
 },{
 	data : 'order_name'
 },{
+	data : 'sugar'
+},{
+	data : 'ice'
+},{
 	data : 'amount'
 },{
 	data : 'note'
@@ -159,7 +167,7 @@ var mColDefs = [{
 	width : "5%",
 	className : ''
 }, {
-	"targets" : [0,1,2,3,4],
+	"targets" : [0,1,2,3,4,5,6],
 	"orderable" : false
 }];
 

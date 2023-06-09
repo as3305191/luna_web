@@ -129,6 +129,10 @@ var menu_otherAppClass = (function(app) {
 				},{
 					data : 'order_name'
 				},{
+					data : 'sugar'
+				},{
+					data : 'ice'
+				},{
 					data : 'amount'
 				},{
 					data : 'note'
