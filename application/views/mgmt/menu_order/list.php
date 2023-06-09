@@ -162,7 +162,7 @@
 							}).appendTo($menu_name);
 						});
 					}
-					if(data.list[0].menu_style_id==4){
+					if(d.list[0].menu_style_id==4){
 
 						$('.s_i').removeClass('hide_s_i');
 
