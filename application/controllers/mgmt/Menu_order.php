@@ -131,10 +131,10 @@ class Menu_order extends MY_Mgmt_Controller {
 		$data['order_name'] = $order_name;
 		$data['amount'] = $amount;
 		$data['note'] = $note;
-		if(!(empty($sugar))){
+		if(!(empty($sugar))&& $sugar!==''){
 			$data['sugar'] = $sugar;
 		}
-		if(!(empty($ice))){
+		if(!(empty($ice)) && $ice!==''){
 			$data['ice'] = $ice;
 		}
 		if(!empty($menu_id)) {
