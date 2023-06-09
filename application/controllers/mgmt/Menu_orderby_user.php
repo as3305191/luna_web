@@ -198,26 +198,60 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		  $objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
 	
 		  //Write cells
-		  $objWorkSheet->setCellValue('A1', '名字')
+		  if($items[$i]->menu_style_id==4){
+			$objWorkSheet->setCellValue('A1', '名字')
+						->setCellValue('B1', '品項')
+						->setCellValue('C1', '糖')
+						->setCellValue('D1', '冰')
+						->setCellValue('E1', '備註')
+						->setCellValue('F1', '金額');
+
+						$items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
+						$total = 0;
+						for ($j=0;$j<count($items_order);$j++) {
+							$k = $j+2;
+							$total+=intval($items_order[$j]->amount);
+							$objWorkSheet->setCellValue('A'.$k , $items_order[$j]->user_name)
+										->setCellValue('B'.$k , $items_order[$j]->order_name)
+										->setCellValue('C'.$k , $items_order[$j]->sugar)
+										->setCellValue('D'.$k , $items_order[$j]->ice)
+										->setCellValue('E'.$k , $items_order[$j]->note)
+										->setCellValue('F'.$k , $items_order[$j]->amount);
+						}
+						$last = count($items_order)+2;
+						$objWorkSheet->setCellValue('A'.$last , '')
+										->setCellValue('B'.$last , '')
+										->setCellValue('C'.$last, '')
+										->setCellValue('D'.$last, '')
+										->setCellValue('E'.$last, '')
+										->setCellValue('F'.$last , '總金額')
+										->setCellValue('G'.$last ,  $total);
+
+
+
+		  } else{
+			$objWorkSheet->setCellValue('A1', '名字')
 					   ->setCellValue('B1', '品項')
 					   ->setCellValue('C1', '備註')
 					   ->setCellValue('D1', '金額');
-		  $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
-		  $total = 0;
-		  for ($j=0;$j<count($items_order);$j++) {
-			$k = $j+2;
-			$total+=intval($items_order[$j]->amount);
-			$objWorkSheet->setCellValue('A'.$k , $items_order[$j]->user_name)
-						 ->setCellValue('B'.$k , $items_order[$j]->order_name)
-						 ->setCellValue('C'.$k , $items_order[$j]->note)
-						 ->setCellValue('D'.$k , $items_order[$j]->amount);
+			$items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
+			$total = 0;
+			for ($j=0;$j<count($items_order);$j++) {
+				$k = $j+2;
+				$total+=intval($items_order[$j]->amount);
+				$objWorkSheet->setCellValue('A'.$k , $items_order[$j]->user_name)
+							->setCellValue('B'.$k , $items_order[$j]->order_name)
+							->setCellValue('C'.$k , $items_order[$j]->note)
+							->setCellValue('D'.$k , $items_order[$j]->amount);
+			}
+			$last = count($items_order)+2;
+			$objWorkSheet->setCellValue('A'.$last , '')
+							->setCellValue('B'.$last , '')
+							->setCellValue('C'.$last, '')
+							->setCellValue('D'.$last , '總金額')
+							->setCellValue('E'.$last ,  $total);
 		  }
-		  $last = count($items_order)+2;
-		  $objWorkSheet->setCellValue('A'.$last , '')
-						->setCellValue('B'.$last , '')
-						->setCellValue('C'.$last, '')
-						->setCellValue('D'.$last , '總金額')
-						->setCellValue('E'.$last ,  $total);
+		  
 		  // Rename sheet
 		  $objWorkSheet->setTitle($items[$i]->menu_name);
 		}
