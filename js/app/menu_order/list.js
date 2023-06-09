@@ -162,7 +162,7 @@ var menu_otherAppClass = (function(app) {
 						if(d=='4'){
 							return r.sugar;
 						} else{
-							this.className="hide_s_i";
+							this.addClass('hide_s_i');
 						}
 					}
 				},{
