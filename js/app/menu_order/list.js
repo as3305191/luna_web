@@ -22,10 +22,10 @@ var menuorderAppClass = (function(app) {
 			},{
 				data : 'order_name'
 			},{
-				className : 's_i',
+				className :'s_i',
 				data : 'sugar',
 			},{
-				className : 's_i',
+				className :'s_i',
 				data : 'ice',
 			},{
 				data : 'amount'
@@ -157,10 +157,10 @@ var menu_otherAppClass = (function(app) {
 				},{
 					data : 'order_name'
 				},{
-					className : 's_i',
+					className :'s_i',
 					data : 'sugar'
 				},{
-					className : 's_i',
+					className :'s_i',
 					data : 'ice'
 				},{
 					data : 'amount'
@@ -197,7 +197,7 @@ var menu_otherAppClass = (function(app) {
 
 
 		// do submit
-		load_menu() ;
+		// load_menu() ;
 		return app;
 	};
 	
