@@ -145,7 +145,7 @@ class Menu_order_dao extends MY_Model {
 
 		$start = $data['start'];
 		$limit = $data['length'];
-	
+		$menu_id = $data['menu_id'];
 		
 		// select
 		$this -> db -> from("$this->table_name as _m");
@@ -156,11 +156,12 @@ class Menu_order_dao extends MY_Model {
 		$this -> db -> where('_m.user_id <>',$data['login_user_id']);
 		$this -> db -> join("users u", "u.id = _m.user_id", "left");
 		$this -> db -> join("menu m", "m.id = _m.menu_id", "left");
-
+		
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
 		}
 		
+		$this -> db -> where('_m.menu_id',$menu_id);
 		$this -> db -> where('_m.is_delete<',1);
 		$this -> db -> where('_m.is_done<',1);
 		$this -> db -> order_by('_m.id','desc');

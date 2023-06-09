@@ -5,6 +5,9 @@
   .menu_img_unsuccess {
   	display: none;
   }
+  .hide_s_i {
+  	display: none;
+  }
 </style>
 <div>
 <header>
@@ -240,7 +243,12 @@ var mColDefs = [{
 					'</a>'+
 				'</div>';
 				$('#album').append(img_html);
-
+				
+				if(data.list.menu_style_id==4){
+					$('.s_i').removeClass('hide_s_i');
+				} else{
+					$('.s_i').addClass('hide_s_i');
+				}
        	 });
         
         // render carousel
@@ -263,12 +271,14 @@ var mColDefs = [{
 		$('#menu_id').val(id);
 		img_album();
 	}
+
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
 		var menu_id = $('#menu_name').val();
 		var order_name = $('#order_name').val();
 		var amount = $('#amount').val();
 		var note = $('#note').val();
-		
+		var ice = $('#ice').val();
+		var sugar = $('#sugar').val();
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu_order/insert',
 			type: 'POST',
@@ -276,7 +286,9 @@ var mColDefs = [{
 				menu_id : menu_id,
 				order_name :order_name,
 				amount :amount,
-				note:note
+				note:note,
+				ice:ice,
+				sugar:sugar
 			},
 			dataType: 'json',
 			success: function(d) {

@@ -111,7 +111,7 @@ var menu_otherAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data_other',
 				data : function(d) {
-					// d.computer = $('#item_id').val();
+					d.menu_id = $('#menu_id').val()
 					// d.lottery_no = $('#lottery_select').val();
 					return d;
 				},

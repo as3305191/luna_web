@@ -64,7 +64,7 @@ class Menu_order extends MY_Mgmt_Controller {
 			'search',
 			'order',
 		));
-		// set corp id
+		$data['menu_id'] = get_post('menu_id');
 		$data['login_user_id'] = $user_list->id;
 		$items = $this -> dao -> find_all_order_list_other($data);
 		$res['items'] = $items;
@@ -119,6 +119,8 @@ class Menu_order extends MY_Mgmt_Controller {
 		$order_name = $this -> get_post('order_name');
 		$amount = $this -> get_post('amount');
 		$note = $this -> get_post('note');
+		$sugar = $this -> get_post('sugar');
+		$ice = $this -> get_post('ice');
 	
 		$s_data = $this -> setup_user_data($s_data);
 		$user_list = $this -> users_dao -> find_by_id($s_data['login_user_id']);
@@ -127,6 +129,8 @@ class Menu_order extends MY_Mgmt_Controller {
 		$data['order_name'] = $order_name;
 		$data['amount'] = $amount;
 		$data['note'] = $note;
+		$data['sugar'] = $sugar;
+		$data['ice'] = $ice;
 		if(!empty($menu_id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
@@ -184,11 +188,12 @@ class Menu_order extends MY_Mgmt_Controller {
 			foreach($image as $each){
 				$res['list_image'][] = $each;
 			}
-			$res['note'] =$list->note;
+			$res['note'] =$list->note;			
 		} else{
 			$res['list_image'] =array();
 			$res['note'] ='';
 		}
+		$res['list'] =$list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
