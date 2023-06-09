@@ -174,10 +174,23 @@ var menu_otherAppClass = (function(app) {
 				},{
 					data : 'order_name'
 				},{
-					data : 'menu_style_id'
+					data : 'menu_style_id',
+					createdCell: function (td, cellData, rowData, row, col) {
+						if ( cellData == '4' ) {
+							return row.sugar;
+						} else {
+							$(td).addClass('hide_s_i');
+						}
+					}
 				},{
-					className :'s_i',
-					data : 'ice'
+					data : 'menu_style_id',
+					createdCell: function (td, cellData, rowData, row, col) {
+						if ( cellData == '4' ) {
+							return row.ice;
+						} else {
+							$(td).addClass('hide_s_i');
+						}
+					}
 				},{
 					data : 'amount'
 				},{
