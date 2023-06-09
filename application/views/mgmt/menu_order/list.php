@@ -138,11 +138,37 @@
 		loadScript(baseUrl + "js/app/menu_order/list.js", function(){
 			currentApp = new menuorderAppClass(new BaseAppClass({}));
 			currentApp_other = new menu_otherAppClass(new BaseAppClass({}));
+			
 		});
 	});
-	// $(document).ready(function() {
-		
-	// });
+	$(document).ready(function() {
+		$('#menu_name').on('change', function(){
+		// menu_click($('#menu_name').val());
+	
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_menu_style',
+			type: "POST",
+			data: {
+				id: $('#menu_name').val()
+			},
+			success: function(data) {
+				currentApp.tableReload();
+				currentApp_other.tableReload();
+				if(data.list.menu_style_id==4){
+
+					$('.s_i').removeClass('hide_s_i');
+					
+				} else{
+					$('.s_i').addClass('hide_s_i');
+
+				}    
+				
+			}
+		});
+
+
+	});
+	});
 	function load_menu() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_menu',
@@ -178,32 +204,7 @@
 		});
 	}
 	load_menu();
-	$('#menu_name').on('change', function(){
-		// menu_click($('#menu_name').val());
-	
-		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_menu_style',
-			type: "POST",
-			data: {
-				id: $('#menu_name').val()
-			},
-			success: function(data) {
-				currentApp.tableReload();
-				currentApp_other.tableReload();
-				if(data.list.menu_style_id==4){
 
-					$('.s_i').removeClass('hide_s_i');
-					
-				} else{
-					$('.s_i').addClass('hide_s_i');
-
-				}    
-				
-			}
-		});
-
-
-	});
 	function img_album() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_open_menu',
