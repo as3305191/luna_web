@@ -86,12 +86,10 @@ class Menu extends MY_Mgmt_Controller {
 		$img= $this -> get_post('img');
 		$menu_style_id= $this -> get_post('menu_style_id');
 		$menu_name= $this -> get_post('menu_name');
-		// $note= $this -> get_post('note');
-		// foreach ($img as $each) {
-		// 	$img_array[]= explode(",", str_replace('#', ',', substr($each, 1, -1)));
-		// }
+		$note= $this -> get_post('note');
+	
 		$data['img_id'] = $img;
-		// $data['note'] = $note;
+		$data['note'] = $note;
 		$data['menu_style_id'] = $menu_style_id;
 		$data['menu_name'] = $menu_name;
 	

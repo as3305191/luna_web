@@ -189,25 +189,32 @@ var mColDefs = [{
 			},
 			success: function(data) {
 
-        $('#img_album').empty();
+				$('#img_album').empty();
 
-        var img_album_html =
-        '<div id="album" style="display:flex;" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive=\'[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]\'>'+
-		'</div>';
+				var img_album_html =
+				'<div id="album" style="display:flex;" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive=\'[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]\'>'+
+				'</div>';
+				$('#img_album').append(img_album_html);
+				var menu_note ='';
+				if(data.note.length>0){
+					
+					menu_note='<div class="" style="color:#a90329;">'+data.note+'</div>';
+				}
+				$('#img_album').append(menu_note);
+				
+				
 
-        $('#img_album').append(img_album_html);
+				$.each(data.list_image, function() {
+				var me = this;
+				var img_html =
+				'<div class="js-slide g-px-3">'+
+					'<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url() ?>api/images/get/'+me+'" data-speed="350" data-caption="Lightbox Gallery">'+
+					'<img class="img-fluid" width="300" height="400" src="<?= base_url() ?>api/images/get/'+me+'/thumb" alt="Image Description">'+
+					'</a>'+
+				'</div>';
+				$('#album').append(img_html);
 
-        $.each(data.list_image, function() {
-          var me = this;
-          var img_html =
-          '<div class="js-slide g-px-3">'+
-            '<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url() ?>api/images/get/'+me+'" data-speed="350" data-caption="Lightbox Gallery">'+
-              '<img class="img-fluid" width="300" height="400" src="<?= base_url() ?>api/images/get/'+me+'/thumb" alt="Image Description">'+
-            '</a>'+
-          '</div>';
-          $('#album').append(img_html);
-
-        });
+       	 });
         
         // render carousel
         // $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
