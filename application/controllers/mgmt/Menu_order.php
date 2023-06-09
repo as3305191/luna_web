@@ -74,6 +74,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	
 	public function edit($id) {
 		$data = array();
 		$s_data = array();
@@ -154,7 +155,15 @@ class Menu_order extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
-
+	public function find_menu_style(){
+		$res = array();
+		$id = $this -> get_post('id');
+		$list = $this -> menu_dao -> find_by_id($id );
+		$res['list'] = $list;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+	
 	public function new_menu_style(){
 		$data = array();
 		$this -> load -> view('layout/show_new_menu_style',$data);

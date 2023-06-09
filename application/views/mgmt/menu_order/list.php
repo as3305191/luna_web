@@ -204,9 +204,29 @@ var mColDefs = [{
 	}
 	load_menu();
 	$('#menu_name').on('change', function(){
-		menu_click($('#menu_name').val());
-		currentApp.tableReload();
-		currentApp_other.tableReload();
+		// menu_click($('#menu_name').val());
+	
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_menu_style',
+			type: "POST",
+			data: {
+				id: $('#menu_name').val()
+			},
+			success: function(data) {
+
+				if(data.list.menu_style_id==4){
+					$('.s_i').removeClass('hide_s_i');
+					
+				} else{
+					$('.s_i').addClass('hide_s_i');
+
+				}    
+				currentApp.tableReload();
+				currentApp_other.tableReload();
+			}
+		});
+
+
 	});
 	function img_album() {
 		$.ajax({
@@ -242,17 +262,9 @@ var mColDefs = [{
 				'</div>';
 				$('#album').append(img_html);
 				
-				if(data.list.menu_style_id==4){
-					$('.s_i').removeClass('hide_s_i');
-					
-				} else{
-					$('.s_i').addClass('hide_s_i');
-
-				}
-       	 });
-        
-        // render carousel
-        // $.HSCore.components.HSCarousel.init('[class*="js-carousel"]');
+				
+       	 		});
+    
 
 			}
 		});
