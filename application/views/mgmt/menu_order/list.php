@@ -216,7 +216,7 @@ var mColDefs = [{
 				currentApp.tableReload();
 				currentApp_other.tableReload();
 				if(data.list.menu_style_id==4){
-					
+
 					$('.s_i').removeClass('hide_s_i');
 					
 				} else{
@@ -290,8 +290,18 @@ var mColDefs = [{
 		var order_name = $('#order_name').val();
 		var amount = $('#amount').val();
 		var note = $('#note').val();
-		var ice = $('#ice').val();
-		var sugar = $('#sugar').val();
+		if($('#ice').val()!=""&&$('#ice').val()!=null&&$('#ice').val()!=undefined){
+			var ice = $('#ice').val();
+		} else{
+			var ice = '';
+		}
+		if($('#sugar').val()!=""&&$('#sugar').val()!=null&&$('#sugar').val()!=undefined){
+			var sugar = $('#sugar').val();
+		} else{
+			var sugar = '';
+		}
+		
+		
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu_order/insert',
 			type: 'POST',
