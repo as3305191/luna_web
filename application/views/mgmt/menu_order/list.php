@@ -205,6 +205,8 @@ var mColDefs = [{
 	load_menu();
 	$('#menu_name').on('change', function(){
 		menu_click($('#menu_name').val());
+		currentApp.tableReload();
+		currentApp_other.tableReload();
 	});
 	function img_album() {
 		$.ajax({
@@ -267,8 +269,6 @@ var mColDefs = [{
 		$('.menu_'+id).removeClass('btn_unsuccess');
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		$('#menu_id').val(id);
-		currentApp.tableReload();
-		currentApp_other.tableReload();
 		img_album();
 	}
 
