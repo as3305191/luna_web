@@ -34,7 +34,7 @@ var menuorderAppClass = (function(app) {
 				},
 				render: function(d,t,r) {
 					if(d== '4'){
-						return row.sugar;
+						return r.sugar;
 					} else{
 						return '';
 					}
@@ -52,7 +52,7 @@ var menuorderAppClass = (function(app) {
 				},
 				render: function(d,t,r) {
 					if(d== '4'){
-						return row.ice;
+						return r.ice;
 					} else{
 						return '';
 					}
@@ -197,7 +197,7 @@ var menu_otherAppClass = (function(app) {
 					},
 					render: function(d,t,r) {
 						if(d== '4'){
-							return row.sugar;
+							return r.sugar;
 						} else{
 							return '';
 						}
@@ -214,7 +214,7 @@ var menu_otherAppClass = (function(app) {
 					},
 					render: function(d,t,r) {
 						if(d== '4'){
-							return row.ice;
+							return r.ice;
 						} else{
 							return '';
 						}
