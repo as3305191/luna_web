@@ -157,8 +157,14 @@ var menu_otherAppClass = (function(app) {
 				},{
 					data : 'order_name'
 				},{
-					className :'s_i',
-					data : 'sugar'
+					data : 'menu_style_id',
+					render: function(d,t,r) {
+						if(d=='4'){
+							return r.sugar;
+						} else{
+							this.className="hide_s_i";
+						}
+					}
 				},{
 					className :'s_i',
 					data : 'ice'
