@@ -140,6 +140,9 @@
 			currentApp_other = new menu_otherAppClass(new BaseAppClass({}));
 		});
 	});
+	$(document).ready(function() {
+		load_menu() ;
+	});
 	function load_menu() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_menu',
@@ -174,7 +177,7 @@
 			}
 		});
 	}
-	load_menu();
+	// load_menu();
 	$('#menu_name').on('change', function(){
 		// menu_click($('#menu_name').val());
 	
