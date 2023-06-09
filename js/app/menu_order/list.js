@@ -17,7 +17,7 @@ var menuorderAppClass = (function(app) {
 			},
 			iDisplayLength : 10,
 
-			mCols = [null,{
+			mCols : [null,{
 				data : 'menu_name'
 			},{
 				data : 'order_name'
