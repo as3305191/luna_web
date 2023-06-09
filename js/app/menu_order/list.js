@@ -157,7 +157,7 @@ var menu_otherAppClass = (function(app) {
 		app.mDtTable = $('#dt_list_other').DataTable($.extend(app.dtConfig,{
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data_other',
-				d : function(d) {
+				data : function(d) {
 					d.menu_id = $('#menu_name').val()
 					// d.lottery_no = $('#lottery_select').val();
 					return d;
