@@ -246,8 +246,10 @@ var mColDefs = [{
 				
 				if(data.list.menu_style_id==4){
 					$('.s_i').removeClass('hide_s_i');
+					
 				} else{
 					$('.s_i').addClass('hide_s_i');
+
 				}
        	 });
         
@@ -269,6 +271,7 @@ var mColDefs = [{
 		$('.menu_'+id).removeClass('btn_unsuccess');
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		$('#menu_id').val(id);
+		currentApp_other.tableReload();
 		img_album();
 	}
 
