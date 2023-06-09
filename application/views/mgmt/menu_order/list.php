@@ -147,7 +147,10 @@ var mCols = [null,{
 		if(data=='4'){
 			return row.sugar
 		} else{
-			this.remove();
+				return[{
+                        className: "hide_column",
+                        "targets": [3]
+                 }];
 		}
 
 	}
@@ -157,7 +160,10 @@ var mCols = [null,{
 		if(data=='4'){
 			return row.ice
 		} else{
-			this.remove();
+			return[{
+                        className: "hide_column",
+                        "targets": [4]
+                 }];
 		}
 
 	}
