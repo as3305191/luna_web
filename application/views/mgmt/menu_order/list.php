@@ -265,6 +265,7 @@ var mColDefs = [{
 		$('.menu_'+id).removeClass('btn_unsuccess');
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		$('#menu_id').val(id);
+		currentApp.tableReload();
 		currentApp_other.tableReload();
 		img_album();
 	}
@@ -292,6 +293,13 @@ var mColDefs = [{
 				if(d.success) {
 					// var $now_fix_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-12"><span fix_id="">  維修原因:  '+fix_reason+'  處置情形:  '+fix_way+'  維修者:  '+$('#fix_user option:selected').text()+'</span></div></div></hr>').appendTo($('#now_fix'));
 					// now_fix_record.push(d.last_id);
+	
+					menu_id.empty();
+					order_name.empty();
+					amount.empty();
+					note.empty();
+					ice.empty();
+					sugar.empty();
 					currentApp.tableReload();
 				}
 			},

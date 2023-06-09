@@ -39,7 +39,8 @@ class Menu_order extends MY_Mgmt_Controller {
 			'search',
 			'order',
 		));
-		// set corp id
+		$menu_id = $this -> get_post('menu_id');
+		$data['menu_id'] = $menu_id;
 		$data['login_user_id'] = $user_list->id;
 		$items = $this -> dao -> query_ajax($data);
 		$res['items'] = $items;
