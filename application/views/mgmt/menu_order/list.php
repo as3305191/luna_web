@@ -213,7 +213,8 @@ var mColDefs = [{
 				id: $('#menu_name').val()
 			},
 			success: function(data) {
-
+				currentApp.tableReload();
+				currentApp_other.tableReload();
 				if(data.list.menu_style_id==4){
 					$('.s_i').removeClass('hide_s_i');
 					
@@ -221,8 +222,7 @@ var mColDefs = [{
 					$('.s_i').addClass('hide_s_i');
 
 				}    
-				currentApp.tableReload();
-				currentApp_other.tableReload();
+				
 			}
 		});
 
