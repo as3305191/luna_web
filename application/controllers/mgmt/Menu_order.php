@@ -184,8 +184,10 @@ class Menu_order extends MY_Mgmt_Controller {
 			foreach($image as $each){
 				$res['list_image'][] = $each;
 			}
+			$res['note'] =$list->note;
 		} else{
 			$res['list_image'] =array();
+			$res['note'] ='';
 		}
 		$res['success'] = TRUE;
 		$this -> to_json($res);
