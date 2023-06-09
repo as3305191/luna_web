@@ -142,9 +142,25 @@ var mCols = [null,{
 },{
 	data : 'order_name'
 },{
-	data : 'sugar'
+	data : 'menu_style_id',
+	render: function (data, type, row) {
+		if(data=='4'){
+			return row.sugar
+		} else{
+			this.remove();
+		}
+
+	}
 },{
-	data : 'ice'
+	data : 'menu_style_id',
+	render: function (data, type, row) {
+		if(data=='4'){
+			return row.ice
+		} else{
+			this.remove();
+		}
+
+	}
 },{
 	data : 'amount'
 },{
