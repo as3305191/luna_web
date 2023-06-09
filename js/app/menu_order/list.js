@@ -6,7 +6,7 @@ var menuorderAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					d.menu_id = $('#menu_id').val()
+					d.menu_id = $('#menu_name').val()
 					
 				},
 				dataSrc : 'items',
