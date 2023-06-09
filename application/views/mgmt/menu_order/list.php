@@ -134,60 +134,6 @@
 <script src="<?= base_url() ?>assets/vendor/fancybox1/jquery.fancybox.min.js"></script>
 
 <script type="text/javascript">
-
-
-
-var mCols = [null,{
-	data : 'menu_name'
-},{
-	data : 'order_name'
-},{
-	data : 'sugar'
-},{
-	data : 'ice'
-},{
-	data : 'amount'
-},{
-	data : 'note'
-}];
-
-var mOrderIdx = 6;
-
-var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
-if(d.menu_style_id !==4){
-	var mColDefs = [{
-		targets : 0,
-		data : null,
-		defaultContent : defaultContent,
-		searchable : false,
-		orderable : false,
-		width : "5%",
-		className : ''
-	}, {
-		"targets" : [0,1,2,3,4,5,6],
-		"orderable" : false
-	}];
-} else{
-	var mColDefs = [{
-		targets : 0,
-		data : null,
-		defaultContent : defaultContent,
-		searchable : false,
-		orderable : false,
-		width : "5%",
-		className : ''
-	}, {
-		"targets" : [0,1,2,3,4,5,6],
-		"orderable" : false
-	},
-	{
-		className: "hide_column",
-		"targets": [3,4]
-    }];
-}
-
-
-
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/menu_order/list.js", function(){
 			currentApp = new menuorderAppClass(new BaseAppClass({}));

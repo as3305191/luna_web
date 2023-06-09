@@ -16,6 +16,51 @@ var menuorderAppClass = (function(app) {
 				}
 			},
 			iDisplayLength : 10,
+
+			mCols = [null,{
+				data : 'menu_name'
+			},{
+				data : 'order_name'
+			},{
+				data : 'menu_style_id',
+				render: function(d,t,r) {
+					if(d=='4'){
+						return r.sugar;
+					} else{
+						return t;
+					}
+				}
+			},{
+				data : 'menu_style_id',
+				render: function(d,t,r) {
+					if(d=='4'){
+						return r.ice;
+					} else{
+						return t;
+					}
+				}
+			},{
+				data : 'amount'
+			},{
+				data : 'note'
+			}],
+			mColDefs :[{
+				targets : 0,
+				data : null,
+				defaultContent : '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>',
+				searchable : false,
+				orderable : false,
+				width : "5%",
+				className : ''
+			}, {
+				"targets" : [0,1,2,3,4,5,6],
+				"orderable" : false
+			},
+		],
+
+
+
+
 			columns : mCols,
 			order : false,
 			columnDefs : mColDefs
