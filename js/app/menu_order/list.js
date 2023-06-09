@@ -24,22 +24,24 @@ var menuorderAppClass = (function(app) {
 			},{
 				// className :'s_i',
 				data : 'menu_style_id',
-				render: function(d,t,r) {
-					if(d=='4'){
-						return r.sugar;
-					} else{
-						this.addClass('hide_s_i');
+				
+					
+				createdCell: function (td, cellData, rowData, row, col) {
+					if ( cellData == '4' ) {
+						return row.sugar;
+					} else {
+						$(td).addClass('hide_s_i');
 					}
 				}
 			},{
 				// className :'s_i',
 				// data : 'ice',
 				data : 'menu_style_id',
-				render: function(d,t,r) {
-					if(d=='4'){
-						return r.ice;
-					} else{
-						this.addClass('hide_s_i');
+				createdCell: function (td, cellData, rowData, row, col) {
+					if ( cellData == '4' ) {
+						return row.ice;
+					} else {
+						$(td).addClass('hide_s_i');
 					}
 				}
 			},{
