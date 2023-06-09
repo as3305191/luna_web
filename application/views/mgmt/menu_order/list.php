@@ -294,12 +294,12 @@ var mColDefs = [{
 					// var $now_fix_list = $('<div class="col-sm-12" style="border-width:3px;border-style:double;border-color:#ccc;padding:5px;"><div class="col-sm-12"><span fix_id="">  維修原因:  '+fix_reason+'  處置情形:  '+fix_way+'  維修者:  '+$('#fix_user option:selected').text()+'</span></div></div></hr>').appendTo($('#now_fix'));
 					// now_fix_record.push(d.last_id);
 	
-					$('#menu_name').empty();
-					$('#order_name').empty();
-					$('#amount').empty();
-					$('#note').empty();
-					$('#ice').empty();
-					$('#sugar').empty();
+					$('#menu_name').val('');
+					$('#order_name').val('');
+					$('#amount').val('');
+					$('#note').val('');
+					$('#ice').val('');
+					$('#sugar').val('');
 					currentApp.tableReload();
 				}
 			},
