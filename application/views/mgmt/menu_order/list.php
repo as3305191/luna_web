@@ -216,6 +216,7 @@ var mColDefs = [{
 				currentApp.tableReload();
 				currentApp_other.tableReload();
 				if(data.list.menu_style_id==4){
+					
 					$('.s_i').removeClass('hide_s_i');
 					
 				} else{

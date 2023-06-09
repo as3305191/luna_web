@@ -131,8 +131,12 @@ class Menu_order extends MY_Mgmt_Controller {
 		$data['order_name'] = $order_name;
 		$data['amount'] = $amount;
 		$data['note'] = $note;
-		$data['sugar'] = $sugar;
-		$data['ice'] = $ice;
+		if(!(empty($sugar))){
+			$data['sugar'] = $sugar;
+		}
+		if(!(empty($ice))){
+			$data['ice'] = $ice;
+		}
 		if(!empty($menu_id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
