@@ -24,14 +24,19 @@ var menuorderAppClass = (function(app) {
 			},{
 				// className :'s_i',
 				data : 'menu_style_id',
-				
-					
 				createdCell: function (td, cellData, rowData, row, col) {
 					if ( cellData == '4' ) {
 						$(td).removeClass('hide_s_i');
-						return row.sugar;
 					} else {
 						$(td).addClass('hide_s_i');
+					}
+					
+				},
+				render: function(d,t,r) {
+					if(d== '4'){
+						return row.sugar;
+					} else{
+						return '';
 					}
 				}
 			},{
@@ -39,11 +44,17 @@ var menuorderAppClass = (function(app) {
 				// data : 'ice',
 				data : 'menu_style_id',
 				createdCell: function (td, cellData, rowData, row, col) {
-					if ( cellData == '4' ) {
+					if ( col == '4' ) {
 						$(td).removeClass('hide_s_i');
-						return row.ice;
 					} else {
 						$(td).addClass('hide_s_i');
+					}
+				},
+				render: function(d,t,r) {
+					if(d== '4'){
+						return row.ice;
+					} else{
+						return '';
 					}
 				}
 			},{
@@ -180,9 +191,15 @@ var menu_otherAppClass = (function(app) {
 					createdCell: function (td, cellData, rowData, row, col) {
 						if ( cellData == '4' ) {
 							$(td).removeClass('hide_s_i');
-							return row.sugar;
 						} else {
 							$(td).addClass('hide_s_i');
+						}
+					},
+					render: function(d,t,r) {
+						if(d== '4'){
+							return row.sugar;
+						} else{
+							return '';
 						}
 					}
 				},{
@@ -190,10 +207,16 @@ var menu_otherAppClass = (function(app) {
 					createdCell: function (td, cellData, rowData, row, col) {
 						if ( cellData == '4' ) {
 							$(td).removeClass('hide_s_i');
-							return row.ice;
 							
 						} else {
 							$(td).addClass('hide_s_i');
+						}
+					},
+					render: function(d,t,r) {
+						if(d== '4'){
+							return row.ice;
+						} else{
+							return '';
 						}
 					}
 				},{
