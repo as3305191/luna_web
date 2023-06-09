@@ -196,7 +196,7 @@ var mColDefs = [{
 				'</div>';
 				$('#img_album').append(img_album_html);
 				var menu_note ='';
-				if(data.note!==''){
+				if(data.note!=""&&data.note!=null&&data.note!=undefined){
 						
 					menu_note='<div class="" style="color:#a90329;">備註: '+data.note+'</div>';
 				}
