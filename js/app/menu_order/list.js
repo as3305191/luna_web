@@ -22,23 +22,11 @@ var menuorderAppClass = (function(app) {
 			},{
 				data : 'order_name'
 			},{
-				data : 'menu_style_id',
-				render: function(d,t,r) {
-					if(d=='4'){
-						return r.sugar;
-					} else{
-						return t;
-					}
-				}
+				className : 'hide_s_i',
+				data : 'sugar',
 			},{
-				data : 'menu_style_id',
-				render: function(d,t,r) {
-					if(d=='4'){
-						return r.ice;
-					} else{
-						return t;
-					}
-				}
+				className : 'hide_s_i',
+				data : 'ice',
 			},{
 				data : 'amount'
 			},{
@@ -169,8 +157,10 @@ var menu_otherAppClass = (function(app) {
 				},{
 					data : 'order_name'
 				},{
+					className : 'hide_s_i',
 					data : 'sugar'
 				},{
+					className : 'hide_s_i',
 					data : 'ice'
 				},{
 					data : 'amount'
