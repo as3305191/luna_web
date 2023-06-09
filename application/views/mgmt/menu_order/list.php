@@ -54,10 +54,8 @@
 									<th></th>
 									<th>選擇店家</th>
 									<th>品項</th>
-									<div class="s_i">
-										<th>糖</th>
-										<th>冰</th>
-									</div>
+									<th class="s_i">糖</th>
+									<th class="s_i">冰</th>
 									<th>金額</th>
 									<th>備註</th>
 								</tr>
@@ -75,19 +73,17 @@
 											<input type="text" class="form-control" id="order_name" placeholder="品項">
 										</div>
 									</td>
-									<div class="s_i">
 
-										<td>
+										<td class="s_i">
 											<div class="input-group col-md-12">
 												<input type="text" class="form-control" id="sugar" placeholder="糖">
 											</div>
 										</td>
-										<td>
+										<td class="s_i">
 											<div class="input-group col-md-12">
 												<input type="text" class="form-control" id="ice" placeholder="冰">
 											</div>
 										</td>
-									</div>
 								
 
 									<td style="border-right:none;">
@@ -121,10 +117,8 @@
 									<th class="min100">店名</th>
 									<th class="min100">名字</th>
 									<th class="min100">品項</th>
-									<div class="s_i">
-										<th class="min100">糖</th>
-										<th class="min100">冰</th>
-									</div>
+									<th class="min100 s_i">糖</th>
+									<th class="min100 s_i">冰</th>
 									<th class="min100">金額</th>
 									<th class="min100">備註</th>
 								</tr>
