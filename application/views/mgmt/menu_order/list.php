@@ -188,7 +188,7 @@
 				id: $('#menu_name').val()
 			},
 			success: function(data) {
-				// currentApp.tableReload();
+				currentApp.tableReload();
 				currentApp_other.tableReload();
 				if(data.list.menu_style_id==4){
 
