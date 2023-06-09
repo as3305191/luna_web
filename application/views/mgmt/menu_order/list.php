@@ -140,9 +140,9 @@
 			currentApp_other = new menu_otherAppClass(new BaseAppClass({}));
 		});
 	});
-	$(document).ready(function() {
-		load_menu() ;
-	});
+	// $(document).ready(function() {
+		
+	// });
 	function load_menu() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_menu',

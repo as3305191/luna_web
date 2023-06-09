@@ -197,10 +197,10 @@ var menu_otherAppClass = (function(app) {
 
 
 		// do submit
-	
+		load_menu() ;
 		return app;
 	};
-
+	
 	// return self
 	return app.init();
 });
