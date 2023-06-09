@@ -142,31 +142,9 @@ var mCols = [null,{
 },{
 	data : 'order_name'
 },{
-	data : 'menu_style_id',
-	render: function (data, type, row) {
-		if(data=='4'){
-			return row.sugar
-		} else{
-				return[{
-                        className: "hide_column",
-                        "targets": [3]
-                 }];
-		}
-
-	}
+	data : 'sugar'
 },{
-	data : 'menu_style_id',
-	render: function (data, type, row) {
-		if(data=='4'){
-			return row.ice
-		} else{
-			return[{
-                        className: "hide_column",
-                        "targets": [4]
-                 }];
-		}
-
-	}
+	data : 'ice'
 },{
 	data : 'amount'
 },{
@@ -176,19 +154,38 @@ var mCols = [null,{
 var mOrderIdx = 6;
 
 var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
+if(d.menu_style_id !==4){
+	var mColDefs = [{
+		targets : 0,
+		data : null,
+		defaultContent : defaultContent,
+		searchable : false,
+		orderable : false,
+		width : "5%",
+		className : ''
+	}, {
+		"targets" : [0,1,2,3,4,5,6],
+		"orderable" : false
+	}];
+} else{
+	var mColDefs = [{
+		targets : 0,
+		data : null,
+		defaultContent : defaultContent,
+		searchable : false,
+		orderable : false,
+		width : "5%",
+		className : ''
+	}, {
+		"targets" : [0,1,2,3,4],
+		"orderable" : false
+	},
+	{
+		className: "hide_column",
+		"targets": [3,4]
+    }];
+}
 
-var mColDefs = [{
-	targets : 0,
-	data : null,
-	defaultContent : defaultContent,
-	searchable : false,
-	orderable : false,
-	width : "5%",
-	className : ''
-}, {
-	"targets" : [0,1,2,3,4,5,6],
-	"orderable" : false
-}];
 
 
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
