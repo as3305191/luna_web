@@ -203,7 +203,9 @@ var mColDefs = [{
 		});
 	}
 	load_menu();
-
+	$('#menu_name').on('change', function(){
+		menu_click($('#menu_name').val());
+	});
 	function img_album() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_open_menu',

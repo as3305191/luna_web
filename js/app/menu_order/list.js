@@ -32,9 +32,9 @@ var menuorderAppClass = (function(app) {
 		}
 		
 
-		$('#s_menu_name').on('change', function(){
-			app.tableReload();
-		});
+		// $('#menu_name').on('change', function(){
+		// 	app.tableReload();
+		// });
 	    // $(window).trigger("hashchange");
 
 		return app;
