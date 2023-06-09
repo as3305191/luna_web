@@ -159,7 +159,14 @@
 							}).appendTo($menu_name);
 						});
 					}
-					
+					if(data.list[0].menu_style_id==4){
+
+						$('.s_i').removeClass('hide_s_i');
+
+					} else{
+						$('.s_i').addClass('hide_s_i');
+
+					}   
 				}
 			},
 			failure:function(){
