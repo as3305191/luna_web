@@ -140,7 +140,7 @@ var menu_otherAppClass = (function(app) {
 			ordering: false,
 			order : [[0, "desc"]],
 			columnDefs : [{
-				"targets" : [0,1,2,3,4],
+				"targets" : [0,1,2,3,4,5,6],
 				"orderable" : false
 			}],
 
