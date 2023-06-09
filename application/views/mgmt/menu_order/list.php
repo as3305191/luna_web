@@ -177,7 +177,7 @@
 			}
 		});
 	}
-	// load_menu();
+	load_menu();
 	$('#menu_name').on('change', function(){
 		// menu_click($('#menu_name').val());
 	
