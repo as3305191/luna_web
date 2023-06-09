@@ -17,7 +17,7 @@ var menuorderAppClass = (function(app) {
 			},
 			iDisplayLength : 10,
 
-			mCols : [null,{
+			columns : [null,{
 				data : 'menu_name'
 			},{
 				data : 'order_name'
@@ -44,7 +44,7 @@ var menuorderAppClass = (function(app) {
 			},{
 				data : 'note'
 			}],
-			mColDefs :[{
+			columnDefs :[{
 				targets : 0,
 				data : null,
 				defaultContent : '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>',
@@ -57,13 +57,8 @@ var menuorderAppClass = (function(app) {
 				"orderable" : false
 			},
 		],
-
-
-
-
-			columns : mCols,
 			order : false,
-			columnDefs : mColDefs
+
 		}));
 
 		// data table actions
