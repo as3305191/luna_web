@@ -257,7 +257,7 @@
 		$('.menu_'+id).removeClass('btn_unsuccess');
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		$('#menu_id').val(id);
-		$('#menu_name select').val(id);
+		$("select[id='menu_name']").val(id)
 		img_album();
 		
 	}
