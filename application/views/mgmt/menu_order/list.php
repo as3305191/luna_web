@@ -238,7 +238,8 @@
 				'</div>';
 				$('#album').append(img_html);
 				
-				
+					var options=$("#menu_name option:selected");
+					options.val($('#menu_id').val());
        	 		});
     
 
@@ -257,8 +258,7 @@
 		$('.menu_'+id).removeClass('btn_unsuccess');
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		$('#menu_id').val(id);
-		var options=$("#menu_name option:selected");
-		options.val(id);
+		
 		img_album();
 	}
 
