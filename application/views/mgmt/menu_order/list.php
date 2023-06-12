@@ -229,20 +229,17 @@
 				
 
 				$.each(data.list_image, function() {
-				var me = this;
-				var img_html =
-				'<div class="js-slide g-px-3">'+
-					'<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url() ?>api/images/get/'+me+'" data-speed="350" data-caption="Lightbox Gallery">'+
-					'<img class="img-fluid" width="300" height="400" src="<?= base_url() ?>api/images/get/'+me+'/thumb" alt="Image Description">'+
-					'</a>'+
-				'</div>';
-				$('#album').append(img_html);
-				
-					
+					var me = this;
+					var img_html =
+					'<div class="js-slide g-px-3">'+
+						'<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url() ?>api/images/get/'+me+'" data-speed="350" data-caption="Lightbox Gallery">'+
+						'<img class="img-fluid" width="300" height="400" src="<?= base_url() ?>api/images/get/'+me+'/thumb" alt="Image Description">'+
+						'</a>'+
+					'</div>';
+					$('#album').append(img_html);					
        	 		});
+			$("#menu_name").val( $('#menu_id').val());
 
-				var options=$("#menu_name option:selected");
-				options.val($('#menu_id').val());
 			}
 		});
 	}
