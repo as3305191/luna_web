@@ -24,11 +24,11 @@
 					<?php if($open_menu_count>0): ?>
 						<?php if($open_menu_count==1): ?>
 							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
-							<input type="hidden" class="form-control" id="menu_id"value="<?= $menu_list[0]->id ?>">
+							<input type="" class="form-control" id="menu_id"value="<?= $menu_list[0]->id ?>">
 
 						<?php else: ?>		
 							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
-							<input type="hidden" class="form-control" id="menu_id" value="<?= $menu_list[0]->id ?>">
+							<input type="" class="form-control" id="menu_id" value="<?= $menu_list[0]->id ?>">
 
 							<?php for ($i=1;$i<count($menu_list);$i++) : ?>
 								<button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>)"><?= $menu_list[$i]->menu_name ?></button>
