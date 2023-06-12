@@ -52,6 +52,8 @@ thead tr th {
 											<th class="min100">店名</th>
 											<th class="min100">名字</th>
 											<th class="min100">品項</th>
+											<th class="min100">糖</th>
+											<th class="min100">冰</th>
 											<th class="min100">金額</th>
 											<th class="min100">備註</th>
 										</tr>
@@ -103,6 +105,10 @@ thead tr th {
 		data : 'user_name'
 	},{
 		data : 'order_name'
+	},{
+		data : 'sugar'
+	},{
+		data : 'ice'
 	},{
 		data : 'amount'
 	},{
