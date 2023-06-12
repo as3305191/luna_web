@@ -238,11 +238,11 @@
 				'</div>';
 				$('#album').append(img_html);
 				
-					var options=$("#menu_name option:selected");
-					options.val($('#menu_id').val());
+					
        	 		});
-    
 
+				var options=$("#menu_name option:selected");
+				options.val($('#menu_id').val());
 			}
 		});
 	}
