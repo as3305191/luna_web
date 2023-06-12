@@ -238,7 +238,7 @@
 					'</div>';
 					$('#album').append(img_html);					
        	 		});
-				$("#menu_name").val( $('#menu_id').val());
+				$("#menu_name").val($('#menu_id').val());
 				currentApp_other.tableReload();
 			}
 		});
