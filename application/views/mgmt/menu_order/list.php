@@ -259,7 +259,7 @@
 		$('#menu_id').val(id);
 		$("select[id='menu_name']").val(id)
 		img_album();
-		
+		currentApp_other.tableReload();
 	}
 
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
