@@ -141,6 +141,7 @@
 			
 		});
 	});
+
 	$('#menu_name').on('change', function(){
 		// menu_click($('#menu_name').val());
 	
@@ -161,7 +162,7 @@
 					$('.s_i').addClass('hide_s_i');
 
 				}    
-				
+				menu_click($('#menu_name').val());
 			}
 		});
 
@@ -256,7 +257,9 @@
 		$('.menu_'+id).removeClass('btn_unsuccess');
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		$('#menu_id').val(id);
+		$('#menu_name select').val(id);
 		img_album();
+		
 	}
 
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
