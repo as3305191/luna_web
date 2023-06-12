@@ -257,9 +257,9 @@
 		$('.menu_'+id).removeClass('btn_unsuccess');
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		$('#menu_id').val(id);
-		$("select[id='menu_name']").val(id)
+		var options=$("#menu_name option:selected");
+		options.val(id);
 		img_album();
-		currentApp_other.tableReload();
 	}
 
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
