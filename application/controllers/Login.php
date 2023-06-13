@@ -15,12 +15,7 @@ class Login extends MY_Base_Controller {
 	public function index() {
 		$data = array();
 		// check login
-		$urlArr=$_SERVER['REQUEST_URI'];
-		if($urlArr=="menu_order"){
-			$data['menu_order']=1;
-		} else{
-			$data['menu_order']=0;
-		}
+		
 		if(!empty($this -> session -> userdata('user_id'))) {
 			redirect("/app/#mgmt/message");
 			return;
@@ -37,7 +32,12 @@ class Login extends MY_Base_Controller {
 
 		// update session
 		$this -> session -> set_userdata('corp', $corp);
-
+		$urlArr=$_SERVER['REQUEST_URI'];
+		if($urlArr=="menu_order"){
+			$data['menu_order']=1;
+		} else{
+			$data['menu_order']=0;
+		}
 		$account = $this -> get_post('account');
 		$password = $this -> get_post('password');
 		$captcha = $this -> get_post('captcha');
