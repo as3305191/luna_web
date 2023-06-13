@@ -22,7 +22,7 @@ class Login extends MY_Base_Controller {
 		}
 		$data = $this -> get_captcha($data);
 		$data['num'] = rand(1,3);
-		// $this -> to_json($data);
+		$this -> to_json($data);
 
 		$this -> load -> view('loginv', $data);
 	}
