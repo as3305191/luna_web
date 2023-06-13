@@ -162,6 +162,10 @@ class Menu_order_dao extends MY_Model {
 		$this -> db -> join("users u", "u.id = _m.user_id", "left");
 		$this -> db -> join("menu m", "m.id = _m.menu_id", "left");
 		
+		if($data['menu_id']&&$data['menu_id']>0) {
+			$this -> db -> where('_m.menu_id',$data['menu_id']);
+		}
+
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
 		}

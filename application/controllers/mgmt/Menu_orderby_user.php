@@ -33,7 +33,8 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 			// 's_menu_style',
 		));
 		// set corp id
-
+		$menu_id = $this -> get_post('menu_id');
+		$data['menu_id'] = $menu_id;
 		$s_data = $this -> setup_user_data(array());
 		$items = $this -> menu_order_dao -> find_all_order_list($data);
 		$res['items'] = $items;

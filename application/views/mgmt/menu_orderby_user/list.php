@@ -23,14 +23,11 @@ thead tr th {
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
 						<header >
-<!-- 								
-						<div class="widget-toolbar pull-right">
-							<div class="btn-group">
-								<button onclick="currentApp.doExportAll()" class="btn btn-xs btn-warning" data-toggle="dropdown">
-									<i class="fa fa-save"></i>匯出
-								</button>
+						<div class="input-group col-md-12">
+								<select id="menu_name" class="form-control">
+									
+								</select> 
 							</div>
-						</div> -->
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 
@@ -174,4 +171,43 @@ $('#add_img_style').click(function() {
 			content:'<?=base_url('mgmt/menu/new_menu_style')?>'
 		})
 	})
+
+
+
+	function load_menu() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_menu',
+			type: 'POST',
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$menu_name = $('#menu_name').empty();
+					var option = '<option value="0">全部</option>';
+					$menu_name.append(option);
+					if(d.list.length>0){
+						$.each(d.list, function(){
+							$('<option/>', {
+								'value': this.id,
+								'text': this.menu_name
+							}).appendTo($menu_name);
+						});
+					}
+					if(d.list[0].menu_style_id==4){
+
+						$('.s_i').removeClass('hide_s_i');
+
+					} else{
+						$('.s_i').addClass('hide_s_i');
+
+					}   
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+	load_menu();
+
 </script>
