@@ -17,13 +17,13 @@ class Login extends MY_Base_Controller {
 		// check login
 		$urlArr=$_SERVER['REQUEST_URI'];
 		if($urlArr=="menu_order"){
-			$data['menu_order']=1;
+			$data['menu_order']=$urlArr;
 			if(!empty($this -> session -> userdata('user_id'))) {
 				redirect("/app/#mgmt/message");
 				return;
 			}
 		} else{
-			$data['menu_order']=0;
+			$data['menu_order']=$urlArr;
 			if(!empty($this -> session -> userdata('user_id'))) {
 				redirect("/app/#mgmt/message");
 				return;
