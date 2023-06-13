@@ -95,7 +95,7 @@ class Menu_dao extends MY_Model {
 	function find_all_open_and_stop(){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		// $this -> db -> where('_m.status',1);
+		$this -> db -> where('_m.status',1);
 		// $this -> db -> where('_m.is_stop',0);
 
 		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
