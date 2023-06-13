@@ -15,15 +15,14 @@ class Login extends MY_Base_Controller {
 	public function index() {
 		$data = array();
 		// check login
-		$data['menu_order'] = $this -> session -> userdata("menu_order");
-
+		
 		if(!empty($this -> session -> userdata('user_id'))) {
 			redirect("/app/#mgmt/message");
 			return;
 		}
 		$data = $this -> get_captcha($data);
 		$data['num'] = rand(1,3);
-		$this -> to_json($data);
+		// $this -> to_json($data);
 
 		$this -> load -> view('loginv', $data);
 	}
