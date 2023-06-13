@@ -23,10 +23,16 @@ thead tr th {
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
 						<header >
-						<div class="input-group col-md-12">
+						
+
+
+							<div class="widget-toolbar pull-left">
+								<label>菜單:</label>
+							</div>
+							<div class="widget-toolbar pull-left">
 								<select id="menu_name" class="form-control">
-									
-								</select> 
+									<!-- option from javascript -->
+								</select>
 							</div>
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
