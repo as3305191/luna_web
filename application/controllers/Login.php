@@ -15,7 +15,7 @@ class Login extends MY_Base_Controller {
 	public function index() {
 		$data = array();
 		// check login
-		$data['num'] = $this -> session -> userdata("menu_order");
+		$data['menu_order'] = $this -> session -> userdata("menu_order");
 
 		if(!empty($this -> session -> userdata('user_id'))) {
 			redirect("/app/#mgmt/message");
