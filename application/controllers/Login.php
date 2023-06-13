@@ -15,7 +15,7 @@ class Login extends MY_Base_Controller {
 	public function index() {
 		$data = array();
 		// check login
-		$urlArr=$_SERVER['REQUEST_URI'];
+		$urlArr=substr(strrchr($_SERVER['PATH_INFO'], "/"), 1);
 		if($urlArr=="menu_order"){
 			$data['menu_order']=$urlArr;
 			if(!empty($this -> session -> userdata('user_id'))) {
@@ -32,7 +32,7 @@ class Login extends MY_Base_Controller {
 		
 		$data = $this -> get_captcha($data);
 		$data['num'] = rand(1,3);
-		// $this -> to_json($data);
+		$this -> to_json($data);
 
 		$this -> load -> view('loginv', $data);
 	}
