@@ -128,6 +128,15 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function find_all_menu(){
+		$res = array();
+		$id = $this -> get_post('id');
+		$list = $this -> menu_dao -> find_all_open_and_stop();
+		$res['list'] = $list;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
 	public function update_menu_style() {
 		$res = array();
 		$last_id = $this -> get_post('last_id');
