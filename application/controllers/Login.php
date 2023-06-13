@@ -18,13 +18,18 @@ class Login extends MY_Base_Controller {
 		$urlArr=$_SERVER['REQUEST_URI'];
 		if($urlArr=="menu_order"){
 			$data['menu_order']=1;
+			if(!empty($this -> session -> userdata('user_id'))) {
+				redirect("/app/#mgmt/message");
+				return;
+			}
 		} else{
 			$data['menu_order']=0;
+			if(!empty($this -> session -> userdata('user_id'))) {
+				redirect("/app/#mgmt/message");
+				return;
+			}
 		}
-		if(!empty($this -> session -> userdata('user_id'))) {
-			redirect("/app/#mgmt/message");
-			return;
-		}
+		
 		$data = $this -> get_captcha($data);
 		$data['num'] = rand(1,3);
 		$this -> to_json($data);
