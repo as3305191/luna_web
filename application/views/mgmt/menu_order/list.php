@@ -144,27 +144,31 @@
 
 	$('#menu_name').on('change', function(){
 		// menu_click($('#menu_name').val());
-	
-		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_menu_style',
-			type: "POST",
-			data: {
-				id: $('#menu_name').val()
-			},
-			success: function(data) {
-				currentApp.tableReload();
-				currentApp_other.tableReload();
-				if(data.list.menu_style_id==4){
+		if($('#menu_name').val()>0){
+			$.ajax({
+				url: '<?= base_url() ?>' + 'mgmt/menu_order/find_menu_style',
+				type: "POST",
+				data: {
+					id: $('#menu_name').val()
+				},
+				success: function(data) {
+					currentApp.tableReload();
+					currentApp_other.tableReload();
+					if(data.list.menu_style_id==4){
 
-					$('.s_i').removeClass('hide_s_i');
-					
-				} else{
-					$('.s_i').addClass('hide_s_i');
+						$('.s_i').removeClass('hide_s_i');
+						
+					} else{
+						$('.s_i').addClass('hide_s_i');
 
-				}    
-				menu_click($('#menu_name').val());
-			}
-		});
+					}    
+					menu_click($('#menu_name').val());
+				}
+			});
+		} else{
+			$('.s_i').removeClass('hide_s_i');
+		}
+		
 
 
 	});
