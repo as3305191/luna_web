@@ -23,14 +23,14 @@ thead tr th {
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
 						<header >
-								
+<!-- 								
 						<div class="widget-toolbar pull-right">
 							<div class="btn-group">
 								<button onclick="currentApp.doExportAll()" class="btn btn-xs btn-warning" data-toggle="dropdown">
 									<i class="fa fa-save"></i>匯出
 								</button>
 							</div>
-						</div>
+						</div> -->
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 

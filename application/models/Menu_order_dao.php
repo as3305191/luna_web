@@ -54,7 +54,7 @@ class Menu_order_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		if(!empty($data['menu_id'])){
+		if(!empty($data['menu_id']) && $data['menu_id']>0){
 			$menu_id = $data['menu_id'];
 			$this -> db -> where('_m.menu_id',$menu_id);
 		}

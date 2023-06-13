@@ -177,7 +177,7 @@
 				if(d) {
 					// console.log(d);
 					$menu_name = $('#menu_name').empty();
-					var option = '';
+					var option = '<option value="0">全部</option>';
 					$menu_name.append(option);
 					if(d.list.length>0){
 						$.each(d.list, function(){
