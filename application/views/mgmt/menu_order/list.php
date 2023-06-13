@@ -170,7 +170,7 @@
 	});
 	function load_menu() {
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/menu_orderby_user/find_all_menu',
+			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_menu',
 			type: 'POST',
 			dataType: 'json',
 			success: function(d) {

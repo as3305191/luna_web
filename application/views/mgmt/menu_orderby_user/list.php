@@ -182,7 +182,7 @@ $('#add_img_style').click(function() {
 
 	function load_menu() {
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_menu',
+			url: '<?= base_url() ?>' + 'mgmt/menu_orderby_user/find_all_open_and_stop',
 			type: 'POST',
 			dataType: 'json',
 			success: function(d) {
