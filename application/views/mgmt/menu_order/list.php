@@ -215,7 +215,7 @@
 					$('#album').append(img_html);					
        	 		});
 				document.querySelector('#menu_name').value = $('#menu_id').val();
-				// currentApp_other.tableReload();
+				currentApp_other.tableReload();
 			}
 		});
 	}
@@ -232,7 +232,6 @@
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		// $('#menu_id').val(id);
 		document.querySelector('#menu_id').value = id;
-		currentApp_other.tableReload();
 		img_album();
 		
 	}
