@@ -214,8 +214,7 @@
 					'</div>';
 					$('#album').append(img_html);					
        	 		});
-				// $("#menu_name").val($('#menu_id').val());
-				// currentApp_other.tableReload();
+				currentApp_other.tableReload();
 			}
 		});
 	}
@@ -230,8 +229,7 @@
 		$('.menu_btn').addClass('btn_unsuccess');
 		$('.menu_'+id).removeClass('btn_unsuccess');
 		$('.menu_'+id).addClass('btn_active btn-success ');
-		// $('#menu_id').val(id);
-		document.querySelector('#menu_id').value = id;
+		$("#menu_name").val($('#menu_id').val());
 		img_album();
 		
 	}
