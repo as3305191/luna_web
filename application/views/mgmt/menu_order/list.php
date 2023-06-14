@@ -162,6 +162,7 @@
 
 				}    
 				menu_click($('#menu_name').val());
+				$('#menu_id').val($('#menu_name').val());
 			}
 		});
 
