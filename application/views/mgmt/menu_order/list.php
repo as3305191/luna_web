@@ -256,8 +256,8 @@
 		$('.menu_btn').addClass('btn_unsuccess');
 		$('.menu_'+id).removeClass('btn_unsuccess');
 		$('.menu_'+id).addClass('btn_active btn-success ');
-		$('#menu_id').val(id);
-		
+		// $('#menu_id').val(id);
+		document.querySelector('#menu_id').value = id;
 		img_album();
 	}
 
