@@ -90,9 +90,9 @@ var menuorderAppClass = (function(app) {
 		}
 		
 
-		// $('#menu_name').on('change', function(){
-		// 	app.tableReload();
-		// });
+		$('#menu_name').on('change', function(){
+			app.tableReload();
+		});
 	    // $(window).trigger("hashchange");
 
 		return app;
@@ -169,7 +169,7 @@ var menu_otherAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data_other',
 				data : function(d) {
-					d.menu_id = $('#menu_id').val()
+					d.menu_id = $('#menu_name').val()
 					// d.lottery_no = $('#lottery_select').val();
 					return d;
 				},
@@ -248,7 +248,7 @@ var menu_otherAppClass = (function(app) {
 		// get year month list
 		app.tableReload();
 
-		$('#menu_id').on('change', function(){
+		$('#menu_name').on('change', function(){
 			app.tableReload();
 		});
 
