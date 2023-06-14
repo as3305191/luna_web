@@ -239,7 +239,7 @@
 					$('#album').append(img_html);					
        	 		});
 				$("#menu_name").val($('#menu_id').val());
-				currentApp_other.tableReload();
+				// currentApp_other.tableReload();
 			}
 		});
 	}
