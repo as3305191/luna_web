@@ -151,8 +151,7 @@
 				id: $('#menu_name').val()
 			},
 			success: function(data) {
-				currentApp.tableReload();
-				currentApp_other.tableReload();
+				
 				if(data.list.menu_style_id==4){
 
 					$('.s_i').removeClass('hide_s_i');
@@ -163,6 +162,8 @@
 				}    
 				menu_click($('#menu_name').val());
 				$('#menu_id').val($('#menu_name').val());
+				currentApp.tableReload();
+				currentApp_other.tableReload();
 			}
 		});
 
