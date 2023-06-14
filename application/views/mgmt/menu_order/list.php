@@ -231,7 +231,7 @@
 		$('.menu_'+id).removeClass('btn_unsuccess');
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		// $('#menu_id').val(id);
-		document.querySelector('#menu_name').value = id;
+		document.querySelector('#menu_id').value = id;
 		currentApp_other.tableReload();
 		img_album();
 		
