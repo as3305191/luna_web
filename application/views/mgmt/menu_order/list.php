@@ -212,7 +212,7 @@
 					'</div>';
 					$('#album').append(img_html);					
        	 		});
-				document.querySelector('#menu_name').value = $('#menu_id').val();
+				
 				
 			}
 		});
@@ -231,6 +231,7 @@
 		// $('#menu_id').val(id);
 		document.querySelector('#menu_id').value = id;
 		img_album();
+		document.querySelector('#menu_name').value = $('#menu_id').val();
 		currentApp_other.tableReload();
 	}
 
