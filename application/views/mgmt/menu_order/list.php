@@ -231,7 +231,7 @@
 		// $('#menu_id').val(id);
 		document.querySelector('#menu_id').value = id;
 		img_album();
-		document.querySelector('#menu_name').value = $('#menu_id').val();
+		document.querySelector('#menu_name').value = id;
 		currentApp_other.tableReload();
 	}
 
