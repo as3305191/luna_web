@@ -141,7 +141,9 @@
 			
 		});
 	});
-
+	$(function() {
+		img_album();
+	});
 
 	function load_menu() {
 		$.ajax({
@@ -219,7 +221,7 @@
 			}
 		});
 	}
-  img_album();
+  
 
 	function menu_click(id) {
 		//   document.getElementById(id).show();
