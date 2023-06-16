@@ -141,10 +141,6 @@
 			
 		});
 	});
-	$(function() {
-		img_album();
-	});
-
 	function load_menu() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_menu',
@@ -217,11 +213,11 @@
 					$('#album').append(img_html);					
        	 		});
 				document.querySelector('#menu_name').value = $('#menu_id').val();
-				currentApp_other.tableReload();
+				
 			}
 		});
 	}
-  
+	img_album();
 
 	function menu_click(id) {
 		//   document.getElementById(id).show();
@@ -235,7 +231,7 @@
 		// $('#menu_id').val(id);
 		document.querySelector('#menu_id').value = id;
 		img_album();
-		
+		currentApp_other.tableReload();
 	}
 
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
