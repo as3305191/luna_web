@@ -41,9 +41,9 @@
 
 .layui-table1{ 
 	/* border-style:groove !important; */
-	margin: 0px 100px 0px 10px !important;
+	/* margin: 0px 100px 0px 10px !important; */
 }
-.td_table{
+/* .td_table{
  	padding: 0px!important;
 	border-color:#000 !important;
 }
@@ -56,11 +56,11 @@
     }
 .pageDiv:last-of-type{ 
 	page-break-after: auto; 
-}
+} */
 
 @page {
-	margin: 0px 0px 0px 0px !important;
-	size: landscape;
+	/* margin: 0px 0px 0px 0px !important;
+	size: landscape; */
 }
 @media print{
 
