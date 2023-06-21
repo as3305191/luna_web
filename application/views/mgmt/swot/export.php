@@ -64,14 +64,14 @@
 }
 @media print{
 
-	@page {
+	/* @page {
 		margin: 0px 0px 0px 0px !important;
 		size: landscape;
 	}
 	*{
 		-webkit-print-color-adjust: exact !important;
 		/* background-color:#fff; */
-	}
+	} */
 
 	.layui-table1{ 
 		/* border-style:groove !important; */
@@ -367,7 +367,4 @@
 	</table>
 	<?php endif?>
 </div>
-<!-- <script>
- window.style.backgroundColor = '#FFF';
- window.body.style.backgroundColor = '#FFF';
-</script> -->
+
