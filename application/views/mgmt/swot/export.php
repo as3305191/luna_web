@@ -91,13 +91,13 @@
 		page-break-inside: avoid;
     } */
 
-	.pageDiv:last-of-type{ 
+	/* .pageDiv:last-of-type{ 
 		page-break-after: auto; 
 	}	
 
 	.noBreak {
 		break-inside: avoid;
-	}
+	} */
 
 }
 </style>
