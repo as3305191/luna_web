@@ -65,8 +65,8 @@
 @media print{
 
 	@page {
-		margin: 0px 0px 0px 0px !important;
-		size: landscape;
+		/* margin: 0px 0px 0px 0px !important;
+		size: landscape; */
 	}
 	*{
 		/* -webkit-print-color-adjust: exact !important; */
