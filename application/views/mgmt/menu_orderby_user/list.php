@@ -198,15 +198,16 @@ $('#add_img_style').click(function() {
 								'text': this.menu_name
 							}).appendTo($menu_name);
 						});
+						if(d.list[0].menu_style_id==4){
+
+							$('.s_i').removeClass('hide_s_i');
+
+						} else{
+							$('.s_i').addClass('hide_s_i');
+
+						}   
 					}
-					if(d.list[0].menu_style_id==4){
-
-						$('.s_i').removeClass('hide_s_i');
-
-					} else{
-						$('.s_i').addClass('hide_s_i');
-
-					}   
+					
 				}
 			},
 			failure:function(){
