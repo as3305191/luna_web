@@ -44,7 +44,7 @@ class Patent_dao extends MY_Model {
 	}
 
 	function find_by_all_like_today_add(){
-		$date = date('Y-m-d');
+		$date = date('Ymd');
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> where("_m.patent_family like '{$date}%'");
