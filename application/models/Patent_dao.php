@@ -27,6 +27,26 @@ class Patent_dao extends MY_Model {
 		$date = date('Y-m-d');
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
+		$this -> db -> where("_m.create_time like '{$date}%'");
+		$this -> db -> order_by("_m.id","desc");
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		if(count($list)>0){
+			if(!empty($list[0]->patent_family)){
+				return $list[0]->patent_family;
+			} else{
+				return '0';
+			}
+		} else{
+			return '0';
+		}
+	
+	}
+
+	function find_by_all_like_today_add(){
+		$date = date('Y-m-d');
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
 		$this -> db -> where("_m.patent_family like '{$date}%'");
 		$this -> db -> order_by("_m.id","desc");
 		$query = $this -> db -> get();
