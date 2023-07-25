@@ -184,7 +184,8 @@ class Patent extends MY_Mgmt_Controller {
 			$last_num = intval($count_num)+1;
 			$family_num = date('Ymd').'0'.$last_num;
 		}
-		$res['family_num'] = $family_num;		
+		$res['family_num'] = $family_num;	
+		$res['last_num'] =$count_num;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
