@@ -183,14 +183,14 @@ class Patent extends MY_Mgmt_Controller {
 		} else{
 			$count_num_fake = $this -> dao -> find_by_all_like_today_add();
 			if($count_num_fake>0){
-				$family_num = intval($count_num)+1;
+				$family_num = intval($count_num_fake)+1;
 			} else{
 				$last_num = intval($count_num)+1;
 				$family_num = date('Ymd').'0'.$last_num;
 			}
 		}
 		$res['family_num'] = $family_num;	
-		$res['last_num'] =$count_num;
+		// $res['last_num'] =$count_num;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
