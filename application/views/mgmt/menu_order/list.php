@@ -12,21 +12,7 @@
   .hide_s_i {
   	display: none;
   }
-  .smoke{
-    padding: 0;
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-}
 
-
-.smoke {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    white-space: nowrap;
-    color: #FFF;
-}
 
 .smoke li {
     list-style: none;
