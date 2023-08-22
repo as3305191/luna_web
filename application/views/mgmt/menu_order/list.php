@@ -18,9 +18,6 @@
     font-family: "Poppins", sans-serif;
 }
 
-body {
-    background: #262626;
-}
 
 .smoke {
     position: absolute;
