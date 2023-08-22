@@ -22,7 +22,7 @@ body {
     background: #262626;
 }
 
-ul {
+.smoke {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -31,7 +31,7 @@ ul {
     color: #FFF;
 }
 
-ul li {
+.smoke li {
     list-style: none;
     display: inline-block;
     font-size: 50px;
@@ -40,43 +40,43 @@ ul li {
     animation: animate 2.5s infinite linear;
 }
 
-ul li:nth-of-type(1) {
+.smoke li:nth-of-type(1) {
     animation-delay: 0s;
 }
 
-ul li:nth-of-type(2) {
+.smoke li:nth-of-type(2) {
     animation-delay: .2s;
 }
 
-ul li:nth-of-type(3) {
+.smoke li:nth-of-type(3) {
     animation-delay: .4s;
 }
 
-ul li:nth-of-type(4) {
+.smoke li:nth-of-type(4) {
     animation-delay: .6s;
 }
 
-ul li:nth-of-type(5) {
+.smoke li:nth-of-type(5) {
     animation-delay: .8s;
 }
 
-ul li:nth-of-type(6) {
+.smoke li:nth-of-type(6) {
     animation-delay: 1s;
 }
 
-ul li:nth-of-type(7) {
+.smoke li:nth-of-type(7) {
     animation-delay: 1.2s;
 }
 
-ul li:nth-of-type(8) {
+.smoke li:nth-of-type(8) {
     animation-delay: 1.4s;
 }
 
-ul li:nth-of-type(9) {
+.smoke li:nth-of-type(9) {
     animation-delay: 1.6s;
 }
 
-ul li:nth-of-type(9) {
+.smoke li:nth-of-type(9) {
     animation-delay: 1.8s;
 }
 
