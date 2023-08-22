@@ -1,3 +1,7 @@
+<header>
+	<link rel="stylesheet" href="<?= base_url('assets/vendor/fancybox/jquery.fancybox.min.css'); ?>" />
+	<link rel="stylesheet" href="<?= base_url('assets/smoke.css'); ?>" />
+</header>
 <style>
   .s_sum {
   	display: none;
@@ -8,11 +12,90 @@
   .hide_s_i {
   	display: none;
   }
+  .smoke{
+    padding: 0;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+body {
+    background: #262626;
+}
+
+ul {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    white-space: nowrap;
+    color: #FFF;
+}
+
+ul li {
+    list-style: none;
+    display: inline-block;
+    font-size: 50px;
+    text-transform: uppercase;
+    margin: 0 10px;
+    animation: animate 2.5s infinite linear;
+}
+
+ul li:nth-of-type(1) {
+    animation-delay: 0s;
+}
+
+ul li:nth-of-type(2) {
+    animation-delay: .2s;
+}
+
+ul li:nth-of-type(3) {
+    animation-delay: .4s;
+}
+
+ul li:nth-of-type(4) {
+    animation-delay: .6s;
+}
+
+ul li:nth-of-type(5) {
+    animation-delay: .8s;
+}
+
+ul li:nth-of-type(6) {
+    animation-delay: 1s;
+}
+
+ul li:nth-of-type(7) {
+    animation-delay: 1.2s;
+}
+
+ul li:nth-of-type(8) {
+    animation-delay: 1.4s;
+}
+
+ul li:nth-of-type(9) {
+    animation-delay: 1.6s;
+}
+
+ul li:nth-of-type(9) {
+    animation-delay: 1.8s;
+}
+
+@keyframes animate {
+    0% {
+        filter: blur(0px);
+    }
+
+    50% {
+        filter: blur(0px);
+    }
+
+    100% {
+        filter: blur(40px);
+    }
+}
 </style>
 <div>
-<header>
-<link rel="stylesheet" href="<?= base_url('assets/vendor/fancybox/jquery.fancybox.min.css'); ?>" />
-</header>
+
 <div class="tab-content">
 
 	
@@ -23,15 +106,15 @@
 					</div>
 					<?php if($open_menu_count>0): ?>
 						<?php if($open_menu_count==1): ?>
-							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
+							<button class="btn_active btn-success text-light smoke menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
 							<input type="hidden" class="form-control" id="menu_id"value="<?= $menu_list[0]->id ?>">
 
 						<?php else: ?>		
-							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
+							<button class="btn_active btn-success text-light smoke menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
 							<input type="hidden" class="form-control" id="menu_id" value="<?= $menu_list[0]->id ?>">
 
 							<?php for ($i=1;$i<count($menu_list);$i++) : ?>
-								<button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>)"><?= $menu_list[$i]->menu_name ?></button>
+								<button class="btn-light text-light btn_unsuccess smoke menu_btn menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>)"><?= $menu_list[$i]->menu_name ?></button>
 							<?php endfor ?>
 						<?php endif?>
 					<?php endif?>
