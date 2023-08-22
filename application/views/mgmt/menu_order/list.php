@@ -11,7 +11,7 @@
 </style>
 <div>
 <header>
-<link rel="stylesheet" href="<?= base_url('assets/vendor/fancybox/jquery.fancybox.min.css') ?>">
+<link rel="stylesheet" href="<?= base_url('assets/vendor/fancybox/jquery.fancybox.min.css'); ?>" />
 </header>
 <div class="tab-content">
 
