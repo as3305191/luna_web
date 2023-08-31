@@ -176,7 +176,7 @@
 				type:2,
 				title:'',
 				closeBtn:0,
-				area:['400px','200px'],
+				area:['1600px','800px'],
 				shadeClose:true,
 				content:'<?=base_url('mgmt/message')?>'
 			})
