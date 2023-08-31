@@ -15,6 +15,34 @@
 			  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 			}
 		</script>
+		 <style> 
+			.black_overlay{ 
+				display: none; 
+				position: absolute; 
+				top: 0%; 
+				left: 0%; 
+				width: 100%; 
+				height: 100%; 
+				background-color: black; 
+				z-index:1001; 
+				-moz-opacity: 0.8; 
+				opacity:.80; 
+				filter: alpha(opacity=88); 
+			} 
+			.white_content { 
+				display: none; 
+				position: absolute; 
+				top: 25%; 
+				left: 25%; 
+				width: 55%; 
+				height: 55%; 
+				padding: 20px; 
+				border: 5px solid #ff4c00; 
+				background-color: white; 
+				z-index:1002; 
+				overflow: auto; 
+			} 
+		</style> 
 	</head>
 	<!-- #BODY -->
 	<body class="smart-style-1">
@@ -59,6 +87,10 @@
 								
 				<!-- <button type="button" class=" btn btn-sm btn-primary btn-group" id="messqge"><i class="fa fa-plus-circle fa-lg"></i></button> -->
 			</div>
+			<p>示例弹出层：<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">请点这里</a></p> 
+			<div id="light" class="white_content">欢迎关注微信公众号【小轻论坛】
+				<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">点这里关闭本窗口</a></div> 
+			<div id="fade" class="black_overlay"></div> 
 		</div>
 		<!-- END #MAIN PANEL -->
 
@@ -144,3 +176,4 @@
 		</script>
 	</body>
 </html>
+ 
