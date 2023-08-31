@@ -2,6 +2,7 @@
 <html lang="en-us">
 	<head>
 		<?php $this->load->view('layout/head'); ?>
+		<?php $this->load->view('mgmt/message/message_show'); ?>
 		<script>
 			var baseUrl = '<?= base_url(); ?>';
 			var currentApp;
