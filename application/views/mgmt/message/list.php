@@ -65,7 +65,7 @@
     <p id="send">傳送資料</p> -->
 </div>
 </body>
-<!-- <?php $this -> load -> view('mgmt/message/message_script'); ?>
+<?php $this -> load -> view('mgmt/message/message_script'); ?>
 <script>
 // if(location.href.indexOf('#reloaded')==-1){
 //     location.href=location.href+"#reloaded";
@@ -849,4 +849,4 @@ function change_f_chat(id,name){
     //     });
       
     // })
-</script> -->
+</script>
