@@ -83,13 +83,7 @@
 			</div>
 
 			<!-- END #MAIN CONTENT -->
-			<div class="pull-left " style="width:200px;line-height:32px">
-								
-			</div>
-			<p>聊天室<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">點這</a></p> 
-			<div id="light" class="white_content">
-				<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">測試</a></div> 
-			<div id="fade" class="black_overlay"></div> 
+		
 		</div>
 		<!-- END #MAIN PANEL -->
 
