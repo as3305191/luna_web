@@ -141,6 +141,9 @@
 	    $(document).ajaxError(function () {
         	layui.layer.close(window._ajaxLoading);
 	    });
+
+		document.getElementById(message_ss).show();
+
 		</script>
 	</body>
 </html>
