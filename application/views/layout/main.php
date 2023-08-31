@@ -81,7 +81,9 @@
 			<div id="content">
 
 			</div>
-
+			<div >
+				<button class="btn-light text-light btn_unsuccess" id="message_s" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="message()">聊天室</button>
+			</div>
 			<!-- END #MAIN CONTENT -->
 		
 		</div>
@@ -166,6 +168,19 @@
 	    $(document).ajaxError(function () {
         	layui.layer.close(window._ajaxLoading);
 	    });
+
+
+
+		$('#message_s').click(function() {
+			layer.open({
+				type:2,
+				title:'',
+				closeBtn:0,
+				area:['400px','200px'],
+				shadeClose:true,
+				content:'<?=base_url('mgmt/message')?>'
+			})
+		});
 		</script>
 	</body>
 </html>
