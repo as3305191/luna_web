@@ -59,6 +59,9 @@
 								
 				<!-- <button type="button" class=" btn btn-sm btn-primary btn-group" id="messqge"><i class="fa fa-plus-circle fa-lg"></i></button> -->
 			</div>
+			<div onclick="message_sw();">
+			123
+			</div>
 		</div>
 		<!-- END #MAIN PANEL -->
 
@@ -141,9 +144,9 @@
 	    $(document).ajaxError(function () {
         	layui.layer.close(window._ajaxLoading);
 	    });
-
-		document.getElementById(message_ss).show();
-
+			function message_sw(){
+				document.getElementById(message_ss).show();
+			}
 		</script>
 	</body>
 </html>
