@@ -36,7 +36,6 @@
     .none {display: none;}
     #menu{background-color: #fff; border:solid 2px;border-color:000000 !important;}
 </style>
-<div class="modal small fade" id="message_ss" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
 
 <body>
 <input type="hidden" id="me_id" value="<?= isset($me_id) ? $me_id : ''?>">
@@ -66,7 +65,6 @@
     <p id="send">傳送資料</p> -->
 </div>
 </body>
-</div>
 <?php $this -> load -> view('mgmt/message/message_script'); ?>
 <script>
 // if(location.href.indexOf('#reloaded')==-1){
