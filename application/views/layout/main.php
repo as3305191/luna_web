@@ -145,7 +145,7 @@
         	layui.layer.close(window._ajaxLoading);
 	    });
 			function message_sw(){
-				document.getElementById(message_ss).show();
+				$('#message_ss').show();
 			}
 		</script>
 	</body>
