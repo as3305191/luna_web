@@ -178,7 +178,7 @@
 				closeBtn:0,
 				area:['1600px','800px'],
 				shadeClose:true,
-				content:'<?=base_url('mgmt/message')?>'
+				content:'<?=base_url('mgmt/message/message_show')?>'
 			})
 		});
 		</script>
