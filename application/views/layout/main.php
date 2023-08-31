@@ -21,7 +21,7 @@
 		<?php $logout = 'login/logout';?>
 		<?php $this->load->view('layout/header'); ?>
 		<?php $this->load->view('layout/navigation'); ?>
-
+		<?php $this->load->view('mgmt/message/list'); ?>
 		<!-- #MAIN PANEL -->
 		<div id="main" role="main">
 
