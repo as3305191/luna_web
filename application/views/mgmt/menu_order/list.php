@@ -100,8 +100,6 @@
 											<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
 
 									</td>
-									
-									
 								</tr>
 							</thead>
 							<tbody>
