@@ -85,11 +85,10 @@
 			<!-- END #MAIN CONTENT -->
 			<div class="pull-left " style="width:200px;line-height:32px">
 								
-				<!-- <button type="button" class=" btn btn-sm btn-primary btn-group" id="messqge"><i class="fa fa-plus-circle fa-lg"></i></button> -->
 			</div>
-			<p>示例弹出层：<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">请点这里</a></p> 
-			<div id="light" class="white_content">欢迎关注微信公众号【小轻论坛】
-				<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">点这里关闭本窗口</a></div> 
+			<p>聊天室<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='block';document.getElementById('fade').style.display='block'">點這</a></p> 
+			<div id="light" class="white_content">
+				<a href = "javascript:void(0)" onclick = "document.getElementById('light').style.display='none';document.getElementById('fade').style.display='none'">測試</a></div> 
 			<div id="fade" class="black_overlay"></div> 
 		</div>
 		<!-- END #MAIN PANEL -->
