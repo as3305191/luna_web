@@ -82,7 +82,7 @@
 
 			</div>
 			<div >
-				<button class="btn-light text-light btn_unsuccess" id="message_s" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="message()">聊天室</button>
+				<button class="btn-light text-light btn_unsuccess" id="message_s" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" >聊天室</button>
 			</div>
 			<!-- END #MAIN CONTENT -->
 		
