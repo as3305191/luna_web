@@ -71,7 +71,6 @@
 
 		<?php $this->load->view('layout/plugins'); ?>
 		<!-- Scripts -->
-	
 		<script>
 		
 			var wOnResize = function(){
@@ -128,7 +127,8 @@
 			// 			}
 			// 		});
 			// 	}
-			
+				
+		
 				layui.layer.close(window._ajaxLoading);
 	    });
 	    //Ajax 發生例外時，要做的事情
