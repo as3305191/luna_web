@@ -20,8 +20,8 @@ class App extends MY_Base_Controller {
 		$data['group_list'] = $this -> users_dao -> find_group_users($user_id);
 		
 		// get menu data
-		// $role_id = $user -> role_id;
-		// $list = $this -> users_dao -> nav_list_by_role_id($role_id);
+		$role_id = $user -> role_id;
+		$list = $this -> users_dao -> nav_list_by_role_id($role_id);
 		// $data['socket_url'] = "ws://192.168.1.205:8081/server.php";
 		// // $data['socket_url'] = "ws://localhost:8081/server.php";
 		// $login_user = $this -> users_dao -> find_by_id($user_id);
