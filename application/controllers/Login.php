@@ -10,6 +10,8 @@ class Login extends MY_Base_Controller {
 
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
+		$this -> load -> model('Department_dao','d_dao');
+
 	}
 
 	public function index() {
@@ -49,6 +51,34 @@ class Login extends MY_Base_Controller {
 					$s_uid = md5($uniqueId);
 					$this -> session -> set_userdata("s_uid", $s_uid);
 					$this -> users_dao -> update(array('token' => $s_uid), $user -> id);
+				
+					if($user->role_id>2){
+						$user_role_list = $this -> d_dao -> find_by('id', $user->role_id);
+						if($user_role_list->level==0){//公司
+							$res['menu_order'] = 1;
+						}
+						if($user_role_list->level==1){//總經理
+							$res['menu_order'] = 1;
+						}
+						if($user_role_list->level==2){//副總
+							$res['menu_order'] = 1;
+						}
+						if($user_role_list->level==3){//部門
+							$user_role_list_lv3 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
+							if($user_role_list_lv3->id==3){//部門
+								$res['menu_order'] = 1;
+							}
+						}
+						if($user_role_list->level==4){//課
+							$user_role_list_lv4 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
+							$user_role_list_lv5 = $this -> d_dao -> find_by('id', $user_role_list_lv4->parent_id);
+							if($user_role_list_lv5->id==3){//部門
+								$res['menu_order'] = 1;
+							}
+						}
+					}
+					
+					
 				} else {
 					$res['msg'] = "帳號或密碼錯誤";
 				}
