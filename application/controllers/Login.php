@@ -19,6 +19,36 @@ class Login extends MY_Base_Controller {
 		// check login
 		
 		if(!empty($this -> session -> userdata('user_id'))) {
+			$data = $this -> setup_user_data($data);
+			$user = $this -> users_dao -> find_by_id($data['user_id']);
+			
+			if($user->role_id>2){
+				if($user_role_list->level==0){//公司
+					$res['menu_order'] = 1;
+				}
+				if($user_role_list->level==1){//總經理
+					$res['menu_order'] = 1;
+				}
+				if($user_role_list->level==2){//副總
+					$res['menu_order'] = 1;
+				}
+				if($user_role_list->level==3){//部門
+					$user_role_list_lv3 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
+					if($user_role_list_lv3->id==3){//部門
+						$res['menu_order'] = 1;
+					}
+				}
+				if($user_role_list->level==4){//課
+					$user_role_list_lv4 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
+					$user_role_list_lv5 = $this -> d_dao -> find_by('id', $user_role_list_lv4->parent_id);
+					if($user_role_list_lv5->id==3){//部門
+						$res['menu_order'] = 1;
+					}
+				}
+			} 
+
+
+
 			redirect("/app/#mgmt/message");
 			return;
 		}
@@ -77,7 +107,6 @@ class Login extends MY_Base_Controller {
 							}
 						}
 					} 
-					$res['user_role_list'] = $user_role_list;
 					
 				} else {
 					$res['msg'] = "帳號或密碼錯誤";
