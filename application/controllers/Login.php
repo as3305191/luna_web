@@ -76,10 +76,8 @@ class Login extends MY_Base_Controller {
 								$res['menu_order'] = 1;
 							}
 						}
-					} else{
-						$res['user_role_list'] = $user_role_list;
-					}
-					
+					} 
+					$res['user_role_list'] = $user_role_list;
 					
 				} else {
 					$res['msg'] = "帳號或密碼錯誤";
