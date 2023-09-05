@@ -209,11 +209,11 @@
 								if(data.msg) {
 									alert(data.msg);
 								} else {
-									if(data.menu_order>0){
-										// location.href = "<?= base_url('app/#mgmt/menu_order') ?>";
-									} else{
-										// location.href = "<?= base_url('app/#mgmt/message') ?>";
-									}
+									// if(data.menu_order>0){
+									// 	// location.href = "<?= base_url('app/#mgmt/menu_order') ?>";
+									// } else{
+									// 	// location.href = "<?= base_url('app/#mgmt/message') ?>";
+									// }
 								}
 							}
 						});
