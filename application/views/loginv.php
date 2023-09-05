@@ -204,7 +204,7 @@
 							data: $("#login-form").serialize(), // serializes the form's elements.
 							success: function(data)
 							{
-								alert(data);
+								// alert(data);
 
 								if(data.msg) {
 									alert(data.msg);
