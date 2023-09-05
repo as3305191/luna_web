@@ -76,6 +76,8 @@ class Login extends MY_Base_Controller {
 								$res['menu_order'] = 1;
 							}
 						}
+					} else{
+						$res['nono'] = "no";
 					}
 					
 					
