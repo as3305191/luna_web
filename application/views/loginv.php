@@ -214,7 +214,6 @@
 									} else{
 										location.href = "<?= base_url('app/#mgmt/message') ?>";
 									}
-									// location.href = "<?= base_url('app/#mgmt/message') ?>";
 								}
 							}
 						});

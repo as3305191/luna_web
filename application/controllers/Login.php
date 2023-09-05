@@ -19,41 +19,41 @@ class Login extends MY_Base_Controller {
 		// check login
 		
 		if(!empty($this -> session -> userdata('user_id'))) {
-			$data = $this -> setup_user_data($data);
-			$user = $this -> users_dao -> find_by_id($data['user_id']);
+			// $data = $this -> setup_user_data($data);
+			// $user = $this -> users_dao -> find_by_id($data['user_id']);
 
-			if($user->role_id>2){
-				if($user_role_list->level==0){//公司
-					redirect("/app/#mgmt/menu_order");
-					return;
-				}
-				if($user_role_list->level==1){//總經理
-					redirect("/app/#mgmt/menu_order");
-					return;
-				}
-				if($user_role_list->level==2){//副總
-					redirect("/app/#mgmt/menu_order");
-					return;
-				}
-				if($user_role_list->level==3){//部門
-					$user_role_list_lv3 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
-					if($user_role_list_lv3->id==3){//部門
-						redirect("/app/#mgmt/menu_order");
-						return;
-					}
-				}
-				if($user_role_list->level==4){//課
-					$user_role_list_lv4 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
-					$user_role_list_lv5 = $this -> d_dao -> find_by('id', $user_role_list_lv4->parent_id);
-					if($user_role_list_lv5->id==3){//部門
-						redirect("/app/#mgmt/menu_order");
-						return;
-					}
-				}
-			} else{
+			// if($user->role_id>2){
+			// 	if($user_role_list->level==0){//公司
+			// 		redirect("/app/#mgmt/menu_order");
+			// 		return;
+			// 	}
+			// 	if($user_role_list->level==1){//總經理
+			// 		redirect("/app/#mgmt/menu_order");
+			// 		return;
+			// 	}
+			// 	if($user_role_list->level==2){//副總
+			// 		redirect("/app/#mgmt/menu_order");
+			// 		return;
+			// 	}
+			// 	if($user_role_list->level==3){//部門
+			// 		$user_role_list_lv3 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
+			// 		if($user_role_list_lv3->id==3){//部門
+			// 			redirect("/app/#mgmt/menu_order");
+			// 			return;
+			// 		}
+			// 	}
+			// 	if($user_role_list->level==4){//課
+			// 		$user_role_list_lv4 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
+			// 		$user_role_list_lv5 = $this -> d_dao -> find_by('id', $user_role_list_lv4->parent_id);
+			// 		if($user_role_list_lv5->id==3){//部門
+			// 			redirect("/app/#mgmt/menu_order");
+			// 			return;
+			// 		}
+			// 	}
+			// } else{
 				redirect("/app/#mgmt/message");
 				return;
-			}
+			// }
 
 
 
@@ -90,30 +90,30 @@ class Login extends MY_Base_Controller {
 					$this -> users_dao -> update(array('token' => $s_uid), $user -> id);
 					$user_role_list = $this -> d_dao -> find_by('id', $user->role_id);
 
-					if($user->role_id>2){
-						if($user_role_list->level==0){//公司
-							$res['menu_order'] = 1;
-						}
-						if($user_role_list->level==1){//總經理
-							$res['menu_order'] = 1;
-						}
-						if($user_role_list->level==2){//副總
-							$res['menu_order'] = 1;
-						}
-						if($user_role_list->level==3){//部門
-							$user_role_list_lv3 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
-							if($user_role_list_lv3->id==3){//部門
-								$res['menu_order'] = 1;
-							}
-						}
-						if($user_role_list->level==4){//課
-							$user_role_list_lv4 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
-							$user_role_list_lv5 = $this -> d_dao -> find_by('id', $user_role_list_lv4->parent_id);
-							if($user_role_list_lv5->id==3){//部門
-								$res['menu_order'] = 1;
-							}
-						}
-					} 
+					// if($user->role_id>2){
+					// 	if($user_role_list->level==0){//公司
+					// 		$res['menu_order'] = 1;
+					// 	}
+					// 	if($user_role_list->level==1){//總經理
+					// 		$res['menu_order'] = 1;
+					// 	}
+					// 	if($user_role_list->level==2){//副總
+					// 		$res['menu_order'] = 1;
+					// 	}
+					// 	if($user_role_list->level==3){//部門
+					// 		$user_role_list_lv3 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
+					// 		if($user_role_list_lv3->id==3){//部門
+					// 			$res['menu_order'] = 1;
+					// 		}
+					// 	}
+					// 	if($user_role_list->level==4){//課
+					// 		$user_role_list_lv4 = $this -> d_dao -> find_by('id', $user_role_list->parent_id);
+					// 		$user_role_list_lv5 = $this -> d_dao -> find_by('id', $user_role_list_lv4->parent_id);
+					// 		if($user_role_list_lv5->id==3){//部門
+					// 			$res['menu_order'] = 1;
+					// 		}
+					// 	}
+					// } 
 					
 				} else {
 					$res['msg'] = "帳號或密碼錯誤";
