@@ -118,16 +118,16 @@
 					Notification.requestPermission(function(permission) {
 						console.log('支援');
 						console.log(permission);
-						if (permission === 'granted') {
-							console.log('granted');
-							var notification = new Notification('Hi there!', notifyConfig); // 建立通知
+						// if (permission === 'granted') {
+						// 	console.log('granted');
+						// 	var notification = new Notification('Hi there!', notifyConfig); // 建立通知
 
-						} else if(permission === 'denied'){
-							console.log('denied');
+						// } else if(permission === 'denied'){
+						// 	console.log('denied');
 
-						} else if(permission === 'default'){
-							console.log('default');
-						}
+						// } else if(permission === 'default'){
+						// 	console.log('default');
+						// }
 					});
 				}
 			}
