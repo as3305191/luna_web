@@ -111,26 +111,29 @@
 				body: '\\ ^o^ /', // 設定內容
 				// icon: '/images/favicon.ico', // 設定 icon
 			};
-			if (!('Notification' in window)) {
+			
+
+			if (!("Notification" in window)) {
+				// Check if the browser supports notifications
 				console.log('瀏覽器不支援推波');
-			} else{
-				if (Notification.permission === 'default' || Notification.permission === 'undefined') {
-					Notification.requestPermission(function(permission) {
-						console.log('支援');
-						console.log(permission);
-						// if (permission === 'granted') {
-						// 	console.log('granted');
-						// 	var notification = new Notification('Hi there!', notifyConfig); // 建立通知
-
-						// } else if(permission === 'denied'){
-						// 	console.log('denied');
-
-						// } else if(permission === 'default'){
-						// 	console.log('default');
-						// }
-					});
+			} else if (Notification.permission === "granted") {
+				// Check whether notification permissions have already been granted;
+				// if so, create a notification
+				const notification = new Notification('Hi there!', notifyConfig);
+			} else if (Notification.permission !== "denied") {
+				// We need to ask the user for permission
+				Notification.requestPermission().then((permission) => {
+				// If the user accepts, let's create a notification
+				if (permission === "granted") {
+					const notification = new Notification('Hi there!', notifyConfig);
+					// …
 				}
+				});
 			}
+
+
+
+
 			Notification.requestPermission(function(permission) {
 						console.log('支援');
 						console.log(permission);
