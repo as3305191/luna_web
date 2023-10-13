@@ -107,13 +107,18 @@
 	    });
 	    //Ajax 結束後，要做的事情
 	    $(document).ajaxStop(function () {
+			var notifyConfig = {
+				body: '\\ ^o^ /', // 設定內容
+				// icon: '/images/favicon.ico', // 設定 icon
+			};
 			if (!('Notification' in window)) {
 				console.log('瀏覽器不支援推波');
 			} else{
 				if (Notification.permission === 'default' || Notification.permission === 'undefined') {
 					Notification.requestPermission(function(permission) {
-						// permission 可為「granted」（同意）、「denied」（拒絕）和「default」（未授權）
-						// 在這裡可針對使用者的授權做處理
+						if (permission === 'granted') {
+							var notification = new Notification('Hi there!', notifyConfig); // 建立通知
+						}
 					});
 				}
 			}
