@@ -117,6 +117,7 @@
 				if (Notification.permission === 'default' || Notification.permission === 'undefined') {
 					Notification.requestPermission(function(permission) {
 						console.log('支援');
+						console.log(permission);
 						if (permission === 'granted') {
 							console.log('granted');
 							var notification = new Notification('Hi there!', notifyConfig); // 建立通知
