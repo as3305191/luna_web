@@ -110,7 +110,12 @@
 			if (!('Notification' in window)) {
 				console.log('瀏覽器不支援推波');
 			} else{
-				console.log('支援');
+				if (Notification.permission === 'default' || Notification.permission === 'undefined') {
+					Notification.requestPermission(function(permission) {
+						// permission 可為「granted」（同意）、「denied」（拒絕）和「default」（未授權）
+						// 在這裡可針對使用者的授權做處理
+					});
+				}
 			}
 		
 			layui.layer.close(window._ajaxLoading);
