@@ -109,10 +109,11 @@
 	    $(document).ajaxStop(function () {
 			if (!('Notification' in window)) {
 				console.log('瀏覽器不支援推波');
+			} else{
+				console.log('支援');
 			}
-				
 		
-				layui.layer.close(window._ajaxLoading);
+			layui.layer.close(window._ajaxLoading);
 	    });
 	    //Ajax 發生例外時，要做的事情
 	    $(document).ajaxError(function () {
