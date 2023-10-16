@@ -84,6 +84,7 @@
 						$(currentListElId).parent('.t-box').css('min-height', ($(currentListElId).height()) + 10 + 'px');
 						$(currentListElId).parent('.t-box').css('height', ($(currentListElId).height()) + 'px');
 						$(currentListElId).parent('.t-box').css('max-height', ($(currentListElId).height()) + 'px');
+						
 						// $('.t-box').css('height', 'auto');
 					}
 				} else {
@@ -101,31 +102,32 @@
 			    }
 			});
 
+			
 			//Ajax 開始後，要做的事情
 	    $(document).ajaxStart(function () {
 				window._ajaxLoading = layui.layer.load(2);
 	    });
 	    //Ajax 結束後，要做的事情
 	    $(document).ajaxStop(function () {
-			var notifyConfig = {
-				body: '\\ ^o^ /', // 設定內容
-				// icon: '/images/favicon.ico', // 設定 icon
-			};
-			if (!('Notification' in window)) {
-				console.log('瀏覽器不支援推波');
-			} else{
-				if (Notification.permission === 'default' || Notification.permission === 'undefined') {
-					Notification.requestPermission(function(permission) {
-						console.log('支援');
-						console.log(permission);
-						if (permission === 'granted') {
-							console.log('granted');
-							var notification = new Notification('Hi there!', notifyConfig); // 建立通知
+			// var notifyConfig = {
+			// 	body: '\\ ^o^ /', // 設定內容
+			// 	// icon: '/images/favicon.ico', // 設定 icon
+			// };
+			// if (!('Notification' in window)) {
+			// 	console.log('瀏覽器不支援推波');
+			// } else{
+			// 	if (Notification.permission === 'default' || Notification.permission === 'undefined') {
+			// 		Notification.requestPermission(function(permission) {
+			// 			console.log('支援');
+			// 			console.log(permission);
+			// 			if (permission === 'granted') {
+			// 				console.log('granted');
+			// 				var notification = new Notification('Hi there!', notifyConfig); // 建立通知
 
-						} 
-					});
-				}
-			}
+			// 			} 
+			// 		});
+			// 	}
+			// }
 
 
 			layui.layer.close(window._ajaxLoading);
