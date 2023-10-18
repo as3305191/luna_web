@@ -174,7 +174,7 @@ class Swot_bfl extends MY_Mgmt_Controller {
 		$data['login_user'] = $this -> users_dao -> find_by_id($u_data['login_user_id']);
 		$data['swot_class_for_0'] = $this -> d_dao -> find_by_id($data['login_user']->role_id);
 		$data['login_user_role_array'] =  explode(",", str_replace('#', ',', trim($data['login_user']->in_department, "#")));
-		$data['department_list'] = $this -> users_dao -> find_all_department();
+		$data['department_list'] = $this -> users_dao -> find_all_department_bfl();
 
 		// $this -> to_json($data);
 		$this->load->view('mgmt/swot_bfl/edit', $data);

@@ -502,6 +502,10 @@ class Users_dao extends MY_Model {
 		$this -> db -> where('parent_id',5);
 		return $this -> db -> get('department') -> result();
 	}
+	function find_all_department_bfl() {
+		$this -> db -> where('parent_id',2);
+		return $this -> db -> get('department') -> result();
+	}
 
 	function find_all_div($parent_id) {
 		$this -> db -> where('parent_id',$parent_id);
