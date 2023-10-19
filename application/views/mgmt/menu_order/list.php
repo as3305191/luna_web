@@ -175,7 +175,7 @@
 	}
 	load_menu();
 
-	function img_album(id) {
+	function img_album() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_open_menu',
 			type: "POST",
@@ -209,8 +209,8 @@
 					'</div>';
 					$('#album').append(img_html);					
        	 		});
-				
-			document.querySelector('#menu_name').value = id;
+				document.querySelector('#menu_name').value = $('#menu_id').val();
+
 
 			}
 		});
@@ -228,7 +228,7 @@
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		// $('#menu_id').val(id);
 		document.querySelector('#menu_id').value = id;
-		img_album(id);
+		img_album();
 		currentApp_other.tableReload();
 	}
 
