@@ -175,6 +175,23 @@
 	}
 	load_menu();
 
+	function menu_click(id) {
+		//   document.getElementById(id).show();
+		
+		$('.menu_img').addClass('menu_img_unsuccess');
+		$('.menu_img_'+id).removeClass('menu_img_unsuccess');
+		// $('.menu_btn').removeClass('btn_active');
+		$('.menu_btn').removeClass('btn_active btn-success ');
+		$('.menu_btn').addClass('btn_unsuccess');
+		$('.menu_'+id).removeClass('btn_unsuccess');
+		$('.menu_'+id).addClass('btn_active btn-success ');
+		// $('#menu_id').val(id);
+		document.querySelector('#menu_id').value = id;
+		img_album();
+		document.querySelector('#menu_name').value = id;
+		
+	}
+
 	function img_album() {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_open_menu',
@@ -215,23 +232,6 @@
 		});
 	}
 	img_album();
-
-	function menu_click(id) {
-		//   document.getElementById(id).show();
-		
-		$('.menu_img').addClass('menu_img_unsuccess');
-		$('.menu_img_'+id).removeClass('menu_img_unsuccess');
-		// $('.menu_btn').removeClass('btn_active');
-		$('.menu_btn').removeClass('btn_active btn-success ');
-		$('.menu_btn').addClass('btn_unsuccess');
-		$('.menu_'+id).removeClass('btn_unsuccess');
-		$('.menu_'+id).addClass('btn_active btn-success ');
-		// $('#menu_id').val(id);
-		document.querySelector('#menu_id').value = id;
-		img_album();
-		document.querySelector('#menu_name').value = id;
-		
-	}
 
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
 		var menu_id = $('#menu_name').val();
