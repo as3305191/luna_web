@@ -92,7 +92,6 @@ var menuorderAppClass = (function(app) {
 
 		$('#menu_name').on('change', function(){
 			app.tableReload();
-			menu_otherAppClass.tableReload();
 		});
 	    // $(window).trigger("hashchange");
 
