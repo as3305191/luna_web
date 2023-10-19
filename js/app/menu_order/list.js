@@ -247,7 +247,9 @@ var menu_otherAppClass = (function(app) {
 
 		// get year month list
 		app.tableReload();
-
+		$('#menu_name').on('change', function(){
+			app.tableReload();
+		});
 		return app;
 	};
 	
