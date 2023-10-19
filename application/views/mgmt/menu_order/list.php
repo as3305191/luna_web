@@ -135,8 +135,8 @@
 <script type="text/javascript">
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/menu_order/list.js", function(){
-			currentApp = new menuorderAppClass(new BaseAppClass({}));
 			currentApp_other = new menu_otherAppClass(new BaseAppClass({}));
+			currentApp = new menuorderAppClass(new BaseAppClass({}));
 		});
 	});
 	function load_menu() {
