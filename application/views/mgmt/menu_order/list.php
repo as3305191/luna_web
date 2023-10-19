@@ -229,6 +229,8 @@
 		img_album();
 		document.querySelector('#menu_name').value = id;
 		currentApp_other.tableReload();
+		currentApp.tableReload();
+
 	}
 
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
