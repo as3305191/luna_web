@@ -137,7 +137,6 @@
 		loadScript(baseUrl + "js/app/menu_order/list.js", function(){
 			currentApp = new menuorderAppClass(new BaseAppClass({}));
 			currentApp_other = new menu_otherAppClass(new BaseAppClass({}));
-			$('select').change();
 		});
 	});
 	function load_menu() {

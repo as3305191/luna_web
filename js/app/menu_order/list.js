@@ -245,16 +245,8 @@ var menu_otherAppClass = (function(app) {
 	
 		});
 
-		// get year month list
 		app.tableReload();
 
-		// $('#menu_name').on('change', function(){
-		// 	app.tableReload();
-		// });
-
-
-		// do submit
-		// load_menu() ;
 		return app;
 	};
 	
