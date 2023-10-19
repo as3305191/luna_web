@@ -228,7 +228,9 @@
 		document.querySelector('#menu_id').value = id;
 		img_album();
 		document.querySelector('#menu_name').value = id;
-		// currentApp_other.tableReload();
+		currentApp.tableReload();
+		currentApp_other.tableReload();
+
 		if((menu_style_id==4)){
 
 			$('.s_i').removeClass('hide_s_i');
