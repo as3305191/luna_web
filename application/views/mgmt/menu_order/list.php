@@ -137,7 +137,6 @@
 		loadScript(baseUrl + "js/app/menu_order/list.js", function(){
 			currentApp = new menuorderAppClass(new BaseAppClass({}));
 			currentApp_other = new menu_otherAppClass(new BaseAppClass({}));
-			
 		});
 	});
 	function load_menu() {
@@ -189,7 +188,7 @@
 		document.querySelector('#menu_id').value = id;
 		img_album();
 		document.querySelector('#menu_name').value = id;
-		
+		currentApp_other.tableReload();
 	}
 
 	function img_album() {
@@ -227,7 +226,7 @@
 					$('#album').append(img_html);					
        	 		});
 				
-				currentApp_other.tableReload();
+				
 			}
 		});
 	}
