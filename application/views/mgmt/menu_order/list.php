@@ -218,7 +218,7 @@
 
 	function menu_click(id) {
 		//   document.getElementById(id).show();
-		currentApp_other.tableReload();
+		
 		$('.menu_img').addClass('menu_img_unsuccess');
 		$('.menu_img_'+id).removeClass('menu_img_unsuccess');
 		// $('.menu_btn').removeClass('btn_active');
