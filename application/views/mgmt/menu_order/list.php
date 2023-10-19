@@ -135,9 +135,9 @@
 <script type="text/javascript">
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/menu_order/list.js", function(){
-			currentApp_other = new menu_otherAppClass(new BaseAppClass({}));
 			currentApp = new menuorderAppClass(new BaseAppClass({}));
-			// $('select').change(e => alert(e.target.value));
+			currentApp_other = new menu_otherAppClass(new BaseAppClass({}));
+			
 		});
 	});
 	function load_menu() {
@@ -174,24 +174,6 @@
 		});
 	}
 	load_menu();
-
-	function menu_click(id) {
-		//   document.getElementById(id).show();
-		
-		$('.menu_img').addClass('menu_img_unsuccess');
-		$('.menu_img_'+id).removeClass('menu_img_unsuccess');
-		// $('.menu_btn').removeClass('btn_active');
-		$('.menu_btn').removeClass('btn_active btn-success ');
-		$('.menu_btn').addClass('btn_unsuccess');
-		$('.menu_'+id).removeClass('btn_unsuccess');
-		$('.menu_'+id).addClass('btn_active btn-success ');
-		// $('#menu_id').val(id);
-		document.querySelector('#menu_id').value = id;
-		document.querySelector('#menu_name').value = id;
-		img_album();
-
-		// currentApp_other.tableReload();
-	}
 
 	function img_album() {
 		$.ajax({
@@ -233,6 +215,22 @@
 		});
 	}
 	img_album();
+
+	function menu_click(id) {
+		//   document.getElementById(id).show();
+		$('.menu_img').addClass('menu_img_unsuccess');
+		$('.menu_img_'+id).removeClass('menu_img_unsuccess');
+		// $('.menu_btn').removeClass('btn_active');
+		$('.menu_btn').removeClass('btn_active btn-success ');
+		$('.menu_btn').addClass('btn_unsuccess');
+		$('.menu_'+id).removeClass('btn_unsuccess');
+		$('.menu_'+id).addClass('btn_active btn-success ');
+		// $('#menu_id').val(id);
+		document.querySelector('#menu_id').value = id;
+		img_album();
+		document.querySelector('#menu_name').value = id;
+		currentApp_other.tableReload();
+	}
 
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
 		var menu_id = $('#menu_name').val();
