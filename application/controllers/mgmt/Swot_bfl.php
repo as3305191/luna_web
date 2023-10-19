@@ -202,7 +202,7 @@ class Swot_bfl extends MY_Mgmt_Controller {
 		$swot_leader = $this -> get_post('swot_leader');
 		
 		$data['title'] = str_replace("<br />","</p><p>",trim($title));
-		$data['unify'] = str_replace("<br />","</p><p>",trim($unify));$unify;
+		$data['unify'] = str_replace("<br />","</p><p>",trim($unify));
 		$data['swot_leader'] = str_replace("<br />","</p><p>",trim($swot_leader));
 		$data['swot_style_id'] = str_replace("<br />","</p><p>",trim($swot_style));
 		$data['m_swot_s'] = str_replace("<br />","</p><p>",trim($m_swot_s));
