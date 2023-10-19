@@ -92,6 +92,7 @@ var menuorderAppClass = (function(app) {
 
 		$('#menu_name').on('change', function(){
 			app.tableReload();
+			menu_otherAppClass.tableReload();
 		});
 	    // $(window).trigger("hashchange");
 
@@ -247,9 +248,9 @@ var menu_otherAppClass = (function(app) {
 
 		// get year month list
 		app.tableReload();
-		$('#menu_name').on('change', function(){
-			app.tableReload();
-		});
+		// $('#menu_name').on('change', function(){
+		// 	app.tableReload();
+		// });
 		return app;
 	};
 	
