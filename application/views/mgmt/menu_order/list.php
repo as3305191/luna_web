@@ -296,10 +296,10 @@
 				if(data.list.menu_style_id==4){
 
 					$('.s_i').removeClass('hide_s_i');
-					console.log('4');
+					
 				} else{
 					$('.s_i').addClass('hide_s_i');
-					console.log(data.list.menu_style_id);
+
 				}    
 				menu_click($('#menu_name').val());
 				// $('#menu_id').val($('#menu_name').val());
