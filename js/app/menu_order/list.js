@@ -251,9 +251,9 @@ var menu_otherAppClass = (function(app) {
 		// $('.menu_btn').on('click', function(){
 		// 	app.tableReload();
 		// });
-		$("#menu_btn").change(function(){ 
-			app.tableReload();
-		}); 
+		// $("#menu_btn").change(function(){ 
+		// 	app.tableReload();
+		// }); 
 
 		// do submit
 		// load_menu() ;
