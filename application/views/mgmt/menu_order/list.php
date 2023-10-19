@@ -186,9 +186,10 @@
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		// $('#menu_id').val(id);
 		document.querySelector('#menu_id').value = id;
-		img_album();
 		document.querySelector('#menu_name').value = id;
-		currentApp_other.tableReload();
+		img_album();
+
+		// currentApp_other.tableReload();
 	}
 
 	function img_album() {
@@ -304,7 +305,7 @@
 				menu_click($('#menu_name').val());
 				// $('#menu_id').val($('#menu_name').val());
 				// currentApp.tableReload();
-				currentApp_other.tableReload();
+				// currentApp_other.tableReload();
 			}
 		});
 
