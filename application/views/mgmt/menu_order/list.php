@@ -210,7 +210,7 @@
 					$('#album').append(img_html);					
        	 		});
 				
-				
+				currentApp_other.tableReload();
 			}
 		});
 	}
@@ -228,8 +228,9 @@
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		// $('#menu_id').val(id);
 		document.querySelector('#menu_id').value = id;
-		document.querySelector('#menu_name').value = id;
 		img_album();
+		document.querySelector('#menu_name').value = id;
+		
 	}
 
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
