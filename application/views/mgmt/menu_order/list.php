@@ -24,15 +24,15 @@
 					</div>
 					<?php if($open_menu_count>0): ?>
 						<?php if($open_menu_count==1): ?>
-							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
+							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?= $menu_list[0]->menu_name ?></button>
 							<input type="hidden" class="form-control" id="menu_id"value="<?= $menu_list[0]->id ?>">
 
 						<?php else: ?>		
-							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>)"><?= $menu_list[0]->menu_name ?></button>
+							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?= $menu_list[0]->menu_name ?></button>
 							<input type="hidden" class="form-control" id="menu_id" value="<?= $menu_list[0]->id ?>">
 
 							<?php for ($i=1;$i<count($menu_list);$i++) : ?>
-								<button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>)"><?= $menu_list[$i]->menu_name ?></button>
+								<button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?= $menu_list[$i]->menu_name ?></button>
 							<?php endfor ?>
 						<?php endif?>
 					<?php endif?>
@@ -215,7 +215,7 @@
 	}
 	img_album();
 
-	function menu_click(id) {
+	function menu_click(id,menu_style_id) {
 		//   document.getElementById(id).show();
 		$('.menu_img').addClass('menu_img_unsuccess');
 		$('.menu_img_'+id).removeClass('menu_img_unsuccess');
@@ -229,7 +229,7 @@
 		img_album();
 		document.querySelector('#menu_name').value = id;
 		// currentApp_other.tableReload();
-		if(($('#menu_name').val()==4)){
+		if((menu_style_id==4)){
 
 			$('.s_i').removeClass('hide_s_i');
 
@@ -308,7 +308,7 @@
 					$('.s_i').addClass('hide_s_i');
 
 				}    
-				menu_click($('#menu_name').val());
+				menu_click($('#menu_name').val(),data.list.menu_style_id);
 				// $('#menu_id').val($('#menu_name').val());
 				// currentApp.tableReload();
 				// currentApp_other.tableReload();
