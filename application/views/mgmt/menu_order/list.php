@@ -228,8 +228,15 @@
 		document.querySelector('#menu_id').value = id;
 		img_album();
 		document.querySelector('#menu_name').value = id;
-		currentApp_other.tableReload();
-		
+		// currentApp_other.tableReload();
+		if(($('#menu_name').val()==4)){
+
+			$('.s_i').removeClass('hide_s_i');
+
+		} else{
+			$('.s_i').addClass('hide_s_i');
+
+		}    
 	}
 
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
