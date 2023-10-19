@@ -227,8 +227,9 @@
 		$('.menu_'+id).addClass('btn_active btn-success ');
 		// $('#menu_id').val(id);
 		document.querySelector('#menu_id').value = id;
-		img_album();
 		document.querySelector('#menu_name').value = id;
+		img_album();
+
 		currentApp_other.tableReload();
 	}
 
