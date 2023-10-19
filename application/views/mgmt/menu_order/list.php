@@ -218,6 +218,7 @@
 
 	function menu_click(id) {
 		//   document.getElementById(id).show();
+		currentApp_other.tableReload();
 		$('.menu_img').addClass('menu_img_unsuccess');
 		$('.menu_img_'+id).removeClass('menu_img_unsuccess');
 		// $('.menu_btn').removeClass('btn_active');
@@ -229,7 +230,7 @@
 		document.querySelector('#menu_id').value = id;
 		img_album();
 		document.querySelector('#menu_name').value = id;
-		currentApp_other.tableReload();
+		
 	}
 
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
