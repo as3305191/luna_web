@@ -32,7 +32,7 @@
 							<input type="hidden" class="form-control" id="menu_id" value="<?= $menu_list[0]->id ?>">
 
 							<?php for ($i=1;$i<count($menu_list);$i++) : ?>
-								<button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?= $menu_list[$i]->menu_name ?></button>
+								<button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>,<?= $menu_list[$i]->menu_style_id ?>)"><?= $menu_list[$i]->menu_name ?></button>
 							<?php endfor ?>
 						<?php endif?>
 					<?php endif?>
