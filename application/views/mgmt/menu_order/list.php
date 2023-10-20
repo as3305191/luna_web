@@ -164,7 +164,6 @@
 							$('.s_i').addClass('hide_s_i');
 						}   
 					}
-				
 				}
 			},
 			failure:function(){
