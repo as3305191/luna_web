@@ -7,7 +7,7 @@ var SwotAppClass = (function(app) {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
 					d.list_title = $('#list_title').val();
-					if($('#d_or_c1').val()==17 || $('#d_or_c1').val()==6 || $('#d_or_c1').val()==16 || $('#d_or_c1').val()==9||$('#d_or_c1').val()==70){
+					if($('#d_or_c1').val()==17 || $('#d_or_c1').val()==6 || $('#d_or_c1').val()==16 || $('#d_or_c1').val()==9||$('#d_or_c1').val()==69){
 						d.d_or_c = $('#d_or_c').val();
 
 					} else{
