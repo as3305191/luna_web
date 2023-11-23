@@ -15,7 +15,7 @@ class Import extends MY_Base_Controller {
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Patent_key_dao', 'p_k_dao');
 		
-
+		$this -> load -> model('Products_dao', 'products_dao');
 		$this->load->library('excel');
 	}
 
@@ -142,28 +142,25 @@ class Import extends MY_Base_Controller {
 	}
 
 	function import1(){
-		$object = PHPExcel_IOFactory::load("1123.xlsx");
+		$object = PHPExcel_IOFactory::load("2023.11.21食材抽籤-更新.xlsx");
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
 			for($row=2; $row<=$highestRow; $row++){
-				$account = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-				$password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-				$user_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-				$depname = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
+				$products = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+				// $password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+				// $user_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+				// $depname = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
 				// $depmail = $worksheet->getCellByColumnAndRow(14, $row)->getValue();
 				// $personalmail = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
 	
 					$data = array(
-						'account' =>$account,
-						'password' =>$password,
-						'user_name' =>$user_name,
-						'depname' =>$depname,
+						'product_name' =>$products,
 						// 'email' =>$depmail,
 						// 'personalmail' =>$personalmail,
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->users_dao->insert($data);
+					$this->products_dao->insert($data);
 			}
 		}
 		// $res['success'] = TRUE;
