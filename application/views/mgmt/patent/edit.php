@@ -181,15 +181,6 @@
 					</div>
 				</div>
 			</fieldset>
-			<fieldset>
-				<div class="form-group">
-					<label class="col-md-3 control-label">old關鍵字</label>
-					<div class="col-md-6">
-						<input type="text"  class="form-control" name="patent_key"  id="patent_key" value="<?= isset($item) ? $item -> patent_key : '' ?>"  <?= $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28? '': 'readonly' ?>
-						/>
-					</div>
-				</div>
-			</fieldset>
 			<fieldset >
 				<div class="form-group" >
 					<label class="col-md-3 control-label">全部<input id="together" type="checkbox" class="" value="" />關鍵字</label>
@@ -971,7 +962,6 @@ function do_save() {
 			application_number:$('#application_number').val(),
 			announcement_num:$('#announcement_num').val(),
 			patent_country:$('#patent_country').val(),
-			patent_key: $('#patent_key').val(),
 			patnet_category: $('#patnet_category').val(),
 			public_num_input:  public_num_input.join(","),
 			patnet_num_input:  patnet_num_input.join(","),
