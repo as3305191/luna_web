@@ -23,7 +23,7 @@ thead tr th {
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget" > 
 						<header >
-							<?php if($login_user->role_id==9 ||$login_user->role_id==11||$login_user->role_id==28): ?>
+							<?php if($login_user->role_id==9 ||$login_user->role_id==69 ||$login_user->role_id==11||$login_user->role_id==28): ?>
 								<div class="widget-toolbar pull-left">
 									<div class="btn-group">
 										<button onclick="currentApp.doEdit(0)" class="btn btn-xs btn-success" data-toggle="dropdown">
@@ -410,7 +410,7 @@ thead tr th {
 
 	var mOrderIdx = 6;
 	
-	if($('#l_user_id').val()=='9' || $('#l_user_id').val()=='28'|| $('#l_user_id').val()=='11' ){
+	if($('#l_user_id').val()=='9' || ('#l_user_id').val()=='69'|| $('#l_user_id').val()=='28'|| $('#l_user_id').val()=='11' ){
 		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
 	} else{
 		var defaultContent = '<a role="button" data-toggle="modal" style="margin-right: 5px;" ><i class="fa fa-trash fa-lg"></i></a>';

@@ -35,7 +35,7 @@
 				<i class="fa fa-arrow-circle-left"></i>返回
 			</a>
 		</div>
-		<?php if( $login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28): ?>
+		<?php if( $login_user->role_id==9 || $login_user->role_id==69 || $login_user->role_id==11 || $login_user->role_id==28): ?>
 		<div class="widget-toolbar pull-left">
 			<a href="javascript:void(0);"  onclick="do_save();" class="btn btn-default btn-danger">
 				<i class="fa fa-save"></i>存檔
@@ -525,7 +525,7 @@ $(document).ready(function() {
 				url: "#"
 			};
 			window.history.pushState(state, "title", "#"); 
-		} 
+		}
 		pushHistory(); 
 		window.addEventListener("popstate", function(e) { 
 			currentApp.backTo();
@@ -614,7 +614,7 @@ $("#img-input").fileinput({
 			],
         	initialPreviewConfig: [
 			<?php foreach($item -> image as $img): ?>
-				<?php if($login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28): ?>
+				<?php if($login_user->role_id==9 || $login_user->role_id==69 || $login_user->role_id==11 || $login_user->role_id==28): ?>
 				{
 						'caption' : '<?= $img -> image_name ?>',
 						'size' : <?= $img -> image_size ?>,
@@ -674,7 +674,7 @@ $("#img-input").fileinput({
         	],
         	initialPreviewConfig: [
         	<?php foreach($item -> files as $files): ?>
-			<?php if($login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28): ?>
+			<?php if($login_user->role_id==9 ||$login_user->role_id==69 || $login_user->role_id==11 || $login_user->role_id==28): ?>
 				{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
@@ -728,7 +728,7 @@ $("#img-input").fileinput({
         	],
         	initialPreviewConfig: [
 			<?php foreach($item -> public_number as $files): ?>
-			<?php if($login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28): ?>
+			<?php if($login_user->role_id==9 || $login_user->role_id==69 ||$login_user->role_id==11 || $login_user->role_id==28): ?>
 				{
 	        		'caption' : '<?= $files -> file_name ?>',
 	        		'size' : <?= $files -> file_size ?>,
@@ -787,7 +787,7 @@ $("#img-input").fileinput({
         	],
         	initialPreviewConfig: [
 			<?php foreach($item -> patnet_number as $files): ?>
-				<?php if($login_user->role_id==9 || $login_user->role_id==11 || $login_user->role_id==28): ?>
+				<?php if($login_user->role_id==9 || $login_user->role_id==69 ||$login_user->role_id==11 || $login_user->role_id==28): ?>
 				{
 					
 	        		'caption' : '<?= $files -> file_name ?>',
@@ -1054,7 +1054,7 @@ function do_save() {
 						var i=0;
 						var html='';
 						for(i;i<=d.max;i++){
-							if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
+							if($('#role_id').val()=='9'||$('#role_id').val()=='69'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
 							
 								html+='<div class="widget-toolbar pull-left">'+
 										'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" >'+
@@ -1098,7 +1098,7 @@ function do_save() {
 								
 							});
 				
-							if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
+							if($('#role_id').val()=='9'||$('#role_id').val()=='69'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
 							}else{
 								$('#patnet_status_'+category_level).attr("disabled",true);
 							}
@@ -1169,7 +1169,7 @@ function do_save() {
 
 										if(d.category){
 											$.each(d.category, function(){
-												if($('#role_id').val()=='9'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
+												if($('#role_id').val()=='9'||$('#role_id').val()=='69'||$('#role_id').val()=='11'||$('#role_id').val()=='28'){
 													if(current_app[0]['patnet_status_'+next_c] && current_app[0]['patnet_status_'+next_c]==this.id){
 														$('<option />', {
 															'value': this.id,
