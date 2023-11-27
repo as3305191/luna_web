@@ -14,6 +14,8 @@ class Import extends MY_Base_Controller {
 		$this -> load -> model('Patent_dao', 'patent_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Patent_key_dao', 'p_k_dao');
+		$this -> load -> model('Drink_users_dao', 'drink_users_dao');
+
 		
 		$this -> load -> model('Products_dao', 'products_dao');
 		$this->load->library('excel');
@@ -147,7 +149,8 @@ class Import extends MY_Base_Controller {
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
 			for($row=2; $row<=$highestRow; $row++){
-				$products = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+				$user_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+				$area_num = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
 				// $password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
 				// $user_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
 				// $depname = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
@@ -155,12 +158,13 @@ class Import extends MY_Base_Controller {
 				// $personalmail = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
 	
 					$data = array(
-						'product_name' =>$products,
+						'user_name' =>$productuser_names,
+						'area_num' =>$area_num,
 						// 'email' =>$depmail,
 						// 'personalmail' =>$personalmail,
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->products_dao->insert($data);
+					$this->drink_users_dao->insert($data);
 			}
 		}
 		// $res['success'] = TRUE;
@@ -168,7 +172,7 @@ class Import extends MY_Base_Controller {
 	}
 
 	function import2(){
-		$object = PHPExcel_IOFactory::load("專利系統-申請號及關鍵字2022.4.6以前 - 1.xlsx");
+		$object = PHPExcel_IOFactory::load("員工資料.xlsx");
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
