@@ -148,9 +148,9 @@ class Import extends MY_Base_Controller {
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
-			for($row=2; $row<=$highestRow; $row++){
-				$user_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-				$area_num = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+			for($row=1; $row<=$highestRow; $row++){
+				$user_name = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+				$area_num = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
 				// $password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
 				// $user_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
 				// $depname = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
@@ -158,7 +158,7 @@ class Import extends MY_Base_Controller {
 				// $personalmail = $worksheet->getCellByColumnAndRow(15, $row)->getValue();
 	
 					$data = array(
-						'user_name' =>$productuser_names,
+						'user_name' =>$user_name,
 						'area_num' =>$area_num,
 						// 'email' =>$depmail,
 						// 'personalmail' =>$personalmail,
