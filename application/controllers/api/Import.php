@@ -144,7 +144,7 @@ class Import extends MY_Base_Controller {
 	}
 
 	function import1(){
-		$object = PHPExcel_IOFactory::load("2023.11.21食材抽籤-更新.xlsx");
+		$object = PHPExcel_IOFactory::load("員工資料.xlsx");
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
@@ -172,7 +172,7 @@ class Import extends MY_Base_Controller {
 	}
 
 	function import2(){
-		$object = PHPExcel_IOFactory::load("員工資料.xlsx");
+		$object = PHPExcel_IOFactory::load("專利系統-申請號及關鍵字2022.4.6以前 - 1.xlsx");
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
