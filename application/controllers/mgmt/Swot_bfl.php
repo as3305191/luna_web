@@ -477,7 +477,7 @@ class Swot_bfl extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function replace_num_title($str_old) {
+	function replace_num_title($str_old) {
 		$str = str_replace('<p>&nbsp;</p>','',$str_old);
 		$total_array = explode("</p>",$str);
 		$total_num = substr_count($str,'<p>');
@@ -486,17 +486,24 @@ class Swot_bfl extends MY_Mgmt_Controller {
 			$strbetween_p_p = $total_array[$i];
 			$check = strstr($strbetween_p_p,'<p><span style');
 			$j=$i+1;
-			if($check){
-				$the_num_in_p_p = $this->get_between($strbetween_p_p, '">', '.');
-				$new_str.=str_replace('&nbsp;','',str_replace('>'.$the_num_in_p_p.'.','>'.$j.'.',trim($strbetween_p_p)));
-			}else{
-				$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '.');
-				$new_str.=str_replace('&nbsp;','',str_replace('<p>'.$the_num_in_p_p.'.','<p>'.$j.'.',trim($strbetween_p_p)));
+			if (strpos($strbetween_p_p, ".") !== false) {
+				if($check){
+					$the_num_in_p_p = $this->get_between($strbetween_p_p, '">', '.');
+					$new_str.=str_replace('&nbsp;','',str_replace('>'.$the_num_in_p_p.'.','>'.$j.'.',trim($strbetween_p_p)));
+				}else{
+					$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '.');
+					$new_str.=str_replace('&nbsp;','',str_replace('<p>'.$the_num_in_p_p.'.','<p>'.$j.'.',trim($strbetween_p_p)));
+				}
+			} else{
+				$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '</p>');
+				$new_str.=str_replace('&nbsp;','',str_replace('<p>','<p>'.$j.'.',trim($strbetween_p_p)));
 			}
+			
 			
 		}
 		return $new_str;
 	}
+
 
 	function get_between($input, $start, $end) {
 		$substr = substr($input, strlen($start)+strpos($input, $start),(strlen($input) - strpos($input, $end))*(-1));
