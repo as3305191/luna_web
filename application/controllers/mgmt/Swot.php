@@ -530,13 +530,19 @@ class Swot extends MY_Mgmt_Controller {
 			$strbetween_p_p = $total_array[$i];
 			$check = strstr($strbetween_p_p,'<p><span style');
 			$j=$i+1;
-			if($check){
-				$the_num_in_p_p = $this->get_between($strbetween_p_p, '">', '.');
-				$new_str.=str_replace('&nbsp;','',str_replace('>'.$the_num_in_p_p.'.','>'.$j.'.',trim($strbetween_p_p)));
-			}else{
-				$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '.');
-				$new_str.=str_replace('&nbsp;','',str_replace('<p>'.$the_num_in_p_p.'.','<p>'.$j.'.',trim($strbetween_p_p)));
+			if (strpos($strbetween_p_p, ".") !== false) {
+				if($check){
+					$the_num_in_p_p = $this->get_between($strbetween_p_p, '">', '.');
+					$new_str.=str_replace('&nbsp;','',str_replace('>'.$the_num_in_p_p.'.','>'.$j.'.',trim($strbetween_p_p)));
+				}else{
+					$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '.');
+					$new_str.=str_replace('&nbsp;','',str_replace('<p>'.$the_num_in_p_p.'.','<p>'.$j.'.',trim($strbetween_p_p)));
+				}
+			} else{
+				$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '</p>');
+				$new_str.='<p>'.$j.'.'.$the_num_in_p_p.'</p>';
 			}
+			
 			
 		}
 		return $new_str;
