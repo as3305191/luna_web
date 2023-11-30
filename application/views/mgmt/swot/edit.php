@@ -370,7 +370,7 @@
 				$('.swot_leader').removeClass('hide');
 			}
 		})
-	
+		
 		// $('#c_h_name').select2();
 		// $('#c_s_name').select2();
 		// ckeditor
@@ -393,7 +393,7 @@
 				customConfig : '',
 				toolbarCanCollapse : false,
 				colorButton_enableMore : false,
-				// removePlugins : 'list,indent,enterkey,showblocks,stylescombo,styles',
+				removePlugins : 'list,indent,blocks,bidi',
 				extraPlugins : 'imagemaps,autogrow,uploadimage',
 				filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/dm_image',
 				autoGrow_onStartup : true,
@@ -448,7 +448,7 @@
 		}
 		
 	
-		
+		// $('.cke_toolgroup').remove();
 	});
 
 	
