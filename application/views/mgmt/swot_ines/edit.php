@@ -380,7 +380,7 @@
 				customConfig : '',
 				toolbarCanCollapse : false,
 				colorButton_enableMore : false,
-				removePlugins : 'list,indent,blocks,bidi',
+				removePlugins : 'list,blocks,bidi',
 				extraPlugins : 'imagemaps,autogrow,uploadimage',
 				filebrowserUploadUrl:baseUrl + 'mgmt/images/upload_terms/dm_image',
 				autoGrow_onStartup : true,
