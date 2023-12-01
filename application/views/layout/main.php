@@ -146,7 +146,7 @@
 			};
 			
 			var inter=setInterval(function(){
-				
+				console.log("測量中");
 				
 				var curr = new Date().getTime();
 				if(curr - last > out){ 
