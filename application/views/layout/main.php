@@ -136,11 +136,10 @@
 			var out = 1 ; 
 			var is_protect=0;
 			document.onmouseover=function(){
-				last = new Date().getTime();
-				// console.log(last);
 				if(is_protect<1){
+					last = new Date().getTime();
 					var inter = setInterval(function(){
-						console.log("測量中");
+						// console.log("測量中");
 						
 						var curr = new Date().getTime();
 						if(curr - last > out){ 
