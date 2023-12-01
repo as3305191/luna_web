@@ -150,7 +150,7 @@
 					var curr = new Date().getTime();
 					if(curr - last > out){ 
 						// is_protect=1;
-						// clearInterval(inter);
+						clearInterval(inter);
 						// console.log("for long time");
 						layer.open({
 							type:2,
