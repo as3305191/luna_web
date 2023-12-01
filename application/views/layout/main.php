@@ -140,7 +140,10 @@
 			var last = new Date().getTime();
 			// var out = 10 * 60 * 1000; 
 			var out = 1 ; 
-			var inter=function(){
+			
+			document.onmouseover=function(){
+				last = new Date().getTime();
+				// console.log(last);
 				setInterval(function(){
 					console.log("測量中");
 					
@@ -158,13 +161,7 @@
 						})
 					}
 
-				}, 1000);
-			};
-			
-			document.onmouseover=function(){
-				last = new Date().getTime();
-				// console.log(last);
-				inter;
+				}, 1000);		
 			};
 			
 			
