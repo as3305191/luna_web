@@ -138,8 +138,8 @@
         	layui.layer.close(window._ajaxLoading);
 	    });
 		var last = new Date().getTime();
-			// var out = 10 * 60 * 1000; 
-			var out = 1 ; 
+			var out = 10 * 60 * 1000; 
+			// var out = 1 ; 
 			var is_protect=0;
 			document.onmouseover=function(){
 				if(is_protect<1){
