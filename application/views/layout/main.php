@@ -134,23 +134,24 @@
 			// out = 1 ; 
 			document.onmouseover=function(){
 				last = new Date().getTime();
-			};
-			var inter=setInterval(function(){
-			curr = new Date().getTime();
-			if(curr - last > out){ 
-				clearInterval(inter);
-				// console.log("for long time");
-				layer.open({
-					type:2,
-					title:'',
-					closeBtn:0,
-					area:['100vw','100vw'],
-					shadeClose:true,
-					content:'<?=base_url('mgmt/protect_window')?>'
-				})
-			}
+				var inter=setInterval(function(){
+				curr = new Date().getTime();
+				if(curr - last > out){ 
+					clearInterval(inter);
+					// console.log("for long time");
+					layer.open({
+						type:2,
+						title:'',
+						closeBtn:0,
+						area:['100vw','100vw'],
+						shadeClose:true,
+						content:'<?=base_url('mgmt/protect_window')?>'
+					})
+				}
 
-		}, 1000);
+			}, 1000);
+			};
+			
 
 			layui.layer.close(window._ajaxLoading);
 	    });
