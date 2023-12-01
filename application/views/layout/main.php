@@ -142,6 +142,7 @@
 			var out = 1 ; 
 			document.onmouseover=function(){
 				last = new Date().getTime();
+				console.log(last);
 			};
 			
 			var inter=setInterval(function(){
