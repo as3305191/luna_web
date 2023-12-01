@@ -138,20 +138,18 @@
         	layui.layer.close(window._ajaxLoading);
 	    });
 		
-		
+			document.onmouseover=function(){
+				var last = new Date().getTime();
+			};
+			
 			var inter=setInterval(function(){
-				var last = new Date().getTime(),
-				curr = new Date().getTime(),
-				// out = 10 * 60 * 1000; 
-				out = 1 ; 
-				document.onmouseover=function(){
-					last = new Date().getTime();
-					
-				};
-				curr = new Date().getTime();
+				// var out = 10 * 60 * 1000; 
+				var out = 1 ; 
+				
+				var curr = new Date().getTime();
 				if(curr - last > out){ 
 					clearInterval(inter);
-					console.log("for long time");
+					// console.log("for long time");
 					layer.open({
 						type:2,
 						title:'',
