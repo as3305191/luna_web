@@ -138,15 +138,16 @@
         	layui.layer.close(window._ajaxLoading);
 	    });
 		
-		var last = new Date().getTime(),
-			curr = new Date().getTime(),
-			// out = 10 * 60 * 1000; 
-			out = 1 ; 
-			document.onmouseover=function(){
-				last = new Date().getTime();
-				
-			};
+		
 			var inter=setInterval(function(){
+				var last = new Date().getTime(),
+				curr = new Date().getTime(),
+				// out = 10 * 60 * 1000; 
+				out = 1 ; 
+				document.onmouseover=function(){
+					last = new Date().getTime();
+					
+				};
 				curr = new Date().getTime();
 				if(curr - last > out){ 
 					clearInterval(inter);
