@@ -82,7 +82,7 @@
             </div>
         </div>
     </div>
-    <?php $this->load->view('layout/plugins'); ?>
+    <!-- <?php $this->load->view('layout/plugins'); ?> -->
     <script type="text/javascript">
       document.onmousemove=function(){
         parent.is_protect=0;
