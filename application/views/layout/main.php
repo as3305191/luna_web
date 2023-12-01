@@ -128,7 +128,29 @@
 			// 		});
 			// 	}
 			// }
+			var last = new Date().getTime(),
+			curr = new Date().getTime(),
+			out = 10 * 60 * 1000; 
+			// out = 1 ; 
+			document.onmouseover=function(){
+				last = new Date().getTime();
+			};
+			var inter=setInterval(function(){
+			curr = new Date().getTime();
+			if(curr - last > out){ 
+				clearInterval(inter);
+				// console.log("for long time");
+				layer.open({
+					type:2,
+					title:'',
+					closeBtn:0,
+					area:['100vw','100vw'],
+					shadeClose:true,
+					content:'<?=base_url('mgmt/protect_window')?>'
+				})
+			}
 
+		}, 1000);
 
 			layui.layer.close(window._ajaxLoading);
 	    });
@@ -136,28 +158,8 @@
 	    $(document).ajaxError(function () {
         	layui.layer.close(window._ajaxLoading);
 	    });
-		var last = new Date().getTime(),
-		curr = new Date().getTime(),
-		out = 1 * 60 * 1000; //设置超时时间： 1分
-		document.onmouseover=function(){//监听鼠标移动事件
-			last = new Date().getTime(); //更新操作时间
-		};
-		var inter=setInterval(function(){/*定时器  间隔1秒检测是否长时间未操作页面 */
-			curr = new Date().getTime(); //更新当前时间
-			if(curr - last > out){ //判断是否超时
-				clearInterval(inter);//清空定时器
-				console.log("那么长时间没未操作了！");//超时操作
-				layer.open({
-					type:2,
-					title:'',
-					closeBtn:0,
-					area:['400px','200px'],
-					shadeClose:true,
-					content:'<?=base_url('mgmt/swot/new_swot_title')?>'
-				})
-			}
-
-		}, 1000);
+		
+		
 		</script>
 	</body>
 </html>

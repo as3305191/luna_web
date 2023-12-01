@@ -14,7 +14,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background:#000; filter:Alpha(opacity=60);
+            background:#000;
             overflow: hidden;
         }
         @keyframes spin {
@@ -30,10 +30,10 @@
             justify-content: center;
         }
         .protect_content div {
-            border-radius: 100%;
+            border-radius: 50%;
             position: relative;
-            width: 100%;
-            height: 100%;
+            width: 50%;
+            height: 50%;
             box-shadow: 0 0 0 var(--line) var(--ring) inset;
             box-sizing: border-box;
             animation: var(--spin);
@@ -59,8 +59,8 @@
         .protect_content>div>div>div>div>div {
             --ring: #4597ef;
             left: -50%;
-            width: 200%;
-            height: 200%;
+            width: 100%;
+            height: 100%;
         }
         .protect_content>div>div>div>div>div>div {
             --ring: #aacbdb;
@@ -84,5 +84,9 @@
     </div>
     <?php $this->load->view('layout/plugins'); ?>
     <script type="text/javascript">
-
+        document.onmousemove=function(){
+            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+            parent.layer.close(index);	
+     	};
     </script>
+
