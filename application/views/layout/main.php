@@ -144,12 +144,13 @@
 			document.onmouseover=function(){
 				last = new Date().getTime();
 				// console.log(last);
-				if(is_protect==0){
+				if(is_protect<1){
 					var inter = setInterval(function(){
 						console.log("測量中");
 						
 						var curr = new Date().getTime();
 						if(curr - last > out){ 
+							is_protect=1;
 							clearInterval(inter);
 							// console.log("for long time");
 							layer.open({
