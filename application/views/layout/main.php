@@ -151,7 +151,7 @@
 				curr = new Date().getTime();
 				if(curr - last > out){ 
 					clearInterval(inter);
-					// console.log("for long time");
+					console.log("for long time");
 					layer.open({
 						type:2,
 						title:'',
