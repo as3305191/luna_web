@@ -60,7 +60,7 @@
 <script src="<?= base_url('js/plugin/msie-fix/jquery.mb.browser.min.js') ?>"></script>
 
 <!-- FastClick: For mobile devices: you can disable this in app.js -->
-<script src="<?= base_url('js/plugin/fastclick/fastclick.min.js') ?>"></script>
+<!-- <script src="<?= base_url('js/plugin/fastclick/fastclick.min.js') ?>"></script> -->
 
 <!-- Bootstrap Validator -->
 <script src="<?= base_url('js/plugin/bootstrapvalidator/bootstrapValidator.min.js') ?>"></script>
