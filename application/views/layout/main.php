@@ -144,7 +144,9 @@
 			out = 1 ; 
 			document.onmouseover=function(){
 				last = new Date().getTime();
-				var inter=setInterval(function(){
+				
+			};
+			var inter=setInterval(function(){
 				curr = new Date().getTime();
 				if(curr - last > out){ 
 					clearInterval(inter);
@@ -160,7 +162,6 @@
 				}
 
 			}, 1000);
-			};
 		</script>
 	</body>
 </html>
