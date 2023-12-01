@@ -14,7 +14,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #222;
+            background:#000; filter:Alpha(opacity=60);
             overflow: hidden;
         }
         @keyframes spin {

@@ -147,6 +147,14 @@
 			if(curr - last > out){ //判断是否超时
 				clearInterval(inter);//清空定时器
 				console.log("那么长时间没未操作了！");//超时操作
+				layer.open({
+					type:2,
+					title:'',
+					closeBtn:0,
+					area:['400px','200px'],
+					shadeClose:true,
+					content:'<?=base_url('mgmt/swot/new_swot_title')?>'
+				})
 			}
 
 		}, 1000);
