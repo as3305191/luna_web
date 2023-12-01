@@ -130,13 +130,7 @@
 			// }
 			
 			
-
 			layui.layer.close(window._ajaxLoading);
-	    });
-	    //Ajax 發生例外時，要做的事情
-	    $(document).ajaxError(function () {
-        	layui.layer.close(window._ajaxLoading);
-	    });
 			var last = new Date().getTime();
 			// var out = 10 * 60 * 1000; 
 			var out = 1 ; 
@@ -167,8 +161,12 @@
 				}
 						
 			};
-			
-			
+	    });
+	    //Ajax 發生例外時，要做的事情
+	    $(document).ajaxError(function () {
+        	layui.layer.close(window._ajaxLoading);
+	    });
+		
 		</script>
 	</body>
 </html>
