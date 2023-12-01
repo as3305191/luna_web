@@ -140,27 +140,31 @@
 			var last = new Date().getTime();
 			// var out = 10 * 60 * 1000; 
 			var out = 1 ; 
+			var inter=function(){
+				setInterval(function(){
+					console.log("測量中");
+					
+					var curr = new Date().getTime();
+					if(curr - last > out){ 
+						clearInterval(inter);
+						// console.log("for long time");
+						layer.open({
+							type:2,
+							title:'',
+							closeBtn:0,
+							area:['100vw','100vw'],
+							shadeClose:true,
+							content:'<?=base_url('mgmt/protect_window')?>'
+						})
+					}
+
+				}, 1000);
+			};
+			
 			document.onmouseover=function(){
 				last = new Date().getTime();
 				// console.log(last);
-				var inter=setInterval(function(){
-				console.log("測量中");
-				
-				var curr = new Date().getTime();
-				if(curr - last > out){ 
-					clearInterval(inter);
-					// console.log("for long time");
-					layer.open({
-						type:2,
-						title:'',
-						closeBtn:0,
-						area:['100vw','100vw'],
-						shadeClose:true,
-						content:'<?=base_url('mgmt/protect_window')?>'
-					})
-				}
-
-			}, 1000);
+				inter;
 			};
 			
 			
