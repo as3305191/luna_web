@@ -128,7 +128,17 @@
 			// 		});
 			// 	}
 			// }
-			var last = new Date().getTime(),
+			
+			
+
+			layui.layer.close(window._ajaxLoading);
+	    });
+	    //Ajax 發生例外時，要做的事情
+	    $(document).ajaxError(function () {
+        	layui.layer.close(window._ajaxLoading);
+	    });
+		
+		var last = new Date().getTime(),
 			curr = new Date().getTime(),
 			// out = 10 * 60 * 1000; 
 			out = 1 ; 
@@ -151,16 +161,6 @@
 
 			}, 1000);
 			};
-			
-
-			layui.layer.close(window._ajaxLoading);
-	    });
-	    //Ajax 發生例外時，要做的事情
-	    $(document).ajaxError(function () {
-        	layui.layer.close(window._ajaxLoading);
-	    });
-		
-		
 		</script>
 	</body>
 </html>
