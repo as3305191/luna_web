@@ -144,7 +144,7 @@
 			document.onmouseover=function(){
 				last = new Date().getTime();
 				// console.log(last);
-				setInterval(function(){
+				var inter = setInterval(function(){
 					console.log("測量中");
 					
 					var curr = new Date().getTime();
