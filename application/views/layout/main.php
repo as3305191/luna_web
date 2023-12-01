@@ -138,34 +138,33 @@
         	layui.layer.close(window._ajaxLoading);
 	    });
 		var last = new Date().getTime();
-			// var out = 10 * 60 * 1000; 
-			var out = 1000 ; 
-			var is_protect=0;
+			var out = 10 * 60 * 1000; 
+			// var out = 1000 ; 
+			// var is_protect=0;
 			document.onmouseover=function(){
-				if(is_protect<1){
 					last = new Date().getTime();
-					var inter = setInterval(function(){
-						// console.log("測量中");
-						
-						var curr = new Date().getTime();
-						if(curr - last > out){ 
-							is_protect=1;
-							clearInterval(inter);
-							// console.log("for long time");
-							layer.open({
-								type:2,
-								title:'',
-								closeBtn:0,
-								area:['100vw','100vw'],
-								shadeClose:true,
-								content:'<?=base_url('mgmt/protect_window')?>'
-							})
-						}
-
-					}, 1000);
-				}
+					
 						
 			};
+			var inter = setInterval(function(){
+						// console.log("測量中");
+						
+				var curr = new Date().getTime();
+				if(curr - last > out){ 
+					// is_protect=1;
+					clearInterval(inter);
+					// console.log("for long time");
+					layer.open({
+						type:2,
+						title:'',
+						closeBtn:0,
+						area:['100vw','100vw'],
+						shadeClose:true,
+						content:'<?=base_url('mgmt/protect_window')?>'
+					})
+				}
+
+			}, 1000);
 		</script>
 	</body>
 </html>
