@@ -129,7 +129,6 @@
 			// 	}
 			// }
 			
-			inter;
 			layui.layer.close(window._ajaxLoading);
 			
 	    });
