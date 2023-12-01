@@ -137,14 +137,14 @@
 	    $(document).ajaxError(function () {
         	layui.layer.close(window._ajaxLoading);
 	    });
-		
+			// var out = 10 * 60 * 1000; 
+			var out = 1 ; 
 			document.onmouseover=function(){
 				var last = new Date().getTime();
 			};
 			
 			var inter=setInterval(function(){
-				// var out = 10 * 60 * 1000; 
-				var out = 1 ; 
+				
 				
 				var curr = new Date().getTime();
 				if(curr - last > out){ 
