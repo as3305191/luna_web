@@ -80,13 +80,13 @@
 					last = new Date().getTime();		
 			};
 			var inter =function(){
-				setInterval(function(){
+				var inter_num =setInterval(function(){
 							// console.log("測量中");
 							
 					var curr = new Date().getTime();
 					if(curr - last > out){ 
 						// is_protect=1;
-						clearInterval(inter);
+						clearInterval(inter_num);
 						// console.log("for long time");
 						layer.open({
 							type:2,
