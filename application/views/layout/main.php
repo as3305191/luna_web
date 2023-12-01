@@ -138,7 +138,7 @@
 	    });
 		var last = new Date().getTime();
 			// var out = 10 * 60 * 1000; 
-			var out = 1000 ; 
+			var out = 5000 ; 
 			var is_protect=0;
 			document.onmouseover=function(){
 					last = new Date().getTime();	
