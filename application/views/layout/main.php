@@ -136,7 +136,20 @@
 	    $(document).ajaxError(function () {
         	layui.layer.close(window._ajaxLoading);
 	    });
-		
+		var last = new Date().getTime(),
+		curr = new Date().getTime(),
+		out = 1 * 60 * 1000; //设置超时时间： 1分
+		document.onmouseover=function(){//监听鼠标移动事件
+			last = new Date().getTime(); //更新操作时间
+		};
+		var inter=setInterval(function(){/*定时器  间隔1秒检测是否长时间未操作页面 */
+			curr = new Date().getTime(); //更新当前时间
+			if(curr - last > out){ //判断是否超时
+				clearInterval(inter);//清空定时器
+				console.log("那么长时间没未操作了！");//超时操作
+			}
+
+		}, 1000);
 		</script>
 	</body>
 </html>
