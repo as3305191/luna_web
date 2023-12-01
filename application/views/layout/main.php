@@ -142,10 +142,8 @@
 			var out = 1 ; 
 			document.onmouseover=function(){
 				last = new Date().getTime();
-				console.log(last);
-			};
-			
-			var inter=setInterval(function(){
+				// console.log(last);
+				var inter=setInterval(function(){
 				console.log("測量中");
 				
 				var curr = new Date().getTime();
@@ -163,6 +161,9 @@
 				}
 
 			}, 1000);
+			};
+			
+			
 		</script>
 	</body>
 </html>
