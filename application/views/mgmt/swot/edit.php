@@ -354,7 +354,7 @@
 
 </div>
 <!-- end widget -->
-<script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
+
 <script src="<?= base_url('js/plugin/ckeditor/adapters/jquery.js') ?>"></script>
 <script>
 	$(function() {

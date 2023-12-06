@@ -146,6 +146,7 @@ thead tr th {
 </div>
 
 <?php $this -> load -> view('general/delete_modal'); ?>
+<script src="<?= base_url('js/plugin/ckeditor/ckeditor.js') ?>"></script>
 <script type="text/javascript">
 	var baseUrl = '<?=base_url('')?>';
 
