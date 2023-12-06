@@ -152,9 +152,10 @@
 		  e.preventDefault()
 		  $(this).tab('show');
 		  if($(this).attr('href') == '#s3') {
-		  		setTimeout(function(){
-		  			CKEDITOR.instances.desc.execCommand('autogrow');
-		  		}, 500);
+		  		// setTimeout(function(){
+				// 	CKEDITOR.instances.desc.execCommand('autogrow');
+		  		// }, 500);
+				  CKEDITOR.instances.desc.execCommand('autogrow');
 		  }
 	})
 
