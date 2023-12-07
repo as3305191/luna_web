@@ -243,7 +243,7 @@ class Sock{
         $msg = ''; 
         $l = strlen($data); 
         for ($i= 0; $i<$l; $i++) { 
-            $msg .= dechex(ord($data{$i})); 
+            $msg .= dechex(ord($data[$i])); 
         } 
         return $msg; 
     }
