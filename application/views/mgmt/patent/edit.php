@@ -566,7 +566,7 @@ if($('#item_id').val()>0){
 	}
 
 	if($('#files_id').val().length>0){
-		pdf_array.push($('#files_id').val());
+		pdf_array.push($('#files_id').val().split(','));
 		console.log(pdf_array);
 		// pdf_array.splice($.inArray(0,pdf_array),1);
 	}
