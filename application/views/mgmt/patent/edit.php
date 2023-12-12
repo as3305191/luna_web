@@ -563,7 +563,7 @@ if($('#item_id').val()>0){
 	if($('#img_id').val().length>0){
 		// img.push($('#img_id').val());
 	
-		img.push($('#img_id').val().split(','));
+		img=$('#img_id').val().split(',');
 
 		// pdf_array.splice($.inArray(0,pdf_array),1);
 	}
@@ -576,7 +576,7 @@ if($('#item_id').val()>0){
 
 	if($('#public_num_file').val().length>0){
 		// public_num_input.push($('#public_num_file').val());
-		public_num_input.push($('#public_num_file').val().split(','));
+		public_num_input=$('#public_num_file').val().split(',');
 
 		// public_num_input.splice($.inArray(0,public_num_input),1);
 		
@@ -584,7 +584,7 @@ if($('#item_id').val()>0){
 	
 	if($('#patnet_num_file').val().length>0){
 		// patnet_num_input.push($('#patnet_num_file').val());
-		patnet_num_input.push($('#patnet_num_file').val().split(','));
+		patnet_num_input=$('#patnet_num_file').val().split(',');
 
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 	}
@@ -725,11 +725,9 @@ $("#img-input").fileinput({
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#file-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
-		console.log('data:'+data);
 		console.log('before:'+pdf_array);
-		console.log(pdf_array[0].indexOf(data));
 		
-		pdf_array[0].splice(pdf_array[0].indexOf(data),1);
+		pdf_array.splice(pdf_array.indexOf(data),1);
 		console.log('after:'+pdf_array);
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
