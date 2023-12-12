@@ -561,33 +561,44 @@ if($('#item_id').val()>0){
 	same_family_id =$('#same_family_id').val();
 	// console.log(same_family_id);
 	if($('#img_id').val().length>0){
-		img.push($('#img_id').val());
+		// img.push($('#img_id').val());
+	
+		img.push($('#img_id').val().split(','));
+
 		// pdf_array.splice($.inArray(0,pdf_array),1);
 	}
 
 	if($('#files_id').val().length>0){
 		pdf_array.push($('#files_id').val().split(','));
-		console.log(pdf_array);
+		// console.log(pdf_array);
 		// pdf_array.splice($.inArray(0,pdf_array),1);
 	}
 
 	if($('#public_num_file').val().length>0){
-		public_num_input.push($('#public_num_file').val());
+		// public_num_input.push($('#public_num_file').val());
+		public_num_input.push($('#public_num_file').val().split(','));
+
 		// public_num_input.splice($.inArray(0,public_num_input),1);
 		
 	}
 	
 	if($('#patnet_num_file').val().length>0){
-		patnet_num_input.push($('#patnet_num_file').val());
+		// patnet_num_input.push($('#patnet_num_file').val());
+		patnet_num_input.push($('#patnet_num_file').val().split(','));
+
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 	}
 
 	if($('#now_patent_status').val().length>0){
-		now_patent_status.push($('#now_patent_status').val());
+		// now_patent_status.push($('#now_patent_status').val());
+		now_patent_status.push($('#now_patent_status').val().split(','));
+
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 	}
 	if(typeof $('#key_array').val() !=='undefined'){
-		patent_key_array.push($('#key_array').val());
+		// patent_key_array.push($('#key_array').val());
+		patent_key_array.push($('#key_array').val().split(','));
+
 	}
 	
 } else{
