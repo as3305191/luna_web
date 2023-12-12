@@ -144,13 +144,13 @@ class Import extends MY_Base_Controller {
 	}
 
 	function import1(){
-		$object = PHPExcel_IOFactory::load("員工資料.xlsx");
+		$object = PHPExcel_IOFactory::load("員工資料1.xlsx");
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
 			for($row=1; $row<=$highestRow; $row++){
-				$user_name = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-				$area_num = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+				$user_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+				$area_num = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
 				// $password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
 				// $user_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
 				// $depname = $worksheet->getCellByColumnAndRow(8, $row)->getValue();
