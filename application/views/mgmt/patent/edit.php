@@ -666,7 +666,9 @@ $("#img-input").fileinput({
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#img-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
-		img.splice($.inArray(data,img),1);
+		img.splice(img.indexOf(data),1);
+
+		// img.splice($.inArray(data,img),1);
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
@@ -725,10 +727,8 @@ $("#img-input").fileinput({
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#file-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
-		console.log('before:'+pdf_array);
 		
 		pdf_array.splice(pdf_array.indexOf(data),1);
-		console.log('after:'+pdf_array);
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	});
@@ -786,7 +786,9 @@ $("#img-input").fileinput({
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#public-num-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
-		public_num_input.splice($.inArray(data,public_num_input),1);
+		public_num_input.splice(public_num_input.indexOf(data),1);
+
+		// public_num_input.splice($.inArray(data,public_num_input),1);
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	}).on('filedeleted', function(event,data,key) {
@@ -845,7 +847,8 @@ $("#img-input").fileinput({
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#patnet-num-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
-		patnet_num_input.splice($.inArray(data,patnet_num_input),1);
+		// patnet_num_input.splice($.inArray(data,patnet_num_input),1);
+		patnet_num_input.splice(patnet_num_input.indexOf(data),1);
 
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
