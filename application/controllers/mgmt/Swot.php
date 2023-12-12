@@ -534,8 +534,9 @@ class Swot extends MY_Mgmt_Controller {
 			if (strpos($strbetween_p_p, ".") !== false) {
 				if($check){
 					$the_num_in_p_p = $this->get_between($strbetween_p_p, '">', '.');
-					$new_str.=str_replace('&nbsp;','',str_replace('>'.$the_num_in_p_p.'.',$before_num_text.'">'.$j.'.',trim($strbetween_p_p)));
-					// $new_str=$before_num_text;
+					// the_num_in_p_p
+					// $new_str.=str_replace('&nbsp;','',str_replace('>'.$the_num_in_p_p.'.',$before_num_text.'">'.$j.'.',trim($strbetween_p_p)));
+					$new_str=$before_num_text;
 				}else{
 					$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '.');
 					$new_str.=str_replace('&nbsp;','',str_replace('<p>'.$the_num_in_p_p.'.','<p>'.$j.'.',trim($strbetween_p_p)));
@@ -558,6 +559,11 @@ class Swot extends MY_Mgmt_Controller {
 		$n_text= $this->get_between($text, '<p>', '.');
 		$res_num = strrpos($n_text, ';">', 0);
 		$before_text = substr($n_text, 0, $res_num);
+		return $before_text;
+	}
+	function get_before_word($text,$start) {
+		$res_num = strrpos($text, $start, 0);
+		$before_text = substr($text, 0, $res_num);
 		return $before_text;
 	}
 }
