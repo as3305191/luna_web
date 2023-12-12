@@ -282,7 +282,6 @@
 					</div>
 				</div>
 			</fieldset>
-
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">公告日</label>
