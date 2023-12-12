@@ -567,7 +567,7 @@ class Swot extends MY_Mgmt_Controller {
 		$before_num_text = '<p>'.substr($n_text, 0, $res_num).';">';
 		$p_text = str_replace('',$before_num_text,$n_text);//到數字
 		$pount_position = strrpos($p_text, '>', 0);
-		$num = substr($p_text, $pount_position);
+		$num = substr($p_text, $pount_position+1);
 		return $num;
 	}
 }
