@@ -529,14 +529,14 @@ class Swot extends MY_Mgmt_Controller {
 		for($i=0;$i<=$total_num;$i++){
 			$strbetween_p_p = $total_array[$i];
 			$check = strstr($strbetween_p_p,'<p><span style');
-			$before_num_text = $this->get_after_word($strbetween_p_p);
 			$j=$i+1;
 			if (strpos($strbetween_p_p, ".") !== false) {
 				if($check){
 					$the_num_in_p_p = $this->get_between($strbetween_p_p, '">', '.');
-					// the_num_in_p_p
-					// $new_str.=str_replace('&nbsp;','',str_replace('>'.$the_num_in_p_p.'.',$before_num_text.'">'.$j.'.',trim($strbetween_p_p)));
-					$new_str=$before_num_text;
+					$before_num_text = $this->get_after_word($strbetween_p_p);
+
+					$new_str.=str_replace('&nbsp;','',str_replace($before_num_text.$the_num_in_p_p.'.',$before_num_text.$j.'.',trim($strbetween_p_p)));
+					// $new_str=$before_num_text;
 				}else{
 					$the_num_in_p_p = $this->get_between($strbetween_p_p, '<p>', '.');
 					$new_str.=str_replace('&nbsp;','',str_replace('<p>'.$the_num_in_p_p.'.','<p>'.$j.'.',trim($strbetween_p_p)));
@@ -559,11 +559,6 @@ class Swot extends MY_Mgmt_Controller {
 		$n_text= $this->get_between($text, '<p>', '.');
 		$res_num = strrpos($n_text, ';">', 0);
 		$before_text = substr($n_text, 0, $res_num);
-		return $before_text;
-	}
-	function get_before_word($text,$start) {
-		$res_num = strrpos($text, $start, 0);
-		$before_text = substr($text, 0, $res_num);
-		return $before_text;
+		return '<p>'.$before_text.';">';
 	}
 }
