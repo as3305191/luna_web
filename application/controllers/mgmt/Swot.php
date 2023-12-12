@@ -555,8 +555,9 @@ class Swot extends MY_Mgmt_Controller {
 		return $substr;
 	}
 	function get_after_word($text) {
-		$res_num = strrpos($text, ';">', 0);
-		$before_text = substr($text, 0, $res_num);
+		$n_text= $this->get_between($text, '<', '.');
+		$res_num = strrpos($n_text, ';">', 0);
+		$before_text = substr($n_text, 0, $res_num);
 		return $before_text;
 	}
 }
