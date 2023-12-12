@@ -715,6 +715,8 @@ $("#img-input").fileinput({
 	}).on('filedeleted', function(event,data,key) {
 		console.log('data:'+data);
 		console.log('before:'+pdf_array);
+		console.log(pdf_array.indexOf(data));
+		
 		pdf_array.splice(pdf_array.indexOf(data),1);
 		console.log('after:'+pdf_array);
 	}).on('fileuploaderror', function(event, data, previewId, index) {
