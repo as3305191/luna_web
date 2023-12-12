@@ -564,7 +564,10 @@ class Swot extends MY_Mgmt_Controller {
 	function text_find_num($text) {
 		$n_text= $this->get_between($text, '<p>', '.');
 		$res_num = strrpos($n_text, ';">', 0);
-		$num = substr($text, $res_num);
+		$before_num_text = '<p>'.substr($n_text, 0, $res_num).';">';
+		$p_text = str_replace('',$before_num_text,$n_text);//數字之後
+		$pount_position = strrpos($p_text, '.', 0);
+		$num = substr($text, 0, $pount_position);
 		return $num;
 	}
 }
