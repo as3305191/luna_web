@@ -590,8 +590,8 @@ if($('#item_id').val()>0){
 	}
 
 	if($('#now_patent_status').val().length>0){
-		// now_patent_status.push($('#now_patent_status').val());
-		now_patent_status.push($('#now_patent_status').val().split(','));
+		now_patent_status.push($('#now_patent_status').val());
+		// now_patent_status.push($('#now_patent_status').val().split(','));
 
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 	}
