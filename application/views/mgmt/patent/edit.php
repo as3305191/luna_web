@@ -596,8 +596,8 @@ if($('#item_id').val()>0){
 		// patnet_num_input.splice($.inArray(0,patnet_num_input),1);
 	}
 	if(typeof $('#key_array').val() !=='undefined'){
-		// patent_key_array.push($('#key_array').val());
-		patent_key_array.push($('#key_array').val().split(','));
+		patent_key_array.push($('#key_array').val());
+		// patent_key_array.push($('#key_array').val().split(','));
 
 	}
 	
