@@ -713,8 +713,9 @@ $("#img-input").fileinput({
 	}).on('fileselect', function(event, numFiles, label) {
     	$("#file-input").fileinput('upload');
 	}).on('filedeleted', function(event,data,key) {
-		console.log('event:'+event+'data:'+data+'key:'+key);
+		console.log('b:'+pdf_array);
 		pdf_array.splice($.inArray(data,pdf_array),1);
+		console.log(pdf_array);
 	}).on('fileuploaderror', function(event, data, previewId, index) {
 		alert('upload error');
 	});
