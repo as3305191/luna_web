@@ -139,8 +139,15 @@ class Menu_order extends MY_Mgmt_Controller {
 		}
 		if(!empty($menu_id)) {
 			// insert
-			$last_id = $this -> dao -> insert($data);
-			$res['success'] = TRUE;
+			
+			$menu_list = $this -> menu_dao -> find_by_id($menu_id);
+			if($menu_list->status=='1'&&$menu_list->is_stop=='0'){
+				$last_id = $this -> dao -> insert($data);
+				$res['success'] = TRUE;
+			} else{
+				$res['too_late'] = TRUE;
+			}
+			
 		}
 		
  		$this -> to_json($res);
