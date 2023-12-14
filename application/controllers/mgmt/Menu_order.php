@@ -31,8 +31,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		);
 		
 		// 将时间戳转换为星期几的英文表示
-		
-		if(count($list)>1){
+	
 			foreach($list as $each){
 				if(mb_strlen($each->open_date)>0){
 					$weekday_en = date('l', $each->open_date);
@@ -44,17 +43,6 @@ class Menu_order extends MY_Mgmt_Controller {
 				}
 				
 			}
-		} else{
-			if(mb_strlen($list->open_date)>0){
-				$weekday_en = date('l', $list->open_date);
-				$weekday_cn = $weekdays[$weekday_en];
-				$list->date_day= $weekday_cn;
-				$list->timestamp = date('m.d',strtotime($list->open_date)).' ('.$weekday_cn.')';
-			} else{
-				$list->timestamp= '';
-			}
-		}
-		
 		$data['menu_list'] = $list;
 		$data['open_menu_count'] = count($list);
 		// $this -> to_json($data);
