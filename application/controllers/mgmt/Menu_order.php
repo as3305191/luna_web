@@ -38,6 +38,8 @@ class Menu_order extends MY_Mgmt_Controller {
 					$weekday_cn = $weekdays[$weekday_en];
 					$each->date_day= $weekday_cn;
 					$each->timestamp = date('m.d',strtotime($each->open_date)).' ('.$weekday_cn.')';
+					$each->timestamp = $each->open_date.' ('.$weekday_cn.')';
+
 				} else{
 					$each->timestamp= '';
 				}
