@@ -161,8 +161,9 @@ thead tr th {
 
 			var html =data;
 			if(row.open_date!=='0000-00-00'){
-				var month = '' + (row.open_date.getMonth() + 1);
-				var day = '' + row.open_date.getDate();
+				var d = new Date(row.open_date);
+				var month = '' + (d.getMonth() + 1);
+				var day = '' + d.getDate();
 				return month+day+' '+html;
 			} else{
 				return html;
