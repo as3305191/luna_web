@@ -166,7 +166,7 @@ thead tr th {
 				var month = '' + (d.getMonth() + 1);
 				var day = '' + d.getDate();
 				var weekday = d.getDay();
-				return month+'.'+day+'('+weekarrary[weekday]+')'+' '+html;
+				return month+'.'+day+' ('+weekarrary[weekday]+')'+' '+html;
 			} else{
 				return html;
 			}
