@@ -164,7 +164,8 @@ thead tr th {
 				var d = new Date(row.open_date);
 				var month = '' + (d.getMonth() + 1);
 				var day = '' + d.getDate();
-				return month+'.'+day+' '+html;
+				var weekday = d.getDay();
+				return month+'.'+day+'('+weekday+')'+' '+html;
 			} else{
 				return html;
 			}
