@@ -36,9 +36,9 @@ class Menu_order extends MY_Mgmt_Controller {
 			if(mb_strlen($each->open_date)>0){
 				$weekday_en = date('l', $each->open_date);
 				$weekday_cn = $weekdays[$weekday_en];
-				$each['date_day'] = $weekday_cn;
+				$each->date_day= $weekday_cn;
 			} else{
-				$each['date_day'] = '';
+				$each->date_day= '';
 			}
 			
 		}
