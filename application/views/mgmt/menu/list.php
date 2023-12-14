@@ -158,8 +158,14 @@ thead tr th {
 	},{
 		data : 'menu_name',
 		render:function ( data, type, row ) {
+
 			var html =data;
-			return row.open_date+''+html;
+			if(row.open_date!=='0000-00-00'){
+				return row.open_date+''+html;
+			} else{
+				return html;
+			}
+			
 		}
 	}];
 
