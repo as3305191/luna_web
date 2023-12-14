@@ -20,24 +20,15 @@ class Menu_order extends MY_Mgmt_Controller {
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$list = $this -> menu_dao -> find_all_open();
 	
-		$weekdays = array(
-			'Monday' => '一',
-			'Tuesday' => '二',
-			'Wednesday' => '三',
-			'Thursday' => '四',
-			'Friday' => '五',
-			'Saturday' => '六',
-			'Sunday' => '日'
-		);
+		$weekarray=array("日","一","二","三","四","五","六");
 		
 		// 将时间戳转换为星期几的英文表示
 	
 			foreach($list as $each){
 				if(mb_strlen($each->open_date)>0){
-					$weekday_en = date('l', ((int)$each->open_date));
-					$weekday_cn = $weekdays[$weekday_en];
+					$weekday = $weekarray[date("w",strtotime($each->open_date))];
 					$each->date_day= $weekday_cn;
-					$each->timestamp = date('m.d',((int)$each->open_date)).' ('.$weekday_cn.')';
+					$each->timestamp = date('m.d',((int)$each->open_date)).' ('.$weekday.')';
 					// $each->timestamp = $each->open_date.' ('.$weekday_cn.')';
 
 				} else{
