@@ -164,7 +164,7 @@ thead tr th {
 				var d = new Date(row.open_date);
 				var month = '' + (d.getMonth() + 1);
 				var day = '' + d.getDate();
-				return month+day+' '+html;
+				return month+'.'+day+' '+html;
 			} else{
 				return html;
 			}
