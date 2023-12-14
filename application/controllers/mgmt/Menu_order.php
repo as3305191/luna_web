@@ -27,7 +27,7 @@ class Menu_order extends MY_Mgmt_Controller {
 			foreach($list as $each){
 				if($each->open_date!=='0000-00-00'){
 					$weekday = $weekarray[date("w",strtotime($each->open_date))];
-					$each->timestamp = date('m.d',((int)$each->open_date)).' ('.$weekday.')';
+					$each->timestamp = date_format($each->open_date,'m.d').' ('.$weekday.')';
 					// $each->timestamp = $each->open_date.' ('.$weekday_cn.')';
 
 				} else{
