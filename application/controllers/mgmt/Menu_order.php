@@ -34,11 +34,11 @@ class Menu_order extends MY_Mgmt_Controller {
 	
 			foreach($list as $each){
 				if(mb_strlen($each->open_date)>0){
-					$weekday_en = date('l', strtotime($each->open_date));
+					$weekday_en = date('l', ((int)$each->open_date));
 					$weekday_cn = $weekdays[$weekday_en];
 					$each->date_day= $weekday_cn;
-					$each->timestamp = date('m.d',strtotime($each->open_date)).' ('.$weekday_cn.')';
-					$each->timestamp = $each->open_date.' ('.$weekday_cn.')';
+					$each->timestamp = date('m.d',((int)$each->open_date)).' ('.$weekday_cn.')';
+					// $each->timestamp = $each->open_date.' ('.$weekday_cn.')';
 
 				} else{
 					$each->timestamp= '';
