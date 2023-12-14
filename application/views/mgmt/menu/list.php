@@ -161,11 +161,12 @@ thead tr th {
 
 			var html =data;
 			if(row.open_date!=='0000-00-00'){
+				var weekarrary=["日","一","二","三","四","五","六"];
 				var d = new Date(row.open_date);
 				var month = '' + (d.getMonth() + 1);
 				var day = '' + d.getDate();
 				var weekday = d.getDay();
-				return month+'.'+day+'('+weekday+')'+' '+html;
+				return month+'.'+day+'('+weekarrary[weekday]+')'+' '+html;
 			} else{
 				return html;
 			}
