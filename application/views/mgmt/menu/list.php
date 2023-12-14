@@ -159,7 +159,7 @@ thead tr th {
 		data : 'menu_name',
 		render:function ( data, type, row ) {
 			var html =data;
-			return html;
+			return row.open_date+''+html;
 		}
 	}];
 

@@ -85,6 +85,16 @@
 					</div>
 				</div>
 			</fieldset>
+
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">開放日期</label>
+					<div class="col-md-6">
+						<input class="form-control input-xs min100 dt_picker"  id="open_date" type="text"  value="<?= isset($item) ? $item -> open_date : 0 ?>" />
+					</div>
+				</div>
+			</fieldset>
+
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">備註</label>
@@ -104,6 +114,9 @@
 					</div>
 				</div>
 			</fieldset>
+
+
+		
 		</div>
 		
 		</form>
@@ -127,6 +140,13 @@
 	} else{
 		img=[];
 	}
+
+	$(".dt_picker").datetimepicker({
+		format : 'YYYY.MM.DD'
+	}).on('dp.change',function(event){
+
+	});
+
 $("#img-input").fileinput({
 					language: "zh-TW",
 			
@@ -205,6 +225,7 @@ $("#img-input").fileinput({
 			menu_style_id:$('#menu_style_id').val(),
 			menu_name: $('#menu_name').val(),
 			img: img.join(","),
+			open_date: $('#open_date').val(),
 			note: $('#note').val(),
 		},
 		success : function(data) {

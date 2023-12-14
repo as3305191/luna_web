@@ -19,6 +19,29 @@ class Menu_order extends MY_Mgmt_Controller {
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$list = $this -> menu_dao -> find_all_open();
+	
+		$weekdays = array(
+			'Monday' => '一',
+			'Tuesday' => '二',
+			'Wednesday' => '三',
+			'Thursday' => '四',
+			'Friday' => '五',
+			'Saturday' => '六',
+			'Sunday' => '日'
+		);
+		
+		// 将时间戳转换为星期几的英文表示
+		
+		foreach($list as $each){
+			if(mb_strlen($each->open_date)>0){
+				$weekday_en = date('l', $each->open_date);
+				$weekday_cn = $weekdays[$weekday_en];
+				$each['date_day'] = $weekday_cn;
+			} else{
+				$each['date_day'] = '';
+			}
+			
+		}
 		$data['menu_list'] = $list;
 		$data['open_menu_count'] = count($list);
 		// $this -> to_json($data);
