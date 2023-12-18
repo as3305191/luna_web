@@ -132,6 +132,21 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$res = array();
 		$id = $this -> get_post('id');
 		$list = $this -> menu_dao -> find_all_open_and_stop();
+		$weekarray=array("日","一","二","三","四","五","六");
+		
+		// 将时间戳转换为星期几的英文表示
+	
+			foreach($list as $each){
+				if($each->open_date!=='0000-00-00'){
+					$weekday = $weekarray[date("w",strtotime($each->open_date))];
+					$each->timestamp = date('m.d',strtotime($each->open_date)).' ('.$weekday.')';
+					// $each->timestamp = $each->open_date.' ('.$weekday_cn.')';
+
+				} else{
+					$each->timestamp= '';
+				}
+				
+			}
 		$res['list'] = $list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);

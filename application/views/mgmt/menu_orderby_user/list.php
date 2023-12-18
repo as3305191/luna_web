@@ -195,7 +195,7 @@ $('#add_img_style').click(function() {
 						$.each(d.list, function(){
 							$('<option/>', {
 								'value': this.id,
-								'text': this.menu_name
+								'text': this.timestamp+' '+this.menu_name
 							}).appendTo($menu_name);
 						});
 						if(d.list[0].menu_style_id==4){
