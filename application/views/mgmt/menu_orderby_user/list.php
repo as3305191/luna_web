@@ -106,7 +106,7 @@ thead tr th {
 		data : 'menu_name',
 		render:function ( data, type, row ) {
 
-			return row.timestamp+' '+data
+			return data+' '+row.timestamp;
 
 		}
 	},{
