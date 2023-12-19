@@ -51,7 +51,7 @@ thead tr th {
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min25">開放日期</th>
+											<th class="min25"></th>
 											<th class="min100">店名</th>
 											<th class="min100">名字</th>
 											<th class="min100">品項</th>
@@ -102,10 +102,13 @@ thead tr th {
 <script type="text/javascript">
 	// var baseUrl = '<?=base_url('')?>';
 
-	var mCols = [{
-		data : 'timestamp'
-	},{
-		data : 'menu_name'
+	var mCols = [null,{
+		data : 'menu_name',
+		render:function ( data, type, row ) {
+
+			return row.timestamp+' '+data
+
+		}
 	},{
 		data : 'user_name'
 	},{
