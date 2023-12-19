@@ -37,6 +37,21 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$data['menu_id'] = $menu_id;
 		$s_data = $this -> setup_user_data(array());
 		$items = $this -> menu_order_dao -> find_all_order_list($data);
+		$weekarray=array("日","一","二","三","四","五","六");
+		
+		// 将时间戳转换为星期几的英文表示
+	
+			foreach($items as $each){
+				if($each->open_date!=='0000-00-00'){
+					$weekday = $weekarray[date("w",strtotime($each->open_date))];
+					$each->timestamp = date('m.d',strtotime($each->open_date)).' ('.$weekday.')';
+					// $each->timestamp = $each->open_date.' ('.$weekday_cn.')';
+
+				} else{
+					$each->timestamp= '';
+				}
+				
+			}
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> menu_order_dao -> find_all_order_list($data,true);
 		$res['recordsTotal'] = $this -> menu_order_dao -> find_all_order_list($data,true);
