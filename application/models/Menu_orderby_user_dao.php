@@ -57,7 +57,7 @@ class Menu_orderby_user_dao extends MY_Model {
 		// join
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> join("menu_style ms", "ms.id = _m.menu_style_id", "left");
-		$this -> db -> join("menu m", "m.id = _m.menu_id", "left");
+		// $this -> db -> join("menu m", "immg.id = _m.img_id", "left");
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 
