@@ -30,7 +30,7 @@ var patentAppClass = (function(app) {
 			},
 			iDisplayLength : 50,
 			columns : mCols,
-			order : [[9, "desc"]],
+			order : [[10, "desc"]],
 			columnDefs : mColDefs
 		}));
 
