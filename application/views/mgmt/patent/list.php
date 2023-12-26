@@ -411,7 +411,7 @@ thead tr th {
 		data : 'update_date'
 	}];
 
-	var mOrderIdx = 6;
+	var mOrderIdx = 7;
 	
 	if($('#l_user_id').val()=='9' || $('#l_user_id').val()=='69'|| $('#l_user_id').val()=='28'|| $('#l_user_id').val()=='11' ){
 		var defaultContent = '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>';
