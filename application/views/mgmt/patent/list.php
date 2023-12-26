@@ -143,6 +143,7 @@ thead tr th {
 											<th class="min100">專利號</th>
 											<th class="min100">公開號</th>
 											<th class="min100">申請日</th>
+											<th class="min100">公開日</th>
 											<th class="min100">公告日</th>
 											<th class="min100">更新日</th>
 										</tr>
@@ -403,8 +404,10 @@ thead tr th {
 	}, {
 		data : 'application_date'
 	}, {
-		data : 'announcement_date'
+		data : 'public_date'
 	}, {
+		data : 'announcement_date'
+	},{
 		data : 'update_date'
 	}];
 
