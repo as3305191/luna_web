@@ -216,7 +216,6 @@
 	img_album();
 
 	function menu_click(id,menu_style_id) {
-		if(id!==$('#menu_id').val()){
 			//   document.getElementById(id).show();
 			$('.menu_img').addClass('menu_img_unsuccess');
 			$('.menu_img_'+id).removeClass('menu_img_unsuccess');
@@ -240,7 +239,6 @@
 				$('.s_i').addClass('hide_s_i');
 
 			}   
-		}
 		 
 	}
 
