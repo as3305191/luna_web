@@ -216,29 +216,32 @@
 	img_album();
 
 	function menu_click(id,menu_style_id) {
-		//   document.getElementById(id).show();
-		$('.menu_img').addClass('menu_img_unsuccess');
-		$('.menu_img_'+id).removeClass('menu_img_unsuccess');
-		// $('.menu_btn').removeClass('btn_active');
-		$('.menu_btn').removeClass('btn_active btn-success ');
-		$('.menu_btn').addClass('btn_unsuccess');
-		$('.menu_'+id).removeClass('btn_unsuccess');
-		$('.menu_'+id).addClass('btn_active btn-success ');
-		// $('#menu_id').val(id);
-		document.querySelector('#menu_id').value = id;
-		img_album();
-		document.querySelector('#menu_name').value = id;
-		currentApp.tableReload();
-		currentApp_other.tableReload();
+		if(id!==$('#menu_id').val()){
+			//   document.getElementById(id).show();
+			$('.menu_img').addClass('menu_img_unsuccess');
+			$('.menu_img_'+id).removeClass('menu_img_unsuccess');
+			// $('.menu_btn').removeClass('btn_active');
+			$('.menu_btn').removeClass('btn_active btn-success ');
+			$('.menu_btn').addClass('btn_unsuccess');
+			$('.menu_'+id).removeClass('btn_unsuccess');
+			$('.menu_'+id).addClass('btn_active btn-success ');
+			// $('#menu_id').val(id);
+			document.querySelector('#menu_id').value = id;
+			img_album();
+			document.querySelector('#menu_name').value = id;
+			currentApp.tableReload();
+			currentApp_other.tableReload();
 
-		if((menu_style_id==4)){
+			if((menu_style_id==4)){
 
-			$('.s_i').removeClass('hide_s_i');
+				$('.s_i').removeClass('hide_s_i');
 
-		} else{
-			$('.s_i').addClass('hide_s_i');
+			} else{
+				$('.s_i').addClass('hide_s_i');
 
-		}    
+			}   
+		}
+		 
 	}
 
 	function add_order(){//按下+按鈕時新增畫面以及寫入資料庫
