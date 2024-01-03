@@ -61,8 +61,8 @@
     </div>
     <hr/>
 		<div >
-				<label class="col-md-3" style="font-weight:bold;font-size:large;">自己的:</label>
-				<table id="dt_list_menu" class="table table-striped table-bordered table-hover" width="100%">
+			
+				<table id="dt_list_question" class="table table-striped table-bordered table-hover" width="100%">
 
 					<thead>
 						<tr>

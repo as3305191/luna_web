@@ -5,8 +5,11 @@ class Question_title extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('Question_title_dao', 'dao');
-		// $this -> load -> model('Swot_style_dao', 'swot_style_dao');
+		$this -> load -> model('Question_dao', 'dao');
+		$this -> load -> model('Question_option_dao', 'question_option_dao');
+		$this -> load -> model('Question_record_by_user_dao', 'question_record_by_user_dao');
+		$this -> load -> model('Question_title_dao', 'question_title_dao');
+
 		// $this -> load -> model('Swot_dao', 'swot_dao');
 
 		// $this -> load-> library('word');
@@ -37,6 +40,29 @@ class Question_title extends MY_Mgmt_Controller {
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
+		$this -> to_json($res);
+	}
+
+	public function get_data_option() {
+		$res = array();
+		$data = array();
+		$u_data = array();
+		$u_data = $this -> setup_user_data($u_data);
+		$user_list = $this -> users_dao -> find_by_id($u_data['login_user_id']);
+		$data = $this -> get_posts(array(
+			'length',
+			'start',
+			'columns',
+			'search',
+			'order'
+		));
+		$menu_id = $this -> get_post('menu_id');
+		$data['menu_id'] = $menu_id;
+		$data['login_user_id'] = $user_list->id;
+		$items = $this -> dao -> find_all_order_list_other($data);
+		$res['items'] = $items;
+		$res['recordsFiltered'] = $this -> dao -> find_all_order_list_other($data,true);
+		$res['recordsTotal'] = $this -> dao -> find_all_order_list_other($data,true);
 		$this -> to_json($res);
 	}
 

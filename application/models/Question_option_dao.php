@@ -1,13 +1,13 @@
 <?php
-class Question_dao extends MY_Model {
+class Question_option_dao extends MY_Model {
 
 	function __construct() {
 		parent::__construct();
 
 		// initialize table name
-		parent::set_table_name('question');
+		parent::set_table_name('question_option');
 	}
-	
+
 	function query_ajax($data,$is_count = FALSE) {
 		$start = $data['start'];
 		$limit = $data['length'];
@@ -181,6 +181,5 @@ class Question_dao extends MY_Model {
 		}
 
 	}
-
 }
 ?>
