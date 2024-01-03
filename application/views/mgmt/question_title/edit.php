@@ -61,7 +61,14 @@
     </div>
     <hr/>
 		<div >
-			
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">問卷名稱</label>
+					<div class="col-md-6" >
+						<input type="text" required class="form-control" name="question_title_name"  id="question_title_name" value="<?= isset($item) ? $item -> question_title_name : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
 				<table id="dt_list_question" class="table table-striped table-bordered table-hover" width="100%">
 
 					<thead>

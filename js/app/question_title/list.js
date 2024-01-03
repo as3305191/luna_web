@@ -18,50 +18,12 @@ var QuestionTitleAppClass = (function(app) {
 			iDisplayLength : 10,
 
 			columns : [null,{
-				data : 'menu_name'
+				data : 'question_title_name'
 			},{
-				data : 'order_name'
+				data : 'use_question_id'
 			},{
-				// className :'s_i',
-				data : 'menu_style_id',
-				createdCell: function (td, cellData, rowData, row, col) {
-					if ( cellData == '4' ) {
-						$(td).removeClass('hide_s_i');
-					} else {
-						$(td).addClass('hide_s_i');
-					}
-					
-				},
-				render: function(d,t,r) {
-					if(d== '4'){
-						return r.sugar;
-					} else{
-						return '';
-					}
-				}
-			},{
-				// className :'s_i',
-				// data : 'ice',
-				data : 'menu_style_id',
-				createdCell: function (td, cellData, rowData, row, col) {
-					if ( col == '4' ) {
-						$(td).removeClass('hide_s_i');
-					} else {
-						$(td).addClass('hide_s_i');
-					}
-				},
-				render: function(d,t,r) {
-					if(d== '4'){
-						return r.ice;
-					} else{
-						return '';
-					}
-				}
-			},{
-				data : 'amount'
-			},{
-				data : 'note'
-			}],
+				data : 'create_time'
+			},],
 			columnDefs :[{
 				targets : 0,
 				data : null,
@@ -71,7 +33,7 @@ var QuestionTitleAppClass = (function(app) {
 				width : "5%",
 				className : ''
 			}, {
-				"targets" : [0,1,2,3,4,5,6],
+				"targets" : [0,1,2,3],
 				"orderable" : false
 			},
 		],
@@ -90,9 +52,9 @@ var QuestionTitleAppClass = (function(app) {
 		}
 		
 
-		$('#menu_name').on('change', function(){
-			app.tableReload();
-		});
+		// $('#menu_name').on('change', function(){
+		// 	app.tableReload();
+		// });
 	    // $(window).trigger("hashchange");
 
 		return app;
