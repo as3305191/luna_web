@@ -65,7 +65,7 @@ var QuestionTitleAppClass = (function(app) {
 
 
 var questioneachAppClass = (function(app) {
-	app.basePath = "mgmt/menu_order/";
+	app.basePath = "mgmt/question_title/";
 	app.disableRowClick = true;
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click
@@ -142,54 +142,13 @@ var questioneachAppClass = (function(app) {
 
 			pageLength: 10,
 			
-			columns : [{
-					data : 'menu_name'
-				},{
-					data : 'user_name'
-				},{
-					data : 'order_name'
-				},{
-					data : 'menu_style_id',
-					createdCell: function (td, cellData, rowData, row, col) {
-						if ( cellData == '4' ) {
-							$(td).removeClass('hide_s_i');
-						} else {
-							$(td).addClass('hide_s_i');
-						}
-					},
-					render: function(d,t,r) {
-						if(d== '4'){
-							return r.sugar;
-						} else{
-							return '';
-						}
-					}
-				},{
-					data : 'menu_style_id',
-					createdCell: function (td, cellData, rowData, row, col) {
-						if ( cellData == '4' ) {
-							$(td).removeClass('hide_s_i');
-							
-						} else {
-							$(td).addClass('hide_s_i');
-						}
-					},
-					render: function(d,t,r) {
-						if(d== '4'){
-							return r.ice;
-						} else{
-							return '';
-						}
-					}
-				},{
-					data : 'amount'
-				},{
-					data : 'note'
-				}],
+			columns : [null,{
+					data : 'question'
+				},],
 			ordering: false,
 			order : [[0, "desc"]],
 			columnDefs : [{
-				"targets" : [0,1,2,3,4,5,6],
+				"targets" : [0,1],
 				"orderable" : false
 			}],
 
