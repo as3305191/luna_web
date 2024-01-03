@@ -75,26 +75,16 @@
 						<tr>
 							<th></th>
 							<th>題目</th>
-							<th></th>
 						</tr>
 						<tr>
 							<td class="min50" style="border-right:none;"></td>
 							
 							<td style="border-right:none;">
-								<div class="input-group col-md-12">
-									<input type="text" class="form-control" id="order_name" placeholder="品項">
-								</div>
-							</td>
-
-							
-							<td style="border-right:none;">
 								<div class="input-group col-md-10">
-									<input type="text" class="form-control" id="note" placeholder="備註">
+									<input type="text" class="form-control" id="order_name" placeholder="題目">
 								</div>
-
-							<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
-
-							</td>
+								<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
+							</td>							
 						</tr>
 					</thead>
 					<tbody>
