@@ -95,7 +95,12 @@ class Menu extends MY_Mgmt_Controller {
 		$data['menu_style_id'] = $menu_style_id;
 		$data['menu_name'] = $menu_name;
 		$data['open_date'] = $open_date;
-		$data['open_dep'] = $dep_array;
+		if($dep_array!==''){
+			$data['open_dep'] = $dep_array;
+		} else{
+			$data['open_dep'] = 0;
+		}
+		
 		if(empty($id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
