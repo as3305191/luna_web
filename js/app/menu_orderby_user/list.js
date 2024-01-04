@@ -13,15 +13,15 @@ var menuorderuserAppClass = (function(app) {
 				dataType : 'json',
 				type : 'post',
 				complete:function(data){
-					if(data){
-						console.log(data);
+					
+						console.log(row);
 						// if(data.total!=='0'||data.total!==null||data.total>0){
 						// 	$('#total').text(data.total);
 						// } else{
 						// 	$('#total').text(0);
 						// }
 						
-					}
+					
 				}
 			},
 			iDisplayLength : 50,
