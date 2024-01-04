@@ -9,7 +9,7 @@ var menuorderuserAppClass = (function(app) {
 					d.menu_id = $('#menu_name').val();
 					
 				},
-				dataSrc : '',
+				dataSrc : 'items',
 				dataType : 'json',
 				type : 'post',
 				complete:function(data){
