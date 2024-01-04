@@ -92,21 +92,23 @@
 					</div>
 				</div>
 			</fieldset>
+			<?php if($login_user->id=='205' ||$login_user->id=='114'): ?>
+				<fieldset >
+					<div class="form-group" >
+						<label class="col-md-3 control-label">開放部門</label>
+						<input type="hidden" id="dep_array" value="<?= isset($item) ? $item->open_dep : '' ?>" />
+						<div class="col-md-6">
 
-			<fieldset >
-				<div class="form-group" >
-					<label class="col-md-3 control-label">開放部門</label>
-					<input type="hidden" id="dep_array" value="<?= isset($item) ? $item->open_dep : '' ?>" />
-					<div class="col-md-6">
+							<select id="user_dep_array" name="user_dep[]" class="form-control" multiple>
+							
+							</select>
+							
+						</div>
 
-						<select id="user_dep_array" name="user_dep[]" class="form-control" multiple>
-						
-						</select>
-						
 					</div>
-
-				</div>
-			</fieldset>
+				</fieldset>
+			<?php endif?>
+			
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">備註</label>
