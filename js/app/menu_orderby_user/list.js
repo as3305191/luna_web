@@ -14,10 +14,11 @@ var menuorderuserAppClass = (function(app) {
 				type : 'post',
 				complete:function(data){
 					if(data){
-						if(data.total>0){
-							$('#total').val(data.total);
+						console.log(data.total);
+						if(data.total!=='0'||data.total!==null||data.total>0){
+							$('#total').text(data.total);
 						} else{
-							$('#total').val(0);
+							$('#total').text(0);
 						}
 						
 					}
