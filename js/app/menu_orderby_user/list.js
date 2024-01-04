@@ -14,7 +14,7 @@ var menuorderuserAppClass = (function(app) {
 				type : 'post',
 				complete:function(data){
 					if(data){
-						console.log(data);
+						console.log(total);
 						// if(data.total!=='0'||data.total!==null||data.total>0){
 						// 	$('#total').text(data.total);
 						// } else{
