@@ -50,10 +50,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 				} else{
 					$each->timestamp= '';
 				}
-				
-			}
-			foreach($items as $each){
-				$total_amount += $each->amount;
+				$total_amount += intval($each->amount);
 			}
 		$res['total_amount'] = $total_amount;
 		$res['items'] = $items;
