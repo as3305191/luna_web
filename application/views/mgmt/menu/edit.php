@@ -178,8 +178,8 @@
 					// console.log(d.dep);
 					$user_dep_array = $('#user_dep_array').empty();
 					option ='';
-					if(user_dep_array.length>0){
-						$new_user_dep_array = user_dep_array[0].split(",");
+					if(dep_array.length>0){
+						$new_user_dep_array = dep_array[0].split(",");
 
 					} else{
 						$new_user_dep_array = [];
