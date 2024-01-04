@@ -24,15 +24,15 @@
 					</div>
 					<?php if($open_menu_count>0): ?>
 						<?php if($open_menu_count==1): ?>
-							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?= isset($menu_list[0]->timestamp) ? $menu_list[0]->timestamp.' ': '' ?><?php if($menu_list[0]->open_dep!=='0'): ?><i class="fa fa-lg fa-lock"></i><?php endif?><?= $menu_list[0]->menu_name ?></button>
+							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?php if($menu_list[0]->open_dep!=='0'): ?><i class="fa fa-lg fa-lock"></i><?php endif?><?= isset($menu_list[0]->timestamp) ? $menu_list[0]->timestamp.' ': '' ?><?= $menu_list[0]->menu_name ?></button>
 							<input type="hidden" class="form-control" id="menu_id"value="<?= $menu_list[0]->id ?>">
 
 						<?php else: ?>		
-							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?= isset($menu_list[0]->timestamp) ? $menu_list[0]->timestamp.' ': '' ?><?php if($menu_list[0]->open_dep!=='0'): ?><i class="fa fa-lg fa-lock"></i><?php endif?><?= $menu_list[0]->menu_name ?></button>
+							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?php if($menu_list[0]->open_dep!=='0'): ?><i class="fa fa-lg fa-lock"></i><?php endif?><?= isset($menu_list[0]->timestamp) ? $menu_list[0]->timestamp.' ': '' ?><?= $menu_list[0]->menu_name ?></button>
 							<input type="hidden" class="form-control" id="menu_id" value="<?= $menu_list[0]->id ?>">
 
 							<?php for ($i=1;$i<count($menu_list);$i++) : ?>
-								<button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>,<?= $menu_list[$i]->menu_style_id ?>)"><?= isset($menu_list[$i]->timestamp) ? $menu_list[$i]->timestamp.' ': '' ?><?php if($menu_list[$i]->open_dep!=='0'): ?><i class="fa fa-lg fa-lock"></i><?php endif?><?= $menu_list[$i]->menu_name ?></button>
+								<button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $menu_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $menu_list[$i]->id ?>,<?= $menu_list[$i]->menu_style_id ?>)"><?php if($menu_list[0]->open_dep!=='0'): ?><i class="fa fa-lg fa-lock"></i><?php endif?><?= isset($menu_list[$i]->timestamp) ? $menu_list[$i]->timestamp.' ': '' ?><?= $menu_list[$i]->menu_name ?></button>
 							<?php endfor ?>
 						<?php endif?>
 					<?php endif?>
