@@ -50,7 +50,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		}
 
 		$data['login_user'] = $login_user;
-		$data['menu_list'] = $list;
+		$data['menu_list'] = $map_list;
 		$data['open_menu_count'] = count($list);
 		// $this -> to_json($data);
 		$this -> load -> view('mgmt/menu_order/list', $data);
