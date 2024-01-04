@@ -77,6 +77,26 @@ class Question_title extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/question_title/edit', $data);
 	}
 
+	public function insert_question() {//新增
+		$res = array();
+		$data = array();
+		
+		$question = $this -> get_post('question');
+	
+		
+		$data['question'] = $question;
+		
+		if(!empty($question)) {
+			// insert
+			
+			$last_id = $this -> dao -> insert($data);
+			$res['success'] = TRUE;
+			
+		}
+		
+ 		$this -> to_json($res);
+	}
+
 	public function swot_title_get_data() {
 		$res = array();
 		$swot_title_id =$this -> get_post('swot_title_id');

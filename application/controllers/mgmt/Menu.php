@@ -10,6 +10,7 @@ class Menu extends MY_Mgmt_Controller {
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Menu_style_dao', 'menu_style_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
+		$this -> load -> model('Department_dao','d_dao');
 
 	}
 
@@ -108,6 +109,14 @@ class Menu extends MY_Mgmt_Controller {
 	public function delete($id) {
 		$res['success'] = TRUE;
 		$this -> dao -> delete($id);
+		$this -> to_json($res);
+	}
+
+	public function find_dep(){
+		$res = array();
+		$dep = $this -> d_dao -> find_all_ktx_dep();
+		$res['dep'] = $dep;
+		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
 

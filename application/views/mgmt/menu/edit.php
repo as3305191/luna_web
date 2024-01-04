@@ -93,6 +93,20 @@
 				</div>
 			</fieldset>
 
+			<fieldset >
+				<div class="form-group" >
+					<label class="col-md-3 control-label">開放部門</label>
+					<input type="hidden" id="dep_array" value="<?= isset($dep_array) ? $dep_array : '' ?>" />
+					<div class="col-md-6">
+
+						<select id="user_dep_array" name="user_dep[]" class="form-control" multiple>
+						
+						</select>
+						
+					</div>
+
+				</div>
+			</fieldset>
 			<fieldset>
 				<div class="form-group">
 					<label class="col-md-3 control-label">備註</label>
@@ -144,6 +158,58 @@
 	}).on('dp.change',function(event){
 
 	});
+	var dep_array =[];
+
+	if(typeof $('#dep_array').val() !=='undefined'){
+		dep_array.push($('#dep_array').val());
+
+	}
+
+
+	function find_dep() {	
+		
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/menu/dep',
+			type: 'POST',
+			data: {},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$user_dep_array = $('#user_dep_array').empty();
+					option ='';
+					if(user_dep_array.length>0){
+						$new_user_dep_array = user_dep_array[0].split(",");
+
+					} else{
+						$new_user_dep_array = [];
+
+					}
+
+					$.each(d.dep, function(){
+						if($new_user_dep_array.indexOf(this.id)>=0){
+							option +='<option value="'+this.id+'"  selected="selected">'+this.name+'</option>';
+						} else{
+							option +='<option value="'+this.id+'">'+this.key+'</option>';
+						}
+
+					});
+					$user_dep_array.append(option).select2();
+					// select2()
+				}	
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+
+	}
+	find_dep();
+	$('#user_dep_array').on('change', function(){
+		$('#dep_array').val('');
+		$('#dep_array').val($('#user_dep_array').val());
+	});
+
 
 $("#img-input").fileinput({
 					language: "zh-TW",

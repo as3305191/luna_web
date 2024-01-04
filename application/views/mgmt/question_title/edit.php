@@ -81,9 +81,9 @@
 							
 							<td style="border-right:none;">
 								<div class="input-group col-md-10">
-									<input type="text" class="form-control" id="order_name" placeholder="題目">
+									<input type="text" class="form-control" id="question" placeholder="題目">
 								</div>
-								<button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
+								<button type="button" class="btn btn-sm btn-primary" onclick="add_question()"><i class="fa fa-plus-circle fa-lg"></i></button>
 							</td>							
 						</tr>
 					</thead>
@@ -104,4 +104,31 @@
 <script>
 		currentApp.question = new questioneachAppClass(new BaseAppClass({}));
 
+		function add_question(){//按下+按鈕時新增畫面以及寫入資料庫
+		var question = $('#question').val();
+				
+		
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/question_title/insert_question',
+			type: 'POST',
+			data: {
+				question : question,
+				
+			},
+			dataType: 'json',
+			success: function(d) {
+				if(d.success) {
+					
+						$('#question').val('');
+						
+						currentApp.question.tableReload();
+					}
+			
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+
+	}
 </script>
