@@ -17,25 +17,38 @@ class Menu_order extends MY_Mgmt_Controller {
 	{
 		$data = array();
 		$data = $this -> setup_user_data($data);
-		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
-
+		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);		
+		$login_user_dep=explode('#',ltrim(rtrim($login_user->in_array_department,'#'),'#'));
 		$list = $this -> menu_dao -> find_all_open();
 	
 		$weekarray=array("日","一","二","三","四","五","六");
 		
-		// 将时间戳转换为星期几的英文表示
-	
-			foreach($list as $each){
-				if($each->open_date!=='0000-00-00'){
-					$weekday = $weekarray[date("w",strtotime($each->open_date))];
-					$each->timestamp = date('m.d',strtotime($each->open_date)).' ('.$weekday.')';
-					// $each->timestamp = $each->open_date.' ('.$weekday_cn.')';
+		foreach($list as $each){
+			if($each->open_date!=='0000-00-00'){
+				$weekday = $weekarray[date("w",strtotime($each->open_date))];
+				$each->timestamp = date('m.d',strtotime($each->open_date)).' ('.$weekday.')';
+				// $each->timestamp = $each->open_date.' ('.$weekday_cn.')';
 
-				} else{
-					$each->timestamp= '';
+			} else{
+				$each->timestamp= '';
+			}
+			
+		}
+		foreach($list as $each){
+			if($each->open_dep==0){
+				$map_list[]= $each;
+			} else{
+				$each_open_dep=explode(',',$each->open_dep);
+				foreach($each_open_dep as $each_o_dep){
+					if(in_array($each_o_dep, $login_user_dep)){
+						$map_list[]= $each;
+					}
 				}
 				
 			}
+			
+		}
+
 		$data['login_user'] = $login_user;
 		$data['menu_list'] = $list;
 		$data['open_menu_count'] = count($list);
