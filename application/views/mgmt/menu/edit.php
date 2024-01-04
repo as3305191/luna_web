@@ -96,7 +96,7 @@
 			<fieldset >
 				<div class="form-group" >
 					<label class="col-md-3 control-label">開放部門</label>
-					<input type="hidden" id="dep_array" value="<?= isset($dep_array) ? $dep_array : '' ?>" />
+					<input type="hidden" id="dep_array" value="<?= isset($item) ? $item->open_dep : '' ?>" />
 					<div class="col-md-6">
 
 						<select id="user_dep_array" name="user_dep[]" class="form-control" multiple>
@@ -175,7 +175,7 @@
 			dataType: 'json',
 			success: function(d) {
 				if(d) {
-					console.log(d.dep);
+					// console.log(d.dep);
 					$user_dep_array = $('#user_dep_array').empty();
 					option ='';
 					if(user_dep_array.length>0){
@@ -291,7 +291,7 @@ $("#img-input").fileinput({
 			img: img.join(","),
 			open_date: $('#open_date').val(),
 			note: $('#note').val(),
-			dep_array: dep_array.join(",")
+			dep_array: $('#dep_array').val()
 		},
 		success : function(data) {
 			if(data.error_msg) {
