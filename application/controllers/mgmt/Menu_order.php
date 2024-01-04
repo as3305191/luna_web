@@ -17,7 +17,8 @@ class Menu_order extends MY_Mgmt_Controller {
 	{
 		$data = array();
 		$data = $this -> setup_user_data($data);
-		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
+		
 		$list = $this -> menu_dao -> find_all_open();
 	
 		$weekarray=array("日","一","二","三","四","五","六");
@@ -35,6 +36,7 @@ class Menu_order extends MY_Mgmt_Controller {
 				}
 				
 			}
+		$data['login_user'] = $login_user;
 		$data['menu_list'] = $list;
 		$data['open_menu_count'] = count($list);
 		// $this -> to_json($data);

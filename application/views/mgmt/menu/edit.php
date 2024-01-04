@@ -169,7 +169,7 @@
 	function find_dep() {	
 		
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/menu/dep',
+			url: '<?= base_url() ?>' + 'mgmt/menu/find_dep',
 			type: 'POST',
 			data: {},
 			dataType: 'json',
@@ -291,6 +291,7 @@ $("#img-input").fileinput({
 			img: img.join(","),
 			open_date: $('#open_date').val(),
 			note: $('#note').val(),
+			dep_array: dep_array.join(",")
 		},
 		success : function(data) {
 			if(data.error_msg) {

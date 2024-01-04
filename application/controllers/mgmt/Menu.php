@@ -89,12 +89,13 @@ class Menu extends MY_Mgmt_Controller {
 		$menu_name= $this -> get_post('menu_name');
 		$note= $this -> get_post('note');
 		$open_date= $this -> get_post('open_date');
-		
+		$dep_array= $this -> get_post('dep_array');
 		$data['img_id'] = $img;
 		$data['note'] = $note;
 		$data['menu_style_id'] = $menu_style_id;
 		$data['menu_name'] = $menu_name;
 		$data['open_date'] = $open_date;
+		$data['open_dep'] = $dep_array;
 		if(empty($id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
