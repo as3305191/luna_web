@@ -14,12 +14,12 @@ var menuorderuserAppClass = (function(app) {
 				type : 'post',
 				complete:function(data){
 					
-						console.log(data.responseJSON);
-						// if(data.total!=='0'||data.total!==null||data.total>0){
-						// 	$('#total').text(data.total);
-						// } else{
-						// 	$('#total').text(0);
-						// }
+						// console.log(data.responseJSON.total);
+						if(data.responseJSON.total!=='0'||data.responseJSON.total!==null||data.responseJSON.total>0){
+							$('#total').text(data.responseJSON.total);
+						} else{
+							$('#total').text(0);
+						}
 						
 					
 				}
