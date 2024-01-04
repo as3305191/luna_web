@@ -175,7 +175,7 @@
 			dataType: 'json',
 			success: function(d) {
 				if(d) {
-					// console.log(d);
+					console.log(d.dep);
 					$user_dep_array = $('#user_dep_array').empty();
 					option ='';
 					if(user_dep_array.length>0){
@@ -186,11 +186,11 @@
 
 					}
 
-					$.each(d.dep[0], function(){
+					$.each(d.dep, function(){
 						if($new_user_dep_array.indexOf(this.id)>=0){
 							option +='<option value="'+this.id+'"  selected="selected">'+this.name+'</option>';
 						} else{
-							option +='<option value="'+this.id+'">'+this.key+'</option>';
+							option +='<option value="'+this.id+'">'+this.name+'</option>';
 						}
 
 					});
