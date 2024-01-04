@@ -13,6 +13,9 @@ var menuorderuserAppClass = (function(app) {
 				dataType : 'json',
 				type : 'post',
 				complete:function(data){
+					if(data){
+						$('#total').text(data.amount);
+					}
 				}
 			},
 			iDisplayLength : 50,
