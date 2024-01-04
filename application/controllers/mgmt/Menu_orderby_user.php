@@ -38,7 +38,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$items = $this -> menu_order_dao -> find_all_order_list($data);
 		$weekarray=array("日","一","二","三","四","五","六");
-		
+		$total_amount=0;
 		// 将时间戳转换为星期几的英文表示
 	
 			foreach($items as $each){
@@ -52,6 +52,10 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 				}
 				
 			}
+			foreach($items as $each){
+				$total_amount += $each->amount;
+			}
+		$res['total_amount'] = $total_amount;
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> menu_order_dao -> find_all_order_list($data,true);
 		$res['recordsTotal'] = $this -> menu_order_dao -> find_all_order_list($data,true);

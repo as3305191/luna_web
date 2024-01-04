@@ -34,6 +34,9 @@ thead tr th {
 									<!-- option from javascript -->
 								</select>
 							</div>
+							<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
+								<span style="font-size: 16pt;color:#0d0d56">總金額：<?= isset($total_amount) ? $total_amount : 0 ?></span>
+							</div>
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
 

@@ -22,6 +22,7 @@
 					<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
 						<span style="font-size: 16pt;color:#0d0d56">開放的菜單</span>
 					</div>
+					
 					<?php if($open_menu_count>0): ?>
 						<?php if($open_menu_count==1): ?>
 							<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?php if($menu_list[0]->open_dep!=='0'): ?><i class="fa fa-lg fa-lock"> </i>&nbsp;<?php endif?><?= isset($menu_list[0]->timestamp) ? $menu_list[0]->timestamp.' ': '' ?><?= $menu_list[0]->menu_name ?></button>
