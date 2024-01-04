@@ -35,7 +35,7 @@ thead tr th {
 								</select>
 							</div>
 							<div class="widget-toolbar pull-left">
-								<span style="color:red">總金額：<?= isset($total_amount) ? $total_amount : 0 ?></span>
+								<span style="color:red">總金額：<?= isset($total) ? $total : 0 ?></span>
 							</div>
 						</header>
 						<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
