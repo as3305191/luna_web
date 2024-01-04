@@ -186,7 +186,7 @@
 
 					}
 
-					$.each(d.dep, function(){
+					$.each(d.dep[0], function(){
 						if($new_user_dep_array.indexOf(this.id)>=0){
 							option +='<option value="'+this.id+'"  selected="selected">'+this.name+'</option>';
 						} else{
