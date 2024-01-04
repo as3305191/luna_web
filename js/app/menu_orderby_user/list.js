@@ -16,9 +16,9 @@ var menuorderuserAppClass = (function(app) {
 					
 						console.log(data.responseJSON.total);
 						if(data.responseJSON.total!=='0'||data.responseJSON.total!==null||data.responseJSON.total>0){
-							$('#total').val(data.responseJSON.total);
+							$('#total_amount').text(data.responseJSON.total);
 						} else{
-							$('#total').val(0);
+							$('#total_amount').text(0);
 						}
 						
 					
