@@ -14,7 +14,12 @@ var menuorderuserAppClass = (function(app) {
 				type : 'post',
 				complete:function(data){
 					if(data){
-						$('#total').text(data.amount);
+						if(data.amount>0){
+							$('#total').text(data.amount);
+						} else{
+							$('#total').text(0);
+						}
+						
 					}
 				}
 			},
