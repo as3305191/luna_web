@@ -206,10 +206,8 @@ $('#add_img_style').click(function() {
 					if(d.list.length>0){
 						$.each(d.list, function(){
 							if(this.open_dep!=='0'){
-								$('<option class="option2"/>', {
-									'value': this.id,
-									'text': ' '+this.timestamp+' '+this.menu_name
-								}).appendTo($menu_name);
+								$('<option value='+this.id+'><i class="fa fa-lg fa-lock"></i>'+this.timestamp+' '+this.menu_name+'</option>'
+									).appendTo($menu_name);
 							} else{
 								$('<option/>', {
 									'value': this.id,
