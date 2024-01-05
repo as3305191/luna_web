@@ -209,7 +209,7 @@ $('#add_img_style').click(function() {
 					if(d.list.length>0){
 						$.each(d.list, function(){
 							if(this.open_dep!=='0'){
-								$('<option value='+this.id+'>'+this.timestamp+' '+this.menu_name+'&#xf2b9;</option>'
+								$('<option value='+this.id+'>'+this.timestamp+' '+this.menu_name+' &#xf023;</option>'
 									).appendTo($menu_name);
 							} else{
 								$('<option/>', {
