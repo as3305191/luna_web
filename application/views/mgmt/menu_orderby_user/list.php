@@ -210,7 +210,7 @@ $('#add_img_style').click(function() {
 					if(d.list.length>0){
 						$.each(d.list, function(){
 							if(this.open_dep!=='0'){
-								$('<option style="background-image:'+img_url+'" value='+this.id+'>'+this.timestamp+' '+this.menu_name+'</option>'
+								$('<option style="height: 25px;text-align: center;background-size: 15px;background-repeat: no-repeat;background-position: 5px 2pxbackground-image:'+img_url+'" value='+this.id+'>'+this.timestamp+' '+this.menu_name+'</option>'
 									).appendTo($menu_name);
 							} else{
 								$('<option/>', {
