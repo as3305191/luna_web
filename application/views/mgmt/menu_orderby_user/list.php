@@ -5,6 +5,9 @@ thead tr th {
 	background-color:#FFFFFF !important;
 	text-align:center;
 }
+.option2 {
+	background-image:<?= base_url("img/lock/lock.png") ?>;
+}
 </style>
 
 <!-- CSS Unify Theme -->
@@ -206,7 +209,7 @@ $('#add_img_style').click(function() {
 					if(d.list.length>0){
 						$.each(d.list, function(){
 							if(this.open_dep!=='0'){
-								$('<option value='+this.id+'><i class="fa fa-lg fa-lock">'+this.timestamp+' '+this.menu_name+'</i></option>'
+								$('<option class="option2" value='+this.id+'>'+this.timestamp+' '+this.menu_name+'</option>'
 									).appendTo($menu_name);
 							} else{
 								$('<option/>', {
