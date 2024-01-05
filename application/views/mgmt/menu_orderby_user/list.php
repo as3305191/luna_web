@@ -1,12 +1,11 @@
 <style>
-thead tr th {
-	position:sticky;
-	top:0;
-	background-color:#FFFFFF !important;
-	text-align:center;
+
+#menu_name{
+  font-family:"FontAwesome";
+  font-size:14px;
 }
-.option2 {
-	background-image:<?= base_url("img/lock/lock.png") ?>;
+#menu_name::before{
+  vertical-align:middle;
 }
 </style>
 
@@ -210,7 +209,7 @@ $('#add_img_style').click(function() {
 					if(d.list.length>0){
 						$.each(d.list, function(){
 							if(this.open_dep!=='0'){
-								$('<option data-icon="'+img_url+'" style="height: 25px;text-align: center;background-size: 15px;background-repeat: no-repeat;background-position: 5px 2px;" value='+this.id+'>'+this.timestamp+' '+this.menu_name+'</option>'
+								$('<option value='+this.id+'>'+this.timestamp+' '+this.menu_name+'&#xf2b9;</option>'
 									).appendTo($menu_name);
 							} else{
 								$('<option/>', {
