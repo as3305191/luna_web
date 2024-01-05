@@ -108,8 +108,12 @@ thead tr th {
 	var mCols = [null,{
 		data : 'menu_name',
 		render:function ( data, type, row ) {
-
-			return data+' '+row.timestamp;
+			if(row.open_dep!=='0'){
+				return '<i class="fa fa-lg fa-lock"></i>&nbsp;'+data+' '+row.timestamp;
+			} else{
+				return data+' '+row.timestamp;
+			}
+			
 
 		}
 	},{

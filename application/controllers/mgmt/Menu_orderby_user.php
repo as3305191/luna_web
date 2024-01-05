@@ -11,6 +11,8 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$this -> load -> model('Menu_order_dao', 'menu_order_dao');
 		$this -> load -> model('Images_dao', 'img_dao');
 		$this -> load -> model('Menu_style_dao', 'menu_style_dao');
+		$this -> load -> model('Users_dao', 'users_dao');
+
 		$this->load->library('excel');
 	
 	}
@@ -36,8 +38,11 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$menu_id = $this -> get_post('menu_id');
 		$data['menu_id'] = $menu_id;
 		$s_data = $this -> setup_user_data(array());
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);		
+		$login_user_dep=explode('#',ltrim(rtrim($login_user->in_department,'#'),'#'));
 		$items = $this -> menu_order_dao -> find_all_order_list($data);
 		$weekarray=array("日","一","二","三","四","五","六");
+		$map_list= array();
 		$total=0;
 		// 将时间戳转换为星期几的英文表示
 	
@@ -50,10 +55,23 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 				} else{
 					$each->timestamp= '';
 				}
+
+				if($each->open_dep==0){
+					$map_list[]= $each;
+				} else{
+					$each_open_dep=explode(',',$each->open_dep);
+					foreach($each_open_dep as $each_o_dep){
+						if(in_array($each_o_dep, $login_user_dep)){
+							$map_list[]= $each;
+						}
+					}
+					
+				}
 				$total += intval($each->amount);
 			}
+			
 		$res['total'] = $total;
-		$res['items'] = $items;
+		$res['items'] = $map_list;
 		$res['recordsFiltered'] = $this -> menu_order_dao -> find_all_order_list($data,true);
 		$res['recordsTotal'] = $this -> menu_order_dao -> find_all_order_list($data,true);
 		$this -> to_json($res);
@@ -147,9 +165,12 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 	public function find_all_menu(){
 		$res = array();
 		$id = $this -> get_post('id');
+		$s_data = $this -> setup_user_data(array());
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);		
+		$login_user_dep=explode('#',ltrim(rtrim($login_user->in_department,'#'),'#'));
 		$list = $this -> menu_dao -> find_all_open_and_stop();
 		$weekarray=array("日","一","二","三","四","五","六");
-		
+		$map_list= array();
 		// 将时间戳转换为星期几的英文表示
 	
 			foreach($list as $each){
@@ -161,9 +182,20 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 				} else{
 					$each->timestamp= '';
 				}
+				if($each->open_dep==0){
+					$map_list[]= $each;
+				} else{
+					$each_open_dep=explode(',',$each->open_dep);
+					foreach($each_open_dep as $each_o_dep){
+						if(in_array($each_o_dep, $login_user_dep)){
+							$map_list[]= $each;
+						}
+					}
+					
+				}
 				
 			}
-		$res['list'] = $list;
+		$res['list'] = $map_list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}

@@ -32,10 +32,6 @@ class Menu_order extends MY_Mgmt_Controller {
 			} else{
 				$each->timestamp= '';
 			}
-			
-		}
-		
-		foreach($list as $each){
 			if($each->open_dep==0){
 				$map_list[]= $each;
 			} else{
