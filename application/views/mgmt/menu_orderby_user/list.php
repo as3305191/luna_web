@@ -205,10 +205,18 @@ $('#add_img_style').click(function() {
 					$menu_name.append(option);
 					if(d.list.length>0){
 						$.each(d.list, function(){
-							$('<option/>', {
-								'value': this.id,
-								'text': this.timestamp+' '+this.menu_name
-							}).appendTo($menu_name);
+							if(this.open_dep!=='0'){
+								$('<option/>', {
+									'value': this.id,
+									'text': '<i class="fa fa-lg fa-lock"></i>&nbsp;'+this.timestamp+' '+this.menu_name
+								}).appendTo($menu_name);
+							} else{
+								$('<option/>', {
+									'value': this.id,
+									'text': this.timestamp+' '+this.menu_name
+								}).appendTo($menu_name);
+							}
+							
 						});
 						if(d.list[0].menu_style_id==4){
 
