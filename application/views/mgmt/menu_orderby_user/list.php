@@ -196,6 +196,7 @@ $('#add_img_style').click(function() {
 
 
 	function load_menu() {
+		var img_url = '<?= base_url() ?>' + 'img/lock/lock.png'
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/menu_orderby_user/find_all_menu',
 			type: 'POST',
@@ -209,7 +210,7 @@ $('#add_img_style').click(function() {
 					if(d.list.length>0){
 						$.each(d.list, function(){
 							if(this.open_dep!=='0'){
-								$('<option class="option2" value='+this.id+'>'+this.timestamp+' '+this.menu_name+'</option>'
+								$('<option style="background-image:'+img_url+'" value='+this.id+'>'+this.timestamp+' '+this.menu_name+'</option>'
 									).appendTo($menu_name);
 							} else{
 								$('<option/>', {
