@@ -124,7 +124,7 @@ class Menu_order_dao extends MY_Model {
 		$this -> db -> select('u.user_name as user_name');
 		$this -> db -> select('m.menu_name as menu_name');
 		$this -> db -> select('m.open_date as open_date');
-
+		$this -> db -> select('m.open_dep as open_dep');
 		$this -> db -> join("users u", "u.id = _m.user_id", "left");
 		$this -> db -> join("menu m", "m.id = _m.menu_id", "left");
 		
