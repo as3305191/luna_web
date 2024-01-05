@@ -208,7 +208,7 @@ $('#add_img_style').click(function() {
 							if(this.open_dep!=='0'){
 								$('<option class="option2"/>', {
 									'value': this.id,
-									'text': '&nbsp;'+this.timestamp+' '+this.menu_name
+									'text': ' '+this.timestamp+' '+this.menu_name
 								}).appendTo($menu_name);
 							} else{
 								$('<option/>', {
