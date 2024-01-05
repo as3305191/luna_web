@@ -20,7 +20,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);		
 		$login_user_dep=explode('#',ltrim(rtrim($login_user->in_department,'#'),'#'));
 		$list = $this -> menu_dao -> find_all_open();
-	
+		$map_list= array();
 		$weekarray=array("日","一","二","三","四","五","六");
 		
 		foreach($list as $each){
