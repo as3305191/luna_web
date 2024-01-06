@@ -192,8 +192,6 @@ $('#add_img_style').click(function() {
 		})
 	})
 
-
-
 	function load_menu() {
 		var img_url = '<?= base_url() ?>' + 'img/lock/lock.png'
 		$.ajax({
