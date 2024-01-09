@@ -32,17 +32,20 @@ class Menu_order extends MY_Mgmt_Controller {
 			} else{
 				$each->timestamp= '';
 			}
-			if($each->open_dep==0){
-				$map_list[]= $each;
-			} else{
-				$each_open_dep=explode(',',$each->open_dep);
-				foreach($each_open_dep as $each_o_dep){
-					if(in_array($each_o_dep, $login_user_dep)){
-						$map_list[]= $each;
+			if($login_user->id!=='205'){
+				if($each->open_dep==0){
+					$map_list[]= $each;
+				} else{
+					$each_open_dep=explode(',',$each->open_dep);
+					foreach($each_open_dep as $each_o_dep){
+						if(in_array($each_o_dep, $login_user_dep)){
+							$map_list[]= $each;
+						}
 					}
+					
 				}
-				
 			}
+			
 			
 		}
 
