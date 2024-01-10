@@ -67,6 +67,8 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 						}
 						
 					}
+				} else{
+					$map_list[]= $each;
 				}
 				
 				$total += intval($each->amount);
@@ -196,6 +198,8 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 						}
 						
 					}
+				} else{
+					$map_list[]= $each;
 				}
 				
 				

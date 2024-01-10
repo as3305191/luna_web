@@ -44,6 +44,8 @@ class Menu_order extends MY_Mgmt_Controller {
 					}
 					
 				}
+			} else{
+				$map_list[]= $each;
 			}
 			
 			
