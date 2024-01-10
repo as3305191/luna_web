@@ -32,7 +32,7 @@ class Menu_order extends MY_Mgmt_Controller {
 			} else{
 				$each->timestamp= '';
 			}
-			if($login_user->id!=='205'){
+			if($login_user->id!=='205'||$login_user->id!=='114'){
 				if($each->open_dep==0){
 					$map_list[]= $each;
 				} else{
