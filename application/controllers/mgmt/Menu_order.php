@@ -227,6 +227,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		$res = array();
 		$s_data = array();
 		$id = $this -> get_post('id');
+		$s_data = $this -> setup_user_data($s_data);
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);		
 		$login_user_dep=explode('#',ltrim(rtrim($login_user->in_department,'#'),'#'));
 		$list = $this -> menu_dao -> find_all_open();
