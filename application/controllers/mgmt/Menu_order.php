@@ -45,10 +45,10 @@ class Menu_order extends MY_Mgmt_Controller {
 		}
 
 		$data['login_user'] = $login_user;
-		if($login_user->id!=='205'||$login_user->id!=='114'){
-			$data['menu_list'] = $map_list;
-		} else{
+		if($login_user->id=='205'||$login_user->id=='114'){
 			$data['menu_list'] = $list;
+		} else{
+			$data['menu_list'] = $map_list;
 		}
 
 		
@@ -245,7 +245,11 @@ class Menu_order extends MY_Mgmt_Controller {
 				}
 			}
 		}
-		$res['list'] = $map_list;
+		if($login_user->id=='205'||$login_user->id=='114'){
+			$res['list'] = $list;
+		} else{
+			$res['list'] = $map_list;
+		}
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
