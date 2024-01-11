@@ -230,7 +230,7 @@ class Menu_order extends MY_Mgmt_Controller {
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);		
 		$login_user_dep=explode('#',ltrim(rtrim($login_user->in_department,'#'),'#'));
 		$list = $this -> menu_dao -> find_all_open();
-
+		$map_list= array();
 		foreach($list as $each){
 			
 			if($each->open_dep==0){
