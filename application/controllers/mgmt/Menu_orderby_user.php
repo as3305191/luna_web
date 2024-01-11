@@ -55,27 +55,27 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 				} else{
 					$each->timestamp= '';
 				}
-				if($login_user->id!=='205'||$login_user->id!=='114'){
-					if($each->open_dep==0){
-						$map_list[]= $each;
-					} else{
-						$each_open_dep=explode(',',$each->open_dep);
-						foreach($each_open_dep as $each_o_dep){
-							if(in_array($each_o_dep, $login_user_dep)){
-								$map_list[]= $each;
-							}
-						}
-						
-					}
-				} else{
+				if($each->open_dep==0){
 					$map_list[]= $each;
+				} else{
+					$each_open_dep=explode(',',$each->open_dep);
+					foreach($each_open_dep as $each_o_dep){
+						if(in_array($each_o_dep, $login_user_dep)){
+							$map_list[]= $each;
+						}
+					}
+					
 				}
 				
 				$total += intval($each->amount);
 			}
 			
 		$res['total'] = $total;
-		$res['items'] = $map_list;
+		if($login_user->id!=='205'||$login_user->id!=='114'){
+			$data['items'] = $map_list;
+		} else{
+			$data['items'] = $items;
+		}
 		$res['recordsFiltered'] = $this -> menu_order_dao -> find_all_order_list($data,true);
 		$res['recordsTotal'] = $this -> menu_order_dao -> find_all_order_list($data,true);
 		$this -> to_json($res);
@@ -186,25 +186,25 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 				} else{
 					$each->timestamp= '';
 				}
-				if($login_user->id!=='205'||$login_user->id!=='114'){
-					if($each->open_dep==0){
-						$map_list[]= $each;
-					} else{
-						$each_open_dep=explode(',',$each->open_dep);
-						foreach($each_open_dep as $each_o_dep){
-							if(in_array($each_o_dep, $login_user_dep)){
-								$map_list[]= $each;
-							}
-						}
-						
-					}
-				} else{
+				if($each->open_dep==0){
 					$map_list[]= $each;
+				} else{
+					$each_open_dep=explode(',',$each->open_dep);
+					foreach($each_open_dep as $each_o_dep){
+						if(in_array($each_o_dep, $login_user_dep)){
+							$map_list[]= $each;
+						}
+					}
+					
 				}
 				
 				
 			}
-		$res['list'] = $map_list;
+		if($login_user->id!=='205'||$login_user->id!=='114'){
+			$data['list'] = $map_list;
+		} else{
+			$data['list'] = $list;
+		}
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}

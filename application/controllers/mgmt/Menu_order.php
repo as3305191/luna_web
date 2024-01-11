@@ -32,27 +32,26 @@ class Menu_order extends MY_Mgmt_Controller {
 			} else{
 				$each->timestamp= '';
 			}
-			if($login_user->id!=='205'||$login_user->id!=='114'){
-				if($each->open_dep==0){
-					$map_list[]= $each;
-				} else{
-					$each_open_dep=explode(',',$each->open_dep);
-					foreach($each_open_dep as $each_o_dep){
-						if(in_array($each_o_dep, $login_user_dep)){
-							$map_list[]= $each;
-						}
-					}
-					
-				}
-			} else{
+			if($each->open_dep==0){
 				$map_list[]= $each;
+			} else{
+				$each_open_dep=explode(',',$each->open_dep);
+				foreach($each_open_dep as $each_o_dep){
+					if(in_array($each_o_dep, $login_user_dep)){
+						$map_list[]= $each;
+					}
+				}
 			}
-			
-			
 		}
 
 		$data['login_user'] = $login_user;
-		$data['menu_list'] = $map_list;
+		if($login_user->id!=='205'||$login_user->id!=='114'){
+			$data['menu_list'] = $map_list;
+		} else{
+			$data['menu_list'] = $list;
+		}
+
+		
 		$data['open_menu_count'] = count($list);
 		// $this -> to_json($data);
 		$this -> load -> view('mgmt/menu_order/list', $data);
