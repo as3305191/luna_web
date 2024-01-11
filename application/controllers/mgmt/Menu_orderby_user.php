@@ -72,9 +72,9 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 			
 		$res['total'] = $total;
 		if($login_user->id!=='205'||$login_user->id!=='114'){
-			$data['items'] = $map_list;
+			$res['items'] = $map_list;
 		} else{
-			$data['items'] = $items;
+			$res['items'] = $items;
 		}
 		$res['recordsFiltered'] = $this -> menu_order_dao -> find_all_order_list($data,true);
 		$res['recordsTotal'] = $this -> menu_order_dao -> find_all_order_list($data,true);
@@ -201,9 +201,9 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 				
 			}
 		if($login_user->id!=='205'||$login_user->id!=='114'){
-			$data['list'] = $map_list;
+			$res['list'] = $map_list;
 		} else{
-			$data['list'] = $list;
+			$res['list'] = $list;
 		}
 		$res['success'] = TRUE;
 		$this -> to_json($res);
