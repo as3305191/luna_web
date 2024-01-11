@@ -227,7 +227,21 @@ class Menu_order extends MY_Mgmt_Controller {
 		$res = array();
 		$id = $this -> get_post('id');
 		$list = $this -> menu_dao -> find_all_open();
-		$res['list'] = $list;
+
+		foreach($list as $each){
+			
+			if($each->open_dep==0){
+				$map_list[]= $each;
+			} else{
+				$each_open_dep=explode(',',$each->open_dep);
+				foreach($each_open_dep as $each_o_dep){
+					if(in_array($each_o_dep, $login_user_dep)){
+						$map_list[]= $each;
+					}
+				}
+			}
+		}
+		$res['list'] = $map_list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
