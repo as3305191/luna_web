@@ -44,6 +44,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 		$weekarray=array("日","一","二","三","四","五","六");
 		$map_list= array();
 		$total=0;
+		$total_dep=0;
 		// 将时间戳转换为星期几的英文表示
 	
 			foreach($items as $each){
@@ -57,11 +58,13 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 				}
 				if($each->open_dep==0){
 					$map_list[]= $each;
+					$total_dep += intval($each->amount);
 				} else{
 					$each_open_dep=explode(',',$each->open_dep);
 					foreach($each_open_dep as $each_o_dep){
 						if(in_array($each_o_dep, $login_user_dep)){
 							$map_list[]= $each;
+							$total_dep += intval($each->amount);
 						}
 					}
 					
@@ -70,11 +73,13 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 				$total += intval($each->amount);
 			}
 			
-		$res['total'] = $total;
+		
 		if($login_user->id=='205'||$login_user->id=='114'){
 			$res['items'] = $items;
+			$res['total'] = $total;
 		} else{
 			$res['items'] = $map_list;
+			$res['total'] = $total_dep;
 		}
 		$res['recordsFiltered'] = $this -> menu_order_dao -> find_all_order_list($data,true);
 		$res['recordsTotal'] = $this -> menu_order_dao -> find_all_order_list($data,true);
