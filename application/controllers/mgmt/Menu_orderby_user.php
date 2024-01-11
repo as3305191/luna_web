@@ -201,7 +201,7 @@ class Menu_orderby_user extends MY_Mgmt_Controller {
 				
 			}
 		if($login_user->id=='205'||$login_user->id=='114'){
-			$res['list'] = $items;
+			$res['list'] = $list;
 		} else{
 			$res['list'] = $map_list;
 		}
