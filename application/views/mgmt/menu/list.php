@@ -166,11 +166,14 @@ thead tr th {
 				var month = '' + (d.getMonth() + 1);
 				var day = '' + d.getDate();
 				var weekday = d.getDay();
+				return month+'.'+day+' ('+weekarrary[weekday]+')'+' '+html;
+
 				if(row.open_dep!=='0'){
 					return '<i class="fa fa-lg fa-lock"></i>&nbsp;'+month+'.'+day+' ('+weekarrary[weekday]+')'+' '+html;
 				} else{
 					return month+'.'+day+' ('+weekarrary[weekday]+')'+' '+html;
 				}
+
 
 			} else{
 				if(row.open_dep!=='0'){
@@ -178,7 +181,6 @@ thead tr th {
 				} else{
 					return month+'.'+day+' ('+weekarrary[weekday]+')'+' '+html;
 				}
-				
 			}
 			
 		}
