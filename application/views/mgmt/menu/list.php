@@ -169,7 +169,7 @@ thead tr th {
 				html += month+'.'+day+' ('+weekarrary[weekday]+')'+' '+data;
 			} 
 			if(row.open_dep!=='0'){
-				html +='&nbsp<i class="fa fa-lg fa-lock"></i>;';
+				html +='&nbsp;<i class="fa fa-lg fa-lock"></i>';
 			}
 			return html;
 
