@@ -158,19 +158,21 @@ thead tr th {
 	},{
 		data : 'menu_name',
 		render:function ( data, type, row ) {
-
-			var html =data;
+			var html ='';
+			if(row.open_dep!=='0'){
+				html +='<i class="fa fa-lg fa-lock"></i>&nbsp;';
+			}
 			if(row.open_date!=='0000-00-00'){
 				var weekarrary=["日","一","二","三","四","五","六"];
 				var d = new Date(row.open_date);
 				var month = '' + (d.getMonth() + 1);
 				var day = '' + d.getDate();
 				var weekday = d.getDay();
-				return month+'.'+day+' ('+weekarrary[weekday]+')'+' '+html;
-			} else{
-				return html;
-			}
-			
+				html += month+'.'+day+' ('+weekarrary[weekday]+')'+' '+data;
+			} 
+
+			return html;
+
 		}
 	}];
 
