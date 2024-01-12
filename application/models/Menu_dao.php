@@ -87,7 +87,7 @@ class Menu_dao extends MY_Model {
 		$this -> db -> where('_m.is_stop',0);
 
 		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
-		$this -> db -> order_by('_m.id', 'desc');
+		// $this -> db -> order_by('_m.id', 'desc');
 		$this -> db -> order_by('_m.open_date', 'asc');
 		$list = $this -> db -> get() -> result();
 		return $list;
