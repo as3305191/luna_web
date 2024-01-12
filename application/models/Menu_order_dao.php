@@ -139,7 +139,7 @@ class Menu_order_dao extends MY_Model {
 		$this -> db -> where('_m.is_delete<',1);
 		$this -> db -> where('_m.is_done<',1);
 		$this -> db -> order_by('_m.id','desc');
-
+		$this -> db -> order_by('_m.open_date','asc');
 		// query results
 		if(!$is_count) {
 			$query = $this -> db -> get();
