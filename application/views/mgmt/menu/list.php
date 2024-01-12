@@ -167,7 +167,9 @@ thead tr th {
 				var day = '' + d.getDate();
 				var weekday = d.getDay();
 				html += month+'.'+day+' ('+weekarrary[weekday]+')'+' '+data;
-			} 
+			}  else{
+				html += data;
+			}
 			if(row.open_dep!=='0'){
 				html +='&nbsp;<i class="fa fa-lg fa-lock"></i>';
 			}
