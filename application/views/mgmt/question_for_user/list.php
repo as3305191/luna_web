@@ -56,7 +56,7 @@
 					closeBtn:0,
 					area:['400px','200px'],
 					shadeClose:true,
-					content:'<?=base_url('layout/show_que1')?>'
+					content:'<?=base_url('mgmt/question_for_user/show_que1')?>'
 				})
 				break; 
 			}
@@ -67,7 +67,7 @@
 					closeBtn:0,
 					area:['400px','200px'],
 					shadeClose:true,
-					content:'<?=base_url('layout/show_que2')?>'
+					content:'<?=base_url('mgmt/question_for_user/show_que2')?>'
 				})
 				break;
 			}
@@ -78,7 +78,7 @@
 					closeBtn:0,
 					area:['400px','200px'],
 					shadeClose:true,
-					content:'<?=base_url('layout/show_que3')?>'
+					content:'<?=base_url('mgmt/question_for_user/show_que3')?>'
 				})
 				break;
 			}
@@ -89,7 +89,7 @@
 					closeBtn:0,
 					area:['400px','200px'],
 					shadeClose:true,
-					content:'<?=base_url('layout/show_que4')?>'
+					content:'<?=base_url('mgmt/question_for_user/show_que4')?>'
 				})
 				break;
 			}
@@ -100,7 +100,7 @@
 					closeBtn:0,
 					area:['400px','200px'],
 					shadeClose:true,
-					content:'<?=base_url('layout/show_que5')?>'
+					content:'<?=base_url('mgmt/question_for_user/show_que5')?>'
 				})
 				break;
 			}

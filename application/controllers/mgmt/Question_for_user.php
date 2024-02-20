@@ -85,6 +85,27 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function show_que1(){
+		$data = array();
+		$this -> load -> view('layout/show_que1',$data);
+	}
+	public function show_que2(){
+		$data = array();
+		$this -> load -> view('layout/show_que2',$data);
+	}
+	public function show_que3(){
+		$data = array();
+		$this -> load -> view('layout/show_que3',$data);
+	}
+	public function show_que4(){
+		$data = array();
+		$this -> load -> view('layout/show_que4',$data);
+	}
+	public function show_que5(){
+		$data = array();
+		$this -> load -> view('layout/show_que5',$data);
+	}
+
 	public function up_lock(){
 		$swot_id = $this -> get_post('id');
 		$u_data = array();
