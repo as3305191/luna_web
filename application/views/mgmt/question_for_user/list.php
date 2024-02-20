@@ -54,7 +54,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['400px','200px'],
+					area:['800px','600px'],
 					shadeClose:true,
 					content:'<?=base_url('mgmt/question_for_user/show_que1')?>'
 				})
@@ -65,7 +65,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['400px','200px'],
+					area:['800px','600px'],
 					shadeClose:true,
 					content:'<?=base_url('mgmt/question_for_user/show_que2')?>'
 				})
@@ -76,7 +76,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['400px','200px'],
+					area:['800px','600px'],
 					shadeClose:true,
 					content:'<?=base_url('mgmt/question_for_user/show_que3')?>'
 				})
@@ -87,7 +87,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['400px','200px'],
+					area:['800px','600px'],
 					shadeClose:true,
 					content:'<?=base_url('mgmt/question_for_user/show_que4')?>'
 				})
@@ -98,7 +98,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['400px','200px'],
+					area:['800px','600px'],
 					shadeClose:true,
 					content:'<?=base_url('mgmt/question_for_user/show_que5')?>'
 				})
