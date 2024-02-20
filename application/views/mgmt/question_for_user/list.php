@@ -1,85 +1,110 @@
+<style>
+  .s_sum {
+  	display: none;
+  }
+  .menu_img_unsuccess {
+  	display: none;
+  }
+  .hide_s_i {
+  	display: none;
+  }
+</style>
+<div>
+<header>
+<link rel="stylesheet" href="<?= base_url('assets/vendor/fancybox/jquery.fancybox.min.css'); ?>" />
+<!-- <link rel="stylesheet" href="<?= base_url('assets/smoke.css'); ?>" /> -->
+</header>
 <div class="tab-content">
-	<div class="tab-pane active" id="list_page">
 
-		<!-- widget grid -->
-		<section id="widget-grid" class="">
+	
+				<div class="row" style="padding:0px 0px 6px 12px;">
 
-			<!-- row -->
-			<div class="row">
-
-				<!-- NEW WIDGET START -->
-				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-
-					<!-- Widget ID (each widget will need unique ID)-->
-					<div class="jarviswidget">
-						<header>
-							<!-- <div class="widget-toolbar pull-left">
-								<div class="btn-group">
-									<button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
-										<i class="fa fa-plus"></i>新增
-									</button>
-								</div>
-							</div> -->
-						</header>
-
-						<!-- widget div-->
-						<div>
-							<!-- widget edit box -->
-							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
-							</div>
-							<!-- end widget edit box -->
-							<!-- widget content -->
-							<div class="widget-body no-padding">
-
-								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
-									<thead>
-										<tr>
-											<th class="min100"></th>
-											<th class="min150">問卷標題</th>
-											<th class="min150">匯出</th>
-											<th class="min150">建立時間</th>
-										</tr>
-										<!-- <tr class="search_box">
-											<th></th>
-											<th></th>
-											<th></th>
-										</tr> -->
-									</thead>
-									<tbody>
-									</tbody>
-								</table>
-							</div>
-							<!-- end widget content -->
-						</div>
-						<!-- end widget div -->
+					<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
+						<span style="font-size: 16pt;color:#0d0d56">開放問卷</span>
 					</div>
-					<!-- end widget -->
-				</article>
-				<!-- WIDGET END -->
-			</div>
-			<!-- end row -->
-		</section>
-		<!-- end widget grid -->
-	</div>
+					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(1)">問卷1</button>
+					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(2)">問卷2</button>
+					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(3)">問卷3</button>
+					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(4)">問卷4</button>
+					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(5)">問卷5</button>
 
-	<div class="tab-pane animated fadeIn" id="edit_page">
-		<section class="">
-			<!-- row -->
-			<div class="row">
-				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="edit-modal-body">
+					<!-- <button class="btn-success text-light btn_active menu_1" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="backStep1()">菜單1</button>
+					<button class="btn-light text-light btn_unsuccess menu_3" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;">菜單3</button> -->
+				</div>
 
-				</article>
-			</div>
-		</section>
-	</div>
+				
 </div>
+
+
 <?php $this -> load -> view('general/delete_modal'); ?>
 
 <script type="text/javascript">
+
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/question_for_user/list.js", function(){
 			currentApp = new QuestionforuserAppClass(new BaseAppClass({}));
 		});
 	});
+
+
+	function q_click(q_num) {
+		switch (q_num) {
+			case '1': {
+				layer.open({
+					type:2,
+					title:'',
+					closeBtn:0,
+					area:['400px','200px'],
+					shadeClose:true,
+					content:'<?=base_url('layout/show_que1')?>'
+				})
+				break; 
+			}
+			case '2': {
+				layer.open({
+					type:2,
+					title:'',
+					closeBtn:0,
+					area:['400px','200px'],
+					shadeClose:true,
+					content:'<?=base_url('layout/show_que2')?>'
+				})
+				break;
+			}
+			case '3': {
+				layer.open({
+					type:2,
+					title:'',
+					closeBtn:0,
+					area:['400px','200px'],
+					shadeClose:true,
+					content:'<?=base_url('layout/show_que3')?>'
+				})
+				break;
+			}
+			case '4': {
+				layer.open({
+					type:2,
+					title:'',
+					closeBtn:0,
+					area:['400px','200px'],
+					shadeClose:true,
+					content:'<?=base_url('layout/show_que4')?>'
+				})
+				break;
+			}
+			case '5': {
+				layer.open({
+					type:2,
+					title:'',
+					closeBtn:0,
+					area:['400px','200px'],
+					shadeClose:true,
+					content:'<?=base_url('layout/show_que5')?>'
+				})
+				break;
+			}
+		}
+	}
+
 </script>
