@@ -49,7 +49,7 @@
 
 	function q_click(q_num) {
 		switch (q_num) {
-			case '1': {
+			case 1: {
 				layer.open({
 					type:2,
 					title:'',
@@ -60,7 +60,7 @@
 				})
 				break; 
 			}
-			case '2': {
+			case 2: {
 				layer.open({
 					type:2,
 					title:'',
@@ -71,7 +71,7 @@
 				})
 				break;
 			}
-			case '3': {
+			case 3: {
 				layer.open({
 					type:2,
 					title:'',
@@ -82,7 +82,7 @@
 				})
 				break;
 			}
-			case '4': {
+			case 4: {
 				layer.open({
 					type:2,
 					title:'',
@@ -93,7 +93,7 @@
 				})
 				break;
 			}
-			case '5': {
+			case 5: {
 				layer.open({
 					type:2,
 					title:'',
