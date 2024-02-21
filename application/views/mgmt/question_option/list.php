@@ -36,15 +36,14 @@
 									<thead>
 										<tr>
 											<th class="min100"></th>
-											<th class="min150">問卷標題</th>
-											<th class="min150">匯出</th>
+											<th class="min150">標題</th>
 											<th class="min150">建立時間</th>
 										</tr>
-										<!-- <tr class="search_box">
+										<tr class="search_box">
 											<th></th>
 											<th></th>
 											<th></th>
-										</tr> -->
+										</tr>
 									</thead>
 									<tbody>
 									</tbody>
@@ -78,8 +77,8 @@
 
 <script type="text/javascript">
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/question_option/list.js", function(){
-			currentApp = new QuestionoptionAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/swot_title/list.js", function(){
+			currentApp = new SwotTitleAppClass(new BaseAppClass({}));
 		});
 	});
 </script>

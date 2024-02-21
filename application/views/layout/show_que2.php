@@ -21,7 +21,7 @@
     <input type="checkbox" name="Hate" value="Italian">義式<br>
     <input type="checkbox" name="Hate" value="Japanese">日式<br>
     <input type="checkbox" name="Hate" value="American">美式<br>
-    
+
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
             <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>
@@ -48,7 +48,7 @@
   			type: 'POST',
   			data: {
   				parent_id:$('#parent_id').val(),
-          new_name : $('#name').val()
+          new_name : $('#name').val(),
   			},
   			dataType: 'json',
   			success: function(d) {
