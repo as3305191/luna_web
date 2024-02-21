@@ -16,21 +16,12 @@
     </div>
     <hr/>
    
-    Q2：味覺不會騙人，你晚餐吃什麼？單選題 <br>
-    <input type="radio" name="dinner" value="Taiwanese">台式<br>
-    <input type="radio" name="dinner" value="Italian">義式<br>
-    <input type="radio" name="dinner" value="Japanese">日式<br>
-    <input type="radio" name="dinner" value="American">美式<br>
-  Q3：味覺不會騙人，你喜歡吃什麼？複選題 <br>
-    <input type="radio" name="Q31" value="Taiwanese">台式
-    <input type="radio" name="Q32" value="Italian">義式
-    <input type="radio" name="Q33" value="Japanese">日式
-    <input type="radio" name="Q34" value="American">美式<br>
-  Q4：味覺不會騙人，你討厭吃什麼？複選題 <br>
-    <input type="checkbox" name="Hate" value="Taiwanese">台式
-    <input type="checkbox" name="Hate" value="Italian">義式
-    <input type="checkbox" name="Hate" value="Japanese">日式
+    Q4：味覺不會騙人，你討厭吃什麼？複選題 <br>
+    <input type="checkbox" name="Hate" value="Taiwanese">台式<br>
+    <input type="checkbox" name="Hate" value="Italian">義式<br>
+    <input type="checkbox" name="Hate" value="Japanese">日式<br>
     <input type="checkbox" name="Hate" value="American">美式<br>
+    
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
             <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>

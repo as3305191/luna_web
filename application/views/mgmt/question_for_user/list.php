@@ -17,20 +17,20 @@
 <div class="tab-content">
 
 	
-				<div class="row" style="padding:0px 0px 6px 12px;">
+		<div class="row" style="padding:0px 0px 6px 12px;">
 
-					<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
-						<span style="font-size: 16pt;color:#0d0d56">開放問卷</span>
-					</div>
-					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(1)">問卷1</button>
-					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(2)">問卷2</button>
-					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(3)">問卷3</button>
-					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(4)">問卷4</button>
-					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(5)">問卷5</button>
+			<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
+				<span style="font-size: 16pt;color:#0d0d56">開放問卷</span>
+			</div>
+			<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(1)">問卷1</button>
+			<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(2)">問卷2</button>
+			<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(3)">問卷3</button>
+			<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(4)">問卷4</button>
+			<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(5)">問卷5</button>
 
-					<!-- <button class="btn-success text-light btn_active menu_1" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="backStep1()">菜單1</button>
-					<button class="btn-light text-light btn_unsuccess menu_3" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;">菜單3</button> -->
-				</div>
+			<!-- <button class="btn-success text-light btn_active menu_1" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;" onclick="backStep1()">菜單1</button>
+			<button class="btn-light text-light btn_unsuccess menu_3" style="border-radius: 5px; padding: 10px; width: 160px; height: 48px;">菜單3</button> -->
+		</div>
 
 				
 </div>
