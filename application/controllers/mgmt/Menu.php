@@ -100,11 +100,7 @@ class Menu extends MY_Mgmt_Controller {
 		} else{
 			$data['open_dep'] = 0;
 		}
-		if($dep_array!==''){
-			$data['open_date'] = $open_date;
-		} else{
-			$data['open_date'] = '0000-00-00';
-		}
+
 		
 		if(empty($id)) {
 			// insert
