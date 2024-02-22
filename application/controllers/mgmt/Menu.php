@@ -101,7 +101,11 @@ class Menu extends MY_Mgmt_Controller {
 			$data['open_dep'] = 0;
 		}
 
-		
+		if($open_date!==''){
+			$data['open_date'] = $open_date;
+		} else{
+			$data['open_date'] = '0000-00-00';
+		}
 		if(empty($id)) {
 			// insert
 			$last_id = $this -> dao -> insert($data);
