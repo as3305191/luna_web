@@ -14,7 +14,8 @@
     <div class="col-xs-12">
         <span style="font-size:12pt">問卷5</span>
     </div>
-
+    <hr/>
+    <input type="" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     Q4：味覺不會騙人，你討厭吃什麼？複選題 <br>
     <input type="checkbox" name="Hate" value="Taiwanese">台式<br>
     <input type="checkbox" name="Hate" value="Italian">義式<br>
