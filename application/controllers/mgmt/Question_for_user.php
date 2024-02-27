@@ -87,22 +87,32 @@ class Question_for_user extends MY_Mgmt_Controller {
 
 	public function show_que1(){
 		$data = array();
+		$qid =$this -> get_post('id');
+		$data['qid'] = $qid;
 		$this -> load -> view('layout/show_que1',$data);
 	}
 	public function show_que2(){
 		$data = array();
+		$qid =$this -> get_post('id');
+		$data['qid'] = $qid;
 		$this -> load -> view('layout/show_que2',$data);
 	}
 	public function show_que3(){
 		$data = array();
+		$qid =$this -> get_post('id');
+		$data['qid'] = $qid;
 		$this -> load -> view('layout/show_que3',$data);
 	}
 	public function show_que4(){
 		$data = array();
+		$qid =$this -> get_post('id');
+		$data['qid'] = $qid;
 		$this -> load -> view('layout/show_que4',$data);
 	}
 	public function show_que5(){
 		$data = array();
+		$qid =$this -> get_post('id');
+		$data['qid'] = $qid;
 		$this -> load -> view('layout/show_que5',$data);
 	}
 
