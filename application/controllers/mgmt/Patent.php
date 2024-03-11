@@ -178,16 +178,23 @@ class Patent extends MY_Mgmt_Controller {
 	public function new_patent_family() {
 		$res = array();
 		$count_num = $this -> dao -> find_by_all_today_add();
-		if($count_num>0){
-			$family_num = intval($count_num)+1;
+		// if($count_num>0){
+		// 	$family_num = intval($count_num)+1;
+		// } else{
+		// 	$count_num_fake = $this -> dao -> find_by_all_like_today_add();
+		// 	if($count_num_fake>0){
+		// 		$family_num = intval($count_num_fake)+1;
+		// 	} else{
+		// 		$last_num = intval($count_num)+1;
+		// 		$family_num = date('Ymd').'0'.$last_num;
+		// 	}
+		// }
+		$count_num_fake = $this -> dao -> find_by_all_like_today_add();
+		if($count_num_fake>0){
+			$family_num = intval($count_num_fake)+1;
 		} else{
-			$count_num_fake = $this -> dao -> find_by_all_like_today_add();
-			if($count_num_fake>0){
-				$family_num = intval($count_num_fake)+1;
-			} else{
-				$last_num = intval($count_num)+1;
-				$family_num = date('Ymd').'0'.$last_num;
-			}
+			$last_num = intval($count_num)+1;
+			$family_num = date('Ymd').'0'.$last_num;
 		}
 		$res['family_num'] = $family_num;	
 		// $res['last_num'] =$count_num;
