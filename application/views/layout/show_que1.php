@@ -17,7 +17,7 @@
     <hr/>
     <input type="" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
 
-  Q4：味覺不會騙人，你討厭吃什麼？複選題 <br>
+    Q4：味覺不會騙人，你討厭吃什麼？複選題 <br>
     <input type="checkbox" name="Hate" value="Taiwanese">台式<br>
     <input type="checkbox" name="Hate" value="Italian">義式<br>
     <input type="checkbox" name="Hate" value="Japanese">日式<br>
@@ -48,7 +48,7 @@
   			url: '<?= base_url() ?>' + 'mgmt/roles/add_under',
   			type: 'POST',
   			data: {
-  				parent_id:$('#parent_id').val(),
+  				qid:$('#qid').val(),
           new_name : $('#name').val()
   			},
   			dataType: 'json',

@@ -47,7 +47,7 @@
   			url: '<?= base_url() ?>' + 'mgmt/roles/add_under',
   			type: 'POST',
   			data: {
-  				parent_id:$('#parent_id').val(),
+  				qid:$('#qid').val(),
           new_name : $('#name').val()
   			},
   			dataType: 'json',
