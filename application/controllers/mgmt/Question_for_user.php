@@ -115,6 +115,19 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['qid'] = $qid;
 		$this -> load -> view('layout/show_que5',$data);
 	}
+	public function save_q1(){
+		$data = array();
+		$qid =$this -> get_get('id');
+		$q1 =$this -> get_get('q1');
+		$q2 =$this -> get_get('q2');
+		$q3 =$this -> get_get('q3');
+		$q4 =$this -> get_get('q4');
+		$q5 =$this -> get_get('q5');
+
+		$data['qid'] = $qid;
+	}
+
+
 
 	public function up_lock(){
 		$swot_id = $this -> get_post('id');

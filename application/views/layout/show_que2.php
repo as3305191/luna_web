@@ -12,7 +12,7 @@
 </style>
 <div class="col-xs-12" style="padding:20px">
     <div class="col-xs-12">
-        <span style="font-size:12pt">問卷2</span>
+        <span style="font-size:12pt">肌肉骨骼症狀問卷調查表</span>
     </div>
     <hr/>
     <input type="" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
