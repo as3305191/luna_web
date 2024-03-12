@@ -136,6 +136,7 @@
           q11 : document.querySelector("input[name='q3_11']:checked").value,
           q12 : document.querySelector("input[name='q3_12']:checked").value,
           q13 : document.querySelector("input[name='q3_13']:checked").value,
+        },
   			dataType: 'json',
   			success: function(d) {
   				if(d) {
