@@ -16,7 +16,7 @@
     </div>
     <hr/>
     個人疲勞評估
-    <input type="" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
+    <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     1.	你常覺得疲勞嗎？ <br>
     <input type="checkbox" name="q1" value="100">總是(100)<br>
     <input type="checkbox" name="q1" value="75">常常(75)<br>
