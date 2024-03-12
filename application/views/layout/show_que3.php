@@ -118,7 +118,7 @@
   })
   $('.dosubmit').click(function() {
   		$.ajax({
-  			url: '<?= base_url() ?>' + 'mgmt/roles/add_under',
+  			url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q3',
   			type: 'POST',
   			data: {
   				qid:$('#qid').val(),
