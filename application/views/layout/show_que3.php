@@ -15,7 +15,7 @@
         <span style="font-size:12pt">個人及工作疲勞量表</span>
     </div>
     <hr/>
-    個人疲勞評估
+    個人疲勞評估<br>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     1.	你常覺得疲勞嗎？ <br>
     <input type="checkbox" name="q1" value="100">總是(100)<br>
@@ -53,7 +53,7 @@
     <input type="checkbox" name="q6" value="50">有時候(50)<br>
     <input type="checkbox" name="q6" value="25">不常(25)<br>
     <input type="checkbox" name="q6" value="0">從未或幾乎從未(0)<br>
-    工作疲勞評估
+    工作疲勞評估<br>
     1.	你的工作會令人情緒上心力交瘁嗎？<br>
     <input type="checkbox" name="q7" value="100">總是(100)<br>
     <input type="checkbox" name="q7" value="75">常常(75)<br>
