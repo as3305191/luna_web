@@ -7,7 +7,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('Question_title_dao', 'dao');
 		$this -> load -> model('Users_dao', 'users_dao');
-
+		$this -> load -> model('Question_ans_dao', 'question_ans_dao');
 		// $this -> load -> model('Swot_style_dao', 'swot_style_dao');
 		// $this -> load -> model('Swot_dao', 'swot_dao');
 
