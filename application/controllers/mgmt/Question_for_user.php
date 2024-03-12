@@ -153,9 +153,10 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['q12'] = $q12;
 		$data['q13'] = $q13;
 		$data['question_type'] = 'que3';
-		
+
 		$this -> question_ans_dao -> insert($data);
-		$res['success'] = 'success';
+		$res['success'] = TRUE;
+		$this -> to_json($res);
 	}
 
 
