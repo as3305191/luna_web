@@ -16,7 +16,7 @@
     </div>
     <hr/>
     個人疲勞評估<br>
-    <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
+    <!-- <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" /> -->
     1.	你常覺得疲勞嗎？ <br>
     <input type="radio" name="q1" value="100" id="q1_100"><label for="q1_100">總是(100)</label><br>
     <input type="radio" name="q1" value="75" id="q1_75"><label for="q1_75">常常(75)</label><br>
@@ -121,7 +121,7 @@
   			url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q3',
   			type: 'POST',
   			data: {
-  				qid:$('#qid').val(),
+  				// qid:$('#qid').val(),
           q1 : $("input[name='q1']:checked").val(),
           q2 : $("input[name='q2']:checked").val(),
           q3 : $("input[name='q3']:checked").val(),

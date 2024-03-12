@@ -122,7 +122,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data = array();
 		$s_data = $this -> setup_user_data($s_data);
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
-		$qid =$this -> get_get('qid');
+		// $qid =$this -> get_get('qid');
 		$q1 =$this -> get_get('q1');
 		$q2 =$this -> get_get('q2');
 		$q3 =$this -> get_get('q3');
@@ -138,7 +138,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$q13 =$this -> get_get('q13');
 
 		$data['user_id'] = $login_user->id;
-		$data['qid'] = $qid;
+		// $data['qid'] = $qid;
 		$data['q1'] = $q1;
 		$data['q2'] = $q2;
 		$data['q3'] = $q3;
