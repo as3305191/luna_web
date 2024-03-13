@@ -15,7 +15,7 @@
         <span style="font-size:12pt">暴力危害及風險評估之調查問卷</span>
     </div>
     <hr/>
-    <input type="" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
+    <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     第一部分、基本資料<br>
     一、個人概況： <br>
     1.工作型態：<br>
