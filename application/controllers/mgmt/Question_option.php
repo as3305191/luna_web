@@ -5,7 +5,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('Question_title_dao', 'dao');
+		$this -> load -> model('Question_option_dao', 'dao');
 		$this -> load -> model('Question_style_dao', 'question_style_dao');
 		// $this -> load -> model('Swot_style_dao', 'swot_style_dao');
 		// $this -> load -> model('Swot_dao', 'swot_dao');
