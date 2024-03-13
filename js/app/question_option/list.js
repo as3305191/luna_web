@@ -34,33 +34,7 @@ var QuestionoptionAppClass = (function(app) {
 						.prop('onclick',null)
 						.off('click')
 						.on('click', function(){
-							var me = $(this).attr('id');
-							$.ajax({
-								url: baseUrl + app.basePath + '/delete',
-								data: {
-								'id': me
-								},
-								error: function() {
-								},
-								dataType: 'json',
-								success: function(data) {
-									if(data.success_msg){
-										$.smallBox({
-											title: data.success_msg,
-											content: "<i class='fa fa-clock-o'></i> <i>1 seconds ago...</i>",
-											color: "#5F895F",
-											iconSmall: "fa fa-check bounce animated",
-											timeout: 4000
-										});
-
-										app.tableReload();
-									}
-									if(data.message){
-										layer.msg(data.message);
-									}
-								},
-								type: 'POST'
-							})
+							app.doDelItem();
 						});
 					});
 
