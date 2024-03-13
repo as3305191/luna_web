@@ -8,7 +8,9 @@ class Question_option_dao extends MY_Model {
 		parent::set_table_name('question_option');
 	}
 
-	function query_ajax($data,$is_count = FALSE) {
+
+
+	function query_ajax($data) {
 		$start = $data['start'];
 		$limit = $data['length'];
 		$columns = $data['columns'];
@@ -16,10 +18,7 @@ class Question_option_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
-
-		$this -> db -> select('m.menu_name as menu_name');
-		$this -> db -> select('m.menu_style_id as menu_style_id');
-		$this -> db -> select('u.user_name as user_name');
+		$this -> db -> select('ms.menu_style as style_name');
 
 		// join
 		$this -> ajax_from_join();
@@ -32,37 +31,35 @@ class Question_option_dao extends MY_Model {
 
 		// order
 		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
-		$this -> db -> order_by('id', 'desc');
-
+		// $this -> db -> order_by('id', 'desc');
+		$this -> db -> order_by('status', 'desc');
 		// limit
-		// $this -> db -> limit($limit, $start);
-		if(!$is_count) {
-			$this -> db -> limit($limit, $start);
-		}
-		
-		if(!$is_count) {
-			$query = $this -> db -> get();
-			return $query -> result();
-		} else {
-			return $this -> db -> count_all_results();
-		}
+		$this -> db -> limit($limit, $start);
+
+		// query results
+		$query = $this -> db -> get();
+		return $query -> result();
 	}
 
 	function search_always($data) {
-		if(!empty($data['menu_id']) && $data['menu_id']>0){
-			$menu_id = $data['menu_id'];
-			$this -> db -> where('_m.menu_id',$menu_id);
+		if(!empty($data['id'])){
+			$this -> db -> where("_m.id", $data['id']);
 		}
-		$this -> db -> where('_m.is_delete<',1);
-		$this -> db -> where('_m.is_done<',1);
-		$this -> db -> where('_m.user_id',$data['login_user_id']);
+		if(!empty($data['s_menu_style'])){
+			$this -> db -> where("_m.menu_style_id", $data['s_menu_style']);
+		}
+
+		if(!empty($data['s_menu_name'])){
+			$s_menu_name = $data['s_menu_name'];
+			$this -> db -> where("_m.menu_name like", "%$s_menu_name%");
+		}
 	}
 
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("menu m", "m.id = _m.menu_id", "left");
-		$this -> db -> join("users u", "u.id = _m.user_id", "left");
+		$this -> db -> join("menu_style ms", "ms.id = _m.menu_style_id", "left");
+		// $this -> db -> join("images img", "img.id = _m.img_id", "left");
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 
@@ -80,106 +77,67 @@ class Question_option_dao extends MY_Model {
 		return $list;
 	}
 
-	function find_order_by_menu($id){
+	function find_all_open(){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		$this -> db -> where('_m.menu_id',$id);
-		$this -> db -> where('_m.is_done<',1);
-		$this -> db -> select('u.user_name as user_name');
+		$this -> db -> where('_m.status',1);
+		$this -> db -> where('_m.is_stop',0);
 
-		$this -> db -> join("users u", "u.id = _m.user_id", "left");
 		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
-		$this -> db -> order_by('_m.id', 'desc');
+		// $this -> db -> order_by('_m.id', 'desc');
+		$this -> db -> order_by('_m.open_date', 'asc');
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
 
-	function find_by_all_this_menu($id){
+	function find_all_open_and_stop(){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		$this -> db -> where('_m.menu_id',$id);
-		$this -> db -> where('_m.is_done<',1);
+		$this -> db -> where('_m.status',1);
+		// $this -> db -> where('_m.is_stop',0);
 
 		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
-		$this -> db -> order_by('_m.id', 'desc');
+		$this -> db -> order_by('_m.open_date', 'asc');
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
 
-	function find_all_order_list($data, $is_count = FALSE) {
-
-		$start = $data['start'];
-		$limit = $data['length'];
-	
-		
-		// select
+	function find_all_open_menu($id){
 		$this -> db -> from("$this->table_name as _m");
-
 		$this -> db -> select('_m.*');
-		$this -> db -> select('u.user_name as user_name');
-		$this -> db -> select('m.menu_name as menu_name');
-		$this -> db -> select('m.open_date as open_date');
+		$this -> db -> where('_m.status',1);
+		$this -> db -> where('_m.id',$id);
 
-		$this -> db -> join("users u", "u.id = _m.user_id", "left");
-		$this -> db -> join("menu m", "m.id = _m.menu_id", "left");
-		
-		if($data['menu_id']&&$data['menu_id']>0) {
-			$this -> db -> where('_m.menu_id',$data['menu_id']);
-		}
-
-		if(!$is_count) {
-			$this -> db -> limit($limit, $start);
+		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
+		$this -> db -> order_by('_m.open_date', 'asc');
+		$list = $this -> db -> get() -> result();
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return null;
 		}
 		
-		$this -> db -> where('_m.is_delete<',1);
-		$this -> db -> where('_m.is_done<',1);
-		$this -> db -> order_by('_m.id','desc');
+	}
+	function find_all_open_without_stop(){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.status',1);
 
-		// query results
-		if(!$is_count) {
-			$query = $this -> db -> get();
-			return $query -> result();
-		} else {
-			return $this -> db -> count_all_results();
-		}
-
+		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
+		$this -> db -> order_by('_m.open_date', 'asc');
+		$list = $this -> db -> get() -> result();
+		return $list;
 	}
 
-	function find_all_order_list_other($data, $is_count = FALSE) {
-
-		$start = $data['start'];
-		$limit = $data['length'];
-		$menu_id = $data['menu_id'];
-		
-		// select
+	function find_same_menu_name($data){
 		$this -> db -> from("$this->table_name as _m");
-
 		$this -> db -> select('_m.*');
-		$this -> db -> select('u.user_name as user_name');
-		$this -> db -> select('m.menu_name as menu_name');
-		$this -> db -> select('m.menu_style_id as menu_style_id');
-		$this -> db -> where('_m.user_id <>',$data['login_user_id']);
-		$this -> db -> join("users u", "u.id = _m.user_id", "left");
-		$this -> db -> join("menu m", "m.id = _m.menu_id", "left");
-		
-		
-		if(!$is_count) {
-			$this -> db -> limit($limit, $start);
-		}
-		
-		$this -> db -> where('_m.menu_id',$menu_id);
-		$this -> db -> where('_m.is_delete<',1);
-		$this -> db -> where('_m.is_done<',1);
-		$this -> db -> order_by('_m.id','desc');
-
-		// query results
-		if(!$is_count) {
-			$query = $this -> db -> get();
-			return $query -> result();
-		} else {
-			return $this -> db -> count_all_results();
-		}
-
+		$menu_name = $data['menu_name'];
+		$this -> db -> where("_m.menu_name like", "%$menu_name%");
+		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
+		$this -> db -> order_by('_m.id', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list;
 	}
 }
 ?>
