@@ -194,9 +194,9 @@
 
   $("input[name='q2_1']").on('change', function(){
     if( document.querySelector("input[name='q2_1']:checked").value=='是'){
-      $('#d_hide').addClass('d_hide');
-    } else{
       $('#d_hide').removeClass('d_hide');
+    } else{
+      $('#d_hide').addClass('d_hide');
     }
   });
 
