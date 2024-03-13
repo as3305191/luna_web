@@ -17,85 +17,12 @@
     <hr/>
     個人疲勞評估<br>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
-    1.	你常覺得疲勞嗎？ <br>
-    <input type="radio" name="q3_1" value="100" id="q1_100"><label for="q1_100">總是(100)</label><br>
-    <input type="radio" name="q3_1" value="75" id="q1_75"><label for="q1_75">常常(75)</label><br>
-    <input type="radio" name="q3_1" value="50" id="q1_50"><label for="q1_50">有時候(50)</label><br>
-    <input type="radio" name="q3_1" value="25" id="q1_25"><label for="q1_25">不常(25)</label><br>
-    <input type="radio" name="q3_1" value="0" id="q1_0"><label for="q1_0">從未或幾乎從未(0)</label><br>
-    2.	你常覺得身體上體力透支嗎？ <br>
-    <input type="radio" name="q3_2" value="100" id="q2_100"><label for="q2_100">總是(100)</label><br>
-    <input type="radio" name="q3_2" value="75" id="q2_75"><label for="q2_75">常常(75)</label><br>
-    <input type="radio" name="q3_2" value="50" id="q2_50"><label for="q2_50">有時候(50)</label><br>
-    <input type="radio" name="q3_2" value="25" id="q2_25"><label for="q2_25">不常(25)</label><br>
-    <input type="radio" name="q3_2" value="0" id="q2_0"><label for="q2_0">從未或幾乎從未(0)</label><br>
-    3.	你常覺得情緒上心力交瘁嗎？ <br>
-    <input type="radio" name="q3_3" value="100" id="q3_100"><label for="q3_100">總是(100)</label><br>
-    <input type="radio" name="q3_3" value="75" id="q3_75"><label for="q3_75">常常(75)</label><br>
-    <input type="radio" name="q3_3" value="50" id="q3_50"><label for="q3_50">有時候(50)</label><br>
-    <input type="radio" name="q3_3" value="25" id="q3_25"><label for="q3_25">不常(25)</label><br>
-    <input type="radio" name="q3_3" value="0" id="q3_0"><label for="q3_0">從未或幾乎從未(0)</label><br>
-    4.	你常會覺得，「我快要撐不下去了」嗎？ <br>
-    <input type="radio" name="q3_4" value="100" id="q4_100"><label for="q4_100">總是(100)</label><br>
-    <input type="radio" name="q3_4" value="75" id="q4_75"><label for="q4_75">常常(75)</label><br>
-    <input type="radio" name="q3_4" value="50" id="q4_50"><label for="q4_50">有時候(50)</label><br>
-    <input type="radio" name="q3_4" value="25" id="q4_25"><label for="q4_25">不常(25)</label><br>
-    <input type="radio" name="q3_4" value="0" id="q4_0"><label for="q4_0">從未或幾乎從未(0)</label><br>
-    5.	你常覺得精疲力竭嗎？ <br>
-    <input type="radio" name="q3_5" value="100" id="q5_100"><label for="q5_100">總是(100)</label><br>
-    <input type="radio" name="q3_5" value="75" id="q5_75"><label for="q5_75">常常(75)</label><br>
-    <input type="radio" name="q3_5" value="50" id="q5_50"><label for="q5_50">有時候(50)</label><br>
-    <input type="radio" name="q3_5" value="25" id="q5_25"><label for="q5_25">不常(25)</label><br>
-    <input type="radio" name="q3_5" value="0" id="q5_0"><label for="q5_0">從未或幾乎從未(0)</label><br>
-    6.	你常常覺得虛弱，好像快要生病了嗎？ <br>
-    <input type="radio" name="q3_6" value="100" id="q6_100"><label for="q6_100">總是(100)</label><br>
-    <input type="radio" name="q3_6" value="75" id="q6_75"><label for="q6_75">常常(75)</label><br>
-    <input type="radio" name="q3_6" value="50" id="q6_50"><label for="q6_50">有時候(50)</label><br>
-    <input type="radio" name="q3_6" value="25" id="q6_25"><label for="q6_25">不常(25)</label><br>
-    <input type="radio" name="q3_6" value="0" id="q6_0"><label for="q6_0">從未或幾乎從未(0)</label><br>
-    工作疲勞評估<br>
-    1.	你的工作會令人情緒上心力交瘁嗎？<br>
-    <input type="radio" name="q3_7" value="100" id="q7_100"><label for="q7_100">總是(100)</label><br>
-    <input type="radio" name="q3_7" value="75" id="q7_75"><label for="q7_75">常常(75)</label><br>
-    <input type="radio" name="q3_7" value="50" id="q7_50"><label for="q7_50">有時候(50)</label><br>
-    <input type="radio" name="q3_7" value="25" id="q7_25"><label for="q7_25">不常(25)</label><br>
-    <input type="radio" name="q3_7" value="0" id="q7_0"><label for="q7_0">從未或幾乎從未(0)</label><br>
-    2.	你的工作會讓你覺得快要累垮了嗎？ <br>
-    <input type="radio" name="q3_8" value="100" id="q8_100"><label for="q8_100">總是(100)</label><br>
-    <input type="radio" name="q3_8" value="75" id="q8_100"><label for="q8_100">常常(75)</label><br>
-    <input type="radio" name="q3_8" value="50" id="q8_50"><label for="q8_50">有時候(50)</label><br>
-    <input type="radio" name="q3_8" value="25" id="q8_25"><label for="q8_25">不常(25)</label><br>
-    <input type="radio" name="q3_8" value="0" id="q8_0"><label for="q8_0">從未或幾乎從未(0)</label><br>
-    3.	你的工作會讓你覺得挫折嗎？ <br>
-    <input type="radio" name="q3_9" value="100" id="q9_100"><label for="q9_100">總是(100)</label><br>
-    <input type="radio" name="q3_9" value="75" id="q9_75"><label for="q9_75">常常(75)</label><br>
-    <input type="radio" name="q3_9" value="50" id="q9_50"><label for="q9_50">有時候(50)</label><br>
-    <input type="radio" name="q3_9" value="25" id="q9_25"><label for="q9_25">不常(25)</label><br>
-    <input type="radio" name="q3_9" value="0" id="q9_0"><label for="q9_0">從未或幾乎從未(0)</label><br>
-    4.	工作一整天之後，你覺得精疲力竭嗎？ <br>
-    <input type="radio" name="q3_10" value="100" id="q10_100"><label for="q10_100">總是(100)</label><br>
-    <input type="radio" name="q3_10" value="75" id="q10_75"><label for="q10_75">常常(75)</label><br>
-    <input type="radio" name="q3_10" value="50" id="q10_50"><label for="q10_50">有時候(50)</label><br>
-    <input type="radio" name="q3_10" value="25" id="q10_25"><label for="q10_25">不常(25)</label><br>
-    <input type="radio" name="q3_10" value="0" id="q10_0"><label for="q10_0">從未或幾乎從未(0)</label><br>
-    5.	上班之前只要想到又要工作一整天，你就覺得沒力嗎？ <br>
-    <input type="radio" name="q3_11" value="100" id="q11_100"><label for="q11_100">總是(100)</label><br>
-    <input type="radio" name="q3_11" value="75" id="q11_75"><label for="q11_75">常常(75)</label><br>
-    <input type="radio" name="q3_11" value="50" id="q11_50"><label for="q11_50">有時候(50)</label><br>
-    <input type="radio" name="q3_11" value="25" id="q11_25"><label for="q11_25">不常(25)</label><br>
-    <input type="radio" name="q3_11" value="0" id="q11_0"><label for="q11_0">從未或幾乎從未(0)</label><br>
-    6.	上班時你會覺得每一刻都很難熬嗎？ <br>
-    <input type="radio" name="q3_12" value="100" id="q12_100"><label for="q12_100">總是(100)</label><br>
-    <input type="radio" name="q3_12" value="75" id="q12_75"><label for="q12_75">常常(75)</label><br>
-    <input type="radio" name="q3_12" value="50" id="q12_50"><label for="q12_50">有時候(50)</label><br>
-    <input type="radio" name="q3_12" value="25" id="q12_25"><label for="q12_25">不常(25)</label><br>
-    <input type="radio" name="q3_12" value="0" id="q12_0"><label for="q12_0">從未或幾乎從未(0)</label><br>
-    7.	不工作的時候，你有足夠的精力陪朋友或家人嗎？ <br>
-    <input type="radio" name="q3_13" value="100" id="q13_100"><label for="q13_100">總是(100)</label><br>
-    <input type="radio" name="q3_13" value="75" id="q13_75"><label for="q13_75">常常(75)</label><br>
-    <input type="radio" name="q3_13" value="50" id="q13_50"><label for="q13_50">有時候(50)</label><br>
-    <input type="radio" name="q3_13" value="25" id="q13_25"><label for="q13_25">不常(25)</label><br>
-    <input type="radio" name="q3_13" value="0" id="q13_0"><label for="q13_0">從未或幾乎從未(0)</label><br>
+    1.  您在過去1年內，身體是否有長達2星期以上的痠痛、發麻、刺痛、肌肉疲勞、關節活動限制等不適症狀？ <br>
+    （若否，結束此調查表；若是，請繼續填寫<br>
+    <input type="radio" name="q2_1" value="是" id="q1_y"><label for="q1_y">是</label><br>
+    <input type="radio" name="q2_1" value="否" id="q1_n"><label for="q1_n">否</label><br>
+    <img src="" with="600" heigh="400" alt="一張圖片">
+    <img width="120" src="<?= base_url('img/body_fat/logo/body_back_for_que2.png') ?>" >
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
             <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>
