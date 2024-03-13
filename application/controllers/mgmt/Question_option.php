@@ -43,7 +43,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 	public function edit($id) {
 		$data = array();
-		$data['swot_title_id'] =$id;
+		$id =$id;
 		if(!empty($id)) {
 			$q_data = $this -> get_posts(array(
 				'length',
