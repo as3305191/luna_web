@@ -100,9 +100,9 @@ class Question_option extends MY_Mgmt_Controller {
 	public function up_lock_question_list(){
 		$question_id = $this -> get_post('id');
 		$u_data = array();
-		$list = $this -> dao -> find_by_id($question_id);
+		$list = $this -> dao -> find_by_id($menu_id);
 		if(!empty($list)){
-			if($list->is_close==0){
+			if($list->is_close==1){
 				$u_data['is_close'] = 0;
 				$res['success_msg'] = '問卷開放成功';
 				
