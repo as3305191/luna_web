@@ -24,8 +24,8 @@ class Question_for_user extends MY_Mgmt_Controller {
 		foreach ($question_option_open_list as $each){
 			$question_option_open_list = $this -> question_ans_dao -> find_all_not_write($data['login_user_id'],$each->id);
 			if(count($question_option_open_list)<1){
-				$data['question_option_id_list']->id=$each->id;
-				$data['question_option_id_list']->question_style_id=$each->question_style_id;
+				$data['question_option_id_list']['id'][]=$each->id;
+				$data['question_option_id_list']['question_style_id'][]=$each->question_style_id;
 			}
 		}
 		$this -> to_json($data);
