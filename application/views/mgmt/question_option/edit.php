@@ -278,12 +278,12 @@ function load_style() {
 							if(this.id==s_question_style){
 								$('<option/>', {
 									'value': this.id,
-									'text': this.option_style
+									'text': this.option_style_name
 								}).attr("selected", true).appendTo($question_style);	
 							} else{
 								$('<option/>', {
 									'value': this.id,
-									'text': this.option_style
+									'text': this.option_style_name
 								}).appendTo($question_style);
 							}
 						});
@@ -291,7 +291,7 @@ function load_style() {
 						$.each(d.option_style, function(){
 							$('<option/>', {
 								'value': this.id,
-								'text': this.option_style
+								'text': this.option_style_name
 							}).appendTo($question_style);
 						});
 					}
