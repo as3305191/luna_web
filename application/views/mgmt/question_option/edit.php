@@ -66,7 +66,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">問卷種類</label>
 					<div class="col-md-6" id="patnet_status" >
-						<input type="hidden" class="form-control" id="s_question_style" value="<?= isset($item) ? $item -> question_style_id : 0 ?>"  />
+						<input type="" class="form-control" id="s_question_style" value="<?= isset($item) ? $item -> question_style_id : 0 ?>"  />
 						<select id="question_style" class="form-control">
 										
 						</select>
