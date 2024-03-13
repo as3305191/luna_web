@@ -24,112 +24,120 @@
     
     二.請於下圖勾選各部位痠痛或不適症狀之嚴重度:嚴重度說明:0無症狀;1輕微可忽略;2顯著但不影響工作;3影響工作但不需休假;
     4影響工作且需休假少於四天;5影響工作且需休假四天以上。<br>
-    <img width="300" src="<?= base_url('img/body_fat/logo/body_back_for_que2.png') ?>" >
-    1. <br>
-    <input type="radio" name="q2_2" value="0" id="q2_1"><label for="q2_1">0</label><br>
-    <input type="radio" name="q2_2" value="1" id="q2_2"><label for="q2_2">1</label><br>
-    <input type="radio" name="q2_2" value="2" id="q2_3"><label for="q2_3">2</label><br>
-    <input type="radio" name="q2_2" value="3" id="q2_4"><label for="q2_4">3</label><br>
-    <input type="radio" name="q2_2" value="4" id="q2_5"><label for="q2_5">4</label><br>
-    <input type="radio" name="q2_2" value="5" id="q2_6"><label for="q2_6">5</label><br>
-    2. <br>
-    <input type="radio" name="q2_3" value="0" id="q3_1"><label for="q3_1">0</label><br>
-    <input type="radio" name="q2_3" value="1" id="q3_2"><label for="q3_2">1</label><br>
-    <input type="radio" name="q2_3" value="2" id="q3_3"><label for="q3_3">2</label><br>
-    <input type="radio" name="q2_3" value="3" id="q3_4"><label for="q3_4">3</label><br>
-    <input type="radio" name="q2_3" value="4" id="q3_5"><label for="q3_5">4</label><br>
-    <input type="radio" name="q2_3" value="5" id="q3_6"><label for="q3_6">5</label><br>
-    3. <br>
-    <input type="radio" name="q2_4" value="0" id="q4_1"><label for="q4_1">0</label><br>
-    <input type="radio" name="q2_4" value="1" id="q4_2"><label for="q4_2">1</label><br>
-    <input type="radio" name="q2_4" value="2" id="q4_3"><label for="q4_3">2</label><br>
-    <input type="radio" name="q2_4" value="3" id="q4_4"><label for="q4_4">3</label><br>
-    <input type="radio" name="q2_4" value="4" id="q4_5"><label for="q4_5">4</label><br>
-    <input type="radio" name="q2_4" value="5" id="q4_6"><label for="q4_6">5</label><br>
-    4. <br>
-    <input type="radio" name="q2_5" value="0" id="q5_1"><label for="q5_1">0</label><br>
-    <input type="radio" name="q2_5" value="1" id="q5_2"><label for="q5_2">1</label><br>
-    <input type="radio" name="q2_5" value="2" id="q5_3"><label for="q5_3">2</label><br>
-    <input type="radio" name="q2_5" value="3" id="q5_4"><label for="q5_4">3</label><br>
-    <input type="radio" name="q2_5" value="4" id="q5_5"><label for="q5_5">4</label><br>
-    <input type="radio" name="q2_5" value="5" id="q5_6"><label for="q5_6">5</label><br>
-    5. <br>
-    <input type="radio" name="q2_6" value="0" id="q6_1"><label for="q6_1">0</label><br>
-    <input type="radio" name="q2_6" value="1" id="q6_2"><label for="q6_2">1</label><br>
-    <input type="radio" name="q2_6" value="2" id="q6_3"><label for="q6_3">2</label><br>
-    <input type="radio" name="q2_6" value="3" id="q6_4"><label for="q6_4">3</label><br>
-    <input type="radio" name="q2_6" value="4" id="q6_5"><label for="q6_5">4</label><br>
-    <input type="radio" name="q2_6" value="5" id="q6_6"><label for="q6_6">5</label><br>
-    6. <br>
-    <input type="radio" name="q2_7" value="0" id="q7_1"><label for="q7_1">0</label><br>
-    <input type="radio" name="q2_7" value="1" id="q7_2"><label for="q7_2">1</label><br>
-    <input type="radio" name="q2_7" value="2" id="q7_3"><label for="q7_3">2</label><br>
-    <input type="radio" name="q2_7" value="3" id="q7_4"><label for="q7_4">3</label><br>
-    <input type="radio" name="q2_7" value="4" id="q7_5"><label for="q7_5">4</label><br>
-    <input type="radio" name="q2_7" value="5" id="q7_6"><label for="q7_6">5</label><br>
-    7. <br>
-    <input type="radio" name="q2_8" value="0" id="q8_1"><label for="q8_1">0</label><br>
-    <input type="radio" name="q2_8" value="1" id="q8_2"><label for="q8_2">1</label><br>
-    <input type="radio" name="q2_8" value="2" id="q8_3"><label for="q8_3">2</label><br>
-    <input type="radio" name="q2_8" value="3" id="q8_4"><label for="q8_4">3</label><br>
-    <input type="radio" name="q2_8" value="4" id="q8_5"><label for="q8_5">4</label><br>
-    <input type="radio" name="q2_8" value="5" id="q8_6"><label for="q8_6">5</label><br>
-    8. <br>
-    <input type="radio" name="q2_9" value="0" id="q9_1"><label for="q9_1">0</label><br>
-    <input type="radio" name="q2_9" value="1" id="q9_2"><label for="q9_2">1</label><br>
-    <input type="radio" name="q2_9" value="2" id="q9_3"><label for="q9_3">2</label><br>
-    <input type="radio" name="q2_9" value="3" id="q9_4"><label for="q9_4">3</label><br>
-    <input type="radio" name="q2_9" value="4" id="q9_5"><label for="q9_5">4</label><br>
-    <input type="radio" name="q2_9" value="5" id="q9_6"><label for="q9_6">5</label><br>
-    9. <br>
-    <input type="radio" name="q2_10" value="0" id="q10_1"><label for="q10_1">0</label><br>
-    <input type="radio" name="q2_10" value="1" id="q10_2"><label for="q10_2">1</label><br>
-    <input type="radio" name="q2_10" value="2" id="q10_3"><label for="q10_3">2</label><br>
-    <input type="radio" name="q2_10" value="3" id="q10_4"><label for="q10_4">3</label><br>
-    <input type="radio" name="q2_10" value="4" id="q10_5"><label for="q10_5">4</label><br>
-    <input type="radio" name="q2_10" value="5" id="q10_6"><label for="q10_6">5</label><br>
-    10. <br>
-    <input type="radio" name="q2_11" value="0" id="q11_1"><label for="q11_1">0</label><br>
-    <input type="radio" name="q2_11" value="1" id="q11_2"><label for="q11_2">1</label><br>
-    <input type="radio" name="q2_11" value="2" id="q11_3"><label for="q11_3">2</label><br>
-    <input type="radio" name="q2_11" value="3" id="q11_4"><label for="q11_4">3</label><br>
-    <input type="radio" name="q2_11" value="4" id="q11_5"><label for="q11_5">4</label><br>
-    <input type="radio" name="q2_11" value="5" id="q11_6"><label for="q11_6">5</label><br>
-    11. <br>
-    <input type="radio" name="q2_12" value="0" id="q12_1"><label for="q12_1">0</label><br>
-    <input type="radio" name="q2_12" value="1" id="q12_2"><label for="q12_2">1</label><br>
-    <input type="radio" name="q2_12" value="2" id="q12_3"><label for="q12_3">2</label><br>
-    <input type="radio" name="q2_12" value="3" id="q12_4"><label for="q12_4">3</label><br>
-    <input type="radio" name="q2_12" value="4" id="q12_5"><label for="q12_5">4</label><br>
-    <input type="radio" name="q2_12" value="5" id="q12_6"><label for="q12_6">5</label><br>
-    12. <br>
-    <input type="radio" name="q2_13" value="0" id="q13_1"><label for="q13_1">0</label><br>
-    <input type="radio" name="q2_13" value="1" id="q13_2"><label for="q13_2">1</label><br>
-    <input type="radio" name="q2_13" value="2" id="q13_3"><label for="q13_3">2</label><br>
-    <input type="radio" name="q2_13" value="3" id="q13_4"><label for="q13_4">3</label><br>
-    <input type="radio" name="q2_13" value="4" id="q13_5"><label for="q13_5">4</label><br>
-    <input type="radio" name="q2_13" value="5" id="q13_6"><label for="q13_6">5</label><br>
-    13. <br>
-    <input type="radio" name="q2_14" value="0" id="q14_1"><label for="q14_1">0</label><br>
-    <input type="radio" name="q2_14" value="1" id="q14_2"><label for="q14_2">1</label><br>
-    <input type="radio" name="q2_14" value="2" id="q14_3"><label for="q14_3">2</label><br>
-    <input type="radio" name="q2_14" value="3" id="q14_4"><label for="q14_4">3</label><br>
-    <input type="radio" name="q2_14" value="4" id="q14_5"><label for="q14_5">4</label><br>
-    <input type="radio" name="q2_14" value="5" id="q14_6"><label for="q14_6">5</label><br>
-    14. <br>
-    <input type="radio" name="q2_15" value="0" id="q15_1"><label for="q15_1">0</label><br>
-    <input type="radio" name="q2_15" value="1" id="q15_2"><label for="q15_2">1</label><br>
-    <input type="radio" name="q2_15" value="2" id="q15_3"><label for="q15_3">2</label><br>
-    <input type="radio" name="q2_15" value="3" id="q15_4"><label for="q15_4">3</label><br>
-    <input type="radio" name="q2_15" value="4" id="q15_5"><label for="q15_5">4</label><br>
-    <input type="radio" name="q2_15" value="5" id="q15_6"><label for="q15_6">5</label><br>
-    15. <br>
-    <input type="radio" name="q2_16" value="0" id="q16_1"><label for="q16_1">0</label><br>
-    <input type="radio" name="q2_16" value="1" id="q16_2"><label for="q16_2">1</label><br>
-    <input type="radio" name="q2_16" value="2" id="q16_3"><label for="q16_3">2</label><br>
-    <input type="radio" name="q2_16" value="3" id="q16_4"><label for="q16_4">3</label><br>
-    <input type="radio" name="q2_16" value="4" id="q16_5"><label for="q16_5">4</label><br>
-    <input type="radio" name="q2_16" value="5" id="q16_6"><label for="q16_6">5</label><br>
+    <div class="form-group">
+      <div class="col-xs-6" >
+        <img width="300" src="<?= base_url('img/body_fat/logo/body_back_for_que2.png') ?>" >
+      </div >
+      <div class="col-xs-6" >
+          1. <br>
+        <input type="radio" name="q2_2" value="0" id="q2_1"><label for="q2_1">0</label><br>
+        <input type="radio" name="q2_2" value="1" id="q2_2"><label for="q2_2">1</label><br>
+        <input type="radio" name="q2_2" value="2" id="q2_3"><label for="q2_3">2</label><br>
+        <input type="radio" name="q2_2" value="3" id="q2_4"><label for="q2_4">3</label><br>
+        <input type="radio" name="q2_2" value="4" id="q2_5"><label for="q2_5">4</label><br>
+        <input type="radio" name="q2_2" value="5" id="q2_6"><label for="q2_6">5</label><br>
+        2. <br>
+        <input type="radio" name="q2_3" value="0" id="q3_1"><label for="q3_1">0</label><br>
+        <input type="radio" name="q2_3" value="1" id="q3_2"><label for="q3_2">1</label><br>
+        <input type="radio" name="q2_3" value="2" id="q3_3"><label for="q3_3">2</label><br>
+        <input type="radio" name="q2_3" value="3" id="q3_4"><label for="q3_4">3</label><br>
+        <input type="radio" name="q2_3" value="4" id="q3_5"><label for="q3_5">4</label><br>
+        <input type="radio" name="q2_3" value="5" id="q3_6"><label for="q3_6">5</label><br>
+        3. <br>
+        <input type="radio" name="q2_4" value="0" id="q4_1"><label for="q4_1">0</label><br>
+        <input type="radio" name="q2_4" value="1" id="q4_2"><label for="q4_2">1</label><br>
+        <input type="radio" name="q2_4" value="2" id="q4_3"><label for="q4_3">2</label><br>
+        <input type="radio" name="q2_4" value="3" id="q4_4"><label for="q4_4">3</label><br>
+        <input type="radio" name="q2_4" value="4" id="q4_5"><label for="q4_5">4</label><br>
+        <input type="radio" name="q2_4" value="5" id="q4_6"><label for="q4_6">5</label><br>
+        4. <br>
+        <input type="radio" name="q2_5" value="0" id="q5_1"><label for="q5_1">0</label><br>
+        <input type="radio" name="q2_5" value="1" id="q5_2"><label for="q5_2">1</label><br>
+        <input type="radio" name="q2_5" value="2" id="q5_3"><label for="q5_3">2</label><br>
+        <input type="radio" name="q2_5" value="3" id="q5_4"><label for="q5_4">3</label><br>
+        <input type="radio" name="q2_5" value="4" id="q5_5"><label for="q5_5">4</label><br>
+        <input type="radio" name="q2_5" value="5" id="q5_6"><label for="q5_6">5</label><br>
+        5. <br>
+        <input type="radio" name="q2_6" value="0" id="q6_1"><label for="q6_1">0</label><br>
+        <input type="radio" name="q2_6" value="1" id="q6_2"><label for="q6_2">1</label><br>
+        <input type="radio" name="q2_6" value="2" id="q6_3"><label for="q6_3">2</label><br>
+        <input type="radio" name="q2_6" value="3" id="q6_4"><label for="q6_4">3</label><br>
+        <input type="radio" name="q2_6" value="4" id="q6_5"><label for="q6_5">4</label><br>
+        <input type="radio" name="q2_6" value="5" id="q6_6"><label for="q6_6">5</label><br>
+        6. <br>
+        <input type="radio" name="q2_7" value="0" id="q7_1"><label for="q7_1">0</label><br>
+        <input type="radio" name="q2_7" value="1" id="q7_2"><label for="q7_2">1</label><br>
+        <input type="radio" name="q2_7" value="2" id="q7_3"><label for="q7_3">2</label><br>
+        <input type="radio" name="q2_7" value="3" id="q7_4"><label for="q7_4">3</label><br>
+        <input type="radio" name="q2_7" value="4" id="q7_5"><label for="q7_5">4</label><br>
+        <input type="radio" name="q2_7" value="5" id="q7_6"><label for="q7_6">5</label><br>
+        7. <br>
+        <input type="radio" name="q2_8" value="0" id="q8_1"><label for="q8_1">0</label><br>
+        <input type="radio" name="q2_8" value="1" id="q8_2"><label for="q8_2">1</label><br>
+        <input type="radio" name="q2_8" value="2" id="q8_3"><label for="q8_3">2</label><br>
+        <input type="radio" name="q2_8" value="3" id="q8_4"><label for="q8_4">3</label><br>
+        <input type="radio" name="q2_8" value="4" id="q8_5"><label for="q8_5">4</label><br>
+        <input type="radio" name="q2_8" value="5" id="q8_6"><label for="q8_6">5</label><br>
+        8. <br>
+        <input type="radio" name="q2_9" value="0" id="q9_1"><label for="q9_1">0</label><br>
+        <input type="radio" name="q2_9" value="1" id="q9_2"><label for="q9_2">1</label><br>
+        <input type="radio" name="q2_9" value="2" id="q9_3"><label for="q9_3">2</label><br>
+        <input type="radio" name="q2_9" value="3" id="q9_4"><label for="q9_4">3</label><br>
+        <input type="radio" name="q2_9" value="4" id="q9_5"><label for="q9_5">4</label><br>
+        <input type="radio" name="q2_9" value="5" id="q9_6"><label for="q9_6">5</label><br>
+        9. <br>
+        <input type="radio" name="q2_10" value="0" id="q10_1"><label for="q10_1">0</label><br>
+        <input type="radio" name="q2_10" value="1" id="q10_2"><label for="q10_2">1</label><br>
+        <input type="radio" name="q2_10" value="2" id="q10_3"><label for="q10_3">2</label><br>
+        <input type="radio" name="q2_10" value="3" id="q10_4"><label for="q10_4">3</label><br>
+        <input type="radio" name="q2_10" value="4" id="q10_5"><label for="q10_5">4</label><br>
+        <input type="radio" name="q2_10" value="5" id="q10_6"><label for="q10_6">5</label><br>
+        10. <br>
+        <input type="radio" name="q2_11" value="0" id="q11_1"><label for="q11_1">0</label><br>
+        <input type="radio" name="q2_11" value="1" id="q11_2"><label for="q11_2">1</label><br>
+        <input type="radio" name="q2_11" value="2" id="q11_3"><label for="q11_3">2</label><br>
+        <input type="radio" name="q2_11" value="3" id="q11_4"><label for="q11_4">3</label><br>
+        <input type="radio" name="q2_11" value="4" id="q11_5"><label for="q11_5">4</label><br>
+        <input type="radio" name="q2_11" value="5" id="q11_6"><label for="q11_6">5</label><br>
+        11. <br>
+        <input type="radio" name="q2_12" value="0" id="q12_1"><label for="q12_1">0</label><br>
+        <input type="radio" name="q2_12" value="1" id="q12_2"><label for="q12_2">1</label><br>
+        <input type="radio" name="q2_12" value="2" id="q12_3"><label for="q12_3">2</label><br>
+        <input type="radio" name="q2_12" value="3" id="q12_4"><label for="q12_4">3</label><br>
+        <input type="radio" name="q2_12" value="4" id="q12_5"><label for="q12_5">4</label><br>
+        <input type="radio" name="q2_12" value="5" id="q12_6"><label for="q12_6">5</label><br>
+        12. <br>
+        <input type="radio" name="q2_13" value="0" id="q13_1"><label for="q13_1">0</label><br>
+        <input type="radio" name="q2_13" value="1" id="q13_2"><label for="q13_2">1</label><br>
+        <input type="radio" name="q2_13" value="2" id="q13_3"><label for="q13_3">2</label><br>
+        <input type="radio" name="q2_13" value="3" id="q13_4"><label for="q13_4">3</label><br>
+        <input type="radio" name="q2_13" value="4" id="q13_5"><label for="q13_5">4</label><br>
+        <input type="radio" name="q2_13" value="5" id="q13_6"><label for="q13_6">5</label><br>
+        13. <br>
+        <input type="radio" name="q2_14" value="0" id="q14_1"><label for="q14_1">0</label><br>
+        <input type="radio" name="q2_14" value="1" id="q14_2"><label for="q14_2">1</label><br>
+        <input type="radio" name="q2_14" value="2" id="q14_3"><label for="q14_3">2</label><br>
+        <input type="radio" name="q2_14" value="3" id="q14_4"><label for="q14_4">3</label><br>
+        <input type="radio" name="q2_14" value="4" id="q14_5"><label for="q14_5">4</label><br>
+        <input type="radio" name="q2_14" value="5" id="q14_6"><label for="q14_6">5</label><br>
+        14. <br>
+        <input type="radio" name="q2_15" value="0" id="q15_1"><label for="q15_1">0</label><br>
+        <input type="radio" name="q2_15" value="1" id="q15_2"><label for="q15_2">1</label><br>
+        <input type="radio" name="q2_15" value="2" id="q15_3"><label for="q15_3">2</label><br>
+        <input type="radio" name="q2_15" value="3" id="q15_4"><label for="q15_4">3</label><br>
+        <input type="radio" name="q2_15" value="4" id="q15_5"><label for="q15_5">4</label><br>
+        <input type="radio" name="q2_15" value="5" id="q15_6"><label for="q15_6">5</label><br>
+        15. <br>
+        <input type="radio" name="q2_16" value="0" id="q16_1"><label for="q16_1">0</label><br>
+        <input type="radio" name="q2_16" value="1" id="q16_2"><label for="q16_2">1</label><br>
+        <input type="radio" name="q2_16" value="2" id="q16_3"><label for="q16_3">2</label><br>
+        <input type="radio" name="q2_16" value="3" id="q16_4"><label for="q16_4">3</label><br>
+        <input type="radio" name="q2_16" value="4" id="q16_5"><label for="q16_5">4</label><br>
+        <input type="radio" name="q2_16" value="5" id="q16_6"><label for="q16_6">5</label><br>
+      </div >
+		</div>
+    
+    
     三.上圖最痠痛或不適之部位，症狀持續長達多久時間？<br>
     <input type="radio" name="q2_17" value="2星期" id="q17_1"><label for="q17_1">2星期</label><br>
     <input type="radio" name="q2_17" value="1個月" id="q17_2"><label for="q17_2">1個月</label><br>
