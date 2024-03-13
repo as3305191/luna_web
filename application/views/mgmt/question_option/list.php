@@ -39,11 +39,11 @@
 											<th class="min150">標題</th>
 											<th class="min150">建立時間</th>
 										</tr>
-										<tr class="search_box">
+										<!-- <tr class="search_box">
 											<th></th>
 											<th></th>
 											<th></th>
-										</tr>
+										</tr> -->
 									</thead>
 									<tbody>
 									</tbody>
