@@ -18,10 +18,10 @@
     個人疲勞評估<br>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     1.  您在過去1年內，身體是否有長達2星期以上的痠痛、發麻、刺痛、肌肉疲勞、關節活動限制等不適症狀？ <br>
-    （若否，結束此調查表；若是，請繼續填寫<br>
+    (若否，結束此調查表；若是，請繼續填寫) <br>
     <input type="radio" name="q2_1" value="是" id="q1_y"><label for="q1_y">是</label><br>
     <input type="radio" name="q2_1" value="否" id="q1_n"><label for="q1_n">否</label><br>
-    <img width="560" src="<?= base_url('img/body_fat/logo/body_back_for_que2.png') ?>" >
+    <img width="300" src="<?= base_url('img/body_fat/logo/body_back_for_que2.png') ?>" >
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
             <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>
