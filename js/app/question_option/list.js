@@ -108,10 +108,10 @@ var QuestionoptionAppClass = (function(app) {
 			columns : [null, {
 				data : 'question_style_name',
 				render: function(d,t,r) {
-					if(d){
+					if(r.note){
 						return d+'-'+r.note;
 					} else{
-						return '';
+						return d;
 					}
 				}
 			}, {
