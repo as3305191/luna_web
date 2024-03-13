@@ -126,6 +126,7 @@ $("input[name='q1_6']").on('change', function(){
         q1_7_check_value.push(obj[i].value);
       }
     }
+    
   });
   $('.cancel').click(function() {
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
