@@ -21,8 +21,7 @@
     （若否，結束此調查表；若是，請繼續填寫<br>
     <input type="radio" name="q2_1" value="是" id="q1_y"><label for="q1_y">是</label><br>
     <input type="radio" name="q2_1" value="否" id="q1_n"><label for="q1_n">否</label><br>
-    <img src="" with="600" heigh="400" alt="一張圖片">
-    <img width="120" src="<?= base_url('img/body_fat/logo/body_back_for_que2.png') ?>" >
+    <img width="560" src="<?= base_url('img/body_fat/logo/body_back_for_que2.png') ?>" >
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
             <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>
