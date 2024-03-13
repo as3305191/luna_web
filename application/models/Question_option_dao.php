@@ -41,6 +41,9 @@ class Question_option_dao extends MY_Model {
 
 	function search_always($data) {
 		$this -> db -> where('_m.is_delete', 0);
+		if(!empty($data['id'])){
+			$this -> db -> where("_m.id", $data['id']);
+		}
 	}
 
 	function ajax_from_join() {
