@@ -24,7 +24,7 @@
 			</div>
 			<?php if(isset($question_option_id_list)): ?>
 				<?php foreach ($question_option_id_list as $each) : ?>
-					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click($each['question_style_id'],$each['id'])">問卷1</button>
+					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click($each->question_style_id,$each->id)">問卷1</button>
 				<?php endforeach ?>
 			<?php endif?>
 			<!-- <button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="q_click(2,7)">問卷2</button>
