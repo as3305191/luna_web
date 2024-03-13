@@ -40,7 +40,7 @@ class Question_option_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		
+		$this -> db -> where('_m.is_delete', 0);
 	}
 
 	function ajax_from_join() {
