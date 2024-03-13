@@ -152,11 +152,11 @@
     <textarea class="form-control" name="q2_19"></textarea>
     五.近3個月您是否有因上述不適症狀而請假就醫? <br>
     <input type="radio" name="q2_20" value="是" id="q20_y"><label for="q20_y">是</label><br>
-    <input type="radio" name="q2_20" value="否" id="q20_n"><label for="q20_n">否</label><br>
+    <input type="radio" name="q2_20" value="否" id="q20_n"><label for="q20_n">否</label>
     請假<input name="q2_21">天<br>
     六.您是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療）？<br>
     <input type="radio" name="q2_22" value="是" id="q22_y"><label for="q22_y">是</label><br>
-    <input type="radio" name="q2_22" value="否" id="q22_n"><label for="q22_n">否</label><br>
+    <input type="radio" name="q2_22" value="否" id="q22_n"><label for="q22_n">否</label>
     診斷名稱：
     <input name="q2_23"><br>
     七.其他症狀、病史說明：(例如糖尿病、高血壓等等)<br>
