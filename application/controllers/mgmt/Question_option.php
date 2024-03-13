@@ -44,7 +44,22 @@ class Question_option extends MY_Mgmt_Controller {
 	public function edit($id) {
 		$data = array();
 		$data['swot_title_id'] =$id;
- 
+		if(!empty($id)) {
+			$q_data = $this -> get_posts(array(
+				'length',
+				'start',
+				'columns',
+				'search',
+				'order'
+			));
+			$q_data['id'] = $id;
+			$list = $this -> dao -> query_ajax($q_data);
+			$item = $list[0];
+			
+			$data['item'] = $item;
+		
+
+		}
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
