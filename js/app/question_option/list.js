@@ -106,7 +106,7 @@ var QuestionoptionAppClass = (function(app) {
 			},
 			pageLength: 50,
 			columns : [null, {
-				data : 'swot_title'
+				data : 'question_style_name'
 			}, {
 				data : 'create_time'
 			}],
@@ -117,7 +117,7 @@ var QuestionoptionAppClass = (function(app) {
 				data : null,
 				render:function ( data, type, row ) {
 					var input = '';
-					if(row.is_lock < 1){
+					if(row.is_close>0){
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
 						+input

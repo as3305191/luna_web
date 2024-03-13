@@ -18,7 +18,7 @@ class Question_option_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
-
+		$this -> db -> select('qs.question_style_name as question_style_name');
 		// join
 		$this -> ajax_from_join();
 
@@ -46,7 +46,7 @@ class Question_option_dao extends MY_Model {
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		// $this -> db -> join("images img", "img.id = _m.img_id", "left");
+		$this -> db -> join("question_style qs", "qs.id = _m.question_style_id", "left");
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 

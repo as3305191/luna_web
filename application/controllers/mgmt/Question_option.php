@@ -97,26 +97,23 @@ class Question_option extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function up_lock_swot_style(){
-		$swot_title_id = $this -> get_post('swot_title_id');
-		$swot_style_id = $this -> get_post('swot_style_id');
-
+	public function up_lock_question_list(){
+		$question_id = $this -> get_post('id');
 		$u_data = array();
-		$column = "iso_id_".$swot_style_id;
-		$find_each_id_is_lock = $this -> dao -> find_each_is_lock($swot_title_id);
-
-		if($find_each_id_is_lock[0]->$column<1){
-			$u_data['iso_id_'.$swot_style_id] = 1;
-			$res['success_msg'] = '變更已鎖定成功';
-		} else{
-			$u_data['iso_id_'.$swot_style_id] = 0;
-			$res['success_msg'] = '變更可編輯成功';
+		$list = $this -> dao -> find_by_id($menu_id);
+		if(!empty($list)){
+			if($list->is_close==1){
+				$u_data['is_close'] = 0;
+				$res['success_msg'] = '問卷開放成功';
+				
+			} else{
+				$u_data['is_close'] = 1;
+				$res['success_msg'] = '問卷變更不開放';
+				
+			}
+			$this -> dao -> update($u_data, $question_id);
 		}
-			$this -> dao -> update($u_data, $swot_title_id);
-
-		
 		$res['success'] = TRUE;
-		// $res['123'] = $find_each_id_is_lock[0]->$column;
 		$this -> to_json($res);
 	}
 
