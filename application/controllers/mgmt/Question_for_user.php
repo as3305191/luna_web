@@ -19,7 +19,8 @@ class Question_for_user extends MY_Mgmt_Controller {
 	{
 		$data = array();
 		$data = $this -> setup_user_data($data);
-		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
+
 		$question_option_open_list = $this -> question_option_dao -> find_all_open_question();
 		foreach ($question_option_open_list as $each){
 			$question_option_open_list = $this -> question_ans_dao -> find_all_not_write($data['login_user_id'],$each->id);
@@ -28,6 +29,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 				$data['question_option_id_list']['question_style_id']=$each->question_style_id;
 			}
 		}
+		$data['question_option_open_list']=$question_option_open_list;
 		$this -> to_json($data);
 		$this -> load -> view('mgmt/question_for_user/list', $data);
 	}
