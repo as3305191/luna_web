@@ -44,11 +44,11 @@
 
 <script type="text/javascript">
 
-	// loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-	// 	loadScript(baseUrl + "js/app/question_for_user/list.js", function(){
-	// 		currentApp = new QuestionforuserAppClass(new BaseAppClass({}));
-	// 	});
-	// });
+	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
+		loadScript(baseUrl + "js/app/question_for_user/list.js", function(){
+			currentApp = new QuestionforuserAppClass(new BaseAppClass({}));
+		});
+	});
 
 
 	function q_click(q_num,id) {
