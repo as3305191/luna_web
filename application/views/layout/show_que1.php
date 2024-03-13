@@ -106,7 +106,21 @@
   $( document ).ready(function() {
     $('#name').focus();
   })
-
+var q1_6_check_value = [];
+var q1_7_check_value = [];
+$("input[name='q1_6']").on('change', function(){
+    for (i in obj) {
+        if (obj[i].checked)
+        q1_6_check_value.push(obj[i].value);
+    }
+  });
+  $("input[name='q1_7']").on('change', function(){
+    for (i in obj) {
+      if (obj[i].checked){
+        q1_7_check_value.push(obj[i].value);
+      }
+    }
+  });
   $('.cancel').click(function() {
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
     parent.layer.close(index);
@@ -123,8 +137,8 @@
        q3 : document.querySelector("input[name='q1_3']:checked").value,
        q4 : document.querySelector("input[name='q1_4']:checked").value,
        q5 : document.querySelector("input[name='q1_5']:checked").value,
-       q6 : document.querySelector("input[name='q1_6']:checked").value,
-       q7 : document.querySelector("input[name='q1_7']:checked").value,
+       q6 : q1_6_check_value,
+       q7 : q1_7_check_value,
        q8 : document.querySelector("input[name='q1_8']:checked").value,
        q9 : document.querySelector("input[name='q1_9']:checked").value,
        q10 : document.querySelector("input[name='q1_10']:checked").value,
