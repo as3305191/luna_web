@@ -106,7 +106,14 @@ var QuestionoptionAppClass = (function(app) {
 			},
 			pageLength: 50,
 			columns : [null, {
-				data : 'question_style_name'
+				data : 'question_style_name',
+				render: function(d,t,r) {
+					if(d){
+						return d+'-'+r.note;
+					} else{
+						return '';
+					}
+				}
 			}, {
 				data : 'create_time'
 			}],
