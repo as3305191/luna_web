@@ -106,10 +106,10 @@
   $( document ).ready(function() {
     $('#name').focus();
   })
-var q1_6_check_value = [];
-var q1_7_check_value = [];
+var q1_6_check_value;
+var q1_7_check_value;
 $("input[name='q1_6']").on('change', function(){
-    q1_6_check_value = [''];
+    q1_6_check_value = [];
     obj = document.getElementsByName("q1_6_check_value");
     for (i in obj) {
         if (obj[i].checked){
@@ -118,9 +118,10 @@ $("input[name='q1_6']").on('change', function(){
     }
   });
   $("input[name='q1_7']").on('change', function(){
-    q1_7_check_value = [''];
+    q1_7_check_value = [];
+    obj = document.getElementsByName("q1_7_check_value");
+
     for (i in obj) {
-      obj = document.getElementsByName("q1_7_check_value");
       if (obj[i].checked){
         q1_7_check_value.push(obj[i].value);
       }
