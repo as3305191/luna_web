@@ -121,7 +121,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
 		$id = $this -> get_post('id');
 		$u_data['is_delete'] = 1;
-		$this -> dao ->  update($u_data, $question_id);
+		$this -> dao ->  update($u_data, $id);
 		$this -> to_json($res);
 	}
 
