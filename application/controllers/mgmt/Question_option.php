@@ -52,38 +52,23 @@ class Question_option extends MY_Mgmt_Controller {
 		$this->load->view('mgmt/question_option/edit', $data);
 	}
 
-	public function swot_title_get_data() {
+	public function insert() {//新增
 		$res = array();
-		$swot_title_id =$this -> get_post('swot_title_id');
-		$data = $this -> get_posts(array(
-			'length',
-			'start',
-			'columns',
-			'search',
-			'order',
-		));
 		$data = array();
-		$items= $this -> swot_style_dao -> find_all_style();
-
-		foreach($items as $each){
-			$list = $this -> dao -> find_by_id($swot_title_id);
-			// if(!empty($list)){
-			// 	if($list->is_lock==1){
-			// 		$each->now_is_lock =  1;
-			// 	} else{
-			// 		$each->now_is_lock =  0;
-			// 	}
-			// } else {
-			// 	$each->now_is_lock= 0;
-			// } 
-			$column = "iso_id_".$each ->id;
-			$each->now_is_lock =  $list->$column;
+		$id = $this -> get_post('id');
+		$question_style_id= $this -> get_post('question_style_id');
+		$note= $this -> get_post('note');
+		$data['question_style_id'] = $question_style_id;
+		$data['note'] = $note;
+		if(empty($id)) {
+			// insert
+			$last_id = $this -> dao -> insert($data);
+		} else {
+			$this -> dao -> update($data, $id);
 			
-		} 
-
-		$res['items'] = $items;
+		}
 		$res['success'] = TRUE;
-		$this -> to_json($res);
+ 		$this -> to_json($res);
 	}
 
 	public function find_question_style(){

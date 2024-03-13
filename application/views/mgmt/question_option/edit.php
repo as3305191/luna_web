@@ -66,7 +66,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">問卷種類</label>
 					<div class="col-md-6" id="patnet_status" >
-						<input type="hidden" required class="form-control" id="s_question_style" value="<?= isset($item) ? $item -> question_style_id : 0 ?>"  />
+						<input type="hidden" class="form-control" id="s_question_style" value="<?= isset($item) ? $item -> question_style_id : 0 ?>"  />
 						<select id="question_style" class="form-control">
 										
 						</select>
@@ -78,7 +78,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">註記</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="note"  id="note" value="<?= isset($item) ? $item -> note : '' ?>"  />
+						<input type="text" class="form-control" name="note"  id="note" value="<?= isset($item) ? $item -> note : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -101,19 +101,16 @@
 <script>
 
 
-	function do_save() {
-	var url = baseUrl + 'mgmt/menu/insert'; // the script where you handle the form input.
+function do_save() {
+	var url = baseUrl + 'mgmt/question_option/insert'; // the script where you handle the form input.
 	$.ajax({
 		type : "POST",
 		url : url,
 		data : {
 			id: $('#item_id').val(),
-			menu_style_id:$('#menu_style_id').val(),
-			menu_name: $('#menu_name').val(),
-			img: img.join(","),
-			open_date: $('#open_date').val(),
+			question_style_id: $('#s_question_style').val(),
 			note: $('#note').val(),
-			dep_array: $('#dep_array').val()
+			
 		},
 		success : function(data) {
 			if(data.error_msg) {
