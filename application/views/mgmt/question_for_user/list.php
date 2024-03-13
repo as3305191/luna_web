@@ -71,7 +71,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['600px','800px'],
+					area:['1000px','800px'],
 					shadeClose:true,
 					content:'<?=base_url()?>'+url
 				})
