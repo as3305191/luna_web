@@ -38,6 +38,7 @@
 											<th class="min100"></th>
 											<th class="min150">標題</th>
 											<th class="min150">建立時間</th>
+											<th class="min150">匯出</th>
 										</tr>
 										<!-- <tr class="search_box">
 											<th></th>

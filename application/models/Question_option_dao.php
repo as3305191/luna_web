@@ -77,6 +77,15 @@ class Question_option_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_all_open_question(){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+
+		$this -> db -> order_by('_m.is_close', 0);
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+
 	function find_all_open_and_stop(){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');

@@ -5,9 +5,10 @@ class Question_for_user extends MY_Mgmt_Controller {
 
 	function __construct() {
 		parent::__construct();
-		$this -> load -> model('Question_title_dao', 'dao');
-		$this -> load -> model('Users_dao', 'users_dao');
+		$this -> load -> model('Question_option_dao', 'question_option_dao');
+		$this -> load -> model('Question_style_dao', 'question_style_dao');
 		$this -> load -> model('Question_ans_dao', 'question_ans_dao');
+		$this -> load -> model('Users_dao', 'users_dao');
 		// $this -> load -> model('Swot_style_dao', 'swot_style_dao');
 		// $this -> load -> model('Swot_dao', 'swot_dao');
 
@@ -18,8 +19,16 @@ class Question_for_user extends MY_Mgmt_Controller {
 	{
 		$data = array();
 		$data = $this -> setup_user_data($data);
-		// $data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
-		// $this -> to_json($data);
+		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+		$question_option_open_list = $this -> question_option_dao -> find_all_open_question();
+		foreach ($question_option_open_list as $each){
+			$question_option_open_list = $this -> question_ans_dao -> find_all_not_write($data['login_user']->user_id,$each->id);
+			if(count($question_option_open_list)<1){
+				$data['question_option_id_list']['id']=$each->id;
+				$data['question_option_id_list']['question_style_id']=$each->question_style_id;
+			}
+		}
+		$this -> to_json($data);
 		$this -> load -> view('mgmt/question_for_user/list', $data);
 	}
 
