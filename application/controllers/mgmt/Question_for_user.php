@@ -166,8 +166,8 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['q3'] = $q3;
 		$data['q4'] = $q4;
 		$data['q5'] = $q5;
-		$data['q6'] = implode(" ", $q6);
-		$data['q7'] = implode(" ", $q7);
+		$data['q6'] = $q6;
+		$data['q7'] = $q7;
 		$data['q8'] = $q8;
 		$data['q9'] = $q9;
 		$data['q10'] = $q10;
