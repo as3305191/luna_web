@@ -192,9 +192,9 @@
     parent.layer.close(index);
   })
 
-  document.querySelector("input[name='q2_1']:checked").on('change', function(){
+  document.querySelector("input[name='q2_1']").on('change', function(){
     if( document.querySelector("input[name='q2_1']:checked").value=='是'){
-      $('#d_hide').style.display= 'visible';
+      $('#d_hide').style.display= 'block';
     } else{
       $('#d_hide').style.display= 'none';
     }
