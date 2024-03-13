@@ -25,9 +25,15 @@ class Question_for_user extends MY_Mgmt_Controller {
 		foreach ($question_option_open_list as $each){
 			$question_option_open_list = $this -> question_ans_dao -> find_all_not_write($data['login_user_id'],$each->id);
 			if(count($question_option_open_list)<1){
+				if($each->note==''){
+					$title=$each->qs_name;
+				} else{
+					$title=$each->qs_name.'-'.$each->note;
+				}
 				$data['question_option_id_list'][] = array (
 						"id" => $each->id,
-						"question_style_id" => $each->question_style_id
+						"question_style_id" => $each->question_style_id,
+						"question_title" => $title,
 				);
 			}
 		}

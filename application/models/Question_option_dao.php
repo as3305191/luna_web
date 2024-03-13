@@ -80,9 +80,10 @@ class Question_option_dao extends MY_Model {
 	function find_all_open_question(){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-
+		$this -> db -> select('qs.question_style_name as qs_name');
 		$this -> db -> where('_m.is_close', 0);
 		$this -> db -> where('_m.is_delete', 0);
+		$this -> db -> join("question_style qs", "qs.id = _m.question_style_id", "left");
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
