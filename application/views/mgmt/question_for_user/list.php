@@ -71,7 +71,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['1000px','500px'],
+					area:['1000px','700px'],
 					shadeClose:true,
 					content:'<?=base_url()?>'+url
 				})
@@ -83,7 +83,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['1000px','500px'],
+					area:['1000px','700px'],
 					shadeClose:true,
 					content:'<?=base_url()?>'+url
 				})
