@@ -139,31 +139,31 @@
       </div >
 		</div>
     
-    
-    三.上圖最痠痛或不適之部位，症狀持續長達多久時間？<br>
-    <input type="radio" name="q2_17" value="2星期" id="q17_1"><label for="q17_1">2星期</label><br>
-    <input type="radio" name="q2_17" value="1個月" id="q17_2"><label for="q17_2">1個月</label><br>
-    <input type="radio" name="q2_17" value="3個月" id="q17_3"><label for="q17_3">3個月</label><br>
-    <input type="radio" name="q2_17" value="6個月" id="q17_4"><label for="q17_4">6個月</label><br>
-    <input type="radio" name="q2_17" value="1年" id="q17_5"><label for="q17_5">1年</label><br>
-    <input type="radio" name="q2_17" value="2年以上" id="q17_6"><label for="q17_6">2年以上</label><br>
-    四.上圖痠痛或不適症狀，是否經常於工作後才出現或加劇？<br>
-    <input type="radio" name="q2_18" value="是" id="q18_y"><label for="q18_y">是</label><br>
-    <input type="radio" name="q2_18" value="否" id="q18_n"><label for="q18_n">否</label><br>
-    症狀與工作相關說明：<br>
-    <textarea class="form-control" name="q2_19"></textarea>
-    五.近3個月您是否有因上述不適症狀而請假就醫? <br>
-    <input type="radio" name="q2_20" value="是" id="q20_y"><label for="q20_y">是</label><br>
-    <input type="radio" name="q2_20" value="否" id="q20_n"><label for="q20_n">否</label>
-    請假<input name="q2_21">天<br>
-    六.您是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療）？<br>
-    <input type="radio" name="q2_22" value="是" id="q22_y"><label for="q22_y">是</label><br>
-    <input type="radio" name="q2_22" value="否" id="q22_n"><label for="q22_n">否</label>
-    診斷名稱：
-    <input name="q2_23"><br>
-    七.其他症狀、病史說明：(例如糖尿病、高血壓等等)<br>
-    <textarea class="form-control" name="q2_14"></textarea>
-
+    <div class="form-group">
+      三.上圖最痠痛或不適之部位，症狀持續長達多久時間？<br>
+      <input type="radio" name="q2_17" value="2星期" id="q17_1"><label for="q17_1">2星期</label><br>
+      <input type="radio" name="q2_17" value="1個月" id="q17_2"><label for="q17_2">1個月</label><br>
+      <input type="radio" name="q2_17" value="3個月" id="q17_3"><label for="q17_3">3個月</label><br>
+      <input type="radio" name="q2_17" value="6個月" id="q17_4"><label for="q17_4">6個月</label><br>
+      <input type="radio" name="q2_17" value="1年" id="q17_5"><label for="q17_5">1年</label><br>
+      <input type="radio" name="q2_17" value="2年以上" id="q17_6"><label for="q17_6">2年以上</label><br>
+      四.上圖痠痛或不適症狀，是否經常於工作後才出現或加劇？<br>
+      <input type="radio" name="q2_18" value="是" id="q18_y"><label for="q18_y">是</label><br>
+      <input type="radio" name="q2_18" value="否" id="q18_n"><label for="q18_n">否</label><br>
+      症狀與工作相關說明：<br>
+      <textarea class="form-control" name="q2_19"></textarea>
+      五.近3個月您是否有因上述不適症狀而請假就醫? <br>
+      <input type="radio" name="q2_20" value="是" id="q20_y"><label for="q20_y">是</label><br>
+      <input type="radio" name="q2_20" value="否" id="q20_n"><label for="q20_n">否</label>
+      請假<input name="q2_21">天<br>
+      六.您是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療）？<br>
+      <input type="radio" name="q2_22" value="是" id="q22_y"><label for="q22_y">是</label><br>
+      <input type="radio" name="q2_22" value="否" id="q22_n"><label for="q22_n">否</label>
+      診斷名稱：
+      <input name="q2_23"><br>
+      七.其他症狀、病史說明：(例如糖尿病、高血壓等等)<br>
+      <textarea class="form-control" name="q2_14"></textarea>
+    </div>
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
             <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>
