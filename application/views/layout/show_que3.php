@@ -122,7 +122,7 @@
   			url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q3',
   			type: 'POST',
   			data: {
-  				// qid:$('#qid').val(),
+  				qid:$('#qid').val(),
           q1 : document.querySelector("input[name='q3_1']:checked").value,
           q2 : document.querySelector("input[name='q3_2']:checked").value,
           q3 : document.querySelector("input[name='q3_3']:checked").value,
