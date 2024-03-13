@@ -18,7 +18,6 @@ class Question_option_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('ms.menu_style as style_name');
 
 		// join
 		$this -> ajax_from_join();
@@ -32,7 +31,6 @@ class Question_option_dao extends MY_Model {
 		// order
 		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
 		// $this -> db -> order_by('id', 'desc');
-		$this -> db -> order_by('status', 'desc');
 		// limit
 		$this -> db -> limit($limit, $start);
 
@@ -42,23 +40,12 @@ class Question_option_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		if(!empty($data['id'])){
-			$this -> db -> where("_m.id", $data['id']);
-		}
-		if(!empty($data['s_menu_style'])){
-			$this -> db -> where("_m.menu_style_id", $data['s_menu_style']);
-		}
-
-		if(!empty($data['s_menu_name'])){
-			$s_menu_name = $data['s_menu_name'];
-			$this -> db -> where("_m.menu_name like", "%$s_menu_name%");
-		}
+		
 	}
 
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("menu_style ms", "ms.id = _m.menu_style_id", "left");
 		// $this -> db -> join("images img", "img.id = _m.img_id", "left");
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
