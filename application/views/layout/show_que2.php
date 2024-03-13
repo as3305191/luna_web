@@ -163,7 +163,7 @@
         診斷名稱：
         <input name="q2_23"><br>
         七.其他症狀、病史說明：(例如糖尿病、高血壓等等)<br>
-        <textarea class="form-control" name="q2_14"></textarea>
+        <textarea class="form-control" name="q2_24"></textarea>
       </div>
     </div>
     <div class="col-xs-12 no-padding" style="margin-top:20px">
@@ -189,23 +189,34 @@
   $('.dosubmit').click(function() {
    
   		$.ajax({
-  			url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q3',
+  			url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q2',
   			type: 'POST',
   			data: {
   				qid:$('#qid').val(),
-          q1 : document.querySelector("input[name='q3_1']:checked").value,
-          q2 : document.querySelector("input[name='q3_2']:checked").value,
-          q3 : document.querySelector("input[name='q3_3']:checked").value,
-          q4 : document.querySelector("input[name='q3_4']:checked").value,
-          q5 : document.querySelector("input[name='q3_5']:checked").value,
-          q6 : document.querySelector("input[name='q3_6']:checked").value,
-          q7 : document.querySelector("input[name='q3_7']:checked").value,
-          q8 : document.querySelector("input[name='q3_8']:checked").value,
-          q9 : document.querySelector("input[name='q3_9']:checked").value,
-          q10 : document.querySelector("input[name='q3_10']:checked").value,
-          q11 : document.querySelector("input[name='q3_11']:checked").value,
-          q12 : document.querySelector("input[name='q3_12']:checked").value,
-          q13 : document.querySelector("input[name='q3_13']:checked").value,
+          q1 : document.querySelector("input[name='q2_1']:checked").value,
+          q2 : document.querySelector("input[name='q2_2']:checked").value,
+          q3 : document.querySelector("input[name='q2_3']:checked").value,
+          q4 : document.querySelector("input[name='q2_4']:checked").value,
+          q5 : document.querySelector("input[name='q2_5']:checked").value,
+          q6 : document.querySelector("input[name='q2_6']:checked").value,
+          q7 : document.querySelector("input[name='q2_7']:checked").value,
+          q8 : document.querySelector("input[name='q2_8']:checked").value,
+          q9 : document.querySelector("input[name='q2_9']:checked").value,
+          q10 : document.querySelector("input[name='q2_10']:checked").value,
+          q11 : document.querySelector("input[name='q2_11']:checked").value,
+          q12 : document.querySelector("input[name='q2_12']:checked").value,
+          q13 : document.querySelector("input[name='q2_13']:checked").value,
+          q14 : document.querySelector("input[name='q2_14']:checked").value,
+          q15 : document.querySelector("input[name='q2_15']:checked").value,
+          q16 : document.querySelector("input[name='q2_16']:checked").value,
+          q17 : document.querySelector("input[name='q2_17']:checked").value,
+          q18 : document.querySelector("input[name='q2_18']:checked").value,
+          q19 : document.querySelector("input[name='q2_29']:checked").value,
+          q20 : document.querySelector("input[name='q2_20']:checked").value,
+          q21 : document.querySelector("input[name='q2_21']:checked").value,
+          q22 : document.querySelector("input[name='q2_22']:checked").value,
+          q23 : document.querySelector("input[name='q2_23']:checked").value,
+          q24 : document.querySelector("input[name='q2_24']:checked").value,
         },
   			dataType: 'json',
   			success: function(d) {

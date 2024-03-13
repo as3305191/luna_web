@@ -198,7 +198,19 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$q11 =$this -> get_post('q11');
 		$q12 =$this -> get_post('q12');
 		$q13 =$this -> get_post('q13');
+		$q14 =$this -> get_post('q14');
+		$q15 =$this -> get_post('q15');
+		$q16 =$this -> get_post('q16');
+		$q17 =$this -> get_post('q17');
+		$q18 =$this -> get_post('q18');
+		$q19 =$this -> get_post('q19');
+		$q20 =$this -> get_post('q20');
+		$q21 =$this -> get_post('q21');
+		$q22 =$this -> get_post('q22');
+		$q23 =$this -> get_post('q23');
+		$q24 =$this -> get_post('q24');
 
+		
 		$data['user_id'] = $login_user->id;
 		// $data['qid'] = $qid;
 		$data['q1'] = $q1;
@@ -214,6 +226,17 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['q11'] = $q11;
 		$data['q12'] = $q12;
 		$data['q13'] = $q13;
+		$data['q14'] = $q14;
+		$data['q15'] = $q15;
+		$data['q16'] = $q16;
+		$data['q17'] = $q17;
+		$data['q18'] = $q18;
+		$data['q19'] = $q19;
+		$data['q20'] = $q20;
+		$data['q21'] = $q21;
+		$data['q22'] = $q22;
+		$data['q23'] = $q23;
+		$data['q24'] = $q24;
 		$data['question_option_id'] = $qid;
 
 		$this -> question_ans_dao -> insert($data);
