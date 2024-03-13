@@ -117,9 +117,8 @@ class Question_option extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function delete() {
+	public function delete($id) {
 		$res['success'] = TRUE;
-		$id = $this -> get_post('id');
 		$u_data['is_delete'] = 1;
 		$this -> dao ->  update($u_data, $id);
 		$this -> to_json($res);
