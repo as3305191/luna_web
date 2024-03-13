@@ -6,6 +6,7 @@ class Question_option extends MY_Mgmt_Controller {
 	function __construct() {
 		parent::__construct();
 		$this -> load -> model('Question_title_dao', 'dao');
+		$this -> load -> model('Question_style_dao', 'question_style_dao');
 		// $this -> load -> model('Swot_style_dao', 'swot_style_dao');
 		// $this -> load -> model('Swot_dao', 'swot_dao');
 
@@ -81,6 +82,14 @@ class Question_option extends MY_Mgmt_Controller {
 		} 
 
 		$res['items'] = $items;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+	public function find_question_style(){
+		$res = array();
+		$question_style_list = $this -> question_style_dao -> find_all();
+		$res['question_style'] = $question_style_list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
