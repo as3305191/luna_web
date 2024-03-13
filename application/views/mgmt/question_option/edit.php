@@ -133,36 +133,36 @@ function load_style() {
 			type: 'POST',
 			dataType: 'json',
 			success: function(d) {
-				// if(d) {
-				// 	var s_question_style=$('#s_question_style').val();
-				// 	// console.log(d);
-				// 	$question_style = $('#question_style').empty();
-				// 	var option = '<option value="0">無</option>';
-				// 	$question_style.append(option);
-				// 	if(s_question_style>0 ){ 
-				// 		$.each(d.option_style, function(){
-				// 			if(this.id==s_question_style){
-				// 				$('<option/>', {
-				// 					'value': this.id,
-				// 					'text': this.option_style_name
-				// 				}).attr("selected", true).appendTo($question_style);	
-				// 			} else{
-				// 				$('<option/>', {
-				// 					'value': this.id,
-				// 					'text': this.option_style_name
-				// 				}).appendTo($question_style);
-				// 			}
-				// 		});
-				// 	} else{
-				// 		$.each(d.option_style, function(){
-				// 			$('<option/>', {
-				// 				'value': this.id,
-				// 				'text': this.option_style_name
-				// 			}).appendTo($question_style);
-				// 		});
-				// 	}
+				if(d) {
+					var s_question_style=$('#s_question_style').val();
+					// console.log(d);
+					$question_style = $('#question_style').empty();
+					var option = '<option value="0">無</option>';
+					$question_style.append(option);
+					if(s_question_style>0 ){ 
+						$.each(d.question_style, function(){
+							if(this.id==s_question_style){
+								$('<option/>', {
+									'value': this.id,
+									'text': this.option_style_name
+								}).attr("selected", true).appendTo($question_style);	
+							} else{
+								$('<option/>', {
+									'value': this.id,
+									'text': this.option_style_name
+								}).appendTo($question_style);
+							}
+						});
+					} else{
+						$.each(d.question_style, function(){
+							$('<option/>', {
+								'value': this.id,
+								'text': this.option_style_name
+							}).appendTo($question_style);
+						});
+					}
 					
-				// }
+				}
 			},
 			failure:function(){
 				alert('faialure');
