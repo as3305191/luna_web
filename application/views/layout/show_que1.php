@@ -116,6 +116,7 @@ $("input[name='q1_6']").on('change', function(){
           q1_6_check_value.push(obj[i].value);
         }
     }
+    console.log(q1_6_check_value);
   });
   $("input[name='q1_7']").on('change', function(){
     q1_7_check_value = [];
@@ -126,7 +127,8 @@ $("input[name='q1_6']").on('change', function(){
         q1_7_check_value.push(obj[i].value);
       }
     }
-    
+    console.log(q1_7_check_value);
+
   });
   $('.cancel').click(function() {
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
