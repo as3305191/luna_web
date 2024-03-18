@@ -9,7 +9,6 @@ var QuestionoptionAppClass = (function(app) {
 					if(!app.enableFirstClickable) {
 						_rtd = _rtd.not(':first')
 					}
-					}
 					_rtd.addClass('pointer').on('click', function(){
 						app.doEdit(aData.id);
 
