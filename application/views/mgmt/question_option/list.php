@@ -82,4 +82,10 @@
 			currentApp = new QuestionoptionAppClass(new BaseAppClass({}));
 		});
 	});
+
+	
+	function export_question(id) {
+		console.log(id);
+	}
+	
 </script>
