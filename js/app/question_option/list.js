@@ -8,7 +8,6 @@ var QuestionoptionAppClass = (function(app) {
 					var _rtd = $(nRow).find('td');
 					if(!app.enableFirstClickable) {
 						_rtd = _rtd.not(':first')
-						_rtd = _rtd.not(':last')
 					}
 					}
 					_rtd.addClass('pointer').on('click', function(){
