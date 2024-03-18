@@ -116,6 +116,17 @@ var QuestionoptionAppClass = (function(app) {
 				}
 			}, {
 				data : 'create_time'
+			}, {
+				data : 'id',
+				render: function(d,t,r) {
+					if(d){
+						return '<button onclick="export_question('+d+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
+								+'<i class="fa fa-save"></i>匯出'
+								+'</button>';
+					} else{
+						return d;
+					}
+				}
 			}],
 			ordering: false,
 			order : [[2, "desc"]],
