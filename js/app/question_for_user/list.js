@@ -7,7 +7,7 @@ var QuestionforuserAppClass = (function(app) {
 				if(!app.disableRowClick) {
 					var _rtd = $(nRow).find('td');
 					if(!app.enableFirstClickable) {
-						_rtd = _rtd.not(':first')
+						_rtd = _rtd.not(':first,:last')
 					}
 					_rtd.addClass('pointer').on('click', function(){
 						app.doEdit(aData.id);
