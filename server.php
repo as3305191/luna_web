@@ -117,7 +117,7 @@ class Sock{
             $this->sockets[]=$v['socket'];
         }
         //输出日志
-        $this->e("key:$k close");
+        $this->e("key:".$k." close");
     }
      
     //根据sock在users里面查找相应的$k
