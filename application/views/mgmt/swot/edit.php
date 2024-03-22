@@ -553,6 +553,41 @@
 		
 	};
 
+	function load_swot_title() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
+			type: 'POST',
+			data: {
+				id: $('#item_id').val(),
+			},
+			dataType: 'json',
+			success: function(d) {
+				if(d) {
+					// console.log(d);
+					$swot_title = $('#swot_title').empty();
+					$.each(d.swot, function(){
+						if(this.id==$('#s_title').val()){
+							$('<option/>', {
+								'value': this.id,
+								'text': this.swot_title
+							}).attr("selected", true).appendTo($swot_title);
+						}else{
+							$('<option/>', {
+								'value': this.id,
+								'text': this.swot_title
+							}).appendTo($swot_title);
+						}
+					});
+					$('#swot_title').select2();
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+	load_swot_title();
+
 	function load_swot_style_edit(s_title_val) {
 		if($('#item_id').val()>0){
 			url = '<?= base_url() ?>' + 'mgmt/swot/find_swot_style';
@@ -563,7 +598,7 @@
 			url: url,
 			type: 'POST',
 			data: {
-				s_title_val:s_title_val
+				s_title_val:document.querySelector("#s_title_val:checked").value,
 			},
 			dataType: 'json',
 			success: function(d) {
@@ -591,44 +626,7 @@
 			}
 		});
 	}
-	
-	
-	function load_swot_title() {
-		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_title',
-			type: 'POST',
-			data: {
-				id: $('#item_id').val(),
-			},
-			dataType: 'json',
-			success: function(d) {
-				if(d) {
-					// console.log(d);
-					$swot_title = $('#swot_title').empty();
-					$.each(d.swot, function(){
-						if(this.id==$('#s_title').val()){
-							$('<option/>', {
-								'value': this.id,
-								'text': this.swot_title
-							}).attr("selected", true).appendTo($swot_title);
-						}else{
-							$('<option/>', {
-								'value': this.id,
-								'text': this.swot_title
-							}).appendTo($swot_title);
-						}
-					});
-					$('#swot_title').select2();
-					load_swot_style_edit($('#s_title').val());
-				}
-			},
-			failure:function(){
-				alert('faialure');
-			}
-		});
-	}
-	load_swot_title();
-
+	load_swot_style_edit()
 
 	function re_num() {
 		$.ajax({
