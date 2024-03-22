@@ -378,7 +378,7 @@ class Swot extends MY_Mgmt_Controller {
 		foreach($swot_style as $each){
 			$field_name = 'iso_id_'.$each->id;
 			if($swot_title->$field_name==0){
-				$res['swot'] = $each;
+				$res['swot'][] = $each;
 			}
 		}
 		
