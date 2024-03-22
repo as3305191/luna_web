@@ -204,7 +204,15 @@ class Swot_style_dao extends MY_Model {
 		return $query -> result();
 	}
 
+	function find_all_open($s_title_id) {
+		// select
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
 
+
+		$query = $this -> db -> get();
+		return $query -> result();
+	}
 
 }
 ?>

@@ -362,8 +362,16 @@ class Swot extends MY_Mgmt_Controller {
 
 	public function find_swot_style(){
 		$res = array();
-		$swot = $this -> swot_style_dao -> find_all();
-		$res['swot'] = $swot;
+		$s_title_id = $this -> get_post('s_title_val');
+		$swot_style = $this -> swot_style_dao -> find_all();
+		$swot_title = $this -> swot_title_dao -> find_by_id($s_title_id);
+		foreach($swot_style as $each){
+			$field_name = 'iso_id_'.$each->id;
+			if($swot_title->$field_name==0){
+				$res['swot'] = $each;
+			}
+		}
+		
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
