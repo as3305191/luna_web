@@ -554,8 +554,13 @@
 	};
 
 	function load_swot_style_edit(s_title_val) {
+		if($('#item_id').val()>0){
+			url = '<?= base_url() ?>' + 'mgmt/swot/find_swot_style';
+		} else{
+			url = '<?= base_url() ?>' + 'mgmt/swot/find_swot_style_edit';
+		}
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_style_edit',
+			url: ,
 			type: 'POST',
 			data: {
 				s_title_val:s_title_val
