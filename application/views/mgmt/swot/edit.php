@@ -447,7 +447,8 @@
 			}
 		}
 		
-	
+		load_swot_style_edit()
+
 		// $('.cke_toolgroup').remove();
 	});
 
@@ -626,7 +627,6 @@
 			}
 		});
 	}
-	load_swot_style_edit()
 
 	function re_num() {
 		$.ajax({
