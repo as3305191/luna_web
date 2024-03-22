@@ -589,7 +589,7 @@
 	}
 	load_swot_title();
 
-	function load_swot_style_edit(s_title_val) {
+	function load_swot_style_edit() {
 		if($('#item_id').val()>0){
 			url = '<?= base_url() ?>' + 'mgmt/swot/find_swot_style';
 		} else{
