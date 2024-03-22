@@ -447,7 +447,7 @@
 			}
 		}
 		load_swot_title();
-		load_swot_style_edit();
+		
 
 		// $('.cke_toolgroup').remove();
 	});
@@ -580,6 +580,7 @@
 						}
 					});
 					$('#swot_title').select2();
+					load_swot_style_edit();
 				}
 			},
 			failure:function(){
