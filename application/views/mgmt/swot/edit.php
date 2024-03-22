@@ -446,8 +446,8 @@
 				currentApp.isUse($('#item_id').val());
 			}
 		}
-		
-		load_swot_style_edit()
+		load_swot_title();
+		load_swot_style_edit();
 
 		// $('.cke_toolgroup').remove();
 	});
@@ -587,7 +587,7 @@
 			}
 		});
 	}
-	load_swot_title();
+	
 
 	function load_swot_style_edit() {
 		if($('#item_id').val()>0){
