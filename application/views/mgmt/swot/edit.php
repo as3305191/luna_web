@@ -560,7 +560,7 @@
 			url = '<?= base_url() ?>' + 'mgmt/swot/find_swot_style_edit';
 		}
 		$.ajax({
-			url: ,
+			url: url,
 			type: 'POST',
 			data: {
 				s_title_val:s_title_val
