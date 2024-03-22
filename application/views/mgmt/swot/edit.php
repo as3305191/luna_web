@@ -598,7 +598,7 @@
 			url: url,
 			type: 'POST',
 			data: {
-				s_title_val:document.querySelector("#s_title_val:checked").value,
+				s_title_val:$('#swot_title').val(),
 			},
 			dataType: 'json',
 			success: function(d) {
