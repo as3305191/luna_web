@@ -555,7 +555,7 @@
 
 	function load_swot_style(s_title_val) {
 		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_style',
+			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_style_edit',
 			type: 'POST',
 			data: {
 				s_title_val:s_title_val
