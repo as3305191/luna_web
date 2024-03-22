@@ -553,7 +553,7 @@
 		
 	};
 
-	function load_swot_style(s_title_val) {
+	function load_swot_style_edit(s_title_val) {
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/swot/find_swot_style_edit',
 			type: 'POST',
@@ -614,7 +614,7 @@
 						}
 					});
 					$('#swot_title').select2();
-					load_swot_style($('#s_title').val());
+					load_swot_style_edit($('#s_title').val());
 				}
 			},
 			failure:function(){
