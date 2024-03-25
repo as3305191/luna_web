@@ -279,7 +279,7 @@
     if(total1>=70){
       text = '嚴重';
     }
-    $('#t1_s').text(text);
+    $('#t1_s').append(text);
   }
   function t2(){
     var text1 = '';
@@ -293,6 +293,6 @@
     if(total3>=60){
       text1 = '嚴重';
     }
-    $('#t2_s').text(text1);
+    $('#t2_s').append(text1);
   }
 </script>
