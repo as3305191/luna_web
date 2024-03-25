@@ -117,35 +117,35 @@
     parent.layer.close(index);
   })
   $('.dosubmit').click(function() {
-    if (document.querySelector("input[name='q3_1']:checked").value==null||
-      document.querySelector("input[name='q3_2']:checked").value==null||
-      document.querySelector("input[name='q3_3']:checked").value==null||
-      document.querySelector("input[name='q3_4']:checked").value==null||
-      document.querySelector("input[name='q3_5']:checked").value==null||
-      document.querySelector("input[name='q3_6']:checked").value==null||
-      document.querySelector("input[name='q3_7']:checked").value==null||
-      document.querySelector("input[name='q3_8']:checked").value==null||
-      document.querySelector("input[name='q3_9']:checked").value==null||
-      document.querySelector("input[name='q3_10']:checked").value==null||
-      document.querySelector("input[name='q3_11']:checked").value==null||
-      document.querySelector("input[name='q3_12']:checked").value==null||
-      document.querySelector("input[name='q3_13']:checked").value==null){
-    alert("請填寫完全部題目！");   
-  } else{
-    var  q1 = document.querySelector("input[name='q3_1']:checked").value;
-    var  q2 = document.querySelector("input[name='q3_2']:checked").value;
-    var  q3 = document.querySelector("input[name='q3_3']:checked").value;
-    var  q4 = document.querySelector("input[name='q3_4']:checked").value;
-    var  q5 = document.querySelector("input[name='q3_5']:checked").value;
-    var  q6 = document.querySelector("input[name='q3_6']:checked").value;
-    var  q7 = document.querySelector("input[name='q3_7']:checked").value;
-    var  q8 = document.querySelector("input[name='q3_8']:checked").value;
-    var  q9 = document.querySelector("input[name='q3_9']:checked").value;
-    var  q10 = document.querySelector("input[name='q3_10']:checked").value;
-    var  q11 = document.querySelector("input[name='q3_11']:checked").value;
-    var  q12 = document.querySelector("input[name='q3_12']:checked").value;
-    var  q13 = document.querySelector("input[name='q3_13']:checked").value; 
-    $.ajax({
+    if (document.getElementsByName("q3_1").checked==false||
+      document.getElementsByName("q3_2").checked==false||
+      document.getElementsByName("q3_3").checked==false||
+      document.getElementsByName("q3_4").checked==false||
+      document.getElementsByName("q3_5").checked==false||
+      document.getElementsByName("q3_6").checked==false||
+      document.getElementsByName("q3_7").checked==false||
+      document.getElementsByName("q3_8").checked==false||
+      document.getElementsByName("q3_9").checked==false||
+      document.getElementsByName("q3_10").checked==false||
+      document.getElementsByName("q3_11").checked==false||
+      document.getElementsByName("q3_12").checked==false||
+      document.getElementsByName("q3_13").checked==false){
+       alert("請填寫完全部題目！");   
+    } else{
+        var  q1 = document.querySelector("input[name='q3_1']:checked").value;
+        var  q2 = document.querySelector("input[name='q3_2']:checked").value;
+        var  q3 = document.querySelector("input[name='q3_3']:checked").value;
+        var  q4 = document.querySelector("input[name='q3_4']:checked").value;
+        var  q5 = document.querySelector("input[name='q3_5']:checked").value;
+        var  q6 = document.querySelector("input[name='q3_6']:checked").value;
+        var  q7 = document.querySelector("input[name='q3_7']:checked").value;
+        var  q8 = document.querySelector("input[name='q3_8']:checked").value;
+        var  q9 = document.querySelector("input[name='q3_9']:checked").value;
+        var  q10 = document.querySelector("input[name='q3_10']:checked").value;
+        var  q11 = document.querySelector("input[name='q3_11']:checked").value;
+        var  q12 = document.querySelector("input[name='q3_12']:checked").value;
+        var  q13 = document.querySelector("input[name='q3_13']:checked").value; 
+        $.ajax({
           url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q3',
           type: 'POST',
           data: {
