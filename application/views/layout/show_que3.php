@@ -121,19 +121,19 @@
     parent.layer.close(index);
   })
 
-  var  q1 = '';
-  var  q2 = '';
-  var  q3 = '';
-  var  q4 = '';
-  var  q5 = '';
-  var  q6 = '';
-  var  q7 = '';
-  var  q8 = '';
-  var  q9 = '';
-  var  q10 = '';
-  var  q11 = '';
-  var  q12 = '';
-  var  q13 = '';
+  var  q1 = null;
+  var  q2 = null;
+  var  q3 = null;
+  var  q4 = null;
+  var  q5 = null;
+  var  q6 = null;
+  var  q7 = null;
+  var  q8 = null;
+  var  q9 = null;
+  var  q10 = null;
+  var  q11 = null;
+  var  q12 = null;
+  var  q13 = null;
   var  total1 = 0;
   var  total2 = 0;
   $('input:radio[name="q3_1"]').on('change', function(){
