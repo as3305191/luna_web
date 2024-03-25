@@ -90,6 +90,8 @@
     <input type="radio" name="q3_12" value="50" id="q12_50"><label for="q12_50">有時候(50)</label><br>
     <input type="radio" name="q3_12" value="25" id="q12_25"><label for="q12_25">不常(25)</label><br>
     <input type="radio" name="q3_12" value="0" id="q12_0"><label for="q12_0">從未或幾乎從未(0)</label><br>
+    個人相關疲勞分數(各題加總後除以6):
+    個人相關過勞分級(【輕微】50分以下/【中度】50-70分/【嚴重】70分以上):
     7.	不工作的時候，你有足夠的精力陪朋友或家人嗎？ <br>
     <input type="radio" name="q3_13" value="100" id="q13_100"><label for="q13_100">總是(100)</label><br>
     <input type="radio" name="q3_13" value="75" id="q13_75"><label for="q13_75">常常(75)</label><br>
@@ -116,6 +118,42 @@
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
     parent.layer.close(index);
   })
+
+  if ($('input:radio[name="q3_1"]:checked').val()!==null&&
+      $('input:radio[name="q3_2"]:checked').val()!==null&&
+      $('input:radio[name="q3_3"]:checked').val()!==null&&
+      $('input:radio[name="q3_4"]:checked').val()!==null&&
+      $('input:radio[name="q3_5"]:checked').val()!==null&&
+      $('input:radio[name="q3_6"]:checked').val()!==null){
+        var  q1 = document.querySelector("input[name='q3_1']:checked").value;
+        var  q2 = document.querySelector("input[name='q3_2']:checked").value;
+        var  q3 = document.querySelector("input[name='q3_3']:checked").value;
+        var  q4 = document.querySelector("input[name='q3_4']:checked").value;
+        var  q5 = document.querySelector("input[name='q3_5']:checked").value;
+        var  q6 = document.querySelector("input[name='q3_6']:checked").value;
+        var  total1 = '';
+          $('input:radio[name="q3_1"]:checked').val().on('change', function(){
+            total1 =(q1+q2+q3+q4+q5+q6)/6;
+          });
+          $('input:radio[name="q3_2"]:checked').val().on('change', function(){
+            total1 =(q1+q2+q3+q4+q5+q6)/6;
+          });
+          $('input:radio[name="q3_3"]:checked').val().on('change', function(){
+            total1 =(q1+q2+q3+q4+q5+q6)/6;
+          });
+          $('input:radio[name="q3_4"]:checked').val().on('change', function(){
+            total1 =(q1+q2+q3+q4+q5+q6)/6;
+          });
+          $('input:radio[name="q3_5"]:checked').val().on('change', function(){
+            total1 =(q1+q2+q3+q4+q5+q6)/6;
+          });
+          $('input:radio[name="q3_6"]:checked').val().on('change', function(){
+            total1 =(q1+q2+q3+q4+q5+q6)/6;
+          });
+
+        console.log(total1);
+  }
+
   $('.dosubmit').click(function() {
     if ($('input:radio[name="q3_1"]:checked').val()==null||
         $('input:radio[name="q3_2"]:checked').val()==null||
@@ -132,9 +170,8 @@
         $('input:radio[name="q3_13"]:checked').val()==null){
           alert("請填寫完全部題目！");   
 
-
     } else{
-      var  q1 = document.querySelector("input[name='q3_1']:checked").value;
+        var  q1 = document.querySelector("input[name='q3_1']:checked").value;
         var  q2 = document.querySelector("input[name='q3_2']:checked").value;
         var  q3 = document.querySelector("input[name='q3_3']:checked").value;
         var  q4 = document.querySelector("input[name='q3_4']:checked").value;
