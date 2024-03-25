@@ -138,81 +138,97 @@
   var  total2 = 0;
   $('input:radio[name="q3_1"]').on('change', function(){
     q1 = $('input:radio[name="q3_1"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))%6;
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;
+
     // console.log(total1);
     t1();
   });
   $('input:radio[name="q3_2"]').on('change', function(){
     q2 = $('input:radio[name="q3_2"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))%6;
-    // console.log(total1);
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;    // console.log(total1);
     t1();
   });
   $('input:radio[name="q3_3"]').on('change', function(){
     q3 = $('input:radio[name="q3_3"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))%6;
-    // console.log(total1);
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;    // console.log(total1);
     t1();
   });
   $('input:radio[name="q3_4"]').on('change', function(){
     q4 = $('input:radio[name="q3_4"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))%6;
-    // console.log(total1);
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;    // console.log(total1);
     t1();
   });
   $('input:radio[name="q3_5"]').on('change', function(){
     q5 = $('input:radio[name="q3_5"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))%6;
-    // console.log(total1);
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;    // console.log(total1);
     t1();
   });
   $('input:radio[name="q3_6"]').on('change', function(){
     q6 = $('input:radio[name="q3_6"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))%6;
-    // console.log(total1);
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;    // console.log(total1);
     t1();
   });
 
   $('input:radio[name="q3_7"]').on('change', function(){
     q7 = $('input:radio[name="q3_7"]:checked').val();
-    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))%7;
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;
     // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_8"]').on('change', function(){
     q8 = $('input:radio[name="q3_8"]:checked').val();
-    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))%7;
-    // console.log(total1);
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_9"]').on('change', function(){
     q9 = $('input:radio[name="q3_9"]:checked').val();
-    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))%7;
-    // console.log(total1);
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_10"]').on('change', function(){
     q10 = $('input:radio[name="q3_10"]:checked').val();
-    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))%7;
-    // console.log(total1);
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_11"]').on('change', function(){
     q11 = $('input:radio[name="q3_11"]:checked').val();
-    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))%7;
-    // console.log(total1);
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_12"]').on('change', function(){
     q12 = $('input:radio[name="q3_12"]:checked').val();
-    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))%7;
-    // console.log(total1);
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_13"]').on('change', function(){
     q13 = $('input:radio[name="q3_13"]:checked').val();
-    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))%7;
-    // console.log(total1);
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
     t2();
   });
 
