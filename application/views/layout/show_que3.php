@@ -269,7 +269,7 @@
 
   function t1(){
     var text = '';
-    $('#t1').text(total1);
+    
     if(parseInt(total1)<=50){
       text = '輕微';
     }
@@ -279,11 +279,14 @@
     if(parseInt(total1)>=70){
       text = '嚴重';
     }
-    $('#t1_s').text(text);
+    if (q1==null||q2==null||q3==null||q4==null||q5==null||q6==null){
+      $('#t1').text(total1);
+      $('#t1_s').text(text);
+    }
   }
   function t2(){
     var text1 = '';
-    $('#t2').text(total2);
+    
     if(parseInt(total2)<=45){
       text1 = '輕微';
     }
@@ -293,6 +296,9 @@
     if(parseInt(total2)>=60){
       text1 = '嚴重';
     }
-    $('#t2_s').text(text1);
+    if (q7==null||q8==null||q9==null||q10==null||q11==null||q12==null||q13==null){
+      $('#t2').text(total2);
+      $('#t2_s').text(text1);
+    }
   }
 </script>
