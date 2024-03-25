@@ -125,12 +125,12 @@
       $('input:radio[name="q3_4"]:checked').val()!==null&&
       $('input:radio[name="q3_5"]:checked').val()!==null&&
       $('input:radio[name="q3_6"]:checked').val()!==null){
-        var  q1 = document.querySelector("input[name='q3_1']:checked").value;
-        var  q2 = document.querySelector("input[name='q3_2']:checked").value;
-        var  q3 = document.querySelector("input[name='q3_3']:checked").value;
-        var  q4 = document.querySelector("input[name='q3_4']:checked").value;
-        var  q5 = document.querySelector("input[name='q3_5']:checked").value;
-        var  q6 = document.querySelector("input[name='q3_6']:checked").value;
+        var  q1 = $('input:radio[name="q3_1"]:checked').val();
+        var  q2 = $('input:radio[name="q3_2"]:checked').val();
+        var  q3 = $('input:radio[name="q3_3"]:checked').val();
+        var  q4 = $('input:radio[name="q3_4"]:checked').val();
+        var  q5 = $('input:radio[name="q3_5"]:checked').val();
+        var  q6 = $('input:radio[name="q3_6"]:checked').val();
         var  total1 = '';
           $('input:radio[name="q3_1"]:checked').val().on('change', function(){
             total1 =(q1+q2+q3+q4+q5+q6)/6;
