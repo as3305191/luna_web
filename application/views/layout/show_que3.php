@@ -121,12 +121,12 @@
     parent.layer.close(index);
   })
 
-  var  q1 = '';
-  var  q2 = '';
-  var  q3 = '';
-  var  q4 = '';
-  var  q5 = '';
-  var  q6 = '';
+  var  q1 = 0;
+  var  q2 = 0;
+  var  q3 = 0;
+  var  q4 = 0;
+  var  q5 = 0;
+  var  q6 = 0;
   var  q7 = $('input:radio[name="q3_7"]:checked').val();
   var  q8 = $('input:radio[name="q3_8"]:checked').val();
   var  q9 = $('input:radio[name="q3_9"]:checked').val();
