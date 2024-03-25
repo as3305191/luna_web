@@ -273,7 +273,7 @@
     if(parseInt(total1)<=50){
       text = '輕微';
     }
-    if(50<parseInt(total1)<69){
+    if(parseInt(total1)<69 && parseInt(total1)>50){
       text = '中度';
     }
     if(parseInt(total1)>=70){
@@ -287,7 +287,7 @@
     if(parseInt(total2)<=45){
       text1 = '輕微';
     }
-    if(45<parseInt(total2)<60){
+    if(45<parseInt(total2) && parseInt(total2)<60){
       text1 = '中度';
     }
     if(parseInt(total2)>=60){
