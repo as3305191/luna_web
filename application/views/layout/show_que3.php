@@ -117,19 +117,19 @@
     parent.layer.close(index);
   })
   $('.dosubmit').click(function() {
-    if (document.querySelector("input[name='q3_1']").checked&&
-        document.querySelector("input[name='q3_2']").checked&&
-        document.querySelector("input[name='q3_3']").checked&&
-        document.querySelector("input[name='q3_4']").checked&&
-        document.querySelector("input[name='q3_5']").checked&&
-        document.querySelector("input[name='q3_6']").checked&&
-        document.querySelector("input[name='q3_7']").checked&&
-        document.querySelector("input[name='q3_8']").checked&&
-        document.querySelector("input[name='q3_9']").checked&&
-        document.querySelector("input[name='q3_10']").checked&&
-        document.querySelector("input[name='q3_11']").checked&&
-        document.querySelector("input[name='q3_12']").checked&&
-        document.querySelector("input[name='q3_13']").checked){
+    if ($('input:radio[name="q3_1"]:checked').val()!==null&&
+        $('input:radio[name="q3_2"]:checked').val()!==null&&
+        $('input:radio[name="q3_3"]:checked').val()!==null&&
+        $('input:radio[name="q3_4"]:checked').val()!==null&&
+        $('input:radio[name="q3_5"]:checked').val()!==null&&
+        $('input:radio[name="q3_6"]:checked').val()!==null&&
+        $('input:radio[name="q3_7"]:checked').val()!==null&&
+        $('input:radio[name="q3_8"]:checked').val()!==null&&
+        $('input:radio[name="q3_9"]:checked').val()!==null&&
+        $('input:radio[name="q3_10"]:checked').val()!==null&&
+        $('input:radio[name="q3_11"]:checked').val()!==null&&
+        $('input:radio[name="q3_12"]:checked').val()!==null&&
+        $('input:radio[name="q3_13"]:checked').val()!==null){
         var  q1 = document.querySelector("input[name='q3_1']:checked").value;
         var  q2 = document.querySelector("input[name='q3_2']:checked").value;
         var  q3 = document.querySelector("input[name='q3_3']:checked").value;
