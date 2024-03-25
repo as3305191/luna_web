@@ -285,13 +285,13 @@
     var text1 = '';
     $('#t2').text(total2);
     if(total2<=45){
-      text = '輕微';
+      text1 = '輕微';
     }
     if(45<total3<60){
-      text = '中度';
+      text1 = '中度';
     }
     if(total3>=60){
-      text = '嚴重';
+      text1 = '嚴重';
     }
     $('#t2_s').text(text1);
   }
