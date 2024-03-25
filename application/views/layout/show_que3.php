@@ -117,21 +117,19 @@
     parent.layer.close(index);
   })
   $('.dosubmit').click(function() {
-    if (document.getElementsByName("q3_1").checked==underfined||
-      document.getElementsByName("q3_2").checked==underfined||
-      document.getElementsByName("q3_3").checked==underfined||
-      document.getElementsByName("q3_4").checked==underfined||
-      document.getElementsByName("q3_5").checked==underfined||
-      document.getElementsByName("q3_6").checked==underfined||
-      document.getElementsByName("q3_7").checked==underfined||
-      document.getElementsByName("q3_8").checked==underfined||
-      document.getElementsByName("q3_9").checked==underfined||
-      document.getElementsByName("q3_10").checked==underfined||
-      document.getElementsByName("q3_11").checked==underfined||
-      document.getElementsByName("q3_12").checked==underfined||
-      document.getElementsByName("q3_13").checked==underfined){
-       alert("請填寫完全部題目！");   
-    } else{
+    if (document.getElementsByName("q3_1").checked &&
+        document.getElementsByName("q3_2").checked&&
+        document.getElementsByName("q3_3").checked&&
+        document.getElementsByName("q3_4").checked&&
+        document.getElementsByName("q3_5").checked&&
+        document.getElementsByName("q3_6").checked&&
+        document.getElementsByName("q3_7").checked&&
+        document.getElementsByName("q3_8").checked&&
+        document.getElementsByName("q3_9").checked&&
+        document.getElementsByName("q3_10").checked&&
+        document.getElementsByName("q3_11").checked&&
+        document.getElementsByName("q3_12").checked&&
+        document.getElementsByName("q3_13").checked){
         var  q1 = document.querySelector("input[name='q3_1']:checked").value;
         var  q2 = document.querySelector("input[name='q3_2']:checked").value;
         var  q3 = document.querySelector("input[name='q3_3']:checked").value;
@@ -181,10 +179,10 @@
           failure:function(){
             layer.msg('faialure');
           }
-        });
+        });  
 
-
-
+    } else{
+      alert("請填寫完全部題目！");   
   }
   		
   })
