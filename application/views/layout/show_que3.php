@@ -270,29 +270,29 @@
   function t1(){
     var text = '';
     $('#t1').text(total1);
-    if(total1<=50){
+    if(parseInt(total1)<=50){
       text = '輕微';
     }
-    if(50<total1<69){
+    if(50<parseInt(total1)<69){
       text = '中度';
     }
-    if(total1>=70){
+    if(parseInt(total1)>=70){
       text = '嚴重';
     }
-    $('#t1_s').append(text);
+    $('#t1_s').text(text);
   }
   function t2(){
     var text1 = '';
     $('#t2').text(total2);
-    if(total2<=45){
+    if(parseInt(total2)<=45){
       text1 = '輕微';
     }
-    if(45<total3<60){
+    if(45<parseInt(total2)<60){
       text1 = '中度';
     }
-    if(total3>=60){
+    if(parseInt(total2)>=60){
       text1 = '嚴重';
     }
-    $('#t2_s').append(text1);
+    $('#t2_s').text(text1);
   }
 </script>
