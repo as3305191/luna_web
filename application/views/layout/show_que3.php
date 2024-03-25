@@ -53,8 +53,8 @@
     <input type="radio" name="q3_6" value="50" id="q6_50"><label for="q6_50">有時候(50)</label><br>
     <input type="radio" name="q3_6" value="25" id="q6_25"><label for="q6_25">不常(25)</label><br>
     <input type="radio" name="q3_6" value="0" id="q6_0"><label for="q6_0">從未或幾乎從未(0)</label><br>
-    個人相關疲勞分數(各題加總後除以6):
-    個人相關過勞分級(【輕微】50分以下/【中度】50-70分/【嚴重】70分以上):
+    個人相關疲勞分數(各題加總後除以6):<div id="t1"></div>
+    個人相關過勞分級(【輕微】50分以下/【中度】50-70分/【嚴重】70分以上):<div id="t1_s"></div>
     工作疲勞評估<br>
     1.	你的工作會令人情緒上心力交瘁嗎？<br>
     <input type="radio" name="q3_7" value="100" id="q7_100"><label for="q7_100">總是(100)</label><br>
@@ -98,8 +98,8 @@
     <input type="radio" name="q3_13" value="50" id="q13_50"><label for="q13_50">有時候(50)</label><br>
     <input type="radio" name="q3_13" value="25" id="q13_25"><label for="q13_25">不常(25)</label><br>
     <input type="radio" name="q3_13" value="0" id="q13_0"><label for="q13_0">從未或幾乎從未(0)</label><br>
-    工作相關疲勞分數(各題加總後除以7):
-    工作相關過勞分級(【輕微】45分以下/【中度】45-60分/【嚴重】60分以上):
+    工作相關疲勞分數(各題加總後除以7):<div id="t2"></div>
+    工作相關過勞分級(【輕微】45分以下/【中度】45-60分/【嚴重】60分以上):<div id="t2_s"></div>
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
             <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>
@@ -127,46 +127,94 @@
   var  q4 = 0;
   var  q5 = 0;
   var  q6 = 0;
-  var  q7 = $('input:radio[name="q3_7"]:checked').val();
-  var  q8 = $('input:radio[name="q3_8"]:checked').val();
-  var  q9 = $('input:radio[name="q3_9"]:checked').val();
-  var  q10 = $('input:radio[name="q3_10"]:checked').val();
-  var  q11 = $('input:radio[name="q3_11"]:checked').val();
-  var  q12 = $('input:radio[name="q3_12"]:checked').val();
-  var  q13 = $('input:radio[name="q3_13"]:checked').val();
-  var  total1 = '';
+  var  q7 = 0;
+  var  q8 = 0;
+  var  q9 = 0;
+  var  q10 = 0;
+  var  q11 = 0;
+  var  q12 = 0;
+  var  q13 = 0;
+  var  total1 = 0;
+  var  total2 = 0;
   $('input:radio[name="q3_1"]').on('change', function(){
     q1 = $('input:radio[name="q3_1"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
-    console.log(total1);
+    // console.log(total1);
+    t1();
   });
   $('input:radio[name="q3_2"]').on('change', function(){
     q2 = $('input:radio[name="q3_2"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
-    console.log(total1);
+    // console.log(total1);
+    t1();
   });
   $('input:radio[name="q3_3"]').on('change', function(){
     q3 = $('input:radio[name="q3_3"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
-    console.log(total1);
+    // console.log(total1);
+    t1();
   });
   $('input:radio[name="q3_4"]').on('change', function(){
     q4 = $('input:radio[name="q3_4"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
-    console.log(total1);
+    // console.log(total1);
+    t1();
   });
   $('input:radio[name="q3_5"]').on('change', function(){
     q5 = $('input:radio[name="q3_5"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
-    console.log(total1);
+    // console.log(total1);
+    t1();
   });
   $('input:radio[name="q3_6"]').on('change', function(){
     q6 = $('input:radio[name="q3_6"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
-    console.log(total1);
+    // console.log(total1);
+    t1();
   });
 
-  
+  $('input:radio[name="q3_7"]').on('change', function(){
+    q7 = $('input:radio[name="q3_7"]:checked').val();
+    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))/7;
+    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_8"]').on('change', function(){
+    q8 = $('input:radio[name="q3_8"]:checked').val();
+    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))/7;
+    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_9"]').on('change', function(){
+    q9 = $('input:radio[name="q3_9"]:checked').val();
+    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))/7;
+    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_10"]').on('change', function(){
+    q10 = $('input:radio[name="q3_10"]:checked').val();
+    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))/7;
+    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_11"]').on('change', function(){
+    q11 = $('input:radio[name="q3_11"]:checked').val();
+    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))/7;
+    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_12"]').on('change', function(){
+    q12 = $('input:radio[name="q3_12"]:checked').val();
+    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))/7;
+    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_13"]').on('change', function(){
+    q13 = $('input:radio[name="q3_13"]:checked').val();
+    total2 =(parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13))/7;
+    // console.log(total1);
+    t2();
+  });
 
 
   $('.dosubmit').click(function() {
@@ -218,4 +266,33 @@
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
+
+  function t1(){
+    var text = '';
+    $('#t1').text(total1);
+    if(total1<=50){
+      text = '輕微';
+    }
+    if(50<total1<69){
+      text = '中度';
+    }
+    if(total1>=70){
+      text = '嚴重';
+    }
+    $('#t1_s').text(text);
+  }
+  function t2(){
+    var text1 = '';
+    $('#t2').text(total2);
+    if(total2<=45){
+      text = '輕微';
+    }
+    if(45<total3<60){
+      text = '中度';
+    }
+    if(total3>=60){
+      text = '嚴重';
+    }
+    $('#t2_s').text(text1);
+  }
 </script>
