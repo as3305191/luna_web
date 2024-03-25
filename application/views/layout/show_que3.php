@@ -135,24 +135,30 @@
   var  total1 = '';
   $('input:radio[name="q3_1"]:checked').on('change', function(){
     total1 =(q1+q2+q3+q4+q5+q6)/6;
+    console.log(total1);
   });
   $('input:radio[name="q3_2"]:checked').on('change', function(){
     total1 =(q1+q2+q3+q4+q5+q6)/6;
+    console.log(total1);
   });
   $('input:radio[name="q3_3"]:checked').on('change', function(){
     total1 =(q1+q2+q3+q4+q5+q6)/6;
+    console.log(total1);
   });
   $('input:radio[name="q3_4"]:checked').on('change', function(){
     total1 =(q1+q2+q3+q4+q5+q6)/6;
+    console.log(total1);
   });
   $('input:radio[name="q3_5"]:checked').on('change', function(){
     total1 =(q1+q2+q3+q4+q5+q6)/6;
+    console.log(total1);
   });
   $('input:radio[name="q3_6"]:checked').on('change', function(){
     total1 =(q1+q2+q3+q4+q5+q6)/6;
+    console.log(total1);
   });
 
-console.log(total1);
+  
 
 
   $('.dosubmit').click(function() {
