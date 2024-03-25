@@ -106,19 +106,8 @@
     </div>
     <?php $this->load->view('layout/plugins'); ?>
 <script type="text/javascript">
-  var  q1 = document.querySelector("input[name='q3_1']:checked").value;
-  var  q2 = document.querySelector("input[name='q3_2']:checked").value;
-  var  q3 = document.querySelector("input[name='q3_3']:checked").value;
-  var  q4 = document.querySelector("input[name='q3_4']:checked").value;
-  var  q5 = document.querySelector("input[name='q3_5']:checked").value;
-  var  q6 = document.querySelector("input[name='q3_6']:checked").value;
-  var  q7 = document.querySelector("input[name='q3_7']:checked").value;
-  var  q8 = document.querySelector("input[name='q3_8']:checked").value;
-  var  q9 = document.querySelector("input[name='q3_9']:checked").value;
-  var  q10 = document.querySelector("input[name='q3_10']:checked").value;
-  var  q11 = document.querySelector("input[name='q3_11']:checked").value;
-  var  q12 = document.querySelector("input[name='q3_12']:checked").value;
-  var  q13 = document.querySelector("input[name='q3_13']:checked").value; 
+ 
+  
   $( document ).ready(function() {
     $('#name').focus();
   })
@@ -128,9 +117,35 @@
     parent.layer.close(index);
   })
   $('.dosubmit').click(function() {
-    if(q1.value>=0&&q2.value>=0&&q3.value>=0&&q4.value>=0&&q5.value>=0&&q6.value>=0&&q7.value>=0&&q8.value>=0&&
-      q9.value>=0&&q10.value>=0&&q11.value>=0&&q12.value>=0&&q13.value>=0){
-      $.ajax({
+    if (document.querySelector("input[name='q3_1']:checked").value==null||
+      document.querySelector("input[name='q3_2']:checked").value==null||
+      document.querySelector("input[name='q3_3']:checked").value==null||
+      document.querySelector("input[name='q3_4']:checked").value==null||
+      document.querySelector("input[name='q3_5']:checked").value==null||
+      document.querySelector("input[name='q3_6']:checked").value==null||
+      document.querySelector("input[name='q3_7']:checked").value==null||
+      document.querySelector("input[name='q3_8']:checked").value==null||
+      document.querySelector("input[name='q3_9']:checked").value==null||
+      document.querySelector("input[name='q3_10']:checked").value==null||
+      document.querySelector("input[name='q3_11']:checked").value==null||
+      document.querySelector("input[name='q3_12']:checked").value==null||
+      document.querySelector("input[name='q3_13']:checked").value==null){
+    alert("請填寫完全部題目！");   
+  } else{
+    var  q1 = document.querySelector("input[name='q3_1']:checked").value;
+    var  q2 = document.querySelector("input[name='q3_2']:checked").value;
+    var  q3 = document.querySelector("input[name='q3_3']:checked").value;
+    var  q4 = document.querySelector("input[name='q3_4']:checked").value;
+    var  q5 = document.querySelector("input[name='q3_5']:checked").value;
+    var  q6 = document.querySelector("input[name='q3_6']:checked").value;
+    var  q7 = document.querySelector("input[name='q3_7']:checked").value;
+    var  q8 = document.querySelector("input[name='q3_8']:checked").value;
+    var  q9 = document.querySelector("input[name='q3_9']:checked").value;
+    var  q10 = document.querySelector("input[name='q3_10']:checked").value;
+    var  q11 = document.querySelector("input[name='q3_11']:checked").value;
+    var  q12 = document.querySelector("input[name='q3_12']:checked").value;
+    var  q13 = document.querySelector("input[name='q3_13']:checked").value; 
+    $.ajax({
           url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q3',
           type: 'POST',
           data: {
@@ -167,9 +182,10 @@
             layer.msg('faialure');
           }
         });
-    } else{
-      alert("請填寫全部題目！！");
-    }
+
+
+
+  }
   		
   })
   $('.trash_btn').click(function() {
