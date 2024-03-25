@@ -157,14 +157,15 @@
           症狀與工作相關說明：<br>
           <textarea class="form-control" name="q2_19"></textarea>
           五.近3個月您是否有因上述不適症狀而請假就醫? <br>
-          <input type="radio" name="q2_20" value="是" id="q20_y"><label for="q20_y">是</label><br>
-          <input type="radio" name="q2_20" value="否" id="q20_n"><label for="q20_n">否</label>
+          <input type="radio" name="q2_20" value="是" id="q20_y"><label for="q20_y">是</label>
           請假<input name="q2_21">天<br>
+          <input type="radio" name="q2_20" value="否" id="q20_n"><label for="q20_n">否</label><br>
           六.您是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療）？<br>
-          <input type="radio" name="q2_22" value="是" id="q22_y"><label for="q22_y">是</label><br>
-          <input type="radio" name="q2_22" value="否" id="q22_n"><label for="q22_n">否</label>
+          <input type="radio" name="q2_22" value="是" id="q22_y"><label for="q22_y">是</label>
           診斷名稱：
           <input name="q2_23"><br>
+          <input type="radio" name="q2_22" value="否" id="q22_n"><label for="q22_n">否</label><br>
+        
           七.其他症狀、病史說明：(例如糖尿病、高血壓等等)<br>
           <textarea class="form-control" name="q2_24"></textarea>
         </div>
@@ -199,6 +200,127 @@
       $('#d_hide').addClass('d_hide');
     }
   });
+  var  q1 = null;
+  var  q2 = null;
+  var  q3 = null;
+  var  q4 = null;
+  var  q5 = null;
+  var  q6 = null;
+  var  q7 = null;
+  var  q8 = null;
+  var  q9 = null;
+  var  q10 = null;
+  var  q11 = null;
+  var  q12 = null;
+  var  q13 = null;
+  var  q14 = null;
+  var  q15 = null;
+  var  q16 = null;
+  var  q17 = null;
+  var  q18 = null;
+  var  q19 = null;
+  var  q20 = null;
+  var  q21 = null;
+  var  q22 = null;
+  var  q23 = null;
+  var  q24 = null;
+  $('input:radio[name="q2_1"]').on('change', function(){
+    q1 = $('input:radio[name="q2_1"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_2"]').on('change', function(){
+    q2 = $('input:radio[name="q2_2"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_3"]').on('change', function(){
+    q3 = $('input:radio[name="q2_3"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_4"]').on('change', function(){
+    q4 = $('input:radio[name="q2_4"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_5"]').on('change', function(){
+    q5 = $('input:radio[name="q2_5"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_6"]').on('change', function(){
+    q6 = $('input:radio[name="q2_6"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_7"]').on('change', function(){
+    q7 = $('input:radio[name="q2_7"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_8"]').on('change', function(){
+    q8 = $('input:radio[name="q2_8"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_9"]').on('change', function(){
+    q9 = $('input:radio[name="q2_9"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_10"]').on('change', function(){
+    q10 = $('input:radio[name="q2_10"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_11"]').on('change', function(){
+    q11 = $('input:radio[name="q2_11"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_12"]').on('change', function(){
+    q12 = $('input:radio[name="q2_12"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_13"]').on('change', function(){
+    q13 = $('input:radio[name="q2_13"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_14"]').on('change', function(){
+    q14 = $('input:radio[name="q2_14"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_15"]').on('change', function(){
+    q15 = $('input:radio[name="q2_15"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_16"]').on('change', function(){
+    q16 = $('input:radio[name="q2_16"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_17"]').on('change', function(){
+    q17 = $('input:radio[name="q2_17"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_18"]').on('change', function(){
+    q18 = $('input:radio[name="q2_18"]:checked').val();
+   
+  });
+  $('textarea[name="q2_19"]').on('change', function(){
+    q19 = $('textarea[name="q2_19"]').val();
+   
+  });
+  $('input:radio[name="q2_20"]').on('change', function(){
+    q20 = $('input:radio[name="q2_20"]:checked').val();
+   
+  });
+
+  $('input:radio[name="q2_21"]').on('change', function(){
+    q21 = $('input:radio[name="q2_21"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_22"]').on('change', function(){
+    q22 = $('input:radio[name="q2_22"]:checked').val();
+   
+  });
+  $('input[name="q2_23"]').on('change', function(){
+    q23 = $('input[name="q2_23"]').val();
+   
+  });
+  $('textarea[name="q2_24"]').on('change', function(){
+    q24 = $('textarea[name="q2_24"]').val();
+   
+  });
 
   $('.dosubmit').click(function() {
    
@@ -207,30 +329,30 @@
   			type: 'POST',
   			data: {
   				qid:$('#qid').val(),
-          q1 : document.querySelector("input[name='q2_1']:checked").value,
-          q2 : document.querySelector("input[name='q2_2']:checked").value,
-          q3 : document.querySelector("input[name='q2_3']:checked").value,
-          q4 : document.querySelector("input[name='q2_4']:checked").value,
-          q5 : document.querySelector("input[name='q2_5']:checked").value,
-          q6 : document.querySelector("input[name='q2_6']:checked").value,
-          q7 : document.querySelector("input[name='q2_7']:checked").value,
-          q8 : document.querySelector("input[name='q2_8']:checked").value,
-          q9 : document.querySelector("input[name='q2_9']:checked").value,
-          q10 : document.querySelector("input[name='q2_10']:checked").value,
-          q11 : document.querySelector("input[name='q2_11']:checked").value,
-          q12 : document.querySelector("input[name='q2_12']:checked").value,
-          q13 : document.querySelector("input[name='q2_13']:checked").value,
-          q14 : document.querySelector("input[name='q2_14']:checked").value,
-          q15 : document.querySelector("input[name='q2_15']:checked").value,
-          q16 : document.querySelector("input[name='q2_16']:checked").value,
-          q17 : document.querySelector("input[name='q2_17']:checked").value,
-          q18 : document.querySelector("input[name='q2_18']:checked").value,
-          q19 : document.querySelector("textarea[name='q2_19']").value,
-          q20 : document.querySelector("input[name='q2_20']:checked").value,
-          q21 : document.querySelector("input[name='q2_21']").value,
-          q22 : document.querySelector("input[name='q2_22']:checked").value,
-          q23 : document.querySelector("input[name='q2_23']").value,
-          q24 : document.querySelector("textarea[name='q2_24']").value,
+          q1 : q1,
+          q2 : q2,
+          q3 : q3,
+          q4 : q4,
+          q5 : q5,
+          q6 : q6,
+          q7 : q7,
+          q8 : q8,
+          q9 : q9,
+          q10 : q10,
+          q11 : q11,
+          q12 : q12,
+          q13 : q13,
+          q14 : q14,
+          q15 : q15,
+          q16 : q16,
+          q17 : q17,
+          q18 : q18,
+          q19 : q19,
+          q20 : q20,
+          q21 : q21,
+          q22 : q22,
+          q23 : q23,
+          q24 : q24,
         },
   			dataType: 'json',
   			success: function(d) {
