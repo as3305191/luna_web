@@ -137,32 +137,32 @@
   var  total1 = '';
   $('input:radio[name="q3_1"]').on('change', function(){
     q1 = $('input:radio[name="q3_1"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
+    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
     console.log(total1);
   });
   $('input:radio[name="q3_2"]').on('change', function(){
     q2 = $('input:radio[name="q3_2"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
+    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
     console.log(total1);
   });
   $('input:radio[name="q3_3"]').on('change', function(){
     q3 = $('input:radio[name="q3_3"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
+    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
     console.log(total1);
   });
   $('input:radio[name="q3_4"]').on('change', function(){
     q4 = $('input:radio[name="q3_4"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
+    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
     console.log(total1);
   });
   $('input:radio[name="q3_5"]').on('change', function(){
     q5 = $('input:radio[name="q3_5"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
+    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
     console.log(total1);
   });
   $('input:radio[name="q3_6"]').on('change', function(){
     q6 = $('input:radio[name="q3_6"]:checked').val();
-    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
+    total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6))/6;
     console.log(total1);
   });
 
