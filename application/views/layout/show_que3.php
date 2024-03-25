@@ -119,71 +119,48 @@
     parent.layer.close(index);
   })
 
-  if ($('input:radio[name="q3_1"]:checked').val()!==null&&
-      $('input:radio[name="q3_2"]:checked').val()!==null&&
-      $('input:radio[name="q3_3"]:checked').val()!==null&&
-      $('input:radio[name="q3_4"]:checked').val()!==null&&
-      $('input:radio[name="q3_5"]:checked').val()!==null&&
-      $('input:radio[name="q3_6"]:checked').val()!==null){
-        var  q1 = $('input:radio[name="q3_1"]:checked').val();
-        var  q2 = $('input:radio[name="q3_2"]:checked').val();
-        var  q3 = $('input:radio[name="q3_3"]:checked').val();
-        var  q4 = $('input:radio[name="q3_4"]:checked').val();
-        var  q5 = $('input:radio[name="q3_5"]:checked').val();
-        var  q6 = $('input:radio[name="q3_6"]:checked').val();
-        var  total1 = '';
-          $('input:radio[name="q3_1"]:checked').on('change', function(){
-            total1 =(q1+q2+q3+q4+q5+q6)/6;
-          });
-          $('input:radio[name="q3_2"]:checked').on('change', function(){
-            total1 =(q1+q2+q3+q4+q5+q6)/6;
-          });
-          $('input:radio[name="q3_3"]:checked').on('change', function(){
-            total1 =(q1+q2+q3+q4+q5+q6)/6;
-          });
-          $('input:radio[name="q3_4"]:checked').on('change', function(){
-            total1 =(q1+q2+q3+q4+q5+q6)/6;
-          });
-          $('input:radio[name="q3_5"]:checked').on('change', function(){
-            total1 =(q1+q2+q3+q4+q5+q6)/6;
-          });
-          $('input:radio[name="q3_6"]:checked').on('change', function(){
-            total1 =(q1+q2+q3+q4+q5+q6)/6;
-          });
+  var  q1 = $('input:radio[name="q3_1"]:checked').val();
+  var  q2 = $('input:radio[name="q3_2"]:checked').val();
+  var  q3 = $('input:radio[name="q3_3"]:checked').val();
+  var  q4 = $('input:radio[name="q3_4"]:checked').val();
+  var  q5 = $('input:radio[name="q3_5"]:checked').val();
+  var  q6 = $('input:radio[name="q3_6"]:checked').val();
+  var  q7 = $('input:radio[name="q3_7"]:checked').val();
+  var  q8 = $('input:radio[name="q3_8"]:checked').val();
+  var  q9 = $('input:radio[name="q3_9"]:checked').val();
+  var  q10 = $('input:radio[name="q3_10"]:checked').val();
+  var  q11 = $('input:radio[name="q3_11"]:checked').val();
+  var  q12 = $('input:radio[name="q3_12"]:checked').val();
+  var  q13 = $('input:radio[name="q3_13"]:checked').val();
+  var  total1 = '';
+  $('input:radio[name="q3_1"]:checked').on('change', function(){
+    total1 =(q1+q2+q3+q4+q5+q6)/6;
+  });
+  $('input:radio[name="q3_2"]:checked').on('change', function(){
+    total1 =(q1+q2+q3+q4+q5+q6)/6;
+  });
+  $('input:radio[name="q3_3"]:checked').on('change', function(){
+    total1 =(q1+q2+q3+q4+q5+q6)/6;
+  });
+  $('input:radio[name="q3_4"]:checked').on('change', function(){
+    total1 =(q1+q2+q3+q4+q5+q6)/6;
+  });
+  $('input:radio[name="q3_5"]:checked').on('change', function(){
+    total1 =(q1+q2+q3+q4+q5+q6)/6;
+  });
+  $('input:radio[name="q3_6"]:checked').on('change', function(){
+    total1 =(q1+q2+q3+q4+q5+q6)/6;
+  });
 
-        console.log(total1);
-  }
+console.log(total1);
+
 
   $('.dosubmit').click(function() {
-    if ($('input:radio[name="q3_1"]:checked').val()==null||
-        $('input:radio[name="q3_2"]:checked').val()==null||
-        $('input:radio[name="q3_3"]:checked').val()==null||
-        $('input:radio[name="q3_4"]:checked').val()==null||
-        $('input:radio[name="q3_5"]:checked').val()==null||
-        $('input:radio[name="q3_6"]:checked').val()==null||
-        $('input:radio[name="q3_7"]:checked').val()==null||
-        $('input:radio[name="q3_8"]:checked').val()==null||
-        $('input:radio[name="q3_9"]:checked').val()==null||
-        $('input:radio[name="q3_10"]:checked').val()==null||
-        $('input:radio[name="q3_11"]:checked').val()==null||
-        $('input:radio[name="q3_12"]:checked').val()==null||
-        $('input:radio[name="q3_13"]:checked').val()==null){
+    if (q1==null||q2==null||q3==null||q4==null||q5==null||q6==null||
+         q7==null||q8==null||q9==null||q10==null||q11==null||q12==null||q13==null){
           alert("請填寫完全部題目！");   
-
     } else{
-        var  q1 = document.querySelector("input[name='q3_1']:checked").value;
-        var  q2 = document.querySelector("input[name='q3_2']:checked").value;
-        var  q3 = document.querySelector("input[name='q3_3']:checked").value;
-        var  q4 = document.querySelector("input[name='q3_4']:checked").value;
-        var  q5 = document.querySelector("input[name='q3_5']:checked").value;
-        var  q6 = document.querySelector("input[name='q3_6']:checked").value;
-        var  q7 = document.querySelector("input[name='q3_7']:checked").value;
-        var  q8 = document.querySelector("input[name='q3_8']:checked").value;
-        var  q9 = document.querySelector("input[name='q3_9']:checked").value;
-        var  q10 = document.querySelector("input[name='q3_10']:checked").value;
-        var  q11 = document.querySelector("input[name='q3_11']:checked").value;
-        var  q12 = document.querySelector("input[name='q3_12']:checked").value;
-        var  q13 = document.querySelector("input[name='q3_13']:checked").value; 
+      
         $.ajax({
           url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q3',
           type: 'POST',
