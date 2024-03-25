@@ -98,6 +98,8 @@
     <input type="radio" name="q3_13" value="50" id="q13_50"><label for="q13_50">有時候(50)</label><br>
     <input type="radio" name="q3_13" value="25" id="q13_25"><label for="q13_25">不常(25)</label><br>
     <input type="radio" name="q3_13" value="0" id="q13_0"><label for="q13_0">從未或幾乎從未(0)</label><br>
+    工作相關疲勞分數(各題加總後除以7):
+    工作相關過勞分級(【輕微】45分以下/【中度】45-60分/【嚴重】60分以上):
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
             <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>
@@ -119,12 +121,12 @@
     parent.layer.close(index);
   })
 
-  var  q1 = $('input:radio[name="q3_1"]:checked').val();
-  var  q2 = $('input:radio[name="q3_2"]:checked').val();
-  var  q3 = $('input:radio[name="q3_3"]:checked').val();
-  var  q4 = $('input:radio[name="q3_4"]:checked').val();
-  var  q5 = $('input:radio[name="q3_5"]:checked').val();
-  var  q6 = $('input:radio[name="q3_6"]:checked').val();
+  var  q1 = '';
+  var  q2 = '';
+  var  q3 = '';
+  var  q4 = '';
+  var  q5 = '';
+  var  q6 = '';
   var  q7 = $('input:radio[name="q3_7"]:checked').val();
   var  q8 = $('input:radio[name="q3_8"]:checked').val();
   var  q9 = $('input:radio[name="q3_9"]:checked').val();
@@ -134,26 +136,32 @@
   var  q13 = $('input:radio[name="q3_13"]:checked').val();
   var  total1 = '';
   $('input:radio[name="q3_1"]').on('change', function(){
+    q1 = $('input:radio[name="q3_1"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
     console.log(total1);
   });
   $('input:radio[name="q3_2"]').on('change', function(){
+    q2 = $('input:radio[name="q3_2"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
     console.log(total1);
   });
   $('input:radio[name="q3_3"]').on('change', function(){
+    q3 = $('input:radio[name="q3_3"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
     console.log(total1);
   });
   $('input:radio[name="q3_4"]').on('change', function(){
+    q4 = $('input:radio[name="q3_4"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
     console.log(total1);
   });
   $('input:radio[name="q3_5"]').on('change', function(){
+    q5 = $('input:radio[name="q3_5"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
     console.log(total1);
   });
   $('input:radio[name="q3_6"]').on('change', function(){
+    q6 = $('input:radio[name="q3_6"]:checked').val();
     total1 =(parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6));
     console.log(total1);
   });
