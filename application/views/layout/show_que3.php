@@ -279,7 +279,7 @@
     if(parseInt(total1)>=70){
       text = '嚴重';
     }
-    if (q1==null||q2==null||q3==null||q4==null||q5==null||q6==null){
+    if (q1!==null||q2!==null||q3!==null||q4!==null||q5!==null||q6!==null){
       $('#t1').text(total1);
       $('#t1_s').text(text);
     }
@@ -296,7 +296,7 @@
     if(parseInt(total2)>=60){
       text1 = '嚴重';
     }
-    if (q7==null||q8==null||q9==null||q10==null||q11==null||q12==null||q13==null){
+    if (q7!==null||q8!==null||q9!==null||q10!==null||q11!==null||q12!==null||q13!==null){
       $('#t2').text(total2);
       $('#t2_s').text(text1);
     }
