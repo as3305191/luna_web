@@ -53,8 +53,8 @@
     <input type="radio" name="q3_6" value="50" id="q6_50"><label for="q6_50">有時候(50)</label><br>
     <input type="radio" name="q3_6" value="25" id="q6_25"><label for="q6_25">不常(25)</label><br>
     <input type="radio" name="q3_6" value="0" id="q6_0"><label for="q6_0">從未或幾乎從未(0)</label><br>
-    個人相關疲勞分數(各題加總後除以6):<span color="red" id="t1"></span><br>
-    個人相關過勞分級(【輕微】50分以下/【中度】50-70分/【嚴重】70分以上):<span color="red" id="t1_s"></span><br>
+    個人相關疲勞分數(各題加總後除以6):<span font="red" id="t1"></span><br>
+    個人相關過勞分級(【輕微】50分以下/【中度】50-70分/【嚴重】70分以上):<span font="red" id="t1_s"></span><br>
     工作疲勞評估<br>
     1.	你的工作會令人情緒上心力交瘁嗎？<br>
     <input type="radio" name="q3_7" value="100" id="q7_100"><label for="q7_100">總是(100)</label><br>
