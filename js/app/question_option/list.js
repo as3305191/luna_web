@@ -230,7 +230,8 @@ var QuestionoptionAppClass = (function(app) {
 		};
 
 		app.doExportAll = function(id) {
-			window.open(baseUrl + app.basePath + 'export_all/' + id);
+			// window.open(baseUrl + app.basePath + 'export_all/' + id);
+			console.log(id);
 		}
 
 		// edit
