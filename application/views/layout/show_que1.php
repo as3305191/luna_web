@@ -149,8 +149,9 @@ $("input[name='q1_6']").on('change', function(){
     obj = document.getElementsByName("q1_6");
     q6 = [];
     for (i in obj) {
-        if (obj[i].checked)
-        q6.push(obj[i].value);
+        if (obj[i].checked){
+          q6.push(obj[i].value);
+        }
     }
 
     // console.log(q6);
@@ -228,8 +229,8 @@ $("input[name='q1_6']").on('change', function(){
               q3 : q3,
               q4 : q4,
               q5 : q5,
-              q6 : q6,
-              q7 : q7,
+              q6 : q6.toString(),
+              q7 : q7.toString(),
               q8 : q8,
               q9 : q9,
               q10 : q10,
