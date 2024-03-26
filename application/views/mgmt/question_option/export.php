@@ -127,5 +127,5 @@
 <script>
 currentApp.not_finish = new QuestionnotfinishAppClass(new BaseAppClass({}));
 // currentApp.each_detail = new QuestioneachdetailAppClass(new BaseAppClass({}));
-
+ 
 </script>

@@ -362,6 +362,11 @@ var QuestionnotfinishAppClass = (function(app) {
 
 		}));
 
+		app.export_item = function(id) {
+			var item=[1,2,3];
+			console.log(item); 
+		}
+		
 		// data table actions
 		app.dtActions();
 
