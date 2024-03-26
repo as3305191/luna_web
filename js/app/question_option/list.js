@@ -373,7 +373,7 @@ var QuestionnotfinishAppClass = (function(app) {
 				dataType : 'json',
 				type : 'post'
 			},
-			pageLength: 50,
+			pageLength: 5,
 			columns : [ {
 				data : 'user_name'
 			},],
