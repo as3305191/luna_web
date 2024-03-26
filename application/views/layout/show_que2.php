@@ -314,22 +314,22 @@
 
   $('[name="q1o"]').on('change', function(){
     q1o = $('[name="q1o"]').val();
-    console.log(q1o);
+    // console.log(q1o);
    
   });
   $('[name="q2o"]').on('change', function(){
     q2o = $('[name="q2o"]').val();
-    console.log(q2o);
+    // console.log(q2o);
 
   });
   $('[name="q3o"]').on('change', function(){
     q3o = $('[name="q3o"]').val();
-    console.log(q3o);
+    // console.log(q3o);
 
   });
   $('[name="q4o"]').on('change', function(){
     q4o = $('[name="q4o"]').val();
-    console.log(q4o);
+    // console.log(q4o);
 
   });
 
