@@ -55,7 +55,7 @@ class Question_option extends MY_Mgmt_Controller {
 			'item_id'
 		));
 		$items_list = $this -> question_ans_dao -> find_all_not_finish($data);
-		$all_user_list =  $this -> users_dao -> find_all_user_id();
+		$all_user_list =  $this -> users_dao -> find_all_ktx_user_id();
 		if(count($items_list)>0){
 			foreach($items_list as $each){
 				if(in_array($each->user_id, $all_user_list)){
