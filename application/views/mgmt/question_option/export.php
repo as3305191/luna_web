@@ -34,6 +34,9 @@
 			<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo()" class="btn btn-default">
 				<i class="fa fa-arrow-circle-left"></i>返回
 			</a>
+			<a href="javascript:void(0);" onclick="currentApp.export_item()" class="btn btn-default">
+				<i class="fa fa-save"></i>下載檔案
+			</a>
 		</div>
 		
 		<!-- <div class="widget-toolbar pull-left">
