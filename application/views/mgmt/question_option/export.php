@@ -126,5 +126,6 @@
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 <script>
 
-
+currentApp_not_finish = new QuestionnotfinishAppClass(new BaseAppClass({}));
+currentApp_each_detail = new QuestioneachdetailAppClass(new BaseAppClass({}));
 </script>
