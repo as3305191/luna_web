@@ -84,8 +84,8 @@
 	});
 
 	
-	function export_question(id) {
-		console.log(id);
-	}
+	// function export_question(id) {
+	// 	console.log(id);
+	// }
 	
 </script>

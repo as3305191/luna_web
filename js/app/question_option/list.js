@@ -120,7 +120,7 @@ var QuestionoptionAppClass = (function(app) {
 				data : 'id',
 				render: function(d,t,r) {
 					if(d){
-						return '<button onclick="export_question('+d+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
+						return '<button onclick="currentApp.doExportAll('+d+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
 								+'<i class="fa fa-save"></i>匯出'
 								+'</button>';
 					} else{
@@ -229,6 +229,9 @@ var QuestionoptionAppClass = (function(app) {
 			});
 		};
 
+		app.doExportAll = function(id) {
+			window.open(baseUrl + app.basePath + 'export_all/' + id);
+		}
 
 		// edit
 		app.doEdit = function(id) {
