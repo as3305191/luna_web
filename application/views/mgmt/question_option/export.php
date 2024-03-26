@@ -54,7 +54,7 @@
 		<!-- widget content -->
 		<div class="widget-body">
 			<form id="app-export-form" method="post" class="form-horizontal">
-				<input type="" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
+				
 			
 				<div class="form-group" style="padding:0px 26px">
        			 	<div class="clearfix"></div>
@@ -68,7 +68,7 @@
 							<!-- end widget edit box -->
 							<!-- widget content -->
 							<div class="widget-body no-padding">
-
+								<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 								<table id="dt_list_export" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
@@ -104,73 +104,4 @@
 <script>
 
 
-function do_save() {
-	var url = baseUrl + 'mgmt/question_option/insert'; // the script where you handle the form input.
-	$.ajax({
-		type : "POST",
-		url : url,
-		data : {
-			id: $('#item_id').val(),
-			question_style_id: $('#s_question_style').val(),
-			note: $('#note').val(),
-			
-		},
-		success : function(data) {
-			if(data.error_msg) {
-				layer.msg(data.error_msg);
-			} else {
-				currentApp.mDtTable.ajax.reload(null, false);
-				currentApp.backTo();
-			}
-		}
-	});
-};
-
-function load_style() {
-		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/question_option/find_question_style',
-		
-			type: 'POST',
-			dataType: 'json',
-			success: function(d) {
-				if(d) {
-					var s_question_style=$('#s_question_style').val();
-					// console.log(d);
-					$question_style = $('#question_style').empty();
-					var option = '<option value="0">無</option>';
-					$question_style.append(option);
-					if(s_question_style>0 ){ 
-						$.each(d.question_style, function(){
-							if(this.id==s_question_style){
-								$('<option/>', {
-									'value': this.id,
-									'text': this.question_style_name
-								}).attr("selected", true).appendTo($question_style);	
-							} else{
-								$('<option/>', {
-									'value': this.id,
-									'text': this.question_style_name
-								}).appendTo($question_style);
-							}
-						});
-					} else{
-						$.each(d.question_style, function(){
-							$('<option/>', {
-								'value': this.id,
-								'text': this.question_style_name
-							}).appendTo($question_style);
-						});
-					}
-					
-				}
-			},
-			failure:function(){
-				alert('faialure');
-			}
-		});
-	}
-	load_style();
-	$('#question_style').on('change', function(){
-		$('#s_question_style').val($('#question_style').val()) ;
-	});
 </script>
