@@ -344,6 +344,8 @@ console.log(q1);
          q14!==null&&q15!==null&&q16!==null&&q17!==null&&q18!==null&&q19!==null&&q13!==null&&
          q21!==null){
           is_ok=true;
+         } else{
+          alert('請填寫完全部題目！');
          }
     } else{
       if (q1=='否'){
