@@ -268,8 +268,6 @@ var QuestionoptionAppClass = (function(app) {
 	return app.init();
 });
 
-
-
 var QuestionnotfinishAppClass = (function(app) {
 	app.basePath = "mgmt/question_option/";
 	app.disableRowClick = true;
