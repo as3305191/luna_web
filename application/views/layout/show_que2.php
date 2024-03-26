@@ -335,7 +335,9 @@
   });
 console.log(q1);
   $('.dosubmit').click(function() {
-   
+   if(q1==null){
+    alert('請填寫第一題！');
+   } else{
     if (q1=='是'){
       if (q1!==null&&q2!==null&&q3!==null&&q4!==null&&q5!==null&&q6!==null&&
          q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null&&q13!==null&&
@@ -346,11 +348,10 @@ console.log(q1);
     } else{
       if (q1=='否'){
         is_ok=true;
-      } else{
-        alert('請填寫第一題！');
       }
-      
     }
+   }
+   
     if(is_ok){
       $.ajax({
   			url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q2',
