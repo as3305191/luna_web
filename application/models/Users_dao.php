@@ -710,7 +710,7 @@ class Users_dao extends MY_Model {
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 
 		$this -> db -> select('_m.id');
-		$this -> db -> select('_m.user_name');
+		// $this -> db -> select('_m.user_name');
 		$query = $this -> db -> get();
 		$list = $query -> result();
 

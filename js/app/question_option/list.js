@@ -374,72 +374,24 @@ var QuestionnotfinishAppClass = (function(app) {
 				type : 'post'
 			},
 			pageLength: 50,
-			columns : [null, {
-				data : 'question_style_name',
-				render: function(d,t,r) {
-					if(r.note){
-						return d+'-'+r.note;
-					} else{
-						return d;
-					}
-				}
-			}, {
-				data : 'create_time'
-			}, {
-				data : 'id',
-				render: function(d,t,r) {
-					if(d){
-						return '<button onclick="currentApp.doExportAll('+d+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
-								+'<i class="fa fa-save"></i>匯出'
-								+'</button>';
-					} else{
-						return d;
-					}
-				}
-			}],
+			columns : [ {
+				data : 'user_name'
+			},],
 			ordering: false,
-			order : [[2, "desc"]],
-			columnDefs : [{
+			order : [[0, "desc"]],
+			columnDefs :[{
 				targets : 0,
 				data : null,
-				render:function ( data, type, row ) {
-					var input = '';
-					if(row.is_close<1){
-						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
-						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
-						+input
-						+'<label class="onoffswitch-label" for="'+row.id+'">'
-							+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="編輯"></span>'
-							+'<span class="onoffswitch-switch"></span>'
-						+'</label>'
-					+'</span>';
-					}else{
-						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
-						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
-						+input
-						+'<label class="onoffswitch-label" for="'+row.id+'">'
-							+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="編輯"></span>'
-							+'<span class="onoffswitch-switch"></span>'
-						+'</label>'
-					+'</span>'
-					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>';
-					}
-					return html;
-		    },
+				defaultContent : '',
 				searchable : false,
 				orderable : false,
-				width : "8%",
-				className: ''
+				width : "5%",
+				className : ''
 			}, {
-				"targets" : 0,
+				"targets" : [0],
 				"orderable" : false
-			}, {
-				"targets" : 1,
-				"orderable" : false
-			}, {
-				"targets" : 2,
-				"orderable" : false
-			}],
+			},
+		],
 
 			footerCallback: function (row, data, start, end, display ) {
 				var api = this.api();

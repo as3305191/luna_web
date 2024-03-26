@@ -77,9 +77,8 @@
 					<table id="dt_list_not_finish" class="table table-striped table-bordered table-hover" width="100%">
 						<thead>
 							<tr>
-								<th class="min100"></th>
+								<!-- <th class="min100"></th> -->
 								<th class="min150">姓名</th>
-								
 							</tr>
 							<!-- <tr class="search_box">
 								<th></th>
