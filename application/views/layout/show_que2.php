@@ -155,19 +155,19 @@
           <input type="radio" name="q2_18" value="是" id="q18_y"><label for="q18_y">是</label><br>
           <input type="radio" name="q2_18" value="否" id="q18_n"><label for="q18_n">否</label><br>
           症狀與工作相關說明：<br>
-          <textarea class="form-control" name="q2_19"></textarea>
+          <textarea class="form-control" name="q1o"></textarea>
           五.近3個月您是否有因上述不適症狀而請假就醫? <br>
-          <input type="radio" name="q2_20" value="是" id="q20_y"><label for="q20_y">是</label>
-          請假<input name="q2_21">天<br>
-          <input type="radio" name="q2_20" value="否" id="q20_n"><label for="q20_n">否</label><br>
+          <input type="radio" name="q2_19" value="是" id="q19_y"><label for="q19_y">是</label>
+          請假<input name="q2o">天<br>
+          <input type="radio" name="q2_19" value="否" id="q19_n"><label for="q19_n">否</label><br>
           六.您是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療）？<br>
-          <input type="radio" name="q2_22" value="是" id="q22_y"><label for="q22_y">是</label>
+          <input type="radio" name="q2_20" value="是" id="q20_y"><label for="q20_y">是</label>
           診斷名稱：
-          <input name="q2_23"><br>
-          <input type="radio" name="q2_22" value="否" id="q22_n"><label for="q22_n">否</label><br>
+          <input name="q3o"><br>
+          <input type="radio" name="q2_21" value="否" id="q21_n"><label for="q21_n">否</label><br>
         
           七.其他症狀、病史說明：(例如糖尿病、高血壓等等)<br>
-          <textarea class="form-control" name="q2_24"></textarea>
+          <textarea class="form-control" name="q4o"></textarea>
         </div>
       </div>
     </div>
@@ -221,9 +221,10 @@
   var  q19 = null;
   var  q20 = null;
   var  q21 = null;
-  var  q22 = null;
-  var  q23 = null;
-  var  q24 = null;
+  var  q1o = '無';
+  var  q2o = '無';
+  var  q3o = '無';
+  var  q4o = '無';
   $('input:radio[name="q2_1"]').on('change', function(){
     q1 = $('input:radio[name="q2_1"]:checked').val();
    
@@ -296,8 +297,8 @@
     q18 = $('input:radio[name="q2_18"]:checked').val();
    
   });
-  $('textarea[name="q2_19"]').on('change', function(){
-    q19 = $('textarea[name="q2_19"]').val();
+  $('input:radio[name="q2_19"]').on('change', function(){
+    q19 = $('input:radio[name="q2_19"]:checked').val();
    
   });
   $('input:radio[name="q2_20"]').on('change', function(){
@@ -309,17 +310,27 @@
     q21 = $('input:radio[name="q2_21"]:checked').val();
    
   });
-  $('input:radio[name="q2_22"]').on('change', function(){
-    q22 = $('input:radio[name="q2_22"]:checked').val();
+
+
+  $('[name="q1o"]').on('change', function(){
+    q1o = $('[name="q1o"]').val();
+    console.log(q1o);
    
   });
-  $('input[name="q2_23"]').on('change', function(){
-    q23 = $('input[name="q2_23"]').val();
-   
+  $('[name="q2o"]').on('change', function(){
+    q2o = $('[name="q2o"]').val();
+    console.log(q2o);
+
   });
-  $('textarea[name="q2_24"]').on('change', function(){
-    q24 = $('textarea[name="q2_24"]').val();
-   
+  $('[name="q3o"]').on('change', function(){
+    q3o = $('[name="q3o"]').val();
+    console.log(q3o);
+
+  });
+  $('[name="q4o"]').on('change', function(){
+    q4o = $('[name="q4o"]').val();
+    console.log(q4o);
+
   });
 
   $('.dosubmit').click(function() {
@@ -350,9 +361,10 @@
           q19 : q19,
           q20 : q20,
           q21 : q21,
-          q22 : q22,
-          q23 : q23,
-          q24 : q24,
+          q1o : q1o,
+          q2o : q2o,
+          q3o : q3o,
+          q4o : q4o
         },
   			dataType: 'json',
   			success: function(d) {
