@@ -55,9 +55,9 @@ class Question_option extends MY_Mgmt_Controller {
 			'item_id'
 		));
 		$items_list = $this -> question_ans_dao -> find_all_not_finish($data);
-		$all_user_list =  $this -> users_dao -> find_all_ktx_user_id();
+		$all_user_list =  $this -> users_dao -> find_all_ktx_user();
 		foreach($all_user_list as $each){
-			if(in_array($each, $items_list)){
+			if(in_array($each->id, $items_list)){
 	
 			} else{
 				$res['items'][] = $each;
