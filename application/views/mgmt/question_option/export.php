@@ -57,7 +57,7 @@
 		<!-- widget content -->
 		<div class="widget-body">
 			<form id="app-export-form" method="post" class="form-horizontal">
-			<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
+			<input type="hidden" name="id" id="export_item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 			
 				<div class="form-group" style="padding:0px 26px">
        			 	<div class="clearfix"></div>
@@ -78,9 +78,8 @@
 						<thead>
 							<tr>
 								<th class="min100"></th>
-								<th class="min150">標題</th>
-								<th class="min150">建立時間</th>
-								<th class="min150">匯出</th>
+								<th class="min150">姓名</th>
+								
 							</tr>
 							<!-- <tr class="search_box">
 								<th></th>

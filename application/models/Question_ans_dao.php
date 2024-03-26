@@ -159,5 +159,39 @@ class Question_ans_dao extends MY_Model {
 		}
 	}
 
+	function find_all_not_finish($data, $is_count = FALSE) {
+
+		$start = $data['start'];
+		$limit = $data['length'];
+		$item_id = $data['item_id'];
+		// select
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select('_m.*');
+		// $this -> db -> select('u.user_name as user_name');
+		// $this -> db -> select('m.menu_name as menu_name');
+		// $this -> db -> select('m.menu_style_id as menu_style_id');
+		// $this -> db -> where('_m.user_id <>',$data['login_user_id']);
+		// $this -> db -> join("users u", "u.id = _m.user_id", "left");
+		// $this -> db -> join("menu m", "m.id = _m.menu_id", "left");
+		
+		
+		if(!$is_count) {
+			$this -> db -> limit($limit, $start);
+		}
+		
+		$this -> db -> where('_m.question_option_id',$item_id);
+		
+		// $this -> db -> order_by('_m.id','desc');
+
+		// query results
+		if(!$is_count) {
+			$query = $this -> db -> get();
+			return $query -> result();
+		} else {
+			return $this -> db -> count_all_results();
+		}
+
+	}
 }
 ?>

@@ -7,8 +7,8 @@ class Question_option extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('Question_option_dao', 'dao');
 		$this -> load -> model('Question_style_dao', 'question_style_dao');
-		// $this -> load -> model('Swot_style_dao', 'swot_style_dao');
-		// $this -> load -> model('Swot_dao', 'swot_dao');
+		$this -> load -> model('Question_ans_dao', 'question_ans_dao');
+		$this -> load -> model('Users_dao', 'users_dao');
 
 		// $this -> load-> library('word');
 	}
@@ -51,13 +51,23 @@ class Question_option extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
+			'item_id'
 		));
-		$items = $this -> dao -> query_ajax($data);
+		$items_list = $this -> question_ans_dao -> find_all_not_finish($data);
+		$all_user_list =  $this -> users_dao -> find_all_user_id();
+		foreach($items_list as $each){
+			if(in_array($each->user_id, $all_user_list)){
 	
-		$res['items'] = $items;
-		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
-		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
+			} else{
+				$res['items'][] = $each;
+			}
+		}
+		
+		
+		$res['recordsFiltere'] = $this -> question_ans_dao -> find_all_not_finish($data,true);
+		$res['recordsTotal'] = $this -> question_ans_dao -> find_all_not_finish($data,true);
 		$this -> to_json($res);
+
 	}
 
 	public function get_data_each_detail() {
@@ -70,12 +80,13 @@ class Question_option extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
+			'item_id'
 		));
-		$items = $this -> dao -> query_ajax($data);
+		$items = $this -> dao -> find_all_each_detail($data);
 	
 		$res['items'] = $items;
-		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
-		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
+		$res['recordsFiltered'] = $this -> dao -> find_all_each_detail($data,true);
+		$res['recordsTotal'] = $this -> dao -> find_all_each_detail($data,true);
 		$this -> to_json($res);
 	}
 

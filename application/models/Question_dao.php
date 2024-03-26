@@ -106,7 +106,7 @@ class Question_dao extends MY_Model {
 		return $list;
 	}
 
-	function find_all_order_list($data, $is_count = FALSE) {
+	function find_all_each_detail($data, $is_count = FALSE) {
 
 		$start = $data['start'];
 		$limit = $data['length'];
@@ -145,7 +145,7 @@ class Question_dao extends MY_Model {
 
 	}
 
-	function find_all_order_list_other($data, $is_count = FALSE) {
+	function find_all_not_finish($data, $is_count = FALSE) {
 
 		$start = $data['start'];
 		$limit = $data['length'];

@@ -365,7 +365,7 @@ var QuestionnotfinishAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + 'get_data_not_finish',
 				data : function(d) {
-					// d.item_id = $('#item_id').val();
+					d.item_id = $('#export_item_id').val();
 					// d.s_news_style = $('#s_news_style').val();
 					return d;
 				},
@@ -603,7 +603,7 @@ var QuestioneachdetailAppClass = (function(app) {
 			ajax : {
 				url : baseUrl + app.basePath + 'get_data_each_detail',
 				data : function(d) {
-					// d.item_id = $('#item_id').val();
+					d.item_id = $('#export_item_id').val();
 					// d.s_news_style = $('#s_news_style').val();
 					return d;
 				},
