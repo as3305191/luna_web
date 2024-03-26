@@ -57,7 +57,7 @@
 		<!-- widget content -->
 		<div class="widget-body">
 			<form id="app-export-form" method="post" class="form-horizontal">
-				
+			<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 			
 				<div class="form-group" style="padding:0px 26px">
        			 	<div class="clearfix"></div>
@@ -65,33 +65,50 @@
     			<hr/>
 				<div>
 							<!-- widget edit box -->
-							<div class="jarviswidget-editbox">
-								<!-- This area used as dropdown edit box -->
-							</div>
-							<!-- end widget edit box -->
-							<!-- widget content -->
-							<div class="widget-body no-padding">
-								<input type="hidden" name="id" id="item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
-								<table id="dt_list_export" class="table table-striped table-bordered table-hover" width="100%">
-									<thead>
-										<tr>
-											<th class="min100"></th>
-											<th class="min150">標題</th>
-											<th class="min150">建立時間</th>
-											<th class="min150">匯出</th>
-										</tr>
-										<!-- <tr class="search_box">
-											<th></th>
-											<th></th>
-											<th></th>
-										</tr> -->
-									</thead>
-									<tbody>
-									</tbody>
-								</table>
-							</div>
-							<!-- end widget content -->
-						</div>
+				<div class="jarviswidget-editbox">
+					<!-- This area used as dropdown edit box -->
+				</div>
+				<!-- end widget edit box -->
+				<!-- widget content -->
+				<div class="widget-body no-padding">
+					<table id="dt_list_not_finish" class="table table-striped table-bordered table-hover" width="100%">
+						<thead>
+							<tr>
+								<th class="min100"></th>
+								<th class="min150">標題</th>
+								<th class="min150">建立時間</th>
+								<th class="min150">匯出</th>
+							</tr>
+							<!-- <tr class="search_box">
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr> -->
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>
+
+				<div class="widget-body no-padding">
+					<table id="dt_list_each_detail" class="table table-striped table-bordered table-hover" width="100%">
+						<thead>
+							<tr>
+								<th class="min100"></th>
+								<th class="min150">標題</th>
+								<th class="min150">建立時間</th>
+								<th class="min150">匯出</th>
+							</tr>
+							<!-- <tr class="search_box">
+								<th></th>
+								<th></th>
+								<th></th>
+							</tr> -->
+						</thead>
+						<tbody>
+						</tbody>
+					</table>
+				</div>			</div>
 		
 			</form>
 

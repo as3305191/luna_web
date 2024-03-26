@@ -90,6 +90,8 @@
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/question_option/list.js", function(){
 			currentApp = new QuestionoptionAppClass(new BaseAppClass({}));
+			currentApp_not_finish = new QuestionnotfinishAppClass(new BaseAppClass({}));
+			currentApp_each_detail = new QuestioneachdetailAppClass(new BaseAppClass({}));
 		});
 	});
 

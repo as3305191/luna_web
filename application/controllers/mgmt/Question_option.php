@@ -41,6 +41,44 @@ class Question_option extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function get_data_not_finish() {
+		$res = array();
+		// $s_data = $this -> setup_user_data(array());
+		// $login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$data = $this -> get_posts(array(
+			'length',
+			'start',
+			'columns',
+			'search',
+			'order',
+		));
+		$items = $this -> dao -> query_ajax($data);
+	
+		$res['items'] = $items;
+		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
+		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
+		$this -> to_json($res);
+	}
+
+	public function get_data_each_detail() {
+		$res = array();
+		// $s_data = $this -> setup_user_data(array());
+		// $login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$data = $this -> get_posts(array(
+			'length',
+			'start',
+			'columns',
+			'search',
+			'order',
+		));
+		$items = $this -> dao -> query_ajax($data);
+	
+		$res['items'] = $items;
+		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
+		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
+		$this -> to_json($res);
+	}
+
 	public function edit($id) {
 		$data = array();
 		if(!empty($id)) {
