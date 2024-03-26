@@ -225,6 +225,7 @@
   var  q2o = '無';
   var  q3o = '無';
   var  q4o = '無';
+  var is_ok=false;
   $('input:radio[name="q2_1"]').on('change', function(){
     q1 = $('input:radio[name="q2_1"]:checked').val();
    
@@ -332,9 +333,9 @@
     // console.log(q4o);
 
   });
-
+console.log(q1);
   $('.dosubmit').click(function() {
-    var is_ok=false;
+   
     if (q1=='是'){
       if (q1!==null&&q2!==null&&q3!==null&&q4!==null&&q5!==null&&q6!==null&&
          q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null&&q13!==null&&
