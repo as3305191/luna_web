@@ -70,6 +70,9 @@
 				</div>
 				<!-- end widget edit box -->
 				<!-- widget content -->
+				<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
+					<span style="font-size: 16pt;color:#0d0d56">未填寫人員</span>
+				</div>
 				<div class="widget-body no-padding">
 					<table id="dt_list_not_finish" class="table table-striped table-bordered table-hover" width="100%">
 						<thead>
@@ -89,7 +92,9 @@
 						</tbody>
 					</table>
 				</div>
-
+				<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
+					<span style="font-size: 16pt;color:#0d0d56">已填寫資料</span>
+				</div>
 				<div class="widget-body no-padding">
 					<table id="dt_list_each_detail" class="table table-striped table-bordered table-hover" width="100%">
 						<thead>
