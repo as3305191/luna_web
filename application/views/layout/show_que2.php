@@ -334,8 +334,24 @@
   });
 
   $('.dosubmit').click(function() {
-   
-  		$.ajax({
+    var is_ok=false;
+    if (q1=='是'){
+      if (q1!==null&&q2!==null&&q3!==null&&q4!==null&&q5!==null&&q6!==null&&
+         q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null&&q13!==null&&
+         q14!==null&&q15!==null&&q16!==null&&q17!==null&&q18!==null&&q19!==null&&q13!==null&&
+         q21!==null){
+          is_ok=true;
+         }
+    } else{
+      if (q1=='否'){
+        is_ok=true;
+      } else{
+        alert('請填寫第一題！');
+      }
+      
+    }
+    if(is_ok){
+      $.ajax({
   			url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q2',
   			type: 'POST',
   			data: {
@@ -384,6 +400,8 @@
   				layer.msg('faialure');
   			}
   		});
+    }
+  		
   })
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
