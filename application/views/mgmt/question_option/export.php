@@ -125,7 +125,7 @@
 <!-- end widget -->
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 <script>
+currentApp.not_finish = new FixrecordAppClass(new BaseAppClass({}));
+// currentApp.each_detail = new FixrecordingAppClass(new BaseAppClass({}));
 
-currentApp_not_finish = new QuestionnotfinishAppClass(new BaseAppClass({}));
-// currentApp_each_detail = new QuestioneachdetailAppClass(new BaseAppClass({}));
 </script>
