@@ -43,6 +43,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 	public function get_data_not_finish() {
 		$res = array();
+		$res['items'] = array();
 		// $s_data = $this -> setup_user_data(array());
 		// $login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data = $this -> get_posts(array(
