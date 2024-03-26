@@ -269,7 +269,7 @@ var QuestionoptionAppClass = (function(app) {
 });
 var QuestionnotfinishAppClass = (function(app) {
 	app.basePath = "mgmt/question_option/";
-	app.disableRowClick = ture;
+	app.disableRowClick = true;
 
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click
@@ -459,7 +459,7 @@ var QuestionnotfinishAppClass = (function(app) {
 });
 var QuestioneachdetailAppClass = (function(app) {
 	app.basePath = "mgmt/question_option/";
-	app.disableRowClick = ture;
+	app.disableRowClick = true;
 
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 				// edit click
