@@ -65,7 +65,7 @@ class Question_option extends MY_Mgmt_Controller {
 				}
 			}
 		} else{
-			$res['items'] = $this -> users_dao -> find_all();
+			$res['items'] = $this -> users_dao -> find_all_ktx_user();
 		}
 		
 		

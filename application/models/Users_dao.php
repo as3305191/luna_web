@@ -729,6 +729,30 @@ class Users_dao extends MY_Model {
 
 		return $list;
 	}
+	function find_all_ktx_user(){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> join("department d", "d.id = _m.role_id", "left");
+
+		$this -> db -> select('_m.*');
+		
+		
+		// $this -> db -> select('_m.user_name');
+
+
+		$this -> db -> group_start();
+		$this -> db -> where('d.id>',0);
+		$this -> db -> where('d.id<=',27);
+		$this -> db -> or_group_start();
+		$this -> db -> where('d.id>=',69);
+		$this -> db -> where('d.id<=',74);
+		$this -> db -> group_end();
+		$this -> db -> group_end();
+	
+		$query = $this -> db -> get();
+		$list = $query -> result();
+
+		return $list;
+	}
 
 	function find_all_user_by_message(){
 		$this -> db -> from("$this->table_name as _m");
