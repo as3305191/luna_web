@@ -73,6 +73,16 @@
 			</div>
 		</section>
 	</div>
+	<div class="tab-pane animated fadeIn" id="export_page">
+		<section class="">
+			<!-- row -->
+			<div class="row">
+				<article class="col-xs-12 col-sm-12 col-md-12 col-lg-12" id="export-modal-body">
+
+				</article>
+			</div>
+		</section>
+	</div>
 </div>
 <?php $this -> load -> view('general/delete_modal'); ?>
 

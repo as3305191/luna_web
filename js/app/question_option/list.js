@@ -230,8 +230,17 @@ var QuestionoptionAppClass = (function(app) {
 		};
 
 		app.doExportAll = function(id) {
-			// window.open(baseUrl + app.basePath + 'export_all/' + id);
-			console.log(id);
+			var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
+				.appendTo($('#export-modal-body').empty());
+			$("#btn-submit-export").prop( "disabled", true);
+
+			$('.tab-pane').removeClass('active'); 
+			$('#export_page').addClass('active');
+			$('#export-modal-body').load(baseUrl + 'mgmt/question_option/export/' + id, function(){
+	        	$("#btn-submit-export").prop( "disabled", false);
+	        	loading.remove();
+			});
+			// console.log(id);
 		}
 
 		// edit
