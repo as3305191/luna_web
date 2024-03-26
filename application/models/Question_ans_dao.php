@@ -167,10 +167,10 @@ class Question_ans_dao extends MY_Model {
 		// select
 		$this -> db -> from("$this->table_name as _m");
 
-		$this -> db -> select('_m.*');
-		$this -> db -> select('u.user_name as user_name');
+		$this -> db -> select('_m.user_id');
+		// $this -> db -> select('u.user_name as user_name');
 		
-		$this -> db -> join("users u", "u.id = _m.user_id", "left");
+		// $this -> db -> join("users u", "u.id = _m.user_id", "left");
 		
 		
 		if(!$is_count) {
