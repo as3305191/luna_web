@@ -262,11 +262,11 @@
                         if(d.offline_users){
                             $.each(d.offline_users, function(){
                                 var me = this;
-                                var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me[0].no_read+'</span>';
-                                if(me[0].no_read>0){
-                                    each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
+                                var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me.no_read+'</span>';
+                                if(me.no_read>0){
+                                    each_offline_user += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+notread+'</p>';
                                 } else{
-                                    each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                                    each_offline_user += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+'</p>';
                                 } 
                             })
                             var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
@@ -275,11 +275,11 @@
                         if(d.offline_users_no_noread){
                             $.each(d.offline_users_no_noread, function(){
                                 var me = this;
-                                var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me[0].no_read+'</span>';
-                                if(me[0].no_read>0){
-                                    each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
+                                var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me.no_read+'</span>';
+                                if(me.no_read>0){
+                                    each_offline_user += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+notread+'</p>';
                                 } else{
-                                    each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                                    each_offline_user += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+'</p>';
                                 } 
                             })
                             var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';

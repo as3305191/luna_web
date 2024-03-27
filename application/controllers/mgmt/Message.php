@@ -136,9 +136,9 @@ class Message extends MY_Mgmt_Controller {
 				// $res['offline_users'][] = $all_users;
 				foreach($all_users as $each_offline_user){
 					if($each_offline_user->no_read>0){
-						$res['offline_users'][][]= $each_offline_user;
+						$res['offline_users'][] = $each_offline_user;
 					} else{
-						$res['offline_users_no_noread'][][] = $each_offline_user;
+						$res['offline_users_no_noread'][] = $each_offline_user;
 					}
 				}
 			}
