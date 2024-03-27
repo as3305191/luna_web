@@ -112,7 +112,7 @@
 <!-- end widget -->
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 <script>
-// currentApp.each_detail = new QuestioneachdetailAppClass(new BaseAppClass({}));
+currentApp.each_detail = new QuestioneachdetailAppClass(new BaseAppClass({}));
 
 function load_not_finish() {
 		var html ='';

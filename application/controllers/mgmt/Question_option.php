@@ -74,11 +74,11 @@ class Question_option extends MY_Mgmt_Controller {
 			'order',
 			'item_id'
 		));
-		$items = $this -> dao -> find_all_each_detail($data);
+		$items = $this -> question_ans_dao -> find_all_each_detail($data);
 	
 		$res['items'] = $items;
-		$res['recordsFiltered'] = $this -> dao -> find_all_each_detail($data,true);
-		$res['recordsTotal'] = $this -> dao -> find_all_each_detail($data,true);
+		$res['recordsFiltered'] = $this -> question_ans_dao -> find_all_each_detail($data,true);
+		$res['recordsTotal'] = $this -> question_ans_dao -> find_all_each_detail($data,true);
 		$this -> to_json($res);
 	}
 
@@ -203,5 +203,180 @@ class Question_option extends MY_Mgmt_Controller {
 		$this -> dao ->  update($u_data, $id);
 		$this -> to_json($res);
 	}
+	public function export_excel(){
+		$fileName = '點餐表'.date('Y-m-d H:i:s').'.xls';
 
+		$objPHPExcel = new PHPExcel();
+		// $objPHPExcel->setActiveSheetIndex(0);
+		// $objPHPExcel->getActiveSheet()->SetCellValue('A1', '部門名稱');
+		// $objPHPExcel->getActiveSheet()->SetCellValue('B1', '主功能');
+		// $objPHPExcel->getActiveSheet()->SetCellValue('C1', '權限項目');
+		// $objPHPExcel->getActiveSheet()->SetCellValue('D1', '其他設定');
+	
+	
+		$sheet = $objPHPExcel->getActiveSheet();
+
+		$items = $this -> menu_dao -> find_all_open_without_stop();
+		//Start adding next sheets
+		
+		for ($i=0;$i<count($items);$i++) {
+	
+		  // Add new sheet
+		  $objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+	
+		  //Write cells
+		  if($items[$i]->menu_style_id==4){
+			$objWorkSheet->setCellValue('A1', '名字')
+						->setCellValue('B1', '品項')
+						->setCellValue('C1', '糖')
+						->setCellValue('D1', '冰')
+						->setCellValue('E1', '備註')
+						->setCellValue('F1', '金額');
+
+						$items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
+						$total = 0;
+						for ($j=0;$j<count($items_order);$j++) {
+							$k = $j+2;
+							$total+=intval($items_order[$j]->amount);
+							$objWorkSheet->setCellValue('A'.$k , $items_order[$j]->user_name)
+										->setCellValue('B'.$k , $items_order[$j]->order_name)
+										->setCellValue('C'.$k , $items_order[$j]->sugar)
+										->setCellValue('D'.$k , $items_order[$j]->ice)
+										->setCellValue('E'.$k , $items_order[$j]->note)
+										->setCellValue('F'.$k , $items_order[$j]->amount);
+						}
+						$last = count($items_order)+2;
+						$objWorkSheet->setCellValue('A'.$last , '')
+										->setCellValue('B'.$last , '')
+										->setCellValue('C'.$last, '')
+										->setCellValue('D'.$last, '')
+										->setCellValue('E'.$last, '')
+										->setCellValue('F'.$last , '總金額')
+										->setCellValue('G'.$last ,  $total);
+
+
+
+		  } else{
+			$objWorkSheet->setCellValue('A1', '名字')
+					   ->setCellValue('B1', '品項')
+					   ->setCellValue('C1', '備註')
+					   ->setCellValue('D1', '金額');
+			$items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
+			$total = 0;
+			for ($j=0;$j<count($items_order);$j++) {
+				$k = $j+2;
+				$total+=intval($items_order[$j]->amount);
+				$objWorkSheet->setCellValue('A'.$k , $items_order[$j]->user_name)
+							->setCellValue('B'.$k , $items_order[$j]->order_name)
+							->setCellValue('C'.$k , $items_order[$j]->note)
+							->setCellValue('D'.$k , $items_order[$j]->amount);
+			}
+			$last = count($items_order)+2;
+			$objWorkSheet->setCellValue('A'.$last , '')
+							->setCellValue('B'.$last , '')
+							->setCellValue('C'.$last, '')
+							->setCellValue('D'.$last , '總金額')
+							->setCellValue('E'.$last ,  $total);
+		  }
+		  
+		  // Rename sheet
+		  $objWorkSheet->setTitle($items[$i]->menu_name);
+		}
+	
+		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+
+		// download file
+		header("Content-Type: application/vnd.ms-excel");
+		header('Content-Disposition: attachment; filename="'.$fileName.'"');
+		// $writer = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+		$objWriter->save('php://output');
+	}
+	public function export_excel_all(){
+		$fileName = '點餐表'.date('Y-m-d H:i:s').'.xls';
+
+		$objPHPExcel = new PHPExcel();
+		// $objPHPExcel->setActiveSheetIndex(0);
+		// $objPHPExcel->getActiveSheet()->SetCellValue('A1', '部門名稱');
+		// $objPHPExcel->getActiveSheet()->SetCellValue('B1', '主功能');
+		// $objPHPExcel->getActiveSheet()->SetCellValue('C1', '權限項目');
+		// $objPHPExcel->getActiveSheet()->SetCellValue('D1', '其他設定');
+	
+	
+		$sheet = $objPHPExcel->getActiveSheet();
+
+		$items = $this -> menu_dao -> find_all_open_without_stop();
+		//Start adding next sheets
+		
+		for ($i=0;$i<count($items);$i++) {
+	
+		  // Add new sheet
+		  $objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+	
+		  //Write cells
+		  if($items[$i]->menu_style_id==4){
+			$objWorkSheet->setCellValue('A1', '名字')
+						->setCellValue('B1', '品項')
+						->setCellValue('C1', '糖')
+						->setCellValue('D1', '冰')
+						->setCellValue('E1', '備註')
+						->setCellValue('F1', '金額');
+
+						$items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
+						$total = 0;
+						for ($j=0;$j<count($items_order);$j++) {
+							$k = $j+2;
+							$total+=intval($items_order[$j]->amount);
+							$objWorkSheet->setCellValue('A'.$k , $items_order[$j]->user_name)
+										->setCellValue('B'.$k , $items_order[$j]->order_name)
+										->setCellValue('C'.$k , $items_order[$j]->sugar)
+										->setCellValue('D'.$k , $items_order[$j]->ice)
+										->setCellValue('E'.$k , $items_order[$j]->note)
+										->setCellValue('F'.$k , $items_order[$j]->amount);
+						}
+						$last = count($items_order)+2;
+						$objWorkSheet->setCellValue('A'.$last , '')
+										->setCellValue('B'.$last , '')
+										->setCellValue('C'.$last, '')
+										->setCellValue('D'.$last, '')
+										->setCellValue('E'.$last, '')
+										->setCellValue('F'.$last , '總金額')
+										->setCellValue('G'.$last ,  $total);
+
+
+
+		  } else{
+			$objWorkSheet->setCellValue('A1', '名字')
+					   ->setCellValue('B1', '品項')
+					   ->setCellValue('C1', '備註')
+					   ->setCellValue('D1', '金額');
+			$items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
+			$total = 0;
+			for ($j=0;$j<count($items_order);$j++) {
+				$k = $j+2;
+				$total+=intval($items_order[$j]->amount);
+				$objWorkSheet->setCellValue('A'.$k , $items_order[$j]->user_name)
+							->setCellValue('B'.$k , $items_order[$j]->order_name)
+							->setCellValue('C'.$k , $items_order[$j]->note)
+							->setCellValue('D'.$k , $items_order[$j]->amount);
+			}
+			$last = count($items_order)+2;
+			$objWorkSheet->setCellValue('A'.$last , '')
+							->setCellValue('B'.$last , '')
+							->setCellValue('C'.$last, '')
+							->setCellValue('D'.$last , '總金額')
+							->setCellValue('E'.$last ,  $total);
+		  }
+		  
+		  // Rename sheet
+		  $objWorkSheet->setTitle($items[$i]->menu_name);
+		}
+	
+		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+
+		// download file
+		header("Content-Type: application/vnd.ms-excel");
+		header('Content-Disposition: attachment; filename="'.$fileName.'"');
+		// $writer = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
+		$objWriter->save('php://output');
+	}
 }

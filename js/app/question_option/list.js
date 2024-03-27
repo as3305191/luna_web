@@ -268,7 +268,7 @@ var QuestionoptionAppClass = (function(app) {
 	return app.init();
 });
 
-var QuestionnotfinishAppClass = (function(app) {
+var QuestioneachdetailAppClass = (function(app) {
 	app.basePath = "mgmt/question_option/";
 	app.disableRowClick = true;
 	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
@@ -331,9 +331,9 @@ var QuestionnotfinishAppClass = (function(app) {
 	};
 
 	app.init = function() {
-		app.mDtTable = $('#dt_list_not_finish').DataTable($.extend(app.dtConfig,{
+		app.mDtTable = $('#dt_list_each_detail').DataTable($.extend(app.dtConfig,{
 			ajax : {
-				url : baseUrl + app.basePath + '/get_data_not_finish',
+				url : baseUrl + app.basePath + '/get_data_each_detail',
 				data : function(d) {
 					d.item_id = $('#export_item_id').val()
 					// d.lottery_no = $('#lottery_select').val();
@@ -348,6 +348,17 @@ var QuestionnotfinishAppClass = (function(app) {
 			
 			columns : [{
 					data : 'user_name'
+				},{
+					data : 'id',
+					render: function(d,t,r) {
+						if(d){
+							return '<button onclick="currentApp.each_detail.doExportAll('+d+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
+									+'<i class="fa fa-save"></i>匯出'
+									+'</button>';
+						} else{
+							return d;
+						}
+					}
 				},],
 			ordering: false,
 			order : [[0, "desc"]],
@@ -362,10 +373,7 @@ var QuestionnotfinishAppClass = (function(app) {
 
 		}));
 
-		app.export_item = function(id) {
-			var item=[1,2,3];
-			console.log(item); 
-		}
+		
 		
 		// data table actions
 		app.dtActions();
@@ -375,144 +383,17 @@ var QuestionnotfinishAppClass = (function(app) {
 	
 		});
 
-		app.tableReload();
-
-		return app;
-	};
-	
-	// return self
-	return app.init();
-});
-
-var QuestioneachdetailAppClass = (function(app) {
-	app.basePath = "mgmt/question_option/";
-	app.disableRowClick = true;
-
-	app.fnRowCallback1 = function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-				
-
-
-		};
-
-	app.dtConfig = {
-		processing : true,
-		serverSide : true,
-		responsive : true,
-		deferLoading : 0, // don't reload on init
-		iDisplayLength : 10,
-		sDom: app.sDom,
-		language : {
-			url : baseUrl + "js/datatables-lang/zh-TW.json"
-		},
-		bSortCellsTop : true,
-		fnRowCallback : app.fnRowCallback1,
-		footerCallback: function( tfoot, data, start, end, display ) {
-			setTimeout(function(){ $(window).trigger('resize'); }, 300);
+		app.doExportAll = function(id) {
+			window.open(baseUrl + 'mgmt/question_option/export_excel/' + id);
 		}
-	};
-
-	app.init = function() {
-		app.mDtTable = $('#dt_list_each_detail').DataTable($.extend(app.dtConfig,{
-			ajax : {
-				url : baseUrl + app.basePath + 'get_data_each_detail',
-				data : function(d) {
-					d.item_id = $('#export_item_id').val();
-					// d.s_news_style = $('#s_news_style').val();
-					return d;
-				},
-				dataSrc : 'items',
-				dataType : 'json',
-				type : 'post'
-			},
-			pageLength: 50,
-			columns : [null, {
-				data : 'question_style_name',
-				render: function(d,t,r) {
-					if(r.note){
-						return d+'-'+r.note;
-					} else{
-						return d;
-					}
-				}
-			}, {
-				data : 'create_time'
-			}, {
-				data : 'id',
-				render: function(d,t,r) {
-					if(d){
-						return '<button onclick="currentApp.doExportAll('+d+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
-								+'<i class="fa fa-save"></i>匯出'
-								+'</button>';
-					} else{
-						return d;
-					}
-				}
-			}],
-			ordering: false,
-			order : [[2, "desc"]],
-			columnDefs : [{
-				targets : 0,
-				data : null,
-				render:function ( data, type, row ) {
-					var input = '';
-					if(row.is_close<1){
-						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
-						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
-						+input
-						+'<label class="onoffswitch-label" for="'+row.id+'">'
-							+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="編輯"></span>'
-							+'<span class="onoffswitch-switch"></span>'
-						+'</label>'
-					+'</span>';
-					}else{
-						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
-						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
-						+input
-						+'<label class="onoffswitch-label" for="'+row.id+'">'
-							+'<span class="onoffswitch-inner" data-swchon-text="編輯" data-swchoff-text="編輯"></span>'
-							+'<span class="onoffswitch-switch"></span>'
-						+'</label>'
-					+'</span>'
-					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>';
-					}
-					return html;
-		    },
-				searchable : false,
-				orderable : false,
-				width : "8%",
-				className: ''
-			}, {
-				"targets" : 0,
-				"orderable" : false
-			}, {
-				"targets" : 1,
-				"orderable" : false
-			}, {
-				"targets" : 2,
-				"orderable" : false
-			}],
-
-			footerCallback: function (row, data, start, end, display ) {
-				var api = this.api();
-			}
-		}));	
-
-
-		// data table actions
-		app.dtActions();
-
-		// get year month list
+		app.export_item = function(id) {
+			window.open(baseUrl + 'mgmt/question_option/export_excel_all/' + id);
+		}
 		app.tableReload();
 
-	
-		app.mDtTable.on( 'xhr', function () {
-		    var json = app.mDtTable.ajax.json();
-	
-		});
-	
 		return app;
 	};
-
+	
 	// return self
 	return app.init();
 });
