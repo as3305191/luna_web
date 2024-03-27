@@ -55,7 +55,7 @@ class Question_option extends MY_Mgmt_Controller {
 				if($each_user->id==$each_item->user_id){
 					
 				}else{
-					$res['items'] = $each_user;
+					$res['items'][] = $each_user;
 				}
 			}
 		}
