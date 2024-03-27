@@ -133,14 +133,14 @@ class Message extends MY_Mgmt_Controller {
 					$not_read = $this -> dao -> find_not_read($data['login_user_id'],$each_offline_user->id);
 					$each_offline_user->no_read =$not_read;
 				}
-				foreach($all_users as $each_offline_user){
-					if($each_offline_user->no_read>0){
-						$res['offline_users'][] = $each_offline_user;
-					} else{
-						$res['offline_users_no_noread'][] = $each_offline_user;
-					}
-				}
-				
+				$res['offline_users'][] = $all_users;
+				// foreach($all_users as $each_offline_user){
+				// 	if($each_offline_user->no_read>0){
+				// 		$res['offline_users'][] = $each_offline_user;
+				// 	} else{
+				// 		$res['offline_users_no_noread'][] = $each_offline_user;
+				// 	}
+				// }
 			}
 		}
 			if(!empty($online_id_array)){
