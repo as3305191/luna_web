@@ -58,7 +58,6 @@ class Question_option extends MY_Mgmt_Controller {
 				$res['items'][] = $each;
 			}
 		}
-		$res['items']= $all_user_list;
 		$this -> to_json($res);
 
 	}
