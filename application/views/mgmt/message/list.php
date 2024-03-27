@@ -248,6 +248,7 @@
                 // users.all.className='ck';
                 var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
                 var each_offline_user = '';
+                var each_offline_user_no_noread = '';
                 var us_offline = $('#us_offline').empty();
                 $.ajax({
                     url : url,
@@ -277,12 +278,12 @@
                                 var me = this;
                                 var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me.no_read+'</span>';
                                 if(me.no_read>0){
-                                    each_offline_user += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+notread+'</p>';
+                                    each_offline_user_no_noread += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+notread+'</p>';
                                 } else{
-                                    each_offline_user += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+'</p>';
+                                    each_offline_user_no_noread += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+'</p>';
                                 } 
                             })
-                            var html='<div>'+each_offline_user+'</div>';
+                            var html='<div>'+each_offline_user_no_noread+'</div>';
                             us_offline.append(html);
                         }
                     
