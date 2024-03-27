@@ -159,7 +159,7 @@ class Question_ans_dao extends MY_Model {
 		}
 	}
 
-	function find_all_not_finish($data) {
+	function find_all_finish($data) {
 
 		
 		$item_id = $data['item_id'];

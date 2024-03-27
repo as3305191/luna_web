@@ -49,15 +49,16 @@ class Question_option extends MY_Mgmt_Controller {
 		$data = $this -> get_posts(array(
 			'item_id'
 		));
-		$items_list = $this -> question_ans_dao -> find_all_not_finish($data);
+		$items_list = $this -> question_ans_dao -> find_all_finish($data);
 		$all_user_list =  $this -> users_dao -> find_all_ktx_user();
-		foreach($all_user_list as $each){
-			if(in_array($each->id, $items_list)){
+		// foreach($all_user_list as $each){
+		// 	if(in_array($each->id, $items_list)){
 	
-			} else{
-				$res['items'][] = $each;
-			}
-		}
+		// 	} else{
+		// 		$res['items'][] = $each;
+		// 	}
+		// }
+		$res['items'] = $items_list;
 		$this -> to_json($res);
 
 	}
