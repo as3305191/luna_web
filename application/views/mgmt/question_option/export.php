@@ -75,20 +75,18 @@
 							<!-- This area used as dropdown edit box -->
 						</div>
 						
-						<div class="widget-body no-padding">
-							<table id="dt_list_each_detail" class="table table-striped table-bordered table-hover" width="100%">
-								<thead>
-									<tr>
-										<th class="min150">姓名</th>
-										<th class="min150">建立時間</th>
-										<th class="min150">匯出</th>
-									</tr>
-								
-								</thead>
-								<tbody>
-								</tbody>
-							</table>
-						</div>	
+						<table id="dt_list_each_detail" class="table table-striped table-bordered table-hover" width="100%">
+							<thead>
+								<tr>
+									<th class="min150">姓名</th>
+									<th class="min150">建立時間</th>
+									<th class="min150">匯出</th>
+								</tr>
+							
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
 					</div>	
 			</div>
 		
