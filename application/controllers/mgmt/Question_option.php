@@ -47,11 +47,6 @@ class Question_option extends MY_Mgmt_Controller {
 		// $s_data = $this -> setup_user_data(array());
 		// $login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data = $this -> get_posts(array(
-			'length',
-			'start',
-			'columns',
-			'search',
-			'order',
 			'item_id'
 		));
 		$items_list = $this -> question_ans_dao -> find_all_not_finish($data);
@@ -63,11 +58,6 @@ class Question_option extends MY_Mgmt_Controller {
 				$res['items'][] = $each;
 			}
 		}
-		
-		
-		
-		$res['recordsFiltere'] = $this -> question_ans_dao -> find_all_not_finish($data,true);
-		$res['recordsTotal'] = $this -> question_ans_dao -> find_all_not_finish($data,true);
 		$this -> to_json($res);
 
 	}
