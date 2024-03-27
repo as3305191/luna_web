@@ -224,7 +224,7 @@ class Question_option extends MY_Mgmt_Controller {
 	
 		// $sheet = $objPHPExcel->getActiveSheet();
 
-		switch ($question_ans_list->qs_id) {
+		switch ($question_ans_list[0]->qs_id) {
 			case 1:
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
