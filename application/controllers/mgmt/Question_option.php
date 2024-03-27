@@ -208,8 +208,8 @@ class Question_option extends MY_Mgmt_Controller {
 		$this -> dao ->  update($u_data, $id);
 		$this -> to_json($res);
 	}
-	public function export_excel(){
-		$id = $this -> get_get('id');
+	public function export_excel($id){
+		// $id = $this -> get_get('id');
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_p($id);
 	
 		$fileName = $question_ans_list[0]->question_style_name."(".$question_ans_list[0]->user_name.")-".date('Y-m-d H:i:s').'.xls';
