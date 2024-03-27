@@ -740,14 +740,12 @@ class Users_dao extends MY_Model {
 		$this -> db -> select('_m.role_id');
 
 
-		$this -> db -> group_start();
 		$this -> db -> where('_m.role_id>',3);
-		$this -> db -> where('_m.role_id<=',27);
-		$this -> db -> or_group_start();
-		$this -> db -> where('_m.role_id>=',69);
-		$this -> db -> where('_m.role_id<=',74);
-		$this -> db -> group_end();
-		$this -> db -> group_end();
+		$this -> db -> or_where('_m.role_id<=',27);
+		
+		$this -> db -> or_where('_m.role_id>=',69);
+		$this -> db -> or_where('_m.role_id<=',74);
+
 	
 		$query = $this -> db -> get();
 		$list = $query -> result();
