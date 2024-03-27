@@ -128,10 +128,10 @@ function load_not_finish() {
 				if(d) {
 					$question_style = $('#not_finish_p').empty();
 					$.each(d.items, function(){
-						html+='<span>'+this.dep_name+'-'+this.user_name+'</span>';
+						html+='<span>'+this.dep_name+'-'+this.user_name+'</span> ';
 					});
 					html.appendTo($question_style);
-					// console.log(d);
+					console.log(html);
 					
 				}
 			},
