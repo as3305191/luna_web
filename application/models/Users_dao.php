@@ -736,7 +736,7 @@ class Users_dao extends MY_Model {
 		$this -> db -> select('_m.id');
 		
 		$this -> db -> select('_m.user_name');
-		$this -> db -> select('_m.depname');
+		$this -> db -> select('d.name as dep_name');
 		$this -> db -> select('_m.role_id');
 
 
