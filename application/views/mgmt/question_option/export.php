@@ -79,24 +79,30 @@
 				<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
 					<span style="font-size: 16pt;color:#0d0d56">已填寫資料</span>
 				</div>
-				<div class="widget-body no-padding">
-					<table id="dt_list_each_detail" class="table table-striped table-bordered table-hover" width="100%">
-						<thead>
-							<tr>
-								<th class="min150">姓名</th>
-								<th class="min150">建立時間</th>
-								<th class="min150">匯出</th>
-							</tr>
-							<!-- <tr class="search_box">
-								<th></th>
-								<th></th>
-								<th></th>
-							</tr> -->
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
-				</div>			
+				<div>
+					<div class="jarviswidget-editbox">
+						<!-- This area used as dropdown edit box -->
+					</div>
+					
+					<div class="widget-body no-padding">
+						<table id="dt_list_each_detail" class="table table-striped table-bordered table-hover" width="100%">
+							<thead>
+								<tr>
+									<th class="min150">姓名</th>
+									<th class="min150">建立時間</th>
+									<th class="min150">匯出</th>
+								</tr>
+								<!-- <tr class="search_box">
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr> -->
+							</thead>
+							<tbody>
+							</tbody>
+						</table>
+					</div>	
+				</div>	
 			</div>
 		
 			</form>
