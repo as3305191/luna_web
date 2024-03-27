@@ -52,7 +52,9 @@ class Question_option extends MY_Mgmt_Controller {
 		$all_user_list =  $this -> users_dao -> find_all_ktx_user();
 		foreach($all_user_list as $each_user){
 			foreach($items_list as $each_item){
-				if($each_user->id!==$each_item->user_id){
+				if($each_user->id==$each_item->user_id){
+					
+				}else{
 					$res['items'] = $each_user;
 				}
 			}
