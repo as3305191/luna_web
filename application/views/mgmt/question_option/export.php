@@ -131,7 +131,7 @@ function load_not_finish() {
 						html+='<span>'+this.dep_name+'-'+this.user_name+'</span> ';
 					});
 					$question_style.append(html);
-					console.log(html);
+					// console.log(html);
 					
 				}
 			},
