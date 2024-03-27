@@ -733,10 +733,11 @@ class Users_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> join("department d", "d.id = _m.role_id", "left");
 
-		$this -> db -> select('_m.*');
+		$this -> db -> select('_m.id');
 		
-		
-		// $this -> db -> select('_m.user_name');
+		$this -> db -> select('_m.user_name');
+		$this -> db -> select('_m.depname');
+		$this -> db -> select('_m.role_id');
 
 
 		$this -> db -> group_start();
