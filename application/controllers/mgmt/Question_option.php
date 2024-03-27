@@ -44,21 +44,20 @@ class Question_option extends MY_Mgmt_Controller {
 	public function get_data_not_finish() {
 		$res = array();
 		$res['items'] = array();
-		// $s_data = $this -> setup_user_data(array());
-		// $login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		
 		$data = $this -> get_posts(array(
 			'item_id'
 		));
 		$items_list = $this -> question_ans_dao -> find_all_finish($data);
 		$all_user_list =  $this -> users_dao -> find_all_ktx_user();
-		// foreach($all_user_list as $each){
-		// 	if(in_array($each->id, $items_list)){
-	
-		// 	} else{
-		// 		$res['items'][] = $each;
-		// 	}
-		// }
-		$res['items'] = $items_list;
+		foreach($all_user_list as $each_user){
+			foreach($items_list as $each_item){
+				if($each_user->id!==$each_item->user_id){
+					$res['items'] = $each_item;
+				}
+			}
+		}
+		
 		$this -> to_json($res);
 
 	}
