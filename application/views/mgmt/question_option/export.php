@@ -130,7 +130,7 @@ function load_not_finish() {
 					$.each(d.items, function(){
 						html+='<span>'+this.dep_name+'-'+this.user_name+'</span> ';
 					});
-					html.appendTo($question_style);
+					$question_style.append(html);
 					console.log(html);
 					
 				}
