@@ -112,8 +112,7 @@
 <!-- end widget -->
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 <script>
-// currentApp.not_finish = new QuestionnotfinishAppClass(new BaseAppClass({}));
-currentApp.each_detail = new QuestioneachdetailAppClass(new BaseAppClass({}));
+// currentApp.each_detail = new QuestioneachdetailAppClass(new BaseAppClass({}));
 
 function load_not_finish() {
 		$.ajax({
