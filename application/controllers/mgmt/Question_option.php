@@ -208,10 +208,11 @@ class Question_option extends MY_Mgmt_Controller {
 		$this -> dao ->  update($u_data, $id);
 		$this -> to_json($res);
 	}
-	public function export_excel($id ){
+	public function export_excel(){
+		$id = $this -> get_get('id');
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_p($id);
 	
-		$fileName = $question_ans_list->question_style_name."(".$question_ans_list->user_name.")-".date('Y-m-d H:i:s').'.xls';
+		$fileName = $question_ans_list[0]->question_style_name."(".$question_ans_list[0]->user_name.")-".date('Y-m-d H:i:s').'.xls';
 
 		$objPHPExcel = new PHPExcel();
 		// $objPHPExcel->setActiveSheetIndex(0);
@@ -225,10 +226,10 @@ class Question_option extends MY_Mgmt_Controller {
 
 		switch ($question_ans_list->qs_id) {
 			case 1:
-				// for ($i=0;$i<count($question_ans_list);$i++) {
+				for ($i=0;$i<count($question_ans_list);$i++) {
 	
 					// Add new sheet
-					$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
+					$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
 			  
 					//Write cells
 					  $objWorkSheet->setCellValue('A1', '工作型態')
@@ -248,18 +249,18 @@ class Question_option extends MY_Mgmt_Controller {
 								  $total = 0;
 								  for ($j=0;$j<count($question_ans_list);$j++) {
 									  $k = $j+2;
-									  $objWorkSheet->setCellValue('A'.$k , $question_ans_list[$j]->user_name)
-												  ->setCellValue('B'.$k , $question_ans_list[$j]->order_name)
-												  ->setCellValue('C'.$k , $question_ans_list[$j]->sugar)
-												  ->setCellValue('D'.$k , $question_ans_list[$j]->ice)
-												  ->setCellValue('E'.$k , $question_ans_list[$j]->note)
-												  ->setCellValue('F'.$k , $question_ans_list[$j]->amount)
-												  ->setCellValue('G'.$k , $question_ans_list[$j]->amount)
-												  ->setCellValue('H'.$k , $question_ans_list[$j]->amount)
-												  ->setCellValue('I'.$k , $question_ans_list[$j]->amount)
-												  ->setCellValue('J'.$k , $question_ans_list[$j]->amount)
-												  ->setCellValue('K'.$k , $question_ans_list[$j]->amount)
-												  ->setCellValue('L'.$k , $question_ans_list[$j]->amount);
+									  $objWorkSheet->setCellValue('A'.$k , $question_ans_list[$j]->q1)
+												  ->setCellValue('B'.$k , $question_ans_list[$j]->q2)
+												  ->setCellValue('C'.$k , $question_ans_list[$j]->q3)
+												  ->setCellValue('D'.$k , $question_ans_list[$j]->q4)
+												  ->setCellValue('E'.$k , $question_ans_list[$j]->q5)
+												  ->setCellValue('F'.$k , $question_ans_list[$j]->q6)
+												  ->setCellValue('G'.$k , $question_ans_list[$j]->q7)
+												  ->setCellValue('H'.$k , $question_ans_list[$j]->q8)
+												  ->setCellValue('I'.$k , $question_ans_list[$j]->q9)
+												  ->setCellValue('J'.$k , $question_ans_list[$j]->q10)
+												  ->setCellValue('K'.$k , $question_ans_list[$j]->q11)
+												  ->setCellValue('L'.$k , $question_ans_list[$j]->q12);
 
 								  }
 								//   $last = count($items_order)+2;
@@ -272,8 +273,8 @@ class Question_option extends MY_Mgmt_Controller {
 								// 				  ->setCellValue('G'.$last ,  $total);
 		  
 		  
-						$objWorkSheet->setTitle($question_ans_list->question_style_name);
-				// }
+						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+				}
 			  
 			  break;
 			case 2:
