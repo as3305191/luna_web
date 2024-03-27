@@ -47,17 +47,17 @@
     <input type="radio" name="q1_5" value="需值班" id="q1_54"><label for="q1_54">需值班</label>
     說明：<input name="q1_5o"><br>
     四、在您的工作環境中，曾經遭遇下列的暴力攻擊情境？（可複選）<br>
-    <input type="checkbox" name="q1_6" value="肢體暴力，如毆打、踢、推、捏、拉扯等" id="q1_61"><label for="q1_61">肢體暴力，如毆打、踢、推、捏、拉扯等</label>
-    <input type="checkbox" name="q1_6" value="言語暴力，如辱罵、言語騷擾、冷嘲熱諷等" id="q1_62"><label for="q1_62">言語暴力，如辱罵、言語騷擾、冷嘲熱諷等</label>
-    <input type="checkbox" name="q1_6" value="心理暴力，如威脅、恐嚇、歧視、排擠、騷擾等" id="q1_63"><label for="q1_63">心理暴力，如威脅、恐嚇、歧視、排擠、騷擾等</label>
-    <input type="checkbox" name="q1_6" value="性騷擾，如不當的性暗示與行為" id="q1_64"><label for="q1_64">性騷擾，如不當的性暗示與行為</label>
-    <input type="checkbox" name="q1_6" value="其他" id="q1_65"><label for="q1_65">其他</label> <input name="q1_6o">
+    <input type="checkbox" name="q1_6" value="肢體暴力，如毆打、踢、推、捏、拉扯等" id="q1_61"><label for="q1_61">肢體暴力，如毆打、踢、推、捏、拉扯等</label><br>
+    <input type="checkbox" name="q1_6" value="言語暴力，如辱罵、言語騷擾、冷嘲熱諷等" id="q1_62"><label for="q1_62">言語暴力，如辱罵、言語騷擾、冷嘲熱諷等</label><br>
+    <input type="checkbox" name="q1_6" value="心理暴力，如威脅、恐嚇、歧視、排擠、騷擾等" id="q1_63"><label for="q1_63">心理暴力，如威脅、恐嚇、歧視、排擠、騷擾等</label><br>
+    <input type="checkbox" name="q1_6" value="性騷擾，如不當的性暗示與行為" id="q1_64"><label for="q1_64">性騷擾，如不當的性暗示與行為</label><br>
+    <input type="checkbox" name="q1_6" value="其他" id="q1_65"><label for="q1_65">其他</label> <input name="q1_6o"><br>
     <input type="checkbox" name="q1_6" value="無" id="q1_66"><label for="q1_66">無</label><br>
-    五、公司是否提供有關預防暴力攻擊之衛生教育訓練？<br>
-    <input type="checkbox" name="q1_7" value="曾提供任何工作安全衛生教育訓練" id="q1_71"><label for="q1_71">曾提供任何工作安全衛生教育訓練（免勾其他選項）</label>
-    <input type="checkbox" name="q1_7" value="人身安全之防範" id="q1_72"><label for="q1_72">人身安全之防範</label>
-    <input type="checkbox" name="q1_7" value="防護用具之使用" id="q1_73"><label for="q1_73">防護用具之使用</label>
-    <input type="checkbox" name="q1_7" value="危害通識教育訓練" id="q1_74"><label for="q1_74">危害通識教育訓練</label>
+    五、公司是否提供有關預防暴力攻擊之衛生教育訓練？ 可複選）<br>
+    <input type="checkbox" name="q1_7" value="曾提供任何工作安全衛生教育訓練" id="q1_71"><label for="q1_71">沒有提供任何工作安全衛生教育訓練（免勾其他選項）</label><br>
+    <input type="checkbox" name="q1_7" value="人身安全之防範" id="q1_72"><label for="q1_72">人身安全之防範</label><br>
+    <input type="checkbox" name="q1_7" value="防護用具之使用" id="q1_73"><label for="q1_73">防護用具之使用</label><br>
+    <input type="checkbox" name="q1_7" value="危害通識教育訓練" id="q1_74"><label for="q1_74">危害通識教育訓練</label><br>
     <input type="checkbox" name="q1_7" value="法規教育" id="q1_75"><label for="q1_75">法規教育</label><br>
     第二部分、暴力預防認知現況<br>
     1.我清楚了解如何辨識職場發生的暴力危害<br>
