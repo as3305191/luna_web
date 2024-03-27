@@ -59,50 +59,37 @@
 			<form id="app-export-form" method="post" class="form-horizontal">
 			<input type="hidden" name="id" id="export_item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
 			
-				<div class="form-group" style="padding:0px 26px">
-       			 	<div class="clearfix"></div>
-    			</div>
-    			<hr/>
-				<div>
-							<!-- widget edit box -->
-				<div class="jarviswidget-editbox">
-					<!-- This area used as dropdown edit box -->
-				</div>
-				<!-- end widget edit box -->
-				<!-- widget content -->
-				<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
-					<span style="font-size: 16pt;color:#0d0d56">未填寫人員：</span>
-				</div>
-				<div class="col-md-12 col-xs-12 col-sm-12 " id="not_finish_p" style="padding:0px 0px 6px 0px;">
-					
-				</div>
-				<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
-					<span style="font-size: 16pt;color:#0d0d56">已填寫資料</span>
-				</div>
-				<div>
-					<div class="jarviswidget-editbox">
-						<!-- This area used as dropdown edit box -->
+			
+					<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
+						<span style="font-size: 16pt;color:#0d0d56">未填寫人員：</span>
 					</div>
-					
-					<div class="widget-body no-padding">
-						<table id="dt_list_each_detail" class="table table-striped table-bordered table-hover" width="100%">
-							<thead>
-								<tr>
-									<th class="min150">姓名</th>
-									<th class="min150">建立時間</th>
-									<th class="min150">匯出</th>
-								</tr>
-								<!-- <tr class="search_box">
-									<th></th>
-									<th></th>
-									<th></th>
-								</tr> -->
-							</thead>
-							<tbody>
-							</tbody>
-						</table>
+					<div class="col-md-12 col-xs-12 col-sm-12 " id="not_finish_p" style="padding:0px 0px 6px 0px;">
+						
+					</div>
+				
+					<div>
+						<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
+							<span style="font-size: 16pt;color:#0d0d56">已填寫資料：</span>
+						</div>
+						<div class="jarviswidget-editbox">
+							<!-- This area used as dropdown edit box -->
+						</div>
+						
+						<div class="widget-body no-padding">
+							<table id="dt_list_each_detail" class="table table-striped table-bordered table-hover" width="100%">
+								<thead>
+									<tr>
+										<th class="min150">姓名</th>
+										<th class="min150">建立時間</th>
+										<th class="min150">匯出</th>
+									</tr>
+								
+								</thead>
+								<tbody>
+								</tbody>
+							</table>
+						</div>	
 					</div>	
-				</div>	
 			</div>
 		
 			</form>
