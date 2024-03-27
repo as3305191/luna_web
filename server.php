@@ -307,7 +307,7 @@ class Sock{
                 }
             }
 
-            $sql="SELECT id FROM `users` WHERE status='0'  order by status desc";
+            $sql="SELECT id FROM `users` WHERE status='0' ";
             $select=mysqli_query($link,$sql);
             foreach($select as $each){
                 $map_all_user[]=$each['id'];
@@ -339,7 +339,7 @@ class Sock{
             $now_online=array_diff($this->online_user,$map_all_user);
             $this->online_user=$now_online;
             $ar['now_online']=$this->online_user;
-            $sql1="SELECT id FROM `users` WHERE status='0'";
+            $sql1="SELECT id FROM `users` WHERE status='0'  order by status desc";
             $select1=mysqli_query($link,$sql1);
             foreach($select1 as $each){
                 $map_all_user1[]=$each['id'];
