@@ -83,8 +83,7 @@
 					<table id="dt_list_each_detail" class="table table-striped table-bordered table-hover" width="100%">
 						<thead>
 							<tr>
-								<th class="min100"></th>
-								<th class="min150">標題</th>
+								<th class="min150">姓名</th>
 								<th class="min150">建立時間</th>
 								<th class="min150">匯出</th>
 							</tr>

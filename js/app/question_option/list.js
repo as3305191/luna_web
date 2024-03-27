@@ -349,6 +349,8 @@ var QuestioneachdetailAppClass = (function(app) {
 			columns : [{
 					data : 'user_name'
 				},{
+					data : 'create_time'
+				},{
 					data : 'id',
 					render: function(d,t,r) {
 						if(d){
