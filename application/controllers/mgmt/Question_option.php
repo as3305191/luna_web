@@ -50,13 +50,18 @@ class Question_option extends MY_Mgmt_Controller {
 		));
 		$items_list = $this -> question_ans_dao -> find_all_finish($data);
 		$all_user_list =  $this -> users_dao -> find_all_ktx_user();
-		foreach($all_user_list as $each_user){
-			foreach($items_list as $each_item){
-				if($each_user->id!==$each_item->user_id){
-					$res['items'][] = $each_user;
+		if(count($items_list)>0){
+			foreach($all_user_list as $each_user){
+				foreach($items_list as $each_item){
+					if($each_user->id!==$each_item->user_id){
+						$res['items'][] = $each_user;
+					}
 				}
 			}
+		} else{
+			$res['items'] = $all_user_list;
 		}
+		
 		
 		$this -> to_json($res);
 
