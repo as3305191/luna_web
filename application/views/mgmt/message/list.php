@@ -282,7 +282,7 @@
                                     each_offline_user += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+'</p>';
                                 } 
                             })
-                            var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
+                            var html='<div>'+each_offline_user+'</div>';
                             us_offline.append(html);
                         }
                     
