@@ -46,6 +46,7 @@ class User_msg_dao extends MY_Model {
 		$this -> db -> where("_m.to_user_id", $my_id);
 		$this -> db -> where("_m.from_user_id", $to_id);
 		$this -> db -> where("_m.status",0);
+		$this -> db -> order_by("_m.status",'desc');
 		$query = $this -> db -> get();
 		$list = $query -> result();
 

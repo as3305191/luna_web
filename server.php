@@ -522,7 +522,7 @@ class Sock{
         $now_online=array_diff($this->online_user,$map_all_user);
         $this->online_user=$now_online;
         $ar['now_online']=$this->online_user;
-        $sql1="SELECT id FROM `users` WHERE status='0' order by status asc";
+        $sql1="SELECT id FROM `users` WHERE status='0'";
         $select1=mysqli_query($link,$sql1);
         foreach($select1 as $each){
             $map_all_user1[]=$each['id'];
