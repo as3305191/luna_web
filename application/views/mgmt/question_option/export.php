@@ -115,6 +115,7 @@
 // currentApp.each_detail = new QuestioneachdetailAppClass(new BaseAppClass({}));
 
 function load_not_finish() {
+		var html ='';
 		$.ajax({
 			url: '<?= base_url() ?>' + 'mgmt/question_option/get_data_not_finish',
 		
@@ -126,7 +127,11 @@ function load_not_finish() {
 			success: function(d) {
 				if(d) {
 					$question_style = $('#not_finish_p').empty();
-					console.log(d);
+					$.each(d.items, function(){
+						html+='<span>'+this.dep_name+'-'+this.user_name+'</span>';
+					});
+					html.appendTo($question_style);
+					// console.log(d);
 					
 				}
 			},
