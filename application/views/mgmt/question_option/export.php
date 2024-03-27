@@ -71,24 +71,10 @@
 				<!-- end widget edit box -->
 				<!-- widget content -->
 				<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
-					<span style="font-size: 16pt;color:#0d0d56">未填寫人員</span>
+					<span style="font-size: 16pt;color:#0d0d56">未填寫人員：</span>
 				</div>
-				<div class="widget-body no-padding">
-					<table id="dt_list_not_finish" class="table table-striped table-bordered table-hover" width="100%">
-						<thead>
-							<tr>
-								<!-- <th class="min100"></th> -->
-								<th class="min150">姓名</th>
-							</tr>
-							<!-- <tr class="search_box">
-								<th></th>
-								<th></th>
-								<th></th>
-							</tr> -->
-						</thead>
-						<tbody>
-						</tbody>
-					</table>
+				<div class="col-md-12 col-xs-12 col-sm-12 " id="not_finish_p" style="padding:0px 0px 6px 0px;">
+					
 				</div>
 				<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
 					<span style="font-size: 16pt;color:#0d0d56">已填寫資料</span>
@@ -111,7 +97,8 @@
 						<tbody>
 						</tbody>
 					</table>
-				</div>			</div>
+				</div>			
+			</div>
 		
 			</form>
 
@@ -125,7 +112,29 @@
 <!-- end widget -->
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 <script>
-currentApp.not_finish = new QuestionnotfinishAppClass(new BaseAppClass({}));
-// currentApp.each_detail = new QuestioneachdetailAppClass(new BaseAppClass({}));
- 
+// currentApp.not_finish = new QuestionnotfinishAppClass(new BaseAppClass({}));
+currentApp.each_detail = new QuestioneachdetailAppClass(new BaseAppClass({}));
+
+function load_not_finish() {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/question_option/get_data_not_finish',
+		
+			type: 'POST',
+			dataType: 'json',
+			data : {
+				item_id: $('#export_item_id').val(),
+			},
+			success: function(d) {
+				if(d) {
+					$question_style = $('#not_finish_p').empty();
+					console.log(d);
+					
+				}
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
+	load_not_finish();
 </script>
