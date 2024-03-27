@@ -248,7 +248,6 @@
                 // users.all.className='ck';
                 var url = '<?= base_url() ?>' + 'mgmt/message/find_offline_users';
                 var each_offline_user = '';
-                var each_offline_user_no_noread = '';
                 var us_offline = $('#us_offline').empty();
                 $.ajax({
                     url : url,
@@ -270,23 +269,25 @@
                                     each_offline_user += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+'</p>';
                                 } 
                             })
-                            var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
-                            us_offline.append(html);
+                           
+                            // us_offline.append(html);
                         }
                         if(d.offline_users_no_noread){
                             $.each(d.offline_users_no_noread, function(){
                                 var me = this;
                                 var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me.no_read+'</span>';
                                 if(me.no_read>0){
-                                    each_offline_user_no_noread += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+notread+'</p>';
+                                    each_offline_user += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+notread+'</p>';
                                 } else{
-                                    each_offline_user_no_noread += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+'</p>';
+                                    each_offlineeach_offline_user_user_no_noread += '<p me_id="'+me.id+'" offline_name="'+me.user_name+'" onclick="change_f_chat('+me.id+',\''+me.user_name+'\');">'+me.user_name+'</p>';
                                 } 
                             })
-                            var html='<div>'+each_offline_user_no_noread+'</div>';
-                            us_offline.append(html);
+                            // var html='<div>'+each_offline_user_no_noread+'</div>';
+                           
                         }
-                    
+                        var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
+                        us_offline.append(html);
+                        
                         if(d.online_users!=false){
                             $.each(d.online_users, function(){
                                 var me = this;
