@@ -191,11 +191,6 @@ class Question_ans_dao extends MY_Model {
 		$this -> db -> select('u.user_name');
 
 		$this -> db -> join("users u", "u.id = _m.user_id", "left");
-	
-		
-		if($data['menu_id']&&$data['menu_id']>0) {
-			$this -> db -> where('_m.menu_id',$data['menu_id']);
-		}
 
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
