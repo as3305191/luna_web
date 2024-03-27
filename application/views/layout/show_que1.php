@@ -54,7 +54,7 @@
     <input type="checkbox" name="q1_6" value="其他" id="q1_65"><label for="q1_65">其他</label> <input name="q1_6o"><br>
     <input type="checkbox" name="q1_6" value="無" id="q1_66"><label for="q1_66">無</label><br>
     五、公司是否提供有關預防暴力攻擊之衛生教育訓練？ 可複選）<br>
-    <input type="checkbox" name="q1_7" value="曾提供任何工作安全衛生教育訓練" id="q1_71"><label for="q1_71">沒有提供任何工作安全衛生教育訓練（免勾其他選項）</label><br>
+    <input type="checkbox" name="q1_7" value="沒有提供任何工作安全衛生教育訓練" id="q1_71"><label for="q1_71">沒有提供任何工作安全衛生教育訓練（免勾其他選項）</label><br>
     <input type="checkbox" name="q1_7" value="人身安全之防範" id="q1_72"><label for="q1_72">人身安全之防範</label><br>
     <input type="checkbox" name="q1_7" value="防護用具之使用" id="q1_73"><label for="q1_73">防護用具之使用</label><br>
     <input type="checkbox" name="q1_7" value="危害通識教育訓練" id="q1_74"><label for="q1_74">危害通識教育訓練</label><br>
