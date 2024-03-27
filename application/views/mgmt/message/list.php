@@ -272,6 +272,19 @@
                             var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
                             us_offline.append(html);
                         }
+                        if(d.offline_users_no_noread){
+                            $.each(d.offline_users_no_noread, function(){
+                                var me = this;
+                                var notread='<span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10 c_red" style="float:right;padding: .20rem .25rem;">'+me[0].no_read+'</span>';
+                                if(me[0].no_read>0){
+                                    each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+notread+'</p>';
+                                } else{
+                                    each_offline_user += '<p me_id="'+me[0].id+'" offline_name="'+me[0].user_name+'" onclick="change_f_chat('+me[0].id+',\''+me[0].user_name+'\');">'+me[0].user_name+'</p>';
+                                } 
+                            })
+                            var html='<div><p class="my">離線人員...</p>'+each_offline_user+'</div>';
+                            us_offline.append(html);
+                        }
                     
                         if(d.online_users!=false){
                             $.each(d.online_users, function(){
