@@ -441,7 +441,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 		switch ($question_ans_list[0]->qs_id) {
 			case 1:
-				$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
@@ -487,11 +487,11 @@ class Question_option extends MY_Mgmt_Controller {
 		  
 		  
 				}
-				$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+				$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
 
 			  break;
 			case 2:
-				$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
@@ -554,11 +554,11 @@ class Question_option extends MY_Mgmt_Controller {
 		  
 		  
 				}
-				$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+				$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
 
 			  break;
 			case 3:
-				$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
@@ -616,7 +616,7 @@ class Question_option extends MY_Mgmt_Controller {
 		  
 		  
 				}
-				$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+				$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
 
 			  break;
 			default:
