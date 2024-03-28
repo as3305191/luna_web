@@ -312,7 +312,6 @@ var QuestioneachdetailAppClass = (function(app) {
 					app.fnRowCallbackExt(nRow, aData, iDisplayIndex, iDisplayIndexFull);
 				}
 		};
-
 	app.dtConfig = {
 		processing : true,
 		serverSide : true,
@@ -362,7 +361,8 @@ var QuestioneachdetailAppClass = (function(app) {
 						}
 					}
 				},],
-			ordering: false,
+			ordering: false,	
+			defaultContent : '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>',
 			order : [[0, "desc"]],
 			columnDefs : [{
 				"targets" : [0,1,2,3],
