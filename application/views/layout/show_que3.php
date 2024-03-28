@@ -136,6 +136,10 @@
   var  q13 = null;
   var  total1 = 0;
   var  total2 = 0;
+  var  q1o = '無';
+  var  q2o = '無';
+  var  q3o = '無';
+  var  q4o = '無';
   $('input:radio[name="q3_1"]').on('change', function(){
     q1 = $('input:radio[name="q3_1"]:checked').val();
     sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
@@ -257,6 +261,10 @@
             q11 : q11,
             q12 : q12,
             q13 : q13,
+            q1o : q1o,
+            q2o : q2o,
+            q3o : q3o,
+            q4o : q4o,
           },
           dataType: 'json',
           success: function(d) {
@@ -298,6 +306,8 @@
     if (q1!==null&&q2!==null&&q3!==null&&q4!==null&&q5!==null&&q6!==null){
       $('#t1').text(total1);
       $('#t1_s').text(text);
+      q1o = total1;
+      q2o = text;
     }
   }
   function t2(){
@@ -315,6 +325,8 @@
     if (q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null&&q13!==null){
       $('#t2').text(total2);
       $('#t2_s').text(text1);
+      q3o = total1;
+      q4o = text;
     }
   }
 </script>

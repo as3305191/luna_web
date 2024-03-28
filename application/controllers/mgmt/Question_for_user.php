@@ -270,7 +270,10 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$q11 =$this -> get_post('q11');
 		$q12 =$this -> get_post('q12');
 		$q13 =$this -> get_post('q13');
-
+		$q1o =$this -> get_post('q1o');
+		$q2o =$this -> get_post('q2o');
+		$q3o =$this -> get_post('q3o');
+		$q4o =$this -> get_post('q4o');
 		$data['user_id'] = $login_user->id;
 		// $data['qid'] = $qid;
 		$data['q1'] = $q1;
@@ -286,6 +289,10 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['q11'] = $q11;
 		$data['q12'] = $q12;
 		$data['q13'] = $q13;
+		$data['q1o'] = $q1o;
+		$data['q2o'] = $q2o;
+		$data['q3o'] = $q3o;
+		$data['q4o'] = $q4o;
 		$data['question_option_id'] = $qid;
 
 		$this -> question_ans_dao -> insert($data);

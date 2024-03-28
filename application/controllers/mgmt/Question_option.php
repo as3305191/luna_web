@@ -370,7 +370,6 @@ class Question_option extends MY_Mgmt_Controller {
 								  ->setCellValue('L1', '我具備因應暴力危害事件的事務處理與執行能力');
 
 								//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
-								  $total = 0;
 								  for ($j=0;$j<count($question_ans_list);$j++) {
 									  $k = $j+2;
 									  $objWorkSheet->setCellValue('A'.$k , $question_ans_list[$j]->q1)
