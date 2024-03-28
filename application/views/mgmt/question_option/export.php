@@ -34,7 +34,7 @@
 			<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo()" class="btn btn-default">
 				<i class="fa fa-arrow-circle-left"></i>返回
 			</a>
-			<a href="javascript:void(0);" onclick="currentApp.each_detail.export_item()" class="btn btn-default">
+			<a href="javascript:void(0);" onclick="currentApp.each_detail.export_item(<?= isset($item) ? $item -> id : '' ?>)" class="btn btn-default">
 				<i class="fa fa-save"></i>下載檔案
 			</a>
 		</div>
