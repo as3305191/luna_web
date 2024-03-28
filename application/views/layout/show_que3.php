@@ -325,8 +325,8 @@
     if (q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null&&q13!==null){
       $('#t2').text(total2);
       $('#t2_s').text(text1);
-      q3o = total1;
-      q4o = text;
+      q3o = total2;
+      q4o = text1;
     }
   }
 </script>
