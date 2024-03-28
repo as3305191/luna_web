@@ -346,7 +346,7 @@ var QuestioneachdetailAppClass = (function(app) {
 
 			pageLength: 10,
 			
-			columns : [{
+			columns : [null,{
 					data : 'user_name'
 				},{
 					data : 'create_time'
@@ -384,6 +384,23 @@ var QuestioneachdetailAppClass = (function(app) {
 		    var json = app.mDtTable.ajax.json();
 	
 		});
+
+		app.doDelItem = function() {
+			$.ajax({
+				url : baseUrl + app.basePath  + 'delete_user_q_a/' + app._delId,
+				success: function(d) {
+					if(d.success){
+						app.mDtTable.ajax.reload();
+					}
+					if(d.message){
+						layer.msg(d.message);
+					}
+				},
+				failure: function() {
+					alert('Network Error...');
+				}
+			});
+		};
 
 		app.doExportAll = function(id) {
 			window.open(baseUrl + 'mgmt/question_option/export_excel/' + id);

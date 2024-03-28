@@ -208,6 +208,15 @@ class Question_option extends MY_Mgmt_Controller {
 		$this -> dao ->  update($u_data, $id);
 		$this -> to_json($res);
 	}
+
+	public function delete_user_q_a($id) {
+		$res['success'] = TRUE;
+		// $u_data['is_delete'] = 1;
+		// $this -> dao ->  update($u_data, $id);
+		$this ->  question_ans_dao ->  delete($id);
+		$this -> to_json($res);
+	}
+
 	public function export_excel($id){
 		// $id = $this -> get_get('id');
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_p($id);
@@ -229,7 +238,7 @@ class Question_option extends MY_Mgmt_Controller {
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
 					// Add new sheet
-					$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
+					$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
 			  
 					//Write cells
 					  $objWorkSheet->setCellValue('A1', '工作型態')
