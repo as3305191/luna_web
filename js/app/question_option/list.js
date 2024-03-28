@@ -363,7 +363,7 @@ var QuestioneachdetailAppClass = (function(app) {
 					}
 				},],
 			ordering: false,
-			order : [[0, "desc"]],
+			order : [[1, "desc"]],
 			columnDefs : [{
 				"targets" : [0],
 				"orderable" : false
