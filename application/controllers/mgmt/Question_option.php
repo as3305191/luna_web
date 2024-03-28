@@ -427,7 +427,7 @@ class Question_option extends MY_Mgmt_Controller {
 		// $id = $this -> get_get('id');
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_item($id);
 	
-		$fileName = $question_ans_list[0]->question_style_name."(".$question_ans_list[0]->user_name.")-".date('Y-m-d H:i:s').'.xls';
+		$fileName = $question_ans_list[0]->question_style_name.date('Y-m-d H:i:s').'.xls';
 
 		$objPHPExcel = new PHPExcel();
 		// $objPHPExcel->setActiveSheetIndex(0);
