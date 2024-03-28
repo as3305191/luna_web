@@ -362,11 +362,15 @@ var QuestioneachdetailAppClass = (function(app) {
 					}
 				},],
 			ordering: false,	
-			defaultContent : '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>',
 			order : [[0, "desc"]],
-			columnDefs : [{
-				"targets" : [0,1,2,3],
-				"orderable" : false
+			columnDefs :[{
+				targets : 0,
+				data : null,
+				defaultContent : '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-right: 5px;"><i class="fa fa-trash fa-lg"></i></a>',
+				searchable : false,
+				orderable : false,
+				width : "5%",
+				className : ''
 			}],
 
 			footerCallback: function (row, data, start, end, display ) {
