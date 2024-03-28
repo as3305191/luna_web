@@ -441,10 +441,11 @@ class Question_option extends MY_Mgmt_Controller {
 
 		switch ($question_ans_list[0]->qs_id) {
 			case 1:
+				$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
 					// Add new sheet
-					$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 			  
 					  $objWorkSheet->setCellValue('A1', '工作型態')
 								  ->setCellValue('B1', '性別')
@@ -485,15 +486,16 @@ class Question_option extends MY_Mgmt_Controller {
 								// 				  ->setCellValue('G'.$last ,  $total);
 		  
 		  
-						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
 				}
-			  
+				$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+
 			  break;
 			case 2:
+				$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
 					// Add new sheet
-					$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 			  
 					//Write cells
 					  $objWorkSheet->setCellValue('A1', '是否不適')
@@ -551,14 +553,16 @@ class Question_option extends MY_Mgmt_Controller {
 								  }
 		  
 		  
-						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
 				}
+				$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+
 			  break;
 			case 3:
+				$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
 					// Add new sheet
-					$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 			  
 					//Write cells
 					  $objWorkSheet->setCellValue('A1', '你常覺得疲勞嗎？')
@@ -611,8 +615,9 @@ class Question_option extends MY_Mgmt_Controller {
 								// 				  ->setCellValue('G'.$last ,  $total);
 		  
 		  
-						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
 				}
+				$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+
 			  break;
 			default:
 			  //code block
