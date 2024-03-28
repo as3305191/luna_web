@@ -212,7 +212,10 @@ class Question_ans_dao extends MY_Model {
 		$this -> db -> select('u.user_name');
 
 		$this -> db -> join("users u", "u.id = _m.user_id", "left");
-
+		if(isset($data['s_name'])) {
+			$s_name = $data['s_name'];
+			$this -> db -> where('u.user_name',$s_name);
+		}
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
 		}

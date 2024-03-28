@@ -257,9 +257,7 @@ var QuestionoptionAppClass = (function(app) {
 			});
 		};
 
-		$('#s_news_style').on('change', function(){
-			app.tableReload();
-		});
+		
 	
 		return app;
 	};
@@ -335,7 +333,7 @@ var QuestioneachdetailAppClass = (function(app) {
 				url : baseUrl + app.basePath + '/get_data_each_detail',
 				data : function(d) {
 					d.item_id = $('#export_item_id').val()
-					// d.lottery_no = $('#lottery_select').val();
+					d.s_name = $('#s_name').val()
 					return d;
 				},
 				dataSrc : 'items',
@@ -405,7 +403,9 @@ var QuestioneachdetailAppClass = (function(app) {
 				}
 			});
 		};
-
+		$('#s_name').on('change', function(){
+			app.tableReload();
+		});
 		app.doExportAll = function(id) {
 			window.open(baseUrl + 'mgmt/question_option/export_excel/' + id);
 		}

@@ -77,7 +77,8 @@ class Question_option extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			'item_id'
+			'item_id',
+			's_name'
 		));
 		$items = $this -> question_ans_dao -> find_all_each_detail($data);
 	
