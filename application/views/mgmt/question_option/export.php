@@ -72,11 +72,9 @@
 							<span style="font-size: 16pt;color:#0d0d56">已填寫資料：</span>
 						</div>
 						<div class="jarviswidget-editbox">
-						
-						</div>
-						<div class="widget-toolbar pull-left">
 							<input id="s_name" placeholder="搜尋人名" type="text" class="" >
 						</div>
+					
 						<table id="dt_list_each_detail" class="table table-striped table-bordered table-hover" width="100%">
 							<thead>
 								<tr>
