@@ -229,7 +229,7 @@ class Question_option extends MY_Mgmt_Controller {
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
 					// Add new sheet
-					$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+					$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 			  
 					//Write cells
 					  $objWorkSheet->setCellValue('A1', '工作型態')
