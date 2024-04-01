@@ -209,7 +209,6 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$q18 =$this -> get_post('q18');
 		$q19 =$this -> get_post('q19');
 		$q20 =$this -> get_post('q20');
-		$q21 =$this -> get_post('q21');
 
 		$q1o =$this -> get_post('q1o');
 		$q2o =$this -> get_post('q2o');
@@ -238,7 +237,6 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['q18'] = $q18;
 		$data['q19'] = $q19;
 		$data['q20'] = $q20;
-		$data['q21'] = $q21;
 
 		$data['q1o'] = $q1o;
 		$data['q2o'] = $q2o;

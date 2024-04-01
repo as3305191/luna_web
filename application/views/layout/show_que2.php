@@ -169,7 +169,7 @@
           <input type="radio" name="q2_20" value="是" id="q20_y"><label for="q20_y">是</label>
           診斷名稱：
           <input name="q3o"><br>
-          <input type="radio" name="q2_21" value="否" id="q21_n"><label for="q21_n">否</label><br>
+          <input type="radio" name="q2_20" value="否" id="q21_n"><label for="q21_n">否</label><br>
         
           七.其他症狀、病史說明：(例如糖尿病、高血壓等等)<br>
           <textarea class="form-control" name="q4o"></textarea>
@@ -312,10 +312,6 @@
    
   });
 
-  $('input:radio[name="q2_21"]').on('change', function(){
-    q21 = $('input:radio[name="q2_21"]:checked').val();
-   
-  });
 
 
   $('[name="q1o"]').on('change', function(){
@@ -371,7 +367,6 @@ console.log(q1);
           console.log(q18);
           console.log(q19);
           console.log(q20);
-          console.log(q21);
         
           alert('請填寫完全部題目！');
          }
@@ -408,7 +403,6 @@ console.log(q1);
           q18 : q18,
           q19 : q19,
           q20 : q20,
-          q21 : q21,
           q1o : q1o,
           q2o : q2o,
           q3o : q3o,
