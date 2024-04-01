@@ -213,7 +213,7 @@ class Question_ans_dao extends MY_Model {
 		$this -> db -> select('d.name as dep_name');
 
 		$this -> db -> join("users u", "u.id = _m.user_id", "left");
-		$this -> db -> join("department d", "u.id = r.role_id", "left");
+		$this -> db -> join("department d", "u.id = u.role_id", "left");
 		$this -> db -> join("question_option qo", "qo.id = _m.question_option_id", "left");
 		$this -> db -> join("question_style qs", "qs.id = qo.question_style_id", "left");
 
