@@ -233,51 +233,52 @@ class Question_option extends MY_Mgmt_Controller {
 	
 	
 		// $sheet = $objPHPExcel->getActiveSheet();
+		$all_cell_title = ['A1','B1','C1','D1','E1','F1','G1','H1','I1','J1','K1',
+							'L1','M1','N1','O1','P1','Q1','R1','S1','T1','U1','V1','W1','X1'];
+		$all_cell_name = ['A','B','C','D','E','F','G','H','I','J','K',
+							'L','M','N','O','P','Q','R','S','T','U','V','W','X'];
 
+		 
 		switch ($question_ans_list[0]->qs_id) {
 			case 1:
+				$cell_title = ['工作型態','性別','年資','平均每週工作時數','班別','曾經遭遇的暴力攻擊情境',
+				'公司提供有關預防暴力攻擊之衛生教育訓練','我清楚了解如何辨識職場發生的暴力危害',
+				'我清楚了解如何進行暴力危害的風險評估','我清楚了解如何避免或遠離暴力危害事件',
+				'我清楚了解暴力危害事件發生時如何尋求支援管道','我具備因應暴力危害事件的事務處理與執行能力'];
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
 					// Add new sheet
 					$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
 			  
-					  $objWorkSheet->setCellValue('A1', '工作型態')
-								  ->setCellValue('B1', '性別')
-								  ->setCellValue('C1', '年資')
-								  ->setCellValue('D1', '平均每週工作時數')
-								  ->setCellValue('E1', '班別')
-								  ->setCellValue('F1', '曾經遭遇的暴力攻擊情境')
-								  ->setCellValue('G1', '公司提供有關預防暴力攻擊之衛生教育訓練')
-								  ->setCellValue('H1', '我清楚了解如何辨識職場發生的暴力危害')
-								  ->setCellValue('I1', '我清楚了解如何進行暴力危害的風險評估')
-								  ->setCellValue('J1', '我清楚了解如何避免或遠離暴力危害事件')
-								  ->setCellValue('K1', '我清楚了解暴力危害事件發生時如何尋求支援管道')
-								  ->setCellValue('L1', '我具備因應暴力危害事件的事務處理與執行能力');
+					  $objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
+								  ->setCellValue($all_cell_title[1], $cell_title[1])
+								  ->setCellValue($all_cell_title[2], $cell_title[2])
+								  ->setCellValue($all_cell_title[3], $cell_title[3])
+								  ->setCellValue($all_cell_title[4], $cell_title[4])
+								  ->setCellValue($all_cell_title[5], $cell_title[5])
+								  ->setCellValue($all_cell_title[6], $cell_title[6])
+								  ->setCellValue($all_cell_title[7], $cell_title[7])
+								  ->setCellValue($all_cell_title[8], $cell_title[8])
+								  ->setCellValue($all_cell_title[9], $cell_title[9])
+								  ->setCellValue($all_cell_title[10], $cell_title[10])
+								  ->setCellValue($all_cell_title[11], $cell_title[11]);
 
 								  for ($j=0;$j<count($question_ans_list);$j++) {
 									  $k = $j+2;
-									  $objWorkSheet->setCellValue('A'.$k , $question_ans_list[$j]->q1)
-												  ->setCellValue('B'.$k , $question_ans_list[$j]->q2)
-												  ->setCellValue('C'.$k , $question_ans_list[$j]->q3)
-												  ->setCellValue('D'.$k , $question_ans_list[$j]->q4)
-												  ->setCellValue('E'.$k , $question_ans_list[$j]->q5)
-												  ->setCellValue('F'.$k , $question_ans_list[$j]->q6)
-												  ->setCellValue('G'.$k , $question_ans_list[$j]->q7)
-												  ->setCellValue('H'.$k , $question_ans_list[$j]->q8)
-												  ->setCellValue('I'.$k , $question_ans_list[$j]->q9)
-												  ->setCellValue('J'.$k , $question_ans_list[$j]->q10)
-												  ->setCellValue('K'.$k , $question_ans_list[$j]->q11)
-												  ->setCellValue('L'.$k , $question_ans_list[$j]->q12);
+									  $objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->q1)
+												  ->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->q2)
+												  ->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q3)
+												  ->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q4)
+												  ->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q5)
+												  ->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q6)
+												  ->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q7)
+												  ->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q8)
+												  ->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q9)
+												  ->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q10)
+												  ->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q11)
+												  ->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q12);
 
 								  }
-								//   $last = count($items_order)+2;
-								//   $objWorkSheet->setCellValue('A'.$last , '')
-								// 				  ->setCellValue('B'.$last , '')
-								// 				  ->setCellValue('C'.$last, '')
-								// 				  ->setCellValue('D'.$last, '')
-								// 				  ->setCellValue('E'.$last, '')
-								// 				  ->setCellValue('F'.$last , '總金額')
-								// 				  ->setCellValue('G'.$last ,  $total);
 		  
 		  
 						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
@@ -285,63 +286,65 @@ class Question_option extends MY_Mgmt_Controller {
 			  
 			  break;
 			case 2:
+				$cell_title = ['是否不適','頸','左肩','左手肘/左前臂','左手/左手腕','左臀/左大腿',
+				'左膝','左腳踝/左腳','上背','右肩','右手肘/右前臂','下背','右手/右手腕','右臀/右大腿','右膝',
+				'右腳踝/右腳','痠痛持續時間','是否工作加劇','最近3個月是否因上述不適而請假','請假幾天',
+				'是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療)','診斷名稱','其他症狀、病史說明'];
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
 					// Add new sheet
 					$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
-			  
-					//Write cells
-					  $objWorkSheet->setCellValue('A1', '是否不適')
-								  ->setCellValue('B1', '頸')
-								  ->setCellValue('C1', '左肩')
-								  ->setCellValue('D1', '左手肘/左前臂')
-								  ->setCellValue('E1', '左手/左手腕')
-								  ->setCellValue('F1', '左臀/左大腿')
-								  ->setCellValue('G1', '左膝')
-								  ->setCellValue('H1', '左腳踝/左腳')
-								  ->setCellValue('I1', '上背')
-								  ->setCellValue('J1', '右肩')
-								  ->setCellValue('K1', '右手肘/右前臂')
-								  ->setCellValue('L1', '下背')
-								  ->setCellValue('M1', '右手/右手腕')
-								  ->setCellValue('N1', '右臀/右大腿')
-								  ->setCellValue('O1', '右膝')
-								  ->setCellValue('P1', '右腳踝/右腳')
-								  ->setCellValue('Q1', '痠痛持續時間')
-								  ->setCellValue('R1', '是否工作加劇')
-								  ->setCellValue('S1', '最近3個月是否因上述不適而請假')
-								  ->setCellValue('T1', '請假幾天')
-								  ->setCellValue('U1', '是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療)')
-								  ->setCellValue('V1', '診斷名稱')
-								  ->setCellValue('W1', '其他症狀、病史說明');
 								  
+								  $objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
+								  ->setCellValue($all_cell_title[1], $cell_title[1])
+								  ->setCellValue($all_cell_title[2], $cell_title[2])
+								  ->setCellValue($all_cell_title[3], $cell_title[3])
+								  ->setCellValue($all_cell_title[4], $cell_title[4])
+								  ->setCellValue($all_cell_title[5], $cell_title[5])
+								  ->setCellValue($all_cell_title[6], $cell_title[6])
+								  ->setCellValue($all_cell_title[7], $cell_title[7])
+								  ->setCellValue($all_cell_title[8], $cell_title[8])
+								  ->setCellValue($all_cell_title[9], $cell_title[9])
+								  ->setCellValue($all_cell_title[10], $cell_title[10])
+								  ->setCellValue($all_cell_title[11], $cell_title[11])
+								  ->setCellValue($all_cell_title[12], $cell_title[12])
+								  ->setCellValue($all_cell_title[13], $cell_title[13])
+								  ->setCellValue($all_cell_title[14], $cell_title[14])
+								  ->setCellValue($all_cell_title[15], $cell_title[15])
+								  ->setCellValue($all_cell_title[16], $cell_title[16])
+								  ->setCellValue($all_cell_title[17], $cell_title[17])
+								  ->setCellValue($all_cell_title[18], $cell_title[18])
+								  ->setCellValue($all_cell_title[19], $cell_title[19])
+								  ->setCellValue($all_cell_title[20], $cell_title[20])
+								  ->setCellValue($all_cell_title[21], $cell_title[21])
+								  ->setCellValue($all_cell_title[22], $cell_title[22]);
 
 								//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
 								  for ($j=0;$j<count($question_ans_list);$j++) {
 									  $k = $j+2;
-									  $objWorkSheet->setCellValue('A'.$k , $question_ans_list[$j]->q1)
-												  ->setCellValue('B'.$k , $question_ans_list[$j]->q2)
-												  ->setCellValue('C'.$k , $question_ans_list[$j]->q3)
-												  ->setCellValue('D'.$k , $question_ans_list[$j]->q4)
-												  ->setCellValue('E'.$k , $question_ans_list[$j]->q5)
-												  ->setCellValue('F'.$k , $question_ans_list[$j]->q6)
-												  ->setCellValue('G'.$k , $question_ans_list[$j]->q7)
-												  ->setCellValue('H'.$k , $question_ans_list[$j]->q8)
-												  ->setCellValue('I'.$k , $question_ans_list[$j]->q9)
-												  ->setCellValue('J'.$k , $question_ans_list[$j]->q10)
-												  ->setCellValue('K'.$k , $question_ans_list[$j]->q11)
-												  ->setCellValue('L'.$k , $question_ans_list[$j]->q12)
-												  ->setCellValue('M'.$k , $question_ans_list[$j]->q13)
-												  ->setCellValue('N'.$k , $question_ans_list[$j]->q14)
-												  ->setCellValue('O'.$k , $question_ans_list[$j]->q15)
-												  ->setCellValue('P'.$k , $question_ans_list[$j]->q16)
-												  ->setCellValue('Q'.$k , $question_ans_list[$j]->q17)
-												  ->setCellValue('R'.$k , $question_ans_list[$j]->q18)
-												  ->setCellValue('S'.$k , $question_ans_list[$j]->q19)
-												  ->setCellValue('T'.$k , $question_ans_list[$j]->q1o)
-												  ->setCellValue('U'.$k , $question_ans_list[$j]->q20)
-												  ->setCellValue('V'.$k , $question_ans_list[$j]->q2o)
-												  ->setCellValue('W'.$k , $question_ans_list[$j]->q3o);
+									  $objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->q1)
+												  ->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->q2)
+												  ->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q3)
+												  ->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q4)
+												  ->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q5)
+												  ->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q6)
+												  ->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q7)
+												  ->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q8)
+												  ->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q9)
+												  ->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q10)
+												  ->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q11)
+												  ->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q12)
+												  ->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q13)
+												  ->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q14)
+												  ->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q15)
+												  ->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q16)
+												  ->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q17)
+												  ->setCellValue($all_cell_name[17].$k , $question_ans_list[$j]->q18)
+												  ->setCellValue($all_cell_name[18].$k , $question_ans_list[$j]->q19)
+												  ->setCellValue($all_cell_name[19].$k , $question_ans_list[$j]->q1o)
+												  ->setCellValue($all_cell_name[20].$k , $question_ans_list[$j]->q20)
+												  ->setCellValue($all_cell_name[21].$k , $question_ans_list[$j]->q2o)
+												  ->setCellValue($all_cell_name[22].$k , $question_ans_list[$j]->q3o);
 								
 								  }
 		  
@@ -350,50 +353,54 @@ class Question_option extends MY_Mgmt_Controller {
 				}
 			  break;
 			case 3:
+				$cell_title = ['你常覺得疲勞嗎？','你常覺得身體上體力透支嗎？','你常覺得情緒上心力交瘁嗎？','你常會覺得，「我快要撐不下去了」嗎?',
+				'你常覺得精疲力竭嗎？','你常常覺得虛弱，好像快要生病了嗎？',
+				'個人相關疲勞分數','個人相關過勞分級','你的工作會令人情緒上心力交瘁嗎？','你的工作會讓你覺得快要累垮了嗎？','你的工作會讓你覺得挫折嗎？',
+				'工作一整天之後，你覺得精疲力竭嗎？','上班之前只要想到又要工作一整天，你就覺得沒力嗎？','上班時你會覺得每一刻都很難熬嗎？',
+				'不工作的時候，你有足夠的精力陪朋友或家人嗎？','工作相關疲勞分數','工作相關過勞分級'];
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
 					// Add new sheet
 					$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
-			  
-					//Write cells
-					  $objWorkSheet->setCellValue('A1', '你常覺得疲勞嗎？')
-								  ->setCellValue('B1', '你常覺得身體上體力透支嗎？')
-								  ->setCellValue('C1', '你常覺得情緒上心力交瘁嗎？')
-								  ->setCellValue('D1', '你常會覺得，「我快要撐不下去了」嗎?')
-								  ->setCellValue('E1', '你常覺得精疲力竭嗎？')
-								  ->setCellValue('F1', '你常常覺得虛弱，好像快要生病了嗎？')
-								  ->setCellValue('G1', '個人相關疲勞分數')
-								  ->setCellValue('H1', '個人相關過勞分級')
-								  ->setCellValue('I1', '你的工作會令人情緒上心力交瘁嗎？')
-								  ->setCellValue('J1', '你的工作會讓你覺得快要累垮了嗎？')
-								  ->setCellValue('K1', '你的工作會讓你覺得挫折嗎？')
-								  ->setCellValue('L1', '工作一整天之後，你覺得精疲力竭嗎？')
-								  ->setCellValue('M1', '上班之前只要想到又要工作一整天，你就覺得沒力嗎？')
-								  ->setCellValue('N1', '上班時你會覺得每一刻都很難熬嗎？')
-								  ->setCellValue('O1', '不工作的時候，你有足夠的精力陪朋友或家人嗎？')
-								  ->setCellValue('p1', '工作相關疲勞分數')
-								  ->setCellValue('Q1', '工作相關過勞分級');
+				
+								  $objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
+								  ->setCellValue($all_cell_title[1], $cell_title[1])
+								  ->setCellValue($all_cell_title[2], $cell_title[2])
+								  ->setCellValue($all_cell_title[3], $cell_title[3])
+								  ->setCellValue($all_cell_title[4], $cell_title[4])
+								  ->setCellValue($all_cell_title[5], $cell_title[5])
+								  ->setCellValue($all_cell_title[6], $cell_title[6])
+								  ->setCellValue($all_cell_title[7], $cell_title[7])
+								  ->setCellValue($all_cell_title[8], $cell_title[8])
+								  ->setCellValue($all_cell_title[9], $cell_title[9])
+								  ->setCellValue($all_cell_title[10], $cell_title[10])
+								  ->setCellValue($all_cell_title[11], $cell_title[11])
+								  ->setCellValue($all_cell_title[12], $cell_title[12])
+								  ->setCellValue($all_cell_title[13], $cell_title[13])
+								  ->setCellValue($all_cell_title[14], $cell_title[14])
+								  ->setCellValue($all_cell_title[15], $cell_title[15])
+								  ->setCellValue($all_cell_title[16], $cell_title[16]);
 
 								//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
 								  for ($j=0;$j<count($question_ans_list);$j++) {
 									  $k = $j+2;
-									  $objWorkSheet->setCellValue('A'.$k , $question_ans_list[$j]->q1)
-												  ->setCellValue('B'.$k , $question_ans_list[$j]->q2)
-												  ->setCellValue('C'.$k , $question_ans_list[$j]->q3)
-												  ->setCellValue('D'.$k , $question_ans_list[$j]->q4)
-												  ->setCellValue('E'.$k , $question_ans_list[$j]->q5)
-												  ->setCellValue('F'.$k , $question_ans_list[$j]->q6)
-												  ->setCellValue('G'.$k , $question_ans_list[$j]->q1o)
-												  ->setCellValue('H'.$k , $question_ans_list[$j]->q2o)
-												  ->setCellValue('I'.$k , $question_ans_list[$j]->q7)
-												  ->setCellValue('J'.$k , $question_ans_list[$j]->q8)
-												  ->setCellValue('K'.$k , $question_ans_list[$j]->q9)
-												  ->setCellValue('L'.$k , $question_ans_list[$j]->q10)
-												  ->setCellValue('M'.$k , $question_ans_list[$j]->q11)
-												  ->setCellValue('N'.$k , $question_ans_list[$j]->q12)
-												  ->setCellValue('O'.$k , $question_ans_list[$j]->q13)
-												  ->setCellValue('P'.$k , $question_ans_list[$j]->q3o)
-												  ->setCellValue('Q'.$k , $question_ans_list[$j]->q4o);
+									  $objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->q1)
+												  ->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->q2)
+												  ->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q3)
+												  ->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q4)
+												  ->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q5)
+												  ->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q6)
+												  ->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q1o)
+												  ->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q2o)
+												  ->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q7)
+												  ->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q8)
+												  ->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q9)
+												  ->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q10)
+												  ->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q11)
+												  ->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q12)
+												  ->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q13)
+												  ->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q3o)
+												  ->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q4o);
 
 								  }
 								//   $last = count($items_order)+2;
@@ -411,7 +418,7 @@ class Question_option extends MY_Mgmt_Controller {
 			  break;
 			default:
 			  //code block
-		  }
+		}
 
 		
 		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
@@ -438,190 +445,192 @@ class Question_option extends MY_Mgmt_Controller {
 	
 	
 		// $sheet = $objPHPExcel->getActiveSheet();
+		$all_cell_title = ['A1','B1','C1','D1','E1','F1','G1','H1','I1','J1','K1',
+		'L1','M1','N1','O1','P1','Q1','R1','S1','T1','U1','V1','W1','X1'];
+		$all_cell_name = ['A','B','C','D','E','F','G','H','I','J','K',
+				'L','M','N','O','P','Q','R','S','T','U','V','W','X'];
+
 
 		switch ($question_ans_list[0]->qs_id) {
-			case 1:
-				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
+		case 1:
+		$cell_title = ['工作型態','性別','年資','平均每週工作時數','班別','曾經遭遇的暴力攻擊情境',
+		'公司提供有關預防暴力攻擊之衛生教育訓練','我清楚了解如何辨識職場發生的暴力危害',
+		'我清楚了解如何進行暴力危害的風險評估','我清楚了解如何避免或遠離暴力危害事件',
+		'我清楚了解暴力危害事件發生時如何尋求支援管道','我具備因應暴力危害事件的事務處理與執行能力'];
+		for ($i=0;$i<count($question_ans_list);$i++) {
 
-				for ($i=0;$i<count($question_ans_list);$i++) {
-	
-					// Add new sheet
-			  
-					  $objWorkSheet->setCellValue('A1', '工作型態')
-								  ->setCellValue('B1', '性別')
-								  ->setCellValue('C1', '年資')
-								  ->setCellValue('D1', '平均每週工作時數')
-								  ->setCellValue('E1', '班別')
-								  ->setCellValue('F1', '曾經遭遇的暴力攻擊情境')
-								  ->setCellValue('G1', '公司提供有關預防暴力攻擊之衛生教育訓練')
-								  ->setCellValue('H1', '我清楚了解如何辨識職場發生的暴力危害')
-								  ->setCellValue('I1', '我清楚了解如何進行暴力危害的風險評估')
-								  ->setCellValue('J1', '我清楚了解如何避免或遠離暴力危害事件')
-								  ->setCellValue('K1', '我清楚了解暴力危害事件發生時如何尋求支援管道')
-								  ->setCellValue('L1', '我具備因應暴力危害事件的事務處理與執行能力');
+		// Add new sheet
+		$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
 
-								  for ($j=0;$j<count($question_ans_list);$j++) {
-									  $k = $j+2;
-									  $objWorkSheet->setCellValue('A'.$k , $question_ans_list[$j]->q1)
-												  ->setCellValue('B'.$k , $question_ans_list[$j]->q2)
-												  ->setCellValue('C'.$k , $question_ans_list[$j]->q3)
-												  ->setCellValue('D'.$k , $question_ans_list[$j]->q4)
-												  ->setCellValue('E'.$k , $question_ans_list[$j]->q5)
-												  ->setCellValue('F'.$k , $question_ans_list[$j]->q6)
-												  ->setCellValue('G'.$k , $question_ans_list[$j]->q7)
-												  ->setCellValue('H'.$k , $question_ans_list[$j]->q8)
-												  ->setCellValue('I'.$k , $question_ans_list[$j]->q9)
-												  ->setCellValue('J'.$k , $question_ans_list[$j]->q10)
-												  ->setCellValue('K'.$k , $question_ans_list[$j]->q11)
-												  ->setCellValue('L'.$k , $question_ans_list[$j]->q12);
+		$objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
+					->setCellValue($all_cell_title[1], $cell_title[1])
+					->setCellValue($all_cell_title[2], $cell_title[2])
+					->setCellValue($all_cell_title[3], $cell_title[3])
+					->setCellValue($all_cell_title[4], $cell_title[4])
+					->setCellValue($all_cell_title[5], $cell_title[5])
+					->setCellValue($all_cell_title[6], $cell_title[6])
+					->setCellValue($all_cell_title[7], $cell_title[7])
+					->setCellValue($all_cell_title[8], $cell_title[8])
+					->setCellValue($all_cell_title[9], $cell_title[9])
+					->setCellValue($all_cell_title[10], $cell_title[10])
+					->setCellValue($all_cell_title[11], $cell_title[11]);
 
-								  }
-								//   $last = count($items_order)+2;
-								//   $objWorkSheet->setCellValue('A'.$last , '')
-								// 				  ->setCellValue('B'.$last , '')
-								// 				  ->setCellValue('C'.$last, '')
-								// 				  ->setCellValue('D'.$last, '')
-								// 				  ->setCellValue('E'.$last, '')
-								// 				  ->setCellValue('F'.$last , '總金額')
-								// 				  ->setCellValue('G'.$last ,  $total);
-		  
-		  
-				}
-				$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
+					for ($j=0;$j<count($question_ans_list);$j++) {
+						$k = $j+2;
+						$objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->q1)
+									->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->q2)
+									->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q3)
+									->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q4)
+									->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q5)
+									->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q6)
+									->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q7)
+									->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q8)
+									->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q9)
+									->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q10)
+									->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q11)
+									->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q12);
 
-			  break;
-			case 2:
-				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
+					}
 
-				for ($i=0;$i<count($question_ans_list);$i++) {
-	
-					// Add new sheet
-			  
-					//Write cells
-					  $objWorkSheet->setCellValue('A1', '是否不適')
-								  ->setCellValue('B1', '頸')
-								  ->setCellValue('C1', '左肩')
-								  ->setCellValue('D1', '左手肘/左前臂')
-								  ->setCellValue('E1', '左手/左手腕')
-								  ->setCellValue('F1', '左臀/左大腿')
-								  ->setCellValue('G1', '左膝')
-								  ->setCellValue('H1', '左腳踝/左腳')
-								  ->setCellValue('I1', '上背')
-								  ->setCellValue('J1', '右肩')
-								  ->setCellValue('K1', '右手肘/右前臂')
-								  ->setCellValue('L1', '下背')
-								  ->setCellValue('M1', '右手/右手腕')
-								  ->setCellValue('N1', '右臀/右大腿')
-								  ->setCellValue('O1', '右膝')
-								  ->setCellValue('P1', '右腳踝/右腳')
-								  ->setCellValue('Q1', '痠痛持續時間')
-								  ->setCellValue('R1', '是否工作加劇')
-								  ->setCellValue('S1', '最近3個月是否因上述不適而請假')
-								  ->setCellValue('T1', '請假幾天')
-								  ->setCellValue('U1', '是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療)')
-								  ->setCellValue('V1', '診斷名稱')
-								  ->setCellValue('W1', '其他症狀、病史說明');
-								  
 
-								//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
-								  for ($j=0;$j<count($question_ans_list);$j++) {
-									  $k = $j+2;
-									  $objWorkSheet->setCellValue('A'.$k , $question_ans_list[$j]->q1)
-												  ->setCellValue('B'.$k , $question_ans_list[$j]->q2)
-												  ->setCellValue('C'.$k , $question_ans_list[$j]->q3)
-												  ->setCellValue('D'.$k , $question_ans_list[$j]->q4)
-												  ->setCellValue('E'.$k , $question_ans_list[$j]->q5)
-												  ->setCellValue('F'.$k , $question_ans_list[$j]->q6)
-												  ->setCellValue('G'.$k , $question_ans_list[$j]->q7)
-												  ->setCellValue('H'.$k , $question_ans_list[$j]->q8)
-												  ->setCellValue('I'.$k , $question_ans_list[$j]->q9)
-												  ->setCellValue('J'.$k , $question_ans_list[$j]->q10)
-												  ->setCellValue('K'.$k , $question_ans_list[$j]->q11)
-												  ->setCellValue('L'.$k , $question_ans_list[$j]->q12)
-												  ->setCellValue('M'.$k , $question_ans_list[$j]->q13)
-												  ->setCellValue('N'.$k , $question_ans_list[$j]->q14)
-												  ->setCellValue('O'.$k , $question_ans_list[$j]->q15)
-												  ->setCellValue('P'.$k , $question_ans_list[$j]->q16)
-												  ->setCellValue('Q'.$k , $question_ans_list[$j]->q17)
-												  ->setCellValue('R'.$k , $question_ans_list[$j]->q18)
-												  ->setCellValue('S'.$k , $question_ans_list[$j]->q19)
-												  ->setCellValue('T'.$k , $question_ans_list[$j]->q1o)
-												  ->setCellValue('U'.$k , $question_ans_list[$j]->q20)
-												  ->setCellValue('V'.$k , $question_ans_list[$j]->q2o)
-												  ->setCellValue('W'.$k , $question_ans_list[$j]->q3o);
-								
-								  }
-		  
-		  
-				}
-				$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
+			$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+		}
 
-			  break;
-			case 3:
-				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
+		break;
+		case 2:
+		$cell_title = ['是否不適','頸','左肩','左手肘/左前臂','左手/左手腕','左臀/左大腿',
+		'左膝','左腳踝/左腳','上背','右肩','右手肘/右前臂','下背','右手/右手腕','右臀/右大腿','右膝',
+		'右腳踝/右腳','痠痛持續時間','是否工作加劇','最近3個月是否因上述不適而請假','請假幾天',
+		'是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療)','診斷名稱','其他症狀、病史說明'];
+		for ($i=0;$i<count($question_ans_list);$i++) {
 
-				for ($i=0;$i<count($question_ans_list);$i++) {
-	
-					// Add new sheet
-			  
-					//Write cells
-					  $objWorkSheet->setCellValue('A1', '你常覺得疲勞嗎？')
-								  ->setCellValue('B1', '你常覺得身體上體力透支嗎？')
-								  ->setCellValue('C1', '你常覺得情緒上心力交瘁嗎？')
-								  ->setCellValue('D1', '你常會覺得，「我快要撐不下去了」嗎?')
-								  ->setCellValue('E1', '你常覺得精疲力竭嗎？')
-								  ->setCellValue('F1', '你常常覺得虛弱，好像快要生病了嗎？')
-								  ->setCellValue('G1', '個人相關疲勞分數')
-								  ->setCellValue('H1', '個人相關過勞分級')
-								  ->setCellValue('I1', '你的工作會令人情緒上心力交瘁嗎？')
-								  ->setCellValue('J1', '你的工作會讓你覺得快要累垮了嗎？')
-								  ->setCellValue('K1', '你的工作會讓你覺得挫折嗎？')
-								  ->setCellValue('L1', '工作一整天之後，你覺得精疲力竭嗎？')
-								  ->setCellValue('M1', '上班之前只要想到又要工作一整天，你就覺得沒力嗎？')
-								  ->setCellValue('N1', '上班時你會覺得每一刻都很難熬嗎？')
-								  ->setCellValue('O1', '不工作的時候，你有足夠的精力陪朋友或家人嗎？')
-								  ->setCellValue('p1', '工作相關疲勞分數')
-								  ->setCellValue('Q1', '工作相關過勞分級');
+		// Add new sheet
+		$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+					
+					$objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
+					->setCellValue($all_cell_title[1], $cell_title[1])
+					->setCellValue($all_cell_title[2], $cell_title[2])
+					->setCellValue($all_cell_title[3], $cell_title[3])
+					->setCellValue($all_cell_title[4], $cell_title[4])
+					->setCellValue($all_cell_title[5], $cell_title[5])
+					->setCellValue($all_cell_title[6], $cell_title[6])
+					->setCellValue($all_cell_title[7], $cell_title[7])
+					->setCellValue($all_cell_title[8], $cell_title[8])
+					->setCellValue($all_cell_title[9], $cell_title[9])
+					->setCellValue($all_cell_title[10], $cell_title[10])
+					->setCellValue($all_cell_title[11], $cell_title[11])
+					->setCellValue($all_cell_title[12], $cell_title[12])
+					->setCellValue($all_cell_title[13], $cell_title[13])
+					->setCellValue($all_cell_title[14], $cell_title[14])
+					->setCellValue($all_cell_title[15], $cell_title[15])
+					->setCellValue($all_cell_title[16], $cell_title[16])
+					->setCellValue($all_cell_title[17], $cell_title[17])
+					->setCellValue($all_cell_title[18], $cell_title[18])
+					->setCellValue($all_cell_title[19], $cell_title[19])
+					->setCellValue($all_cell_title[20], $cell_title[20])
+					->setCellValue($all_cell_title[21], $cell_title[21])
+					->setCellValue($all_cell_title[22], $cell_title[22]);
 
-								//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
-								  for ($j=0;$j<count($question_ans_list);$j++) {
-									  $k = $j+2;
-									  $objWorkSheet->setCellValue('A'.$k , $question_ans_list[$j]->q1)
-												  ->setCellValue('B'.$k , $question_ans_list[$j]->q2)
-												  ->setCellValue('C'.$k , $question_ans_list[$j]->q3)
-												  ->setCellValue('D'.$k , $question_ans_list[$j]->q4)
-												  ->setCellValue('E'.$k , $question_ans_list[$j]->q5)
-												  ->setCellValue('F'.$k , $question_ans_list[$j]->q6)
-												  ->setCellValue('G'.$k , $question_ans_list[$j]->q1o)
-												  ->setCellValue('H'.$k , $question_ans_list[$j]->q2o)
-												  ->setCellValue('I'.$k , $question_ans_list[$j]->q7)
-												  ->setCellValue('J'.$k , $question_ans_list[$j]->q8)
-												  ->setCellValue('K'.$k , $question_ans_list[$j]->q9)
-												  ->setCellValue('L'.$k , $question_ans_list[$j]->q10)
-												  ->setCellValue('M'.$k , $question_ans_list[$j]->q11)
-												  ->setCellValue('N'.$k , $question_ans_list[$j]->q12)
-												  ->setCellValue('O'.$k , $question_ans_list[$j]->q13)
-												  ->setCellValue('P'.$k , $question_ans_list[$j]->q3o)
-												  ->setCellValue('Q'.$k , $question_ans_list[$j]->q4o);
+					//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
+					for ($j=0;$j<count($question_ans_list);$j++) {
+						$k = $j+2;
+						$objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->q1)
+									->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->q2)
+									->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q3)
+									->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q4)
+									->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q5)
+									->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q6)
+									->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q7)
+									->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q8)
+									->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q9)
+									->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q10)
+									->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q11)
+									->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q12)
+									->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q13)
+									->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q14)
+									->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q15)
+									->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q16)
+									->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q17)
+									->setCellValue($all_cell_name[17].$k , $question_ans_list[$j]->q18)
+									->setCellValue($all_cell_name[18].$k , $question_ans_list[$j]->q19)
+									->setCellValue($all_cell_name[19].$k , $question_ans_list[$j]->q1o)
+									->setCellValue($all_cell_name[20].$k , $question_ans_list[$j]->q20)
+									->setCellValue($all_cell_name[21].$k , $question_ans_list[$j]->q2o)
+									->setCellValue($all_cell_name[22].$k , $question_ans_list[$j]->q3o);
+					
+					}
 
-								  }
-								//   $last = count($items_order)+2;
-								//   $objWorkSheet->setCellValue('A'.$last , '')
-								// 				  ->setCellValue('B'.$last , '')
-								// 				  ->setCellValue('C'.$last, '')
-								// 				  ->setCellValue('D'.$last, '')
-								// 				  ->setCellValue('E'.$last, '')
-								// 				  ->setCellValue('F'.$last , '總金額')
-								// 				  ->setCellValue('G'.$last ,  $total);
-		  
-		  
-				}
-				$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
 
-			  break;
-			default:
-			  //code block
-		  }
+			$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+		}
+		break;
+		case 3:
+		$cell_title = ['你常覺得疲勞嗎？','你常覺得身體上體力透支嗎？','你常覺得情緒上心力交瘁嗎？','你常會覺得，「我快要撐不下去了」嗎?',
+		'你常覺得精疲力竭嗎？','你常常覺得虛弱，好像快要生病了嗎？',
+		'個人相關疲勞分數','個人相關過勞分級','你的工作會令人情緒上心力交瘁嗎？','你的工作會讓你覺得快要累垮了嗎？','你的工作會讓你覺得挫折嗎？',
+		'工作一整天之後，你覺得精疲力竭嗎？','上班之前只要想到又要工作一整天，你就覺得沒力嗎？','上班時你會覺得每一刻都很難熬嗎？',
+		'不工作的時候，你有足夠的精力陪朋友或家人嗎？','工作相關疲勞分數','工作相關過勞分級'];
+		for ($i=0;$i<count($question_ans_list);$i++) {
+
+		// Add new sheet
+		$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+
+					$objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
+					->setCellValue($all_cell_title[1], $cell_title[1])
+					->setCellValue($all_cell_title[2], $cell_title[2])
+					->setCellValue($all_cell_title[3], $cell_title[3])
+					->setCellValue($all_cell_title[4], $cell_title[4])
+					->setCellValue($all_cell_title[5], $cell_title[5])
+					->setCellValue($all_cell_title[6], $cell_title[6])
+					->setCellValue($all_cell_title[7], $cell_title[7])
+					->setCellValue($all_cell_title[8], $cell_title[8])
+					->setCellValue($all_cell_title[9], $cell_title[9])
+					->setCellValue($all_cell_title[10], $cell_title[10])
+					->setCellValue($all_cell_title[11], $cell_title[11])
+					->setCellValue($all_cell_title[12], $cell_title[12])
+					->setCellValue($all_cell_title[13], $cell_title[13])
+					->setCellValue($all_cell_title[14], $cell_title[14])
+					->setCellValue($all_cell_title[15], $cell_title[15])
+					->setCellValue($all_cell_title[16], $cell_title[16]);
+
+					//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
+					for ($j=0;$j<count($question_ans_list);$j++) {
+						$k = $j+2;
+						$objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->q1)
+									->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->q2)
+									->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q3)
+									->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q4)
+									->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q5)
+									->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q6)
+									->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q1o)
+									->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q2o)
+									->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q7)
+									->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q8)
+									->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q9)
+									->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q10)
+									->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q11)
+									->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q12)
+									->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q13)
+									->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q3o)
+									->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q4o);
+
+					}
+					//   $last = count($items_order)+2;
+					//   $objWorkSheet->setCellValue('A'.$last , '')
+					// 				  ->setCellValue('B'.$last , '')
+					// 				  ->setCellValue('C'.$last, '')
+					// 				  ->setCellValue('D'.$last, '')
+					// 				  ->setCellValue('E'.$last, '')
+					// 				  ->setCellValue('F'.$last , '總金額')
+					// 				  ->setCellValue('G'.$last ,  $total);
+
+
+			$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+		}
+		break;
+		default:
+		//code block
+		}
 
 		
 		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
