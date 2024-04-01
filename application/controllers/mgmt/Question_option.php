@@ -450,9 +450,10 @@ class Question_option extends MY_Mgmt_Controller {
 		$all_cell_name = ['A','B','C','D','E','F','G','H','I','J','K',
 				'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
-		$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 
 		switch ($question_ans_list[0]->qs_id) {
+			$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+
 		case 1:
 		$cell_title = ['部門','姓名','工作型態','性別','年資','平均每週工作時數','班別','曾經遭遇的暴力攻擊情境',
 		'公司提供有關預防暴力攻擊之衛生教育訓練','我清楚了解如何辨識職場發生的暴力危害',
