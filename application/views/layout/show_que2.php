@@ -350,6 +350,7 @@ console.log(q1);
          q21!==null){
           is_ok=true;
          } else{
+          console.log('-----');
           console.log(q1);
           console.log(q2);
           console.log(q3);
