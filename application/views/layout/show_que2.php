@@ -32,7 +32,7 @@
           0無症狀。<br>1輕微可忽略。<br>2顯著但不影響工作。<br>3影響工作但不需休假。<br>4影響工作且需休假少於四天。<br>5影響工作且需休假四天以上。<br>       
         </div >
        
-        <div class="col-xs-3" style="padding-left:100px;" >
+        <div class="col-xs-2" style="padding-left:100px;" >
           1. <br>
           <input type="radio" name="q2_2" value="0" id="q2_1"><label for="q2_1">0</label>
           <input type="radio" name="q2_2" value="1" id="q2_2"><label for="q2_2">1</label>
@@ -84,10 +84,10 @@
           <input type="radio" name="q2_8" value="5" id="q8_6"><label for="q8_6">5</label><br>
 
         </div >
-        <div class="col-xs-3" >
+        <div class="col-xs-5" >
           <img width="300" src="<?= base_url('img/body_fat/logo/body_back_for_que2.png') ?>" >
         </div >
-        <div class="col-xs-3" >
+        <div class="col-xs-2" >
           8. <br>
           <input type="radio" name="q2_9" value="0" id="q9_1"><label for="q9_1">0</label>
           <input type="radio" name="q2_9" value="1" id="q9_2"><label for="q9_2">1</label>
