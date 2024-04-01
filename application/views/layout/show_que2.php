@@ -29,7 +29,7 @@
       嚴重度說明:<br>
       <div class="form-group">
         <div class="col-xs-2" >
-          0無症狀。<br>1輕微可忽略。<br>2顯著但不影響工作。<br>3影響工作但不需休假。<br>4影響工作且需休假少於四天。<br>5影響工作且需休假四天以上。<br>       
+          0無症狀<br>1輕微可忽略<br>2顯著但不影響工作<br>3影響工作但不需休假<br>4影響工作且需休假少於四天<br>5影響工作且需休假四天以上<br>       
         </div >
        
         <div class="col-xs-3" style="padding-left:100px;" >
