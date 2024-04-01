@@ -450,7 +450,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$all_cell_name = ['A','B','C','D','E','F','G','H','I','J','K',
 				'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
-		$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
+		$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 
 		switch ($question_ans_list[0]->qs_id) {
 		case 1:
@@ -498,7 +498,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 
 				}
-				$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+				$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
 
 				break;
 		case 2:
@@ -570,7 +570,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 
 			}
-			$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+			$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
 
 			break;
 		case 3:
@@ -639,7 +639,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 
 		}
-			$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+			$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
 
 			break;
 		default:
