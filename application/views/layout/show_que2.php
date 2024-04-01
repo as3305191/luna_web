@@ -81,6 +81,9 @@
           <input type="radio" name="q2_8" value="3" id="q8_4"><label for="q8_4">3</label>
           <input type="radio" name="q2_8" value="4" id="q8_5"><label for="q8_5">4</label>
           <input type="radio" name="q2_8" value="5" id="q8_6"><label for="q8_6">5</label><br>
+
+        </div >
+        <div class="col-xs-3" >
           8. <br>
           <input type="radio" name="q2_9" value="0" id="q9_1"><label for="q9_1">0</label>
           <input type="radio" name="q2_9" value="1" id="q9_2"><label for="q9_2">1</label>
@@ -88,8 +91,6 @@
           <input type="radio" name="q2_9" value="3" id="q9_4"><label for="q9_4">3</label>
           <input type="radio" name="q2_9" value="4" id="q9_5"><label for="q9_5">4</label>
           <input type="radio" name="q2_9" value="5" id="q9_6"><label for="q9_6">5</label><br>
-        </div >
-        <div class="col-xs-3" >
           9. <br>
           <input type="radio" name="q2_10" value="0" id="q10_1"><label for="q10_1">0</label>
           <input type="radio" name="q2_10" value="1" id="q10_2"><label for="q10_2">1</label>
