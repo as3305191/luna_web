@@ -350,6 +350,28 @@ console.log(q1);
          q21!==null){
           is_ok=true;
          } else{
+          console.log(q1);
+          console.log(q2);
+          console.log(q3);
+          console.log(q4);
+          console.log(q5);
+          console.log(q6);
+          console.log(q7);
+          console.log(q8);
+          console.log(q9);
+          console.log(q10);
+          console.log(q11);
+          console.log(q12);
+          console.log(q13);
+          console.log(q14);
+          console.log(q15);
+          console.log(q16);
+          console.log(q17);
+          console.log(q18);
+          console.log(q19);
+          console.log(q20);
+          console.log(q21);
+        
           alert('請填寫完全部題目！');
          }
     } else{
