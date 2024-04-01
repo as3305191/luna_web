@@ -452,13 +452,13 @@ class Question_option extends MY_Mgmt_Controller {
 
 
 		switch ($question_ans_list[0]->qs_id) {
-			$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
-
 		case 1:
 		$cell_title = ['部門','姓名','工作型態','性別','年資','平均每週工作時數','班別','曾經遭遇的暴力攻擊情境',
 		'公司提供有關預防暴力攻擊之衛生教育訓練','我清楚了解如何辨識職場發生的暴力危害',
 		'我清楚了解如何進行暴力危害的風險評估','我清楚了解如何避免或遠離暴力危害事件',
 		'我清楚了解暴力危害事件發生時如何尋求支援管道','我具備因應暴力危害事件的事務處理與執行能力'];
+		$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
+
 		for ($i=0;$i<count($question_ans_list);$i++) {
 
 		// Add new sheet
@@ -507,10 +507,11 @@ class Question_option extends MY_Mgmt_Controller {
 		'左膝','左腳踝/左腳','上背','右肩','右手肘/右前臂','下背','右手/右手腕','右臀/右大腿','右膝',
 		'右腳踝/右腳','痠痛持續時間','是否工作加劇','最近3個月是否因上述不適而請假','請假幾天',
 		'是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療)','診斷名稱','其他症狀、病史說明'];
+		$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
+
 		for ($i=0;$i<count($question_ans_list);$i++) {
 
 		// Add new sheet
-		$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
 					
 					$objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
 					->setCellValue($all_cell_title[1], $cell_title[1])
@@ -580,10 +581,11 @@ class Question_option extends MY_Mgmt_Controller {
 		'個人相關疲勞分數','個人相關過勞分級','你的工作會令人情緒上心力交瘁嗎？','你的工作會讓你覺得快要累垮了嗎？','你的工作會讓你覺得挫折嗎？',
 		'工作一整天之後，你覺得精疲力竭嗎？','上班之前只要想到又要工作一整天，你就覺得沒力嗎？','上班時你會覺得每一刻都很難熬嗎？',
 		'不工作的時候，你有足夠的精力陪朋友或家人嗎？','工作相關疲勞分數','工作相關過勞分級'];
+		$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
+
 		for ($i=0;$i<count($question_ans_list);$i++) {
 
 		// Add new sheet
-		$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
 
 					$objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
 					->setCellValue($all_cell_title[1], $cell_title[1])
