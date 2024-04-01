@@ -97,7 +97,7 @@
     <input type="radio" name="q3_13" value="25" id="q13_75"><label for="q13_75">常常(25)</label><br>
     <input type="radio" name="q3_13" value="50" id="q13_50"><label for="q13_50">有時候(50)</label><br>
     <input type="radio" name="q3_13" value="75" id="q13_25"><label for="q13_25">不常(75)</label><br>
-    <input type="radio" name="q3_13" value="100" id="q13_0"><label for="q13_0">從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_13" value="100" id="q13_0"><label for="q13_0">從未或幾乎從未(100)</label><br>
     工作相關疲勞分數(各題加總後除以7):<span style="color:red" id="t2"></span><br>
     工作相關過勞分級(【輕微】45分以下/【中度】45-60分/【嚴重】60分以上):<span style="color:red" id="t2_s"></span><br>
     <div class="col-xs-12 no-padding" style="margin-top:20px">
