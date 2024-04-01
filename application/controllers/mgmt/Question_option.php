@@ -450,6 +450,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$all_cell_name = ['A','B','C','D','E','F','G','H','I','J','K',
 				'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
 
+		$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
 
 		switch ($question_ans_list[0]->qs_id) {
 		case 1:
@@ -460,7 +461,6 @@ class Question_option extends MY_Mgmt_Controller {
 		for ($i=0;$i<count($question_ans_list);$i++) {
 
 		// Add new sheet
-		$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
 
 		$objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
 					->setCellValue($all_cell_title[1], $cell_title[1])
@@ -497,10 +497,10 @@ class Question_option extends MY_Mgmt_Controller {
 					}
 
 
-			$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
-		}
+				}
+				$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
 
-		break;
+				break;
 		case 2:
 		$cell_title = ['部門','姓名','是否不適','頸','左肩','左手肘/左前臂','左手/左手腕','左臀/左大腿',
 		'左膝','左腳踝/左腳','上背','右肩','右手肘/右前臂','下背','右手/右手腕','右臀/右大腿','右膝',
@@ -569,9 +569,10 @@ class Question_option extends MY_Mgmt_Controller {
 					}
 
 
+			}
 			$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
-		}
-		break;
+
+			break;
 		case 3:
 		$cell_title = ['部門','姓名','你常覺得疲勞嗎？','你常覺得身體上體力透支嗎？','你常覺得情緒上心力交瘁嗎？','你常會覺得，「我快要撐不下去了」嗎?',
 		'你常覺得精疲力竭嗎？','你常常覺得虛弱，好像快要生病了嗎？',
@@ -637,9 +638,10 @@ class Question_option extends MY_Mgmt_Controller {
 					// 				  ->setCellValue('G'.$last ,  $total);
 
 
-			$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
 		}
-		break;
+			$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+
+			break;
 		default:
 		//code block
 		}
