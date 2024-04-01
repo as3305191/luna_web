@@ -32,7 +32,7 @@
           0無症狀。<br>1輕微可忽略。<br>2顯著但不影響工作。<br>3影響工作但不需休假。<br>4影響工作且需休假少於四天。<br>5影響工作且需休假四天以上。<br>       
         </div >
        
-        <div class="col-xs-3" style="padding-left:15px;" >
+        <div class="col-xs-3" style="padding-left:100px;" >
           1. <br>
           <input type="radio" name="q2_2" value="0" id="q2_1"><label for="q2_1">0</label>
           <input type="radio" name="q2_2" value="1" id="q2_2"><label for="q2_2">1</label>
