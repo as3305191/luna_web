@@ -210,8 +210,10 @@ class Question_ans_dao extends MY_Model {
 		$this -> db -> select('qo.note as note');
 		$this -> db -> select('qs.question_style_name as question_style_name');
 		$this -> db -> select('qs.id as qs_id');
+		$this -> db -> select('d.name as dep_name');
 
 		$this -> db -> join("users u", "u.id = _m.user_id", "left");
+		$this -> db -> join("department d", "u.id = r.role_id", "left");
 		$this -> db -> join("question_option qo", "qo.id = _m.question_option_id", "left");
 		$this -> db -> join("question_style qs", "qs.id = qo.question_style_id", "left");
 
