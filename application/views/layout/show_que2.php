@@ -26,9 +26,12 @@
     <input type="radio" name="q2_1" value="否" id="q1_n"><label for="q1_n">否</label><br>
     <div class="d_hide" id="d_hide">
       二.請於下圖勾選各部位痠痛或不適症狀之嚴重度:<br>
-      嚴重度說明:0無症狀;1輕微可忽略;2顯著但不影響工作;3影響工作但不需休假;4影響工作且需休假少於四天;5影響工作且需休假四天以上。<br>
+      嚴重度說明:<br>
       <div class="form-group">
-        <div class="col-xs-6" >
+        <div class="col-xs-2" >
+          0無症狀;<br>1輕微可忽略;<br>2顯著但不影響工作;<br>3影響工作但不需休假;<br>4影響工作且需休假少於四天;<br>5影響工作且需休假四天以上。<br>       
+        </div >
+        <div class="col-xs-4" >
           <img width="300" src="<?= base_url('img/body_fat/logo/body_back_for_que2.png') ?>" >
         </div >
         <div class="col-xs-3" >
