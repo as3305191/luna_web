@@ -196,19 +196,20 @@ class Import extends MY_Base_Controller {
 			$vnm=["阮氏娥","梁氏梅","黎氏賢","農氏厚","黃氏慧","武氏定","阮氏媛","武氏填","武氏胡北","武氏香","陳氏詩","阮氏娟","黎氏慧","丁氏芳"];
 			if($each->id>490){
 
-				if(in_array($each->user_name, $idn)){
+				if(in_array(trim($each->user_name), $idn)){
 					$data = array(
 						'lang' =>'idn',
+						'user_name' =>trim($each->user_name),
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
 					$this->users_dao->update($data,$each->id);
 				} else{
 
-					if(in_array($each->user_name, $vnm)){
+					if(in_array(trim($each->user_name), $vnm)){
 						$data = array(
 							'lang' =>'vnm',
-						
+							'user_name' =>trim($each->user_name),
 						);
 						// $this->users_dao->update_by($data,'empid',$empid);
 						$this->users_dao->update($data,$each->id);
