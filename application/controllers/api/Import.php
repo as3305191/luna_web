@@ -198,7 +198,7 @@ class Import extends MY_Base_Controller {
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->users_dao->update($data);
+					$this->users_dao->update($data,$each->id);
 				}
 				if($each->depname =='作業課' && $each->lang='idn'){
 					$data = array(
@@ -206,7 +206,7 @@ class Import extends MY_Base_Controller {
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->users_dao->update($data);
+					$this->users_dao->update($data,$each->id);
 				}
 				if($each->depname =='作業課' && $each->lang='cht'){
 					$data = array(
@@ -214,7 +214,7 @@ class Import extends MY_Base_Controller {
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->users_dao->update($data);
+					$this->users_dao->update($data,$each->id);
 				}
 				
 			}
