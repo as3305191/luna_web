@@ -569,6 +569,8 @@ class Users_dao extends MY_Model {
 	}
 
 	function find_all_account() {
+		$this -> db -> from("$this->table_name as _m");
+
 		$this -> db -> select('_m.account');
 	
 		// query results
