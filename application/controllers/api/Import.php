@@ -215,7 +215,7 @@ class Import extends MY_Base_Controller {
 				// 		$this->users_dao->update($data,$each->id);
 				// 	}
 				// }
-				if($each->depname =='作業課' && $each->lang='vnm'){
+				if($each->depname =='作業課' && $each->lang=='vnm'){
 					$data = array(
 						'role_id' =>76,
 					
@@ -223,7 +223,7 @@ class Import extends MY_Base_Controller {
 					// $this->users_dao->update_by($data,'empid',$empid);
 					$this->users_dao->update($data,$each->id);
 				}
-				if($each->depname =='作業課' && $each->lang='idn'){
+				if($each->depname =='作業課' && $each->lang=='idn'){
 					$data = array(
 						'role_id' =>75,
 					
