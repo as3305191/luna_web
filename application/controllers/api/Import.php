@@ -192,25 +192,25 @@ class Import extends MY_Base_Controller {
 		$user = $this -> users_dao -> find_all();
 		foreach ($user as $each){
 			if($each->id>490){
-				if($each->depname =='作業課' && $each->lang='vnm'){
+				// if($each->depname =='五甲一廠' && $each->lang='vnm'){
+				// 	$data = array(
+				// 		'role_id' =>76,
+					
+				// 	);
+				// 	// $this->users_dao->update_by($data,'empid',$empid);
+				// 	$this->users_dao->update($data,$each->id);
+				// }
+				if($each->depname =='五甲一廠' && $each->lang='idn'){
 					$data = array(
-						'role_id' =>76,
+						'role_id' =>77,
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
 					$this->users_dao->update($data,$each->id);
 				}
-				if($each->depname =='作業課' && $each->lang='idn'){
+				if($each->depname =='五甲一廠' && $each->lang='cht'){
 					$data = array(
-						'role_id' =>75,
-					
-					);
-					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->users_dao->update($data,$each->id);
-				}
-				if($each->depname =='作業課' && $each->lang='cht'){
-					$data = array(
-						'role_id' =>31,
+						'role_id' =>34,
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
