@@ -149,9 +149,9 @@ class Import extends MY_Base_Controller {
 			$highestColumn = $worksheet->getHighestColumn();
 			$idn=["和利","拉瑪","羅尼","艾弟","納陸","羅滿","蘇比","仁弟","安仨","阿吉","阿吉斯"];
 			$vnm=["阮氏娥","梁氏梅","黎氏賢","農氏厚","黃氏慧","武氏定","阮氏媛","武氏填","武氏胡北","武氏香","陳氏詩","阮氏娟","黎氏慧","丁氏芳"];
-			for($row=1; $row<=$highestRow; $row++){
+			for($row=2; $row<=$highestRow; $row++){
 				$account = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-				$user = $this -> users_dao -> find_by('account', $account);
+				$user = $this -> users_dao -> find_all_account();
 				if (empty($user)) {
 					$password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
 					// $user_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
@@ -166,15 +166,15 @@ class Import extends MY_Base_Controller {
 							$lang ="cht";
 						}
 					}
-					$data = array(
-						'account' =>$account,
-						'password' =>$password,
-						'user_name' =>$user_name,
-						'lang' =>$lang,
-					);
+					
 				}
 				
-				
+				$data = array(
+					'account' =>$account,
+					'password' =>$password,
+					'user_name' =>$user_name,
+					'lang' =>$lang,
+				);
 	
 					
 					// $this->users_dao->update_by($data,'empid',$empid);

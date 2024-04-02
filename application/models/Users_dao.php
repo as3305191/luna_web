@@ -568,6 +568,15 @@ class Users_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_all_account() {
+		$this -> db -> select('_m.account');
+	
+		// query results
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		return $list;
+	}
+
 	function find_by_account_and_corp($corp_id, $account) {
 		$list = array();
 		$this -> db -> where('status', 0);
