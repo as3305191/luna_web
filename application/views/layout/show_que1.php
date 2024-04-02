@@ -1,4 +1,6 @@
 <?php $this->load->view('layout/head'); ?>
+<?php $lang = $this -> session -> userdata('lang'); ?>
+<?php require_once(APPPATH."views/lang/$lang.php"); ?>
 <style>
   span{
     color:#003355;
