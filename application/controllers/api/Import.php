@@ -190,8 +190,30 @@ class Import extends MY_Base_Controller {
 	}
 	function update_user(){
 		$user = $this -> users_dao -> find_all();
+
 		foreach ($user as $each){
+			$idn=["和利","拉瑪","羅尼","艾弟","納陸","羅滿","蘇比","仁弟","安仨","阿吉","阿吉斯"];
+			$vnm=["阮氏娥","梁氏梅","黎氏賢","農氏厚","黃氏慧","武氏定","阮氏媛","武氏填","武氏胡北","武氏香","陳氏詩","阮氏娟","黎氏慧","丁氏芳"];
 			if($each->id>490){
+
+				if(in_array($each->user_name, $idn)){
+					$data = array(
+						'lang' =>'idn',
+					
+					);
+					// $this->users_dao->update_by($data,'empid',$empid);
+					$this->users_dao->update($data,$each->id);
+				} else{
+
+					if(in_array($each->user_name, $vnm)){
+						$data = array(
+							'lang' =>'vnm',
+						
+						);
+						// $this->users_dao->update_by($data,'empid',$empid);
+						$this->users_dao->update($data,$each->id);
+					}
+				}
 				// if($each->depname =='五甲一廠' && $each->lang='vnm'){
 				// 	$data = array(
 				// 		'role_id' =>76,
