@@ -156,6 +156,8 @@ class Import extends MY_Base_Controller {
 					$password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
 					// $user_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
 					$user_name = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+					$depname = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+
 					// $user_name = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
 					if(in_array($user_name, $vnm)){
 						$lang ="vnm";
@@ -171,6 +173,7 @@ class Import extends MY_Base_Controller {
 						'password' =>$password,
 						'user_name' =>$user_name,
 						'lang' =>$lang,
+						'depname' =>$depname,
 					);
 					$this->users_dao->insert($data);
 
