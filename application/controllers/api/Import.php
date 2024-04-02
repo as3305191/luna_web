@@ -215,31 +215,54 @@ class Import extends MY_Base_Controller {
 				// 		$this->users_dao->update($data,$each->id);
 				// 	}
 				// }
-				if($each->depname =='作業課' && $each->lang=='vnm'){
+				// if($each->depname =='作業課' && $each->lang=='vnm'){
+				// 	$data = array(
+				// 		'role_id' =>76,
+					
+				// 	);
+				// 	// $this->users_dao->update_by($data,'empid',$empid);
+				// 	$this->users_dao->update($data,$each->id);
+				// }
+				// if($each->depname =='作業課' && $each->lang=='idn'){
+				// 	$data = array(
+				// 		'role_id' =>75,
+					
+				// 	);
+				// 	// $this->users_dao->update_by($data,'empid',$empid);
+				// 	$this->users_dao->update($data,$each->id);
+				// }
+				if($each->depname =='產技課' && $each->lang=='cht'){
 					$data = array(
-						'role_id' =>76,
+						'role_id' =>30,
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
 					$this->users_dao->update($data,$each->id);
 				}
-				if($each->depname =='作業課' && $each->lang=='idn'){
+				if($each->depname =='會計課' && $each->lang=='cht'){
 					$data = array(
-						'role_id' =>75,
+						'role_id' =>23,
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
 					$this->users_dao->update($data,$each->id);
 				}
-				if($each->depname =='作業課' && $each->lang=='cht'){
+				if($each->depname =='生管課' && $each->lang=='cht'){
 					$data = array(
-						'role_id' =>31,
+						'role_id' =>25,
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
 					$this->users_dao->update($data,$each->id);
 				}
-				
+				if($each->depname =='銷售課' && $each->lang=='cht'){
+					$data = array(
+						'role_id' =>19,
+					
+					);
+					// $this->users_dao->update_by($data,'empid',$empid);
+					$this->users_dao->update($data,$each->id);
+				}
 			}
 		}
 	}
