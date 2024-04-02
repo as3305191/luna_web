@@ -143,22 +143,38 @@ class Import extends MY_Base_Controller {
 		// $this -> to_json($res);
 	}
 	function import_user(){
-		$object = PHPExcel_IOFactory::load("員工資料1.xlsx");
+		$object = PHPExcel_IOFactory::load("員工.xlsx");
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
+			$idn=["和利","拉瑪","羅尼","艾弟","納陸","羅滿","蘇比","仁弟","安仨","阿吉","阿吉斯"];
+			$vnm=["阮氏娥","梁氏梅","黎氏賢","農氏厚","黃氏慧","武氏定","阮氏媛","武氏填","武氏胡北","武氏香","陳氏詩","阮氏娟","黎氏慧","丁氏芳"];
 			for($row=1; $row<=$highestRow; $row++){
-				$area_num = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-				$user_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-				$user_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-				$user_name = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-				$user_name = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
-
+				$account = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+				$user = $this -> users_dao -> find_by('account', $account);
+				if (empty($user)) {
+					$password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+					// $user_name = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+					$user_name = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+					// $user_name = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+					if(in_array($user_name, $vnm)){
+						$lang ="vnm";
+					} else{
+						if(in_array($user_name, $idn)){
+							$lang ="idn";
+						} else{
+							$lang ="cht";
+						}
+					}
+				}
+				
+				
 	
 					$data = array(
+						'account' =>$account,
+						'password' =>$password,
 						'user_name' =>$user_name,
-						'area_num' =>$area_num,
-					
+						'lang' =>$lang,
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
 					$this->users_dao->insert($data);
