@@ -231,33 +231,41 @@ class Import extends MY_Base_Controller {
 				// 	// $this->users_dao->update_by($data,'empid',$empid);
 				// 	$this->users_dao->update($data,$each->id);
 				// }
-				if($each->depname =='產技課' && $each->lang=='cht'){
-					$data = array(
-						'role_id' =>30,
+				// if($each->depname =='產技課' && $each->lang=='cht'){
+				// 	$data = array(
+				// 		'role_id' =>30,
 					
-					);
-					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->users_dao->update($data,$each->id);
-				}
-				if($each->depname =='會計課' && $each->lang=='cht'){
-					$data = array(
-						'role_id' =>23,
+				// 	);
+				// 	// $this->users_dao->update_by($data,'empid',$empid);
+				// 	$this->users_dao->update($data,$each->id);
+				// }
+				// if($each->depname =='會計課' && $each->lang=='cht'){
+				// 	$data = array(
+				// 		'role_id' =>23,
 					
-					);
-					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->users_dao->update($data,$each->id);
-				}
-				if($each->depname =='生管課' && $each->lang=='cht'){
-					$data = array(
-						'role_id' =>25,
+				// 	);
+				// 	// $this->users_dao->update_by($data,'empid',$empid);
+				// 	$this->users_dao->update($data,$each->id);
+				// }
+				// if($each->depname =='生管課' && $each->lang=='cht'){
+				// 	$data = array(
+				// 		'role_id' =>25,
 					
-					);
-					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->users_dao->update($data,$each->id);
-				}
-				if($each->depname =='銷售課' && $each->lang=='cht'){
+				// 	);
+				// 	// $this->users_dao->update_by($data,'empid',$empid);
+				// 	$this->users_dao->update($data,$each->id);
+				// }
+				// if($each->depname =='銷售課' && $each->lang=='cht'){
+				// 	$data = array(
+				// 		'role_id' =>19,
+					
+				// 	);
+				// 	// $this->users_dao->update_by($data,'empid',$empid);
+				// 	$this->users_dao->update($data,$each->id);
+				// }
+				if($each->depname =='業務後勤課' && $each->lang=='cht'){
 					$data = array(
-						'role_id' =>19,
+						'role_id' =>22,
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
