@@ -231,14 +231,14 @@ class Import extends MY_Base_Controller {
 					// $this->users_dao->update_by($data,'empid',$empid);
 					$this->users_dao->update($data,$each->id);
 				}
-				// if($each->depname =='作業課' && $each->lang='cht'){
-				// 	$data = array(
-				// 		'role_id' =>34,
+				if($each->depname =='作業課' && $each->lang=='cht'){
+					$data = array(
+						'role_id' =>31,
 					
-				// 	);
-				// 	// $this->users_dao->update_by($data,'empid',$empid);
-				// 	$this->users_dao->update($data,$each->id);
-				// }
+					);
+					// $this->users_dao->update_by($data,'empid',$empid);
+					$this->users_dao->update($data,$each->id);
+				}
 				
 			}
 		}
