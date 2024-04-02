@@ -196,42 +196,42 @@ class Import extends MY_Base_Controller {
 			$vnm=["阮氏娥","梁氏梅","黎氏賢","農氏厚","黃氏慧","武氏定","阮氏媛","武氏填","武氏胡北","武氏香","陳氏詩","阮氏娟","黎氏慧","丁氏芳"];
 			if($each->id>490){
 
-				if(in_array(trim($each->user_name), $idn)){
-					$data = array(
-						'lang' =>'idn',
-						'user_name' =>trim($each->user_name),
-					
-					);
-					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->users_dao->update($data,$each->id);
-				} else{
-
-					if(in_array(trim($each->user_name), $vnm)){
-						$data = array(
-							'lang' =>'vnm',
-							'user_name' =>trim($each->user_name),
-						);
-						// $this->users_dao->update_by($data,'empid',$empid);
-						$this->users_dao->update($data,$each->id);
-					}
-				}
-				// if($each->depname =='五甲一廠' && $each->lang='vnm'){
+				// if(in_array(trim($each->user_name), $idn)){
 				// 	$data = array(
-				// 		'role_id' =>76,
+				// 		'lang' =>'idn',
+				// 		'user_name' =>trim($each->user_name),
 					
 				// 	);
 				// 	// $this->users_dao->update_by($data,'empid',$empid);
 				// 	$this->users_dao->update($data,$each->id);
+				// } else{
+
+				// 	if(in_array(trim($each->user_name), $vnm)){
+				// 		$data = array(
+				// 			'lang' =>'vnm',
+				// 			'user_name' =>trim($each->user_name),
+				// 		);
+				// 		// $this->users_dao->update_by($data,'empid',$empid);
+				// 		$this->users_dao->update($data,$each->id);
+				// 	}
 				// }
-				if($each->depname =='廠務課' && $each->lang='idn'){
+				if($each->depname =='作業課' && $each->lang='vnm'){
 					$data = array(
-						'role_id' =>78,
+						'role_id' =>76,
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
 					$this->users_dao->update($data,$each->id);
 				}
-				// if($each->depname =='五甲一廠' && $each->lang='cht'){
+				if($each->depname =='作業課' && $each->lang='idn'){
+					$data = array(
+						'role_id' =>75,
+					
+					);
+					// $this->users_dao->update_by($data,'empid',$empid);
+					$this->users_dao->update($data,$each->id);
+				}
+				// if($each->depname =='作業課' && $each->lang='cht'){
 				// 	$data = array(
 				// 		'role_id' =>34,
 					
