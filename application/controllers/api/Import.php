@@ -200,22 +200,22 @@ class Import extends MY_Base_Controller {
 				// 	// $this->users_dao->update_by($data,'empid',$empid);
 				// 	$this->users_dao->update($data,$each->id);
 				// }
-				if($each->depname =='五甲一廠' && $each->lang='idn'){
+				if($each->depname =='廠務課' && $each->lang='idn'){
 					$data = array(
-						'role_id' =>77,
+						'role_id' =>78,
 					
 					);
 					// $this->users_dao->update_by($data,'empid',$empid);
 					$this->users_dao->update($data,$each->id);
 				}
-				if($each->depname =='五甲一廠' && $each->lang='cht'){
-					$data = array(
-						'role_id' =>34,
+				// if($each->depname =='五甲一廠' && $each->lang='cht'){
+				// 	$data = array(
+				// 		'role_id' =>34,
 					
-					);
-					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->users_dao->update($data,$each->id);
-				}
+				// 	);
+				// 	// $this->users_dao->update_by($data,'empid',$empid);
+				// 	$this->users_dao->update($data,$each->id);
+				// }
 				
 			}
 		}
