@@ -21,6 +21,8 @@
     </div>
     <hr/>
     個人疲勞評估<br>
+    <?php $lang = $this -> session -> userdata('lang'); ?>
+    <input type=""  value="<?php $lang = $this -> session -> userdata('lang'); ?>" />
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     一.  您在過去1年內，身體是否有長達2星期以上的痠痛、發麻、刺痛、肌肉疲勞、關節活動限制等不適症狀？ <br>
     (若否，結束此調查表；若是，請繼續填寫) <br>
