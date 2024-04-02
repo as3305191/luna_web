@@ -166,16 +166,17 @@ class Import extends MY_Base_Controller {
 							$lang ="cht";
 						}
 					}
-				}
-				
-				
-	
 					$data = array(
 						'account' =>$account,
 						'password' =>$password,
 						'user_name' =>$user_name,
 						'lang' =>$lang,
 					);
+				}
+				
+				
+	
+					
 					// $this->users_dao->update_by($data,'empid',$empid);
 					$this->users_dao->insert($data);
 			}
