@@ -1347,8 +1347,8 @@
 
 <script type="text/javascript">
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
-		loadScript(baseUrl + "js/app/question_option/list.js", function(){
-			currentApp = new QuestionoptionAppClass(new BaseAppClass({}));
+		loadScript(baseUrl + "js/app/unlawful_infringement/list.js", function(){
+			currentApp = new unlawfulinfringement(new BaseAppClass({}));
 		
 		});
 	});
