@@ -19,86 +19,86 @@
     <?= $this->_lang['q2_pfa'] ?><br>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     <?= $this->_lang['q2_ft'] ?><br>
-    <input type="radio" name="q3_1" value="100" id="q1_100"><label for="q1_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_1" value="75" id="q1_75"><label for="q1_75"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_1" value="50" id="q1_50"><label for="q1_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_1" value="25" id="q1_25"><label for="q1_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_1" value="0" id="q1_0"><label for="q1_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_1" value="100" id="q1_100"><label for="q1_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_1" value="75" id="q1_75"><label for="q1_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_1" value="50" id="q1_50"><label for="q1_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_1" value="25" id="q1_25"><label for="q1_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_1" value="0" id="q1_0"><label for="q1_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_fbe'] ?><br>
-    <input type="radio" name="q3_2" value="100" id="q2_100"><label for="q2_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_2" value="75" id="q2_75"><label for="q2_75"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_2" value="50" id="q2_50"><label for="q2_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_2" value="25" id="q2_25"><label for="q2_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_2" value="0" id="q2_0"><label for="q2_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_2" value="100" id="q2_100"><label for="q2_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_2" value="75" id="q2_75"><label for="q2_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_2" value="50" id="q2_50"><label for="q2_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_2" value="25" id="q2_25"><label for="q2_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_2" value="0" id="q2_0"><label for="q2_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_fme'] ?><br>
-    <input type="radio" name="q3_3" value="100" id="q3_100"><label for="q3_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_3" value="75" id="q3_75"><label for="q3_75"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_3" value="50" id="q3_50"><label for="q3_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_3" value="25" id="q3_25"><label for="q3_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_3" value="0" id="q3_0"><label for="q3_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_3" value="100" id="q3_100"><label for="q3_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_3" value="75" id="q3_75"><label for="q3_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_3" value="50" id="q3_50"><label for="q3_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_3" value="25" id="q3_25"><label for="q3_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_3" value="0" id="q3_0"><label for="q3_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_fic'] ?><br>
-    <input type="radio" name="q3_4" value="100" id="q4_100"><label for="q4_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_4" value="75" id="q4_75"><label for="q4_75"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_4" value="50" id="q4_50"><label for="q4_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_4" value="25" id="q4_25"><label for="q4_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_4" value="0" id="q4_0"><label for="q4_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_4" value="100" id="q4_100"><label for="q4_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_4" value="75" id="q4_75"><label for="q4_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_4" value="50" id="q4_50"><label for="q4_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_4" value="25" id="q4_25"><label for="q4_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_4" value="0" id="q4_0"><label for="q4_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_fvt'] ?><br>
-    <input type="radio" name="q3_5" value="100" id="q5_100"><label for="q5_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_5" value="75" id="q5_75"><label for="q5_75"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_5" value="50" id="q5_50"><label for="q5_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_5" value="25" id="q5_25"><label for="q5_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_5" value="0" id="q5_0"><label for="q5_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_5" value="100" id="q5_100"><label for="q5_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_5" value="75" id="q5_75"><label for="q5_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_5" value="50" id="q5_50"><label for="q5_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_5" value="25" id="q5_25"><label for="q5_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_5" value="0" id="q5_0"><label for="q5_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_fw'] ?><br>
-    <input type="radio" name="q3_6" value="100" id="q6_100"><label for="q6_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_6" value="75" id="q6_75"><label for="q6_75"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_6" value="50" id="q6_50"><label for="q6_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_6" value="25" id="q6_25"><label for="q6_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_6" value="0" id="q6_0"><label for="q6_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_6" value="100" id="q6_100"><label for="q6_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_6" value="75" id="q6_75"><label for="q6_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_6" value="50" id="q6_50"><label for="q6_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_6" value="25" id="q6_25"><label for="q6_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_6" value="0" id="q6_0"><label for="q6_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_ptf'] ?><span style="color:red" id="t1"></span><br>
     <?= $this->_lang['q2_ptg'] ?><span style="color:red" id="t1_s"></span><br>
     <?= $this->_lang['q2_wte'] ?><br>
     <?= $this->_lang['q2_ywt'] ?><br>
-    <input type="radio" name="q3_7" value="100" id="q7_100"><label for="q7_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_7" value="75" id="q7_75"><label for="q7_75"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_7" value="50" id="q7_50"><label for="q7_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_7" value="25" id="q7_25"><label for="q7_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_7" value="0" id="q7_0"><label for="q7_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_7" value="100" id="q7_100"><label for="q7_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_7" value="75" id="q7_75"><label for="q7_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_7" value="50" id="q7_50"><label for="q7_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_7" value="25" id="q7_25"><label for="q7_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_7" value="0" id="q7_0"><label for="q7_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_ywe'] ?><br>
-    <input type="radio" name="q3_8" value="100" id="q8_100"><label for="q8_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_8" value="75" id="q8_100"><label for="q8_100"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_8" value="50" id="q8_50"><label for="q8_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_8" value="25" id="q8_25"><label for="q8_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_8" value="0" id="q8_0"><label for="q8_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_8" value="100" id="q8_100"><label for="q8_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_8" value="75" id="q8_100"><label for="q8_100"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_8" value="50" id="q8_50"><label for="q8_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_8" value="25" id="q8_25"><label for="q8_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_8" value="0" id="q8_0"><label for="q8_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_ywf'] ?><br>
-    <input type="radio" name="q3_9" value="100" id="q9_100"><label for="q9_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_9" value="75" id="q9_75"><label for="q9_75"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_9" value="50" id="q9_50"><label for="q9_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_9" value="25" id="q9_25"><label for="q9_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_9" value="0" id="q9_0"><label for="q9_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_9" value="100" id="q9_100"><label for="q9_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_9" value="75" id="q9_75"><label for="q9_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_9" value="50" id="q9_50"><label for="q9_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_9" value="25" id="q9_25"><label for="q9_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_9" value="0" id="q9_0"><label for="q9_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_wdt'] ?><br>
-    <input type="radio" name="q3_10" value="100" id="q10_100"><label for="q10_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_10" value="75" id="q10_75"><label for="q10_75"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_10" value="50" id="q10_50"><label for="q10_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_10" value="25" id="q10_25"><label for="q10_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_10" value="0" id="q10_0"><label for="q10_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_10" value="100" id="q10_100"><label for="q10_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_10" value="75" id="q10_75"><label for="q10_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_10" value="50" id="q10_50"><label for="q10_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_10" value="25" id="q10_25"><label for="q10_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_10" value="0" id="q10_0"><label for="q10_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_fwd'] ?><br>
-    <input type="radio" name="q3_11" value="100" id="q11_100"><label for="q11_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_11" value="75" id="q11_75"><label for="q11_75"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_11" value="50" id="q11_50"><label for="q11_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_11" value="25" id="q11_25"><label for="q11_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_11" value="0" id="q11_0"><label for="q11_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_11" value="100" id="q11_100"><label for="q11_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_11" value="75" id="q11_75"><label for="q11_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_11" value="50" id="q11_50"><label for="q11_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_11" value="25" id="q11_25"><label for="q11_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_11" value="0" id="q11_0"><label for="q11_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_wfu'] ?><br>
-    <input type="radio" name="q3_12" value="100" id="q12_100"><label for="q12_100"><?= $this->_lang['q1_binf'] ?>總是(100)</label><br>
-    <input type="radio" name="q3_12" value="75" id="q12_75"><label for="q12_75"><?= $this->_lang['q1_binf'] ?>常常(75)</label><br>
-    <input type="radio" name="q3_12" value="50" id="q12_50"><label for="q12_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_12" value="25" id="q12_25"><label for="q12_25"><?= $this->_lang['q1_binf'] ?>不常(25)</label><br>
-    <input type="radio" name="q3_12" value="0" id="q12_0"><label for="q12_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(0)</label><br>
+    <input type="radio" name="q3_12" value="100" id="q12_100"><label for="q12_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
+    <input type="radio" name="q3_12" value="75" id="q12_75"><label for="q12_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
+    <input type="radio" name="q3_12" value="50" id="q12_50"><label for="q12_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_12" value="25" id="q12_25"><label for="q12_25"><?= $this->_lang['q2_pfa_nf_25'] ?></label><br>
+    <input type="radio" name="q3_12" value="0" id="q12_0"><label for="q12_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_nwf'] ?><br>
-    <input type="radio" name="q3_13" value="0" id="q13_100"><label for="q13_100"><?= $this->_lang['q1_binf'] ?>總是(0)</label><br>
-    <input type="radio" name="q3_13" value="25" id="q13_75"><label for="q13_75"><?= $this->_lang['q1_binf'] ?>常常(25)</label><br>
-    <input type="radio" name="q3_13" value="50" id="q13_50"><label for="q13_50"><?= $this->_lang['q1_binf'] ?>有時候(50)</label><br>
-    <input type="radio" name="q3_13" value="75" id="q13_25"><label for="q13_25"><?= $this->_lang['q1_binf'] ?>不常(75)</label><br>
-    <input type="radio" name="q3_13" value="100" id="q13_0"><label for="q13_0"><?= $this->_lang['q1_binf'] ?>從未或幾乎從未(100)</label><br>
+    <input type="radio" name="q3_13" value="0" id="q13_100"><label for="q13_100"><?= $this->_lang['q2_pfa_a_b_0'] ?></label><br>
+    <input type="radio" name="q3_13" value="25" id="q13_75"><label for="q13_75"><?= $this->_lang['q2_pfa_f_b_25'] ?></label><br>
+    <input type="radio" name="q3_13" value="50" id="q13_50"><label for="q13_50"><?= $this->_lang['q2_pfa_s_50'] ?></label><br>
+    <input type="radio" name="q3_13" value="75" id="q13_25"><label for="q13_25"><?= $this->_lang['q2_pfa_nf_b_75'] ?></label><br>
+    <input type="radio" name="q3_13" value="100" id="q13_0"><label for="q13_0"><?= $this->_lang['q2_pfa_n_b_100'] ?></label><br>
     <?= $this->_lang['q2_wtf'] ?><span style="color:red" id="t2"></span><br>
     <?= $this->_lang['q2_wte'] ?><span style="color:red" id="t2_s"></span><br>
     <div class="col-xs-12 no-padding" style="margin-top:20px">
