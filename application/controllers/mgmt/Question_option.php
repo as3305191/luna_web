@@ -660,7 +660,6 @@ class Question_option extends MY_Mgmt_Controller {
 					// 				  ->setCellValue('F'.$last , '總金額')
 					// 				  ->setCellValue('G'.$last ,  $total);
 
-
 		}
 			$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
 
