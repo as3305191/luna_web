@@ -13,7 +13,7 @@
 </style>
 <div class="col-xs-12" style="padding:20px">
     <div class="col-xs-12">
-        <span style="font-size:12pt">暴力危害及風險評估之調查問卷</span>
+        <span style="font-size:12pt"><?= $lang->_lang['q1_vh'] ?></span>
     </div>
     <hr/>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
