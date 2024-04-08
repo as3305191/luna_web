@@ -2,7 +2,7 @@
 $this -> _lang = array();
 $this -> _lang['q1_vh'] = "Kuisioner tentang bahaya kekerasan dan penilaian resiko";
 $this -> _lang['q1_binf'] = "Bagian pertama, Data pribadi";
-$this -> _lang['q1_pf'] = "一、個人概況：";
+$this -> _lang['q1_pf'] = "一、Profil pribadi：";
 $this -> _lang['q1_wt'] = "1.Tipe pekerjaan：";
 $this -> _lang['q1_wt_of'] = "Pekerja kantoran";
 $this -> _lang['q1_wt_sp'] = "Pekerja di lapangan";
