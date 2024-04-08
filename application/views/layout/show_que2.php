@@ -168,7 +168,7 @@
           <textarea class="form-control" name="q1o"></textarea>
           <?= $this->_lang['q3_t5'] ?><br>
           <input type="radio" name="q2_19" value="是" id="q19_y"><label for="q19_y"><?= $this->_lang['q3_pr1_y'] ?></label>
-          <?= $this->_lang['q3_pr1_n_y'] ?><?= $this->_lang['q3_t5_h_day'] ?><input name="q2o"><?= $this->_lang['q3_t5_d'] ?><br>
+          <?= $this->_lang['q3_t5_h_day'] ?><input name="q2o"><?= $this->_lang['q3_t5_d'] ?><br>
           <input type="radio" name="q2_19" value="否" id="q19_n"><label for="q19_n"><?= $this->_lang['q3_pr1_n'] ?></label><br>
           <?= $this->_lang['q3_t6'] ?><br>
           <input type="radio" name="q2_20" value="是" id="q20_y"><label for="q20_y"><?= $this->_lang['q3_pr1_y'] ?></label>
