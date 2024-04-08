@@ -322,8 +322,7 @@ class Question_option extends MY_Mgmt_Controller {
 								  ->setCellValue($all_cell_title[24], $cell_title[24])
 								  ->setCellValue($all_cell_title[25], $cell_title[25])
 								  ->setCellValue($all_cell_title[26], $cell_title[26])
-								  ->setCellValue($all_cell_title[27], $cell_title[27])
-								  ->setCellValue($all_cell_title[28], $cell_title[28]);
+								  ->setCellValue($all_cell_title[27], $cell_title[27]);
 
 								//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
 								  for ($j=0;$j<count($question_ans_list);$j++) {
@@ -355,8 +354,7 @@ class Question_option extends MY_Mgmt_Controller {
 												  ->setCellValue($all_cell_name[24].$k , $question_ans_list[$j]->q19)
 												  ->setCellValue($all_cell_name[25].$k , $question_ans_list[$j]->q2o)
 												  ->setCellValue($all_cell_name[26].$k , $question_ans_list[$j]->q20)
-												  ->setCellValue($all_cell_name[27].$k , $question_ans_list[$j]->q3o)
-												  ->setCellValue($all_cell_name[28].$k , $question_ans_list[$j]->q4o);
+												  ->setCellValue($all_cell_name[27].$k , $question_ans_list[$j]->q3o);
 								
 								  }
 		  
