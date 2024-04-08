@@ -16,21 +16,25 @@
 </style>
 <div class="col-xs-12" style="padding:20px">
     <div class="col-xs-12">
-        <span style="font-size:12pt">肌肉骨骼症狀問卷調查表</span>
+        <span style="font-size:12pt">   <?= $this->_lang['q3_msq'] ?></span>
     </div>
     <hr/>
-    個人疲勞評估<br>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
-    一.  您在過去1年內，身體是否有長達2星期以上的痠痛、發麻、刺痛、肌肉疲勞、關節活動限制等不適症狀？ <br>
-    (若否，結束此調查表；若是，請繼續填寫) <br>
-    <input type="radio" name="q2_1" value="是" id="q1_y"><label for="q1_y">是</label><br>
-    <input type="radio" name="q2_1" value="否" id="q1_n"><label for="q1_n">否</label><br>
+    <?= $this->_lang['q3_pr1_1'] ?><br>
+    <?= $this->_lang['q3_pr1_n_y'] ?><br>
+    <input type="radio" name="q2_1" value="是" id="q1_y"><label for="q1_y"><?= $this->_lang['q3_pr1_y'] ?></label><br>
+    <input type="radio" name="q2_1" value="否" id="q1_n"><label for="q1_n"><?= $this->_lang['q3_pr1_n'] ?></label><br>
     <div class="d_hide" id="d_hide">
-      二.請於下圖勾選各部位痠痛或不適症狀之嚴重度:<br>
-      嚴重度說明:<br>
+    <?= $this->_lang['q3_pr1_2'] ?><br>
+    <?= $this->_lang['q3_h_tip'] ?><br>
       <div class="form-group">
         <div class="col-xs-2" >
-          0無症狀<br>1輕微可忽略<br>2顯著但不影響工作<br>3影響工作但不需休假<br>4影響工作且需休假少於四天<br>5影響工作且需休假四天以上<br>       
+             <?= $this->_lang['q3_h_0'] ?><br>
+             <?= $this->_lang['q3_h_1'] ?><br>
+             <?= $this->_lang['q3_h_2'] ?><br>
+             <?= $this->_lang['q3_h_3'] ?><br>
+             <?= $this->_lang['q3_h_4'] ?><br>
+             <?= $this->_lang['q3_h_5'] ?><br>       
         </div >
        
         <div class="col-xs-3" style="padding-left:100px;" >
@@ -150,29 +154,29 @@
       
       <div class="form-group">
       <div class="col-xs-12" >
-          三.上圖最痠痛或不適之部位，症狀持續長達多久時間？<br>
-          <input type="radio" name="q2_17" value="2星期" id="q17_1"><label for="q17_1">2星期</label><br>
-          <input type="radio" name="q2_17" value="1個月" id="q17_2"><label for="q17_2">1個月</label><br>
-          <input type="radio" name="q2_17" value="3個月" id="q17_3"><label for="q17_3">3個月</label><br>
-          <input type="radio" name="q2_17" value="6個月" id="q17_4"><label for="q17_4">6個月</label><br>
-          <input type="radio" name="q2_17" value="1年" id="q17_5"><label for="q17_5">1年</label><br>
-          <input type="radio" name="q2_17" value="2年以上" id="q17_6"><label for="q17_6">2年以上</label><br>
-          四.上圖痠痛或不適症狀，是否經常於工作後才出現或加劇？<br>
-          <input type="radio" name="q2_18" value="是" id="q18_y"><label for="q18_y">是</label><br>
-          <input type="radio" name="q2_18" value="否" id="q18_n"><label for="q18_n">否</label><br>
-          症狀與工作相關說明：<br>
+      <?= $this->_lang['q3_pr1_3'] ?><br>
+          <input type="radio" name="q2_17" value="2星期" id="q17_1"><label for="q17_1"><?= $this->_lang['q3_pr1_2w'] ?></label><br>
+          <input type="radio" name="q2_17" value="1個月" id="q17_2"><label for="q17_2"><?= $this->_lang['q3_pr1_1m'] ?></label><br>
+          <input type="radio" name="q2_17" value="3個月" id="q17_3"><label for="q17_3"><?= $this->_lang['q3_pr1_3m'] ?></label><br>
+          <input type="radio" name="q2_17" value="6個月" id="q17_4"><label for="q17_4"><?= $this->_lang['q3_pr1_6m'] ?></label><br>
+          <input type="radio" name="q2_17" value="1年" id="q17_5"><label for="q17_5"><?= $this->_lang['q3_pr1_1y'] ?></label><br>
+          <input type="radio" name="q2_17" value="2年以上" id="q17_6"><label for="q17_6"><?= $this->_lang['q3_pr1_2yu'] ?></label><br>
+          <?= $this->_lang['q3_t4'] ?><br>
+          <input type="radio" name="q2_18" value="是" id="q18_y"><label for="q18_y"><?= $this->_lang['q3_pr1_y'] ?></label><br>
+          <input type="radio" name="q2_18" value="否" id="q18_n"><label for="q18_n"><?= $this->_lang['q3_pr1_n'] ?></label><br>
+          <?= $this->_lang['q3_t4_tip'] ?><br>
           <textarea class="form-control" name="q1o"></textarea>
-          五.近3個月您是否有因上述不適症狀而請假就醫? <br>
-          <input type="radio" name="q2_19" value="是" id="q19_y"><label for="q19_y">是</label>
-          請假<input name="q2o">天<br>
-          <input type="radio" name="q2_19" value="否" id="q19_n"><label for="q19_n">否</label><br>
-          六.您是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療）？<br>
-          <input type="radio" name="q2_20" value="是" id="q20_y"><label for="q20_y">是</label>
-          診斷名稱：
+          <?= $this->_lang['q3_t5'] ?><br>
+          <input type="radio" name="q2_19" value="是" id="q19_y"><label for="q19_y"><?= $this->_lang['q3_pr1_y'] ?></label>
+          <?= $this->_lang['q3_pr1_n_y'] ?><?= $this->_lang['q3_t5_h_day'] ?><input name="q2o"><?= $this->_lang['q3_t5_d'] ?><br>
+          <input type="radio" name="q2_19" value="否" id="q19_n"><label for="q19_n"><?= $this->_lang['q3_pr1_n'] ?></label><br>
+          <?= $this->_lang['q3_t6'] ?><br>
+          <input type="radio" name="q2_20" value="是" id="q20_y"><label for="q20_y"><?= $this->_lang['q3_pr1_y'] ?></label>
+          <?= $this->_lang['q3_t6_sick_name'] ?>
           <input name="q3o"><br>
-          <input type="radio" name="q2_20" value="否" id="q21_n"><label for="q21_n">否</label><br>
+          <input type="radio" name="q2_20" value="否" id="q21_n"><label for="q21_n"><?= $this->_lang['q3_pr1_n'] ?></label><br>
         
-          七.其他症狀、病史說明：(例如糖尿病、高血壓等等)<br>
+          <?= $this->_lang['q3_t7'] ?><br>
           <textarea class="form-control" name="q4o"></textarea>
         </div>
       </div>
