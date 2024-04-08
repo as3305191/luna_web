@@ -17,80 +17,80 @@
     </div>
     <hr/>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
-    第一部分、基本資料<br>
-    一、個人概況： <br>
-    1.工作型態：<br>
-    <input type="radio" name="q1_1" value="辦公室人員" id="q1_11"><label for="q1_11">辦公室人員</label>
-    <input type="radio" name="q1_1" value="現場人員" id="q1_12"><label for="q1_12">現場人員</label>
-    <input type="radio" name="q1_1" value="外勤人員" id="q1_13"><label for="q1_13">外勤人員</label><br>
-    <input type="radio" name="q1_1" value="其他" id="q1_14"><label for="q1_14">其他</label> <input name="q1_1o"><br>
+    <?= $this->_lang['q1_binf'] ?><br>
+    <?= $this->_lang['q1_q1_pfvh'] ?><br>
+    <?= $this->_lang['q1_wt'] ?><br>
+    <input type="radio" name="q1_1" value="辦公室人員" id="q1_11"><label for="q1_11"><?= $this->_lang['q1_wt_of'] ?></label>
+    <input type="radio" name="q1_1" value="現場人員" id="q1_12"><label for="q1_12"><?= $this->_lang['q1_wt_sp'] ?></label>
+    <input type="radio" name="q1_1" value="外勤人員" id="q1_13"><label for="q1_13"><?= $this->_lang['q1_wt_ft'] ?></label><br>
+    <input type="radio" name="q1_1" value="其他" id="q1_14"><label for="q1_14"><?= $this->_lang['q1_wt_ot'] ?></label> <input name="q1_1o"><br>
 
-    2.性別：
-    <input type="radio" name="q1_2" value="男" id="q1_m"><label for="q1_m">男</label>
-    <input type="radio" name="q1_2" value="女" id="q1_1fm"><label for="q1_1fm">女</label><br>
-    二、工作年資：<br>
-    1.工作型態：<br>
-    <input type="radio" name="q1_3" value="未滿1年" id="q1_31"><label for="q1_31">未滿1年</label>
-    <input type="radio" name="q1_3" value="1年-3年" id="q1_32"><label for="q1_32">1年-3年</label>
-    <input type="radio" name="q1_3" value="3年-5年" id="q1_33"><label for="q1_33">3年-5年</label>
-    <input type="radio" name="q1_3" value="5-10年" id="q1_34"><label for="q1_34">5-10年</label>
-    <input type="radio" name="q1_3" value="10-15年" id="q1_35"><label for="q1_35">10-15年</label>
-    <input type="radio" name="q1_3" value="15年以上" id="q1_36"><label for="q1_36">15年以上</label><br>
-    2.平均每週工作時數:<br>
-    <input type="radio" name="q1_4" value="42小時以下" id="q1_41"><label for="q1_41">42小時以下</label>
-    <input type="radio" name="q1_4" value="43-48小時" id="q1_42"><label for="q1_42">43-48小時</label>
-    <input type="radio" name="q1_4" value="49-54小時" id="q1_43"><label for="q1_43">49-54小時</label>
-    <input type="radio" name="q1_4" value="55小時以上" id="q1_44"><label for="q1_44">55小時以上</label><br>
-    三、工作形態：<br>
-    <input type="radio" name="q1_5" value="正常班" id="q1_51"><label for="q1_51">正常班</label>
-    <input type="radio" name="q1_5" value="需假日出勤" id="q1_52"><label for="q1_52">需假日出勤</label>
-    <input type="radio" name="q1_5" value="需外勤" id="q1_53"><label for="q1_53">需外勤</label>
-    <input type="radio" name="q1_5" value="需值班" id="q1_54"><label for="q1_54">需值班</label>
-    說明：<input name="q1_5o"><br>
-    四、在您的工作環境中，曾經遭遇下列的暴力攻擊情境？（可複選）<br>
-    <input type="checkbox" name="q1_6" value="肢體暴力，如毆打、踢、推、捏、拉扯等" id="q1_61"><label for="q1_61">肢體暴力，如毆打、踢、推、捏、拉扯等</label><br>
-    <input type="checkbox" name="q1_6" value="言語暴力，如辱罵、言語騷擾、冷嘲熱諷等" id="q1_62"><label for="q1_62">言語暴力，如辱罵、言語騷擾、冷嘲熱諷等</label><br>
-    <input type="checkbox" name="q1_6" value="心理暴力，如威脅、恐嚇、歧視、排擠、騷擾等" id="q1_63"><label for="q1_63">心理暴力，如威脅、恐嚇、歧視、排擠、騷擾等</label><br>
-    <input type="checkbox" name="q1_6" value="性騷擾，如不當的性暗示與行為" id="q1_64"><label for="q1_64">性騷擾，如不當的性暗示與行為</label><br>
-    <input type="checkbox" name="q1_6" value="其他" id="q1_65"><label for="q1_65">其他</label> <input name="q1_6o"><br>
-    <input type="checkbox" name="q1_6" value="無" id="q1_66"><label for="q1_66">無</label><br>
-    五、公司是否提供有關預防暴力攻擊之衛生教育訓練？（可複選）<br>
-    <input type="checkbox" name="q1_7" value="沒有提供任何工作安全衛生教育訓練" id="q1_71"><label for="q1_71">沒有提供任何工作安全衛生教育訓練（免勾其他選項）</label><br>
-    <input type="checkbox" name="q1_7" value="人身安全之防範" id="q1_72"><label for="q1_72">人身安全之防範</label><br>
-    <input type="checkbox" name="q1_7" value="防護用具之使用" id="q1_73"><label for="q1_73">防護用具之使用</label><br>
-    <input type="checkbox" name="q1_7" value="危害通識教育訓練" id="q1_74"><label for="q1_74">危害通識教育訓練</label><br>
-    <input type="checkbox" name="q1_7" value="法規教育" id="q1_75"><label for="q1_75">法規教育</label><br>
-    第二部分、暴力預防認知現況<br>
-    1.我清楚了解如何辨識職場發生的暴力危害<br>
-    <input type="radio" name="q1_8" value="非常同意" id="q1_81"><label for="q1_81">非常同意</label>
-    <input type="radio" name="q1_8" value="同意" id="q1_82"><label for="q1_82">同意</label>
-    <input type="radio" name="q1_8" value="沒意見" id="q1_83"><label for="q1_83">沒意見</label>
-    <input type="radio" name="q1_8" value="不同意" id="q1_84"><label for="q1_84">不同意</label>
-    <input type="radio" name="q1_8" value="非常不同意" id="q1_85"><label for="q1_85">非常不同意</label><br>
-    2.我清楚了解如何進行暴力危害的風險評估<br>
-    <input type="radio" name="q1_9" value="非常同意" id="q1_91"><label for="q1_91">非常同意</label>
-    <input type="radio" name="q1_9" value="同意" id="q1_92"><label for="q1_92">同意</label>
-    <input type="radio" name="q1_9" value="沒意見" id="q1_93"><label for="q1_93">沒意見</label>
-    <input type="radio" name="q1_9" value="不同意" id="q1_94"><label for="q1_94">不同意</label>
-    <input type="radio" name="q1_9" value="非常不同意" id="q1_95"><label for="q1_95">非常不同意</label><br>
-    3.我清楚了解如何避免或遠離暴力危害事件<br>
-    <input type="radio" name="q1_10" value="非常同意" id="q1_101"><label for="q1_101">非常同意</label>
-    <input type="radio" name="q1_10" value="同意" id="q1_102"><label for="q1_102">同意</label>
-    <input type="radio" name="q1_10" value="沒意見" id="q1_103"><label for="q1_103">沒意見</label>
-    <input type="radio" name="q1_10" value="不同意" id="q1_104"><label for="q1_104">不同意</label>
-    <input type="radio" name="q1_10" value="非常不同意" id="q1_105"><label for="q1_105">非常不同意</label><br>
-    4.我清楚了解暴力危害事件發生時如何尋求支援管道<br>
-    <input type="radio" name="q1_11" value="非常同意" id="q1_111"><label for="q1_111">非常同意</label>
-    <input type="radio" name="q1_11" value="同意" id="q1_112"><label for="q1_112">同意</label>
-    <input type="radio" name="q1_11" value="沒意見" id="q1_113"><label for="q1_113">沒意見</label>
-    <input type="radio" name="q1_11" value="不同意" id="q1_114"><label for="q1_114">不同意</label>
-    <input type="radio" name="q1_11" value="非常不同意" id="q1_115"><label for="q1_115">非常不同意</label><br>
-    5.我具備因應暴力危害事件的事務處理與執行能力<br>
-    <input type="radio" name="q1_12" value="非常同意" id="q1_121"><label for="q1_121">非常同意</label>
-    <input type="radio" name="q1_12" value="同意" id="q1_122"><label for="q1_122">同意</label>
-    <input type="radio" name="q1_12" value="沒意見" id="q1_123"><label for="q1_123">沒意見</label>
-    <input type="radio" name="q1_12" value="不同意" id="q1_124"><label for="q1_124">不同意</label>
-    <input type="radio" name="q1_12" value="非常不同意" id="q1_125"><label for="q1_125">非常不同意</label><br>
+    <?= $this->_lang['q1_g'] ?>
+    <input type="radio" name="q1_2" value="男" id="q1_m"><label for="q1_m"><?= $this->_lang['q1_g_m'] ?></label>
+    <input type="radio" name="q1_2" value="女" id="q1_1fm"><label for="q1_1fm"><?= $this->_lang['q1_g_f'] ?></label><br>
+    <?= $this->_lang['q1_wexp'] ?><br>
+    <?= $this->_lang['q1_sen'] ?><br>
+    <input type="radio" name="q1_3" value="未滿1年" id="q1_31"><label for="q1_31"><?= $this->_lang['q1_sen_n1'] ?></label>
+    <input type="radio" name="q1_3" value="1年-3年" id="q1_32"><label for="q1_32"><?= $this->_lang['q1_sen_n3'] ?></label>
+    <input type="radio" name="q1_3" value="3年-5年" id="q1_33"><label for="q1_33"><?= $this->_lang['q1_sen_n5'] ?></label>
+    <input type="radio" name="q1_3" value="5-10年" id="q1_34"><label for="q1_34"><?= $this->_lang['q1_sen_n10'] ?></label>
+    <input type="radio" name="q1_3" value="10-15年" id="q1_35"><label for="q1_35"><?= $this->_lang['q1_sen_n15'] ?></label>
+    <input type="radio" name="q1_3" value="15年以上" id="q1_36"><label for="q1_36"><?= $this->_lang['q1_sen_y15'] ?></label><br>
+    <?= $this->_lang['q1_aw'] ?><br>
+    <input type="radio" name="q1_4" value="42小時以下" id="q1_41"><label for="q1_41"><?= $this->_lang['q1_aw_n42'] ?></label>
+    <input type="radio" name="q1_4" value="43-48小時" id="q1_42"><label for="q1_42"><?= $this->_lang['q1_aw_n48'] ?></label>
+    <input type="radio" name="q1_4" value="49-54小時" id="q1_43"><label for="q1_43"><?= $this->_lang['q1_aw_n54'] ?></label>
+    <input type="radio" name="q1_4" value="55小時以上" id="q1_44"><label for="q1_44"><?= $this->_lang['q1_aw_y55'] ?></label><br>
+    <?= $this->_lang['q1_wf'] ?><br>
+    <input type="radio" name="q1_5" value="正常班" id="q1_51"><label for="q1_51"><?= $this->_lang['q1_wf_nc'] ?></label>
+    <input type="radio" name="q1_5" value="需假日出勤" id="q1_52"><label for="q1_52"><?= $this->_lang['q1_wf_nha'] ?></label>
+    <input type="radio" name="q1_5" value="需外勤" id="q1_53"><label for="q1_53"><?= $this->_lang['q1_wf_nfs'] ?></label>
+    <input type="radio" name="q1_5" value="需值班" id="q1_54"><label for="q1_54"><?= $this->_lang['q1_wf_od'] ?></label>
+    <?= $this->_lang['q1_wf_noote'] ?><input name="q1_5o"><br>
+    <?= $this->_lang['q1_we_v'] ?><br>
+    <input type="checkbox" name="q1_6" value="肢體暴力，如毆打、踢、推、捏、拉扯等" id="q1_61"><label for="q1_61"><?= $this->_lang['q1_we_pbv'] ?></label><br>
+    <input type="checkbox" name="q1_6" value="言語暴力，如辱罵、言語騷擾、冷嘲熱諷等" id="q1_62"><label for="q1_62"><?= $this->_lang['q1_we_vv'] ?></label><br>
+    <input type="checkbox" name="q1_6" value="心理暴力，如威脅、恐嚇、歧視、排擠、騷擾等" id="q1_63"><label for="q1_63"><?= $this->_lang['q1_we_pv'] ?></label><br>
+    <input type="checkbox" name="q1_6" value="性騷擾，如不當的性暗示與行為" id="q1_64"><label for="q1_64"><?= $this->_lang['q1_we_sh'] ?></label><br>
+    <input type="checkbox" name="q1_6" value="其他" id="q1_65"><label for="q1_65"><?= $this->_lang['q1_we_o'] ?></label> <input name="q1_6o"><br>
+    <input type="checkbox" name="q1_6" value="無" id="q1_66"><label for="q1_66"><?= $this->_lang['q1_we_n'] ?></label><br>
+    <?= $this->_lang['q1_dfv'] ?><br>
+    <input type="checkbox" name="q1_7" value="沒有提供任何工作安全衛生教育訓練" id="q1_71"><label for="q1_71"><?= $this->_lang['q1_nwst'] ?></label><br>
+    <input type="checkbox" name="q1_7" value="人身安全之防範" id="q1_72"><label for="q1_72"><?= $this->_lang['q1_pap'] ?></label><br>
+    <input type="checkbox" name="q1_7" value="防護用具之使用" id="q1_73"><label for="q1_73"><?= $this->_lang['q1_upe'] ?></label><br>
+    <input type="checkbox" name="q1_7" value="危害通識教育訓練" id="q1_74"><label for="q1_74"><?= $this->_lang['q1_dgt'] ?></label><br>
+    <input type="checkbox" name="q1_7" value="法規教育" id="q1_75"><label for="q1_75"><?= $this->_lang['q1_rt'] ?></label><br>
+    <?= $this->_lang['q1_dfvn'] ?><br>
+    <?= $this->_lang['q1_iwv'] ?><br>
+    <input type="radio" name="q1_8" value="非常同意" id="q1_81"><label for="q1_81"><?= $this->_lang['q1_t_va'] ?></label>
+    <input type="radio" name="q1_8" value="同意" id="q1_82"><label for="q1_82"><?= $this->_lang['q1_t_a'] ?></label>
+    <input type="radio" name="q1_8" value="沒意見" id="q1_83"><label for="q1_83"><?= $this->_lang['q1_t_nc'] ?></label>
+    <input type="radio" name="q1_8" value="不同意" id="q1_84"><label for="q1_84"><?= $this->_lang['q1_t_na'] ?></label>
+    <input type="radio" name="q1_8" value="非常不同意" id="q1_85"><label for="q1_85"><?= $this->_lang['q1_t_vna'] ?></label><br>
+    <?= $this->_lang['q1_ira'] ?><br>
+    <input type="radio" name="q1_9" value="非常同意" id="q1_91"><label for="q1_91"><?= $this->_lang['q1_t_va'] ?></label>
+    <input type="radio" name="q1_9" value="同意" id="q1_92"><label for="q1_92"><?= $this->_lang['q1_t_a'] ?></label>
+    <input type="radio" name="q1_9" value="沒意見" id="q1_93"><label for="q1_93"><?= $this->_lang['q1_t_nc'] ?></label>
+    <input type="radio" name="q1_9" value="不同意" id="q1_94"><label for="q1_94"><?= $this->_lang['q1_t_na'] ?></label>
+    <input type="radio" name="q1_9" value="非常不同意" id="q1_95"><label for="q1_95"><?= $this->_lang['q1_t_vna'] ?></label><br>
+    <?= $this->_lang['q1_iav'] ?><br>
+    <input type="radio" name="q1_10" value="非常同意" id="q1_101"><label for="q1_101"><?= $this->_lang['q1_t_va'] ?></label>
+    <input type="radio" name="q1_10" value="同意" id="q1_102"><label for="q1_102"><?= $this->_lang['q1_t_a'] ?></label>
+    <input type="radio" name="q1_10" value="沒意見" id="q1_103"><label for="q1_103"><?= $this->_lang['q1_t_nc'] ?></label>
+    <input type="radio" name="q1_10" value="不同意" id="q1_104"><label for="q1_104"><?= $this->_lang['q1_t_na'] ?></label>
+    <input type="radio" name="q1_10" value="非常不同意" id="q1_105"><label for="q1_105"><?= $this->_lang['q1_t_vna'] ?></label><br>
+    <?= $this->_lang['q1_ivnsc'] ?><br>
+    <input type="radio" name="q1_11" value="非常同意" id="q1_111"><label for="q1_111"><?= $this->_lang['q1_t_va'] ?></label>
+    <input type="radio" name="q1_11" value="同意" id="q1_112"><label for="q1_112"><?= $this->_lang['q1_t_a'] ?></label>
+    <input type="radio" name="q1_11" value="沒意見" id="q1_113"><label for="q1_113"><?= $this->_lang['q1_t_nc'] ?></label>
+    <input type="radio" name="q1_11" value="不同意" id="q1_114"><label for="q1_114"><?= $this->_lang['q1_t_na'] ?></label>
+    <input type="radio" name="q1_11" value="非常不同意" id="q1_115"><label for="q1_115"><?= $this->_lang['q1_t_vna'] ?></label><br>
+    <?= $this->_lang['q1_ihea'] ?><br>
+    <input type="radio" name="q1_12" value="非常同意" id="q1_121"><label for="q1_121"><?= $this->_lang['q1_t_va'] ?></label>
+    <input type="radio" name="q1_12" value="同意" id="q1_122"><label for="q1_122"><?= $this->_lang['q1_t_a'] ?></label>
+    <input type="radio" name="q1_12" value="沒意見" id="q1_123"><label for="q1_123"><?= $this->_lang['q1_t_nc'] ?></label>
+    <input type="radio" name="q1_12" value="不同意" id="q1_124"><label for="q1_124"><?= $this->_lang['q1_t_na'] ?></label>
+    <input type="radio" name="q1_12" value="非常不同意" id="q1_125"><label for="q1_125"><?= $this->_lang['q1_t_vna'] ?></label><br>
 
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
