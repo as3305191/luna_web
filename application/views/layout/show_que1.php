@@ -18,7 +18,7 @@
     <hr/>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     <?= $this->_lang['q1_binf'] ?><br>
-    <?= $this->_lang['q1_pfvh'] ?><br>
+    <?= $this->_lang['q1_pf'] ?><br>
     <?= $this->_lang['q1_wt'] ?><br>
     <input type="radio" name="q1_1" value="辦公室人員" id="q1_11"><label for="q1_11"><?= $this->_lang['q1_wt_of'] ?></label>
     <input type="radio" name="q1_1" value="現場人員" id="q1_12"><label for="q1_12"><?= $this->_lang['q1_wt_sp'] ?></label>
