@@ -56,7 +56,7 @@
     <input type="radio" name="q3_6" value="0" id="q6_0"><label for="q6_0"><?= $this->_lang['q2_pfa_n_0'] ?></label><br>
     <?= $this->_lang['q2_ptf'] ?><span style="color:red" id="t1"></span><br>
     <?= $this->_lang['q2_ptg'] ?><span style="color:red" id="t1_s"></span><br>
-    <?= $this->_lang['q2_wte'] ?><br>
+    <?= $this->_lang['q2_wte_t'] ?><br>
     <?= $this->_lang['q2_ywt'] ?><br>
     <input type="radio" name="q3_7" value="100" id="q7_100"><label for="q7_100"><?= $this->_lang['q2_pfa_a_100'] ?></label><br>
     <input type="radio" name="q3_7" value="75" id="q7_75"><label for="q7_75"><?= $this->_lang['q2_pfa_f_75'] ?></label><br>
