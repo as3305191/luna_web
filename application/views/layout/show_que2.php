@@ -20,6 +20,17 @@
     </div>
     <hr/>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
+    <?= $this->_lang['q3_bi'] ?><br>
+    <?= $this->_lang['q3_a'] ?><input name="q5o"><br>
+    <?= $this->_lang['q3_g'] ?>
+    <input type="radio" name="q2_1_1" value="男" id="q1_1_m"><label for="q1_1_m"><?= $this->_lang['q3_g_m'] ?></label>
+    <input type="radio" name="q2_1_1" value="女" id="q1_1_f"><label for="q1_1_f"><?= $this->_lang['q3_g_f'] ?></label><br>
+    <?= $this->_lang['q3_h'] ?><input name="q6o"><br>
+    <?= $this->_lang['q3_w'] ?><input name="q7o"><br>
+    <?= $this->_lang['q3_dh'] ?>
+    <input type="radio" name="q2_1_2" value="右" id="q1_2_r"><label for="q1_2_r"><?= $this->_lang['q3_dh_r'] ?></label>
+    <input type="radio" name="q2_1_2" value="左" id="q1_2_l"><label for="q1_2_l"><?= $this->_lang['q3_dh_l'] ?></label><br>
+
     <?= $this->_lang['q3_pr1_1'] ?><br>
     <?= $this->_lang['q3_pr1_n_y'] ?><br>
     <input type="radio" name="q2_1" value="是" id="q1_y"><label for="q1_y"><?= $this->_lang['q3_pr1_y'] ?></label><br>
@@ -231,10 +242,15 @@
   var  q19 = null;
   var  q20 = null;
   var  q21 = null;
+  var  q22 = null;
+
   var  q1o = '無';
   var  q2o = '無';
   var  q3o = '無';
   var  q4o = '無';
+  var  q5o = '無';
+  var  q6o = '無';
+  var  q7o = '無';
   var is_ok=false;
   $('input:radio[name="q2_1"]').on('change', function(){
     q1 = $('input:radio[name="q2_1"]:checked').val();
@@ -316,9 +332,15 @@
     q20 = $('input:radio[name="q2_20"]:checked').val();
    
   });
-
-
-
+  $('input:radio[name="q2_1_1"]').on('change', function(){
+    q21 = $('input:radio[name="q2_1_1"]:checked').val();
+   
+  });
+  $('input:radio[name="q2_1_2"]').on('change', function(){
+    q22 = $('input:radio[name="q2_1_2"]:checked').val();
+   
+  });
+ 
   $('[name="q1o"]').on('change', function(){
     q1o = $('[name="q1o"]').val();
     // console.log(q1o);
@@ -339,6 +361,21 @@
     // console.log(q4o);
 
   });
+  $('[name="q5o"]').on('change', function(){
+    q5o = $('[name="q5o"]').val();
+    // console.log(q4o);
+
+  });
+  $('[name="q6o"]').on('change', function(){
+    q6o = $('[name="q6o"]').val();
+    // console.log(q4o);
+
+  });
+  $('[name="q7o"]').on('change', function(){
+    q7o = $('[name="q7o"]').val();
+    // console.log(q4o);
+
+  });
 console.log(q1);
   $('.dosubmit').click(function() {
    if(q1==null){
@@ -347,7 +384,7 @@ console.log(q1);
     if (q1=='是'){
       if (q1!==null&&q2!==null&&q3!==null&&q4!==null&&q5!==null&&q6!==null&&
          q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null&&q13!==null&&
-         q14!==null&&q15!==null&&q16!==null&&q17!==null&&q18!==null&&q19!==null&&q13!==null){
+         q14!==null&&q15!==null&&q16!==null&&q17!==null&&q18!==null&&q19!==null&&q20!==null&&q21!==null&&q22!==null){
           is_ok=true;
          } else{
           // console.log('-----');
@@ -376,7 +413,12 @@ console.log(q1);
          }
     } else{
       if (q1=='否'){
-        is_ok=true;
+        if (q21!==null&&q22!==null){
+          is_ok=true;
+        } else{
+          alert('請填寫完全部題目！');
+        }
+        
       }
     }
    }
@@ -407,10 +449,15 @@ console.log(q1);
           q18 : q18,
           q19 : q19,
           q20 : q20,
+          q21 : q21,
+          q22 : q22,
           q1o : q1o,
           q2o : q2o,
           q3o : q3o,
-          q4o : q4o
+          q4o : q4o,
+          q5o : q5o,
+          q6o : q6o,
+          q7o : q7o
         },
   			dataType: 'json',
   			success: function(d) {

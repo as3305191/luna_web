@@ -225,12 +225,15 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$q18 =$this -> get_post('q18');
 		$q19 =$this -> get_post('q19');
 		$q20 =$this -> get_post('q20');
-
+		$q21 =$this -> get_post('q21');
+		$q22 =$this -> get_post('q22');
 		$q1o =$this -> get_post('q1o');
 		$q2o =$this -> get_post('q2o');
 		$q3o =$this -> get_post('q3o');
 		$q4o =$this -> get_post('q4o');
-		
+		$q5o =$this -> get_post('q5o');
+		$q6o =$this -> get_post('q6o');
+		$q7o =$this -> get_post('q7o');
 		$data['user_id'] = $login_user->id;
 		// $data['qid'] = $qid;
 		$data['q1'] = $q1;
@@ -253,11 +256,17 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['q18'] = $q18;
 		$data['q19'] = $q19;
 		$data['q20'] = $q20;
+		$data['q21'] = $q21;
+		$data['q22'] = $q22;
 
 		$data['q1o'] = $q1o;
 		$data['q2o'] = $q2o;
 		$data['q3o'] = $q3o;
 		$data['q4o'] = $q4o;
+		$data['q5o'] = $q5o;
+		$data['q6o'] = $q6o;
+		$data['q7o'] = $q7o;
+
 		$data['question_option_id'] = $qid;
 
 		$this -> question_ans_dao -> insert($data);
