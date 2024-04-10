@@ -448,7 +448,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_item($id);
 		$question_option= $this -> dao -> find_by_id($id);
 		$question_style= $this -> question_style_dao -> find_by_id($question_option->question_style_id);
-		$note='';
+		$note='-';
 		if(!empty($question_option->note) && $question_option->note!==''){
 			$note.='-'.$question_option->note;
 		}
