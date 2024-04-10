@@ -221,7 +221,7 @@ class Question_option extends MY_Mgmt_Controller {
 	public function export_excel($id){
 		// $id = $this -> get_get('id');
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_p($id);
-		$note='-';
+		$note='';
 		if(!empty($question_ans_list[0]->note) && $question_ans_list[0]->note!==''){
 			$note.='-'.$question_ans_list[0]->note;
 		}
@@ -448,12 +448,12 @@ class Question_option extends MY_Mgmt_Controller {
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_item($id);
 		$question_option= $this -> dao -> find_by_id($id);
 		$question_style= $this -> question_style_dao -> find_by_id($question_option->question_style_id);
-		$note='-';
+		$note='';
 		if(!empty($question_option->note) && $question_option->note!==''){
 			$note.='-'.$question_option->note;
 		}
 		
-		$fileName = $question_style->question_style_name.$note.date('Y-m-d H:i:s').'.xls';
+		$fileName = $question_style->question_style_name.$note.'-'.date('Y-m-d H:i:s').'.xls';
 
 		$objPHPExcel = new PHPExcel();
 		// $objPHPExcel->setActiveSheetIndex(0);
