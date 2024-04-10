@@ -221,7 +221,7 @@ class Question_option extends MY_Mgmt_Controller {
 	public function export_excel($id){
 		// $id = $this -> get_get('id');
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_p($id);
-		$note='';
+		$note='-';
 		if(!empty($question_ans_list[0]->note) && $question_ans_list[0]->note!==''){
 			$note.='-'.$question_ans_list[0]->note;
 		}
