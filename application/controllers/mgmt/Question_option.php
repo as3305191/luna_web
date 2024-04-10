@@ -221,8 +221,11 @@ class Question_option extends MY_Mgmt_Controller {
 	public function export_excel($id){
 		// $id = $this -> get_get('id');
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_p($id);
-	
-		$fileName = $question_ans_list[0]->question_style_name."(".$question_ans_list[0]->user_name.")-".date('Y-m-d H:i:s').'.xls';
+		$note='';
+		if(!empty($question_ans_list[0]->note) && $question_ans_list[0]->note!==''){
+			$note.='-'.$question_ans_list[0]->note;
+		}
+		$fileName = $question_ans_list[0]->question_style_name.$note."(".$question_ans_list[0]->user_name.")-".date('Y-m-d H:i:s').'.xls';
 
 		$objPHPExcel = new PHPExcel();
 		// $objPHPExcel->setActiveSheetIndex(0);
@@ -281,7 +284,7 @@ class Question_option extends MY_Mgmt_Controller {
 								  }
 		  
 		  
-						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name.$note);
 				}
 			  
 			  break;
@@ -359,7 +362,7 @@ class Question_option extends MY_Mgmt_Controller {
 								  }
 		  
 		  
-						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name.$note);
 				}
 			  break;
 			case 3:
@@ -423,7 +426,7 @@ class Question_option extends MY_Mgmt_Controller {
 								// 				  ->setCellValue('G'.$last ,  $total);
 		  
 		  
-						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name);
+						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name.$note);
 				}
 			  break;
 			default:
@@ -443,8 +446,12 @@ class Question_option extends MY_Mgmt_Controller {
 	public function export_excel_all($id){
 		// $id = $this -> get_get('id');
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_item($id);
-	
-		$fileName = $question_ans_list[0]->question_style_name.date('Y-m-d H:i:s').'.xls';
+		$note='';
+		if(!empty($question_ans_list[0]->note) && $question_ans_list[0]->note!==''){
+			$note.='-'.$question_ans_list[0]->note;
+		}
+		
+		$fileName = $question_ans_list[0]->question_style_name.$note.date('Y-m-d H:i:s').'.xls';
 
 		$objPHPExcel = new PHPExcel();
 		// $objPHPExcel->setActiveSheetIndex(0);
@@ -509,7 +516,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 
 				}
-				$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
+				$objWorkSheet->setTitle($question_ans_list[0]->question_style_name.$note);
 
 				break;
 		case 2:
@@ -592,7 +599,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 
 			}
-			$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
+			$objWorkSheet->setTitle($question_ans_list[0]->question_style_name.$note);
 
 			break;
 		case 3:
@@ -661,7 +668,7 @@ class Question_option extends MY_Mgmt_Controller {
 					// 				  ->setCellValue('G'.$last ,  $total);
 
 		}
-			$objWorkSheet->setTitle($question_ans_list[0]->question_style_name);
+			$objWorkSheet->setTitle($question_ans_list[0]->question_style_name.$note);
 
 			break;
 		default:
