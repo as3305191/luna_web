@@ -138,11 +138,11 @@
   function change_yn(q_num){
     if($('input:radio[name="q'+q_num+'_o1"]:checked').val()=='否'){
       for(var $j=2;$j<=21;$j++){
-          $('#q'+q_num+'_o1_'+$j).addClass("enabledinput");
+          $('#q'+q_num+'_o1_'+$j).addClass("disabledinput");
       }
     }else{
       for(var $j=2;$j<=21;$j++){
-          $('#q'+q_num+'_o1_'+$j).removeClass("enabledinput");
+          $('#q'+q_num+'_o1_'+$j).removeClass("disabledinput");
       }
     }
   }
