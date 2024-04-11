@@ -46,10 +46,10 @@
                 <tr>
                   <td class="min300"><?= $question_list[$i] ?></td>
                   <td class="min30">
-                    <input type="radio" id="q<?= $i+1 ?>_o1_1" name="q<?= $i+1 ?>_o1" value="是" class="btnY1"/>
+                    <input type="radio" id="q<?= $i+1 ?>_o1_1" name="q<?= $i+1 ?>_o1" value="是" class="btnY1" onclick="change_yn(<?= $i+1 ?>)"/>
                   </td>
                   <td class="min100">
-                    <input type="radio" id="q<?= $i+1 ?>_o1_2" name="q<?= $i+1 ?>_o1" value="否" class="btnN1"/>
+                    <input type="radio" id="q<?= $i+1 ?>_o1_2" name="q<?= $i+1 ?>_o1" value="否" class="btnN1" onclick="change_yn(<?= $i+1 ?>)"/>
                   </td>
                     <td class="R1 min150">
                       <input type="radio" id="q<?= $i+1 ?>_o1_3" name="q<?= $i+1 ?>_o2" value="肢體"/>
@@ -127,23 +127,18 @@
     parent.layer.close(index);
   })
 
-  var question_list = <?= count($question_list)?>;
-
-  for(var $i=1;$i<=question_list;$i++){
-
-    $('input:radio[name="q'+$i+'_o1"]').on('change', function(){
-      
-      console.log(this.getFrameIndex);
-      if(this.value=='否'){
-        for(var $j=2;$j<=21;$j++){
-          $('#q'+$i+'_o1_'+$j).disabled = true;
-        }
-      } else{
-        $('#q'+$i+'_o1_'+$j).disabled = false;
+ 
+  function change_yn(q_num){
+    if($('input:radio[name="q'+q_num+'_o1"]:checked').val()=='否'){
+      for(var $j=2;$j<=21;$j++){
+          $('#q'+$q_num+'_o1_'+$j).disabled = true;
       }
-    });
-  };
-
+    }else{
+      for(var $j=2;$j<=21;$j++){
+          $('#q'+$q_num+'_o1_'+$j).disabled = false;
+      }
+    }
+  }
   var  q1 = null;
   var  q2 = null;
   var  q3 = null;
