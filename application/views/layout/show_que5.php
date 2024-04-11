@@ -12,7 +12,7 @@
   }
   table tr td {
     /* border:3px #cccccc solid; */
-    padding:0px 0px 10px 5px;
+    padding:0px 0px 15px 5px;
   }
 </style>
 <div class="col-xs-12" style="padding:20px">
