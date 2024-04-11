@@ -13,6 +13,8 @@
   tbody tr td {
     top:0;
     padding:0px 0px 15px 5px;
+    text-align:center;
+
   }
   thead tr th {
     /* border:3px #cccccc solid; */
