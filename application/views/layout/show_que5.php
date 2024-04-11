@@ -141,8 +141,8 @@
       }
     }else{
       for(var $j=3;$j<=21;$j++){
-          $('#q'+q_num+'_o1_'+$j).removeClass("disabledinput");
           $('.disabledinput').disable(false);
+          $('#q'+q_num+'_o1_'+$j).removeClass("disabledinput");
       }
     }
   }
