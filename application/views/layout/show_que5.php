@@ -9,7 +9,7 @@
   }
   th span{
     color:white;
-  }
+  
   tbody tr td {
     top:0;
     padding:0px 0px 15px 5px;
@@ -23,12 +23,10 @@
   }
   .disabledinput {
     opacity: 0.4;
-    filter: alpha(opacity=40); /* For IE8 and earlier */
+    filter: alpha(opacity=40);
+    pointer-events: none; 
   }
-  .enabledinput {
-    opacity: 1;
-    filter: alpha(opacity=100); /* For IE8 and earlier */
-  }
+
 </style>
 <div class="col-xs-12" style="padding:20px">
 
