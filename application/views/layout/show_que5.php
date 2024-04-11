@@ -15,7 +15,7 @@
 	/* top:0; */
 	/* background-color:#FFFFFF !important; */
 	/* text-align:center; */
-  border-collapse:collapse;
+  border:3px #cccccc solid;
 }
 </style>
 <div class="col-xs-12" style="padding:20px">
