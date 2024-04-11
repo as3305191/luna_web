@@ -16,7 +16,7 @@
         <span style="font-size:12pt">問卷5</span>
     </div>
     <hr/>
-    <input type="" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
+    <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     <table>
 							<tr>
 							<td>潛在風險(外部/內部)</td>
