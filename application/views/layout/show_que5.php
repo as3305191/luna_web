@@ -19,7 +19,7 @@
     padding:0px 0px 15px 5px;
     position:sticky;
     top:0;
-    background-color:#FFFFFF !important;
+    /* background-color:#FFFFFF !important; */
     text-align:center;
   }
 </style>
