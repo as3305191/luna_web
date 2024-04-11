@@ -39,7 +39,7 @@
 
               <?php for ($i=0;$i<count($question_list);$i++) : ?>
               <tr>
-								<td class="min250"><?= $question_list[$i] ?></td>
+								<td class="min300"><?= $question_list[$i] ?></td>
                 <td class="min30">
 									<input type="radio" id="q<?= $i+1 ?>_o1_1" name="q<?= $i+1 ?>_o1" value="是" class="btnY1"/>
 								</td>
