@@ -1288,6 +1288,7 @@
 							</td>
 							</tr>
 						</table>
+</hr>
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
             <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>
