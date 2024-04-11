@@ -56,7 +56,7 @@
 										<input type="radio" id="q<?= $i+1 ?>_o1_6" name="q<?= $i+1 ?>_o2" value="性騷擾"/>
 										<label for="q<?= $i+1 ?>_o1_6">性騷擾</label>
 									</td>
-									<td  class="R1 min100">
+									<td  class="R1 min150">
 										<input type="radio" id="q<?= $i+1 ?>_o1_7" name="q<?= $i+1 ?>_o3" value="可能3分"/>
 										<label for="q<?= $i+1 ?>_o1_7">可能3分</label><br>
 										<input type="radio" id="q<?= $i+1 ?>_o1_8" name="q<?= $i+1 ?>_o3" value="不太可能2分"/>
