@@ -261,7 +261,6 @@
 								<td><input type="radio" id="Q_Y" name="Q5_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q5_Yn" value="否"/>
-									<label for="Q5_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q5_R_Id1" name="Q5_R" value="肢體"/>
@@ -316,7 +315,6 @@
 								<td><input type="radio" id="Q_Y" name="Q6_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q6_Yn" value="否"/>
-									<label for="Q6_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q6_R_Id1" name="Q6_R" value="肢體"/>
@@ -371,7 +369,6 @@
 								<td><input type="radio" id="Q_Y" name="Q7_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q7_Yn" value="否"/>
-									<label for="Q7_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q7_R_Id1" name="Q7_R" value="肢體"/>
@@ -426,7 +423,6 @@
 								<td><input type="radio" id="Q_Y" name="Q8_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q8_Yn" value="否"/>
-									<label for="Q8_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q8_R_Id1" name="Q8_R" value="肢體"/>
@@ -481,7 +477,6 @@
 								<td><input type="radio" id="Q_Y" name="Q9_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q9_Yn" value="否"/>
-									<label for="Q9_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q9_R_Id1" name="Q9_R" value="肢體"/>
@@ -536,7 +531,6 @@
 								<td><input type="radio" id="Q_Y" name="Q10_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q10_Yn" value="否"/>
-									<label for="Q10_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q10_R_Id1" name="Q10_R" value="肢體"/>
@@ -591,7 +585,6 @@
 								<td><input type="radio" id="Q_Y" name="Q11_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q11_Yn" value="否"/>
-									<label for="Q11_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q11_R_Id1" name="Q11_R" value="肢體"/>
@@ -646,7 +639,6 @@
 								<td><input type="radio" id="Q_Y" name="Q12_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q12_Yn" value="否"/>
-									<label for="Q12_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q12_R_Id1" name="Q12_R" value="肢體"/>
@@ -701,7 +693,6 @@
 								<td><input type="radio" id="Q_Y" name="Q13_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q13_Yn" value="否"/>
-									<label for="Q13_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q13_R_Id1" name="Q13_R" value="肢體"/>
@@ -756,7 +747,6 @@
 								<td><input type="radio" id="Q_Y" name="Q14_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q14_Yn" value="否"/>
-									<label for="Q14_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q14_R_Id1" name="Q14_R" value="肢體"/>
@@ -811,7 +801,6 @@
 								<td><input type="radio" id="Q_Y" name="Q15_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q15_Yn" value="否"/>
-									<label for="Q15_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q15_R_Id1" name="Q15_R" value="肢體"/>
@@ -869,7 +858,6 @@
 								<td><input type="radio" id="Q_Y" name="Q16_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q16_Yn" value="否"/>
-									<label for="Q16_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q16_R_Id1" name="Q16_R" value="肢體"/>
@@ -924,7 +912,6 @@
 								<td><input type="radio" id="Q_Y" name="Q17_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q17_Yn" value="否"/>
-									<label for="Q17_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q17_R_Id1" name="Q17_R" value="肢體"/>
@@ -979,7 +966,6 @@
 								<td><input type="radio" id="Q_Y" name="Q18_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q18_Yn" value="否"/>
-									<label for="Q18_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q18_R_Id1" name="Q18_R" value="肢體"/>
@@ -1034,7 +1020,6 @@
 								<td><input type="radio" id="Q_Y" name="Q19_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q19_Yn" value="否"/>
-									<label for="Q19_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q19_R_Id1" name="Q19_R" value="肢體"/>
@@ -1199,7 +1184,6 @@
 								<td><input type="radio" id="Q_Y" name="Q22_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q22_Yn" value="否"/>
-									<label for="Q22_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q22_R_Id1" name="Q22_R" value="肢體"/>
@@ -1254,7 +1238,6 @@
 								<td><input type="radio" id="Q_Y" name="Q23_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q23_Yn" value="否"/>
-									<label for="Q23_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q23_R_Id1" name="Q23_R" value="肢體"/>
