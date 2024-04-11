@@ -11,10 +11,10 @@
     color:white;
   }
   table tr td {
-	position:sticky;
+	/* position:sticky; */
 	top:0;
-	background-color:#FFFFFF !important;
-	text-align:center;
+	/* background-color:#FFFFFF !important; */
+	/* text-align:center; */
   border-collapse:collapse;
 }
 </style>
