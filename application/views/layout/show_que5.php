@@ -132,34 +132,213 @@
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
     parent.layer.close(index);
   })
+ 
+  var  q1 = null;
+  var  q2 = null;
+  var  q3 = null;
+  var  q4 = null;
+  var  q5 = null;
+  var  q6 = null;
+  var  q7 = null;
+  var  q8 = null;
+  var  q9 = null;
+  var  q10 = null;
+  var  q11 = null;
+  var  q12 = null;
+  var  q13 = null;
+  var  total1 = 0;
+  var  total2 = 0;
+  var  q1o = '無';
+  var  q2o = '無';
+  var  q3o = '無';
+  var  q4o = '無';
+  $('input:radio[name="q3_1"]').on('change', function(){
+    q1 = $('input:radio[name="q3_1"]:checked').val();
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;
+
+    // console.log(total1);
+    t1();
+  });
+  $('input:radio[name="q3_2"]').on('change', function(){
+    q2 = $('input:radio[name="q3_2"]:checked').val();
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;    // console.log(total1);
+    t1();
+  });
+  $('input:radio[name="q3_3"]').on('change', function(){
+    q3 = $('input:radio[name="q3_3"]:checked').val();
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;    // console.log(total1);
+    t1();
+  });
+  $('input:radio[name="q3_4"]').on('change', function(){
+    q4 = $('input:radio[name="q3_4"]:checked').val();
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;    // console.log(total1);
+    t1();
+  });
+  $('input:radio[name="q3_5"]').on('change', function(){
+    q5 = $('input:radio[name="q3_5"]:checked').val();
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;    // console.log(total1);
+    t1();
+  });
+  $('input:radio[name="q3_6"]').on('change', function(){
+    q6 = $('input:radio[name="q3_6"]:checked').val();
+    sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
+    var rem = sum_p1 % 6;
+    total1 = (sum_p1 - rem) / 6;    // console.log(total1);
+    t1();
+  });
+
+  $('input:radio[name="q3_7"]').on('change', function(){
+    q7 = $('input:radio[name="q3_7"]:checked').val();
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;
+    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_8"]').on('change', function(){
+    q8 = $('input:radio[name="q3_8"]:checked').val();
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_9"]').on('change', function(){
+    q9 = $('input:radio[name="q3_9"]:checked').val();
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_10"]').on('change', function(){
+    q10 = $('input:radio[name="q3_10"]:checked').val();
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_11"]').on('change', function(){
+    q11 = $('input:radio[name="q3_11"]:checked').val();
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_12"]').on('change', function(){
+    q12 = $('input:radio[name="q3_12"]:checked').val();
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    t2();
+  });
+  $('input:radio[name="q3_13"]').on('change', function(){
+    q13 = $('input:radio[name="q3_13"]:checked').val();
+    sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
+    var rem2 = sum_p2 % 6;
+    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    t2();
+  });
+
+
   $('.dosubmit').click(function() {
-  		$.ajax({
-  			url: '<?= base_url() ?>' + 'mgmt/roles/add_under',
-  			type: 'POST',
-  			data: {
-  				qid:$('#qid').val(),
-          new_name : $('#name').val()
-  			},
-  			dataType: 'json',
-  			success: function(d) {
-  				if(d) {
-  					console.log(d);
-  				}
-          if(d.success){
-            var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-            parent.layer.close(index);
-            parent.location.reload();
+    if (q1==null||q2==null||q3==null||q4==null||q5==null||q6==null||
+         q7==null||q8==null||q9==null||q10==null||q11==null||q12==null||q13==null){
+          alert("請填寫完全部題目！");   
+    } else{
+      
+        $.ajax({
+          url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q5',
+          type: 'POST',
+          data: {
+            qid:$('#qid').val(),
+            q1 : q1,
+            q2 : q2,
+            q3 : q3,
+            q4 : q4,
+            q5 : q5,
+            q6 : q6,
+            q7 : q7,
+            q8 : q8,
+            q9 : q9,
+            q10 : q10,
+            q11 : q11,
+            q12 : q12,
+            q13 : q13,
+            q1o : q1o,
+            q2o : q2o,
+            q3o : q3o,
+            q4o : q4o,
+          },
+          dataType: 'json',
+          success: function(d) {
+            if(d) {
+              console.log(d);
+            }
+            if(d.success){
+              var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+              parent.layer.close(index);
+              parent.location.reload();
+            }
+            if(d.error){
+              layer.msg(d.error);
+            }
+          },
+          failure:function(){
+            layer.msg('faialure');
           }
-          if(d.error){
-            layer.msg(d.error);
-          }
-  			},
-  			failure:function(){
-  				layer.msg('faialure');
-  			}
-  		});
+        });  
+  }
+  		
   })
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
+
+  function t1(){
+    var text = '';
+    
+    if(parseInt(total1)<=50){
+      text = '<?= $this->_lang['q2_ss'] ?>';
+    }
+    if(parseInt(total1)<69 && parseInt(total1)>50){
+      text = '<?= $this->_lang['q2_mm'] ?>';
+    }
+    if(parseInt(total1)>=70){
+      text = '<?= $this->_lang['q2_sbs'] ?>';
+    }
+    if (q1!==null&&q2!==null&&q3!==null&&q4!==null&&q5!==null&&q6!==null){
+      $('#t1').text(total1);
+      $('#t1_s').text(text);
+      q1o = total1;
+      q2o = text;
+    }
+  }
+  function t2(){
+    var text1 = '';
+    
+    if(parseInt(total2)<=45){
+      text = '<?= $this->_lang['q2_ss'] ?>';
+    }
+    if(45<parseInt(total2) && parseInt(total2)<60){
+      text = '<?= $this->_lang['q2_mm'] ?>';
+    }
+    if(parseInt(total2)>=60){
+      text = '<?= $this->_lang['q2_sbs'] ?>';
+    }
+    if (q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null&&q13!==null){
+      $('#t2').text(total2);
+      $('#t2_s').text(text1);
+      q3o = total2;
+      q4o = text1;
+    }
+  }
 </script>
