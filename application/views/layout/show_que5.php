@@ -1287,14 +1287,12 @@
 									<label for="Q23_Lr_Id2">有：敘述</label>
 							</td>
 							</tr>
-              <div >
+              <tr> 
                 -----------------------------------
-              </div >
-						</table>
-
-            <?php for ($i=0;$i<count($question_list);$i++) : ?>
+              </tr>
+              <?php for ($i=0;$i<count($question_list);$i++) : ?>
               <tr>
-								<td><?= $each['id'] ?></td>
+								<td><?= $question_list[$i] ?></td>
                 <td>
 									<input type="radio" id="q<?= $i+1 ?>_o1_1" name="q<?= $i+1 ?>_o1" value="是" class="btnY1"/>
 								</td>
@@ -1353,6 +1351,9 @@
 
 			    	<?php endfor ?>
 
+						</table>
+
+           
             
 
             
