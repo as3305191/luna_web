@@ -9,7 +9,7 @@
   }
   th span{
     color:white;
-  
+  }
   tbody tr td {
     top:0;
     padding:0px 0px 15px 5px;
@@ -24,7 +24,7 @@
   .disabledinput {
     opacity: 0.4;
     filter: alpha(opacity=40);
-    pointer-events: none; 
+    display: none;
   }
 
 </style>
@@ -144,6 +144,7 @@
       }
     }
   }
+
   var  q1 = null;
   var  q2 = null;
   var  q3 = null;
