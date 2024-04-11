@@ -126,9 +126,10 @@
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
     parent.layer.close(index);
   })
+
   var question_list = <?= count($question_list)?>;
-  $i=1;
-  question_list.each(function() {
+  
+  for(var $i=1;$i<=question_list;$i++){
 
     $('input:radio[name="q'+$i+'_o1"]').on('change', function(){
       if(this.value=='否'){
@@ -140,7 +141,8 @@
       }
     });
     $i+1;
-  });
+  };
+
   var  q1 = null;
   var  q2 = null;
   var  q3 = null;
