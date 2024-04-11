@@ -26,7 +26,7 @@
 
     <hr/>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
-    <table>
+    <table class="col-xs-12">
 							<thead>
                 <tr>
                   <th>潛在風險(外部/內部)</th>
