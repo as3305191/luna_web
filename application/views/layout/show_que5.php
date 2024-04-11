@@ -92,7 +92,7 @@
 										<input type="radio" id="q<?= $i+1 ?>_o1_19" name="q<?= $i+1 ?>_o7" value="無"/>
 										<label for="q<?= $i+1 ?>_o1_19">無</label><br>
 										<input type="radio" id="q<?= $i+1 ?>_o1_20" name="q<?= $i+1 ?>_o7" value="有：敘述"/>
-										<label for="q<?= $i+1 ?>_o1_20">有：敘述</label>
+										<label for="q<?= $i+1 ?>_o1_20">有：敘述	<input name="q<?= $i+1 ?>_o8"></label>
 									</td>
 							</tr>
 
