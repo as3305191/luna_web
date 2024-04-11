@@ -32,9 +32,9 @@
 							<td>現有控制措施</td>
 							<td>降低風險措施</td>
 							</tr>
-							<tr>
+							<!-- <tr>
 								<td>外部不法侵害(註：勾否者該項無需評估)</td>
-							</tr>
+							</tr> -->
 
               <?php for ($i=0;$i<count($question_list);$i++) : ?>
               <tr>
