@@ -40,13 +40,13 @@
               <?php for ($i=0;$i<count($question_list);$i++) : ?>
               <tr>
 								<td class="min250"><?= $question_list[$i] ?></td>
-                <td>
+                <td class="min50">
 									<input type="radio" id="q<?= $i+1 ?>_o1_1" name="q<?= $i+1 ?>_o1" value="是" class="btnY1"/>
 								</td>
-								<td>
+								<td class="min50">
 									<input type="radio" id="q<?= $i+1 ?>_o1_2" name="q<?= $i+1 ?>_o1" value="否" class="btnN1"/>
 								</td>
-									<td  class="R1">
+									<td  class="R1 min50">
 										<input type="radio" id="q<?= $i+1 ?>_o1_3" name="q<?= $i+1 ?>_o2" value="肢體"/>
 										<label for="q<?= $i+1 ?>_o1_3">肢體</label><br>
 										<input type="radio" id="q<?= $i+1 ?>_o1_4" name="q<?= $i+1 ?>_o2" value="語言"/>
@@ -56,7 +56,7 @@
 										<input type="radio" id="q<?= $i+1 ?>_o1_6" name="q<?= $i+1 ?>_o2" value="性騷擾"/>
 										<label for="q<?= $i+1 ?>_o1_6">性騷擾</label>
 									</td>
-									<td  class="R1">
+									<td  class="R1 min50">
 										<input type="radio" id="q<?= $i+1 ?>_o1_7" name="q<?= $i+1 ?>_o3" value="可能3分"/>
 										<label for="q<?= $i+1 ?>_o1_7">可能3分</label><br>
 										<input type="radio" id="q<?= $i+1 ?>_o1_8" name="q<?= $i+1 ?>_o3" value="不太可能2分"/>
@@ -64,7 +64,7 @@
 										<input type="radio" id="q<?= $i+1 ?>_o1_9" name="q<?= $i+1 ?>_o3" value="極不可能1分"/>
 										<label for="q<?= $i+1 ?>_o1_9">極不可能1分</label>
 									</td>
-									<td  class="R1">
+									<td  class="R1 min50">
 										<input type="radio" id="q<?= $i+1 ?>_o1_10" name="q<?= $i+1 ?>_o4" value="嚴重3分"/>
 										<label for="q<?= $i+1 ?>_o1_10">嚴重3分</label><br>
 										<input type="radio" id="q<?= $i+1 ?>_o1_11" name="q<?= $i+1 ?>_o4" value="中度2分"/>
@@ -72,7 +72,7 @@
 										<input type="radio" id="q<?= $i+1 ?>_o1_12" name="q<?= $i+1 ?>_o4" value="輕度1分"/>
 										<label for="q<?= $i+1 ?>_o1_12">輕度1分</label>
 									</td>
-									<td  class="R1">
+									<td  class="R1 min50">
 										<input type="radio" id="q<?= $i+1 ?>_o1_13" name="q<?= $i+1 ?>_o5" value="高度6-9分"/>
 										<label for="q<?= $i+1 ?>_o1_13">高度6-9分</label><br>
 										<input type="radio" id="q<?= $i+1 ?>_o1_14" name="q<?= $i+1 ?>_o5" value="中度3-4分"/>
@@ -80,7 +80,7 @@
 										<input type="radio" id="q<?= $i+1 ?>_o1_15" name="q<?= $i+1 ?>_o5" value="輕度1-2分"/>
 										<label for="q<?= $i+1 ?>_o1_15">輕度1-2分</label>
 									</td>
-									<td  class="R1">
+									<td  class="R1 min50">
 										<input type="radio" id="q<?= $i+1 ?>_o1_16" name="q<?= $i+1 ?>_o6" value="工程控制"/>
 										<label for="q<?= $i+1 ?>_o1_16">工程控制</label><br>
 										<input type="radio" id="q<?= $i+1 ?>_o1_17" name="q<?= $i+1 ?>_o6" value="個人防護"/>
@@ -88,7 +88,7 @@
 										<input type="radio" id="q<?= $i+1 ?>_o1_18" name="q<?= $i+1 ?>_o6" value="管理控制"/>
 										<label for="q<?= $i+1 ?>_o1_18">管理控制</label>
 									</td>
-									<td class="R1">
+									<td class="R1 min50">
 										<input type="radio" id="q<?= $i+1 ?>_o1_19" name="q<?= $i+1 ?>_o7" value="無"/>
 										<label for="q<?= $i+1 ?>_o1_19">無</label><br>
 										<input type="radio" id="q<?= $i+1 ?>_o1_20" name="q<?= $i+1 ?>_o7" value="有：敘述"/>
