@@ -88,11 +88,11 @@
 										<input type="radio" id="q<?= $i+1 ?>_o1_18" name="q<?= $i+1 ?>_o6" value="管理控制"/>
 										<label for="q<?= $i+1 ?>_o1_18">管理控制</label>
 									</td>
-									<td class="R1 min250">
+									<td class="R1 min300">
 										<input type="radio" id="q<?= $i+1 ?>_o1_19" name="q<?= $i+1 ?>_o7" value="無"/>
 										<label for="q<?= $i+1 ?>_o1_19">無</label><br>
 										<input type="radio" id="q<?= $i+1 ?>_o1_20" name="q<?= $i+1 ?>_o7" value="有：敘述"/>
-										<label for="q<?= $i+1 ?>_o1_20">有：<input name="q<?= $i+1 ?>_o8"></label>
+										<label for="q<?= $i+1 ?>_o1_20">有：</label><input name="q<?= $i+1 ?>_o8">
 									</td>
 							</tr>
 
