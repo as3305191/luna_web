@@ -14,6 +14,12 @@
     /* border:3px #cccccc solid; */
     padding:0px 0px 15px 5px;
   }
+  table tr th {
+    /* border:3px #cccccc solid; */
+    padding:0px 0px 15px 5px;
+
+    text-align:center;
+  }
 </style>
 <div class="col-xs-12" style="padding:20px">
     <div class="col-xs-12">
@@ -23,15 +29,15 @@
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     <table>
 							<tr>
-							<td>潛在風險(外部/內部)</td>
-							<td>是</td>
-							<td>否</td>
-							<td>風險類型</td>
-							<td>可能性(發生機率)</td>
-							<td>嚴重性(傷害程度)</td>
-							<td>風險等級(可能性×嚴重性)</td>
-							<td>現有控制措施</td>
-							<td>降低風險措施</td>
+                <th>潛在風險(外部/內部)</th>
+                <th>是</th>
+                <th>否</th>
+                <th>風險類型</th>
+                <th>可能性(發生機率)</th>
+                <th>嚴重性(傷害程度)</th>
+                <th>風險等級(可能性×嚴重性)</th>
+                <th>現有控制措施</th>
+                <th>降低風險措施</th>
 							</tr>
 							<!-- <tr>
 								<td>外部不法侵害(註：勾否者該項無需評估)</td>
