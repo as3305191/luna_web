@@ -21,7 +21,7 @@
     background-color:#f3f3f3 !important;
     top:0;
   }
-  .disabledinput:disabled {
+  .disabledinput {
     opacity: 0.4;
     filter: alpha(opacity=40);
     /* display: block; */
@@ -137,10 +137,12 @@
     if($('input:radio[name="q'+q_num+'_o1"]:checked').val()=='否'){
       for(var $j=3;$j<=21;$j++){
           $('#q'+q_num+'_o1_'+$j).addClass("disabledinput");
+          $('.disabledinput').disable(true);
       }
     }else{
       for(var $j=3;$j<=21;$j++){
           $('#q'+q_num+'_o1_'+$j).removeClass("disabledinput");
+          $('.disabledinput').disable(false);
       }
     }
   }
