@@ -10,6 +10,12 @@
   th span{
     color:white;
   }
+  thead tr th {
+	position:sticky;
+	top:0;
+	background-color:#FFFFFF !important;
+	text-align:center;
+}
 </style>
 <div class="col-xs-12" style="padding:20px">
     <div class="col-xs-12">
