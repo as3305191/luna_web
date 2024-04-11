@@ -132,7 +132,8 @@
   for(var $i=1;$i<=question_list;$i++){
 
     $('input:radio[name="q'+$i+'_o1"]').on('change', function(){
-      console.log('q'+$i+'_o1:change');
+      
+      console.log(this.getFrameIndex);
       if(this.value=='否'){
         for(var $j=2;$j<=21;$j++){
           $('#q'+$i+'_o1_'+$j).disabled = true;
