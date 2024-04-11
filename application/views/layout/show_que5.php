@@ -10,13 +10,9 @@
   th span{
     color:white;
   }
-  table {
-	/* position:sticky; */
-	/* top:0; */
-	/* background-color:#FFFFFF !important; */
-	/* text-align:center; */
-  border:3px #cccccc solid;
-}
+  table tr td {
+    border:3px #cccccc solid;
+  }
 </style>
 <div class="col-xs-12" style="padding:20px">
     <div class="col-xs-12">
