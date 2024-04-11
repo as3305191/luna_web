@@ -24,7 +24,7 @@
   .disabledinput {
     opacity: 0.4;
     filter: alpha(opacity=40);
-    display: none;
+    display: block;
   }
 
 </style>
