@@ -42,7 +42,6 @@
 								</td>
 								<td>
 									<input type="radio" id="Q_N" name="Q1_Yn" value="否" class="btnN1"/>
-									<label for="Q1_Id"></label>
 								</td>
 									<td  class="R1">
 										<input type="radio" id="Q1_R_Id1" name="Q1_R" value="肢體"/>
@@ -98,7 +97,6 @@
 								<td><input type="radio" id="Q_Y" name="Q2_Yn" value="是" class="btnY2"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q2_Yn" value="否" class="btnN2"/>
-									<label for="Q2_Id"></label>
 								</td>
 								<td class="R2">
 									<input type="radio" id="Q2_R_Id1" name="Q2_R" value="肢體"/>
@@ -209,7 +207,6 @@
 								<td><input type="radio" id="Q_Y" name="Q4_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q4_Yn" value="否"/>
-									<label for="Q4_Id"></label>
 								</td>
 								<td>
 									<input type="radio" id="Q4_R_Id1" name="Q4_R" value="肢體"/>
