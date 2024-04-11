@@ -21,6 +21,7 @@
     background-color:#f3f3f3 !important;
     top:0;
   }
+  
 </style>
 <div class="col-xs-12" style="padding:20px">
 
@@ -31,7 +32,7 @@
                 <tr>
                   <th>潛在風險(外部/內部)</th>
                   <th>是</th>
-                  <th>否(勾否者該項無需評估)</th>
+                  <th>否</th>
                   <th>風險類型</th>
                   <th>可能性(發生機率)</th>
                   <th>嚴重性(傷害程度)</th>
@@ -50,7 +51,7 @@
                   <td class="min100">
                     <input type="radio" id="q<?= $i+1 ?>_o1_2" name="q<?= $i+1 ?>_o1" value="否" class="btnN1"/>
                   </td>
-                    <td  class="R1 min150">
+                    <td class="R1 min150">
                       <input type="radio" id="q<?= $i+1 ?>_o1_3" name="q<?= $i+1 ?>_o2" value="肢體"/>
                       <label for="q<?= $i+1 ?>_o1_3">肢體</label>
                       <input type="radio" id="q<?= $i+1 ?>_o1_4" name="q<?= $i+1 ?>_o2" value="語言"/>
@@ -96,7 +97,7 @@
                       <input type="radio" id="q<?= $i+1 ?>_o1_19" name="q<?= $i+1 ?>_o7" value="無"/>
                       <label for="q<?= $i+1 ?>_o1_19">無</label><br>
                       <input type="radio" id="q<?= $i+1 ?>_o1_20" name="q<?= $i+1 ?>_o7" value="有：敘述"/>
-                      <label for="q<?= $i+1 ?>_o1_20">有：</label><input name="q<?= $i+1 ?>_o8">
+                      <label for="q<?= $i+1 ?>_o1_20">有：</label><input id="q<?= $i+1 ?>_o1_21" name="q<?= $i+1 ?>_o8">
                     </td>
                 </tr>
 
@@ -125,7 +126,21 @@
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
     parent.layer.close(index);
   })
- 
+  var question_list = <?= count($question_list)?>;
+  $i=1;
+  $("tr").each(function() {
+
+    $('input:radio[name="q'+$i+'_o1"]').on('change', function(){
+      if(this.value=='否'){
+        for(var $j=2;$j<=21;$j++){
+          $('#q'+$i+'_o1_'+$j).disabled = true;
+        }
+      } else{
+        $('#q'+$i+'_o1_'+$j).disabled = false;
+      }
+    });
+    $i+1;
+  });
   var  q1 = null;
   var  q2 = null;
   var  q3 = null;
@@ -145,7 +160,7 @@
   var  q2o = '無';
   var  q3o = '無';
   var  q4o = '無';
-  $('input:radio[name="q3_1"]').on('change', function(){
+  $('').on('change', function(){
     q1 = $('input:radio[name="q3_1"]:checked').val();
     sum_p1 = parseInt(q1)+parseInt(q2)+parseInt(q3)+parseInt(q4)+parseInt(q5)+parseInt(q6);
     var rem = sum_p1 % 6;
