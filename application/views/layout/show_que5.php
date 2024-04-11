@@ -48,11 +48,11 @@
 								</td>
 									<td  class="R1 min100">
 										<input type="radio" id="q<?= $i+1 ?>_o1_3" name="q<?= $i+1 ?>_o2" value="肢體"/>
-										<label for="q<?= $i+1 ?>_o1_3">肢體</label><br>
+										<label for="q<?= $i+1 ?>_o1_3">肢體</label>
 										<input type="radio" id="q<?= $i+1 ?>_o1_4" name="q<?= $i+1 ?>_o2" value="語言"/>
 										<label for="q<?= $i+1 ?>_o1_4">語言</label><br>
 										<input type="radio" id="q<?= $i+1 ?>_o1_5" name="q<?= $i+1 ?>_o2" value="心理"/>
-										<label for="q<?= $i+1 ?>_o1_5">心理</label><br>
+										<label for="q<?= $i+1 ?>_o1_5">心理</label>
 										<input type="radio" id="q<?= $i+1 ?>_o1_6" name="q<?= $i+1 ?>_o2" value="性騷擾"/>
 										<label for="q<?= $i+1 ?>_o1_6">性騷擾</label>
 									</td>
