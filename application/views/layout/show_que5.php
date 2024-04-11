@@ -10,7 +10,7 @@
   th span{
     color:white;
   }
-  thead tr td {
+  table tr td {
 	position:sticky;
 	top:0;
 	background-color:#FFFFFF !important;
