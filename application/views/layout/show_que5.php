@@ -21,10 +21,10 @@
     background-color:#f3f3f3 !important;
     top:0;
   }
-  .disabledinput {
+  .disabledinput:disabled {
     opacity: 0.4;
     filter: alpha(opacity=40);
-    display: block;
+    /* display: block; */
   }
 
 </style>
