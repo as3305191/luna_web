@@ -10,9 +10,9 @@
   th span{
     color:white;
   }
-  table tr td {
+  table {
 	/* position:sticky; */
-	top:0;
+	/* top:0; */
 	/* background-color:#FFFFFF !important; */
 	/* text-align:center; */
   border-collapse:collapse;
