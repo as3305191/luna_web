@@ -128,7 +128,7 @@
   })
   var question_list = <?= count($question_list)?>;
   $i=1;
-  $("tr").each(function() {
+  question_list.each(function() {
 
     $('input:radio[name="q'+$i+'_o1"]').on('change', function(){
       if(this.value=='否'){
