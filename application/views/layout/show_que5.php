@@ -11,7 +11,8 @@
     color:white;
   }
   table tr td {
-    border:3px #cccccc solid;
+    /* border:3px #cccccc solid; */
+    padding:5px 5px 5px 5px;
   }
 </style>
 <div class="col-xs-12" style="padding:20px">
