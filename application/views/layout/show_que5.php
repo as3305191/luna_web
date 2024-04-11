@@ -47,7 +47,7 @@
                   <td class="min30">
                     <input type="radio" id="q<?= $i+1 ?>_o1_1" name="q<?= $i+1 ?>_o1" value="是" class="btnY1"/>
                   </td>
-                  <td class="min30">
+                  <td class="min100">
                     <input type="radio" id="q<?= $i+1 ?>_o1_2" name="q<?= $i+1 ?>_o1" value="否" class="btnN1"/>
                   </td>
                     <td  class="R1 min150">
