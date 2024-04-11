@@ -50,10 +50,10 @@
                 <?php for ($i=0;$i<count($question_list);$i++) : ?>
                 <tr>
                   <td class="min300"><?= $question_list[$i] ?></td>
-                  <td class="min30">
+                  <td class="min80">
                     <input type="radio" id="q<?= $i+1 ?>_o1_1" name="q<?= $i+1 ?>_o1" value="是" class="btnY1" onclick="change_yn(<?= $i+1 ?>)"/>
                   </td>
-                  <td class="min100">
+                  <td class="min80">
                     <input type="radio" id="q<?= $i+1 ?>_o1_2" name="q<?= $i+1 ?>_o1" value="否" class="btnN1" onclick="change_yn(<?= $i+1 ?>)"/>
                   </td>
                     <td class="R1 min150">
