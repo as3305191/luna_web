@@ -13,7 +13,7 @@
   tbody tr td {
     top:0;
     padding:0px 0px 15px 5px;
-    text-align:center;
+    /* text-align:center; */
 
   }
   thead tr th {
@@ -22,7 +22,7 @@
     position:sticky;
     top:0;
     /* background-color:#FFFFFF !important; */
-    text-align:center;
+    /* text-align:center; */
   }
 </style>
 <div class="col-xs-12" style="padding:20px">
