@@ -31,6 +31,7 @@
             <button type="button" class="btn btn-success dosubmit" style="width:120px;height:40px;float:right">送出</button>
         </div>
     </div>
+    </div>
     <?php $this->load->view('layout/plugins'); ?>
     <script type="text/javascript">
 	// date-picker
