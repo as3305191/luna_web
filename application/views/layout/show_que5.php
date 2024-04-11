@@ -31,7 +31,7 @@
                 <tr>
                   <th>潛在風險(外部/內部)</th>
                   <th>是</th>
-                  <th>否</th>
+                  <th>否(勾否者該項無需評估)</th>
                   <th>風險類型</th>
                   <th>可能性(發生機率)</th>
                   <th>嚴重性(傷害程度)</th>
@@ -104,13 +104,6 @@
               </tbody>
 
 						</table>
-
-           
-            
-
-            
-
-
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
             <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>
