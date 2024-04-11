@@ -13,16 +13,12 @@
   tbody tr td {
     top:0;
     padding:0px 0px 15px 5px;
-    /* text-align:center; */
 
   }
   thead tr th {
-    /* border:3px #cccccc solid; */
     padding:0px 0px 15px 5px;
     position:sticky;
     top:0;
-    /* background-color:#FFFFFF !important; */
-    /* text-align:center; */
   }
 </style>
 <div class="col-xs-12" style="padding:20px">
@@ -45,9 +41,6 @@
                   <th>降低風險措施</th>
                 </tr>
 							</thead>
-							<!-- <tr>
-								<td>外部不法侵害(註：勾否者該項無需評估)</td>
-							</tr> -->
               <tbody>
                 <?php for ($i=0;$i<count($question_list);$i++) : ?>
                 <tr>
