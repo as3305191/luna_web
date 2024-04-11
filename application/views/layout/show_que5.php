@@ -136,13 +136,11 @@
   function change_yn(q_num){
     if($('input:radio[name="q'+q_num+'_o1"]:checked').val()=='否'){
       for(var $j=3;$j<=21;$j++){
-          $('#q'+q_num+'_o1_'+$j).addClass("disabledinput");
-          $('.disabledinput').disable(true);
+          $('#q'+q_num+'_o1_'+$j).addClass("disabledinput").disable(true);
       }
     }else{
       for(var $j=3;$j<=21;$j++){
-          $('.disabledinput').disable(false);
-          $('#q'+q_num+'_o1_'+$j).removeClass("disabledinput");
+          $('#q'+q_num+'_o1_'+$j).disable(false).removeClass("disabledinput");
       }
     }
   }
