@@ -35,7 +35,7 @@
 							<tr>
 								<td>外部不法侵害(註：勾否者該項無需評估)</td>
 							</tr>
-							<tr>
+							<!-- <tr>
 								<td>是否有組織外之人員(承攬商、客戶、服務對象或親友等)因其行為無法預知，可能成為該區工作者不法侵害來源</td>
 								<td>
 									<input type="radio" id="Q_Y" name="Q1_Yn" value="是" class="btnY1"/>
@@ -1289,7 +1289,7 @@
 							</tr>
               <tr> 
                 -----------------------------------
-              </tr>
+              </tr> -->
               <?php for ($i=0;$i<count($question_list);$i++) : ?>
               <tr>
 								<td><?= $question_list[$i] ?></td>
