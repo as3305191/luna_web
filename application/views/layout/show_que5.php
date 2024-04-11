@@ -18,6 +18,7 @@
   thead tr th {
     padding:0px 0px 15px 5px;
     position:sticky;
+    background-color:#FFFFFF !important;
     top:0;
   }
 </style>
