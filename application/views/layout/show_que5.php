@@ -21,7 +21,14 @@
     background-color:#f3f3f3 !important;
     top:0;
   }
-  
+  .disabledinput {
+    opacity: 0.4;
+    filter: alpha(opacity=40); /* For IE8 and earlier */
+  }
+  .enabledinput {
+    opacity: 1;
+    filter: alpha(opacity=100); /* For IE8 and earlier */
+  }
 </style>
 <div class="col-xs-12" style="padding:20px">
 
@@ -131,11 +138,11 @@
   function change_yn(q_num){
     if($('input:radio[name="q'+q_num+'_o1"]:checked').val()=='否'){
       for(var $j=2;$j<=21;$j++){
-          $('#q'+q_num+'_o1_'+$j).disabled = true;
+          $('#q'+q_num+'_o1_'+$j).addClass("enabledinput");
       }
     }else{
       for(var $j=2;$j<=21;$j++){
-          $('#q'+q_num+'_o1_'+$j).disabled = false;
+          $('#q'+q_num+'_o1_'+$j).removeClass("enabledinput");
       }
     }
   }
