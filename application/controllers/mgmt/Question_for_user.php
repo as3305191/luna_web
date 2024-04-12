@@ -42,6 +42,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 						$s_data['under_role_list']= $under_role_list;
 					} else{
 						$s_data['under_role_list']=  $this -> d_dao -> find_by_id($login_user->role_id);
+					}
 				}
 			}
 			
