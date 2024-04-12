@@ -49,7 +49,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 							if($each->note==''){
 								$title_dep=$each->qs_name.'-'.$each_by_dep->name;
 							} else{
-								$title_dep=$each->qs_name.$each_by_dep->name.'-'.$each->note;
+								$title_dep=$each->qs_name.'-'.$each_by_dep->name.'-'.$each->note;
 							}
 							$data['question_option_id_list_by_dep'][] = array (
 								"id" => $each->id,
