@@ -22,11 +22,11 @@
 			<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
 				<span style="font-size: 16pt;color:#0d0d56">開放問卷</span>
 			</div>
-			<?php if(isset($question_option_id_list)): ?>
+			<!-- <?php if(isset($question_option_id_list)): ?>
 				<?php foreach ($question_option_id_list as $each) : ?>
 					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 300px; height: 48px;" onclick="q_click(<?= $each['question_style_id']?>,<?= $each['id'] ?>)"><?=$each['question_title']?></button>
 				<?php endforeach ?>
-			<?php endif?>
+			<?php endif?> -->
 			<?php if(isset($question_option_id_list_by_dep)): ?>
 				<?php foreach ($question_option_id_list_by_dep as $each) : ?>
 					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 300px; height: 48px;" onclick="q_click(<?= $each['question_style_id']?>,<?= $each['id'] ?>,<?= $each['role_id'] ?>)"><?=$each['question_title']?></button>
