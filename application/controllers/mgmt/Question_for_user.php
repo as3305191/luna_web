@@ -61,12 +61,16 @@ class Question_for_user extends MY_Mgmt_Controller {
 						
 					} else{
 						$under_role=  $this -> d_dao -> find_by_id($login_user->role_id);
-						
+						if($each->note==''){
+							$title_dep=$each->qs_name.'-'.$under_role->name;
+						} else{
+							$title_dep=$each->qs_name.'-'.$under_role->name.'-'.$each->note;
+						}
 						$data['question_option_id_list_by_dep'][] = array (
 							"id" => $each->id,
 							"role_id" => $login_user->role_id,
 							"question_style_id" => 5,
-							"question_title" => $under_role->name,
+							"question_title" => $title_dep,
 						);
 					}
 				}
