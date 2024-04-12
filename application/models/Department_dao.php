@@ -227,6 +227,12 @@ class Department_dao extends MY_Model {
 	function find_under_roles($role_id){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> where('_m.parent_id', $role_id);
+		$this -> db -> where('_m.id', '53');
+		$this -> db -> where('_m.id<>', '78');
+		$this -> db -> where('_m.id<>', '75');
+		$this -> db -> where('_m.id<>', '76');
+		$this -> db -> where('_m.id<>', '77');
+		$this -> db -> where('_m.id<>', '78');
 
 		$this -> db -> order_by('id','asc');
 		$list = $this -> db -> get() -> result();
