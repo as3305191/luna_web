@@ -26,18 +26,6 @@ class Question_for_user extends MY_Mgmt_Controller {
 		foreach ($question_option_open_list as $each){
 			$question_option_open_list = $this -> question_ans_dao -> find_all_not_write($data['login_user_id'],$each->id);
 			if(count($question_option_open_list)<1){
-				if($each->note==''){
-					$title=$each->qs_name;
-				} else{
-					$title=$each->qs_name.'-'.$each->note;
-				}
-				if($each->question_style_id!==5){
-					$data['question_option_id_list'][] = array (
-						"id" => $each->id,
-						"question_style_id" => $each->question_style_id,
-						"question_title" => $title,
-					);
-				}
 				
 				if($each->question_style_id==5){
 					if($login_user->role_id=='53'){
@@ -82,12 +70,25 @@ class Question_for_user extends MY_Mgmt_Controller {
 							"question_title" => $title_dep,
 						);
 					}
+				}else{
+					if($each->note==''){
+						$title=$each->qs_name;
+					} else{
+						$title=$each->qs_name.'-'.$each->note;
+					}
+					if($each->question_style_id!==5){
+						$data['question_option_id_list'][] = array (
+							"id" => $each->id,
+							"question_style_id" => $each->question_style_id,
+							"question_title" => $title,
+						);
+					}
 				}
 			}
 			
 		}
 		$data['question_option_open_list']=$question_option_open_list;
-		$this -> to_json($data['question_option_id_list_by_dep']);
+		// $this -> to_json($data['question_option_id_list_by_dep']);
 		$this -> load -> view('mgmt/question_for_user/list', $data);
 	}
 
