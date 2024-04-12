@@ -228,7 +228,7 @@ class Department_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> where('_m.parent_id', $role_id);
 
-
+		$this -> db -> order_by('id','asc');
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
