@@ -87,7 +87,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 			
 		}
 		$data['question_option_open_list']=$question_option_open_list;
-		$this -> to_json($data['question_option_id_list_by_dep']);
+		// $this -> to_json($data['question_option_id_list_by_dep']);
 		$this -> load -> view('mgmt/question_for_user/list', $data);
 	}
 
