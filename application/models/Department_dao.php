@@ -224,5 +224,13 @@ class Department_dao extends MY_Model {
 
 		return $list;
 	}
+	function find_under_roles($role_id){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> where('_m.parent_id', $role_id);
+
+
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
 }
 ?>
