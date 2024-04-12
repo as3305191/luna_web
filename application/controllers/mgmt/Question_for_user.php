@@ -31,11 +31,14 @@ class Question_for_user extends MY_Mgmt_Controller {
 				} else{
 					$title=$each->qs_name.'-'.$each->note;
 				}
-				$data['question_option_id_list'][] = array (
+				if($each->question_style_id!==5){
+					$data['question_option_id_list'][] = array (
 						"id" => $each->id,
 						"question_style_id" => $each->question_style_id,
 						"question_title" => $title,
-				);
+					);
+				}
+				
 				if($each->question_style_id==5){
 					$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
 					if(!empty($under_role_list)){
