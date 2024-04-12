@@ -41,17 +41,40 @@ class Question_for_user extends MY_Mgmt_Controller {
 				
 				if($each->question_style_id==5){
 					$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
+					
 					if(!empty($under_role_list)){
-						$s_data['under_role_list']= $under_role_list;
+						// $s_data['under_role_list']= $under_role_list;
+						
+						foreach ($under_role_list as $each_by_dep){
+							if($each->note==''){
+								$title_dep=$each->qs_name.'-'.$each_by_dep->name;
+							} else{
+								$title_dep=$each->qs_name.$each_by_dep->name.'-'.$each->note;
+							}
+							$data['question_option_id_list_by_dep'][] = array (
+								"id" => $each->id,
+								"role_id" => $each_by_dep->id,
+								"question_style_id" => 5,
+								"question_title" => $title_dep,
+							);
+						}
+						
 					} else{
-						$s_data['under_role_list']=  $this -> d_dao -> find_by_id($login_user->role_id);
+						$under_role=  $this -> d_dao -> find_by_id($login_user->role_id);
+						
+						$data['question_option_id_list_by_dep'][] = array (
+							"id" => $each->id,
+							"role_id" => $login_user->role_id,
+							"question_style_id" => 5,
+							"question_title" => $under_role->name,
+						);
 					}
 				}
 			}
 			
 		}
 		$data['question_option_open_list']=$question_option_open_list;
-		// $this -> to_json($s_data);
+		$this -> to_json($data['question_option_id_list_by_dep']);
 		$this -> load -> view('mgmt/question_for_user/list', $data);
 	}
 
