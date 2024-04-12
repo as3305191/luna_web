@@ -37,7 +37,12 @@ class Question_for_user extends MY_Mgmt_Controller {
 						"question_title" => $title,
 				);
 				if($each->question_style_id==5){
-					$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);					
+					$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
+					if(!empty($under_role_list)){
+						$s_data['under_role_list']=$under_role_list;
+					} else{
+						$s_data['under_role_list'] = '最大';
+					}		
 				}
 			}
 			
