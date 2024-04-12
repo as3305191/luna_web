@@ -41,8 +41,8 @@ class Question_for_user extends MY_Mgmt_Controller {
 					if(!empty($under_role_list)){
 						$s_data['under_role_list']= $under_role_list;
 					} else{
-						$s_data['under_role_list'] = 'top';
-					}		
+						$s_data['under_role_list']= $login_user->role_id;
+					}	
 				}
 			}
 			
