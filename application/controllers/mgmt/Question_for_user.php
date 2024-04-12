@@ -18,6 +18,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 	public function index()
 	{
 		$data = array();
+		$s_data = array();
 		$data = $this -> setup_user_data($data);
 		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
 
@@ -35,10 +36,15 @@ class Question_for_user extends MY_Mgmt_Controller {
 						"question_style_id" => $each->question_style_id,
 						"question_title" => $title,
 				);
+				if($each->question_style_id==5){
+					$login_user_role_array =  explode(",", str_replace('#', ',', trim($login_user->in_department, "#")));
+					$s_data['login_user_role_array'] = $login_user_role_array;
+				}
 			}
+			
 		}
 		$data['question_option_open_list']=$question_option_open_list;
-		// $this -> to_json($data);
+		$this -> to_json($data);
 		$this -> load -> view('mgmt/question_for_user/list', $data);
 	}
 
@@ -201,6 +207,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['q1o'] = $q1o;
 		$data['q2o'] = $q2o;
 		$data['q3o'] = $q3o;
+		$data['role_id'] = $login_user->role_id;
 		$data['question_option_id'] = $qid;
 
 		$this -> question_ans_dao -> insert($data);
@@ -275,6 +282,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['q5o'] = $q5o;
 		$data['q6o'] = $q6o;
 		$data['q7o'] = $q7o;
+		$data['role_id'] = $login_user->role_id;
 
 		$data['question_option_id'] = $qid;
 
@@ -326,7 +334,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['q3o'] = $q3o;
 		$data['q4o'] = $q4o;
 		$data['question_option_id'] = $qid;
-
+		$data['role_id'] = $login_user->role_id;
 		$this -> question_ans_dao -> insert($data);
 		$res['success'] = TRUE;
 		$this -> to_json($res);
