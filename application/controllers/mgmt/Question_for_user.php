@@ -185,7 +185,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$data['lang'] = $login_user->lang;
 		$qid =$this -> get_get('id');
+		$role_id =$this -> get_get('role_id');
 		$data['qid'] = $qid;
+		$data['role_id'] = $role_id;
 		$data['question_list'] = ['是否有組織外之人員(承攬商、客戶、服務對象或親友等)因其行為無法預知，可能成為該區工作者不法侵害來源',
 								'是否有已知工作會接觸有暴力史客戶','勞工工作性質是否為執行公共安全業務',
 								'勞工工作是否為單獨作業','勞工是否需於深夜或凌晨工作','勞工是否需於較陌生環境工作','勞工工作是否涉及現金交易、運送或處理貴重物品',

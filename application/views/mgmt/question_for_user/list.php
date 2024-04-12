@@ -27,6 +27,11 @@
 					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 300px; height: 48px;" onclick="q_click(<?= $each['question_style_id']?>,<?= $each['id'] ?>)"><?=$each['question_title']?></button>
 				<?php endforeach ?>
 			<?php endif?>
+			<?php if(isset($question_option_id_list_by_dep)): ?>
+				<?php foreach ($question_option_id_list_by_dep as $each) : ?>
+					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 300px; height: 48px;" onclick="q_click(<?= $each['question_style_id']?>,<?= $each['id'] ?>,<?= $each['role_id'] ?>)"><?=$each['question_title']?></button>
+				<?php endforeach ?>
+			<?php endif?>
 		</div>
 
 				
@@ -44,7 +49,7 @@
 	});
 
 
-	function q_click(q_num,id) {
+	function q_click(q_num,id,role_id=false) {
 		switch (q_num) {
 			case 1: {
 				url = 'mgmt/question_for_user/show_que'+q_num+'?id='+id;
@@ -95,7 +100,7 @@
 				break;
 			}
 			case 5: {
-				url = 'mgmt/question_for_user/show_que'+q_num+'?id='+id;
+				url = 'mgmt/question_for_user/show_que'+q_num+'?id='+id+'role_id='+role_id;
 				layer.open({
 					type:2,
 					title:'',
