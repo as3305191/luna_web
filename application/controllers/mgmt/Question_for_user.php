@@ -41,42 +41,45 @@ class Question_for_user extends MY_Mgmt_Controller {
 				
 				if($each->question_style_id==5){
 					if($login_user->role_id=='53'){
-						$login_user->role_id=='6';
+						$under_role_list = $this -> d_dao -> find_under_roles(6);
+
+					} else{
 						$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
-						if(!empty($under_role_list)){
-							// $s_data['under_role_list']= $under_role_list;
-							
-							foreach ($under_role_list as $each_by_dep){
-								if($each->note==''){
-									$title_dep=$each->qs_name.'-'.$each_by_dep->name;
-								} else{
-									$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
-								}
-								$data['question_option_id_list_by_dep'][] = array (
-									"id" => $each->id,
-									"role_id" => $each_by_dep->id,
-									"question_style_id" => 5,
-									"question_title" => $title_dep,
-								);
-							}
-							
-						} else{
-							$under_role=  $this -> d_dao -> find_by_id($login_user->role_id);
+
+					}
+					
+					
+					if(!empty($under_role_list)){
+						// $s_data['under_role_list']= $under_role_list;
+						
+						foreach ($under_role_list as $each_by_dep){
 							if($each->note==''){
-								$title_dep=$each->qs_name.'-'.$under_role->name;
+								$title_dep=$each->qs_name.'-'.$each_by_dep->name;
 							} else{
-								$title_dep=$each->qs_name.'('.$under_role->name.')-'.$each->note;
+								$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
 							}
 							$data['question_option_id_list_by_dep'][] = array (
 								"id" => $each->id,
-								"role_id" => $login_user->role_id,
+								"role_id" => $each_by_dep->id,
 								"question_style_id" => 5,
 								"question_title" => $title_dep,
 							);
 						}
+						
+					} else{
+						$under_role=  $this -> d_dao -> find_by_id($login_user->role_id);
+						if($each->note==''){
+							$title_dep=$each->qs_name.'-'.$under_role->name;
+						} else{
+							$title_dep=$each->qs_name.'('.$under_role->name.')-'.$each->note;
+						}
+						$data['question_option_id_list_by_dep'][] = array (
+							"id" => $each->id,
+							"role_id" => $login_user->role_id,
+							"question_style_id" => 5,
+							"question_title" => $title_dep,
+						);
 					}
-					
-					
 				}
 			}
 			
