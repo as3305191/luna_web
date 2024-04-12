@@ -100,7 +100,7 @@
 				break;
 			}
 			case 5: {
-				url = 'mgmt/question_for_user/show_que'+q_num+'?id='+id+'role_id='+role_id;
+				url = 'mgmt/question_for_user/show_que'+q_num+'?id='+id+'&role_id='+role_id;
 				layer.open({
 					type:2,
 					title:'',
