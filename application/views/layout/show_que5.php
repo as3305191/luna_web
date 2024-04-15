@@ -147,12 +147,14 @@
   }
   var $num='';
   var question_list_count= <?= $question_list_count?>;
- 
+  var now_script = '';
   for(var i=1;i<=question_list_count;i++){
     for(var j=0;j<7;j++){
       $num=''
+      now_script = '';
       $num=(i*7)+j+1;
-      document.write('var q'+$num+'=null;');
+      now_script='var q'+$num+'=null;';
+      document.write(now_script);
     }
   }
   // var  q1 = null;
