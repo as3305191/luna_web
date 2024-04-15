@@ -155,10 +155,11 @@
       $num=''
       now_script = '';
       each_dom_script='';
-
+      $i_1 = i+1;
+      $j_1 = j+1;
       $num=i*7+j+1;
-      each_dom_script='$(\'input:radio[name="q'+i+'_o'+j+1+'"]\').on(\'change\', function(){'+
-         'q'+$num+ '= $(\'input:radio[name="q'+i+'_o'+j+1+'"]:checked\').val();'+
+      each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
+         'q'+$num+ '= $(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]:checked\').val();'+
          'console.log(q'+$num+');'+
       '});';
 
