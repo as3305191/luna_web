@@ -463,9 +463,9 @@ console.log(q1);
         },
   			dataType: 'json',
   			success: function(d) {
-  				if(d) {
-  					console.log(d);
-  				}
+  				// if(d) {
+  					// console.log(d);
+  				// }
           if(d.success){
             var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
             parent.layer.close(index);
