@@ -152,7 +152,7 @@
     for(var j=0;j<7;j++){
       $num=''
       now_script = '';
-      $num=(i*7)+j+1;
+      $num=(j*7)+i+1;
       now_script='var q'+$num+'=null;';
       document.write(now_script);
     }
