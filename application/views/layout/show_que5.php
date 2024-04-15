@@ -145,15 +145,16 @@
       }
     }
   }
-  // var question_list = <?= $question_list?>;
-  // var question_list_count = question_list.length;
-  // for(var i=1;i<=question_list_count;i++){
-  //   for(var j=0;j<7;j++){
-  //     var set_q1 = '';
-  //     set_q1 = 'q'+(i*7);
-  //     set_q1 = null;
-  //   }
-  // }
+  var $num='';
+  var question_list = <?= $question_list?>;
+  var question_list_count = question_list.length;
+  for(var i=1;i<=question_list_count;i++){
+    for(var j=0;j<7;j++){
+      $num=''
+      $num=($i*7)+$j+1;
+      document.write('var q'+$num+'=null;');
+    }
+  }
   // var  q1 = null;
   // var  q2 = null;
   // var  q3 = null;
