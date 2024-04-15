@@ -210,12 +210,14 @@ class Question_for_user extends MY_Mgmt_Controller {
 								'組織內是否曾發生主管或勞工遭受同事(含上司)不當言行對待','是否有無法接受不同性別、年齡、國籍或宗教信仰工作者',
 								'是否有同仁離職或請求調職原因源於職場不法侵害事件之發生','是否有被同仁排擠或工作適應不良者','內部是否有酗酒、毒癮之工作者',
 								'內部是否有處於情緒低落、絕望或恐懼，極需被關懷照顧工作者','是否有超時工作，反應工作壓力大工作者','工作環境是否有空間擁擠，照明設備不足問題，工作場所出入是否未有相當管制措施'];
+
 		// for($i=1;$i<=count($data['question_list']);$i++){
 		// 	for($j=0;$j<7;$j++){
 		// 		$num=$i*7+$j+1;
 		// 		echo '<script type="text/javascript"> var q'.$num.'=null;</script>';
 		// 	}
 		// }
+		$data['question_list_count'] = count($data['question_list']);
 		$this -> load -> view('layout/show_que5',$data);
 	}
 

@@ -146,10 +146,8 @@
     }
   }
   var $num='';
-  var question_list= <?= $question_list?>.toString();
-  console.log(question_list);
-  var question_list_array= question_list.split(",");
-  var question_list_count = question_list.length;
+  var question_list_count= <?= $question_list_count?>;
+ 
   for(var i=1;i<=question_list_count;i++){
     for(var j=0;j<7;j++){
       $num=''
