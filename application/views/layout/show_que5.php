@@ -153,7 +153,7 @@
       $num=''
       now_script = '';
       $num=(i*7)+j+1;
-      now_script='var q'+$num+'=null;';
+      now_script='<script type="text/javascript">var q'+$num+'=null;</script>';
       document.write(now_script);
     }
   }
