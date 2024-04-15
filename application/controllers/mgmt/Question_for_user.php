@@ -28,16 +28,15 @@ class Question_for_user extends MY_Mgmt_Controller {
 			if(count($question_option_open_list)<1){
 				
 				if($each->question_style_id==5){
-					if($login_user->role_id=='53'){
+					if($login_user->role_id=='53'){//孟利權限轉管理部
 						$under_role_list = $this -> d_dao -> find_under_roles(6);
 					} else{
-						if($login_user->role_id=='71'){
+						if($login_user->role_id=='71'){//特別權限：採購(訂飲料更改權限)
 							$under_role_list = $this -> d_dao -> find_under_roles(26);
 						} else{
 							$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
 						}
 					}
-					
 					
 					if(!empty($under_role_list)){
 						// $s_data['under_role_list']= $under_role_list;
