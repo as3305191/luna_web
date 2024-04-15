@@ -151,7 +151,7 @@
   for(var i=1;i<=question_list_count;i++){
     for(var j=0;j<7;j++){
       $num=''
-      $num=($i*7)+$j+1;
+      $num=(i*7)+j+1;
       document.write('var q'+$num+'=null;');
     }
   }
