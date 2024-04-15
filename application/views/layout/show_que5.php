@@ -163,10 +163,9 @@
          'q'+$num+ '= $(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]:checked\').val();'+
       '});';
       if(j==6){
-        $i_2 = i+2;
         $j_2 = j+2;
-        each_dom_script+='$(\'input[name="q'+$i_2+'_o'+$j_2+'"]\').on(\'change\', function(){'+
-         'q'+$i_1+'o= $(\'input[name="q'+$i_2+'_o'+$j_2+'"]\').val();'+
+        each_dom_script+='$(\'input[name="q'+$i_1+'_o'+$j_2+'"]\').on(\'change\', function(){'+
+         'q'+$i_1+'o= $(\'input[name="q'+$i_1+'_o'+$j_2+'"]\').val();'+
       '});';
       }
      
