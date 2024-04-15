@@ -148,11 +148,11 @@
   var $num='';
   var question_list_count= <?= $question_list_count?>;
   var now_script = '';
-  for(var i=1;i<=question_list_count;i++){
+  for(var i=0;i<question_list_count;i++){
     for(var j=0;j<7;j++){
       $num=''
       now_script = '';
-      $num=(j*7)+i+1;
+      $num=(i*7)+j+1;
       now_script='var q'+$num+'=null;';
       document.write(now_script);
     }
