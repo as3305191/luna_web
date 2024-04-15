@@ -146,7 +146,7 @@
     }
   }
   var $num='';
-  var question_list[] = <?= $question_list?>;
+  const question_list= <?= $question_list?>;
   var question_list_count = question_list.length;
   for(var i=1;i<=question_list_count;i++){
     for(var j=0;j<7;j++){
