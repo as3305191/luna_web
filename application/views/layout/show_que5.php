@@ -159,6 +159,7 @@
       $num=i*7+j+1;
       each_dom_script='$(\'input:radio[name="q'+i+'"_o'+j+1+'"]\').on(\'change\', function(){'+
          'q'+$num+ '= $(\'input:radio[name="q'+i+'"_o'+j+1+'"]:checked\').val();'+
+         'console.log(q'+$num+');'+
       '});';
 
       now_script='<script type="text/javascript"> var q'+$num+'=null;'+each_dom_script+' <\/script>';
