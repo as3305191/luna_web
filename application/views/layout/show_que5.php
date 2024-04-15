@@ -148,12 +148,20 @@
   var $num='';
   var question_list_count= <?= $question_list_count?>;
   var now_script = '';
+  var $each_dom_script='';
+
   for(var i=0;i<question_list_count;i++){
     for(var j=0;j<7;j++){
       $num=''
       now_script = '';
+      $each_dom_script='';
+
       $num=i*7+j+1;
-      now_script='<script type="text/javascript"> var q'+$num+'=null; <\/script>';
+       $each_dom_script='$(\'input:radio[name="q'+i+'"_o'+j+1+'"]\').on(\'change\', function(){'+
+         'q+$num+ = $(\'input:radio[name="q'+i+'"_o'+j+1+'"]:checked\').val();'+
+      '});';
+
+      now_script='<script type="text/javascript"> var q'+$num+'=null;'+$each_dom_scrip+' <\/script>';
       document.write(now_script);
     } 
   }
