@@ -244,8 +244,8 @@
                 } else{
                   // document.getElementsByName(key).value(obj[key]).checked=true;
                   // document.querySelector('input[class='+key+']:checked').value
-                  $('.'+key).val(obj[key]).checked=true;
-
+                  // $('.'+key).val(obj[key]).checked=true;
+                  $('.'+key).val(obj[key]).attr("checked",true);
 
                 }
               }
