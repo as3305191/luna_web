@@ -57,7 +57,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['1200px','700px'],
+					area:['1200px','600px'],
 					shadeClose:true,
 					content:'<?=base_url()?>'+url
 				})
@@ -69,7 +69,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['1200px','700px'],
+					area:['1200px','600px'],
 					shadeClose:true,
 					content:'<?=base_url()?>'+url
 				})
@@ -81,7 +81,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['1200px','700px'],
+					area:['1200px','600px'],
 					shadeClose:true,
 					content:'<?=base_url()?>'+url
 				})
@@ -93,7 +93,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['1200px','700px'],
+					area:['1200px','600px'],
 					shadeClose:true,
 					content:'<?=base_url()?>'+url
 				})
@@ -105,7 +105,7 @@
 					type:2,
 					title:'',
 					closeBtn:0,
-					area:['1500px','700px'],
+					area:['1200px','600px'],
 					shadeClose:true,
 					content:'<?=base_url()?>'+url
 				})
