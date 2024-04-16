@@ -164,9 +164,9 @@
       $num=i*7+j+1;
       if(j==0){
         if(i==question_list_count-1){
-          y_n_script+='q'+$i_1;
+          y_n_script+='q'+$i_1+'==null';
         } else{
-          y_n_script+='q'+$i_1+'||';
+          y_n_script+='q'+$i_1+'==null||';
         }
       }
       each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
@@ -187,7 +187,7 @@
       if(j==6&&i==question_list_count-1){
         // console.log(ajax_dom);
         ajax_script='<script type="text/javascript">$(\'.dosubmit\').click(function() {'+
-            'if (q1==null){'+
+            'if ('+y_n_script+'){'+
                  ' alert("請填寫完全部題目！");'+ 
             ' } else{'+
                   ' $.ajax({'+ 
