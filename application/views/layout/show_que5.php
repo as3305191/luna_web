@@ -255,7 +255,7 @@
   }
   function setRadioButtonByValue(groupName, radioValue) {
     // console.log(groupName+':'+radioValue);
-    var radios = $('.'+groupName).find('input');
+    var radios = $('.'+groupName);
     console.log(radios[0]);
     
     for (var i = 0; i < radios.length; i++) {
