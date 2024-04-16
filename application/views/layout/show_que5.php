@@ -177,59 +177,43 @@
       document.write(now_script);
       if(j==6&&i==question_list_count-1){
         console.log(ajax_dom);
-        document.write( $('.dosubmit').click(function() {
-    if (q1==null||q2==null||q3==null||q4==null||q5==null||q6==null||
-         q7==null||q8==null||q9==null||q10==null||q11==null||q12==null||q13==null){
-          alert("請填寫完全部題目！");   
-    } else{
-      
-        $.ajax({
-          url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q5',
-          type: 'POST',
-          data: {
-            qid:$('#qid').val(),
-            q1 : q1,
-            q2 : q2,
-            q3 : q3,
-            q4 : q4,
-            q5 : q5,
-            q6 : q6,
-            q7 : q7,
-            q8 : q8,
-            q9 : q9,
-            q10 : q10,
-            q11 : q11,
-            q12 : q12,
-            q13 : q13,
+        document.write(' $(\'.dosubmit\').click(function() {'+
+            'if (q1==null||q2==null||q3==null||q4==null||q5==null||q6==null||'+
+               ' q7==null||q8==null||q9==null||q10==null||q11==null||q12==null||q13==null){'+
+                 ' alert("請填寫完全部題目！");'+ 
+                 ' } else{'+ 
+              
+                  ' $.ajax({'+ 
+                    ' url: \'<?= base_url('mgmt/question_for_user/save_q5') ?>\','+ 
+                    ' type: \'POST\','+ 
+                    ' data: {'+ 
+                      '  qid:$(\'#qid\').val(),'+ 
+                    
+                      ' },'+ 
+                  '  dataType: \'json\','+ 
+                  ' success: function(d) {'+ 
+                    'if(d) {'+ 
+                      '  console.log(d);'+ 
+                      '}'+ 
+                      'if(d.success){'+ 
+                        '  var index = parent.layer.getFrameIndex(window.name);'+ 
+                        ' parent.layer.close(index);'+ 
+                        ' parent.location.reload();'+ 
+                        ' }'+ 
+                        'if(d.error){'+ 
+                          ' layer.msg(d.error);'+ 
+                          '}'+ 
+                          ' },'+ 
+                          ' failure:function(){'+ 
+                            '  layer.msg('faialure');'+ 
+                            '}'+ 
+                            ' });  '+ 
+                            '}'+ 
+                            '})'
 
-            q1o : q1o,
-            q2o : q2o,
-            q3o : q3o,
-            q4o : q4o,
-          },
-          dataType: 'json',
-          success: function(d) {
-            if(d) {
-              console.log(d);
-            }
-            if(d.success){
-              var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
-              parent.layer.close(index);
-              parent.location.reload();
-            }
-            if(d.error){
-              layer.msg(d.error);
-            }
-          },
-          failure:function(){
-            layer.msg('faialure');
-          }
-        });  
-    }
-  		
-  }));
+        );
       }
-    } 
+    }
   }
 
 
