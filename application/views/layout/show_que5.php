@@ -232,7 +232,9 @@
   				if(d) {
             for (const key in d.items) {
               obj= d.items;
-              key.val(obj[key]).prop("checked", true);
+              document.write('<script type="text/javascript">'+key+'.val('+obj[key]+').prop("checked", true);<\/script>');
+
+              
             }
   				}
          
