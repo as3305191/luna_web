@@ -24,67 +24,66 @@ class Question_for_user extends MY_Mgmt_Controller {
 
 		$question_option_open_list = $this -> question_option_dao -> find_all_open_question();
 		foreach ($question_option_open_list as $each){
-			$question_option_open_list = $this -> question_ans_dao -> find_all_not_write($data['login_user_id'],$each->id);
+			$question_option_open_list_user = $this -> question_ans_dao -> find_all_not_write($data['login_user_id'],$each->id);
+			$question_option_open_list_dep = $this -> question_ans_dao -> find_all_not_write($each->id);
+
 			if(count($question_option_open_list)<1){
-				
-				if($each->question_style_id==5){
-					if($login_user->role_id=='53'){//孟利權限轉管理部
-						$under_role_list = $this -> d_dao -> find_under_roles(6);
+				if($each->note==''){
+					$title=$each->qs_name;
+				} else{
+					$title=$each->qs_name.'-'.$each->note;
+				}
+				if($each->question_style_id!==5){
+					$data['question_option_id_list'][] = array (
+						"id" => $each->id,
+						"question_style_id" => $each->question_style_id,
+						"question_title" => $title,
+					);
+				}
+			}
+			if(count($question_option_open_list_dep)<1){
+				if($login_user->role_id=='53'){//孟利權限轉管理部
+					$under_role_list = $this -> d_dao -> find_under_roles(6);
+				} else{
+					if($login_user->role_id=='71'){//特別權限：採購(訂飲料更改權限)
+						$under_role_list = $this -> d_dao -> find_under_roles(26);
 					} else{
-						if($login_user->role_id=='71'){//特別權限：採購(訂飲料更改權限)
-							$under_role_list = $this -> d_dao -> find_under_roles(26);
-						} else{
-							$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
-						}
+						$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
 					}
+				}
+				
+				if(!empty($under_role_list)){
+					// $s_data['under_role_list']= $under_role_list;
 					
-					if(!empty($under_role_list)){
-						// $s_data['under_role_list']= $under_role_list;
-						
-						foreach ($under_role_list as $each_by_dep){
-							if($each->note==''){
-								$title_dep=$each->qs_name.'-'.$each_by_dep->name;
-							} else{
-								$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
-							}
-							$data['question_option_id_list_by_dep'][] = array (
-								"id" => $each->id,
-								"role_id" => $each_by_dep->id,
-								"question_style_id" => 5,
-								"question_title" => $title_dep,
-							);
-						}
-						
-					} else{
-						$under_role=  $this -> d_dao -> find_by_id($login_user->role_id);
+					foreach ($under_role_list as $each_by_dep){
 						if($each->note==''){
-							$title_dep=$each->qs_name.'-'.$under_role->name;
+							$title_dep=$each->qs_name.'-'.$each_by_dep->name;
 						} else{
-							$title_dep=$each->qs_name.'('.$under_role->name.')-'.$each->note;
+							$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
 						}
 						$data['question_option_id_list_by_dep'][] = array (
 							"id" => $each->id,
-							"role_id" => $login_user->role_id,
+							"role_id" => $each_by_dep->id,
 							"question_style_id" => 5,
 							"question_title" => $title_dep,
 						);
 					}
-				}else{
+					
+				} else{
+					$under_role=  $this -> d_dao -> find_by_id($login_user->role_id);
 					if($each->note==''){
-						$title=$each->qs_name;
+						$title_dep=$each->qs_name.'-'.$under_role->name;
 					} else{
-						$title=$each->qs_name.'-'.$each->note;
+						$title_dep=$each->qs_name.'('.$under_role->name.')-'.$each->note;
 					}
-					if($each->question_style_id!==5){
-						$data['question_option_id_list'][] = array (
-							"id" => $each->id,
-							"question_style_id" => $each->question_style_id,
-							"question_title" => $title,
-						);
-					}
+					$data['question_option_id_list_by_dep'][] = array (
+						"id" => $each->id,
+						"role_id" => $login_user->role_id,
+						"question_style_id" => 5,
+						"question_title" => $title_dep,
+					);
 				}
 			}
-			
 		}
 		$data['question_option_open_list']=$question_option_open_list;
 		// $this -> to_json($data['question_option_id_list_by_dep']);
