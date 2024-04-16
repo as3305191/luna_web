@@ -57,7 +57,7 @@
                     <input type="radio" class="q<?= $i+1 ?>" id="q<?= $i+1 ?>_o1_1" name="q<?= $i+1 ?>_o1" value="是" class="btnY1" onclick="change_yn(<?= $i+1 ?>)" />
                   </td>
                   <td class="min60">
-                    <input type="radio" id="q<?= $i+1 ?>_o1_2" name="q<?= $i+1 ?>_o1" value="否" class="btnN1" onclick="change_yn(<?= $i+1 ?>)"/>
+                    <input type="radio" class="q<?= $i+1 ?>" id="q<?= $i+1 ?>_o1_2" name="q<?= $i+1 ?>_o1" value="否" class="btnN1" onclick="change_yn(<?= $i+1 ?>)"/>
                   </td>
                     <td class="R1 min125">
                       <input type="radio" class="q<?= $i+2 ?>" id="q<?= $i+1 ?>_o1_3" name="q<?= $i+1 ?>_o2" value="肢體"/>
