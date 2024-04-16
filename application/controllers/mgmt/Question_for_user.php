@@ -117,19 +117,6 @@ class Question_for_user extends MY_Mgmt_Controller {
 								);
 							}
 						}
-					}else{
-						if($each->note==''){
-							$title_dep=$each->qs_name.'-'.$each_by_dep->name;
-						} else{
-							$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
-						}
-						$data['question_option_id_list_by_dep'][] = array (
-							"id" => $each->id,
-							"question_ans_id" => 0,
-							"role_id" => $each_by_dep->id,
-							"question_style_id" => 5,
-							"question_title" => $title_dep,
-						);
 					}
 
 				
