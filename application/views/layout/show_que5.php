@@ -32,7 +32,7 @@
 
     <hr/>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
-    <input type="" id="role_id" value="<?= isset($role_id) ? $role_id : '' ?>" />
+    <input type="hidden" id="role_id" value="<?= isset($role_id) ? $role_id : '' ?>" />
     <input type="" id="question_ans_id" value="<?= isset($question_ans_id) ? $question_ans_id : '' ?>" />
 
     <table class="col-xs-12">
