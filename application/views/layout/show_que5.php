@@ -264,10 +264,10 @@
             radios[i].checked=true;
             console.log(groupName.substring(1));
             change_yn(groupName.substring(1));
-            break;
+            // break;
         } else{
           radios[i].checked=true;
-          break;
+          // break;
         }
         
       }
