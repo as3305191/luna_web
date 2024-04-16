@@ -260,7 +260,7 @@
     
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].value == radioValue) {
-        radios[i].attr("checked",true);
+        radios[i].checked=true;
         break;
       }
     }
