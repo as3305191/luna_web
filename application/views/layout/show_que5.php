@@ -149,6 +149,7 @@
   var question_list_count= <?= $question_list_count?>;
   var now_script = '';
   var each_dom_script='';
+  var ajax_dom='';
 
   for(var i=0;i<question_list_count;i++){
     for(var j=0;j<7;j++){
@@ -162,37 +163,22 @@
       each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
          'q'+$num+ '= $(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]:checked\').val();'+
       '});';
+      ajax_dom+= 'q'+$num+':q'+$num+','
       if(j==6){
         $j_2 = j+2;
         each_dom_script+='$(\'input[name="q'+$i_1+'_o'+$j_2+'"]\').on(\'change\', function(){'+
-         'q'+$i_1+'o= $(\'input[name="q'+$i_1+'_o'+$j_2+'"]\').val();'+
-      '});';
+          'q'+$i_1+'o= $(\'input[name="q'+$i_1+'_o'+$j_2+'"]\').val();'+
+        '});';
+        ajax_dom+= 'q'+$i_1+'o:q'+$i_1+'o,'
       }
-     
-
+      if(j==6&&i==question_list_count-1){
+        console.log(ajax_dom);
+      }
       now_script='<script type="text/javascript"> var q'+$num+'=null;'+each_dom_script+' <\/script>';
+     
       document.write(now_script);
     } 
   }
-  // var  q1 = null;
-  // var  q2 = null;
-  // var  q3 = null;
-  // var  q4 = null;
-  // var  q5 = null;
-  // var  q6 = null;
-  // var  q7 = null;
-  // var  q8 = null;
-  // var  q9 = null;
-  // var  q10 = null;
-  // var  q11 = null;
-  // var  q12 = null;
-  // var  q13 = null;
-  
-  // var  q1o = '無';
-  // var  q2o = '無';
-  // var  q3o = '無';
-  // var  q4o = '無';
-
 
 
   $('.dosubmit').click(function() {
@@ -219,6 +205,7 @@
             q11 : q11,
             q12 : q12,
             q13 : q13,
+
             q1o : q1o,
             q2o : q2o,
             q3o : q3o,
