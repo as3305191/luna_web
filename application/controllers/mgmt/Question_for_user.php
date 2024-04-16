@@ -78,7 +78,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 							}
 							$data['question_option_id_list_by_dep'][] = array (
 								"id" => $each->id,
-								"question_ans_id" => $question_option_open_list_dep,
+								"question_ans_id" => $question_option_open_list_dep->id,
 								"role_id" => $each_by_dep->id,
 								"question_style_id" => 5,
 								"question_title" => $title_dep,
