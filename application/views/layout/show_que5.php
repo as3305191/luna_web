@@ -232,9 +232,8 @@
   				if(d) {
             for (const key in d.items) {
               obj= d.items;
+              delete obj.create_time;
               document.write('<script type="text/javascript">'+key+'.val('+obj[key]+').prop("checked", true);<\/script>');
-
-              
             }
   				}
          
