@@ -406,41 +406,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		for($j=1;$j<=23;$j++){
 			$data['q'.$j.'o'] = $this -> get_post('q'.$j.'o');
 		}
-		// $q1 =$this -> get_post('q1');
-		// $q2 =$this -> get_post('q2');
-		// $q3 =$this -> get_post('q3');
-		// $q4 =$this -> get_post('q4');
-		// $q5 =$this -> get_post('q5');
-		// $q6 =$this -> get_post('q6');
-		// $q7 =$this -> get_post('q7');
-		// $q8 =$this -> get_post('q8');
-		// $q9 =$this -> get_post('q9');
-		// $q10 =$this -> get_post('q10');
-		// $q11 =$this -> get_post('q11');
-		// $q12 =$this -> get_post('q12');
-		// $q13 =$this -> get_post('q13');
-		// $q1o =$this -> get_post('q1o');
-		// $q2o =$this -> get_post('q2o');
-		// $q3o =$this -> get_post('q3o');
-		// $q4o =$this -> get_post('q4o');
-	
-		// $data['q1'] = $q1;
-		// $data['q2'] = $q2;
-		// $data['q3'] = $q3;
-		// $data['q4'] = $q4;
-		// $data['q5'] = $q5;
-		// $data['q6'] = $q6;
-		// $data['q7'] = $q7;
-		// $data['q8'] = $q8;
-		// $data['q9'] = $q9;
-		// $data['q10'] = $q10;
-		// $data['q11'] = $q11;
-		// $data['q12'] = $q12;
-		// $data['q13'] = $q13;
-		// $data['q1o'] = $q1o;
-		// $data['q2o'] = $q2o;
-		// $data['q3o'] = $q3o;
-		// $data['q4o'] = $q4o;
+
 
 		$this -> question_ans_dao -> insert($data);
 		$res['success'] = TRUE;
