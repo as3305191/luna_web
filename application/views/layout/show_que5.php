@@ -230,9 +230,9 @@
   			dataType: 'json',
   			success: function(d) {
   				if(d) {
-            for (var key in d.items) {
-                var value = array[key];
-                console.log(key, value);
+            for (const key in d.items) {
+              obj= d.items;
+              console.log(key, obj[key]);
             }
   				}
          

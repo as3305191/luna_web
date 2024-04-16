@@ -452,7 +452,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		
 		$id =$this -> get_post('q5_ans_id');
 
-		$items = $this -> question_ans_dao -> find_by_this_id($id);
+		$items = $this -> question_ans_dao -> find_by_id($id);
 	
 		$res['items'] = $items;
 		
