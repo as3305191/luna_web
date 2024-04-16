@@ -267,7 +267,7 @@
             // change_yn(q_num);
 
 
-              for(var $j=2;$j<=8;$j++){
+              for(var $j=2;$j<=7;$j++){
                 var nq_num = parseInt(q_num)+$j;
                
                 $('.q'+nq_num).addClass("disabledinput").attr('disabled',true).attr('checked',false);
