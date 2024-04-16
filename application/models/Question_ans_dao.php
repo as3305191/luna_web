@@ -117,10 +117,10 @@ class Question_ans_dao extends MY_Model {
 	function find_all_not_write($user_id,$question_option_id){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		$this -> db -> where('_m.user_id',$user_id);
-		$this -> db -> where('_m.question_option_id',$question_option_id);
-		$this -> db -> where('_m.for_dep',0);
-		$this -> db -> where('_m.question_option_id',$question_option_id);
+		$this -> db -> where('user_id',$user_id);
+		$this -> db -> where('question_option_id',$question_option_id);
+		$this -> db -> where('for_dep',0);
+		$this -> db -> where('question_option_id',$question_option_id);
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
@@ -128,8 +128,8 @@ class Question_ans_dao extends MY_Model {
 	function find_all_not_write_dep($question_option_id){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		$this -> db -> where('_m.for_dep',1);
-		$this -> db -> where('_m.question_option_id',$question_option_id);
+		$this -> db -> where('for_dep',1);
+		$this -> db -> where('question_option_id',$question_option_id);
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
