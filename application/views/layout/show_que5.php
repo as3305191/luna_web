@@ -236,7 +236,7 @@
               var last_str_key =  key.toString().substr(-1)
               if(str_key='p'){
                 if(last_str_key='o'){
-                  console.log('no_ans');
+                  console.log(key+' :no_ans');
                 } else{
                   $('.'+key+'').val(obj[key]).checked=true;
                 }
