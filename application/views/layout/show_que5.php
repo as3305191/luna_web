@@ -262,6 +262,7 @@
       if (radios[i].value == radioValue) {
         if(radioValue=='否'){
             radios[i].checked=true;
+            console.log(groupName.substring(1));
             change_yn(groupName.substring(1));
             break;
         } else{
