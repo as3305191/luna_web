@@ -432,6 +432,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data($s_data);
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['question_option_id']  =$this -> get_post('qid');
+		$id =$this -> get_post('question_ans_id');
 		$data['user_id'] = $login_user->id;
 		$data['role_id'] = $login_user->role_id;
 
@@ -441,8 +442,12 @@ class Question_for_user extends MY_Mgmt_Controller {
 		for($j=1;$j<=23;$j++){
 			$data['q'.$j.'o'] = $this -> get_post('q'.$j.'o');
 		}
+		if($id>0){
+			$this -> question_ans_dao -> update($data, $id);
 
-		$this -> question_ans_dao -> insert($data);
+		} else{
+			$this -> question_ans_dao -> insert($data);
+		}
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
