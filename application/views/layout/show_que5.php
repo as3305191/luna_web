@@ -177,20 +177,17 @@
       document.write(now_script);
       if(j==6&&i==question_list_count-1){
         console.log(ajax_dom);
-        document.write(' $(\'.dosubmit\').click(function() {'+
-            'if (q1==null||q2==null||q3==null||q4==null||q5==null||q6==null||'+
-               ' q7==null||q8==null||q9==null||q10==null||q11==null||q12==null||q13==null){'+
+        ajax='<script type="text/javascript">$(\'.dosubmit\').click(function() {'+
+            'if (q1==null){'+
                  ' alert("請填寫完全部題目！");'+ 
-                 ' } else{'+ 
-              
+            ' } else{'+
                   ' $.ajax({'+ 
                     ' url: \'<?= base_url('mgmt/question_for_user/save_q5') ?>\','+ 
                     ' type: \'POST\','+ 
                     ' data: {'+ 
-                      '  qid:$(\'#qid\').val(),'+ 
-                    
-                      ' },'+ 
-                  '  dataType: \'json\','+ 
+                      ' qid:$(\'#qid\').val(),'+ 
+                    '},'+ 
+                  ' dataType: \'json\','+ 
                   ' success: function(d) {'+ 
                     'if(d) {'+ 
                       '  console.log(d);'+ 
@@ -209,9 +206,8 @@
                             '}'+ 
                             ' });  '+ 
                             '}'+ 
-                            '})'
-
-        );
+                            '})<\/script>';
+        document.write();
       }
     }
   }
