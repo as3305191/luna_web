@@ -127,16 +127,18 @@ class Question_ans_dao extends MY_Model {
 		return $list;
 	}
 
-	function find_all_not_write_dep($question_option_id){
+	function find_all_not_write_dep($role_id,$question_option_id){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
+		$this -> db -> where('role_id',$role_id);
+
 		$this -> db -> where('qs.for_dep',1);
 		$this -> db -> where('question_option_id',$question_option_id);
 		$this -> db -> join("question_option qo", "qo.id = _m.question_option_id", "left");
 		$this -> db -> join("question_style qs", "qs.id = qo.question_style_id", "left");
 
 		$list = $this -> db -> get() -> result();
-		return $list;
+		return $list[0];
 	}
 
 	function find_last_cost(){
