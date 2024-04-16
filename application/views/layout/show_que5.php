@@ -274,7 +274,7 @@
                
               }
               var o_nq_num = (parseInt(q_num)-parseInt(q_num) % 7)/7+1;
-              $('.q'+o_nq_num+'o').val('').addClass("disabledinput").attr('disabled',true);
+              $('.q'+o_nq_num+'o').val('無').addClass("disabledinput").attr('disabled',true);
               console.log(o_nq_num);
             // break;
         } else{
