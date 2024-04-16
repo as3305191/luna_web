@@ -54,7 +54,7 @@
                 <tr>
                   <td class="min200"><?= $question_list[$i] ?></td>
                   <td class="min60">
-                    <input type="radio" id="q<?= $i+1 ?>_o1_1" name="q<?= $i+1 ?>_o1" value="是" class="btnY1" onclick="change_yn(<?= $i+1 ?>)"/>
+                    <input type="radio" id="q<?= $i+1 ?>_o1_1" name="q<?= $i+1 ?>_o1" value="是" class="btnY1" onclick="change_yn(<?= $i+1 ?>)" />
                   </td>
                   <td class="min60">
                     <input type="radio" id="q<?= $i+1 ?>_o1_2" name="q<?= $i+1 ?>_o1" value="否" class="btnN1" onclick="change_yn(<?= $i+1 ?>)"/>
@@ -186,7 +186,7 @@
      
       document.write(now_script);
       if(j==6&&i==question_list_count-1){
-        // console.log(ajax_dom);
+        load_ans();
         ajax_script='<script type="text/javascript">$(\'.dosubmit\').click(function() {'+
             'if ('+y_n_script+'){'+
                  ' alert("請填寫完全部題目！");'+ 
@@ -210,61 +210,42 @@
                         ' }'+ 
                         'if(d.error){'+ 
                           ' layer.msg(d.error);'+ 
-                          '}'+ 
-                          ' },'+ 
+                          '}},'+ 
                           ' failure:function(){'+ 
                             '  layer.msg(\'faialure\');'+ 
-                            '}'+ 
-                            ' });  '+ 
-                            '}'+ 
-                            '})<\/script>';
+                            '}});}})<\/script>';
         document.write(ajax_script);
       }
     }
   }
 
+  function load_ans(){
+    if($('#question_ans_id').val()>0){
+      $.ajax({
+  			url: '<?= base_url() ?>' + 'mgmt/question_for_user/load_q5_ans',
+  			type: 'POST',
+  			data: {
+  				q5_ans_id:$('#question_ans_id').val(),
+  			},
+  			dataType: 'json',
+  			success: function(d) {
+  				if(d) {
+            for (var key in d.items) {
+                var value = array[key];
+                console.log(key, value);
+            }
+  				}
+         
+  			},
+  			failure:function(){
+  				layer.msg('faialure');
+  			}
+  		});
+    }
+  }
 
- 
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
 
-  function t1(){
-    var text = '';
-    
-    if(parseInt(total1)<=50){
-      text = '<?= $this->_lang['q2_ss'] ?>';
-    }
-    if(parseInt(total1)<69 && parseInt(total1)>50){
-      text = '<?= $this->_lang['q2_mm'] ?>';
-    }
-    if(parseInt(total1)>=70){
-      text = '<?= $this->_lang['q2_sbs'] ?>';
-    }
-    if (q1!==null&&q2!==null&&q3!==null&&q4!==null&&q5!==null&&q6!==null){
-      $('#t1').text(total1);
-      $('#t1_s').text(text);
-      q1o = total1;
-      q2o = text;
-    }
-  }
-  function t2(){
-    var text1 = '';
-    
-    if(parseInt(total2)<=45){
-      text = '<?= $this->_lang['q2_ss'] ?>';
-    }
-    if(45<parseInt(total2) && parseInt(total2)<60){
-      text = '<?= $this->_lang['q2_mm'] ?>';
-    }
-    if(parseInt(total2)>=60){
-      text = '<?= $this->_lang['q2_sbs'] ?>';
-    }
-    if (q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null&&q13!==null){
-      $('#t2').text(total2);
-      $('#t2_s').text(text1);
-      q3o = total2;
-      q4o = text1;
-    }
-  }
 </script>

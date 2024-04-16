@@ -447,6 +447,18 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function load_q5_ans() {
+		$res = array();
+		
+		$id =$this -> get_post('id');
+
+		$items = $this -> question_ans_dao -> find_by_id($id);
+	
+		$res['items'] = $items;
+		
+		$this -> to_json($res);
+	}
+	
 	public function up_lock(){
 		$swot_id = $this -> get_post('id');
 		$u_data = array();
