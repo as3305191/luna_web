@@ -234,16 +234,9 @@
               obj= d.items;
               var str_key = key.toString().substring(0,1);
               if(str_key=='p'){
-                if(key.toString().substr(-1)=o){
-
-                } else{
-                  
-
-                  // document.write('<script type="text/javascript">'+key+'.val('+obj[key]+').prop("checked", true);<\/script>');
-                }
-                console.log(key.toString().substring(0,1));
+                
+                console.log(str_key);
               }
-              console.log(typeof(str_key));
             }
   				}
          
