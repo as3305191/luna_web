@@ -261,8 +261,8 @@
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].value == radioValue) {
         if(radioValue=='否'){
-            change_yn(groupName.substring(1));
             radios[i].checked=true;
+            change_yn(groupName.substring(1));
             break;
         } else{
           radios[i].checked=true;
