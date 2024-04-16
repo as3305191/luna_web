@@ -267,15 +267,15 @@
             // change_yn(q_num);
 
 
-              for(var $j=1;$j<=7;$j++){
+              for(var $j=1;$j<=8;$j++){
                 var nq_num = parseInt(q_num)+$j;
                
                 $('.q'+nq_num).addClass("disabledinput").attr('disabled',true).attr('checked',false);
                
               }
               var o_nq_num = (parseInt(q_num)-parseInt(q_num) % 7)/7+1;
-              $('.q'+o_nq_num+'_o').val('');
-              console.log(o_nq_num);
+              // $('.q'+o_nq_num+'_o').val('');
+              // console.log(o_nq_num);
             // break;
         } else{
           radios[i].checked=true;
