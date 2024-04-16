@@ -237,6 +237,7 @@
               if(str_key='p'){
                 if(last_str_key=='o'){
                   console.log(key+' :no_ans');
+                  $('.'+key+'').val(obj[key]);
                 } else{
                   $('.'+key+'').val(obj[key]).checked=true;
                 }
