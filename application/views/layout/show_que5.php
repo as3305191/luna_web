@@ -234,8 +234,8 @@
               obj= d.items;
               var str_key = key.toString().substring(0,1);
               var last_str_key =  key.toString().substr(-1)
-              if(str_key='p'){
-                if(last_str_key='o'){
+              if(str_key=='p'){
+                if(last_str_key=='o'){
                   $('.'+key).val(obj[key]);
                 } else{
                 
@@ -256,7 +256,6 @@
   }
   function setRadioButtonByValue(groupName, radioValue) {
     console.log(groupName+':'+radioValue);
-    console.log(radios.length);
     
     var radios = document.getElementsByName(groupName);
     for (var i = 0; i < radios.length; i++) {
