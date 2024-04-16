@@ -21,6 +21,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$s_data = array();
 		$data = $this -> setup_user_data($data);
 		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
+		if($login_user->role_id=='9'||$login_user->role_id=='16'){
+			$under_role_list = $this -> d_dao -> find_under_roles(6);
+		}
 		if($login_user->role_id=='53'){//孟利權限轉管理部
 			$under_role_list = $this -> d_dao -> find_under_roles(6);
 		} else{

@@ -238,7 +238,7 @@
               if(str_key=='q'){
                 if(last_str_key=='o'){
                   $('.'+key).val(obj[key]);
-                  console.log(key+':'+obj[key]);
+                  // console.log(key+':'+obj[key]);
                 } else{
                   // $('.'+key).val(obj[key]).attr("checked",true);
                   setRadioButtonByValue(key, obj[key]);
@@ -260,8 +260,15 @@
     var radios = $('.'+groupName);
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].value == radioValue) {
-        radios[i].checked=true;
-        break;
+        if(radioValue=='否'){
+            change_yn(groupName.substring(1));
+            radios[i].checked=true;
+            break;
+        } else{
+          radios[i].checked=true;
+          break;
+        }
+        
       }
     }
   }
