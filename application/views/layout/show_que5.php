@@ -138,6 +138,7 @@
     if($('input:radio[name="q'+q_num+'_o1"]:checked').val()=='否'){
       for(var $j=3;$j<=21;$j++){
           $('#q'+q_num+'_o1_'+$j).addClass("disabledinput").attr('disabled',true).attr('checked',false);
+          $('#q'+q_num+'_o1_21').val('');
       }
     }else{
       for(var $j=3;$j<=21;$j++){
@@ -178,7 +179,7 @@
       if(j==6&&i==question_list_count-1){
         // console.log(ajax_dom);
         ajax_script='<script type="text/javascript">$(\'.dosubmit\').click(function() {'+
-            'if (q1==null){'+
+            'if (q1==null||){'+
                  ' alert("請填寫完全部題目！");'+ 
             ' } else{'+
                   ' $.ajax({'+ 
