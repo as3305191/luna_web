@@ -240,7 +240,14 @@
                 } else{
                 
                   // $('.'+key).val(obj[key]).attr("checked",true);
-                  setRadioButtonByValue(key, obj[key]);
+                  // setRadioButtonByValue(key, obj[key]);
+                  var radios = document.getElementsByName(key);
+                  for (var i = 0; i < radios.length; i++) {
+                    if (radios[i].value == obj[key]) {
+                      radios[i].checked = true;
+                      return;
+                    }
+                  }
                 }
               }
 
@@ -255,13 +262,7 @@
     }
   }
   function setRadioButtonByValue(groupName, radioValue) {
-    var radios = document.getElementsByName(groupName);
-    for (var i = 0; i < radios.length; i++) {
-      if (radios[i].value == radioValue) {
-        radios[i].checked = true;
-        return;
-      }
-    }
+    
   }
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
