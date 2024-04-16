@@ -269,13 +269,13 @@
 
               for(var $j=1;$j<=7;$j++){
                 var nq_num = parseInt(q_num)+$j;
-                var o_nq_num = (parseInt(q_num)-parseInt(q_num) % 7)/7+2;
+               
                 $('.q'+nq_num).addClass("disabledinput").attr('disabled',true).attr('checked',false);
-                $('.q'+o_nq_num+'_o').val('');
-                console.log(o_nq_num);
+               
               }
-
-
+              var o_nq_num = (parseInt(q_num)-parseInt(q_num) % 7)/7+1;
+              $('.q'+o_nq_num+'_o').val('');
+              console.log(o_nq_num);
             // break;
         } else{
           radios[i].checked=true;
