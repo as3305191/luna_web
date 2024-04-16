@@ -43,6 +43,15 @@ class Department_dao extends MY_Model {
 		return $query -> result();
 	}
 
+	function find_by_this_id($id) {
+		
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.id', $id);
+
+		$query = $this -> db -> get();
+		return $query -> result();
+	}
+
 	function search_always($data) {
 		$this -> db -> where('_m.status', 0);
 	}
