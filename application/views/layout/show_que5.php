@@ -232,14 +232,15 @@
   				if(d) {
             for (const key in d.items) {
               obj= d.items;
-              if(key.toString().substring(0,1)=p){
+              if(key.toString().substring(0,1)=='p'){
                 if(key.toString().substr(-1)=o){
 
                 } else{
-                  console.log(key+':'+obj[key]);
+                  
 
                   // document.write('<script type="text/javascript">'+key+'.val('+obj[key]+').prop("checked", true);<\/script>');
                 }
+                console.log(key+':'+obj[key]);
               }
               console.log(key.toString().substring(0,1));
 
