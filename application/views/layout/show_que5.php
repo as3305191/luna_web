@@ -243,7 +243,7 @@
                 }
                 console.log(key.toString().substring(0,1));
               }
-              console.log(str_key);
+              console.log(typeof(str_key));
             }
   				}
          
