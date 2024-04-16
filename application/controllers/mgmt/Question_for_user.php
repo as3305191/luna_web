@@ -21,8 +21,17 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$s_data = array();
 		$data = $this -> setup_user_data($data);
 		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
-
+		if($login_user->role_id=='53'){//孟利權限轉管理部
+			$under_role_list = $this -> d_dao -> find_under_roles(6);
+		} else{
+			if($login_user->role_id=='71'){//特別權限：採購(訂飲料更改權限)
+				$under_role_list = $this -> d_dao -> find_under_roles(26);
+			} else{
+				$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
+			}
+		}
 		$question_option_open_list = $this -> question_option_dao -> find_all_open_question();
+
 		foreach ($question_option_open_list as $each){
 			$question_option_open_list_user = $this -> question_ans_dao -> find_all_not_write($data['login_user_id'],$each->id);
 
@@ -40,15 +49,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 					);
 				}
 			}
-			if($login_user->role_id=='53'){//孟利權限轉管理部
-				$under_role_list = $this -> d_dao -> find_under_roles(6);
-			} else{
-				if($login_user->role_id=='71'){//特別權限：採購(訂飲料更改權限)
-					$under_role_list = $this -> d_dao -> find_under_roles(26);
-				} else{
-					$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
-				}
-			}
+		
 			
 			if(!empty($under_role_list)){
 				// $s_data['under_role_list']= $under_role_list;
@@ -61,6 +62,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 						}
 						$data['question_option_id_list_by_dep'][] = array (
 							"id" => $each->id,
+							"question_ans_id" => 0,
 							"role_id" => $each_by_dep->id,
 							"question_style_id" => 5,
 							"question_title" => $title_dep,
