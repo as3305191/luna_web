@@ -450,7 +450,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 	public function load_q5_ans() {
 		$res = array();
 		
-		$id =$this -> get_post('id');
+		$id =$this -> get_post('q5_ans_id');
 
 		$items = $this -> question_ans_dao -> find_by_id($id);
 	
