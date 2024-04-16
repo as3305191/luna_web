@@ -50,7 +50,8 @@ class Question_for_user extends MY_Mgmt_Controller {
 				}
 			}
 		
-			
+			$question_option_open_list_dep = $this -> question_ans_dao -> find_all_with_dep($each->id);
+
 			if(!empty($under_role_list)){
 				// $s_data['under_role_list']= $under_role_list;
 				if(count($question_option_open_list_dep)<1){
