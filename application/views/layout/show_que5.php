@@ -235,7 +235,7 @@
               var str_key = key.toString().substring(0,1);
               var last_str_key =  key.toString().substr(-1)
               if(str_key='p'){
-                if(last_str_key=='o'){
+                if(last_str_key='o'){
                   $('.'+key).val(obj[key]);
                 } else{
                 
