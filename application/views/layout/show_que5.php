@@ -269,11 +269,9 @@
 
               for(var $j=1;$j<=7;$j++){
                 var nq_num = q_num+$j;
-                if($('input:radio[name="q'+q_num+'_o1"]:checked').val()=='否'){
-                  $('.q'+nq_num).addClass("disabledinput").attr('disabled',true).attr('checked',false);
-                  $('.q'+nq_num+'_o').val('');
-                  console.log(nq_num);
-                }
+                $('.q'+nq_num).addClass("disabledinput").attr('disabled',true).attr('checked',false);
+                $('.q'+nq_num+'_o').val('');
+                console.log(nq_num);
               }
 
 
