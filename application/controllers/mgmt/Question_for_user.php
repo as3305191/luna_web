@@ -30,9 +30,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 				$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
 			}
 		}
-		if(empty($under_role_list)){
-			$under_role_list[]= $this -> d_dao -> find_by_id($login_user->role_id);
-		}
+		// if(empty($under_role_list)){
+		// 	$under_role_list[]= $this -> d_dao -> find_by_id($login_user->role_id);
+		// }
 		$question_option_open_list = $this -> question_option_dao -> find_all_open_question();
 
 		foreach ($question_option_open_list as $each){
