@@ -232,7 +232,6 @@
   				if(d) {
             for (const key in d.items) {
               obj= d.items;
-              key==obj.c
               key.val(obj[key]).prop("checked", true);
             }
   				}
