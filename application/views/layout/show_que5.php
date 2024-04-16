@@ -205,7 +205,7 @@
                           '}'+ 
                           ' },'+ 
                           ' failure:function(){'+ 
-                            '  layer.msg('faialure');'+ 
+                            '  layer.msg(\'faialure\');'+ 
                             '}'+ 
                             ' });  '+ 
                             '}'+ 
