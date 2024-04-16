@@ -230,7 +230,7 @@
   			dataType: 'json',
   			success: function(d) {
   				if(d) {
-            for (const key in d.items) {
+            for (var key in d.items) {
               obj= d.items;
               var str_key = key.toString().substring(0,1);
               if(str_key=='p'){
