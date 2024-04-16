@@ -254,9 +254,9 @@
     }
   }
   function setRadioButtonByValue(groupName, radioValue) {
-    console.log(groupName+':'+radioValue);
+    // console.log(groupName+':'+radioValue);
     var radios = document.getElementsByName(groupName);
-    console.log(radios);
+    console.log(radios[1]);
     
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].value == radioValue) {
