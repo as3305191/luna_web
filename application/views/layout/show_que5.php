@@ -105,7 +105,7 @@
                       <input type="radio" class="q<?= $i*7+7 ?>" id="q<?= $i+1 ?>_o1_19" name="q<?= $i+1 ?>_o7" value="無"/>
                       <label for="q<?= $i+1 ?>_o1_19">無</label><br>
                       <input type="radio" class="q<?= $i*7+7 ?>" id="q<?= $i+1 ?>_o1_20" name="q<?= $i+1 ?>_o7" value="有：敘述"/>
-                      <label for="q<?= $i+1 ?>_o1_20">有：</label><input class="q<?= $i*7+8 ?>" id="q<?= $i+1 ?>_o1_21" name="q<?= $i+1 ?>_o8">
+                      <label for="q<?= $i+1 ?>_o1_20">有：</label><input class="q<?= $i*7+8 ?>o" id="q<?= $i+1 ?>_o1_21" name="q<?= $i+1 ?>_o8">
                     </td>
                 </tr>
 
