@@ -117,9 +117,9 @@ class Question_ans_dao extends MY_Model {
 	function find_all_not_write($user_id,$question_option_id){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		$this -> db -> where('user_id',$user_id);
-		$this -> db -> where('for_dep',0);
-		$this -> db -> where('question_option_id',$question_option_id);
+		$this -> db -> where('_m.user_id',$user_id);
+		$this -> db -> where('qs.for_dep',0);
+		$this -> db -> where('_m.question_option_id',$question_option_id);
 		$this -> db -> join("question_option qo", "qo.id = _m.question_option_id", "left");
 		$this -> db -> join("question_style qs", "qs.id = qo.question_style_id", "left");
 
@@ -130,10 +130,10 @@ class Question_ans_dao extends MY_Model {
 	function find_all_not_write_dep($role_id,$question_option_id){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		$this -> db -> where('role_id',$role_id);
+		$this -> db -> where('_m.role_id',$role_id);
 
 		$this -> db -> where('qs.for_dep',1);
-		$this -> db -> where('question_option_id',$question_option_id);
+		$this -> db -> where('_m.question_option_id',$question_option_id);
 		$this -> db -> join("question_option qo", "qo.id = _m.question_option_id", "left");
 		$this -> db -> join("question_style qs", "qs.id = qo.question_style_id", "left");
 
