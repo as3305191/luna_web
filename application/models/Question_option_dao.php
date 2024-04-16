@@ -84,7 +84,7 @@ class Question_option_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> select('qs.question_style_name as qs_name');
-		$this -> db -> where('_m.for_dep', 0);
+		$this -> db -> where('qs.for_dep', 0);
 
 		$this -> db -> where('_m.is_close', 0);
 		$this -> db -> where('_m.is_delete', 0);
@@ -96,7 +96,7 @@ class Question_option_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> select('qs.question_style_name as qs_name');
-		$this -> db -> where('_m.for_dep', 1);
+		$this -> db -> where('qs.for_dep', 1);
 
 		$this -> db -> where('_m.is_close', 0);
 		$this -> db -> where('_m.is_delete', 0);
