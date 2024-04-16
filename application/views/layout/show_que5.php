@@ -176,7 +176,7 @@
      
       document.write(now_script);
       if(j==6&&i==question_list_count-1){
-        console.log(ajax_dom);
+        // console.log(ajax_dom);
         ajax_script='<script type="text/javascript">$(\'.dosubmit\').click(function() {'+
             'if (q1==null){'+
                  ' alert("請填寫完全部題目！");'+ 
