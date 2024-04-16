@@ -262,8 +262,19 @@
       if (radios[i].value == radioValue) {
         if(radioValue=='否'){
             radios[i].checked=true;
-            console.log(groupName.substring(1));
-            change_yn(groupName.substring(1));
+            console.log();
+            var q_num = groupName.substring(1);
+            // change_yn(q_num);
+
+
+            if($('input:radio[name="q'+q_num+'_o1"]:checked').val()=='否'){
+              for(var $j=3;$j<=21;$j++){
+                  $('#q'+q_num+'_o1_'+$j).addClass("disabledinput").attr('disabled',true).attr('checked',false);
+                  $('#q'+q_num+'_o1_21').val('');
+              }
+            }
+
+
             // break;
         } else{
           radios[i].checked=true;
