@@ -240,14 +240,7 @@
                 } else{
                 
                   // $('.'+key).val(obj[key]).attr("checked",true);
-                  // setRadioButtonByValue(key, obj[key]);
-                  var radios = document.getElementsByName(key);
-                  for (var i = 0; i < radios.length; i++) {
-                    if (radios[i].value == obj[key]) {
-                      radios[i].attr("checked",true);
-                      // return;
-                    }
-                  }
+                  setRadioButtonByValue(key, obj[key]);
                 }
               }
 
@@ -262,8 +255,15 @@
     }
   }
   function setRadioButtonByValue(groupName, radioValue) {
-    
+    var radios = document.getElementsByName(groupName);
+    for (var i = 0; i < radios.length; i++) {
+      if (radios[i].value == radioValue) {
+        radios[i].checked = true;
+        break;
+      }
+    }
   }
+
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
