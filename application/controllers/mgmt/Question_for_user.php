@@ -403,7 +403,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		for($i=1;$i<=161;$i++){
 			$data['q'.$i] = $this -> get_post('q'.$i);
 		}
-		for($j=1;$j<=161;$j++){
+		for($j=1;$j<=23;$j++){
 			$data['q'.$j.'o'] = $this -> get_post('q'.$j.'o');
 		}
 		// $q1 =$this -> get_post('q1');
@@ -442,7 +442,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		// $data['q3o'] = $q3o;
 		// $data['q4o'] = $q4o;
 
-		// $this -> question_ans_dao -> insert($data);
+		$this -> question_ans_dao -> insert($data);
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
