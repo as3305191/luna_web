@@ -150,7 +150,7 @@
   var now_script = '';
   var each_dom_script='';
   var ajax_dom='';
-
+  var ajax_script='';
   for(var i=0;i<question_list_count;i++){
     for(var j=0;j<7;j++){
       $num=''
@@ -177,7 +177,7 @@
       document.write(now_script);
       if(j==6&&i==question_list_count-1){
         console.log(ajax_dom);
-        ajax='<script type="text/javascript">$(\'.dosubmit\').click(function() {'+
+        ajax_script='<script type="text/javascript">$(\'.dosubmit\').click(function() {'+
             'if (q1==null){'+
                  ' alert("請填寫完全部題目！");'+ 
             ' } else{'+
@@ -207,7 +207,7 @@
                             ' });  '+ 
                             '}'+ 
                             '})<\/script>';
-        document.write();
+        document.write(ajax_script);
       }
     }
   }
