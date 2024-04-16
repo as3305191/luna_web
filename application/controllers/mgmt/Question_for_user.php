@@ -400,6 +400,8 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['question_option_id']  =$this -> get_post('qid');
 		$data['user_id'] = $login_user->id;
+		$data['role_id'] = $login_user->role_id;
+
 		for($i=1;$i<=161;$i++){
 			$data['q'.$i] = $this -> get_post('q'.$i);
 		}
