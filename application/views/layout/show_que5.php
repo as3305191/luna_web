@@ -152,6 +152,7 @@
   var each_dom_script='';
   var ajax_dom='';
   var ajax_script='';
+  var y_n_script='';
   for(var i=0;i<question_list_count;i++){
     for(var j=0;j<7;j++){
       $num=''
@@ -161,16 +162,23 @@
       $i_1 = i+1;
       $j_1 = j+1;
       $num=i*7+j+1;
+      if(j==0){
+        if(i==question_list_count-1){
+          y_n_script+='q'+$i_1;
+        } else{
+          y_n_script+='q'+$i_1+'||';
+        }
+      }
       each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
          'q'+$num+ '= $(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]:checked\').val();'+
       '});';
-      ajax_dom+= 'q'+$num+':q'+$num+','
+      ajax_dom+= 'q'+$num+':q'+$num+',';
       if(j==6){
         $j_2 = j+2;
         each_dom_script+='var q'+$i_1+'o=\'無\';'+'$(\'input[name="q'+$i_1+'_o'+$j_2+'"]\').on(\'change\', function(){'+
           'q'+$i_1+'o= $(\'input[name="q'+$i_1+'_o'+$j_2+'"]\').val();'+
         '});';
-        ajax_dom+= 'q'+$i_1+'o:q'+$i_1+'o,'
+        ajax_dom+= 'q'+$i_1+'o:q'+$i_1+'o,';
       }
       
       now_script='<script type="text/javascript"> var q'+$num+'=null;'+each_dom_script+' <\/script>';
@@ -179,7 +187,7 @@
       if(j==6&&i==question_list_count-1){
         // console.log(ajax_dom);
         ajax_script='<script type="text/javascript">$(\'.dosubmit\').click(function() {'+
-            'if (q1==null||){'+
+            'if (q1==null){'+
                  ' alert("請填寫完全部題目！");'+ 
             ' } else{'+
                   ' $.ajax({'+ 
