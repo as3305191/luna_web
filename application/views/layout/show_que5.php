@@ -254,7 +254,15 @@
   		});
     }
   }
-
+  function setRadioButtonByValue(groupName, radioValue) {
+    var radios = document.getElementsByName(groupName);
+    for (var i = 0; i < radios.length; i++) {
+      if (radios[i].value == radioValue) {
+        radios[i].checked = true;
+        return;
+      }
+    }
+  }
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
