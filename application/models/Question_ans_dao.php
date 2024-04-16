@@ -138,7 +138,10 @@ class Question_ans_dao extends MY_Model {
 		$this -> db -> join("question_style qs", "qs.id = qo.question_style_id", "left");
 
 		$list = $this -> db -> get() -> result();
-		return $list[0];
+		if(count($list) > 0) {
+			return $list[0];
+		}
+		return NULL;
 	}
 
 	function find_all_with_dep($question_option_id){
