@@ -237,12 +237,16 @@
               if(str_key='p'){
                 if(last_str_key=='o'){
                   // $('.'+key+'').val(obj[key]);
-                  document.getElementsByName(key).value(obj[key]);
+                  // document.getElementsByName(key).value(obj[key]);
 
                   console.log(key+' : '+obj[key]);
 
                 } else{
-                  document.getElementsByName(key).value(obj[key]).checked=true;
+                  // document.getElementsByName(key).value(obj[key]).checked=true;
+                  // document.querySelector('input[class='+key+']:checked').value
+                  $('input[class='+key+']:checked').val(obj[key]);
+
+
                 }
               }
 
