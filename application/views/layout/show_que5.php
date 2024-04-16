@@ -171,17 +171,13 @@
         '});';
         ajax_dom+= 'q'+$i_1+'o:q'+$i_1+'o,'
       }
-      if(j==6&&i==question_list_count-1){
-        console.log(ajax_dom);
-      }
+      
       now_script='<script type="text/javascript"> var q'+$num+'=null;'+each_dom_script+' <\/script>';
      
       document.write(now_script);
-    } 
-  }
-
-
-  $('.dosubmit').click(function() {
+      if(j==6&&i==question_list_count-1){
+        console.log(ajax_dom);
+        document.write( $('.dosubmit').click(function() {
     if (q1==null||q2==null||q3==null||q4==null||q5==null||q6==null||
          q7==null||q8==null||q9==null||q10==null||q11==null||q12==null||q13==null){
           alert("請填寫完全部題目！");   
@@ -229,9 +225,15 @@
             layer.msg('faialure');
           }
         });  
-  }
+    }
   		
-  })
+  }));
+      }
+    } 
+  }
+
+
+ 
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
