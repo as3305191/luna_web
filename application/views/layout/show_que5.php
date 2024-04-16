@@ -244,8 +244,8 @@
                   var radios = document.getElementsByName(key);
                   for (var i = 0; i < radios.length; i++) {
                     if (radios[i].value == obj[key]) {
-                      radios[i].checked = true;
-                      return;
+                      radios[i].attr("checked",true);
+                      // return;
                     }
                   }
                 }
