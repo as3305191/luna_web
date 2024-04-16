@@ -398,7 +398,14 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data = array();
 		$s_data = $this -> setup_user_data($s_data);
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
-		// $qid =$this -> get_post('qid');
+		$data['question_option_id']  =$this -> get_post('qid');
+		$data['user_id'] = $login_user->id;
+		for($i=1;$i<=161;$i++){
+			$data['q'.$i] = $this -> get_post('q'.$i);
+		}
+		for($j=1;$j<=161;$j++){
+			$data['q'.$j.'o'] = $this -> get_post('q'.$j.'o');
+		}
 		// $q1 =$this -> get_post('q1');
 		// $q2 =$this -> get_post('q2');
 		// $q3 =$this -> get_post('q3');
@@ -416,8 +423,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		// $q2o =$this -> get_post('q2o');
 		// $q3o =$this -> get_post('q3o');
 		// $q4o =$this -> get_post('q4o');
-		// $data['user_id'] = $login_user->id;
-		// // $data['qid'] = $qid;
+	
 		// $data['q1'] = $q1;
 		// $data['q2'] = $q2;
 		// $data['q3'] = $q3;
@@ -435,7 +441,6 @@ class Question_for_user extends MY_Mgmt_Controller {
 		// $data['q2o'] = $q2o;
 		// $data['q3o'] = $q3o;
 		// $data['q4o'] = $q4o;
-		// $data['question_option_id'] = $qid;
 
 		// $this -> question_ans_dao -> insert($data);
 		$res['success'] = TRUE;
