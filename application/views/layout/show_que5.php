@@ -240,9 +240,8 @@
 
                   // document.write('<script type="text/javascript">'+key+'.val('+obj[key]+').prop("checked", true);<\/script>');
                 }
-                console.log(key+':'+obj[key]);
+                console.log(key.toString().substring(0,1));
               }
-              console.log(key.toString().substring(0,1));
 
             }
   				}
