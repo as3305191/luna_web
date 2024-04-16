@@ -267,10 +267,10 @@
             // change_yn(q_num);
 
 
-              for(var $j=3;$j<=21;$j++){
+              for(var $j=1;$j<=7;$j++){
                 if($('input:radio[name="q'+q_num+'_o1"]:checked').val()=='否'){
-                  $('.q'+q_num).addClass("disabledinput").attr('disabled',true).attr('checked',false);
-                  $('.q'+q_num+'_o').val('');
+                  $('.q'+q_num+$j).addClass("disabledinput").attr('disabled',true).attr('checked',false);
+                  $('.q'+q_num+$j+'_o').val('');
               }
             }
 
