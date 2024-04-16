@@ -232,8 +232,8 @@
   				if(d) {
             for (const key in d.items) {
               obj= d.items;
-              if(key.toString().substring(0,1)=='p'){
-                if(key.toString().substr(-1)=='o'){
+              if(key.toString().substring(0,1)=p){
+                if(key.toString().substr(-1)=o){
 
                 } else{
                   console.log(key+':'+obj[key]);
