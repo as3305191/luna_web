@@ -236,7 +236,9 @@
               var last_str_key =  key.toString().substr(-1)
               if(str_key='p'){
                 if(last_str_key=='o'){
-                  $('.'+key+'').text(obj[key]);
+                  $('.'+key+'').val(obj[key]);
+                  console.log(key+' : '+obj[key]);
+
                 } else{
                   $('.'+key+'').val(obj[key]).checked=true;
                 }
