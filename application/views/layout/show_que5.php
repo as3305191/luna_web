@@ -236,15 +236,9 @@
               var last_str_key =  key.toString().substr(-1)
               if(str_key='p'){
                 if(last_str_key=='o'){
-                  // $('.'+key+'').val(obj[key]);
-                  // document.getElementsByName(key).value(obj[key]);
-
-                  console.log(key+' : '+obj[key]);
-
+                  $('.'+key).val(obj[key]);
                 } else{
-                  // document.getElementsByName(key).value(obj[key]).checked=true;
-                  // document.querySelector('input[class='+key+']:checked').value
-                  // $('.'+key).val(obj[key]).checked=true;
+                
                   $('.'+key).val(obj[key]).attr("checked",true);
 
                 }
