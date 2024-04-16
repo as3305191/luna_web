@@ -186,6 +186,7 @@
                     ' type: \'POST\','+ 
                     ' data: {'+ 
                       ' qid:$(\'#qid\').val(),'+ 
+                      ajax_dom+
                     '},'+ 
                   ' dataType: \'json\','+ 
                   ' success: function(d) {'+ 
