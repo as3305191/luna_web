@@ -25,7 +25,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$question_option_open_list = $this -> question_option_dao -> find_all_open_question();
 		foreach ($question_option_open_list as $each){
 			$question_option_open_list_user = $this -> question_ans_dao -> find_all_not_write($data['login_user_id'],$each->id);
-			$question_option_open_list_dep = $this -> question_ans_dao -> find_all_not_write($each->id);
+			$question_option_open_list_dep = $this -> question_ans_dao -> find_all_not_write_dep($each->id);
 
 			if(count($question_option_open_list_user)<1){
 				if($each->note==''){
