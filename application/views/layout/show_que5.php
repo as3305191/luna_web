@@ -237,12 +237,12 @@
               if(str_key='p'){
                 if(last_str_key=='o'){
                   // $('.'+key+'').val(obj[key]);
-                  $('.'+key+'').val(123);
+                  document.getElementsByName(key).val(123);
 
                   console.log(key+' : '+obj[key]);
 
                 } else{
-                  $('.'+key+'').val(obj[key]).checked=true;
+                  document.getElementsByName(key).val(obj[key]).checked=true;
                 }
               }
 
