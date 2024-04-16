@@ -239,8 +239,8 @@
                   $('.'+key).val(obj[key]);
                 } else{
                 
-                  $('.'+key).val(obj[key]).attr("checked",true);
-
+                  // $('.'+key).val(obj[key]).attr("checked",true);
+                  setRadioButtonByValue(key, obj[key]);
                 }
               }
 
