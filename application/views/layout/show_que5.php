@@ -258,7 +258,7 @@
     var radios = document.getElementsByName(groupName);
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].value == radioValue) {
-        radios[i].checked = true;
+        radios[i].attr("checked",true);
         break;
       }
     }
