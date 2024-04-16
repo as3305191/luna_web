@@ -44,7 +44,8 @@ class Department_dao extends MY_Model {
 	}
 
 	function find_by_this_id($id) {
-		
+		$this -> db -> from("$this->table_name as _m");
+
 		$this -> db -> select('_m.*');
 		$this -> db -> where('_m.id', $id);
 
