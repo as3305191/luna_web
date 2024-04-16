@@ -409,7 +409,6 @@ class Question_for_user extends MY_Mgmt_Controller {
 			$data['q'.$j.'o'] = $this -> get_post('q'.$j.'o');
 		}
 
-
 		$this -> question_ans_dao -> insert($data);
 		$res['success'] = TRUE;
 		$this -> to_json($res);
