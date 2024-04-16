@@ -21,8 +21,6 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$s_data = array();
 		$data = $this -> setup_user_data($data);
 		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
-		$dep_list= $this -> d_dao -> find_by_id($login_user->role_id);
-
 		if($login_user->role_id=='53'){//孟利權限轉管理部
 			$under_role_list = $this -> d_dao -> find_under_roles(6);
 		} else{
@@ -31,6 +29,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 			} else{
 				$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
 			}
+		}
+		if(empty($under_role_list)){
+			$under_role_list[] = $login_user->role_id;
 		}
 		$question_option_open_list = $this -> question_option_dao -> find_all_open_question();
 
@@ -72,9 +73,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 						}
 					} else{
 						if($each->note==''){
-							$title_dep=$each->qs_name.'-'.$dep_list->name;
+							$title_dep=$each->qs_name.'-'.$each_by_dep->name;
 						} else{
-							$title_dep=$each->qs_name.'('.$dep_list->name.')-'.$each->note;
+							$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
 						}
 						$data['question_option_id_list_by_dep'][] = array (
 							"id" => $each->id,
@@ -117,35 +118,6 @@ class Question_for_user extends MY_Mgmt_Controller {
 									"question_title" => $title_dep,
 								);
 							}
-						}
-					} else{
-						$question_option_open_list_dep = $this -> question_ans_dao -> find_all_not_write_dep($login_user->role_id,$each->id);
-						if(!empty($question_option_open_list_dep)){
-							if($each->note==''){
-								$title_dep=$each->qs_name.'-'.$dep_list->name;
-							} else{
-								$title_dep=$each->qs_name.'('.$dep_list->name.')-'.$each->note;
-							}
-							$data['question_option_id_list_by_dep'][] = array (
-								"id" => $each->id,
-								"question_ans_id" => $question_option_open_list_dep->id,
-								"role_id" => $login_user->role_id,
-								"question_style_id" => 5,
-								"question_title" => $title_dep,
-							);
-						} else{
-							if($each->note==''){
-								$title_dep=$each->qs_name.'-'.$dep_list->name;
-							} else{
-								$title_dep=$each->qs_name.'('.$dep_list->name.')-'.$each->note;
-							}
-							$data['question_option_id_list_by_dep'][] = array (
-								"id" => $each->id,
-								"question_ans_id" => 0,
-								"role_id" => $login_user->role_id,
-								"question_style_id" => 5,
-								"question_title" => $title_dep,
-							);
 						}
 					}
 
