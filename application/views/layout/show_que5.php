@@ -232,9 +232,9 @@
   				if(d) {
             for (var key in d.items) {
               obj= d.items;
-              var str_key = key.toString().substring(0,1);
+              var str_key = key.toString().substr(1);
               var last_str_key =  key.toString().substr(-1)
-              if(str_key='p'){
+              if(str_key=='p'){
                 if(last_str_key=='o'){
                   $('.'+key).val(obj[key]);
                 } else{
@@ -256,8 +256,6 @@
   function setRadioButtonByValue(groupName, radioValue) {
     // console.log(groupName+':'+radioValue);
     var radios = $('.'+groupName);
-    console.log(radios[0]);
-    
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].value == radioValue) {
         radios[i].checked=true;
