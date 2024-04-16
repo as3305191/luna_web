@@ -233,8 +233,9 @@
             for (var key in d.items) {
               obj= d.items;
               var str_key = key.toString().substring(0,1);
+              var last_str_key =  key.toString().substr(-1)
               if(str_key='p'){
-                if(key.toString().substr(-1)='o'){
+                if(last_str_key='o'){
 
                 } else{
                   
