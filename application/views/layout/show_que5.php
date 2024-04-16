@@ -273,8 +273,8 @@
                 $('.q'+nq_num).addClass("disabledinput").attr('disabled',true).attr('checked',false);
                
               }
-              var o_nq_num = (parseInt(q_num)-parseInt(q_num) % 7)/7+1;
-              $('.q'+o_nq_num+'_o').val('').addClass("disabledinput").attr('disabled',true);
+              // var o_nq_num = (parseInt(q_num)-parseInt(q_num) % 7)/7+1;
+              // $('.q'+o_nq_num+'_o').val('').addClass("disabledinput").attr('disabled',true);
               // console.log(o_nq_num);
             // break;
         } else{
