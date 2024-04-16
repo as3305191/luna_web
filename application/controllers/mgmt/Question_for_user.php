@@ -68,7 +68,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 					}
 				} else{
 					foreach ($under_role_list as $each_by_dep){
-						$question_option_open_list_dep = $this -> question_ans_dao -> find_all_not_write_dep($each_by_dep->role_id,$each->id);
+						$question_option_open_list_dep = $this -> question_ans_dao -> find_all_not_write_dep($each_by_dep->id,$each->id);
 
 						if(!empty($question_option_open_list_dep)){
 							if($each->note==''){
