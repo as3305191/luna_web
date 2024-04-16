@@ -240,7 +240,7 @@
                   console.log(key+' : '+obj[key]);
 
                 } else{
-                  $('\'.'+key+'\'').val(obj[key]).checked=true;
+                  // $('\'.'+key+'\'').val(obj[key]).checked=true;
                 }
               }
 
