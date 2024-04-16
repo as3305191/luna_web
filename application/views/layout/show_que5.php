@@ -166,7 +166,7 @@
       ajax_dom+= 'q'+$num+':q'+$num+','
       if(j==6){
         $j_2 = j+2;
-        each_dom_script+='$(\'input[name="q'+$i_1+'_o'+$j_2+'"]\').on(\'change\', function(){'+
+        each_dom_script+='var q'+$i_1+'o=null;'+'$(\'input[name="q'+$i_1+'_o'+$j_2+'"]\').on(\'change\', function(){'+
           'q'+$i_1+'o= $(\'input[name="q'+$i_1+'_o'+$j_2+'"]\').val();'+
         '});';
         ajax_dom+= 'q'+$i_1+'o:q'+$i_1+'o,'
