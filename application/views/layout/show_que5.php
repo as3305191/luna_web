@@ -309,12 +309,12 @@
       } else{
           class_num = className.substr(1);
 
-          console.log(class_num);
           if(parseInt(class_num)==2){
             var valArray = radioValue.split(",");
-            console.log(valArray);
             valArray.forEach(function(){
               if(radios[i].value == this){
+                console.log(this);
+
                 radios[i].checked=true;
               }
             });            
@@ -325,6 +325,7 @@
 
               valArray.forEach(function(){
                 if(radios[i].value == this){
+                  console.log(this);
                   radios[i].checked=true;
                 }
               });  
