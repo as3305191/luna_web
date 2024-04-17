@@ -60,13 +60,13 @@
                     <input type="radio" class="q<?= $i*7+1 ?>" id="q<?= $i+1 ?>_o1_2" name="q<?= $i+1 ?>_o1" value="否" class="btnN1" onclick="change_yn(<?= $i+1 ?>)"/>
                   </td>
                     <td class="R1 min125">
-                      <input type="radio" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_3" name="q<?= $i+1 ?>_o2" value="肢體"/>
+                      <input type="ckeckbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_3" name="q<?= $i+1 ?>_o2" value="肢體"/>
                       <label for="q<?= $i+1 ?>_o1_3">肢體</label>
-                      <input type="radio" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_4" name="q<?= $i+1 ?>_o2" value="語言"/>
+                      <input type="ckeckbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_4" name="q<?= $i+1 ?>_o2" value="語言"/>
                       <label for="q<?= $i+1 ?>_o1_4">語言</label><br>
-                      <input type="radio" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_5" name="q<?= $i+1 ?>_o2" value="心理"/>
+                      <input type="ckeckbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_5" name="q<?= $i+1 ?>_o2" value="心理"/>
                       <label for="q<?= $i+1 ?>_o1_5">心理</label>
-                      <input type="radio" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_6" name="q<?= $i+1 ?>_o2" value="性騷擾"/>
+                      <input type="ckeckbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_6" name="q<?= $i+1 ?>_o2" value="性騷擾"/>
                       <label for="q<?= $i+1 ?>_o1_6">性騷擾</label>
                     </td>
                     <td  class="R1 min125">
