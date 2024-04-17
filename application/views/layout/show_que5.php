@@ -241,7 +241,7 @@
                   $('.'+key).val(obj[key]);
                   // console.log(key+':'+obj[key]);
                   
-                  document.write('<script type="text/javascript">'+key+'=$(.'+key+').val();<\/script>');
+                  document.write('<script type="text/javascript">'+key+'=$(\'.'+key+'\').val();<\/script>');
 
                 } else{
                   // $('.'+key).val(obj[key]).attr("checked",true);
