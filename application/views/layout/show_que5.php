@@ -178,13 +178,14 @@
       
       if(j==1){
         each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
-          'obj = document.getElementsByName("q1_6");'+
+          'obj = document.getElementsByName("q'+$i_1+'_o'+$j_1+'");'+
           'q'+$num+' = [];'+
             'for (i in obj) {'+
                 'if (obj[i].checked){'+
                   'q'+$num+'.push(obj[i].value);'+
                ' }'+
             '}'+
+            'console.log(q'+$num+');'+
         '});';
       } else{
         each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
