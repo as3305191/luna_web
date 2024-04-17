@@ -175,9 +175,22 @@
           y_n_script+='$(\'input:radio[name="q'+$i_1+'_o1"]:checked\').val()==null||';
         }
       }
-      each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
-         'q'+$num+ '= $(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]:checked\').val();'+
-      '});';
+      
+      if(j==1){
+        each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
+          'obj = document.getElementsByName("q1_6");'+
+          'q'+$num+' = [];'+
+            'for (i in obj) {'+
+                'if (obj[i].checked){'+
+                  'q'+$num+'.push(obj[i].value);'+
+               ' }'+
+            '}'+
+        '});';
+      } else{
+        each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
+          'q'+$num+ '= $(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]:checked\').val();'+
+        '});';
+      }
       ajax_dom+= 'q'+$num+':q'+$num+',';
       if(j==6){
         $j_2 = j+2;
