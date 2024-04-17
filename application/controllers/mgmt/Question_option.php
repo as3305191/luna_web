@@ -73,11 +73,11 @@ class Question_option extends MY_Mgmt_Controller {
 				}
 				$items_list = $this -> d_dao -> find_all_ktx_dep();
 				foreach($items_list as $each){
-					if(!array_key_exists($each->id,$q_ans_is_finish)){
+					if(!array_key_exists($each->id,$new_q_ans_is_finish)){
 						$all_div_list = $this -> d_dao -> find_under_roles($each->id);
 						if(!empty($all_div_list)){
 							foreach($all_div_list as $each_div){
-								if(!array_key_exists($each_div->id,$q_ans_is_finish)){
+								if(!array_key_exists($each_div->id,$new_q_ans_is_finish)){
 									$items_list_for_dep[][]= $each_div;
 								}
 							}
@@ -88,8 +88,8 @@ class Question_option extends MY_Mgmt_Controller {
 					
 				}
 				$res['items'] = $items_list_for_dep;
-				$res['q_ans_is_finish'] = $q_ans_is_finish;
-				$res['items'] = $items_list_for_dep;
+				$res['q_ans_is_finish'] = $new_q_ans_is_finish;
+				// $res['items'] = $items_list_for_dep;
 
 
 			}
