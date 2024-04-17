@@ -313,8 +313,6 @@
             var valArray = radioValue.split(",");
             valArray.forEach(function(value){
               if(radios[i].value == value){
-                // console.log(value);
-
                 radios[i].checked=true;
               }
             });            
@@ -323,7 +321,6 @@
               var valArray = radioValue.split(",");
               valArray.forEach(function(value){
                 if(radios[i].value == value){
-                  // console.log(value);
                   radios[i].checked=true;
                 }
               });  
