@@ -117,11 +117,22 @@ function load_not_finish() {
 			},
 			success: function(d) {
 				if(d) {
-					$question_style = $('#not_finish_p').empty();
-					$.each(d.items, function(){
-						html+='<span>'+this.dep_name+'-'+this.user_name+'</span> ';
-					});
-					$question_style.append(html);
+					if(d.for_dep==0) {
+						$question_style = $('#not_finish_p').empty();
+						$.each(d.items, function(){
+							html+='<span>'+this.dep_name+'-'+this.user_name+'</span> ';
+						});
+						$question_style.append(html);
+					} else{
+						if(d.for_dep==1) {
+							$question_style = $('#not_finish_p').empty();
+							$.each(d.items, function(){
+								html+='<span>'+this.dep_name+'-'+this.user_name+'</span> ';
+							});
+							$question_style.append(html);
+						}
+					}
+					
 					// console.log(html);
 					
 				}

@@ -71,17 +71,17 @@ class Question_option extends MY_Mgmt_Controller {
 				foreach($items_list as $each){
 					$all_div_list = $this -> d_dao -> find_under_roles($each->id);
 					if(!empty($all_div_list)){
-						$items_list_for_dep[] = $all_div_list;
+						$items_list_for_dep[]= $all_div_list;
 					} else{
-						$items_list_for_dep[] = $each;
+						$items_list_for_dep[][]= $each;
 					}
 				}
 				$res['items'] = $items_list_for_dep;
 			}
 		}
 		
-		
-		
+		$res['for_dep'] = $q_style_list->for_dep;
+
 		$this -> to_json($res);
 
 	}
