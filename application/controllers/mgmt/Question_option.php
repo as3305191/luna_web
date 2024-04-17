@@ -78,11 +78,11 @@ class Question_option extends MY_Mgmt_Controller {
 						if(!empty($all_div_list)){
 							foreach($all_div_list as $each_div){
 								if(!in_array($each_div->id,$new_q_ans_is_finish)){
-									$items_list_for_dep[][]= $each_div;
+									$items_list_for_dep[]= $each_div;
 								}
 							}
 						} else{
-							$items_list_for_dep[][]= $each;
+							$items_list_for_dep[]= $each;
 						}
 					}
 					

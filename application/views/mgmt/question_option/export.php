@@ -127,10 +127,7 @@ function load_not_finish() {
 						if(d.for_dep==1) {
 							$question_style = $('#not_finish_p').empty();
 							$.each(d.items, function(){
-								var dep_each = this;
-								$.each(dep_each, function(){
-									html+='<span>'+this.name+'</span> ';
-								});
+								html+='<span>'+this.name+'</span> ';
 							});
 							$question_style.append(html);
 						}
