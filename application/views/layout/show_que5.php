@@ -171,7 +171,7 @@
           y_n_script+='$(\'input:radio[name="q'+$i_1+'_o1"]:checked\').val()==null||';
         }
       }
-      each_dom_script='var q'+$num+ '$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]:checked\').val();$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
+      each_dom_script='q'+$num+ '=$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]:checked\').val();$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
          'q'+$num+ '= $(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]:checked\').val();'+
       '});';
       ajax_dom+= 'q'+$num+':q'+$num+',';
