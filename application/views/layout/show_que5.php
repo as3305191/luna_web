@@ -240,12 +240,9 @@
                 if(last_str_key=='o'){
                   $('.'+key).val(obj[key]);
                   // console.log(key+':'+obj[key]);
-                  document.write('<script type="text/javascript"> q'+key+'o=$(\'input:radio[name="q'+key+'_o1"]\').val();<\/script>');
                 } else{
                   // $('.'+key).val(obj[key]).attr("checked",true);
                   setRadioButtonByValue(key, obj[key]);
-                  // document.write('<script type="text/javascript"> q'+key+'=$(\'input:radio[name="q'+key+'_o1"]:checked\').val();<\/script>');
-
                 }
               }
 
@@ -266,14 +263,24 @@
       if (radios[i].value == radioValue) {
         if(radioValue=='否'){
             radios[i].checked=true;
+            // console.log();
             var q_num = groupName.substring(1);
+            // change_yn(q_num);
+
+
               for(var $j=1;$j<=6;$j++){
                 var nq_num = parseInt(q_num)+$j;
+               
                 $('.q'+nq_num).addClass("disabledinput").attr('disabled',true).attr('checked',false);
+               
               }
               var o_nq_num = (parseInt(q_num)-parseInt(q_num) % 7)/7+1;
+              $('.q'+o_nq_num+'o').val('無').addClass("disabledinput").attr('disabled',true);
+              // console.log(o_nq_num);
+            // break;
         } else{
           radios[i].checked=true;
+          // break;
         }
         
       }
