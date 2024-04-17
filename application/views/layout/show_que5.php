@@ -164,7 +164,8 @@
       $j_1 = j+1;
       $num=i*7+j+1;
       if(j==0){
-        if(i==0){
+        var max_count = question_list_count-1;
+        if(i==max_count){
           y_n_script+='q'+$num+'==null';
         } else{
           y_n_script+='q'+$num+'==null||';
