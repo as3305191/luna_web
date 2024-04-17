@@ -177,8 +177,8 @@
       }
       
       if(j==1){
-        each_dom_script='$(\'input[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
-          'obj = document.getElementsByName("q'+$j_1+'");'+
+        each_dom_script='$(\'input:[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
+          'obj = document.getElementsByName("q'+$i_1+'_o'+$j_1+'");'+
           'q'+$num+' = [];'+
             'for (i in obj) {'+
                 'if (obj[i].checked){'+
