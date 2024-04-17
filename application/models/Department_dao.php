@@ -234,6 +234,7 @@ class Department_dao extends MY_Model {
 
 		return $list;
 	}
+	
 	function find_under_roles($role_id){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');

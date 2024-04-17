@@ -9,6 +9,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$this -> load -> model('Question_style_dao', 'question_style_dao');
 		$this -> load -> model('Question_ans_dao', 'question_ans_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
+		$this -> load -> model('Department_dao','d_dao');
 
 		// $this -> load-> library('word');
 	}
@@ -45,22 +46,40 @@ class Question_option extends MY_Mgmt_Controller {
 		$res = array();
 		$res['items'] = array();
 		
-		$data = $this -> get_posts(array(
-			'item_id'
-		));
-		$items_list = $this -> question_ans_dao -> find_all_finish($data);
-		$all_user_list =  $this -> users_dao -> find_all_ktx_user();
-		if(count($items_list)>0){
-			foreach($all_user_list as $each_user){
-				foreach($items_list as $each_item){
-					if($each_user->id!==$each_item->user_id){
-						$res['items'][] = $each_user;
+		$item_id = $this -> get_posts('item_id');
+		$q_option_list = $this -> dao -> find_by_id($item_id);
+		$q_style_list = $this -> question_style_dao -> find_by_id($q_option_list->question_style_dao);
+
+		if($q_style_list->for_dep==0){
+			$items_list = $this -> question_ans_dao -> find_all_finish($item_id);
+			$all_user_list =  $this -> users_dao -> find_all_ktx_user();
+			if(count($items_list)>0){
+				foreach($all_user_list as $each_user){
+					foreach($items_list as $each_item){
+						if($each_user->id!==$each_item->user_id){
+							$res['items'][] = $each_user;
+						}
 					}
 				}
+			} else{
+				$res['items'] = $all_user_list;
 			}
 		} else{
-			$res['items'] = $all_user_list;
+			if($q_style_list->for_dep==1){
+				$items_list_for_dep= array();
+				$items_list = $this -> d_dao -> find_all_ktx_dep();
+				foreach($items_list as $each){
+					$all_div_list = $this -> d_dao -> find_under_roles($each->id);
+					if(!empty($all_div_list)){
+						$items_list_for_dep[] = $all_div_list;
+					} else{
+						$items_list_for_dep[] = $each;
+					}
+				}
+				$res['items'] = $items_list_for_dep;
+			}
 		}
+		
 		
 		
 		$this -> to_json($res);

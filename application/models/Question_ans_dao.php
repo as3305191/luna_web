@@ -193,18 +193,14 @@ class Question_ans_dao extends MY_Model {
 		}
 	}
 
-	function find_all_finish($data) {
+	function find_all_finish($item_id) {
 
 		
-		$item_id = $data['item_id'];
 		// select
 		$this -> db -> from("$this->table_name as _m");
 
 		$this -> db -> select('_m.user_id');
-		// $this -> db -> select('u.user_name as user_name');
-		
-		// $this -> db -> join("users u", "u.id = _m.user_id", "left");
-		
+	
 		$this -> db -> where('_m.question_option_id',$item_id);
 		
 		$query = $this -> db -> get();
