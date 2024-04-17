@@ -166,9 +166,9 @@
       if(j==0){
         var max_count = question_list_count-1;
         if(i==max_count){
-          y_n_script+='$(\'input:radio[name="q'+$i_1+'_o1"]:checked\').val();==null';
+          y_n_script+='$(\'input:radio[name="q'+$i_1+'_o1"]:checked\').val()==null';
         } else{
-          y_n_script+='$(\'input:radio[name="q'+$i_1+'_o1"]:checked\').val();==null||';
+          y_n_script+='$(\'input:radio[name="q'+$i_1+'_o1"]:checked\').val()==null||';
         }
       }
       each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
