@@ -68,7 +68,9 @@ class Question_option extends MY_Mgmt_Controller {
 			if($q_style_list->for_dep==1){
 				$items_list_for_dep= array();
 				$q_ans_is_finish = $this -> question_ans_dao -> find_all_finish_role($item_id);
-
+				foreach($q_ans_is_finish as $each){
+					$new_q_ans_is_finish[] = $each->role_id;
+				}
 				$items_list = $this -> d_dao -> find_all_ktx_dep();
 				foreach($items_list as $each){
 					if(!array_key_exists($each->id,$q_ans_is_finish)){
