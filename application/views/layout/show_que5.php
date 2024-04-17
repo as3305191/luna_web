@@ -196,7 +196,7 @@
                     ' type: \'POST\','+ 
                     ' data: {'+ 
                       ' qid:$(\'#qid\').val(),'+ 
-                      'question_ans_id:$(\'#question_ans_id\').val(),'
+                      'question_ans_id:$(\'#question_ans_id\').val(),'+
                       ajax_dom+
                     '},'+ 
                   ' dataType: \'json\','+ 
