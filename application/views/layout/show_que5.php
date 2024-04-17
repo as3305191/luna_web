@@ -280,6 +280,7 @@
   function setRadioButtonByValue(className, radioValue) {
     // console.log(groupName+':'+radioValue);
     var radios = $('.'+className);
+    class_num = className.substr(1);
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].value == radioValue) {
         if(radioValue=='否'){
@@ -302,9 +303,8 @@
         } else{
           radios[i].checked=true;
 
-          class_num = className.substr(1);
           console.log(class_num);
-          if(class_num==2){
+          if(parseInt(class_num)==2){
             var valArray = radioValue.split(",");
             valArray.each(function(){
               if(radios[i].value == this){
@@ -312,7 +312,7 @@
               }
             });            
           }else{
-            if(class_num>2 && parseInt(class_num) % 7==2){
+            if(parseInt(class_num)>2 && parseInt(class_num) % 7==2){
               var valArray = radioValue.split(",");
               valArray.each(function(){
                 if(radios[i].value == this){
