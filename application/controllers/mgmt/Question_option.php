@@ -46,7 +46,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$res = array();
 		$res['items'] = array();
 		
-		$item_id = $this -> get_posts('item_id');
+		$item_id = $this -> get_post('item_id');
 		$q_option_list = $this -> dao -> find_by_id($item_id);
 		$q_style_list = $this -> question_style_dao -> find_by_id($q_option_list->question_style_dao);
 
