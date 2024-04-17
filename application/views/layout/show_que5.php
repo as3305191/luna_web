@@ -280,7 +280,6 @@
   function setRadioButtonByValue(className, radioValue) {
     // console.log(groupName+':'+radioValue);
     var radios = $('.'+className);
-    class_num = className.substr(1);
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].value == radioValue) {
         if(radioValue=='否'){
@@ -301,7 +300,15 @@
               // console.log(o_nq_num);
             // break;
         } else{
+          
           radios[i].checked=true;
+
+          // break;
+        }
+        
+      } else{
+        radios[i].checked=true;
+          class_num = className.substr(1);
 
           console.log(class_num);
           if(parseInt(class_num)==2){
@@ -319,14 +326,8 @@
                   radios[i].checked=true;
                 }
               });  
-            } else{
-              radios[i].checked=true;
-            }
+            } 
           }
-         
-          // break;
-        }
-        
       }
     }
   }
