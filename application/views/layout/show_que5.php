@@ -305,7 +305,7 @@
           class_num = className.substr(1);
           if(class_num==2){
             var valArray = radioValue.split(",");
-            valArray.forEach(function(value){
+            valArray.each(function(){
               if(radios[i].value == this){
                 radios[i].checked=true;
               }
@@ -313,7 +313,7 @@
           }else{
             if(class_num>2 && parseInt(class_num) % 7==2){
               var valArray = radioValue.split(",");
-              valArray.forEach(function(value){
+              valArray.each(function(){
                 if(radios[i].value == this){
                   radios[i].checked=true;
                 }
