@@ -277,7 +277,7 @@
   		});
     }
   }
-  function setRadioButtonByValue(groupName, radioValue) {
+  function setRadioButtonByValue(className, radioValue) {
     // console.log(groupName+':'+radioValue);
     var radios = $('.'+groupName);
     for (var i = 0; i < radios.length; i++) {
