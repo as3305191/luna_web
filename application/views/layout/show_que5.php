@@ -279,13 +279,13 @@
   }
   function setRadioButtonByValue(className, radioValue) {
     // console.log(groupName+':'+radioValue);
-    var radios = $('.'+groupName);
+    var radios = $('.'+className);
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].value == radioValue) {
         if(radioValue=='否'){
             radios[i].checked=true;
             // console.log();
-            var q_num = groupName.substring(1);
+            var q_num = className.substring(1);
             // change_yn(q_num);
 
 
