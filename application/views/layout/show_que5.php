@@ -244,7 +244,7 @@
                 } else{
                   // $('.'+key).val(obj[key]).attr("checked",true);
                   setRadioButtonByValue(key, obj[key]);
-                  document.write('<script type="text/javascript"> q'+key+'=$(\'input:radio[name="q'+key+'_o1"]:checked\').val();<\/script>');
+                  // document.write('<script type="text/javascript"> q'+key+'=$(\'input:radio[name="q'+key+'_o1"]:checked\').val();<\/script>');
 
                 }
               }
