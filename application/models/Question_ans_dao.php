@@ -208,6 +208,21 @@ class Question_ans_dao extends MY_Model {
 
 	}
 
+	function find_all_finish_role($item_id) {
+
+		
+		// select
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select('_m.role_id');
+	
+		$this -> db -> where('_m.question_option_id',$item_id);
+		
+		$query = $this -> db -> get();
+		return $query -> result();
+
+	}
+
 	function find_by_all_p($id) {
 
 		// select

@@ -67,14 +67,23 @@ class Question_option extends MY_Mgmt_Controller {
 		} else{
 			if($q_style_list->for_dep==1){
 				$items_list_for_dep= array();
+				$q_ans_is_finish = $this -> question_ans_dao -> find_all_finish_role($item_id);
+
 				$items_list = $this -> d_dao -> find_all_ktx_dep();
 				foreach($items_list as $each){
-					$all_div_list = $this -> d_dao -> find_under_roles($each->id);
-					if(!empty($all_div_list)){
-						$items_list_for_dep[]= $all_div_list;
-					} else{
-						$items_list_for_dep[][]= $each;
+					if(!in_array($each->id,$q_ans_is_finish)){
+						$all_div_list = $this -> d_dao -> find_under_roles($each->id);
+						if(!empty($all_div_list)){
+							foreach($all_div_list as $each_div){
+								if(!in_array($each_div->id,$q_ans_is_finish)){
+									$items_list_for_dep[][]= $each_div;
+								}
+							}
+						} else{
+							$items_list_for_dep[][]= $each;
+						}
 					}
+					
 				}
 				$res['items'] = $items_list_for_dep;
 			}
