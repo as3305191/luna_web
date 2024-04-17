@@ -86,6 +86,10 @@ class Question_option extends MY_Mgmt_Controller {
 					
 				}
 				$res['items'] = $items_list_for_dep;
+				$res['q_ans_is_finish'] = $q_ans_is_finish;
+				$res['items'] = $items_list_for_dep;
+
+
 			}
 		}
 		
