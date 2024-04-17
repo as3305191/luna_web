@@ -178,7 +178,7 @@
       
       if(j==1){
         each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
-          'obj = document.getElementsByName("q'+$i_1+'_o'+$j_1+'");'+
+          'obj = document.getElementsByName("q'+$i_1+'");'+
           'q'+$num+' = [];'+
             'for (i in obj) {'+
                 'if (obj[i].checked){'+
