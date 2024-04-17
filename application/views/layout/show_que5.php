@@ -164,7 +164,7 @@
       $j_1 = j+1;
       $num=i*7+j+1;
       if(j==0){
-        if(i==question_list_count-1){
+        if(i==0){
           y_n_script+='q'+$i_1+'==null';
         } else{
           y_n_script+='q'+$i_1+'==null||';
