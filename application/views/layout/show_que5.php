@@ -240,9 +240,13 @@
                 if(last_str_key=='o'){
                   $('.'+key).val(obj[key]);
                   // console.log(key+':'+obj[key]);
+                  
+                  document.write('<script type="text/javascript">'+$key+ '= '+obj[key]+';');
+
                 } else{
                   // $('.'+key).val(obj[key]).attr("checked",true);
                   setRadioButtonByValue(key, obj[key]);
+                  'q'+$key+ '= $(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]:checked\').val();'
                 }
               }
 
