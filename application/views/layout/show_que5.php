@@ -165,9 +165,9 @@
       $num=i*7+j+1;
       if(j==0){
         if(i==0){
-          y_n_script+='q'+$i_1+'==null';
+          y_n_script+='q'+$num+'==null';
         } else{
-          y_n_script+='q'+$i_1+'==null||';
+          y_n_script+='q'+$num+'==null||';
         }
       }
       each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
