@@ -185,7 +185,7 @@
                   'q'+$num+'.push(obj[i].value);'+
                ' }'+
             '}'+
-            'q'+$num+' = q'+$num+'.toString();'
+            'q'+$num+' = q'+$num+'.toString();'+
             'console.log(q'+$num+');'+
 
         '});';
