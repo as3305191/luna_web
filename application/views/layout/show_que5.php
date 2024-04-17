@@ -241,8 +241,6 @@
                   $('.'+key).val(obj[key]);
                   // console.log(key+':'+obj[key]);
                   
-                  document.write('<script type="text/javascript">var '+key+'=\''+obj[key]+'\';<\/script>');
-
                 } else{
                   // $('.'+key).val(obj[key]).attr("checked",true);
                   setRadioButtonByValue(key, obj[key]);
