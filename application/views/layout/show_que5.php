@@ -306,6 +306,17 @@
     }
   }
 
+  function setRadioButtonByValue(i_1,j_1,num) {
+    obj = document.getElementsByName('q'+$i_1+'_o'+$j_1);
+    q7 = [];
+
+    for (i in obj) {
+      if (obj[i].checked){
+        q7.push(obj[i].value);
+      }
+    }
+  }
+
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
