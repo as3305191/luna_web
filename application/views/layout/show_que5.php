@@ -303,6 +303,7 @@
           radios[i].checked=true;
 
           class_num = className.substr(1);
+          console.log(class_num);
           if(class_num==2){
             var valArray = radioValue.split(",");
             valArray.each(function(){
