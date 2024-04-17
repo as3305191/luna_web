@@ -311,9 +311,9 @@
 
           if(parseInt(class_num)==2){
             var valArray = radioValue.split(",");
-            valArray.forEach(function(){
-              if(radios[i].value == this){
-                console.log(this);
+            valArray.forEach(function(value){
+              if(radios[i].value == value){
+                console.log(value);
 
                 radios[i].checked=true;
               }
@@ -321,11 +321,9 @@
           }else{
             if(parseInt(class_num)>2 && parseInt(class_num) % 7==2){
               var valArray = radioValue.split(",");
-              console.log(valArray);
-
               valArray.forEach(function(){
-                if(radios[i].value == this){
-                  console.log(this);
+                if(radios[i].value == value){
+                  console.log(value);
                   radios[i].checked=true;
                 }
               });  
