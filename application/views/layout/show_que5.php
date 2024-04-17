@@ -185,7 +185,9 @@
                   'q'+$num+'.push(obj[i].value);'+
                ' }'+
             '}'+
+            'q'+$num+' = q'+$num+'.toString();'
             'console.log(q'+$num+');'+
+
         '});';
       } else{
         each_dom_script='$(\'input:radio[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
