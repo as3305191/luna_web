@@ -101,7 +101,8 @@
 				
 			} else{
         value +=parseInt(other_option_val);
-				sum_id.innerHTML = "總分合計:"+value 
+				sum_id.innerHTML = "總分合計:"+value ;
+        is_ok=true;
       }
 		}
 		
@@ -114,8 +115,7 @@
     parent.layer.close(index);
   })
   $('.dosubmit').click(function() {
-    if (q1!==null&&q2!==null&&q3!==null&&q4!==null&&q5!==null&&q6!==null&&
-         q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null){
+    if (is_ok){
           $.ajax({
             url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q6',
             type: 'POST',
