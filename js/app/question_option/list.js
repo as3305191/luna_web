@@ -346,21 +346,33 @@ var QuestioneachdetailAppClass = (function(app) {
 			columns : [null,{
 					data : 'user_name',
 					createdCell: function (td, cellData, rowData, row, col) {
-						console.log(cellData);
-						console.log(rowData);
-						console.log(row);
 
-						if ( cellData == '4' ) {
+						if ( row.for_dep==0) {
 							$(td).removeClass('hide_s_i');
 						} else {
 							$(td).addClass('hide_s_i');
 						}
 					},
 					render: function(d,t,r) {
-						if(d){
-							return '<button onclick="currentApp.each_detail.doExportAll('+d+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
-									+'<i class="fa fa-save"></i>匯出'
-									+'</button>';
+						if(r.for_dep==0){
+							return d;
+						} else{
+							return d;
+						}
+					}
+				},{
+					data : 'dep_name',
+					createdCell: function (td, cellData, rowData, row, col) {
+
+						if ( row.for_dep==1) {
+							$(td).removeClass('hide_s_i');
+						} else {
+							$(td).addClass('hide_s_i');
+						}
+					},
+					render: function(d,t,r) {
+						if(r.for_dep==0){
+							return d;
 						} else{
 							return d;
 						}

@@ -280,8 +280,11 @@ class Question_ans_dao extends MY_Model {
 
 		$this -> db -> select('_m.*');
 		$this -> db -> select('u.user_name');
+		$this -> db -> select('d.name as dep_name');
 
 		$this -> db -> join("users u", "u.id = _m.user_id", "left");
+		$this -> db -> join("department d", "d.id = _m.role_id", "left");
+
 		if(isset($data['s_name'])&&$data['s_name']!=='') {
 			$s_name = $data['s_name'];
 			$this -> db -> where('u.user_name',$s_name);
