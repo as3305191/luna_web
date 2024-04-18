@@ -346,6 +346,10 @@ var QuestioneachdetailAppClass = (function(app) {
 			columns : [null,{
 					data : 'user_name',
 					createdCell: function (td, cellData, rowData, row, col) {
+						console.log(cellData);
+						console.log(rowData);
+						console.log(row);
+
 						if ( cellData == '4' ) {
 							$(td).removeClass('hide_s_i');
 						} else {
