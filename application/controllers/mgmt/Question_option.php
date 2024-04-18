@@ -125,7 +125,7 @@ class Question_option extends MY_Mgmt_Controller {
 			$res['items'] = $items;
 
 		} else{
-			$res['items']['for_dep'] = $item->for_dep;
+			$res['items']['for_dep'][] = $item->for_dep;
 			$res['items'] = $items;
 		}
 		
