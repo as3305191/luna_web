@@ -723,6 +723,84 @@ class Question_option extends MY_Mgmt_Controller {
 			$objWorkSheet->setTitle($question_style->question_style_name.$note);
 
 			break;
+			case 5:
+				$cell_title = ['是否有組織外之人員(承攬商、客戶、服務對象或親友等)因其行為無法預知，可能成為該區工作者不法侵害來源',
+				'是否有已知工作會接觸有暴力史客戶','勞工工作性質是否為執行公共安全業務',
+				'勞工工作是否為單獨作業','勞工是否需於深夜或凌晨工作','勞工是否需於較陌生環境工作','勞工工作是否涉及現金交易、運送或處理貴重物品',
+				'勞工工作是否為直接面對群眾之第一線服務工作','勞工工作是否會與酗酒、毒癮或精神疾病患者接觸','勞工工作是否需接觸絕望或恐懼或極需被關懷照顧者',
+				'勞工當中是否有自行通報因私人關係遭受不法侵害威脅者或為家庭暴力受害者','新進勞工是否有尚未接受職場不法侵害預防教育訓練者',
+				'工作場所是否位於交通不便，偏遠地區','工作環境中是否有讓施暴者隱藏的地方','離開工作場所後，是否可能遭遇因執行職務所致之不法侵害行為',
+				'組織內是否曾發生主管或勞工遭受同事(含上司)不當言行對待','是否有無法接受不同性別、年齡、國籍或宗教信仰工作者',
+				'是否有同仁離職或請求調職原因源於職場不法侵害事件之發生','是否有被同仁排擠或工作適應不良者','內部是否有酗酒、毒癮之工作者',
+				'內部是否有處於情緒低落、絕望或恐懼，極需被關懷照顧工作者','是否有超時工作，反應工作壓力大工作者','工作環境是否有空間擁擠，照明設備不足問題，工作場所出入是否未有相當管制措施'];
+				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
+		
+				for ($i=0;$i<count($question_ans_list);$i++) {
+		
+				// Add new sheet
+		
+							$objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
+							->setCellValue($all_cell_title[1], $cell_title[1])
+							->setCellValue($all_cell_title[2], $cell_title[2])
+							->setCellValue($all_cell_title[3], $cell_title[3])
+							->setCellValue($all_cell_title[4], $cell_title[4])
+							->setCellValue($all_cell_title[5], $cell_title[5])
+							->setCellValue($all_cell_title[6], $cell_title[6])
+							->setCellValue($all_cell_title[7], $cell_title[7])
+							->setCellValue($all_cell_title[8], $cell_title[8])
+							->setCellValue($all_cell_title[9], $cell_title[9])
+							->setCellValue($all_cell_title[10], $cell_title[10])
+							->setCellValue($all_cell_title[11], $cell_title[11])
+							->setCellValue($all_cell_title[12], $cell_title[12])
+							->setCellValue($all_cell_title[13], $cell_title[13])
+							->setCellValue($all_cell_title[14], $cell_title[14])
+							->setCellValue($all_cell_title[15], $cell_title[15])
+							->setCellValue($all_cell_title[16], $cell_title[16])
+							->setCellValue($all_cell_title[17], $cell_title[17])
+							->setCellValue($all_cell_title[18], $cell_title[18]);
+		
+							//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
+							for ($j=0;$j<count($question_ans_list);$j++) {
+								$k = $j+2;
+								$objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->dep_name)
+											->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->user_name)
+											->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q1)
+											->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q2)
+											->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q3)
+											->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q4)
+											->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q5)
+											->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q6)
+											->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q1o)
+											->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q2o)
+											->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q7)
+											->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q8)
+											->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q9)
+											->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q10)
+											->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q11)
+											->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q12)
+											->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q13)
+											->setCellValue($all_cell_name[17].$k , $question_ans_list[$j]->q3o)
+											->setCellValue($all_cell_name[18].$k , $question_ans_list[$j]->q4o);
+		
+							}
+							//   $last = count($items_order)+2;
+							//   $objWorkSheet->setCellValue('A'.$last , '')
+							// 				  ->setCellValue('B'.$last , '')
+							// 				  ->setCellValue('C'.$last, '')
+							// 				  ->setCellValue('D'.$last, '')
+							// 				  ->setCellValue('E'.$last, '')
+							// 				  ->setCellValue('F'.$last , '總金額')
+							// 				  ->setCellValue('G'.$last ,  $total);
+		
+				}
+					$objWorkSheet->setTitle($question_style->question_style_name.$note);
+		
+					break;
+				case 6:
+
+					$this ->export_all_word();
+			
+				break;
 		default:
 		//code block
 		}
@@ -736,5 +814,90 @@ class Question_option extends MY_Mgmt_Controller {
 		// $writer = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 		$objWriter->save('php://output');
 	}
+
+	function export_all_word() {
+		$data = $this -> session -> userdata("fix_data");
+		$list = $this -> dao -> query_ajax($data);
+		$h = array();
+		$s = array();
+
+		if(!empty($list)){
+			$item = $list[0];
+			$hard_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($item->id,0);
+			$soft_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($item->id,1);
+			foreach($hard_list as $h_list){
+				$h[] = $h_list->hard_name;
+			}
+			foreach($soft_list as $s_list){
+				$s[] = $s_list->soft_name;
+			}
+			$compter_fix_list = $this -> fix_record_dao -> find_now_compter_fix($item->id);
+		} 
 	
+		$PHPWord = new PHPWord(); 
+		$PHPWord->setDefaultFontName('華康仿宋體'); 
+		// $section = $PHPWord->createSection();
+		$sectionStyle = array('orientation' => null,  'marginLeft' => 2000,  'marginRight' => 2000); //頁面設定
+		$section = $PHPWord->createSection($sectionStyle); //建立一個頁面
+		
+		$tableStyle = array('borderSize'=>6, 'borderColor'=>'black', 'cellMargin'=>80);
+		$whitetableStyle = array('borderSize'=>6, 'borderColor'=>'ffffff', 'cellMargin'=>80);
+		$footer_style = array('borderSize'=>6, 'borderColor'=>'ffffff', 'cellMargin'=>80);
+
+		$PHPWord->addTableStyle('white_tableStyle',$whitetableStyle,null);
+		$PHPWord->addTableStyle('tableStyle',$tableStyle,null);
+		$PHPWord->addTableStyle('footer_tableStyle',$footer_style,null);
+
+		$white_table = $section->addTable('white_tableStyle');
+		$table = $section->addTable('tableStyle');
+		$footer_table = $section->addTable('footer_tableStyle');
+
+		$white_table->addRow();
+		$white_table->addCell(8000,null,8)->addText('滿意度雙向調查',array('bold' => true, 'size'=>25),array('align'=>'center'));
+
+		
+		$table->addRow();
+		$table->addCell(1000,null,1)->addText('項目',null,array('align'=>'center'));
+		
+		$table->addRow();
+		$table->addCell(1000,null,1)->addText('硬體配備',null,array('align'=>'center'));
+		
+
+		$table->addRow();
+		$table->addCell(1000,null,1)->addText('安裝軟體',null,array('align'=>'center'));
+		
+		$table->addRow();
+		$table->addCell(1000,null,1)->addText('使用者',null,array('align'=>'center'));
+		$table->addCell(6000,null,6)->addText($item->admin_user_id,null);
+		$table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
+
+		$table->addRow();
+		$table->addCell(8000,null,8)->addText('維修紀錄',null,array('align'=>'center'));
+
+		$table->addRow();
+		$table->addCell(1000,null,1)->addText('維修日期',null,array('align'=>'center'));
+		$table->addCell(3000,null,3)->addText('故障原因',null,array('align'=>'center'));
+		$table->addCell(3000,null,3)->addText('處置情形',null,array('align'=>'center'));
+		$table->addCell(1000,null,1)->addText('維修人員',null,array('align'=>'center'));
+
+		foreach($compter_fix_list as $each){
+			$table->addRow();
+			$table->addCell(1000,null,1)->addText(str_replace("-",",",$each->done_fix_date),null);
+			$table->addCell(3000,null,3)->addText($each->fix_reason,null);
+			$table->addCell(3000,null,3)->addText($each->fix_way,null);
+			$table->addCell(1000,null,1)->addText($each->user_name,null);
+		}
+		$footer_table->addRow();
+		$footer_table->addCell(8000,null,8)->addText('R020102-A',null,array('align'=>'right'));
+
+		$date = date('YmdHis');
+		$filename = $date."-維修單.docx";
+		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
+		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+		header('Cache-Control: max-age=0'); //no cache
+		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2007');
+		$objWriter->save('php://output');
+	}
+
+
 }
