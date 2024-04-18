@@ -367,7 +367,7 @@ var QuestioneachdetailAppClass = (function(app) {
 						if(d.for_dep==0){
 							return d;
 						} else{
-							return d+'('+r.user_name+')';
+							return d+' ('+r.user_name+')';
 						}
 					},
 					createdCell: function (td, cellData, rowData, row, col) {
