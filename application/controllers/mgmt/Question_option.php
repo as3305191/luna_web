@@ -11,7 +11,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Department_dao','d_dao');
 
-		// $this -> load-> library('word');
+		$this -> load-> library('word');
 	}
 
 	public function index()
