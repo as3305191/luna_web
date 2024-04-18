@@ -49,7 +49,7 @@
 			</tr>
 			<tr>
 				<td>分數</td>
-        <?php for ($i=0;$i<count($question_list);$i++) : ?>
+        <?php for ($i=0;$i<10;$i++) : ?>
 
           <td>
             <select name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
