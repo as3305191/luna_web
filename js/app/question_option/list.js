@@ -345,6 +345,13 @@ var QuestioneachdetailAppClass = (function(app) {
 			
 			columns : [null,{
 					data : 'user_name',
+					render: function(d,t,r) {
+						if(r.for_dep==0){
+							return d;
+						} else{
+							return d;
+						}
+					},
 					createdCell: function (td, cellData, rowData, row, col) {
 
 						if ( row.for_dep==0) {
@@ -352,16 +359,17 @@ var QuestioneachdetailAppClass = (function(app) {
 						} else {
 							$(td).addClass('hide_s_i');
 						}
-					},
+					}
+					
+				},{
+					data : 'dep_name',
 					render: function(d,t,r) {
 						if(r.for_dep==0){
 							return d;
 						} else{
 							return d;
 						}
-					}
-				},{
-					data : 'dep_name',
+					},
 					createdCell: function (td, cellData, rowData, row, col) {
 
 						if ( row.for_dep==1) {
@@ -369,14 +377,8 @@ var QuestioneachdetailAppClass = (function(app) {
 						} else {
 							$(td).addClass('hide_s_i');
 						}
-					},
-					render: function(d,t,r) {
-						if(r.for_dep==0){
-							return d;
-						} else{
-							return d;
-						}
 					}
+					
 				},{
 					data : 'create_time'
 				},{
