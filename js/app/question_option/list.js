@@ -389,7 +389,7 @@ var QuestioneachdetailAppClass = (function(app) {
 									+'<i class="fa fa-save"></i>匯出'
 									+'</button>';
 						} else{
-							return '<button onclick="currentApp.each_detail.doExportAll('+d+')" style="pointer-enents :none;" class="btn btn-xs btn-warning disabledinput"  data-toggle="dropdown">'
+							return '<button onclick="currentApp.each_detail.doExportAll('+d+')" style="pointer-events:none;" class="btn btn-xs btn-warning disabledinput"  data-toggle="dropdown">'
 									+'<i class="fa fa-save"></i>匯出'
 									+'</button>';
 						}
