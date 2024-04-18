@@ -262,7 +262,6 @@
                   // console.log(key+':'+obj[key]);
                   
                 } else{
-                  // $('.'+key).val(obj[key]).attr("checked",true);
                   setRadioButtonByValue(key, obj[key]);
                 }
               }
@@ -278,37 +277,25 @@
     }
   }
   function setRadioButtonByValue(className, radioValue) {
-    // console.log(groupName+':'+radioValue);
     var radios = $('.'+className);
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].value == radioValue) {
         if(radioValue=='否'){
             radios[i].checked=true;
-            // console.log();
             var q_num = className.substring(1);
-            // change_yn(q_num);
-
-
               for(var $j=1;$j<=6;$j++){
                 var nq_num = parseInt(q_num)+$j;
-               
                 $('.q'+nq_num).addClass("disabledinput").attr('disabled',true).attr('checked',false);
-               
               }
               var o_nq_num = (parseInt(q_num)-parseInt(q_num) % 7)/7+1;
               $('.q'+o_nq_num+'o').val('無').addClass("disabledinput").attr('disabled',true);
-              // console.log(o_nq_num);
-            // break;
-        } else{
-          
-          radios[i].checked=true;
 
-          // break;
+        } else{
+          radios[i].checked=true;
         }
         
       } else{
           class_num = className.substr(1);
-
           if(parseInt(class_num)==2){
             var valArray = radioValue.split(",");
             valArray.forEach(function(value){
@@ -329,7 +316,6 @@
       }
     }
   }
-
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
