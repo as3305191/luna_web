@@ -126,7 +126,7 @@ class Question_option extends MY_Mgmt_Controller {
 		// 	$res['items']['for_dep'] = $q_o_list[0]->for_dep;
 
 		// }
-		$res['items'] = $items;
+		$res['items']['list'] = $items;
 		$res['items']['for_dep'] = $q_o_list[0]->for_dep;
 		
 
