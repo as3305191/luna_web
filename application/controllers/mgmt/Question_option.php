@@ -118,11 +118,10 @@ class Question_option extends MY_Mgmt_Controller {
 		$id= $this -> get_post('item_id');
 		$items = $this -> question_ans_dao -> find_all_each_detail($data);
 		$q_o_list = $this -> dao -> find_by_this_id($id);
-		$item = $q_o_list;
 		foreach($items as $each){
 			$each['for_dep'][] = $item->for_dep;
 		}
-		$res['items'] = $items;
+		$res['items'] = $q_o_list;
 
 		
 		$res['recordsFiltered'] = $this -> question_ans_dao -> find_all_each_detail($data,true);
