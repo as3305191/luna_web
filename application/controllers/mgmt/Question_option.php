@@ -885,9 +885,9 @@ class Question_option extends MY_Mgmt_Controller {
 		$footer_table->addCell(8000,null,8)->addText('R020102-A',null,array('align'=>'right'));
 
 		$date = date('YmdHis');
-		$filename = $date."-維修單.docx";
+		$filename = $date."-123.docx";
 		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
-		header('Content-Disposition: attachment;filename="'.'112233'.'"'); //tell browser what's the file name
+		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
 		header('Cache-Control: max-age=0'); //no cache
 		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2007');
 		$objWriter->save('php://output');
