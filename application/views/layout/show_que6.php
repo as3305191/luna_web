@@ -117,7 +117,7 @@
     if (q1!==null&&q2!==null&&q3!==null&&q4!==null&&q5!==null&&q6!==null&&
          q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null){
           $.ajax({
-            url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q1',
+            url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q6',
             type: 'POST',
             data: {
               qid:$('#qid').val(),
