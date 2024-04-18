@@ -128,9 +128,7 @@ class Question_option extends MY_Mgmt_Controller {
 		// }
 		$res['items'] = $items;
 		$res['items']['for_dep'] = $q_o_list[0]->for_dep;
-		
-
-		
+	
 		$res['recordsFiltered'] = $this -> question_ans_dao -> find_all_each_detail($data,true);
 		$res['recordsTotal'] = $this -> question_ans_dao -> find_all_each_detail($data,true);
 		$this -> to_json($res);
@@ -182,7 +180,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['login_user'] = $login_user;
-		$this -> to_json($data);
+		// $this -> to_json($data);
 
 		$this->load->view('mgmt/question_option/export', $data);
 	}
