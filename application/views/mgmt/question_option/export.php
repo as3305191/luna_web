@@ -25,7 +25,9 @@
 .remove_pa:hover{
     color:#9AFF02;
 }
-
+.hide_s_i {
+  	display: none !important;
+}
 </style>
 <!-- Widget ID (each widget will need unique ID)-->
 <div class="jarviswidget" id="wid-id-7" data-widget-colorbutton="false"	data-widget-editbutton="false" data-widget-deletebutton="false" data-widget-sortable="false">
