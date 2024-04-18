@@ -512,6 +512,48 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function save_q6(){
+		$s_data = array();
+		$data = array();
+		$s_data = $this -> setup_user_data($s_data);
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$qid =$this -> get_post('qid');
+		$q1 =$this -> get_post('q1');
+		$q2 =$this -> get_post('q2');
+		$q3 =$this -> get_post('q3');
+		$q4 =$this -> get_post('q4');
+		$q5 =$this -> get_post('q5');
+		$q6 =$this -> get_post('q6');
+		$q7 =$this -> get_post('q7');
+		$q8 =$this -> get_post('q8');
+		$q9 =$this -> get_post('q9');
+		$q10 =$this -> get_post('q10');
+	
+		$q1o =$this -> get_post('q1o');
+		
+
+		$data['user_id'] = $login_user->id;
+		// $data['qid'] = $qid;
+		$data['q1'] = $q1;
+		$data['q2'] = $q2;
+		$data['q3'] = $q3;
+		$data['q4'] = $q4;
+		$data['q5'] = $q5;
+		$data['q6'] = $q6;
+		$data['q7'] = $q7;
+		$data['q8'] = $q8;
+		$data['q9'] = $q9;
+		$data['q10'] = $q10;
+
+		$data['q1o'] = $q1o;
+
+		$data['role_id'] = $login_user->role_id;
+		$data['question_option_id'] = $qid;
+
+		$this -> question_ans_dao -> insert($data);
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
 	public function load_q5_ans() {
 		$res = array();
 		
