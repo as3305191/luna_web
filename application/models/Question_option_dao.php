@@ -201,6 +201,22 @@ class Question_option_dao extends MY_Model {
 		return $query -> result();
 
 	}
+	function find_by_this_id($id) {
+
+		// select
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select('_m.*');
+		$this -> db -> select('qs.for_dep as for_dep');
+
+		$this -> db -> join("question_style qs", "qs.id = _m.question_style_id", "left");
+
+		$this -> db -> where('_m.id',$id);
+		
+		$query = $this -> db -> get();
+		return $query -> result();
+
+	}
 
 }
 ?>
