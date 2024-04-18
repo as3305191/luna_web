@@ -838,7 +838,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$PHPWord = new PHPWord(); 
 		$PHPWord->setDefaultFontName('華康仿宋體'); 
 		// $section = $PHPWord->createSection();
-		$sectionStyle = array('orientation' => null,  'marginLeft' => 2000,  'marginRight' => 2000); //頁面設定
+		$sectionStyle = array('orientation' => null,  'marginLeft' => 1000,  'marginRight' => 1000); //頁面設定
 		$section = $PHPWord->createSection($sectionStyle); //建立一個頁面
 		
 		$tableStyle = array('borderSize'=>6, 'borderColor'=>'black', 'cellMargin'=>80);
@@ -854,21 +854,21 @@ class Question_option extends MY_Mgmt_Controller {
 		$footer_table = $section->addTable('footer_tableStyle');
 
 		$white_table->addRow();
-		$white_table->addCell(8000,null,8)->addText('滿意度雙向調查',array('bold' => true, 'size'=>25),array('align'=>'center'));
+		$white_table->addCell(10000,null,8)->addText('滿意度雙向調查',array('bold' => true, 'size'=>25),array('align'=>'center'));
 		
 		$table->addRow();
-		$table->addCell(8000,null,8)->addText('使用者',null,array('align'=>'center'));
+		$table->addCell(10000,null,8)->addText('使用者',null,array('align'=>'center'));
 
 		$table->addRow();
-		$table->addCell(8000,null,8)->addText('其他意見有問有答：',null,array('align'=>'center'));
+		$table->addCell(10000,null,8)->addText('其他意見有問有答：',null,array('align'=>'center'));
 
 		$table->addRow();
-		$table->addCell(8000,null,8)->addText('公司回覆：',null,array('align'=>'center'));
+		$table->addCell(10000,null,8)->addText('公司回覆：',null,array('align'=>'center'));
 		
 
 		
 		$footer_table->addRow();
-		$footer_table->addCell(8000,null,8)->addText('R020101-A',null,array('align'=>'right'));
+		$footer_table->addCell(10000,null,8)->addText('R020101-A',null,array('align'=>'right'));
 
 		$date = date('YmdHis');
 		$filename = $date."-123.docx";
