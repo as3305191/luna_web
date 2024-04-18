@@ -412,6 +412,13 @@ var QuestioneachdetailAppClass = (function(app) {
 		app.export_item = function(id) {
 			window.open(baseUrl + 'mgmt/question_option/export_excel_all/' + id);
 		}
+	
+		
+
+
+
+		$('.s_i').removeClass('hide_s_i');
+
 		app.tableReload();
 
 		return app;

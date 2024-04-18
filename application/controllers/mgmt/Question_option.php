@@ -68,6 +68,7 @@ class Question_option extends MY_Mgmt_Controller {
 			if($q_style_list->for_dep==1){
 				$items_list_for_dep= array();
 				$q_ans_is_finish = $this -> question_ans_dao -> find_all_finish_role($item_id);
+				$new_q_ans_is_finish = array();
 				foreach($q_ans_is_finish as $each){
 					$new_q_ans_is_finish[] = $each->role_id;
 				}
@@ -463,66 +464,7 @@ class Question_option extends MY_Mgmt_Controller {
 						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name.$note);
 				}
 			  break;
-			  case 5:
-				$cell_title = [];
-				for ($i=0;$i<count($question_ans_list);$i++) {
-	
-					// Add new sheet
-					$objWorkSheet = $objPHPExcel->createSheet($i); //Setting index when creating
-				
-								  $objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
-								  ->setCellValue($all_cell_title[1], $cell_title[1])
-								  ->setCellValue($all_cell_title[2], $cell_title[2])
-								  ->setCellValue($all_cell_title[3], $cell_title[3])
-								  ->setCellValue($all_cell_title[4], $cell_title[4])
-								  ->setCellValue($all_cell_title[5], $cell_title[5])
-								  ->setCellValue($all_cell_title[6], $cell_title[6])
-								  ->setCellValue($all_cell_title[7], $cell_title[7])
-								  ->setCellValue($all_cell_title[8], $cell_title[8])
-								  ->setCellValue($all_cell_title[9], $cell_title[9])
-								  ->setCellValue($all_cell_title[10], $cell_title[10])
-								  ->setCellValue($all_cell_title[11], $cell_title[11])
-								  ->setCellValue($all_cell_title[12], $cell_title[12])
-								  ->setCellValue($all_cell_title[13], $cell_title[13])
-								  ->setCellValue($all_cell_title[14], $cell_title[14])
-								  ->setCellValue($all_cell_title[15], $cell_title[15])
-								  ->setCellValue($all_cell_title[16], $cell_title[16]);
-
-								//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
-								  for ($j=0;$j<count($question_ans_list);$j++) {
-									  $k = $j+2;
-									  $objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->q1)
-												  ->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->q2)
-												  ->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q3)
-												  ->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q4)
-												  ->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q5)
-												  ->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q6)
-												  ->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q1o)
-												  ->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q2o)
-												  ->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q7)
-												  ->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q8)
-												  ->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q9)
-												  ->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q10)
-												  ->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q11)
-												  ->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q12)
-												  ->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q13)
-												  ->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q3o)
-												  ->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q4o);
-
-								  }
-								//   $last = count($items_order)+2;
-								//   $objWorkSheet->setCellValue('A'.$last , '')
-								// 				  ->setCellValue('B'.$last , '')
-								// 				  ->setCellValue('C'.$last, '')
-								// 				  ->setCellValue('D'.$last, '')
-								// 				  ->setCellValue('E'.$last, '')
-								// 				  ->setCellValue('F'.$last , '總金額')
-								// 				  ->setCellValue('G'.$last ,  $total);
-		  
-		  
-						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name.$note);
-				}
-			  break;
+			 
 			default:
 			  //code block
 		}
