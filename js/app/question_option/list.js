@@ -372,7 +372,7 @@ var QuestioneachdetailAppClass = (function(app) {
 					},
 					createdCell: function (td, cellData, rowData, row, col) {
 
-						if ( rowData.for_dep==1) {
+						if ( rowData.for_dep==1||rowData.for_dep==2) {
 							$(td).removeClass('hide_s_i');
 						} else {
 							$(td).addClass('hide_s_i');
