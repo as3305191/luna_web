@@ -346,7 +346,7 @@ var QuestioneachdetailAppClass = (function(app) {
 			columns : [null,{
 					data : 'user_name',
 					render: function(d,t,r) {
-						if(r.for_dep==0){
+						if(d.for_dep==0){
 							return d;
 						} else{
 							return d;
@@ -354,7 +354,7 @@ var QuestioneachdetailAppClass = (function(app) {
 					},
 					createdCell: function (td, cellData, rowData, row, col) {
 
-						if ( row.for_dep==0) {
+						if ( rowData.for_dep==0) {
 							$(td).removeClass('hide_s_i');
 						} else {
 							$(td).addClass('hide_s_i');
@@ -364,7 +364,7 @@ var QuestioneachdetailAppClass = (function(app) {
 				},{
 					data : 'dep_name',
 					render: function(d,t,r) {
-						if(r.for_dep==0){
+						if(d.for_dep==0){
 							return d;
 						} else{
 							return d;
@@ -372,7 +372,7 @@ var QuestioneachdetailAppClass = (function(app) {
 					},
 					createdCell: function (td, cellData, rowData, row, col) {
 
-						if ( row.for_dep==1) {
+						if ( rowData.for_dep==1) {
 							$(td).removeClass('hide_s_i');
 						} else {
 							$(td).addClass('hide_s_i');
