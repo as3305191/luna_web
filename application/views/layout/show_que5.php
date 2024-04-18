@@ -40,7 +40,7 @@
     <input type="hidden" id="role_id" value="<?= isset($role_id) ? $role_id : '' ?>" />
     <input type="hidden" id="question_ans_id" value="<?= isset($question_ans_id) ? $question_ans_id : '' ?>" />
 
-    <table class="col-xs-12">
+    <table class="col-xs-10">
 							<thead>
                 <tr>
                   <th>潛在風險(外部/內部)</th>
