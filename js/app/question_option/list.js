@@ -416,10 +416,10 @@ var QuestioneachdetailAppClass = (function(app) {
 		
 
 		if($('#export_item_for_dep').val()==0){
-			$('.for_div').addClass('hide_s_i');
+			$('.for_dep').addClass('hide_s_i');
 		} else{
 			if($('#export_item_for_dep').val()==1){
-				$('.for_dep').addClass('hide_s_i');
+				$('.for_div').addClass('hide_s_i');
 			} else{
 				if($('#export_item_for_dep').val()==2){
 			
