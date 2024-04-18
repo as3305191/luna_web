@@ -37,7 +37,8 @@ class Question_for_user extends MY_Mgmt_Controller {
 			$under_role_list= $this -> d_dao -> find_by_this_id($login_user->role_id);
 		}
 		$question_option_open_list = $this -> question_option_dao -> find_all_open_question();
-		$question_option_open_list_for_dep = $this -> question_option_dao -> find_all_open_question_for_dep();
+		$question_option_open_list_for_dep_1 = $this -> question_option_dao -> find_all_open_question_for_dep_1();
+		$question_option_open_list_for_dep_2 = $this -> question_option_dao -> find_all_open_question_for_dep_2();
 
 		foreach ($question_option_open_list as $each){
 			$question_option_open_list_user = $this -> question_ans_dao -> find_all_not_write($data['login_user_id'],$each->id);
@@ -59,7 +60,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 				
 			}
 		}
-		foreach ($question_option_open_list_for_dep as $each){
+		foreach ($question_option_open_list_for_dep_1 as $each){
 
 				$question_option_open_list_dep = $this -> question_ans_dao -> find_all_with_dep($each->id);
 				if(empty($question_option_open_list_dep)){
