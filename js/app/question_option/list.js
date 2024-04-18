@@ -344,7 +344,23 @@ var QuestioneachdetailAppClass = (function(app) {
 			pageLength: 10,
 			
 			columns : [null,{
-					data : 'user_name'
+					data : 'user_name',
+					createdCell: function (td, cellData, rowData, row, col) {
+						if ( cellData == '4' ) {
+							$(td).removeClass('hide_s_i');
+						} else {
+							$(td).addClass('hide_s_i');
+						}
+					},
+					render: function(d,t,r) {
+						if(d){
+							return '<button onclick="currentApp.each_detail.doExportAll('+d+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
+									+'<i class="fa fa-save"></i>匯出'
+									+'</button>';
+						} else{
+							return d;
+						}
+					}
 				},{
 					data : 'create_time'
 				},{

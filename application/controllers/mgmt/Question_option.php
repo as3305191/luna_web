@@ -116,7 +116,9 @@ class Question_option extends MY_Mgmt_Controller {
 			's_name'
 		));
 		$items = $this -> question_ans_dao -> find_all_each_detail($data);
-	
+		$list = $this -> dao -> query_ajax($data);
+		$item = $list[0];
+		$res['items']['for_dep'] = $item->for_dep;
 		$res['items'] = $items;
 		$res['recordsFiltered'] = $this -> question_ans_dao -> find_all_each_detail($data,true);
 		$res['recordsTotal'] = $this -> question_ans_dao -> find_all_each_detail($data,true);

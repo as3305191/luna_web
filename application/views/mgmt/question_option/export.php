@@ -85,7 +85,7 @@
 									<th class="min150 for_div">姓名</th>
 									<th class="min150 for_dep">部門</th>
 									<th class="min150">建立時間</th>
-									<th class="min150 for_div">匯出</th>
+									<th class="min150">匯出</th>
 								</tr>
 							
 							</thead>

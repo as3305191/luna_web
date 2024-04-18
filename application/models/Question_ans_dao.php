@@ -289,7 +289,7 @@ class Question_ans_dao extends MY_Model {
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
 		}
-		
+
 		$this -> db -> where('_m.question_option_id',$item_id);
 		$this -> db -> order_by('_m.id','desc');
 
