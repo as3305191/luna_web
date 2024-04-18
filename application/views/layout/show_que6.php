@@ -17,7 +17,7 @@
     </div>
     <hr/>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
-    <table>
+    <table class="col-xs-12">
 		<thead >
 			<tr>
 				<td>序號</td>
@@ -49,86 +49,20 @@
 			</tr>
 			<tr>
 				<td>分數</td>
-				<td><select name="s1" onchange="sum('s1')">
-					<option value="0">請選擇</option>
-					<option value="10">A(10分):優異</option>
-					<option value="9">B(9分):佳</option>
-					<option value="8">C(8分):可</option>
-					<option value="7">D(7分):普通</option>
-					<option value="6">C(6分):不佳</option>
-				</select></td>
-				<td><select name="s2" onchange="sum('s2')">
-					<option value="0">請選擇</option>
-					<option value="10">A(10分):優異</option>
-					<option value="9">B(9分):佳</option>
-					<option value="8">C(8分):可</option>
-					<option value="7">D(7分):普通</option>
-					<option value="6">C(6分):不佳</option>
-				</select></td>
-				<td><select name="s3" onchange="sum('s3')">
-					<option value="0">請選擇</option>
-					<option value="10">A(10分):優異</option>
-					<option value="9">B(9分):佳</option>
-					<option value="8">C(8分):可</option>
-					<option value="7">D(7分):普通</option>
-					<option value="6">C(6分):不佳</option>
-				</select></td>
-				<td><select name="s4" onchange="sum('s4')">
-					<option value="0">請選擇</option>
-					<option value="10">A(10分):優異</option>
-					<option value="9">B(9分):佳</option>
-					<option value="8">C(8分):可</option>
-					<option value="7">D(7分):普通</option>
-					<option value="6">C(6分):不佳</option>
-				</select></td>
-				<td><select name="s5" onchange="sum('s5')">
-					<option value="0">請選擇</option>
-					<option value="10">A(10分):優異</option>
-					<option value="9">B(9分):佳</option>
-					<option value="8">C(8分):可</option>
-					<option value="7">D(7分):普通</option>
-					<option value="6">C(6分):不佳</option>
-				</select></td>
-				<td><select name="s6" onchange="sum('s6')">
-					<option value="0">請選擇</option>
-					<option value="10">A(10分):優異</option>
-					<option value="9">B(9分):佳</option>
-					<option value="8">C(8分):可</option>
-					<option value="7">D(7分):普通</option>
-					<option value="6">C(6分):不佳</option>
-				</select></td>
-				<td><select name="s7" onchange="sum('s7')">
-					<option value="0">請選擇</option>
-					<option value="10">A(10分):優異</option>
-					<option value="9">B(9分):佳</option>
-					<option value="8">C(8分):可</option>
-					<option value="7">D(7分):普通</option>
-					<option value="6">C(6分):不佳</option>
-				</select></td>
-				<td><select name="s8" onchange="sum('s8')">
-					<option value="0">請選擇</option>
-					<option value="10">A(10分):優異</option>
-					<option value="9">B(9分):佳</option>
-					<option value="8">C(8分):可</option>
-					<option value="7">D(7分):普通</option>
-					<option value="6">C(6分):不佳</option>
-				</select></td>
-				<td><select name="s9" onchange="sum('s9')">
-					<option value="0">請選擇</option>
-					<option value="10">A(10分):優異</option>
-					<option value="9">B(9分):佳</option>
-					<option value="8">C(8分):可</option>
-					<option value="7">D(7分):普通</option>
-					<option value="6">C(6分):不佳</option>
-				</select></td>
-				<td><select name="s10" onchange="sum('s10')">
-					<option value="0">請選擇</option>
-					<option value="10">A(10分):優異</option>
-					<option value="9">B(9分):佳</option>
-					<option value="8">C(8分):可</option>
-					<option value="7">D(7分):普通</option>
-					<option value="6">C(6分):不佳</option>
-				</select></td>
+        <?php for ($i=0;$i<count($question_list);$i++) : ?>
+
+          <td>
+            <select name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
+              <option value="0">請選擇</option>
+              <option value="10">A(10分):優異</option>
+              <option value="9">B(9分):佳</option>
+              <option value="8">C(8分):可</option>
+              <option value="7">D(7分):普通</option>
+              <option value="6">C(6分):不佳</option>
+            </select>
+          </td>
+        <?php endfor ?>
+
 			</tr>
 			<tr>
 				<td id="sum_id" colspan="11">總分合計:</td>	
