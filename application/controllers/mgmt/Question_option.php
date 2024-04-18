@@ -833,23 +833,7 @@ class Question_option extends MY_Mgmt_Controller {
 	}
 
 	function export_all_word($id) {
-		$data = $this -> session -> userdata("fix_data");
-		$list = $this -> dao -> query_ajax($data);
-		$h = array();
-		$s = array();
-
-		if(!empty($list)){
-			$item = $list[0];
-			$hard_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($item->id,0);
-			$soft_list = $this -> c_s_h_join_list_dao -> find_use_now_by_computer($item->id,1);
-			foreach($hard_list as $h_list){
-				$h[] = $h_list->hard_name;
-			}
-			foreach($soft_list as $s_list){
-				$s[] = $s_list->soft_name;
-			}
-			$compter_fix_list = $this -> fix_record_dao -> find_now_compter_fix($item->id);
-		} 
+		
 	
 		$PHPWord = new PHPWord(); 
 		$PHPWord->setDefaultFontName('華康仿宋體'); 
@@ -885,7 +869,6 @@ class Question_option extends MY_Mgmt_Controller {
 		
 		$table->addRow();
 		$table->addCell(1000,null,1)->addText('使用者',null,array('align'=>'center'));
-		$table->addCell(6000,null,6)->addText($item->admin_user_id,null);
 		$table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
 
 		$table->addRow();
@@ -897,20 +880,14 @@ class Question_option extends MY_Mgmt_Controller {
 		$table->addCell(3000,null,3)->addText('處置情形',null,array('align'=>'center'));
 		$table->addCell(1000,null,1)->addText('維修人員',null,array('align'=>'center'));
 
-		foreach($compter_fix_list as $each){
-			$table->addRow();
-			$table->addCell(1000,null,1)->addText(str_replace("-",",",$each->done_fix_date),null);
-			$table->addCell(3000,null,3)->addText($each->fix_reason,null);
-			$table->addCell(3000,null,3)->addText($each->fix_way,null);
-			$table->addCell(1000,null,1)->addText($each->user_name,null);
-		}
+		
 		$footer_table->addRow();
 		$footer_table->addCell(8000,null,8)->addText('R020102-A',null,array('align'=>'right'));
 
 		$date = date('YmdHis');
 		$filename = $date."-維修單.docx";
 		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
-		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
+		header('Content-Disposition: attachment;filename="'.'112233'.'"'); //tell browser what's the file name
 		header('Cache-Control: max-age=0'); //no cache
 		$objWriter = PHPWord_IOFactory::createWriter($PHPWord, 'Word2007');
 		$objWriter->save('php://output');
