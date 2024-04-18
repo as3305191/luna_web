@@ -125,7 +125,8 @@ class Question_option extends MY_Mgmt_Controller {
 			$res['items'] = $items;
 
 		} else{
-			$res['items'][] = $item->for_dep;
+			$res['items']['for_dep'] = $item->for_dep;
+			$res['items'] = $items;
 		}
 		
 		$res['recordsFiltered'] = $this -> question_ans_dao -> find_all_each_detail($data,true);
