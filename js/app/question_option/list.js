@@ -344,7 +344,7 @@ var QuestioneachdetailAppClass = (function(app) {
 			pageLength: 10,
 			
 			columns : [null,{
-					data : 'list.user_name',
+					data : 'user_name',
 					createdCell: function (td, cellData, rowData, row, col) {
 						console.log(cellData);
 						console.log(rowData);
