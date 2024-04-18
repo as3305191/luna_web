@@ -256,7 +256,15 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['question_list_count'] = count($data['question_list']);
 		$this -> load -> view('layout/show_que5',$data);
 	}
-
+	public function show_que6(){
+		$data = array();
+		$data = $this -> setup_user_data($data);
+		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
+		$data['lang'] = $login_user->lang;
+		$qid =$this -> get_get('id');
+		$data['qid'] = $qid;
+		$this -> load -> view('layout/show_que6',$data);
+	}
 	public function save_q1(){
 		$s_data = array();
 		$data = array();

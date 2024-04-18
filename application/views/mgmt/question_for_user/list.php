@@ -111,6 +111,18 @@
 				})
 				break;
 			}
+			case 6: {
+				url = 'mgmt/question_for_user/show_que'+q_num+'?id='+id+'&role_id='+role_id+'&question_ans_id='+question_ans_id;
+				layer.open({
+					type:2,
+					title:'',
+					closeBtn:0,
+					area:['1200px','600px'],
+					shadeClose:true,
+					content:'<?=base_url()?>'+url
+				})
+				break;
+			}
 		}
 	}
 </script>
