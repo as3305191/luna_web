@@ -115,6 +115,7 @@ class Question_option extends MY_Mgmt_Controller {
 			'item_id',
 			's_name'
 		));
+		$data['id']= $this -> get_post('item_id');
 		$items = $this -> question_ans_dao -> find_all_each_detail($data);
 		$q_o_list = $this -> dao -> query_ajax($data);
 		$item = $q_o_list[0];
