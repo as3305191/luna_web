@@ -364,7 +364,7 @@ var QuestioneachdetailAppClass = (function(app) {
 				},{
 					data : 'dep_name',
 					render: function(d,t,r) {
-						if(r.for_dep==1||rowData.for_dep==2){
+						if(r.for_dep==1||r.for_dep==2){
 							return d;
 						} else{
 							return d+' ('+r.user_name+')';
