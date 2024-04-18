@@ -346,7 +346,7 @@ var QuestioneachdetailAppClass = (function(app) {
 			columns : [null,{
 					data : 'user_name',
 					render: function(d,t,r) {
-						if(d.for_dep==0){
+						if(r.for_dep==0){
 							return d;
 						} else{
 							return d;
@@ -364,7 +364,7 @@ var QuestioneachdetailAppClass = (function(app) {
 				},{
 					data : 'dep_name',
 					render: function(d,t,r) {
-						if(d.for_dep==0){
+						if(r.for_dep==0){
 							return d;
 						} else{
 							return d+' ('+r.user_name+')';
@@ -384,7 +384,7 @@ var QuestioneachdetailAppClass = (function(app) {
 				},{
 					data : 'id',
 					render: function(d,t,r) {
-						if(d.for_dep==0||d.for_dep==2){
+						if(r.for_dep==0||r.for_dep==2){
 							return '<button onclick="currentApp.each_detail.doExportAll('+d+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
 									+'<i class="fa fa-save"></i>匯出'
 									+'</button>';
