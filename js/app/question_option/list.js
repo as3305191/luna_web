@@ -442,10 +442,10 @@ var QuestioneachdetailAppClass = (function(app) {
 		$('#s_name').on('change', function(){
 			app.tableReload();
 		});
-		app.doExportAll = function(id) {
+		app.doExportAll = function(id,style) {
 			window.open(baseUrl + 'mgmt/question_option/export_excel/' + id);
 		}
-		app.export_item = function(id) {
+		app.export_item = function(id,style) {
 			window.open(baseUrl + 'mgmt/question_option/export_excel_all/' + id);
 		}
 	
