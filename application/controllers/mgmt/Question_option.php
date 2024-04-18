@@ -118,16 +118,11 @@ class Question_option extends MY_Mgmt_Controller {
 		$items = $this -> question_ans_dao -> find_all_each_detail($data);
 		$q_o_list = $this -> dao -> query_ajax($data);
 		$item = $q_o_list[0];
-		if(count($items)>0){
-			foreach($items as $each){
-				$each['for_dep'] = $item->for_dep;
-			}
-			$res['items'] = $items;
-
-		} else{
-			$res['items']['for_dep'][] = $item->for_dep;
-			$res['items'] = $items;
+		foreach($items as $each){
+			$each['for_dep'] = $item->for_dep;
 		}
+		$res['items'] = $items;
+
 		
 		$res['recordsFiltered'] = $this -> question_ans_dao -> find_all_each_detail($data,true);
 		$res['recordsTotal'] = $this -> question_ans_dao -> find_all_each_detail($data,true);
