@@ -283,13 +283,12 @@
         if(radioValue=='否'){
             radios[i].checked=true;
             var q_num = className.substring(1);
-              for(var $j=1;$j<=6;$j++){
-                var nq_num = parseInt(q_num)+$j;
-                $('.q'+nq_num).addClass("disabledinput").attr('disabled',true).attr('checked',false);
-              }
-              var o_nq_num = (parseInt(q_num)-parseInt(q_num) % 7)/7+1;
-              $('.q'+o_nq_num+'o').val('無').addClass("disabledinput").attr('disabled',true);
-
+            for(var $j=1;$j<=6;$j++){
+              var nq_num = parseInt(q_num)+$j;
+              $('.q'+nq_num).addClass("disabledinput").attr('disabled',true).attr('checked',false);
+            }
+            var o_nq_num = (parseInt(q_num)-parseInt(q_num) % 7)/7+1;
+            $('.q'+o_nq_num+'o').val('無').addClass("disabledinput").attr('disabled',true);
         } else{
           radios[i].checked=true;
         }
