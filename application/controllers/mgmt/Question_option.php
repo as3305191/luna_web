@@ -120,12 +120,12 @@ class Question_option extends MY_Mgmt_Controller {
 		$q_o_list = $this -> dao -> find_by_this_id($id);
 		if(count($items)>0){
 			foreach($items as $each){
-				$each['for_dep'] = $q_o_list[0]->for_dep;
+				$each['for_dep'][] = $q_o_list[0]->for_dep;
 			}
 			$res['items'] = $items;
 		} else{
 			$res['items'] = $items;
-			$res['items']['for_dep'] = $q_o_list[0]->for_dep;;
+			$res['items']['for_dep'][] = $q_o_list[0]->for_dep;;
 
 		}
 		
