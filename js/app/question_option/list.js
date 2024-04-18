@@ -443,7 +443,11 @@ var QuestioneachdetailAppClass = (function(app) {
 			app.tableReload();
 		});
 		app.doExportAll = function(id,style_id) {
-			window.open(baseUrl + 'mgmt/question_option/export_excel/' + id);
+			if(style_id==6){
+				window.open(baseUrl + 'mgmt/question_option/export_all_word/' + id);
+			} else{
+				window.open(baseUrl + 'mgmt/question_option/export_excel/' + id);
+			}
 		}
 		app.export_item = function(id,style_id) {
 			window.open(baseUrl + 'mgmt/question_option/export_excel_all/' + id);

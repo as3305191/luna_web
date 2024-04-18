@@ -817,11 +817,7 @@ class Question_option extends MY_Mgmt_Controller {
 					$objWorkSheet->setTitle($question_style->question_style_name.$note);
 		
 					break;
-				case 6:
-
-					$this ->export_all_word();
 			
-				break;
 		default:
 		//code block
 		}
@@ -836,7 +832,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$objWriter->save('php://output');
 	}
 
-	function export_all_word() {
+	function export_all_word($id) {
 		$data = $this -> session -> userdata("fix_data");
 		$list = $this -> dao -> query_ajax($data);
 		$h = array();
