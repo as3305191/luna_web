@@ -119,7 +119,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$q_o_list = $this -> dao -> query_ajax($data);
 		$item = $q_o_list[0];
 		foreach($items as $each){
-			$each['for_dep'] = $item->for_dep;
+			$each['for_dep'][] = $item->for_dep;
 		}
 		$res['items'] = $items;
 
