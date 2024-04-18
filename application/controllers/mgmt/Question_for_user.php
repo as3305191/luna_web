@@ -36,6 +36,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		if(empty($under_role_list)){
 			$under_role_list= $this -> d_dao -> find_by_this_id($login_user->role_id);
 		}
+		$find_dep = $this -> d_dao -> find_by_id($login_user->role_id);
 		$question_option_open_list = $this -> question_option_dao -> find_all_open_question();
 		$question_option_open_list_for_dep_1 = $this -> question_option_dao -> find_all_open_question_for_dep_1();
 		$question_option_open_list_for_dep_2 = $this -> question_option_dao -> find_all_open_question_for_dep_2();
@@ -62,10 +63,43 @@ class Question_for_user extends MY_Mgmt_Controller {
 		}
 		foreach ($question_option_open_list_for_dep_1 as $each){
 
-				$question_option_open_list_dep = $this -> question_ans_dao -> find_all_with_dep($each->id);
-				if(empty($question_option_open_list_dep)){
-					if(!empty($under_role_list)){
-						foreach ($under_role_list as $each_by_dep){
+			$question_option_open_list_dep = $this -> question_ans_dao -> find_all_with_dep($each->id);
+			if(empty($question_option_open_list_dep)){
+				if(!empty($under_role_list)){
+					foreach ($under_role_list as $each_by_dep){
+						if($each->note==''){
+							$title_dep=$each->qs_name.'-'.$each_by_dep->name;
+						} else{
+							$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
+						}
+						$data['question_option_id_list_by_dep'][] = array (
+							"id" => $each->id,
+							"question_ans_id" => 0,
+							"role_id" => $each_by_dep->id,
+							"question_style_id" => 5,
+							"question_title" => $title_dep,
+						);
+					}
+				} 
+			} else{
+				if(!empty($under_role_list)){
+					foreach ($under_role_list as $each_by_dep){
+						$question_option_open_list_dep = $this -> question_ans_dao -> find_all_not_write_dep($each_by_dep->id,$each->id);
+
+						if(!empty($question_option_open_list_dep)){
+							if($each->note==''){
+								$title_dep=$each->qs_name.'-'.$each_by_dep->name;
+							} else{
+								$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
+							}
+							$data['question_option_id_list_by_dep'][] = array (
+								"id" => $each->id,
+								"question_ans_id" => $question_option_open_list_dep->id,
+								"role_id" => $each_by_dep->id,
+								"question_style_id" => 5,
+								"question_title" => $title_dep,
+							);
+						} else{
 							if($each->note==''){
 								$title_dep=$each->qs_name.'-'.$each_by_dep->name;
 							} else{
@@ -79,45 +113,59 @@ class Question_for_user extends MY_Mgmt_Controller {
 								"question_title" => $title_dep,
 							);
 						}
-					} 
-				} else{
-					if(!empty($under_role_list)){
-						foreach ($under_role_list as $each_by_dep){
-							$question_option_open_list_dep = $this -> question_ans_dao -> find_all_not_write_dep($each_by_dep->id,$each->id);
-	
-							if(!empty($question_option_open_list_dep)){
-								if($each->note==''){
-									$title_dep=$each->qs_name.'-'.$each_by_dep->name;
-								} else{
-									$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
-								}
-								$data['question_option_id_list_by_dep'][] = array (
-									"id" => $each->id,
-									"question_ans_id" => $question_option_open_list_dep->id,
-									"role_id" => $each_by_dep->id,
-									"question_style_id" => 5,
-									"question_title" => $title_dep,
-								);
-							} else{
-								if($each->note==''){
-									$title_dep=$each->qs_name.'-'.$each_by_dep->name;
-								} else{
-									$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
-								}
-								$data['question_option_id_list_by_dep'][] = array (
-									"id" => $each->id,
-									"question_ans_id" => 0,
-									"role_id" => $each_by_dep->id,
-									"question_style_id" => 5,
-									"question_title" => $title_dep,
-								);
-							}
-						}
 					}
-
 				}
 			}
-				
+		}
+		foreach ($question_option_open_list_for_dep_2 as $each){
+
+			$question_option_open_list_dep = $this -> question_ans_dao -> find_all_with_dep($each->id);
+			if(empty($question_option_open_list_dep)){
+				if($each->note==''){
+					$title_dep=$each->qs_name.'-'.$each_by_dep->name;
+				} else{
+					$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
+				}
+				$data['question_option_id_list_by_dep'][] = array (
+					"id" => $each->id,
+					"question_ans_id" => 0,
+					"role_id" => $login_user->role_id,
+					"question_style_id" => 6,
+					"question_title" => $title_dep,
+				);
+			} else{
+				if(!empty($under_role_list)){
+					$question_option_open_list_dep = $this -> question_ans_dao -> find_all_not_write_dep($each_by_dep->id,$each->id);
+					if(!empty($question_option_open_list_dep)){
+						if($each->note==''){
+							$title_dep=$each->qs_name.'-'.$each_by_dep->name;
+						} else{
+							$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
+						}
+						$data['question_option_id_list_by_dep'][] = array (
+							"id" => $each->id,
+							"question_ans_id" => $question_option_open_list_dep->id,
+							"role_id" => $login_user->role_id,
+							"question_style_id" => 6,
+							"question_title" => $title_dep,
+						);
+					} else{
+						if($each->note==''){
+							$title_dep=$each->qs_name.'-'.$each_by_dep->name;
+						} else{
+							$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
+						}
+						$data['question_option_id_list_by_dep'][] = array (
+							"id" => $each->id,
+							"question_ans_id" => 0,
+							"role_id" => $login_user->role_id,
+							"question_style_id" => 6,
+							"question_title" => $title_dep,
+						);
+					}
+				}
+			}
+		}
 		
 		$data['question_option_open_list']=$question_option_open_list;
 		// $this -> to_json($under_role_list);
