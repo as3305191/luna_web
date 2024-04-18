@@ -458,7 +458,7 @@ var QuestioneachdetailAppClass = (function(app) {
 				$('.for_div').addClass('hide_s_i');
 			} else{
 				if($('#export_item_for_dep').val()==2){
-			
+					$('.for_div').addClass('hide_s_i');
 				}
 			}
 		}
