@@ -384,12 +384,14 @@ var QuestioneachdetailAppClass = (function(app) {
 				},{
 					data : 'id',
 					render: function(d,t,r) {
-						if(d){
+						if(d.for_dep==0){
 							return '<button onclick="currentApp.each_detail.doExportAll('+d+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
 									+'<i class="fa fa-save"></i>匯出'
 									+'</button>';
 						} else{
-							return d;
+							return '<button onclick="currentApp.each_detail.doExportAll('+d+')" class="btn btn-xs btn-warning disabledinput" pointer-enents ="none"; data-toggle="dropdown">'
+									+'<i class="fa fa-save"></i>匯出'
+									+'</button>';
 						}
 					}
 				},],
