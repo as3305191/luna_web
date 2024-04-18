@@ -856,7 +856,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$white_table->addRow();
 		$white_table->addCell(10000,null,8)->addText('滿意度雙向調查',array('bold' => true, 'size'=>25),array('align'=>'center'));
 		
-		$table->addRow(4000);
+		$table->addRow(3500);
 		$table->addCell(10000,null,8)->addText('員工滿意度：(A(10分); B(9分); C(8分); D(7分); E(6分))',null,array('align'=>'left'));
 
 		$table->addRow(4000);
