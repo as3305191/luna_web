@@ -20,7 +20,7 @@
     <table class="col-xs-12">
 		<thead >
 			<tr>
-				<td>序號</td>
+				<td class="min50">序號</td>
 				<td>1</td>
 				<td>2</td>
 				<td>3</td>
@@ -35,7 +35,7 @@
 		</thead>
 		<tbody id="example_tbody">
 			<tr>
-				<td>項目</td>
+				<td class="min50">項目</td>
 				<td>系統</td>
 				<td>制度</td>
 				<td>成本</td>
@@ -48,7 +48,7 @@
 				<td>公平</td>
 			</tr>
 			<tr>
-				<td>分數</td>
+				<td class="min50">分數</td>
         <?php for ($i=0;$i<10;$i++) : ?>
 
           <td>
