@@ -139,6 +139,14 @@ function load_not_finish() {
 								html+='<span>'+this.name+'</span> ';
 							});
 							$question_style.append(html);
+						} else{
+							if(d.for_dep==2) {
+								$question_style = $('#not_finish_p').empty();
+								$.each(d.items, function(){
+									html+='<span>'+this.name+'</span> ';
+								});
+								$question_style.append(html);
+							}
 						}
 					}
 					
