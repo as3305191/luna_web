@@ -855,34 +855,20 @@ class Question_option extends MY_Mgmt_Controller {
 
 		$white_table->addRow();
 		$white_table->addCell(8000,null,8)->addText('滿意度雙向調查',array('bold' => true, 'size'=>25),array('align'=>'center'));
-
 		
 		$table->addRow();
-		$table->addCell(1000,null,1)->addText('項目',null,array('align'=>'center'));
-		
-		$table->addRow();
-		$table->addCell(1000,null,1)->addText('硬體配備',null,array('align'=>'center'));
-		
+		$table->addCell(8000,null,8)->addText('使用者',null,array('align'=>'center'));
 
 		$table->addRow();
-		$table->addCell(1000,null,1)->addText('安裝軟體',null,array('align'=>'center'));
+		$table->addCell(8000,null,8)->addText('其他意見有問有答：',null,array('align'=>'center'));
+
+		$table->addRow();
+		$table->addCell(8000,null,8)->addText('公司回覆：',null,array('align'=>'center'));
 		
-		$table->addRow();
-		$table->addCell(1000,null,1)->addText('使用者',null,array('align'=>'center'));
-		$table->addCell(1000,null,1)->addText('',null,array('align'=>'center'));
-
-		$table->addRow();
-		$table->addCell(8000,null,8)->addText('維修紀錄',null,array('align'=>'center'));
-
-		$table->addRow();
-		$table->addCell(1000,null,1)->addText('維修日期',null,array('align'=>'center'));
-		$table->addCell(3000,null,3)->addText('故障原因',null,array('align'=>'center'));
-		$table->addCell(3000,null,3)->addText('處置情形',null,array('align'=>'center'));
-		$table->addCell(1000,null,1)->addText('維修人員',null,array('align'=>'center'));
 
 		
 		$footer_table->addRow();
-		$footer_table->addCell(8000,null,8)->addText('R020102-A',null,array('align'=>'right'));
+		$footer_table->addCell(8000,null,8)->addText('R020101-A',null,array('align'=>'right'));
 
 		$date = date('YmdHis');
 		$filename = $date."-123.docx";
