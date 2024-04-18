@@ -33,7 +33,7 @@
       border: 1px solid black;
   }
 </style>
-<div class="col-xs-12" style="padding:20px">
+<div class="col-xs-10" style="padding:20px">
 
     <hr/>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
