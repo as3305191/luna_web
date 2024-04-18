@@ -132,7 +132,7 @@
               q9 : $('select[name="s9"]').val(),
               q10 : $('select[name="s10"]').val(),
 
-              q1o : $('[name="q1o"]').text(),
+              q1o : $('[name="q1o"]').val(),
             
             },
             dataType: 'json',
