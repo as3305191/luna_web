@@ -385,11 +385,11 @@ var QuestioneachdetailAppClass = (function(app) {
 					data : 'id',
 					render: function(d,t,r) {
 						if(r.for_dep==0||r.for_dep==2){
-							return '<button onclick="currentApp.each_detail.doExportAll('+d+r.question_style_id+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
+							return '<button onclick="currentApp.each_detail.doExportAll('+d+','+r.question_style_id+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
 									+'<i class="fa fa-save"></i>匯出'
 									+'</button>';
 						} else{
-							return '<button onclick="currentApp.each_detail.doExportAll('+d+r.question_style_id+')" style="pointer-events:none;" class="btn btn-xs btn-warning disabledinput"  data-toggle="dropdown">'
+							return '<button onclick="currentApp.each_detail.doExportAll('+d+','+r.question_style_id+')" style="pointer-events:none;" class="btn btn-xs btn-warning disabledinput"  data-toggle="dropdown">'
 									+'<i class="fa fa-save"></i>匯出'
 									+'</button>';
 						}
