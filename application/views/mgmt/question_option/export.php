@@ -58,6 +58,8 @@
 		<div class="widget-body">
 			<form id="app-export-form" method="post" class="form-horizontal">
 			<input type="hidden" name="id" id="export_item_id" value="<?= isset($item) ? $item -> id : '' ?>" />
+			<input type="hidden" id="export_item_for_dep" value="<?= isset($item) ? $item -> for_dep : '' ?>" />
+
 			
 					<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
 						<span style="font-size: 16pt;color:#0d0d56">未填寫人員：</span>

@@ -19,6 +19,8 @@ class Question_option_dao extends MY_Model {
 		// select
 		$this -> db -> select('_m.*');
 		$this -> db -> select('qs.question_style_name as question_style_name');
+		$this -> db -> select('qs.for_dep as for_dep');
+
 		// join
 		$this -> ajax_from_join();
 
