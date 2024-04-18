@@ -47,7 +47,8 @@ class Question_ans_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('ns.news_style as news_style');
+		// $this -> db -> select('ns.news_style as news_style');
+		$this -> db -> select('qs.id as question_style_id');
 
 		// join
 		$this -> ajax_from_join();
@@ -71,9 +72,9 @@ class Question_ans_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		if(isset($data['s_news_style']) && $data['s_news_style'] > 0) {
-			$this -> db -> where('ns.id', $data['s_news_style']);
-		}
+		// if(isset($data['s_news_style']) && $data['s_news_style'] > 0) {
+		// 	$this -> db -> where('ns.id', $data['s_news_style']);
+		// }
 		if(isset($data['id']) && $data['id'] > 0) {
 			$this -> db -> where('_m.id', $data['id']);
 		}
@@ -82,8 +83,8 @@ class Question_ans_dao extends MY_Model {
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
-		// $this -> db -> join("users iu", "iu.id = _m.intro_id", "left");
+		$this -> db -> join("question_option qo", "qo.id = _m.question_option_id", "left");
+		$this -> db -> join("question_style qs", "qs.id = qo.question_style_id", "left");
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 
