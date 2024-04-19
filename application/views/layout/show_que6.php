@@ -190,8 +190,9 @@
                 } else{
                   if(obj[key]!==null){
                     var select_class = '.'+key;
-                    var optionval = obj[key].toString;
-                    document.querySelector(select_class).value = optionval;
+                    var optionval = obj[key].toString();
+                    console.log(optionval);
+                    // document.querySelector(select_class).value = optionval;
                   }
                  
                 }
