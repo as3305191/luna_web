@@ -120,7 +120,6 @@ class Question_for_user extends MY_Mgmt_Controller {
 		foreach ($question_option_open_list_for_dep_2 as $each){
 
 			$question_option_open_list_dep_2 = $this -> question_ans_dao -> find_all_with_dep($each->id);
-			$this -> to_json($question_option_open_list_dep_2);
 
 			if(empty($question_option_open_list_dep_2)){
 				if($each->note==''){
@@ -137,6 +136,8 @@ class Question_for_user extends MY_Mgmt_Controller {
 				);
 			} else{
 				$question_option_open_list_dep_2 = $this -> question_ans_dao -> find_all_not_write_dep_2($login_user->role_id,$each->id);
+				$this -> to_json($question_option_open_list_dep_2);
+
 				if(!empty($question_option_open_list_dep_2)){
 					if($each->note==''){
 						$title_dep=$each->qs_name.'-'.$each_by_dep->name;
