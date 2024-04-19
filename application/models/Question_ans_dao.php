@@ -147,7 +147,7 @@ class Question_ans_dao extends MY_Model {
 	function find_all_not_write_dep_2($role_id,$question_option_id){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
-		$this -> db -> where('_m.role_id',$role_id);
+		$this -> db -> where('_m.dep_id',$role_id);
 
 		$this -> db -> where('qs.for_dep',2);
 		$this -> db -> where('_m.question_option_id',$question_option_id);
