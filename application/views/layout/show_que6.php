@@ -61,7 +61,7 @@
 	</table>
   <div class="col-xs-12 no-padding" style="margin-top:20px">
     其他意見有問有答：</br>
-    <textarea class="form-control" name="q1o"></textarea>
+    <textarea class="form-control" name="q1o" ><?= isset($items)? $items[11] : '' ?></textarea>
   </div>
 
     <div class="col-xs-12 no-padding" style="margin-top:20px">
@@ -83,7 +83,6 @@
 
   $( document ).ready(function() {
     $('#name').focus();
-    load_ans();
   })
   
 
