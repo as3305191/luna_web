@@ -311,6 +311,10 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$data['lang'] = $login_user->lang;
 		$qid =$this -> get_get('id');
+		$role_id =$this -> get_get('role_id');
+		$question_ans_id =$this -> get_get('question_ans_id');
+		$data['role_id'] = $role_id;
+		$data['question_ans_id'] = $question_ans_id;
 		$data['qid'] = $qid;
 		$this -> load -> view('layout/show_que6',$data);
 	}
