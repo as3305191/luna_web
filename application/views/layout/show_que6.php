@@ -123,8 +123,8 @@
 			if (other_option_val == 0){
         sum_id.innerHTML = "總分合計:還有其他沒選擇";
         break ;
-				
-			} else{
+        is_ok=false;
+      } else{
         value +=parseInt(other_option_val);
 				sum_id.innerHTML = "總分合計:"+value ;
         is_ok=true;
