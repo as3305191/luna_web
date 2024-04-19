@@ -84,6 +84,7 @@
 
   $( document ).ready(function() {
     $('#name').focus();
+    load_ans();
   })
   
   var  q1 = null;
@@ -203,7 +204,7 @@
                   if(obj[key]!==null){
                     var select_class = '.'+key;
                     var optionval = obj[key].toString;
-                    document.querySelector(select_class).value =  optionval;
+                    document.querySelector(select_class).value = optionval;
                   }
                  
                 }
@@ -220,5 +221,5 @@
     }
   }
 
-  load_ans();
+  
 </script>
