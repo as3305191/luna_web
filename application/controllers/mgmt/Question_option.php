@@ -911,7 +911,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$table_note = $table->addCell(10000,null,8);
 		$table_note->addText('其他意見有問有答：',array('size'=>13),array('align'=>'left'));
 		for($i=0;$i<$count_q1o;$i++){
-			$table_note->addText($$stringArr[$i],array('size'=>13),array('align'=>'left'));
+			$table_note->addText($stringArr[$i],array('size'=>13),array('align'=>'left'));
 		}
 
 		$table->addRow(4000);
