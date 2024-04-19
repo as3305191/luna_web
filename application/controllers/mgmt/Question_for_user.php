@@ -324,15 +324,24 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$qid =$this -> get_get('id');
 		$role_id =$this -> get_get('role_id');
 		$question_ans_id =$this -> get_get('question_ans_id');
-
+		$total = 0;
+		$i=0;
 		if($question_ans_id>0){
 			$items = $this -> question_ans_dao -> find_by_id($question_ans_id);
 			
 			foreach($items as $key => $value){
 				if(substr($key, 0, 1)=='q'&&substr($key, 1, 1)!=='u'&&$value!==null){
 					$data['items'][] = $value;
+					if($i<10){
+						$total +=intval($data['items'][$i]);
+					}
+					$i++;
 				}
 			}
+			for($i=0;$i<10;$i++){
+				
+			}
+
 		}
 		$data['role_id'] = $role_id;
 		$data['question_ans_id'] = $question_ans_id;
