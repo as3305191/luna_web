@@ -192,7 +192,7 @@
                 } else{
                   if(obj[key]!==null&&obj[key]!==''&&obj[key]!==NaN){
                   
-                    console.log($('#s_s_'+key).value);
+                    console.log($('#s_s_'+key).val());
 
                     // document.querySelector('#s'+key).value = optionval;
                   }
