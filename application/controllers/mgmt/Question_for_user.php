@@ -129,9 +129,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 			if(empty($question_option_open_list_dep_2)){
 
 				if($each->note==''){
-					$title_dep=$each->qs_name.'-'.$find_dep->name;
+					$title_dep=$each->qs_name.'-'.$find_dep_list->name;
 				} else{
-					$title_dep=$each->qs_name.'('.$find_dep->name.')-'.$each->note;
+					$title_dep=$each->qs_name.'('.$find_dep_list->name.')-'.$each->note;
 				}
 				$data['question_option_id_list_by_dep'][] = array (
 					"id" => $each->id,
@@ -145,9 +145,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 
 				if(!empty($question_option_open_list_dep_2)){
 					if($each->note==''){
-						$title_dep=$each->qs_name.'-'.$find_dep->name;
+						$title_dep=$each->qs_name.'-'.$find_dep_list->name;
 					} else{
-						$title_dep=$each->qs_name.'('.$find_dep->name.')-'.$each->note;
+						$title_dep=$each->qs_name.'('.$find_dep_list->name.')-'.$each->note;
 					}
 					$data['question_option_id_list_by_dep'][] = array (
 						"id" => $each->id,
@@ -158,9 +158,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 					);
 				} else{
 					if($each->note==''){
-						$title_dep=$each->qs_name.'-'.$find_dep->name;
+						$title_dep=$each->qs_name.'-'.$find_dep_list->name;
 					} else{
-						$title_dep=$each->qs_name.'('.$find_dep->name.')-'.$each->note;
+						$title_dep=$each->qs_name.'('.$find_dep_list->name.')-'.$each->note;
 					}
 					$data['question_option_id_list_by_dep'][] = array (
 						"id" => $each->id,
