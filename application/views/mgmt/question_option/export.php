@@ -41,7 +41,7 @@
 			<a href="javascript:void(0);" id="back_parent" onclick="currentApp.backTo()" class="btn btn-default">
 				<i class="fa fa-arrow-circle-left"></i>返回
 			</a>
-			<?php if($item -> for_dep!==2):?>
+			<?php if($item -> for_dep<2):?>
 				<a href="javascript:void(0);" onclick="currentApp.each_detail.export_item(<?= isset($item) ? $item -> id : '' ?>,<?= isset($item) ? $item -> question_style_id : '' ?>)" class="btn btn-default">
 					<i class="fa fa-save"></i>下載檔案
 				</a>
@@ -82,7 +82,7 @@
 						<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
 							<span style="font-size: 16pt;color:#0d0d56">已填寫資料：</span>
 						</div>
-						<?php if($item -> for_dep!==2):?>
+						<?php if($item -> for_dep<2):?>
 							<div class="widget-toolbar pull-left">
 								<input id="s_name" placeholder="搜尋人名" type="text" class="" >
 							</div>
