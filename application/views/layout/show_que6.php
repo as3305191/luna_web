@@ -194,7 +194,7 @@
                   if(obj[key]!==null||obj[key]!==''){
                     var select_class = '.'+key;
                   
-                    var optionval = obj[key].toString;
+                    var optionval = parseInt(obj[key]);
                     console.log(optionval);
                     // document.querySelector(select_class).value = optionval;
                   }
