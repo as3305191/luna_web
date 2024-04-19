@@ -14,6 +14,7 @@
 <div class="col-xs-12" style="padding:20px">
 
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
+    A(10分); B(9分); C(8分); D(7分); E(6分)
     <table class="col-xs-12">
 		<tbody id="example_tbody">
 			<tr>
