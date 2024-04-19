@@ -87,20 +87,7 @@
     load_ans();
   })
   
-  var  q1 = null;
-  var  q2 = null;
-  var  q3 = null;
-  var  q4 = null;
-  var  q5 = null;
-  var  q6 = null;
-  var  q7 = null;
-  var  q8 = null;
-  var  q9 = null;
-  var  q10 = null;
-  
-  var  q1o = '無';
-  var  q2o = '無';
-  var  q3o = '無';
+
   var is_ok=false;
 
   function sum(id_name) {
