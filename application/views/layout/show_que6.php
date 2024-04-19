@@ -122,8 +122,8 @@
 			other_option_val =$('select[name="s'+name_num+'"]').val();
 			if (other_option_val == 0){
         sum_id.innerHTML = "總分合計:還有其他沒選擇";
-        break ;
         is_ok=false;
+        break ;
       } else{
         value +=parseInt(other_option_val);
 				sum_id.innerHTML = "總分合計:"+value ;
