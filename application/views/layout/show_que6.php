@@ -207,7 +207,7 @@
                       //   console.log(select[i].value);
                       //   // select[i].selected=true;        
                       // } 
-                      console.log(select[i].value);
+                      console.log(select[i]);
 
                     }
                   }
