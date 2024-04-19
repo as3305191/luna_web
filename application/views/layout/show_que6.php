@@ -69,9 +69,12 @@
         <div class="col-xs-6 no-padding">
             <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>
         </div>
-        <div class="col-xs-6 no-padding">
-            <button type="button" class="btn btn-success dosubmit" style="width:120px;height:40px;float:right">送出</button>
-        </div>
+        <?php if($question_ans_id==0): ?>
+
+          <div class="col-xs-6 no-padding">
+              <button type="button" class="btn btn-success dosubmit" style="width:120px;height:40px;float:right">送出</button>
+          </div>
+        <?php endif?>
     </div>
     </div>
 
@@ -221,6 +224,8 @@
         console.log(select[i].value);
         // select[i].selected=true;        
       } 
+      console.log(select[i].value);
+
     }
   }
   load_ans();
