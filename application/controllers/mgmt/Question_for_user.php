@@ -559,10 +559,10 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 	}
-	public function load_q5_ans() {
+	public function load_ans() {
 		$res = array();
 		
-		$id =$this -> get_post('q5_ans_id');
+		$id =$this -> get_post('id');
 
 		$items = $this -> question_ans_dao -> find_by_id($id);
 	

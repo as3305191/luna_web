@@ -249,10 +249,10 @@
   function load_ans(){
     if($('#question_ans_id').val()>0){
       $.ajax({
-  			url: '<?= base_url() ?>' + 'mgmt/question_for_user/load_q5_ans',
+  			url: '<?= base_url() ?>' + 'mgmt/question_for_user/load_ans',
   			type: 'POST',
   			data: {
-  				q5_ans_id:$('#question_ans_id').val(),
+  				id:$('#question_ans_id').val(),
   			},
   			dataType: 'json',
   			success: function(d) {
