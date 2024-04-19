@@ -317,11 +317,14 @@ class Question_for_user extends MY_Mgmt_Controller {
 
 		if($question_ans_id>0){
 			$items = $this -> question_ans_dao -> find_by_id($question_ans_id);
-			$data['items'] = $items;
+			
+			foreach($items as $key => $value){
+				if(substr($key, 0, 1)=='q'&&substr($key, 1, 1)!=='u'){
+					$data['items'][] = $value;
 
-		}else{
-			$data['items'] = array();
- 		}
+				}
+			}
+		}
 		$data['role_id'] = $role_id;
 		$data['question_ans_id'] = $question_ans_id;
 		$data['qid'] = $qid;
