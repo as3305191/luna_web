@@ -43,7 +43,7 @@
         <?php for ($i=0;$i<10;$i++) : ?>
 
           <td>
-            <select calss ="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
+            <select class ="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
               <option value="0">請選擇</option>
               <option value="10">A(10分):優異</option>
               <option value="9">B(9分):佳</option>
