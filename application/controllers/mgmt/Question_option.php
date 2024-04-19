@@ -893,10 +893,9 @@ class Question_option extends MY_Mgmt_Controller {
 		$white_table->addRow();
 		$white_table->addCell(10000,null,8)->addText('寬仕工業股份有限公司',array('bold' => true, 'size'=>25),array('align'=>'center'));
 		$white_table->addRow();
-		$white_table->addCell(10000,null,8)->addText('滿意度雙向調查',array('bold' => true, 'size'=>20),array('align'=>'center'));
+		$white_table->addCell(10000,null,8)->addText('滿意度雙向調查-'.$list->note,array('bold' => true, 'size'=>20),array('align'=>'center'));
 		$white_table->addRow();
-		$table_title = $white_table->addCell(10000,null,8);
-		$table_title->addText($list->note.'-'.$find_dep_list->name,array('bold' => true, 'size'=>20),array('align'=>'right'));
+		$$white_table->addCell(10000,null,8)->addText($find_dep_list->name,array('bold' => true, 'size'=>20),array('align'=>'right'));
 		
 		$table->addRow(2500);
 		$table_score = $table->addCell(10000,null,8);
