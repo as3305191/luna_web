@@ -890,10 +890,10 @@ class Question_option extends MY_Mgmt_Controller {
 		$table_score->addText('分工:'.$items[5].','.'訓練:'.$items[6].','.'福利:'.$items[7].','.'分享:'.$items[8].','.'公平:'.$items[9],array('size'=>15),array('align'=>'left'));
 
 		$table->addRow(4000);
-		$table->addCell(10000,null,8)->addText('其他意見有問有答：'.$list->q1o,null,array('align'=>'left'));
+		$table->addCell(10000,null,8)->addText('其他意見有問有答：'.$list->q1o,array('size'=>15),array('align'=>'left'));
 
 		$table->addRow(4000);
-		$table->addCell(10000,null,8)->addText('公司回覆：',null,array('align'=>'left'));
+		$table->addCell(10000,null,8)->addText('公司回覆：',array('size'=>15),array('align'=>'left'));
 
 
 		$date = date('YmdHis');
