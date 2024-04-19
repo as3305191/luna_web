@@ -201,7 +201,15 @@
                   
                 } else{
                   if(obj[key]!==null){
-                    setRadioButtonByValue(key, obj[key]);
+                    var select = $('.'+className);
+                    for (var i = 0; i < select.length; i++) {
+                      // if (select[i].value == selectValue) {
+                      //   console.log(select[i].value);
+                      //   // select[i].selected=true;        
+                      // } 
+                      console.log(select[i].value);
+
+                    }
                   }
                  
                 }
@@ -217,16 +225,6 @@
   		});
     }
   }
-  function setRadioButtonByValue(className, selectValue) {
-    var select = $('.'+className);
-    for (var i = 0; i < select.length; i++) {
-      if (select[i].value == selectValue) {
-        console.log(select[i].value);
-        // select[i].selected=true;        
-      } 
-      console.log(select[i].value);
 
-    }
-  }
   load_ans();
 </script>
