@@ -221,4 +221,5 @@
       } 
     }
   }
+  load_ans();
 </script>
