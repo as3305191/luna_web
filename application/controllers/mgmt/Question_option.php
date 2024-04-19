@@ -894,15 +894,12 @@ class Question_option extends MY_Mgmt_Controller {
 		$table_score = $table->addCell(10000,null,8);
 		$table_score->addText('員工滿意度(A(10分); B(9分); C(8分); D(7分); E(6分)):',array('size'=>13),array('align'=>'left'));
 		$table_score->addText('系統:'.$items[0].','.'制度:'.$items[1].','.'成本:'.$items[2].','.'協助:'.$items[3].','.'彈性:'.$items[4],array('size'=>13),array('align'=>'left'));
-		$table_score->addTextBreak(1);
 		$table_score->addText('分工:'.$items[5].','.'訓練:'.$items[6].','.'福利:'.$items[7].','.'分享:'.$items[8].','.'公平:'.$items[9],array('size'=>13),array('align'=>'left'));
-		$table_score->addTextBreak(1);
 		$table_score->addText('總分: '.$total,array('size'=>15),array('align'=>'left'));
 
 		$table->addRow(3500);
 		$table_note = $table->addCell(10000,null,8);
 		$table_note->addText('其他意見有問有答：',array('size'=>13),array('align'=>'left'));
-		$table_note->addTextBreak(1);
 		$table_note->addText($list->q1o,array('size'=>10),array('align'=>'left'));
 
 		$table->addRow(4000);
