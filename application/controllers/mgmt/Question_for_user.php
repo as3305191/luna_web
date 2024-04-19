@@ -338,9 +338,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 					$i++;
 				}
 			}
-			for($i=0;$i<10;$i++){
-				
-			}
+			$data['items'][] = $total;
 
 		}
 		$data['role_id'] = $role_id;
