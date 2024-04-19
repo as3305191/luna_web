@@ -199,7 +199,6 @@
                 } else{
                   if(obj[key]!==null){
                     setRadioButtonByValue(key, obj[key]);
-                    console.log(key+':'+obj[key]);
                   }
                  
                 }
@@ -217,11 +216,12 @@
   }
   function setRadioButtonByValue(className, selectValue) {
     var select = $('.'+className);
-    for (var i = 0; i < select.length; i++) {
-      if (select[i].value == selectValue) {
-        select[i].selected=true;        
-      } 
-    }
+    select.value = selectValue;
+    // for (var i = 0; i < select.length; i++) {
+    //   if (select[i].value == selectValue) {
+    //     select[i].selected=true;        
+    //   } 
+    // }
   }
   load_ans();
 </script>
