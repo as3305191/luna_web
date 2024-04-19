@@ -197,11 +197,13 @@
                   // console.log(key+':'+obj[key]);
                   
                 } else{
-                  setRadioButtonByValue(key, obj[key]);
-                  console.log(key+':'+obj[key]);
+                  if(obj[key]!==null){
+                    setRadioButtonByValue(key, obj[key]);
+                    console.log(key+':'+obj[key]);
+                  }
+                 
                 }
               }
-              console.log(key+':'+obj[key]);
 
             }
   				}
