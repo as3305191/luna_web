@@ -836,8 +836,9 @@ class Question_option extends MY_Mgmt_Controller {
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_item_6($id);
 		$list = $question_ans_list[0];
 		$new_q1o = preg_replace('/\s(?=)/', '/n', $list->q1o);
-		$count_q1o = $this->countString($new_q1o, "/n");
 		$stringArr=explode("/n", $new_q1o);
+		$count_q1o = $this->countString($stringArr, "/n");
+
 		$total=0;
 		$find_dep = $this -> d_dao -> find_by_id($list->role_id);
 		if($find_dep->parent_id==5){
