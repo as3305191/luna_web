@@ -878,7 +878,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$white_table->addRow();
 		$white_table->addCell(10000,null,8)->addText('滿意度雙向調查',array('bold' => true, 'size'=>25),array('align'=>'center'));
 		$white_table->addRow();
-		$white_table->addCell(10000,null,8)->addText($list->dep_name,array('bold' => true, 'size'=>14),array('align'=>'right'));
+		$white_table->addCell(10000,null,8)->addText($list->dep_name,array('size'=>14),array('align'=>'right'));
 		
 		
 		$table->addRow(4000);
