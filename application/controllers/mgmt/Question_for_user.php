@@ -333,7 +333,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 				if(substr($key, 0, 1)=='q'&&substr($key, 1, 1)!=='u'&&$value!==null){
 					$data['items'][] = $value;
 					if($i<10){
-						$total +=intval($data['items'][$i]);
+						$total +=intval($value);
 					}
 					$i++;
 				}
@@ -344,7 +344,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['role_id'] = $role_id;
 		$data['question_ans_id'] = $question_ans_id;
 		$data['qid'] = $qid;
-		// $this -> to_json($data['items']);
+		$this -> to_json($data['items']);
 
 		$this -> load -> view('layout/show_que6',$data);
 	}
