@@ -216,12 +216,12 @@
   }
   function setRadioButtonByValue(className, selectValue) {
     var select = $('.'+className);
-    select.value = selectValue;
-    // for (var i = 0; i < select.length; i++) {
-    //   if (select[i].value == selectValue) {
-    //     select[i].selected=true;        
-    //   } 
-    // }
+    for (var i = 0; i < select.length; i++) {
+      if (select[i].value == selectValue) {
+        console.log(select[i].value);
+        // select[i].selected=true;        
+      } 
+    }
   }
   load_ans();
 </script>
