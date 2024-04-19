@@ -42,7 +42,7 @@
 				<td class="min50">分數</td>
         <?php for ($i=0;$i<10;$i++) : ?>
           <td >
-            <select id = "s<?= $i+1 ?>" class="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
+            <select id = "s_s_<?= $i+1 ?>" class="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
               <option value="0">請選擇</option>
               <option value="10">A(10分):優異</option>
               <option value="9">B(9分):佳</option>
@@ -51,11 +51,7 @@
               <option value="6">C(6分):不佳</option>
             </select>
           </td>
-          <?php if ($i==9) : ?>
-            <script type="text/javascript">
-              load_ans();
-            </script>
-          <?php endif ?>
+         
         <?php endfor ?>
 
 			</tr>
@@ -87,7 +83,7 @@
 
   $( document ).ready(function() {
     $('#name').focus();
-   
+    load_ans();
   })
   
 
@@ -185,7 +181,7 @@
               var str_key = key.toString().substr(0,1);
               var s_str_key = key.toString().substr(1,1);
               var last_str_key =  key.toString().substr(-1);
-              var optionval = obj[key].toString();
+              var optionval = obj[key];
               var select_class = '.'+key;
 
               if(str_key=='q' && s_str_key!=='u'){
@@ -196,7 +192,7 @@
                 } else{
                   if(obj[key]!==null&&obj[key]!==''&&obj[key]!==NaN){
                   
-                    console.log($('.s'+key).value);
+                    console.log($('#s_s_'+key).value);
 
                     // document.querySelector('#s'+key).value = optionval;
                   }
