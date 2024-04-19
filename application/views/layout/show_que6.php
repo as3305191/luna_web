@@ -205,7 +205,6 @@
                     for (var i = 0; i < select.length; i++) {
                       if ( select[i].value == obj[key] ) {
                           selector.selectedIndex = i;
-                          break;
                       }
 
                     }
