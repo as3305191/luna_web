@@ -319,9 +319,8 @@ class Question_for_user extends MY_Mgmt_Controller {
 			$items = $this -> question_ans_dao -> find_by_id($question_ans_id);
 			
 			foreach($items as $key => $value){
-				if(substr($key, 0, 1)=='q'&&substr($key, 1, 1)!=='u'){
+				if(substr($key, 0, 1)=='q'&&substr($key, 1, 1)!=='u'&&$value!==null){
 					$data['items'][] = $value;
-
 				}
 			}
 		}
