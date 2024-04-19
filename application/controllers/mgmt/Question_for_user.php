@@ -318,6 +318,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 	}
 	public function show_que6(){
 		$data = array();
+		$data['items']= array();
 		$data = $this -> setup_user_data($data);
 		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$data['lang'] = $login_user->lang;
