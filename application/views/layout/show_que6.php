@@ -182,7 +182,7 @@
               var str_key = key.toString().substr(0,1);
               var s_str_key = key.toString().substr(1,1);
               var last_str_key =  key.toString().substr(-1);
-              var optionval = obj[key].toString;
+              var optionval = obj[key].toString();
               var select_class = '.'+key;
 
               if(str_key=='q' && s_str_key!=='u'){
