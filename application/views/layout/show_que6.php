@@ -198,6 +198,7 @@
                   
                 } else{
                   setRadioButtonByValue(key, obj[key]);
+                  console.log(key+':'+obj[key]);
                 }
               }
 
@@ -211,11 +212,11 @@
   		});
     }
   }
-  function setRadioButtonByValue(className, radioValue) {
-    var radios = $('.'+className);
-    for (var i = 0; i < radios.length; i++) {
-      if (radios[i].value == radioValue) {
-        radios[i].selected=true;        
+  function setRadioButtonByValue(className, selectValue) {
+    var select = $('.'+className);
+    for (var i = 0; i < select.length; i++) {
+      if (select[i].value == selectValue) {
+        select[i].selected=true;        
       } 
     }
   }
