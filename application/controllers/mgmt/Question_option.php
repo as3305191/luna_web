@@ -833,8 +833,9 @@ class Question_option extends MY_Mgmt_Controller {
 	}
 
 	function export_all_word($id) {
-		
-	
+		$question_ans_list = $this -> question_ans_dao -> find_by_all_item($id);
+		$list = $question_ans_list[0];
+
 		$PHPWord = new PHPWord();
 		$PHPWord->setDefaultFontName('華康仿宋體W4'); 
 		// $section = $PHPWord->createSection();
@@ -855,19 +856,23 @@ class Question_option extends MY_Mgmt_Controller {
 
 		$white_table->addRow();
 		$white_table->addCell(10000,null,8)->addText('滿意度雙向調查',array('bold' => true, 'size'=>25),array('align'=>'center'));
-		
-		$table->addRow(4000);
-		$table->addCell(10000,null,8)->addText('員工滿意度(A(10分); B(9分); C(8分); D(7分); E(6分))：',null,array('align'=>'left'));
+		$white_table->addRow();
+		$white_table->addCell(10000,null,8)->addText($list->dep_name,array('bold' => true, 'size'=>14),array('align'=>'right'));
 
 		$table->addRow(4000);
-		$table->addCell(10000,null,8)->addText('其他意見有問有答：',null,array('align'=>'left'));
+		$table->addCell(10000,null,8)->addText('員工滿意度(A(10分); B(9分); C(8分); D(7分); E(6分))：',null,array('align'=>'left'));
+		$table->addCell($table->addRow());
+
+
+		$table->addRow(4000);
+		$table->addCell(10000,null,8)->addText('其他意見有問有答：'.$list->q1o,null,array('align'=>'left'));
 
 		$table->addRow(4000);
 		$table->addCell(10000,null,8)->addText('公司回覆：',null,array('align'=>'left'));
 
 
 		$date = date('YmdHis');
-		$filename = $date."-123.docx";
+		$filename = $date.$list->dep_name."-滿意度雙向調查.docx";
 		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
 		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
 		header('Cache-Control: max-age=0'); //no cache
