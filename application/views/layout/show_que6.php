@@ -24,7 +24,7 @@
     <input type="hidden" id="question_ans_id" value="<?= isset($question_ans_id) ? $question_ans_id : '' ?>" />
     A(10分); B(9分); C(8分); D(7分); E(6分)
     <table class="col-xs-12">
-		<tbody id="example_tbody">
+		<tbody >
 			<tr>
 				<td class="min50">項目</td>
 				<td>系統</td>
@@ -40,8 +40,8 @@
 			</tr>
 			<tr>
 				<td class="min50">分數</td>
-        <?php for ($i=0;$i<10;$i++) : ?>
-          <td>
+        <!-- <?php for ($i=0;$i<10;$i++) : ?>
+          <td id="example_tbody"y>
             <select id = "s<?= $i+1 ?>" class="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
               <option value="0">請選擇</option>
               <option value="10">A(10分):優異</option>
@@ -51,15 +51,12 @@
               <option value="6">C(6分):不佳</option>
             </select>
           </td>
-        <?php endfor ?>
+        <?php endfor ?> -->
 
 			</tr>
-      </tbody>
-      <tbody id="">
 			<tr>
 				<td id="sum_id" colspan="11">總分合計:還有其他沒選擇</td>	
 			</tr>
-		</tbody>
 	</table>
   <div class="col-xs-12 no-padding" style="margin-top:20px">
     其他意見有問有答：</br>
