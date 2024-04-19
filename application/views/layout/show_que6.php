@@ -183,7 +183,7 @@
               var str_key = key.toString().substr(0,1);
               var s_str_key = key.toString().substr(1,1);
               var last_str_key =  key.toString().substr(-1);
-              var optionval = parseInt(obj[key]);
+              var optionval = obj[key].toString;
               var select_class = '.'+key;
 
               if(str_key=='q' && s_str_key!=='u'){
@@ -195,7 +195,7 @@
                   if(obj[key]!==null&&obj[key]!==''&&obj[key]!==NaN){
                   
                     // console.log(optionval);
-                    document.querySelector('#s'+key).val() = optionval;
+                    document.querySelector('#s'+key).value = optionval;
                   }
                  
                 }
