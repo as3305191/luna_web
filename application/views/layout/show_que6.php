@@ -191,8 +191,12 @@
                 } else{
                   if(obj[key]!==null&&obj[key]!==''&&obj[key]!==NaN){
                   
-                    console.log(obj[key]);
-                    document.querySelector('#s'+key).value = obj[key];
+                    var options = document.getElementById('#s_s_'+key).options;
+                    console.log(options);
+
+                    // for(var i =0;i<options.length;i++){
+
+                    // }
                   }
                  
                 }
