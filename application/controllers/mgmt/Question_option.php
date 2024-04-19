@@ -872,7 +872,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 
 		$date = date('YmdHis');
-		$filename = $date.$list->dep_name."-滿意度雙向調查.docx";
+		$filename = $list->dep_name."-滿意度雙向調查".$date.".docx";
 		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
 		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
 		header('Cache-Control: max-age=0'); //no cache
