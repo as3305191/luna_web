@@ -835,6 +835,9 @@ class Question_option extends MY_Mgmt_Controller {
 	function export_all_word($id) {
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_item_6($id);
 		$list = $question_ans_list[0];
+		$new_q1o = preg_replace('/\s(?=)/', '/n', $list->q1o);
+		$count_q1o = $this->countString($new_q1o, "/n");
+		$stringArr=explode("/n", $new_q1o);
 		$total=0;
 		$find_dep = $this -> d_dao -> find_by_id($list->role_id);
 		if($find_dep->parent_id==5){
@@ -907,7 +910,9 @@ class Question_option extends MY_Mgmt_Controller {
 		$table->addRow(3500);
 		$table_note = $table->addCell(10000,null,8);
 		$table_note->addText('其他意見有問有答：',array('size'=>13),array('align'=>'left'));
-		$table_note->addText($list->q1o,array('size'=>13),array('align'=>'left'));
+		for($i=0;$i<$count_q1o;$i++){
+			$table_note->addText($$stringArr[$i],array('size'=>13),array('align'=>'left'));
+		}
 
 		$table->addRow(4000);
 		$table->addCell(10000,null,8)->addText('公司回覆：',array('size'=>13),array('align'=>'left'));
@@ -921,5 +926,13 @@ class Question_option extends MY_Mgmt_Controller {
 		$objWriter->save('php://output');
 	}
 
-
+	function countString($string, $substring) {
+		$count = 0;
+		$pos = stripos($string, $substring);
+		while ($pos !== false) {
+			$count++;
+			$pos = stripos($string, $substring, $pos + 1);
+		}
+		return $count;
+	}
 }
