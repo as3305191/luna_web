@@ -56,7 +56,7 @@
 
 			</tr>
 			<tr>
-				<td id="sum_id" colspan="11"><?= isset($items)? '總分合計:'.$items[11] : '總分合計:還有其他沒選擇' ?></td>	
+				<td id="sum_id" colspan="11"><?= isset($items)? '總分合計:'.$items[$items_count] : '總分合計:還有其他沒選擇' ?></td>	
 			</tr>
 	</table>
   <div class="col-xs-12 no-padding" style="margin-top:20px">

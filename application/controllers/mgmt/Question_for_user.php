@@ -338,13 +338,14 @@ class Question_for_user extends MY_Mgmt_Controller {
 					$i++;
 				}
 			}
-			$data['items'][] = $total;
 
 		}
+		$data['items'][] = $total;
 		$data['role_id'] = $role_id;
 		$data['question_ans_id'] = $question_ans_id;
 		$data['qid'] = $qid;
-		$this -> to_json($data['items']);
+		$data['items_count'] = count($data['items'])-1;
+		// $this -> to_json($data['items']);
 
 		$this -> load -> view('layout/show_que6',$data);
 	}
