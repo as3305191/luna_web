@@ -43,12 +43,12 @@
         <?php for ($i=0;$i<10;$i++) : ?>
           <td >
             <select id = "s_s_<?= $i+1 ?>" class="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
-              <option value="0">請選擇</option>
-              <option value="10">A(10分):優異</option>
-              <option value="9">B(9分):佳</option>
-              <option value="8">C(8分):可</option>
-              <option value="7">D(7分):普通</option>
-              <option value="6">C(6分):不佳</option>
+              <option value="0" <?= isset($items)&& $items['s'.$i+1]==0 ? 'selected' : '' ?>>請選擇</option>
+              <option value="10" <?= isset($items)&& $items['s'.$i+1]==10 ? 'selected' : '' ?>>A(10分):優異</option>
+              <option value="9" <?= isset($items)&& $items['s'.$i+1]==9 ? 'selected' : '' ?>>B(9分):佳</option>
+              <option value="8" <?= isset($items)&& $items['s'.$i+1]==8 ? 'selected' : '' ?>>C(8分):可</option>
+              <option value="7" <?= isset($items)&& $items['s'.$i+1]==7 ? 'selected' : '' ?>>D(7分):普通</option>
+              <option value="6" <?= isset($items)&& $items['s'.$i+1]==6 ? 'selected' : '' ?>>C(6分):不佳</option>
             </select>
           </td>
          
@@ -163,55 +163,6 @@
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
-
-
-  function load_ans(){
-    if($('#question_ans_id').val()>0){
-      $.ajax({
-  			url: '<?= base_url() ?>' + 'mgmt/question_for_user/load_ans',
-  			type: 'POST',
-  			data: {
-  				id:$('#question_ans_id').val(),
-  			},
-  			dataType: 'json',
-  			success: function(d) {
-  				if(d) {
-            for (var key in d.items) {
-              obj= d.items;
-              var str_key = key.toString().substr(0,1);
-              var s_str_key = key.toString().substr(1,1);
-              var last_str_key =  key.toString().substr(-1);
-              var select_class = '.'+key;
-
-              if(str_key=='q' && s_str_key!=='u'){
-                if(last_str_key=='o'){
-                  $('.'+key).val(obj[key]);
-                  // console.log(key+':'+obj[key]);
-                  
-                } else{
-                  if(obj[key]!==null&&obj[key]!==''&&obj[key]!==NaN){
-                  
-                    var options = document.getElementById('#s_s_'+key).options;
-                    console.log(options);
-
-                    // for(var i =0;i<options.length;i++){
-
-                    // }
-                  }
-                 
-                }
-              }
-
-            }
-  				}
-         
-  			},
-  			failure:function(){
-  				layer.msg('faialure');
-  			}
-  		});
-    }
-  }
 
   
 </script>

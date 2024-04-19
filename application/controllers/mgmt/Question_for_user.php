@@ -314,9 +314,18 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$qid =$this -> get_get('id');
 		$role_id =$this -> get_get('role_id');
 		$question_ans_id =$this -> get_get('question_ans_id');
+
+		if($question_ans_id>0){
+			$items = $this -> question_ans_dao -> find_by_id($question_ans_id);
+			$data['items'] = $items;
+
+		}else{
+			$data['items'] = array();
+ 		}
 		$data['role_id'] = $role_id;
 		$data['question_ans_id'] = $question_ans_id;
 		$data['qid'] = $qid;
+
 		$this -> load -> view('layout/show_que6',$data);
 	}
 	public function save_q1(){
