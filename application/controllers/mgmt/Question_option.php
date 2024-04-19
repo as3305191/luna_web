@@ -835,27 +835,36 @@ class Question_option extends MY_Mgmt_Controller {
 	function export_all_word($id) {
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_item_6($id);
 		$list = $question_ans_list[0];
+		$total=0;
 		foreach($list as $key => $value){
 			if(substr($key, 0, 1)=='q'&&substr($key, 1, 1)!=='u'&&$value!==null){
 				switch ($value) {
 					case 6:
 						$items[] = 'E';
+						$num[] = $value;
 					break;
 					case 7:
 						$items[] = 'D';
+						$num[] = $value;
 					break;
 					case 8:
 						$items[] = 'C';
+						$num[] = $value;
 					break;
 					case 9:
 						$items[] = 'B';
+						$num[] = $value;
 					break;
 					case 10:
 						$items[] = 'A';
+						$num[] = $value;
 					break;
 
 				}
 			}
+		}
+		for($i=0;$i<10;$i++){
+			$total += intval($num[$i]);
 		}
 		$PHPWord = new PHPWord();
 		$PHPWord->setDefaultFontName('華康仿宋體W4'); 
@@ -888,6 +897,8 @@ class Question_option extends MY_Mgmt_Controller {
 		$table_score->addText('系統:'.$items[0].','.'制度:'.$items[1].','.'成本:'.$items[2].','.'協助:'.$items[3].','.'彈性:'.$items[4],array('size'=>15),array('align'=>'left'));
 		$table_score->addTextBreak(2);
 		$table_score->addText('分工:'.$items[5].','.'訓練:'.$items[6].','.'福利:'.$items[7].','.'分享:'.$items[8].','.'公平:'.$items[9],array('size'=>15),array('align'=>'left'));
+		$table_score->addTextBreak(2);
+		$table_score->addText('總分: '.$total,array('size'=>15),array('align'=>'left'));
 
 		$table->addRow(4000);
 		$table->addCell(10000,null,8)->addText('其他意見有問有答：'.$list->q1o,array('size'=>15),array('align'=>'left'));
