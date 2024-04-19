@@ -181,7 +181,6 @@
               var str_key = key.toString().substr(0,1);
               var s_str_key = key.toString().substr(1,1);
               var last_str_key =  key.toString().substr(-1);
-              var optionval = obj[key];
               var select_class = '.'+key;
 
               if(str_key=='q' && s_str_key!=='u'){
@@ -192,8 +191,8 @@
                 } else{
                   if(obj[key]!==null&&obj[key]!==''&&obj[key]!==NaN){
                   
-                    console.log($('#s_s_'+key));
-                    // $('#s_s_'+key).val() = optionval;
+                    console.log(obj[key]);
+                    document.querySelector('#s'+key).value = obj[key];
                   }
                  
                 }
