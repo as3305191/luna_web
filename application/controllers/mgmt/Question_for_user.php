@@ -119,7 +119,10 @@ class Question_for_user extends MY_Mgmt_Controller {
 		foreach ($question_option_open_list_for_dep_2 as $each){
 			$find_dep = $this -> d_dao -> find_by_id($login_user->role_id);
 			if($find_dep->parent_id!==5){
-				$find_dep = $this -> d_dao -> find_by("id",$find_dep->parent_id);
+				$find_dep_list = $find_dep;
+			} else{
+				$find_dep_list = $this -> d_dao -> find_by("id",$find_dep->parent_id);
+
 			}
 			$question_option_open_list_dep_2 = $this -> question_ans_dao -> find_all_with_dep_2($each->id);
 
