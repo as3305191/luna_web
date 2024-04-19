@@ -836,6 +836,13 @@ class Question_option extends MY_Mgmt_Controller {
 		$question_ans_list = $this -> question_ans_dao -> find_by_all_item_6($id);
 		$list = $question_ans_list[0];
 		$total=0;
+		$find_dep = $this -> d_dao -> find_by_id($list->role_id);
+		if($find_dep->parent_id==5){
+			$find_dep_list = $find_dep;
+		} else{
+			$find_dep_list = $this -> d_dao -> find_by("id",$find_dep->parent_id);
+
+		}
 		foreach($list as $key => $value){
 			if(substr($key, 0, 1)=='q'&&substr($key, 1, 1)!=='u'&&$value!==null){
 				switch ($value) {
@@ -887,7 +894,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$white_table->addRow();
 		$white_table->addCell(10000,null,8)->addText('滿意度雙向調查',array('bold' => true, 'size'=>25),array('align'=>'center'));
 		$white_table->addRow();
-		$white_table->addCell(10000,null,8)->addText($list->dep_name,array('size'=>14),array('align'=>'right'));
+		$white_table->addCell(10000,null,8)->addText($find_dep_list->name,array('size'=>14),array('align'=>'right'));
 		
 		$table->addRow(3500);
 		$table_score = $table->addCell(10000,null,8);
@@ -905,7 +912,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$table->addCell(10000,null,8)->addText('公司回覆：',array('size'=>13),array('align'=>'left'));
 
 		$date = date('YmdHis');
-		$filename = $list->dep_name."-滿意度雙向調查".$date.".docx";
+		$filename = $list->dep_name."-".$list->note."-滿意度雙向調查".$date.".docx";
 		header('Content-Type: application/vnd.openxmlformats-officedocument.wordprocessingml.document'); //mime type
 		header('Content-Disposition: attachment;filename="'.$filename.'"'); //tell browser what's the file name
 		header('Cache-Control: max-age=0'); //no cache
