@@ -190,8 +190,7 @@
                 } else{
                   if(obj[key]!==null){
                     var select_class = '.'+key;
-                    var optionval = obj[key].toString();
-                    console.log(optionval);
+                    console.log(obj[key]);
                     // document.querySelector(select_class).value = optionval;
                   }
                  
