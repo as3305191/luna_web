@@ -201,7 +201,7 @@
                   
                 } else{
                   if(obj[key]!==null){
-                    var select = $('.'+className);
+                    var select = $('.'+key);
                     for (var i = 0; i < select.length; i++) {
                       // if (select[i].value == selectValue) {
                       //   console.log(select[i].value);
