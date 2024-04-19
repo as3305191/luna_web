@@ -539,6 +539,13 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data = array();
 		$s_data = $this -> setup_user_data($s_data);
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$find_dep = $this -> d_dao -> find_by_id($login_user->role_id);
+			if($find_dep->parent_id==5){
+				$find_dep_list = $find_dep;
+			} else{
+				$find_dep_list = $this -> d_dao -> find_by("id",$find_dep->parent_id);
+
+			}
 		$qid =$this -> get_post('qid');
 		$q1 =$this -> get_post('q1');
 		$q2 =$this -> get_post('q2');
@@ -569,7 +576,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 
 		$data['q1o'] = $q1o;
 
-		$data['role_id'] = $login_user->role_id;
+		$data['role_id'] = $find_dep_list->id;
 		$data['question_option_id'] = $qid;
 
 		$this -> question_ans_dao -> insert($data);
