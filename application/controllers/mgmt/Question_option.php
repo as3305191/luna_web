@@ -900,7 +900,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$table->addRow(3500);
 		$table_note = $table->addCell(10000,null,8);
 		$table_note->addText('其他意見有問有答：',array('size'=>13),array('align'=>'left'));
-		$table_note->addText($list->q1o,array('size'=>10),array('align'=>'left'));
+		$table_note->addText($list->q1o,array('size'=>13),array('align'=>'left'));
 
 		$table->addRow(4000);
 		$table->addCell(10000,null,8)->addText('公司回覆：',array('size'=>13),array('align'=>'left'));
