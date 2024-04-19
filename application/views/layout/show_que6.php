@@ -82,7 +82,6 @@
 
   $( document ).ready(function() {
     $('#name').focus();
-    load_ans();
   })
   
 
@@ -105,10 +104,7 @@
               ' <option value="6">C(6分):不佳</option>'+
               '</select>'+
             '</td>';
-    // if(i==9){
-    //   continue;
-
-    // }
+    load_ans();
   }
 
   $('#example_tbody').append(each_dom_script);
