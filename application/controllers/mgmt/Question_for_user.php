@@ -325,6 +325,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['role_id'] = $role_id;
 		$data['question_ans_id'] = $question_ans_id;
 		$data['qid'] = $qid;
+		$this -> to_json($items);
 
 		$this -> load -> view('layout/show_que6',$data);
 	}
