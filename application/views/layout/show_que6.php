@@ -38,10 +38,10 @@
 				<td>分享</td>
 				<td>公平</td>
 			</tr>
-			<tr>
+			<tr id="body_tr">
 				<td class="min50">分數</td>
-        <!-- <?php for ($i=0;$i<10;$i++) : ?>
-          <td id="example_tbody"y>
+        <?php for ($i=0;$i<10;$i++) : ?>
+          <td >
             <select id = "s<?= $i+1 ?>" class="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
               <option value="0">請選擇</option>
               <option value="10">A(10分):優異</option>
@@ -51,7 +51,12 @@
               <option value="6">C(6分):不佳</option>
             </select>
           </td>
-        <?php endfor ?> -->
+          <?php if ($i==9) : ?>
+            <script type="text/javascript">
+              load_ans();
+            </script>
+          <?php endif ?>
+        <?php endfor ?>
 
 			</tr>
 			<tr>
@@ -82,41 +87,11 @@
 
   $( document ).ready(function() {
     $('#name').focus();
+   
   })
   
 
   var is_ok=false;
-  var each_dom_script ='';
-
-
-
-  for(var i=0;i<10;i++){
-     $num=''
-    now_script = '';
-    $i_1 = i+1;
-    each_dom_script+=' <td>'+
-    '<select id = "s'+$i_1+'" class="s'+ $i_1 +'" name="s'+ $i_1 +'" onchange="sum(s'+$i_1+')">'+
-            '<option value="0">請選擇</option>'+
-              ' <option value="10">A(10分):優異</option>'+
-              ' <option value="9">B(9分):佳</option>'+
-              ' <option value="8">C(8分):可</option>'+
-              '<option value="7">D(7分):普通</option>'+
-              ' <option value="6">C(6分):不佳</option>'+
-              '</select>'+
-            '</td>';
-    if(i==9){
-      load_ans();
-
-    }
-  }
-
-  $('#example_tbody').append(each_dom_script);
-
-
-
-
-
-
   function sum(id_name) {
 		onclick_option_val = $('select[name="'+id_name+'"]').val();
 		val = parseInt(onclick_option_val);
