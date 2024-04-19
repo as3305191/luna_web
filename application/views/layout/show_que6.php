@@ -51,7 +51,6 @@
               <option value="6">C(6分):不佳</option>
             </select>
           </td>
-          <input type="" id="i_num" value="<?= $i?>" />
         <?php endfor ?>
 
 			</tr>
@@ -84,14 +83,7 @@
 
   $( document ).ready(function() {
     $('#name').focus();
-    $('#i_num').on('change', function(){
-      var i_num=$('#i_num').val();
-
-      if(i_num=9){
-        load_ans();
-      }
-      
-    });   
+    load_ans();
   })
   
 
