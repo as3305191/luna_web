@@ -201,13 +201,9 @@
                   
                 } else{
                   if(obj[key]!==null){
-                    var select = $('.'+key).options;
-                    for (var i = 0; i < select.length; i++) {
-                      if ( select[i].value == obj[key] ) {
-                          selector.selectedIndex = i;
-                      }
-
-                    }
+                    var select = $('.'+key);
+                      select.value = obj[key];
+                    
                   }
                  
                 }
