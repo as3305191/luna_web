@@ -202,8 +202,7 @@
                 } else{
                   if(obj[key]!==null){
                     var select_class = '.'+key;
-                    document.querySelector(select_class).value = obj[key];
-
+                    document.querySelector(select_class).value =  parseInt(obj[key]);
                   }
                  
                 }
