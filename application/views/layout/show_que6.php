@@ -10,6 +10,12 @@
   th span{
     color:white;
   }
+  table {
+      border-collapse: collapse;
+  }
+  table, th, td {
+      border: 1px solid black;
+  }
 </style>
 <div class="col-xs-12" style="padding:20px">
 

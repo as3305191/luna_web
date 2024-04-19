@@ -26,12 +26,7 @@
     filter: alpha(opacity=40);
     /* display: block; */
   }
-  table {
-      border-collapse: collapse;
-  }
-  table, th, td {
-      border: 1px solid black;
-  }
+
 </style>
 <div class="col-xs-10" style="padding:20px">
 
