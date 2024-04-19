@@ -41,7 +41,6 @@
 			<tr>
 				<td class="min50">分數</td>
         <?php for ($i=0;$i<10;$i++) : ?>
-
           <td>
             <select id = "s<?= $i+1 ?>" class="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
               <option value="0">請選擇</option>
@@ -52,6 +51,7 @@
               <option value="6">C(6分):不佳</option>
             </select>
           </td>
+          <input type="" id="i_num" value="<?= $i?>" />
         <?php endfor ?>
 
 			</tr>
@@ -84,7 +84,14 @@
 
   $( document ).ready(function() {
     $('#name').focus();
-    load_ans();
+    $('#i_num').on('change', function(){
+      var i_num=$('#i_num').val();
+
+      if(i_num=9){
+        load_ans();
+      }
+      
+    });   
   })
   
 
