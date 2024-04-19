@@ -104,7 +104,10 @@
               ' <option value="6">C(6分):不佳</option>'+
               '</select>'+
             '</td>';
-    load_ans();
+    if(i==9){
+      load_ans();
+
+    }
   }
 
   $('#example_tbody').append(each_dom_script);
