@@ -134,7 +134,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 					"question_title" => $title_dep,
 				);
 			} else{
-				$question_option_open_list_dep = $this -> question_ans_dao -> find_all_not_write_dep($each_by_dep->id,$each->id);
+				$question_option_open_list_dep = $this -> question_ans_dao -> find_all_not_write_dep($login_user->role_id,$each->id);
 				if(!empty($question_option_open_list_dep)){
 					if($each->note==''){
 						$title_dep=$each->qs_name.'-'.$each_by_dep->name;
