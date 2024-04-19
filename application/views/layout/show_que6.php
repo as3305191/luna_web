@@ -194,8 +194,8 @@
                 } else{
                   if(obj[key]!==null&&obj[key]!==''&&obj[key]!==NaN){
                   
-                    console.log(optionval);
-                    // document.querySelector(select_class).value = optionval;
+                    // console.log(optionval);
+                    document.querySelector(select_class).value = optionval;
                   }
                  
                 }
