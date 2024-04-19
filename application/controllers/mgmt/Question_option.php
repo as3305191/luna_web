@@ -890,7 +890,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$white_table->addCell(10000,null,8)->addText($list->dep_name,array('size'=>14),array('align'=>'right'));
 		
 		
-		$table->addRow(4000);
+		$table->addRow(3500);
 		$table_score = $table->addCell(10000,null,8);
 		$table_score->addText('員工滿意度(A(10分); B(9分); C(8分); D(7分); E(6分)):',array('size'=>15),array('align'=>'left'));
 		$table_score->addTextBreak(2);
@@ -901,10 +901,10 @@ class Question_option extends MY_Mgmt_Controller {
 		$table_score->addText('總分: '.$total,array('size'=>15),array('align'=>'left'));
 
 		$table->addRow(4000);
-		$table->addCell(10000,null,8)->addText('其他意見有問有答：'.$list->q1o,array('size'=>15),array('align'=>'left'));
+		$table->addCell(10000,null,8)->addText('其他意見有問有答：'.$list->q1o,array('size'=>13),array('align'=>'left'));
 
 		$table->addRow(4000);
-		$table->addCell(10000,null,8)->addText('公司回覆：',array('size'=>15),array('align'=>'left'));
+		$table->addCell(10000,null,8)->addText('公司回覆：',array('size'=>13),array('align'=>'left'));
 
 
 		$date = date('YmdHis');
