@@ -191,7 +191,7 @@
                   // console.log(key+':'+obj[key]);
                   
                 } else{
-                  if(obj[key]!==null||obj[key]!==''){
+                  if(obj[key]!==null&&obj[key]!==''&&obj[key]!==NaN){
                     var select_class = '.'+key;
                   
                     var optionval = parseInt(obj[key]);
