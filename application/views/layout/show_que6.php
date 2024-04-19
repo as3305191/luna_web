@@ -14,6 +14,8 @@
 <div class="col-xs-12" style="padding:20px">
 
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
+    <input type="" id="role_id" value="<?= isset($role_id) ? $role_id : '' ?>" />
+    <input type="" id="question_ans_id" value="<?= isset($question_ans_id) ? $question_ans_id : '' ?>" />
     A(10分); B(9分); C(8分); D(7分); E(6分)
     <table class="col-xs-12">
 		<tbody id="example_tbody">
@@ -48,7 +50,7 @@
 
 			</tr>
 			<tr>
-				<td id="sum_id" colspan="11">總分合計:</td>	
+				<td id="sum_id" colspan="11">總分合計:還有其他沒選擇</td>	
 			</tr>
 		</tbody>
 	</table>
