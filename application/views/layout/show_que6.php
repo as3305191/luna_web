@@ -201,9 +201,8 @@
                   
                 } else{
                   if(obj[key]!==null){
-                    console.log(obj[key]);
-
-                    document.querySelector('.'+key).value = obj[key];
+                    var select_class = '.'+key;
+                    document.querySelector(select_class).value = obj[key];
 
                   }
                  
