@@ -193,7 +193,10 @@
                 } else{
                   if(obj[key]!==null||obj[key]!==''){
                     var select_class = '.'+key;
-                    document.querySelector(select_class).value = obj[key];
+                  
+                    var optionval = obj[key].toString();
+                    console.log(optionval);
+                    // document.querySelector(select_class).value = optionval;
                   }
                  
                 }
