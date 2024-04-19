@@ -82,7 +82,7 @@
 						<div class="col-md-12 col-xs-12 col-sm-12 " style="padding:0px 0px 6px 0px;">
 							<span style="font-size: 16pt;color:#0d0d56">已填寫資料：</span>
 						</div>
-						<?php if($item -> for_dep<2):?>
+						<?php if($item -> for_dep==0):?>
 							<div class="widget-toolbar pull-left">
 								<input id="s_name" placeholder="搜尋人名" type="text" class="" >
 							</div>
