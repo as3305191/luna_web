@@ -119,10 +119,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 		}
 		foreach ($question_option_open_list_for_dep_2 as $each){
 
-			$question_option_open_list_dep_2 = $this -> question_ans_dao -> find_all_with_dep($each->id);
+			$question_option_open_list_dep_2 = $this -> question_ans_dao -> find_all_with_dep_2($each->id);
 
 			if(empty($question_option_open_list_dep_2)){
-				$this -> to_json($question_option_open_list_dep_2);
 
 				if($each->note==''){
 					$title_dep=$each->qs_name.'-'.$each_by_dep->name;
