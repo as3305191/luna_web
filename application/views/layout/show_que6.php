@@ -182,9 +182,10 @@
               obj= d.items;
               var str_key = key.toString().substr(0,1);
               var s_str_key = key.toString().substr(1,1);
-              // console.log(s_str_key);
+              var last_str_key =  key.toString().substr(-1);
+              var optionval = parseInt(obj[key]);
+              var select_class = '.'+key;
 
-              var last_str_key =  key.toString().substr(-1)
               if(str_key=='q' && s_str_key!=='u'){
                 if(last_str_key=='o'){
                   $('.'+key).val(obj[key]);
@@ -192,9 +193,7 @@
                   
                 } else{
                   if(obj[key]!==null&&obj[key]!==''&&obj[key]!==NaN){
-                    var select_class = '.'+key;
                   
-                    var optionval = parseInt(obj[key]);
                     console.log(optionval);
                     // document.querySelector(select_class).value = optionval;
                   }
