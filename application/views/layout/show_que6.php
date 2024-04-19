@@ -201,9 +201,7 @@
                   
                 } else{
                   if(obj[key]!==null){
-                    var select = $('.'+key);
-                      select.value = obj[key];
-                    
+                    document.querySelector('.'+key).value = obj[key];
                   }
                  
                 }
