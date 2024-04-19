@@ -71,12 +71,22 @@
 
 			</tr>
 			<tr>
-				<td id="sum_id" colspan="11"><?= isset($items)? '總分合計:'.$items[$items_count] : '總分合計:還有其他沒選擇' ?></td>	
+        <?php if ($items_count>0) : ?>
+         <td id="sum_id" colspan="11"><?= isset($items)? '總分合計:'.$items[$items_count] : '總分合計:還有其他沒選擇' ?></td>	
+
+        <?php else :?>
+          <td id="sum_id" colspan="11">總分合計:還有其他沒選擇</td>	
+        <?php endif ?>
 			</tr>
 	</table>
   <div class="col-xs-12 no-padding" style="margin-top:20px">
     其他意見有問有答：</br>
-    <textarea class="form-control" name="q1o" ><?= isset($items)? $items[10] : '' ?></textarea>
+    <?php if ($items_count>0) : ?>
+      <textarea class="form-control" name="q1o" ><?= isset($items)? $items[10] : '' ?></textarea>
+
+    <?php else :?>
+      <textarea class="form-control" name="q1o" ></textarea>
+    <?php endif ?>
   </div>
 
     <div class="col-xs-12 no-padding" style="margin-top:20px">
