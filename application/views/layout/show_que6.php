@@ -41,16 +41,31 @@
 			<tr id="body_tr">
 				<td class="min50">分數</td>
         <?php for ($i=0;$i<10;$i++) : ?>
-          <td >
-            <select id = "s_s_<?= $i+1 ?>" class="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
-              <option value="0" <?= isset($items)&& $items[$i]==0 ? 'selected' : '' ?>>請選擇</option>
-              <option value="10" <?= isset($items)&& $items[$i]==10 ? 'selected' : '' ?>>A(10分):優異</option>
-              <option value="9" <?= isset($items)&& $items[$i]==9 ? 'selected' : '' ?>>B(9分):佳</option>
-              <option value="8" <?= isset($items)&& $items[$i]==8 ? 'selected' : '' ?>>C(8分):可</option>
-              <option value="7" <?= isset($items)&& $items[$i]==7 ? 'selected' : '' ?>>D(7分):普通</option>
-              <option value="6" <?= isset($items)&& $items[$i]==6 ? 'selected' : '' ?>>C(6分):不佳</option>
-            </select>
-          </td>
+          <?php if ($items_count>0) : ?>
+            <td >
+              <select id = "s_s_<?= $i+1 ?>" class="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
+                <option value="0" <?= isset($items)&& $items[$i]==0 ? 'selected' : '' ?>>請選擇</option>
+                <option value="10" <?= isset($items)&& $items[$i]==10 ? 'selected' : '' ?>>A(10分):優異</option>
+                <option value="9" <?= isset($items)&& $items[$i]==9 ? 'selected' : '' ?>>B(9分):佳</option>
+                <option value="8" <?= isset($items)&& $items[$i]==8 ? 'selected' : '' ?>>C(8分):可</option>
+                <option value="7" <?= isset($items)&& $items[$i]==7 ? 'selected' : '' ?>>D(7分):普通</option>
+                <option value="6" <?= isset($items)&& $items[$i]==6 ? 'selected' : '' ?>>C(6分):不佳</option>
+              </select>
+            </td>
+          <?php else :?>
+            <td >
+              <select id = "s_s_<?= $i+1 ?>" class="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
+                <option value="0">請選擇</option>
+                <option value="10" >>A(10分):優異</option>
+                <option value="9">B(9分):佳</option>
+                <option value="8">C(8分):可</option>
+                <option value="7">D(7分):普通</option>
+                <option value="6">>C(6分):不佳</option>
+              </select>
+            </td>
+          <?php endif ?>
+
+         
          
         <?php endfor ?>
 
