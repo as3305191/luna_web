@@ -52,7 +52,10 @@
 			</tr>
 		</tbody>
 	</table>
-  其他意見有問有答：<textarea class="form-control" name="q1o"></textarea>
+  <div class="col-xs-12 no-padding" style="margin-top:20px">
+    其他意見有問有答：</br>
+    <textarea class="form-control" name="q1o"></textarea>
+  </div>
 
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
