@@ -833,7 +833,7 @@ class Question_option extends MY_Mgmt_Controller {
 	}
 
 	function export_all_word($id) {
-		$question_ans_list = $this -> question_ans_dao -> find_by_all_item($id);
+		$question_ans_list = $this -> question_ans_dao -> find_by_all_item_6($id);
 		$list = $question_ans_list[0];
 
 		$PHPWord = new PHPWord();

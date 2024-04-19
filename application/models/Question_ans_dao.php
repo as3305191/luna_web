@@ -295,7 +295,29 @@ class Question_ans_dao extends MY_Model {
 		return $query -> result();
 
 	}
+	function find_by_all_item_6($id) {
 
+		// select
+		$this -> db -> from("$this->table_name as _m");
+
+		$this -> db -> select('_m.*');
+		$this -> db -> select('u.user_name as user_name');
+		$this -> db -> select('qo.note as note');
+		$this -> db -> select('qs.question_style_name as question_style_name');
+		$this -> db -> select('qs.id as qs_id');
+		$this -> db -> select('d.name as dep_name');
+
+		$this -> db -> join("users u", "u.id = _m.user_id", "left");
+		$this -> db -> join("department d", "d.id = u.role_id", "left");
+		$this -> db -> join("question_option qo", "qo.id = _m.question_option_id", "left");
+		$this -> db -> join("question_style qs", "qs.id = qo.question_style_id", "left");
+
+		$this -> db -> where('_m.id',$id);
+		
+		$query = $this -> db -> get();
+		return $query -> result();
+
+	}
 	function find_all_each_detail($data, $is_count = FALSE) {
 
 		$start = $data['start'];
