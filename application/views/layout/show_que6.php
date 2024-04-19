@@ -54,6 +54,8 @@
         <?php endfor ?>
 
 			</tr>
+      </tbody>
+      <tbody id="">
 			<tr>
 				<td id="sum_id" colspan="11">總分合計:還有其他沒選擇</td>	
 			</tr>
