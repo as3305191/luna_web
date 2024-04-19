@@ -88,6 +88,7 @@
   
 
   var is_ok=false;
+  var each_dom_script ='';
 
 
 
@@ -95,7 +96,6 @@
      $num=''
     now_script = '';
     $i_1 = i+1;
-    var each_dom_script ='';
     each_dom_script+=' <td>'+
     '<select id = "s'+$i_1+'" class="s'+ $i_1 +'" name="s'+ $i_1 +'" onchange="sum(s'+$i_1+')">'+
             '<option value="0">請選擇</option>'+
