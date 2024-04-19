@@ -56,11 +56,11 @@
             <td >
               <select id = "s_s_<?= $i+1 ?>" class="s<?= $i+1 ?>" name="s<?= $i+1 ?>" onchange="sum('s<?= $i+1 ?>')">
                 <option value="0">請選擇</option>
-                <option value="10" >>A(10分):優異</option>
+                <option value="10" >A(10分):優異</option>
                 <option value="9">B(9分):佳</option>
                 <option value="8">C(8分):可</option>
                 <option value="7">D(7分):普通</option>
-                <option value="6">>C(6分):不佳</option>
+                <option value="6">C(6分):不佳</option>
               </select>
             </td>
           <?php endif ?>
