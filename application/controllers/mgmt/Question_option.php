@@ -904,7 +904,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$table_score->addText('員工滿意度(A(10分); B(9分); C(8分); D(7分); E(6分)):',array('size'=>15),array('align'=>'left'));
 		$table_note->addText('其他意見有問有答：',array('size'=>13),array('align'=>'left'));
 		$table_score->addTextBreak(1);
-		$table_note->addText($list->q1o,array('size'=>13),array('align'=>'left'));
+		$table_note->addText($list->q1o,array('size'=>10),array('align'=>'left'));
 
 		$table->addRow(4000);
 		$table->addCell(10000,null,8)->addText('公司回覆：',array('size'=>13),array('align'=>'left'));
