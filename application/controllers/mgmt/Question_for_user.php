@@ -36,7 +36,6 @@ class Question_for_user extends MY_Mgmt_Controller {
 		if(empty($under_role_list)){
 			$under_role_list= $this -> d_dao -> find_by_this_id($login_user->role_id);
 		}
-		$find_dep = $this -> d_dao -> find_by_id($login_user->role_id);
 		$question_option_open_list = $this -> question_option_dao -> find_all_open_question();
 		$question_option_open_list_for_dep_1 = $this -> question_option_dao -> find_all_open_question_for_dep_1();
 		$question_option_open_list_for_dep_2 = $this -> question_option_dao -> find_all_open_question_for_dep_2();
@@ -118,15 +117,18 @@ class Question_for_user extends MY_Mgmt_Controller {
 			}
 		}
 		foreach ($question_option_open_list_for_dep_2 as $each){
-
+			$find_dep = $this -> d_dao -> find_by_id($login_user->role_id);
+			if($find_dep->parent_id!==5){
+				$find_dep = $this -> d_dao -> find_by("id",$find_dep->parent_id);
+			}
 			$question_option_open_list_dep_2 = $this -> question_ans_dao -> find_all_with_dep_2($each->id);
 
 			if(empty($question_option_open_list_dep_2)){
 
 				if($each->note==''){
-					$title_dep=$each->qs_name.'-'.$each_by_dep->name;
+					$title_dep=$each->qs_name.'-'.$find_dep->name;
 				} else{
-					$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
+					$title_dep=$each->qs_name.'('.$find_dep->name.')-'.$each->note;
 				}
 				$data['question_option_id_list_by_dep'][] = array (
 					"id" => $each->id,
@@ -140,9 +142,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 
 				if(!empty($question_option_open_list_dep_2)){
 					if($each->note==''){
-						$title_dep=$each->qs_name.'-'.$each_by_dep->name;
+						$title_dep=$each->qs_name.'-'.$find_dep->name;
 					} else{
-						$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
+						$title_dep=$each->qs_name.'('.$find_dep->name.')-'.$each->note;
 					}
 					$data['question_option_id_list_by_dep'][] = array (
 						"id" => $each->id,
@@ -153,9 +155,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 					);
 				} else{
 					if($each->note==''){
-						$title_dep=$each->qs_name.'-'.$each_by_dep->name;
+						$title_dep=$each->qs_name.'-'.$find_dep->name;
 					} else{
-						$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
+						$title_dep=$each->qs_name.'('.$find_dep->name.')-'.$each->note;
 					}
 					$data['question_option_id_list_by_dep'][] = array (
 						"id" => $each->id,
