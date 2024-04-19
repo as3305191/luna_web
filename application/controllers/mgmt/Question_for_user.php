@@ -143,12 +143,25 @@ class Question_for_user extends MY_Mgmt_Controller {
 					}
 					$data['question_option_id_list_by_dep'][] = array (
 						"id" => $each->id,
-						"question_ans_id" => $question_option_open_list_dep->id,
+						"question_ans_id" => $question_option_open_list_dep[0]->id,
 						"role_id" => $login_user->role_id,
 						"question_style_id" => 6,
 						"question_title" => $title_dep,
 					);
-				} 
+				} else{
+					if($each->note==''){
+						$title_dep=$each->qs_name.'-'.$each_by_dep->name;
+					} else{
+						$title_dep=$each->qs_name.'('.$each_by_dep->name.')-'.$each->note;
+					}
+					$data['question_option_id_list_by_dep'][] = array (
+						"id" => $each->id,
+						"question_ans_id" => 0,
+						"role_id" => $login_user->role_id,
+						"question_style_id" => 6,
+						"question_title" => $title_dep,
+					);
+				}
 			}
 		}
 		
