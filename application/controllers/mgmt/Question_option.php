@@ -65,7 +65,7 @@ class Question_option extends MY_Mgmt_Controller {
 				foreach($finish_list as $each_f){
 					$listitems[] = $all_user_list;
 					$key = array_search($each_f, $listitems);
-					$res['items'] = array_diff($listitems,$listitems[$key]);
+					$res['items'][] = array_diff($listitems,$listitems[$key]);
 				}
 			} else{
 				$res['items'] = $all_user_list;
