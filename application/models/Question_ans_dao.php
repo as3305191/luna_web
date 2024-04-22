@@ -226,7 +226,7 @@ class Question_ans_dao extends MY_Model {
 		// select
 		$this -> db -> from("$this->table_name as _m");
 
-		$this -> db -> select('_m.user_id');
+		$this -> db -> select('_m.*');
 	
 		$this -> db -> where('_m.question_option_id',$item_id);
 		
