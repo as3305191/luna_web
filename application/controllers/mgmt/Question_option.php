@@ -70,7 +70,10 @@ class Question_option extends MY_Mgmt_Controller {
 			}
 			$res['f_user_id_list1'] = $all_user_list[2];
 
-			$res['f_user_id_list'] = in_array($all_user_list[2],$res['items']);
+			$res['t_f'] = in_array($all_user_list[2],$res['items']);
+			$res['f_user_id_list'] = $f_user_id_list;
+
+
 		} else{
 			if($q_style_list->for_dep==1){
 				$items_list_for_dep= array();
