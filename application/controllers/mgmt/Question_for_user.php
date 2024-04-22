@@ -294,7 +294,11 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$question_ans_id =$this -> get_get('question_ans_id');
 
 		$data['qid'] = $qid;
-		$data['role_id'] = $role_id;
+		if($role_id==53){
+			$data['role_id'] = 18;
+		} else{
+			$data['role_id'] = $role_id;
+		}
 		$data['question_ans_id'] = $question_ans_id;
 
 		$data['question_list'] = ['是否有組織外之人員(承攬商、客戶、服務對象或親友等)因其行為無法預知，可能成為該區工作者不法侵害來源',
