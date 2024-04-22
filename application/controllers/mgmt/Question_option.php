@@ -63,7 +63,7 @@ class Question_option extends MY_Mgmt_Controller {
 					}
 				}
 				foreach($finish_list as $each_f){
-					$items_new_list = $all_user_list;
+					$items_new_list[] = $all_user_list;
 					$key = array_search($each_f,$items_new_list);
 					unset($items_new_list[$key]);
 				}
