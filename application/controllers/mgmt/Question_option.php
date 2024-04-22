@@ -70,7 +70,7 @@ class Question_option extends MY_Mgmt_Controller {
 				$res['items'] = $all_user_list;
 			}
 			$res['finish_list'] = $finish_list;
-			$res['array_search'] = array_search($each_f[0], $res['items']);
+			$res['array_search'] = array_search($finish_list[0], $res['items']);
 		} else{
 			if($q_style_list->for_dep==1){
 				$items_list_for_dep= array();
