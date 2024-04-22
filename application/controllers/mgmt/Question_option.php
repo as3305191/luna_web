@@ -55,30 +55,15 @@ class Question_option extends MY_Mgmt_Controller {
 			$all_user_list =  $this -> users_dao -> find_all_ktx_user();
 			if(count($items_list)>0){
 				foreach($items_list as $each_item){
-					$f_user_id_list[] = $each_item->user_id;
 					foreach($all_user_list as $each_user){
-						if(in_array($each_user->id,$f_user_id_list)){
-						} else{
-							if(in_array($each_user,$res['items'])){
-							} else{
-								$res['items'][] = $each_user;
-							}
+						if($each_item->user_id==$each_user->id){
+							$res['items'][] = $each_user;
 						}
 					}
 				}
 				
 			} else{
 				$res['items'] = $all_user_list;
-			}
-			// $res['f_user_id_list1'] = $all_user_list[2];
-
-			// $res['f_user_id_list'] = $f_user_id_list;
-
-			if(in_array($all_user_list[1],$res['items'])){
-				$res['t_f'] = 123;
-			} else{
-				$res['t_f'] = 234;
-
 			}
 		} else{
 			if($q_style_list->for_dep==1){
