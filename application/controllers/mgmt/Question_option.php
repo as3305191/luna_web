@@ -45,7 +45,6 @@ class Question_option extends MY_Mgmt_Controller {
 	public function get_data_not_finish() {
 		$res = array();
 		$res['items'] = array();
-		$listitems = array();
 		$finish_list = array();
 		$item_id = $this -> get_post('item_id');
 		$q_option_list = $this -> dao -> find_by_id($item_id);
@@ -63,15 +62,15 @@ class Question_option extends MY_Mgmt_Controller {
 					}
 				}
 				foreach($finish_list as $each_f){
-					$listitems[] = $all_user_list;
-					$key = array_search($each_f, $listitems);
-					$res['items'][] = array_diff($listitems,$listitems[$key]);
+					$res['items'][] = $all_user_list;
+					$key = array_search($each_f, $res['items']);
+					$res['items'] = array_diff($res['items'],$res['items'][$key]);
 				}
 			} else{
 				$res['items'] = $all_user_list;
 			}
-			// $res['finish_list'] = $finish_list;
-			// $res['array_search'] = array_search($finish_list[1], $res['items']);
+			$res['finish_list'] = $finish_list;
+			$res['array_search'] = array_search($finish_list[1], $res['items']);
 		} else{
 			if($q_style_list->for_dep==1){
 				$items_list_for_dep= array();
