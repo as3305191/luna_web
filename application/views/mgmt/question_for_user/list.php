@@ -24,12 +24,12 @@
 			</div>
 			<?php if(isset($question_option_id_list)): ?>
 				<?php foreach ($question_option_id_list as $each) : ?>
-					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 300px; height: 48px;" onclick="q_click(<?= $each['question_style_id']?>,<?= $each['id'] ?>)"><?=$each['question_title']?></button>
+					<button class="btn_active btn-success text-light menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 300px; height: 48px;" onclick="q_click(<?= $each['question_style_id']?>,<?= $each['id'] ?>)"><?=$each['question_title']?></button>
 				<?php endforeach ?>
 			<?php endif?>
 			<?php if(isset($question_option_id_list_by_dep)): ?>
 				<?php foreach ($question_option_id_list_by_dep as $each) : ?>
-					<button class="btn_active btn-success text-light  menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 300px; height: 48px;" onclick="q_click(<?= $each['question_style_id']?>,<?= $each['id'] ?>,<?= $each['role_id'] ?>,<?= $each['question_ans_id'] ?>)"><?=$each['question_title']?></button>
+					<button class="btn_active btn-success text-light menu_btn menu_0" style="border-radius: 5px; padding: 10px; width: 300px; height: 48px;" onclick="q_click(<?= $each['question_style_id']?>,<?= $each['id'] ?>,<?= $each['role_id'] ?>,<?= $each['question_ans_id'] ?>)"><?=$each['question_title']?><?= isset($each['question_ans_id'])&& $each['question_ans_id']>0 ? '-已完成' : '' ?></button>
 				<?php endforeach ?>
 			<?php endif?>
 		</div>
