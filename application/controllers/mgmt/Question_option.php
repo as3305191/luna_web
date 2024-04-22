@@ -62,15 +62,14 @@ class Question_option extends MY_Mgmt_Controller {
 					}
 				}
 				foreach($finish_list as $each_f){
-					$res['items'][] = $all_user_list;
+					$res['items'] = $all_user_list;
 					$key = array_search($each_f, $res['items']);
 					unset($res['items'][$key]);
 				}
 			} else{
 				$res['items'] = $all_user_list;
 			}
-			$res['finish_list'] = $finish_list;
-			// $res['array_search'] = array_search($finish_list[1], $res['items']);
+			$res['array_search'] = array_search($all_user_list[2], $res['items']);
 		} else{
 			if($q_style_list->for_dep==1){
 				$items_list_for_dep= array();
