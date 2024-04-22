@@ -45,7 +45,7 @@ class Question_option extends MY_Mgmt_Controller {
 	public function get_data_not_finish() {
 		$res = array();
 		$res['items'] = array();
-		$items_list = = array();
+		$items_list = array();
 		$finish_list = array();
 		$item_id = $this -> get_post('item_id');
 		$q_option_list = $this -> dao -> find_by_id($item_id);
