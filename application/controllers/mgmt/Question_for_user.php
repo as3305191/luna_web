@@ -665,7 +665,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 	}
 
 	public function re_sql() {
-		$list = $this -> question_ans_dao -> find_by('question_option_id',1);
+		$list = $this -> question_ans_dao -> find_by_question_option_id();
 		$this -> to_json($list);
 	}
 }
