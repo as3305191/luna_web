@@ -67,7 +67,7 @@ class Question_option extends MY_Mgmt_Controller {
 				}
 				if(count($already_list)>0){
 					foreach($already_list as $already_list_each_user){
-						if(!in_array($already_list_each_user,$res['items'])){
+						if(in_array($already_list_each_user,$res['items'])==false){
 							$res['items'][] = $each_user;
 						}
 					}
