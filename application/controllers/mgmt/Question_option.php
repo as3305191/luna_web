@@ -45,7 +45,7 @@ class Question_option extends MY_Mgmt_Controller {
 	public function get_data_not_finish() {
 		$res = array();
 		$res['items'] = array();
-		$items_list = array();
+		$items_new_list = array();
 		$finish_list = array();
 		$item_id = $this -> get_post('item_id');
 		$q_option_list = $this -> dao -> find_by_id($item_id);
@@ -63,9 +63,9 @@ class Question_option extends MY_Mgmt_Controller {
 					}
 				}
 				foreach($finish_list as $each_f){
-					$items_list = $all_user_list;
-					$key = array_search($each_f,$items_list);
-					unset($items_list[$key]);
+					$items_new_list = $all_user_list;
+					$key = array_search($each_f,$items_new_list);
+					unset($items_new_list[$key]);
 				}
 				$res['items'] = $items_list;
 			} else{
