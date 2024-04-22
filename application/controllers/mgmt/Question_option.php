@@ -57,7 +57,7 @@ class Question_option extends MY_Mgmt_Controller {
 				foreach($items_list as $each_item){
 					$f_user_id_list[] = $each_item->user_id;
 					foreach($all_user_list as $each_user){
-						if(in_array($each_user->id,$f_user_id_list)==0){
+						if(in_array($each_user->id,$f_user_id_list)==false){
 							$res['items'][] = $each_user;
 						} 
 					}
@@ -67,7 +67,7 @@ class Question_option extends MY_Mgmt_Controller {
 				$res['items'] = $all_user_list;
 			}
 
-			$res['f_user_id_list'] = in_array(1,$f_user_id_list);
+			$res['f_user_id_list'] = $f_user_id_list;
 		} else{
 			if($q_style_list->for_dep==1){
 				$items_list_for_dep= array();
