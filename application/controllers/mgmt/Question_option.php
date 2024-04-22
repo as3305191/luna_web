@@ -74,8 +74,8 @@ class Question_option extends MY_Mgmt_Controller {
 
 			// $res['f_user_id_list'] = $f_user_id_list;
 
-			if(in_array($all_user_list[1],$res['items'])){
-
+			if(in_array($all_user_list[2],$res['items'])){
+				$res['t_f'] = 123;
 			} else{
 				$res['t_f'] = in_array($all_user_list[2],$res['items']);
 
