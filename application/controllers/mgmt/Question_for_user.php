@@ -533,8 +533,10 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['question_option_id']  =$this -> get_post('qid');
 		$id =$this -> get_post('question_ans_id');
+		$role_id =$this -> get_post('role_id');
+
 		$data['user_id'] = $login_user->id;
-		$data['role_id'] = $login_user->role_id;
+		$data['role_id'] = $role_id;
 
 		for($i=1;$i<=161;$i++){
 			$data['q'.$i] = $this -> get_post('q'.$i);
@@ -577,7 +579,9 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$q10 =$this -> get_post('q10');
 	
 		$q1o =$this -> get_post('q1o');
-		
+		$role_id =$this -> get_post('role_id');
+
+
 
 		$data['user_id'] = $login_user->id;
 		// $data['qid'] = $qid;
@@ -594,7 +598,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 
 		$data['q1o'] = $q1o;
 
-		$data['role_id'] = $find_dep_list->id;
+		$data['role_id'] = $role_id;
 		$data['question_option_id'] = $qid;
 
 		$this -> question_ans_dao -> insert($data);

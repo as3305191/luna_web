@@ -158,7 +158,7 @@
               q10 : $('select[name="s10"]').val(),
 
               q1o : $('[name="q1o"]').val(),
-            
+              role_id :$('#role_id').val(),
             },
             dataType: 'json',
             success: function(d) {
