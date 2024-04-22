@@ -665,7 +665,30 @@ class Question_for_user extends MY_Mgmt_Controller {
 	}
 
 	public function re_sql() {
+		$data = array();
 		$list = $this -> question_ans_dao -> find_by_question_option_id();
+		foreach($list as $each){
+			if(intval($each->q1o)<=50){
+				$data['q2o'] = '輕微';
+			}
+			if(intval($each->q1o)<69 && intval($each->q1o)>50){
+				$data['q2o'] = '中度';
+			}
+			if(intval($each->q1o)>=70){
+				$data['q2o'] = '嚴重';
+			}
+			if(intval($each->q3o)<=45){
+				$data['q4o'] = '輕微';
+			}
+			if(45<intval($each->q3o) && intval($each->q3o)<60){
+				$data['q4o'] = '中度';
+			}
+			if(intval($each->q3o)>=60){
+				$data['q4o'] = '嚴重';
+			}
+			$this -> question_ans_dao -> update($data, $each->id);
+
+		}
 		$this -> to_json($list);
 	}
 }
