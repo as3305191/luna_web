@@ -57,7 +57,9 @@ class Question_option extends MY_Mgmt_Controller {
 				foreach($items_list as $each_item){
 					foreach($all_user_list as $each_user){
 						if($each_user->id!==$each_item->user_id){
-							$res['items'][] = $each_user;
+							if(!in_array($each_user,$res['items'])){
+								$res['items'][] = $each_user;
+							}
 						}
 					}
 				}
