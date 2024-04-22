@@ -68,6 +68,7 @@ class Question_option extends MY_Mgmt_Controller {
 					unset($items_new_list[$key]);
 				}
 				$res['items'] = $items_new_list;
+				$res['finish_list'] = $finish_list;
 
 			} else{
 				$res['items'] = $all_user_list;
