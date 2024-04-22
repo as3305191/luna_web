@@ -68,10 +68,10 @@ class Question_option extends MY_Mgmt_Controller {
 					unset($items_new_list[$key]);
 				}
 				$res['items'] = $items_new_list;
+
 			} else{
 				$res['items'] = $all_user_list;
 			}
-			$res['count'] = $items_list;
 
 		} else{
 			if($q_style_list->for_dep==1){
