@@ -44,7 +44,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 	public function get_data_not_finish() {
 		$res = array();
-		$res['items'] = array();
+		// $res['items'] = array();
 		$items_new_list = array();
 		$finish_list = array();
 		$item_id = $this -> get_post('item_id');
