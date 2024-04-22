@@ -67,7 +67,7 @@ class Question_option extends MY_Mgmt_Controller {
 					$key = array_search($each_f,$items_new_list);
 					unset($items_new_list[$key]);
 				}
-				$res['items'] = $items_list;
+				$res['items'] = $items_new_list;
 			} else{
 				$res['items'] = $all_user_list;
 			}
