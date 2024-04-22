@@ -48,7 +48,6 @@
 		});
 	});
 
-
 	function q_click(q_num,id,role_id=false,question_ans_id=false) {
 		switch (q_num) {
 			case 1: {
