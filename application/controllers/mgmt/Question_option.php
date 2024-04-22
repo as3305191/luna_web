@@ -98,8 +98,6 @@ class Question_option extends MY_Mgmt_Controller {
 				}
 				$res['items'] = $items_list_for_dep;
 				$res['q_ans_is_finish'] = $new_q_ans_is_finish;
-				// $res['items'] = $items_list_for_dep;
-
 
 			} else{
 				if($q_style_list->for_dep==2){
@@ -114,12 +112,9 @@ class Question_option extends MY_Mgmt_Controller {
 						if(!in_array($each->id,$new_q_ans_is_finish)){
 							$items_list_for_dep[]= $each;
 						}
-						
 					}
 					$res['items'] = $items_list_for_dep;
 					$res['q_ans_is_finish'] = $new_q_ans_is_finish;
-					// $res['items'] = $items_list_for_dep;
-	
 	
 				}
 			}

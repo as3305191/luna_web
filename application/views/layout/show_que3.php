@@ -296,40 +296,47 @@
 
   function t1(){
     var text = '';
-    
+    var text_cht = '';
     if(parseInt(total1)<=50){
       text = '<?= $this->_lang['q2_ss'] ?>';
+      text_cht = '輕微';
     }
     if(parseInt(total1)<69 && parseInt(total1)>50){
       text = '<?= $this->_lang['q2_mm'] ?>';
+      text_cht = '中度';
     }
     if(parseInt(total1)>=70){
       text = '<?= $this->_lang['q2_sbs'] ?>';
+      text_cht = '嚴重';
     }
     if (q1!==null&&q2!==null&&q3!==null&&q4!==null&&q5!==null&&q6!==null){
       $('#t1').text(total1);
       $('#t1_s').text(text);
       q1o = total1;
-      q2o = text;
+      q2o = text_cht;
     }
   }
   function t2(){
     var text1 = '';
-    
+    var text1_cht = '';
+
     if(parseInt(total2)<=45){
-      text = '<?= $this->_lang['q2_ss'] ?>';
+      text1 = '<?= $this->_lang['q2_ss'] ?>';
+      text1_cht = '輕微';
     }
     if(45<parseInt(total2) && parseInt(total2)<60){
-      text = '<?= $this->_lang['q2_mm'] ?>';
+      text1 = '<?= $this->_lang['q2_mm'] ?>';
+      text1_cht = '中度';
     }
     if(parseInt(total2)>=60){
-      text = '<?= $this->_lang['q2_sbs'] ?>';
+      text1 = '<?= $this->_lang['q2_sbs'] ?>';
+      text1_cht = '嚴重';
     }
     if (q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null&&q13!==null){
       $('#t2').text(total2);
       $('#t2_s').text(text1);
       q3o = total2;
-      q4o = text1;
+      q4o = text1_cht;
     }
   }
 </script>
