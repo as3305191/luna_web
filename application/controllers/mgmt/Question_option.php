@@ -489,15 +489,7 @@ class Question_option extends MY_Mgmt_Controller {
 												  ->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q4o);
 
 								  }
-								//   $last = count($items_order)+2;
-								//   $objWorkSheet->setCellValue('A'.$last , '')
-								// 				  ->setCellValue('B'.$last , '')
-								// 				  ->setCellValue('C'.$last, '')
-								// 				  ->setCellValue('D'.$last, '')
-								// 				  ->setCellValue('E'.$last, '')
-								// 				  ->setCellValue('F'.$last , '總金額')
-								// 				  ->setCellValue('G'.$last ,  $total);
-		  
+								
 		  
 						$objWorkSheet->setTitle($question_ans_list[$i]->question_style_name.$note);
 				}
@@ -530,14 +522,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$fileName = $question_style->question_style_name.$note.'-'.date('Y-m-d H:i:s').'.xls';
 
 		$objPHPExcel = new PHPExcel();
-		// $objPHPExcel->setActiveSheetIndex(0);
-		// $objPHPExcel->getActiveSheet()->SetCellValue('A1', '部門名稱');
-		// $objPHPExcel->getActiveSheet()->SetCellValue('B1', '主功能');
-		// $objPHPExcel->getActiveSheet()->SetCellValue('C1', '權限項目');
-		// $objPHPExcel->getActiveSheet()->SetCellValue('D1', '其他設定');
 	
-	
-		// $sheet = $objPHPExcel->getActiveSheet();
 		$all_cell_title = ['A1','B1','C1','D1','E1','F1','G1','H1','I1','J1','K1',
 		'L1','M1','N1','O1','P1','Q1','R1','S1','T1','U1','V1','W1','X1','Y1','Z1','AA1','AB1','AC1','AD1','AE1','AF1','AG1'];
 		$all_cell_name = ['A','B','C','D','E','F','G','H','I','J','K',
@@ -734,14 +719,7 @@ class Question_option extends MY_Mgmt_Controller {
 									->setCellValue($all_cell_name[18].$k , $question_ans_list[$j]->q4o);
 
 					}
-					//   $last = count($items_order)+2;
-					//   $objWorkSheet->setCellValue('A'.$last , '')
-					// 				  ->setCellValue('B'.$last , '')
-					// 				  ->setCellValue('C'.$last, '')
-					// 				  ->setCellValue('D'.$last, '')
-					// 				  ->setCellValue('E'.$last, '')
-					// 				  ->setCellValue('F'.$last , '總金額')
-					// 				  ->setCellValue('G'.$last ,  $total);
+				
 
 		}
 			$objWorkSheet->setTitle($question_style->question_style_name.$note);
@@ -758,68 +736,15 @@ class Question_option extends MY_Mgmt_Controller {
 				'是否有同仁離職或請求調職原因源於職場不法侵害事件之發生','是否有被同仁排擠或工作適應不良者','內部是否有酗酒、毒癮之工作者',
 				'內部是否有處於情緒低落、絕望或恐懼，極需被關懷照顧工作者','是否有超時工作，反應工作壓力大工作者','工作環境是否有空間擁擠，照明設備不足問題，工作場所出入是否未有相當管制措施'];
 				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
-		
-				for ($i=0;$i<count($question_ans_list);$i++) {
-		
-				// Add new sheet
-		
-							$objWorkSheet->setCellValue($all_cell_title[0], $cell_title[0])
-							->setCellValue($all_cell_title[1], $cell_title[1])
-							->setCellValue($all_cell_title[2], $cell_title[2])
-							->setCellValue($all_cell_title[3], $cell_title[3])
-							->setCellValue($all_cell_title[4], $cell_title[4])
-							->setCellValue($all_cell_title[5], $cell_title[5])
-							->setCellValue($all_cell_title[6], $cell_title[6])
-							->setCellValue($all_cell_title[7], $cell_title[7])
-							->setCellValue($all_cell_title[8], $cell_title[8])
-							->setCellValue($all_cell_title[9], $cell_title[9])
-							->setCellValue($all_cell_title[10], $cell_title[10])
-							->setCellValue($all_cell_title[11], $cell_title[11])
-							->setCellValue($all_cell_title[12], $cell_title[12])
-							->setCellValue($all_cell_title[13], $cell_title[13])
-							->setCellValue($all_cell_title[14], $cell_title[14])
-							->setCellValue($all_cell_title[15], $cell_title[15])
-							->setCellValue($all_cell_title[16], $cell_title[16])
-							->setCellValue($all_cell_title[17], $cell_title[17])
-							->setCellValue($all_cell_title[18], $cell_title[18]);
-		
-							//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
-							for ($j=0;$j<count($question_ans_list);$j++) {
-								$k = $j+2;
-								$objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->dep_name)
-											->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->user_name)
-											->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q1)
-											->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q2)
-											->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q3)
-											->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q4)
-											->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q5)
-											->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q6)
-											->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q1o)
-											->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q2o)
-											->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q7)
-											->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q8)
-											->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q9)
-											->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q10)
-											->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q11)
-											->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q12)
-											->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q13)
-											->setCellValue($all_cell_name[17].$k , $question_ans_list[$j]->q3o)
-											->setCellValue($all_cell_name[18].$k , $question_ans_list[$j]->q4o);
-		
-							}
-							//   $last = count($items_order)+2;
-							//   $objWorkSheet->setCellValue('A'.$last , '')
-							// 				  ->setCellValue('B'.$last , '')
-							// 				  ->setCellValue('C'.$last, '')
-							// 				  ->setCellValue('D'.$last, '')
-							// 				  ->setCellValue('E'.$last, '')
-							// 				  ->setCellValue('F'.$last , '總金額')
-							// 				  ->setCellValue('G'.$last ,  $total);
-		
+				for ($i=0;$i<count($cell_title);$i++){
+					$objWorkSheet->setCellValue($all_cell_name[0].$i+2, $cell_title[$i]); 
+			    }
+				for ($j=0;$j<count($question_ans_list);$j++){
+					$objWorkSheet->setCellValue($all_cell_name[$j].$i+2, $question_ans_list[$j]->dep_name); 
 				}
-					$objWorkSheet->setTitle($question_style->question_style_name.$note);
-		
-					break;
+				$objWorkSheet->setTitle($question_style->question_style_name.$note);
+	
+				break;
 			
 		default:
 		//code block
