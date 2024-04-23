@@ -545,8 +545,8 @@ class Question_for_user extends MY_Mgmt_Controller {
 			$data['q'.$j.'o'] = $this -> get_post('q'.$j.'o');
 		}
 		if($id>0){
-			$this -> question_ans_dao -> update($data, $id);
-
+			// $this -> question_ans_dao -> update($data, $id);
+			$res['success_message'] = TRUE;
 		} else{
 			$this -> question_ans_dao -> insert($data);
 		}

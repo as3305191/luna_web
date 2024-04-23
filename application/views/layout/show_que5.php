@@ -226,11 +226,14 @@
                     'if(d) {'+ 
                       '  console.log(d);'+ 
                       '}'+ 
+                      'if(d.success_message){'+ 
+                        '  layer.msg(\'已填寫完成\');'+ 
+                        ' }else{'+
                       'if(d.success){'+ 
                         '  var index = parent.layer.getFrameIndex(window.name);'+ 
                         ' parent.layer.close(index);'+ 
                         ' parent.location.reload();'+ 
-                        ' }'+ 
+                        ' }}'+ 
                         'if(d.error){'+ 
                           ' layer.msg(d.error);'+ 
                           '}},'+ 
