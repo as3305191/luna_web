@@ -726,6 +726,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 			break;
 			case 5:
+				$num_b=array();
 				for($num=1;$num<=100;$num++){
 					$num_b[] =$num;
 				}
