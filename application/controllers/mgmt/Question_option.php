@@ -741,8 +741,8 @@ class Question_option extends MY_Mgmt_Controller {
 					$objWorkSheet->setCellValue($all_cell_name[0].$new_num, $cell_title[$i]); 
 			    }
 				for ($j=0;$j<count($question_ans_list);$j++){
-					$new_num = $j+2;
-					$objWorkSheet->setCellValue($all_cell_name[$j].$new_num, $question_ans_list[$j]->dep_name); 
+					$new_num = $j+1;
+					$objWorkSheet->setCellValue($all_cell_name[$new_num].$j, $question_ans_list[$j]->dep_name); 
 				}
 				$objWorkSheet->setTitle($question_style->question_style_name.$note);
 	
