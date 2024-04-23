@@ -744,10 +744,9 @@ class Question_option extends MY_Mgmt_Controller {
 					for ($j=0;$j<count($question_ans_list);$j++){//每7 option為1題
 						$new_num = $j+1;
 						$new_num_k = $k+1;
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].$new_num_k, $question_ans_list[$j]->dep_name);	
+						$objWorkSheet->setCellValue($all_cell_name[$new_num].$new_num, $question_ans_list[$j]->dep_name);	
 					}
 				}
-				$objWorkSheet->setTitle($question_style->question_style_name.$note);
 	
 				break;
 			
