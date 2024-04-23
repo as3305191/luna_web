@@ -727,7 +727,7 @@ class Question_option extends MY_Mgmt_Controller {
 			break;
 			case 5:
 				$num_b=array();
-				for($num=1;$num<=100;$num++){
+				for($num=1;$num<=1000;$num++){
 					$num_b[] =$num;
 				}
 				$cell_title = ['是否有組織外之人員(承攬商、客戶、服務對象或親友等)因其行為無法預知，可能成為該區工作者不法侵害來源',
