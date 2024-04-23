@@ -737,10 +737,12 @@ class Question_option extends MY_Mgmt_Controller {
 				'內部是否有處於情緒低落、絕望或恐懼，極需被關懷照顧工作者','是否有超時工作，反應工作壓力大工作者','工作環境是否有空間擁擠，照明設備不足問題，工作場所出入是否未有相當管制措施'];
 				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 				for ($i=0;$i<count($cell_title);$i++){
-					$objWorkSheet->setCellValue($all_cell_name[0].$i+2, $cell_title[$i]); 
+					$new_num = $i+2;
+					$objWorkSheet->setCellValue($all_cell_name[0].$new_num, $cell_title[$i]); 
 			    }
 				for ($j=0;$j<count($question_ans_list);$j++){
-					$objWorkSheet->setCellValue($all_cell_name[$j].$i+2, $question_ans_list[$j]->dep_name); 
+					$new_num = $j+2;
+					$objWorkSheet->setCellValue($all_cell_name[$j].$new_num, $question_ans_list[$j]->dep_name); 
 				}
 				$objWorkSheet->setTitle($question_style->question_style_name.$note);
 	
