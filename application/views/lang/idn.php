@@ -150,4 +150,7 @@ $this -> _lang['q3_t5_d'] = "hari";
 $this -> _lang['q3_t6'] = "六.Pernahkah Anda didiagnosis dengan gangguan muskuloskeletal atau neurologis (memerlukan pengobatan, rehabilitasi, atau pembedahan) oleh dokter？";
 $this -> _lang['q3_t6_sick_name'] = "nama diagnosa：";
 $this -> _lang['q3_t7'] = "七.Gejala lain, deskripsi riwayat medis: (seperti diabetes, tekanan darah tinggi, dll.)";
+
+$this -> _lang['send'] = "mengirimkan";
+$this -> _lang['cancel'] = "Membatalkan";
 ?>

@@ -150,4 +150,7 @@ $this -> _lang['q3_t5_d'] = "Ngày";
 $this -> _lang['q3_t6'] = "六.Bạn đã bao giờ được bác sĩ chẩn đoán mắc bệnh liên quan đến cơ xương khớp hoặc hệ thần kinh (cần dùng thuốc, phục hồi chức năng hoặc phẫu thuật) chưa?";
 $this -> _lang['q3_t6_sick_name'] = "tên chẩn đoán：";
 $this -> _lang['q3_t7'] = "七.Các triệu chứng và tiền sử bệnh lý khác: (như tiểu đường, cao huyết áp, v.v.) ";
+
+$this -> _lang['send'] = "gửi đi";
+$this -> _lang['cancel'] = "Hủy bỏ";
 ?>

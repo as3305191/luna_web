@@ -91,12 +91,12 @@
 
     <div class="col-xs-12 no-padding" style="margin-top:20px">
         <div class="col-xs-6 no-padding">
-            <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left">取消</button>
+            <button type="button" class="btn btn-secondary cancel" style="width:120px;height:40px;float:left"><?= $this->_lang['cancel'] ?></button>
         </div>
         <?php if($question_ans_id==0): ?>
 
           <div class="col-xs-6 no-padding">
-              <button type="button" class="btn btn-success dosubmit" style="width:120px;height:40px;float:right">送出</button>
+              <button type="button" class="btn btn-success dosubmit" style="width:120px;height:40px;float:right"><?= $this->_lang['send'] ?></button>
           </div>
         <?php endif?>
     </div>
