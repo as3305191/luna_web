@@ -70,19 +70,19 @@
                       <label for="q<?= $i+1 ?>_o1_6">性騷擾</label>
                     </td>
                     <td  class="R1 min125">
-                      <input type="radio" class="q<?= $i*7+3 ?>" id="q<?= $i+1 ?>_o1_7" name="q<?= $i+1 ?>_o3" value="可能3分"/>
+                      <input type="radio" class="q<?= $i*7+3 ?>" id="q<?= $i+1 ?>_o1_7" name="q<?= $i+1 ?>_o3" value="3"/>
                       <label for="q<?= $i+1 ?>_o1_7">可能3分</label><br>
-                      <input type="radio" class="q<?= $i*7+3 ?>" id="q<?= $i+1 ?>_o1_8" name="q<?= $i+1 ?>_o3" value="不太可能2分"/>
+                      <input type="radio" class="q<?= $i*7+3 ?>" id="q<?= $i+1 ?>_o1_8" name="q<?= $i+1 ?>_o3" value="2"/>
                       <label for="q<?= $i+1 ?>_o1_8">不太可能2分</label><br>
-                      <input type="radio" class="q<?= $i*7+3 ?>" id="q<?= $i+1 ?>_o1_9" name="q<?= $i+1 ?>_o3" value="極不可能1分"/>
+                      <input type="radio" class="q<?= $i*7+3 ?>" id="q<?= $i+1 ?>_o1_9" name="q<?= $i+1 ?>_o3" value="1"/>
                       <label for="q<?= $i+1 ?>_o1_9">極不可能1分</label>
                     </td>
                     <td  class="R1 min125">
-                      <input type="radio" class="q<?= $i*7+4 ?>" id="q<?= $i+1 ?>_o1_10" name="q<?= $i+1 ?>_o4" value="嚴重3分"/>
+                      <input type="radio" class="q<?= $i*7+4 ?>" id="q<?= $i+1 ?>_o1_10" name="q<?= $i+1 ?>_o4" value="3"/>
                       <label for="q<?= $i+1 ?>_o1_10">嚴重3分</label><br>
-                      <input type="radio" class="q<?= $i*7+4 ?>" id="q<?= $i+1 ?>_o1_11" name="q<?= $i+1 ?>_o4" value="中度2分"/>
+                      <input type="radio" class="q<?= $i*7+4 ?>" id="q<?= $i+1 ?>_o1_11" name="q<?= $i+1 ?>_o4" value="2"/>
                       <label for="q<?= $i+1 ?>_o1_11">中度2分</label><br>
-                      <input type="radio" class="q<?= $i*7+4 ?>" id="q<?= $i+1 ?>_o1_12" name="q<?= $i+1 ?>_o4" value="輕度1分"/>
+                      <input type="radio" class="q<?= $i*7+4 ?>" id="q<?= $i+1 ?>_o1_12" name="q<?= $i+1 ?>_o4" value="1"/>
                       <label for="q<?= $i+1 ?>_o1_12">輕度1分</label>
                     </td>
                     <td  class="R1 min125">
