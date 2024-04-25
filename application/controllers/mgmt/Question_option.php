@@ -742,10 +742,16 @@ class Question_option extends MY_Mgmt_Controller {
 				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 				for ($i=0;$i<count($cell_title);$i++){
 					$new_num = $i+2;
-					$objWorkSheet->setCellValue($all_cell_name[0].$new_num, $cell_title[$i]); 
+					$mergeCells = $i+1;
+					$mergeCells_3 = $i+4;
+					if(($i+1)%4==1||$i==0){
+						$objWorkSheet->mergeCells("A".$mergeCells.":A".$mergeCells_3)->setCellValue($all_cell_name[0].$new_num, $cell_title[$i]); 
+					}
 			    }
+				$t1_style = ['肢體暴力','語言暴力','心理暴力','性騷擾'];
 				for ($j=0;$j<count($question_ans_list);$j++){//每7 option為1題
-					
+					$new_num = $j+2;
+					$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $t1_style[$j]);	
 					$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);	
 				}
 				$objWorkSheet->setTitle($question_style->question_style_name.$note);
