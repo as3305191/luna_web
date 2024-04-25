@@ -583,7 +583,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 
 
 
-		$data['user_id'] = $find_dep_list->id;
+		$data['user_id'] = $login_user->id;
 		// $data['qid'] = $qid;
 		$data['q1'] = $q1;
 		$data['q2'] = $q2;
@@ -598,7 +598,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 
 		$data['q1o'] = $q1o;
 
-		$data['role_id'] = $role_id;
+		$data['role_id'] = $find_dep_list->role_id;
 		$data['question_option_id'] = $qid;
 
 		$this -> question_ans_dao -> insert($data);
