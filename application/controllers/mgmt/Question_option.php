@@ -781,7 +781,7 @@ class Question_option extends MY_Mgmt_Controller {
 					// 	$last_num = implode(",", $question_ans_list[$j]->$ans_2_title);
 
 					// }
-					$ans_1 = $first_num * $last_num;
+					// $ans_1 = $first_num * $last_num;
 					$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
 					$objWorkSheet->setCellValue($all_cell_name[$new_num].'2', $question_ans_list[$j]->$ans_1_title);
 					// $objWorkSheet->setCellValue($all_cell_name[$new_num].'3', $last_num);
