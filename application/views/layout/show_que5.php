@@ -94,11 +94,11 @@
                       <label for="q<?= $i+1 ?>_o1_15">輕度1-2分</label>
                     </td>
                     <td  class="R1 min150">
-                      <input type="radio" class="q<?= $i*7+6 ?>" id="q<?= $i+1 ?>_o1_16" name="q<?= $i+1 ?>_o6" value="工程控制"/>
+                      <input type="checkbox" class="q<?= $i*7+6 ?>" id="q<?= $i+1 ?>_o1_16" name="q<?= $i+1 ?>_o6" value="工程控制"/>
                       <label for="q<?= $i+1 ?>_o1_16">工程控制</label><br>
-                      <input type="radio" class="q<?= $i*7+6 ?>" id="q<?= $i+1 ?>_o1_17" name="q<?= $i+1 ?>_o6" value="個人防護"/>
+                      <input type="checkbox" class="q<?= $i*7+6 ?>" id="q<?= $i+1 ?>_o1_17" name="q<?= $i+1 ?>_o6" value="個人防護"/>
                       <label for="q<?= $i+1 ?>_o1_17">個人防護</label><br>
-                      <input type="radio" class="q<?= $i*7+6 ?>" id="q<?= $i+1 ?>_o1_18" name="q<?= $i+1 ?>_o6" value="管理控制"/>
+                      <input type="checkbox" class="q<?= $i*7+6 ?>" id="q<?= $i+1 ?>_o1_18" name="q<?= $i+1 ?>_o6" value="管理控制"/>
                       <label for="q<?= $i+1 ?>_o1_18">管理控制</label>
                     </td>
                     <td class="R1 min250">
@@ -176,7 +176,7 @@
         }
       }
       
-      if(j==1){
+      if(j==1||j==5){
         each_dom_script='$(\'input[name="q'+$i_1+'_o'+$j_1+'"]\').on(\'change\', function(){'+
           'obj = document.getElementsByName("q'+$i_1+'_o'+$j_1+'");'+
           'q'+$num+' = [];'+
@@ -186,7 +186,7 @@
                ' }'+
             '}'+
             'q'+$num+' = q'+$num+'.toString();'+
-            'console.log(q'+$num+');'+
+            // 'console.log(q'+$num+');'+
 
         '});';
       } else{
