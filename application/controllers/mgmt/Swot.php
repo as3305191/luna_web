@@ -49,7 +49,7 @@ class Swot extends MY_Mgmt_Controller {
 		$data['d_or_c'] = $d_or_c ;
 		$data['login_user'] = $login_user;
 		$login_user_array = str_replace('#', ',', trim($login_user->in_department, "#"));
-		$res['login_user_array'] = $login_user_array;
+		$data['login_user_array'] = $login_user_array;
 
 		$items = $this -> dao -> query_ajax($data);
 		foreach($items as $each){
@@ -62,6 +62,8 @@ class Swot extends MY_Mgmt_Controller {
 
 		}
 		$res['items'] = $items;
+
+		$res['login_user_array'] = $login_user_array;
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
 		$this -> to_json($res);
