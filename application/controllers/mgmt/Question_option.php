@@ -750,7 +750,7 @@ class Question_option extends MY_Mgmt_Controller {
 					$mergeCells_3 = $i+4;
 					$cell_title_i = ($i-1)/4;
 					if(($i-1)%4==0||$i==1){
-						$objWorkSheet->mergeCells("B".$mergeCells.":B".$mergeCells_3)->setCellValue($all_cell_name[0].$mergeCells, $cell_title[$cell_title_i]); 
+						$objWorkSheet->mergeCells("B".$mergeCells.":B".$mergeCells_3)->setCellValue($all_cell_name[1].$mergeCells, $cell_title[$cell_title_i]); 
 					}
 					if($i<4){
 						$objWorkSheet->setCellValue($all_cell_name[2].$new_num, $t1_style[$i]); 
