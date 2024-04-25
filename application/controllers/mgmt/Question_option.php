@@ -772,12 +772,14 @@ class Question_option extends MY_Mgmt_Controller {
 					if($question_ans_list[$j]->$ans_1_title==''){
 						$first_num = 0;
 					} else{
-						$first_num = $question_ans_list[$j]->$ans_1_title;
+						$first_num = implode(" ", $question_ans_list[$j]->$ans_1_title);;
 					}
 					if($question_ans_list[$j]->$ans_2_title==''){
 						$last_num = 0;
 					} else{
-						$last_num = $question_ans_list[$j]->$ans_2_title;
+						// $last_num = $question_ans_list[$j]->$ans_2_title;
+						$last_num = implode(" ", $question_ans_list[$j]->$ans_2_title);;
+
 					}
 					$ans_1 = $first_num * $last_num;
 					$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
