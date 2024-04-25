@@ -742,9 +742,9 @@ class Question_option extends MY_Mgmt_Controller {
 				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 				for ($i=0;$i<count($cell_title)*4;$i++){
 					$new_num = $i+2;
-					$mergeCells = $i+2;
-					$mergeCells_3 = $i+5;
-					$cell_title_i = ($i-2)/4;
+					$mergeCells = $i+1;
+					$mergeCells_3 = $i+4;
+					$cell_title_i = ($i-1)/4;
 					if(($i+1)%4==2||$i==1){
 						$objWorkSheet->mergeCells("A".$mergeCells.":A".$mergeCells_3)->setCellValue($all_cell_name[0].$new_num, $cell_title[$cell_title_i]); 
 					}
