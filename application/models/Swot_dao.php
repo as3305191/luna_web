@@ -65,7 +65,11 @@ class Swot_dao extends MY_Model {
 		$this -> ajax_from_join();
 
 		// search always
-		$this -> search_always($data);
+		$login_user_array = explode(",",$data['login_user_array']);
+		foreach($login_user_array as $each){
+			$this -> search_always($data);
+		}
+		
 
 		$this -> db -> order_by('id', 'desc');
 
