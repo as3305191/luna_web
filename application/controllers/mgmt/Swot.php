@@ -48,7 +48,9 @@ class Swot extends MY_Mgmt_Controller {
 		} 
 		$data['d_or_c'] = $d_or_c ;
 		$data['login_user'] = $login_user;
-		$data['login_user_array'] = str_replace('#', ',', trim($login_user->in_department, "#"));
+		$login_user_array = str_replace('#', ',', trim($login_user->in_department, "#"));
+		$data['login_user_array'] = $login_user_array;
+
 		$items = $this -> dao -> query_ajax($data);
 		foreach($items as $each){
 			if(!empty($each->class_id)){
