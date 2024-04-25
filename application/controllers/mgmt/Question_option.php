@@ -746,10 +746,16 @@ class Question_option extends MY_Mgmt_Controller {
 					$mergeCells = $i+1;
 					$mergeCells_3 = $i+4;
 					$cell_title_i = ($i-1)/4;
+					$i
 					if(($i-1)%4==0||$i==1){
 						$objWorkSheet->mergeCells("A".$mergeCells.":A".$mergeCells_3)->setCellValue($all_cell_name[0].$mergeCells, $cell_title[$cell_title_i]); 
 					}
-					$objWorkSheet->setCellValue($all_cell_name[1].$mergeCells, $t1_style[$i]); 
+					if($i<5){
+						$objWorkSheet->setCellValue($all_cell_name[1].$mergeCells, $t1_style[$i]); 
+					} else{
+						$newt1_style_i =$i%4;
+						$objWorkSheet->setCellValue($all_cell_name[1].$mergeCells, $t1_style[$newt1_style_i]); 
+					}
 
 			    }
 
