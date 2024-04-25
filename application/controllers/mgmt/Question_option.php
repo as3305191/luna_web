@@ -740,6 +740,7 @@ class Question_option extends MY_Mgmt_Controller {
 				'是否有同仁離職或請求調職原因源於職場不法侵害事件之發生','是否有被同仁排擠或工作適應不良者','內部是否有酗酒、毒癮之工作者',
 				'內部是否有處於情緒低落、絕望或恐懼，極需被關懷照顧工作者','是否有超時工作，反應工作壓力大工作者','工作環境是否有空間擁擠，照明設備不足問題，工作場所出入是否未有相當管制措施'];
 				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
+				$t1_style = ['肢體暴力','語言暴力','心理暴力','性騷擾'];
 				for ($i=0;$i<count($cell_title)*4;$i++){
 					$new_num = $i+2;
 					$mergeCells = $i+1;
@@ -748,9 +749,11 @@ class Question_option extends MY_Mgmt_Controller {
 					if(($i-1)%4==0||$i==1){
 						$objWorkSheet->mergeCells("A".$mergeCells.":A".$mergeCells_3)->setCellValue($all_cell_name[0].$mergeCells, $cell_title[$cell_title_i]); 
 					}
+					$objWorkSheet->setCellValue($all_cell_name[1].$mergeCells, $cell_title[$i]); 
+
 			    }
 
-				$t1_style = ['肢體暴力','語言暴力','心理暴力','性騷擾'];
+				
 				for ($j=0;$j<count($question_ans_list);$j++){//每7 option為1題
 					$new_num = $j+2;
 					$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);	
