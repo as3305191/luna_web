@@ -749,8 +749,6 @@ class Question_option extends MY_Mgmt_Controller {
 						$objWorkSheet->mergeCells("A".$mergeCells.":A".$mergeCells_3)->setCellValue($all_cell_name[0].$new_num, $cell_title[$cell_title_i]); 
 					}
 			    }
-				$objWorkSheet->mergeCells("A2:A5")->setCellValue('A2', $cell_title[0]); 
-				$objWorkSheet->mergeCells("A6:A9")->setCellValue('A6', $cell_title[1]); 
 
 				$t1_style = ['肢體暴力','語言暴力','心理暴力','性騷擾'];
 				for ($j=0;$j<count($question_ans_list);$j++){//每7 option為1題
