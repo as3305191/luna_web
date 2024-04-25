@@ -740,7 +740,7 @@ class Question_option extends MY_Mgmt_Controller {
 				'是否有同仁離職或請求調職原因源於職場不法侵害事件之發生','是否有被同仁排擠或工作適應不良者','內部是否有酗酒、毒癮之工作者',
 				'內部是否有處於情緒低落、絕望或恐懼，極需被關懷照顧工作者','是否有超時工作，反應工作壓力大工作者','工作環境是否有空間擁擠，照明設備不足問題，工作場所出入是否未有相當管制措施'];
 				$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
-				for ($i=0;$i<count($cell_title);$i++){
+				for ($i=0;$i<count($cell_title)*4;$i++){
 					$new_num = $i+2;
 					$mergeCells = $i+1;
 					$mergeCells_3 = $i+4;
