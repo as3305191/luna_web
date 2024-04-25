@@ -583,7 +583,7 @@ class Question_for_user extends MY_Mgmt_Controller {
 
 
 
-		$data['user_id'] = $login_user->id;
+		$data['user_id'] = $find_dep_list->id;
 		// $data['qid'] = $qid;
 		$data['q1'] = $q1;
 		$data['q2'] = $q2;
