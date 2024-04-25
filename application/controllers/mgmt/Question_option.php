@@ -761,32 +761,39 @@ class Question_option extends MY_Mgmt_Controller {
 					}
 
 			    }
-
-				
-				for ($j=0;$j<count($question_ans_list);$j++){//每7 option為1題
-					$new_num = $j+3;
-					$new_num_3 = $j+3;
-					$new_num_4 = $j+4;
-					$ans_1_title = "q".($new_num_3);
-					$ans_2_title = "q".($new_num_4);
-					// if($question_ans_list[$j]->$ans_1_title==''){
-					// 	$first_num = 0;
-					// } else{
-					// 	$first_num = implode(",", $question_ans_list[$j]->$ans_1_title);
-					// }
-					// if($question_ans_list[$j]->$ans_2_title==''){
-					// 	$last_num = 0;
-					// } else{
-					// 	// $last_num = $question_ans_list[$j]->$ans_2_title;
-					// 	$last_num = implode(",", $question_ans_list[$j]->$ans_2_title);
-
-					// }
-					// $ans_1 = $first_num * $last_num;
-					$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
-					$objWorkSheet->setCellValue($all_cell_name[$new_num].'2', $ans_1_title);
-					// $objWorkSheet->setCellValue($all_cell_name[$new_num].'3', $last_num);
-
+				for($x=0;$x<23;$x++){
+					$new_num_x = $x+3;
+					$new_num_3_x = $x+3;
+					$new_num_4_X = $x+4;
+					$ans_1_title = "q".($new_num_3_x);
+					$ans_2_title = "q".($new_num_4_X);
+					if($question_ans_list[$x]->$ans_1_title==''){
+							$first_num = 0;
+						} else{
+							$first_num = implode(",", $question_ans_list[$x]->$ans_1_title);
+						}
+						if($question_ans_list[$x]->$ans_2_title==''){
+							$last_num = 0;
+						} else{
+							// $last_num = $question_ans_list[$j]->$ans_2_title;
+							$last_num = implode(",", $question_ans_list[$x]->$ans_2_title);
+	
+						}
+						$ans_1 = $first_num * $last_num;
+					for ($j=0;$j<count($question_ans_list);$j++){//每7 option為1題
+						$new_num = $j+3;
+						$new_num_3 = $j+3;
+						$new_num_4 = $j+4;
+						
+						
+						
+						$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
+						$objWorkSheet->setCellValue($all_cell_name[$new_num].'2', $$ans_1);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'3', $last_num);
+	
+					}
 				}
+				
 				$objWorkSheet->setTitle($question_style->question_style_name.$note);
 	
 				break;
