@@ -765,8 +765,8 @@ class Question_option extends MY_Mgmt_Controller {
 				
 				for ($j=0;$j<count($question_ans_list);$j++){//每7 option為1題
 					$new_num = $j+3;
-					$ans_1_title = "q".$j+3;
-					$ans_2_title = "q".$j+4;
+					$ans_1_title = "q".($j+3);
+					$ans_2_title = "q".($j+4);
 
 					$ans_1 =intval($question_ans_list[$j]->$ans_1_title)*intval($question_ans_list[$j]->$ans_2_title);
 					$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
