@@ -751,7 +751,6 @@ class Question_option extends MY_Mgmt_Controller {
 				$t1_style = ['肢體暴力','語言暴力','心理暴力','性騷擾'];
 				for ($j=0;$j<count($question_ans_list);$j++){//每7 option為1題
 					$new_num = $j+2;
-					$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $t1_style[$j]);	
 					$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);	
 				}
 				$objWorkSheet->setTitle($question_style->question_style_name.$note);
@@ -785,7 +784,6 @@ class Question_option extends MY_Mgmt_Controller {
 			$find_dep_list = $find_dep;
 		} else{
 			$find_dep_list = $this -> d_dao -> find_by("id",$find_dep->parent_id);
-
 		}
 		foreach($list as $key => $value){
 			if(substr($key, 0, 1)=='q'&&substr($key, 1, 1)!=='u'&&$value!==null){
