@@ -32,6 +32,14 @@ class Question_for_user extends MY_Mgmt_Controller {
 			} else{
 				$under_role_list = $this -> d_dao -> find_under_roles($login_user->role_id);
 			}
+			
+		}
+		if($login_user->role_id=='53'){//東錦權限轉五甲
+			$under_role_list = $this -> d_dao -> find_under_roles(34);
+
+		}
+		if($login_user->role_id=='53'){//林秀權限轉業務
+			$under_role_list = $this -> d_dao -> find_under_roles(6);
 		}
 		if(empty($under_role_list)){
 			$under_role_list= $this -> d_dao -> find_by_this_id($login_user->role_id);
