@@ -744,8 +744,9 @@ class Question_option extends MY_Mgmt_Controller {
 					$new_num = $i+2;
 					$mergeCells = $i+1;
 					$mergeCells_3 = $i+4;
+					$cell_title_i = $i/4;
 					if(($i+1)%4==1||$i==0){
-						$objWorkSheet->mergeCells("A".$mergeCells.":A".$mergeCells_3)->setCellValue($all_cell_name[0].$new_num, $cell_title[$i]); 
+						$objWorkSheet->mergeCells("A".$mergeCells.":A".$mergeCells_3)->setCellValue($all_cell_name[0].$new_num, $cell_title[$cell_title_i]); 
 					}
 			    }
 				$t1_style = ['肢體暴力','語言暴力','心理暴力','性騷擾'];
