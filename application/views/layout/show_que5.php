@@ -301,7 +301,7 @@
         
       } else{
           class_num = className.substr(1);
-          if(parseInt(class_num)==2){
+          if(parseInt(class_num)==2||parseInt(class_num)==6){
             var valArray = radioValue.split(",");
             valArray.forEach(function(value){
               if(radios[i].value == value){
