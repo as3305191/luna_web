@@ -769,8 +769,17 @@ class Question_option extends MY_Mgmt_Controller {
 					$new_num_4 = $j+4;
 					$ans_1_title = "q".($new_num_3);
 					$ans_2_title = "q".($new_num_4);
-
-					$ans_1 =intval($question_ans_list[$j]->$ans_1_title)*intval($question_ans_list[$j]->$ans_2_title);
+					if($question_ans_list[$j]->$ans_1_title==''){
+						$first_num = 0;
+					} else{
+						$first_num = intval($question_ans_list[$j]->$ans_1_title);
+					}
+					if($question_ans_list[$j]->$ans_2_title==''){
+						$last_num = 0;
+					} else{
+						$last_num = intval($question_ans_list[$j]->$ans_2_title);
+					}
+					$ans_1 = $first_num * $last_num;
 					$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
 					$objWorkSheet->setCellValue($all_cell_name[$new_num].'2', $ans_1);
 
