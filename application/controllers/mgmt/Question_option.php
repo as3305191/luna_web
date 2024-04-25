@@ -752,7 +752,7 @@ class Question_option extends MY_Mgmt_Controller {
 					if($i<4){
 						$objWorkSheet->setCellValue($all_cell_name[1].$new_num, $t1_style[$i]); 
 					} else{
-						$newt1_style_i = ($i-2)%4;
+						$newt1_style_i = $i%4;
 						$objWorkSheet->setCellValue($all_cell_name[1].$new_num, $t1_style[$newt1_style_i]); 
 					}
 
