@@ -810,7 +810,7 @@ class Question_option extends MY_Mgmt_Controller {
 									$xx_2 = ($x*4)+2;
 									$nnew_x = $xx_2+$y;
 									$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
-									$horizontal_sum['list'.$nnew_x][]=$ans;
+									$horizontal_sum[$nnew_x][]=$ans;
 									$each_total_sum +=intval($ans);
 								}
 							}
@@ -825,7 +825,7 @@ class Question_option extends MY_Mgmt_Controller {
 								// 	$horizontal_sum_by_num=0;
 								// }
 								
-								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,$horizontal_sum[0]);
+								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,$horizontal_sum->$nnnew_x);
 							}
 						}
 						if($x==22){
