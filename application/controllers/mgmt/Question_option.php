@@ -783,7 +783,7 @@ class Question_option extends MY_Mgmt_Controller {
 						$val_2 = (explode(",",$question_ans_list[$j]->$get_2_val));
 						$val_3 = $question_ans_list[$j]->$get_3_val;
 						$val_4 = $question_ans_list[$j]->$get_4_val;
-
+						$key=array();
 						if(!empty($val_3)){
 							$ans_f = intval($val_3);
 						}
