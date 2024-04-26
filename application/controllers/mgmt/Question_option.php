@@ -816,7 +816,7 @@ class Question_option extends MY_Mgmt_Controller {
 						$ans_23_f = 0;
 						$ans_23_l = 0;
 
-						$ans_1_f = intval($question_ans_list[$j]->q3);
+						$ans_1_f = $question_ans_list[$j]->q3;
 						$ans_1_l = intval($question_ans_list[$j]->q4);
 						$ans_2_f = intval($question_ans_list[$j]->q10);
 						$ans_2_l = intval($question_ans_list[$j]->q11);
