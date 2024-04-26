@@ -817,15 +817,15 @@ class Question_option extends MY_Mgmt_Controller {
 
 							if($j==count($question_ans_list)-1){
 								$horizontal_sum_by_num = 0;
-								// if(isset($horizontal_sum[$nnnew_x])){
-								// 	foreach($horizontal_sum[$nnnew_x] as $each){
-								// 		$horizontal_sum_by_num+=intval($each);
-								// 	}
-								// } else{
-								// 	$horizontal_sum_by_num=0;
-								// }
+								if(isset($horizontal_sum[$nnnew_x])){
+									foreach($horizontal_sum[$nnnew_x] as $key => $value){
+										$horizontal_sum_by_num+=intval($value);
+									}
+								} else{
+									$horizontal_sum_by_num=0;
+								}
 								
-								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,$horizontal_sum[$nnnew_x]);
+								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,$horizontal_sum_by_num);
 							}
 						}
 						if($x==22){
