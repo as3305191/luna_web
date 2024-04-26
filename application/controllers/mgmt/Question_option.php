@@ -818,9 +818,9 @@ class Question_option extends MY_Mgmt_Controller {
 		// header("Content-Type: application/vnd.ms-excel");
 		header('Content-Type: text/html; charset=UTF8');
 		header('Content-Disposition: attachment; filename="'.$fileName.'"');
-		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');   
+		// $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');   
 
-		// $objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
 		$objWriter->setPreCalculateFormulas(true);
 
 		// download file
