@@ -768,7 +768,7 @@ class Question_option extends MY_Mgmt_Controller {
 					$new_num_3 = $j+3;
 					$new_num_4 = $j+4;
 					
-					
+						$ans_1_f = 0;
 						$ans_1_l = 0;
 						$ans_2_f = 0;
 						$ans_2_l = 0;
