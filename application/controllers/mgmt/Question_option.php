@@ -803,6 +803,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 						for($y=0;$y<4;$y++){
 							$xxx_2 = ($x*4)+2;
+							$nnew_x = $xxx_2+$y;
 							foreach($key as $each){
 								if($y==$each){
 									$xx_2 = ($x*4)+2;
@@ -814,7 +815,7 @@ class Question_option extends MY_Mgmt_Controller {
 							}
 
 							if($j==count($question_ans_list)-1){
-								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$xxx_2,'total');
+								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnew_x,'total');
 							}
 						}
 						if($x==22){
