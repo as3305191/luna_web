@@ -726,6 +726,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 			break;
 			case 5:
+				error_reporting(E_ALL);
 				$num_b=array();
 				for($num=1;$num<=1000;$num++){
 					$num_b[] =$num;
@@ -876,7 +877,7 @@ class Question_option extends MY_Mgmt_Controller {
 		
 							// }
 							// $ans_1 = $first_num * $last_num;
-						$ans_1 = $question_ans_list[$j]->q3 * $question_ans_list[$j]->q4;
+						$ans_1 = intval($question_ans_list[$j]->q3) * intval($question_ans_list[$j]->q4);
 						// $ans_2 = $ans_2_f * $ans_2_l;
 						// $ans_3 = $ans_3_f * $ans_3_l;
 						// $ans_4 = $ans_4_f * $ans_4_l;
