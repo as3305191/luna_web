@@ -768,7 +768,7 @@ class Question_option extends MY_Mgmt_Controller {
 					$new_num_4 = $j+4;
 					
 					$ans_1_f = 0;
-					if($question_ans_list[$j]->q3!==''){
+					if(!empty($question_ans_list[$j]->q3)){
 						$ans_1_f = $question_ans_list[$j]->q3;
 					}
 						$ans_1_l = 0;
