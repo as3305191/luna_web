@@ -814,192 +814,215 @@ class Question_option extends MY_Mgmt_Controller {
 						$ans_22_l = 0;
 						$ans_23_f = 0;
 						$ans_23_l = 0;
+						for($x=0;$x<23;$x++){
+							$ans_f = 0 ;
+							$ans_l = 0 ;
+							$x_1 = $x+1;
+							$x_2 = $x+2;
+							$x_3 = $x+3;
+							$x_4 = $x+4;
+							$get_2_val = 'q'.(($x*4)+$x_2);
+							$get_3_val = 'q'.(($x*4)+$x_3);
+							$get_4_val = 'q'.(($x*4)+$x_4);
+							$val_2 = $question_ans_list[$j]->$get_2_val;
+							$val_3 = $question_ans_list[$j]->$get_3_val;
+							$val_4 = $question_ans_list[$j]->$get_4_val;
+
+							if(!empty($val_3)){
+								$ans_f = intval($val_3);
+							}
+							if(!empty($val_3)){
+								$ans_l = intval($val_4);
+							}		
+							$ans_1 = $ans_f * $ans_l;
+							$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
+							$objWorkSheet->setCellValue($all_cell_name[$new_num].'2', $ans_1);
+						}
+
+						// if(!empty($question_ans_list[$j]->q3)){
+						// 	$ans_1_f = intval($question_ans_list[$j]->q3);
+						// }
+						// if(!empty($question_ans_list[$j]->q4)){
+						// 	$ans_1_l = intval($question_ans_list[$j]->q4);
+						// }
+						// if(!empty($question_ans_list[$j]->q10)){
+						// 	$ans_2_f = intval($question_ans_list[$j]->q10);
+						// }
+						// if(!empty($question_ans_list[$j]->q11)){
+						// 	$ans_2_l = intval($question_ans_list[$j]->q11);
+						// }
+						// if(!empty($question_ans_list[$j]->q17)){
+						// 	$ans_3_f = intval($question_ans_list[$j]->q17);
+						// }
+						// if(!empty($question_ans_list[$j]->q18)){
+						// 	$ans_3_l = intval($question_ans_list[$j]->q18);
+						// }
+						// if(!empty($question_ans_list[$j]->q24)){
+						// 	$ans_4_f = intval($question_ans_list[$j]->q24);
+						// }
+						// if(!empty($question_ans_list[$j]->q25)){
+						// 	$ans_4_l = intval($question_ans_list[$j]->q25);
+						// }					
+						// if(!empty($question_ans_list[$j]->q31)){
+						// 	$ans_5_f = intval($question_ans_list[$j]->q31);
+						// }	
+						// if(!empty($question_ans_list[$j]->q32)){
+						// 	$ans_5_l = intval($question_ans_list[$j]->q32);
+						// }	
+						// if(!empty($question_ans_list[$j]->q38)){
+						// 	$ans_6_f = intval($question_ans_list[$j]->q38);
+						// }	
+						// if(!empty($question_ans_list[$j]->q39)){
+						// 	$ans_6_l = intval($question_ans_list[$j]->q39);
+						// }	
+						// if(!empty($question_ans_list[$j]->q45)){
+						// 	$ans_7_f = intval($question_ans_list[$j]->q45);
+						// }	
+						// if(!empty($question_ans_list[$j]->q46)){
+						// 	$ans_7_l = intval($question_ans_list[$j]->q46);
+						// }	
+						// if(!empty($question_ans_list[$j]->q52)){
+						// 	$ans_8_f = intval($question_ans_list[$j]->q52);
+						// }	
+						// if(!empty($question_ans_list[$j]->q53)){
+						// 	$ans_8_l = intval($question_ans_list[$j]->q53);
+						// }
+						// if(!empty($question_ans_list[$j]->q59)){
+						// 	$ans_9_f = intval($question_ans_list[$j]->q59);
+						// }	
+						// if(!empty($question_ans_list[$j]->q60)){
+						// 	$ans_9_l = intval($question_ans_list[$j]->q60);
+						// }	
+						// if(!empty($question_ans_list[$j]->q66)){
+						// 	$ans_10_f = intval($question_ans_list[$j]->q66);
+						// }	
+						// if(!empty($question_ans_list[$j]->q67)){
+						// 	$ans_10_l = intval($question_ans_list[$j]->q67);
+						// }	
+						// if(!empty($question_ans_list[$j]->q73)){
+						// 	$ans_11_f = intval($question_ans_list[$j]->q73);
+						// }	
+						// if(!empty($question_ans_list[$j]->q74)){
+						// 	$ans_11_l = intval($question_ans_list[$j]->q74);
+						// }	
+						// if(!empty($question_ans_list[$j]->q80)){
+						// 	$ans_12_f = intval($question_ans_list[$j]->q80);
+						// }	
+						// if(!empty($question_ans_list[$j]->q81)){
+						// 	$ans_12_l = intval($question_ans_list[$j]->q81);
+						// }	
+						// if(!empty($question_ans_list[$j]->q87)){
+						// 	$ans_13_f = intval($question_ans_list[$j]->q87);
+						// }	
+						// if(!empty($question_ans_list[$j]->q88)){
+						// 	$ans_13_l = intval($question_ans_list[$j]->q88);
+						// }	
+						// if(!empty($question_ans_list[$j]->q94)){
+						// 	$ans_14_f = intval($question_ans_list[$j]->q94);
+						// }	
+						// if(!empty($question_ans_list[$j]->q95)){
+						// 	$ans_14_l = intval($question_ans_list[$j]->q95);
+						// }	
+						// if(!empty($question_ans_list[$j]->q101)){
+						// 	$ans_15_f = intval($question_ans_list[$j]->q101);
+						// }	
+						// if(!empty($question_ans_list[$j]->q102)){
+						// 	$ans_15_l = intval($question_ans_list[$j]->q102);
+						// }	
+						// if(!empty($question_ans_list[$j]->q108)){
+						// 	$ans_16_f = intval($question_ans_list[$j]->q108);
+						// }	
+						// if(!empty($question_ans_list[$j]->q109)){
+						// 	$ans_16_l = intval($question_ans_list[$j]->q109);
+						// }	
+						// if(!empty($question_ans_list[$j]->q115)){
+						// 	$ans_17_f = intval($question_ans_list[$j]->q115);
+						// }	
+						// if(!empty($question_ans_list[$j]->q116)){
+						// 	$ans_17_l = intval($question_ans_list[$j]->q116);
+						// }	
+						// if(!empty($question_ans_list[$j]->q122)){
+						// 	$ans_18_f = intval($question_ans_list[$j]->q122);
+						// }	
+						// if(!empty($question_ans_list[$j]->q123)){
+						// 	$ans_18_l = intval($question_ans_list[$j]->q123);
+						// }	
+						// if(!empty($question_ans_list[$j]->q129)){
+						// 	$ans_19_f = intval($question_ans_list[$j]->q129);
+						// }	
+						// if(!empty($question_ans_list[$j]->q130)){
+						// 	$ans_19_l = intval($question_ans_list[$j]->q130);
+						// }
+						// if(!empty($question_ans_list[$j]->q136)){
+						// 	$ans_20_f = intval($question_ans_list[$j]->q136);
+						// }
+						// if(!empty($question_ans_list[$j]->q137)){
+						// 	$ans_20_l = intval($question_ans_list[$j]->q137);
+						// }
+						// if(!empty($question_ans_list[$j]->q143)){
+						// 	$ans_21_f = intval($question_ans_list[$j]->q143);
+						// }
+						// if(!empty($question_ans_list[$j]->q144)){
+						// 	$ans_21_f = intval($question_ans_list[$j]->q144);
+						// }
+						// if(!empty($question_ans_list[$j]->q150)){
+						// 	$ans_22_f = intval($question_ans_list[$j]->q150);
+						// }
+						// if(!empty($question_ans_list[$j]->q151)){
+						// 	$ans_22_l = intval($question_ans_list[$j]->q151);
+						// }
+						// if(!empty($question_ans_list[$j]->q157)){
+						// 	$ans_23_f = intval($question_ans_list[$j]->q157);
+						// }
+						// if(!empty($question_ans_list[$j]->q158)){
+						// 	$ans_23_f = intval($question_ans_list[$j]->q158);
+						// }
+						// $ans_1 = $ans_1_f * $ans_1_l;
+						// $ans_2 = $ans_2_f * $ans_2_l;
+						// $ans_3 = $ans_3_f * $ans_3_l;
+						// $ans_4 = $ans_4_f * $ans_4_l;
+						// $ans_5 = $ans_5_f * $ans_5_l;
+						// $ans_6 = $ans_6_f * $ans_6_l;
+						// $ans_7 = $ans_7_f * $ans_7_l;
+						// $ans_8 = $ans_8_f * $ans_8_l;
+						// $ans_9 = $ans_9_f * $ans_9_l;
+						// $ans_10 = $ans_10_f * $ans_10_l;
+						// $ans_11 = $ans_11_f * $ans_11_l;
+						// $ans_12 = $ans_12_f * $ans_12_l;
+						// $ans_13 = $ans_13_f * $ans_13_l;
+						// $ans_14 = $ans_14_f * $ans_14_l;
+						// $ans_15 = $ans_15_f * $ans_15_l;
+						// $ans_16 = $ans_16_f * $ans_16_l;
+						// $ans_17 = $ans_17_f * $ans_17_l;
+						// $ans_18 = $ans_18_f * $ans_18_l;
+						// $ans_19 = $ans_19_f * $ans_19_l;
+						// $ans_20 = $ans_20_f * $ans_20_l;
+						// $ans_21 = $ans_21_f * $ans_21_l;
+						// $ans_22 = $ans_22_f * $ans_22_l;
+						// $ans_23 = $ans_23_f * $ans_23_l;
 						
-						if(!empty($question_ans_list[$j]->q3)){
-							$ans_1_f = intval($question_ans_list[$j]->q3);
-						}
-						if(!empty($question_ans_list[$j]->q4)){
-							$ans_1_l = intval($question_ans_list[$j]->q4);
-						}
-						if(!empty($question_ans_list[$j]->q10)){
-							$ans_2_f = intval($question_ans_list[$j]->q10);
-						}
-						if(!empty($question_ans_list[$j]->q11)){
-							$ans_2_l = intval($question_ans_list[$j]->q11);
-						}
-						if(!empty($question_ans_list[$j]->q17)){
-							$ans_3_f = intval($question_ans_list[$j]->q17);
-						}
-						if(!empty($question_ans_list[$j]->q18)){
-							$ans_3_l = intval($question_ans_list[$j]->q18);
-						}
-						if(!empty($question_ans_list[$j]->q24)){
-							$ans_4_f = intval($question_ans_list[$j]->q24);
-						}
-						if(!empty($question_ans_list[$j]->q25)){
-							$ans_4_l = intval($question_ans_list[$j]->q25);
-						}					
-						if(!empty($question_ans_list[$j]->q31)){
-							$ans_5_f = intval($question_ans_list[$j]->q31);
-						}	
-						if(!empty($question_ans_list[$j]->q32)){
-							$ans_5_l = intval($question_ans_list[$j]->q32);
-						}	
-						if(!empty($question_ans_list[$j]->q38)){
-							$ans_6_f = intval($question_ans_list[$j]->q38);
-						}	
-						if(!empty($question_ans_list[$j]->q39)){
-							$ans_6_l = intval($question_ans_list[$j]->q39);
-						}	
-						if(!empty($question_ans_list[$j]->q45)){
-							$ans_7_f = intval($question_ans_list[$j]->q45);
-						}	
-						if(!empty($question_ans_list[$j]->q46)){
-							$ans_7_l = intval($question_ans_list[$j]->q46);
-						}	
-						if(!empty($question_ans_list[$j]->q52)){
-							$ans_8_f = intval($question_ans_list[$j]->q52);
-						}	
-						if(!empty($question_ans_list[$j]->q53)){
-							$ans_8_l = intval($question_ans_list[$j]->q53);
-						}
-						if(!empty($question_ans_list[$j]->q59)){
-							$ans_9_f = intval($question_ans_list[$j]->q59);
-						}	
-						if(!empty($question_ans_list[$j]->q60)){
-							$ans_9_l = intval($question_ans_list[$j]->q60);
-						}	
-						if(!empty($question_ans_list[$j]->q66)){
-							$ans_10_f = intval($question_ans_list[$j]->q66);
-						}	
-						if(!empty($question_ans_list[$j]->q67)){
-							$ans_10_l = intval($question_ans_list[$j]->q67);
-						}	
-						if(!empty($question_ans_list[$j]->q73)){
-							$ans_11_f = intval($question_ans_list[$j]->q73);
-						}	
-						if(!empty($question_ans_list[$j]->q74)){
-							$ans_11_l = intval($question_ans_list[$j]->q74);
-						}	
-						if(!empty($question_ans_list[$j]->q80)){
-							$ans_12_f = intval($question_ans_list[$j]->q80);
-						}	
-						if(!empty($question_ans_list[$j]->q81)){
-							$ans_12_l = intval($question_ans_list[$j]->q81);
-						}	
-						if(!empty($question_ans_list[$j]->q87)){
-							$ans_13_f = intval($question_ans_list[$j]->q87);
-						}	
-						if(!empty($question_ans_list[$j]->q88)){
-							$ans_13_l = intval($question_ans_list[$j]->q88);
-						}	
-						if(!empty($question_ans_list[$j]->q94)){
-							$ans_14_f = intval($question_ans_list[$j]->q94);
-						}	
-						if(!empty($question_ans_list[$j]->q95)){
-							$ans_14_l = intval($question_ans_list[$j]->q95);
-						}	
-						if(!empty($question_ans_list[$j]->q101)){
-							$ans_15_f = intval($question_ans_list[$j]->q101);
-						}	
-						if(!empty($question_ans_list[$j]->q102)){
-							$ans_15_l = intval($question_ans_list[$j]->q102);
-						}	
-						if(!empty($question_ans_list[$j]->q108)){
-							$ans_16_f = intval($question_ans_list[$j]->q108);
-						}	
-						if(!empty($question_ans_list[$j]->q109)){
-							$ans_16_l = intval($question_ans_list[$j]->q109);
-						}	
-						if(!empty($question_ans_list[$j]->q115)){
-							$ans_17_f = intval($question_ans_list[$j]->q115);
-						}	
-						if(!empty($question_ans_list[$j]->q116)){
-							$ans_17_l = intval($question_ans_list[$j]->q116);
-						}	
-						if(!empty($question_ans_list[$j]->q122)){
-							$ans_18_f = intval($question_ans_list[$j]->q122);
-						}	
-						if(!empty($question_ans_list[$j]->q123)){
-							$ans_18_l = intval($question_ans_list[$j]->q123);
-						}	
-						if(!empty($question_ans_list[$j]->q129)){
-							$ans_19_f = intval($question_ans_list[$j]->q129);
-						}	
-						if(!empty($question_ans_list[$j]->q130)){
-							$ans_19_l = intval($question_ans_list[$j]->q130);
-						}
-						if(!empty($question_ans_list[$j]->q136)){
-							$ans_20_f = intval($question_ans_list[$j]->q136);
-						}
-						if(!empty($question_ans_list[$j]->q137)){
-							$ans_20_l = intval($question_ans_list[$j]->q137);
-						}
-						if(!empty($question_ans_list[$j]->q143)){
-							$ans_21_f = intval($question_ans_list[$j]->q143);
-						}
-						if(!empty($question_ans_list[$j]->q144)){
-							$ans_21_f = intval($question_ans_list[$j]->q144);
-						}
-						if(!empty($question_ans_list[$j]->q150)){
-							$ans_22_f = intval($question_ans_list[$j]->q150);
-						}
-						if(!empty($question_ans_list[$j]->q151)){
-							$ans_22_l = intval($question_ans_list[$j]->q151);
-						}
-						if(!empty($question_ans_list[$j]->q157)){
-							$ans_23_f = intval($question_ans_list[$j]->q157);
-						}
-						if(!empty($question_ans_list[$j]->q158)){
-							$ans_23_f = intval($question_ans_list[$j]->q158);
-						}
-						$ans_1 = $ans_1_f * $ans_1_l;
-						$ans_2 = $ans_2_f * $ans_2_l;
-						$ans_3 = $ans_3_f * $ans_3_l;
-						$ans_4 = $ans_4_f * $ans_4_l;
-						$ans_5 = $ans_5_f * $ans_5_l;
-						$ans_6 = $ans_6_f * $ans_6_l;
-						$ans_7 = $ans_7_f * $ans_7_l;
-						$ans_8 = $ans_8_f * $ans_8_l;
-						$ans_9 = $ans_9_f * $ans_9_l;
-						$ans_10 = $ans_10_f * $ans_10_l;
-						$ans_11 = $ans_11_f * $ans_11_l;
-						$ans_12 = $ans_12_f * $ans_12_l;
-						$ans_13 = $ans_13_f * $ans_13_l;
-						$ans_14 = $ans_14_f * $ans_14_l;
-						$ans_15 = $ans_15_f * $ans_15_l;
-						$ans_16 = $ans_16_f * $ans_16_l;
-						$ans_17 = $ans_17_f * $ans_17_l;
-						$ans_18 = $ans_18_f * $ans_18_l;
-						$ans_19 = $ans_19_f * $ans_19_l;
-						$ans_20 = $ans_20_f * $ans_20_l;
-						$ans_21 = $ans_21_f * $ans_21_l;
-						$ans_22 = $ans_22_f * $ans_22_l;
-						$ans_23 = $ans_23_f * $ans_23_l;
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'2', $ans_1);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'3', $ans_2);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'4', $ans_3);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'5', $ans_4);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'6', $ans_5);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'7', $ans_6);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'8', $ans_7);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'9', $ans_8);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'10', $ans_9);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'11', $ans_10);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'12', $ans_11);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'13', $ans_12);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'14', $ans_13);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'15', $ans_14);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'16', $ans_15);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'17', $ans_16);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'18', $ans_17);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'19', $ans_18);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'20', $ans_19);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'21', $ans_20);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'22', $ans_21);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'23', $ans_22);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'24', $ans_23);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'3', $ans_2);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'4', $ans_3);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'5', $ans_4);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'6', $ans_5);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'7', $ans_6);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'8', $ans_7);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'9', $ans_8);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'10', $ans_9);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'11', $ans_10);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'12', $ans_11);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'13', $ans_12);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'14', $ans_13);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'15', $ans_14);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'16', $ans_15);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'17', $ans_16);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'18', $ans_17);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'19', $ans_18);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'20', $ans_19);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'21', $ans_20);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'22', $ans_21);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'23', $ans_22);
+						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'24', $ans_23);
 
 						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'3', $last_num);
 	
