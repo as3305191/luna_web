@@ -814,7 +814,7 @@ class Question_option extends MY_Mgmt_Controller {
 		//code block
 		}
 
-		$file = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');   
+		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');   
 
 		// $objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
 		$objWriter->setPreCalculateFormulas(true);
