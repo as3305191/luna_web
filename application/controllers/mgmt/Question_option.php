@@ -12,6 +12,8 @@ class Question_option extends MY_Mgmt_Controller {
 		$this -> load -> model('Department_dao','d_dao');
 
 		$this -> load-> library('word');
+		$this -> load-> library('PHPExcel');
+
 	}
 
 	public function index()
@@ -818,9 +820,9 @@ class Question_option extends MY_Mgmt_Controller {
 		// header("Content-Type: application/vnd.ms-excel");
 		header('Content-Type: text/html; charset=UTF8');
 		header('Content-Disposition: attachment; filename="'.$fileName.'"');
-		// $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');   
+		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');   
 
-		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+		// $objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
 		$objWriter->setPreCalculateFormulas();
 
 		// download file
