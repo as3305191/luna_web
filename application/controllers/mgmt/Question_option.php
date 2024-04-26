@@ -816,12 +816,11 @@ class Question_option extends MY_Mgmt_Controller {
 
 		
 		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+		$objWriter->setPreCalculateFormulas(true);
 
 		// download file
 		header("Content-Type: application/vnd.ms-excel");
 		header('Content-Disposition: attachment; filename="'.$fileName.'"');
-		$objWriter->setPreCalculateFormulas(true);
-		// $writer = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 		$objWriter->save('php://output');
 	}
 
