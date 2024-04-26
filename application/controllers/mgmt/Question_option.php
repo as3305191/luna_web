@@ -784,7 +784,6 @@ class Question_option extends MY_Mgmt_Controller {
 						$val_3 = $question_ans_list[$j]->$get_3_val;
 						$val_4 = $question_ans_list[$j]->$get_4_val;
 						$key=array();
-						$horizontal_sum = array();
 						if(!empty($val_3)){
 							$ans_f = intval($val_3);
 						}
@@ -809,6 +808,7 @@ class Question_option extends MY_Mgmt_Controller {
 								if($y==$each){
 									$xx_2 = ($x*4)+2;
 									$nnew_x = $xx_2+$y;
+									$horizontal_sum[$nnew_x] = array();
 									$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
 									$horizontal_sum[$nnew_x][]=$ans;
 									$each_total_sum +=intval($ans);
