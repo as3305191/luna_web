@@ -813,15 +813,17 @@ class Question_option extends MY_Mgmt_Controller {
 		default:
 		//code block
 		}
-
+		header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Cache-Control: max-age=0');
+		header("Content-Type: application/vnd.ms-excel");
+		header('Content-Disposition: attachment; filename="'.$fileName.'"');
 		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');   
 
 		// $objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
 		$objWriter->setPreCalculateFormulas(true);
 
 		// download file
-		header("Content-Type: application/vnd.ms-excel");
-		header('Content-Disposition: attachment; filename="'.$fileName.'"');
+		
 		$objWriter->save('php://output');
 	}
 
