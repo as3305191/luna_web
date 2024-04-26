@@ -815,7 +815,8 @@ class Question_option extends MY_Mgmt_Controller {
 		}
 		header('Content-type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
 		header('Cache-Control: max-age=0');
-		header("Content-Type: application/vnd.ms-excel");
+		// header("Content-Type: application/vnd.ms-excel");
+		header('Content-Type: text/html; charset=UTF8');
 		header('Content-Disposition: attachment; filename="'.$fileName.'"');
 		$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');   
 
