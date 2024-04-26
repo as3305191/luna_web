@@ -769,7 +769,12 @@ class Question_option extends MY_Mgmt_Controller {
 					
 					for($x=0;$x<23;$x++){
 						$new_num_x = $x+3;
-						$ans_1_f = 0;
+						if($question_ans_list[$j]->q3!==''){
+							$ans_1_f = intval($question_ans_list[$j]->q3);
+						} else{
+							$ans_1_f = 0;
+
+						}
 						$ans_1_l = 0;
 						$ans_2_f = 0;
 						$ans_2_l = 0;
@@ -815,53 +820,53 @@ class Question_option extends MY_Mgmt_Controller {
 						$ans_22_l = 0;
 						$ans_23_f = 0;
 						$ans_23_l = 0;
-
-						$ans_1_f = $question_ans_list[$j]->q3;
-						$ans_1_l = intval($question_ans_list[$j]->q4);
-						$ans_2_f = intval($question_ans_list[$j]->q10);
-						$ans_2_l = intval($question_ans_list[$j]->q11);
-						$ans_3_f = intval($question_ans_list[$j]->q17);
-						$ans_3_l = intval($question_ans_list[$j]->q18);
-						$ans_4_f = intval($question_ans_list[$j]->q24);
-						$ans_4_l = intval($question_ans_list[$j]->q25);
-						$ans_5_f = intval($question_ans_list[$j]->q31);
-						$ans_5_l = intval($question_ans_list[$j]->q32);
-						$ans_6_f = intval($question_ans_list[$j]->q38);
-						$ans_6_l = intval($question_ans_list[$j]->q39);
-						$ans_7_f = intval($question_ans_list[$j]->q45);
-						$ans_7_l = intval($question_ans_list[$j]->q46);
-						$ans_8_f = intval($question_ans_list[$j]->q52);
-						$ans_8_l = intval($question_ans_list[$j]->q53);
-						$ans_9_f = intval($question_ans_list[$j]->q59);
-						$ans_9_l = intval($question_ans_list[$j]->q60);
-						$ans_10_f = intval($question_ans_list[$j]->q66);
-						$ans_10_l = intval($question_ans_list[$j]->q67);
-						$ans_11_f = intval($question_ans_list[$j]->q73);
-						$ans_11_l = intval($question_ans_list[$j]->q74);
-						$ans_12_f = intval($question_ans_list[$j]->q80);
-						$ans_12_l = intval($question_ans_list[$j]->q81);
-						$ans_13_f = intval($question_ans_list[$j]->q87);
-						$ans_13_l = intval($question_ans_list[$j]->q88);
-						$ans_14_f = intval($question_ans_list[$j]->q94);
-						$ans_14_l = intval($question_ans_list[$j]->q95);
-						$ans_15_f = intval($question_ans_list[$j]->q101);
-						$ans_15_l = intval($question_ans_list[$j]->q102);
-						$ans_16_f = intval($question_ans_list[$j]->q108);
-						$ans_16_l = intval($question_ans_list[$j]->q109);
-						$ans_17_f = intval($question_ans_list[$j]->q115);
-						$ans_17_l = intval($question_ans_list[$j]->q116);
-						$ans_18_f = intval($question_ans_list[$j]->q122);
-						$ans_18_l = intval($question_ans_list[$j]->q123);
-						$ans_19_f = intval($question_ans_list[$j]->q129);
-						$ans_19_l = intval($question_ans_list[$j]->q130);
-						$ans_20_f = intval($question_ans_list[$j]->q136);
-						$ans_20_l = intval($question_ans_list[$j]->q137);
-						$ans_21_f = intval($question_ans_list[$j]->q143);
-						$ans_21_l = intval($question_ans_list[$j]->q144);
-						$ans_22_f = intval($question_ans_list[$j]->q150);
-						$ans_22_l = intval($question_ans_list[$j]->q151);
-						$ans_23_f = intval($question_ans_list[$j]->q157);
-						$ans_23_l = intval($question_ans_list[$j]->q158);
+						
+												
+						// $ans_1_l = intval($question_ans_list[$j]->q4);
+						// $ans_2_f = intval($question_ans_list[$j]->q10);
+						// $ans_2_l = intval($question_ans_list[$j]->q11);
+						// $ans_3_f = intval($question_ans_list[$j]->q17);
+						// $ans_3_l = intval($question_ans_list[$j]->q18);
+						// $ans_4_f = intval($question_ans_list[$j]->q24);
+						// $ans_4_l = intval($question_ans_list[$j]->q25);
+						// $ans_5_f = intval($question_ans_list[$j]->q31);
+						// $ans_5_l = intval($question_ans_list[$j]->q32);
+						// $ans_6_f = intval($question_ans_list[$j]->q38);
+						// $ans_6_l = intval($question_ans_list[$j]->q39);
+						// $ans_7_f = intval($question_ans_list[$j]->q45);
+						// $ans_7_l = intval($question_ans_list[$j]->q46);
+						// $ans_8_f = intval($question_ans_list[$j]->q52);
+						// $ans_8_l = intval($question_ans_list[$j]->q53);
+						// $ans_9_f = intval($question_ans_list[$j]->q59);
+						// $ans_9_l = intval($question_ans_list[$j]->q60);
+						// $ans_10_f = intval($question_ans_list[$j]->q66);
+						// $ans_10_l = intval($question_ans_list[$j]->q67);
+						// $ans_11_f = intval($question_ans_list[$j]->q73);
+						// $ans_11_l = intval($question_ans_list[$j]->q74);
+						// $ans_12_f = intval($question_ans_list[$j]->q80);
+						// $ans_12_l = intval($question_ans_list[$j]->q81);
+						// $ans_13_f = intval($question_ans_list[$j]->q87);
+						// $ans_13_l = intval($question_ans_list[$j]->q88);
+						// $ans_14_f = intval($question_ans_list[$j]->q94);
+						// $ans_14_l = intval($question_ans_list[$j]->q95);
+						// $ans_15_f = intval($question_ans_list[$j]->q101);
+						// $ans_15_l = intval($question_ans_list[$j]->q102);
+						// $ans_16_f = intval($question_ans_list[$j]->q108);
+						// $ans_16_l = intval($question_ans_list[$j]->q109);
+						// $ans_17_f = intval($question_ans_list[$j]->q115);
+						// $ans_17_l = intval($question_ans_list[$j]->q116);
+						// $ans_18_f = intval($question_ans_list[$j]->q122);
+						// $ans_18_l = intval($question_ans_list[$j]->q123);
+						// $ans_19_f = intval($question_ans_list[$j]->q129);
+						// $ans_19_l = intval($question_ans_list[$j]->q130);
+						// $ans_20_f = intval($question_ans_list[$j]->q136);
+						// $ans_20_l = intval($question_ans_list[$j]->q137);
+						// $ans_21_f = intval($question_ans_list[$j]->q143);
+						// $ans_21_l = intval($question_ans_list[$j]->q144);
+						// $ans_22_f = intval($question_ans_list[$j]->q150);
+						// $ans_22_l = intval($question_ans_list[$j]->q151);
+						// $ans_23_f = intval($question_ans_list[$j]->q157);
+						// $ans_23_l = intval($question_ans_list[$j]->q158);
 							// if($question_ans_list[$x]->$ans_1_title==''){
 							// 	$first_num = 0;
 							// } else{
@@ -875,29 +880,29 @@ class Question_option extends MY_Mgmt_Controller {
 		
 							// }
 							// $ans_1 = $first_num * $last_num;
-						$ans_1 = $ans_1_f * $ans_1_l;
-						$ans_2 = $ans_2_f * $ans_2_l;
-						$ans_3 = $ans_3_f * $ans_3_l;
-						$ans_4 = $ans_4_f * $ans_4_l;
-						$ans_5 = $ans_5_f * $ans_5_l;
-						$ans_6 = $ans_6_f * $ans_6_l;
-						$ans_7 = $ans_7_f * $ans_7_l;
-						$ans_8 = $ans_8_f * $ans_8_l;
-						$ans_9 = $ans_9_f * $ans_9_l;
-						$ans_10 = $ans_10_f * $ans_10_l;
-						$ans_11 = $ans_11_f * $ans_11_l;
-						$ans_12 = $ans_12_f * $ans_12_l;
-						$ans_13 = $ans_13_f * $ans_13_l;
-						$ans_14 = $ans_14_f * $ans_14_l;
-						$ans_15 = $ans_15_f * $ans_15_l;
-						$ans_16 = $ans_16_f * $ans_16_l;
-						$ans_17 = $ans_17_f * $ans_17_l;
-						$ans_18 = $ans_18_f * $ans_18_l;
-						$ans_19 = $ans_19_f * $ans_19_l;
-						$ans_20 = $ans_20_f * $ans_20_l;
-						$ans_21 = $ans_21_f * $ans_21_l;
-						$ans_22 = $ans_22_f * $ans_22_l;
-						$ans_23 = $ans_23_f * $ans_23_l;
+						// $ans_1 = $ans_1_f * $ans_1_l;
+						// $ans_2 = $ans_2_f * $ans_2_l;
+						// $ans_3 = $ans_3_f * $ans_3_l;
+						// $ans_4 = $ans_4_f * $ans_4_l;
+						// $ans_5 = $ans_5_f * $ans_5_l;
+						// $ans_6 = $ans_6_f * $ans_6_l;
+						// $ans_7 = $ans_7_f * $ans_7_l;
+						// $ans_8 = $ans_8_f * $ans_8_l;
+						// $ans_9 = $ans_9_f * $ans_9_l;
+						// $ans_10 = $ans_10_f * $ans_10_l;
+						// $ans_11 = $ans_11_f * $ans_11_l;
+						// $ans_12 = $ans_12_f * $ans_12_l;
+						// $ans_13 = $ans_13_f * $ans_13_l;
+						// $ans_14 = $ans_14_f * $ans_14_l;
+						// $ans_15 = $ans_15_f * $ans_15_l;
+						// $ans_16 = $ans_16_f * $ans_16_l;
+						// $ans_17 = $ans_17_f * $ans_17_l;
+						// $ans_18 = $ans_18_f * $ans_18_l;
+						// $ans_19 = $ans_19_f * $ans_19_l;
+						// $ans_20 = $ans_20_f * $ans_20_l;
+						// $ans_21 = $ans_21_f * $ans_21_l;
+						// $ans_22 = $ans_22_f * $ans_22_l;
+						// $ans_23 = $ans_23_f * $ans_23_l;
 						$objWorkSheet->setCellValue($all_cell_name[$new_num].($x+1), $question_ans_list[$j]->dep_name);
 						$objWorkSheet->setCellValue($all_cell_name[$new_num].($x+2), $ans_1_f);
 						// $objWorkSheet->setCellValue($all_cell_name[$new_num].($x+3), $ans_2);
