@@ -800,12 +800,14 @@ class Question_option extends MY_Mgmt_Controller {
 							$nnew_x = $xx_2+$y;
 							$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
 						}
+						if($x==22){
+							$objWorkSheet->setCellValue($all_cell_name[$new_num].'94','=SUM('.$all_cell_name[$new_num].'2:'.$all_cell_name[$new_num].'93)');
+						}
 					}
 
 				}
 				
 				$objWorkSheet->setTitle($question_style->question_style_name.$note);
-	
 				break;
 			
 		default:
@@ -818,6 +820,7 @@ class Question_option extends MY_Mgmt_Controller {
 		// download file
 		header("Content-Type: application/vnd.ms-excel");
 		header('Content-Disposition: attachment; filename="'.$fileName.'"');
+		$objWriter->setPreCalculateFormulas(true);
 		// $writer = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel5');
 		$objWriter->save('php://output');
 	}
