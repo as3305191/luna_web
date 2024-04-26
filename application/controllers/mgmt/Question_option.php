@@ -767,14 +767,13 @@ class Question_option extends MY_Mgmt_Controller {
 					$new_num_3 = $j+3;
 					$new_num_4 = $j+4;
 					
-					for($x=0;$x<23;$x++){
-						$new_num_x = $x+3;
-						// if($question_ans_list[$j]->q3!==''){
-						// 	$ans_1_f = $question_ans_list[$j]->q3;
-						// } else{
-						// 	$ans_1_f = 0;
+					
+						if(!empty($question_ans_list[$j]->q3)){
+							$ans_1_f = intval($question_ans_list[$j]->q3);
+						} else{
+							$ans_1_f = 0;
 
-						// }
+						}
 						$ans_1_l = 0;
 						$ans_2_f = 0;
 						$ans_2_l = 0;
@@ -903,8 +902,8 @@ class Question_option extends MY_Mgmt_Controller {
 						// $ans_21 = $ans_21_f * $ans_21_l;
 						// $ans_22 = $ans_22_f * $ans_22_l;
 						// $ans_23 = $ans_23_f * $ans_23_l;
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].($x+1), $question_ans_list[$j]->dep_name);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].($x+2), $question_ans_list[$j]->q3);
+						$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
+						$objWorkSheet->setCellValue($all_cell_name[$new_num].'2', $question_ans_list[$j]->q3);
 						// $objWorkSheet->setCellValue($all_cell_name[$new_num].($x+3), $ans_2);
 						// $objWorkSheet->setCellValue($all_cell_name[$new_num].($x+4), $ans_3);
 						// $objWorkSheet->setCellValue($all_cell_name[$new_num].($x+5), $ans_4);
@@ -930,7 +929,6 @@ class Question_option extends MY_Mgmt_Controller {
 
 						// $objWorkSheet->setCellValue($all_cell_name[$new_num].'3', $last_num);
 	
-					}
 				}
 				
 				$objWorkSheet->setTitle($question_style->question_style_name.$note);
