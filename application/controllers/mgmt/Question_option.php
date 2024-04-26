@@ -804,7 +804,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 						for($y=0;$y<4;$y++){
 							$xxx_2 = ($x*4)+2;
-							$nnew_x = $xxx_2+$y;
+							$nnnew_x = $xxx_2+$y;
 							foreach($key as $each){
 								if($y==$each){
 									$xx_2 = ($x*4)+2;
@@ -818,10 +818,10 @@ class Question_option extends MY_Mgmt_Controller {
 
 							if($j==count($question_ans_list)-1){
 								$horizontal_sum_by_num = 0;
-								foreach($horizontal_sum[$nnew_x] as $each){
+								foreach($horizontal_sum[$nnnew_x] as $each){
 									$horizontal_sum_by_num+=intval($each);
 								}
-								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnew_x,$horizontal_sum_by_num);
+								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,$horizontal_sum_by_num);
 							}
 						}
 						if($x==22){
