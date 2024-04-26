@@ -818,8 +818,10 @@ class Question_option extends MY_Mgmt_Controller {
 							if($j==count($question_ans_list)-1){
 								$horizontal_sum_by_num = 0;
 								if(isset($horizontal_sum[$nnnew_x])){
-									foreach($horizontal_sum[$nnnew_x] as $v_key => $value){
-										$horizontal_sum_by_num+=intval($value);
+									foreach($horizontal_sum as $v_key => $value){
+										if($v_key==$nnnew_x){
+											$horizontal_sum_by_num+=intval($value);
+										}
 									}
 								} else{
 									$horizontal_sum_by_num=0;
