@@ -814,6 +814,7 @@ class Question_option extends MY_Mgmt_Controller {
 						$ans_22_l = 0;
 						$ans_23_f = 0;
 						$ans_23_l = 0;
+						$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
 						for($x=0;$x<23;$x++){
 							$ans_f = 0 ;
 							$ans_l = 0 ;
@@ -835,8 +836,7 @@ class Question_option extends MY_Mgmt_Controller {
 								$ans_l = intval($val_4);
 							}		
 							$ans_1 = $ans_f * $ans_l;
-							$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
-							$objWorkSheet->setCellValue($all_cell_name[$new_num].'2', $ans_1);
+							$objWorkSheet->setCellValue($all_cell_name[$new_num].$x_2, $ans_1);
 						}
 
 						// if(!empty($question_ans_list[$j]->q3)){
