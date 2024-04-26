@@ -797,7 +797,7 @@ class Question_option extends MY_Mgmt_Controller {
 						}
 						for($y=0;$y<4;$y++){
 							$xx_2 = ($x*4)+2;
-							$nnew_x = $xx_2+$y+1;
+							$nnew_x = $xx_2+$y;
 							$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
 						}
 					}
