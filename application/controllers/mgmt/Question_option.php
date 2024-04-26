@@ -810,22 +810,22 @@ class Question_option extends MY_Mgmt_Controller {
 									$nnew_x = $xx_2+$y;
 									$horizontal_sum[$nnew_x] = array();
 									$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
-									$horizontal_sum[$nnew_x][]=$ans;
+									$horizontal_sum['list'.$nnew_x][]=$ans;
 									$each_total_sum +=intval($ans);
 								}
 							}
 
 							if($j==count($question_ans_list)-1){
 								$horizontal_sum_by_num = 0;
-								if(isset($horizontal_sum[$nnnew_x])){
-									foreach($horizontal_sum[$nnnew_x] as $each){
+								if(isset($horizontal_sum['list'.$nnnew_x])){
+									foreach($horizontal_sum['list'.$nnnew_x] as $each){
 										$horizontal_sum_by_num+=intval($each);
 									}
 								} else{
-									$horizontal_sum[$nnnew_x]=array();
+									$horizontal_sum['list'.$nnnew_x]=array();
 								}
 								
-								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,implode(",", $horizontal_sum[$nnnew_x]));
+								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,implode(",", $horizontal_sum['list'.$nnnew_x]));
 							}
 						}
 						if($x==22){
