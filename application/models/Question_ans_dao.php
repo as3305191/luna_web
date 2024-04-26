@@ -285,7 +285,7 @@ class Question_ans_dao extends MY_Model {
 		$this -> db -> select('d.name as dep_name');
 
 		$this -> db -> join("users u", "u.id = _m.user_id", "left");
-		$this -> db -> join("department d", "d.id = u.role_id", "left");
+		$this -> db -> join("department d", "d.id = _m.role_id", "left");
 		$this -> db -> join("question_option qo", "qo.id = _m.question_option_id", "left");
 		$this -> db -> join("question_style qs", "qs.id = qo.question_style_id", "left");
 
@@ -308,7 +308,7 @@ class Question_ans_dao extends MY_Model {
 		$this -> db -> select('d.name as dep_name');
 
 		$this -> db -> join("users u", "u.id = _m.user_id", "left");
-		$this -> db -> join("department d", "d.id = u.role_id", "left");
+		$this -> db -> join("department d", "d.id = _m.role_id", "left");
 		$this -> db -> join("question_option qo", "qo.id = _m.question_option_id", "left");
 		$this -> db -> join("question_style qs", "qs.id = qo.question_style_id", "left");
 
