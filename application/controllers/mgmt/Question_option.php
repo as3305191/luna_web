@@ -809,7 +809,7 @@ class Question_option extends MY_Mgmt_Controller {
 									$nnew_x = $xx_2+$y;
 									$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
 									// $objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, implode(",",$key));
-									$each_total_sum +=$ans;
+									$each_total_sum +=intval($ans);
 								}
 							}
 
