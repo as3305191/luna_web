@@ -823,7 +823,7 @@ class Question_option extends MY_Mgmt_Controller {
 										$horizontal_sum_by_num+=intval($each);
 									}
 								} else{
-									$horizontal_sum_by_num=0;
+									$horizontal_sum[$nnnew_x]=[];
 								}
 								
 								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,implode(",",$horizontal_sum[$nnnew_x]));
