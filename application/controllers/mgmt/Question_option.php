@@ -802,13 +802,15 @@ class Question_option extends MY_Mgmt_Controller {
 							$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
 						}
 						if($x==22){
-							$objWorkSheet->setCellValue($all_cell_name[$new_num].'94','=SUM('.$all_cell_name[$new_num].'2:'.$all_cell_name[$new_num].'93)');
+							$objWorkSheet->setCellValue($all_cell_name[$new_num].'94','=sum('.$all_cell_name[$new_num].'2:'.$all_cell_name[$new_num].'93)');
 						}
 					}
 
 				}
 				
 				$objWorkSheet->setTitle($question_style->question_style_name.$note);
+				$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
+				$objWriter->setPreCalculateFormulas(true);
 				break;
 			
 		default:
@@ -822,7 +824,7 @@ class Question_option extends MY_Mgmt_Controller {
 		// $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');   
 
 		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
-		$objWriter->setPreCalculateFormulas(false);
+		$objWriter->setPreCalculateFormulas(true);
 
 		// download file
 		
