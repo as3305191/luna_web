@@ -826,7 +826,7 @@ class Question_option extends MY_Mgmt_Controller {
 									$horizontal_sum_by_num=0;
 								}
 								
-								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,'total');
+								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,$nnnew_x);
 							}
 						}
 						if($x==22){
