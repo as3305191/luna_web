@@ -768,7 +768,7 @@ class Question_option extends MY_Mgmt_Controller {
 					$new_num_4 = $j+4;
 					
 					
-						if($question_ans_list[$j]->q3!==null){
+						if($question_ans_list[$j]->q3>0){
 							$ans_1_f = intval($question_ans_list[$j]->q3);
 						} else{
 							$ans_1_f = 0;
