@@ -768,7 +768,7 @@ class Question_option extends MY_Mgmt_Controller {
 					$new_num = $j+3;
 					$new_num_3 = $j+3;
 					$new_num_4 = $j+4;
-
+					$each_total_sum = 0;
 					$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
 					for($x=0;$x<23;$x++){
 						$ans_f = 0 ;
@@ -780,7 +780,7 @@ class Question_option extends MY_Mgmt_Controller {
 						$get_2_val = 'q'.(($x*4)+$x_2);
 						$get_3_val = 'q'.(($x*4)+$x_3);
 						$get_4_val = 'q'.(($x*4)+$x_4);
-						$val_2 = $question_ans_list[$j]->$get_2_val;
+						$val_2 = (explode(",",$question_ans_list[$j]->$get_2_val));
 						$val_3 = $question_ans_list[$j]->$get_3_val;
 						$val_4 = $question_ans_list[$j]->$get_4_val;
 
@@ -791,20 +791,35 @@ class Question_option extends MY_Mgmt_Controller {
 							$ans_l = intval($val_4);
 						}		
 						$ans_1 = $ans_f * $ans_l;
+						$each_total_sum += $ans_1;
 						if($ans_1==0){
 							$ans='';
 						} else{
 							$ans=$ans_1;
 						}
+
+						foreach($val_2 as $each){
+							$key[] = array_search($each, $answer_style); // $key = 2;
+						}
+
 						for($y=0;$y<4;$y++){
 							$xx_2 = ($x*4)+2;
 							$nnew_x = $xx_2+$y;
-							$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
+							foreach($key as $each){
+								if($y==$each){
+									$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
+								}
+							}
+
+							if($j==count($question_ans_list)-1){
+								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnew_x,'total');
+							}
 						}
 						if($x==22){
-							$objWorkSheet->setCellValue($all_cell_name[$new_num].'94','=sum('.$all_cell_name[$new_num].'2:'.$all_cell_name[$new_num].'93)');
+							$objWorkSheet->setCellValue($all_cell_name[$new_num].'94',$each_total_sum);
 						}
 					}
+				
 
 				}
 				
@@ -819,13 +834,8 @@ class Question_option extends MY_Mgmt_Controller {
 		// header("Content-Type: application/vnd.ms-excel");
 		header('Content-Type: text/html; charset=UTF8');
 		header('Content-Disposition: attachment; filename="'.$fileName.'"');
-		// $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');   
 
-		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
-		$objWriter->getPreCalculateFormulas();
-
-		// download file
-		
+		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);		
 		$objWriter->save('php://output');
 	}
 
