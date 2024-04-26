@@ -810,18 +810,16 @@ class Question_option extends MY_Mgmt_Controller {
 									$xx_2 = ($x*4)+2;
 									$nnew_x = $xx_2+$y;
 									$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
-									$horizontal_sum[$nnew_x][]=$ans;
+									$horizontal_sum[][$nnew_x]=$ans;
 									$each_total_sum +=intval($ans);
 								}
 							}
 
 							if($j==count($question_ans_list)-1){
 								$horizontal_sum_by_num = 0;
-								if(isset($horizontal_sum)){
-									foreach($horizontal_sum as $v_key => $value){
-										if($v_key==$nnnew_x){
-											$horizontal_sum_by_num+=intval($value);
-										}
+								if(isset($horizontal_sum[0])){
+									foreach($horizontal_sum[$nnnew_x] as $each){
+										$horizontal_sum_by_num+=intval($each);
 									}
 								} else{
 									$horizontal_sum_by_num=0;
