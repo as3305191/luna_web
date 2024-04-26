@@ -823,11 +823,9 @@ class Question_option extends MY_Mgmt_Controller {
 									foreach($horizontal_sum['list'.$nnnew_x] as $each){
 										$horizontal_sum_by_num+=intval($each);
 									}
-								} else{
-									$horizontal_sum['list'.$nnnew_x]=array();
 								}
 								
-								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,implode(",", $horizontal_sum['list'.$nnnew_x]));
+								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,implode(",", $horizontal_sum_by_num));
 							}
 						}
 						if($x==22){
