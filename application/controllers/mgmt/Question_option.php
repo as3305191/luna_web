@@ -791,7 +791,6 @@ class Question_option extends MY_Mgmt_Controller {
 							$ans_l = intval($val_4);
 						}		
 						$ans_1 = $ans_f * $ans_l;
-						$each_total_sum += $ans_1;
 						if($ans_1==0){
 							$ans='';
 						} else{
@@ -808,7 +807,9 @@ class Question_option extends MY_Mgmt_Controller {
 								if($y==$each){
 									$xx_2 = ($x*4)+2;
 									$nnew_x = $xx_2+$y;
-									$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
+									// $objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
+									$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $key);
+
 								}
 							}
 
