@@ -808,7 +808,7 @@ class Question_option extends MY_Mgmt_Controller {
 									$xx_2 = ($x*4)+2;
 									$nnew_x = $xx_2+$y;
 									// $objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $ans);
-									$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, $key);
+									$objWorkSheet->setCellValue($all_cell_name[$new_num].$nnew_x, implode(",",$key));
 
 								}
 							}
