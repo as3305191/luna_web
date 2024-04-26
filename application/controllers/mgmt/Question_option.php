@@ -768,9 +768,10 @@ class Question_option extends MY_Mgmt_Controller {
 					$new_num_3 = $j+3;
 					$new_num_4 = $j+4;
 					
-					$ans_1_f = 0;
 					if(!empty($question_ans_list[$j]->q3)){
 						$ans_1_f = $question_ans_list[$j]->q3;
+					} else{
+						$ans_1_f = 0;
 					}
 						$ans_1_l = 0;
 						$ans_2_f = 0;
@@ -901,7 +902,7 @@ class Question_option extends MY_Mgmt_Controller {
 						// $ans_22 = $ans_22_f * $ans_22_l;
 						// $ans_23 = $ans_23_f * $ans_23_l;
 						$objWorkSheet->setCellValue($all_cell_name[$new_num].'1', $question_ans_list[$j]->dep_name);
-						$objWorkSheet->setCellValue($all_cell_name[$new_num].'2', $ans_1);
+						$objWorkSheet->setCellValue($all_cell_name[$new_num].'2', $ans_1_f);
 						// $objWorkSheet->setCellValue($all_cell_name[$new_num].($x+3), $ans_2);
 						// $objWorkSheet->setCellValue($all_cell_name[$new_num].($x+4), $ans_3);
 						// $objWorkSheet->setCellValue($all_cell_name[$new_num].($x+5), $ans_4);
