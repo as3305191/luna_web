@@ -809,8 +809,6 @@ class Question_option extends MY_Mgmt_Controller {
 				}
 				
 				$objWorkSheet->setTitle($question_style->question_style_name.$note);
-				$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
-				$objWriter->setPreCalculateFormulas(true);
 				break;
 			
 		default:
@@ -824,7 +822,7 @@ class Question_option extends MY_Mgmt_Controller {
 		// $objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel,'Excel2007');   
 
 		$objWriter = new PHPExcel_Writer_Excel5($objPHPExcel);
-		$objWriter->setPreCalculateFormulas(true);
+		$objWriter->getPreCalculateFormulas();
 
 		// download file
 		

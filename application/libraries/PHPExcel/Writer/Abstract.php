@@ -97,6 +97,7 @@ abstract class PHPExcel_Writer_Abstract implements PHPExcel_Writer_IWriter
     public function getPreCalculateFormulas()
     {
         return $this->preCalculateFormulas;
+
     }
 
     /**
