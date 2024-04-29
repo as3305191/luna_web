@@ -906,7 +906,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$PHPWord = new PHPWord();
 		$PHPWord->setDefaultFontName('華康仿宋體W4'); 
 		// $section = $PHPWord->createSection();
-		$sectionStyle = array('orientation' => null,  'marginLeft' => 1000,  'marginRight' => 1000); //頁面設定
+		$sectionStyle = array('orientation' => null,  'marginLeft' => 0,  'marginRight' => 0); //頁面設定
 		$section = $PHPWord->createSection($sectionStyle); //建立一個頁面
 		
 		$tableStyle = array('borderSize'=>6, 'borderColor'=>'black', 'cellMargin'=>80);
@@ -921,15 +921,15 @@ class Question_option extends MY_Mgmt_Controller {
 		$table = $section->addTable('tableStyle');
 		$footer_table = $section->addTable('footer_tableStyle');
 		$white_table->addRow();
-		$white_table->addCell(10000,null,8)->addText('寬仕工業股份有限公司',array('bold' => true, 'size'=>25),array('align'=>'center'));
+		$white_table->addCell(12000,null,8)->addText('寬仕工業股份有限公司',array('bold' => true, 'size'=>25),array('align'=>'center'));
 		$white_table->addRow();
-		$white_table->addCell(10000,null,8)->addText('滿意度雙向調查-'.$list->note,array('bold' => true, 'size'=>20),array('align'=>'center'));
+		$white_table->addCell(12000,null,8)->addText('滿意度雙向調查-'.$list->note,array('bold' => true, 'size'=>20),array('align'=>'center'));
 		$white_table->addRow();
-		$white_table->addCell(10000,null,8)->addText('部門：'.$find_dep_list->name,array('size'=>16),array('align'=>'right'));
+		$white_table->addCell(12000,null,8)->addText('部門：'.$find_dep_list->name,array('size'=>16),array('align'=>'right'));
 		$white_table->addRow();
-		$white_table->addCell(10000,null,8)->addText('日期：'.$find_dep_list->name,array('size'=>16),array('align'=>'right'));
+		$white_table->addCell(12000,null,8)->addText('日期：'.$find_dep_list->name,array('size'=>16),array('align'=>'right'));
 		$table->addRow(3000);
-		$table_score = $table->addCell(10000,null,8);
+		$table_score = $table->addCell(12000,null,8);
 		$table_score->addText('員工滿意度：員工填寫(員工對公司考核)',array('size'=>13),array('align'=>'left'));
 		$table_score->addText('※ 你認為公司有做的程度，每項打分：',array('size'=>13),array('align'=>'left'));
 		$table_score->addText('A優異(10分); B佳(9分); C可(8分); D普通(7分); E不佳(6分)',array('size'=>13),array('align'=>'left'));
@@ -940,14 +940,14 @@ class Question_option extends MY_Mgmt_Controller {
 		$table_score->addText('總分: '.$total,array('size'=>15,'color' => 'red'),array('align'=>'left'));
 
 		$table->addRow(3000);
-		$table_note = $table->addCell(10000,null,8);
+		$table_note = $table->addCell(12000,null,8);
 		$table_note->addText('其他意見有問有答：',array('size'=>13),array('align'=>'left'));
 		for($i=0;$i<$count_q1o;$i++){
 			$table_note->addText($stringArr[$i],array('size'=>13),array('align'=>'left'));
 		}
 
-		$table->addRow(5000);
-		$table->addCell(10000,null,8)->addText('公司回覆：',array('size'=>13),array('align'=>'left'));
+		$table->addRow(4500);
+		$table->addCell(12000,null,8)->addText('公司回覆：',array('size'=>13),array('align'=>'left'));
 
 		$date = date('YmdHis');
 		$filename = $list->dep_name."-".$list->note."-滿意度雙向調查".$date.".docx";
