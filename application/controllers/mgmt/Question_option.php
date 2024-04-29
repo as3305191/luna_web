@@ -906,7 +906,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$PHPWord = new PHPWord();
 		$PHPWord->setDefaultFontName('華康仿宋體W4'); 
 		// $section = $PHPWord->createSection();
-		$sectionStyle = array('orientation' => null,  'marginLeft' => 0,  'marginRight' => 0); //頁面設定
+		$sectionStyle = array('orientation' => null,  'marginLeft' => 200,  'marginRight' => 200); //頁面設定
 		$section = $PHPWord->createSection($sectionStyle); //建立一個頁面
 		
 		$tableStyle = array('borderSize'=>6, 'borderColor'=>'black', 'cellMargin'=>80);
