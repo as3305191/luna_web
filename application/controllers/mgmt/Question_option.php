@@ -927,7 +927,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$white_table->addRow();
 		$white_table->addCell(12000,null,8)->addText('部門：'.$find_dep_list->name,array('size'=>16),array('align'=>'right'));
 		$white_table->addRow();
-		$white_table->addCell(12000,null,8)->addText('日期：'.date('Y.m.d', strtotime($find_dep_list->create_time)),array('size'=>16),array('align'=>'right'));
+		$white_table->addCell(12000,null,8)->addText('日期：'.date('Y.m.d', strtotime($list->create_time)),array('size'=>16),array('align'=>'right'));
 		$table->addRow(3000);
 		$table_score = $table->addCell(12000,null,8);
 		$table_score->addText('員工滿意度：員工填寫(員工對公司考核)',array('size'=>13),array('align'=>'left'));
