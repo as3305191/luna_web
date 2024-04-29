@@ -933,7 +933,7 @@ class Question_option extends MY_Mgmt_Controller {
 		$table->addRow(1800);
 		$table_score = $table->addCell(12000,null,8);
 		$table_score->addText('員工滿意度：員工填寫(員工對公司考核)',array('size'=>12),array('align'=>'left'));
-		$table_score->addText('※ 你認為公司有做的程度，每項打分：',array('size'=>12),array('align'=>'left'));
+		$table_score->addText('※你認為公司有做的程度，每項打分：',array('size'=>12),array('align'=>'left'));
 		$table_score->addText('  A優異(10分); B佳(9分); C可(8分); D普通(7分); E不佳(6分)',array('size'=>12),array('align'=>'left'));
 		$table_score->addText('');
 		$table_score->addText('系統:'.$items[0].'  '.'制度:'.$items[1].'  '.'成本:'.$items[2].'  '.'協助:'.$items[3].'  '.'彈性:'.$items[4],array('size'=>12),array('align'=>'left'));
