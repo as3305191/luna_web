@@ -926,10 +926,10 @@ class Question_option extends MY_Mgmt_Controller {
 		$white_table->addCell(12000,null,8)->addText('滿意度雙向調查-'.$list->note,array('bold' => true, 'size'=>20),array('align'=>'center'));
 		$white_table->addRow();
 		$white_table->addCell(10000,null,7)->addText('');
-		$white_table->addCell(2000,null,1)->addText('部門：'.$find_dep_list->name,array('size'=>14),array('align'=>'left'));
+		$white_table->addCell(2000,null,1)->addText('部門：'.$find_dep_list->name,array('size'=>13),array('align'=>'left'));
 		$white_table->addRow();
 		$white_table->addCell(10000,null,7)->addText('');
-		$white_table->addCell(2000,null,1)->addText('日期：'.date('Y.m.d', strtotime($list->create_time)),array('size'=>14),array('align'=>'left'));
+		$white_table->addCell(2000,null,1)->addText('日期：'.date('Y.m.d', strtotime($list->create_time)),array('size'=>13),array('align'=>'left'));
 		$table->addRow(1800);
 		$table_score = $table->addCell(12000,null,8);
 		$table_score->addText('員工滿意度：員工填寫(員工對公司考核)',array('size'=>12),array('align'=>'left'));
