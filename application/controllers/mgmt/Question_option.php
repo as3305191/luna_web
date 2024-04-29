@@ -729,6 +729,7 @@ class Question_option extends MY_Mgmt_Controller {
 			case 5:
 				error_reporting(E_ALL);
 				$num_b=array();
+				$total_sum = 0;
 				for($num=1;$num<=1000;$num++){
 					$num_b[] =$num;
 				}
@@ -784,7 +785,6 @@ class Question_option extends MY_Mgmt_Controller {
 						$val_3 = $question_ans_list[$j]->$get_3_val;
 						$val_4 = $question_ans_list[$j]->$get_4_val;
 						$key=array();
-						$total_sum = 0;
 
 						if(!empty($val_3)){
 							$ans_f = intval($val_3);
