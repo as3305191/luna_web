@@ -110,7 +110,7 @@
     $('#name').focus();
   })
   
-
+  var str_ok=false;
   var is_ok=false;
   function sum(id_name) {
 		onclick_option_val = $('select[name="'+id_name+'"]').val();
@@ -131,9 +131,14 @@
       }
 		}
 		
+  }
+
+  $('[name="q1o"]').on('change', function(){
+    var  q1o_str = $('[name="q1o"]').val();
+    if(q1o_str.length<=300){
+      str_ok=true;
     }
-
-
+	});
 
   $('.cancel').click(function() {
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
@@ -141,7 +146,8 @@
   })
   $('.dosubmit').click(function() {
     if (is_ok){
-          $.ajax({
+      if (str_ok){
+        $.ajax({
             url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q6',
             type: 'POST',
             data: {
@@ -177,7 +183,11 @@
             failure:function(){
               layer.msg('faialure');
             }
-          });    
+          });  
+      } else{
+        alert('字數請勿超過300字');
+      }
+            
     } else{
       alert('請填寫完全部題目！');
 
