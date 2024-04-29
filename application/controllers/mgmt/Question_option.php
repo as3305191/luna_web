@@ -945,7 +945,7 @@ class Question_option extends MY_Mgmt_Controller {
 			$table_note->addText($stringArr[$i],array('size'=>13),array('align'=>'left'));
 		}
 
-		$table->addRow(4500);
+		$table->addRow(4200);
 		$table->addCell(12000,null,8)->addText('公司回覆：',array('size'=>13),array('align'=>'left'));
 
 		$date = date('YmdHis');
