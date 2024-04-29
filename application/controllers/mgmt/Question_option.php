@@ -928,25 +928,26 @@ class Question_option extends MY_Mgmt_Controller {
 		$white_table->addCell(12000,null,8)->addText('部門：'.$find_dep_list->name,array('size'=>16),array('align'=>'right'));
 		$white_table->addRow();
 		$white_table->addCell(12000,null,8)->addText('日期：'.date('Y.m.d', strtotime($list->create_time)),array('size'=>16),array('align'=>'right'));
-		$table->addRow(2000);
+		$table->addRow(1800);
 		$table_score = $table->addCell(12000,null,8);
-		$table_score->addText('員工滿意度：員工填寫(員工對公司考核)',array('size'=>13),array('align'=>'left'));
-		$table_score->addText('※ 你認為公司有做的程度，每項打分：',array('size'=>13),array('align'=>'left'));
-		$table_score->addText('A優異(10分); B佳(9分); C可(8分); D普通(7分); E不佳(6分)',array('size'=>13),array('align'=>'left'));
-		$table_score->addText('系統:'.$items[0].'  '.'制度:'.$items[1].'  '.'成本:'.$items[2].'  '.'協助:'.$items[3].'  '.'彈性:'.$items[4],array('size'=>13),array('align'=>'left'));
-		$table_score->addText('分工:'.$items[5].'  '.'訓練:'.$items[6].'  '.'福利:'.$items[7].'  '.'分享:'.$items[8].'  '.'公平:'.$items[9],array('size'=>13),array('align'=>'left'));
+		$table_score->addText('員工滿意度：員工填寫(員工對公司考核)',array('size'=>12),array('align'=>'left'));
+		$table_score->addText('※ 你認為公司有做的程度，每項打分：',array('size'=>12),array('align'=>'left'));
+		$table_score->addText('A優異(10分); B佳(9分); C可(8分); D普通(7分); E不佳(6分)',array('size'=>12),array('align'=>'left'));
+		$table_score->addText('');
+		$table_score->addText('系統:'.$items[0].'  '.'制度:'.$items[1].'  '.'成本:'.$items[2].'  '.'協助:'.$items[3].'  '.'彈性:'.$items[4],array('size'=>12),array('align'=>'left'));
+		$table_score->addText('分工:'.$items[5].'  '.'訓練:'.$items[6].'  '.'福利:'.$items[7].'  '.'分享:'.$items[8].'  '.'公平:'.$items[9],array('size'=>12),array('align'=>'left'));
 		$table_score->addText('');
 		$table_score->addText('總分: '.$total,array('size'=>15,'color' => 'red'),array('align'=>'left'));
 
 		$table->addRow(3000);
 		$table_note = $table->addCell(12000,null,8);
-		$table_note->addText('其他意見有問有答：',array('size'=>13),array('align'=>'left'));
+		$table_note->addText('其他意見有問有答：',array('size'=>12),array('align'=>'left'));
 		for($i=0;$i<$count_q1o;$i++){
-			$table_note->addText($stringArr[$i],array('size'=>13),array('align'=>'left'));
+			$table_note->addText($stringArr[$i],array('size'=>12),array('align'=>'left'));
 		}
 
-		$table->addRow(4000);
-		$table->addCell(12000,null,8)->addText('公司回覆：',array('size'=>13),array('align'=>'left'));
+		$table->addRow(3500);
+		$table->addCell(12000,null,8)->addText('公司回覆：',array('size'=>12),array('align'=>'left'));
 
 		$date = date('YmdHis');
 		$filename = $list->dep_name."-".$list->note."-滿意度雙向調查".$date.".docx";
