@@ -22,7 +22,9 @@
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     <input type="hidden" id="role_id" value="<?= isset($role_id) ? $role_id : '' ?>" />
     <input type="hidden" id="question_ans_id" value="<?= isset($question_ans_id) ? $question_ans_id : '' ?>" />
-    A(10分); B(9分); C(8分); D(7分); E(6分)
+    員工滿意度：員工填寫(員工對公司考核)</br>
+    ※你認為公司有做的程度，每項打分：</br>
+      A優異(10分); B佳(9分); C可(8分); D普通(7分); E不佳(6分)</br>
     <table class="col-xs-12">
 		<tbody >
 			<tr>
