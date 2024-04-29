@@ -939,14 +939,14 @@ class Question_option extends MY_Mgmt_Controller {
 		$table_score->addText('');
 		$table_score->addText('總分: '.$total,array('size'=>15,'color' => 'red'),array('align'=>'left'));
 
-		$table->addRow(2500);
+		$table->addRow(3000);
 		$table_note = $table->addCell(10000,null,8);
 		$table_note->addText('其他意見有問有答：',array('size'=>13),array('align'=>'left'));
 		for($i=0;$i<$count_q1o;$i++){
 			$table_note->addText($stringArr[$i],array('size'=>13),array('align'=>'left'));
 		}
 
-		$table->addRow(4000);
+		$table->addRow(5000);
 		$table->addCell(10000,null,8)->addText('公司回覆：',array('size'=>13),array('align'=>'left'));
 
 		$date = date('YmdHis');
