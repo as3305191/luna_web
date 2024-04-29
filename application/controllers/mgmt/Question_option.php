@@ -784,6 +784,8 @@ class Question_option extends MY_Mgmt_Controller {
 						$val_3 = $question_ans_list[$j]->$get_3_val;
 						$val_4 = $question_ans_list[$j]->$get_4_val;
 						$key=array();
+						$total_sum = 0;
+
 						if(!empty($val_3)){
 							$ans_f = intval($val_3);
 						}
@@ -826,12 +828,14 @@ class Question_option extends MY_Mgmt_Controller {
 								} else{
 									$horizontal_sum['list'.$nnnew_x]=array();
 								}
-								
+								$total_sum += $horizontal_sum_by_num;
 								$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].$nnnew_x,$horizontal_sum_by_num);
+
 							}
 						}
 						if($x==22){
 							$objWorkSheet->setCellValue($all_cell_name[$new_num].'94',$each_total_sum);
+							$objWorkSheet->setCellValue($all_cell_name[($new_num+1)].'94',$total_sum);
 						}
 					}
 				
