@@ -227,23 +227,5 @@
     var baseUrl = '<?=base_url('')?>';
     window.open(baseUrl + 'mgmt/question_option/export_all_word/' + id);
 	}
-  
-
-var a1=0;
-var a2=0;
-var a3=0;
-var arr = [1,2,3,4,5,6];
-for(i=0;i<6;i++){
-  // var new_p = 'a'+(i+1);
-  if(i>3){
-    this['a'+i-(i%3)+1]+=parseInt(arr[i]);
-
-  } else{
-    this['a'+(i+1)]+=parseInt(arr[i]);
-
-  }
-
-  console.log('a1 '+a1+' a2 '+a2+' a3 '+a3);
-}
 
 </script>
