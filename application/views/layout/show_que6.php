@@ -229,4 +229,14 @@
 	}
   
 
+var a1=0;
+var a2=0;
+var a3=0;
+var arr = [1,2,3,4,5,6];
+for(i=0;i<=6;i++){
+  var new_p = 'a'+i;
+  new_p+=arr[i];
+  console.log('a1 '+a1+' a2 '+a2+' a3 '+a3);
+}
+
 </script>
