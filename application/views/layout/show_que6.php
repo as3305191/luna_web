@@ -142,7 +142,7 @@
 
   $('[name="q1o"]').on('change', function(){
     var  q1o_str = $('[name="q1o"]').val();
-    if(q1o_str.length<=495){
+    if(q1o_str.length<=630){
       str_ok=true;
     }
 	});
@@ -192,7 +192,7 @@
             }
           });  
       } else{
-        alert('字數請勿超過495字');
+        alert('字數請勿超過630字');
       }
             
     } else{
