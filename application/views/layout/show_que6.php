@@ -35,6 +35,19 @@
     &nbsp;&nbsp;&nbsp;A優異(10分); B佳(9分); C可(8分); D普通(7分); E不佳(6分)</br>
     <table class="col-xs-12">
 		<tbody >
+      <tr>
+				<td class="min50">序號</td>
+				<td>1</td>
+				<td>2</td>
+				<td>3</td>
+				<td>4</td>
+				<td>5</td>
+				<td>6</td>
+				<td>7</td>
+				<td>8</td>
+				<td>9</td>
+				<td>10</td>
+			</tr>
 			<tr>
 				<td class="min50">項目</td>
 				<td>系統</td>
