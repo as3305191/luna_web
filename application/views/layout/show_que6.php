@@ -144,6 +144,8 @@
     var  q1o_str = $('[name="q1o"]').val();
     if(q1o_str.length<=630||q1o_str==''){
       str_ok=true;
+    } else{
+      str_ok=false;
     }
 	});
 
