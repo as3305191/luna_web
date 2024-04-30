@@ -18,7 +18,12 @@
   }
 </style>
 <div class="col-xs-12" style="padding:20px">
-
+    <div class="widget-toolbar pull-right">
+      <button onclick="currentApp.each_detail.doExportAll(<?= isset($qid) ? $qid : '' ?>)" class="btn btn-xs btn-warning" data-toggle="dropdown">
+        <i class="fa fa-save"></i>匯出
+      </button>
+    </div>
+</hr>
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     <input type="hidden" id="role_id" value="<?= isset($role_id) ? $role_id : '' ?>" />
     <input type="hidden" id="question_ans_id" value="<?= isset($question_ans_id) ? $question_ans_id : '' ?>" />
@@ -200,5 +205,8 @@
     $(this).closest('.itemp').remove();
   })
 
+	function doExportAll(id) {
+    window.open(baseUrl + 'mgmt/question_option/export_all_word/' + id);
+	}
   
 </script>
