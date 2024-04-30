@@ -88,6 +88,7 @@
 	</table>
   <div class="col-xs-12 no-padding" style="margin-top:20px">
     其他意見有問有答：</br>
+    <!-- <div id="count_str">剩餘：630字;14行 </div></br> -->
     <?php if ($items_count>0) : ?>
       <textarea class="form-control" name="q1o" ><?= isset($items)? $items[10] : '' ?></textarea>
 
@@ -119,6 +120,7 @@
   
   var str_ok=true;
   var is_ok=false;
+  var str_row_num_ok=true;
   function sum(id_name) {
 		onclick_option_val = $('select[name="'+id_name+'"]').val();
 		val = parseInt(onclick_option_val);
@@ -141,11 +143,19 @@
   }
 
   $('[name="q1o"]').on('change', function(){
-    var  q1o_str = $('[name="q1o"]').val();
+    var q1o_str = $('[name="q1o"]').val();
+    var q1o_str_row_num = q1o_str.spilt("\n").length;
     if(q1o_str.length<=630||q1o_str==''){
       str_ok=true;
+      str_row_num_ok=true;
     } else{
       str_ok=false;
+      
+    }
+    if(q1o_str_row_num<=14){
+      str_row_num_ok=true;
+    } else{
+      str_row_num_ok=false;
     }
 	});
 
@@ -156,7 +166,8 @@
   $('.dosubmit').click(function() {
     if (is_ok){
       if (str_ok){
-        $.ajax({
+        if (str_row_num_ok){
+          $.ajax({
             url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q6',
             type: 'POST',
             data: {
@@ -193,6 +204,9 @@
               layer.msg('faialure');
             }
           });  
+        } else{
+          alert('字數請勿超過14行');
+        }        
       } else{
         alert('字數請勿超過630字');
       }
