@@ -142,7 +142,7 @@
 
   $('[name="q1o"]').on('change', function(){
     var  q1o_str = $('[name="q1o"]').val();
-    if(q1o_str.length<=630){
+    if(q1o_str.length<=630||q1o_str==''){
       str_ok=true;
     }
 	});
