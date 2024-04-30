@@ -117,7 +117,7 @@
     $('#name').focus();
   })
   
-  var str_ok=false;
+  var str_ok=true;
   var is_ok=false;
   function sum(id_name) {
 		onclick_option_val = $('select[name="'+id_name+'"]').val();
