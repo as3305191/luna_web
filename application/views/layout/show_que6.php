@@ -145,6 +145,7 @@
   $('[name="q1o"]').on('change', function(){
     var q1o_str = $('[name="q1o"]').val();
     var q1o_str_row_num = q1o_str.spilt("/n").length;
+    console.log(q1o_str_row_num);
     if(q1o_str.length<=630||q1o_str==''){
       str_ok=true;
       str_row_num_ok=true;
