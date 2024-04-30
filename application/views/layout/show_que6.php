@@ -18,9 +18,9 @@
   }
 </style>
 <div class="col-xs-12" style="padding:20px">
-  <?php if (isset($qid) && $qid>0) : ?>
+  <?php if (isset($question_ans_id) && $question_ans_id>0) : ?>
       <div class="widget-toolbar pull-right">
-        <button onclick="currentApp.each_detail.doExportAll_for_6(<?= isset($qid) ? $qid : '' ?>)" class="btn btn-xs btn-warning" data-toggle="dropdown">
+        <button onclick="currentApp.each_detail.doExportAll_for_6(<?= isset($question_ans_id) ? $question_ans_id : '' ?>)" class="btn btn-xs btn-warning" data-toggle="dropdown">
           <i class="fa fa-save"></i>匯出
         </button>
       </div>
