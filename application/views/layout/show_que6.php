@@ -206,6 +206,7 @@
   })
 
 	function doExportAll(id) {
+    var baseUrl = '<?=base_url('')?>';
     window.open(baseUrl + 'mgmt/question_option/export_all_word/' + id);
 	}
   
