@@ -82,7 +82,7 @@
          <td id="sum_id" colspan="11"><?= isset($items)? '總分合計:'.$items[$items_count] : '總分合計:還有其他沒選擇' ?></td>	
 
         <?php else :?>
-          <td id="sum_id" colspan="11">總分合計:還有其他沒選擇</td>	
+          <td id="sum_id" colspan="11">總分合計:</td>	
         <?php endif ?>
 			</tr>
 	</table>
@@ -128,7 +128,7 @@
 			name_num= j+1;   
 			other_option_val =$('select[name="s'+name_num+'"]').val();
 			if (other_option_val == 0){
-        sum_id.innerHTML = "總分合計:還有其他沒選擇";
+        sum_id.innerHTML = "總分合計:";
         is_ok=false;
         break ;
       } else{
@@ -176,7 +176,7 @@
             dataType: 'json',
             success: function(d) {
               if(d) {
-                console.log(d);
+                // console.log(d);
               }
               if(d.success){
                 var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
