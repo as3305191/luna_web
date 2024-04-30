@@ -151,12 +151,13 @@
       str_row_num_ok=true;
     } else{
       str_ok=false;
-      
+      alert('字數請勿超過630字');      
     }
     if(q1o_str_row_num<=14){
       str_row_num_ok=true;
     } else{
       str_row_num_ok=false;
+      alert('字數請勿超過14行');
     }
 	});
 
