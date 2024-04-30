@@ -143,10 +143,10 @@
   }
 
   $('[name="q1o"]').on('change', function(){
-    var q1o_str = $('[name="q1o"]');
-    var q1o_str_row_num = getLineNum(q1o_str);
+    var q1o_str = $('[name="q1o"]').val();
+    var q1o_str_row_num = q1o_str.spilt("\n").length;
     console.log(q1o_str_row_num);
-    if(q1o_str.val().length<=630||q1o_str.val()==''){
+    if(q1o_str.length<=630||q1o_str==''){
       str_ok=true;
       str_row_num_ok=true;
     } else{
@@ -228,23 +228,4 @@
 	}
   
 
-
-function getLineNum(textarea) {
-  var style = window.getComputedStyle(textarea);
-  var lineHeight = parseInt(style.lineHeight);
-  var paddingTop = parseInt(style.paddingTop);
-  var paddingBottom = parseInt(style.paddingBottom);
-  var scrollTop = textarea.scrollTop;
-  var text = textarea.value;
-  var rows = text.split("/n"); 
-
-  var lineNum = 0;
-  for (var i = 0; i<rows.length; i++) {
-    var rect = textarea.getClientRects()[i];
-    if (rect.top >= paddingTop && rect.top + lineHeight <= textarea.clientHeight - paddingBottom) {
-      lineNum++;
-    }
-  }
-  return lineNum + (text.slice(-1) == "/n" ? 1 : 0);
-}
 </script>
