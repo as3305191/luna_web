@@ -909,8 +909,8 @@ class Question_option extends MY_Mgmt_Controller {
 		$sectionStyle = array('orientation' => null,  'marginLeft' => 400,  'marginRight' => 400); //頁面設定
 		$section = $PHPWord->createSection($sectionStyle); //建立一個頁面
 		
-		$tableStyle = array('borderSize'=>6, 'borderColor'=>'black', 'cellMargin'=>80);
 		$whitetableStyle = array('borderSize'=>6, 'borderColor'=>'ffffff', 'cellMargin'=>20);
+		$tableStyle = array('borderSize'=>6, 'borderColor'=>'black', 'cellMargin'=>80);
 		$footer_style = array('borderSize'=>6, 'borderColor'=>'ffffff', 'cellMargin'=>80);
 
 		$PHPWord->addTableStyle('white_tableStyle',$whitetableStyle,null);
