@@ -225,8 +225,8 @@ class Question_option extends MY_Mgmt_Controller {
 			$last_id = $this -> dao -> insert($data);
 		} else {
 			$this -> dao -> update($data, $id);
-			
 		}
+		
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
