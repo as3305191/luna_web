@@ -106,6 +106,17 @@ class Question_style_dao extends MY_Model {
 		return $list;
 	}
 
+	function find_all_list(){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.is_del',0);
+
+		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
+		$this -> db -> order_by('_m.id', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
+
 	function find_all_order_list($data, $is_count = FALSE) {
 
 		$start = $data['start'];

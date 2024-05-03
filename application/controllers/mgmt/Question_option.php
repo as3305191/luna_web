@@ -233,7 +233,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 	public function find_question_style(){
 		$res = array();
-		$question_style_list = $this -> question_style_dao -> find_all();
+		$question_style_list = $this -> question_style_dao -> find_all_list();
 		$res['question_style'] = $question_style_list;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
