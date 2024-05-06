@@ -228,7 +228,6 @@ class Department_dao extends MY_Model {
 		$this -> db -> from($this -> table_name);
 		$this -> db -> where('level =','3');
 		$this -> db -> where('id <>','35');
-		$this -> db -> where('id <>','71');
 		$this -> db -> where('id <','37');
 
 		$this -> db -> order_by('pos','asc');
@@ -250,6 +249,7 @@ class Department_dao extends MY_Model {
 		$this -> db -> where('_m.id<>', '37');
 		$this -> db -> where('_m.id<>', '21');
 		$this -> db -> where('_m.id<>', '36');
+		$this -> db -> where('id <>','71');
 
 		$this -> db -> order_by('id','asc');
 		$list = $this -> db -> get() -> result();
