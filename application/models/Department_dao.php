@@ -249,7 +249,7 @@ class Department_dao extends MY_Model {
 		$this -> db -> where('_m.id<>', '37');
 		$this -> db -> where('_m.id<>', '21');
 		$this -> db -> where('_m.id<>', '36');
-		$this -> db -> where('id <>','71');
+		$this -> db -> where('_m.id <>','71');
 
 		$this -> db -> order_by('id','asc');
 		$list = $this -> db -> get() -> result();
