@@ -297,15 +297,15 @@
   function t1(){
     var text = '';
     var text_cht = '';
-    if(parseInt(total1)<=50){
+    if(parseInt(total1)<50){
       text = '<?= $this->_lang['q2_ss'] ?>';
       text_cht = '輕微';
     }
-    if(parseInt(total1)<69 && parseInt(total1)>50){
+    if(parseInt(total1)<=70 && parseInt(total1)>=50){
       text = '<?= $this->_lang['q2_mm'] ?>';
       text_cht = '中度';
     }
-    if(parseInt(total1)>=70){
+    if(parseInt(total1)>70){
       text = '<?= $this->_lang['q2_sbs'] ?>';
       text_cht = '嚴重';
     }
@@ -320,15 +320,15 @@
     var text1 = '';
     var text1_cht = '';
 
-    if(parseInt(total2)<=45){
+    if(parseInt(total2)<45){
       text1 = '<?= $this->_lang['q2_ss'] ?>';
       text1_cht = '輕微';
     }
-    if(45<parseInt(total2) && parseInt(total2)<60){
+    if(45<=parseInt(total2) && parseInt(total2)<=60){
       text1 = '<?= $this->_lang['q2_mm'] ?>';
       text1_cht = '中度';
     }
-    if(parseInt(total2)>=60){
+    if(parseInt(total2)>60){
       text1 = '<?= $this->_lang['q2_sbs'] ?>';
       text1_cht = '嚴重';
     }
