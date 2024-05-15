@@ -654,8 +654,9 @@ class Question_option extends MY_Mgmt_Controller {
 									->setCellValue($all_cell_name[26].$k , $question_ans_list[$j]->q2o)
 									->setCellValue($all_cell_name[27].$k , $question_ans_list[$j]->q19)
 									->setCellValue($all_cell_name[28].$k , $question_ans_list[$j]->q20)
-									->setCellValue($all_cell_name[29].$k , $question_ans_list[$j]->q3o);
-					
+									->setCellValue($all_cell_name[29].$k , $question_ans_list[$j]->q3o)
+									->setCellValue($all_cell_name[30].$k , $question_ans_list[$j]->q4o);
+
 					}
 
 
