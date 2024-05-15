@@ -156,6 +156,14 @@ class Users extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function update_user_name() {
+		$list = $this -> dao -> find_all();
+		foreach($list as $each){
+			$data['user_name'] = trim($each->user_name);
+			$this -> dao -> update($data, $each->id);
+		}
+
+	}
 
 	public function check_account($id) {
 		$account = $this -> get_post('account');
