@@ -426,8 +426,8 @@ class Question_option extends MY_Mgmt_Controller {
 												  ->setCellValue($all_cell_name[21].$k , $question_ans_list[$j]->q17)
 												  ->setCellValue($all_cell_name[22].$k , $question_ans_list[$j]->q18)
 												  ->setCellValue($all_cell_name[23].$k , $question_ans_list[$j]->q1o)
-												  ->setCellValue($all_cell_name[24].$k , $question_ans_list[$j]->q19)
-												  ->setCellValue($all_cell_name[25].$k , $question_ans_list[$j]->q2o)
+												  ->setCellValue($all_cell_name[24].$k , $question_ans_list[$j]->q2o)
+												  ->setCellValue($all_cell_name[25].$k , $question_ans_list[$j]->q19)
 												  ->setCellValue($all_cell_name[26].$k , $question_ans_list[$j]->q20)
 												  ->setCellValue($all_cell_name[27].$k , $question_ans_list[$j]->q3o);
 								
@@ -650,8 +650,8 @@ class Question_option extends MY_Mgmt_Controller {
 									->setCellValue($all_cell_name[23].$k , $question_ans_list[$j]->q16)
 									->setCellValue($all_cell_name[24].$k , $question_ans_list[$j]->q17)
 									->setCellValue($all_cell_name[25].$k , $question_ans_list[$j]->q18)
-									->setCellValue($all_cell_name[26].$k , $question_ans_list[$j]->q19)
-									->setCellValue($all_cell_name[27].$k , $question_ans_list[$j]->q2o)
+									->setCellValue($all_cell_name[26].$k , $question_ans_list[$j]->q2o)
+									->setCellValue($all_cell_name[27].$k , $question_ans_list[$j]->q19)
 									->setCellValue($all_cell_name[28].$k , $question_ans_list[$j]->q20)
 									->setCellValue($all_cell_name[29].$k , $question_ans_list[$j]->q3o);
 					
