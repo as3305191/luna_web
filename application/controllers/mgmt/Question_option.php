@@ -363,7 +363,7 @@ class Question_option extends MY_Mgmt_Controller {
 			case 2:
 				$cell_title = ['性別','年齡','身高','體重','慣用手','是否不適','頸','左肩','左手肘/左前臂','左手/左手腕','左臀/左大腿',
 				'左膝','左腳踝/左腳','上背','右肩','右手肘/右前臂','下背','右手/右手腕','右臀/右大腿','右膝',
-				'右腳踝/右腳','痠痛持續時間','是否工作加劇','最近3個月是否因上述不適而請假','症狀與工作相關說明','請假幾天',
+				'右腳踝/右腳','痠痛持續時間','是否工作加劇','症狀與工作相關說明','最近3個月是否因上述不適而請假','請假幾天',
 				'是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療)','診斷名稱','其他症狀、病史說明'];
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
@@ -426,9 +426,9 @@ class Question_option extends MY_Mgmt_Controller {
 												  ->setCellValue($all_cell_name[20].$k , $question_ans_list[$j]->q16)
 												  ->setCellValue($all_cell_name[21].$k , $question_ans_list[$j]->q17)
 												  ->setCellValue($all_cell_name[22].$k , $question_ans_list[$j]->q18)
-												  ->setCellValue($all_cell_name[23].$k , $question_ans_list[$j]->q19)
+												  ->setCellValue($all_cell_name[23].$k , $question_ans_list[$j]->q1o)
 
-												  ->setCellValue($all_cell_name[24].$k , $question_ans_list[$j]->q1o)
+												  ->setCellValue($all_cell_name[24].$k , $question_ans_list[$j]->q19)
 												  ->setCellValue($all_cell_name[25].$k , $question_ans_list[$j]->q2o)
 												  ->setCellValue($all_cell_name[26].$k , $question_ans_list[$j]->q20)
 												  ->setCellValue($all_cell_name[27].$k , $question_ans_list[$j]->q3o)
@@ -584,7 +584,7 @@ class Question_option extends MY_Mgmt_Controller {
 		case 2:
 		$cell_title = ['部門','姓名','性別','年齡','身高','體重','慣用手','是否不適','頸','左肩','左手肘/左前臂','左手/左手腕','左臀/左大腿',
 		'左膝','左腳踝/左腳','上背','右肩','右手肘/右前臂','下背','右手/右手腕','右臀/右大腿','右膝',
-		'右腳踝/右腳','痠痛持續時間','是否工作加劇','最近3個月是否因上述不適而請假','症狀與工作相關說明','請假幾天',
+		'右腳踝/右腳','痠痛持續時間','是否工作加劇','症狀與工作相關說明','最近3個月是否因上述不適而請假','請假幾天',
 		'是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療)','診斷名稱','其他症狀、病史說明'];
 		$objWorkSheet = $objPHPExcel->createSheet(0); //Setting index when creating
 
@@ -652,8 +652,8 @@ class Question_option extends MY_Mgmt_Controller {
 									->setCellValue($all_cell_name[22].$k , $question_ans_list[$j]->q16)
 									->setCellValue($all_cell_name[23].$k , $question_ans_list[$j]->q17)
 									->setCellValue($all_cell_name[24].$k , $question_ans_list[$j]->q18)
-									->setCellValue($all_cell_name[25].$k , $question_ans_list[$j]->q19)
-									->setCellValue($all_cell_name[26].$k , $question_ans_list[$j]->q1o)
+									->setCellValue($all_cell_name[25].$k , $question_ans_list[$j]->q1o)
+									->setCellValue($all_cell_name[26].$k , $question_ans_list[$j]->q19)
 									->setCellValue($all_cell_name[27].$k , $question_ans_list[$j]->q2o)
 									->setCellValue($all_cell_name[28].$k , $question_ans_list[$j]->q20)
 									->setCellValue($all_cell_name[29].$k , $question_ans_list[$j]->q3o)
