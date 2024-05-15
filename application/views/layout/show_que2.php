@@ -215,14 +215,6 @@
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
     parent.layer.close(index);
   })
-
-  $("input[name='q2_1']").on('change', function(){
-    if( document.querySelector("input[name='q2_1']:checked").value=='是'){
-      $('#d_hide').removeClass('d_hide');
-    } else{
-      $('#d_hide').addClass('d_hide');
-    }
-  });
   var  q1 = null;
   var  q2 = null;
   var  q3 = null;
@@ -254,6 +246,41 @@
   var  q6o = '無';
   var  q7o = '無';
   var is_ok=false;
+  $("input[name='q2_1']").on('change', function(){
+    if( document.querySelector("input[name='q2_1']:checked").value=='是'){
+      $('#d_hide').removeClass('d_hide');
+    } else{
+      $('#d_hide').addClass('d_hide');
+        q2 = null;
+        q3 = null;
+        q4 = null;
+        q5 = null;
+        q6 = null;
+        q7 = null;
+        q8 = null;
+        q9 = null;
+        q10 = null;
+        q11 = null;
+        q12 = null;
+        q13 = null;
+        q14 = null;
+        q15 = null;
+        q16 = null;
+        q17 = null;
+        q18 = null;
+        q19 = null;
+        q20 = null;
+        q21 = null;
+        q22 = null;
+
+        q1o = '無';
+        q2o = '無';
+        q3o = '無';
+        q4o = '無';
+    
+    }
+  });
+  
   $('input:radio[name="q2_1"]').on('change', function(){
     q1 = $('input:radio[name="q2_1"]:checked').val();
    
