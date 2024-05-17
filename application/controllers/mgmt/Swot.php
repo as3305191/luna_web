@@ -68,6 +68,7 @@ class Swot extends MY_Mgmt_Controller {
 		$res['items'] = $items;
 
 		$res['login_user_array'] = $login_user_array;
+		$res['d_or_c'] = $data['d_or_c'];
 		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
 		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
 		$this -> to_json($res);
