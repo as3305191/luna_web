@@ -50,11 +50,16 @@ class Swot extends MY_Mgmt_Controller {
 		$data['login_user_array'] = $login_user_array;
 		
 		$data['login_user'] = $login_user;
-		if($d_or_c==0){
+		if($login_user->role_id==17 || $login_user->role_id==16 || $login_user->role_id==9){
 			$data['d_or_c'] = $d_or_c;
 		} else{
-			$data['d_or_c'] = $login_user_array;
+			if($d_or_c==0){
+				$data['d_or_c'] = $d_or_c;
+			} else{
+				$data['d_or_c'] = $login_user_array;
+			}
 		}
+		
 		$items = $this -> dao -> query_ajax($data);
 		foreach($items as $each){
 			if(!empty($each->class_id)){
