@@ -454,14 +454,14 @@ var QuestioneachdetailAppClass = (function(app) {
 		}
 	
 		app.show_que5 = function(id,style_id,role_id) {
-			url = 'mgmt/question_for_user/show_que5'+'?id='+style_id+'&role_id='+role_id+'&question_ans_id='+id;
+			url = 'mgmt/question_for_user/show_que5?id='+style_id+'&role_id='+role_id+'&question_ans_id='+id;
 			layer.open({
 				type:2,
 				title:'',
 				closeBtn:0,
 				area:['1200px','600px'],
 				shadeClose:true,
-				content:'<?=base_url()?>'+url
+				content: baseUrl+url
 			})
 		}
 
