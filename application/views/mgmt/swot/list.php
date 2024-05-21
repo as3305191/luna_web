@@ -55,7 +55,6 @@ thead tr th {
 
 										<button type="button" class=" btn btn-sm btn-primary btn-group" id="add_title"><i class="fa fa-plus-circle fa-lg"></i></button>
 									<?php endif?>
-
 								</div>
 								<div class="pull-left " style="width:200px;line-height:32px">
 									<select class="col-md-9 control-label" id="list_style"  >
@@ -79,7 +78,6 @@ thead tr th {
 											整合部門總檢
 										</button>
 									<?php endif?>
-									
 								</div>
 								<div class="widget-toolbar pull-right">
 									<button onclick="currentApp.do_remove();" class="btn btn-xs btn-success" data-toggle="dropdown">

@@ -40,11 +40,6 @@
 											<th class="min150">建立時間</th>
 											<th class="min150">匯出</th>
 										</tr>
-										<!-- <tr class="search_box">
-											<th></th>
-											<th></th>
-											<th></th>
-										</tr> -->
 									</thead>
 									<tbody>
 									</tbody>

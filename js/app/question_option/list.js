@@ -389,7 +389,7 @@ var QuestioneachdetailAppClass = (function(app) {
 									+'<i class="fa fa-save"></i>匯出'
 									+'</button>';
 						} else{
-							return '<button onclick="currentApp.each_detail.doExportAll('+d+','+r.question_style_id+')" style="pointer-events:none;" class="btn btn-xs btn-warning disabledinput"  data-toggle="dropdown">'
+							return '<button onclick="currentApp.each_detail.show_que5('+d+','+r.question_style_id+','+r.role_id+')" class="btn btn-xs btn-warning" data-toggle="dropdown">'
 									+'<i class="fa fa-save"></i>匯出'
 									+'</button>';
 						}
@@ -453,7 +453,17 @@ var QuestioneachdetailAppClass = (function(app) {
 			window.open(baseUrl + 'mgmt/question_option/export_excel_all/' + id);
 		}
 	
-		
+		app.show_que5 = function(id,style_id,role_id) {
+			url = 'mgmt/question_for_user/show_que5'+'?id='+style_id+'&role_id='+role_id+'&question_ans_id='+id;
+			layer.open({
+				type:2,
+				title:'',
+				closeBtn:0,
+				area:['1200px','600px'],
+				shadeClose:true,
+				content:'<?=base_url()?>'+url
+			})
+		}
 
 		if($('#export_item_for_dep').val()==0){
 			$('.for_dep').addClass('hide_s_i');
