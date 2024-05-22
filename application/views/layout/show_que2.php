@@ -22,7 +22,7 @@
     <input type="hidden" id="qid" value="<?= isset($qid) ? $qid : '' ?>" />
     <?= $this->_lang['q3_bi'] ?><br>
     <?= $this->_lang['q3_a'] ?><input name="q5o"><br>
-    <?= $this->_lang['q3_sen'] ?><br>
+    <?= $this->_lang['q3_sen'] ?>
     <input type="radio" name="q2_32" value="未滿1年" id="q2_31"><label for="q2_31"><?= $this->_lang['q1_sen_n1'] ?></label>
     <input type="radio" name="q2_32" value="1年-3年" id="q2_32"><label for="q2_32"><?= $this->_lang['q1_sen_n3'] ?></label>
     <input type="radio" name="q2_32" value="3年-5年" id="q2_33"><label for="q2_33"><?= $this->_lang['q1_sen_n5'] ?></label>
