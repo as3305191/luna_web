@@ -46,7 +46,7 @@
     <input type="radio" name="q1_5" value="需假日出勤" id="q1_52"><label for="q1_52"><?= $this->_lang['q1_wf_nha'] ?></label>
     <input type="radio" name="q1_5" value="需外勤" id="q1_53"><label for="q1_53"><?= $this->_lang['q1_wf_nfs'] ?></label>
     <input type="radio" name="q1_5" value="需值班" id="q1_54"><label for="q1_54"><?= $this->_lang['q1_wf_od'] ?></label>
-    <?= $this->_lang['q1_wf_noote'] ?><input name="q1_5o"><br>
+    <?= $this->_lang['q1_wf_noote'] ?><br>
     <?= $this->_lang['q1_we_v'] ?><br>
     <input type="checkbox" name="q1_6" value="無" id="q1_66"><label for="q1_66"><?= $this->_lang['q1_we_n'] ?></label><br>
     <input type="checkbox" name="q1_6" value="肢體暴力，如毆打、踢、推、捏、拉扯等" id="q1_61"><label for="q1_61"><?= $this->_lang['q1_we_pbv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_7o"><br>
