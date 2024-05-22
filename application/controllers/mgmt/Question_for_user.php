@@ -383,6 +383,10 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$q1o =$this -> get_post('q1o');
 		$q2o =$this -> get_post('q2o');
 		$q3o =$this -> get_post('q3o');
+		$q4o =$this -> get_post('q4o');
+		$q5o =$this -> get_post('q5o');
+		$q6o =$this -> get_post('q6o');
+		$q7o =$this -> get_post('q7o');
 
 		$data['user_id'] = $login_user->id;
 		// $data['qid'] = $qid;
@@ -401,6 +405,10 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$data['q1o'] = $q1o;
 		$data['q2o'] = $q2o;
 		$data['q3o'] = $q3o;
+		$data['q4o'] = $q4o;
+		$data['q5o'] = $q5o;
+		$data['q6o'] = $q6o;
+		$data['q7o'] = $q7o;
 		$data['role_id'] = $login_user->role_id;
 		$data['question_option_id'] = $qid;
 

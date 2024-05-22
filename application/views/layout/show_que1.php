@@ -48,10 +48,10 @@
     <input type="radio" name="q1_5" value="需值班" id="q1_54"><label for="q1_54"><?= $this->_lang['q1_wf_od'] ?></label>
     <?= $this->_lang['q1_wf_noote'] ?><input name="q1_5o"><br>
     <?= $this->_lang['q1_we_v'] ?><br>
-    <input type="checkbox" name="q1_6" value="肢體暴力，如毆打、踢、推、捏、拉扯等" id="q1_61"><label for="q1_61"><?= $this->_lang['q1_we_pbv'] ?></label><br>
-    <input type="checkbox" name="q1_6" value="言語暴力，如辱罵、言語騷擾、冷嘲熱諷等" id="q1_62"><label for="q1_62"><?= $this->_lang['q1_we_vv'] ?></label><br>
-    <input type="checkbox" name="q1_6" value="心理暴力，如威脅、恐嚇、歧視、排擠、騷擾等" id="q1_63"><label for="q1_63"><?= $this->_lang['q1_we_pv'] ?></label><br>
-    <input type="checkbox" name="q1_6" value="性騷擾，如不當的性暗示與行為" id="q1_64"><label for="q1_64"><?= $this->_lang['q1_we_sh'] ?></label><br>
+    <input type="checkbox" name="q1_6" value="肢體暴力，如毆打、踢、推、捏、拉扯等" id="q1_61"><label for="q1_61"><?= $this->_lang['q1_we_pbv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_7o"><br>
+    <input type="checkbox" name="q1_6" value="言語暴力，如辱罵、言語騷擾、冷嘲熱諷等" id="q1_62"><label for="q1_62"><?= $this->_lang['q1_we_vv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_8o"><br>
+    <input type="checkbox" name="q1_6" value="心理暴力，如威脅、恐嚇、歧視、排擠、騷擾等" id="q1_63"><label for="q1_63"><?= $this->_lang['q1_we_pv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_9o"><br>
+    <input type="checkbox" name="q1_6" value="性騷擾，如不當的性暗示與行為" id="q1_64"><label for="q1_64"><?= $this->_lang['q1_we_sh'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_10o"><br>
     <input type="checkbox" name="q1_6" value="其他" id="q1_65"><label for="q1_65"><?= $this->_lang['q1_we_o'] ?></label> <input name="q1_6o"><br>
     <input type="checkbox" name="q1_6" value="無" id="q1_66"><label for="q1_66"><?= $this->_lang['q1_we_n'] ?></label><br>
     <?= $this->_lang['q1_dfv'] ?><br>
@@ -127,6 +127,12 @@
   var  q2o = '無';
   var  q3o = '無';
   var is_ok=false;
+  var is_ok61=true;
+  var is_ok62=true;
+  var is_ok63=true;
+  var is_ok64=true;
+  var is_ok65=true;
+
   $('input:radio[name="q1_1"]').on('change', function(){
     q1 = $('input:radio[name="q1_1"]:checked').val();
    
@@ -148,17 +154,7 @@
    
   });
   
-$("input[name='q1_6']").on('change', function(){
-    obj = document.getElementsByName("q1_6");
-    q6 = [];
-    for (i in obj) {
-        if (obj[i].checked){
-          q6.push(obj[i].value);
-        }
-    }
 
-    // console.log(q6);
-  });
   $("input[name='q1_7']").on('change', function(){
     obj = document.getElementsByName("q1_7");
     q7 = [];
@@ -207,13 +203,94 @@ $("input[name='q1_6']").on('change', function(){
   $('[name="q1_6o"]').on('change', function(){
     q3o = $('[name="q1_6o"]').val();
     // console.log(q3o);
+    var the_checkbox65 = document.getElementById("q1_65");
+    if(the_checkbox65.checked){
+      if(q3o.length<=2){
+        is_ok65=false
+      } else{
+        is_ok65=true
+      }
+    }else{
+      is_ok65=true
+    }
+    console.log(is_ok65);
 
   });
 
+  $('[name="q1_7o"]').on('change', function(){
+    q4o = $('[name="q1_7o"]').val();
+    // console.log(q3o);
+    var the_checkbox61 = document.getElementById("q1_61");
+    if(the_checkbox61.checked){
+      if(q4o.length<=2){
+        is_ok61=false
+      } else{
+        is_ok61=true
+      }
+    }else{
+      is_ok61=true
+    }
+    console.log(is_ok61);
 
+  });
+  $('[name="q1_8o"]').on('change', function(){
+    q5o = $('[name="q1_8o"]').val();
+    // console.log(q3o);
+    var the_checkbox62 = document.getElementById("q1_62");
+    if(the_checkbox62.checked){
+      if(q5o.length<=2){
+        is_ok62=false
+      } else{
+        is_ok62=true
+      }
+    }else{
+      is_ok62=true
+    }
+    console.log(is_ok62);
 
+  });
+  $('[name="q1_9o"]').on('change', function(){
+    q6o = $('[name="q1_9o"]').val();
+    // console.log(q3o);
+    var the_checkbox63 = document.getElementById("q1_63");
+    if(the_checkbox63.checked){
+      if(q6o.length<=2){
+        is_ok63=false
+      } else{
+        is_ok63=true
+      }
+    }else{
+      is_ok63=true
+    }
+    console.log(is_ok63);
+  });
+  $('[name="q1_10o"]').on('change', function(){
+    q7o = $('[name="q1_10o"]').val();
+    // console.log(q3o);
+    var the_checkbox64 = document.getElementById("q1_64");
+    if(the_checkbox64.checked){
+      if(q7o.length<=2){
+        is_ok64=false
+      } else{
+        is_ok64=true
+      }
+    }else{
+      is_ok64=true
+    }
+    
+    console.log(is_ok64);
 
+  });
 
+  $("input[name='q1_6']").on('change', function(){
+    obj = document.getElementsByName("q1_6");
+    q6 = [];
+    for (i in obj) {
+        if (obj[i].checked){
+          q6.push(obj[i].value);
+        }
+    }
+  });
 
   $('.cancel').click(function() {
     var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
@@ -242,6 +319,10 @@ $("input[name='q1_6']").on('change', function(){
               q1o : q1o,
               q2o : q2o,
               q3o : q3o,
+              q3o : q4o,
+              q3o : q5o,
+              q3o : q6o,
+              q3o : q7o,
             },
             dataType: 'json',
             success: function(d) {
