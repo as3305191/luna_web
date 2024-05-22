@@ -106,6 +106,7 @@ $this -> _lang['q2_m45'] = "【trung bình】45-60 điểm";
 $this -> _lang['q2_s60'] = "【nghiêm trọng】trên 60 điểm";
 $this -> _lang['q2_r'] = "Để bảo vệ quyền và sự riêng tư của nhân viên, thông tin sức khỏe được thu thập trong tài liệu này chỉ được sử dụng bởi nhân viên chăm sóc y tế và an toàn lao động của công ty để thực hiện các dịch vụ y tế lao động và thực hiện các biện pháp quản lý sức khỏe sau đó, và hồ sơ được lưu giữ theo đến pháp luật. ";
 
+$this -> _lang['q3_sen'] = "Số Năm";
 $this -> _lang['q3_msq'] = "Bảng điều tra tình trạng cơ bắp xương khớp";
 $this -> _lang['q3_bi'] = "1.Thông tin cơ bản";
 $this -> _lang['q3_df'] = "Ngày viết";

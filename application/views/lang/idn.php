@@ -106,6 +106,7 @@ $this -> _lang['q2_m45'] = "【menengah】nilai 45-60";
 $this -> _lang['q2_s60'] = "【berat】nilai 60 keatas";
 $this -> _lang['q2_r'] = "Untuk melindungi hak dan privasi rekan kerja, informasi kesehatan yang dikumpulkan dalam dokumen ini hanya digunakan oleh personel medis dan keselamatan kerja perusahaan untuk penerapan layanan kesehatan tenaga kerja dan penerapan tindakan manajemen kesehatan selanjutnya, dan catatan disimpan sesuai dengan hukum。 ";
 
+$this -> _lang['q3_sen'] = "Lama bekerja";
 $this -> _lang['q3_msq'] = "form tanyajawab gejala Musculoskeletal";
 $this -> _lang['q3_bi'] = "1.data pribadi：";
 $this -> _lang['q3_df'] = "tgl isi data";
