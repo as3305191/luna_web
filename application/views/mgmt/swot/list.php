@@ -269,11 +269,13 @@ thead tr th {
 		var style=$('#list_style').val();
 		if(style=="8"){
 			var title=$('#list_title').val();
-			if($('#d_or_c1').val()==17 ||$('#d_or_c1').val()==69 || $('#d_or_c1').val()==6 || $('#d_or_c1').val()==16 || $('#d_or_c1').val()==9){
-				var dep=$('#d_or_c').val();
-			} else{
-				var dep=$('#d_or_c1').val();
-			}
+			// if($('#d_or_c1').val()==17 ||$('#d_or_c1').val()==69 || $('#d_or_c1').val()==6 || $('#d_or_c1').val()==16 || $('#d_or_c1').val()==9){
+			// 	var dep=$('#d_or_c').val();
+			// } else{
+			// 	var dep=$('#d_or_c1').val();
+			// }
+			var dep=$('#d_or_c1').val();
+
 			currentApp.doEdit1(0,title,8,dep);
 		} else{
 			alert("請選擇總檢");
