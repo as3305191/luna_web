@@ -126,6 +126,11 @@
   var  q1o = '無';
   var  q2o = '無';
   var  q3o = '無';
+  var  q4o = '無';
+  var  q5o = '無';
+  var  q6o = '無';
+  var  q7o = '無';
+
   var is_ok=false;
   var is_ok61=true;
   var is_ok62=true;
