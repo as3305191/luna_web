@@ -48,7 +48,7 @@
     <input type="radio" name="q1_5" value="需值班" id="q1_54"><label for="q1_54"><?= $this->_lang['q1_wf_od'] ?></label>
     <?= $this->_lang['q1_wf_noote'] ?><input name="q1_5o"><br>
     <?= $this->_lang['q1_we_v'] ?><br>
-    <input type="checkbox" name="q1_6" value="無" id="q1_66"><label for="q1_66"><?= $this->_lang['q1_we_n'] ?><?= $this->_lang['q1_nwst'] ?></label><br>
+    <input type="checkbox" name="q1_6" value="無" id="q1_66"><label for="q1_66"><?= $this->_lang['q1_nwst'] ?></label><br>
     <input type="checkbox" name="q1_6" value="肢體暴力，如毆打、踢、推、捏、拉扯等" id="q1_61"><label for="q1_61"><?= $this->_lang['q1_we_pbv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_7o"><br>
     <input type="checkbox" name="q1_6" value="言語暴力，如辱罵、言語騷擾、冷嘲熱諷等" id="q1_62"><label for="q1_62"><?= $this->_lang['q1_we_vv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_8o"><br>
     <input type="checkbox" name="q1_6" value="心理暴力，如威脅、恐嚇、歧視、排擠、騷擾等" id="q1_63"><label for="q1_63"><?= $this->_lang['q1_we_pv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_9o"><br>
