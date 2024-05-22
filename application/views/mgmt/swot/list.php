@@ -40,7 +40,7 @@ thead tr th {
 										<option value="0">請選擇部門</option>
 										<option value="3">寬仕</option>
 										<?php foreach ($all_department_list as $each) : ?>
-												<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
+											<option value="<?= $each -> id?>"><?=  $each -> name ?></option>
 										<?php endforeach ?>	
 									</select>
 								</div>
@@ -269,14 +269,14 @@ thead tr th {
 		var style=$('#list_style').val();
 		if(style=="8"){
 			var title=$('#list_title').val();
-			// if($('#d_or_c1').val()==17 ||$('#d_or_c1').val()==69 || $('#d_or_c1').val()==6 || $('#d_or_c1').val()==16 || $('#d_or_c1').val()==9){
-			// 	var dep=$('#d_or_c').val();
-			// } else{
-			// 	var dep=$('#d_or_c1').val();
-			// }
-			var dep=$('#d_or_c1').val();
+			var dep_id = 0;
+			if($('#d_or_c1').val()==17 ||$('#d_or_c1').val()==69 || $('#d_or_c1').val()==6 || $('#d_or_c1').val()==16 || $('#d_or_c1').val()==9){
+				dep_id=$('#d_or_c').val();
+			} else{
+				dep_id=$('#d_or_c1').val();
+			}
 
-			currentApp.doEdit1(0,title,8,dep);
+			currentApp.doEdit1(0,title,8,dep_id);
 		} else{
 			alert("請選擇總檢");
 		}
