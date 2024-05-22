@@ -319,7 +319,12 @@ class Question_option extends MY_Mgmt_Controller {
 				$cell_title = ['工作型態','性別','年資','平均每週工作時數','班別','曾經遭遇的暴力攻擊情境',
 				'公司提供有關預防暴力攻擊之衛生教育訓練','我清楚了解如何辨識職場發生的暴力危害',
 				'我清楚了解如何進行暴力危害的風險評估','我清楚了解如何避免或遠離暴力危害事件',
-				'我清楚了解暴力危害事件發生時如何尋求支援管道','我具備因應暴力危害事件的事務處理與執行能力'];
+				'我清楚了解暴力危害事件發生時如何尋求支援管道','我具備因應暴力危害事件的事務處理與執行能力',
+				'肢體暴力說明',
+				'言語暴力說明',
+				'心理暴力說明',
+				'性騷擾說明',
+				'其他說明',];
 				for ($i=0;$i<count($question_ans_list);$i++) {
 	
 					// Add new sheet
@@ -336,7 +341,12 @@ class Question_option extends MY_Mgmt_Controller {
 								  ->setCellValue($all_cell_title[8], $cell_title[8])
 								  ->setCellValue($all_cell_title[9], $cell_title[9])
 								  ->setCellValue($all_cell_title[10], $cell_title[10])
-								  ->setCellValue($all_cell_title[11], $cell_title[11]);
+								  ->setCellValue($all_cell_title[11], $cell_title[11])
+								  ->setCellValue($all_cell_title[11], $cell_title[12])
+								  ->setCellValue($all_cell_title[11], $cell_title[13])
+								  ->setCellValue($all_cell_title[11], $cell_title[14])
+								  ->setCellValue($all_cell_title[11], $cell_title[15])
+								  ->setCellValue($all_cell_title[11], $cell_title[16]);
 
 								  for ($j=0;$j<count($question_ans_list);$j++) {
 									  $k = $j+2;
@@ -351,7 +361,12 @@ class Question_option extends MY_Mgmt_Controller {
 												  ->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q9)
 												  ->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q10)
 												  ->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q11)
-												  ->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q12);
+												  ->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q12)
+												  ->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q4o)
+												  ->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q5o)
+												  ->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q6o)
+												  ->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q7o)
+												  ->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q3o);
 
 								  }
 		  
