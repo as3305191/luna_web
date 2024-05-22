@@ -188,6 +188,7 @@ class Swot extends MY_Mgmt_Controller {
 				$item['m_swot_w_o'] = $this->replace_num_title($m_swot_w_o);
 				$item['m_swot_s_t'] = $this->replace_num_title($m_swot_s_t);
 				$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
+				$item['dep'] = $dep;
 				$data['item']= $item;
 
 				if($style==8){
