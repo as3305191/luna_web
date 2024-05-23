@@ -168,6 +168,8 @@ class Swot extends MY_Mgmt_Controller {
 					$w_o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_o)));
 					$s_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_t)));
 					$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
+					$this -> to_json($each->id);
+
 				}
 
 				$item['id'] = 0;
@@ -234,9 +236,6 @@ class Swot extends MY_Mgmt_Controller {
 		$data['department_list'] = $this -> users_dao -> find_all_department();
 		// $this -> to_json($data['swot_class']);
 
-		$this -> to_json($q_data['parent_id']);
-		$this -> to_json($q_data['list_style']);
-		$this -> to_json($q_data['list_title']);
 
 
 		$this->load->view('mgmt/swot/edit', $data);
