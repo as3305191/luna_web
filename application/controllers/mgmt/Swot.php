@@ -235,6 +235,10 @@ class Swot extends MY_Mgmt_Controller {
 		// $this -> to_json($data['swot_class']);
 
 		$this -> to_json($q_data['parent_id']);
+		$this -> to_json($q_data['list_style']);
+		$this -> to_json($q_data['list_title']);
+
+
 		$this->load->view('mgmt/swot/edit', $data);
 	}
 
