@@ -138,7 +138,7 @@ class Swot extends MY_Mgmt_Controller {
 				));
 				$q_data['list_title'] =  $title;
 				$q_data['list_style'] =  $style;
-				$q_data['unify'] =  1;
+				// $q_data['unify'] =  1;
 				$q_data['type'] =  $type;
 				$q_data['d_or_c'] =  $dep;
 				if($q_data['d_or_c']  >0){
