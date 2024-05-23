@@ -100,7 +100,7 @@ class Swot_dao extends MY_Model {
 			if(!empty($data['list_style']) && !empty($data['list_title']) && $data['list_style']>0&& $data['list_title']>0){
 				$list_style = $data['list_style'];
 				$list_title = $data['list_title'];
-				if(!empty($data['parent_id'])){
+				if(!empty($data['parent_id']) &&$data['parent_id']>0){
 					$parent_id = $data['parent_id'];
 					$this -> db -> group_start();
 					$this -> db -> where("_m.role_id",$d_or_c);
