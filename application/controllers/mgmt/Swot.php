@@ -284,7 +284,6 @@ class Swot extends MY_Mgmt_Controller {
 			} else{
 				$data['class_id'] = $login_user->role_id;
 			}
-			$data['unify'] =0;
 			$data['role_id'] = $department;
 			$this -> dao -> insert($data);
 
