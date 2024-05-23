@@ -234,7 +234,7 @@ class Swot extends MY_Mgmt_Controller {
 		$data['department_list'] = $this -> users_dao -> find_all_department();
 		// $this -> to_json($data['swot_class']);
 
-		$this -> to_json($list);
+		$this -> to_json($q_data['parent_id']);
 		$this->load->view('mgmt/swot/edit', $data);
 	}
 
