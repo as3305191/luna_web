@@ -123,16 +123,11 @@ class Swot_dao extends MY_Model {
 					$this -> db -> group_end();
 					$this -> db -> group_end();
 				}  else{
-					$this -> db -> group_start();
 					$this -> db -> where("_m.class_id",$d_or_c);
 					$this -> db -> where("_m.swot_style_id",$list_style);
 					$this -> db -> where("_m.title",$list_title);
-					$this -> db -> or_group_start();
-					$this -> db -> where("_m.role_id",$d_or_c);
-					$this -> db -> where("_m.swot_style_id",$list_style);
-					$this -> db -> where("_m.title",$list_title);
-					$this -> db -> group_end();
-					$this -> db -> group_end();
+					$this -> db -> or_where("_m.role_id",$d_or_c);
+				
 				}
 				
 			} else if(!empty($data['list_style']) && $data['list_style']>0 && $data['list_title']==0){
