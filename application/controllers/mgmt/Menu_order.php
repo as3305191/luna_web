@@ -52,7 +52,7 @@ class Menu_order extends MY_Mgmt_Controller {
 
 		
 		$data['open_menu_count'] = count($list);
-		$this -> to_json($data);
+		// $this -> to_json($data);
 		$this -> load -> view('mgmt/menu_order/list', $data);
 	}
 
