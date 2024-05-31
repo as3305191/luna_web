@@ -22,7 +22,6 @@ class Menu_order extends MY_Mgmt_Controller {
 		$list = $this -> menu_dao -> find_all_open();
 		$map_list= array();
 		$weekarray=array("日","一","二","三","四","五","六");
-		$data['menu_list']= array();
 		foreach($list as $each){
 			if($each->open_date!=='0000-00-00'){
 				$weekday = $weekarray[date("w",strtotime($each->open_date))];
