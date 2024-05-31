@@ -24,13 +24,11 @@
 					</div>
 					
 					<?php if($open_menu_count>0): ?>
-						<?php if($open_menu_count==1): ?>
-							<?php if(isset($menu_list)): ?>
-								<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?php if($menu_list[0]->open_dep!=='0'): ?><i class="fa fa-lg fa-lock"> </i>&nbsp;<?php endif?><?= isset($menu_list[0]->timestamp) ? $menu_list[0]->timestamp.' ': '' ?><?= $menu_list[0]->menu_name ?></button>
-								<input type="hidden" class="form-control" id="menu_id"value="<?= $menu_list[0]->id ?>">
-							<?php endif?>
-						<?php else: ?>	
-							<?php if(isset($menu_list)): ?>
+						<?php if(isset($menu_list) && count($menu_list)>0): ?>
+							<?php if($open_menu_count==1): ?>
+									<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?php if($menu_list[0]->open_dep!=='0'): ?><i class="fa fa-lg fa-lock"> </i>&nbsp;<?php endif?><?= isset($menu_list[0]->timestamp) ? $menu_list[0]->timestamp.' ': '' ?><?= $menu_list[0]->menu_name ?></button>
+									<input type="hidden" class="form-control" id="menu_id"value="<?= $menu_list[0]->id ?>">
+							<?php else: ?>	
 								<button class="btn_active btn-success text-light  menu_btn menu_<?= $menu_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $menu_list[0]->id ?>,<?= $menu_list[0]->menu_style_id ?>)"><?php if($menu_list[0]->open_dep!=='0'): ?><i class="fa fa-lg fa-lock"> </i>&nbsp;<?php endif?><?= isset($menu_list[0]->timestamp) ? $menu_list[0]->timestamp.' ': '' ?><?= $menu_list[0]->menu_name ?></button>
 								<input type="hidden" class="form-control" id="menu_id" value="<?= $menu_list[0]->id ?>">
 
