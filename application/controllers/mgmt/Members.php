@@ -133,7 +133,7 @@ class Members extends MY_Mgmt_Controller {
 		if(empty($birth)){
 			$data['birth'] = NULL;
 		} else{
-			$data['birth'] = $birth ;
+			$data['birth'] = $birth;
 		}
 
 		if(empty($id)) {

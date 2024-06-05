@@ -191,51 +191,51 @@
   $('input:radio[name="q3_7"]').on('change', function(){
     q7 = $('input:radio[name="q3_7"]:checked').val();
     sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
-    var rem2 = sum_p2 % 6;
-    total2 = (sum_p2 - rem2) / 6;
+    var rem2 = sum_p2 % 7;
+    total2 = (sum_p2 - rem2) / 7;
     // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_8"]').on('change', function(){
     q8 = $('input:radio[name="q3_8"]:checked').val();
     sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
-    var rem2 = sum_p2 % 6;
-    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    var rem2 = sum_p2 % 7;
+    total2 = (sum_p2 - rem2) / 7;    // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_9"]').on('change', function(){
     q9 = $('input:radio[name="q3_9"]:checked').val();
     sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
-    var rem2 = sum_p2 % 6;
-    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    var rem2 = sum_p2 % 7;
+    total2 = (sum_p2 - rem2) / 7;    // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_10"]').on('change', function(){
     q10 = $('input:radio[name="q3_10"]:checked').val();
     sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
-    var rem2 = sum_p2 % 6;
-    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    var rem2 = sum_p2 % 7;
+    total2 = (sum_p2 - rem2) / 7;    // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_11"]').on('change', function(){
     q11 = $('input:radio[name="q3_11"]:checked').val();
     sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
-    var rem2 = sum_p2 % 6;
-    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    var rem2 = sum_p2 % 7;
+    total2 = (sum_p2 - rem2) / 7;    // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_12"]').on('change', function(){
     q12 = $('input:radio[name="q3_12"]:checked').val();
     sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
-    var rem2 = sum_p2 % 6;
-    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    var rem2 = sum_p2 % 7;
+    total2 = (sum_p2 - rem2) / 7;    // console.log(total1);
     t2();
   });
   $('input:radio[name="q3_13"]').on('change', function(){
     q13 = $('input:radio[name="q3_13"]:checked').val();
     sum_p2 = parseInt(q7)+parseInt(q8)+parseInt(q9)+parseInt(q10)+parseInt(q11)+parseInt(q12)+parseInt(q13);
-    var rem2 = sum_p2 % 6;
-    total2 = (sum_p2 - rem2) / 6;    // console.log(total1);
+    var rem2 = sum_p2 % 7;
+    total2 = (sum_p2 - rem2) / 7;    // console.log(total1);
     t2();
   });
 
