@@ -683,35 +683,35 @@ class Question_for_user extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function re_sql() {
-		$data = array();
-		$list = $this -> question_ans_dao -> find_by_question_option_id();
-		foreach($list as $each){
-			// if(intval($each->q1o)<50){
-			// 	$data['q2o'] = '輕微';
-			// }
-			// if(intval($each->q1o)<=70 && intval($each->q1o)>=50){
-			// 	$data['q2o'] = '中度';
-			// }
-			// if(intval($each->q1o)>70){
-			// 	$data['q2o'] = '嚴重';
-			// }
-			$total_num = intval($each->q7)+intval($each->q8)+intval($each->q9)+intval($each->q10)+intval($each->q11)+intval($each->q12)+intval($each->q13);
-			$rem2 = $total_num % 7;
-			$total_num2 = ($total_num - $rem2) / 7;
-			$data['q3o'] = $total_num2;
-			if(intval($total_num2)<45){
-				$data['q4o'] = '輕微';
-			}
-			if(45<=intval($total_num2) && intval($total_num2)<=60){
-				$data['q4o'] = '中度';
-			}
-			if(intval($total_num2)>60){
-				$data['q4o'] = '嚴重';
-			}
-			$this -> question_ans_dao -> update($data, $each->id);
+	// public function re_sql() {
+	// 	$data = array();
+	// 	$list = $this -> question_ans_dao -> find_by_question_option_id();
+	// 	foreach($list as $each){
+	// 		// if(intval($each->q1o)<50){
+	// 		// 	$data['q2o'] = '輕微';
+	// 		// }
+	// 		// if(intval($each->q1o)<=70 && intval($each->q1o)>=50){
+	// 		// 	$data['q2o'] = '中度';
+	// 		// }
+	// 		// if(intval($each->q1o)>70){
+	// 		// 	$data['q2o'] = '嚴重';
+	// 		// }
+	// 		$total_num = intval($each->q7)+intval($each->q8)+intval($each->q9)+intval($each->q10)+intval($each->q11)+intval($each->q12)+intval($each->q13);
+	// 		$rem2 = $total_num % 7;
+	// 		$total_num2 = ($total_num - $rem2) / 7;
+	// 		$data['q3o'] = $total_num2;
+	// 		if(intval($total_num2)<45){
+	// 			$data['q4o'] = '輕微';
+	// 		}
+	// 		if(45<=intval($total_num2) && intval($total_num2)<=60){
+	// 			$data['q4o'] = '中度';
+	// 		}
+	// 		if(intval($total_num2)>60){
+	// 			$data['q4o'] = '嚴重';
+	// 		}
+	// 		$this -> question_ans_dao -> update($data, $each->id);
 
-		}
-		$this -> to_json($list);
-	}
+	// 	}
+	// 	$this -> to_json($list);
+	// }
 }
