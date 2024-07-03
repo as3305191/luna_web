@@ -277,16 +277,18 @@ class Computer extends MY_Mgmt_Controller {
 
 		$hard_list = $this -> c_s_h_join_list_dao -> find_all_by_id($id,0);
 		$soft_list = $this -> c_s_h_join_list_dao -> find_all_by_id($id,1);
-		foreach($hard_list as $each){
-			$this -> c_h_dao -> update($data, $each->hard_id);
-		}
-		foreach($soft_list as $each){
-			$soft_now_list = $this -> c_s_dao -> find_by_id($each->soft_id);
-			if(!empty($soft_now_list) && $soft_now_list->usage_count==0){//如過使用次數剩餘0才做刪除
-				$this -> c_s_dao -> update($data, $soft_now_list->id);
-			}
-		}
-		$this -> dao -> update($data, $id);
+		// foreach($hard_list as $each){
+		// 	$this -> c_h_dao -> update($data, $each->hard_id);
+		// }
+		// foreach($soft_list as $each){
+		// 	$soft_now_list = $this -> c_s_dao -> find_by_id($each->soft_id);
+		// 	if(!empty($soft_now_list) && $soft_now_list->usage_count==0){//如過使用次數剩餘0才做刪除
+		// 		$this -> c_s_dao -> update($data, $soft_now_list->id);
+		// 	}
+		// }
+		// $this -> dao -> update($data, $id);
+		$res['hard_list'] = $hard_list;
+		$res['soft_list'] = $soft_list;
 		$this -> to_json($res);
 	}
 
