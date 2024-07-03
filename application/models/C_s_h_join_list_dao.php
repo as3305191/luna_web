@@ -732,8 +732,8 @@ class C_s_h_join_list_dao extends MY_Model {
 		if($type==0){
 			$this -> db -> select('c_h.computer_hard_id as hard_id');
 			$this -> db -> where('_m.computer_hard_id>', 0);
-			$this -> db -> where('c_s.is_delete', 0); 
-			$this -> db -> where('c_s.is_ok', 1); 
+			$this -> db -> where('c_h.is_delete', 0); 
+			$this -> db -> where('c_h.is_ok', 1); 
 			$this -> db -> where('_m.type', 0);
 
 			$this -> db -> join("computer_hard c_h", "c_h.id = _m.computer_hard_id", "left");
