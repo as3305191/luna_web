@@ -275,7 +275,7 @@ class Computer extends MY_Mgmt_Controller {
 		$data['is_delete'] = 1;
 		$data['delete_userid'] = $login_user->id;
 
-		$hard_list = $this -> c_s_h_join_list_dao -> find_all_by_id($id,0);
+		// $hard_list = $this -> c_s_h_join_list_dao -> find_all_by_id($id,0);
 		// $soft_list = $this -> c_s_h_join_list_dao -> find_all_by_id($id,1);
 		// foreach($hard_list as $each){
 		// 	$this -> c_h_dao -> update($data, $each->hard_id);
@@ -286,8 +286,8 @@ class Computer extends MY_Mgmt_Controller {
 		// 		$this -> c_s_dao -> update($data, $soft_now_list->id);
 		// 	}
 		// }
-		// $this -> dao -> update($data, $id);
-		$res['hard_list'] = $hard_list;
+		$this -> dao -> update($data, $id);
+		// $res['hard_list'] = $hard_list;
 		// $res['soft_list'] = $soft_list;
 		$this -> to_json($res);
 	}
