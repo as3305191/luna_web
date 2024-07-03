@@ -271,10 +271,9 @@ class Computer extends MY_Mgmt_Controller {
 	public function delete($id) {
 		$res['success'] = TRUE;
 		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['is_delete'] = 1;
 		$data['delete_userid'] = $login_user->id;
-		$id = $this -> get_get('id');
 
 		$hard_list = $this -> c_s_h_join_list_dao -> find_all_by_id($id,0);
 		$soft_list = $this -> c_s_h_join_list_dao -> find_all_by_id($id,1);

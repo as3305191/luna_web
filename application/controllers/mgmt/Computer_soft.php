@@ -135,10 +135,9 @@ class Computer_soft extends MY_Mgmt_Controller {
 
 	public function delete($id) {
 		$res['success'] = TRUE;
-		$id = $this -> get_get('id');
 
 		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 		$data['is_delete'] = 1;
 		$data['delete_userid'] = $login_user->id;
 
