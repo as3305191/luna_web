@@ -726,7 +726,6 @@ class C_s_h_join_list_dao extends MY_Model {
 
 	function find_all_by_id($id,$type) {
 
-		// select
 		if($type==0){
 			$this -> db -> select('_m.*');
 			$this -> db -> select('c_h.computer_hard_id as hard_id');
