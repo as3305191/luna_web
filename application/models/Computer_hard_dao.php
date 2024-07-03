@@ -302,7 +302,7 @@ class Computer_hard_dao extends MY_Model {
 			$id = $data['id'];
 			$this -> db -> where("_m.id", $id);
 		}
-		// $this -> db -> where("_m.is_delete",0);
+		$this -> db -> where("_m.is_delete",0);
 
 	}
 
