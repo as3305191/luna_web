@@ -727,23 +727,25 @@ class C_s_h_join_list_dao extends MY_Model {
 	function find_all_by_id($id,$type) {
 
 		// select
-		$this -> db -> select('_m.*');
-		$this -> db -> where("_m.computer_id", $id);
 		if($type==0){
+			$this -> db -> select('_m.*');
 			$this -> db -> select('c_h.computer_hard_id as hard_id');
 			$this -> db -> where('_m.computer_hard_id>', 0);
 			$this -> db -> where('c_h.is_delete', 0); 
 			$this -> db -> where('c_h.is_ok', 1); 
 			$this -> db -> where('_m.type', 0);
+			$this -> db -> where("_m.computer_id", $id);
 
 			$this -> db -> join("computer_hard c_h", "c_h.id = _m.computer_hard_id", "left");
 
 		}else if($type==1){
+			$this -> db -> select('_m.*');
 			$this -> db -> select('c_s.computer_soft_id as soft_id');
 			$this -> db -> where('_m.computer_soft_id>', 0);
 			$this -> db -> where('c_s.is_delete', 0); 
 			$this -> db -> where('c_s.is_ok', 1); 
 			$this -> db -> where('_m.type', 0);
+			$this -> db -> where("_m.computer_id", $id);
 
 			$this -> db -> join("computer_soft c_s", "c_s.id = _m.computer_soft_id", "left");
 
