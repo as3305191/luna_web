@@ -294,7 +294,7 @@ class Computer_hard_dao extends MY_Model {
 	function search_always($data) {
 		if(!empty($data['type'])){
 			$type = $data['type'];
-			if($type>-1){
+			if($type>=0){
 				$this -> db -> where("_m.type", $type);
 			}
 		}
