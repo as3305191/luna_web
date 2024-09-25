@@ -92,7 +92,7 @@
 					</div>
 				</div>
 			</fieldset>
-			<?php if($login_user->id=='205' ||$login_user->id=='114'): ?>
+			<?php if($login_user->id=='205' ||$login_user->id=='114'||$login_user->id=='87'||$login_user->id=='108'||$login_user->id=='137'): ?>
 				<fieldset >
 					<div class="form-group" >
 						<label class="col-md-3 control-label">開放部門</label>
