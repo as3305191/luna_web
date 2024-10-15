@@ -13,7 +13,7 @@ $stmt = sqlsrv_query( $conn, $sql);
 
 if ( $stmt ){    
      //   $id = $stmt['id']; 
-      echo"<td>".$stmt."</td>"; 
+      echo "<td>".json_encode($stmt)."</td>"; 
      //  echo"<td>".$stmt['name2']."</td>";
  } 
 else{ 
