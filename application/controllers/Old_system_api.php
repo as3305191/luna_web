@@ -38,7 +38,7 @@ class Old_system_api extends MY_Mgmt_Controller {
 		sqlsrv_free_stmt( $stmt);    
 		sqlsrv_close( $conn);
 		// $this -> to_json($data);
-		$this->load->view('mgmt/old_system_api/list', $data);
+		$this->load->view('mgmt/old_system_api/list', $stmt);
 	}
 
 	public function get_data() {
