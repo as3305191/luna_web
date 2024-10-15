@@ -26,7 +26,7 @@ class Old_system_api extends MY_Mgmt_Controller {
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
 		$result = sqlsrv_fetch_array($stmt);
-		// sqlsrv_close( $conn);
+		sqlsrv_close( $conn);
 		$this -> to_json($result);
 		$this->load->view('mgmt/old_system_api/list', $stmt);
 	}
