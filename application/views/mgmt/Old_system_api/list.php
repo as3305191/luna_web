@@ -11,12 +11,11 @@ thead tr th {
 <link rel="stylesheet" href="<?= base_url() ?>assets_co/assets_/css/styles.multipage-real-estate.css">
   
 <div class="tab-content">
-
+	
 </div>
 <!-- Station Serach Modal -->
 
 
-<?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 	var baseUrl = '<?=base_url('')?>';
 	var mCols = [{
