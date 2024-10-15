@@ -25,19 +25,9 @@ class Old_system_api extends MY_Mgmt_Controller {
 		
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
-		if ( $stmt ){    
-			 //   $id = $stmt['id']; 
-			  echo "<td>".json_encode($stmt)."</td>"; 
-			 //  echo"<td>".$stmt['name2']."</td>";
-		 } 
-		else{ 
-			 echo "Error in statement execution.\n";    
-			 die( print_r( sqlsrv_errors(), true));    
-		}    
-		
-		sqlsrv_free_stmt($stmt);    
-		sqlsrv_close( $conn);
-		$this -> to_json($stmt[0]);
+		$result = sqlsrv_fetch_array($stmt);
+		// sqlsrv_close( $conn);
+		$this -> to_json($result);
 		$this->load->view('mgmt/old_system_api/list', $stmt);
 	}
 
