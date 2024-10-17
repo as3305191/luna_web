@@ -105,7 +105,6 @@
 							<form action="" id="login-form" class="smart-form client-form" method="post">
 								<header>
 								 登入
-								 <button type="button" class="btn btn-sm btn-primary" id="add_key"><i class="fa fa-plus-circle fa-lg"></i></button>
 								</header>
 
 								<fieldset>
