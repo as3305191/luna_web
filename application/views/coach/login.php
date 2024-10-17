@@ -89,7 +89,6 @@
 
   <div class="u-outer-spaces-helper"></div>
 
-
   <!-- JS Global Compulsory -->
   <script src="<?= base_url() ?>coach_1/assets/vendor/jquery/jquery.min.js"></script>
   <script src="<?= base_url() ?>coach_1/assets/vendor/jquery-migrate/jquery-migrate.min.js"></script>
@@ -110,7 +109,6 @@
   <!-- JS Customization -->
   <script src="<?= base_url() ?>coach_1/assets/js/custom.js"></script>
   <script src="<?= base_url() ?>js/plugin/jquery-validate/jquery.validate.min.js"></script>
-
   <!-- JS Plugins Init. -->
   <script>
 
@@ -145,10 +143,9 @@
 
   					// Ajax form submition
   					submitHandler : function(form) {
-
   						$.ajax({
   							type: "POST",
-  							url: '<?= base_url('coach/login/do_login') ?>',
+  							url: '<?= base_url('/login/do_login') ?>',
   							data: $("#login-form").serialize(), // serializes the form's elements.
   							success: function(data)
   							{
@@ -168,6 +165,10 @@
   				});
 
   			});
+
+
+   
+
   </script>
 
 </body>

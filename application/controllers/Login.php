@@ -63,6 +63,7 @@ class Login extends MY_Base_Controller {
 		$data['num'] = rand(1,3);
 		// $this -> to_json($data);
 
+		// $this -> load -> view('coach\login', $data);
 		$this -> load -> view('loginv', $data);
 	}
 

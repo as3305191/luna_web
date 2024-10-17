@@ -2,6 +2,23 @@
 <?php require_once(APPPATH."views/lang/$lang.php"); ?>
 <!DOCTYPE html>
 
+<head>
+    <!-- Vender  -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>patent_vendor/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>patent_vendor/icon-line-pro/style.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>patent_vendor/icon-line/css/simple-line-icons.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>patent_vendor/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>patent_vendor/fancybox/jquery.fancybox.css">
+    <!-- Koko CSS  -->
+    <!-- <link rel="stylesheet" type="text/css" href="<?= base_url() ?>patent_css/base.css"> -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>patent_css/layout.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>patent_css/global.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>patent_css/module.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>patent_css/component.css">
+    <link rel="stylesheet" href="<?= base_url() ?>assets_co/assets_/css/styles.multipage-real-estate.css">
+</head>
+
+
 <html lang="en-us" id="extr-page">
 	<head>
 		<meta charset="utf-8">
@@ -88,6 +105,7 @@
 							<form action="" id="login-form" class="smart-form client-form" method="post">
 								<header>
 								 登入
+								 <button type="button" class="btn btn-sm btn-primary" id="add_key"><i class="fa fa-plus-circle fa-lg"></i></button>
 								</header>
 
 								<fieldset>
@@ -200,7 +218,7 @@
 					submitHandler : function(form) {
 						$.ajax({
 							type: "POST",
-							url: '<?= base_url('login/do_login') ?>',
+							url: '<?= base_url('app/login/do_login') ?>',
 							data: $("#login-form").serialize(), // serializes the form's elements.
 							success: function(data)
 							{
@@ -237,6 +255,18 @@
 			    }
 				});
 		};
+
+
+		$('#add_key').click(function() {
+	layer.open({
+		type:2,
+		title:'',
+		closeBtn:0,
+		area:['400px','200px'],
+		shadeClose:true,
+		content:'<?=base_url('mgmt/patent/new_key')?>'
+    })
+});
 		</script>
 
 	</body>
