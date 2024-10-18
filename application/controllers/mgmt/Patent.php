@@ -547,8 +547,8 @@ class Patent extends MY_Mgmt_Controller {
 				}
 			}
 		}
-		$res['success'] = TRUE;
-		$this -> to_json(array_reverse($res));
+		// $res['success'] = TRUE;
+		$this -> to_json($res);
 	}
 
 	public function export_all($id) {
