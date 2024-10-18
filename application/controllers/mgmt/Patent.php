@@ -536,21 +536,21 @@ class Patent extends MY_Mgmt_Controller {
 		$last_child_category = $this -> patent_status_dao -> find_by_id($patent->patnet_status);
 		if(!empty($last_child_category)){
 			$last_level = $last_child_category->level;
-			$last_child = $this -> patent_status_dao -> find_by_id($last_child_category->id);
 			for($i=$last_level;$i>=0;$i--){
+				$last_child = $this -> patent_status_dao -> find_by_id($last_child_category->id);
 				if($i<$last_level){
 					$j = $i+1;
-					$last_child = $this -> patent_status_dao -> find_by_id($last_child->parent_id);
+					$last_child = $this -> patent_status_dao -> find_by_id($res['patnet_status_'.$j]);
 					$res['patnet_status_'.$i] = $last_child -> parent_id;
 				} else{
 					$res['patnet_status_'.$i] = $last_child -> id;
 				}
 			}
 		} else{
-			$res['patnet_status_3'] = 0;
-			$res['patnet_status_2'] = 0;
-			$res['patnet_status_1'] = 0;
-			$res['patnet_status_0'] = 0;
+			$res['patnet_status_3'] = '0';
+			$res['patnet_status_2'] = '0';
+			$res['patnet_status_1'] = '0';
+			$res['patnet_status_0'] = '0';
 		}
 		$res['success'] = TRUE;
 		$this -> to_json(array_reverse($res));
