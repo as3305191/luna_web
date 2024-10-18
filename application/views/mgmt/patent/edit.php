@@ -866,8 +866,10 @@ if($('#item_id').val()>0){
 		},
 		success : function(d) {
 			if(d){
-				console.log(d);
+				// console.log(d);
 				current_app.push(d);
+				load_edit_category();
+
 			}
 		}
 	});
@@ -1234,7 +1236,6 @@ function do_save() {
 
 		// } 
 	}	
-	load_edit_category();
 	
 	function do_search_family() {
 		// familyChange();
