@@ -867,8 +867,7 @@ if($('#item_id').val()>0){
 		success : function(d) {
 			if(d){
 				current_app.push(d);
-				console.log(d[0]);
-				console.log(current_app);
+				console.log(d);
 			}
 		}
 	});
