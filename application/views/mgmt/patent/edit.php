@@ -1075,13 +1075,13 @@ function do_save() {
 							
 								html+='<div class="widget-toolbar pull-left">'+
 										'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" >'+
-											'<option value="all">全部</option>'+
+											'<option value="0">全部</option>'+
 										'</select>'+
 									'</div>';
 							} else{
 								html+='<div class="widget-toolbar pull-left">'+
 											'<select id="patnet_status_'+i+'" class="p_patnet_status form-control" data-val="'+i+'" disabled>'+
-												'<option value="all">全部</option>'+
+												'<option value="0">全部</option>'+
 											'</select>'+
 										'</div>';
 							}
@@ -1139,9 +1139,9 @@ function do_save() {
 							var me = $(this);
 							var _dataVal = me.data("val");
 							var select_Val = me.val();
-							var all_option = '<option value="all">全部</option>';
+							var all_option = '<option value="0">全部</option>';
 							$("#patnet_status select").each(function (i) {
-								if($(this).val()!=="all"){
+								if($(this).val()!=="0"){
 									now_patent_status.push($(this).val());
 								}
 							});
@@ -1150,13 +1150,13 @@ function do_save() {
 									var keynum_d_val = $('#'+key).data("val");
 									if(keynum_d_val>_dataVal){
 										$('#patnet_status_'+keynum_d_val).empty();
-										$('<option value="all">全部</option>').appendTo($('#patnet_status_'+keynum_d_val));
+										$('<option value="0">全部</option>').appendTo($('#patnet_status_'+keynum_d_val));
 									}
 								});
 							}
 							
 							var before_dataVal = _dataVal-1;
-							if(select_Val=='all'){
+							if(select_Val=='0'){
 								if(_dataVal>0){
 									$('#in_patnet_status').val($('#patnet_status_'+before_dataVal).val());
 								}else{
@@ -1176,7 +1176,7 @@ function do_save() {
 									},
 									dataType: 'json',
 									success: function(d) {
-										var category_option = '<option value="all">全部</option>';
+										var category_option = '<option value="0">全部</option>';
 										// var $category = $('#patnet_status_'+next_c).empty();
 										// $category.append(category_option);
 										var $category = $('#patnet_status_'+next_c).empty();

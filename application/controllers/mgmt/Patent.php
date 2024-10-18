@@ -547,10 +547,10 @@ class Patent extends MY_Mgmt_Controller {
 				}
 			}
 		} else{
-			$res['patnet_status_0'] = '';
-			$res['patnet_status_1'] = '';
-			$res['patnet_status_2'] = '';
-			$res['patnet_status_3'] = '';
+			$res['patnet_status_0'] = 0;
+			$res['patnet_status_1'] = 0;
+			$res['patnet_status_2'] = 0;
+			$res['patnet_status_3'] = 0;
 		}
 		$res['success'] = TRUE;
 		$this -> to_json(array_reverse($res));
