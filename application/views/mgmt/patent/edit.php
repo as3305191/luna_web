@@ -869,12 +869,13 @@ if($('#item_id').val()>0){
 				console.log(d);
 				current_app.push(d);
 			}
-			load_edit_category();
 
 		}
 	});
 
 } 
+load_edit_category();
+
 
 function check_family(){
 	var url = baseUrl + 'mgmt/patent/check_family'; 
