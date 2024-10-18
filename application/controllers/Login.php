@@ -51,7 +51,7 @@ class Login extends MY_Base_Controller {
 			// 		}
 			// 	}
 			// } else{
-				redirect("/app/home");
+				redirect("/app/home/");
 				return;
 			// }
 

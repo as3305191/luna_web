@@ -229,7 +229,7 @@
 									if(data.menu_order>0){
 										location.href = "<?= base_url('app/#mgmt/menu_order') ?>";
 									} else{
-										location.href = "<?= base_url('app/#mgmt/message') ?>";
+										location.href = "<?= base_url('/app/home/') ?>";
 									}
 								}
 							}
