@@ -541,14 +541,17 @@ class Patent extends MY_Mgmt_Controller {
 				if($i<$last_level){
 					$j = $i+1;
 					$last_child = $this -> patent_status_dao -> find_by_id($res['patnet_status_'.$j]);
-					$res['patnet_status_'.$i] = $last_child -> parent_id;
+					// $res['patnet_status_'.$i] = $last_child -> parent_id;
+					$res = array(['patnet_status_'.$i]=>$last_child -> parent_id);
 				} else{
-					$res['patnet_status_'.$i] = $last_child -> id;
+					// $res['patnet_status_'.$i] = $last_child -> id;
+					$res = array(['patnet_status_'.$i]=>$last_child -> id);
+
 				}
 			}
 		}
-		// $res['success'] = TRUE;
-		$this -> to_json($res);
+		$res['success'] = TRUE;
+		$this -> to_json(array_reverse($res));
 	}
 
 	public function export_all($id) {
