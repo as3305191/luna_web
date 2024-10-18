@@ -532,7 +532,24 @@ $(document).ready(function() {
 
 		
 });
+if($('#item_id').val()>0){
+	var url = baseUrl + 'mgmt/patent/find_each_category_val'; // the script where you handle the form input.
+	$.ajax({
+		type : "POST",
+		url : url,
+		data : {
+			item_id:$('#item_id').val(),
+		},
+		success : function(d) {
+			if(d){
+				console.log(d);
+				current_app.push(d);
+			}
 
+		}
+	});
+
+} 
 $('#app-edit-form').bootstrapValidator({
 		feedbackIcons : {
 			valid : 'glyphicon glyphicon-ok',
@@ -856,24 +873,7 @@ $("#img-input").fileinput({
 	});
 	
 
-if($('#item_id').val()>0){
-	var url = baseUrl + 'mgmt/patent/find_each_category_val'; // the script where you handle the form input.
-	$.ajax({
-		type : "POST",
-		url : url,
-		data : {
-			item_id:$('#item_id').val(),
-		},
-		success : function(d) {
-			if(d){
-				console.log(d);
-				current_app.push(d);
-			}
 
-		}
-	});
-
-} 
 load_edit_category();
 
 
