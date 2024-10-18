@@ -1091,7 +1091,8 @@ function do_save() {
 							$.each(d.category, function(){
 								category_level = this.level;
 								// console.log(current_app[0]['patnet_status_'+category_level]);
-								if(isset(current_app[0]['patnet_status_'+category_level])){
+								var option = 'patnet_status_'+category_level;
+								if(option in current_app[0]){
 									if(current_app[0]['patnet_status_'+category_level]>0){
 										if(current_app[0].hasOwnProperty('patnet_status_'+category_level) && current_app[0]['patnet_status_'+category_level]==this.id){
 											$('<option />', {
