@@ -530,7 +530,7 @@ $(document).ready(function() {
 			currentApp.backTo();
 		}, false); 
 
-		
+		load_edit_category();
 });
 
 $('#app-edit-form').bootstrapValidator({
@@ -1232,7 +1232,7 @@ function do_save() {
 
 		// } 
 	}	
-	load_edit_category();
+	
 	
 	function do_search_family() {
 		// familyChange();
