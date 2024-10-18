@@ -1,7 +1,11 @@
 <?php
 error_reporting(E_ALL ^ E_NOTICE);
 ob_implicit_flush();
- 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS, post, get');
+header('Access-Control-Max-Age: 3600');
+header('Access-Control-Allow-Headers: Origin, Content-Type, X-Auth-Token');
+header('Access-Control-Allow-Credentials: true');
 //地址與接口，即創建socket時需要服務器的IP和端口
 // $sk=new Sock('127.0.0.1',8081);
 $sk=new Sock('192.168.1.205',8081);
