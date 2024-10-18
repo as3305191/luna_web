@@ -542,7 +542,7 @@ if($('#item_id').val()>0){
 		},
 		success : function(d) {
 			if(d){
-				console.log(d);
+				// console.log(d);
 				current_app.push(d);
 			}
 
