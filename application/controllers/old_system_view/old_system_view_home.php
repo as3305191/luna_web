@@ -57,7 +57,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		
 		$total_old_user_ewallet = $income - $outcome;
 		$data['old_user_id'] = $old_user_id;
-		$data['total_old_user_ewalle'] = $total_old_user_ewallet;
+		$data['total_old_user_ewallet'] = $total_old_user_ewallet;
 		$data['store_list'] = $store;
 		// $data['host'] = $_SERVER['HTTP_HOST'];
 
