@@ -31,9 +31,9 @@ class Old_system_view_home extends MY_Base_Controller {
 		$income = 0;
 		$outcome = 0;
 		if($_SERVER['HTTP_HOST']=='192.168.1.205'){
-			$host = '192.168.1.211/eform/order/menu';
+			$host = '192.168.1.211/eform/order';
 		} else{
-			$host = '211.21.221.121/eform/order/menu';
+			$host = '211.21.221.121/eform/order';
 		}
 		foreach($old_user_ewallet as $each){
 			
