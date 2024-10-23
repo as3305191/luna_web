@@ -31,12 +31,14 @@ class Old_system_view_home extends MY_Base_Controller {
 		$income = 0;
 		$outcome = 0;
 		foreach($old_user_ewallet as $each){
-			if($each->$income !=='null'){
-				$income+=$each->$income;
-			}
-			if($each->$outcome !=='null'){
-				$outcome+=$each->$outcome;
-			}
+			$data['each_i'] = $each->$income;
+			$data['each_o'] = $each->$outcome;
+			// if($each->$income !=='null'){
+			// 	$income+=$each->$income;
+			// }
+			// if($each->$outcome !=='null'){
+			// 	$outcome+=$each->$outcome;
+			// }
 			
 		}
 		$total_old_user_ewallet = $income - $outcome;
