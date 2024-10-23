@@ -28,13 +28,18 @@ class Old_system_view_home extends MY_Base_Controller {
 		$old_user_id = $this -> get_old_user_id($login_user->account);
 		$menu_open_list = $this -> get_data_menu($today);
 		$old_user_ewallet = $this -> get_user_ewallet($old_user_id);
-		$income = 0;
-		$outcome = 0;
-		foreach($old_user_ewallet as $each){
-			$income.=$each->$income;
-			$outcome.=$each->$outcome;
-		}
-		$total_old_user_ewallet = $income - $outcome;
+		// $income = 0;
+		// $outcome = 0;
+		// foreach($old_user_ewallet as $each){
+		// 	if($each->$income !==NUll){
+		// 		$income.=$each->$income;
+		// 	}
+		// 	if($each->$outcome !==NUll){
+		// 		$outcome.=$each->$outcome;
+		// 	}
+			
+		// }
+		// $total_old_user_ewallet = $income - $outcome;
 		$data['old_user_id'] = $old_user_id;
 		$data['total_old_user_ewalle'] = $old_user_ewallet;
 		$data['menu_open_list'] = $menu_open_list;
