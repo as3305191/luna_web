@@ -33,55 +33,7 @@
           <!-- Profile Content -->
           <div class="col-lg-9">
             <!-- Overall Statistics -->
-            <div class="row g-mb-40">
-              <div class="col-md-6 g-mb-30 g-mb-0--md">
-                <div class="g-bg-cyan g-color-white g-pa-25">
-                  <header class="d-flex text-uppercase g-mb-40">
-                    <i class="icon-people align-self-center display-4 g-mr-20"></i>
-
-                    <div class="g-line-height-1">
-                      <h4 class="h5">今日上秤學員總共幾人</h4>
-                      <div class="js-counter g-font-size-30" data-comma-separated="true"><?=$count_today?></div>
-                    </div>
-                  </header>
-
-                  <div class="d-flex justify-content-between text-uppercase g-mb-25">
-                    <div class="g-line-height-1">
-                      <h5 class="h6 g-font-weight-600">3天未上秤學員</h5>
-											<button class="js-counter g-font-size-16" data-comma-separated="true" style="background-color:#00FF00;cursor:pointer" onclick="show_lose_3days(<?= isset($members_lose_3days) ? 1: 0 ?>)"><?=$count_members_lose_3days?></button>
-                    </div>
-
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6 g-mb-30 g-mb-0--md">
-                <div class="g-bg-purple g-color-white g-pa-25">
-                  <header class="d-flex text-uppercase g-mb-40">
-                    <i class="icon-layers align-self-center display-4 g-mr-20"></i>
-
-                    <div class="g-line-height-1">
-                      <h4 class="h5">幫助幾人</h4>
-                      <div class="js-counter g-font-size-30" data-comma-separated="true"><?=$count_help_people?></div>
-
-                    </div>
-                  </header>
-
-                  <div class="d-flex justify-content-between text-uppercase g-mb-25">
-                    <div class="g-line-height-1">
-                      <h5 class="h6 g-font-weight-600">幾天</h5>
-                      <div class="js-counter g-font-size-16" data-comma-separated="true"><?=$days?></div>
-                    </div>
-
-                    <div class="text-right g-line-height-1">
-                      <h5 class="h6 g-font-weight-600">總共減脂</h5>
-                      <div class="g-font-size-16" data-comma-separated="true">
-                        <span><?=doubleval($help_fat_rate_change)?></span>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
+           
 
 
             <!-- Profile Content -->
