@@ -39,8 +39,9 @@ class Old_system_view_home extends MY_Base_Controller {
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
-		
-		$sql = "SELECT * FROM order_menu where odate=$today and enddate=NULL";    
+		$sql = "SELECT * FROM order_menu";    
+
+		// $sql = "SELECT * FROM order_menu where odate=$today and enddate=NULL";    
 		
 		/* Execute the query. */    
 		
@@ -81,8 +82,9 @@ class Old_system_view_home extends MY_Base_Controller {
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
-		
-		$sql = "SELECT id FROM account where account=$account";    
+		$sql = "SELECT id FROM account";    
+
+		// $sql = "SELECT id FROM account where account=$account and deldate=NULL";    
 		
 		/* Execute the query. */    
 		
