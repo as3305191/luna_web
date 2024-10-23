@@ -31,8 +31,8 @@ class Old_system_view_home extends MY_Base_Controller {
 		$income = 0;
 		$outcome = 0;
 		foreach($old_user_ewallet as $each){
-			$income+=$each->$income;
-			$outcome+=$each->$outcome;
+			$income.=$each->$income;
+			$outcome.=$each->$outcome;
 		}
 		$total_old_user_ewallet = $income - $outcome;
 		$data['old_user_id'] = $old_user_id;
