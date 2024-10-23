@@ -50,7 +50,8 @@ class Old_system_view_home extends MY_Base_Controller {
 		while($row=sqlsrv_fetch_array($stmt)){
             $result_array[] = $row;
         }
-	    $this -> to_json($result_array);
+	    // $this -> to_json($result_array);
+		return $result_array;
 		// $this->load->view('mgmt/old_system_api/list', $result_array);
 		sqlsrv_close($conn);
 	}
@@ -71,6 +72,8 @@ class Old_system_view_home extends MY_Base_Controller {
     //         $result_array[] = $row;
     //    }
 	// 	$this -> to_json($result_array);
+	// return $result_array;
+
 	// 	// $this->load->view('mgmt/old_system_api/list', $result_array);
 	// 	sqlsrv_close($conn);
 	// }
@@ -91,7 +94,9 @@ class Old_system_view_home extends MY_Base_Controller {
 		while($row=sqlsrv_fetch_array($stmt)){
             $result_array[] = array_shift($row);
         }
-	    $this -> to_json($result_array);
+	    // $this -> to_json($result_array);
+		return $result_array;
+
 		// $this->load->view('mgmt/old_system_api/list', $result_array);
 		sqlsrv_close($conn);
 	}
