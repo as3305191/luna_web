@@ -50,7 +50,7 @@ class Old_system_view_home extends MY_Base_Controller {
 			$store[] = $this -> get_store($each->storeid);
 		}
 		foreach($store as $each){
-			$each->new_img_address = $host.'\/'.ltrim($each->piclink,'.');
+			$each->new_img_address = $host.ltrim($each->piclink,'.');
 		}
 		$total_old_user_ewallet = $income - $outcome;
 		$data['old_user_id'] = $old_user_id;
