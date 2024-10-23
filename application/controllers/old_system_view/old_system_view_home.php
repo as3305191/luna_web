@@ -33,8 +33,8 @@ class Old_system_view_home extends MY_Base_Controller {
 		// foreach($old_user_ewallet as $each){
 		// 	$income+=$each->$income;
 		// 	$outcome+=$each->$outcome;
-		}
-		$total_old_user_ewallet = $income - $outcome;
+		// }
+		// $total_old_user_ewallet = $income - $outcome;
 		$data['old_user_id'] = $old_user_id;
 		$data['old_user_ewallet'] = $old_user_ewallet;
 		$data['menu_open_list'] = $menu_open_list;
