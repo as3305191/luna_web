@@ -55,26 +55,26 @@ class Old_system_view_home extends MY_Base_Controller {
 		sqlsrv_close($conn);
 	}
 
-	public function get_user_ewallet() {
-		header("Content-Type:text/html; charset=utf-8");
-		$serverName="KTX-2008D1\sqlexpress";
-		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
-		$conn=sqlsrv_connect($serverName,$connectionInfo);
+	// public function get_user_ewallet() {
+	// 	header("Content-Type:text/html; charset=utf-8");
+	// 	$serverName="KTX-2008D1\sqlexpress";
+	// 	$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+	// 	$conn=sqlsrv_connect($serverName,$connectionInfo);
 		
-		$sql = "SELECT * FROM [informationexc].[dbo].[order_menu] where odate=$today and enddate=NULL";    
+	// 	$sql = "SELECT * FROM [informationexc].[dbo].[order_menu] where odate=$today and enddate=NULL";    
 		
-		/* Execute the query. */    
+	// 	/* Execute the query. */    
 		
-		$stmt = sqlsrv_query( $conn, $sql);    
+	// 	$stmt = sqlsrv_query( $conn, $sql);    
 		
-		$result_array = array();
-		while($row=sqlsrv_fetch_array($stmt)){
-            $result_array[] = $row;
-       }
-		$this -> to_json($result_array);
-		// $this->load->view('mgmt/old_system_api/list', $result_array);
-		sqlsrv_close($conn);
-	}
+	// 	$result_array = array();
+	// 	while($row=sqlsrv_fetch_array($stmt)){
+    //         $result_array[] = $row;
+    //    }
+	// 	$this -> to_json($result_array);
+	// 	// $this->load->view('mgmt/old_system_api/list', $result_array);
+	// 	sqlsrv_close($conn);
+	// }
 	
 	public function get_old_user_id($account) {
 		header("Content-Type:text/html; charset=utf-8");
