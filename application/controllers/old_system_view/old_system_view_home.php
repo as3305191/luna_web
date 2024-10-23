@@ -48,6 +48,8 @@ class Old_system_view_home extends MY_Base_Controller {
 		$data['old_user_id'] = $old_user_id;
 		$data['total_old_user_ewalle'] = $total_old_user_ewallet;
 		$data['store_list'] = $store;
+		$data['host'] = $_SERVER['HTTP_HOST'];
+
 		$this -> to_json($data);
 		$this -> load -> view('old_system_view/old_system_view_home', $data);
 	}
