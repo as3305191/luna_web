@@ -33,7 +33,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		foreach($old_user_ewallet as $each){
 			
 			if($each->$income !=='null'){
-				$income+=$each->$income;
+				$income+=intval($each->$income);
 			}
 			// if($each->$outcome !=='null'){
 			// 	$outcome+=$each->$outcome;
