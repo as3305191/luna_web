@@ -23,12 +23,20 @@ class Old_system_view_home extends MY_Base_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 
-		// $data['page'] = ceil($data['p']/10);
+		$today = date("Y-m-d");
 		$data['now'] = 'old_system_view_home';//現在哪頁
 		$old_user_id = $this -> get_old_user_id($login_user->account);
-		$today = date("Y-m-d");
 		$menu_open_list = $this -> get_data_menu($today);
+		$old_user_ewallet = $this -> get_user_ewallet($old_user_id);
+		$income = 0;
+		$outcome = 0;
+		foreach($old_user_ewallet as $each){
+			$income+=$each->$income;
+			$outcome+=$each->$outcome;
+		}
+		$total_old_user_ewallet = $income - $outcome;
 		$data['old_user_id'] = $old_user_id;
+		$data['old_user_ewallet'] = $total_old_user_ewallet;
 		$data['menu_open_list'] = $menu_open_list;
 		$this -> to_json($data);
 		$this -> load -> view('old_system_view/old_system_view_home', $data);
@@ -60,12 +68,12 @@ class Old_system_view_home extends MY_Base_Controller {
 		sqlsrv_close($conn);
 	}
 
-	public function get_user_ewallet() {
+	public function get_user_ewallet($old_user_id) {
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		
-		$sql = "SELECT * FROM [informationexc].[dbo].[order_menu] where odate=$today and enddate=NULL";    
+		$sql = "SELECT * FROM order_ewallet where usid=$old_user_id";    
 		
 		/* Execute the query. */    
 		
