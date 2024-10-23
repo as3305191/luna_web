@@ -21,11 +21,11 @@ class Old_system_view_home extends MY_Base_Controller {
 		$count_today_= array();
 
 		$s_data = $this -> setup_user_data(array());
-		$data['login_user'] = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 
 		// $data['page'] = ceil($data['p']/10);
 		$data['now'] = 'old_system_view_home';//現在哪頁
-		$old_user_id = $this -> get_old_user_id($data['login_user']->account);
+		$old_user_id = $this -> get_old_user_id($login_user->account);
 		$today = date("Y-m-d");
 		$menu_open_list = $this -> get_data_menu($today);
 		$data['old_user_id'] = $old_user_id;
