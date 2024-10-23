@@ -47,10 +47,10 @@ class Old_system_view_home extends MY_Base_Controller {
 		}
 		$store = array();
 		foreach($menu_open_list as $each){
-			$store[] = $this -> get_store($each->storeid);
+			$store[] =  json_decode(json_encode($this -> get_store($each->storeid),true));
 		}
 		foreach($store as $each){
-			$each->new_img_address[0] = $host.ltrim($each->piclink,'.');
+			$each->new_img_address = $host.ltrim($each->piclink,'.');
 		}
 		$total_old_user_ewallet = $income - $outcome;
 		$data['old_user_id'] = $old_user_id;
