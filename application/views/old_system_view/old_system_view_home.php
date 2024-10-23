@@ -43,16 +43,13 @@
 
               <!-- Product Table Panel -->
               <div class="card border-0">
-               
 
-               
-               
                 <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                   <h3 class="h6 mb-0">
                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 餐廳
                   </h3>
                   <h3 class="h6 mb-0">
-                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額
+                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <?php $total_old_user_ewallet ?>
                   </h3>
                 </div>
 
@@ -62,7 +59,6 @@
                       <tr>
                         <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">餐點名稱</th>
                         <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">備註</th>
-                        <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">幫人點餐</th>
                         <th class="g-font-weight-300 g-color-black dt_list_th_big" style="min-width: 100px">價錢</th>
                       </tr>
                     </thead>
