@@ -25,86 +25,76 @@ class Old_system_view_home extends MY_Base_Controller {
 
 		// $data['page'] = ceil($data['p']/10);
 		$data['now'] = 'old_system_view_home';//現在哪頁
-
+		$old_user_id = $this -> get_old_user_id($data['login_user']->account);
 		$today = date("Y-m-d");
-
+		$menu_open_list = $this -> get_data_menu($today);
+		$data['menu_open_list'] = $menu_open_list;//現在哪頁
 		// $this -> to_json($data);
 		$this -> load -> view('old_system_view/old_system_view_home', $data);
 	}
 
-	public function get_data() {
-		$res = array();
-		$id = $this -> get_post('id');
-		$page = $this -> get_post('page');
-
-		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
-		if($page>1){
-			$b=((int)$page-1)*10;
-		 	$items = $this -> dao -> query_ajax_by_old_system_view($login_user->code,$b);
-			foreach ($items as $each) {
-				$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
-				$each-> the_new_weight = intval($the_new_weight_list-> weight)/10;
-			}
-		 	$res['items'] = $items;
-			$res['count_items'] = count($res['items']);
-		} else{
-			$items  = $this -> dao -> query_ajax_by_old_system_view($login_user->code,1);
-			foreach ($items as $each) {
-			$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
-			$the_original_weight_list= $this -> records_dao -> find_original_weight($each->id);
-			if(!empty($the_new_weight_list-> weight)){
-				$each-> the_new_weight = floatval($the_new_weight_list-> weight);
-			} else{
-				$each-> the_new_weight = 0;
-			}
-			if(!empty($the_original_weight_list-> weight) && !empty($the_new_weight_list-> weight)){
-				$each-> the_weight_change = (floatval($the_original_weight_list-> weight)-floatval($the_new_weight_list-> weight));
-			} else{
-				$each-> the_weight_change = 0;
-			}
-			if(!empty($the_original_weight_list-> body_fat_rate) && !empty($the_new_weight_list-> body_fat_rate)){
-				$each-> the_fat_rate_change = floatval($the_original_weight_list-> body_fat_rate)-floatval($the_new_weight_list-> body_fat_rate);
-			} else{
-				$each-> the_fat_rate_change = 0;
-			}
-			if(!empty( $the_new_weight_list-> fat_info)){
-				$each-> the_fat_info = $the_new_weight_list-> fat_info;
-			} else{
-				$each-> the_fat_info = 0;
-			}
-			}
-			$res['items'] = $items;
-			$res['count_items'] = count($res['items']);
-		}
-
-		$this -> to_json($res);
+	public function get_data_menu($today) {
+		header("Content-Type:text/html; charset=utf-8");
+		$serverName="KTX-2008D1\sqlexpress";
+		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+		$conn=sqlsrv_connect($serverName,$connectionInfo);
+		
+		$sql = "SELECT * FROM [informationexc].[dbo].[order_menu] where odate='$today' and enddate='NULL'";    
+		
+		/* Execute the query. */    
+		
+		$stmt = sqlsrv_query( $conn, $sql);    
+		
+		$result_array = array();
+		while($row=sqlsrv_fetch_array($stmt)){
+            $result_array[] = $row;
+       }
+		$this -> to_json($result_array);
+		// $this->load->view('mgmt/old_system_api/list', $result_array);
+		sqlsrv_close($conn);
 	}
 
-	public function find_today_weight() {
-		$res = array();
-		$name = $this -> get_post('name');
-
-		$s_data = $this -> setup_user_data(array());
-		$login_user= $this -> dao -> find_by_id($s_data['login_user_id']);
-
-		if(!empty($name)){
-			$member_name = $this -> dao -> find_by_member_name($name);
-			if(!empty($member_name)){
-				$member_weihght = $this -> records_dao -> find_by_member_weight($member_name[0]->id,$login_user);
-			} else{
-				$member_weihght = '沒有結果';
-			}
-		} else{
-			$member_weihght = $this -> records_dao -> find_by_member_weight($member_id='no_person_',$login_user);
-		}
-
-
-		$res['member_weihght'] = $member_weihght;
-
-		$this -> to_json($res);
+	public function get_user_ewallet() {
+		header("Content-Type:text/html; charset=utf-8");
+		$serverName="KTX-2008D1\sqlexpress";
+		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+		$conn=sqlsrv_connect($serverName,$connectionInfo);
+		
+		$sql = "SELECT * FROM [informationexc].[dbo].[order_menu] where odate='$today' and enddate='NULL'";    
+		
+		/* Execute the query. */    
+		
+		$stmt = sqlsrv_query( $conn, $sql);    
+		
+		$result_array = array();
+		while($row=sqlsrv_fetch_array($stmt)){
+            $result_array[] = $row;
+       }
+		$this -> to_json($result_array);
+		// $this->load->view('mgmt/old_system_api/list', $result_array);
+		sqlsrv_close($conn);
 	}
-
+	
+	public function get_old_user_id($account) {
+		header("Content-Type:text/html; charset=utf-8");
+		$serverName="KTX-2008D1\sqlexpress";
+		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+		$conn=sqlsrv_connect($serverName,$connectionInfo);
+		
+		$sql = "SELECT * FROM [informationexc].[dbo].[account] where account='$account' and deldate='NULL'";    
+		
+		/* Execute the query. */    
+		
+		$stmt = sqlsrv_query( $conn, $sql);    
+		
+		$result_array = array();
+		while($row=sqlsrv_fetch_array($stmt)){
+            $result_array[] = $row;
+       }
+		$this -> to_json($result_array[0]->id);
+		// $this->load->view('mgmt/old_system_api/list', $result_array);
+		sqlsrv_close($conn);
+	}
 	function update_graduate() {
 		$res = array();
 
