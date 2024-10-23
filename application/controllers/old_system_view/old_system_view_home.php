@@ -28,16 +28,16 @@ class Old_system_view_home extends MY_Base_Controller {
 		$old_user_id = json_decode(json_encode($this -> get_old_user_id($login_user->account),true));
 		$menu_open_list = json_decode(json_encode($this -> get_data_menu($today),true));
 		$old_user_ewallet = json_decode(json_encode($this -> get_user_ewallet($old_user_id),true));
-		$income = 0;
-		$outcome = 0;
-		foreach($old_user_ewallet as $each){
-			$income.=$each->$income;
-			$outcome.=$each->$outcome;
-		}
-		$total_old_user_ewallet = $income - $outcome;
-		$data['old_user_id'] = $old_user_id;
-		$data['total_old_user_ewalle'] = $total_old_user_ewallet;
-		$data['menu_open_list'] = $menu_open_list;
+		// $income = 0;
+		// $outcome = 0;
+		// foreach($old_user_ewallet as $each){
+		// 	$income.=$each->$income;
+		// 	$outcome.=$each->$outcome;
+		// }
+		// $total_old_user_ewallet = $income - $outcome;
+		// $data['old_user_id'] = $old_user_id;
+		$data['total_old_user_ewalle'] = $old_user_ewallet;
+		// $data['menu_open_list'] = $menu_open_list;
 		$this -> to_json($data);
 		$this -> load -> view('old_system_view/old_system_view_home', $data);
 	}
