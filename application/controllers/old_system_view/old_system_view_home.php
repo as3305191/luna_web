@@ -27,7 +27,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$data['now'] = 'old_system_view_home';//現在哪頁
 		$old_user_id = json_decode(json_encode($this -> get_old_user_id($login_user->account),true));
 		$menu_open_list = json_decode(json_encode($this -> get_data_menu($today),true));
-		$old_user_ewallet = $this -> get_user_ewallet($old_user_id);
+		$old_user_ewallet = json_decode(json_encode($this -> get_user_ewallet($old_user_id),true));
 		$income = 0;
 		$outcome = 0;
 		foreach($old_user_ewallet as $each){
