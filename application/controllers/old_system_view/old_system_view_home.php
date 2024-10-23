@@ -36,7 +36,7 @@ class Old_system_view_home extends MY_Base_Controller {
 				$income+=intval($each->income);
 			}
 			if($each->outcome !=='null'){
-				$outcome+=$each->outcome;
+				$outcome+=intval($each->outcome);
 			}
 			
 		}
