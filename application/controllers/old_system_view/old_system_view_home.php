@@ -82,7 +82,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		
-		$sql = "SELECT * FROM [informationexc].[dbo].[account] where account='$account' and deldate='NULL'";    
+		$sql = "SELECT id FROM [informationexc].[dbo].[account] where account='$account' and deldate='NULL'";    
 		
 		/* Execute the query. */    
 		
@@ -92,7 +92,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		while($row=sqlsrv_fetch_array($stmt)){
             $result_array[] = $row;
        }
-		$this -> to_json($result_array[0]->id);
+		$this -> to_json($result_array);
 		// $this->load->view('mgmt/old_system_api/list', $result_array);
 		sqlsrv_close($conn);
 	}
