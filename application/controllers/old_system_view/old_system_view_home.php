@@ -35,7 +35,6 @@ class Old_system_view_home extends MY_Base_Controller {
 	}
 
 	public function get_data_menu($today) {
-		header("Content-Type:text/html; charset=utf-8");
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
@@ -57,7 +56,6 @@ class Old_system_view_home extends MY_Base_Controller {
 	}
 
 	// public function get_user_ewallet() {
-	// 	header("Content-Type:text/html; charset=utf-8");
 	// 	$serverName="KTX-2008D1\sqlexpress";
 	// 	$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 	// 	$conn=sqlsrv_connect($serverName,$connectionInfo);
@@ -78,7 +76,6 @@ class Old_system_view_home extends MY_Base_Controller {
 	// }
 	
 	public function get_old_user_id($account) {
-		header("Content-Type:text/html; charset=utf-8");
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
