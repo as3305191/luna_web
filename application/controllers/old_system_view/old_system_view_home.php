@@ -27,7 +27,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$data['now'] = 'old_system_view_home';//現在哪頁
 		$old_user_id = json_decode(json_encode($this -> get_old_user_id($login_user->account),true));
 		$menu_open_list = json_decode(json_encode($this -> get_data_menu($today),true));
-		$old_user_ewallet = json_decode(json_encode($this -> get_user_ewallet($old_user_id),true));
+		$old_user_ewallet = $this -> get_user_ewallet($old_user_id);
 		// $income = 0;
 		// $outcome = 0;
 		// foreach($old_user_ewallet as $each){
@@ -35,9 +35,9 @@ class Old_system_view_home extends MY_Base_Controller {
 		// 	$outcome.=$each->$outcome;
 		// }
 		// $total_old_user_ewallet = $income - $outcome;
-		// $data['old_user_id'] = $old_user_id;
+		$data['old_user_id'] = $old_user_id;
 		$data['total_old_user_ewalle'] = $old_user_ewallet;
-		// $data['menu_open_list'] = $menu_open_list;
+		$data['menu_open_list'] = $menu_open_list;
 		$this -> to_json($data);
 		$this -> load -> view('old_system_view/old_system_view_home', $data);
 	}
@@ -85,7 +85,7 @@ class Old_system_view_home extends MY_Base_Controller {
        }
 		// $this -> to_json($result_array);
 		if(count($result_array)>0){
-			return $result_array;
+			return $result_array[0];
 		} else{
 			return NULL;
 		}
@@ -112,7 +112,7 @@ class Old_system_view_home extends MY_Base_Controller {
         }
 	    // $this -> to_json($result_array);
 		if(count($result_array)>0){
-			return $result_array;
+			return $result_array[0];
 		} else{
 			return NULL;
 		}
