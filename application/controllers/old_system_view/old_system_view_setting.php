@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Coach_setting extends MY_Base_Controller {
+class Old_system_view_setting extends MY_Base_Controller {
 
 	function __construct() {
 		parent::__construct();

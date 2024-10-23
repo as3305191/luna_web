@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Coach_home extends MY_Base_Controller {
+class Old_system_view_home extends MY_Base_Controller {
 
 	function __construct() {
 		parent::__construct();
@@ -21,8 +21,8 @@ class Coach_home extends MY_Base_Controller {
 		$count_today_= array();
 
 		$s_data = $this -> setup_user_data(array());
-		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
-		$items = $this -> dao -> find_all_by_old_system_view($data['login_user']->code);
+		$data['login_user'] = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		// $items = $this -> dao -> find_all_by_old_system_view($data['login_user']->code);
 		$data['p'] = count($items);
 		$data['page'] = ceil($data['p']/10);
 		$data['now'] = 'old_system_view_home';//現在哪頁
