@@ -40,17 +40,17 @@ class Old_system_view_home extends MY_Base_Controller {
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		// $sql = "SELECT * FROM order_menu";    
 
-		$sql = "SELECT * FROM order_menu where odate=$today";    
+		$sql = "SELECT * FROM order_menu where odate='$today'";    
 		
 		/* Execute the query. */    
 		
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
 		$result_array = array();
-		while($row=sqlsrv_fetch_array($stmt,SQLSRV_FETCH_NUMERIC)){
+		while($row=sqlsrv_fetch_array($stmt)){
             $result_array[] = $row;
-       }
-	   return $this -> to_json($result_array);
+        }
+	    $this -> to_json($result_array);
 		// $this->load->view('mgmt/old_system_api/list', $result_array);
 		sqlsrv_close($conn);
 	}
@@ -81,17 +81,17 @@ class Old_system_view_home extends MY_Base_Controller {
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		// $sql = "SELECT id FROM account";    
 
-		$sql = "SELECT id FROM account where account=$account";    
+		$sql = "SELECT id FROM account where account='$account'";    
 		
 		/* Execute the query. */    
 		
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
 		$result_array = array();
-		while($row=sqlsrv_fetch_array($stmt,SQLSRV_FETCH_NUMERIC)){
+		while($row=sqlsrv_fetch_array($stmt)){
             $result_array[] = $row;
-       }
-		return $this -> to_json($result_array);
+        }
+	    $this -> to_json($result_array);
 		// $this->load->view('mgmt/old_system_api/list', $result_array);
 		sqlsrv_close($conn);
 	}
