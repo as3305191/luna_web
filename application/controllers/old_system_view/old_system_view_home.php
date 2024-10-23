@@ -30,6 +30,11 @@ class Old_system_view_home extends MY_Base_Controller {
 		$old_user_ewallet = json_decode(json_encode($this -> get_user_ewallet($old_user_id),true));
 		$income = 0;
 		$outcome = 0;
+		if($_SERVER['HTTP_HOST']=='192.168.1.205'){
+			$host = '192.168.1.211';
+		} else{
+			$host = '211.21.221.121';
+		}
 		foreach($old_user_ewallet as $each){
 			
 			if($each->income !=='null'){
@@ -44,11 +49,14 @@ class Old_system_view_home extends MY_Base_Controller {
 		foreach($menu_open_list as $each){
 			$store[] = $this -> get_store($each->storeid);
 		}
+		foreach($store as $each){
+			$each->new_img_address = $host.ltrim($each->piclink,'.');
+		}
 		$total_old_user_ewallet = $income - $outcome;
 		$data['old_user_id'] = $old_user_id;
 		$data['total_old_user_ewalle'] = $total_old_user_ewallet;
 		$data['store_list'] = $store;
-		$data['host'] = $_SERVER['HTTP_HOST'];
+		// $data['host'] = $_SERVER['HTTP_HOST'];
 
 		$this -> to_json($data);
 		$this -> load -> view('old_system_view/old_system_view_home', $data);
