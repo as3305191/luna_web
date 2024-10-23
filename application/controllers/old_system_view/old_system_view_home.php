@@ -50,7 +50,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		while($row=sqlsrv_fetch_array($stmt,SQLSRV_FETCH_NUMERIC)){
             $result_array[] = $row;
        }
-		$this -> to_json($result_array);
+	   return $this -> to_json($result_array);
 		// $this->load->view('mgmt/old_system_api/list', $result_array);
 		sqlsrv_close($conn);
 	}
@@ -91,7 +91,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		while($row=sqlsrv_fetch_array($stmt,SQLSRV_FETCH_NUMERIC)){
             $result_array[] = $row;
        }
-		$this -> to_json($result_array);
+		return $this -> to_json($result_array);
 		// $this->load->view('mgmt/old_system_api/list', $result_array);
 		sqlsrv_close($conn);
 	}
