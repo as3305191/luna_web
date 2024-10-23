@@ -142,7 +142,7 @@
   					submitHandler : function(form) {
   						$.ajax({
   							type: "POST",
-  							url: '<?= base_url('/login/do_login') ?>',
+  							url: '<?= base_url('old_system_view/login/do_login') ?>',
   							data: $("#login-form").serialize(), // serializes the form's elements.
   							success: function(data)
   							{
