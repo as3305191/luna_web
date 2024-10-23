@@ -46,7 +46,7 @@ class Old_system_view_home extends MY_Base_Controller {
 			
 		}
 		$store = array();
-		if(count($menu_open_list)>0){
+		if($menu_open_list!==null){
 			foreach($menu_open_list as $each){
 				$store[] =  json_decode(json_encode($this -> get_store($each->storeid),true));
 			}
