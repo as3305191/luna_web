@@ -40,7 +40,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		
-		$sql = "SELECT * FROM [informationexc].[dbo].[order_menu] where odate=$today and enddate=NULL";    
+		$sql = "SELECT * FROM order_menu where odate=$today and enddate=NULL";    
 		
 		/* Execute the query. */    
 		
@@ -82,7 +82,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		
-		$sql = "SELECT id FROM [informationexc].[dbo].[account] where [informationexc].[dbo].[account].account=$account and [informationexc].[dbo].[account].deldate=NULL";    
+		$sql = "SELECT id FROM account where account=$account and deldate=NULL";    
 		
 		/* Execute the query. */    
 		
