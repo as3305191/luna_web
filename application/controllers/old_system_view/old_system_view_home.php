@@ -27,66 +27,66 @@ class Coach_home extends MY_Base_Controller {
 		$data['page'] = ceil($data['p']/10);
 		$data['now'] = 'old_system_view_home';//現在哪頁
 
-		$members_lose_3days = $this -> dao -> query_ajax_by_old_system_viewall($data['login_user']->code);
-		foreach ($members_lose_3days as $each) {
-			$each -> last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
-		}
-		foreach ($members_lose_3days as $each_lose_3days_items) {
-			if($each_lose_3days_items->last_weight!==NULL){
-				$data['count_members_lose_3days_all_list'] = $each_lose_3days_items;
-				$count_members_lose_3days_[] = $each_lose_3days_items;//3天
+		// $members_lose_3days = $this -> dao -> query_ajax_by_old_system_viewall($data['login_user']->code);
+		// foreach ($members_lose_3days as $each) {
+		// 	$each -> last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
+		// }
+		// foreach ($members_lose_3days as $each_lose_3days_items) {
+		// 	if($each_lose_3days_items->last_weight!==NULL){
+		// 		$data['count_members_lose_3days_all_list'] = $each_lose_3days_items;
+		// 		$count_members_lose_3days_[] = $each_lose_3days_items;//3天
 
-			}
-		}
+		// 	}
+		// }
 
-		$data['count_members_lose_3days'] = count($count_members_lose_3days_);
-		$data['members_lose_3days'] = $members_lose_3days;
+		// $data['count_members_lose_3days'] = count($count_members_lose_3days_);
+		// $data['members_lose_3days'] = $members_lose_3days;
 
 
-		$find_all_members = $this -> dao -> query_ajax_by_old_system_viewall($data['login_user']->code);
-		foreach ($find_all_members as $each) {
-			$today_body_fat = $this -> records_dao -> find_today_body_fat($each->id);
-			if($today_body_fat!==NULL){
-				$count_today_[] = $today_body_fat;//3天
-			}
-		}
+		// $find_all_members = $this -> dao -> query_ajax_by_old_system_viewall($data['login_user']->code);
+		// foreach ($find_all_members as $each) {
+		// 	$today_body_fat = $this -> records_dao -> find_today_body_fat($each->id);
+		// 	if($today_body_fat!==NULL){
+		// 		$count_today_[] = $today_body_fat;//3天
+		// 	}
+		// }
 
-		$data['count_today'] = count($count_today_);
-		$the_fat_rate_change = $this -> dao -> query_ajax_by_old_system_viewall($data['login_user']->code);
+		// $data['count_today'] = count($count_today_);
+		// $the_fat_rate_change = $this -> dao -> query_ajax_by_old_system_viewall($data['login_user']->code);
 
-		foreach ($the_fat_rate_change as $each) {
-			$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
-			$the_original_weight_list= $this -> records_dao -> find_original_weight($each->id);
-			if(!empty($the_original_weight_list->body_fat_rate) && !empty($the_new_weight_list->body_fat_rate)){
-				$each-> the_fat_rate_change = floatval($the_original_weight_list-> body_fat_rate)-floatval($the_new_weight_list-> body_fat_rate);
-			} else{
-				$each-> the_fat_rate_change = 0;
-			}
-		}
+		// foreach ($the_fat_rate_change as $each) {
+		// 	$the_new_weight_list= $this -> records_dao -> find_each_weight($each->id);
+		// 	$the_original_weight_list= $this -> records_dao -> find_original_weight($each->id);
+		// 	if(!empty($the_original_weight_list->body_fat_rate) && !empty($the_new_weight_list->body_fat_rate)){
+		// 		$each-> the_fat_rate_change = floatval($the_original_weight_list-> body_fat_rate)-floatval($the_new_weight_list-> body_fat_rate);
+		// 	} else{
+		// 		$each-> the_fat_rate_change = 0;
+		// 	}
+		// }
 
-		$sum = 0;
-		foreach($the_fat_rate_change as $each){
-			$sum += floatval($each->the_fat_rate_change);
-		}
-		$data['count_help_people'] = count($the_fat_rate_change);
-		$data['help_fat_rate_change'] =ROUND($sum,2) ;
+		// $sum = 0;
+		// foreach($the_fat_rate_change as $each){
+		// 	$sum += floatval($each->the_fat_rate_change);
+		// }
+		// $data['count_help_people'] = count($the_fat_rate_change);
+		// $data['help_fat_rate_change'] =ROUND($sum,2) ;
 
-		$find_date = $this -> dao -> query_ajax_by_old_system_viewall($data['login_user']->code);
-		$map_date = 0;
-		foreach ($find_date as $each) {
-			$startdate = $this -> records_dao -> find_first_day($each->id);
-			if($map_date==0 || strtotime($map_date)>strtotime($startdate)){
-				$map_date = $startdate;
-			}
-		}
+		// $find_date = $this -> dao -> query_ajax_by_old_system_viewall($data['login_user']->code);
+		// $map_date = 0;
+		// foreach ($find_date as $each) {
+		// 	$startdate = $this -> records_dao -> find_first_day($each->id);
+		// 	if($map_date==0 || strtotime($map_date)>strtotime($startdate)){
+		// 		$map_date = $startdate;
+		// 	}
+		// }
 
 		$today = date("Y-m-d");
-		if(strtotime($today)>strtotime($map_date)){
-			$days=(strtotime($today)-strtotime($map_date))/(60*60*24);
-		} else{
-			$days=0;
-		}
-		$data['days'] = $days;
+		// if(strtotime($today)>strtotime($map_date)){
+		// 	$days=(strtotime($today)-strtotime($map_date))/(60*60*24);
+		// } else{
+		// 	$days=0;
+		// }
+		// $data['days'] = $days;
 
 		// $this -> to_json($data);
 		$this -> load -> view('old_system_view/old_system_view_home', $data);
