@@ -73,53 +73,7 @@
                   </div>
                   <!-- End Product Table -->
                 </div>
-                <nav class="text-center" aria-label="Page Navigation">
-                  <ul class="list-inline">
-                    <?php
-                      for ($i=1;$i<=$page;$i++){
-                    ?>
-                    <?php $j=$i?>
-
-                      <?php if ($i==1): ?>
-                        <li class="list-inline-item float-sm-left">
-                          <a class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-16" onclick="for_table(<?=$j?>)" aria-label="Previous">
-                            <span aria-hidden="true">
-                              <i class="fa fa-angle-left g-mr-5"></i> 最前頁
-                            </span>
-                            <span class="sr-only">Previous</span>
-                          </a>
-                        </li>
-                      <?php else: ?>
-                      <?php endif; ?>
-
-
-                      <?php if ($i==1): ?>
-                        <li class="list-inline-item g-hidden-sm-down" >
-                          <a class="u-pagination-v1__item u-pagination-v1-4 u-pagination-v1-4--active g-rounded-50 g-pa-7-14 s<?=$i?>"  onclick="for_table(<?=$i?>)">
-                        <?php echo $i?></a></li>
-                      <?php else: ?>
-                        <li class="list-inline-item g-hidden-sm-down" >
-                          <a class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-14 s<?=$i?>"  onclick="for_table(<?=$i?>)">
-                        <?php echo $i?></a></li>
-                      <?php endif; ?>
-
-
-                      <?php if ($i==$page): ?>
-                        <li class="list-inline-item float-sm-right">
-                          <a class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-16" onclick="for_table(<?=$j?>)" aria-label="Next">
-                            <span aria-hidden="true">
-                              最後頁 <i class="fa fa-angle-right g-ml-5"></i>
-                            </span>
-                            <span class="sr-only">下一頁</span>
-                          </a>
-                        </li>
-                      <?php else: ?>
-                      <?php endif; ?>
-
-                        <?php } ?>
-
-                  </ul>
-                </nav>
+               
                 <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                   <h3 class="h6 mb-0">
                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 學員今日體重
@@ -172,70 +126,8 @@
 
 </body>
 </html>
-<!-- Product Serach Modal -->
-<div class="modal fade" id="graduate" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-        <h3 id="deleteModalLabel">確認畢業</h3>
-			</div>
-      <fieldset>
-          <div class="form-group">
-            <label class="col-md-3 control-label">學員</label>
-            <div class="col-md-9">
-              <div class="col-md-9">
-                <input type="hidden" class="form-control"  id="m_id" />
-                <input type="text" class="form-control" style = "border-style:none none none none;" id="m_name" readonly/>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger btn-sm" onclick="save_graduate()">
-					<i class="fa fa-save"></i> 確認
-				</button>
-				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
-					<i class="fa fa-close"></i> 關閉
-				</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
-<div class="modal fade" id="lose_3day" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-        <h3 id="lose_3day_Label">3天未上線人員</h3>
-			</div>
-      <div class="js-scrollbar card-block  u-info-v1-1 g-bg-white-gradient-v1--after g-height-400 g-pa-0">
-          <?php foreach ($members_lose_3days as $each): ?>
-            <?php if ($each->last_weight): ?>
-            <ul class="list-unstyled">
-              <li class="d-flex justify-content-start g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-10">
-                <div class="g-mt-2">
-                  <img class="g-width-50 g-height-50 rounded-circle" src="<?=base_url('')?>mgmt/images/get/<?=$each->image_id?>/thumb" alt="Image Description">
-                </div>
-                <div class="align-self-center g-px-10">
-                  <h5 class="h6 g-font-weight-600 g-color-black g-mb-3">
-                      <span class="g-mr-5"><?=$each->user_name?></span>
-                      <!-- <small class="g-font-size-12 g-color-blue">8k+ earned</small> -->
-                    </h5>
-                  <!-- <p class="m-0">Nulla ipsum dolor sit amet adipiscing</p> -->
-                </div>
-              </li>
-            </ul>
-          <?php endif; ?>
-        <?php endforeach; ?>
-      </div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
-					<i class="fa fa-close"></i> 關閉
-				</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
+
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
 
 <script>
