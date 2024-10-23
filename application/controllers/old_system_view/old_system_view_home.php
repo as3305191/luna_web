@@ -47,7 +47,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
 		$result_array = array();
-		while($row=sqlsrv_fetch_array($stmt)){
+		while($row=sqlsrv_fetch_array($stmt,SQLSRV_FETCH_NUMERIC)){
             $result_array[] = $row;
        }
 		$this -> to_json($result_array);
@@ -88,7 +88,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
 		$result_array = array();
-		while($row=sqlsrv_fetch_array($stmt)){
+		while($row=sqlsrv_fetch_array($stmt,SQLSRV_FETCH_NUMERIC)){
             $result_array[] = $row;
        }
 		$this -> to_json($result_array);
