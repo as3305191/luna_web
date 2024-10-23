@@ -40,6 +40,10 @@ class Old_system_view_home extends MY_Base_Controller {
 			}
 			
 		}
+		$store = array();
+		foreach($menu_open_list as $each){
+			$store[] = $this -> get_store($each->storeid);
+		}
 		$total_old_user_ewallet = $income - $outcome;
 		$data['old_user_id'] = $old_user_id;
 		$data['total_old_user_ewalle'] = $total_old_user_ewallet;
@@ -67,6 +71,32 @@ class Old_system_view_home extends MY_Base_Controller {
 	    // $this -> to_json($result_array);
 		if(count($result_array)>0){
 			return $result_array;
+		} else{
+			return NULL;
+		}
+		// $this->load->view('mgmt/old_system_api/list', $result_array);
+		sqlsrv_close($conn);
+	}
+
+	public function get_store($storeid) {
+		$serverName="KTX-2008D1\sqlexpress";
+		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+		$conn=sqlsrv_connect($serverName,$connectionInfo);
+		// $sql = "SELECT * FROM order_menu";    
+
+		$sql = "SELECT * FROM order_store where id='$storeid'";    
+		
+		/* Execute the query. */    
+		
+		$stmt = sqlsrv_query( $conn, $sql);    
+		
+		$result_array = array();
+		while($row=sqlsrv_fetch_array($stmt)){
+            $result_array[] = $row;
+        }
+	    // $this -> to_json($result_array);
+		if(count($result_array)>0){
+			return $result_array[0];
 		} else{
 			return NULL;
 		}
