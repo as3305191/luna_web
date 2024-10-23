@@ -28,7 +28,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$old_user_id = $this -> get_old_user_id($login_user->account);
 		$today = date("Y-m-d");
 		$menu_open_list = $this -> get_data_menu($today);
-		$data['old_user_id'] = $old_user_id[0];
+		$data['old_user_id'] = $old_user_id;
 		$data['menu_open_list'] = $menu_open_list;
 		$this -> to_json($data);
 		$this -> load -> view('old_system_view/old_system_view_home', $data);
@@ -48,7 +48,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		
 		$result_array = array();
 		while($row=sqlsrv_fetch_array($stmt)){
-            $result_array[] = $row;
+            $result_array = $row;
         }
 	    $this -> to_json($result_array);
 		// $this->load->view('mgmt/old_system_api/list', $result_array);
