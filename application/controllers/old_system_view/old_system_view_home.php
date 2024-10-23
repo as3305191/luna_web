@@ -82,7 +82,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		
-		$sql = "SELECT id FROM account where account=$account and deldate=NULL";    
+		$sql = "SELECT id FROM account where account=$account";    
 		
 		/* Execute the query. */    
 		
