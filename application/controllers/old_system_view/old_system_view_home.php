@@ -23,7 +23,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$s_data = $this -> setup_user_data(array());
 		$data['login_user'] = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 
-		$data['page'] = ceil($data['p']/10);
+		// $data['page'] = ceil($data['p']/10);
 		$data['now'] = 'old_system_view_home';//現在哪頁
 
 		$today = date("Y-m-d");
