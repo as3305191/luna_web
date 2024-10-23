@@ -49,7 +49,7 @@
                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 餐廳
                   </h3>
                   <h3 class="h6 mb-0">
-                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <?php $total_old_user_ewalle ?>
+                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <?php $total_old_user_ewalle[0] ?>
                   </h3>
                 </div>
 
