@@ -75,9 +75,9 @@
                     <?php else: ?>	
                       <button class="btn_active btn-success text-light  menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[0]->id ?>,<?= $store_list[0]->new_img_address ?>)">&nbsp;<?= $store_list[0]->store ?></button>
                       <input type="hidden" class="form-control" id="menu_id" value="<?= $store_list[0]->id ?>">
-                      <?php for ($i=1;$i<count($store_list);$i++) : ?>
+                      <?php for ($i=1;$i<count($store_list);$i++) : ?>                      
                         <button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $store_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[$i]->id ?>,<?= $store_list[$i]->new_img_address ?>)">&nbsp;<?= $store_list[$i]->store ?></button>
-                      <?php endfor ?>
+                        <?php endfor ?>
                     <?php endif?>
                     <div id="img_album" class="g-pos-rel" style="padding:10px 0px 6px 12px;">
             
