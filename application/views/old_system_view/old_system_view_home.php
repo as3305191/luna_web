@@ -67,12 +67,12 @@
                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <?=$total_old_user_ewallet ?>
                   </h3>
                 </div>
-                  <?php if(count($menu_list)==1): ?>
+                  <?php if(count($store_list)==1): ?>
                     <button class="btn_active btn-success text-light  menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[0]->id ?>)"><i class="fa fa-lg fa-lock"> </i>&nbsp;<?= $store_list[0]->store ?></button>
                     <input type="hidden" class="form-control" id="menu_id" value="<?= $store_list[0]->id ?>">
                   <?php else: ?>	
                     <button class="btn_active btn-success text-light  menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[0]->id ?>)"><i class="fa fa-lg fa-lock"> </i>&nbsp;<?= $store_list[0]->store ?></button>
-                    <input type="hidden" class="form-control" id="menu_id" value="<?= $menu_list[0]->id ?>">
+                    <input type="hidden" class="form-control" id="menu_id" value="<?= $store_list[0]->id ?>">
                     <?php for ($i=1;$i<count($store_list);$i++) : ?>
                       <button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $store_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[$i]->id ?>)"><i class="fa fa-lg fa-lock"> </i>&nbsp;<?= $store_list[$i]->store ?></button>
                     <?php endfor ?>
