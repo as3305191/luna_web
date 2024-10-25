@@ -44,7 +44,9 @@
               <!-- Product Table Panel -->
               <div class="card border-0">
 
-                <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
+                
+              <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
+                  <h3 class="h6 mb-0"></h3>
                   <h3 class="h6 mb-0">
                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 餐廳
                   </h3>
