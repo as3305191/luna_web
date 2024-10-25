@@ -165,7 +165,7 @@
         img_album(new_img_address);
     }
 
-    function img_album(new_img_address) {
+    function img_album(address) {
       $('#img_album').empty();
 
       var img_album_html =
@@ -175,8 +175,8 @@
 
       var img_html =
             '<div class="js-slide g-px-3">'+
-              '<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="'+new_img_address+'" data-speed="350" data-caption="Lightbox Gallery">'+
-              '<img class="img-fluid" width="300" height="400" src="'+new_img_address+'" alt="Image Description">'+
+              '<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="'+address+'" data-speed="350" data-caption="Lightbox Gallery">'+
+              '<img class="img-fluid" width="300" height="400" src="'+address+'" alt="Image Description">'+
               '</a>'+
             '</div>';
             $('#album').append(img_html);
