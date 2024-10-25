@@ -69,13 +69,13 @@
                 </div>
                 <div class="card-block g-pa-0" >
                   <?php if(count($store_list)==1): ?>
-                    <button class="btn_active btn-success text-light  menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[0]->id ?>)">&nbsp;<?= $store_list[0]->store ?></button>
+                    <button class="btn_active btn-success text-light  menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[0]->id ?>,<?= $store_list[0]->new_img_address ?>)">&nbsp;<?= $store_list[0]->store ?></button>
                     <input type="hidden" class="form-control" id="menu_id" value="<?= $store_list[0]->id ?>">
                   <?php else: ?>	
-                    <button class="btn_active btn-success text-light  menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[0]->id ?>)">&nbsp;<?= $store_list[0]->store ?></button>
+                    <button class="btn_active btn-success text-light  menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[0]->id ?>,<?= $store_list[0]->new_img_address ?>)">&nbsp;<?= $store_list[0]->store ?></button>
                     <input type="hidden" class="form-control" id="menu_id" value="<?= $store_list[0]->id ?>">
                     <?php for ($i=1;$i<count($store_list);$i++) : ?>
-                      <button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $store_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[$i]->id ?>)">&nbsp;<?= $store_list[$i]->store ?></button>
+                      <button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $store_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[$i]->id ?>,<?= $store_list[$i]->new_img_address ?>)">&nbsp;<?= $store_list[$i]->store ?></button>
                     <?php endfor ?>
                   <?php endif?>
                 
@@ -146,7 +146,7 @@
 <script src="<?= base_url() ?>assets/vendor/fancybox1/jquery.fancybox.min.js"></script>
 <script>
   var baseUrl = '<?=base_url('')?>';
-	function menu_click(id) {
+	function menu_click(id,new_img_address) {
 			//   document.getElementById(id).show();
 			$('.menu_img').addClass('menu_img_unsuccess');
 			$('.menu_img_'+id).removeClass('menu_img_unsuccess');
@@ -155,46 +155,24 @@
 			$('.menu_btn').addClass('btn_unsuccess');
 			$('.menu_'+id).removeClass('btn_unsuccess');
 			$('.menu_'+id).addClass('btn_active btn-success ');
+      img_album(new_img_address);
 	}
 
-	function img_album() {
-		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/menu_order/find_all_open_menu',
-			type: "POST",
-			data: {
-				id: $('#menu_id').val()
-			},
-			success: function(data) {
+	function img_album(new_img_address) {
+    $('#img_album').empty();
 
-				$('#img_album').empty();
+    var img_album_html =
+    '<div id="album" style="display:flex;" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive=\'[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]\'>'+
+    '</div>';
+    $('#img_album').append(img_album_html);
 
-				var img_album_html =
-				'<div id="album" style="display:flex;" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive=\'[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]\'>'+
-				'</div>';
-				$('#img_album').append(img_album_html);
-				var menu_note ='';
-				if(data.note!=""&&data.note!=null&&data.note!=undefined){
-						
-					menu_note='<div class="" style="color:#a90329;">備註: '+data.note+'</div>';
-				}
-				$('#img_album').append(menu_note);
-				
-				
-
-				$.each(data.list_image, function() {
-					var me = this;
-					var img_html =
+    var img_html =
 					'<div class="js-slide g-px-3">'+
-						'<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url() ?>api/images/get/'+me+'" data-speed="350" data-caption="Lightbox Gallery">'+
-						'<img class="img-fluid" width="300" height="400" src="<?= base_url() ?>api/images/get/'+me+'/thumb" alt="Image Description">'+
+						'<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="<?= base_url() ?>'+new_img_address+'" data-speed="350" data-caption="Lightbox Gallery">'+
+						'<img class="img-fluid" width="300" height="400" src="<?= base_url() ?>'+new_img_address+'" alt="Image Description">'+
 						'</a>'+
 					'</div>';
-					$('#album').append(img_html);					
-       	 		});
-				
-				
-			}
-		});
+					$('#album').append(img_html);
 	}
 	img_album();
 
