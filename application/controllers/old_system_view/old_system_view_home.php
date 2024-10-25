@@ -17,10 +17,11 @@ class Old_system_view_home extends MY_Base_Controller {
 
 	public function index() {
 		$data = array();
-	
+		$count_members_lose_3days_ = array();
+		$count_today_= array();
 
-		$u_data = $this -> setup_user_data(array());
-		$login_user = $this -> users_dao -> find_by_id($u_data['user_id']);
+		$s_data = $this -> setup_user_data(array());
+		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
 
 		$today = date("Y-m-d");
 		$data['now'] = 'old_system_view_home';//現在哪頁
