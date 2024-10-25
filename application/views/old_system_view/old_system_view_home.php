@@ -65,13 +65,7 @@
                       </tr>
                       <tr>
 									<td class="min50" style="border-right:none;"></td>
-									<td class="min120" style="border-right:none;">
-										<div class="input-group col-md-12">
-											<select id="menu_name" class="form-control">
-												
-											</select> 
-										</div>
-									</td>
+									
 									<td style="border-right:none;">
 										<div class="input-group col-md-12">
 											<input type="text" class="form-control" id="order_name" placeholder="品項">
