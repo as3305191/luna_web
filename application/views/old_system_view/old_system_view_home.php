@@ -79,10 +79,11 @@
                         <button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $store_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[$i]->id ?>,<?= $store_list[$i]->new_img_address ?>)">&nbsp;<?= $store_list[$i]->store ?></button>
                       <?php endfor ?>
                     <?php endif?>
-                  <?php endif?>
-                  <div id="img_album" class="g-pos-rel" style="padding:10px 0px 6px 12px;">
+                    <div id="img_album" class="g-pos-rel" style="padding:10px 0px 6px 12px;">
             
-                  </div>
+                    </div>
+                  <?php endif?>
+                  
                 </div>
                 <div class="card-block g-pa-0" >
                   <table id="dt_list" class="table table-bordered u-table--v2">
