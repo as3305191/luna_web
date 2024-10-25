@@ -176,7 +176,7 @@
       var img_html =
             '<div class="js-slide g-px-3">'+
               '<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="'+address+'" data-speed="350" data-caption="Lightbox Gallery">'+
-              '<img class="img-fluid" width="300" height="400" src="'+address+'" alt="Image Description">'+
+              '<img class="img-fluid" width="300" height="400" src="'+address+'" alt="">'+
               '</a>'+
             '</div>';
             $('#album').append(img_html);
