@@ -176,6 +176,6 @@
 		// 			'</div>';
 		// 			$('#album').append(img_html);
 	}
-	img_album();
+	// img_album();
 
 </script>
