@@ -67,8 +67,8 @@
                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <?=$total_old_user_ewallet ?>
                   </h3>
                 </div>
-                <?php for ($i=1;$i<count($store);$i++) : ?>
-                    <button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $store[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store[$i]->id ?>)"><i class="fa fa-lg fa-lock"> </i>&nbsp;<?= $store[$i]->store ?></button>
+                <?php for ($i=1;$i<count($store_list);$i++) : ?>
+                    <button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $store_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[$i]->id ?>)"><i class="fa fa-lg fa-lock"> </i>&nbsp;<?= $store_list[$i]->store ?></button>
                 <?php endfor ?>
                 <div id="img_album" class="g-pos-rel" style="padding:10px 0px 6px 12px;">
 					
