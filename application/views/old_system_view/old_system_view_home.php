@@ -171,18 +171,18 @@
     function img_album(address) {
       $('#img_album').empty();
 
-      // var img_album_html =
-      // '<div id="album" style="display:flex;" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive=\'[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]\'>'+
-      // '</div>';
-      // $('#img_album').append(img_album_html);
+      var img_album_html =
+      '<div id="album" style="display:flex;" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive=\'[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]\'>'+
+      '</div>';
+      $('#img_album').append(img_album_html);
 
-      var img_html =
-            '<div class="js-slide g-px-3">'+
-              '<a class="js-fancybox d-block" href="javascript:;"  data-fancybox="lightbox-gallery--01" data-src="http://'+address+'" data-speed="350" data-caption="Lightbox Gallery">'+
-              '<img class="img-fluid" width="300" height="400" src="http://'+address+'" alt="">'+
-              '</a>'+
-            '</div>';
-            $('#img_album').append(img_html);
+      var img_html ='<img src="http://'+address+'" loading="" style="max-height:200px;max-width:200px" >';
+            // '<div class="js-slide g-px-3">'+
+            //   '<a class="js-fancybox d-block" href="javascript:;"  data-fancybox="lightbox-gallery--01" data-src="http://'+address+'" data-speed="350" data-caption="Lightbox Gallery">'+
+            //   '<img class="img-fluid" width="300" height="400" src="http://'+address+'" alt="">'+
+            //   '</a>'+
+            // '</div>';
+            $('#album').append(img_html);
     }
 
 </script>
