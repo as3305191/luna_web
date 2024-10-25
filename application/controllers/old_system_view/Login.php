@@ -15,7 +15,7 @@ class Login extends MY_Base_Controller {
 	public function index() {
 		$data = array();
 		// check login
-		if(!empty($this -> session -> userdata('old_system_view_user_id'))) {
+		if(!empty($this -> session -> userdata('user_id'))) {
 			redirect("/old_system_view/old_system_view_home");
 			return;
 		}
@@ -30,7 +30,7 @@ class Login extends MY_Base_Controller {
 		if (!empty($account) && !empty($password) ) {
 			$user = $this -> dao -> find_by('account', $account);
 			if (!empty($user) && $user -> password == $password) {
-				$this -> session -> set_userdata('old_system_view_user_id', $user -> id);
+				$this -> session -> set_userdata('user_id', $user -> id);
 			} else {
 				$res['msg'] = "帳號或密碼錯誤";
 			}
@@ -45,7 +45,7 @@ class Login extends MY_Base_Controller {
 	public function do_login_app($id) {
 		$user = $this -> dao -> find_by_id($id);
 		if($user-> type == 1){
-			$this -> session -> set_userdata('old_system_view_user_id', $user -> id);
+			$this -> session -> set_userdata('user_id', $user -> id);
 			redirect("/old_system_view/old_system_view_home");
 		} else {
 			echo "You Are Not Coach!!!";
