@@ -174,19 +174,13 @@
       $('#img_album').append(img_album_html);
 
       var img_html =
-     '<a'+
-        'data-fancybox'+
-        'data-src="http://'+address+'"'+
-        'data-caption="Hello world"'+
-      '>'+
-        '<img src="http://'+address+'" width="200" height="150" alt="" />'+
-      '</a>';
+     
 
-            // '<div class="js-slide g-px-3">'+
-            //   '<a class="js-fancybox d-block"  data-fancybox="lightbox-gallery--01" data-src="'+address+'" data-speed="350" data-caption="Lightbox Gallery">'+
-            //   '<img class="img-fluid" width="300" height="400" src="'+address+'" alt="">'+
-            //   '</a>'+
-            // '</div>';
+            '<div class="js-slide g-px-3">'+
+              '<a class="js-fancybox d-block"  data-fancybox="lightbox-gallery--01" data-src="http://'+address+'" data-speed="350" data-caption="Lightbox Gallery">'+
+              '<img class="img-fluid" width="300" height="400" src="http://'+address+'" alt="">'+
+              '</a>'+
+            '</div>';
             $('#album').append(img_html);
     }
   })
