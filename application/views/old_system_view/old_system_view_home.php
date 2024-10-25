@@ -176,11 +176,12 @@
       // '</div>';
       // $('#img_album').append(img_album_html);
 
-      var img_html ='<img src="http://'+address+'" loading="" style="max-height:200px;max-width:200px" >';
+      var img_html =
+      // '<img src="http://'+address+'" loading="" style="max-height:200px;max-width:200px" >';
             // '<div class="js-slide g-px-3">'+
-            //   '<a class="js-fancybox d-block" href="javascript:;"  data-fancybox="lightbox-gallery--01" data-src="http://'+address+'" data-speed="350" data-caption="Lightbox Gallery">'+
-            //   '<img class="img-fluid" width="300" height="400" src="http://'+address+'" alt="">'+
-            //   '</a>'+
+              '<a class="js-fancybox d-block" href="javascript:;"  data-fancybox="lightbox-gallery--01" data-src="http://'+address+'" data-speed="350" data-caption="Lightbox Gallery">'+
+              '<img class="img-fluid" width="300" height="400" src="http://'+address+'" alt="">'+
+              '</a>';
             // '</div>';
             $('#img_album').append(img_html);
     }
