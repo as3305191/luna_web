@@ -80,8 +80,8 @@
 									<td style="border-right:none;">
 										<div class="input-group col-md-12">
 											<input type="text" class="form-control" id="amount" placeholder="金錢總額">
-										</div>
-                    <button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
+                      <button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
+                    </div>
 									</td>
 								</tr>
                     </thead>
