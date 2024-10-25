@@ -176,10 +176,10 @@
       var img_html =
      '<a'+
         'data-fancybox'+
-        'data-src="'+address+'"'+
+        'data-src="http://'+address+'"'+
         'data-caption="Hello world"'+
       '>'+
-        '<img src="'+address+'" width="200" height="150" alt="" />'+
+        '<img src="http://'+address+'" width="200" height="150" alt="" />'+
       '</a>';
 
             // '<div class="js-slide g-px-3">'+
