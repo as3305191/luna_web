@@ -169,33 +169,86 @@ class Old_system_view_home extends MY_Base_Controller {
 		// $this->load->view('mgmt/old_system_api/list', $result_array);
 		sqlsrv_close($conn);
 	}
-	function update_graduate() {
-		$res = array();
 
-		$user_id = $this -> get_post("user_id");
-		$i_data['status']= 1;
+	public function order($data) {
+		$serverName="KTX-2008D1\sqlexpress";
+		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+		$conn=sqlsrv_connect($serverName,$connectionInfo);
+		// $sql = "SELECT id FROM account";    
 
-
-		if(!empty($user_id)){
-			$this-> dao ->update_by($i_data,'id',$user_id);
-			$res['success'] = "true";
+		$sql = "SELECT id FROM account where account='$account'";    
+		
+		/* Execute the query. */    
+		
+		$stmt = sqlsrv_query( $conn, $sql);    
+		
+		$result_array = array();
+		while($row=sqlsrv_fetch_array($stmt)){
+            $result_array[] = array_shift($row);
+        }
+	    // $this -> to_json($result_array);
+		if(count($result_array)>0){
+			return $result_array[0];
 		} else{
-			$res['error'] = "true";
+			return NULL;
 		}
-		$this -> to_json($res);
+
+		// $this->load->view('mgmt/old_system_api/list', $result_array);
+		sqlsrv_close($conn);
 	}
 
-	function show_people() {
-		$res = array();
+	public function pay_money($money) {
+		$serverName="KTX-2008D1\sqlexpress";
+		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+		$conn=sqlsrv_connect($serverName,$connectionInfo);
+		// $sql = "SELECT id FROM account";    
 
-		$id_array = $this -> get_post("id_array");
-
-		foreach ($id_array as $each) {
-			$items = $this-> dao ->find_by_id($each->id);
+		$sql = "SELECT id FROM account where account='$account'";    
+		
+		/* Execute the query. */    
+		
+		$stmt = sqlsrv_query( $conn, $sql);    
+		
+		$result_array = array();
+		while($row=sqlsrv_fetch_array($stmt)){
+            $result_array[] = array_shift($row);
+        }
+	    // $this -> to_json($result_array);
+		if(count($result_array)>0){
+			return $result_array[0];
+		} else{
+			return NULL;
 		}
-		$res['items'] = $items;
 
-		$this -> to_json($res);
+		// $this->load->view('mgmt/old_system_api/list', $result_array);
+		sqlsrv_close($conn);
+	}
+
+	public function get_already_order($usid) {
+		$serverName="KTX-2008D1\sqlexpress";
+		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+		$conn=sqlsrv_connect($serverName,$connectionInfo);
+		// $sql = "SELECT id FROM account";    
+
+		$sql = "SELECT id FROM account where account='$account'";    
+		
+		/* Execute the query. */    
+		
+		$stmt = sqlsrv_query( $conn, $sql);    
+		
+		$result_array = array();
+		while($row=sqlsrv_fetch_array($stmt)){
+            $result_array[] = array_shift($row);
+        }
+	    // $this -> to_json($result_array);
+		if(count($result_array)>0){
+			return $result_array[0];
+		} else{
+			return NULL;
+		}
+
+		// $this->load->view('mgmt/old_system_api/list', $result_array);
+		sqlsrv_close($conn);
 	}
 
 	public function logout() {
