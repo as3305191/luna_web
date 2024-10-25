@@ -51,7 +51,7 @@
                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 餐廳
                   </h3>
                   <?php for ($i=1;$i<count($store);$i++) : ?>
-                    <button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $store[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store[$i]->id ?>,<?= $store[$i]->menu_style_id ?>)"><?php if($menu_list[$i]->open_dep!=='0'): ?><i class="fa fa-lg fa-lock"> </i>&nbsp;<?php endif?><?= $store[$i]->menu_name ?></button>
+                    <button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $store[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store[$i]->id ?>)"><i class="fa fa-lg fa-lock"> </i>&nbsp;<?= $store[$i]->store ?></button>
                   <?php endfor ?>
                   <h3 class="h6 mb-0">
                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <?=$total_old_user_ewallet ?>
