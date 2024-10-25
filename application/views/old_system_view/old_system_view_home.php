@@ -152,36 +152,37 @@
     if( c_store_list >0 ){
       	img_album('<?= $store_list[0]->new_img_address ?>');
     }
+    var baseUrl = '<?=base_url('')?>';
+    function menu_click(id,new_img_address) {
+        //   document.getElementById(id).show();
+        $('.menu_img').addClass('menu_img_unsuccess');
+        $('.menu_img_'+id).removeClass('menu_img_unsuccess');
+        // $('.menu_btn').removeClass('btn_active');
+        $('.menu_btn').removeClass('btn_active btn-success ');
+        $('.menu_btn').addClass('btn_unsuccess');
+        $('.menu_'+id).removeClass('btn_unsuccess');
+        $('.menu_'+id).addClass('btn_active btn-success ');
+        img_album(new_img_address);
+    }
+
+    function img_album(new_img_address) {
+      $('#img_album').empty();
+
+      var img_album_html =
+      '<div id="album" style="display:flex;" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive=\'[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]\'>'+
+      '</div>';
+      $('#img_album').append(img_album_html);
+
+      var img_html =
+            '<div class="js-slide g-px-3">'+
+              '<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="'+new_img_address+'" data-speed="350" data-caption="Lightbox Gallery">'+
+              '<img class="img-fluid" width="300" height="400" src="'+new_img_address+'" alt="Image Description">'+
+              '</a>'+
+            '</div>';
+            $('#album').append(img_html);
+    }
   })
 
-  var baseUrl = '<?=base_url('')?>';
-	function menu_click(id,new_img_address) {
-			//   document.getElementById(id).show();
-			$('.menu_img').addClass('menu_img_unsuccess');
-			$('.menu_img_'+id).removeClass('menu_img_unsuccess');
-			// $('.menu_btn').removeClass('btn_active');
-			$('.menu_btn').removeClass('btn_active btn-success ');
-			$('.menu_btn').addClass('btn_unsuccess');
-			$('.menu_'+id).removeClass('btn_unsuccess');
-			$('.menu_'+id).addClass('btn_active btn-success ');
-      img_album(new_img_address);
-	}
-
-	function img_album(new_img_address) {
-    $('#img_album').empty();
-
-    var img_album_html =
-    '<div id="album" style="display:flex;" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive=\'[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]\'>'+
-    '</div>';
-    $('#img_album').append(img_album_html);
-
-    var img_html =
-					'<div class="js-slide g-px-3">'+
-						'<a class="js-fancybox d-block" href="javascript:;" data-fancybox="lightbox-gallery--01" data-src="'+new_img_address+'" data-speed="350" data-caption="Lightbox Gallery">'+
-						'<img class="img-fluid" width="300" height="400" src="'+new_img_address+'" alt="Image Description">'+
-						'</a>'+
-					'</div>';
-					$('#album').append(img_html);
-	}
+ 
 
 </script>
