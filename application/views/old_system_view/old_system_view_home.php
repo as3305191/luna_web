@@ -140,7 +140,6 @@
 
 
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
-<?php $this -> load -> view('general/delete_modal'); ?>
 <script src="<?= base_url() ?>assets/vendor/fancybox1/jquery.fancybox.min.js"></script>
 <script>
   var baseUrl = '<?=base_url('')?>';
