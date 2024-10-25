@@ -148,9 +148,9 @@
 <script src="<?= base_url() ?>assets/vendor/fancybox1/jquery.fancybox.min.js"></script>
 <script>
   $(document).ready(function() {
-    // if(<?php count($store_list) >0 ?>){
-    //   	img_album(<?= $store_list[$i]->new_img_address ?>);
-    // }
+    if(<?php count($store_list) >0 ?>){
+      	img_album(<?= $store_list[$i]->new_img_address ?>);
+    }
   })
 
   var baseUrl = '<?=base_url('')?>';
