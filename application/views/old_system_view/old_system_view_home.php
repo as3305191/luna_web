@@ -52,7 +52,6 @@
                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <?=$total_old_user_ewallet ?>
                   </h3>
                 </div>
-
                 <div class="card-block g-pa-0" >
                   <table id="dt_list" class="table table-bordered u-table--v2">
                     <thead class="text-uppercase g-letter-spacing-1">
@@ -61,8 +60,36 @@
                         <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">備註</th>
                         <th class="g-font-weight-300 g-color-black dt_list_th_big" style="min-width: 100px">價錢</th>
                       </tr>
+                      <tr>
+									<td class="min50" style="border-right:none;"></td>
+									<td class="min120" style="border-right:none;">
+										<div class="input-group col-md-12">
+											<select id="menu_name" class="form-control">
+												
+											</select> 
+										</div>
+									</td>
+									<td style="border-right:none;">
+										<div class="input-group col-md-12">
+											<input type="text" class="form-control" id="order_name" placeholder="品項">
+										</div>
+									</td>
+
+									<td style="border-right:none;">
+										<div class="input-group col-md-10">
+											<input type="text" class="form-control" id="note" placeholder="備註">
+										</div>
+									</td>
+									<td style="border-right:none;">
+										<div class="input-group col-md-12">
+											<input type="text" class="form-control" id="amount" placeholder="金錢總額">
+										</div>
+                    <button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
+									</td>
+								</tr>
                     </thead>
                     <tbody id="dt_list_body">
+
                     </tbody>
                   </table>
                 </div>
