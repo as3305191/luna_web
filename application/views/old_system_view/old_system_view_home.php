@@ -150,7 +150,7 @@
   $(document).ready(function() {
     var c_store_list = <?= count($store_list)?> ;
     if( c_store_list >0 ){
-      	img_album('<?= $store_list[$i]->new_img_address ?>');
+      	img_album('<?= $store_list[0]->new_img_address ?>');
     }
   })
 
