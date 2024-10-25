@@ -15,7 +15,7 @@ class Login extends MY_Base_Controller {
 	public function index() {
 		$data = array();
 		// check login
-		if(!empty($this -> session -> userdata('user_id'))) {
+		if(!empty($this -> session -> userdata('old_system_view_user_id'))) {
 			redirect("/old_system_view/old_system_view_home");
 			return;
 		}
