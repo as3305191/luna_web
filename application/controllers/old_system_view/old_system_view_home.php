@@ -71,7 +71,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		// $sql = "SELECT * FROM order_menu";    
 
-		$sql = "SELECT * FROM order_menu where odate='$today' and enddate IS NULL";    
+		$sql = "SELECT * FROM order_menu where enddate IS NULL";    
 		
 		/* Execute the query. */    
 		
