@@ -148,7 +148,8 @@
 <script src="<?= base_url() ?>assets/vendor/fancybox1/jquery.fancybox.min.js"></script>
 <script>
   $(document).ready(function() {
-    if(<?php count($store_list) >0 ?>){
+    var c_store_list = <?= count($store_list)?> ;
+    if( c_store_list >0 ){
       	img_album(<?= $store_list[$i]->new_img_address ?>);
     }
   })
