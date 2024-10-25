@@ -152,7 +152,10 @@
     if( c_store_list >0 ){
       	img_album('<?= $store_list[0]->new_img_address ?>');
     }
-    // var baseUrl = '<?=base_url('')?>';
+   
+  })
+
+  var baseUrl = '<?=base_url('')?>';
     function menu_click(id,new_img_address) {
         //   document.getElementById(id).show();
         $('.menu_img').addClass('menu_img_unsuccess');
@@ -183,8 +186,5 @@
             '</div>';
             $('#album').append(img_html);
     }
-  })
-
- 
 
 </script>
