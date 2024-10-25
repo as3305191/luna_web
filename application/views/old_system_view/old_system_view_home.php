@@ -67,6 +67,7 @@
                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <?=$total_old_user_ewallet ?>
                   </h3>
                 </div>
+                <div class="card-block g-pa-0" >
                   <?php if(count($store_list)==1): ?>
                     <button class="btn_active btn-success text-light  menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[0]->id ?>)">&nbsp;<?= $store_list[0]->store ?></button>
                     <input type="hidden" class="form-control" id="menu_id" value="<?= $store_list[0]->id ?>">
@@ -77,9 +78,11 @@
                       <button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $store_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click(<?= $store_list[$i]->id ?>)">&nbsp;<?= $store_list[$i]->store ?></button>
                     <?php endfor ?>
                   <?php endif?>
-                <div id="img_album" class="g-pos-rel" style="padding:10px 0px 6px 12px;">
-					
-					      </div>
+                
+                  <div id="img_album" class="g-pos-rel" style="padding:10px 0px 6px 12px;">
+            
+                  </div>
+                </div>
                 <div class="card-block g-pa-0" >
                   <table id="dt_list" class="table table-bordered u-table--v2">
                     <thead class="text-uppercase g-letter-spacing-1">
