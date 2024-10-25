@@ -21,7 +21,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$count_today_= array();
 
 		$s_data = $this -> setup_user_data(array());
-		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
+		$login_user = $this -> users_dao -> find_by_id($s_data['old_system_view_user_id']);
 
 		$today = date("Y-m-d");
 		$data['now'] = 'old_system_view_home';//現在哪頁
