@@ -196,7 +196,7 @@ class Old_system_view_home extends MY_Base_Controller {
 			'amount'
 		));
 		$data['orderid'] = json_decode(json_encode($this -> get_s_o_id($data['store_id']),true));
-		$last_id = json_decode(json_encode($this -> order($data),true));
+		$last_id = json_decode(json_encode($this -> order_deal($data),true));
 		$pay_money_last_id = json_decode(json_encode($this -> pay_money($last_id,$data),true));
 		$res['orderid'] = $data['orderid'];
 		$res['last_id'] = $last_id;
@@ -232,7 +232,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		sqlsrv_close($conn);
 	}
 
-	public function order($data) {
+	public function order_deal($data) {
 		$orderid = $data['orderid'];
 		$usid = $data['usid'];
 		$order_name = $data['order_name'];
@@ -255,7 +255,7 @@ class Old_system_view_home extends MY_Base_Controller {
         }
 	    // $this -> to_json($result_array);
 		if(count($result_array)>0){
-			return $result_array;
+			return $result_array[0];
 		} else{
 			return NULL;
 		}
