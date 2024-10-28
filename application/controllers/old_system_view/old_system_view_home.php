@@ -176,6 +176,7 @@ class Old_system_view_home extends MY_Base_Controller {
 			'note',
 			'amount'
 		));
+		$data['orderid'] = json_decode(json_encode($this -> get_s_o_id($data['store_id']),true));
 		$last_id = json_decode(json_encode($this -> order($data),true));
 		$pay_money_last_id = json_decode(json_encode($this -> pay_money($last_id,$data),true));
 		$res['success'] = TRUE;
@@ -184,8 +185,35 @@ class Old_system_view_home extends MY_Base_Controller {
  		$this -> to_json($res);
 	}
 
+	public function get_s_o_id($store_id) {
+		$serverName="KTX-2008D1\sqlexpress";
+		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+		$conn=sqlsrv_connect($serverName,$connectionInfo);
+		// $sql = "SELECT id FROM account";    
+
+		$sql = "SELECT id FROM order_menu where storeid='$store_id' and enddate IS NULL";    
+		
+		/* Execute the query. */    
+		
+		$stmt = sqlsrv_query( $conn, $sql);    
+		
+		$result_array = array();
+		while($row=sqlsrv_fetch_array($stmt)){
+            $result_array[] = array_shift($row);
+        }
+	    // $this -> to_json($result_array);
+		if(count($result_array)>0){
+			return $result_array[0]->id;
+		} else{
+			return NULL;
+		}
+
+		// $this->load->view('mgmt/old_system_api/list', $result_array);
+		sqlsrv_close($conn);
+	}
+
 	public function order($data) {
-		$orderid = $data['store_id'];
+		$orderid = $data['orderid'];
 		$usid = $data['usid'];
 		$order_name = $data['order_name'];
 		$note = $data['note'];
@@ -218,7 +246,6 @@ class Old_system_view_home extends MY_Base_Controller {
 	}
 
 	public function pay_money($last_id,$data) {
-		$orderid = $data['store_id'];
 		$usid = $data['usid'];
 		$order_name = $data['order_name'];
 		$note = $data['note'];
