@@ -17,8 +17,6 @@ class Old_system_view_home extends MY_Base_Controller {
 
 	public function index() {
 		$data = array();
-		$count_members_lose_3days_ = array();
-		$count_today_= array();
 
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> users_dao -> find_by_id($s_data['login_user_id']);
@@ -36,14 +34,12 @@ class Old_system_view_home extends MY_Base_Controller {
 			$host = '211.21.221.121/eform/order';
 		}
 		foreach($old_user_ewallet as $each){
-			
 			if($each->income !=='null'){
 				$income+=intval($each->income);
 			}
 			if($each->outcome !=='null'){
 				$outcome+=intval($each->outcome);
 			}
-			
 		}
 		$store = array();
 		if($menu_open_list!==null){
