@@ -250,16 +250,16 @@ class Old_system_view_home extends MY_Base_Controller {
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
 		$result_array = array();
-		while($row=sqlsrv_fetch_array($stmt)){
-            $result_array[] = array_shift($row);
-        }
-	    // $this -> to_json($result_array);
-		if(count($result_array)>0){
-			return $result_array[0];
-		} else{
-			return NULL;
-		}
-
+		// while($row=sqlsrv_fetch_array($stmt)){
+        //     $result_array[] = array_shift($row);
+        // }
+	    // // $this -> to_json($result_array);
+		// if(count($result_array)>0){
+		// 	return $result_array[0];
+		// } else{
+		// 	return NULL;
+		// }
+		return $stmt;
 		// $this->load->view('mgmt/old_system_api/list', $result_array);
 		sqlsrv_close($conn);
 	}
