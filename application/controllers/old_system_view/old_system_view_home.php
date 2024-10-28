@@ -242,7 +242,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		// $sql = "SELECT id FROM account";    
-		$sql = "INSERT INTO order_record(orderid,userid,orderitem,notice,) OUTPUT Inserted.id VALUES ('$orderid','$usid','$order_name','$note');";    
+		$sql = "INSERT INTO order_record(orderid) OUTPUT Inserted.id VALUES ('$orderid');";    
 
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
