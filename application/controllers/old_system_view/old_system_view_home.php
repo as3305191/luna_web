@@ -195,8 +195,8 @@ class Old_system_view_home extends MY_Base_Controller {
 			'note',
 			'amount'
 		));
-		$data['orderid'] = json_decode(json_encode($this -> get_s_o_id($data['store_id']),true));
-		$last_id = json_decode(json_encode($this -> order_deal($data),true));
+		$orderid = json_decode(json_encode($this -> get_s_o_id($data['store_id']),true));
+		$last_id = json_decode(json_encode($this -> order_deal($orderid,$data),true));
 		$pay_money_last_id = json_decode(json_encode($this -> pay_money($last_id,$data),true));
 		$res['orderid'] = $data['orderid'];
 		$res['last_id'] = $last_id;
@@ -232,8 +232,8 @@ class Old_system_view_home extends MY_Base_Controller {
 		sqlsrv_close($conn);
 	}
 
-	public function order_deal($data) {
-		$orderid = $data['orderid'];
+	public function order_deal($orderid,$data) {
+		// $order_id = $orderid;
 		$usid = $data['usid'];
 		$order_name = $data['order_name'];
 		$note = $data['note'];
