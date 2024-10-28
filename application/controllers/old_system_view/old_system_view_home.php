@@ -200,7 +200,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		// $pay_money_last_id = json_decode(json_encode($this -> pay_money($last_id,$data),true));
 		$res['orderid'] = $orderid;
 		$res['last_id'] = $last_id;
-		// $res['pay_money_last_id'] = $pay_money_last_id;
+		$res['data'] = $data;
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
