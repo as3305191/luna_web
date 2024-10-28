@@ -238,7 +238,6 @@ class Old_system_view_home extends MY_Base_Controller {
 		$order_name = $data['order_name'];
 		$note = $data['note'];
 		$amount = $data['amount'];
-		$date = date('yyyy-mm-dd hh:mm:ss');
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
