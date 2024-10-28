@@ -189,7 +189,7 @@
           usid: old_user_id,
           order_name: $('#order_name').val(),
           note: $('#note').val(),
-          amount: $('#store_id').val(),
+          amount: $('#amount').val(),
         },
         success : function(data) {
           if(data) {
