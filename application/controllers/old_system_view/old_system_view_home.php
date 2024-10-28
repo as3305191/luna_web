@@ -233,7 +233,6 @@ class Old_system_view_home extends MY_Base_Controller {
 	}
 
 	public function order_deal($orderid,$data) {
-		// $order_id = $orderid;
 		$usid = $data['usid'];
 		$order_name = $data['order_name'];
 		$note = $data['note'];
@@ -244,28 +243,24 @@ class Old_system_view_home extends MY_Base_Controller {
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		// $sql = "SELECT id FROM account";    
 		$sql = "INSERT INTO order_record(orderid,userid,orderitem,notice,price) OUTPUT Inserted.id VALUES ('$orderid','$usid','$order_name','$note','$amount');";    
-		
-		/* Execute the query. */    
-		
+				
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
 		$result_array = array();
 		while($row=sqlsrv_fetch_array($stmt)){
             $result_array[] = array_shift($row);
         }
-	    // $this -> to_json($result_array);
 		if(count($result_array)>0){
 			return $result_array[0];
 		} else{
 			return NULL;
 		}
+
 		sqlsrv_close($conn);
 	}
 
 	public function pay_money($last_id,$data) {
 		$usid = $data['usid'];
-		$order_name = $data['order_name'];
-		$note = $data['note'];
 		$amount = $data['amount'];
 		$serverName="KTX-2008D1\sqlexpress";
 
@@ -274,23 +269,19 @@ class Old_system_view_home extends MY_Base_Controller {
 		// $sql = "SELECT id FROM account";    
 
 		$sql = "INSERT INTO order_ewallet(usid,outcome,operator,rid) OUTPUT Inserted.id VALUES ('$usid','$amount','$usid','$last_id');";    
-		
-		/* Execute the query. */    
-		
+				
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
 		$result_array = array();
 		while($row=sqlsrv_fetch_array($stmt)){
             $result_array[] = array_shift($row);
         }
-	    // $this -> to_json($result_array);
 		if(count($result_array)>0){
 			return $result_array[0];
 		} else{
 			return NULL;
 		}
 
-		// $this->load->view('mgmt/old_system_api/list', $result_array);
 		sqlsrv_close($conn);
 	}
 
