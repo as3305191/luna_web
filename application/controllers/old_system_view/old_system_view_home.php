@@ -167,13 +167,36 @@ class Old_system_view_home extends MY_Base_Controller {
 		sqlsrv_close($conn);
 	}
 
+	public function order_meal() {
+		$res = array();
+		$data = $this -> get_posts(array(
+			'usid',
+			'store_id',
+			'order_name',
+			'note',
+			'amount'
+		));
+		$last_id = json_decode(json_encode($this -> order($data),true));
+		$pay_money_last_id = json_decode(json_encode($this -> pay_money($last_id,$data),true));
+		$res['success'] = TRUE;
+		$res['last_id'] = $last_id;
+		$res['pay_money_last_id'] = $pay_money_last_id;
+ 		$this -> to_json($res);
+	}
+
 	public function order($data) {
+		$orderid = $data['store_id'];
+		$usid = $data['usid'];
+		$order_name = $data['order_name'];
+		$note = $data['note'];
+		$amount = $data['amount'];
+
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		// $sql = "SELECT id FROM account";    
-
-		$sql = "SELECT id FROM account where account='$account'";    
+		$sql = "INSERT INTO order_record(orderid,userid,orderitem,notice,price) VALUE ('$orderid','$usid','$order_name','$note','$amount')
+		        SELECT @@IDENTITY as last_id";    
 		
 		/* Execute the query. */    
 		
@@ -185,7 +208,7 @@ class Old_system_view_home extends MY_Base_Controller {
         }
 	    // $this -> to_json($result_array);
 		if(count($result_array)>0){
-			return $result_array[0];
+			return $result_array[0]->id;
 		} else{
 			return NULL;
 		}
@@ -194,13 +217,20 @@ class Old_system_view_home extends MY_Base_Controller {
 		sqlsrv_close($conn);
 	}
 
-	public function pay_money($money) {
+	public function pay_money($last_id,$data) {
+		$orderid = $data['store_id'];
+		$usid = $data['usid'];
+		$order_name = $data['order_name'];
+		$note = $data['note'];
+		$amount = $data['amount'];
 		$serverName="KTX-2008D1\sqlexpress";
+
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		// $sql = "SELECT id FROM account";    
 
-		$sql = "SELECT id FROM account where account='$account'";    
+		$sql = "INSERT INTO order_ewallet(usid,outcome,operator,rid) VALUE ('$usid','$amount','$usid','$last_id')
+		        SELECT @@IDENTITY as last_id";    
 		
 		/* Execute the query. */    
 		
@@ -212,7 +242,7 @@ class Old_system_view_home extends MY_Base_Controller {
         }
 	    // $this -> to_json($result_array);
 		if(count($result_array)>0){
-			return $result_array[0];
+			return $result_array[0]->id;
 		} else{
 			return NULL;
 		}

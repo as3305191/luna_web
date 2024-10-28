@@ -70,11 +70,11 @@
                 <div class="card-block g-pa-0" >
                   <?php if(count($store_list)>0): ?>
                     <?php if(count($store_list)==1): ?>
-                      <button class="btn_active btn-success text-light  menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click('<?= $store_list[0]->id ?>','<?= $store_list[0]->new_img_address ?>')">&nbsp;<?= $store_list[0]->store ?></button>
-                      <input type="hidden" class="form-control" id="menu_id" value="<?= $store_list[0]->id ?>">
+                      <button class="btn_active btn-success text-light menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click('<?= $store_list[0]->id ?>','<?= $store_list[0]->new_img_address ?>')">&nbsp;<?= $store_list[0]->store ?></button>
+                      <input type="hidden" class="form-control" id="store_id" value="<?= $store_list[0]->id ?>">
                     <?php else: ?>	
-                      <button class="btn_active btn-success text-light  menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click('<?= $store_list[0]->id ?>','<?= $store_list[0]->new_img_address ?>')">&nbsp;<?= $store_list[0]->store ?></button>
-                      <input type="hidden" class="form-control" id="menu_id" value="<?= $store_list[0]->id ?>">
+                      <button class="btn_active btn-success text-light menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click('<?= $store_list[0]->id ?>','<?= $store_list[0]->new_img_address ?>')">&nbsp;<?= $store_list[0]->store ?></button>
+                      <input type="hidden" class="form-control" id="store_id" value="<?= $store_list[0]->id ?>">
                       <?php for ($i=1;$i<count($store_list);$i++) : ?>                      
                         <button class="btn-light text-light btn_unsuccess menu_btn menu_<?= $store_list[$i]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click('<?= $store_list[$i]->id ?>','<?= $store_list[$i]->new_img_address ?>')">&nbsp;<?= $store_list[$i]->store ?></button>
                         <?php endfor ?>
@@ -90,7 +90,7 @@
                     <thead class="text-uppercase g-letter-spacing-1">
                       <tr>
                         <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px"></th>
-                        <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">餐點名稱</th>
+                        <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">品名</th>
                         <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">備註</th>
                         <th class="g-font-weight-300 g-color-black dt_list_th_big" style="min-width: 100px">價錢</th>
                       </tr>
@@ -154,10 +154,11 @@
     }
    
   })
-
+  
+  var old_user_id = '<?=$old_user_id?>';
   var baseUrl = '<?=base_url('')?>';
     function menu_click(id,new_img_address) {
-        //   document.getElementById(id).show();
+      $('#store_id').val('');
         $('.menu_img').addClass('menu_img_unsuccess');
         $('.menu_img_'+id).removeClass('menu_img_unsuccess');
         // $('.menu_btn').removeClass('btn_active');
@@ -165,25 +166,37 @@
         $('.menu_btn').addClass('btn_unsuccess');
         $('.menu_'+id).removeClass('btn_unsuccess');
         $('.menu_'+id).addClass('btn_active btn-success ');
+        $('#store_id').val(id);
         img_album(new_img_address);
     }
 
     function img_album(address) {
       $('#img_album').empty();
-
-      // var img_album_html =
-      // '<div id="album" style="display:flex;" class="js-carousel g-pt-6 g-mx-2" data-infinite="true" data-slides-show="5" data-slides-scroll="1" data-rows="1" data-responsive=\'[{"breakpoint": 1200,"settings": {"slidesToShow": 5} }, {"breakpoint": 992,"settings": {"slidesToShow": 4}}, {"breakpoint": 768,"settings": { "slidesToShow": 1}}, { "breakpoint": 576,"settings": {"slidesToShow": 1}}, {"breakpoint": 446,"settings": { "slidesToShow": 1}}]\'>'+
-      // '</div>';
-      // $('#img_album').append(img_album_html);
-
       var img_html =
-      // '<img src="http://'+address+'" loading="" style="max-height:200px;max-width:200px" >';
-            // '<div class="js-slide g-px-3">'+
               '<a class="js-fancybox d-block" href="javascript:;"  data-fancybox="lightbox-gallery--01" data-src="http://'+address+'" data-speed="350" data-caption="Lightbox Gallery">'+
               '<img class="img-fluid" width="300" height="400" src="http://'+address+'" alt="">'+
               '</a>';
-            // '</div>';
-            $('#img_album').append(img_html);
+      $('#img_album').append(img_html);
+    }
+    function add_order() {
+      var url = baseUrl + 'old_system_view/old_system_view_home/order_meal'; // the script where you handle the form input.
+      $.ajax({
+        type : "POST",
+        url : url,
+        data : {
+          id: $('#item_id').val(),
+          store_id: $('#store_id').val(),
+          usid: old_user_id,
+          order_name: $('#order_name').val(),
+          note: $('#note').val(),
+          amount: $('#store_id').val(),
+        },
+        success : function(data) {
+          if(data) {
+            console.log(data);
+          }
+        }
+      });
     }
 
 </script>
