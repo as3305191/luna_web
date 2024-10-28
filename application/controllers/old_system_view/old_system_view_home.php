@@ -34,6 +34,7 @@ class Old_system_view_home extends MY_Base_Controller {
 			$host = '211.21.221.121/eform/order';
 		}
 		foreach($old_user_ewallet as $each){
+			
 			if($each->income !=='null'){
 				$income+=intval($each->income);
 			}
