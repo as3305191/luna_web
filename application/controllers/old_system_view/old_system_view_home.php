@@ -198,10 +198,10 @@ class Old_system_view_home extends MY_Base_Controller {
 		$date = date('Y-m-d h:m:s');
 		$orderid = json_decode(json_encode($this -> get_s_o_id($data['store_id']),true));
 		$last_id = json_decode(json_encode($this -> order_deal($orderid,$data,$date),true));
-		// $pay_money_last_id = json_decode(json_encode($this -> pay_money($last_id,$data),true));
+		$pay_money_last_id = json_decode(json_encode($this -> pay_money($last_id,$data),true));
 		$res['orderid'] = $orderid;
 		$res['last_id'] = $last_id;
-		$res['date'] = $date;
+		// $res['date'] = $date;
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
