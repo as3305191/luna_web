@@ -255,7 +255,7 @@ class Old_system_view_home extends MY_Base_Controller {
         }
 	    // $this -> to_json($result_array);
 		if(count($result_array)>0){
-			return $result_array[0]->id;
+			return $result_array[0];
 		} else{
 			return NULL;
 		}
@@ -288,7 +288,7 @@ class Old_system_view_home extends MY_Base_Controller {
         }
 	    // $this -> to_json($result_array);
 		if(count($result_array)>0){
-			return $result_array[0]->id;
+			return $result_array[0];
 		} else{
 			return NULL;
 		}
