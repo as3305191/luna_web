@@ -243,7 +243,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		// $sql = "SELECT id FROM account";    
 		$sql = "INSERT INTO order_record(orderid,userid,orderitem,notice,price) OUTPUT Inserted.id VALUES ('$orderid','$usid','$order_name','$note','$amount');";    
-				
+
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
 		$result_array = array();
