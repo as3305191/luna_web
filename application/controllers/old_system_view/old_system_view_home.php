@@ -114,6 +114,25 @@ class Old_system_view_home extends MY_Base_Controller {
 		sqlsrv_close($conn);
 	}
 
+	public function re_money() {
+		$res = array();
+		$usid = $this -> get_post('usid');
+		$old_user_ewallet = json_decode(json_encode($this -> get_user_ewallet($usid),true));
+		$income = 0;
+		$outcome = 0;
+		foreach($old_user_ewallet as $each){
+			if($each->income !=='null'){
+				$income+=intval($each->income);
+			}
+			if($each->outcome !=='null'){
+				$outcome+=intval($each->outcome);
+			}
+		}
+		$total_old_user_ewallet = $income - $outcome;
+		$res['total_old_user_ewallet'] = $total_old_user_ewallet;
+		$this -> to_json($res);
+	}
+
 	public function get_user_ewallet($old_user_id) {
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");

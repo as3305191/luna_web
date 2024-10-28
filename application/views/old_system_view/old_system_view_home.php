@@ -64,7 +64,7 @@
                   </h3>
                  
                   <h3 class="h6 mb-0">
-                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <?=$total_old_user_ewallet ?>
+                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <p id="user_money"><?=$total_old_user_ewallet ?></p>
                   </h3>
                 </div>
                 <div class="card-block g-pa-0" >
@@ -197,6 +197,27 @@
           }
         }
       });
+    }
+
+    function re_total_money(old_user_id) {
+
+      $('#user_money').empty();
+
+      var url = baseUrl + 'old_system_view/old_system_view_home/re_money'; // the script where you handle the form input.
+      $.ajax({
+        type : "POST",
+        url : url,
+        data : {
+          usid: old_user_id,
+
+        },
+        success : function(data) {
+          if(data) {
+            $('#user_money').append(data['total_old_user_ewallet']);
+          }
+        }
+      });
+
     }
 
 </script>
