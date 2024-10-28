@@ -200,7 +200,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		// $pay_money_last_id = json_decode(json_encode($this -> pay_money($last_id,$data),true));
 		$res['orderid'] = $orderid;
 		$res['last_id'] = $last_id;
-		$res['data'] = $data;
+		// $res['pay_money_last_id'] = $pay_money_last_id;
 		$res['success'] = TRUE;
  		$this -> to_json($res);
 	}
@@ -237,12 +237,12 @@ class Old_system_view_home extends MY_Base_Controller {
 		$order_name = $data['order_name'];
 		$note = $data['note'];
 		$amount = $data['amount'];
-
+		$date = date('yyyy-mm-dd hh:mm:ss');
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		// $sql = "SELECT id FROM account";    
-		$sql = "INSERT INTO order_record(orderid) OUTPUT Inserted.id VALUES ('$orderid');";    
+		$sql = "INSERT INTO order_record(orderid,userid,orderitem,notice,price,rdate) OUTPUT Inserted.id VALUES ('$orderid','$usid','$order_name','$note','$amount');";    
 
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
