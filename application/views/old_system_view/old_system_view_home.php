@@ -16,6 +16,14 @@
     transform: translate(-50%, -50%);
     padding: 10px;
   }
+  .element_table {
+    /* border: 5px solid; */
+    position: absolute;
+    top: 50%;
+    /* left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px; */
+  }
 @media only screen and (max-width: 750px) {
 	.dt_list_th{
 	  min-width: 67px !important;
@@ -113,7 +121,7 @@
                     </div>
                   </div>
 
-                  <table id="dt_list" class="table table-bordered u-table--v2" margin ="5px">
+                  <table id="dt_list" class="table table-bordered u-table--v2 element_table">
                     <thead class="text-uppercase g-letter-spacing-1">
                       <tr>
                         <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px"></th>
