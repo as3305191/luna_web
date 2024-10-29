@@ -82,7 +82,7 @@
                   
                 </div>
                 <div class="card-block g-pa-0" >
-                  <div class="g-pos-rel" >
+                  <div class="g-pos-rel" style="position: relative;">
                     <div class="form-group">
                       <label class="col-md-3 control-label">品項:</label>
                       <div class="col-md-6">
@@ -101,9 +101,8 @@
                         <input type="text" class="form-control" id="amount" placeholder="金錢總額">
                       </div>
                     </div>
-                   
-                    <div class="widget-toolbar pull-right">
-                     <button type="button" class="btn btn-sm btn-primary" onclick="add_order()">確認</button>
+                    <div class="widget-toolbar pull-right" style="width: auto;height: auto;margin: 0 auto;padding: 10px;position: relative;">
+                      <button type="button" class="btn btn-sm btn-primary" onclick="add_order()">確認</button>
                     </div>
                   </div>
 
