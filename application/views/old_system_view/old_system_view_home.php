@@ -8,7 +8,11 @@
   .hide_s_i {
   	display: none;
   }
-
+  .element {
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+  }
 @media only screen and (max-width: 750px) {
 	.dt_list_th{
 	  min-width: 67px !important;
@@ -101,8 +105,8 @@
                         <input type="text" class="form-control" id="amount" placeholder="金錢總額">
                       </div>
                     </div>
-                    <div class="widget-toolbar pull-right" style="max-width: fit-content;margin-left: auto;margin-right: auto;">
-                     <button type="button" class="btn btn-sm btn-primary" onclick="add_order()">確認</button>
+                    <div class="widget-toolbar pull-right" >
+                     <button type="button" class="btn btn-sm btn-primary element" onclick="add_order()">確認</button>
                     </div>
                   </div>
 
