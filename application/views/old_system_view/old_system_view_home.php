@@ -145,14 +145,13 @@
 <script>
   $(document).ready(function() {
     var c_store_list = <?= count($store_list)?> ;
-    var now_amount = <?=$total_old_user_ewallet ?> ;
     if( c_store_list >0 ){
       	img_album('<?= $store_list[0]->new_img_address ?>');
     }
     load_already_order();
 
   })
-  
+  var now_amount = <?= $total_old_user_ewallet ?> ;
   var old_user_id = '<?=$old_user_id?>';
   var baseUrl = '<?=base_url('')?>';
     function menu_click(id,new_img_address) {
