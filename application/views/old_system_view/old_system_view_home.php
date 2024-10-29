@@ -83,10 +83,24 @@
                 </div>
                 <div class="card-block g-pa-0" >
                   <div class="g-pos-rel" >
-
-                    <input type="text" class="form-control" id="order_name" placeholder="品項">
-                    <input type="text" class="form-control" id="note" placeholder="備註">
-                    <input type="text" class="form-control" id="amount" placeholder="金錢總額">
+                    <div class="form-group">
+                      <label class="col-md-3 control-label">品項:</label>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" id="order_name" placeholder="品項">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-3 control-label">備註:</label>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" id="note" placeholder="備註">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label class="col-md-3 control-label">金錢總額:</label>
+                      <div class="col-md-6">
+                        <input type="text" class="form-control" id="amount" placeholder="金錢總額">
+                      </div>
+                    </div>
                     <button type="button" class="btn btn-sm btn-primary" onclick="add_order()">確認</button>
                   </div>
 
