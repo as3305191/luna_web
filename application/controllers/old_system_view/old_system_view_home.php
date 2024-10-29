@@ -211,13 +211,13 @@ class Old_system_view_home extends MY_Base_Controller {
 		$old_user_id = $this -> get_post('old_user_id');
 		$today = date("Y-m-d");
 		$finish_list = json_decode(json_encode($this -> get_finish_order_by_user($today,$old_user_id),true));
-		if($finish_list !==null && count($finish_list)>0){
-			$res['success'] = 'already';
-			$res['finish_list'] = $finish_list;
-		} else{
-			$res['success'] = 'not_order';
-		}
- 
+		// if($finish_list !==null && count($finish_list)>0){
+		// 	$res['success'] = 'already';
+		// 	$res['finish_list'] = $finish_list;
+		// } else{
+		// 	$res['success'] = 'not_order';
+		// }
+		$res['finish_list'] = $finish_list;
  		$this -> to_json($res);
 	}
 
