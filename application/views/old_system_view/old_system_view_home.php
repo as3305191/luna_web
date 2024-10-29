@@ -116,7 +116,7 @@
                         <input type="text" class="form-control" id="amount" placeholder="金錢總額">
                       </div>
                     </div>
-                    <div class="widget-toolbar pull-right " >
+                    <div class="form-group" >
                      <button type="button" class="btn btn-sm btn-primary element" onclick="add_order()">確認</button>
                     </div>
                   </div>
