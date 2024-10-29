@@ -209,9 +209,14 @@ class Old_system_view_home extends MY_Base_Controller {
 	public function finish_order() {
 		$res = array();
 		$old_user_id = $this -> get_post('usid');
+		$today = date("Y-m-d");
 		$finish_list = json_decode(json_encode($this -> get_finish_order_by_user($old_user_id),true));
-	
-		$res['finish_list'] = $finish_list;
+		if($finish_list !==null && count($finish_list)>0){
+			$res['success'] = 'already';
+			$res['finish_list'] = $finish_list;
+		} else{
+			$res['success'] = 'not_order';
+		}
  		$this -> to_json($res);
 	}
 
@@ -221,7 +226,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 
 		$sql = "SELECT order_record.* from order_record LEFT JOIN order_menu ON
-				(order_record.orderid = order_menu.id) where order_record.userid='$old_user_id' and
+				order_record.orderid = order_menu.id where order_record.userid='$old_user_id' and
 				order_menu.enddate IS NULL;";    
 		
 		$stmt = sqlsrv_query( $conn, $sql);    
