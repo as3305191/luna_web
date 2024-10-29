@@ -82,6 +82,14 @@
                   
                 </div>
                 <div class="card-block g-pa-0" >
+                  <div class="g-pos-rel" >
+
+                    <input type="text" class="form-control" id="order_name" placeholder="品項">
+                    <input type="text" class="form-control" id="note" placeholder="備註">
+                    <input type="text" class="form-control" id="amount" placeholder="金錢總額">
+                    <button type="button" class="btn btn-sm btn-primary" onclick="add_order()">確認</button>
+                  </div>
+
                   <table id="dt_list" class="table table-bordered u-table--v2">
                     <thead class="text-uppercase g-letter-spacing-1">
                       <tr>
@@ -90,27 +98,6 @@
                         <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px">備註</th>
                         <th class="g-font-weight-300 g-color-black dt_list_th_big" style="min-width: 100px">價錢</th>
                       </tr>
-                      <tr>
-									<td class="min50" style="border-right:none;"></td>
-									
-									<td style="border-right:none;">
-										<div class="input-group col-md-12">
-											<input type="text" class="form-control" id="order_name" placeholder="品項">
-										</div>
-									</td>
-
-									<td style="border-right:none;">
-										<div class="input-group col-md-10">
-											<input type="text" class="form-control" id="note" placeholder="備註">
-										</div>
-									</td>
-									<td style="border-right:none;">
-										<div class="input-group col-md-12">
-											<input type="text" class="form-control" id="amount" placeholder="金錢總額">
-                      <button type="button" class="btn btn-sm btn-primary" onclick="add_order()">確認</button>
-                    </div>
-									</td>
-								</tr>
                     </thead>
                     <tbody id="dt_list_body">
 
