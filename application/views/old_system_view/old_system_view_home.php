@@ -180,36 +180,57 @@
     }
     function add_order() {
       var url = baseUrl + 'old_system_view/old_system_view_home/order_meal'; // the script where you handle the form input.
+      
+      var id = $('#item_id').val();
+      var store_id = $('#store_id').val();
+      var order_name = $('#order_name').val();
+      var note = $('#note').val();
+      var amount = $('#amount').val();
       $.ajax({
         type : "POST",
         url : url,
         data : {
-          id: $('#item_id').val(),
-          store_id: $('#store_id').val(),
+          id: id,
+          store_id: store_id,
           usid: old_user_id,
-          order_name: $('#order_name').val(),
-          note: $('#note').val(),
-          amount: $('#amount').val(),
+          order_name: order_name,
+          note: note,
+          amount: amount,
         },
         success : function(data) {
           if(data) {
-            console.log(data);
+            re_total_money();
+            draw();
           }
         }
       });
     }
 
-    function re_total_money(old_user_id) {
+    function draw() {
+      $('#dt_list_body').empty();
+      var url = baseUrl + 'old_system_view/old_system_view_home/finish_order'; // the script where you handle the form input.
+      $.ajax({
+        type : "POST",
+        url : url,
+        data : {
+          usid: old_user_id,
+        },
+        success : function(d) {
+          if(d.success) {
+            console.log(d);
+          }
+        }
+      });
+    }
 
+    function re_total_money() {
       $('#user_money').empty();
-
       var url = baseUrl + 'old_system_view/old_system_view_home/re_money'; // the script where you handle the form input.
       $.ajax({
         type : "POST",
         url : url,
         data : {
           usid: old_user_id,
-
         },
         success : function(data) {
           if(data) {

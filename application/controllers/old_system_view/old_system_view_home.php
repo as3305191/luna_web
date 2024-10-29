@@ -206,15 +206,27 @@ class Old_system_view_home extends MY_Base_Controller {
  		$this -> to_json($res);
 	}
 
-	public function get_s_o_id($store_id) {
+	public function finish_order() {
+		$res = array();
+		$old_user_id = $this -> get_post('old_user_id');
+		$today = date("Y-m-d");
+		$finish_list = json_decode(json_encode($this -> get_finish_order_by_user($today),true));
+		if(count($finish_list)>0){
+			$res['success'] = TRUE;
+			$res['finish_list'] = $finish_list;
+		} else{
+			$res['not_order'] = TRUE;
+		}
+ 
+ 		$this -> to_json($res);
+	}
+
+	public function get_finish_order_by_user($today) {
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
-		// $sql = "SELECT id FROM account";    
 
-		$sql = "SELECT id FROM order_menu where storeid='$store_id' and enddate IS NULL";    
-		
-		/* Execute the query. */    
+		$sql = "SELECT * FROM order_record as o_r LEFT JOIN order_menu as o_m ON o_r.orderid = o_m.id where o_r.rdate like '$today'% and o_m.enddate IS NULL";    
 		
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
@@ -222,14 +234,34 @@ class Old_system_view_home extends MY_Base_Controller {
 		while($row=sqlsrv_fetch_array($stmt)){
             $result_array[] = array_shift($row);
         }
-	    // $this -> to_json($result_array);
 		if(count($result_array)>0){
 			return $result_array[0];
 		} else{
 			return NULL;
 		}
 
-		// $this->load->view('mgmt/old_system_api/list', $result_array);
+		sqlsrv_close($conn);
+	}
+
+	public function get_s_o_id($store_id) {
+		$serverName="KTX-2008D1\sqlexpress";
+		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+		$conn=sqlsrv_connect($serverName,$connectionInfo);
+
+		$sql = "SELECT id FROM order_menu where storeid='$store_id' and enddate IS NULL";    
+				
+		$stmt = sqlsrv_query( $conn, $sql);    
+		
+		$result_array = array();
+		while($row=sqlsrv_fetch_array($stmt)){
+            $result_array[] = array_shift($row);
+        }
+		if(count($result_array)>0){
+			return $result_array[0];
+		} else{
+			return NULL;
+		}
+
 		sqlsrv_close($conn);
 	}
 
