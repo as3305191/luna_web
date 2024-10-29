@@ -210,7 +210,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$res = array();
 		$old_user_id = $this -> get_post('old_user_id');
 		$today = date("Y-m-d");
-		$finish_list = json_decode(json_encode($this -> get_finish_order_by_user($today,$old_user_id),true));
+		$finish_list = json_decode(json_encode($this -> get_finish_order_by_user($old_user_id),true));
 		// if($finish_list !==null && count($finish_list)>0){
 		// 	$res['success'] = 'already';
 		// 	$res['finish_list'] = $finish_list;
@@ -226,7 +226,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 
-		$sql = "SELECT * FROM order_record LEFT JOIN order_menu ON order_record.orderid = order_menu.id where order_record.userid='$old_user_id' and order_menu.enddate IS NULL";    
+		$sql = "SELECT order_record.* FROM order_record LEFT JOIN order_menu ON order_record.orderid = order_menu.id where order_record.userid='$old_user_id' and order_menu.enddate IS NULL";    
 		
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
