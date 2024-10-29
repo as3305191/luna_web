@@ -200,13 +200,13 @@
         success : function(data) {
           if(data) {
             re_total_money();
-            draw();
+            // load_already_order();
           }
         }
       });
     }
 
-    function draw() {
+    function load_already_order() {
       $('#dt_list_body').empty();
       var url = baseUrl + 'old_system_view/old_system_view_home/finish_order'; // the script where you handle the form input.
       $.ajax({
@@ -222,6 +222,7 @@
         }
       });
     }
+    load_already_order();
 
     function re_total_money() {
       $('#user_money').empty();
