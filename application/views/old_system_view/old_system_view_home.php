@@ -198,7 +198,6 @@
         success : function(data) {
           if(data) {
             re_total_money();
-            load_already_order();
           }
         }
       });
@@ -241,7 +240,6 @@
         },
         success : function(data) {
           re_total_money();
-          load_already_order();
         }
       });
 
@@ -259,6 +257,7 @@
         success : function(data) {
           if(data) {
             $('#user_money').append('<i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i>剩餘金額 :'+data['total_old_user_ewallet']);
+            load_already_order();
           }
         }
       });
