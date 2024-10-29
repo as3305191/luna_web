@@ -65,7 +65,7 @@
                   </h3>
                  
                   <h3 class="h6 mb-0">
-                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5">剩餘金額: <p id="user_money"><?=$total_old_user_ewallet ?></p></i> 
+                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"> <p id="user_money">剩餘金額:<?=$total_old_user_ewallet ?></p></i> 
                   </h3>
                 </div>
                 <div class="card-block g-pa-0" >
