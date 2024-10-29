@@ -60,7 +60,7 @@
                 
                 <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                   <h3 class="h6 mb-0">
-                    <p id="user_money"><i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i>剩餘金額 :<?=$total_old_user_ewallet ?></p>
+                    <p id="user_money"><i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i>剩餘金額 :<?=$total_old_user_ewallet ?>餘額不足請找企劃課儲值，最低儲值200元'</p>
                   </h3>
                 </div>
                 <div class="card-block g-pa-0" >
@@ -262,7 +262,7 @@
         },
         success : function(data) {
           if(data) {
-            $('#user_money').append('<i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i>剩餘金額 :'+data['total_old_user_ewallet']);
+            $('#user_money').append('<i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i>剩餘金額 :'+data['total_old_user_ewallet']+'餘額不足請找企劃課儲值，最低儲值200元');
             load_already_order();
           }
         }
