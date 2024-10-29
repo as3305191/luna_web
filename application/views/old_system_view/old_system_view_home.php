@@ -9,10 +9,11 @@
   	display: none;
   }
   .element {
-    border: 5px solid;
+    /* border: 5px solid; */
     position: absolute;
     top: 50%;
-    transform: translate(0, -50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 10px;
   }
 @media only screen and (max-width: 750px) {
