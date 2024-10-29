@@ -206,6 +206,7 @@
 
     function load_already_order() {
       var url = baseUrl + 'old_system_view/old_system_view_home/finish_order'; // the script where you handle the form input.
+      var $body = $('#dt_list_body').empty();
       $.ajax({
         type : "POST",
         url : url,
@@ -214,9 +215,7 @@
         },
         success : function(d) {
           if(d.success=='already') {
-            var $body = $('#dt_list_body').empty();
             $.each(d.finish_list, function(){
-          
               var me = this;
               var $tr = $('<tr class="pointer">').click(function(){
               }).appendTo($body);
