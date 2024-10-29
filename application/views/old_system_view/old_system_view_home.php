@@ -237,7 +237,7 @@
         },
         success : function(data) {
           if(data) {
-            $('#user_money').append('剩餘金額 :'+data['total_old_user_ewallet']);
+            $('#user_money').append('<i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i>剩餘金額 :'+data['total_old_user_ewallet']);
           }
         }
       });
