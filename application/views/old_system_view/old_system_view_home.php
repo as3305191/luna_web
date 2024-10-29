@@ -121,7 +121,8 @@
                     </div>
                   </div>
                 </div>
-                <div class="card-block g-pa-0">
+
+                <div class="card border-0">
                   <table id="dt_list" class="table table-bordered u-table--v2 ">
                     <thead class="text-uppercase g-letter-spacing-1">
                       <tr>
