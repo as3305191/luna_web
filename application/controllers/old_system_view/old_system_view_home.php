@@ -235,7 +235,7 @@ class Old_system_view_home extends MY_Base_Controller {
             $result_array[] = array_shift($row);
         }
 		if(count($result_array)>0){
-			return $result_array[0];
+			return $result_array;
 		} else{
 			return NULL;
 		}
