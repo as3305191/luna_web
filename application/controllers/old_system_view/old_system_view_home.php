@@ -226,8 +226,8 @@ class Old_system_view_home extends MY_Base_Controller {
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 
-		$sql = "SELECT order_record.* from order_record LEFT OUTER JOIN order_menu ON
-				order_record.orderid = order_menu.id where order_record.userid='$old_user_id' and
+		$sql = "SELECT order_record.* from order_record LEFT JOIN order_menu ON
+				(order_record.orderid = order_menu.id) where order_record.userid='$old_user_id' and
 				order_menu.enddate IS NULL;";    
 		
 		$stmt = sqlsrv_query( $conn, $sql);    
