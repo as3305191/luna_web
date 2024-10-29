@@ -120,7 +120,8 @@
                      <button type="button" class="btn btn-sm btn-primary " onclick="add_order()">確認</button>
                     </div>
                   </div>
-
+                </div>
+                <div class="card-block g-pa-0">
                   <table id="dt_list" class="table table-bordered u-table--v2 ">
                     <thead class="text-uppercase g-letter-spacing-1">
                       <tr>
