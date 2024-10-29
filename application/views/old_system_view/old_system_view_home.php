@@ -204,7 +204,6 @@
     }
 
     function load_already_order() {
-      $('#dt_list_body').empty();
       var url = baseUrl + 'old_system_view/old_system_view_home/finish_order'; // the script where you handle the form input.
       $.ajax({
         type : "POST",
@@ -214,12 +213,17 @@
         },
         success : function(d) {
           if(d.success=='already') {
+            var $body = $('#dt_list_body').empty();
             $.each(d.finish_list, function(){
+          
               var me = this;
-              console.log(me.id);
-              console.log(me.orderitem);
-              console.log(me.notice);
-              console.log(me.price);
+              var $tr = $('<tr class="pointer">').click(function(){
+              }).appendTo($body);
+                $('<td>').html(me.id).appendTo($tr);
+                $('<td>').html(me.orderitem).appendTo($tr);
+                $('<td>').html(me.notice).appendTo($tr);
+                $('<td>').html(me.price).appendTo($tr);
+             
             });
           }
         }
