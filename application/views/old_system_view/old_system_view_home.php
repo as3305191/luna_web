@@ -121,7 +121,7 @@
                     </div>
                   </div>
 
-                  <table id="dt_list" class="table table-bordered u-table--v2 element_table">
+                  <table id="dt_list" class="table table-bordered u-table--v2 ">
                     <thead class="text-uppercase g-letter-spacing-1">
                       <tr>
                         <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px"></th>
