@@ -217,10 +217,15 @@
           usid: old_user_id,
         },
         success : function(d) {
-          // if(d.success=='already') {
-           
-          // }
-          console.log(d);
+          if(d.success=='already') {
+            $.each(d.finish_list, function(){
+              var me = this;
+              console.log(me.id);
+              console.log(me.orderitem);
+              console.log(me.notice);
+              console.log(me.price);
+            });
+          }
         }
       });
     }
