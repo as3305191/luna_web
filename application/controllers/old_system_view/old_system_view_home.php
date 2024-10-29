@@ -208,8 +208,7 @@ class Old_system_view_home extends MY_Base_Controller {
 
 	public function finish_order() {
 		$res = array();
-		$old_user_id = $this -> get_post('old_user_id');
-		$today = date("Y-m-d");
+		$old_user_id = $this -> get_post('usid');
 		$finish_list = json_decode(json_encode($this -> get_finish_order_by_user($old_user_id),true));
 	
 		$res['finish_list'] = $finish_list;
