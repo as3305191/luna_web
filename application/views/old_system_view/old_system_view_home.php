@@ -186,7 +186,7 @@
       var order_name = $('#order_name').val();
       var note = $('#note').val();
       var amount = $('#amount').val();
-      if(now_amount>amount) {
+      if(parseInt(now_amount)>parseInt(amount)) {
         $.ajax({
           type : "POST",
           url : url,
