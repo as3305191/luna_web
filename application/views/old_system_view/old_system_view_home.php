@@ -9,9 +9,11 @@
   	display: none;
   }
   .element {
-    margin: auto;
-    width: 50%;
-    /* padding: 10px; */
+    border: 5px solid;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    padding: 10px;
   }
 @media only screen and (max-width: 750px) {
 	.dt_list_th{
