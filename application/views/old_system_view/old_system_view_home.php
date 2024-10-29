@@ -107,7 +107,7 @@
 									<td style="border-right:none;">
 										<div class="input-group col-md-12">
 											<input type="text" class="form-control" id="amount" placeholder="金錢總額">
-                      <button type="button" class="btn btn-sm btn-primary" onclick="add_order()"><i class="fa fa-plus-circle fa-lg"></i></button>
+                      <button type="button" class="btn btn-sm btn-primary" onclick="add_order()">確認</button>
                     </div>
 									</td>
 								</tr>
@@ -224,7 +224,7 @@
               var me = this;
               var $tr = $('<tr class="pointer">').click(function(){
               }).appendTo($body);
-                $('<td>').html('<button type="button" class="btn btn-sm btn-primary" onclick="delete_order('+me.id+')">刪除</button>').appendTo($tr);
+                $('<td>').html('<button type="button" class="btn btn-sm btn-primary" onclick="delete_order('+me.id+')">取消</button>').appendTo($tr);
                 $('<td>').html(me.orderitem).appendTo($tr);
                 $('<td>').html(me.notice).appendTo($tr);
                 $('<td>').html(me.price).appendTo($tr);
