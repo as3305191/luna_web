@@ -221,7 +221,7 @@ class Old_system_view_home extends MY_Base_Controller {
  		$this -> to_json($res);
 	}
 
-	public function get_finish_order_by_user($today,$old_user_id) {
+	public function get_finish_order_by_user($old_user_id) {
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
@@ -232,14 +232,14 @@ class Old_system_view_home extends MY_Base_Controller {
 		
 		$result_array = array();
 		while($row=sqlsrv_fetch_array($stmt)){
-            $result_array[] = $row;
+            $result_array[] = array_shift($row);
         }
-		if(count($result_array)>0){
-			return $result_array;
-		} else{
-			return NULL;
-		}
-
+		// if(count($result_array)>0){
+		// 	return $result_array;
+		// } else{
+		// 	return NULL;
+		// }
+		return $result_array;
 		sqlsrv_close($conn);
 	}
 
