@@ -211,7 +211,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$old_user_id = $this -> get_post('old_user_id');
 		$today = date("Y-m-d");
 		$finish_list = json_decode(json_encode($this -> get_finish_order_by_user($today),true));
-		if(count($finish_list)>0){
+		if($finish_list !==null && count($finish_list)>0){
 			$res['success'] = 'already';
 			$res['finish_list'] = $finish_list;
 		} else{
