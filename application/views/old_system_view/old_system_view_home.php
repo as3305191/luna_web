@@ -152,7 +152,8 @@
     if( c_store_list >0 ){
       	img_album('<?= $store_list[0]->new_img_address ?>');
     }
-   
+    load_already_order();
+
   })
   
   var old_user_id = '<?=$old_user_id?>';
@@ -222,7 +223,6 @@
         }
       });
     }
-    load_already_order();
 
     function re_total_money() {
       $('#user_money').empty();
