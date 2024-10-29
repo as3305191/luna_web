@@ -226,7 +226,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 
-		$sql = "SELECT * FROM order_record LEFT JOIN order_menu ON order_record.orderid = order_menu.id where order_record.userid='$old_user_id' and order_menu.enddate IS NULL";    
+		$sql = "SELECT order_record.* FROM order_record LEFT JOIN order_menu ON order_record.orderid = order_menu.id where order_record.userid='$old_user_id' and order_menu.enddate IS NULL";    
 		
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
@@ -234,12 +234,12 @@ class Old_system_view_home extends MY_Base_Controller {
 		while($row=sqlsrv_fetch_array($stmt)){
             $result_array[] = array_shift($row);
         }
-		// if(count($result_array)>0){
-		// 	return $result_array;
-		// } else{
-		// 	return NULL;
-		// }
-		return $result_array;
+		if(count($result_array)>0){
+			return $result_array;
+		} else{
+			return NULL;
+		}
+
 		sqlsrv_close($conn);
 	}
 
