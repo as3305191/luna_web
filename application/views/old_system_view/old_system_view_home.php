@@ -175,6 +175,7 @@
               '</a>';
       $('#img_album').append(img_html);
     }
+
     function add_order() {
       var url = baseUrl + 'old_system_view/old_system_view_home/order_meal'; // the script where you handle the form input.
       
@@ -197,7 +198,7 @@
         success : function(data) {
           if(data) {
             re_total_money();
-            // load_already_order();
+            load_already_order();
           }
         }
       });
@@ -219,7 +220,7 @@
               var me = this;
               var $tr = $('<tr class="pointer">').click(function(){
               }).appendTo($body);
-                $('<td>').html(me.id).appendTo($tr);
+                $('<td>').html('<button type="button" class="btn btn-sm btn-primary" onclick="delete_order('+me.id+')">刪除</button>').appendTo($tr);
                 $('<td>').html(me.orderitem).appendTo($tr);
                 $('<td>').html(me.notice).appendTo($tr);
                 $('<td>').html(me.price).appendTo($tr);
@@ -228,6 +229,23 @@
           }
         }
       });
+    }
+
+    function delete_order(id) {
+      var url = baseUrl + 'old_system_view/old_system_view_home/delete_order'; 
+      $.ajax({
+        type : "POST",
+        url : url,
+        data : {
+          id: id,
+          usid: old_user_id,
+        },
+        success : function(data) {
+          re_total_money();
+          load_already_order();
+        }
+      });
+
     }
 
     function re_total_money() {

@@ -133,6 +133,17 @@ class Old_system_view_home extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 
+	public function delete_order() {
+		$res = array();
+		$id = $this -> get_post('id');
+		$usid = $this -> get_post('usid');
+
+		$this -> delete_record($id);
+		$this -> update_ewallet($usid,$id);
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
 	public function get_user_ewallet($old_user_id) {
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
@@ -154,6 +165,56 @@ class Old_system_view_home extends MY_Base_Controller {
 		} else{
 			return NULL;
 		}
+
+		// $this->load->view('mgmt/old_system_api/list', $result_array);
+		sqlsrv_close($conn);
+	}
+
+	public function delete_record($id) {
+		$serverName="KTX-2008D1\sqlexpress";
+		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+		$conn=sqlsrv_connect($serverName,$connectionInfo);
+		
+		$sql = "DELETE FROM order_record where id='$id'";    
+
+		$stmt = sqlsrv_query( $conn, $sql);    
+		
+	// 	$result_array = array();
+	// 	while($row=sqlsrv_fetch_array($stmt)){
+    //         $result_array[] = $row;
+    //    }
+	// 	// $this -> to_json($result_array);
+	// 	if(count($result_array)>0){
+	// 		return $result_array;
+	// 	} else{
+	// 		return NULL;
+	// 	}
+
+		// $this->load->view('mgmt/old_system_api/list', $result_array);
+		sqlsrv_close($conn);
+	}
+
+	public function update_ewallet($usid,$id) {
+		$serverName="KTX-2008D1\sqlexpress";
+		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
+		$conn=sqlsrv_connect($serverName,$connectionInfo);
+		
+		$sql = "UPDATE order_ewallet set delmark='1' where usid='$usid' and rid='$id'";    
+
+		/* Execute the query. */    
+		
+		$stmt = sqlsrv_query( $conn, $sql);    
+		
+	// 	$result_array = array();
+	// 	while($row=sqlsrv_fetch_array($stmt)){
+    //         $result_array[] = $row;
+    //    }
+	// 	// $this -> to_json($result_array);
+	// 	if(count($result_array)>0){
+	// 		return $result_array;
+	// 	} else{
+	// 		return NULL;
+	// 	}
 
 		// $this->load->view('mgmt/old_system_api/list', $result_array);
 		sqlsrv_close($conn);
