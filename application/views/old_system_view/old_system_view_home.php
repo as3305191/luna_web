@@ -8,9 +8,7 @@
   .hide_s_i {
   	display: none;
   }
-  .btn_unsuccess_text {
-    color:black;
-  }
+
 @media only screen and (max-width: 750px) {
 	.dt_list_th{
 	  min-width: 67px !important;
