@@ -33,15 +33,18 @@ class Old_system_view_home extends MY_Base_Controller {
 		} else{
 			$host = '211.21.221.121/eform/order';
 		}
-		foreach($old_user_ewallet as $each){
+		if(count($old_user_ewallet)>0){
+			foreach($old_user_ewallet as $each){
 			
-			if($each->income !=='null'){
-				$income+=intval($each->income);
-			}
-			if($each->outcome !=='null'){
-				$outcome+=intval($each->outcome);
+				if($each->income !=='null'){
+					$income+=intval($each->income);
+				}
+				if($each->outcome !=='null'){
+					$outcome+=intval($each->outcome);
+				}
 			}
 		}
+		
 		$store = array();
 		if($menu_open_list!==null){
 			foreach($menu_open_list as $each){
