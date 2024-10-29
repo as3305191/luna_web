@@ -101,7 +101,11 @@
                         <input type="text" class="form-control" id="amount" placeholder="金錢總額">
                       </div>
                     </div>
-                    <button type="button" class="btn btn-sm btn-primary" onclick="add_order()">確認</button>
+                    <div class="form-group">
+                      <div class="col-md-6">
+                        <button type="button" class="btn btn-sm btn-primary" onclick="add_order()">確認</button>
+                      </div>
+                    </div>
                   </div>
 
                   <table id="dt_list" class="table table-bordered u-table--v2">
