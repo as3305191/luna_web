@@ -88,7 +88,7 @@
                   <?php endif?>
                   
                 </div>
-                <div class="card-block g-pa-0"  style="padding:0px 0px 0px 0px;">
+                <div class="card-block g-pa-0">
                   <div class="g-pos-rel">
                     <div class="form-group">
                       <label class="col-md-3 control-label">品項:</label>
@@ -113,7 +113,7 @@
                     </div>
                   </div>
 
-                  <table id="dt_list" class="table table-bordered u-table--v2">
+                  <table id="dt_list" class="table table-bordered u-table--v2" style="padding:0px 0px 0px 0px;">
                     <thead class="text-uppercase g-letter-spacing-1">
                       <tr>
                         <th class="g-font-weight-300 g-color-black dt_list_th" style="min-width: 100px"></th>
