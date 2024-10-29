@@ -11,7 +11,7 @@
   .element {
     /* border: 5px solid; */
     position: absolute;
-    top: 65%;
+    top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px;
@@ -19,7 +19,7 @@
   .element_table {
     /* border: 5px solid; */
     position: absolute;
-    top: 105%;
+    top: 110%;
     /* left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px; */
