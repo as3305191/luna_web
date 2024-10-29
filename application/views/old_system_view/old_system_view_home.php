@@ -60,7 +60,7 @@
                 
                 <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                   <h3 class="h6 mb-0">
-                    <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> <p>剩餘金額: </p><p id="user_money"><?=$total_old_user_ewallet ?></p>
+                    <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i><p id="user_money">剩餘金額 :<?=$total_old_user_ewallet ?></p>
                   </h3>
                 </div>
                 <div class="card-block g-pa-0" >
@@ -237,7 +237,7 @@
         },
         success : function(data) {
           if(data) {
-            $('#user_money').append(data['total_old_user_ewallet']);
+            $('#user_money').append('剩餘金額 :'+data['total_old_user_ewallet']);
           }
         }
       });
