@@ -164,8 +164,8 @@
         $('.menu_img').addClass('menu_img_unsuccess');
         $('.menu_img_'+id).removeClass('menu_img_unsuccess');
         // $('.menu_btn').removeClass('btn_active');
-        $('.menu_btn').removeClass('btn_active btn-success ');
-        $('.menu_btn').addClass('btn_unsuccess');
+        $('.menu_btn').removeClass('btn_active btn-success text-light');
+        $('.menu_btn').addClass('btn_unsuccess text-light');
         $('.menu_'+id).removeClass('btn_unsuccess');
         $('.menu_'+id).addClass('btn_active btn-success ');
         $('#store_id').val(id);
