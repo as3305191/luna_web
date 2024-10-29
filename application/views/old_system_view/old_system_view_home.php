@@ -9,9 +9,9 @@
   	display: none;
   }
   .element {
-    max-width: fit-content;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
   }
 @media only screen and (max-width: 750px) {
 	.dt_list_th{
