@@ -232,7 +232,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		
 		$result_array = array();
 		while($row=sqlsrv_fetch_array($stmt)){
-            $result_array[] = array_shift($row);
+            $result_array[] = $row;
         }
 		if(count($result_array)>0){
 			return $result_array;
