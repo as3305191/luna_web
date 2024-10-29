@@ -210,7 +210,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$res = array();
 		$old_user_id = $this -> get_post('old_user_id');
 		$today = date("Y-m-d");
-		$finish_list = json_decode(json_encode($this -> get_finish_order_by_user($today),true));
+		$finish_list = json_decode(json_encode($this -> get_finish_order_by_user($today,$old_user_id),true));
 		if($finish_list !==null && count($finish_list)>0){
 			$res['success'] = 'already';
 			$res['finish_list'] = $finish_list;
@@ -221,12 +221,12 @@ class Old_system_view_home extends MY_Base_Controller {
  		$this -> to_json($res);
 	}
 
-	public function get_finish_order_by_user($today) {
+	public function get_finish_order_by_user($today,$old_user_id) {
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 
-		$sql = "SELECT * FROM order_record as o_r LEFT JOIN order_menu as o_m ON o_r.orderid = o_m.id where o_r.rdate like '$today'% and o_m.enddate IS NULL";    
+		$sql = "SELECT * FROM order_record as o_r LEFT JOIN order_menu as o_m ON o_r.orderid = o_m.id where o_r.rdate like '$today'% and o_r.userid='$old_user_id' and o_m.enddate IS NULL";    
 		
 		$stmt = sqlsrv_query( $conn, $sql);    
 		
