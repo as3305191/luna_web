@@ -88,7 +88,7 @@
                   <?php endif?>
                   
                 </div>
-                <div class="card-block g-pa-0"  padding="0 0 50px 0">
+                <div class="card-block g-pa-0"  style="padding:0px 0px 0px 0px;">
                   <div class="g-pos-rel">
                     <div class="form-group">
                       <label class="col-md-3 control-label">品項:</label>
