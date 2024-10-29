@@ -216,7 +216,7 @@
           usid: old_user_id,
         },
         success : function(d) {
-          if(d.success) {
+          if(d.success=='already') {
             console.log(d);
           }
         }

@@ -212,10 +212,10 @@ class Old_system_view_home extends MY_Base_Controller {
 		$today = date("Y-m-d");
 		$finish_list = json_decode(json_encode($this -> get_finish_order_by_user($today),true));
 		if(count($finish_list)>0){
-			$res['success'] = TRUE;
+			$res['success'] = 'already';
 			$res['finish_list'] = $finish_list;
 		} else{
-			$res['not_order'] = TRUE;
+			$res['success'] = 'not_order';
 		}
  
  		$this -> to_json($res);
