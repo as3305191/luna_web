@@ -60,13 +60,8 @@
                 
                 <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                   <h3 class="h6 mb-0">
-                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 餐廳
+                    <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <p id="user_money"><?=$total_old_user_ewallet ?></p>
                   </h3>
-                  <div class="card-block g-pa-0" >
-                    <h3 class="h6 mb-0">
-                       <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 剩餘金額: <p id="user_money"><?=$total_old_user_ewallet ?></p>
-                    </h3>
-                  </div>
                 </div>
                 <div class="card-block g-pa-0" >
                   <?php if(count($store_list)>0): ?>
