@@ -145,6 +145,7 @@
 <script>
   $(document).ready(function() {
     var c_store_list = <?= count($store_list)?> ;
+    var now_amount = <?=$total_old_user_ewallet ?> ;
     if( c_store_list >0 ){
       	img_album('<?= $store_list[0]->new_img_address ?>');
     }
@@ -177,6 +178,7 @@
     }
 
     function add_order() {
+    
       var url = baseUrl + 'old_system_view/old_system_view_home/order_meal'; // the script where you handle the form input.
       
       var id = $('#item_id').val();
@@ -184,23 +186,28 @@
       var order_name = $('#order_name').val();
       var note = $('#note').val();
       var amount = $('#amount').val();
-      $.ajax({
-        type : "POST",
-        url : url,
-        data : {
-          id: id,
-          store_id: store_id,
-          usid: old_user_id,
-          order_name: order_name,
-          note: note,
-          amount: amount,
-        },
-        success : function(data) {
-          if(data) {
-            re_total_money();
+      if(now_amount>amount) {
+        $.ajax({
+          type : "POST",
+          url : url,
+          data : {
+            id: id,
+            store_id: store_id,
+            usid: old_user_id,
+            order_name: order_name,
+            note: note,
+            amount: amount,
+          },
+          success : function(data) {
+            if(data) {
+              re_total_money();
+            }
           }
-        }
-      });
+        });
+      } else{
+        alert('請儲值金額不足');
+      }
+      
     }
 
     function load_already_order() {
