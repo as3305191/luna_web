@@ -19,7 +19,7 @@
   .element_table {
     /* border: 5px solid; */
     position: absolute;
-    top: 115%;
+    top: 110%;
     /* left: 50%;
     transform: translate(-50%, -50%);
     padding: 10px; */
