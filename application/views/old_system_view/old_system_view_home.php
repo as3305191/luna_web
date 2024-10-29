@@ -11,7 +11,7 @@
   .element {
     margin: auto;
     width: 50%;
-    padding: 10px;
+    /* padding: 10px; */
   }
 @media only screen and (max-width: 750px) {
 	.dt_list_th{
