@@ -2,9 +2,9 @@
 
   <!-- User Image -->
   <div class="u-block-hover g-pos-rel">
-    <figure>
+    <!-- <figure>
       <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="<?= base_url('img/old_system/icon.jpg') ?>" alt="Image Description">
-    </figure>
+    </figure> -->
 
 
 
@@ -21,10 +21,9 @@
   <div class="list-group list-group-border-0 g-mb-40">
     <!-- Overall -->
 
-    <a href="<?= base_url("old_system_view/old_system_view_home") ?>" class="list-group-item justify-content-between old_system_view_home">
+    <!-- <a href="<?= base_url("old_system_view/old_system_view_home") ?>" class="list-group-item justify-content-between old_system_view_home">
       <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> 主頁</span>
-      <!-- <span class="u-label g-font-size-11 g-bg-white g-color-main g-rounded-20 g-px-10">2</span> -->
-    </a>
+    </a> -->
 
     <!-- Settings -->
     <!-- <a href="<?= base_url("old_system_view/old_system_view_setting") ?>" class="list-group-item list-group-item-action justify-content-between old_system_view_setting">

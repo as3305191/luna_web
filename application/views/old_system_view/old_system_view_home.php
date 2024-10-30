@@ -71,11 +71,9 @@
 
               <!-- Product Table Panel -->
               <div class="card border-0">
-
-                
                 <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0 g-mb-15">
                   <h3 class="h6 mb-0">
-                    <p id="user_money"><i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i>剩餘金額 :<?=$total_old_user_ewallet ?> (餘額不足請找企劃課儲值，最低儲值200元)</p>
+                    <p id="user_money" style="font-size:15px;"><i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i>剩餘金額 :<?=$total_old_user_ewallet ?> (餘額不足請找企劃課儲值，最低儲值200元)</p>
                   </h3>
                 </div>
                 <div class="card-block g-pa-0" >
@@ -83,7 +81,7 @@
                     <?php if(count($store_list)==1): ?>
                       <button class="btn_active btn-success text-light menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click('<?= $store_list[0]->id ?>','<?= $store_list[0]->new_img_address ?>')">&nbsp;<?= $store_list[0]->store ?></button>
                       <input type="hidden" class="form-control" id="store_id" value="<?= $store_list[0]->id ?>">
-                    <?php else: ?>	
+                    <?php else: ?>
                       <button class="btn_active btn-success text-light menu_btn menu_<?= $store_list[0]->id ?>" style="border-radius: 5px; padding: 10px; width: 220px; height: 48px;" onclick="menu_click('<?= $store_list[0]->id ?>','<?= $store_list[0]->new_img_address ?>')">&nbsp;<?= $store_list[0]->store ?></button>
                       <input type="hidden" class="form-control" id="store_id" value="<?= $store_list[0]->id ?>">
                       <?php for ($i=1;$i<count($store_list);$i++) : ?>                      
