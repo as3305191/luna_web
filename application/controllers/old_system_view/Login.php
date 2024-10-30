@@ -8,7 +8,7 @@ class Login extends MY_Base_Controller {
 
 		$this->load->helper('captcha');
 
-		$this -> load -> model('Users_dao', 'users_dao');
+		$this -> load -> model('Users_dao', 'dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
 	}
 
