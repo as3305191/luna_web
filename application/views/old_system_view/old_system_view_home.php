@@ -61,9 +61,6 @@
           <!-- Profile Content -->
           <div class="col-lg-9">
             <!-- Overall Statistics -->
-           
-
-
             <!-- Profile Content -->
             <div class="col-lg-12">
               <!-- Overall Statistics -->
