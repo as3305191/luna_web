@@ -300,11 +300,12 @@
 		
 	</body>
 </html>
-<script src="jquery.min.js"></script>
+<script src="<?= base_url() ?>jquery.min.js"></script>
 <!-- <script src="jquery-migrate.min.js"></script> -->
-<script src="jquery.loading.min.js"></script>
+<script src="<?= base_url() ?>jquery.loading.min.js"></script>
 	<script>
-	
+	  var baseUrl = '<?=base_url('')?>';
+
 		function do_save() {
 			var $dep =  $('#dep').val();
 			var $user_name = $('#user_name').val();
