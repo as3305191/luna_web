@@ -230,76 +230,12 @@
 						</table>
 			<div id="content">
 			</div > 
-		<!-- <div >
-			<div class="pull-left " style="width:150px;line-height:32px">
-				
-			</div>
-			<div class="pull-left " style="width:150px;line-height:32px">
-				
-			</div>           
-			<div class="pull-left " style="width:150px;line-height:32px">
-				<div class="pull-left " style="width:150px;line-height:32px">
-					上午飲料：<select class="" id="morning_drink" >
-								<option value="0">請選擇品項</option>
-								<option value="紅茶">紅茶</option>
-								
-							</select>
-				</div> 
-				<div class="pull-left " style="width:150px;line-height:32px">
-				糖：<select class="" id="morning_s" >
-						<option value="0">請選擇糖</option>
-						<option value="1分糖">1分糖</option>
-						
-					</select>
-				</div> 
-				<div class="pull-left " style="width:150px;line-height:32px">
-				冰：<select class="" id="morning_i" >
-						<option value="0">請選擇冰</option>
-						<option value="微冰">微冰</option>
-						
-					</select>
-				</div> 
-					
-					
-			</div>
-			<div class="pull-left " style="width:150px;line-height:32px">
-			<div class="pull-left " style="width:150px;line-height:32px">
-			下午飲料：<select class="" id="afternoon_drink" >
-						<option value="0">請選擇品項</option>
-						<option value="紅茶">紅茶</option>
-						
-					</select>
-				</div> 
-				<div class="pull-left " style="width:150px;line-height:32px">
-				糖：<select class="" id="afternoon_s" >
-						<option value="0">請選擇糖</option>
-						<option value="1分糖">1分糖</option>
-						
-					</select>
-				</div> 
-				<div class="pull-left " style="width:150px;line-height:32px">
-						
-				冰：<select class="" id="afternoon_i" >
-						<option value="0">請選擇冰</option>
-						<option value="微冰">微冰</option>
-						
-					</select>
-				</div> 
-				
-				
-			</div>
-			<div id="content">
-			</div>
-			<button type="button" onclick="do_save();">送出訂單</button>
-			<div id="content">
-			</div > 
-		</div> -->
-		
-	
-
 		
 	</body>
 </html>
+<script src="<?= base_url() ?>inventory/jquery.min.js"></script>
+<script src="<?= base_url() ?>inventory/jquery.loading.min.js"></script>
+
 <script src="<?= base_url('jquery.min.js') ?>"></script>
 <!-- <script src="jquery-migrate.min.js"></script> -->
 <script src="<?= base_url('jquery.loading.min.js') ?>"></script>
