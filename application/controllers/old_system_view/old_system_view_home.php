@@ -23,7 +23,7 @@ class Old_system_view_home extends MY_Base_Controller {
 
 		$today = date("Y-m-d");
 		$data['now'] = 'old_system_view_home';//現在哪頁
-		$old_user_id = $this -> get_old_user_id($login_user->account);
+		$old_user_id = $this -> get_old_user_id($login_user->empindex);
 		$menu_open_list = json_decode(json_encode($this -> get_data_menu($today),true));
 		$old_user_ewallet = json_decode(json_encode($this -> get_user_ewallet($old_user_id),true));
 		$income = 0;
@@ -225,13 +225,13 @@ class Old_system_view_home extends MY_Base_Controller {
 		sqlsrv_close($conn);
 	}
 	
-	public function get_old_user_id($account) {
+	public function get_old_user_id($empindex) {
 		$serverName="KTX-2008D1\sqlexpress";
 		$connectionInfo=array("Database"=>"informationexc","TrustServerCertificate"=>"yes","UID"=>"exchange","PWD"=>"97238228","CharacterSet" => "UTF-8");
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		// $sql = "SELECT id FROM account";    
 
-		$sql = "SELECT id FROM account where account='$account'";    
+		$sql = "SELECT id FROM account where empindex='$empindex'";    
 		
 		/* Execute the query. */    
 		
