@@ -235,10 +235,6 @@
 </html>
 <script src="<?= base_url() ?>inventory/jquery.min.js"></script>
 <script src="<?= base_url() ?>inventory/jquery.loading.min.js"></script>
-
-<script src="<?= base_url('jquery.min.js') ?>"></script>
-<!-- <script src="jquery-migrate.min.js"></script> -->
-<script src="<?= base_url('jquery.loading.min.js') ?>"></script>
 	<script>
 	  var baseUrl = '<?=base_url('')?>';
 
