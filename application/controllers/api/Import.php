@@ -275,22 +275,31 @@ class Import extends MY_Base_Controller {
 		}
 	}
 	function import1(){
-		$object = PHPExcel_IOFactory::load("員工資料1.xlsx");
+		$object = PHPExcel_IOFactory::load("名單.xlsx");
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
-			for($row=1; $row<=$highestRow; $row++){
-				$user_name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-				$area_num = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-				
-	
+			for($row=0; $row<=$highestRow; $row++){
+				$account = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
+				$password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+				$empindex = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
+				$name = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
+				$pmark = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+
+				if($pmark==1){
 					$data = array(
-						'user_name' =>$user_name,
-						'area_num' =>$area_num,
-					
+						'account' =>$empindex,
+						'password' =>$empindex,
+						'empindex' =>$empindex
 					);
-					// $this->users_dao->update_by($data,'empid',$empid);
-					$this->drink_users_dao->insert($data);
+				} else{
+					$data = array(
+						'empindex' =>$empindex
+					);
+				}
+					
+					$this->users_dao->update_by($data,'user_name',$name);
+					// $this->drink_users_dao->insert($data);
 			}
 		}
 		// $res['success'] = TRUE;
