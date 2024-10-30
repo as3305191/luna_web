@@ -231,8 +231,7 @@ class Old_system_view_home extends MY_Base_Controller {
 		$conn=sqlsrv_connect($serverName,$connectionInfo);
 		// $sql = "SELECT id FROM account";    
 
-		$sql = "SELECT id FROM account where empindex='$empindex'";    
-		
+		$sql = "SELECT a_c.id FROM account as a_c left join employee as emp ON a_c.empid = emp.id where empindex='$empindex'";    
 		/* Execute the query. */    
 		
 		$stmt = sqlsrv_query( $conn, $sql);    
