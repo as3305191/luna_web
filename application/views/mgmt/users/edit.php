@@ -57,6 +57,14 @@
 				</fieldset>
 				<fieldset>
 					<div class="form-group">
+						<label class="col-md-3 control-label">員工編號</label>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="empindex" value="<?= isset($item) ? $item -> empindex : '' ?>" />
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<div class="form-group">
 						<label class="col-md-3 control-label">部門</label>
 						<div class="col-md-6">
 							<select name="role_id" id="department_id" class="form-control" onchange="department_change();">

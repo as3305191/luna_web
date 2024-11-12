@@ -111,7 +111,7 @@ class Users extends MY_Mgmt_Controller {
 			'account',
 			'password',
 			'user_name',
-			
+			'empindex',
 		));
 		$role_id = $this -> get_post('role_id');
 		$div_id = $this -> get_post('div_id');
