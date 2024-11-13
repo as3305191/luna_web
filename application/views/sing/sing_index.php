@@ -7,8 +7,8 @@
 <style>
 
 </style>
-	<span><?= $serialNumber ?></span>
-	<span><?= $uniqid ?></span>
+	<span>serialNumber:<?= $serialNumber ?></span>
+	<span>uniqid:<?= $uniqid ?></span>
 
   </html >
 <script>
