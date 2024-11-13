@@ -7,7 +7,7 @@
 <style>
 
 </style>
-	<span>ip:<?= $ip ?></span>
+	<span>mac:<?= $mac ?></span>
 
   </html >
 <script>
