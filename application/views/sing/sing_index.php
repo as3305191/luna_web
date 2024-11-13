@@ -11,14 +11,19 @@
 
   </html >
 <script>
-fetch('/get-mac')
+chrome.system.network.getNetworkInterfaces((interfaces) => {
 
-.then(response => response.json())
-
-
-.then(data => console.log('MAC Address:', data.mac))
+interfaces.forEach(interface => {
 
 
-.catch(error => console.error('Error:', error));
+	console.log(`MAC Address: ${interface.macAddress}`);
+
+
+});
+
+
+});
+
+
 </script>
 
