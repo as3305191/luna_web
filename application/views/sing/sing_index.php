@@ -11,6 +11,17 @@
 
   </html >
 <script>
+const getmac = require('getmac');
 
+getmac.getMac((err, macAddress) => {
+
+
+  if (err) throw err;
+
+
+  console.log('MAC Address: ' + macAddress);
+
+
+});
 </script>
 
