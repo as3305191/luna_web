@@ -18,66 +18,8 @@ class Line_login extends MY_Base_Controller {
 
 	public function index() {
 		$data = array();
-		$_promo_sn = $this -> _promo_sn;
-		$_promo_user_id = $this -> _promo_user_id;
+		$this -> load -> view('line/iagree', $data);
 
-		$intro_id = $this -> get_get("intro_id");
-		$lang = $this -> get_get('lang');
-
-		if($lang == 'zh-tw'){
-			$this -> session -> set_userdata('lang',$lang);
-		}
-
-		$l_user = $this->session->userdata('l_user');
-		if(!empty($l_user)) {
-			$l_user = $this -> users_dao -> find_by_id($l_user -> id);
-			$data['l_user'] = $l_user;
-
-			$l_parent_user = $this -> users_dao -> find_by_id($l_user -> parent_user_id);
-			$data['l_parent_user'] = $l_parent_user;
-
-		}
-
-		if(!empty($_promo_sn)) {
-			$pg = $this -> pg_dao -> find_by('sn', $_promo_sn);
-			if(!empty($pg)) {
-				if($pg -> is_sponsor == 1 && $pg -> is_finish == 0) { // 未繳費則發佈錯誤訊息
-					$data['pg'] = $pg;
-					$pg_user = $this -> users_dao -> find_by_id($pg -> user_id);
-					$data['pg_user'] = $pg_user;
-				} else {
-					$data['error_msg'] = "此網址已結束";
-				}
-			} else {
-				$data['error_msg'] = "此網址不存在";
-			}
-		}
-
-		if(!empty($_promo_user_id)) {
-			$p_user = $this -> users_dao -> find_by_id($_promo_user_id);
-			if(!empty($p_user)) {
-				$data['p_user'] = $p_user;
-			} else {
-				$data['error_msg'] = "此網址不存在";
-			}
-		}
-
-		$data['rand_str'] = generate_random_string(8);
-
-		$data['_promo_sn'] = $_promo_sn;
-		$data['_promo_user_id'] = $_promo_user_id;
-
-		if(!empty($l_user)) {
-			if($l_user -> is_valid_mobile == 0) {
-				// verify mobile
-				redirect('line_login/verify_mobile');
-			} else {
-				// login ok
-				$this -> load -> view('line/iagree', $data);
-			}
-		} else {
-			$this -> load -> view('line/iagree', $data);
-		}
 	}
 
 	public function verify_mobile() {
@@ -280,6 +222,60 @@ class Line_login extends MY_Base_Controller {
 			));
 		}
 		// echo "test sms";
+	}
+	public function line_box() {
+		$data = array(
+			"grant_type"=>"authorization_code",
+			"code"=>$get_code,
+			"redirect_uri"=>'http://211.21.221.121:116/Line_login/line_box',
+			"client_id"=>$client_id,
+			"client_secret"=>$client_secret);
+		
+			$data_string=http_build_query($data);
+		
+			$ch = curl_init('https://api.line.me/oauth2/v2.1/token');
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_POSTFIELDS,$data_string);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+					'Content-Type: application/x-www-form-urlencoded')
+			);
+		
+			$result = curl_exec($ch);
+			//echo $result;
+			$return_arr=array();
+			$return_arr=json_decode($result, true);
+		
+		
+			// 解析 id_token
+			$data = array(
+			"id_token"=>$return_arr['id_token'],
+			"client_id"=>$client_id);
+		
+		
+			$data_string=http_build_query($data);
+		
+			//echo $data_string;
+			$ch = curl_init('https://api.line.me/oauth2/v2.1/verify');
+			curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+			curl_setopt($ch, CURLOPT_POSTFIELDS,$data_string);
+			curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+			curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+					'Content-Type: application/x-www-form-urlencoded')
+			);
+		
+			$result2 = curl_exec($ch);
+			//echo $result;
+			$return_arr2=array();
+			$return_arr2=json_decode($result2, true);
+		
+			// 取得姓名
+			$user_name=$return_arr2['name'];
+		
+			// 取得line編號
+			$user_onlyID=$return_arr2['sub'];
 	}
 
 }
