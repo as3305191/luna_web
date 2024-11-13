@@ -8,7 +8,7 @@
 
 </style>
 	
-<span id="deviceUUID"></span>
+<div id="deviceUUID"></div>
 </html >
 
 <script>
@@ -35,6 +35,6 @@ function getDeviceUUID() {
 }
 const deviceUUID = getDeviceUUID();
 console.log("设备唯⼀标识为: ", deviceUUID);
-document.getElementById('deviceUUID').textContent(deviceUUID);
+document.getElementById('deviceUUID').text(deviceUUID);
 </script>
 
