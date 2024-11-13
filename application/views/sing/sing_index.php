@@ -66,6 +66,14 @@
               <!-- Overall Statistics -->
               <div class="" >
                 <span id="UUID"></span>
+                <select name="num" id="num">
+                  <option value="0">--請選擇--</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
               </div>
             </div>
             <!-- End Profile Content -->
@@ -88,8 +96,8 @@
 
 
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
-<script src="<?= base_url() ?>assets/vendor/fancybox1/jquery.fancybox.min.js"></script>
 <script>
+  var baseUrl = '<?=base_url('')?>';
   function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     var r = Math.random() * 16 | 0,
@@ -108,4 +116,34 @@
   }
   const deviceUUID = getDeviceUUID();
   $('#UUID').text(deviceUUID);
+
+  function do_save() {
+		var url = baseUrl + 'sing/index/give_ticket';
+
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+				deviceUUID: deviceUUID,
+				num: $('#num').val(),	
+				
+			},
+			success : function(data) {
+				if(data.error_msg) {
+					layer.msg(data.error_msg);
+				} else {
+					var this_id = $('#item_id').val;
+					if(this_id>0){
+						currentApp.mDtTable.ajax.reload(null, false);
+						currentApp.back(this_id);
+					} else{
+						currentApp.mDtTable.ajax.reload(null, false);
+						currentApp.backTo();
+					}
+				}
+			}
+		});
+		
+	};
+
 </script>
