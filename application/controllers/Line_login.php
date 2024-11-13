@@ -18,7 +18,7 @@ class Line_login extends MY_Base_Controller {
 
 	public function index() {
 		$data = array();
-		$this -> load -> view('line/iagree', $data);
+		$this -> load -> view('line/l_login', $data);
 
 	}
 
