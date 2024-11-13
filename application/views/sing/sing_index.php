@@ -8,6 +8,8 @@
 
 </style>
 	<span><?= $serialNumber ?></span>
+	<span><?= $uniqid ?></span>
+
   </html >
 <script>
 
