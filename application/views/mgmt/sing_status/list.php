@@ -54,7 +54,6 @@ thead tr th {
 									<thead>
 										<tr>
 											<th class="min25">開放</th>
-											<th class="min100">比賽名稱</th>
 											<th class="min100">日期</th>
 										</tr>
 									</thead>
@@ -145,28 +144,7 @@ thead tr th {
 				width : "8%",
 				className: ''
 			},{
-		data : 'style_name'
-	},{
-		data : 'menu_name',
-		render:function ( data, type, row ) {
-			var html ='';
-			
-			if(row.open_date!=='0000-00-00'){
-				var weekarrary=["日","一","二","三","四","五","六"];
-				var d = new Date(row.open_date);
-				var month = '' + (d.getMonth() + 1);
-				var day = '' + d.getDate();
-				var weekday = d.getDay();
-				html += month+'.'+day+' ('+weekarrary[weekday]+')'+' '+data;
-			}  else{
-				html += data;
-			}
-			if(row.open_dep!=='0'){
-				html +='&nbsp;<i class="fa fa-lg fa-lock"></i>';
-			}
-			return html;
-
-		}
+		data : 'open_date'
 	}];
 
 	var mOrderIdx = 0;
