@@ -1,5 +1,5 @@
 <!-- Title -->
-<title>點餐系統</title>
+<title>唱歌投票系統</title>
 
 <!-- Required Meta Tags Always Come First -->
 <meta charset="utf-8">
