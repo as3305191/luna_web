@@ -61,6 +61,14 @@
     </div>
     <hr/>
 		<div>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">開放日期</label>
+					<div class="col-md-6">
+						<input class="form-control input-xs min100 dt_picker"  id="open_date" type="text"  value="<?= isset($item) ? $item -> open_date : 0 ?>" />
+					</div>
+				</div>
+			</fieldset>
 		
 			<fieldset>
 				<div class="form-group">
@@ -85,5 +93,9 @@
 <!-- end widget -->
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 <script>
+$(".dt_picker").datetimepicker({
+		format : 'YYYY.MM.DD'
+	}).on('dp.change',function(event){
 
+	});
 </script>
