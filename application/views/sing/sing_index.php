@@ -11,17 +11,14 @@
 
   </html >
 <script>
-const getmac = require('node:getmac');
+fetch('/get-mac')
 
-getmac.getMac((err, macAddress) => {
-
-
-  if (err) throw err;
+.then(response => response.json())
 
 
-  console.log('MAC Address: ' + macAddress);
+.then(data => console.log('MAC Address:', data.mac))
 
 
-});
+.catch(error => console.error('Error:', error));
 </script>
 
