@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html >
 <meta charset="utf-8" name="viewport" content="width=device-width,initial-scale=1">
-<script src="<?= base_url() ?>sing/sing.js"></script>
-
 <title></title>
 		<header >
 		</header>
@@ -10,7 +8,8 @@
 
 </style>
 	
-  </html >
+<span id="deviceUUID"></span>
+</html >
 
 <script>
 
@@ -36,5 +35,6 @@ function getDeviceUUID() {
 }
 const deviceUUID = getDeviceUUID();
 console.log("设备唯⼀标识为: ", deviceUUID);
+var $tr = $(deviceUUID).appendTo($('#deviceUUID'));
 </script>
 
