@@ -15,8 +15,16 @@
   </html >
 
 <script>
-var deviceInfo = FR.Mobile.getDeviceInfo();
-FR.Msg.alert("Model: " + deviceInfo.Model + "\n DeviceID: " + deviceInfo.DeviceID);
 
+document.addEventListener('plusready',function(){ 
+	function device(name){
+		 return plus.device.name;
+	}
+	console.log(device('uuid'));
+	console.log(device('imei'));
+	console.log(device('model'));
+	console.log(device('vendor'));
+	console.log(device('imsi'));
+})
 </script>
 

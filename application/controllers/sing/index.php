@@ -18,18 +18,8 @@ class Index extends MY_Base_Controller {
 		$data = array();
 		$data['ip'] = $this->getRequestIp(); 
 
-		$data['mac'] = $this->getMacAddress();
 		
 		$this -> load -> view('sing/sing_index', $data);
-	}
-
-	function getMacAddress(){ 
-		$result = shell_exec("/sbin/ifconfig"); 
-		if(preg_match_all("/HWaddr\s+([\w:]+)/", $result, $matches)){ 
-			$macAddress = $matches[1][0]; 
-			return $macAddress; 
-		} 
-		return null; 
 	}
 
 	function getRequestIp(){
