@@ -14,7 +14,6 @@ class Line_login extends MY_Base_Controller {
 
 		$this -> load -> model('Users_dao', 'users_dao');
 		$this -> load -> model('Corp_dao', 'corp_dao');
-		$this -> load -> model('Wallet_tx_dao', 'wtx_dao');
 	}
 
 	public function index() {
