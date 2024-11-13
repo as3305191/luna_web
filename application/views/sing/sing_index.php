@@ -107,10 +107,9 @@
   }
   function getDeviceUUID() {
     let uuid = localStorage.getItem('deviceUUID');
-
     if (!uuid) {
-    uuid = generateUUID();
-    localStorage.setItem('deviceUUID', uuid);
+      uuid = generateUUID();
+      localStorage.setItem('deviceUUID', uuid);
     }
     return uuid;
   }
@@ -126,21 +125,9 @@
 			data : {
 				deviceUUID: deviceUUID,
 				num: $('#num').val(),	
-				
 			},
 			success : function(data) {
-				if(data.error_msg) {
-					layer.msg(data.error_msg);
-				} else {
-					var this_id = $('#item_id').val;
-					if(this_id>0){
-						currentApp.mDtTable.ajax.reload(null, false);
-						currentApp.back(this_id);
-					} else{
-						currentApp.mDtTable.ajax.reload(null, false);
-						currentApp.backTo();
-					}
-				}
+				
 			}
 		});
 		
