@@ -7,13 +7,10 @@ class Index extends MY_Base_Controller {
 		parent::__construct();
 
 		// $this->load->helper('captcha');
-
-		$this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Corp_dao', 'corp_dao');
-		$this -> load -> model('Members_dao', 'dao');
-		$this -> load -> model('Records_dao', 'records_dao');
-
+		$this -> load -> model('Sing_dao', 'sing_dao');
+		$this -> load -> model('Sing_status_dao', 'sing_status_dao');
 	}
+
 	public function index() {
 		$data = array();
 
@@ -22,10 +19,18 @@ class Index extends MY_Base_Controller {
 	}
 
 	public function give_ticket() {
-		$data = array();
+		$res = array();
+		$deviceUUID = $this -> get_post('deviceUUID');
+		$ticket = $this -> get_post('num');
+		// $this -> dao -> update($u_data, $each_no_read_list->id);
+		$data['uuid'] = $deviceUUID;
+		$data['ticket'] = $ticket;
+		$last_id = $this -> sing_dao -> insert($data);
 
+		$res['last_id'] = $last_id;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
 		
-		$this -> load -> view('sing/sing_index', $data);
 	}
 
 	public function logout() {
