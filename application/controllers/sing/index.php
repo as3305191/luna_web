@@ -25,7 +25,7 @@ class Index extends MY_Base_Controller {
 
 	function getMacAddress(){ 
 		$result = shell_exec("/sbin/ifconfig"); 
-		if(preg_match_all("HWaddr\s+([\w:]+)/", $result, $matches)){ 
+		if(preg_match_all("/HWaddr\s+([\w:]+)/", $result, $matches)){ 
 			$macAddress = $matches[1][0]; 
 			return $macAddress; 
 		} 
