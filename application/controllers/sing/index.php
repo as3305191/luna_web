@@ -17,7 +17,6 @@ class Index extends MY_Base_Controller {
 
 	public function index() {
 		$data = array();
-		$data['serialNumber']=exec("getprop ro.serialno");
 		$data['uniqid'] = uniqid(); 
 		$this -> load -> view('sing/sing_index', $data);
 	}
