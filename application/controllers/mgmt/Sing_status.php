@@ -16,7 +16,7 @@ class Sing_status extends MY_Mgmt_Controller {
 		$data = $this -> setup_user_data($data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
 
-		$this -> load -> view('mgmt/sing/list', $data);
+		$this -> load -> view('mgmt/sing_status/list', $data);
 	}
 
 	public function get_data() {
