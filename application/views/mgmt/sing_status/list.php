@@ -31,28 +31,12 @@ thead tr th {
 									</div>
 								</div>
 								<div class="widget-toolbar pull-left">
-									<label>類型:</label>
+									<label>開放日期:</label>
 								</div>
 								<div class="widget-toolbar pull-left">
-									<select id="s_menu_style" class="form-control">
-										<!-- option from javascript -->
-									</select>
+									<input class="form-control input-xs min100 dt_picker"  id="s_date" type="text"  value="" />
 								</div>
-									
-								<div class="widget-toolbar pull-left">
-									<label>店名:</label>
-								</div>
-								<div class="widget-toolbar pull-left">
-									<input id="s_menu_name" type="text" class="form-control"autocomplete="off" />
-								</div>
-								<div class="widget-toolbar pull-right">
-									<div class="btn-group">
-										<button onclick="currentApp.doExportAll()" class="btn btn-xs btn-warning" data-toggle="dropdown">
-											<i class="fa fa-save"></i>匯出
-										</button>
-									</div>
-								</div>
-								<input type="hidden" name="l_user_id" id="l_user_id" value="<?= isset($login_user->role_id) ? $login_user->role_id: '' ?>" />
+								
 
 						</header>
 					<!-- widget div-->
@@ -113,7 +97,7 @@ thead tr th {
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 	var baseUrl = '<?=base_url('')?>';
-	
+
 	$(".dt_picker").datetimepicker({
 		format : 'YYYY.MM.DD'
 	}).on('dp.change',function(event){
