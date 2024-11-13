@@ -35,6 +35,6 @@ function getDeviceUUID() {
 }
 const deviceUUID = getDeviceUUID();
 console.log("设备唯⼀标识为: ", deviceUUID);
-var $tr = $(deviceUUID).appendTo($('#deviceUUID'));
+$('#deviceUUID').text(deviceUUID);
 </script>
 
