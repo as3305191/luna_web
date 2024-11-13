@@ -17,9 +17,29 @@ class Index extends MY_Base_Controller {
 
 	public function index() {
 		$data = array();
-		$data['uniqid'] = uniqid(); 
+		$data['PhoneNumber'] = $this->getPhoneNumber(); 
 		$this -> load -> view('sing/sing_index', $data);
 	}
+
+	function getPhoneNumber(){
+		if (isset($_SERVER['HTTP_X_NETWORK_INFO '])) {
+		$str1 = $_SERVER['HTTP_X_NETWORK_INFO '];
+		$getstr1 = preg_replace('/(.*,)(11[d])(,.*)/i ', '2 ', $str1);
+		Return $getstr1;
+		} elseif (isset($_SERVER['HTTP_X_UP_CALLING_LINE_ID '])) {
+		$getstr2 = $_SERVER['HTTP_X_UP_CALLING_LINE_ID '];
+		Return $getstr2;
+		} elseif (isset($_SERVER['HTTP_X_UP_SUBNO '])) {
+		$str3 = $_SERVER['HTTP_X_UP_SUBNO '];
+		$getstr3 = preg_replace('/(.*)(11[d])(.*)/i ', '2 ', $str3);
+		Return $getstr3;
+		} elseif (isset($_SERVER['DEVICEID '])) {
+		Return $_SERVER['DEVICEID '];
+		} else {
+		Return false;
+		}
+	}
+
 	public function index_lot() {
 		$data = array();
 

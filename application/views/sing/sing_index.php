@@ -7,7 +7,7 @@
 <style>
 
 </style>
-	<span>uniqid:<?= $uniqid ?></span>
+	<span>PhoneNumber:<?= $PhoneNumber ?></span>
 
   </html >
 <script>
