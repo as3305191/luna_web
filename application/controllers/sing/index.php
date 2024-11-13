@@ -14,31 +14,24 @@ class Index extends MY_Base_Controller {
 		$this -> load -> model('Records_dao', 'records_dao');
 
 	}
-
 	public function index() {
 		$data = array();
-		$data['PhoneNumber'] = $this->getPhoneNumber(); 
+		$data['ip'] = $this->getIP(); 
+
+
+		
 		$this -> load -> view('sing/sing_index', $data);
 	}
 
-	function getPhoneNumber(){
-		if (isset($_SERVER['HTTP_X_NETWORK_INFO '])) {
-			$str1 = $_SERVER['HTTP_X_NETWORK_INFO '];
-			$getstr1 = preg_replace('/(.*,)(11[d])(,.*)/i ', '2 ', $str1);
-			return $getstr1;
-		} elseif (isset($_SERVER['HTTP_X_UP_CALLING_LINE_ID '])) {
-			$getstr2 = $_SERVER['HTTP_X_UP_CALLING_LINE_ID '];
-			return $getstr2;
-		} elseif (isset($_SERVER['HTTP_X_UP_SUBNO '])) {
-			$str3 = $_SERVER['HTTP_X_UP_SUBNO '];
-			$getstr3 = preg_replace('/(.*)(11[d])(.*)/i ', '2 ', $str3);
-			return $getstr3;
-		} elseif (isset($_SERVER['DEVICEID '])) {
-			return $_SERVER['DEVICEID '];
-		} else {
-			return false;
-		}
-	}
+	function getIP()
+    {
+        $ip = getenv('REMOTE_ADDR ');
+        $ip_ = getenv('HTTP_X_FORWARDED_FOR ');
+        if (($ip_ != " ") && ($ip_ != "unknown ")) {
+            $ip = $ip_;
+        }
+        return $ip;
+    }
 
 	public function index_lot() {
 		$data = array();

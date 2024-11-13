@@ -7,7 +7,7 @@
 <style>
 
 </style>
-	<span>PhoneNumber:<?= $PhoneNumber ?></span>
+	<span>ip:<?= $ip ?></span>
 
   </html >
 <script>
