@@ -15,7 +15,8 @@
   </html >
 
 <script>
-
+var deviceInfo = FR.Mobile.getDeviceInfo();
+FR.Msg.alert("Model: " + deviceInfo.Model + "\n DeviceID: " + deviceInfo.DeviceID);
 
 </script>
 
