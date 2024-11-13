@@ -35,6 +35,6 @@ function getDeviceUUID() {
 }
 const deviceUUID = getDeviceUUID();
 console.log("设备唯⼀标识为: ", deviceUUID);
-$('#deviceUUID').text(deviceUUID);
+getElementById('deviceUUID').text(deviceUUID);
 </script>
 
