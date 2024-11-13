@@ -16,22 +16,38 @@ class Index extends MY_Base_Controller {
 	}
 	public function index() {
 		$data = array();
-		$data['ip'] = $this->getIP(); 
+		$data['ip'] = $this->getRequestIp(); 
 
 
 		
 		$this -> load -> view('sing/sing_index', $data);
 	}
 
-	function getIP()
-    {
-        $ip = getenv('REMOTE_ADDR ');
-        $ip_ = getenv('HTTP_X_FORWARDED_FOR ');
-        if (($ip_ != " ") && ($ip_ != "unknown ")) {
-            $ip = $ip_;
-        }
-        return $ip;
-    }
+	function getRequestIp(){
+		$ip_keys = [
+			'HTTP_CLIENT_IP',
+			'HTTP_X_FORWARDED_FOR',
+			'HTTP_X_FORWARDED',
+			'HTTP_X_CLUSTER_CLIENT_IP',
+			'HTTP_FORWARDED_FOR',
+			'HTTP_FORWARDED',
+			'REMOTE_ADDR'
+		];
+
+		foreach ($ip_keys as $key) {
+			if (array_key_exists($key, $_SERVER) === true) {
+				foreach (explode(',', $_SERVER[$key]) as $ip) {
+					$ip = trim($ip);
+					if ((bool) filter_var($ip, FILTER_VALIDATE_IP, FILTER_FLAG_IPV4 | FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
+						return $ip;
+					}
+				}
+			}
+		}
+
+		return isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '-';
+	}
+
 
 	public function index_lot() {
 		$data = array();
