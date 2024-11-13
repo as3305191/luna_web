@@ -11,7 +11,7 @@
 
   </html >
 <script>
-const getmac = require('getmac');
+const getmac = require('node:getmac');
 
 getmac.getMac((err, macAddress) => {
 
