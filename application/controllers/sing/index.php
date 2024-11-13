@@ -23,20 +23,20 @@ class Index extends MY_Base_Controller {
 
 	function getPhoneNumber(){
 		if (isset($_SERVER['HTTP_X_NETWORK_INFO '])) {
-		$str1 = $_SERVER['HTTP_X_NETWORK_INFO '];
-		$getstr1 = preg_replace('/(.*,)(11[d])(,.*)/i ', '2 ', $str1);
-		Return $getstr1;
+			$str1 = $_SERVER['HTTP_X_NETWORK_INFO '];
+			$getstr1 = preg_replace('/(.*,)(11[d])(,.*)/i ', '2 ', $str1);
+			return $getstr1;
 		} elseif (isset($_SERVER['HTTP_X_UP_CALLING_LINE_ID '])) {
-		$getstr2 = $_SERVER['HTTP_X_UP_CALLING_LINE_ID '];
-		Return $getstr2;
+			$getstr2 = $_SERVER['HTTP_X_UP_CALLING_LINE_ID '];
+			return $getstr2;
 		} elseif (isset($_SERVER['HTTP_X_UP_SUBNO '])) {
-		$str3 = $_SERVER['HTTP_X_UP_SUBNO '];
-		$getstr3 = preg_replace('/(.*)(11[d])(.*)/i ', '2 ', $str3);
-		Return $getstr3;
+			$str3 = $_SERVER['HTTP_X_UP_SUBNO '];
+			$getstr3 = preg_replace('/(.*)(11[d])(.*)/i ', '2 ', $str3);
+			return $getstr3;
 		} elseif (isset($_SERVER['DEVICEID '])) {
-		Return $_SERVER['DEVICEID '];
+			return $_SERVER['DEVICEID '];
 		} else {
-		Return false;
+			return false;
 		}
 	}
 
