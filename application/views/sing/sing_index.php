@@ -65,7 +65,7 @@
             <div class="col-lg-12">
               <!-- Overall Statistics -->
               <div class="" >
-                <span id="deviceUUID"></span>
+                <span id="UUID"></span>
               </div>
             </div>
             <!-- End Profile Content -->
@@ -112,5 +112,5 @@
   }
   const deviceUUID = getDeviceUUID();
   console.log("设备唯⼀标识为: ", deviceUUID);
-  document.getElementById('deviceUUID').text=deviceUUID;
+  $('#UUID').text(deviceUUID);
 </script>
