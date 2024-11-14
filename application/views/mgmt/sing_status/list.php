@@ -158,20 +158,20 @@ thead tr th {
 		});
 	});
 
-	function switch_sing(id) {
-		$.ajax({
-			url: '<?= base_url() ?>' + 'mgmt/sing_status/switch_sing',
-			type: 'POST',
-			data: {
-				id: id
-			},
-			dataType: 'json',
-			success: function(d) {
-				currentApp.tableReload();
-			},
-			failure:function(){
-				alert('failure');
-			}
-		});
-	}
+	// function switch_sing(id) {
+	// 	$.ajax({
+	// 		url: '<?= base_url() ?>' + 'mgmt/sing_status/switch_sing',
+	// 		type: 'POST',
+	// 		data: {
+	// 			id: id
+	// 		},
+	// 		dataType: 'json',
+	// 		success: function(d) {
+	// 			currentApp.tableReload();
+	// 		},
+	// 		failure:function(){
+	// 			alert('failure');
+	// 		}
+	// 	});
+	// }
 </script>
