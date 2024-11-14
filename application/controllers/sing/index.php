@@ -16,9 +16,7 @@ class Index extends MY_Base_Controller {
 	public function index() {
 		$data = array();
 		$item = $this -> sing_status_dao -> find_active_sing();
-		if(!empty($item)){
-			$data['item'] = $item;
-		}
+		$data['item'] = $item;
 		$this -> load -> view('sing/sing_index', $data);
 		// $this -> to_json($data);
 
