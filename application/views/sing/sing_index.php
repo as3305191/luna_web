@@ -88,7 +88,6 @@
     </section>
 
     <!-- Footer -->
-    <?php $this -> load -> view("old_system_view/old_system_view_footer")  ?>
     <!-- End Footer -->
   </main>
 
