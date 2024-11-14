@@ -112,7 +112,6 @@ thead tr th {
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
 					+'</span>'
-					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>'
 
 					}else{
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
