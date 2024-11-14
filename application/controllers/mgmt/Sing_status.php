@@ -7,6 +7,7 @@ class Sing_status extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('Sing_dao', 'sing_dao');
 		$this -> load -> model('Sing_status_dao', 'sing_status_dao');
+		$this -> load -> model('Sing_uuid_dao', 'sing_uuid_dao');
 		$this -> load -> model('Users_dao', 'users_dao');
 
 	}
@@ -110,6 +111,7 @@ class Sing_status extends MY_Mgmt_Controller {
 			$u_data['status'] = 1;
 			$res['success_msg'] = '關閉活動';
 			$this -> sing_status_dao -> update($u_data, $id);
+			$this -> sing_uuid_dao -> delete_all();
 		}else{
 			$u_data['status'] = 0;
 			$res['success_msg'] = '開放活動';
