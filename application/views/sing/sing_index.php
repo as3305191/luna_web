@@ -129,7 +129,6 @@
   }
   function getDeviceUUID() {
     getWithExpiry ();
-    const now = new Date();
     let uuid = localStorage.getItem('deviceUUID');
     if (!uuid) {
       
@@ -142,6 +141,7 @@
   const deviceUUID = getDeviceUUID();
 
   function find_uuid_is_used(){
+    const now = new Date();
     var url = baseUrl + 'sing/index/find_uuid_is_used';
     uuid = generateUUID();
 		$.ajax({
