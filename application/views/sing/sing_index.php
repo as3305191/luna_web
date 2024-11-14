@@ -123,6 +123,27 @@
     }
     return uuid;
   }
+
+
+  function getWithExpiry (deviceUUID) {
+
+    const itemStr = localStorage.getItem(key);
+
+    if (!itemStr) {
+      return null;
+    }
+
+    const item = JSON.parse(itemStr);
+    const now = new Date();
+
+    // 比較當前的時間是否已超過我們所設定的過期時間
+    if  (now.getTime() > item.expiry) {
+      localStorage.removeItem(key);
+      return null;
+    }
+
+    return item.value;
+  }
   const deviceUUID = getDeviceUUID();
   // $('#UUID').text(deviceUUID);
 
