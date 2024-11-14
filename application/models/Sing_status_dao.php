@@ -59,7 +59,6 @@ class Sing_status_dao extends MY_Model {
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("sing s", "s.id = _m.sing_id", "left");
 
 	}
 
@@ -102,10 +101,17 @@ class Sing_status_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
+	function find_active_sing(){
+		$date = date('Y.m.d');
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.status',0);
+		$this -> db -> where('_m.open_date',$date);
 
-
-
-	
+		$this -> db -> order_by('_m.id', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list;
+	}
 
 }
 ?>

@@ -22,7 +22,7 @@ class Index extends MY_Base_Controller {
 		$res = array();
 		$deviceUUID = $this -> get_post('deviceUUID');
 		$ticket = $this -> get_post('num');
-		// $this -> dao -> update($u_data, $each_no_read_list->id);
+		$find_active_sing = $this -> sing_status_dao -> find_active_sing();
 		$data['uuid'] = $deviceUUID;
 		$data['ticket'] = $ticket;
 		$last_id = $this -> sing_dao -> insert($data);
