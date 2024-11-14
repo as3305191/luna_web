@@ -105,24 +105,20 @@
 
 
   function getWithExpiry () {
-
     const itemStr = localStorage.getItem('deviceUUID');
-
     if (!itemStr) {
       return null;
     }
 
     const item = JSON.parse(itemStr);
-    const now = new Date();
-
-    // 比較當前的時間是否已超過我們所設定的過期時間
-    if  (now.getTime() > item.expiry) {
-      localStorage.removeItem('deviceUUID');
+    if (new Date().getTime() > item.expired) {
+      localStorage.removeItem('deviceUUID')
+      console.log(localStorage.getItem('deviceUUID')) // null
       return null;
-    }
 
-    return item.value;
     }
+    return item.value;
+ }
 
   function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
