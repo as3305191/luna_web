@@ -157,7 +157,7 @@
             expired: now.getTime()+43200000
           }
           localStorage.setItem('deviceUUID', JSON.stringify(item));
-          return uuid;
+          return item;
 
         } else{
           console.log('is_used');
