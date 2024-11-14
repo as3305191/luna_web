@@ -119,6 +119,7 @@ app.dtConfig = {
 
 		
 		$('#s_date').on('change', function(){
+			console.log('1');
 			app.tableReload();
 		});
 		// $('#s_menu_name').on('keyup', function(){
