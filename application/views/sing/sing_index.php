@@ -65,15 +65,7 @@
             <div class="col-lg-12">
               <!-- Overall Statistics -->
               <div class="element_top" >
-                <!-- <span id="UUID" type="hidden"></span> -->
-                <!-- <select name="num" id="num">
-                  <option value="0">--請選擇--</option>
-                  <option value="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></option>
-                  <option value="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></option>
-                  <option value="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></option>
-                  <option value="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></option>
-                  <option value="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></option>
-                </select> -->
+              
                 <input type="radio" name="m" value="m_1" id="m_1"><label for="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></label><br>
                 <input type="radio" name="m" value="m_2" id="m_2"><label for="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></label><br>
                 <input type="radio" name="m" value="m_3" id="m_3"><label for="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></label><br>
