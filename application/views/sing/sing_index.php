@@ -104,9 +104,9 @@
   });
 
 
-  function getWithExpiry (key) {
+  function getWithExpiry () {
 
-    const itemStr = localStorage.getItem(key);
+    const itemStr = localStorage.getItem('deviceUUID');
 
     if (!itemStr) {
       return null;
@@ -117,7 +117,7 @@
 
     // 比較當前的時間是否已超過我們所設定的過期時間
     if  (now.getTime() > item.expiry) {
-      localStorage.removeItem(key);
+      localStorage.removeItem('deviceUUID');
       return null;
     }
 
@@ -132,7 +132,7 @@
     });
   }
   function getDeviceUUID() {
-    getWithExpiry ('deviceUUID');
+    getWithExpiry ();
     const now = new Date();
     let uuid = localStorage.getItem('deviceUUID');
     if (!uuid) {
