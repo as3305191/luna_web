@@ -68,11 +68,11 @@
                 <span id="UUID"></span>
                 <select name="num" id="num">
                   <option value="0">--請選擇--</option>
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
+                  <option value="m_1"><?= isset($item) ? $item -> m_1 : '' ?></option>
+                  <option value="m_2"><?= isset($item) ? $item -> m_2 : '' ?></option>
+                  <option value="m_3"><?= isset($item) ? $item -> m_3 : '' ?></option>
+                  <option value="m_4"><?= isset($item) ? $item -> m_4 : '' ?></option>
+                  <option value="m_5"><?= isset($item) ? $item -> m_5 : '' ?></option>
                 </select>
               </div>
             </div>

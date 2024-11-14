@@ -14,7 +14,7 @@ class Index extends MY_Base_Controller {
 	public function index() {
 		$data = array();
 
-		
+		$data['item'] = $this -> sing_status_dao -> find_active_sing();
 		$this -> load -> view('sing/sing_index', $data);
 	}
 
@@ -25,6 +25,7 @@ class Index extends MY_Base_Controller {
 		$find_active_sing = $this -> sing_status_dao -> find_active_sing();
 		$data['uuid'] = $deviceUUID;
 		$data['ticket'] = $ticket;
+		$data['sing_status_id'] = $find_active_sing[0]->id;
 		$last_id = $this -> sing_dao -> insert($data);
 
 		$res['last_id'] = $last_id;
