@@ -66,14 +66,19 @@
               <!-- Overall Statistics -->
               <div class="element_top" >
                 <!-- <span id="UUID" type="hidden"></span> -->
-                <select name="num" id="num">
+                <!-- <select name="num" id="num">
                   <option value="0">--請選擇--</option>
                   <option value="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></option>
                   <option value="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></option>
                   <option value="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></option>
                   <option value="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></option>
                   <option value="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></option>
-                </select>
+                </select> -->
+                <input type="radio" name="m" value="m_1" id="m_1"><label for="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></label>
+                <input type="radio" name="m" value="m_2" id="m_2"><label for="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></label>
+                <input type="radio" name="m" value="m_3" id="m_3"><label for="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></label>
+                <input type="radio" name="m" value="m_4" id="m_4"><label for="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></label>
+                <input type="radio" name="m" value="m_5" id="m_5"><label for="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></label>
 
               </div>
               <button type="button" class="btn btn-sm btn-primary element" onclick="do_save()">投票</button>
@@ -100,6 +105,12 @@
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
 <script>
   var baseUrl = '<?=base_url('')?>';
+  var  m = null;
+
+  $('input:radio[name="m"]').on('change', function(){
+    m = $('input:radio[name="m"]:checked').val();
+  });
+
   function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
     var r = Math.random() * 16 | 0,
@@ -126,7 +137,7 @@
 			url : url,
 			data : {
 				deviceUUID: deviceUUID,
-				num: $('#num').val(),	
+				num: m,	
 			},
 			success : function(data) {
 				
