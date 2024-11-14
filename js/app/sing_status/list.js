@@ -118,7 +118,7 @@ app.dtConfig = {
 		}
 
 		
-		$('#s_date').on('change', function(){
+		$('#s_date').val().on('change', function(){
 			console.log('1');
 			app.tableReload();
 		});
