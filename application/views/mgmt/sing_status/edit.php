@@ -124,7 +124,9 @@
 <!-- end widget -->
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 <script>
-
+	$(".dt_picker").datetimepicker({
+		format : 'YYYY.MM.DD'
+	});
 
 function do_save(id) {
 	$.ajax({
