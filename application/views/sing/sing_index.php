@@ -19,7 +19,7 @@
   .element_top {
     /* border: 5px solid; */
     position: absolute;
-    top: 20%;
+    /* top: 20%; */
     left: 50%;
     transform: translate(-50%, -10%);
     padding: 10px;
