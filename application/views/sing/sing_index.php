@@ -174,7 +174,7 @@
 			type : "POST",
 			url : url,
 			data : {
-				deviceUUID: deviceUUID.keys(value),
+				deviceUUID: Object.values(deviceUUID)[0],
 				num: m,	
 			},
 			success : function(data) {
