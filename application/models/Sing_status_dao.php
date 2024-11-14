@@ -49,7 +49,9 @@ class Sing_status_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		
+		$s_date = $data['s_date'];
+		$this -> db -> where('_m.open_date',$s_date);
+
 	}
 
 	function ajax_from_join() {

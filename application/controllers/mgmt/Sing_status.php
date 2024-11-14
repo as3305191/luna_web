@@ -28,8 +28,7 @@ class Sing_status extends MY_Mgmt_Controller {
 			'columns',
 			'search',
 			'order',
-			's_menu_style',
-			's_menu_name'
+			's_date'
 		));
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
@@ -53,7 +52,7 @@ class Sing_status extends MY_Mgmt_Controller {
 				'start',
 				'columns',
 				'search',
-				'order'
+				'order',
 			));
 			$q_data['id'] = $id;
 			$list = $this -> sing_status_dao -> query_ajax($q_data);

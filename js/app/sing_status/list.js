@@ -93,7 +93,7 @@ app.dtConfig = {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					// d.s_menu_style = $('#s_menu_style').val();
+					d.s_date = $('#s_date').val();
 				},
 				dataSrc : 'items',
 				dataType : 'json',
@@ -118,9 +118,9 @@ app.dtConfig = {
 		}
 
 		
-		// $('#s_menu_style').on('change', function(){
-		// 	app.tableReload();
-		// });
+		$('#s_date').on('change', function(){
+			app.tableReload();
+		});
 		// $('#s_menu_name').on('keyup', function(){
 		// 	app.tableReload();
 		// });
