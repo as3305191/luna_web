@@ -278,13 +278,13 @@
 				});
 			},
 			'sound on' : function() {
-				$.sound_on = true;
+				$.sound_on = false;
 				$.speechApp.playConfirmation();
 				$.smallBox({
 					title : "UNMUTE",
 					content : "All sounds have been turned on!",
 					color : "#40ac2b",
-					// sound_file: 'voice_alert',
+					sound_file: 'voice_alert',
 					timeout: 5000,
 					icon : "fa fa-volume-up"
 				});
@@ -296,7 +296,7 @@
 					title : "VOICE COMMAND OFF",
 					content : "Your voice commands has been successfully turned off. Click on the <i class='fa fa-microphone fa-lg fa-fw'></i> icon to turn it back on.",
 					color : "#40ac2b",
-					// sound_file: 'voice_off',
+					sound_file: 'voice_off',
 					timeout: 8000,
 					icon : "fa fa-microphone-slash"
 				});
