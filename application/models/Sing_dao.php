@@ -16,7 +16,7 @@ class Sing_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('s_s.*');
+		$this -> db -> select('ss.*');
 
 		
 		// $this -> db -> select('ss.');
@@ -58,50 +58,6 @@ class Sing_dao extends MY_Model {
 		$this -> db -> join("sing_status s_s", "ss.id = _m.id", "left");
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
-
-	function find_carousel(){
-		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> select('_m.*');
-		$this -> db -> select('ms.menu_style as menu_style');
-		$this -> db -> where('status',1);
-		$this -> db -> where('_m.news_style_id<>',7);
-		$this -> db -> where('_m.news_style_id<>',8);
-
-		$this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
-		$this -> db -> order_by('_m.id', 'desc');
-		$list = $this -> db -> get() -> result();
-		return $list;
-	}
-
-	function find_order_by_menu($id){
-		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> select('_m.*');
-		$this -> db -> where('_m.menu_id',$id);
-		$this -> db -> where('_m.is_done<',1);
-		$this -> db -> select('u.user_name as user_name');
-
-		$this -> db -> join("users u", "u.id = _m.user_id", "left");
-		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
-		$this -> db -> order_by('_m.id', 'desc');
-		$list = $this -> db -> get() -> result();
-		return $list;
-	}
-
-	function find_by_all_this_menu($id){
-		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> select('_m.*');
-		$this -> db -> where('_m.menu_id',$id);
-		$this -> db -> where('_m.is_done<',1);
-
-		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
-		$this -> db -> order_by('_m.id', 'desc');
-		$list = $this -> db -> get() -> result();
-		return $list;
-	}
-
-
-
-	
 
 }
 ?>
