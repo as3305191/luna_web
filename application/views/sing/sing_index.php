@@ -114,7 +114,11 @@
     let uuid = localStorage.getItem('deviceUUID');
     if (!uuid) {
       uuid = generateUUID();
-      localStorage.setItem('deviceUUID', uuid);
+      const item = {
+        value: uuid,
+        expired: now.getTime() + 5
+      }
+      localStorage.setItem('deviceUUID', JSON.stringify(item))
     }
     return uuid;
   }
