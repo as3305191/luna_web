@@ -40,7 +40,7 @@ var SingstatusAppClass = (function(app) {
 			$(nRow).find('.product-post').eq(0).click(function(){
 				var me = $(this).attr('id');
 				$.ajax({
-					url: baseUrl + app.basePath + '/up_lock_menu',
+					url: baseUrl + app.basePath + '/switch_sing',
 					data: {
 					  'id': me
 					},
@@ -93,8 +93,7 @@ app.dtConfig = {
 			ajax : {
 				url : baseUrl + app.basePath + '/get_data',
 				data : function(d) {
-					d.s_menu_style = $('#s_menu_style').val();
-					d.s_menu_name = $('#s_menu_name').val();
+					// d.s_menu_style = $('#s_menu_style').val();
 				},
 				dataSrc : 'items',
 				dataType : 'json',
@@ -119,12 +118,12 @@ app.dtConfig = {
 		}
 
 		
-		$('#s_menu_style').on('change', function(){
-			app.tableReload();
-		});
-		$('#s_menu_name').on('keyup', function(){
-			app.tableReload();
-		});
+		// $('#s_menu_style').on('change', function(){
+		// 	app.tableReload();
+		// });
+		// $('#s_menu_name').on('keyup', function(){
+		// 	app.tableReload();
+		// });
 	    // $(window).trigger("hashchange");
 
 		return app;
