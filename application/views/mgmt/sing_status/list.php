@@ -97,12 +97,6 @@ thead tr th {
 <script type="text/javascript">
 	var baseUrl = '<?=base_url('')?>';
 
-	$(".dt_picker").datetimepicker({
-		format : 'YYYY.MM.DD'
-	}).on('dp.change',function(event){
-
-	});
-
 	var mCols = [{
 				targets : 0,
 				data : 'status',
@@ -161,6 +155,7 @@ thead tr th {
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/sing_status/list.js", function(){
 			currentApp = new SingstatusAppClass(new BaseAppClass({}));
+			
 		});
 	});
 

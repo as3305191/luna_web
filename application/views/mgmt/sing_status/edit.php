@@ -125,6 +125,12 @@
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 <script>
 
+$(".dt_picker").datetimepicker({
+	format : 'YYYY.MM.DD'
+}).on('dp.change',function(event){
+
+});
+
 function do_save(id) {
 	$.ajax({
 		url: '<?= base_url() ?>' + 'mgmt/sing_status/switch_sing',
