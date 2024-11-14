@@ -65,7 +65,7 @@
             <div class="col-lg-12">
               <!-- Overall Statistics -->
               <div class="" >
-                <span id="UUID" type="hidden"></span>
+                <!-- <span id="UUID" type="hidden"></span> -->
                 <select name="num" id="num">
                   <option value="0">--請選擇--</option>
                   <option value="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></option>
@@ -116,7 +116,7 @@
     return uuid;
   }
   const deviceUUID = getDeviceUUID();
-  $('#UUID').text(deviceUUID);
+  // $('#UUID').text(deviceUUID);
 
   function do_save() {
 		var url = baseUrl + 'sing/index/give_ticket';
