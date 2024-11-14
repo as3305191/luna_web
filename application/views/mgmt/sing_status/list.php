@@ -110,11 +110,6 @@ thead tr th {
 					var input = '';
 					var is_stop_html ='';
 					if(row.status >0){//開放
-						if(row.is_stop==0){//可以點
-							is_stop_html  = '<button type="button" style="color:red;" class="btn btn-sm  pull-right" onclick="order_set('+row.id+')">暫停點餐</button>';
-						} else{
-							is_stop_html  = '<button type="button" style="color:green;" class="btn btn-sm  pull-right" onclick="order_set('+row.id+')">重啟點餐</button>';
-						}
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
 						+input
@@ -123,8 +118,7 @@ thead tr th {
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
 					+'</span>'
-					+is_stop_html
-					+'<button type="button" class="btn btn-sm btn-primary pull-right" onclick="finish_menu('+row.id+')">完成</button>';
+					+'<button type="button" class="btn btn-sm btn-primary pull-right" onclick="switch_sing('+row.id+')">完成</button>';
 					}else{
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
@@ -135,7 +129,7 @@ thead tr th {
 						+'</label>'
 					+'</span>'
 					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>'
-					+'<button type="button" class="btn btn-sm btn-primary pull-right" onclick="finish_menu('+row.id+')">完成</button>';
+					+'<button type="button" class="btn btn-sm btn-primary pull-right" onclick="switch_sing('+row.id+')">完成</button>';
 					}
 					return html;
 		    },
@@ -167,8 +161,23 @@ thead tr th {
 	loadScript(baseUrl + "js/class/BaseAppClass.js", function(){
 		loadScript(baseUrl + "js/app/sing_status/list.js", function(){
 			currentApp = new SingstatusAppClass(new BaseAppClass({}));
-			
 		});
 	});
 
+	function switch_sing(id) {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/sing_status/switch_sing',
+			type: 'POST',
+			data: {
+				id: id
+			},
+			dataType: 'json',
+			success: function(d) {
+				currentApp.tableReload();
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
 </script>

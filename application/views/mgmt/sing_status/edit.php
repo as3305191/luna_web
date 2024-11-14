@@ -69,12 +69,43 @@
 					</div>
 				</div>
 			</fieldset>
-		
 			<fieldset>
 				<div class="form-group">
-					<label class="col-md-3 control-label">名稱</label>
+					<label class="col-md-3 control-label">參賽人1</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" name="note"  id="note" value="<?= isset($item) ? $item -> note : '' ?>"  />
+						<input type="text" required class="form-control" id="m_1" value="<?= isset($item) ? $item -> note : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">參賽人2</label>
+					<div class="col-md-6">
+						<input type="text" required class="form-control" id="m_2" value="<?= isset($item) ? $item -> note : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">參賽人3</label>
+					<div class="col-md-6">
+						<input type="text" required class="form-control" id="m_3" value="<?= isset($item) ? $item -> note : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">參賽人4</label>
+					<div class="col-md-6">
+						<input type="text" required class="form-control" id="m_4" value="<?= isset($item) ? $item -> note : '' ?>"  />
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<div class="form-group">
+					<label class="col-md-3 control-label">參賽人5</label>
+					<div class="col-md-6">
+						<input type="text" required class="form-control" id="m_5" value="<?= isset($item) ? $item -> note : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -94,4 +125,27 @@
 <!-- <script src="http://www.appelsiini.net/download/jquery.jeditable.mini.js"></script> -->
 <script>
 
+function do_save(id) {
+	$.ajax({
+		url: '<?= base_url() ?>' + 'mgmt/sing_status/switch_sing',
+		type: 'POST',
+		data: {
+			id: $('#item_id').val(),
+			open_date: $('#open_date').val(),
+			m_1: $('#m_1').val(),
+			m_2: $('#m_2').val(),
+			m_3: $('#m_3').val(),
+			m_4: $('#m_4').val(),
+			m_5: $('#m_5').val(),
+
+		},
+		dataType: 'json',
+		success: function(d) {
+			currentApp.tableReload();
+		},
+		failure:function(){
+			alert('faialure');
+		}
+	});
+}
 </script>
