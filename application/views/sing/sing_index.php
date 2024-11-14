@@ -122,9 +122,9 @@
 
   function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0,
-    v = c === 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
+      var r = Math.random() * 16 | 0,
+      v = c === 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
     });
   }
   function getDeviceUUID() {
@@ -132,20 +132,39 @@
     const now = new Date();
     let uuid = localStorage.getItem('deviceUUID');
     if (!uuid) {
-      uuid = generateUUID();
-      const item = {
-        value: uuid,
-        expired: now.getTime()+43200000
-      }
-      localStorage.setItem('deviceUUID', JSON.stringify(item))
+      
+      uuid = find_uuid_is_used();
+     
     }
     return uuid;
   }
 
-
   const deviceUUID = getDeviceUUID();
-  // $('#UUID').text(deviceUUID);
 
+  function find_uuid_is_used(){
+    var url = baseUrl + 'sing/index/find_uuid_is_used';
+    uuid = generateUUID();
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+				uuid: uuid,
+			},
+			success : function(data) {
+        if(data.not_use){
+          const item = {
+            value: uuid,
+            expired: now.getTime()+43200000
+          }
+          localStorage.setItem('deviceUUID', JSON.stringify(item));
+          return uuid;
+        } else{
+          find_uuid_is_used();
+        }
+        
+			}
+		});
+  }
   function do_save() {
 		var url = baseUrl + 'sing/index/give_ticket';
 

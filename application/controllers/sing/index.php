@@ -9,6 +9,8 @@ class Index extends MY_Base_Controller {
 		// $this->load->helper('captcha');
 		$this -> load -> model('Sing_dao', 'sing_dao');
 		$this -> load -> model('Sing_status_dao', 'sing_status_dao');
+		$this -> load -> model('Sing_uuid_dao', 'sing_uuid_dao');
+
 	}
 
 	public function index() {
@@ -31,6 +33,23 @@ class Index extends MY_Base_Controller {
 		$last_id = $this -> sing_dao -> insert($data);
 
 		$res['last_id'] = $last_id;
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+		
+	}
+	public function find_uuid_is_used() {
+		$res = array();
+		$uuid = $this -> get_post('uuid');
+		$data['uuid'] = $uuid;
+
+		$find_active_sing = $this -> sing_uuid_dao -> find_not_used($uuid);
+		if(empty($find_active_sing)){
+			$res['not_use'] = TRUE;
+			$last_id = $this -> sing_uuid_dao -> insert($data);
+
+		} else{
+			$res['is_used'] = TRUE;
+		}
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 		
