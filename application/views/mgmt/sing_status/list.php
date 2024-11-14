@@ -53,7 +53,7 @@ thead tr th {
 								<table id="dt_list" class="table table-striped table-bordered table-hover" width="100%">
 									<thead>
 										<tr>
-											<th class="min25">開放</th>
+											<th class="min15">開放</th>
 											<th class="min100">日期</th>
 										</tr>
 									</thead>
@@ -112,6 +112,8 @@ thead tr th {
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
 					+'</span>'
+					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>'
+
 					}else{
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
@@ -169,7 +171,7 @@ thead tr th {
 				currentApp.tableReload();
 			},
 			failure:function(){
-				alert('faialure');
+				alert('failure');
 			}
 		});
 	}
