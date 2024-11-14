@@ -278,7 +278,7 @@
 				});
 			},
 			'sound on' : function() {
-				$.sound_on = false;
+				$.sound_on = true;
 				$.speechApp.playConfirmation();
 				$.smallBox({
 					title : "UNMUTE",
