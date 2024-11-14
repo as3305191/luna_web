@@ -139,7 +139,7 @@
       uuid = generateUUID();
       const item = {
         value: uuid,
-        expired: now.getTime() + 5
+        expired: now.getTime()+5
       }
       localStorage.setItem('deviceUUID', JSON.stringify(item))
     }
