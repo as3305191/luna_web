@@ -64,7 +64,7 @@
             <!-- Profile Content -->
             <div class="col-lg-12">
               <!-- Overall Statistics -->
-              <div class="element" >
+              <div class="element_top" >
                 <!-- <span id="UUID" type="hidden"></span> -->
                 <select name="num" id="num">
                   <option value="0">--請選擇--</option>
