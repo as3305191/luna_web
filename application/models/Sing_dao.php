@@ -17,9 +17,8 @@ class Sing_dao extends MY_Model {
 		// select
 		$this -> db -> select('_m.*');
 
-		$this -> db -> select('m.menu_name as menu_name');
-		$this -> db -> select('m.menu_style_id as menu_style_id');
-		$this -> db -> select('u.user_name as user_name');
+		
+		// $this -> db -> select('ss.');
 
 		// join
 		$this -> ajax_from_join();
