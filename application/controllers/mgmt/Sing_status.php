@@ -7,6 +7,7 @@ class Sing_status extends MY_Mgmt_Controller {
 		parent::__construct();
 		$this -> load -> model('Sing_dao', 'sing_dao');
 		$this -> load -> model('Sing_status_dao', 'sing_status_dao');
+		$this -> load -> model('Users_dao', 'users_dao');
 
 	}
 
@@ -33,10 +34,10 @@ class Sing_status extends MY_Mgmt_Controller {
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
 
-		$items = $this -> dao -> query_ajax($data);
+		$items = $this -> sing_dao -> query_ajax($data);
 		$res['items'] = $items;
-		$res['recordsFiltered'] = $this -> dao -> count_ajax($data);
-		$res['recordsTotal'] = $this -> dao -> count_all_ajax($data);
+		$res['recordsFiltered'] = $this -> sing_dao -> count_ajax($data);
+		$res['recordsTotal'] = $this -> sing_dao -> count_all_ajax($data);
 		$this -> to_json($res);
 	}
 
@@ -55,20 +56,9 @@ class Sing_status extends MY_Mgmt_Controller {
 				'order'
 			));
 			$q_data['id'] = $id;
-			$list = $this -> dao -> query_ajax($q_data);
+			$list = $this -> sing_dao -> query_ajax($q_data);
 			$item = $list[0];
-			// if(!empty($item -> image_id)) {
-			// 	$item -> img = $this -> img_dao -> find_by_id($item -> image_id);
-			// }
-			if(!empty($item -> img_id)) {
-				$image= explode(",", $item -> img_id);
-				$item -> image_id =$image ;
-				foreach($image as $each){
-					$item -> image[] = $this -> img_dao -> find_by_id($each);
-				}
-			} else{
-				$item -> image =array();
-			}
+		
 			$data['item'] = $item;
 		
 
