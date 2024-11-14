@@ -22,7 +22,7 @@
     top: 80%;
     /* left: 50%;
     /* transform: translate(-50%, -10%); */
-    padding: 10px; */
+    padding: 10px;
   }
 @media only screen and (max-width: 750px) {
 	.dt_list_th{
