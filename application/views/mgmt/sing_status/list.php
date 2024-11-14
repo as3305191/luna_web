@@ -103,7 +103,7 @@ thead tr th {
 				render:function ( data, type, row ) {
 					var input = '';
 					var is_stop_html ='';
-					if(row.status >0){//開放
+					if(row.status <1){//開放
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
 						+input
