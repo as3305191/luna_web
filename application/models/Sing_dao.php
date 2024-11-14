@@ -17,6 +17,7 @@ class Sing_dao extends MY_Model {
 		// select
 		$this -> db -> select('_m.*');
 		$this -> db -> select('s_s.status');
+		$this -> db -> select('s_s.open_date');
 
 		
 		// $this -> db -> select('ss.');
