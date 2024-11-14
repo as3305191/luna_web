@@ -16,7 +16,7 @@ class Sing_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('ss.*');
+		$this -> db -> select('s_s.*');
 
 		
 		// $this -> db -> select('ss.');
@@ -55,7 +55,7 @@ class Sing_dao extends MY_Model {
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("sing_status s_s", "ss.sing_id = _m.id", "left");
+		$this -> db -> join("sing_status s_s", "s_s.sing_id = _m.id", "left");
 		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
 	}
 
