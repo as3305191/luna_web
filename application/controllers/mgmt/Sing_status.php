@@ -63,7 +63,7 @@ class Sing_status extends MY_Mgmt_Controller {
 		
 
 		}
-		$this->load->view('mgmt/menu/edit', $data);
+		$this->load->view('mgmt/sing_status/edit', $data);
 	}
 
 	public function insert() {//新增
