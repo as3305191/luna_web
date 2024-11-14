@@ -144,7 +144,8 @@ function do_save(id) {
 		},
 		dataType: 'json',
 		success: function(d) {
-			currentApp.tableReload();
+			currentApp.mDtTable.ajax.reload(null, false);
+			currentApp.backTo();
 		},
 		failure:function(){
 			alert('faialure');
