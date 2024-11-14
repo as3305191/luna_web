@@ -103,27 +103,6 @@
     m = $('input:radio[name="m"]:checked').val();
   });
 
-  function generateUUID() {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-    var r = Math.random() * 16 | 0,
-    v = c === 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
-    });
-  }
-  function getDeviceUUID() {
-    const now = new Date();
-    let uuid = localStorage.getItem('deviceUUID');
-    if (!uuid) {
-      uuid = generateUUID();
-      const item = {
-        value: uuid,
-        expired: now.getTime() + 5
-      }
-      localStorage.setItem('deviceUUID', JSON.stringify(item))
-    }
-    return uuid;
-  }
-
 
   function getWithExpiry (deviceUUID) {
 
@@ -143,7 +122,31 @@
     }
 
     return item.value;
+    }
+
+  function generateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+    var r = Math.random() * 16 | 0,
+    v = c === 'x' ? r : (r & 0x3 | 0x8);
+    return v.toString(16);
+    });
   }
+  function getDeviceUUID() {
+    getWithExpiry (deviceUUID);
+    const now = new Date();
+    let uuid = localStorage.getItem('deviceUUID');
+    if (!uuid) {
+      uuid = generateUUID();
+      const item = {
+        value: uuid,
+        expired: now.getTime() + 5
+      }
+      localStorage.setItem('deviceUUID', JSON.stringify(item))
+    }
+    return uuid;
+  }
+
+
   const deviceUUID = getDeviceUUID();
   // $('#UUID').text(deviceUUID);
 
