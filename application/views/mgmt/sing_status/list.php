@@ -112,7 +112,6 @@ thead tr th {
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
 					+'</span>'
-					+'<button type="button" class="btn btn-sm btn-primary pull-right" onclick="switch_sing('+row.id+')">完成</button>';
 					}else{
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
@@ -123,7 +122,6 @@ thead tr th {
 						+'</label>'
 					+'</span>'
 					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>'
-					+'<button type="button" class="btn btn-sm btn-primary pull-right" onclick="switch_sing('+row.id+')">完成</button>';
 					}
 					return html;
 		    },
