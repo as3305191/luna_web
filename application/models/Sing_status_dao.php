@@ -16,7 +16,7 @@ class Sing_status_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
-		$this -> db -> select('s.*');
+		// $this -> db -> select('s.*');
 
 		
 		// $this -> db -> select('ss.');
