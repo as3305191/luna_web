@@ -64,7 +64,7 @@
             <!-- Profile Content -->
             <div class="col-lg-12">
               <!-- Overall Statistics -->
-              <div class="element_top" >
+              <div class="element" >
                 <!-- <span id="UUID" type="hidden"></span> -->
                 <select name="num" id="num">
                   <option value="0">--請選擇--</option>
@@ -74,8 +74,9 @@
                   <option value="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></option>
                   <option value="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></option>
                 </select>
+                <button type="button" class="btn btn-sm btn-primary element" onclick="do_save()">投票</button>
+
               </div>
-              <button type="button" class="btn btn-sm btn-primary element" onclick="do_save()">投票</button>
 
             </div>
             <!-- End Profile Content -->
