@@ -104,7 +104,7 @@
   });
 
 
-  function getWithExpiry (deviceUUID) {
+  function getWithExpiry (key) {
 
     const itemStr = localStorage.getItem(key);
 
