@@ -16,6 +16,8 @@ class Index extends MY_Base_Controller {
 
 		$data['item'] = $this -> sing_status_dao -> find_active_sing();
 		$this -> load -> view('sing/sing_index', $data);
+		$this -> to_json($data);
+
 	}
 
 	public function give_ticket() {
