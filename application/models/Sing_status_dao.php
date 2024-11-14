@@ -109,8 +109,8 @@ class Sing_status_dao extends MY_Model {
 		$this -> db -> where('_m.open_date',$date);
 
 		$this -> db -> order_by('_m.id', 'desc');
-		$list = $this -> db -> get() -> result();
-		return $list;
+		$query = $this -> db -> get();
+		return $query -> result();
 	}
 
 }
