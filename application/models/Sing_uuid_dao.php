@@ -120,15 +120,5 @@ class Sing_uuid_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
-
-	function delete_all(){
-		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> delete();
-		$this -> db -> where('_m.id>',0);
-
-		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
-		$list = $this -> db -> get() -> result();
-		return $list;
-	}
 }
 ?>

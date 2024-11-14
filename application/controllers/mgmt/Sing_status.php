@@ -111,7 +111,7 @@ class Sing_status extends MY_Mgmt_Controller {
 			$u_data['status'] = 1;
 			$res['success_msg'] = '關閉活動';
 			$this -> sing_status_dao -> update($u_data, $id);
-			$this -> sing_uuid_dao -> delete_all();
+			$this -> sing_uuid_dao -> empty_table('sing_uuid');
 		}else{
 			$u_data['status'] = 0;
 			$res['success_msg'] = '開放活動';
