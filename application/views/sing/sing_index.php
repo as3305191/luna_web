@@ -19,9 +19,9 @@
   .element_top {
     /* border: 5px solid; */
     position: absolute;
-    top: 110%;
+    top: 80%;
     /* left: 50%;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -10%); */
     padding: 10px; */
   }
 @media only screen and (max-width: 750px) {
@@ -74,9 +74,9 @@
                   <option value="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></option>
                   <option value="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></option>
                 </select>
-                <button type="button" class="btn btn-sm btn-primary element" onclick="do_save()">投票</button>
 
               </div>
+              <button type="button" class="btn btn-sm btn-primary element" onclick="do_save()">投票</button>
 
             </div>
             <!-- End Profile Content -->
