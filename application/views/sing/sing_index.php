@@ -74,11 +74,11 @@
                   <option value="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></option>
                   <option value="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></option>
                 </select> -->
-                <input type="radio" name="m" value="m_1" id="m_1"><label for="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></label>
-                <input type="radio" name="m" value="m_2" id="m_2"><label for="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></label>
-                <input type="radio" name="m" value="m_3" id="m_3"><label for="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></label>
-                <input type="radio" name="m" value="m_4" id="m_4"><label for="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></label>
-                <input type="radio" name="m" value="m_5" id="m_5"><label for="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></label>
+                <input type="radio" name="m" value="m_1" id="m_1"><label for="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></label><br>
+                <input type="radio" name="m" value="m_2" id="m_2"><label for="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></label><br>
+                <input type="radio" name="m" value="m_3" id="m_3"><label for="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></label><br>
+                <input type="radio" name="m" value="m_4" id="m_4"><label for="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></label><br>
+                <input type="radio" name="m" value="m_5" id="m_5"><label for="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></label><br>
 
               </div>
               <button type="button" class="btn btn-sm btn-primary element" onclick="do_save()">投票</button>
