@@ -166,22 +166,22 @@
 			}
 		});
   }
+console.log( Object.values(deviceUUID));
+  // function do_save() {
+	// 	var url = baseUrl + 'sing/index/give_ticket';
 
-  function do_save() {
-		var url = baseUrl + 'sing/index/give_ticket';
-
-		$.ajax({
-			type : "POST",
-			url : url,
-			data : {
-				deviceUUID: Object.values(deviceUUID)[0],
-				num: m,	
-			},
-			success : function(data) {
+	// 	$.ajax({
+	// 		type : "POST",
+	// 		url : url,
+	// 		data : {
+	// 			deviceUUID: deviceUUID,
+	// 			num: m,	
+	// 		},
+	// 		success : function(data) {
 				
-			}
-		});
+	// 		}
+	// 	});
 		
-	};
+	// };
 
 </script>
