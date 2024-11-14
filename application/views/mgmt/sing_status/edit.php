@@ -73,7 +73,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">參賽人1</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" id="m_1" value="<?= isset($item) ? $item -> note : '' ?>"  />
+						<input type="text" required class="form-control" id="m_1" value="<?= isset($item) ? $item -> m_1 : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -81,7 +81,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">參賽人2</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" id="m_2" value="<?= isset($item) ? $item -> note : '' ?>"  />
+						<input type="text" required class="form-control" id="m_2" value="<?= isset($item) ? $item -> m_2 : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -89,7 +89,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">參賽人3</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" id="m_3" value="<?= isset($item) ? $item -> note : '' ?>"  />
+						<input type="text" required class="form-control" id="m_3" value="<?= isset($item) ? $item -> m_3 : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -97,7 +97,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">參賽人4</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" id="m_4" value="<?= isset($item) ? $item -> note : '' ?>"  />
+						<input type="text" required class="form-control" id="m_4" value="<?= isset($item) ? $item -> m_4 : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -105,7 +105,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">參賽人5</label>
 					<div class="col-md-6">
-						<input type="text" required class="form-control" id="m_5" value="<?= isset($item) ? $item -> note : '' ?>"  />
+						<input type="text" required class="form-control" id="m_5" value="<?= isset($item) ? $item -> m_5 : '' ?>"  />
 					</div>
 				</div>
 			</fieldset>
@@ -133,7 +133,7 @@ $(".dt_picker").datetimepicker({
 
 function do_save(id) {
 	$.ajax({
-		url: '<?= base_url() ?>' + 'mgmt/sing_status/switch_sing',
+		url: '<?= base_url() ?>' + 'mgmt/sing_status/insert',
 		type: 'POST',
 		data: {
 			id: $('#item_id').val(),

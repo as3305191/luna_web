@@ -16,10 +16,10 @@ class Sing_status_dao extends MY_Model {
 		$order = $data['order'];
 		// select
 		$this -> db -> select('_m.*');
+		$this -> db -> select('s.*');
 
-		$this -> db -> select('m.menu_name as menu_name');
-		$this -> db -> select('m.menu_style_id as menu_style_id');
-		$this -> db -> select('u.user_name as user_name');
+		
+		// $this -> db -> select('ss.');
 
 		// join
 		$this -> ajax_from_join();
@@ -32,7 +32,7 @@ class Sing_status_dao extends MY_Model {
 
 		// order
 		$this -> ajax_order_setup($order, $columns, $this -> alias_map);
-		$this -> db -> order_by('id', 'desc');
+		$this -> db -> order_by('_m.id', 'desc');
 
 		// limit
 		// $this -> db -> limit($limit, $start);
@@ -49,21 +49,14 @@ class Sing_status_dao extends MY_Model {
 	}
 
 	function search_always($data) {
-		if(!empty($data['menu_id']) && $data['menu_id']>0){
-			$menu_id = $data['menu_id'];
-			$this -> db -> where('_m.menu_id',$menu_id);
-		}
-		$this -> db -> where('_m.is_delete<',1);
-		$this -> db -> where('_m.is_done<',1);
-		$this -> db -> where('_m.user_id',$data['login_user_id']);
+		
 	}
 
 	function ajax_from_join() {
 		// join
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> join("menu m", "m.id = _m.menu_id", "left");
-		$this -> db -> join("users u", "u.id = _m.user_id", "left");
-		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
+		$this -> db -> join("sing s", "s.id = _m.sing_id", "left");
+
 	}
 
 	function find_carousel(){

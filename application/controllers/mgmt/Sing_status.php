@@ -34,10 +34,10 @@ class Sing_status extends MY_Mgmt_Controller {
 		// set corp id
 		$s_data = $this -> setup_user_data(array());
 
-		$items = $this -> sing_dao -> query_ajax($data);
+		$items = $this -> sing_status_dao -> query_ajax($data);
 		$res['items'] = $items;
-		$res['recordsFiltered'] = $this -> sing_dao -> count_ajax($data);
-		$res['recordsTotal'] = $this -> sing_dao -> count_all_ajax($data);
+		$res['recordsFiltered'] = $this -> sing_status_dao -> count_ajax($data);
+		$res['recordsTotal'] = $this -> sing_status_dao -> count_all_ajax($data);
 		$this -> to_json($res);
 	}
 
@@ -56,7 +56,7 @@ class Sing_status extends MY_Mgmt_Controller {
 				'order'
 			));
 			$q_data['id'] = $id;
-			$list = $this -> sing_dao -> query_ajax($q_data);
+			$list = $this -> sing_status_dao -> query_ajax($q_data);
 			$item = $list[0];
 		
 			$data['item'] = $item;
@@ -70,22 +70,19 @@ class Sing_status extends MY_Mgmt_Controller {
 		$res = array();
 		$data = array();
 		$id = $this -> get_post('id');
-		$img= $this -> get_post('img');
-		$menu_style_id= $this -> get_post('menu_style_id');
-		$menu_name= $this -> get_post('menu_name');
-		$note= $this -> get_post('note');
 		$open_date= $this -> get_post('open_date');
-		$dep_array= $this -> get_post('dep_array');
-		$data['img_id'] = $img;
-		$data['note'] = $note;
-		$data['menu_style_id'] = $menu_style_id;
-		$data['menu_name'] = $menu_name;
+		$m_1= $this -> get_post('m_1');
+		$m_2= $this -> get_post('m_2');
+		$m_3= $this -> get_post('m_3');
+		$m_4= $this -> get_post('m_4');
+		$m_5= $this -> get_post('m_5');
+
 		$data['open_date'] = $open_date;
-		if($dep_array!==''){
-			$data['open_dep'] = $dep_array;
-		} else{
-			$data['open_dep'] = 0;
-		}
+		$data['m_1'] = $m_1;
+		$data['m_2'] = $m_2;
+		$data['m_3'] = $m_3;
+		$data['m_4'] = $m_4;
+		$data['m_5'] = $m_5;
 
 		if($open_date!==''){
 			$data['open_date'] = $open_date;
@@ -94,9 +91,10 @@ class Sing_status extends MY_Mgmt_Controller {
 		}
 		if(empty($id)) {
 			// insert
-			$last_id = $this -> dao -> insert($data);
+			$last_id = $this -> sing_status_dao -> insert($data);
+
 		} else {
-			$this -> dao -> update($data, $id);
+			$this -> sing_status_dao -> update($data, $id);
 			
 		}
 		$res['success'] = TRUE;
