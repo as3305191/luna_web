@@ -178,7 +178,8 @@
 				num: m,	
 			},
 			success : function(data) {
-				
+				alert('投票完成');
+        location.reload;
 			}
 		});
 		
