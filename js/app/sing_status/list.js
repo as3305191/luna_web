@@ -117,9 +117,9 @@ app.dtConfig = {
 			window.open(baseUrl + 'mgmt/menu_orderby_user/export_excel/' + id);
 		}
 
-		
-		$('#s_date').on('keyup', function(){
-			console.log('1');
+		$(".dt_picker").datetimepicker({
+			format : 'YYYY.MM.DD'
+		}).on('dp.change',function(event){
 			app.tableReload();
 		});
 		// $('#s_menu_name').on('keyup', function(){
