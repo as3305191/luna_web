@@ -166,7 +166,7 @@
 			}
 		});
   }
-console.log( Object.values(deviceUUID));
+console.log(deviceUUID.value);
   // function do_save() {
 	// 	var url = baseUrl + 'sing/index/give_ticket';
 
