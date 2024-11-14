@@ -24,14 +24,15 @@ class Index extends MY_Base_Controller {
 
 	public function give_ticket() {
 		$res = array();
-		$deviceUUID = $this -> get_post('deviceUUID');
+		$deviceUUID_object= $this -> get_post('deviceUUID');
+		$deviceUUID = json_decode(json_encode ( $deviceUUID_object ) , true);
 		$ticket = $this -> get_post('num');
 		$find_active_sing = $this -> sing_status_dao -> find_active_sing();
 		$data['ticket'] = $ticket;
 		$data['sing_status_id'] = $find_active_sing[0]->id;
 		$find_active_sing = $this -> sing_dao -> find_gave($data);
 		if(empty($find_active_sing)){
-			$data['uuid'] = $deviceUUID;
+			$data['uuid'] = $deviceUUID['value'];
 			$last_id = $this -> sing_dao -> insert($data);
 		} else{
 			$this -> sing_dao -> update($data, $find_active_sing[0]->id);
