@@ -27,10 +27,15 @@ class Index extends MY_Base_Controller {
 		$deviceUUID = $this -> get_post('deviceUUID');
 		$ticket = $this -> get_post('num');
 		$find_active_sing = $this -> sing_status_dao -> find_active_sing();
-		$data['uuid'] = $deviceUUID;
 		$data['ticket'] = $ticket;
 		$data['sing_status_id'] = $find_active_sing[0]->id;
-		$last_id = $this -> sing_dao -> insert($data);
+		$find_active_sing = $this -> sing_dao -> find_gave($data);
+		if(empty($find_active_sing)){
+			$data['uuid'] = $deviceUUID;
+			$last_id = $this -> sing_dao -> insert($data);
+		} else{
+			$this -> sing_dao -> update($data, $find_active_sing[0]->id);
+		}
 
 		$res['last_id'] = $last_id;
 		$res['success'] = TRUE;

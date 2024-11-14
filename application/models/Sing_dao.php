@@ -56,7 +56,20 @@ class Sing_dao extends MY_Model {
 		// join
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> join("sing_status s_s", "s_s.sing_id = _m.id", "left");
-		// $this -> db -> join("roles r", "r.id = _m.role_id", "left");
+	}
+
+	function find_gave($data){
+		$uuid = $data['uuid'];
+		$sing_status_id = $data['sing_status_id'];
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.uuid',$uuid);
+		$this -> db -> where('_m.sing_status_id',$sing_status_id);
+
+		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
+		$this -> db -> order_by('_m.id', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list;
 	}
 
 }
