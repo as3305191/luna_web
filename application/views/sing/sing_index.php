@@ -13,7 +13,7 @@
     position: absolute;
     top: 110%;
     left: 50%;
-    transform: translate(-50%, 250%);
+    transform: translate(-50%, 280%);
     padding: 10px;
   }
   .element_top {
@@ -21,7 +21,7 @@
     position: absolute;
     /* top: 20%; */
     left: 50%;
-    transform: translate(-50%, -10%);
+    transform: translate(-50%, -50%);
     padding: 10px;
   }
 @media only screen and (max-width: 750px) {
