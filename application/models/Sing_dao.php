@@ -58,8 +58,7 @@ class Sing_dao extends MY_Model {
 		$this -> db -> join("sing_status s_s", "s_s.sing_id = _m.id", "left");
 	}
 
-	function find_gave($data){
-		$uuid = $data['uuid'];
+	function find_gave($data,$uuid){
 		$sing_status_id = $data['sing_status_id'];
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');

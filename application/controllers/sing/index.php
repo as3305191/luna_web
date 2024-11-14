@@ -30,7 +30,7 @@ class Index extends MY_Base_Controller {
 		$find_active_sing = $this -> sing_status_dao -> find_active_sing();
 		$data['ticket'] = $ticket;
 		$data['sing_status_id'] = $find_active_sing[0]->id;
-		$find_active_sing = $this -> sing_dao -> find_gave($data);
+		$find_active_sing = $this -> sing_dao -> find_gave($data,$deviceUUID);
 		if(empty($find_active_sing)){
 			$data['uuid'] = $deviceUUID;
 			$last_id = $this -> sing_dao -> insert($data);
