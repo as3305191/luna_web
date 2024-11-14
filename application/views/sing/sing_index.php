@@ -132,7 +132,7 @@
     });
   }
   function getDeviceUUID() {
-    getWithExpiry (deviceUUID);
+    getWithExpiry ('deviceUUID');
     const now = new Date();
     let uuid = localStorage.getItem('deviceUUID');
     if (!uuid) {
