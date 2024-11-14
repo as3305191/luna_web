@@ -13,7 +13,7 @@
     position: absolute;
     top: 110%;
     left: 50%;
-    transform: translate(-50%, 280%);
+    transform: translate(-50%, 400%);
     padding: 10px;
   }
   .element_top {
