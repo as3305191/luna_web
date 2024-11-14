@@ -101,6 +101,26 @@ class Sing_status extends MY_Mgmt_Controller {
  		$this -> to_json($res);
 	}
 
+
+	public function switch_sing() {
+		$res = array();
+		$id = $this -> get_post('id');
+		
+		$list = $this -> sing_status_dao -> find_by_id($id);
+		if($list->status==0){
+			$u_data['status'] = 1;
+			$res['success_msg'] = '關閉活動';
+			$this -> sing_status_dao -> update($u_data, $id);
+		}else{
+			$u_data['status'] = 0;
+			$res['success_msg'] = '開放活動';
+			$this -> sing_status_dao -> update($u_data, $id);
+		}
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
+
+
 	public function delete($id) {
 		$res['success'] = TRUE;
 		$this -> dao -> delete($id);
@@ -186,26 +206,7 @@ class Sing_status extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
-	public function finish_menu() {
-		$res = array();
-		$id = $this -> get_post('id');
-		$order_list = $this -> menu_order_dao -> find_by_all_this_menu($id);
-		foreach($order_list as $each){
-			$this -> menu_order_dao -> update(array(
-				'is_done' => 1,
-				'is_delete' => 1
-			), $each->id);
-		}
-		$list = $this -> dao -> find_by_id($id);
-		if($list->status==1){
-			$u_data['status'] = 0;
-			$res['success_msg'] = '菜單變更不開放';
-			$this -> dao -> update($u_data, $id);
-		}
-		$res['success'] = TRUE;
-		$this -> to_json($res);
-	}
-
+	
 	public function order_set() {
 		$res = array();
 		$u_data = array();
