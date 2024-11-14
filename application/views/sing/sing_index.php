@@ -68,13 +68,15 @@
                 <span id="UUID" type="hidden"></span>
                 <select name="num" id="num">
                   <option value="0">--請選擇--</option>
-                  <option value="m_1"><?= isset($item) ? $item -> m_1 : '' ?></option>
-                  <option value="m_2"><?= isset($item) ? $item -> m_2 : '' ?></option>
-                  <option value="m_3"><?= isset($item) ? $item -> m_3 : '' ?></option>
-                  <option value="m_4"><?= isset($item) ? $item -> m_4 : '' ?></option>
-                  <option value="m_5"><?= isset($item) ? $item -> m_5 : '' ?></option>
+                  <option value="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></option>
+                  <option value="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></option>
+                  <option value="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></option>
+                  <option value="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></option>
+                  <option value="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></option>
                 </select>
               </div>
+              <button type="button" class="btn btn-sm btn-primary element" onclick="do_save()">投票</button>
+
             </div>
             <!-- End Profile Content -->
             </div>
