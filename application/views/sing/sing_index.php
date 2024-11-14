@@ -20,8 +20,8 @@
     /* border: 5px solid; */
     position: absolute;
     top: 80%;
-    /* left: 50%;
-    /* transform: translate(-50%, -10%); */
+    /* /* left: 50%; */
+    transform: translate(-50%, -10%);
     padding: 10px;
   }
 @media only screen and (max-width: 750px) {
