@@ -111,6 +111,7 @@
     });
   }
   function getDeviceUUID() {
+    const now = new Date();
     let uuid = localStorage.getItem('deviceUUID');
     if (!uuid) {
       uuid = generateUUID();
