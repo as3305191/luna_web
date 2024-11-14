@@ -159,12 +159,14 @@
           localStorage.setItem('deviceUUID', JSON.stringify(item));
           return uuid;
         } else{
+          console.log('is_used');
           find_uuid_is_used();
         }
         
 			}
 		});
   }
+
   function do_save() {
 		var url = baseUrl + 'sing/index/give_ticket';
 
