@@ -152,10 +152,10 @@
 			},
 			success : function(data) {
         if(data.not_use){
-          const item = [
-            value => uuid,
-            expired =>  now.getTime()+43200000
-          ]
+          const item = {
+            value: uuid,
+            expired: now.getTime()+43200000
+          }
           localStorage.setItem('deviceUUID', JSON.stringify(item));
           return uuid;
         } else{
@@ -166,7 +166,7 @@
 			}
 		});
   }
-console.log(deviceUUID.value);
+console.log(deviceUUID);
   // function do_save() {
 	// 	var url = baseUrl + 'sing/index/give_ticket';
 
