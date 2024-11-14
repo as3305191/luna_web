@@ -65,7 +65,7 @@
 				<div class="form-group">
 					<label class="col-md-3 control-label">開放日期</label>
 					<div class="col-md-6">
-						<input class="form-control input-xs min100 dt_picker"  id="open_date" type="text"  value="<?= isset($item) ? $item -> open_date : 0 ?>" />
+						<input class="form-control input-xs min100 dt_picker"  id="open_date" type="text"  value="<?= isset($item) ? $item -> open_date : '' ?>" />
 					</div>
 				</div>
 			</fieldset>
