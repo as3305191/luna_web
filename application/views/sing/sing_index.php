@@ -16,7 +16,7 @@
     transform: translate(-50%, -10%);
     padding: 10px;
   }
-  .element_table {
+  .element_top {
     /* border: 5px solid; */
     position: absolute;
     top: 110%;
@@ -64,7 +64,7 @@
             <!-- Profile Content -->
             <div class="col-lg-12">
               <!-- Overall Statistics -->
-              <div class="element" >
+              <div class="element_top" >
                 <!-- <span id="UUID" type="hidden"></span> -->
                 <select name="num" id="num">
                   <option value="0">--請選擇--</option>
