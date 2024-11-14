@@ -96,7 +96,11 @@ thead tr th {
 <?php $this -> load -> view('general/delete_modal'); ?>
 <script type="text/javascript">
 	var baseUrl = '<?=base_url('')?>';
+	$(".dt_picker").datetimepicker({
+		format : 'YYYY.MM.DD'
+	}).on('dp.change',function(event){
 
+	});
 	var mCols = [{
 				targets : 0,
 				data : 'status',
