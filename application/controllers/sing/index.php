@@ -34,11 +34,12 @@ class Index extends MY_Base_Controller {
 		if(empty($find_active_sing)){
 			$data['uuid'] = $deviceUUID;
 			$last_id = $this -> sing_dao -> insert($data);
+			$res['last_id'] = $last_id;
+
 		} else{
 			$this -> sing_dao -> update($data, $find_active_sing[0]->id);
 		}
 
-		$res['last_id'] = $last_id;
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 		
