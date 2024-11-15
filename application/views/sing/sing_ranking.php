@@ -69,20 +69,16 @@
             <?php $i=1; ?>
             <?php foreach ($ticket_array as $each_key => $each_val): ?>
               <?php if ($each_key==$winner): ?>
-                <div class="mb-4">
-                  <h4 class="h6">第1名<span class="float-right g-ml-10"><?=$each_val?></span></h4>
+                <h4 class="h6">第1名<span class="float-right g-ml-10"><?=$each_val?></span></h4>
                   <div class="js-hr-progress-bar progress g-height-4 rounded-0">
                     <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>%;" aria-valuenow="<?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                </div>
                 <?php $i++; ?>
               <?php else : ?>
-                <div class="mb-4">
-                  <h4 class="h6">第<?= $i; ?>名<span class="float-right g-ml-10"><?=$each_val?></span></h4>
+                <h4 class="h6">第<?= $i; ?>名<span class="float-right g-ml-10"><?=$each_val?></span></h4>
                   <div class="js-hr-progress-bar progress g-height-4 rounded-0">
                     <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>%;" aria-valuenow="<?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                </div>
                 <?php $i++; ?>
               <?php endif; ?>
             <?php endforeach; ?>
