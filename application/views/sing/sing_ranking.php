@@ -56,7 +56,6 @@
 
           <!-- Coach Sidebar -->
           <?php $this -> load -> view("old_system_view/old_system_view_sidebar")  ?>
-          <div class="col-lg-4 g-mb-60">
           <div class="u-shadow-v21 g-brd-around g-brd-gray-light-v4 rounded g-pa-25">
             <div class="text-center mb-5">
               <span class="u-icon-v2 g-width-50 g-height-50 g-color-white g-bg-black g-font-size-18 rounded-circle mb-3">
@@ -103,7 +102,6 @@
 
           
           </div>
-        </div>
         </div>
       </div>
     </section>
