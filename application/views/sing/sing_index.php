@@ -226,6 +226,8 @@
             location.reload();
           } else{
             alert(data.msg);
+            location.reload();
+
           }
         }
 				
