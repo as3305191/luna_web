@@ -25,6 +25,11 @@
     padding: 10px;
   }
   .t_center {
+    display: flex;
+    /* 水平置中 */
+    justify-content: center;    
+    /* 垂直置中 */
+    align-items: center;
     text-align: left;
   }
 @media only screen and (max-width: 750px) {
