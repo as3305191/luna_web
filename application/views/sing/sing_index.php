@@ -40,6 +40,14 @@
   .dt_list_th_big{
 	  min-width: 100px !important;
 	}
+  .div_center {
+    display: flex;
+    justify-content: center;    
+    align-items: center;
+  }
+  .t_center {
+    text-align: left;
+  }
 }
 
 </style>
