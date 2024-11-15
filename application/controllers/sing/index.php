@@ -42,7 +42,7 @@ class Index extends MY_Base_Controller {
 							'm5' => $all_ticket_item_m5,);
 
 
-		rsort($ticket_array);
+							ksort($ticket_array);
 		$data['all_ticket'] = $all_ticket;
 
 		$data['ticket_array'] = $ticket_array;
