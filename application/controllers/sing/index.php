@@ -35,13 +35,16 @@ class Index extends MY_Base_Controller {
 		$all_ticket_item_m4 = $this -> sing_dao -> find_all_ticket_by_num('m_4',$sing_status_id);
 		$all_ticket_item_m5 = $this -> sing_dao -> find_all_ticket_by_num('m_5',$sing_status_id);
 		$all_ticket = $all_ticket_item_m1+$all_ticket_item_m2+$all_ticket_item_m3+$all_ticket_item_m4+$all_ticket_item_m5;
-		$ticket_array['m1'] = $all_ticket_item_m1;
-		$ticket_array['m2'] = $all_ticket_item_m2;
-		$ticket_array['m3'] = $all_ticket_item_m3;
-		$ticket_array['m4'] = $all_ticket_item_m4;
-		$ticket_array['m5'] = $all_ticket_item_m5;
+		$ticket_array =  array('m1' => $all_ticket_item_m1,
+							'm2' => $all_ticket_item_m2,
+							'm3' => $all_ticket_item_m3,
+							'm4' => $all_ticket_item_m4,
+							'm5' => $all_ticket_item_m5,);
+
 
 		rsort($ticket_array);
+		$data['all_ticket'] = $all_ticket;
+
 		$data['ticket_array'] = $ticket_array;
 		$data['winner'] = $ticket_array[0];
 		$this -> to_json($data);
