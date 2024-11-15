@@ -25,7 +25,7 @@
     padding: 10px;
   }
   .t_center {
-    vertical-align:middle;
+    display:inline-flex;
   }
 @media only screen and (max-width: 750px) {
 	.dt_list_th{
