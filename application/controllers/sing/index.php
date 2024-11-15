@@ -26,7 +26,9 @@ class Index extends MY_Base_Controller {
 
 	public function ranking() {
 		$data = array();
-		$sing_status_id= $this -> get_get('sing_status_id');
+		// $sing_status_id= $this -> get_get('sing_status_id');
+		$sing_status_id= 11;
+
 		$all_ticket_item_m1 = $this -> sing_dao -> find_all_ticket_by_num('m_1',$sing_status_id);
 		$all_ticket_item_m2 = $this -> sing_dao -> find_all_ticket_by_num('m_2',$sing_status_id);
 		$all_ticket_item_m3 = $this -> sing_dao -> find_all_ticket_by_num('m_3',$sing_status_id);
