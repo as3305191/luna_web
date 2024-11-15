@@ -24,6 +24,12 @@ class Index extends MY_Base_Controller {
 
 	}
 
+	public function ranking() {
+		$data = array();
+		
+		$this -> load -> view('sing/sing_ranking', $data);
+	}
+
 	public function give_ticket() {
 		$res = array();
 		$deviceUUID_object= $this -> get_post('deviceUUID');
