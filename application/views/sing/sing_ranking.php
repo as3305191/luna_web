@@ -65,22 +65,24 @@
               <h2 class="h4 g-color-black">排行榜</h2>
             </div>
 
-            
+            <?php $i=1; ?>
             <?php foreach ($ticket_array as $each_key => $each_val): ?>
               <?php if ($each_key==$winner): ?>
                 <div class="mb-4">
-                  <h4 class="h6">Web Design <span class="float-right g-ml-10"><?=$each_val?></span></h4>
+                  <h4 class="h6">第1名<span class="float-right g-ml-10"><?=$each_val?></span></h4>
                   <div class="js-hr-progress-bar progress g-height-4 rounded-0">
                     <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>%;" aria-valuenow="<?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
+                <?php $i++; ?>
               <?php else : ?>
                 <div class="mb-4">
-                  <h4 class="h6">1 <span class="float-right g-ml-10"><?=$each_val?></span></h4>
+                  <h4 class="h6">第<?= $i; ?>名<span class="float-right g-ml-10"><?=$each_val?></span></h4>
                   <div class="js-hr-progress-bar progress g-height-4 rounded-0">
                     <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>%;" aria-valuenow="<?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
+                <?php $i++; ?>
               <?php endif; ?>
             <?php endforeach; ?>
 
@@ -110,18 +112,7 @@
 
             <hr class="g-brd-gray-light-v4">
 
-            <!-- Tags -->
-            <ul class="u-list-inline text-center mb-0">
-              <li class="list-inline-item">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v4 g-color-primary--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#">Design</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v4 g-color-primary--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#">Art</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v4 g-color-primary--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#">Graphic</a>
-              </li>
-            </ul>
+          
             <!-- End Tags -->
           </div>
         </div>
