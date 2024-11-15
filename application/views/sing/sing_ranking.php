@@ -66,27 +66,6 @@
             </div>
 
 
-            
-            <?php foreach ($ticket_array as $each_key => $each_val): ?>
-              <?php if ($each_key==$winner): ?>
-                <div class="mb-4">
-                  <h4 class="h6">Web Design <span class="float-right g-ml-10"><?=$each_val?></span></h4>
-                  <div class="js-hr-progress-bar progress g-height-4 rounded-0">
-                    <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= floor($each_val/$allticket) ?>%;" aria-valuenow=<?= floor($each_val/$allticket) ?> aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              <?php else : ?>
-                <div class="mb-4">
-                  <h4 class="h6">Web Design <span class="float-right g-ml-10"><?=$each_val?></span></h4>
-                  <div class="js-hr-progress-bar progress g-height-4 rounded-0">
-                    <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= floor($each_val/$allticket) ?>%;" aria-valuenow="=<?= floor($each_val/$allticket) ?> aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-              <?php endif; ?>
-            <?php endforeach; ?>
-
-
-
             <!-- Progress Bars -->
             <div class="mb-4">
               <h4 class="h6">Web Design <span class="float-right g-ml-10">84%</span></h4>
