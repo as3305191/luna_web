@@ -26,6 +26,7 @@
   }
  
   .div_center {
+    left: 50%;
     display: flex;
     justify-content: center;    
     align-items: center;
