@@ -112,6 +112,5 @@ class Sing_status_dao extends MY_Model {
 		$query = $this -> db -> get();
 		return $query -> result();
 	}
-
 }
 ?>

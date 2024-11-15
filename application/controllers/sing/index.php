@@ -38,15 +38,22 @@ class Index extends MY_Base_Controller {
 		$find_active_sing = $this -> sing_status_dao -> find_active_sing();
 		$data['ticket'] = $ticket;
 		$data['sing_status_id'] = $find_active_sing[0]->id;
+		$find_active_sing_open = $this -> sing_dao -> find_active_sing();
 		$find_active_sing = $this -> sing_dao -> find_gave($data,$deviceUUID);
-		if(empty($find_active_sing)){
-			$data['uuid'] = $deviceUUID;
-			$last_id = $this -> sing_dao -> insert($data);
-			$res['last_id'] = $last_id;
-
+		if(!empty($find_active_sing)){
+			if(empty($find_active_sing)){
+				$data['uuid'] = $deviceUUID;
+				$last_id = $this -> sing_dao -> insert($data);
+				$res['last_id'] = $last_id;
+	
+			} else{
+				$this -> sing_dao -> update($data, $find_active_sing[0]->id);
+				$res['re_msg'] = '已更換投票人員';
+			}
 		} else{
-			$this -> sing_dao -> update($data, $find_active_sing[0]->id);
+			$res['msg'] = '活動已關閉無法投票';
 		}
+		
 
 		$res['success'] = TRUE;
 		$this -> to_json($res);

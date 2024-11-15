@@ -217,8 +217,18 @@
 				num: m,	
 			},
 			success : function(data) {
-				alert('投票完成');
-        location.reload();
+        if(data.last_id){
+          alert('投票完成');
+          location.reload();
+        } else{
+          if(data.re_msg){
+            alert(data.re_msg);
+            location.reload();
+          } else{
+            alert(data.msg);
+          }
+        }
+				
 			}
 		});
 		
