@@ -43,11 +43,11 @@ class Index extends MY_Base_Controller {
 
 
 							arsort($ticket_array);
-		$data['all_ticket'][] = $all_ticket;
+		$data['all_ticket'] = $all_ticket;
 
 		$data['ticket_array'] = $ticket_array;
 		$data['winner'] = $ticket_array;
-		$this -> to_json($data);
+		$this -> to_json($ticket_array);
 
 		$this -> load -> view('sing/sing_ranking', $data);
 	}
