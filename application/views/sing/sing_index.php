@@ -65,7 +65,7 @@
             <div class="col-lg-12">
               <!-- Overall Statistics -->
 
-              <div class="col-md-4 g-mb-30">
+              <div class="col-md-12 g-mb-30">
                 <!-- Icon Blocks -->
                 <div class="g-brd-around--md g-brd-gray-light-v4 text-center g-pa-10 g-px-30--lg g-py-40--lg">
                   <span class="d-block g-color-gray-dark-v4 g-font-size-40 g-mb-15">
