@@ -64,16 +64,28 @@
             <!-- Profile Content -->
             <div class="col-lg-12">
               <!-- Overall Statistics -->
-              <div class="element_top" >
-              
-                <input type="radio" name="m" value="m_1" id="m_1"><label for="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></label><br>
-                <input type="radio" name="m" value="m_2" id="m_2"><label for="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></label><br>
-                <input type="radio" name="m" value="m_3" id="m_3"><label for="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></label><br>
-                <input type="radio" name="m" value="m_4" id="m_4"><label for="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></label><br>
-                <input type="radio" name="m" value="m_5" id="m_5"><label for="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></label><br>
 
+              <div class="col-md-4 g-mb-30">
+                <!-- Icon Blocks -->
+                <div class="g-brd-around--md g-brd-gray-light-v4 text-center g-pa-10 g-px-30--lg g-py-40--lg">
+                  <span class="d-block g-color-gray-dark-v4 g-font-size-40 g-mb-15">
+                    <i class="icon-education-087 u-line-icon-pro"></i>
+                  </span>
+                  <h3 class="h5 g-color-black g-mb-10">Web Design &amp; Development</h3>
+                  <p class="g-color-gray-dark-v4">We strive to embrace and drive change in our industry which allows us to keep our clients relevant and ready to adapt.</p>
+                  <div class="d-inline-block g-width-40 g-brd-bottom g-brd-gray-dark-v5 g-my-15"></div>
+                  <ul class="list-unstyled g-px-30 g-mb-0">
+                    <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10"> <input type="radio" name="m" value="m_1" id="m_1"><label for="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></label></li>
+                    <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10"> <input type="radio" name="m" value="m_2" id="m_2"><label for="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></label></li>
+                    <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10"> <input type="radio" name="m" value="m_3" id="m_3"><label for="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></label></li>
+                    <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10">   <input type="radio" name="m" value="m_4" id="m_4"><label for="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></label></li>
+                    <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10"> <input type="radio" name="m" value="m_5" id="m_5"><label for="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></label></li>
+                    <li class="g-py-8"> <button type="button" class="btn btn-sm btn-primary element" onclick="do_save()">投票</button></li>
+                  </ul>
+                </div>
+                <!-- End Icon Blocks -->
               </div>
-              <button type="button" class="btn btn-sm btn-primary element" onclick="do_save()">投票</button>
+
 
             </div>
             <!-- End Profile Content -->
