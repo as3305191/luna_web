@@ -64,7 +64,7 @@
                 </span>
               <h2 class="h4 g-color-black">排行榜</h2>
             </div>
-
+          
             
             <?php $i=1; ?>
             <?php foreach ($ticket_array as $each_key => $each_val): ?>
@@ -90,10 +90,12 @@
 
 
             <hr class="g-brd-gray-light-v4">
+            </div>
 
           
             <!-- End Tags -->
           </div>
+        </div>
         </div>
       </div>
     </section>
