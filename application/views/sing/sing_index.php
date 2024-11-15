@@ -99,6 +99,7 @@
                         <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_4" id="m_4"><label for="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></label></div></li>
                         <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_5" id="m_5"><label for="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></label></div></li>
                         <li class="g-py-8"> <button type="button" class="btn btn-sm btn-primary" onclick="do_save()">投票</button></li>
+                        <li class="g-py-8"> <button type="button" class="btn btn-sm btn-primary" onclick="view_ranking()">顯示投票結果</button></li>
                       </ul>
                   <?php else: ?>
                       <h3 class="h5 g-color-black g-mb-10">目前無開放的歌唱活動</h3>
@@ -229,6 +230,27 @@
             location.reload();
 
           }
+        }
+				
+			}
+		});
+		
+	};
+
+  function view_ranking() {
+		var url = baseUrl + 'sing/index/view_ranking';
+
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+			},
+			success : function(data) {
+        if(data.success){
+          location.href = "<?= base_url('sing/index/ranking') ?>";
+        } else{
+          alert(data.msg);
+
         }
 				
 			}

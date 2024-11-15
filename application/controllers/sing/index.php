@@ -26,8 +26,8 @@ class Index extends MY_Base_Controller {
 
 	public function ranking() {
 		$data = array();
-		// $sing_status_id= $this -> get_get('sing_status_id');
-		$sing_status_id= 11;
+		$winner_array = array();
+		$sing_status_id= $this -> sing_status_dao -> find_can_ranking();
 
 		$all_ticket_item_m1 = $this -> sing_dao -> find_all_ticket_by_num('m_1',$sing_status_id);
 		$all_ticket_item_m2 = $this -> sing_dao -> find_all_ticket_by_num('m_2',$sing_status_id);
@@ -42,11 +42,19 @@ class Index extends MY_Base_Controller {
 							'm5' => $all_ticket_item_m5,);
 
 
-							arsort($ticket_array);
-		$data['all_ticket'] = $all_ticket;
+		arsort($ticket_array);
+		$winner =array_key_first($ticket_array) ;
+		foreach($ticket_array as $key=>$value){
+			if($value ==$ticket_array[$winner] ){
+				$user_name = $this -> sing_status_dao -> find_can_ranking_winner($value,$sing_status_id);
+				$winner_array[]=$user_name;
+			}
+		}
 
+		$data['winner_name'] = $winner_array;
+		$data['all_ticket'] = $all_ticket;
 		$data['ticket_array'] = $ticket_array;
-		$data['winner'] =array_key_first($ticket_array) ;
+		$data['winner']  = $winner;
 		// $this -> to_json($data);
 
 		$this -> load -> view('sing/sing_ranking', $data);
@@ -81,6 +89,19 @@ class Index extends MY_Base_Controller {
 		$this -> to_json($res);
 		
 	}
+
+	public function view_ranking() {
+		$res = array();
+		$sing_status_id= $this -> sing_status_dao -> find_can_ranking();
+		if(!empty($sing_status_id)){
+			$res['success'] = TRUE;
+		} else{
+			$res['msg'] = '比賽目前進行中，請稍候。';
+		}
+		$this -> to_json($res);
+		
+	}
+
 	public function find_uuid_is_used() {
 		$res = array();
 		$uuid = $this -> get_post('uuid');

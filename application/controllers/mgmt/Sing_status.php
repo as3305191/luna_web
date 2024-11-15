@@ -121,6 +121,23 @@ class Sing_status extends MY_Mgmt_Controller {
 		$this -> to_json($res);
 	}
 
+	public function stop_rank() {
+		$res = array();
+		$id = $this -> get_post('id');
+		
+		$list = $this -> sing_status_dao -> find_by_id($id);
+		if($list->is_stop_rank==0){
+			$u_data['is_stop_rank'] = 1;
+			$res['success_msg'] = '投票結束';
+			$this -> sing_status_dao -> update($u_data, $id);
+		}else{
+			$u_data['is_stop_rank'] = 0;
+			$res['success_msg'] = '恢復投票';
+			$this -> sing_status_dao -> update($u_data, $id);
+		}
+		$res['success'] = TRUE;
+		$this -> to_json($res);
+	}
 
 	public function delete($id) {
 		$res['success'] = TRUE;

@@ -123,5 +123,25 @@ class Sing_status_dao extends MY_Model {
 		$query = $this -> db -> get();
 		return $query -> result();
 	}
+	function find_can_ranking(){
+		$date = date('Y.m.d');
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.id');
+		$this -> db -> where('_m.is_stop_rank',1);
+		$this -> db -> where('_m.open_date',$date);
+
+		$this -> db -> order_by('_m.id', 'desc');
+		$list = $this -> db -> get() -> result();
+		return $list[0];
+	}
+	function find_can_ranking_winner($num,$id){
+		$date = date('Y.m.d');
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.'.$num);
+		$this -> db -> where('_m.id',$id);
+
+		$list = $this -> db -> get() -> result();
+		return $list[0];
+	}
 }
 ?>

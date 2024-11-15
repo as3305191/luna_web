@@ -103,6 +103,12 @@ thead tr th {
 				render:function ( data, type, row ) {
 					var input = '';
 					var is_stop_html ='';
+
+					if(row.is_stop_rank==0){//可以投
+						do_rank_button  = '<button type="button" style="color:red;" class="btn btn-sm  pull-right" onclick="ranking_set('+row.id+')">暫停投票</button>';
+					} else{
+						do_rank_button  = '<button type="button" style="color:green;" class="btn btn-sm  pull-right" onclick="ranking_set('+row.id+')">重啟投票</button>';
+					}
 					if(row.status <1){//開放
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" checked id="'+row.id+'" >'
 						var html = '<span class="onoffswitch" style="margin-top: 10px;">'
@@ -112,6 +118,7 @@ thead tr th {
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
 					+'</span>'
+					+do_rank_button;
 
 					}else{
 						input = '<input type="checkbox"  class="product-post onoffswitch-checkbox" id="'+row.id+'" >'
@@ -121,9 +128,10 @@ thead tr th {
 							+'<span class="onoffswitch-inner" data-swchon-text="開放" data-swchoff-text="開放"></span>'
 							+'<span class="onoffswitch-switch"></span>'
 						+'</label>'
-					+'</span>'
-					+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>'
-					}
+						+'</span>'
+						+ '<a href="#deleteModal" role="button" data-toggle="modal" style="margin-left: 10px;"><i class="fa fa-trash fa-lg"></i></a>'
+						+do_rank_button;
+				    }
 					return html;
 		    },
 				searchable : false,
@@ -158,4 +166,21 @@ thead tr th {
 		});
 	});
 
+	function ranking_set(id) {
+		$.ajax({
+			url: '<?= base_url() ?>' + 'mgmt/sing_status/stop_rank',
+			type: 'POST',
+			data: {
+				id: id
+			},
+			dataType: 'json',
+			success: function(d) {
+					// console.log(d);
+				currentApp.tableReload();
+			},
+			failure:function(){
+				alert('faialure');
+			}
+		});
+	}
 </script>
