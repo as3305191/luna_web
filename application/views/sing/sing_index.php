@@ -84,25 +84,29 @@
               <div class="col-md-12 g-mb-30">
                 <!-- Icon Blocks -->
 
-                <?php if (isset($item)): ?>
+               
                   <div class="g-brd-around--md g-brd-gray-light-v4 text-center g-pa-10 g-px-30--lg g-py-40--lg">
                   <span class="d-block g-color-gray-dark-v4 g-font-size-40 g-mb-15">
                     <i class="icon-education-087 u-line-icon-pro"></i>
                   </span>
-                  <h3 class="h5 g-color-black g-mb-10">Web Design &amp; Development</h3>
-                  <p class="g-color-gray-dark-v4">We strive to embrace and drive change in our industry which allows us to keep our clients relevant and ready to adapt.</p>
-                    <ul class="list-unstyled g-px-30 g-mb-0 ">
-                      <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_1" id="m_1"><label for="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></label></div></li>
-                      <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_2" id="m_2"><label for="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></label></div></li>
-                      <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_3" id="m_3"><label for="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></label></div></li>
-                      <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_4" id="m_4"><label for="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></label></div></li>
-                      <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_5" id="m_5"><label for="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></label></div></li>
-                      <li class="g-py-8"> <button type="button" class="btn btn-sm btn-primary" onclick="do_save()">投票</button></li>
-                    </ul>
+                  <?php if (isset($item)): ?>
+                    <h3 class="h5 g-color-black g-mb-10">Web Design &amp; Development</h3>
+                    <p class="g-color-gray-dark-v4">We strive to embrace and drive change in our industry which allows us to keep our clients relevant and ready to adapt.</p>
+                      <ul class="list-unstyled g-px-30 g-mb-0 ">
+                        <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_1" id="m_1"><label for="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></label></div></li>
+                        <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_2" id="m_2"><label for="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></label></div></li>
+                        <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_3" id="m_3"><label for="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></label></div></li>
+                        <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_4" id="m_4"><label for="m_4">4. <?= isset($item) ? $item -> m_4 : '' ?></label></div></li>
+                        <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_5" id="m_5"><label for="m_5">5. <?= isset($item) ? $item -> m_5 : '' ?></label></div></li>
+                        <li class="g-py-8"> <button type="button" class="btn btn-sm btn-primary" onclick="do_save()">投票</button></li>
+                      </ul>
+                  <?php else: ?>
+                      <h3 class="h5 g-color-black g-mb-10">目前無開放的歌唱活動</h3>
+
+                   <?php endif; ?>
+
                   </div> 
-                <?php else: ?>
-                  <h3 class="h5 g-color-black g-mb-10">目前無開放的歌唱活動</h3>
-                <?php endif; ?>
+               
 
 
                
