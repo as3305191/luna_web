@@ -24,6 +24,9 @@
     transform: translate(-50%, 10%);
     padding: 10px;
   }
+  .t_center {
+    vertical-align:middle;
+  }
 @media only screen and (max-width: 750px) {
 	.dt_list_th{
 	  min-width: 67px !important;
@@ -74,7 +77,7 @@
                   <h3 class="h5 g-color-black g-mb-10">Web Design &amp; Development</h3>
                   <p class="g-color-gray-dark-v4">We strive to embrace and drive change in our industry which allows us to keep our clients relevant and ready to adapt.</p>
                   <div class="d-inline-block g-width-40 g-brd-bottom g-brd-gray-dark-v5 g-my-15"></div>
-                  <ul class="list-unstyled g-px-30 g-mb-0">
+                  <ul class="list-unstyled g-px-30 g-mb-0 t_center">
                     <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10"> <input type="radio" name="m" value="m_1" id="m_1"><label for="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></label></li>
                     <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10"> <input type="radio" name="m" value="m_2" id="m_2"><label for="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></label></li>
                     <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10"> <input type="radio" name="m" value="m_3" id="m_3"><label for="m_3">3. <?= isset($item) ? $item -> m_3 : '' ?></label></li>
