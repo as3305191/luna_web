@@ -30,9 +30,9 @@
     justify-content: center;    
     align-items: center;
   }
-  /* .t_center {
+  .t_center {
     text-align: left;
-  } */
+  }
 @media only screen and (max-width: 750px) {
 	.dt_list_th{
 	  min-width: 67px !important;
