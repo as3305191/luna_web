@@ -69,7 +69,7 @@ class Index extends MY_Base_Controller {
 				$res['last_id'] = $last_id;
 	
 			} else{
-				$this -> sing_dao -> update($data, $find_active_sing[0]->id);
+				$this -> sing_dao -> update($data, $find_gave[0]->id);
 				$res['re_msg'] = '已更換投票人員';
 			}
 		} else{
