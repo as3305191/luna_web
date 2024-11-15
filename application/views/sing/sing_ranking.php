@@ -82,21 +82,7 @@
               </div>
             </div>
 
-            <hr class="g-brd-gray-light-v4">
-
-            <!-- Tags -->
-            <ul class="u-list-inline text-center mb-0">
-              <li class="list-inline-item">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v4 g-color-primary--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#">Design</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v4 g-color-primary--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#">Art</a>
-              </li>
-              <li class="list-inline-item">
-                <a class="u-tags-v1 g-brd-around g-brd-gray-light-v3 g-brd-primary--hover g-color-gray-dark-v4 g-color-primary--hover g-font-size-12 g-rounded-50 g-py-4 g-px-15" href="#">Graphic</a>
-              </li>
-            </ul>
-            <!-- End Tags -->
+          
           </div>
         </div>
         </div>
