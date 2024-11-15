@@ -31,7 +31,7 @@
     align-items: center;
   }
   .t_center {
-    left: 3%;
+    left: 10%;
     text-align: left;
   }
 @media only screen and (max-width: 750px) {
