@@ -20,7 +20,7 @@ class Index extends MY_Base_Controller {
 			$data['item'] = $item;
 		}
 		$this -> load -> view('sing/sing_index', $data);
-		// $this -> to_json($data);
+		$this -> to_json($data);
 
 	}
 
