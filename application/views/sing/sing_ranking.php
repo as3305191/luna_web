@@ -50,7 +50,7 @@
     <?php $this -> load -> view("old_system_view/old_system_view_header")  ?>
     <!-- End Header -->
 
-    <!-- <section class="g-mb-100"> -->
+    <section class="g-mb-100">
       <div class="container">
         <div class="row">
 
@@ -104,7 +104,7 @@
           </div>
         </div>
       </div>
-    <!-- </section> -->
+    </section>
 
     <!-- Footer -->
     <!-- End Footer -->
