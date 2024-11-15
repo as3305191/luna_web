@@ -56,35 +56,37 @@
 
           <!-- Coach Sidebar -->
           <?php $this -> load -> view("old_system_view/old_system_view_sidebar")  ?>
+          <div class="col-lg-4 g-mb-60">
           <div class="u-shadow-v21 g-brd-around g-brd-gray-light-v4 rounded g-pa-25">
             <div class="text-center mb-5">
               <span class="u-icon-v2 g-width-50 g-height-50 g-color-white g-bg-black g-font-size-18 rounded-circle mb-3">
                   <i class="icon-communication-116 u-line-icon-pro"></i>
                 </span>
               <h2 class="h4 g-color-black">排行榜</h2>
+              <?php $i=1; ?>
+              <?php foreach ($ticket_array as $each_key => $each_val): ?>
+                <?php if ($each_key==$winner): ?>
+                  <div class="mb-4">
+                    <h4 class="h6">第1名<span class="float-right g-ml-10"><?=$each_val?></span></h4>
+                    <div class="js-hr-progress-bar progress g-height-4 rounded-0">
+                      <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>%;" aria-valuenow="<?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <?php $i++; ?>
+                <?php else : ?>
+                  <div class="mb-4">
+                    <h4 class="h6">第<?= $i ?>名<span class="float-right g-ml-10"><?=$each_val?></span></h4>
+                    <div class="js-hr-progress-bar progress g-height-4 rounded-0">
+                      <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>%;" aria-valuenow="<?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                  </div>
+                  <?php $i++; ?>
+                <?php endif; ?>
+              <?php endforeach; ?>
             </div>
 
 
-            <?php $i=1; ?>
-            <?php foreach ($ticket_array as $each_key => $each_val): ?>
-              <?php if ($each_key==$winner): ?>
-                <div class="mb-4">
-                  <h4 class="h6">第1名<span class="float-right g-ml-10"><?=$each_val?></span></h4>
-                  <div class="js-hr-progress-bar progress g-height-4 rounded-0">
-                    <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>%;" aria-valuenow="<?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <?php $i++; ?>
-              <?php else : ?>
-                <div class="mb-4">
-                  <h4 class="h6">第<?= $i ?>名<span class="float-right g-ml-10"><?=$each_val?></span></h4>
-                  <div class="js-hr-progress-bar progress g-height-4 rounded-0">
-                    <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>%;" aria-valuenow="<?= $each_val!==0 ? floor($each_val/$allticket)*100 : 0 ?>" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                </div>
-                <?php $i++; ?>
-              <?php endif; ?>
-            <?php endforeach; ?>
+           
             <!-- Progress Bars -->
             <div class="mb-4">
               <h4 class="h6">Web Design <span class="float-right g-ml-10">84%</span></h4>
@@ -102,6 +104,7 @@
 
           
           </div>
+        </div>
         </div>
       </div>
     </section>
