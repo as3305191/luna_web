@@ -36,12 +36,12 @@ class Index extends MY_Base_Controller {
 		$deviceUUID = json_decode(json_encode($deviceUUID_object) , true);
 		$ticket = $this -> get_post('num');
 		$find_active_sing = $this -> sing_status_dao -> find_active_sing();
-		$data['ticket'] = $ticket;
-		$data['sing_status_id'] = $find_active_sing[0]->id;
-		$find_active_sing_open = $this -> sing_dao -> find_active_sing();
-		$find_active_sing = $this -> sing_dao -> find_gave($data,$deviceUUID);
+		
 		if(!empty($find_active_sing)){
-			if(empty($find_active_sing)){
+			$find_gave = $this -> sing_dao -> find_gave($data,$deviceUUID);
+			$data['ticket'] = $ticket;
+			$data['sing_status_id'] = $find_active_sing[0]->id;
+			if(empty($find_gave)){
 				$data['uuid'] = $deviceUUID;
 				$last_id = $this -> sing_dao -> insert($data);
 				$res['last_id'] = $last_id;
