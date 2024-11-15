@@ -26,10 +26,13 @@
   }
  
   .div_center {
+    position: absolute;
     left: 50%;
     display: flex;
     justify-content: center;    
     align-items: center;
+    transform: translate(-50%, 10%);
+
   }
   .t_center {
    
