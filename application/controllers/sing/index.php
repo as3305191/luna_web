@@ -120,6 +120,11 @@ class Index extends MY_Base_Controller {
 		
 	}
 
+	public function show_winner(){
+		$data = array();
+		$this -> load -> view('layout/show_sing_winner',$data);
+	}
+
 	public function logout() {
 		// $corp = $this -> session -> userdata('corp');
 		$this -> session -> sess_destroy();
