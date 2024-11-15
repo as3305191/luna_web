@@ -43,7 +43,7 @@ class Index extends MY_Base_Controller {
 
 
 							arsort($ticket_array);
-		$data['all_ticket'] = $all_ticket;
+		$data['all_ticket'][] = $all_ticket;
 
 		$data['ticket_array'] = $ticket_array;
 		$data['winner'] = $ticket_array;
