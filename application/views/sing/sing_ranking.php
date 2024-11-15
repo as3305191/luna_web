@@ -76,7 +76,7 @@
                   </div>
                 </div>
                 <?php $i++; ?>
-              <?php else : ?>
+                <?php endif; ?>
                 <div class="mb-4">
                   <h4 class="h6">第<?= $i ?>名<span class="float-right g-ml-10"><?=$each_val?></span></h4>
                   <div class="js-hr-progress-bar progress g-height-4 rounded-0">
@@ -84,7 +84,6 @@
                   </div>
                 </div>
                 <?php $i++; ?>
-              <?php endif; ?>
             <?php endforeach; ?>
             <!-- Progress Bars -->
             <div class="mb-4">
