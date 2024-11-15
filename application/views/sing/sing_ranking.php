@@ -76,7 +76,7 @@
                 </div>
               <?php else : ?>
                 <div class="mb-4">
-                  <h4 class="h6">Web Design <span class="float-right g-ml-10"><?=$each_val?></span></h4>
+                  <h4 class="h6">1 <span class="float-right g-ml-10"><?=$each_val?></span></h4>
                   <div class="js-hr-progress-bar progress g-height-4 rounded-0">
                     <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= floor($each_val/$allticket) ?>%;" aria-valuenow="<?= floor($each_val/$allticket) ?>" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
