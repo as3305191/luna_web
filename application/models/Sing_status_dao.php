@@ -112,5 +112,16 @@ class Sing_status_dao extends MY_Model {
 		$query = $this -> db -> get();
 		return $query -> result();
 	}
+	function find_today_active_sing(){
+		$date = date('Y.m.d');
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.status',1);
+		$this -> db -> where('_m.open_date',$date);
+
+		$this -> db -> order_by('_m.id', 'desc');
+		$query = $this -> db -> get();
+		return $query -> result();
+	}
 }
 ?>

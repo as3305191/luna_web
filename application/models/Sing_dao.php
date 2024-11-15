@@ -69,6 +69,17 @@ class Sing_dao extends MY_Model {
 		$list = $this -> db -> get() -> result();
 		return $list;
 	}
+
+	function find_all_ticket_by_num($num,$sing_status_id){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> where('_m.sing_status_id',$sing_status_id);
+		$this -> db -> where('_m.ticket',$num);
+
+		// $this -> db -> join("news_style ns", "ns.id = _m.news_style_id", "left");
+		$list = $this -> db -> get() -> result();
+		return count($list);
+	}
 	
 }
 ?>

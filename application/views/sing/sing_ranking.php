@@ -62,8 +62,8 @@
               <span class="u-icon-v2 g-width-50 g-height-50 g-color-white g-bg-black g-font-size-18 rounded-circle mb-3">
                   <i class="icon-communication-116 u-line-icon-pro"></i>
                 </span>
-              <h2 class="h4 g-color-black">Trending</h2>
-              <p>It's important to stay detail oriented with every project we tackle.</p>
+              <h2 class="h4 g-color-black">排行榜</h2>
+              <p> <?= isset($item) ? $item -> m_1 : '' ?></p>
             </div>
 
             <!-- Progress Bars -->
