@@ -26,16 +26,12 @@
   }
  
   .div_center {
-    position: absolute;
-    left: 50%;
     display: flex;
     justify-content: center;    
     align-items: center;
-    transform: translate(-50%, 10%);
-
   }
   .t_center {
-   
+    left: 50%;
     text-align: left;
   }
 @media only screen and (max-width: 750px) {
