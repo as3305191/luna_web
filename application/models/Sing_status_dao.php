@@ -132,7 +132,11 @@ class Sing_status_dao extends MY_Model {
 
 		$this -> db -> order_by('_m.id', 'desc');
 		$list = $this -> db -> get() -> result();
-		return $list[0];
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return null;
+		}
 	}
 	function find_can_ranking_winner($num,$id){
 		$date = date('Y.m.d');
@@ -141,7 +145,11 @@ class Sing_status_dao extends MY_Model {
 		$this -> db -> where('_m.id',$id);
 
 		$list = $this -> db -> get() -> result();
-		return $list[0];
+		if(count($list)>0){
+			return $list[0];
+		} else{
+			return null;
+		}
 	}
 }
 ?>
