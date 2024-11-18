@@ -78,7 +78,7 @@ class Sing_dao extends MY_Model {
 
 		$list = $this -> db -> get() -> result();
 		if($list){
-			return $list;
+			return count($list);
 		} else{
 			return null;
 		}
