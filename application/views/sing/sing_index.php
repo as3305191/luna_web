@@ -216,7 +216,7 @@
 			url : url,
 			data : {
 				deviceUUID: deviceUUID,
-        active_id: $('#sing_status_id').val(),	
+        sing_status_id: $('#sing_status_id').val(),	
 				num: m,	
 			},
 			success : function(data) {

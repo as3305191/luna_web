@@ -65,22 +65,28 @@ class Index extends MY_Base_Controller {
 		$res = array();
 		$deviceUUID_object= $this -> get_post('deviceUUID');
 		$deviceUUID = $deviceUUID_object;
+		$sing_status_id= $this -> get_post('sing_status_id');
 		$ticket = $this -> get_post('num');
-		$find_active_sing = $this -> sing_status_dao -> find_active_sing();
+		$find_active_sing = $this -> sing_status_dao -> find_by_id($sing_status_id);
 		
-		if(!empty($find_active_sing)){
-			$data['sing_status_id'] = $find_active_sing[0]->id;
-			$find_gave = $this -> sing_dao -> find_gave($data,$deviceUUID);
-			$data['ticket'] = $ticket;
-			if(empty($find_gave)){
-				$data['uuid'] = $deviceUUID;
-				$last_id = $this -> sing_dao -> insert($data);
-				$res['last_id'] = $last_id;
-	
+		if(!empty($find_active_sing)&&$find_active_sing->status==0){
+			if($find_active_sing->is_stop_rank==0){
+				$data['sing_status_id'] = $find_active_sing[0]->id;
+				$find_gave = $this -> sing_dao -> find_gave($data,$deviceUUID);
+				$data['ticket'] = $ticket;
+				if(empty($find_gave)){
+					$data['uuid'] = $deviceUUID;
+					$last_id = $this -> sing_dao -> insert($data);
+					$res['last_id'] = $last_id;
+		
+				} else{
+					$this -> sing_dao -> update($data, $find_gave[0]->id);
+					$res['re_msg'] = '已更換投票人員';
+				}
 			} else{
-				$this -> sing_dao -> update($data, $find_gave[0]->id);
-				$res['re_msg'] = '已更換投票人員';
+				$res['msg'] = '投票已截止，請觀看排行榜。';
 			}
+			
 		} else{
 			$res['msg'] = '活動已關閉無法投票';
 		}
