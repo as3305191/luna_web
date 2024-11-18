@@ -74,7 +74,7 @@
                   <div class="mb-4">
                     <h4 class=" "><a href="#winnerModal" role="button" data-toggle="modal" class="btn btn-md u-btn-gradient-v1 g-mr-10 g-mb-15">第1名</a><span class="float-right g-ml-10"><?=$each_val!=='0' ? $each_val:0?></span></h4>
                     <div class="js-hr-progress-bar progress g-height-4 rounded-0">
-                      <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!=='0' ? floor($each_val/$all_ticket)*100 : '0' ?>%;" aria-valuenow="<?= $each_val!=='0' ? floor($each_val/$all_ticket)*100 : '0' ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!==0 ? floor($each_val/$all_ticket)*100 : 0 ?>%;" aria-valuenow="<?= $each_val!==0 ? floor($each_val/$all_ticket)*100 : 0 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                   <?php $i++; ?>
@@ -82,7 +82,7 @@
                   <div class="mb-4">
                     <h4 class="h6 t_center">第<?= $i ?>名<span class="float-right g-ml-10"><?=$each_val!=='0' ? $each_val:0?></span></h4>
                     <div class="js-hr-progress-bar progress g-height-4 rounded-0">
-                      <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!=='0' ? floor($each_val/$all_ticket)*100 :'0' ?>%;" aria-valuenow="<?= $each_val!=='0' ? floor($each_val/$all_ticket)*100 : '0' ?>" aria-valuemin="0" aria-valuemax="100"></div>
+                      <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val!==0 ? floor($each_val/$all_ticket)*100 :0 ?>%;" aria-valuenow="<?= $each_val!==0 ? floor($each_val/$all_ticket)*100 : 0 ?>" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                   <?php $i++; ?>
