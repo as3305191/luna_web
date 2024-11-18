@@ -29,12 +29,12 @@ class Index extends MY_Base_Controller {
 		$winner_array = array();
 		$sing_status_id= $this -> sing_status_dao -> find_can_ranking();
 
-		// $all_ticket_item_m1 = $this -> sing_dao -> find_all_ticket_by_num('m_1',$sing_status_id);
-		// $all_ticket_item_m2 = $this -> sing_dao -> find_all_ticket_by_num('m_2',$sing_status_id);
-		// $all_ticket_item_m3 = $this -> sing_dao -> find_all_ticket_by_num('m_3',$sing_status_id);
-		// $all_ticket_item_m4 = $this -> sing_dao -> find_all_ticket_by_num('m_4',$sing_status_id);
-		// $all_ticket_item_m5 = $this -> sing_dao -> find_all_ticket_by_num('m_5',$sing_status_id);
-		// $all_ticket = $all_ticket_item_m1+$all_ticket_item_m2+$all_ticket_item_m3+$all_ticket_item_m4+$all_ticket_item_m5;
+		$all_ticket_item_m1 = $this -> sing_dao -> find_all_ticket_by_num('m_1',$sing_status_id->id);
+		$all_ticket_item_m2 = $this -> sing_dao -> find_all_ticket_by_num('m_2',$sing_status_id->id);
+		$all_ticket_item_m3 = $this -> sing_dao -> find_all_ticket_by_num('m_3',$sing_status_id->id);
+		$all_ticket_item_m4 = $this -> sing_dao -> find_all_ticket_by_num('m_4',$sing_status_id->id);
+		$all_ticket_item_m5 = $this -> sing_dao -> find_all_ticket_by_num('m_5',$sing_status_id->id);
+		$all_ticket = $all_ticket_item_m1+$all_ticket_item_m2+$all_ticket_item_m3+$all_ticket_item_m4+$all_ticket_item_m5;
 		// $ticket_array =  array('m1' => $all_ticket_item_m1,
 		// 					'm2' => $all_ticket_item_m2,
 		// 					'm3' => $all_ticket_item_m3,
