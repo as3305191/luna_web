@@ -11,10 +11,10 @@
   .element {
     /* border: 5px solid; */
     position: absolute;
-    top: 110%;
+    /* top: 110%; */
     left: 50%;
-    transform: translate(-50%, 700%);
-    padding: 10px;
+    transform: translate(1090%, -165%);
+    /* padding: 10px; */
   }
   .element_top {
     /* border: 5px solid; */
