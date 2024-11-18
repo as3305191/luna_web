@@ -56,7 +56,7 @@ class Index extends MY_Base_Controller {
 		$data['ticket_array'] = $ticket_array;
 		$data['winner']  = $winner;
 		$data['winner_name'] = $winner_array;
-		// $this -> to_json($data);
+		$this -> to_json($data);
 
 		$this -> load -> view('sing/sing_ranking', $data);
 	}
