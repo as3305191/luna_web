@@ -105,9 +105,7 @@
   <div class="modal fade" id="winnerModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
-    <?php foreach ($winner_name as $each): ?>
-      <span class="float-right g-ml-10"><?= $each ?></span></br>
-    <?php endforeach; ?>
+
 
 			<div class="modal-header">
 				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
@@ -115,6 +113,9 @@
 				</button>
 			</div>
 			<div class="modal-body" id="edit-modal-body">
+      <?php foreach ($winner_name as $each): ?>
+        <span class="float-right g-ml-10"><?= $each ?></span></br>
+      <?php endforeach; ?>
 			</div>
 			<div class="modal-footer">
 			
