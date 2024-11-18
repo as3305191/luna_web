@@ -35,30 +35,30 @@ class Index extends MY_Base_Controller {
 		$all_ticket_item_m4 = $this -> sing_dao -> find_all_ticket_by_num('m_4',$sing_status_id->id);
 		$all_ticket_item_m5 = $this -> sing_dao -> find_all_ticket_by_num('m_5',$sing_status_id->id);
 		$all_ticket = $all_ticket_item_m1+$all_ticket_item_m2+$all_ticket_item_m3+$all_ticket_item_m4+$all_ticket_item_m5;
-		// $ticket_array =  array('m1' => $all_ticket_item_m1,
-		// 					'm2' => $all_ticket_item_m2,
-		// 					'm3' => $all_ticket_item_m3,
-		// 					'm4' => $all_ticket_item_m4,
-		// 					'm5' => $all_ticket_item_m5,);
+		$ticket_array =  array('m1' => $all_ticket_item_m1,
+							'm2' => $all_ticket_item_m2,
+							'm3' => $all_ticket_item_m3,
+							'm4' => $all_ticket_item_m4,
+							'm5' => $all_ticket_item_m5,);
 
 
-		// arsort($ticket_array);
-		// $winner =array_key_first($ticket_array) ;
-		// foreach($ticket_array as $key=>$value){
-		// 	if($value ==$ticket_array[$winner] ){
-		// 		$user_name = $this -> sing_status_dao -> find_can_ranking_winner($value,$sing_status_id);
-		// 		$winner_array[]=$user_name;
-		// 	}
-		// }
+		arsort($ticket_array);
+		$winner =array_key_first($ticket_array) ;
+		foreach($ticket_array as $key=>$value){
+			if($value ==$ticket_array[$winner] ){
+				$user_name = $this -> sing_status_dao -> find_can_ranking_winner($value,$sing_status_id);
+				$winner_array[]=$user_name;
+			}
+		}
 		$data['sing_status_id'] = $sing_status_id;
 
-		// $data['winner_name'] = $winner_array;
+		$data['winner_name'] = $winner_array;
 		$data['all_ticket'] = $all_ticket;
-		// $data['ticket_array'] = $ticket_array;
-		// $data['winner']  = $winner;
-		// $data['$ticket_array[$winner]']  = $ticket_array[$winner];
+		$data['ticket_array'] = $ticket_array;
+		$data['winner']  = $winner;
+		$data['$ticket_array[$winner]']  = $ticket_array[$winner];
 
-		$this -> to_json($data);
+		// $this -> to_json($data);
 
 		$this -> load -> view('sing/sing_ranking', $data);
 	}
