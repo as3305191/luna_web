@@ -71,7 +71,7 @@ class Index extends MY_Base_Controller {
 		
 		if(!empty($find_active_sing)&&$find_active_sing->status==0){
 			if($find_active_sing->is_stop_rank==0){
-				$data['sing_status_id'] = $find_active_sing[0]->id;
+				$data['sing_status_id'] = $find_active_sing->id;
 				$find_gave = $this -> sing_dao -> find_gave($data,$deviceUUID);
 				$data['ticket'] = $ticket;
 				if(empty($find_gave)){
