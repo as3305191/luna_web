@@ -47,7 +47,7 @@ class Index extends MY_Base_Controller {
 		foreach($ticket_array as $key=>$value){
 			if($value ==$ticket_array[$winner] ){
 				$user_name = $this -> sing_status_dao -> find_can_ranking_winner($key,$sing_status_id->id);
-				$winner_array[]=$user_name;
+				$winner_array[]=$user_name->$key;
 			}
 		}
 		$data['sing_status_id'] = $sing_status_id;
