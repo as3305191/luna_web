@@ -76,11 +76,11 @@ class Sing_dao extends MY_Model {
 		$this -> db -> where('_m.sing_status_id',$sing_status_id);
 		$this -> db -> where('_m.ticket',$num);
 
-		$list = $this -> db -> get() -> row();
-		if(count($list)>0){
-			return count($list);
+		$list = $this -> db -> get() -> result();
+		if($list){
+			return $list;
 		} else{
-			return 0;
+			return null;
 		}
 	}
 	
