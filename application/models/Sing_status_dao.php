@@ -140,7 +140,8 @@ class Sing_status_dao extends MY_Model {
 	}
 	function find_can_ranking_winner($num,$id){
 		$this -> db -> from("$this->table_name as _m");
-		$this -> db -> select('_m.'.$num);
+		$m_num = '_m.'.$num;
+		$this -> db -> select($m_num);
 		$this -> db -> where('_m.id',$id);
 
 		$list = $this -> db -> get() -> result();
