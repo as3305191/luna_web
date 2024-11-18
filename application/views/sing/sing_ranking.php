@@ -107,15 +107,30 @@
 		<div class="modal-content">
 
 
-			<div class="modal-header">
+			<!-- <div class="modal-header">
 				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
 					<i class="fa fa-close"></i> 關閉
 				</button>
-			</div>
+			</div> -->
 			<div class="modal-body" id="edit-modal-body">
-      <?php foreach ($winner_name as $each): ?>
-        <span class="float-right g-ml-10"><?= $each ?></span></br>
-      <?php endforeach; ?>
+     
+
+
+      <div class="g-brd-around--md g-brd-gray-light-v4 text-center g-pa-10 g-px-30--lg g-py-40--lg">
+        <span class="d-block g-color-gray-dark-v4 g-font-size-40 g-mb-15">
+          <i class="icon-education-087 u-line-icon-pro"></i>
+        </span>
+          <h3 class="h5 g-color-black g-mb-10">Web Design &amp; Development</h3>
+          <p class="g-color-gray-dark-v4">We strive to embrace and drive change in our industry which allows us to keep our clients relevant and ready to adapt.</p>
+          <ul class="list-unstyled g-px-30 g-mb-0 ">
+          <?php foreach ($winner_name as $each): ?>
+            <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><?= $each ?></li>
+          <?php endforeach; ?>
+
+          </ul>
+       
+        </div> 
+
 			</div>
 			<div class="modal-footer">
 			
