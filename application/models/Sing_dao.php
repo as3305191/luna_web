@@ -80,7 +80,7 @@ class Sing_dao extends MY_Model {
 		if(count($list)>0){
 			return count($list);
 		} else{
-			return null;
+			return 0;
 		}
 		
 	}
