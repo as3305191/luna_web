@@ -56,7 +56,7 @@ class Index extends MY_Base_Controller {
 		$data['all_ticket'] = $all_ticket;
 		$data['ticket_array'] = $ticket_array;
 		$data['winner']  = $winner;
-		$data['$ticket_array[$winner]']  = $ticket_array[$winner];
+		// $data['$ticket_array[$winner]']  = $ticket_array[$winner];
 
 		// $this -> to_json($data);
 

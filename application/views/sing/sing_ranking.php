@@ -106,7 +106,7 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
     <?php foreach ($winner_name as $each): ?>
-      <span class="float-right g-ml-10"><?=$winner_name ?></span></br>
+      <span class="float-right g-ml-10"><?=$each ?></span></br>
     <?php endforeach; ?>
 
 			<div class="modal-header">
