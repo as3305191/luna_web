@@ -35,11 +35,11 @@ class Index extends MY_Base_Controller {
 		$all_ticket_item_m4 = $this -> sing_dao -> find_all_ticket_by_num('m_4',$sing_status_id->id);
 		$all_ticket_item_m5 = $this -> sing_dao -> find_all_ticket_by_num('m_5',$sing_status_id->id);
 		$all_ticket = $all_ticket_item_m1+$all_ticket_item_m2+$all_ticket_item_m3+$all_ticket_item_m4+$all_ticket_item_m5;
-		$ticket_array =  array('m1' => $all_ticket_item_m1,
-							'm2' => $all_ticket_item_m2,
-							'm3' => $all_ticket_item_m3,
-							'm4' => $all_ticket_item_m4,
-							'm5' => $all_ticket_item_m5,);
+		$ticket_array =  array('m_1' => $all_ticket_item_m1,
+							'm_2' => $all_ticket_item_m2,
+							'm_3' => $all_ticket_item_m3,
+							'm_4' => $all_ticket_item_m4,
+							'm_5' => $all_ticket_item_m5,);
 
 
 		arsort($ticket_array);
