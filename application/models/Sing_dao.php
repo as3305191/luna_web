@@ -82,7 +82,6 @@ class Sing_dao extends MY_Model {
 		} else{
 			return 0;
 		}
-		
 	}
 	
 }
