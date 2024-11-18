@@ -50,7 +50,7 @@ class Index extends MY_Base_Controller {
 		// 		$winner_array[]=$user_name;
 		// 	}
 		// }
-		$data['sing_status_id'] = $sing_status_id;
+		$data['sing_status_id'] = $sing_status_id->sing_status_id;
 
 		// $data['winner_name'] = $winner_array;
 		$data['all_ticket'] = $all_ticket;
