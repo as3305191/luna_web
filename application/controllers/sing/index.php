@@ -52,7 +52,7 @@ class Index extends MY_Base_Controller {
 		}
 		$data['sing_status_id'] = $sing_status_id;
 
-		// $data['winner_name'] = $winner_array;
+		$data['winner_name'] = $winner_array;
 		$data['all_ticket'] = $all_ticket;
 		$data['ticket_array'] = $ticket_array;
 		$data['winner']  = $winner;
