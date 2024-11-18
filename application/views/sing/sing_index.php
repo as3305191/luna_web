@@ -90,6 +90,7 @@
                     <i class="icon-education-087 u-line-icon-pro"></i>
                   </span>
                   <?php if (isset($item)): ?>
+                    <div id="sing_status_id" type="hidden"><?= isset($item) ? $item -> m_1 : '' ?></div>
                     <h3 class="h5 g-color-black g-mb-10">Web Design &amp; Development</h3>
                     <p class="g-color-gray-dark-v4">We strive to embrace and drive change in our industry which allows us to keep our clients relevant and ready to adapt.</p>
                       <ul class="list-unstyled g-px-30 g-mb-0 ">
@@ -215,6 +216,7 @@
 			url : url,
 			data : {
 				deviceUUID: deviceUUID,
+        active_id: $('#sing_status_id').val(),	
 				num: m,	
 			},
 			success : function(data) {

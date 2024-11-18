@@ -106,6 +106,7 @@ class Sing_status_dao extends MY_Model {
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.*');
 		$this -> db -> where('_m.status',0);
+		$this -> db -> where('_m.is_stop_rank',0);
 		$this -> db -> where('_m.open_date',$date);
 
 		$this -> db -> order_by('_m.id', 'desc');
