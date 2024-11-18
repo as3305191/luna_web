@@ -120,8 +120,7 @@
         <span class="d-block g-color-gray-dark-v4 g-font-size-40 g-mb-15">
           <i class="icon-education-087 u-line-icon-pro"></i>
         </span>
-          <h3 class="h5 g-color-black g-mb-10">Web Design &amp; Development</h3>
-          <p class="g-color-gray-dark-v4">We strive to embrace and drive change in our industry which allows us to keep our clients relevant and ready to adapt.</p>
+          <h3 class="h5 g-color-black g-mb-10">冠軍得獎者是：</h3>
           <ul class="list-unstyled g-px-30 g-mb-0 ">
           <?php foreach ($winner_name as $each): ?>
             <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><?= $each ?></li>
