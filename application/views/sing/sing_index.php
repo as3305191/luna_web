@@ -90,7 +90,7 @@
                     <i class="icon-education-087 u-line-icon-pro"></i>
                   </span>
                   <?php if (isset($item)): ?>
-                    <div id="sing_status_id" type="hidden"><?= isset($item) ? $item->id: '' ?></div>
+                    <input id="sing_status_id" type="hidden" value="<?= isset($item) ? $item->id: '' ?>">
                     <h3 class="h5 g-color-black g-mb-10">Web Design &amp; Development</h3>
                     <p class="g-color-gray-dark-v4">We strive to embrace and drive change in our industry which allows us to keep our clients relevant and ready to adapt.</p>
                       <ul class="list-unstyled g-px-30 g-mb-0 ">
