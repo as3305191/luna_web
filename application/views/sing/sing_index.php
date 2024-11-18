@@ -91,8 +91,7 @@
                   </span>
                   <?php if (isset($item)): ?>
                     <input id="sing_status_id" type="hidden" value="<?= isset($item) ? $item->id: '' ?>">
-                    <h3 class="h5 g-color-black g-mb-10">Web Design &amp; Development</h3>
-                    <p class="g-color-gray-dark-v4">We strive to embrace and drive change in our industry which allows us to keep our clients relevant and ready to adapt.</p>
+                    <h3 class="h5 g-color-black g-mb-10">請將票投給您最喜歡的參賽者</h3>
                       <ul class="list-unstyled g-px-30 g-mb-0 ">
                         <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_1" id="m_1"><label for="m_1">1. <?= isset($item) ? $item -> m_1 : '' ?></label></div></li>
                         <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><div class="col-lg-2 col-md-2 col-sm-2 t_center"><input type="radio" name="m" value="m_2" id="m_2"><label for="m_2">2. <?= isset($item) ? $item -> m_2 : '' ?></label></div></li>
