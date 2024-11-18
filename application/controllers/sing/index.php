@@ -52,13 +52,11 @@ class Index extends MY_Base_Controller {
 		}
 		$data['sing_status_id'] = $sing_status_id;
 
-		$data['winner_name'] = $winner_array;
 		$data['all_ticket'] = $all_ticket;
 		$data['ticket_array'] = $ticket_array;
 		$data['winner']  = $winner;
-		// $data['$ticket_array[$winner]']  = $ticket_array[$winner];
-
-		// $this -> to_json($data);
+		$data['winner_name'] = $winner_array;
+		$this -> to_json($data);
 
 		$this -> load -> view('sing/sing_ranking', $data);
 	}
