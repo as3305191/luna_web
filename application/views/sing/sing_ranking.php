@@ -90,10 +90,7 @@
                 <?php endforeach; ?>
               <?php else: ?>
                 <h4 class="h6 t_center">投票進行中</h4>
-
               <?php endif; ?>
-
-              
             </div>
 
 

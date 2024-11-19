@@ -107,10 +107,7 @@
                    <?php endif; ?>
 
                   </div> 
-               
 
-
-               
                 <!-- End Icon Blocks -->
                 </div>
 
