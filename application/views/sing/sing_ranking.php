@@ -67,27 +67,33 @@
                 </span>
               <h2 class="h4 g-color-black">排行榜</h2>
               <hr class="g-brd-gray-light-v4">
+              <?php if (isset($ticket_array)): ?>
+                <?php $i=1; ?>
+                <?php foreach ($ticket_array as $each_key => $each_val): ?>
+                  <?php if ($each_key==$winner): ?>
+                    <div class="mb-4">
+                      <h4 class=""><div class="t_center"><a href="#winnerModal" role="button" data-toggle="modal" class="btn btn-md u-btn-gradient-v1 g-mr-10 g-mb-15">第1名</a></div><span class="float-right g-ml-10 element"><?=$each_val!=='0' ? $each_val:0?></span></h4>
+                      <div class="js-hr-progress-bar progress g-height-4 rounded-0">
+                        <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val>0 ? intval(($each_val/$all_ticket)*100): 0 ?>%;" aria-valuenow="<?= $each_val>0 ? intval(($each_val/$all_ticket)*100) : 0 ?>;" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <?php $i++; ?>
+                  <?php else : ?>
+                    <div class="mb-4">
+                      <h4 class="h6 t_center">第<?= $i ?>名<span class="float-right g-ml-10"><?=$each_val!=='0' ? $each_val:0?></span></h4>
+                      <div class="js-hr-progress-bar progress g-height-4 rounded-0">
+                        <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val>0 ? intval(($each_val/$all_ticket)*100) :0 ?>%;" aria-valuenow="<?= $each_val>0 ? intval(($each_val/$all_ticket)*100): 0 ?>;" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                    </div>
+                    <?php $i++; ?>
+                  <?php endif; ?>
+                <?php endforeach; ?>
+              <?php else: ?>
+                <h4 class="h6 t_center">投票進行中</h4>
 
-              <?php $i=1; ?>
-              <?php foreach ($ticket_array as $each_key => $each_val): ?>
-                <?php if ($each_key==$winner): ?>
-                  <div class="mb-4">
-                    <h4 class=""><div class="t_center"><a href="#winnerModal" role="button" data-toggle="modal" class="btn btn-md u-btn-gradient-v1 g-mr-10 g-mb-15">第1名</a></div><span class="float-right g-ml-10 element"><?=$each_val!=='0' ? $each_val:0?></span></h4>
-                    <div class="js-hr-progress-bar progress g-height-4 rounded-0">
-                      <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val>0 ? intval(($each_val/$all_ticket)*100): 0 ?>%;" aria-valuenow="<?= $each_val>0 ? intval(($each_val/$all_ticket)*100) : 0 ?>;" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <?php $i++; ?>
-                <?php else : ?>
-                  <div class="mb-4">
-                    <h4 class="h6 t_center">第<?= $i ?>名<span class="float-right g-ml-10"><?=$each_val!=='0' ? $each_val:0?></span></h4>
-                    <div class="js-hr-progress-bar progress g-height-4 rounded-0">
-                      <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val>0 ? intval(($each_val/$all_ticket)*100) :0 ?>%;" aria-valuenow="<?= $each_val>0 ? intval(($each_val/$all_ticket)*100): 0 ?>;" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                  </div>
-                  <?php $i++; ?>
-                <?php endif; ?>
-              <?php endforeach; ?>
+              <?php endif; ?>
+
+              
             </div>
 
 
@@ -122,9 +128,11 @@
         </span>
           <h3 class="h5 g-color-black g-mb-10">冠軍得獎者是：</h3>
           <ul class="list-unstyled g-px-30 g-mb-0 ">
-          <?php foreach ($winner_name as $each): ?>
-            <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><?= $each ?></li>
-          <?php endforeach; ?>
+          <?php if (isset($winner_name)): ?>
+            <?php foreach ($winner_name as $each): ?>
+              <li class="g-brd-bottom g-brd-gray-light-v3 g-py-10 div_center"><?= $each ?></li>
+            <?php endforeach; ?>
+          <?php endif; ?>
 
           </ul>
        
