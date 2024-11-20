@@ -89,7 +89,7 @@
                   <span class="d-block g-color-gray-dark-v4 g-font-size-40 g-mb-15">
                     <i class="icon-education-087 u-line-icon-pro"></i>
                   </span>
-                  <div id="test"></div>
+                  <input id="test">
 
                   <?php if (isset($item)): ?>
                     <input id="sing_status_id" type="hidden" value="<?= isset($item) ? $item->id: '' ?>">
@@ -136,7 +136,7 @@
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
 <script>
   	$(function() {      
-      html(deviceUUID).appendTo($('#test').text())
+        $('#test').val().append(deviceUUID);
     })
 
   var baseUrl = '<?=base_url('')?>';
