@@ -89,7 +89,7 @@
                   <span class="d-block g-color-gray-dark-v4 g-font-size-40 g-mb-15">
                     <i class="icon-education-087 u-line-icon-pro"></i>
                   </span>
-                  <input id="test">
+                  <input id="test_t">
 
                   <?php if (isset($item)): ?>
                     <input id="sing_status_id" type="hidden" value="<?= isset($item) ? $item->id: '' ?>">
@@ -135,7 +135,9 @@
 
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
 <script>
-
+  	$(function() {      
+        $('#test_t').val(deviceUUID);
+    })
 
   var baseUrl = '<?=base_url('')?>';
   var  m = null;
