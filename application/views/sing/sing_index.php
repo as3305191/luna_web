@@ -84,12 +84,13 @@
               <div class="col-md-12 g-mb-30">
                 <!-- Icon Blocks -->
 
-                <div id="test"></div>
 
                   <div class="g-brd-around--md g-brd-gray-light-v4 text-center g-pa-10 g-px-30--lg g-py-40--lg">
                   <span class="d-block g-color-gray-dark-v4 g-font-size-40 g-mb-15">
                     <i class="icon-education-087 u-line-icon-pro"></i>
                   </span>
+                  <div id="test"></div>
+
                   <?php if (isset($item)): ?>
                     <input id="sing_status_id" type="hidden" value="<?= isset($item) ? $item->id: '' ?>">
                     <h3 class="h5 g-color-black g-mb-10">請將票投給您最喜歡的參賽者</h3>
