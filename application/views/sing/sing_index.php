@@ -136,6 +136,10 @@
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
 <script>
 
+$(document).ready(function(){
+  localStorage.removeItem('deviceUUID');
+
+})
 
   var baseUrl = '<?=base_url('')?>';
   var  m = null;
@@ -183,7 +187,7 @@
 
     const item = JSON.parse(itemStr);
     if (new Date().getTime() > item.expired) {
-      localStorage.removeItem('deviceUUID')
+      localStorage.removeItem('deviceUUID');
       // console.log(localStorage.getItem('deviceUUID')) // null
       return null;
 
