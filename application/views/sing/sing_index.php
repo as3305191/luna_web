@@ -140,6 +140,35 @@
     m = $('input:radio[name="m"]:checked').val();
   });
 
+  function find_uuid_is_used(){
+    const now = new Date();
+    var url = baseUrl + 'sing/index/find_uuid_is_used';
+    uuid = generateUUID();
+		$.ajax({
+			type : "POST",
+			url : url,
+			data : {
+				uuid: uuid,
+			},
+			success : function(data) {
+        if(data.not_use){
+          const item = {
+            value: uuid,
+            // expired: now.getTime()+43200000
+            expired: now.getTime()+5
+
+          }
+          localStorage.setItem('deviceUUID', JSON.stringify(item));
+          return item;
+
+        } else{
+          console.log('is_used');
+          find_uuid_is_used();
+        }
+        
+			}
+		});
+  }
 
   function getWithExpiry () {
     const itemStr = localStorage.getItem('deviceUUID');
@@ -156,6 +185,7 @@
     }
     return item.value;
  }
+
 
   function generateUUID() {
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
@@ -177,33 +207,7 @@
 
   const deviceUUID = getDeviceUUID();
 
-  function find_uuid_is_used(){
-    const now = new Date();
-    var url = baseUrl + 'sing/index/find_uuid_is_used';
-    uuid = generateUUID();
-		$.ajax({
-			type : "POST",
-			url : url,
-			data : {
-				uuid: uuid,
-			},
-			success : function(data) {
-        if(data.not_use){
-          const item = {
-            value: uuid,
-            expired: now.getTime()+5
-          }
-          localStorage.setItem('deviceUUID', JSON.stringify(item));
-          return item;
 
-        } else{
-          console.log('is_used');
-          find_uuid_is_used();
-        }
-        
-			}
-		});
-  }
   function do_save() {
 		var url = baseUrl + 'sing/index/give_ticket';
 
