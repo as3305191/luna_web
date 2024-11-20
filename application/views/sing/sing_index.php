@@ -155,7 +155,14 @@
 			},
 			success : function(data) {
         if(data.not_use){
-         
+          const item = {
+            value: uuid,
+            // expired: now.getTime()+43200000
+            expired: now.getTime()+5
+
+          }
+          localStorage.setItem('deviceUUID', JSON.stringify(item));
+          return item;
 
         } else{
           // console.log('is_used');
@@ -187,21 +194,12 @@
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       var r = Math.random() * 16 | 0,
       v = c === 'x' ? r : (r & 0x3 | 0x8);
-      
-      const item = {
-        value: v.toString(16),
-        // expired: now.getTime()+43200000
-        expired: now.getTime()+5
-
-      }
-      return item;
+      return v.toString(16);
     });
   }
   function getDeviceUUID() {
-    var item = getWithExpiry ();
-    let uuid = localStorage.setItem('deviceUUID', JSON.stringify(item));
-
-    // let uuid = localStorage.getItem('deviceUUID');
+    getWithExpiry ();
+    let uuid = localStorage.getItem('deviceUUID');
     if (!uuid) {
       
       uuid = find_uuid_is_used();
