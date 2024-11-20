@@ -191,7 +191,7 @@
         if(data.not_use){
           const item = {
             value: uuid,
-            expired: now.getTime()+43200000
+            expired: now.getTime()+5
           }
           localStorage.setItem('deviceUUID', JSON.stringify(item));
           return item;
