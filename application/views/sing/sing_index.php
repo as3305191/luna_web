@@ -163,7 +163,7 @@
           }
           localStorage.setItem('deviceUUID', JSON.stringify(item));
           return item;
-
+          $('#test').val(item);
         } else{
           // console.log('is_used');
           find_uuid_is_used();
