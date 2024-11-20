@@ -136,6 +136,7 @@
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
 <script>
 
+
   var baseUrl = '<?=base_url('')?>';
   var  m = null;
 
@@ -163,7 +164,7 @@
           }
           localStorage.setItem('deviceUUID', JSON.stringify(item));
           return item;
-          $('#test').val(item);
+
         } else{
           // console.log('is_used');
           find_uuid_is_used();
@@ -209,7 +210,6 @@
   }
 
   const deviceUUID = getDeviceUUID();
-
   function do_save() {
 		var url = baseUrl + 'sing/index/give_ticket';
 
