@@ -135,10 +135,6 @@
 
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
 <script>
-  	$(function() {   
-      const deviceUUID = getDeviceUUID();
-      $('#test').val(deviceUUID);
-    })
 
   var baseUrl = '<?=base_url('')?>';
   var  m = null;
@@ -159,14 +155,7 @@
 			},
 			success : function(data) {
         if(data.not_use){
-          const item = {
-            value: uuid,
-            // expired: now.getTime()+43200000
-            expired: now.getTime()+5
-
-          }
-          localStorage.setItem('deviceUUID', JSON.stringify(item));
-          return item;
+         
 
         } else{
           // console.log('is_used');
@@ -198,12 +187,21 @@
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       var r = Math.random() * 16 | 0,
       v = c === 'x' ? r : (r & 0x3 | 0x8);
-      return v.toString(16);
+      
+      const item = {
+        value: v.toString(16),
+        // expired: now.getTime()+43200000
+        expired: now.getTime()+5
+
+      }
+      return item;
     });
   }
   function getDeviceUUID() {
-    getWithExpiry ();
-    let uuid = localStorage.getItem('deviceUUID');
+    var item = getWithExpiry ();
+    localStorage.setItem('deviceUUID', JSON.stringify(item));
+
+    // let uuid = localStorage.getItem('deviceUUID');
     if (!uuid) {
       
       uuid = find_uuid_is_used();
@@ -211,6 +209,8 @@
     }
     return uuid;
   }
+
+  const deviceUUID = getDeviceUUID();
 
   function do_save() {
 		var url = baseUrl + 'sing/index/give_ticket';
