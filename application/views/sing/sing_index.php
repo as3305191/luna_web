@@ -158,8 +158,8 @@
         if(data.not_use){
           const item = {
             value: uuid,
-            // expired: now.getTime()+43200000
-            expired: now.getTime()+60000
+            // expired: now.getTime()+86400000//24小時
+            expired: now.getTime()+28800000//8小時
 
           }
           localStorage.setItem('deviceUUID', JSON.stringify(item));
