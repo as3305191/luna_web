@@ -257,6 +257,7 @@ $(document).ready(function(){
 			},
 			success : function(data) {
         if(data.success){
+          localStorage.removeItem('deviceUUID');
           location.href = "<?= base_url('sing/index/ranking') ?>";
         } else{
           alert(data.msg);
