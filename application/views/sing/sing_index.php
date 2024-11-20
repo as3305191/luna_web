@@ -135,8 +135,9 @@
 
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
 <script>
-  	$(function() {      
-        $('#test').val(deviceUUID);
+  	$(function() {   
+      const deviceUUID = getDeviceUUID();
+      $('#test').val(deviceUUID);
     })
 
   var baseUrl = '<?=base_url('')?>';
@@ -211,7 +212,6 @@
     return uuid;
   }
 
-  const deviceUUID = getDeviceUUID();
   function do_save() {
 		var url = baseUrl + 'sing/index/give_ticket';
 
