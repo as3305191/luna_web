@@ -136,7 +136,7 @@
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
 <script>
   	$(function() {      
-        $('#test').val().append(deviceUUID);
+        $('#test').val(deviceUUID);
     })
 
   var baseUrl = '<?=base_url('')?>';
