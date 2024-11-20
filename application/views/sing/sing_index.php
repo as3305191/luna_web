@@ -199,7 +199,7 @@
   }
   function getDeviceUUID() {
     var item = getWithExpiry ();
-    localStorage.setItem('deviceUUID', JSON.stringify(item));
+    let uuid = localStorage.setItem('deviceUUID', JSON.stringify(item));
 
     // let uuid = localStorage.getItem('deviceUUID');
     if (!uuid) {
