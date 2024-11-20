@@ -89,7 +89,6 @@
                   <span class="d-block g-color-gray-dark-v4 g-font-size-40 g-mb-15">
                     <i class="icon-education-087 u-line-icon-pro"></i>
                   </span>
-                  <input id="test_t">
 
                   <?php if (isset($item)): ?>
                     <input id="sing_status_id" type="hidden" value="<?= isset($item) ? $item->id: '' ?>">
@@ -137,7 +136,7 @@
 <script>
 
 $(document).ready(function(){
-  localStorage.removeItem('deviceUUID');
+  // localStorage.removeItem('deviceUUID');
 
 })
 
