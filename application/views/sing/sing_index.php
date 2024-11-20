@@ -135,9 +135,7 @@
 
 <?php $this -> load -> view("old_system_view/old_system_view_script")  ?>
 <script>
-  	$(function() {      
-        $('#test_t').val(deviceUUID);
-    })
+
 
   var baseUrl = '<?=base_url('')?>';
   var  m = null;
@@ -214,12 +212,13 @@
   const deviceUUID = getDeviceUUID();
   function do_save() {
 		var url = baseUrl + 'sing/index/give_ticket';
+    const itemStr = localStorage.getItem('deviceUUID');
 
 		$.ajax({
 			type : "POST",
 			url : url,
 			data : {
-				deviceUUID: deviceUUID,
+				deviceUUID: itemStr.value,
         sing_status_id: $('#sing_status_id').val(),	
 				num: m,	
 			},
