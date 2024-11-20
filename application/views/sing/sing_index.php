@@ -164,7 +164,7 @@
           return item;
 
         } else{
-          console.log('is_used');
+          // console.log('is_used');
           find_uuid_is_used();
         }
         
@@ -181,7 +181,7 @@
     const item = JSON.parse(itemStr);
     if (new Date().getTime() > item.expired) {
       localStorage.removeItem('deviceUUID')
-      console.log(localStorage.getItem('deviceUUID')) // null
+      // console.log(localStorage.getItem('deviceUUID')) // null
       return null;
 
     }
