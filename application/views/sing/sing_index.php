@@ -213,12 +213,13 @@
   function do_save() {
 		var url = baseUrl + 'sing/index/give_ticket';
     const itemStr = localStorage.getItem('deviceUUID');
+    const item = JSON.parse(itemStr);
 
 		$.ajax({
 			type : "POST",
 			url : url,
 			data : {
-				deviceUUID: itemStr.value,
+				deviceUUID: item.value,
         sing_status_id: $('#sing_status_id').val(),	
 				num: m,	
 			},
