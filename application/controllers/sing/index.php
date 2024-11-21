@@ -78,18 +78,18 @@ class Index extends MY_Base_Controller {
 					$data['uuid'] = $deviceUUID;
 					$last_id = $this -> sing_dao -> insert($data);
 					$res['last_id'] = $last_id;
-					$res['succ_gave'] = '投票完成。\r\n Pemungutan suara selesai\r\n Đã hoàn thành việc bỏ phiếu';
+					$res['succ_gave'] = '投票完成。 \n Pemungutan suara selesai \n Đã hoàn thành việc bỏ phiếu';
 
 				} else{
 					$this -> sing_dao -> update($data, $find_gave[0]->id);
-					$res['re_msg'] = '已更換投票人員。\r\n Personil pemungutan suara telah diubah\r\n Nhân sự bỏ phiếu đã được thay đổi';
+					$res['re_msg'] = '已更換投票人員。 \n Personil pemungutan suara telah diubah \n Nhân sự bỏ phiếu đã được thay đổi';
 				}
 			} else{
-				$res['msg'] = '投票已截止，請觀看排行榜。\r\n Voting telah ditutup, harap perhatikan peringkatnya\r\n Bình chọn đã kết thúc, mời các bạn theo dõi bảng xếp hạng';
+				$res['msg'] = '投票已截止，請觀看排行榜。 \n Voting telah ditutup, harap perhatikan peringkatnya \n Bình chọn đã kết thúc, mời các bạn theo dõi bảng xếp hạng';
 			}
 			
 		} else{
-			$res['msg'] = '活動已關閉無法投票。\r\n Acara ditutup dan Anda tidak dapat memilih\r\n Sự kiện đã kết thúc và bạn không thể bỏ phiếu';
+			$res['msg'] = '活動已關閉無法投票。 \n Acara ditutup dan Anda tidak dapat memilih \n Sự kiện đã kết thúc và bạn không thể bỏ phiếu';
 		}
 		
 
@@ -104,7 +104,7 @@ class Index extends MY_Base_Controller {
 		if(!empty($sing_status_id)){
 			$res['success'] = TRUE;
 		} else{
-			$res['msg'] = '比賽目前進行中，請稍候。\r\n Kompetisi sedang berlangsung, harap tunggu.\r\n Cuộc thi hiện đang diễn ra, vui lòng đợi.';
+			$res['msg'] = '比賽目前進行中，請稍候。 \n Kompetisi sedang berlangsung, harap tunggu. \n Cuộc thi hiện đang diễn ra, vui lòng đợi.';
 		}
 		$this -> to_json($res);
 		
