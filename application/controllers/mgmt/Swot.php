@@ -357,7 +357,7 @@ class Swot extends MY_Mgmt_Controller {
 
 	 function test_add_w4($text){
 		$new_text='';
-		$new_text =str_replace("<br/>","</p><p>",trim($text));
+		$new_text =str_replace("<br />","</p><p>",trim($text));
 		return $new_text;
 	}
 
@@ -581,6 +581,12 @@ class Swot extends MY_Mgmt_Controller {
 			
 			
 		}
+		return $new_str;
+	}
+
+	function re_style($str) {
+		$new_str=str_replace('</br>','</p><p>',$str);
+
 		return $new_str;
 	}
 

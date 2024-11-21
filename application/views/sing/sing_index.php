@@ -249,7 +249,6 @@ $(document).ready(function(){
 
   function view_ranking() {
 		var url = baseUrl + 'sing/index/view_ranking';
-
 		$.ajax({
 			type : "POST",
 			url : url,
@@ -261,9 +260,7 @@ $(document).ready(function(){
           location.href = "<?= base_url('sing/index/ranking') ?>";
         } else{
           alert(data.msg);
-
         }
-				
 			}
 		});
 		
