@@ -104,7 +104,7 @@ class Index extends MY_Base_Controller {
 		if(!empty($sing_status_id)){
 			$res['success'] = TRUE;
 		} else{
-			$res['msg'] = '比賽目前進行中，請稍候。\r Kompetisi sedang berlangsung, harap tunggu.\r Cuộc thi hiện đang diễn ra, vui lòng đợi.';
+			$res['msg'] = '比賽目前進行中，請稍候。/\r Kompetisi sedang berlangsung, harap tunggu.\r Cuộc thi hiện đang diễn ra, vui lòng đợi.';
 		}
 		$this -> to_json($res);
 		
