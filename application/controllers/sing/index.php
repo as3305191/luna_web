@@ -85,7 +85,7 @@ class Index extends MY_Base_Controller {
 					$res['re_msg'] = '已更換投票人員。\r Personil pemungutan suara telah diubah\r Nhân sự bỏ phiếu đã được thay đổi';
 				}
 			} else{
-				$res['msg'] = '投票已截止，請觀看排行榜。\r Voting telah ditutup, harap perhatikan peringkatnya\r Bình chọn đã kết thúc, mời các bạn theo dõi bảng xếp hạng';
+				$res['msg'] = '投票已截止，請觀看排行榜。/\r Voting telah ditutup, harap perhatikan peringkatnya\r Bình chọn đã kết thúc, mời các bạn theo dõi bảng xếp hạng';
 			}
 			
 		} else{
