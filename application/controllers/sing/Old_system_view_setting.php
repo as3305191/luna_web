@@ -54,8 +54,6 @@ class Old_system_view_setting extends MY_Base_Controller {
 		$data['email']= $this -> get_post('email');
 		if(!empty($id)) {
 			// insert
-
-
 			$this -> dao -> update($data, $id);
 		} else {
 			// update

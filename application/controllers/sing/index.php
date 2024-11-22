@@ -28,7 +28,6 @@ class Index extends MY_Base_Controller {
 		$data = array();
 		$winner_array = array();
 		$sing_status_id= $this -> sing_status_dao -> find_can_ranking();
-
 		$all_ticket_item_m1 = $this -> sing_dao -> find_all_ticket_by_num('m_1',$sing_status_id->id);
 		$all_ticket_item_m2 = $this -> sing_dao -> find_all_ticket_by_num('m_2',$sing_status_id->id);
 		$all_ticket_item_m3 = $this -> sing_dao -> find_all_ticket_by_num('m_3',$sing_status_id->id);
@@ -81,7 +80,6 @@ class Index extends MY_Base_Controller {
 					$res['succ_gave'] = '投票完成。
  Pemungutan suara selesai
  Đã hoàn thành việc bỏ phiếu';
-
 				} else{
 					$this -> sing_dao -> update($data, $find_gave[0]->id);
 					$res['re_msg'] = '已更換投票人員。
@@ -99,8 +97,6 @@ class Index extends MY_Base_Controller {
  Acara ditutup dan Anda tidak dapat memilih
  Sự kiện đã kết thúc và bạn không thể bỏ phiếu';
 		}
-		
-
 		$res['success'] = TRUE;
 		$this -> to_json($res);
 		
