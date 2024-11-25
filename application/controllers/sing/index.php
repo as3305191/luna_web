@@ -78,24 +78,24 @@ class Index extends MY_Base_Controller {
 					$last_id = $this -> sing_dao -> insert($data);
 					$res['last_id'] = $last_id;
 					$res['succ_gave'] = '投票完成。
- Pemungutan suara selesai
- Đã hoàn thành việc bỏ phiếu';
+					Bỏ phiếu hoàn tất.
+					Pemungutan suara selesai';
 				} else{
 					$this -> sing_dao -> update($data, $find_gave[0]->id);
 					$res['re_msg'] = '已更換投票人員。
- Personil pemungutan suara telah diubah
- Nhân sự bỏ phiếu đã được thay đổi';
+					Đã thay đổi người bình chọn.
+					Anggota pemungutan suara telah diganti';
 				}
 			} else{
 				$res['msg'] = '投票已截止，請觀看排行榜。
- Voting telah ditutup, harap perhatikan peringkatnya
- Bình chọn đã kết thúc, mời các bạn theo dõi bảng xếp hạng';
+				Việc bỏ phiếu đã kết thúc, vui lòng xem bảng xếp hạng.  
+				Pemungutan suara telah berakhir, harap perhatikan peringkatnya';
 			}
 			
 		} else{
 			$res['msg'] = '活動已關閉無法投票。
- Acara ditutup dan Anda tidak dapat memilih
- Sự kiện đã kết thúc và bạn không thể bỏ phiếu';
+			Hoạt động đã kết thúc, không thể bỏ phiếu.  
+			Acara telah ditutup tidak dapat melakukan pemungutan suara.';
 		}
 		$res['success'] = TRUE;
 		$this -> to_json($res);
@@ -109,8 +109,8 @@ class Index extends MY_Base_Controller {
 			$res['success'] = TRUE;
 		} else{
 			$res['msg'] = '比賽目前進行中，請稍候。
- Kompetisi sedang berlangsung, harap tunggu.
- Cuộc thi hiện đang diễn ra, vui lòng đợi.';
+			Cuộc thi đang diễn ra, vui lòng chờ.  
+			Kompetisi sedang berlangsung, mohon ditunggu.';
 		}
 		$this -> to_json($res);
 		
