@@ -31,7 +31,6 @@ class Old_system_view_setting extends MY_Base_Controller {
 		$res = array();
 		$id = $this -> get_post('id');
 		$page = $this -> get_post('page');
-
 		$s_data = $this -> setup_user_data(array());
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		if($page>1){
@@ -42,7 +41,6 @@ class Old_system_view_setting extends MY_Base_Controller {
 			$res['items'] = $this -> dao -> query_ajax_by_old_system_view($id,1);
 			$res['count_items'] = count($res['items']);
 		}
-
 		$this -> to_json($res);
 	}
 
