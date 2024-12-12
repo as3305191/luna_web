@@ -87,44 +87,43 @@
 										<option area_num="4" value="螺絲G8~G14區、J區、不良品區">螺絲G8~G14區、J區、不良品區</option>
 										<option area_num="5" value="鏈帶組裝區、研發工廠">鏈帶組裝區、研發工廠</option>
 										<option area_num="6" value="螺絲J區(螺絲成品)">螺絲J區(螺絲成品)</option>
-										<option area_num="7" value="螺絲F區(螺絲成品)">螺絲F區(螺絲成品)</option>
-										<option area_num="8" value="成品C區(C01-C15)">成品C區(C01-C15)</option>
-										<option area_num="9" value="成品D區(D01-D15)">成品D區(D01-D15)</option>
-										<option area_num="10" value="成品打板區">成品打板區</option>
-										<option area_num="11" value="BIT、撞針">BIT、撞針</option>
-										<option area_num="12" value="包材棧板區">包材棧板區</option>
-										<option area_num="13" value="包材支柱區、包材暫存區">包材支柱區、包材暫存區</option>
-										<option area_num="14" value="包材塑袋區、配件區、包材B區(X)">包材塑袋區、配件區、包材B區(X)</option>
-										<option area_num="15" value="包材鐵架區(B區二側)及(Y)">包材鐵架區(B區二側)及(Y)</option>
-										<option area_num="16" value="包材C區">包材C區</option>
-										<option area_num="17" value="包材E區">包材E區</option>
-										<option area_num="18" value="包材區(H1-H6)">包材區(H1-H6)</option>
-										<option area_num="19" value="包材區(H8-H15)&包材K區">包材區(H8-H15)&包材K區</option>
-										<option area_num="20" value="標籤">標籤</option>
-										<option area_num="21" value="尾數螺絲整理(區分輪流存與否)">尾數螺絲整理(區分輪流存與否)</option>
-										<option area_num="22" value="堆高機">堆高機</option>
-										<option area_num="23" value="固定資產(北花廠、寬仕農場、沙崙廠)">固定資產-北花廠、寬仕農場、沙崙廠</option>
-										<option area_num="24" value="固定資產(品保課、測試室、樣品室、品保實驗室、會議室十一)">固定資產-品保課、測試室、樣品室、品保實驗室、會議室十、F.G.H.I區、倉管課</option>
-										<option area_num="25" value="固定資產(生產部.會議室十二.F. G. H. I區.倉管課.守衛室)">固定資產(生產部.會議室十二.F. G. H. I區.倉管課.守衛室)</option>
-										<option area_num="26" value="固定資產(員工休息室.包裝部.包裝作業課.標籤組.會議室一)">固定資產(員工休息室.包裝部.包裝作業課.標籤組.會議室一)</option>
-										<option area_num="27" value="固定資產(資訊部.資訊部機房.管理部.會議室三.視覺攝影室)">固定資產(資訊部.資訊部機房.管理部.會議室三.視覺攝影室)</option>
-										<option area_num="28" value="固定資產(現場A區.研發工廠.A區廚房.資料庫房.物料組.成品組)">固定資產(現場A區.研發工廠.A區廚房.資料庫房.物料組.成品組)</option>
-										<option area_num="29" value="固定資產(研發部、研發測試室、研發樣品室、會議室四、實驗室、會議室七)">固定資產-研發部、研發測試室、研發樣品室、會議室四、實驗室、會議室七</option>
-										<option area_num="30" value="固定資產(業務部.業務庫品室.財務部.會議室五)">固定資產(業務部.業務庫品室.財務部.會議室五)</option>
-										<option area_num="31" value="固定資產(婦幼室.總經理室.實驗餐廳.接特室.運動室.閱覽室)">固定資產(婦幼室.總經理室.實驗餐廳.接特室.運動室.閱覽室)</option>
-										<option area_num="32" value="固定資產(子日宿舍)">固定資產(子日宿舍)</option>
-										<option area_num="33" value="辦公室(協助接碼電話、飲料餐點分配)">辦公室(協助接碼電話、飲料餐點分配)</option>
-										<option area_num="34" value="全廠廁所清潔">全廠廁所清潔</option>
-										<option area_num="35" value="一般食材、商品">一般食材、商品</option>
-										<option area_num="36" value="一般物料、包材">一般物料、包材</option>
-										<option area_num="37" value="固定資產(總公司)">固定資產(總公司)</option>
-										<option area_num="38" value="(五甲)調度">(五甲)調度</option>
-										<option area_num="39" value="(五甲)線材&搓牙成品">(五甲)線材&搓牙成品</option>
-										<option area_num="40" value="(五甲)模具">(五甲)模具</option>
-										<option area_num="41" value="(五甲)牙板">(五甲)牙板</option>
-										<option area_num="42" value="(五甲)沖棒">(五甲)沖棒</option>
-										<option area_num="43" value="(五甲)撞針">(五甲)撞針</option>
-										<option area_num="44" value="(五甲)固定資產">(五甲)固定資產</option>
+										<option area_num="7" value="成品C區(C01-C15)">成品C區(C01-C15)</option>
+										<option area_num="8" value="成品D區(D01-D15)">成品D區(D01-D15)</option>
+										<option area_num="9" value="成品打板區">成品打板區</option>
+										<option area_num="10" value="BIT、撞針">BIT、撞針</option>
+										<option area_num="11" value="包材棧板區">包材棧板區</option>
+										<option area_num="12" value="包材支柱區、包材暫存區">包材支柱區、包材暫存區</option>
+										<option area_num="13" value="包材塑袋區、配件區、包材B區(X)">包材塑袋區、配件區、包材B區(X)</option>
+										<option area_num="14" value="包材鐵架區(B區二側)及(Y)">包材鐵架區(B區二側)及(Y)</option>
+										<option area_num="15" value="包材C區">包材C區</option>
+										<option area_num="16" value="包材E區">包材E區</option>
+										<option area_num="17" value="包材區(H1-H6)">包材區(H1-H6)</option>
+										<option area_num="18" value="包材區(H8-H15)&包材K區">包材區(H8-H15)&包材K區</option>
+										<option area_num="19" value="標籤">標籤</option>
+										<option area_num="20" value="尾數螺絲整理(區分輪流存與否)">尾數螺絲整理(區分輪流存與否)</option>
+										<option area_num="21" value="堆高機">堆高機</option>
+										<option area_num="22" value="固定資產(北花廠、寬仕農場、沙崙廠)">固定資產-北花廠、寬仕農場、沙崙廠</option>
+										<option area_num="23" value="固定資產(品保課、測試室、樣品室、品保實驗室、會議室十一)">固定資產-品保課、測試室、樣品室、品保實驗室、會議室十、F.G.H.I區、倉管課</option>
+										<option area_num="24" value="固定資產(生產部.會議室十二.F. G. H. I區.倉管課.守衛室)">固定資產(生產部.會議室十二.F. G. H. I區.倉管課.守衛室)</option>
+										<option area_num="25" value="固定資產(員工休息室.包裝部.包裝作業課.標籤組.會議室一)">固定資產(員工休息室.包裝部.包裝作業課.標籤組.會議室一)</option>
+										<option area_num="26" value="固定資產(資訊部.資訊部機房.管理部.會議室三.視覺攝影室)">固定資產(資訊部.資訊部機房.管理部.會議室三.視覺攝影室)</option>
+										<option area_num="27" value="固定資產(現場A區.研發工廠.A區廚房.資料庫房.物料組.成品組)">固定資產(現場A區.研發工廠.A區廚房.資料庫房.物料組.成品組)</option>
+										<option area_num="28" value="固定資產(研發部、研發測試室、研發樣品室、會議室四、實驗室、會議室七)">固定資產-研發部、研發測試室、研發樣品室、會議室四、實驗室、會議室七</option>
+										<option area_num="29" value="固定資產(業務部.業務庫品室.財務部.會議室五)">固定資產(業務部.業務庫品室.財務部.會議室五)</option>
+										<option area_num="30" value="固定資產(婦幼室.總經理室.實驗餐廳.接特室.運動室.閱覽室)">固定資產(婦幼室.總經理室.實驗餐廳.接特室.運動室.閱覽室)</option>
+										<option area_num="31" value="固定資產(子日宿舍)">固定資產(子日宿舍)</option>
+										<option area_num="32" value="辦公室(協助接碼電話、飲料餐點分配)">辦公室(協助接碼電話、飲料餐點分配)</option>
+										<option area_num="33" value="全廠廁所清潔">全廠廁所清潔</option>
+										<option area_num="34" value="一般食材、商品">一般食材、商品</option>
+										<option area_num="35" value="一般物料、包材">一般物料、包材</option>
+										<option area_num="36" value="固定資產(總公司)">固定資產(總公司)</option>
+										<option area_num="37" value="(五甲)調度">(五甲)調度</option>
+										<option area_num="38" value="(五甲)線材&搓牙成品">(五甲)線材&搓牙成品</option>
+										<option area_num="39" value="(五甲)模具">(五甲)模具</option>
+										<option area_num="40" value="(五甲)牙板">(五甲)牙板</option>
+										<option area_num="41" value="(五甲)沖棒">(五甲)沖棒</option>
+										<option area_num="42" value="(五甲)撞針">(五甲)撞針</option>
+										<option area_num="43" value="(五甲)固定資產">(五甲)固定資產</option>
 									</select>
 									</td>
 							</tr>

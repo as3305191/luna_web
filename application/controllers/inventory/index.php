@@ -8,10 +8,9 @@ class Index extends MY_Base_Controller {
 
 		// $this->load->helper('captcha');
 
-		$this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Corp_dao', 'corp_dao');
-		$this -> load -> model('Members_dao', 'dao');
-		$this -> load -> model('Records_dao', 'records_dao');
+		$this -> load -> model('Drink_users_dao', 'drink_users_dao');
+		$this -> load -> model('Ktx_drink_dao', 'ktx_drink_dao');
+
 
 	}
 
@@ -25,6 +24,13 @@ class Index extends MY_Base_Controller {
 
 		$this -> load -> view('inventory/index_draw_lots', $data);
 	}
+	public function api_find_user() {
+		$res = array();
+		$area_num = $this -> get_post('area_num');
+		$res['item'] = $this -> drink_users_dao -> find_user($area_num);
+		$this -> to_json($res);
+	}
+	
 
 	public function get_data_menu($today) {
 		$serverName="KTX-2008D1\sqlexpress";
