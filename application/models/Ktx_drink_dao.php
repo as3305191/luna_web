@@ -29,7 +29,11 @@ class Ktx_drink_dao extends MY_Model {
 
 		$query = $this -> db -> get();
 		$list = $query -> result();
-		return $list[0];
+		if(count($list)>0){
+			return $list[0];
+		}else{
+			return NULL;
+		}
 	}
 
 
