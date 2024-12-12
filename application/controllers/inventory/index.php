@@ -27,7 +27,7 @@ class Index extends MY_Base_Controller {
 	public function api_find_user() {
 		$res = array();
 		$area_num = $this -> get_post('area_num');
-		$res['item'] = $this -> ktx_drink_dao -> find_user($area_num);
+		$res['item'] = $this -> drink_users_dao -> find_user($area_num);
 		$this -> to_json($res);
 	}
 	

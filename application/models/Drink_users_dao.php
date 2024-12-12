@@ -236,5 +236,15 @@ class Drink_users_dao extends MY_Model {
 
 		return $list;
 	}
+	function find_user($area_num){
+		$this -> db -> from("$this->table_name as _m");
+		$this -> db -> select('_m.*');
+		$this -> db -> wwhere('_m.area_num',$area_num);
+
+		$query = $this -> db -> get();
+		$list = $query -> result();
+		return $list;
+	}
+
 }
 ?>
