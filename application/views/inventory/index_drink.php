@@ -322,6 +322,7 @@
 				$('#afternoon_i').removeClass('not_do');
 			}
 		});
+		
 		$('#area').on('change', function(){
 			$('#form_div').loading();
 			var $area_num = $(this).find("option:selected").attr("area_num");;
