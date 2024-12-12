@@ -338,9 +338,9 @@
 					var user_name_option = '<option value="0">請選擇人員</option>';
 					var $user_name = $('#drink_user_name').empty();
 					$user_name.append(user_name_option); 
-					if(d){
+					if(d.item){
 						// console.log(d.list[0]);
-						$.each(d, function(){
+						$.each(d.item, function(){
 							$('<option />', {
 								'value': this.user_name,
 								'text': this.user_name,
