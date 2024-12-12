@@ -259,7 +259,7 @@
 				$('#form_div').loading();
 				
 				$.ajax({
-					url: 'api_drink.php',
+					url: baseUrl+'inventory/index/api_drink',
 					type: 'POST',
 					data: {
 						dep: $dep,

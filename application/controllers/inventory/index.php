@@ -31,6 +31,23 @@ class Index extends MY_Base_Controller {
 		$this -> to_json($res);
 	}
 	
+	public function api_drink() {
+		$res = array();
+		$data = $this -> get_posts(array(
+			'dep',
+			'area',
+			'user_name',
+			'morning_drink',
+			'morning_s',
+			'morning_i',
+			'afternoon_drink',
+			'afternoon_s',
+			'afternoon_i',
+		));
+		$this -> Ktx_drink_dao -> insert($data);
+
+		$this -> to_json($res);
+	}
 
 	public function get_data_menu($today) {
 		$serverName="KTX-2008D1\sqlexpress";
