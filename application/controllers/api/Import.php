@@ -275,7 +275,7 @@ class Import extends MY_Base_Controller {
 		}
 	}
 	function import1(){
-		$object = PHPExcel_IOFactory::load("名單.xlsx");
+		$object = PHPExcel_IOFactory::load("人員名單.xlsx");
 		foreach($object->getWorksheetIterator() as $worksheet){
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
