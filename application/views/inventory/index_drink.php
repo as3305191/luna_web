@@ -245,7 +245,7 @@
 
 		function do_save() {
 			var $dep =  $('#dep').val();
-			var $user_name = $('#user_name').val();
+			var $user_name = $('#drink_user_name').val();
 			var $morning_drink = $('#morning_drink').val();
 			var $morning_s = $('#morning_s').val();
 			var $morning_i = $('#morning_i').val();
