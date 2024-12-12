@@ -24,8 +24,8 @@ class Ktx_drink_dao extends MY_Model {
 	function find_ordered($area,$dep){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.id');
-		$this -> db -> wwhere('_m.area',$area);
-		$this -> db -> wwhere('_m.dep',$dep);
+		$this -> db -> where('_m.area',$area);
+		$this -> db -> where('_m.dep',$dep);
 
 		$query = $this -> db -> get();
 		$list = $query -> result();
