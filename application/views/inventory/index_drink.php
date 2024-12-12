@@ -328,7 +328,7 @@
 			
 			// console.log($area_num);
 			$.ajax({
-				url: 'api_find_user',
+				url: baseUrl+'inventory/index/api_find_user',
 				type: 'POST',
 				data: {
 					area_num:$area_num,
