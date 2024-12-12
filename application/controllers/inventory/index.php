@@ -33,9 +33,9 @@ class Index extends MY_Base_Controller {
 	
 	public function api_drink() {
 		$res = array();
+		$area = $this -> get_post('area');
+		$dep = $this -> get_post('dep');
 		$data = $this -> get_posts(array(
-			'dep',
-			'area',
 			'user_name',
 			'morning_drink',
 			'morning_s',
@@ -44,7 +44,17 @@ class Index extends MY_Base_Controller {
 			'afternoon_s',
 			'afternoon_i',
 		));
-		$this -> Ktx_drink_dao -> insert($data);
+		$sql_done="SELECT * FROM ktx_drink WHERE  dep='$dep' AND user_name='$user_name'";
+		$find_done_order_id = $this -> ktx_drink_dao -> find_ordered($area,$dep);
+		if(!empty($find_done_order_id)){
+			$this -> Ktx_drink_dao -> update($data, $find_done_order_id);
+			$res['item']='update';
+		} else{
+			$data['area']=$area;
+			$data['dep']=$dep;
+			$last_id = $this -> Ktx_drink_dao -> insert($data);
+			$res['item']='done';
+		}
 
 		$this -> to_json($res);
 	}
