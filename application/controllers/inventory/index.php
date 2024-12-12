@@ -46,12 +46,12 @@ class Index extends MY_Base_Controller {
 		));
 		$find_done_order_id = $this -> ktx_drink_dao -> find_ordered($area,$dep);
 		if(!empty($find_done_order_id)){
-			$this -> Ktx_drink_dao -> update($data, $find_done_order_id);
+			$this -> ktx_drink_dao -> update($data, $find_done_order_id);
 			$res['item']='update';
 		} else{
 			$data['area']=$area;
 			$data['dep']=$dep;
-			$last_id = $this -> Ktx_drink_dao -> insert($data);
+			$last_id = $this -> ktx_drink_dao -> insert($data);
 			$res['item']='done';
 		}
 
