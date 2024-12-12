@@ -44,7 +44,6 @@ class Index extends MY_Base_Controller {
 			'afternoon_s',
 			'afternoon_i',
 		));
-		$sql_done="SELECT * FROM ktx_drink WHERE  dep='$dep' AND user_name='$user_name'";
 		$find_done_order_id = $this -> ktx_drink_dao -> find_ordered($area,$dep);
 		if(!empty($find_done_order_id)){
 			$this -> Ktx_drink_dao -> update($data, $find_done_order_id);
