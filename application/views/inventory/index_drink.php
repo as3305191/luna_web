@@ -132,7 +132,7 @@
 								<th style="width: 60px;">姓名：</th>
 								<td  colspan="3">
 									<!-- <input type="" id="user_name"/> -->
-									<select class="" id="user_name" >
+									<select class="" id="drink_user_name" >
 										<option value="0">請選擇人員</option>
 										
 									</select>
@@ -336,7 +336,7 @@
 				dataType: 'json',
 				success: function(d) {
 					var user_name_option = '<option value="0">請選擇人員</option>';
-					var $user_name = $('#user_name').empty();
+					var $user_name = $('#drink_user_name').empty();
 					$user_name.append(user_name_option); 
 					if(d){
 						// console.log(d.list[0]);
