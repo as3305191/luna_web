@@ -54,7 +54,7 @@ class Index extends MY_Base_Controller {
 			$last_id = $this -> ktx_drink_dao -> insert($data);
 			$res['item']='done';
 		}
-
+		$res['find_done_order_id']=$find_done_order_id;
 		$this -> to_json($res);
 	}
 
