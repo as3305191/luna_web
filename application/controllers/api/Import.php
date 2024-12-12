@@ -280,26 +280,17 @@ class Import extends MY_Base_Controller {
 			$highestRow = $worksheet->getHighestRow();
 			$highestColumn = $worksheet->getHighestColumn();
 			for($row=0; $row<=$highestRow; $row++){
-				$account = $worksheet->getCellByColumnAndRow(0, $row)->getValue();
-				$password = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
-				$empindex = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
-				$name = $worksheet->getCellByColumnAndRow(3, $row)->getValue();
-				$pmark = $worksheet->getCellByColumnAndRow(4, $row)->getValue();
+				$name = $worksheet->getCellByColumnAndRow(1, $row)->getValue();
+				$area = $worksheet->getCellByColumnAndRow(2, $row)->getValue();
 
-				if($pmark==1){
-					$data = array(
-						'account' =>$empindex,
-						'password' =>$empindex,
-						'empindex' =>$empindex
-					);
-				} else{
-					$data = array(
-						'empindex' =>$empindex
-					);
-				}
+				$data = array(
+					'user_name' =>$name,
+					'area_num' =>$area,
+
+				);
 					
-					$this->users_dao->update_by($data,'user_name',$name);
-					// $this->drink_users_dao->insert($data);
+					// $this->users_dao->update_by($data,'user_name',$name);
+					$this->drink_users_dao->insert($data);
 			}
 		}
 		// $res['success'] = TRUE;
