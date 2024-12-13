@@ -1,6 +1,3 @@
-<?php
-	include_once 'cooent.php';
-?>
 <html lang="en-us">
 
 	<!-- #BODY -->

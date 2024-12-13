@@ -1,8 +1,3 @@
-<?php
-	include_once 'cooent.php';
-?>
-
-
 <html lang="en-us">
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=1">
