@@ -106,7 +106,7 @@
 										<option area_num="29" value="固定資產(業務部.業務庫品室.財務部.會議室五)">固定資產(業務部.業務庫品室.財務部.會議室五)</option>
 										<option area_num="30" value="固定資產(婦幼室.總經理室.實驗餐廳.接特室.運動室.閱覽室)">固定資產(婦幼室.總經理室.實驗餐廳.接特室.運動室.閱覽室)</option>
 										<option area_num="31" value="固定資產(子日宿舍)">固定資產(子日宿舍)</option>
-										<option area_num="32" value="辦公室(協助接碼電話、飲料餐點分配)">辦公室(協助接碼電話、飲料餐點分配)</option>
+										<option area_num="32" value="辦公室(協助接電話、飲料餐點分配)">辦公室(協助接電話、飲料餐點分配)</option>
 										<option area_num="33" value="全廠廁所清潔">全廠廁所清潔</option>
 										<option area_num="34" value="(深緣)一般食材、商品">(深緣)一般食材、商品</option>
 										<option area_num="35" value="(深緣)一般物料、包材">(深緣)一般物料、包材</option>
