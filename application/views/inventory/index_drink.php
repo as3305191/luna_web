@@ -108,9 +108,9 @@
 										<option area_num="31" value="固定資產(子日宿舍)">固定資產(子日宿舍)</option>
 										<option area_num="32" value="辦公室(協助接碼電話、飲料餐點分配)">辦公室(協助接碼電話、飲料餐點分配)</option>
 										<option area_num="33" value="全廠廁所清潔">全廠廁所清潔</option>
-										<option area_num="34" value="一般食材、商品">一般食材、商品</option>
-										<option area_num="35" value="一般物料、包材">一般物料、包材</option>
-										<option area_num="36" value="固定資產(總公司)">固定資產(總公司)</option>
+										<option area_num="34" value="(深緣)一般食材、商品">(深緣)一般食材、商品</option>
+										<option area_num="35" value="(深緣)一般物料、包材">(深緣)一般物料、包材</option>
+										<option area_num="36" value="(深緣)固定資產(總公司)">(深緣)固定資產(總公司)</option>
 										<option area_num="37" value="(五甲)調度">(五甲)調度</option>
 										<option area_num="38" value="(五甲)線材&搓牙成品">(五甲)線材&搓牙成品</option>
 										<option area_num="39" value="(五甲)割尾半品&成品">(五甲)線材&搓牙成品</option>
