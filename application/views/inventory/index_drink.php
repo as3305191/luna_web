@@ -87,8 +87,8 @@
 										<option area_num="10" value="BIT、撞針">BIT、撞針</option>
 										<option area_num="11" value="包材棧板區">包材棧板區</option>
 										<option area_num="12" value="包材暫存區">包材暫存區</option>
-										<option area_num="13" value="包材塑袋區、配件區、包材B區(X)">包材塑袋區、配件區、包材B區(X)</option>
-										<option area_num="14" value="包材鐵架區(B區二側)及(Y)">包材鐵架區(B區二側)及(Y)</option>
+										<option area_num="13" value="包材塑袋區、配件區(X)、包材B區">包材塑袋區、配件區(X)、包材B區</option>
+										<option area_num="14" value="包材鐵架區(B區二側)及鐵架華司鍊帶區(Y)">包材鐵架區(B區二側)及鐵架華司鍊帶區(Y)</option>
 										<option area_num="15" value="包材C區">包材C區</option>
 										<option area_num="16" value="包材E區">包材E區</option>
 										<option area_num="17" value="包材區(H1-H6)">包材區(H1-H6)</option>
