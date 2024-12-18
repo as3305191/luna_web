@@ -135,14 +135,14 @@
 						
 							</tr>
 							<tr>
-								<th style="width: 80px;">上午飲料(白巷子)：</th>
+								<th style="width: 80px;">上午飲料(古丁)：</th>
 									<td colspan="3">
 									<select class="" id="morning_drink" >
 										<option value="0">請選擇品項</option>
-										<option value="紅烏龍茶王">紅烏龍茶王</option>
-										<option value="紅茶拿鐵">紅茶拿鐵</option>
-										<option value="百香雙Q果">百香雙Q果</option>
-										<option value="椰果奶茶(奶精)">椰果奶茶(奶精)</option>
+										<option value="冬瓜檸檬(無咖啡因)">冬瓜檸檬(無咖啡因)</option>
+										<option value="泰式奶茶">泰式奶茶</option>
+										<option value="大麥決明茶">大麥決明茶</option>
+										<option value="水果茶">水果茶</option>
 									</select>
 									</td>
 							</tr>
@@ -160,7 +160,7 @@
 								<td>
 									<select class="" id="morning_i" >
 										<option value="0">請選擇冰</option>
-										<option value="去冰">去冰</option>
+										<option value="微冰">微冰</option>
 										<option value="溫">溫</option>
 									</select>
 								</td>
@@ -186,14 +186,14 @@
 								</td>
 
 							<tr>
-								<th style="width: 80px;">下午飲料(迷客夏)：</th>
+								<th style="width: 80px;">下午飲料(五分田)：</th>
 									<td  colspan="3">
 									<select class="" id="afternoon_drink" >
 										<option value="0">請選擇品項</option>
-										<option value="焙香決明大麥">焙香決明大麥</option>
-										<option value="珍珠冬瓜茶">珍珠冬瓜茶</option>
-										<option value="綠茶拿鐵">綠茶拿鐵</option>
-										<option value="蜂蜜檸檬晶凍">蜂蜜檸檬晶凍</option>
+										<option value="桂花烏龍">桂花烏龍</option>
+										<option value="桂花烏龍拿鐵">桂花烏龍拿鐵</option>
+										<option value="波霸鐵觀音奶茶">波霸鐵觀音奶茶</option>
+										<option value="黃金蕎麥(無咖啡因)">黃金蕎麥(無咖啡因)</option>
 									</select>
 									</td>
 							</tr>
@@ -213,7 +213,7 @@
 								<td>
 									<select class="" id="afternoon_i" >
 										<option value="0">請選擇冰</option>
-										<option value="去冰">去冰</option>
+										<option value="微冰">微冰</option>
 										<option value="溫">溫</option>
 									</select>
 								</td>
@@ -295,27 +295,31 @@
 		}
 
 		$('#morning_drink').on('change', function(){
-			if($('#morning_drink').val()=='百香雙Q果'){
+			if($('#morning_drink').val()=='冬瓜檸檬(無咖啡因)'){
 				$('#morning_i').addClass('not_do');
-				$('#morning_i').val('去冰'); 
+				$('#morning_s').addClass('not_do');
+				$('#morning_i').val('微冰'); 
+				$('#morning_s').val('正常'); 
 			} else{
 				$('#morning_i').removeClass('not_do');
+				$('#morning_s').removeClass('not_do');
+
 			}
 		});
-		$('#afternoon_drink').on('change', function(){
-			if($('#afternoon_drink').val()=='珍珠冬瓜茶'){
-				$('#afternoon_s').addClass('not_do');
-				$('#afternoon_s').val('正常');
-			} else{
-				$('#afternoon_s').removeClass('not_do');
-			}
-			if($('#afternoon_drink').val()=='蜂蜜檸檬晶凍'){
-				$('#afternoon_i').addClass('not_do');
-				$('#afternoon_i').val('去冰');
-			} else{
-				$('#afternoon_i').removeClass('not_do');
-			}
-		});
+		// $('#afternoon_drink').on('change', function(){
+		// 	if($('#afternoon_drink').val()=='珍珠冬瓜茶'){
+		// 		$('#afternoon_s').addClass('not_do');
+		// 		$('#afternoon_s').val('正常');
+		// 	} else{
+		// 		$('#afternoon_s').removeClass('not_do');
+		// 	}
+		// 	if($('#afternoon_drink').val()=='蜂蜜檸檬晶凍'){
+		// 		$('#afternoon_i').addClass('not_do');
+		// 		$('#afternoon_i').val('去冰');
+		// 	} else{
+		// 		$('#afternoon_i').removeClass('not_do');
+		// 	}
+		// });
 		
 		$('#area').on('change', function(){
 			$('#form_div').loading();
