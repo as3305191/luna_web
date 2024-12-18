@@ -76,7 +76,7 @@
 									<select class="" id="area" >
 										<option area_num="0" value="0">請選擇盤點區域</option>
 										<option area_num="1" value="螺絲I1~I13區">螺絲I1~I13區</option>
-										<option area_num="2" value="螺絲H1~Hl3區">螺絲H1~Hl3區</option>
+										<option area_num="2" value="螺絲H1~H13區">螺絲H1~H13區</option>
 										<option area_num="3" value="螺絲Gl~G7區、G15">螺絲Gl~G7區、G15</option>
 										<option area_num="4" value="螺絲G8~G14區、J區、不良品區">螺絲G8~G14區、J區、不良品區</option>
 										<option area_num="5" value="鏈帶組裝區、研發工廠">鏈帶組裝區、研發工廠</option>
