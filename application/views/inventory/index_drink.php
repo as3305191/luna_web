@@ -82,7 +82,7 @@
 										<option area_num="5" value="鏈帶組裝區、研發工廠">鏈帶組裝區、研發工廠</option>
 										<option area_num="6" value="螺絲J區(螺絲成品)">螺絲J區(螺絲成品)</option>
 										<option area_num="7" value="成品C區(C01-C15)">成品C區(C01-C15)</option>
-										<option area_num="8" value="成品D區(D01-D15)">成品D區(D01-D15)</option>
+										<option area_num="8" value="成品D區(D01-D19)">成品D區(D01-D19)</option>
 										<option area_num="9" value="成品打板區">成品打板區</option>
 										<option area_num="10" value="BIT、撞針">BIT、撞針</option>
 										<option area_num="11" value="包材棧板區">包材棧板區</option>
@@ -94,7 +94,7 @@
 										<option area_num="17" value="包材區(H1-H6)">包材區(H1-H6)</option>
 										<option area_num="18" value="包材區(H8-H15)&包材K區">包材區(H8-H15)&包材K區</option>
 										<option area_num="19" value="標籤">標籤</option>
-										<option area_num="20" value="尾數螺絲整理(區分輪流存與否)">尾數螺絲整理(區分輪流存與否)</option>
+										<option area_num="20" value="尾數螺絲整理(區分留存與否)">尾數螺絲整理(區分留存與否)</option>
 										<option area_num="21" value="堆高機">堆高機</option>
 										<option area_num="22" value="固定資產(北花廠、寬仕農場、沙崙廠)">固定資產-北花廠、寬仕農場、沙崙廠</option>
 										<option area_num="23" value="固定資產(品保課、測試室、樣品室、品保實驗室、會議室十一)">固定資產-品保課、測試室、樣品室、品保實驗室、會議室十、F.G.H.I區、倉管課</option>
