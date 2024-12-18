@@ -113,7 +113,7 @@
 										<option area_num="36" value="(深緣)固定資產(總公司)">(深緣)固定資產(總公司)</option>
 										<option area_num="37" value="(五甲)調度">(五甲)調度</option>
 										<option area_num="38" value="(五甲)線材&搓牙成品">(五甲)線材&搓牙成品</option>
-										<option area_num="39" value="(五甲)割尾半品&成品">(五甲)線材&搓牙成品</option>
+										<option area_num="39" value="(五甲)割尾半品&成品">(五甲)割尾半品&成品</option>
 										<option area_num="40" value="(五甲)模具">(五甲)模具</option>
 										<option area_num="41" value="(五甲)牙板">(五甲)牙板</option>
 										<option area_num="42" value="(五甲)沖棒">(五甲)沖棒</option>
