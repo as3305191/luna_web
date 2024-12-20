@@ -35,8 +35,9 @@ class Index extends MY_Base_Controller {
 		$res = array();
 		$area = $this -> get_post('area');
 		$dep = $this -> get_post('dep');
+		$user_name = $this -> get_post('user_name');
+
 		$data = $this -> get_posts(array(
-			'user_name',
 			'morning_drink',
 			'morning_s',
 			'morning_i',
@@ -44,13 +45,15 @@ class Index extends MY_Base_Controller {
 			'afternoon_s',
 			'afternoon_i',
 		));
-		$find_done_order_id = $this -> ktx_drink_dao -> find_ordered($area,$dep);
+		$find_done_order_id = $this -> ktx_drink_dao -> find_ordered($area,$dep,$user_name);
 		if(!empty($find_done_order_id)){
 			$this -> ktx_drink_dao -> update($data, $find_done_order_id->id);
 			$res['item']='update';
 		} else{
 			$data['area']=$area;
 			$data['dep']=$dep;
+			$data['user_name']=$user_name;
+
 			$last_id = $this -> ktx_drink_dao -> insert($data);
 			$res['item']='done';
 		}

@@ -21,12 +21,12 @@ class Ktx_drink_dao extends MY_Model {
 		return $list;
 	}
 
-	function find_ordered($area,$dep){
+	function find_ordered($area,$dep,$user_name){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> select('_m.id');
 		$this -> db -> where('_m.area',$area);
 		$this -> db -> where('_m.dep',$dep);
-
+		$this -> db -> where('_m.user_name',$user_name);
 		$query = $this -> db -> get();
 		$list = $query -> result();
 		if(count($list)>0){
