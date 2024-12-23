@@ -53,6 +53,7 @@ class Index extends MY_Base_Controller {
 
 		$data['all_ticket'] = $all_ticket;
 		$data['ticket_array'] = $ticket_array;
+		$data['ticket_array_string'] = implode(",", $ticket_array);
 		$data['winner']  = $winner;
 		$data['winner_name'] = $winner_array;
 		// $this -> to_json($data);

@@ -75,6 +75,7 @@
                 </span>
               <h2 class="h4 g-color-black">排行榜</h2>
               <hr class="g-brd-gray-light-v4">
+              <span style='hidden'><?=isset($ticket_array_string)!=='0' ? $ticket_array_string:0?></span>
               <?php if (isset($ticket_array)): ?>
                 <?php $i=1; ?>
                 <?php foreach ($ticket_array as $each_key => $each_val): ?>
@@ -100,7 +101,6 @@
                 <h4 class="h6 t_center">投票進行中</h4>
               <?php endif; ?>
             </div>
-
 
           
           </div>
