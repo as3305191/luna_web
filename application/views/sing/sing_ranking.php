@@ -27,6 +27,14 @@
   .t_center {
     text-align: center;
   }
+  .padding_re_left
+  {
+    position: absolute;
+    /* top: 20%; */
+    left: 50%;
+    transform: translate(240%, -110%);
+    padding: 10px;
+  }
 @media only screen and (max-width: 750px) {
 	.dt_list_th{
 	  min-width: 67px !important;
@@ -72,7 +80,7 @@
                 <?php foreach ($ticket_array as $each_key => $each_val): ?>
                   <?php if ($each_key==$winner): ?>
                     <div class="mb-4">
-                      <h4 class=""><div class="t_center"><a href="#winnerModal" role="button" data-toggle="modal" class="btn btn-md u-btn-gradient-v1 g-mr-10 g-mb-15">第1名</a></div><span class="float-right g-ml-10 element"><?=$each_val!=='0' ? $each_val:0?></span></h4>
+                      <h4 class=""><div class="t_center"><a href="#winnerModal" role="button" data-toggle="modal" class="btn btn-md u-btn-gradient-v1 g-mr-10 g-mb-15">第1名</a></div><span class="float-right g-ml-10 element padding_re_left"><?=$each_val!=='0' ? $each_val:0?></span></h4>
                       <div class="js-hr-progress-bar progress g-height-4 rounded-0">
                         <div class="js-hr-progress-bar-indicator progress-bar" role="progressbar" style="width: <?= $each_val>0 ? intval(($each_val/$all_ticket)*100): 0 ?>%;" aria-valuenow="<?= $each_val>0 ? intval(($each_val/$all_ticket)*100) : 0 ?>;" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
