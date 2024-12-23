@@ -56,7 +56,7 @@ class Index extends MY_Base_Controller {
 		$data['ticket_array_string'] = implode(",", $ticket_array);
 		$data['winner']  = $winner;
 		$data['winner_name'] = $winner_array;
-		echo "<script>console.log(m1=".$all_ticket_item_m1."m2=".$all_ticket_item_m2."m3=".$all_ticket_item_m3."m4".$all_ticket_item_m4."m5=".$all_ticket_item_m5.")</script>";
+		echo "<script>console.log('m1=".$all_ticket_item_m1." m2=".$all_ticket_item_m2." m3=".$all_ticket_item_m3." m4=".$all_ticket_item_m4." m5=".$all_ticket_item_m5."')</script>";
 		// $this -> to_json($data);
 
 		$this -> load -> view('sing/sing_ranking', $data);
