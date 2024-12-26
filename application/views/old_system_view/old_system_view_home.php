@@ -201,23 +201,28 @@
       var note = $('#note').val();
       var amount = $('#amount').val();
       if(parseInt(now_amount)>=parseInt(amount)) {
-        $.ajax({
-          type : "POST",
-          url : url,
-          data : {
-            id: id,
-            store_id: store_id,
-            usid: old_user_id,
-            order_name: order_name,
-            note: note,
-            amount: amount,
-          },
-          success : function(data) {
-            if(data) {
-              re_total_money();
+        if(store_id>0 && store_id!==''){
+          $.ajax({
+            type : "POST",
+            url : url,
+            data : {
+              id: id,
+              store_id: store_id,
+              usid: old_user_id,
+              order_name: order_name,
+              note: note,
+              amount: amount,
+            },
+            success : function(data) {
+              if(data) {
+                re_total_money();
+              }
             }
-          }
-        });
+          });
+        } else{
+          alert('請點選餐廳');
+        }
+        
       } else{
         alert('請儲值金額不足');
       }
