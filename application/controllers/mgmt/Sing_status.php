@@ -44,7 +44,6 @@ class Sing_status extends MY_Mgmt_Controller {
 	public function edit($id) {
 		$data = array();
 		$s_data = array();
-		$id = $this -> get_get('id');
 
 		$s_data = $this -> setup_user_data($s_data);
 		$data['login_user'] = $this -> users_dao -> find_by_id($s_data['login_user_id']);
