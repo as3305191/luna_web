@@ -54,7 +54,7 @@ class Sing_status_dao extends MY_Model {
 			$this -> db -> where('_m.open_date',$s_date);
 		}
 		if(!empty( $data['id'])){
-			$this -> db -> where('_m.id',$id);
+			$this -> db -> where('_m.id',$data['id']);
 		}
 
 	}
