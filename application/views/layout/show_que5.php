@@ -66,8 +66,8 @@
                       <label for="q<?= $i+1 ?>_o1_4">職場霸凌</label><br>
                       <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_5" name="q<?= $i+1 ?>_o2" value="性騷擾"/>
                       <label for="q<?= $i+1 ?>_o1_5">性騷擾</label><br>
-                      <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_6" name="q<?= $i+1 ?>_o2" value="就業岐視"/>
-                      <label for="q<?= $i+1 ?>_o1_6">就業岐視</label>
+                      <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_6" name="q<?= $i+1 ?>_o2" value="就業歧視"/>
+                      <label for="q<?= $i+1 ?>_o1_6">就業歧視</label>
                     </td>
                     <td  class="R1 min125">
                       <input type="radio" class="q<?= $i*7+3 ?>" id="q<?= $i+1 ?>_o1_7" name="q<?= $i+1 ?>_o3" value="3"/>

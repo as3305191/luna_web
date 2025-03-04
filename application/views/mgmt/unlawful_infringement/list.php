@@ -55,8 +55,8 @@
 										<label for="Q1_R_Id2">職場霸凌</label><br>
 										<input type="radio" id="Q1_R_Id3" name="Q1_R" value="性騷擾"/>
 										<label for="Q1_R_Id3">性騷擾</label><br>
-										<input type="radio" id="Q1_R_Id4" name="Q1_R" value="就業岐視"/>
-										<label for="Q1_R_Id4">就業岐視</label>
+										<input type="radio" id="Q1_R_Id4" name="Q1_R" value="就業歧視"/>
+										<label for="Q1_R_Id4">就業歧視</label>
 									</td>
 									<td  class="R1">
 										<input type="radio" id="Q1_P_Id1" name="Q1_P" value="可能3分"/>
@@ -111,8 +111,8 @@
 									<label for="Q2_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q2_R_Id3" name="Q2_R" value="性騷擾"/>
 									<label for="Q2_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q2_R_Id4" name="Q2_R" value="就業岐視"/>
-									<label for="Q2_R_Id4">就業岐視</label>
+									<input type="radio" id="Q2_R_Id4" name="Q2_R" value="就業歧視"/>
+									<label for="Q2_R_Id4">就業歧視</label>
 								</td>
 								<td class="R2">
 									<input type="radio" id="Q2_P_Id1" name="Q2_P" value="可能3分"/>
@@ -167,8 +167,8 @@
 									<label for="Q3_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q3_R_Id3" name="Q3_R" value="性騷擾"/>
 									<label for="Q3_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q3_R_Id4" name="Q3_R" value="就業岐視"/>
-									<label for="Q3_R_Id4">就業岐視</label>
+									<input type="radio" id="Q3_R_Id4" name="Q3_R" value="就業歧視"/>
+									<label for="Q3_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q3_P_Id1" name="Q3_P" value="可能3分"/>
@@ -222,8 +222,8 @@
 									<label for="Q4_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q4_R_Id3" name="Q4_R" value="性騷擾"/>
 									<label for="Q4_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q4_R_Id4" name="Q4_R" value="就業岐視"/>
-									<label for="Q4_R_Id4">就業岐視</label>
+									<input type="radio" id="Q4_R_Id4" name="Q4_R" value="就業歧視"/>
+									<label for="Q4_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q4_P_Id1" name="Q4_P" value="可能3分"/>
@@ -277,8 +277,8 @@
 									<label for="Q5_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q5_R_Id3" name="Q5_R" value="性騷擾"/>
 									<label for="Q5_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q5_R_Id4" name="Q5_R" value="就業岐視"/>
-									<label for="Q5_R_Id4">就業岐視</label>
+									<input type="radio" id="Q5_R_Id4" name="Q5_R" value="就業歧視"/>
+									<label for="Q5_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q5_P_Id1" name="Q5_P" value="可能3分"/>
@@ -332,8 +332,8 @@
 									<label for="Q6_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q6_R_Id3" name="Q6_R" value="性騷擾"/>
 									<label for="Q6_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q6_R_Id4" name="Q6_R" value="就業岐視"/>
-									<label for="Q6_R_Id4">就業岐視</label>
+									<input type="radio" id="Q6_R_Id4" name="Q6_R" value="就業歧視"/>
+									<label for="Q6_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q6_P_Id1" name="Q6_P" value="可能3分"/>
@@ -387,8 +387,8 @@
 									<label for="Q7_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q7_R_Id3" name="Q7_R" value="性騷擾"/>
 									<label for="Q7_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q7_R_Id4" name="Q7_R" value="就業岐視"/>
-									<label for="Q7_R_Id4">就業岐視</label>
+									<input type="radio" id="Q7_R_Id4" name="Q7_R" value="就業歧視"/>
+									<label for="Q7_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q7_P_Id1" name="Q7_P" value="可能3分"/>
@@ -442,8 +442,8 @@
 									<label for="Q8_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q8_R_Id3" name="Q8_R" value="性騷擾"/>
 									<label for="Q8_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q8_R_Id4" name="Q8_R" value="就業岐視"/>
-									<label for="Q8_R_Id4">就業岐視</label>
+									<input type="radio" id="Q8_R_Id4" name="Q8_R" value="就業歧視"/>
+									<label for="Q8_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q8_P_Id1" name="Q8_P" value="可能3分"/>
@@ -497,8 +497,8 @@
 									<label for="Q9_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q9_R_Id3" name="Q9_R" value="性騷擾"/>
 									<label for="Q9_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q9_R_Id4" name="Q9_R" value="就業岐視"/>
-									<label for="Q9_R_Id4">就業岐視</label>
+									<input type="radio" id="Q9_R_Id4" name="Q9_R" value="就業歧視"/>
+									<label for="Q9_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q9_P_Id1" name="Q9_P" value="可能3分"/>
@@ -552,8 +552,8 @@
 									<label for="Q10_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q10_R_Id3" name="Q10_R" value="性騷擾"/>
 									<label for="Q10_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q10_R_Id4" name="Q10_R" value="就業岐視"/>
-									<label for="Q10_R_Id4">就業岐視</label>
+									<input type="radio" id="Q10_R_Id4" name="Q10_R" value="就業歧視"/>
+									<label for="Q10_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q10_P_Id1" name="Q10_P" value="可能3分"/>
@@ -607,8 +607,8 @@
 									<label for="Q11_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q11_R_Id3" name="Q11_R" value="性騷擾"/>
 									<label for="Q11_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q11_R_Id4" name="Q11_R" value="就業岐視"/>
-									<label for="Q11_R_Id4">就業岐視</label>
+									<input type="radio" id="Q11_R_Id4" name="Q11_R" value="就業歧視"/>
+									<label for="Q11_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q11_P_Id1" name="Q11_P" value="可能3分"/>
@@ -662,8 +662,8 @@
 									<label for="Q12_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q12_R_Id3" name="Q12_R" value="性騷擾"/>
 									<label for="Q12_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q12_R_Id4" name="Q12_R" value="就業岐視"/>
-									<label for="Q12_R_Id4">就業岐視</label>
+									<input type="radio" id="Q12_R_Id4" name="Q12_R" value="就業歧視"/>
+									<label for="Q12_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q12_P_Id1" name="Q12_P" value="可能3分"/>
@@ -717,8 +717,8 @@
 									<label for="Q13_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q13_R_Id3" name="Q13_R" value="性騷擾"/>
 									<label for="Q13_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q13_R_Id4" name="Q13_R" value="就業岐視"/>
-									<label for="Q13_R_Id4">就業岐視</label>
+									<input type="radio" id="Q13_R_Id4" name="Q13_R" value="就業歧視"/>
+									<label for="Q13_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q13_P_Id1" name="Q13_P" value="可能3分"/>
@@ -772,8 +772,8 @@
 									<label for="Q14_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q14_R_Id3" name="Q14_R" value="性騷擾"/>
 									<label for="Q14_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q14_R_Id4" name="Q14_R" value="就業岐視"/>
-									<label for="Q14_R_Id4">就業岐視</label>
+									<input type="radio" id="Q14_R_Id4" name="Q14_R" value="就業歧視"/>
+									<label for="Q14_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q14_P_Id1" name="Q14_P" value="可能3分"/>
@@ -827,8 +827,8 @@
 									<label for="Q15_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q15_R_Id3" name="Q15_R" value="性騷擾"/>
 									<label for="Q15_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q15_R_Id4" name="Q15_R" value="就業岐視"/>
-									<label for="Q15_R_Id4">就業岐視</label>
+									<input type="radio" id="Q15_R_Id4" name="Q15_R" value="就業歧視"/>
+									<label for="Q15_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q15_P_Id1" name="Q15_P" value="可能3分"/>
@@ -885,8 +885,8 @@
 									<label for="Q16_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q16_R_Id3" name="Q16_R" value="性騷擾"/>
 									<label for="Q16_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q16_R_Id4" name="Q16_R" value="就業岐視"/>
-									<label for="Q16_R_Id4">就業岐視</label>
+									<input type="radio" id="Q16_R_Id4" name="Q16_R" value="就業歧視"/>
+									<label for="Q16_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q16_P_Id1" name="Q16_P" value="可能3分"/>
@@ -940,8 +940,8 @@
 									<label for="Q17_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q17_R_Id3" name="Q17_R" value="性騷擾"/>
 									<label for="Q17_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q17_R_Id4" name="Q17_R" value="就業岐視"/>
-									<label for="Q17_R_Id4">就業岐視</label>
+									<input type="radio" id="Q17_R_Id4" name="Q17_R" value="就業歧視"/>
+									<label for="Q17_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q17_P_Id1" name="Q17_P" value="可能3分"/>
@@ -995,8 +995,8 @@
 									<label for="Q18_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q18_R_Id3" name="Q18_R" value="性騷擾"/>
 									<label for="Q18_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q18_R_Id4" name="Q18_R" value="就業岐視"/>
-									<label for="Q18_R_Id4">就業岐視</label>
+									<input type="radio" id="Q18_R_Id4" name="Q18_R" value="就業歧視"/>
+									<label for="Q18_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q18_P_Id1" name="Q18_P" value="可能3分"/>
@@ -1050,8 +1050,8 @@
 									<label for="Q19_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q19_R_Id3" name="Q19_R" value="性騷擾"/>
 									<label for="Q19_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q19_R_Id4" name="Q19_R" value="就業岐視"/>
-									<label for="Q19_R_Id4">就業岐視</label>
+									<input type="radio" id="Q19_R_Id4" name="Q19_R" value="就業歧視"/>
+									<label for="Q19_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q19_P_Id1" name="Q19_P" value="可能3分"/>
@@ -1105,8 +1105,8 @@
 									<label for="Q20_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q20_R_Id3" name="Q20_R" value="性騷擾"/>
 									<label for="Q20_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q20_R_Id4" name="Q20_R" value="就業岐視"/>
-									<label for="Q20_R_Id4">就業岐視</label>
+									<input type="radio" id="Q20_R_Id4" name="Q20_R" value="就業歧視"/>
+									<label for="Q20_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q20_P_Id1" name="Q20_P" value="可能3分"/>
@@ -1147,7 +1147,7 @@
 							</td>
 							</tr>
 							<tr>
-								<td>內部是否有處於情緒低落、絕望或恐懼，極需被關懷照顧工作者</td>
+								<td>內部是否有處於情緒低落、絕望或恐懼，極需被關懷照顧之勞工</td>
 								<td><input type="radio" id="Q_Y" name="Q21_Yn" value="是"/>
 								</td>
 								<td><input type="radio" id="Q_N" name="Q21_Yn" value="否"/>
@@ -1160,8 +1160,8 @@
 									<label for="Q21_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q21_R_Id3" name="Q21_R" value="性騷擾"/>
 									<label for="Q21_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q21_R_Id4" name="Q21_R" value="就業岐視"/>
-									<label for="Q21_R_Id4">就業岐視</label>
+									<input type="radio" id="Q21_R_Id4" name="Q21_R" value="就業歧視"/>
+									<label for="Q21_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q21_P_Id1" name="Q21_P" value="可能3分"/>
@@ -1215,8 +1215,8 @@
 									<label for="Q22_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q22_R_Id3" name="Q22_R" value="性騷擾"/>
 									<label for="Q22_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q22_R_Id4" name="Q22_R" value="就業岐視"/>
-									<label for="Q22_R_Id4">就業岐視</label>
+									<input type="radio" id="Q22_R_Id4" name="Q22_R" value="就業歧視"/>
+									<label for="Q22_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q22_P_Id1" name="Q22_P" value="可能3分"/>
@@ -1270,8 +1270,8 @@
 									<label for="Q23_R_Id2">職場霸凌</label><br>
 									<input type="radio" id="Q23_R_Id3" name="Q23_R" value="性騷擾"/>
 									<label for="Q23_R_Id3">性騷擾</label><br>
-									<input type="radio" id="Q23_R_Id4" name="Q23_R" value="就業岐視"/>
-									<label for="Q23_R_Id4">就業岐視</label>
+									<input type="radio" id="Q23_R_Id4" name="Q23_R" value="就業歧視"/>
+									<label for="Q23_R_Id4">就業歧視</label>
 								</td>
 								<td>
 									<input type="radio" id="Q23_P_Id1" name="Q23_P" value="可能3分"/>
