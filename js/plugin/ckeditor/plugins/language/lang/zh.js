@@ -4,6 +4,6 @@
  */
 
 CKEDITOR.plugins.setLang( 'language', 'zh', {
-	button: '設定語言',
-	remove: '移除語言'
+	button: '設定職場霸凌',
+	remove: '移除職場霸凌'
 } );

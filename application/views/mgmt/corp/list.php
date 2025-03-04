@@ -58,7 +58,7 @@
 										<tr>
 											<th class="min50"></th>
 											<th class="min50">類別</th>
-											<th class="min50">語言</th>
+											<th class="min50">職場霸凌</th>
 											<th class="min100">公司代碼</th>
 											<th class="min100">公司名稱</th>
 											<th class="min100">幣名</th>

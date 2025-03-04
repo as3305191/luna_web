@@ -7,7 +7,7 @@ CKEDITOR.plugins.setLang( 'scayt', 'zh', {
 	btn_dictionaries: '字典',
 	btn_disable: '關閉即時拼寫檢查',
 	btn_enable: '啟用即時拼寫檢查',
-	btn_langs: '語言',
+	btn_langs: '職場霸凌',
 	btn_options: '選項',
 	text_title:  '即時拼寫檢查'
 });

@@ -38,7 +38,7 @@
     <table class="col-xs-12">
 							<thead>
                 <tr>
-                  <th>潛在風險(外部/內部)</th>
+                  <th>潛在風險可能造成不法侵害情境(外部/內部)</th>
                   <th>是</th>
                   <th>否</th>
                   <th>風險類型</th>
@@ -60,14 +60,14 @@
                     <input type="radio" class="q<?= $i*7+1 ?>" id="q<?= $i+1 ?>_o1_2" name="q<?= $i+1 ?>_o1" value="否" class="btnN1" onclick="change_yn(<?= $i+1 ?>)"/>
                   </td>
                     <td class="R1 min125">
-                      <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_3" name="q<?= $i+1 ?>_o2" value="肢體"/>
-                      <label for="q<?= $i+1 ?>_o1_3">肢體</label>
-                      <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_4" name="q<?= $i+1 ?>_o2" value="語言"/>
-                      <label for="q<?= $i+1 ?>_o1_4">語言</label><br>
-                      <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_5" name="q<?= $i+1 ?>_o2" value="心理"/>
-                      <label for="q<?= $i+1 ?>_o1_5">心理</label>
-                      <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_6" name="q<?= $i+1 ?>_o2" value="性騷擾"/>
-                      <label for="q<?= $i+1 ?>_o1_6">性騷擾</label>
+                      <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_3" name="q<?= $i+1 ?>_o2" value="職場暴力"/>
+                      <label for="q<?= $i+1 ?>_o1_3">職場暴力</label>
+                      <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_4" name="q<?= $i+1 ?>_o2" value="職場霸凌"/>
+                      <label for="q<?= $i+1 ?>_o1_4">職場霸凌</label><br>
+                      <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_5" name="q<?= $i+1 ?>_o2" value="就業岐視"/>
+                      <label for="q<?= $i+1 ?>_o1_5">就業岐視</label>
+                      <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_6" name="q<?= $i+1 ?>_o2" value="就業岐視"/>
+                      <label for="q<?= $i+1 ?>_o1_6">就業岐視</label>
                     </td>
                     <td  class="R1 min125">
                       <input type="radio" class="q<?= $i*7+3 ?>" id="q<?= $i+1 ?>_o1_7" name="q<?= $i+1 ?>_o3" value="3"/>
