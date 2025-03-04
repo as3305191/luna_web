@@ -61,11 +61,11 @@
                   </td>
                     <td class="R1 min125">
                       <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_3" name="q<?= $i+1 ?>_o2" value="職場暴力"/>
-                      <label for="q<?= $i+1 ?>_o1_3">職場暴力</label>
+                      <label for="q<?= $i+1 ?>_o1_3">職場暴力</label><br>
                       <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_4" name="q<?= $i+1 ?>_o2" value="職場霸凌"/>
                       <label for="q<?= $i+1 ?>_o1_4">職場霸凌</label><br>
                       <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_5" name="q<?= $i+1 ?>_o2" value="就業岐視"/>
-                      <label for="q<?= $i+1 ?>_o1_5">就業岐視</label>
+                      <label for="q<?= $i+1 ?>_o1_5">就業岐視</label><br>
                       <input type="checkbox" class="q<?= $i*7+2 ?>" id="q<?= $i+1 ?>_o1_6" name="q<?= $i+1 ?>_o2" value="就業岐視"/>
                       <label for="q<?= $i+1 ?>_o1_6">就業岐視</label>
                     </td>
