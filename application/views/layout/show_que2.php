@@ -223,7 +223,7 @@
     parent.layer.close(index);
   })
   var  q1 = null;
-  var  q2 = null;
+  var  q2 = $('input:radio[name="q2_2"]:checked').val();
   var  q3 = null;
   var  q4 = null;
   var  q5 = null;
@@ -369,12 +369,12 @@
     q20 = $('input:radio[name="q2_20"]:checked').val();
    
   });
-  $('input:radio[name="q2_1_1"]').on('change', function(){
+  $('input:radio[name="q2_1_1"]').on('click', function(){
     q21 = $('input:radio[name="q2_1_1"]:checked').val();
     console.log(q21);
    
   });
-  $('input:radio[name="q2_1_2"]').on('change', function(){
+  $('input:radio[name="q2_1_2"]').on('click', function(){
     q22 = $('input:radio[name="q2_1_2"]:checked').val();
     console.log(q22);
 
