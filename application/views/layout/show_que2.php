@@ -419,8 +419,9 @@
     // console.log(q4o);
 
   });
-console.log(q1);
   $('.dosubmit').click(function() {
+    console.log('q1:'+q1);
+
    if(q1==null){
     alert('請填寫第一題！');
    } else{
@@ -437,7 +438,6 @@ console.log(q1);
       if (q1=='否'){
         console.log(q21);
         console.log(q22);
-
         if (q21!==null&&q22!==null){
           is_ok=true;
           do_save();
