@@ -435,6 +435,9 @@ console.log(q1);
          }
     } else{
       if (q1=='否'){
+        console.log(q21);
+        console.log(q22);
+
         if (q21!==null&&q22!==null){
           is_ok=true;
           do_save();
