@@ -428,7 +428,6 @@ console.log(q1);
          q14!==null&&q15!==null&&q16!==null&&q17!==null&&q18!==null&&q19!==null&&q20!==null&&q21!==null&&q22!==null&&q23!==null){
           is_ok=true;
          } else{
-    
           alert('請填寫完全部題目！');
          }
     } else{
@@ -438,9 +437,11 @@ console.log(q1);
         } else{
           alert('請填寫完全部題目！');
         }
-        
+        alert(is_ok);
       }
     }
+    alert(is_ok);
+
    }
    
     if(is_ok){
