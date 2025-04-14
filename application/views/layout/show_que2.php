@@ -223,7 +223,7 @@
     parent.layer.close(index);
   })
   var  q1 = null;
-  var  q2 = $('input:radio[name="q2_2"]:checked').val();
+  var  q2 = null;
   var  q3 = null;
   var  q4 = null;
   var  q5 = null;
@@ -254,7 +254,8 @@
   var  q6o = '無';
   var  q7o = '無';
   var is_ok=false;
-  $("input[name='q2_1']").on('change', function(){
+  $('input:radio[name="q2_1"]').on('change', function(){
+    q1 = $('input:radio[name="q2_1"]:checked').val();
     if( document.querySelector("input[name='q2_1']:checked").value=='是'){
       $('#d_hide').removeClass('d_hide');
     } else{
@@ -287,10 +288,6 @@
         q4o = '無';
     
     }
-  });
-  
-  $('input:radio[name="q2_1"]').on('change', function(){
-    q1 = $('input:radio[name="q2_1"]:checked').val();
    
   });
   $('input:radio[name="q2_2"]').on('change', function(){
