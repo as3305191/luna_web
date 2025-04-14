@@ -439,10 +439,11 @@ console.log(q1);
         } else{
           alert('請填寫完全部題目！');
         }
-        alert(is_ok);
+        alert(q21);
+        alert(q22);
+
       }
     }
-    alert(is_ok);
 
    }
     function do_save() {
