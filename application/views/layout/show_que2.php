@@ -371,11 +371,13 @@
   });
   $('input:radio[name="q2_1_1"]').on('change', function(){
     q21 = $('input:radio[name="q2_1_1"]:checked').val();
+    console.log(q21);
    
   });
   $('input:radio[name="q2_1_2"]').on('change', function(){
     q22 = $('input:radio[name="q2_1_2"]:checked').val();
-   
+    console.log(q22);
+
   });
   $('input:radio[name="q2_32"]').on('change', function(){
     q23 = $('input:radio[name="q2_32"]:checked').val();
