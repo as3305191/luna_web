@@ -427,6 +427,7 @@ console.log(q1);
          q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null&&q13!==null&&
          q14!==null&&q15!==null&&q16!==null&&q17!==null&&q18!==null&&q19!==null&&q20!==null&&q21!==null&&q22!==null&&q23!==null){
           is_ok=true;
+          do_save();
          } else{
           alert('請填寫完全部題目！');
          }
@@ -434,6 +435,7 @@ console.log(q1);
       if (q1=='否'){
         if (q21!==null&&q22!==null){
           is_ok=true;
+          do_save();
         } else{
           alert('請填寫完全部題目！');
         }
@@ -443,8 +445,8 @@ console.log(q1);
     alert(is_ok);
 
    }
-   
-    if(is_ok){
+    function do_save() {
+      if(is_ok){
       $.ajax({
   			url: '<?= base_url() ?>' + 'mgmt/question_for_user/save_q2',
   			type: 'POST',
@@ -501,10 +503,12 @@ console.log(q1);
   		});
     }
   		
+    };
+  
   })
 
 
-  
+
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
