@@ -36,6 +36,7 @@ class Question_option_dao extends MY_Model {
 		// $this -> db -> order_by('id', 'desc');
 		// limit
 		$this -> db -> limit($limit, $start);
+		$this -> db -> order_by('_m.id', 'desc');
 
 		// query results
 		$query = $this -> db -> get();
