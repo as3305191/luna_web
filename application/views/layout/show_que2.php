@@ -502,6 +502,9 @@ console.log(q1);
     }
   		
   })
+
+
+  
   $('.trash_btn').click(function() {
     $(this).closest('.itemp').remove();
   })
