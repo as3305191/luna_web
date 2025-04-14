@@ -244,7 +244,6 @@
   var  q20 = null;
   var  q21 = null;
   var  q22 = null;
-  var  q23 = null;
 
   var  q1o = '無';
   var  q2o = '無';
@@ -256,7 +255,7 @@
   var is_ok=false;
   $('input:radio[name="q2_1"]').on('change', function(){
     q1 = $('input:radio[name="q2_1"]:checked').val();
-    if( document.querySelector("input[name='q2_1']:checked").value=='是'){
+    if( q1=='是'){
       $('#d_hide').removeClass('d_hide');
     } else{
       $('#d_hide').addClass('d_hide');
@@ -279,8 +278,6 @@
         q18 = null;
         q19 = null;
         q20 = null;
-        q21 = null;
-        q22 = null;
         q23 = null;
         q1o = '無';
         q2o = '無';
@@ -368,12 +365,10 @@
   });
   $('input:radio[name="q2_1_1"]').on('click', function(){
     q21 = $('input:radio[name="q2_1_1"]:checked').val();
-    console.log(q21);
    
   });
   $('input:radio[name="q2_1_2"]').on('click', function(){
     q22 = $('input:radio[name="q2_1_2"]:checked').val();
-    console.log(q22);
 
   });
   $('input:radio[name="q2_32"]').on('change', function(){
