@@ -244,6 +244,7 @@
   var  q20 = null;
   var  q21 = null;
   var  q22 = null;
+  var  q23 = null;
 
   var  q1o = '無';
   var  q2o = '無';
