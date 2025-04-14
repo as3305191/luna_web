@@ -441,9 +441,6 @@ console.log(q1);
         } else{
           alert('請填寫完全部題目！');
         }
-        alert(q21);
-        alert(q22);
-
       }
     }
 
