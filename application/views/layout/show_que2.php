@@ -279,7 +279,6 @@
         q18 = null;
         q19 = null;
         q20 = null;
-        q23 = null;
         q1o = '無';
         q2o = '無';
         q3o = '無';
