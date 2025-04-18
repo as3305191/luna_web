@@ -325,6 +325,7 @@
       } else{
         is_ok61=true
       };
+      console.log(is_ok61);
     }
     if(q1_6_3.checked){
       q1_6_first.checked=false;
@@ -333,6 +334,8 @@
       } else{
         is_ok62=true
       };
+      console.log(is_ok62);
+
     }
     if(q1_6_4.checked){
       q1_6_first.checked=false;
@@ -341,6 +344,8 @@
       } else{
         is_ok63=true
       };
+      console.log(is_ok63);
+
     }
     if(q1_6_5.checked){
       q1_6_first.checked=false;
@@ -349,6 +354,8 @@
       } else{
         is_ok64=true
       };
+      console.log(is_ok64);
+
     }
     if(q1_6_6.checked){
       q1_6_first.checked=false;
@@ -357,6 +364,8 @@
       } else{
         is_ok65=true
       };
+      console.log(is_ok65);
+
     }
   
 
