@@ -342,11 +342,11 @@ class Question_option extends MY_Mgmt_Controller {
 								  ->setCellValue($all_cell_title[9], $cell_title[9])
 								  ->setCellValue($all_cell_title[10], $cell_title[10])
 								  ->setCellValue($all_cell_title[11], $cell_title[11])
-								  ->setCellValue($all_cell_title[11], $cell_title[12])
-								  ->setCellValue($all_cell_title[11], $cell_title[13])
-								  ->setCellValue($all_cell_title[11], $cell_title[14])
-								  ->setCellValue($all_cell_title[11], $cell_title[15])
-								  ->setCellValue($all_cell_title[11], $cell_title[16]);
+								  ->setCellValue($all_cell_title[12], $cell_title[12])
+								  ->setCellValue($all_cell_title[13], $cell_title[13])
+								  ->setCellValue($all_cell_title[14], $cell_title[14])
+								  ->setCellValue($all_cell_title[15], $cell_title[15])
+								  ->setCellValue($all_cell_title[16], $cell_title[16]);
 
 								  for ($j=0;$j<count($question_ans_list);$j++) {
 									  $k = $j+2;
