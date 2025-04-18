@@ -294,6 +294,7 @@
           q6.push(obj[i].value);
         }
     }
+    console.log(q6);
     var q1_6_first = document.getElementById("q1_66");
     var q1_6_2 = document.getElementById("q1_61");
     var q1_6_3 = document.getElementById("q1_62");
