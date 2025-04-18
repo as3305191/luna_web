@@ -302,11 +302,11 @@
     var q1_6_6 = document.getElementById("q1_65");
     $('[name="q1_6o"]').val('');
     if(q1_6_first.checked){
-      q1_6_2.checked=false;
-      q1_6_3.checked=false;
-      q1_6_4.checked=false;
-      q1_6_5.checked=false;
-      q1_6_6.checked=false;
+      q1_6_2.checked=none;
+      q1_6_3.checked=none;
+      q1_6_4.checked=none;
+      q1_6_5.checked=none;
+      q1_6_6.checked=none;
       $('[name="q1_6o"]').val('');
       $('[name="q1_7o"]').val('');
       $('[name="q1_8o"]').val('');
