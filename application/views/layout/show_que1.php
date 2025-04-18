@@ -45,7 +45,7 @@
     <input type="radio" name="q1_5" value="正常班" id="q1_51"><label for="q1_51"><?= $this->_lang['q1_wf_nc'] ?></label>
     <input type="radio" name="q1_5" value="需假日出勤" id="q1_52"><label for="q1_52"><?= $this->_lang['q1_wf_nha'] ?></label>
     <input type="radio" name="q1_5" value="需外勤" id="q1_53"><label for="q1_53"><?= $this->_lang['q1_wf_nfs'] ?></label>
-    <input type="radio" name="q1_5" value="需值班" id="q1_54"><label for="q1_54"><?= $this->_lang['q1_wf_od'] ?></label>
+    <input type="radio" name="q1_5" value="需值班" id="q1_54"><label for="q1_54"><?= $this->_lang['q1_wf_od'] ?></label><input name="q1_5o"><br>
     <?= $this->_lang['q1_wf_noote'] ?><br>
     <?= $this->_lang['q1_we_v'] ?><br>
     <input type="checkbox" name="q1_6" value="無" id="q1_66" ><label for="q1_66" style="color:red;"><?= $this->_lang['q1_we_n'] ?></label><br>
@@ -54,7 +54,7 @@
     <input type="checkbox" name="q1_6" value="性騷擾暴力，如威脅、恐嚇、歧視、排擠、騷擾等" id="q1_63"><label for="q1_63"><?= $this->_lang['q1_we_pv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_9o"><br>
     <input type="checkbox" name="q1_6" value="就業歧視，如不當的性暗示與行為" id="q1_64"><label for="q1_64"><?= $this->_lang['q1_we_sh'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_10o"><br>
     <input type="checkbox" name="q1_6" value="其他" id="q1_65"><label for="q1_65"><?= $this->_lang['q1_we_o'] ?></label> <input name="q1_6o"><br>
-    <?= $this->_lang['q1_dfv'] ?><input name="q1_5o"><br>
+    <?= $this->_lang['q1_dfv'] ?>
     <input type="checkbox" name="q1_7" value="沒有提供任何工作安全衛生教育訓練" id="q1_71"><label for="q1_71" style="color:red;"><?= $this->_lang['q1_nwst'] ?></label><br>
     <input type="checkbox" name="q1_7" value="人身安全之防範" id="q1_72"><label for="q1_72"><?= $this->_lang['q1_pap'] ?></label><br>
     <input type="checkbox" name="q1_7" value="防護用具之使用" id="q1_73"><label for="q1_73"><?= $this->_lang['q1_upe'] ?></label><br>
