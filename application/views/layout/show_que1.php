@@ -302,11 +302,22 @@
     var q1_6_6 = document.getElementById("q1_65");
     $('[name="q1_6o"]').val('');
     if(q1_6_first.checked){
-      q1_6_2.checked=false;
-      q1_6_3.checked=false;
-      q1_6_4.checked=false;
-      q1_6_5.checked=false;
-      q1_6_6.checked=false;
+      if(q1_6_2.checked){
+        q1_6_2.checked=false;
+      }
+      if(q1_6_3.checked){
+        q1_6_3.checked=false;
+      }
+      if(q1_6_4.checked){
+        q1_6_4.checked=false;
+      }
+      if(q1_6_5.checked){
+        q1_6_5.checked=false;
+      }
+      if(q1_6_6.checked){
+        q1_6_6.checked=false;
+      }
+
       $('[name="q1_6o"]').val('');
       $('[name="q1_7o"]').val('');
       $('[name="q1_8o"]').val('');
@@ -325,7 +336,6 @@
       } else{
         is_ok61=true
       };
-      console.log(is_ok61);
     }
     if(q1_6_3.checked){
       q1_6_first.checked=false;
@@ -334,7 +344,6 @@
       } else{
         is_ok62=true
       };
-      console.log(is_ok62);
 
     }
     if(q1_6_4.checked){
@@ -344,7 +353,6 @@
       } else{
         is_ok63=true
       };
-      console.log(is_ok63);
 
     }
     if(q1_6_5.checked){
@@ -354,7 +362,6 @@
       } else{
         is_ok64=true
       };
-      console.log(is_ok64);
 
     }
     if(q1_6_6.checked){
@@ -364,7 +371,6 @@
       } else{
         is_ok65=true
       };
-      console.log(is_ok65);
 
     }
   
