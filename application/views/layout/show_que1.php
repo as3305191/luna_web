@@ -45,7 +45,7 @@
     <input type="radio" name="q1_5" value="正常班" id="q1_51"><label for="q1_51"><?= $this->_lang['q1_wf_nc'] ?></label>
     <input type="radio" name="q1_5" value="需假日出勤" id="q1_52"><label for="q1_52"><?= $this->_lang['q1_wf_nha'] ?></label>
     <input type="radio" name="q1_5" value="需外勤" id="q1_53"><label for="q1_53"><?= $this->_lang['q1_wf_nfs'] ?></label>
-    <input type="radio" name="q1_5" value="需值班" id="q1_54"><label for="q1_54"><?= $this->_lang['q1_wf_od'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_5o"><br>
+    <input type="radio" name="q1_5" value="需值班" id="q1_54"><label for="q1_54"><?= $this->_lang['q1_wf_od'] ?></label> <br>
     <?= $this->_lang['q1_we_v'] ?><br>
     <input type="checkbox" name="q1_6" value="無" id="q1_66" ><label for="q1_66" style="color:red;"><?= $this->_lang['q1_we_n'] ?></label><br>
     <input type="checkbox" name="q1_6" value="職場暴力暴力，如毆打、踢、推、捏、拉扯等" id="q1_61"><label for="q1_61"><?= $this->_lang['q1_we_pbv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_7o"><br>
@@ -232,7 +232,7 @@
         is_ok61=true
       }
     }else{
-      is_ok61=true
+      is_ok61=false
     }
     console.log(is_ok61);
 
@@ -248,7 +248,7 @@
         is_ok62=true
       }
     }else{
-      is_ok62=true
+      is_ok62=false
     }
     console.log(is_ok62);
 
@@ -264,7 +264,7 @@
         is_ok63=true
       }
     }else{
-      is_ok63=true
+      is_ok63=false
     }
     console.log(is_ok63);
   });
@@ -279,7 +279,7 @@
         is_ok64=true
       }
     }else{
-      is_ok64=true
+      is_ok64=false
     }
     
     console.log(is_ok64);
@@ -293,6 +293,14 @@
         if (obj[i].checked){
           q6.push(obj[i].value);
         }
+    }
+    var q1_6_first = document.getElementById("q1_66");
+    if(q1_6_first.checked){
+      $('[name="q1_6o"]').val('');
+      $('[name="q1_7o"]').val('');
+      $('[name="q1_8o"]').val('');
+      $('[name="q1_9o"]').val('');
+      $('[name="q1_10o"]').val('');
     }
   });
 
