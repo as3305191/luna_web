@@ -420,7 +420,7 @@
     if (q1=='是'){
       if (q1!==null&&q2!==null&&q3!==null&&q4!==null&&q5!==null&&q6!==null&&
          q7!==null&&q8!==null&&q9!==null&&q10!==null&&q11!==null&&q12!==null&&q13!==null&&
-         q14!==null&&q15!==null&&q16!==null&&q17!==null&&q18!==null&&q19!==null&&q20!==null&&q21!==null&&q22!==null&&q23!==null&&$('[name="q5o"]').length>0&&$('[name="q5o"]').length>0&&$('[name="q5o"]').length>0){
+         q14!==null&&q15!==null&&q16!==null&&q17!==null&&q18!==null&&q19!==null&&q20!==null&&q21!==null&&q22!==null&&q23!==null&&q5o.length>0&&q6o.length>0&&q7o.length>0&&q5o!=='無'&&q6o!=='無'&&q7o!=='無'){
           is_ok=true;
           do_save();
          } else{
@@ -430,7 +430,7 @@
       if (q1=='否'){
         console.log(q21);
         console.log(q22);
-        if (q21!==null&&q22!==null&&q23!==null&&$('[name="q5o"]').length>0&&$('[name="q5o"]').length>0&&$('[name="q5o"]').length>0){
+        if (q21!==null&&q22!==null&&q23!==null&&q5o.length>0&&q6o.length>0&&q7o.length>0&&q5o!=='無'&&q6o!=='無'&&q7o!=='無'){
           is_ok=true;
           do_save();
         } else{
