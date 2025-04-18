@@ -152,7 +152,10 @@ class Users extends MY_Mgmt_Controller {
 
 	public function delete($id) {
 		$res['success'] = TRUE;
-		$this -> dao -> delete($id);
+		// $this -> dao -> delete($id);
+		$data['is_del'] = 1;
+		$this -> dao -> update($data, $id);
+
 		$this -> to_json($res);
 	}
 
