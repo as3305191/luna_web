@@ -287,14 +287,7 @@
   });
 
   $("input[name='q1_6']").on('change', function(){
-    obj = document.getElementsByName("q1_6");
-    q6 = [];
-    for (i in obj) {
-        if (obj[i].checked){
-          q6.push(obj[i].value);
-        }
-    }
-    console.log(q6);
+   
     var q1_6_first = document.getElementById("q1_66");
     var q1_6_2 = document.getElementById("q1_61");
     var q1_6_3 = document.getElementById("q1_62");
@@ -329,6 +322,7 @@
       is_ok64=true;
       is_ok65=true;
     }
+
     if(q1_6_2.checked){
       q1_6_first.checked=false;
       if($('[name="q1_7o"]').length<=2){
@@ -402,7 +396,14 @@
       $('[name="q1_6o"]').val('無');
 
     }
-  
+    obj = document.getElementsByName("q1_6");
+    q6 = [];
+    for (i in obj) {
+        if (obj[i].checked){
+          q6.push(obj[i].value);
+        }
+    }
+    console.log(q6);
 
   });
 
