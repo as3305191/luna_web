@@ -330,8 +330,8 @@
     }
     if(q1_6_2.checked){
       q1_6_first.checked=false;
-      if($('[name="q1_6o"]').length<=2){
-        $('[name="q1_6o"]').val('');
+      if($('[name="q1_7o"]').length<=2){
+        $('[name="q1_7o"]').val('');
         is_ok61=false
       } else{
         is_ok61=true
@@ -339,8 +339,8 @@
     }
     if(q1_6_3.checked){
       q1_6_first.checked=false;
-      if($('[name="q1_7o"]').length<=2){
-        $('[name="q1_7o"]').val('');
+      if($('[name="q1_8o"]').length<=2){
+        $('[name="q1_8o"]').val('');
 
         is_ok62=false
       } else{
@@ -350,8 +350,8 @@
     }
     if(q1_6_4.checked){
       q1_6_first.checked=false;
-      if($('[name="q1_8o"]').length<=2){
-        $('[name="q1_8o"]').val('');
+      if($('[name="q1_9o"]').length<=2){
+        $('[name="q1_9o"]').val('');
 
         is_ok63=false
       } else{
@@ -361,8 +361,8 @@
     }
     if(q1_6_5.checked){
       q1_6_first.checked=false;
-      if($('[name="q1_9o"]').length<=2){
-        $('[name="q1_9o"]').val('');
+      if($('[name="q1_10o"]').length<=2){
+        $('[name="q1_10o"]').val('');
 
         is_ok64=false
       } else{
@@ -372,8 +372,8 @@
     }
     if(q1_6_6.checked){
       q1_6_first.checked=false;
-      if($('[name="q1_10o"]').length<=2){
-        $('[name="q1_10o"]').val('');
+      if($('[name="q1_6o"]').length<=2){
+        $('[name="q1_6o"]').val('');
 
         is_ok65=false
       } else{
