@@ -338,7 +338,7 @@ class Question_ans_dao extends MY_Model {
 		$this -> db -> join("question_style qs", "qs.id = qo.question_style_id", "left");
 		if(isset($data['s_name'])&&$data['s_name']!=='') {
 			$s_name = $data['s_name'];
-			$this -> db -> where('u.user_name',$s_name);
+			$this -> db -> where("u.user_name like '%{$s_name}%'");
 		}
 		if(!$is_count) {
 			$this -> db -> limit($limit, $start);
