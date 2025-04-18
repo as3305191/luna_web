@@ -48,11 +48,11 @@
     <input type="radio" name="q1_5" value="需值班" id="q1_54"><label for="q1_54"><?= $this->_lang['q1_wf_od'] ?></label> <br>
     <?= $this->_lang['q1_we_v'] ?><br>
     <input type="checkbox" name="q1_6" value="無" id="q1_66" ><label for="q1_66" style="color:red;"><?= $this->_lang['q1_we_n'] ?></label><br>
-    <input type="checkbox" name="q1_6" value="職場暴力暴力，如毆打、踢、推、捏、拉扯等" id="q1_61"><label for="q1_61"><?= $this->_lang['q1_we_pbv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_7o"><br>
-    <input type="checkbox" name="q1_6" value="言語暴力，如辱罵、言語騷擾、冷嘲熱諷等" id="q1_62"><label for="q1_62"><?= $this->_lang['q1_we_vv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_8o"><br>
-    <input type="checkbox" name="q1_6" value="性騷擾暴力，如威脅、恐嚇、歧視、排擠、騷擾等" id="q1_63"><label for="q1_63"><?= $this->_lang['q1_we_pv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_9o"><br>
-    <input type="checkbox" name="q1_6" value="就業歧視，如不當的性暗示與行為" id="q1_64"><label for="q1_64"><?= $this->_lang['q1_we_sh'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_10o"><br>
-    <input type="checkbox" name="q1_6" value="其他" id="q1_65"><label for="q1_65"><?= $this->_lang['q1_we_o'] ?></label> <input name="q1_6o"><br>
+    <input type="checkbox" name="q1_6" value="職場暴力暴力，如毆打、踢、推、捏、拉扯等" id="q1_61"><label for="q1_61"><?= $this->_lang['q1_we_pbv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_7o" value="無"><br>
+    <input type="checkbox" name="q1_6" value="言語暴力，如辱罵、言語騷擾、冷嘲熱諷等" id="q1_62"><label for="q1_62"><?= $this->_lang['q1_we_vv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_8o" value="無"><br>
+    <input type="checkbox" name="q1_6" value="性騷擾暴力，如威脅、恐嚇、歧視、排擠、騷擾等" id="q1_63"><label for="q1_63"><?= $this->_lang['q1_we_pv'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_9o" value="無"><br>
+    <input type="checkbox" name="q1_6" value="就業歧視，如不當的性暗示與行為" id="q1_64"><label for="q1_64"><?= $this->_lang['q1_we_sh'] ?></label> <?= $this->_lang['q1_wf_noote'] ?><input name="q1_10o" value="無"><br>
+    <input type="checkbox" name="q1_6" value="其他" id="q1_65"><label for="q1_65"><?= $this->_lang['q1_we_o'] ?></label> <input name="q1_6o" value="無"><br>
     <?= $this->_lang['q1_dfv'] ?><br>
     <input type="checkbox" name="q1_7" value="沒有提供任何工作安全衛生教育訓練" id="q1_71"><label for="q1_71" style="color:red;"><?= $this->_lang['q1_nwst'] ?></label><br>
     <input type="checkbox" name="q1_7" value="人身安全之防範" id="q1_72"><label for="q1_72"><?= $this->_lang['q1_pap'] ?></label><br>
@@ -318,11 +318,11 @@
         q1_6_6.checked=false;
       }
 
-      $('[name="q1_6o"]').val('');
-      $('[name="q1_7o"]').val('');
-      $('[name="q1_8o"]').val('');
-      $('[name="q1_9o"]').val('');
-      $('[name="q1_10o"]').val('');
+      $('[name="q1_6o"]').val('無');
+      $('[name="q1_7o"]').val('無');
+      $('[name="q1_8o"]').val('無');
+      $('[name="q1_9o"]').val('無');
+      $('[name="q1_10o"]').val('無');
       is_ok61=true;
       is_ok62=true;
       is_ok63=true;
