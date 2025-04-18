@@ -334,10 +334,12 @@
         $('[name="q1_7o"]').val('');
         is_ok61=false
       } else{
-        $('[name="q1_7o"]').val('無');
 
         is_ok61=true
       };
+    } else{
+      $('[name="q1_7o"]').val('無');
+
     }
     if(q1_6_3.checked){
       q1_6_first.checked=false;
@@ -346,10 +348,12 @@
 
         is_ok62=false
       } else{
-        $('[name="q1_8o"]').val('無');
 
         is_ok62=true
       };
+
+    }else{
+      $('[name="q1_8o"]').val('無');
 
     }
     if(q1_6_4.checked){
@@ -359,10 +363,12 @@
 
         is_ok63=false
       } else{
-        $('[name="q1_9o"]').val('無');
 
         is_ok63=true
       };
+
+    } else{
+      $('[name="q1_9o"]').val('無');
 
     }
     if(q1_6_5.checked){
@@ -372,10 +378,12 @@
 
         is_ok64=false
       } else{
-        $('[name="q1_10o"]').val('無');
 
         is_ok64=true
       };
+
+    }else{
+      $('[name="q1_10o"]').val('無');
 
     }
     if(q1_6_6.checked){
@@ -385,10 +393,12 @@
 
         is_ok65=false
       } else{
-        $('[name="q1_6o"]').val('無');
 
         is_ok65=true
       };
+
+    } else{
+      $('[name="q1_6o"]').val('無');
 
     }
   
