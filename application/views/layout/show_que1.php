@@ -295,13 +295,71 @@
         }
     }
     var q1_6_first = document.getElementById("q1_66");
+    var q1_6_2 = document.getElementById("q1_61");
+    var q1_6_3 = document.getElementById("q1_62");
+    var q1_6_4 = document.getElementById("q1_63");
+    var q1_6_5 = document.getElementById("q1_64");
+    var q1_6_6 = document.getElementById("q1_65");
+    $('[name="q1_6o"]').val('');
     if(q1_6_first.checked){
+      q1_6_2.checked=false;
+      q1_6_3.checked=false;
+      q1_6_4.checked=false;
+      q1_6_5.checked=false;
+      q1_6_6.checked=false;
       $('[name="q1_6o"]').val('');
       $('[name="q1_7o"]').val('');
       $('[name="q1_8o"]').val('');
       $('[name="q1_9o"]').val('');
       $('[name="q1_10o"]').val('');
+      is_ok61=true;
+      is_ok62=true;
+      is_ok63=true;
+      is_ok64=true;
+      is_ok65=true;
     }
+    if(q1_6_2.checked){
+      q1_6_first.checked=false;
+      if($('[name="q1_6o"]').length<=2){
+        is_ok61=false
+      } else{
+        is_ok61=true
+      };
+    }
+    if(q1_6_3.checked){
+      q1_6_first.checked=false;
+      if($('[name="q1_7o"]').length<=2){
+        is_ok62=false
+      } else{
+        is_ok62=true
+      };
+    }
+    if(q1_6_4.checked){
+      q1_6_first.checked=false;
+      if($('[name="q1_8o"]').length<=2){
+        is_ok63=false
+      } else{
+        is_ok63=true
+      };
+    }
+    if(q1_6_5.checked){
+      q1_6_first.checked=false;
+      if($('[name="q1_9o"]').length<=2){
+        is_ok64=false
+      } else{
+        is_ok64=true
+      };
+    }
+    if(q1_6_6.checked){
+      q1_6_first.checked=false;
+      if($('[name="q1_10o"]').length<=2){
+        is_ok65=false
+      } else{
+        is_ok65=true
+      };
+    }
+  
+
   });
 
   $('.cancel').click(function() {
