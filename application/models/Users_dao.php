@@ -743,7 +743,7 @@ class Users_dao extends MY_Model {
 		$this -> db -> where('_m.is_del', 0);
 		$this -> db -> or_group_start();
 		$this -> db -> where('_m.role_id>=',75);
-		$this -> db -> where('_m.role_id<=',78);
+		$this -> db -> where('_m.role_id<=',71);
 		$this -> db -> where('_m.is_del', 0);
 		$this -> db -> group_end();
 		$this -> db -> group_end();
@@ -777,7 +777,7 @@ class Users_dao extends MY_Model {
 
 		$this -> db -> or_group_start();
 		$this -> db -> where('_m.role_id>=',75);
-		$this -> db -> where('_m.role_id<=',78);
+		$this -> db -> where('_m.role_id<=',71);
 		$this -> db -> where('_m.is_del', 0);
 
 		$this -> db -> group_end();
