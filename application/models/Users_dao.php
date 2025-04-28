@@ -726,13 +726,8 @@ class Users_dao extends MY_Model {
 	function find_all_ktx_user_id(){
 		$this -> db -> from("$this->table_name as _m");
 		$this -> db -> join("department d", "d.id = _m.role_id", "left");
-
 		$this -> db -> select('_m.id');
-		
-		
 		// $this -> db -> select('_m.user_name');
-
-
 		$this -> db -> group_start();
 		$this -> db -> where('_m.role_id>',3);
 		$this -> db -> where('_m.role_id<=',37);
