@@ -812,7 +812,7 @@ class Users_dao extends MY_Model {
 		$this -> db -> select("id");
 		$this -> db -> select("user_name");
 		$this -> db -> where("id", $id);
-		$this -> db -> where('_m.is_del', 0);
+		$this -> db -> where('is_del', 0);
 
 		$list = $this -> db -> get() -> result();
 		return $list;
