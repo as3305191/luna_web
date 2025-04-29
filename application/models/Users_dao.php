@@ -731,18 +731,16 @@ class Users_dao extends MY_Model {
 		$this -> db -> group_start();
 		$this -> db -> where('_m.role_id>',3);
 		$this -> db -> where('_m.role_id<=',37);
-		$this -> db -> where('_m.is_del', 0);
 		$this -> db -> or_group_start();
 		$this -> db -> where('_m.role_id>=',69);
 		$this -> db -> where('_m.role_id<=',73);
-		$this -> db -> where('_m.is_del', 0);
 		$this -> db -> or_group_start();
 		$this -> db -> where('_m.role_id>=',75);
 		$this -> db -> where('_m.role_id<=',81);
+		$this -> db -> group_end();
+		$this -> db -> group_end();
+		$this -> db -> group_end();
 		$this -> db -> where('_m.is_del', 0);
-		$this -> db -> group_end();
-		$this -> db -> group_end();
-		$this -> db -> group_end();
 
 		$query = $this -> db -> get();
 		$list = $query -> result();
@@ -763,22 +761,20 @@ class Users_dao extends MY_Model {
 		$this -> db -> group_start();
 		$this -> db -> where('_m.role_id>',3);
 		$this -> db -> where('_m.role_id<=',37);
-		$this -> db -> where('_m.is_del', 0);
 
 		$this -> db -> or_group_start();
 		$this -> db -> where('_m.role_id>=',69);
 		$this -> db -> where('_m.role_id<=',73);
-		$this -> db -> where('_m.is_del', 0);
 
 		$this -> db -> or_group_start();
 		$this -> db -> where('_m.role_id>=',75);
 		$this -> db -> where('_m.role_id<=',81);
-		$this -> db -> where('_m.is_del', 0);
 
 		$this -> db -> group_end();
 		$this -> db -> group_end();
 		$this -> db -> group_end();
-	
+		// $this -> db -> where('_m.is_del', 0);
+
 		$query = $this -> db -> get();
 		$list = $query -> result();
 
