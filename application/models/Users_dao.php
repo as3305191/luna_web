@@ -773,7 +773,7 @@ class Users_dao extends MY_Model {
 		$this -> db -> group_end();
 		$this -> db -> group_end();
 		$this -> db -> group_end();
-		// $this -> db -> where('_m.is_del', 0);
+		$this -> db -> where('_m.is_del', 0);
 
 		$query = $this -> db -> get();
 		$list = $query -> result();
