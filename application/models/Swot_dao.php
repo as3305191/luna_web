@@ -245,7 +245,7 @@ class Swot_dao extends MY_Model {
 			}
 		}
 		if(!empty($data['unify_type'])&&$data['unify_type']==1){
-			$this -> db -> where("_m.unify",1);
+			// $this -> db -> where("_m.unify",1);
 			$this -> db -> order_by('d.parent_id', 'desc');
 		} else{
 			if(!empty($data['unify'])&&$data['unify']==1){
