@@ -194,38 +194,40 @@ class Swot extends MY_Mgmt_Controller {
 				$item['m_swot_s_t'] = $this->replace_num_title($m_swot_s_t);
 				$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
 				$data['item']= $item;
-
-				if($style==8){
-					if($dep>0){
-						
-						$dep_item = $this -> d_dao -> find_by_id($dep);
-						if($dep_item->level==3){
-							$data['swot_class'] = $dep_item->name;;
-							$data['new_class_id'] = $dep;
+				if($unify_type<1){
+					if($style==8){
+						if($dep>0){
+							
+							$dep_item = $this -> d_dao -> find_by_id($dep);
+							if($dep_item->level==3){
+								$data['swot_class'] = $dep_item->name;;
+								$data['new_class_id'] = $dep;
+							} else{
+								$class_dep_item = $this -> d_dao -> find_by_id($dep_item->parent_id);
+								$data['swot_class'] = $class_dep_item->name;
+								$data['new_class_id'] = $class_dep_item->id;
+							}
 						} else{
-							$class_dep_item = $this -> d_dao -> find_by_id($dep_item->parent_id);
-							$data['swot_class'] = $class_dep_item->name;
-							$data['new_class_id'] = $class_dep_item->id;
+							$dep_item = $this -> d_dao -> find_by_id(3);
+							$data['swot_class'] = $dep_item->name;
+							$data['new_class_id'] = 3;
 						}
+						
 					} else{
-						$dep_item = $this -> d_dao -> find_by_id(3);
-						$data['swot_class'] = $dep_item->name;
-						$data['new_class_id'] = 3;
+						
+						if($dep==0||$dep==3){
+							$dep_item = $this -> d_dao -> find_by_id(3);
+							$data['swot_class'] = $dep_item->name;
+							$data['new_class_id'] = 3;
+						} else{
+							$dep_item = $this -> d_dao -> find_by_id($dep);
+							$data['swot_class'] = $dep_item->name;
+							$data['new_class_id'] = $dep;
+						}
+						
 					}
-					
-				} else{
-					
-					if($dep==0||$dep==3){
-						$dep_item = $this -> d_dao -> find_by_id(3);
-						$data['swot_class'] = $dep_item->name;
-						$data['new_class_id'] = 3;
-					} else{
-						$dep_item = $this -> d_dao -> find_by_id($dep);
-						$data['swot_class'] = $dep_item->name;
-						$data['new_class_id'] = $dep;
-					}
-					
 				}
+				
 				$data['unify'] = 1;
 			} 
 		}
