@@ -161,16 +161,20 @@ class Swot extends MY_Mgmt_Controller {
 				$w_o='';
 				$s_t='';
 				$w_t='';
-				foreach($list as $each){	
-					$s.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s)));
-					$w.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w)));
-					$o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_o)));
-					$t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_t)));
-					$s_o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_o)));
-					$w_o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_o)));
-					$s_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_t)));
-					$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
+				if($unify_type<1){
+					foreach($list as $each){	
+						$s.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s)));
+						$w.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w)));
+						$o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_o)));
+						$t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_t)));
+						$s_o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_o)));
+						$w_o.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_o)));
+						$s_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_t)));
+						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
+					}
 				}
+
+				
 
 				$item['id'] = 0;
 				$item['class_id'] = 0;
@@ -194,38 +198,36 @@ class Swot extends MY_Mgmt_Controller {
 				$item['m_swot_s_t'] = $this->replace_num_title($m_swot_s_t);
 				$item['m_swot_w_t'] = $this->replace_num_title($m_swot_w_t);
 				$data['item']= $item;
-				if($unify_type<1){
-					if($style==8){
-						if($dep>0){
-							
-							$dep_item = $this -> d_dao -> find_by_id($dep);
-							if($dep_item->level==3){
-								$data['swot_class'] = $dep_item->name;;
-								$data['new_class_id'] = $dep;
-							} else{
-								$class_dep_item = $this -> d_dao -> find_by_id($dep_item->parent_id);
-								$data['swot_class'] = $class_dep_item->name;
-								$data['new_class_id'] = $class_dep_item->id;
-							}
-						} else{
-							$dep_item = $this -> d_dao -> find_by_id(3);
-							$data['swot_class'] = $dep_item->name;
-							$data['new_class_id'] = 3;
-						}
+				if($style==8){
+					if($dep>0){
 						
-					} else{
-						
-						if($dep==0||$dep==3){
-							$dep_item = $this -> d_dao -> find_by_id(3);
-							$data['swot_class'] = $dep_item->name;
-							$data['new_class_id'] = 3;
-						} else{
-							$dep_item = $this -> d_dao -> find_by_id($dep);
-							$data['swot_class'] = $dep_item->name;
+						$dep_item = $this -> d_dao -> find_by_id($dep);
+						if($dep_item->level==3){
+							$data['swot_class'] = $dep_item->name;;
 							$data['new_class_id'] = $dep;
+						} else{
+							$class_dep_item = $this -> d_dao -> find_by_id($dep_item->parent_id);
+							$data['swot_class'] = $class_dep_item->name;
+							$data['new_class_id'] = $class_dep_item->id;
 						}
-						
+					} else{
+						$dep_item = $this -> d_dao -> find_by_id(3);
+						$data['swot_class'] = $dep_item->name;
+						$data['new_class_id'] = 3;
 					}
+					
+				} else{
+					
+					if($dep==0||$dep==3){
+						$dep_item = $this -> d_dao -> find_by_id(3);
+						$data['swot_class'] = $dep_item->name;
+						$data['new_class_id'] = 3;
+					} else{
+						$dep_item = $this -> d_dao -> find_by_id($dep);
+						$data['swot_class'] = $dep_item->name;
+						$data['new_class_id'] = $dep;
+					}
+					
 				}
 				
 				$data['unify'] = 1;
