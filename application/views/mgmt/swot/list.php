@@ -67,6 +67,9 @@ thead tr th {
 								</div>
 								<div class="pull-left ">
 									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9|| $login_user->role_id==69): ?>
+										<button onclick="unify_unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
+											整合已整合表單
+										</button>
 										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合公司
 										</button>
@@ -74,6 +77,9 @@ thead tr th {
 											整合部門總檢 
 										</button>
 									<?php else:?>
+										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
+											整合公司
+										</button>
 										<button onclick="unify_all_inspection();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合部門總檢
 										</button>
@@ -253,13 +259,23 @@ thead tr th {
 			}
 		});
 	}
-
+	function unify_unify() {
+		var style=$('#list_style').val();
+		if(style!=="8"){
+			var title=$('#list_title').val();
+			var dep=$('#d_or_c').val();
+			currentApp.doEdit(0,title,style,dep,1);
+		} else{
+			// alert("總檢無法使用整合公司");
+		}
+		
+	}
 	function unify() {
 		var style=$('#list_style').val();
 		if(style!=="8"){
 			var title=$('#list_title').val();
 			var dep=$('#d_or_c').val();
-			currentApp.doEdit(0,title,style,dep);
+			currentApp.doEdit(0,title,style,dep,0);
 		} else{
 			// alert("總檢無法使用整合公司");
 		}

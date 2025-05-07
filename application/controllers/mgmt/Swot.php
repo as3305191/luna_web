@@ -90,6 +90,7 @@ class Swot extends MY_Mgmt_Controller {
 		$style = $this -> get_get('style');
 		$dep = $this -> get_get('dep');
 		$type = $this -> get_get('type');
+		$unify_type = $this -> get_get('unify_type');
 		if($id>0) {
 			$q_data = $this -> get_posts(array(
 				'length',
@@ -224,6 +225,7 @@ class Swot extends MY_Mgmt_Controller {
 					}
 					
 				}
+				$data['unify_type'] = $unify_type;
 				$data['unify'] = 1;
 			} 
 		}
