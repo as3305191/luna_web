@@ -31,13 +31,13 @@ var SwotAppClass = (function(app) {
 		// data table actions
 		app.dtActions();
 
-		app.doEdit = function(id,title=0,style=0,dep=0,unify_type) {
+		app.doEdit = function(id,title=0,style=0,dep=0,unify_type=0) {
 			var loading = $('<h1 class="ajax-loading-animation"><i class="fa fa-cog fa-spin"></i> Loading...</h1>')
 				.appendTo($('#edit-modal-body').empty());
 			$("#btn-submit-edit").prop( "disabled", true);
 			$('.tab-pane').removeClass('active');
 			$('#edit_page').addClass('active');	
-				$('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id+'?title='+title+'&unify_type='+unify_type+'&style='+style+'&dep='+dep+'&type=0', function(){
+				$('#edit-modal-body').load(baseUrl + app.basePath + 'edit/' + id+'?title='+title+'&style='+style+'&dep='+dep+'&unify_type='+unify_type+'&type=0', function(){
 					// window.location.hash = app.basePath + 'edit/' + id;
 					$("#btn-submit-edit").prop( "disabled", false);
 					loading.remove();
