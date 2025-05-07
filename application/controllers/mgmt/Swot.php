@@ -172,6 +172,17 @@ class Swot extends MY_Mgmt_Controller {
 						$s_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_t)));
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
+				} else{
+					foreach($list as $each){	
+						$s.=trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s));
+						$w.=trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w));
+						$o.=trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_o));
+						$t.=trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_t));
+						$s_o.=trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_o));
+						$w_o.=trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_o));
+						$s_t.=trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_t));
+						$w_t.=trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t));
+					}
 				}
 
 				
