@@ -135,7 +135,7 @@
 				<div class="swot_leader form-group">
 					<label class="col-md-3 control-label">管理代表</label>
 					<div class="col-md-6">
-						<input type="text"  style="font-family:PMingLiU;"  class=" form-control"  id="swot_leader" value="<?= isset($item['swot_leader']) ? $item['swot_leader'] : '' ?>" />
+						<input type="text"  style="font-family:PMingLiU;"  class=" form-control"  id="swot_leader" value="<?= isset($item['swot_leader']) ? $item['swot_leader'] : '陳虹如' ?>" />
 					</div>
 				</div>
 			</fieldset>
