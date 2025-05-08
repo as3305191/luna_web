@@ -68,17 +68,17 @@ thead tr th {
 								<div class="pull-left ">
 									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9|| $login_user->role_id==69): ?>
 										<button onclick="unify_unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
-											整合已整合表單
+											整合已(整合)
 										</button>
 										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
-											整合公司
+											整合各課
 										</button>
 										<button onclick="unify_all_inspection();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合部門總檢 
 										</button>
 									<?php else:?>
 										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
-											整合公司
+											整合各課
 										</button>
 										<button onclick="unify_all_inspection();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合部門總檢
