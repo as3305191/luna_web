@@ -543,14 +543,14 @@ class Question_option extends MY_Mgmt_Controller {
 		$objPHPExcel = new PHPExcel();
 	
 		$all_cell_title = ['A1','B1','C1','D1','E1','F1','G1','H1','I1','J1','K1',
-		'L1','M1','N1','O1','P1','Q1','R1','S1','T1','U1','V1','W1','X1','Y1','Z1','AA1','AB1','AC1','AD1','AE1','AF1','AG1'];
+		'L1','M1','N1','O1','P1','Q1','R1','S1','T1','U1','V1','W1','X1','Y1','Z1','AA1','AB1','AC1','AD1','AE1','AF1','AG1','AH1'];
 		$all_cell_name = ['A','B','C','D','E','F','G','H','I','J','K',
-				'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','AA','AB','AC','AD','AE','AF','AG'];
+				'L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z','AA','AB','AC','AD','AE','AF','AG','AH'];
 
 
 		switch ($question_ans_list[0]->qs_id) {
 		case 1:
-		$cell_title = ['部門','姓名','工作型態','性別','年資','平均每週工作時數','班別','曾經遭遇的暴力攻擊情境',
+		$cell_title = ['部門','姓名','員工編號','工作型態','性別','年資','平均每週工作時數','班別','曾經遭遇的暴力攻擊情境',
 		'公司提供有關預防暴力攻擊之衛生教育訓練','我清楚了解如何辨識職場發生的暴力危害',
 		'我清楚了解如何進行暴力危害的風險評估','我清楚了解如何避免或遠離暴力危害事件',
 		'我清楚了解暴力危害事件發生時如何尋求支援管道','我具備因應暴力危害事件的事務處理與執行能力',
@@ -583,29 +583,32 @@ class Question_option extends MY_Mgmt_Controller {
 					->setCellValue($all_cell_title[15], $cell_title[15])
 					->setCellValue($all_cell_title[16], $cell_title[16])
 					->setCellValue($all_cell_title[17], $cell_title[17])
-					->setCellValue($all_cell_title[18], $cell_title[18]);
+					->setCellValue($all_cell_title[18], $cell_title[18])
+					->setCellValue($all_cell_title[19], $cell_title[19]);
 
 					for ($j=0;$j<count($question_ans_list);$j++) {
 						$k = $j+2;
 						$objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->dep_name)
 									->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->user_name)
-									->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q1)
-									->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q2)
-									->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q3)
-									->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q4)
-									->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q5)
-									->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q6)
-									->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q7)
-									->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q8)
-									->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q9)
-									->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q10)
-									->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q11)
-									->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q12)
-									->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q4o)
-									->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q5o)
-									->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q6o)
-									->setCellValue($all_cell_name[17].$k , $question_ans_list[$j]->q7o)
-									->setCellValue($all_cell_name[18].$k , $question_ans_list[$j]->q3o);
+									->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->empindex)
+									->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q1)
+									->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q2)
+									->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q3)
+									->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q4)
+									->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q5)
+									->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q6)
+									->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q7)
+									->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q8)
+									->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q9)
+									->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q10)
+									->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q11)
+									->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q12)
+									->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q4o)
+									->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q5o)
+									->setCellValue($all_cell_name[17].$k , $question_ans_list[$j]->q6o)
+									->setCellValue($all_cell_name[18].$k , $question_ans_list[$j]->q7o)
+									->setCellValue($all_cell_name[19].$k , $question_ans_list[$j]->q3o);
+									
 
 					}
 
@@ -615,7 +618,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 				break;
 		case 2:
-		$cell_title = ['部門','姓名','性別','年齡','年資','身高','體重','慣用手','是否不適','頸','左肩','左手肘/左前臂','左手/左手腕','左臀/左大腿',
+		$cell_title = ['部門','姓名','員工編號','性別','年齡','年資','身高','體重','慣用手','是否不適','頸','左肩','左手肘/左前臂','左手/左手腕','左臀/左大腿',
 		'左膝','左腳踝/左腳','上背','右肩','右手肘/右前臂','下背','右手/右手腕','右臀/右大腿','右膝',
 		'右腳踝/右腳','痠痛持續時間','是否工作加劇','症狀與工作相關說明','最近3個月是否因上述不適而請假','請假幾天',
 		'是否曾被醫師確診肌肉骨骼或神經系統相關疾病（需藥物、復健或手術治療)','診斷名稱','其他症狀、病史說明'];
@@ -656,44 +659,47 @@ class Question_option extends MY_Mgmt_Controller {
 					->setCellValue($all_cell_title[28], $cell_title[28])
 					->setCellValue($all_cell_title[29], $cell_title[29])
 					->setCellValue($all_cell_title[30], $cell_title[30])
-					->setCellValue($all_cell_title[31], $cell_title[31]);
+					->setCellValue($all_cell_title[31], $cell_title[31])
+					->setCellValue($all_cell_title[32], $cell_title[32]);
 
 					//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
 					for ($j=0;$j<count($question_ans_list);$j++) {
 						$k = $j+2;
 						$objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->dep_name)
 									->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->user_name)
-									->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q21)
-									->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q5o)
+
+									->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->empindex)
+									->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q21)
 									
-									->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q23)
-									->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q6o)
-									->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q7o)
-									->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q22)
-									->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q1)
-									->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q2)
-									->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q3)
-									->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q4)
-									->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q5)
-									->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q6)
-									->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q7)
-									->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q8)
-									->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q9)
-									->setCellValue($all_cell_name[17].$k , $question_ans_list[$j]->q10)
-									->setCellValue($all_cell_name[18].$k , $question_ans_list[$j]->q11)
-									->setCellValue($all_cell_name[19].$k , $question_ans_list[$j]->q12)
-									->setCellValue($all_cell_name[20].$k , $question_ans_list[$j]->q13)
-									->setCellValue($all_cell_name[21].$k , $question_ans_list[$j]->q14)
-									->setCellValue($all_cell_name[22].$k , $question_ans_list[$j]->q15)
-									->setCellValue($all_cell_name[23].$k , $question_ans_list[$j]->q16)
-									->setCellValue($all_cell_name[24].$k , $question_ans_list[$j]->q17)
-									->setCellValue($all_cell_name[25].$k , $question_ans_list[$j]->q18)
-									->setCellValue($all_cell_name[26].$k , $question_ans_list[$j]->q1o)
-									->setCellValue($all_cell_name[27].$k , $question_ans_list[$j]->q19)
-									->setCellValue($all_cell_name[28].$k , $question_ans_list[$j]->q2o)
-									->setCellValue($all_cell_name[29].$k , $question_ans_list[$j]->q20)
-									->setCellValue($all_cell_name[30].$k , $question_ans_list[$j]->q3o)
-									->setCellValue($all_cell_name[31].$k , $question_ans_list[$j]->q4o);
+									->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q5o)
+									->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q23)
+									->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q6o)
+									->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q7o)
+									->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q22)
+									->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q1)
+									->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q2)
+									->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q3)
+									->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q4)
+									->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q5)
+									->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q6)
+									->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q7)
+									->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q8)
+									->setCellValue($all_cell_name[17].$k , $question_ans_list[$j]->q9)
+									->setCellValue($all_cell_name[18].$k , $question_ans_list[$j]->q10)
+									->setCellValue($all_cell_name[19].$k , $question_ans_list[$j]->q11)
+									->setCellValue($all_cell_name[20].$k , $question_ans_list[$j]->q12)
+									->setCellValue($all_cell_name[21].$k , $question_ans_list[$j]->q13)
+									->setCellValue($all_cell_name[22].$k , $question_ans_list[$j]->q14)
+									->setCellValue($all_cell_name[23].$k , $question_ans_list[$j]->q15)
+									->setCellValue($all_cell_name[24].$k , $question_ans_list[$j]->q16)
+									->setCellValue($all_cell_name[25].$k , $question_ans_list[$j]->q17)
+									->setCellValue($all_cell_name[26].$k , $question_ans_list[$j]->q18)
+									->setCellValue($all_cell_name[27].$k , $question_ans_list[$j]->q1o)
+									->setCellValue($all_cell_name[28].$k , $question_ans_list[$j]->q19)
+									->setCellValue($all_cell_name[29].$k , $question_ans_list[$j]->q2o)
+									->setCellValue($all_cell_name[30].$k , $question_ans_list[$j]->q20)
+									->setCellValue($all_cell_name[31].$k , $question_ans_list[$j]->q3o)
+									->setCellValue($all_cell_name[32].$k , $question_ans_list[$j]->q4o);
 
 					}
 
@@ -703,7 +709,7 @@ class Question_option extends MY_Mgmt_Controller {
 
 			break;
 		case 3:
-		$cell_title = ['部門','姓名','你常覺得疲勞嗎？','你常覺得身體上體力透支嗎？','你常覺得情緒上心力交瘁嗎？','你常會覺得，「我快要撐不下去了」嗎?',
+		$cell_title = ['部門','姓名','員工編號','你常覺得疲勞嗎？','你常覺得身體上體力透支嗎？','你常覺得情緒上心力交瘁嗎？','你常會覺得，「我快要撐不下去了」嗎?',
 		'你常覺得精疲力竭嗎？','你常常覺得虛弱，好像快要生病了嗎？',
 		'個人相關疲勞分數','個人相關過勞分級','你的工作會令人情緒上心力交瘁嗎？','你的工作會讓你覺得快要累垮了嗎？','你的工作會讓你覺得挫折嗎？',
 		'工作一整天之後，你覺得精疲力竭嗎？','上班之前只要想到又要工作一整天，你就覺得沒力嗎？','上班時你會覺得每一刻都很難熬嗎？',
@@ -732,30 +738,32 @@ class Question_option extends MY_Mgmt_Controller {
 					->setCellValue($all_cell_title[15], $cell_title[15])
 					->setCellValue($all_cell_title[16], $cell_title[16])
 					->setCellValue($all_cell_title[17], $cell_title[17])
-					->setCellValue($all_cell_title[18], $cell_title[18]);
+					->setCellValue($all_cell_title[18], $cell_title[18])
+					->setCellValue($all_cell_title[19], $cell_title[19]);
 
 					//   $items_order = $this -> menu_order_dao -> find_order_by_menu($items[$i]->id);
 					for ($j=0;$j<count($question_ans_list);$j++) {
 						$k = $j+2;
 						$objWorkSheet->setCellValue($all_cell_name[0].$k , $question_ans_list[$j]->dep_name)
 									->setCellValue($all_cell_name[1].$k , $question_ans_list[$j]->user_name)
-									->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->q1)
-									->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q2)
-									->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q3)
-									->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q4)
-									->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q5)
-									->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q6)
-									->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q1o)
-									->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q2o)
-									->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q7)
-									->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q8)
-									->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q9)
-									->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q10)
-									->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q11)
-									->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q12)
-									->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q13)
-									->setCellValue($all_cell_name[17].$k , $question_ans_list[$j]->q3o)
-									->setCellValue($all_cell_name[18].$k , $question_ans_list[$j]->q4o);
+									->setCellValue($all_cell_name[2].$k , $question_ans_list[$j]->empindex)
+									->setCellValue($all_cell_name[3].$k , $question_ans_list[$j]->q1)
+									->setCellValue($all_cell_name[4].$k , $question_ans_list[$j]->q2)
+									->setCellValue($all_cell_name[5].$k , $question_ans_list[$j]->q3)
+									->setCellValue($all_cell_name[6].$k , $question_ans_list[$j]->q4)
+									->setCellValue($all_cell_name[7].$k , $question_ans_list[$j]->q5)
+									->setCellValue($all_cell_name[8].$k , $question_ans_list[$j]->q6)
+									->setCellValue($all_cell_name[9].$k , $question_ans_list[$j]->q1o)
+									->setCellValue($all_cell_name[10].$k , $question_ans_list[$j]->q2o)
+									->setCellValue($all_cell_name[11].$k , $question_ans_list[$j]->q7)
+									->setCellValue($all_cell_name[12].$k , $question_ans_list[$j]->q8)
+									->setCellValue($all_cell_name[13].$k , $question_ans_list[$j]->q9)
+									->setCellValue($all_cell_name[14].$k , $question_ans_list[$j]->q10)
+									->setCellValue($all_cell_name[15].$k , $question_ans_list[$j]->q11)
+									->setCellValue($all_cell_name[16].$k , $question_ans_list[$j]->q12)
+									->setCellValue($all_cell_name[17].$k , $question_ans_list[$j]->q13)
+									->setCellValue($all_cell_name[18].$k , $question_ans_list[$j]->q3o)
+									->setCellValue($all_cell_name[19].$k , $question_ans_list[$j]->q4o);
 
 					}
 				

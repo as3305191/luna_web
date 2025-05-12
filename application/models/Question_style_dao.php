@@ -128,6 +128,8 @@ class Question_style_dao extends MY_Model {
 
 		$this -> db -> select('_m.*');
 		$this -> db -> select('u.user_name as user_name');
+		$this -> db -> select('u.empindex as empindex');
+
 		$this -> db -> select('m.menu_name as menu_name');
 		$this -> db -> select('m.open_date as open_date');
 
@@ -167,6 +169,8 @@ class Question_style_dao extends MY_Model {
 
 		$this -> db -> select('_m.*');
 		$this -> db -> select('u.user_name as user_name');
+		$this -> db -> select('u.empindex as empindex');
+
 		$this -> db -> select('m.menu_name as menu_name');
 		$this -> db -> select('m.menu_style_id as menu_style_id');
 		$this -> db -> where('_m.user_id <>',$data['login_user_id']);

@@ -257,6 +257,8 @@ class Question_ans_dao extends MY_Model {
 
 		$this -> db -> select('_m.*');
 		$this -> db -> select('u.user_name as user_name');
+		$this -> db -> select('u.empindex as empindex');
+
 		$this -> db -> select('qo.note as note');
 		$this -> db -> select('qs.question_style_name as question_style_name');
 		$this -> db -> select('qs.id as qs_id');
@@ -279,6 +281,8 @@ class Question_ans_dao extends MY_Model {
 
 		$this -> db -> select('_m.*');
 		$this -> db -> select('u.user_name as user_name');
+		$this -> db -> select('u.empindex as empindex');
+
 		$this -> db -> select('qo.note as note');
 		$this -> db -> select('qs.question_style_name as question_style_name');
 		$this -> db -> select('qs.id as qs_id');
@@ -302,6 +306,8 @@ class Question_ans_dao extends MY_Model {
 
 		$this -> db -> select('_m.*');
 		$this -> db -> select('u.user_name as user_name');
+		$this -> db -> select('u.empindex as empindex');
+
 		$this -> db -> select('qo.note as note');
 		$this -> db -> select('qs.question_style_name as question_style_name');
 		$this -> db -> select('qs.id as qs_id');
@@ -329,6 +335,8 @@ class Question_ans_dao extends MY_Model {
 
 		$this -> db -> select('_m.*');
 		$this -> db -> select('u.user_name');
+		$this -> db -> select('u.empindex as empindex');
+
 		$this -> db -> select('d.name as dep_name');
 		$this -> db -> select('qs.id as question_style_id');
 
