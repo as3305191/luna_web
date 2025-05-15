@@ -23,7 +23,7 @@ class Swot extends MY_Mgmt_Controller {
 		$login_user_d = $this -> d_dao -> find_by_id($login_user->role_id);
 
 		if($login_user_d->level==3){
-			$res['login_user_d'] = $login_user_d;
+			$res['login_user_d'] = $login_user_d->id;
 		} else{
 			$login_user_c_f_d = $this -> d_dao -> find_by_id($login_user_d->parent_id);
 			$res['login_user_d'] = $login_user_c_f_d->id;
