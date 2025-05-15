@@ -226,7 +226,7 @@ thead tr th {
 					});
 					load_list_style();
 					$('#list_title').select2();
-					if($('#l_user_id').val==17 || $('#l_user_id').val==6 || $('#l_user_id').val==16 || $('#l_user_id').val==9|| $('#l_user_id').val==69){
+					if($('#d_or_c1').val()==17 || $('#d_or_c1').val()==6 || $('#d_or_c1').val()==16 || $('#d_or_c1').val()==9|| $('#d_or_c1').val()==69){
 						$('#d_or_c').select2();
 					}
 
