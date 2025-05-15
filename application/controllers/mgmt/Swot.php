@@ -25,7 +25,7 @@ class Swot extends MY_Mgmt_Controller {
 		if($login_user_d->level==3){
 			$data['login_user_d'] = $login_user_d->id;
 		} else{
-			$data['login_user_d'] = $login_user_c_f_d->parent_id;
+			$data['login_user_d'] = $login_user_d->parent_id;
 		}
 		$data['login_user'] =  $login_user;
 		// $this -> to_json($data);
