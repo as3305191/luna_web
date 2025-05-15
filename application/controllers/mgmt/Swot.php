@@ -17,9 +17,18 @@ class Swot extends MY_Mgmt_Controller {
 	{
 		$data = array();
 		$data = $this -> setup_user_data($data);
-		$data['login_user'] = $this -> users_dao -> find_by_id($data['login_user_id']);
+		$login_user = $this -> users_dao -> find_by_id($data['login_user_id']);
 		$data['all_department_list'] = $this -> d_dao -> find_all_d_or_c();
+		
+		$login_user_d = $this -> d_dao -> find_by_id($login_user->role_id);
 
+		if($login_user_d->level==3){
+			$res['login_user_d'] = $login_user->role_id;
+		} else{
+			$login_user_c_f_d = $this -> d_dao -> find_by_id($login_user_d->parent_id);
+			$res['login_user_d'] = $login_user_c_f_d->id;
+		}
+		$data['login_user'] =  $login_user;
 		// $this -> to_json($data);
 
 		$this -> load -> view('mgmt/swot/list', $data);
