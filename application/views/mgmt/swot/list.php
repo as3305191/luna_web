@@ -266,24 +266,26 @@ thead tr th {
 	}
 	function unify_unify() {
 		var style=$('#list_style').val();
-		if(style!=="8"){
-			var title=$('#list_title').val();
-			var dep=$('#d_or_c').val();
-			currentApp.doEdit(0,title,style,dep,1);
-		} else{
-			// alert("總檢無法使用整合公司");
-		}
+		// if(style!=="8"){
+			
+		// } else{
+		// 	// alert("總檢無法使用整合公司");
+		// }
+		var title=$('#list_title').val();
+		var dep=$('#d_or_c').val();
+		currentApp.doEdit(0,title,style,dep,1);
 		
 	}
 	function unify() {
 		var style=$('#list_style').val();
-		if(style!=="8"){
-			var title=$('#list_title').val();
-			var dep=$('#d_or_c').val();
-			currentApp.doEdit(0,title,style,dep,0);
-		} else{
-			// alert("總檢無法使用整合公司");
-		}
+		// if(style!=="8"){
+			
+		// } else{
+		// 	// alert("總檢無法使用整合公司");
+		// }
+		var title=$('#list_title').val();
+		var dep=$('#d_or_c').val();
+		currentApp.doEdit(0,title,style,dep,0);
 		
 	}
 	function unify_all_inspection() {
