@@ -70,17 +70,17 @@ thead tr th {
 								</div>
 								<div class="pull-left ">
 									<?php if($login_user->role_id==17 || $login_user->role_id==6 || $login_user->role_id==16 || $login_user->role_id==9|| $login_user->role_id==69): ?>
-										<button onclick="unify_unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
+										<button onclick="unify(1);" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合各部
 										</button>
-										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
+										<button onclick="unify(0);" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合各課
 										</button>
 										<!-- <button onclick="unify_all_inspection();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合部門總檢 
 										</button> -->
 									<?php else:?>
-										<button onclick="unify();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
+										<button onclick="unify(0);" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
 											整合各課
 										</button>
 										<!-- <button onclick="unify_all_inspection();" class=" btn btn-xs btn-success btn-group" data-toggle="dropdown">
@@ -264,48 +264,43 @@ thead tr th {
 			}
 		});
 	}
-	function unify_unify() {
-		var style=$('#list_style').val();
-		// if(style!=="8"){
+	// function unify_unify() {
+	// 	var style=$('#list_style').val();
+	// 	// if(style!=="8"){
 			
-		// } else{
-		// 	// alert("總檢無法使用整合公司");
-		// }
+	// 	// } else{
+	// 	// 	// alert("總檢無法使用整合公司");
+	// 	// }
+	// 	var title=$('#list_title').val();
+	// 	var dep=$('#d_or_c').val();
+	// 	currentApp.doEdit(0,title,style,dep,1);
+		
+	}
+	function unify($t_type) {
+		var style=$('#list_style').val();
 		var title=$('#list_title').val();
 		var dep=$('#d_or_c').val();
-		currentApp.doEdit(0,title,style,dep,1);
+		currentApp.doEdit(0,title,style,dep,$t_type);
 		
 	}
-	function unify() {
-		var style=$('#list_style').val();
-		// if(style!=="8"){
-			
-		// } else{
-		// 	// alert("總檢無法使用整合公司");
-		// }
-		var title=$('#list_title').val();
-		var dep=$('#d_or_c').val();
-		currentApp.doEdit(0,title,style,dep,0);
-		
-	}
-	function unify_all_inspection() {
-		var style=$('#list_style').val();
-		if(style=="8"){
-			var title=$('#list_title').val();
-			var dep_id = 0;
-			if($('#d_or_c1').val()==17 ||$('#d_or_c1').val()==69 || $('#d_or_c1').val()==6 || $('#d_or_c1').val()==16 || $('#d_or_c1').val()==9){
-				dep_id=$('#d_or_c').val();
-			} else{
-				dep_id=$('#d_or_c1').val();
-			}
+	// function unify_all_inspection() {
+	// 	var style=$('#list_style').val();
+	// 	if(style=="8"){
+	// 		var title=$('#list_title').val();
+	// 		var dep_id = 0;
+	// 		if($('#d_or_c1').val()==17 ||$('#d_or_c1').val()==69 || $('#d_or_c1').val()==6 || $('#d_or_c1').val()==16 || $('#d_or_c1').val()==9){
+	// 			dep_id=$('#d_or_c').val();
+	// 		} else{
+	// 			dep_id=$('#d_or_c1').val();
+	// 		}
 
-			currentApp.doEdit1(0,title,8,dep_id);
-		} else{
-			alert("請選擇總檢");
-		}
+	// 		currentApp.doEdit1(0,title,8,dep_id);
+	// 	} else{
+	// 		alert("請選擇總檢");
+	// 	}
 		
 
-	}
+	// }
 	$('#add_title').click(function() {
 		layer.open({
 			type:2,
