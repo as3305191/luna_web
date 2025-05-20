@@ -363,11 +363,15 @@ class Swot extends MY_Mgmt_Controller {
 				$data['m_swot_w_o'] =$this ->test_add_w4($m_swot_w_o);
 				$data['m_swot_s_t'] =$this ->test_add_w4($m_swot_s_t);
 				$data['m_swot_w_t'] =$this ->test_add_w4($m_swot_w_t);
+
 				$data['update_date'] = date("Y-m-d H:i:s");
 				if($class_id>0){
 					$data['class_id'] = $class_id;
 				} else{
 					$data['class_id'] = $login_user->role_id;
+				}
+				if($login_user->role_id==9){
+					$data['unify'] = 1;
 				}
 				$data['role_id'] = $department;
 				$this -> dao -> insert($data);
