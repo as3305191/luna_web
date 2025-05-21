@@ -370,7 +370,7 @@ class Swot extends MY_Mgmt_Controller {
 				} else{
 					$data['class_id'] = $login_user->role_id;
 				}
-				if($login_user->role_id==9||$login_user->role_id==34){
+				if($data['class_id']==9||$data['class_id']==34){
 					$data['unify'] = 1;
 				}
 				$data['role_id'] = $department;
