@@ -237,7 +237,7 @@ class Swot extends MY_Mgmt_Controller {
 						
 					$dep_item = $this -> d_dao -> find_by_id($dep);
 					if($dep_item->level==3){
-						$data['swot_class'] = $dep_item->name;;
+						$data['swot_class'] = $dep_item->name;
 						$data['new_class_id'] = $dep;
 					} else{
 						$class_dep_item = $this -> d_dao -> find_by_id($dep_item->parent_id);
