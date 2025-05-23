@@ -302,9 +302,9 @@ class Swot extends MY_Mgmt_Controller {
 			// $role_array= explode(",", str_replace('#', ',', trim($login_user->in_department, "#")));
 			if($class_id>0){
 				$data['class_id'] = $class_id;
+				
 			} else{
 				$data['class_id'] = $login_user->role_id;
-				$data['unify'] = 1;
 
 			}
 			if($data['class_id']==9||$data['class_id']==34){
