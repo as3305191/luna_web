@@ -280,11 +280,11 @@ class Swot extends MY_Mgmt_Controller {
 		$department = $this -> get_post('department');
 		$class_id = $this -> get_post('class_id');
 		$make_user = $this -> get_post('make_user');
-		// $unify = $this -> get_post('unify');
+		$unify = $this -> get_post('unify');
 		$swot_leader = $this -> get_post('swot_leader');
 		
 		$data['title'] =$title;
-		// $data['unify'] =$unify;
+		$data['unify'] =$unify;
 		$data['swot_leader'] =$this ->test_add_w4($swot_leader);
 		$data['swot_style_id'] =$this ->test_add_w4($swot_style);
 		$data['m_swot_s'] =$this ->test_add_w4($m_swot_s);
