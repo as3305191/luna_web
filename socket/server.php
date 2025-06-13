@@ -42,17 +42,6 @@ class Sock{
             $changes=$this->sockets;
             $write=NULL;
             $except=NULL;
-
-            /*
-            //
-            socket_select ($sockets, $write = NULL, $except = NULL, NULL);
-            $write是監聽是否有客户端寫數據，傳入NULL是不理是否有寫變化。
-            $except是$sockets里面要被排除的元素，傳入NULL是”監聽”全部。
-            最后一个參數超時
-            如果0：立刻結束
-            如果n>1: 則最多在n秒后结束，如遇某一个連接有新動態，則提前返回
-            如果null：如遇某一个連接有新動態，則返回
-            */
             socket_select($changes,$write,$except,NULL);
             foreach($changes as $sock){
                  
@@ -291,9 +280,6 @@ class Sock{
             } else{
                 $this->online_user=mb_split(",",$now_all_online_user_json->now_online);
             }
-            // error_log(print_r($now_all_online_user_json->now_online,true));
-            // error_log(print_r($this->online_user,true));
-
             if($me_id>0){
                 if(count($this->online_user)>0){
                     if(!in_array($me_id,$this->online_user)){
@@ -332,10 +318,6 @@ class Sock{
             }
             $sql="SELECT id FROM `users` WHERE code='$socket'";
             $select=mysqli_query($link,$sql);
-            // $now_off_user = array();
-            // foreach($select as $each){
-            //     $now_off_user[]=$each['id'];
-            // }
             mysqli_query($link,$sql);
             foreach($select as $each){
                 $map_all_user[]=$each['id'];
@@ -415,131 +397,165 @@ class Sock{
         $this->send1($k,$ar,$key);
     }
     
-    //对新加入的client推送已经在线的client
     function getusers(){
-        $ar=array();
-        foreach($this->users as $k=>$v){
-            $ar[]=array('code'=>$k,'name'=>$v['name'],'me_id'=>$v['me_id']);
+        $users_list = [];
+        foreach($this->users as $socketID => $user){
+            $users_list[] = [
+                'code' => $socketID,
+                'name' => $user['name'],
+                'me_id' => $user['me_id']
+            ];
         }
-        return $ar;
+        return $users_list;
     }
      
-    //$k 发信息人的socketID $key接受人的 socketID ，根据这个socketID可以查找相应的client近行消息推送，即指定client近行发送
-    function send1($k,$ar,$key='all'){
-        $ar['code1']=$key;
-        $ar['code']=$k;
+    function send1($fromSocketID, $messageArr, $toSocketID = 'all'){
+        $messageArr['code1'] = $toSocketID;
+        $messageArr['code'] = $fromSocketID;
         date_default_timezone_set('Asia/Taipei');
-        $ar['time']=date('m-d H:i:s');
-        $me_id=$ar['me_id'];
-        
-        //对发送信息近行编码处理
-        $str = $this->code(json_encode($ar));
-        //面对大家即所有在线者发送信息
-        
-        if($key=='all'){
-            $users=$this->users;
-            //如果是add表示新加的client
-            if($ar['type']=='add'){
-                $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
-                if(!$link){
-                    echo"Mysql連錯<br/>";
-                    echo mysqli_connect_error();
-                    exit();
-                }
-                $socket = $ar['code'];
-                $sql="UPDATE users SET code='$socket' WHERE id='$me_id'";
-                mysqli_query($link,$sql);
-                $ar['type']='madd';
-                $ar['users']=$this->getusers();        //取出所有在线者，用于显示在在线用户列表中
-                $str1 = $this->code(json_encode($ar)); //单独对新client近行编码处理，数据不一样
-                //对新client自己单独发送，因为有些数据是不一样的
-                socket_write($users[$k]['socket'],$str1,strlen($str1));
-                //上面已经对client自己单独发送的，后面就无需再次发送，故unset
-                unset($users[$k]);
+        $messageArr['time'] = date('m-d H:i:s');
+    
+        $me_id = $messageArr['me_id'] ?? null;
+    
+        $encodedMsg = $this->code(json_encode($messageArr));
+    
+        if ($toSocketID === 'all') {
+            $users = $this->users;
+    
+            // 新增用戶特別處理
+            if ($messageArr['type'] === 'add') {
+                $link = $this->getDbConnection();
+                if (!$link) return;
+    
+                $sql = "UPDATE users SET code = ? WHERE id = ?";
+                $stmt = $link->prepare($sql);
+                $stmt->bind_param('si', $fromSocketID, $me_id);
+                $stmt->execute();
+    
+                $messageArr['type'] = 'madd';
+                $messageArr['users'] = $this->getusers();
+    
+                $encodedNewClientMsg = $this->code(json_encode($messageArr));
+    
+                // 只發送給新加入用戶自己
+                socket_write($users[$fromSocketID]['socket'], $encodedNewClientMsg, strlen($encodedNewClientMsg));
+    
+                // 移除新用戶，避免後面再次廣播
+                unset($users[$fromSocketID]);
             }
-            //除了新client外，对其他client近行发送信息。数据量大时，就要考虑延时等问题了
-            foreach($users as $v){
-                socket_write($v['socket'],$str,strlen($str));
+    
+            // 廣播給其他在線用戶
+            foreach ($users as $user) {
+                socket_write($user['socket'], $encodedMsg, strlen($encodedMsg));
             }
-          
-        }else{
-            //单独对个人发送信息，即双方聊天  
-            if( $ar['is_online']==0){//未上限所以未讀
-         
-            } else{
-                if( $ar['status']==0){
-                    socket_write($this->users[$k]['socket'],$str,strlen($str));
-                } else{
-                    socket_write($this->users[$k]['socket'],$str,strlen($str));
-                    socket_write($this->users[$key]['socket'],$str,strlen($str));
+        } else {
+            // 單獨對某個用戶發送訊息（雙向聊天）
+            if ($messageArr['is_online'] == 0) {
+                // 如果對方不在線，可考慮呼叫存離線訊息的函式
+                $this->insert_to_user_is_offline_content($messageArr);
+            } else {
+                if ($messageArr['status'] == 0) {
+                    // 只發送給發送者自己（例如系統回覆）
+                    socket_write($this->users[$fromSocketID]['socket'], $encodedMsg, strlen($encodedMsg));
+                } else {
+                    // 雙方都發送訊息
+                    socket_write($this->users[$fromSocketID]['socket'], $encodedMsg, strlen($encodedMsg));
+                    if (isset($this->users[$toSocketID])) {
+                        socket_write($this->users[$toSocketID]['socket'], $encodedMsg, strlen($encodedMsg));
+                    }
                 }
-            }       
+            }
         }
     }
      
-    function insert_to_user_is_offline_content($ar){
-        $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
-        if(!$link){
-            echo"Mysql連錯<br/>";
-            echo mysqli_connect_error();
-            exit();
-        }
-        $content=$ar['nrong'];
-        $from_user_id=$ar['sender'];
-        $to_user_id=$ar['message_recipient'];
-        $sql="INSERT INTO user_msg('from_user_id','to_user_id','content','status')VALUES('$from_user_id','$to_user_id','$content','0')";
-        // error_log(print_r($sql,true));
-        $insert=mysqli_query($link,$sql);
-        // error_log(print_r($insert,true));
-        $ar['last_id']=$insert;
-    }
+    // 插入離線訊息到資料庫
+function insert_to_user_is_offline_content($messageArr){
+    $link = $this->getDbConnection();
+    if (!$link) return;
 
-    //用户退出向所用client推送信息
-    function send2($k){
-        $this->close($k);
-        $ar['type']='rmove';
-        $ar['nrong']=$k;
-        $link=@mysqli_connect('127.0.0.1','pony','!pony','ktx');
-        if(!$link){
-            echo"Mysql連錯<br/>";
-            echo mysqli_connect_error();
-            exit();
-        }
-        $sql="SELECT id FROM `users` WHERE code='$k'";
-        $select=mysqli_query($link,$sql);
-        while ($r = mysqli_fetch_assoc($select)) {
-            $rows[] = $r;
-        }
-        $off_user= json_encode($rows[0]);
-        $off_user_list= json_decode($off_user);
-        $ar['r_id']=$off_user_list->id;
-        // $now_off_user = array();
-        // foreach($select as $each){
-        //     $now_off_user[]=$each['id'];
-        // }
-        foreach($select as $each){
-            $id = $each['id'];
-            $sql5="UPDATE users SET code= '0' WHERE id='$id'";
-            mysqli_query($link,$sql5);
-            $map_all_user[]=$id;
-        }
-        $now_online=array_diff($this->online_user,$map_all_user);
-        $this->online_user=$now_online;
-        $ar['now_online']=$this->online_user;
-        $sql1="SELECT id FROM `users` WHERE status='0'";
-        $select1=mysqli_query($link,$sql1);
-        foreach($select1 as $each){
-            $map_all_user1[]=$each['id'];
-        }
-        $offline_user[]=array_diff($map_all_user1,$this->online_user);
-        $ar['offline_user']=$offline_user;
-        $this->send1(false,$ar,'all');
+    $content = $messageArr['nrong'] ?? '';
+    $from_user_id = $messageArr['sender'] ?? 0;
+    $to_user_id = $messageArr['message_recipient'] ?? 0;
 
-        $now_online_user = implode(',',$ar['now_online']) ;
-        $sql4="UPDATE user_online SET now_online='$now_online_user' WHERE id='1'";
-        mysqli_query($link,$sql4);
+    $sql = "INSERT INTO user_msg (from_user_id, to_user_id, content, status) VALUES (?, ?, ?, 0)";
+    $stmt = $link->prepare($sql);
+    if ($stmt) {
+        $stmt->bind_param('iis', $from_user_id, $to_user_id, $content);
+        $stmt->execute();
+        $messageArr['last_id'] = $stmt->insert_id;
+        $stmt->close();
     }
-     
+}
+
+// 取得資料庫連線，封裝成函式方便維護
+function getDbConnection(){
+    $link = @mysqli_connect('127.0.0.1', 'pony', '!pony', 'ktx');
+    if (!$link) {
+        error_log("MySQL 連線錯誤: " . mysqli_connect_error());
+        return false;
+    }
+    return $link;
+}
+
+   // 用戶退出通知
+function send2($socketID){
+    $this->close($socketID);
+    $ar = [
+        'type' => 'rmove',
+        'nrong' => $socketID,
+    ];
+
+    $link = $this->getDbConnection();
+    if (!$link) return;
+
+    // 取得該用戶 ID
+    $sql = "SELECT id FROM users WHERE code = ?";
+    $stmt = $link->prepare($sql);
+    $stmt->bind_param('s', $socketID);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $off_user_id = null;
+    if ($row = $result->fetch_assoc()) {
+        $off_user_id = $row['id'];
+    }
+    $stmt->close();
+
+    $ar['r_id'] = $off_user_id;
+
+    // 更新該用戶 code 為 0（表示離線）
+    $sql_update = "UPDATE users SET code = '0' WHERE code = ?";
+    $stmt_update = $link->prepare($sql_update);
+    $stmt_update->bind_param('s', $socketID);
+    $stmt_update->execute();
+    $stmt_update->close();
+
+    // 更新線上用戶列表
+    $this->online_user = array_filter($this->online_user, function($val) use ($off_user_id) {
+        return $val != $off_user_id;
+    });
+
+    $ar['now_online'] = $this->online_user;
+
+    // 取得所有離線用戶
+    $offline_sql = "SELECT id FROM users WHERE status = 0";
+    $offline_result = $link->query($offline_sql);
+    $offline_users = [];
+    while ($row = $offline_result->fetch_assoc()) {
+        $offline_users[] = $row['id'];
+    }
+    $ar['offline_user'] = array_diff($offline_users, $this->online_user);
+
+    // 廣播通知所有在線用戶
+    $this->send1(false, $ar, 'all');
+
+    // 更新 user_online 表
+    $now_online_str = implode(',', $this->online_user);
+    $sql_update_online = "UPDATE user_online SET now_online = ? WHERE id = 1";
+    $stmt_online = $link->prepare($sql_update_online);
+    $stmt_online->bind_param('s', $now_online_str);
+    $stmt_online->execute();
+    $stmt_online->close();
+}
     //紀錄日志
     function e($str){
         //$path=dirname(__FILE__).'/log.txt';
