@@ -193,18 +193,17 @@ class Swot extends MY_Mgmt_Controller {
 						$s_t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s_t));
 						$w_t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w_t));
 
-						$pattern = '~(</span\s*>)?。(<\/p>)~ui';
+						$pattern = '~(</span\s*>)?\s*。\s*(<\/p>)~ui';
 
 						$replace_func = function($matches) use ($each) {
-							// debug用
-							// var_dump($matches);
-
+							var_dump($matches);
 							if (isset($matches[1]) && strcasecmp(trim($matches[1]), '</span>') === 0) {
 								return '。</span>(' . $each->d_or_c_name . ')</p>';
 							} else {
 								return '。(' . $each->d_or_c_name . ')</p>';
 							}
 						};
+
 
 						$s .= preg_replace_callback($pattern, $replace_func, $s_tmp);
 						$w .= preg_replace_callback($pattern, $replace_func, $w_tmp);
