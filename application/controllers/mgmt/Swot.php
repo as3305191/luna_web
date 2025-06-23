@@ -181,29 +181,27 @@ class Swot extends MY_Mgmt_Controller {
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
 				} else{
-					
+					// 初始化（迴圈外面）
+					$m_swot_s = $m_swot_w = $m_swot_o = $m_swot_t = '';
+					$m_swot_s_o = $m_swot_w_o = $m_swot_s_t = $m_swot_w_t = '';
+
 					foreach ($list as $each) {
 						$fields = [
 							'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
 							'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
 						];
 
-						// 初始化變數
-						foreach ($fields as $field) {
-							${$field} = '';
-						}
-
 						foreach ($fields as $field) {
 							$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
 
-							// 處理 。</span> </p> 形式（允許中間有空白或換行）
+							// 先替換 </span> 和 </p> 中間加標註
 							$tmp = preg_replace(
 								'/。<\/span>\s*<\/p>/u',
 								'。</span>(' . $each->d_or_c_name . ')</p>',
 								$tmp
 							);
 
-							// 處理 。</p>（前面不是 </span>）
+							// 再替換純 </p>（不包含 </span> 的）
 							$tmp = preg_replace(
 								'/(?<!<\/span>)。<\/p>/u',
 								'。(' . $each->d_or_c_name . ')</p>',
@@ -213,6 +211,7 @@ class Swot extends MY_Mgmt_Controller {
 							${$field} .= $tmp;
 						}
 					}
+
 
 				}
 
