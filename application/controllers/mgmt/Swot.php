@@ -222,8 +222,8 @@ class Swot extends MY_Mgmt_Controller {
 
 								// 除錯：印出每次處理結果長度和前50字確認
 								// （你測試時可以打開看看）
-								// echo "Field: $field, Length: " . strlen($tmp) . "\n";
-								// echo "Preview: " . mb_substr($tmp,0,50) . "\n\n";
+								echo "Field: $field, Length: " . strlen($tmp) . "\n";
+								echo "Preview: " . mb_substr($tmp,0,50) . "\n\n";
 							}
 						}
 
