@@ -181,40 +181,46 @@ class Swot extends MY_Mgmt_Controller {
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
 				} else{
-					foreach ($list as $each) {	
-						// 移除空白段落
-						$s_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s));
-						$w_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w));
-						$o_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_o));
-						$t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_t));
-						$s_o_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s_o));
-						$w_o_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w_o));
-						$s_t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s_t));
-						$w_t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w_t));
+					foreach ($list as $each) {
+						$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s));
+						$tmp = preg_replace('/<\/span>\s*<\/p>/u', '</span>(' . $each->d_or_c_name . ')</p>', $tmp);
+						$tmp = preg_replace('/(?<!<\/span>)。<\/p>/u', '。(' . $each->d_or_c_name . ')</p>', $tmp);
+						$s .= $tmp;
 
-						// 定義替換邏輯
-						$replace_func = function($matches) use ($each) {
-							if (!empty($matches[1])) {
-								// 有 </span>
-								return '。</span>(' . $each->d_or_c_name . ')</p>';
-							} else {
-								// 沒有 </span>
-								return '。(' . $each->d_or_c_name . ')</p>';
-							}
-						};
+						$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w));
+						$tmp = preg_replace('/<\/span>\s*<\/p>/u', '</span>(' . $each->d_or_c_name . ')</p>', $tmp);
+						$tmp = preg_replace('/(?<!<\/span>)。<\/p>/u', '。(' . $each->d_or_c_name . ')</p>', $tmp);
+						$w .= $tmp;
 
-						// 修正：允許中間有空白字元（含全形空格、tab、換行）
-						$pattern = '/(?:<\/span>)?\s*。(\s*)<\/p>/u';
+						$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_o));
+						$tmp = preg_replace('/<\/span>\s*<\/p>/u', '</span>(' . $each->d_or_c_name . ')</p>', $tmp);
+						$tmp = preg_replace('/(?<!<\/span>)。<\/p>/u', '。(' . $each->d_or_c_name . ')</p>', $tmp);
+						$o .= $tmp;
 
-						// 替換
-						$s .= preg_replace_callback($pattern, $replace_func, $s_tmp);
-						$w .= preg_replace_callback($pattern, $replace_func, $w_tmp);
-						$o .= preg_replace_callback($pattern, $replace_func, $o_tmp);
-						$t .= preg_replace_callback($pattern, $replace_func, $t_tmp);
-						$s_o .= preg_replace_callback($pattern, $replace_func, $s_o_tmp);
-						$w_o .= preg_replace_callback($pattern, $replace_func, $w_o_tmp);
-						$s_t .= preg_replace_callback($pattern, $replace_func, $s_t_tmp);
-						$w_t .= preg_replace_callback($pattern, $replace_func, $w_t_tmp);
+						$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_t));
+						$tmp = preg_replace('/<\/span>\s*<\/p>/u', '</span>(' . $each->d_or_c_name . ')</p>', $tmp);
+						$tmp = preg_replace('/(?<!<\/span>)。<\/p>/u', '。(' . $each->d_or_c_name . ')</p>', $tmp);
+						$t .= $tmp;
+
+						$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s_o));
+						$tmp = preg_replace('/<\/span>\s*<\/p>/u', '</span>(' . $each->d_or_c_name . ')</p>', $tmp);
+						$tmp = preg_replace('/(?<!<\/span>)。<\/p>/u', '。(' . $each->d_or_c_name . ')</p>', $tmp);
+						$s_o .= $tmp;
+
+						$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w_o));
+						$tmp = preg_replace('/<\/span>\s*<\/p>/u', '</span>(' . $each->d_or_c_name . ')</p>', $tmp);
+						$tmp = preg_replace('/(?<!<\/span>)。<\/p>/u', '。(' . $each->d_or_c_name . ')</p>', $tmp);
+						$w_o .= $tmp;
+
+						$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s_t));
+						$tmp = preg_replace('/<\/span>\s*<\/p>/u', '</span>(' . $each->d_or_c_name . ')</p>', $tmp);
+						$tmp = preg_replace('/(?<!<\/span>)。<\/p>/u', '。(' . $each->d_or_c_name . ')</p>', $tmp);
+						$s_t .= $tmp;
+
+						$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w_t));
+						$tmp = preg_replace('/<\/span>\s*<\/p>/u', '</span>(' . $each->d_or_c_name . ')</p>', $tmp);
+						$tmp = preg_replace('/(?<!<\/span>)。<\/p>/u', '。(' . $each->d_or_c_name . ')</p>', $tmp);
+						$w_t .= $tmp;
 					}
 
 
