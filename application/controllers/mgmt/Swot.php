@@ -181,43 +181,41 @@ class Swot extends MY_Mgmt_Controller {
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
 				} else{
-					foreach ($list as $each) {
-						$fields = [
-							'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
-							'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
-						];
+					$fields = [
+					'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
+					'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
+					];
 
-						// 先初始化變數
-						foreach ($fields as $field) {
-							${$field} = '';
-						}
-
-						foreach ($fields as $field) {
-							$tmp = isset($each->$field) ? trim(str_replace('<p>&nbsp;</p>', '', $each->$field)) : '';
-
-							$tmp = preg_replace(
-								'/。<\/span>\s*<\/p>/u',
-								'。</span>(' . $each->d_or_c_name . ')</p>',
-								$tmp
-							);
-
-							$tmp = preg_replace(
-								'/(?<!<\/span>)。<\/p>/u',
-								'。(' . $each->d_or_c_name . ')</p>',
-								$tmp
-							);
-
-							${$field} .= $tmp;
-						}
-					}
-
-					// 印出結果
+					// 先初始化
 					foreach ($fields as $field) {
-						echo "Field: $field, Length: " . strlen(${$field}) . "\n";
-						echo "Preview:\n";
-						// 印出前500字作為預覽
-						echo mb_substr(${$field}, 0, 500) . "\n\n";
+					${$field} = '';
 					}
+
+					foreach ($list as $each) {
+					foreach ($fields as $field) {
+						$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
+
+						// 替換 。</span></p>
+						$tmp = preg_replace(
+						'/。<\/span>\s*<\/p>/u',
+						'。</span>(' . $each->d_or_c_name . ')</p>',
+						$tmp
+						);
+
+						// 替換 。</p> 但前面不是 </span>
+						$tmp = preg_replace(
+						'/(?<!<\/span>)。<\/p>/u',
+						'。(' . $each->d_or_c_name . ')</p>',
+						$tmp
+						);
+
+						${$field} .= $tmp;  // 累加字串
+					}
+					}
+
+					// 這時候 $m_swot_s 等變數已可用
+					echo $m_swot_s;
+
 
 
 				}
