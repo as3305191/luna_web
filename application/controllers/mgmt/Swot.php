@@ -209,7 +209,7 @@ class Swot extends MY_Mgmt_Controller {
 							);
 
 							// 把結果累加到對應變數，原本累加方式
-							${$field} .= $tmp;
+							$field .= $tmp;
 						}
 					}
 
