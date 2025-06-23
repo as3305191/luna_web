@@ -214,10 +214,6 @@ class Swot extends MY_Mgmt_Controller {
 						}
 					}
 
-					// 這時候 $m_swot_s 等變數已可用
-					echo $m_swot_s;
-
-					
 
 				}
 
