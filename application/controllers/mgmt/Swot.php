@@ -181,7 +181,7 @@ class Swot extends MY_Mgmt_Controller {
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
 				} else{
-					foreach($list as $each){	
+					foreach ($list as $each) {	
 						// 移除空白段落
 						$s_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s));
 						$w_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w));
@@ -192,18 +192,21 @@ class Swot extends MY_Mgmt_Controller {
 						$s_t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s_t));
 						$w_t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w_t));
 
-						// 定義一個 function 處理替換邏輯
+						// 定義替換邏輯
 						$replace_func = function($matches) use ($each) {
-							if (isset($matches[1]) && $matches[1] === '</span>') {
-								// 如果有 </span>，插入標註在 </span> 和 </p> 中間
+							if (!empty($matches[1])) {
+								// 有 </span>
 								return '。</span>(' . $each->d_or_c_name . ')</p>';
 							} else {
-								// 否則是純粹的 。</p>，插入標註在 。 和 </p> 中間
+								// 沒有 </span>
 								return '。(' . $each->d_or_c_name . ')</p>';
 							}
 						};
-						$pattern = '~(</span>)?。(<\/p>)~u';
 
+						// 修正：允許中間有空白字元（含全形空格、tab、換行）
+						$pattern = '/(?:<\/span>)?\s*。(\s*)<\/p>/u';
+
+						// 替換
 						$s .= preg_replace_callback($pattern, $replace_func, $s_tmp);
 						$w .= preg_replace_callback($pattern, $replace_func, $w_tmp);
 						$o .= preg_replace_callback($pattern, $replace_func, $o_tmp);
@@ -212,8 +215,7 @@ class Swot extends MY_Mgmt_Controller {
 						$w_o .= preg_replace_callback($pattern, $replace_func, $w_o_tmp);
 						$s_t .= preg_replace_callback($pattern, $replace_func, $s_t_tmp);
 						$w_t .= preg_replace_callback($pattern, $replace_func, $w_t_tmp);
-}
-
+					}
 
 
 				}
