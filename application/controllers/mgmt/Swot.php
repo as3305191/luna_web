@@ -187,33 +187,33 @@ class Swot extends MY_Mgmt_Controller {
 							'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
 						];
 
-						// 初始化所有變數
+						// 先初始化變數
 						foreach ($fields as $field) {
 							${$field} = '';
 						}
 
 						foreach ($fields as $field) {
-							$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
+							// 判斷欄位是否存在並非空，避免報錯
+							$tmp = isset($each->$field) ? trim(str_replace('<p>&nbsp;</p>', '', $each->$field)) : '';
 
-							// 第一階段：處理 。</span></p>
+							// 先處理 。</span></p>
 							$tmp = preg_replace(
 								'/。<\/span>\s*<\/p>/u',
 								'。</span>(' . $each->d_or_c_name . ')</p>',
 								$tmp
 							);
 
-							// 第二階段：處理 。</p>，但不含 </span>
+							// 再處理 。</p>（但前面不是 </span>）
 							$tmp = preg_replace(
 								'/(?<!<\/span>)。<\/p>/u',
 								'。(' . $each->d_or_c_name . ')</p>',
 								$tmp
 							);
 
+							// 累加結果到對應變數
 							${$field} .= $tmp;
 						}
 					}
-
-
 
 				}
 
