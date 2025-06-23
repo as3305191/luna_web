@@ -181,44 +181,35 @@ class Swot extends MY_Mgmt_Controller {
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
 				} else{
-					// 先初始化
-					$s='';
-					$w='';
-					$o='';
-					$t='';
-					$s_o='';
-					$w_o='';
-					$s_t='';
-					$w_t='';
-
+					
 					foreach($list as $each){
-						$fields = [
-							's', 'w', 'o', 't',
-							's_o', 'w_o', 's_t', 'w_t'
+						// 移除空白段落
+						$fields = [ 
+							'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
+							'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
 						];
 
 						foreach ($fields as $field) {
 							$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
 
-							// 替換。</span></p>
+							// 先替換所有「。</span></p>」加標註
 							$tmp = preg_replace(
-								'/(。</span>)(<\/p>)/u',
+								'~(。</span>)(<\/p>)~u',
 								'。</span>(' . $each->d_or_c_name . ')</p>',
 								$tmp
 							);
 
-							// 替換。</p> 但不是。</span></p>
+							// 再替換剩下的「。</p>」且前面不是 </span> 加標註
+							// 利用否定環視 (?<!</span>)，確保不會把剛剛替換過的二次替換
 							$tmp = preg_replace(
 								'/(?<!<\/span>)(。)(<\/p>)/u',
 								'。(' . $each->d_or_c_name . ')</p>',
 								$tmp
 							);
 
-							// 累加到正確變數
+							// 把結果累加到對應變數，原本累加方式
 							${$field} .= $tmp;
 						}
-					}
-
 					}
 
 				}
