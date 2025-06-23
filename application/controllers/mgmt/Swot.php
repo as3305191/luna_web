@@ -182,36 +182,42 @@ class Swot extends MY_Mgmt_Controller {
 					}
 				} else{
 					// 先初始化
-						$m_swot_s = $m_swot_w = $m_swot_o = $m_swot_t = '';
-						$m_swot_s_o = $m_swot_w_o = $m_swot_s_t = $m_swot_w_t = '';
+					$s='';
+					$w='';
+					$o='';
+					$t='';
+					$s_o='';
+					$w_o='';
+					$s_t='';
+					$w_t='';
 
-						foreach($list as $each){
-							$fields = [
-								'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
-								'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
-							];
+					foreach($list as $each){
+						$fields = [
+							's', 'w', 'o', 't',
+							's_o', 'w_o', 's_t', 'w_t'
+						];
 
-							foreach ($fields as $field) {
-								$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
+						foreach ($fields as $field) {
+							$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
 
-								// 替換。</span></p>
-								$tmp = preg_replace(
-									'~(。</span>)(<\/p>)~u',
-									'。</span>(' . $each->d_or_c_name . ')</p>',
-									$tmp
-								);
+							// 替換。</span></p>
+							$tmp = preg_replace(
+								'/(。</span>)(<\/p>)/u',
+								'。</span>(' . $each->d_or_c_name . ')</p>',
+								$tmp
+							);
 
-								// 替換。</p> 但不是。</span></p>
-								$tmp = preg_replace(
-									'/(?<!<\/span>)(。)(<\/p>)/u',
-									'。(' . $each->d_or_c_name . ')</p>',
-									$tmp
-								);
+							// 替換。</p> 但不是。</span></p>
+							$tmp = preg_replace(
+								'/(?<!<\/span>)(。)(<\/p>)/u',
+								'。(' . $each->d_or_c_name . ')</p>',
+								$tmp
+							);
 
-								// 累加到正確變數
-								${$field} .= $tmp;
-							}
+							// 累加到正確變數
+							${$field} .= $tmp;
 						}
+					}
 
 					}
 
