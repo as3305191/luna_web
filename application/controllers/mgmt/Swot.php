@@ -182,48 +182,48 @@ class Swot extends MY_Mgmt_Controller {
 					}
 				} else{
 					function processSwotList(array $list): array {
-						// 欄位名稱陣列
-						$fields = [
-							'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
-							'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
-						];
+					// 欄位名稱陣列
+					$fields = [
+						's', 'w', 'o', 't',
+						's_o', 'w_o', 's_t', 'w_t'
+					];
 
-						// 初始化結果陣列
-						$results = [];
-						foreach ($fields as $field) {
-							$results[$field] = '';
-						}
-
-						// 處理每筆資料
-						foreach ($list as $each) {
-							foreach ($fields as $field) {
-								$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
-
-								// 先替換句尾為 </span></p> 的
-								$tmp = preg_replace(
-									'/。<\/span>\s*<\/p>/u',
-									'。</span>(' . $each->d_or_c_name . ')</p>',
-									$tmp
-								);
-
-								// 再替換一般句尾 </p>，但前面不是 </span>
-								$tmp = preg_replace(
-									'/(?<!<\/span>)。<\/p>/u',
-									'。(' . $each->d_or_c_name . ')</p>',
-									$tmp
-								);
-
-								// 累加結果
-								$results[$field] .= $tmp;
-							}
-						}
-
-						return $results;
+					// 初始化結果陣列
+					$results = [];
+					foreach ($fields as $field) {
+						$results[$field] = '';
 					}
-					$swotResults = processSwotList($list);
+
+					// 處理每筆資料
+					foreach ($list as $each) {
+						foreach ($fields as $field) {
+							$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
+
+							// 先替換句尾為 </span></p> 的
+							$tmp = preg_replace(
+								'/。<\/span>\s*<\/p>/u',
+								'。</span>(' . $each->d_or_c_name . ')</p>',
+								$tmp
+							);
+
+							// 再替換一般句尾 </p>，但前面不是 </span>
+							$tmp = preg_replace(
+								'/(?<!<\/span>)。<\/p>/u',
+								'。(' . $each->d_or_c_name . ')</p>',
+								$tmp
+							);
+
+							// 累加結果
+							$results[$field] .= $tmp;
+						}
+					}
+
+					return $results;
 				}
 
-				$item['swotResults'] = $swotResults;
+				}
+
+				
 
 				$item['id'] = 0;
 				$item['class_id'] = 0;
@@ -288,7 +288,7 @@ class Swot extends MY_Mgmt_Controller {
 		$data['swot_class_for_0'] = $this -> d_dao -> find_by_id($data['login_user']->role_id);
 		$data['login_user_role_array'] =  explode(",", str_replace('#', ',', trim($data['login_user']->in_department, "#")));
 		$data['department_list'] = $this -> users_dao -> find_all_department();
-		$this -> to_json($data['item']);
+		// $this -> to_json($each->id);
 		$this->load->view('mgmt/swot/edit', $data);
 	}
 
