@@ -181,36 +181,52 @@ class Swot extends MY_Mgmt_Controller {
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
 				} else{
-					// 初始化（迴圈外面）
-					$m_swot_s = $m_swot_w = $m_swot_o = $m_swot_t = '';
-					$m_swot_s_o = $m_swot_w_o = $m_swot_s_t = $m_swot_w_t = '';
+					// 先初始化
+						$m_swot_s = $m_swot_w = $m_swot_o = $m_swot_t = '';
+						$m_swot_s_o = $m_swot_w_o = $m_swot_s_t = $m_swot_w_t = '';
 
-					foreach ($list as $each) {
-						$fields = [
-							'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
-							'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
-						];
+						foreach($list as $each){
+							$fields = [
+								'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
+								'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
+							];
 
-						foreach ($fields as $field) {
-							$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
+							foreach ($fields as $field) {
+								// 先拿出原始字串
+								$original = $each->$field;
 
-							// 先替換 </span> 和 </p> 中間加標註
-							$tmp = preg_replace(
-								'/。<\/span>\s*<\/p>/u',
-								'。</span>(' . $each->d_or_c_name . ')</p>',
-								$tmp
-							);
+								// 如果原始字串是空的，直接跳過避免影響
+								if (empty(trim($original))) {
+									continue;
+								}
 
-							// 再替換純 </p>（不包含 </span> 的）
-							$tmp = preg_replace(
-								'/(?<!<\/span>)。<\/p>/u',
-								'。(' . $each->d_or_c_name . ')</p>',
-								$tmp
-							);
+								// 移除空白段落
+								$tmp = trim(str_replace('<p>&nbsp;</p>', '', $original));
 
-							${$field} .= $tmp;
+								// 替換所有的 "。</span></p>"
+								$tmp = preg_replace(
+									'/(。</span>)(<\/p>)/u',
+									'。</span>(' . $each->d_or_c_name . ')</p>',
+									$tmp
+								);
+
+								// 替換所有的 "。</p>" 但前面不是 "</span>"
+								$tmp = preg_replace(
+									'/(?<!<\/span>)(。)(<\/p>)/u',
+									'。(' . $each->d_or_c_name . ')</p>',
+									$tmp
+								);
+
+								// 累加結果
+								${$field} .= $tmp;
+
+								// 除錯：印出每次處理結果長度和前50字確認
+								// （你測試時可以打開看看）
+								// echo "Field: $field, Length: " . strlen($tmp) . "\n";
+								// echo "Preview: " . mb_substr($tmp,0,50) . "\n\n";
+							}
 						}
-					}
+
 
 
 				}
