@@ -192,35 +192,35 @@ class Swot extends MY_Mgmt_Controller {
 						$s_t_tmp = trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_t));
 						$w_t_tmp = trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t));
 						 // 針對每個字串判斷並處理
-						$s .= preg_replace_callback('/(。</span>)(</p>)$/u', function($matches) use ($each){
+						$s .= preg_replace_callback('~(。</span>)(</p>)$~u', function($matches) use ($each){
 							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
 						}, $s_tmp);
 
-						$w .= preg_replace_callback('/(。</span>)(</p>)$/u', function($matches) use ($each){
+						$w .= preg_replace_callback('~(。</span>)(</p>)$~u', function($matches) use ($each){
 							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
 						}, $w_tmp);
 
-						$o .= preg_replace_callback('/(。</span>)(</p>)$/u', function($matches) use ($each){
+						$o .= preg_replace_callback('~(。</span>)(</p>)$~u', function($matches) use ($each){
 							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
 						}, $o_tmp);
 
-						$t .= preg_replace_callback('/(。</span>)(</p>)$/u', function($matches) use ($each){
+						$t .= preg_replace_callback('~(。</span>)(</p>)$~u', function($matches) use ($each){
 							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
 						}, $t_tmp);
 
-						$s_o .= preg_replace_callback('/(。</span>)(</p>)$/u', function($matches) use ($each){
+						$s_o .= preg_replace_callback('~(。</span>)(</p>)$~u', function($matches) use ($each){
 							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
 						}, $s_o_tmp);
 
-						$w_o .= preg_replace_callback('/(。</span>)(</p>)$/u', function($matches) use ($each){
+						$w_o .= preg_replace_callback('~(。</span>)(</p>)$~u', function($matches) use ($each){
 							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
 						}, $w_o_tmp);
 
-						$s_t .= preg_replace_callback('/(。</span>)(</p>)$/u', function($matches) use ($each){
+						$s_t .= preg_replace_callback('~(。</span>)(</p>)$~u', function($matches) use ($each){
 							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
 						}, $s_t_tmp);
 
-						$w_t .= preg_replace_callback('/(。</span>)(</p>)$/u', function($matches) use ($each){
+						$w_t .= preg_replace_callback('~(。</span>)(</p>)$~u', function($matches) use ($each){
 							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
 						}, $w_t_tmp);
 					}
