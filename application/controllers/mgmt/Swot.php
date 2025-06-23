@@ -202,7 +202,7 @@ class Swot extends MY_Mgmt_Controller {
 							// 再替換剩下的「。</p>」且前面不是 </span> 加標註
 							// 利用否定環視 (?<!</span>)，確保不會把剛剛替換過的二次替換
 							$tmp = preg_replace(
-								'~(?<!<\/span>)(。)(<\/p>)~u',
+								'/(?<!<\/span>)(。)(<\/p>)/u',
 								'。(' . $each->d_or_c_name . ')</p>',
 								$tmp
 							);
