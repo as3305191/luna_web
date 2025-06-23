@@ -181,45 +181,43 @@ class Swot extends MY_Mgmt_Controller {
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
 				} else{
-					function processSwotList(array $list): array {
-					// 欄位名稱陣列
+
 					$fields = [
 						's', 'w', 'o', 't',
 						's_o', 'w_o', 's_t', 'w_t'
 					];
 
-					// 初始化結果陣列
-					$results = [];
+					// 先初始化
 					foreach ($fields as $field) {
-						$results[$field] = '';
+						${$field} = '';
 					}
 
-					// 處理每筆資料
 					foreach ($list as $each) {
 						foreach ($fields as $field) {
 							$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
 
-							// 先替換句尾為 </span></p> 的
+							// 替換 。</span></p>
 							$tmp = preg_replace(
-								'/。<\/span>\s*<\/p>/u',
-								'。</span>(' . $each->d_or_c_name . ')</p>',
-								$tmp
+							'/。<\/span>\s*<\/p>/u',
+							'。</span>(' . $each->d_or_c_name . ')</p>',
+							$tmp
 							);
 
-							// 再替換一般句尾 </p>，但前面不是 </span>
+							// 替換 。</p> 但前面不是 </span>
 							$tmp = preg_replace(
-								'/(?<!<\/span>)。<\/p>/u',
-								'。(' . $each->d_or_c_name . ')</p>',
-								$tmp
+							'/(?<!<\/span>)。<\/p>/u',
+							'。(' . $each->d_or_c_name . ')</p>',
+							$tmp
 							);
 
-							// 累加結果
-							$results[$field] .= $tmp;
+							${$field} .= $tmp;  // 累加字串
 						}
 					}
 
-					return $results;
-				}
+					// 這時候 $m_swot_s 等變數已可用
+					echo $m_swot_s;
+
+					
 
 				}
 
