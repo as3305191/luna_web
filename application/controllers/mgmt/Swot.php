@@ -221,17 +221,9 @@ class Swot extends MY_Mgmt_Controller {
 						return $results;
 					}
 					$swotResults = processSwotList($list);
-					$m_swot_s = $swotResults['m_swot_s'];
-					$m_swot_w = $swotResults['m_swot_w'];
-					$m_swot_o = $swotResults['m_swot_o'];
-					$m_swot_t = $swotResults['m_swot_t'];
-					$m_swot_s_o = $swotResults['m_swot_s_o'];
-					$m_swot_w_o = $swotResults['m_swot_w_o'];
-					$m_swot_s_t = $swotResults['m_swot_s_t'];
-					$m_swot_w_t = $swotResults['m_swot_w_t'];
 				}
 
-				
+				$item['swotResults'] = $swotResults;
 
 				$item['id'] = 0;
 				$item['class_id'] = 0;
