@@ -205,7 +205,7 @@ class Swot extends MY_Mgmt_Controller {
 
 								// 替換所有的 "。</span></p>"
 								$tmp = preg_replace(
-									'/(。</span>)(<\/p>)/u',
+									'~(。</span>)(<\/p>)~u',
 									'。</span>(' . $each->d_or_c_name . ')</p>',
 									$tmp
 								);
