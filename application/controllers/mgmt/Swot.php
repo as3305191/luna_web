@@ -181,38 +181,44 @@ class Swot extends MY_Mgmt_Controller {
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
 				} else{
-					$m_swot_s = $m_swot_w = $m_swot_o = $m_swot_t = '';
-					$m_swot_s_o = $m_swot_w_o = $m_swot_s_t = $m_swot_w_t = '';
-					foreach($list as $each){
+					
+					foreach($list as $each){	
 						// 移除空白段落
-						$fields = [ 
-							'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
-							'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
-						];
+						$s_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s));
+						$w_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w));
+						$o_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_o));
+						$t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_t));
+						$s_o_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s_o));
+						$w_o_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w_o));
+						$s_t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s_t));
+						$w_t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w_t));
 
-						foreach ($fields as $field) {
-							$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
+						// 定義一個 function 處理替換邏輯
+						$replace_func = function($matches) use ($each) {
+							if (isset($matches[1]) && $matches[1] === '</span>') {
+								// 如果有 </span>，插入標註在 </span> 和 </p> 中間
+								return '。</span>(' . $each->d_or_c_name . ')</p>';
+							} else {
+								// 否則是純粹的 。</p>，插入標註在 。 和 </p> 中間
+								return '。(' . $each->d_or_c_name . ')</p>';
+							}
+						};
 
-							// 先替換所有「。</span></p>」加標註
-							$tmp = preg_replace(
-								'~(。</span>)(<\/p>)~u',
-								'。</span>(' . $each->d_or_c_name . ')</p>',
-								$tmp
-							);
+						// 這個 pattern 可以匹配兩種情況：
+						// (1) 句尾是「。</span></p>」
+						// (2) 句尾是「。</p>」（但不含前面 </span>）
+						$pattern = '~(</span>)?。(<\/p>)~u';
 
-							// 再替換剩下的「。</p>」且前面不是 </span> 加標註
-							// 利用否定環視 (?<!</span>)，確保不會把剛剛替換過的二次替換
-							$tmp = preg_replace(
-								'/(?<!<\/span>)(。)(<\/p>)/u',
-								'。(' . $each->d_or_c_name . ')</p>',
-								$tmp
-							);
+						$s .= preg_replace_callback($pattern, $replace_func, $s_tmp);
+						$w .= preg_replace_callback($pattern, $replace_func, $w_tmp);
+						$o .= preg_replace_callback($pattern, $replace_func, $o_tmp);
+						$t .= preg_replace_callback($pattern, $replace_func, $t_tmp);
+						$s_o .= preg_replace_callback($pattern, $replace_func, $s_o_tmp);
+						$w_o .= preg_replace_callback($pattern, $replace_func, $w_o_tmp);
+						$s_t .= preg_replace_callback($pattern, $replace_func, $s_t_tmp);
+						$w_t .= preg_replace_callback($pattern, $replace_func, $w_t_tmp);
 
-							// 把結果累加到對應變數，原本累加方式
-							$field .= $tmp;
-						}
 					}
-
 				}
 
 				
