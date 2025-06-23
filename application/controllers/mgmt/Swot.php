@@ -182,38 +182,38 @@ class Swot extends MY_Mgmt_Controller {
 					}
 				} else{
 					
-					foreach($list as $each){	
-						// 移除空白段落
-						$s_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s));
-						$w_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w));
-						$o_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_o));
-						$t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_t));
-						$s_o_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s_o));
-						$w_o_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w_o));
-						$s_t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s_t));
-						$w_t_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w_t));
+					foreach ($list as $each) {
+						$fields = [
+							'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
+							'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
+						];
 
-						$pattern = '~(</span\s*>)?\s*。\s*(<\/p>)~ui';
+						// 初始化變數
+						foreach ($fields as $field) {
+							${$field} = '';
+						}
 
-						$replace_func = function($matches) use ($each) {
-							if (isset($matches[1]) && strcasecmp(trim($matches[1]), '</span>') === 0) {
-								return '。</span>(' . $each->d_or_c_name . ')</p>';
-							} else {
-								return '。(' . $each->d_or_c_name . ')</p>';
-							}
-						};
+						foreach ($fields as $field) {
+							$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
 
+							// 處理 。</span> </p> 形式（允許中間有空白或換行）
+							$tmp = preg_replace(
+								'/。<\/span>\s*<\/p>/u',
+								'。</span>(' . $each->d_or_c_name . ')</p>',
+								$tmp
+							);
 
-						$s .= preg_replace_callback($pattern, $replace_func, $s_tmp);
-						$w .= preg_replace_callback($pattern, $replace_func, $w_tmp);
-						$o .= preg_replace_callback($pattern, $replace_func, $o_tmp);
-						$t .= preg_replace_callback($pattern, $replace_func, $t_tmp);
-						$s_o .= preg_replace_callback($pattern, $replace_func, $s_o_tmp);
-						$w_o .= preg_replace_callback($pattern, $replace_func, $w_o_tmp);
-						$s_t .= preg_replace_callback($pattern, $replace_func, $s_t_tmp);
-						$w_t .= preg_replace_callback($pattern, $replace_func, $w_t_tmp);
+							// 處理 。</p>（前面不是 </span>）
+							$tmp = preg_replace(
+								'/(?<!<\/span>)。<\/p>/u',
+								'。(' . $each->d_or_c_name . ')</p>',
+								$tmp
+							);
 
+							${$field} .= $tmp;
+						}
 					}
+
 				}
 
 				
