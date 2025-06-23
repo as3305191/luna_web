@@ -184,7 +184,7 @@ class Swot extends MY_Mgmt_Controller {
 					
 					foreach($list as $each){	
 						foreach($list as $each){	
-							$pattern = '/(。</span>)(<\/p>)/u';
+							$pattern = '~(。</span>)(<\/p>)~u';
 							// 移除空白段落
 							$s_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_s));
 							$w_tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->m_swot_w));
