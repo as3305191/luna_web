@@ -181,43 +181,54 @@ class Swot extends MY_Mgmt_Controller {
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
 				} else{
-					$fields = [
-					'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
-					'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
-					];
+					function processSwotList(array $list): array {
+						// 欄位名稱陣列
+						$fields = [
+							'm_swot_s', 'm_swot_w', 'm_swot_o', 'm_swot_t',
+							'm_swot_s_o', 'm_swot_w_o', 'm_swot_s_t', 'm_swot_w_t'
+						];
 
-					// 先初始化
-					foreach ($fields as $field) {
-					${$field} = '';
+						// 初始化結果陣列
+						$results = [];
+						foreach ($fields as $field) {
+							$results[$field] = '';
+						}
+
+						// 處理每筆資料
+						foreach ($list as $each) {
+							foreach ($fields as $field) {
+								$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
+
+								// 先替換句尾為 </span></p> 的
+								$tmp = preg_replace(
+									'/。<\/span>\s*<\/p>/u',
+									'。</span>(' . $each->d_or_c_name . ')</p>',
+									$tmp
+								);
+
+								// 再替換一般句尾 </p>，但前面不是 </span>
+								$tmp = preg_replace(
+									'/(?<!<\/span>)。<\/p>/u',
+									'。(' . $each->d_or_c_name . ')</p>',
+									$tmp
+								);
+
+								// 累加結果
+								$results[$field] .= $tmp;
+							}
+						}
+
+						return $results;
 					}
-
-					foreach ($list as $each) {
-					foreach ($fields as $field) {
-						$tmp = trim(str_replace('<p>&nbsp;</p>', '', $each->$field));
-
-						// 替換 。</span></p>
-						$tmp = preg_replace(
-						'/。<\/span>\s*<\/p>/u',
-						'。</span>(' . $each->d_or_c_name . ')</p>',
-						$tmp
-						);
-
-						// 替換 。</p> 但前面不是 </span>
-						$tmp = preg_replace(
-						'/(?<!<\/span>)。<\/p>/u',
-						'。(' . $each->d_or_c_name . ')</p>',
-						$tmp
-						);
-
-						${$field} .= $tmp;  // 累加字串
-					}
-					}
-
-					// 這時候 $m_swot_s 等變數已可用
-					echo $m_swot_s;
-
-
-
+					$swotResults = processSwotList($list);
+					$m_swot_s = $swotResults['m_swot_s'];
+					$m_swot_w = $swotResults['m_swot_w'];
+					$m_swot_o = $swotResults['m_swot_o'];
+					$m_swot_t = $swotResults['m_swot_t'];
+					$m_swot_s_o = $swotResults['m_swot_s_o'];
+					$m_swot_w_o = $swotResults['m_swot_w_o'];
+					$m_swot_s_t = $swotResults['m_swot_s_t'];
+					$m_swot_w_t = $swotResults['m_swot_w_t'];
 				}
 
 				
