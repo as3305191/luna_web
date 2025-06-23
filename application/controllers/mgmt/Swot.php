@@ -181,7 +181,8 @@ class Swot extends MY_Mgmt_Controller {
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
 				} else{
-					
+					$m_swot_s = $m_swot_w = $m_swot_o = $m_swot_t = '';
+					$m_swot_s_o = $m_swot_w_o = $m_swot_s_t = $m_swot_w_t = '';
 					foreach($list as $each){
 						// 移除空白段落
 						$fields = [ 
