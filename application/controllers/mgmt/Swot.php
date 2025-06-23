@@ -181,16 +181,48 @@ class Swot extends MY_Mgmt_Controller {
 						$w_t.=str_replace("</p>","(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
 					}
 				} else{
-
+					
 					foreach($list as $each){	
-						$s.=str_replace("。</p>","。(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s)));
-						$w.=str_replace("。</p>","。(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w)));
-						$o.=str_replace("。</p>","。(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_o)));
-						$t.=str_replace("。</p>","。(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_t)));
-						$s_o.=str_replace("。</p>","。(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_o)));
-						$w_o.=str_replace("。</p>","。(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_o)));
-						$s_t.=str_replace("。</p>","。(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_t)));
-						$w_t.=str_replace("。</p>","。(".$each->d_or_c_name.")</p>",trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t)));
+						 $s_tmp = trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s));
+						$w_tmp = trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w));
+						$o_tmp = trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_o));
+						$t_tmp = trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_t));
+						$s_o_tmp = trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_o));
+						$w_o_tmp = trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_o));
+						$s_t_tmp = trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_s_t));
+						$w_t_tmp = trim(str_replace('<p>&nbsp;</p>','',$each->m_swot_w_t));
+						 // 針對每個字串判斷並處理
+						$s .= preg_replace_callback('/(。</span>)(<\/p>)$/u', function($matches) use ($each){
+							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
+						}, $s_tmp);
+
+						$w .= preg_replace_callback('/(。</span>)(<\/p>)$/u', function($matches) use ($each){
+							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
+						}, $w_tmp);
+
+						$o .= preg_replace_callback('/(。</span>)(<\/p>)$/u', function($matches) use ($each){
+							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
+						}, $o_tmp);
+
+						$t .= preg_replace_callback('/(。</span>)(<\/p>)$/u', function($matches) use ($each){
+							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
+						}, $t_tmp);
+
+						$s_o .= preg_replace_callback('/(。</span>)(<\/p>)$/u', function($matches) use ($each){
+							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
+						}, $s_o_tmp);
+
+						$w_o .= preg_replace_callback('/(。</span>)(<\/p>)$/u', function($matches) use ($each){
+							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
+						}, $w_o_tmp);
+
+						$s_t .= preg_replace_callback('/(。</span>)(<\/p>)$/u', function($matches) use ($each){
+							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
+						}, $s_t_tmp);
+
+						$w_t .= preg_replace_callback('/(。</span>)(<\/p>)$/u', function($matches) use ($each){
+							return $matches[1] . "(" . $each->d_or_c_name . ")" . $matches[2];
+						}, $w_t_tmp);
 					}
 				}
 
