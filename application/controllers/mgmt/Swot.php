@@ -196,7 +196,6 @@ class Swot extends MY_Mgmt_Controller {
 						$pattern = '~(</span\s*>)?\s*。\s*(<\/p>)~ui';
 
 						$replace_func = function($matches) use ($each) {
-							var_dump($matches);
 							if (isset($matches[1]) && strcasecmp(trim($matches[1]), '</span>') === 0) {
 								return '。</span>(' . $each->d_or_c_name . ')</p>';
 							} else {
