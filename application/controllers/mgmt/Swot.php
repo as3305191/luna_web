@@ -193,27 +193,32 @@ class Swot extends MY_Mgmt_Controller {
 						}
 
 						foreach ($fields as $field) {
-							// 判斷欄位是否存在並非空，避免報錯
 							$tmp = isset($each->$field) ? trim(str_replace('<p>&nbsp;</p>', '', $each->$field)) : '';
 
-							// 先處理 。</span></p>
 							$tmp = preg_replace(
 								'/。<\/span>\s*<\/p>/u',
 								'。</span>(' . $each->d_or_c_name . ')</p>',
 								$tmp
 							);
 
-							// 再處理 。</p>（但前面不是 </span>）
 							$tmp = preg_replace(
 								'/(?<!<\/span>)。<\/p>/u',
 								'。(' . $each->d_or_c_name . ')</p>',
 								$tmp
 							);
 
-							// 累加結果到對應變數
 							${$field} .= $tmp;
 						}
 					}
+
+					// 印出結果
+					foreach ($fields as $field) {
+						echo "Field: $field, Length: " . strlen(${$field}) . "\n";
+						echo "Preview:\n";
+						// 印出前500字作為預覽
+						echo mb_substr(${$field}, 0, 500) . "\n\n";
+					}
+
 
 				}
 
