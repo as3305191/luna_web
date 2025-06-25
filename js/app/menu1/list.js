@@ -205,20 +205,16 @@ var MenuClass = (function(app) {
 	
 			// get year month list
 			app.tableReload();
-	
-		
+
 	
 			$('#status_filter > label > span').hide();
-	
 			// set pay status filter
 			$('#pay_status_filter label').on('click', function(){
 				$(this).find('input').prop('checked', true);
 				app.tableReload();
 			});
 			$('#pay_status_filter > label > span').hide();
-	
-	
-	
+		
 			app.doDelItem = function() {
 				$.ajax({
 					url : baseUrl + app.basePath  + 'delete_img/' + app._delId,
