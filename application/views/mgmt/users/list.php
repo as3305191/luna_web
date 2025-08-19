@@ -13,7 +13,7 @@
 					<!-- Widget ID (each widget will need unique ID)-->
 					<div class="jarviswidget">
 						<header>
-							<?php if($login_user -> id == 205):?>
+							<?php if($login_user -> id == 205||$login_user -> id == 2||$login_user -> id == 467):?>
 							<div class="widget-toolbar pull-left">
 								<div class="btn-group">
 									<button onclick="currentApp.doEdit(0)" class="btn dropdown-toggle btn-xs btn-success" data-toggle="dropdown">
