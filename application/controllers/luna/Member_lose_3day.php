@@ -21,7 +21,7 @@ class Member_lose_3day extends MY_Base_Controller {
 		$s_data = $this -> setup_user_data(array());
 
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
-		$res['items'] = $this -> dao -> find_all_by_coach($data['login_user']->code);
+		$res['items'] = $this -> dao -> find_all_by_luna($data['login_user']->code);
 		$data['p'] = count($res['items']);
 		$data['page'] = ceil($data['p']/10);
 
@@ -29,7 +29,7 @@ class Member_lose_3day extends MY_Base_Controller {
 
 		// $this -> to_json($data);
 
-		$this -> load -> view('coach/member_lose_3day', $data);
+		$this -> load -> view('luna/member_lose_3day', $data);
 	}
 
 	public function get_data() {
@@ -39,10 +39,10 @@ class Member_lose_3day extends MY_Base_Controller {
 		$page = $this -> get_post('page');
 
 		// $s_data = $this -> setup_user_data(array());
-		$login_user = $this -> dao -> find_all_coach_by_coach_id($id);
+		$login_user = $this -> dao -> find_all_luna_by_luna_id($id);
 		if($page>1){
 			$b=((int)$page-1)*5;
-			$items = $this -> dao -> query_ajax_by_coach($login_user[0]->code,$b);
+			$items = $this -> dao -> query_ajax_by_luna($login_user[0]->code,$b);
 			foreach ($items as $each) {
 				$last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
 
@@ -55,7 +55,7 @@ class Member_lose_3day extends MY_Base_Controller {
 				}
 			}
 		} else{
-			$items= $this -> dao -> query_ajax_by_coach($login_user[0]->code,1);
+			$items= $this -> dao -> query_ajax_by_luna($login_user[0]->code,1);
 			foreach ($items as $each) {
 				$last_weight = $this -> records_dao -> find_last_w_lose3day($each->id);
 

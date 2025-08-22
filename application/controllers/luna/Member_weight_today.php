@@ -19,7 +19,7 @@ class Member_weight_today extends MY_Base_Controller {
 		$data = array();
 		$s_data = $this -> setup_user_data(array());
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
-		$res['items'] = $this -> dao -> find_all_by_coach($s_data['login_user_id']);
+		$res['items'] = $this -> dao -> find_all_by_luna($s_data['login_user_id']);
 		$data['p'] = count($res['items']);
 		$data['page'] = ceil($data['p']/5);
 
@@ -27,7 +27,7 @@ class Member_weight_today extends MY_Base_Controller {
 
 		// $this -> to_json($data);
 
-		$this -> load -> view('coach/member_weight_today', $data);
+		$this -> load -> view('luna/member_weight_today', $data);
 	}
 
 	public function get_data() {
@@ -38,14 +38,14 @@ class Member_weight_today extends MY_Base_Controller {
 		$login_user = $this -> dao -> find_by_id($s_data['login_user_id']);
 		if($page>1){
 			$b=((int)$page-1)*5;
-			$items = $this -> dao -> query_ajax_by_coach($id,$b);
+			$items = $this -> dao -> query_ajax_by_luna($id,$b);
 			foreach ($items as $each) {
 				$each -> member_last_day_weight = $this -> records_dao -> find_today_weight($each -> id);
 			}
 			$res['items'] = $items;
 			$res['count_items'] = count($res['items']);
 		} else{
-			$items = $this -> dao -> query_ajax_by_coach($id,1);
+			$items = $this -> dao -> query_ajax_by_luna($id,1);
 			foreach ($items as $each) {
 				$each -> member_last_day_weight = $this -> records_dao -> find_today_weight($each -> id);
 			}
@@ -77,7 +77,7 @@ class Member_weight_today extends MY_Base_Controller {
 	public function logout() {
 		// $corp = $this -> session -> userdata('corp');
 		$this -> session -> sess_destroy();
-		redirect('coach/login');
+		redirect('luna/login');
 	}
 
 }

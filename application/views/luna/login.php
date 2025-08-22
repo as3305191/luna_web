@@ -3,7 +3,7 @@
 
 <head>
   <!-- Title -->
-  <title>教練登入</title>
+  <title>Luna登入</title>
 
   <!-- Required Meta Tags Always Come First -->
   <meta charset="utf-8">
@@ -52,7 +52,7 @@
         <div class="col-sm-8 col-lg-5">
           <div class="g-brd-around g-brd-gray-light-v4 rounded g-py-40 g-px-30">
             <header class="text-center mb-4">
-              <h2 class="h2 g-color-black g-font-weight-600">教練登入</h2>
+              <h2 class="h2 g-color-black g-font-weight-600">Luna登入</h2>
             </header>
 
             <!-- Form -->

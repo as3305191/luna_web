@@ -16,10 +16,10 @@ class Login extends MY_Base_Controller {
 		$data = array();
 		// check login
 		if(!empty($this -> session -> userdata('user_id'))) {
-			redirect("/coach/coach_home");
+			redirect("/luna/luna_home");
 			return;
 		}
-		$this -> load -> view('coach/login', $data);
+		$this -> load -> view('luna/login', $data);
 	}
 
 	public function do_login() {
@@ -50,16 +50,16 @@ class Login extends MY_Base_Controller {
 		$user = $this -> dao -> find_by_id($id);
 		if($user-> type == 1){
 			$this -> session -> set_userdata('user_id', $user -> id);
-			redirect("/coach/coach_home");
+			redirect("/luna/luna_home");
 		} else {
-			echo "You Are Not Coach!!!";
+			echo "You Are Not luna!!!";
 		}
 	}
 
 	public function logout() {
 		// $corp = $this -> session -> userdata('corp');
 		$this -> session -> sess_destroy();
-		redirect('coach/login');
+		redirect('luna/login');
 	}
 
 }
