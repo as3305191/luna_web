@@ -93,7 +93,7 @@ define('HASH_IV', '');
 
 // db host
 define('DB_HOST', '127.0.0.1');
-define('DB_NAME', 'ktx');
+// define('DB_NAME', 'ktx');
 
 
 define('IMG_UPLOAD_URL', '');
