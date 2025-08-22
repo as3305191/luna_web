@@ -11,6 +11,7 @@ class MY_Base_Controller extends CI_Controller {
 		$this -> load -> model('C_s_h_join_list_dao', 'c_s_h_join_list_dao');
 		$this -> load -> model('C_s_h_join_list_dao', 'c_s_h_join_list_dao');
 		$this -> load -> model('Department_dao', 'department_dao');
+		$this->load->model('/luna/Members_dao', 'luna_mem_dao');
 
 		// disable cache for back button
 		ob_start();
@@ -110,72 +111,28 @@ class MY_Base_Controller extends CI_Controller {
 	}
 
 	public function setup_user_data($data) {
-		$user_id = $this -> session -> userdata('user_id');
-		$s_uid = $this -> session -> userdata('s_uid');
-		$user = $this -> users_dao -> find_by_id($user_id);
-		// echo $user -> token . '-';
-		// echo $s_uid;
-		// if(empty($user_id)|| $user -> token != $s_uid) {
-		if(empty($user_id)) {
+	$user_id = $this->session->userdata('user_id');
+	$s_uid   = $this->session->userdata('s_uid');
 
-			if ($this -> input ->is_ajax_request()) {
-				echo "<script>window.location.reload();</script>";
-			} else {
-				redirect("app/login/logout");
-			}
+	$user = $this->luna_mem_dao->find_by('id_loginid', $user_id);
+
+	if (empty($user_id)) {
+		if ($this->input->is_ajax_request()) {
+			echo "<script>window.location.reload();</script>";
 		} else {
-			$data['login_user_id'] = $user_id;
-			$data['l_user'] = $user;
-			$array = explode('/', $_SERVER['PATH_INFO']);
-			$last_key_word = substr(strrchr($_SERVER['PATH_INFO'], "/"), 1);
+			redirect("app/luna/login/logout");
+		}
+	} else {
+		$data['login_user_id'] = $user_id;
+		$data['l_user'] = $user;
 
-			if($last_key_word =='fix_list'){
-				$data['now_page'] = $last_key_word;
-			} else{
-				$data['now_page'] = $this->get_between($_SERVER['PATH_INFO'], "mgmt/", '/'.$last_key_word );
-			}
-				
-			if($data['now_page'] !=='fix_list'){
-				$fix_record_id = $this -> session -> userdata('now_fix_record');
-				if(!empty($fix_record_id) && count($fix_record_id)>0){
-					foreach($fix_record_id as $each){
-						$each_fix_list = $this -> fix_record_dao -> find_by_id($each);
-						
-						if(!empty($each_fix_list)){
-							if($each_fix_list->fix_type=='add'){
-								if($each_fix_list->new_c_s_h_jion_list_id>0){
-									$this -> c_s_h_join_list_dao -> delete($each_fix_list->new_c_s_h_jion_list_id);
-									$this -> fix_record_dao -> delete($each_fix_list->id);
-								} else{
-									$this -> fix_record_dao -> delete($each_fix_list->id);
-								}
-							}
-		
-							if($each_fix_list->fix_type=='fix'){
-								$this -> fix_record_dao -> delete($each_fix_list->id);
-							}
-		
-							if($each_fix_list->fix_type=='change'){
-								if($each_fix_list->c_s_h_jion_list_id>0 && $each_fix_list->new_c_s_h_jion_list_id>0){
-									$this -> c_s_h_join_list_dao -> update(array('type' => 0),$each_fix_list->c_s_h_jion_list_id);
-									$this -> c_s_h_join_list_dao -> delete($each_fix_list->new_c_s_h_jion_list_id);
-									$this -> fix_record_dao -> delete($each_fix_list->id);
-								} else{
-									$this -> fix_record_dao -> delete($each_fix_list->id);
-								}
-							
-							}
-						}
-					}
-					
-					$this->session->unset_userdata('now_fix_record');
-				}
-			} 
-			
-		} 
-		// fix_record_dao
-		return $data;
+		$array = explode('/', $_SERVER['PATH_INFO']);
+		$last_key_word = substr(strrchr($_SERVER['PATH_INFO'], "/"), 1);
 	}
+
+	return $data;
+}
+
 
 	function get_between($input, $start, $end) {
 		$substr = substr($input, strlen($start)+strpos($input, $start),(strlen($input) - strpos($input, $end))*(-1));
