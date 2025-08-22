@@ -70,30 +70,65 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$active_group = 'default';
+
+$active_group = 'memberdb'; // 預設先用會員DB
 $query_builder = TRUE;
 
-$db['default'] = array(
-	'dsn'	=> 'mysql:host=' . DB_HOST .'; dbname=' . DB_NAME . '; charset=utf8;',
-	'username' => 'pony',
-	'password' => '!pony',
-	// 'username' => 'root',
-	// 'password' => 'as09760731',
-	'dbdriver' => 'pdo',
-	'dbprefix' => '',
-	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
-	'cache_on' => FALSE,
-	'cachedir' => '',
-	'char_set' => 'utf8',
-	'dbcollat' => 'utf8_general_ci',
-	'swap_pre' => '',
-	'encrypt' => FALSE,
-	'compress' => FALSE,
-	'stricton' => FALSE,
-	'failover' => array(),
-	'save_queries' => TRUE
+$db['memberdb'] = array(
+    'dsn'      => 'sqlsrv:Server=PONY0116,1433;Database=LUNA_MEMBERDB_2025;',
+    'username' => 'as3305191',
+    'password' => 'as09760731',
+    'dbdriver' => 'pdo',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => (ENVIRONMENT !== 'production'),
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
 );
+
+$db['gamedb'] = array(
+    'dsn'      => 'sqlsrv:Server=PONY0116,1433;Database=LUNA_GAMEDB_2025;',
+    'username' => 'as3305191',
+    'password' => 'as09760731',
+    'dbdriver' => 'pdo',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => (ENVIRONMENT !== 'production'),
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+
+$db['logdb'] = array(
+    'dsn'      => 'sqlsrv:Server=PONY0116,1433;Database=LUNA_LOGDB_2025;',
+    'username' => 'as3305191',
+    'password' => 'as09760731',
+    'dbdriver' => 'pdo',
+    'dbprefix' => '',
+    'pconnect' => FALSE,
+    'db_debug' => (ENVIRONMENT !== 'production'),
+    'char_set' => 'utf8',
+    'dbcollat' => 'utf8_general_ci',
+    'swap_pre' => '',
+    'encrypt' => FALSE,
+    'compress' => FALSE,
+    'stricton' => FALSE,
+    'failover' => array(),
+    'save_queries' => TRUE
+);
+
+
 
 
 // $db[$active_group] = array(
