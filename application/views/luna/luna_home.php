@@ -340,7 +340,7 @@
     });
   }
 
-  for_table(1);
+  // for_table(1);
 
   function search_member(){
     var url = baseUrl + 'luna/luna_home/find_today_weight';
@@ -404,6 +404,6 @@
     }
 
 
-search_member();
+// search_member();
 </script>
 <!-- End Page Javascript -->

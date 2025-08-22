@@ -182,7 +182,7 @@
     });
   }
 
-  for_table(1);
+  // for_table(1);
 
 
 </script>
