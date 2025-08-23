@@ -33,11 +33,14 @@
     <!-- <a href="<?= base_url("luna/member_weight_today") ?>" class="list-group-item list-group-item-action justify-content-between member_weight_today">
       <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> 今日上秤學員顯示列表</span>
     </a> -->
-    <a href="<?= base_url("luna/member_lose_3day") ?>" class="list-group-item list-group-item-action justify-content-between member_lose_3day">
+    <a href="<?= base_url("luna/luna_mall") ?>" class="list-group-item list-group-item-action justify-content-between luna_mall">
       <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> 線上商城</span>
     </a>
-    <a href="<?= base_url("luna/member_weight_last_day") ?>" class="list-group-item list-group-item-action justify-content-between member_weight_last_day">
+    <a href="<?= base_url("luna/luna_gmtool") ?>" class="list-group-item list-group-item-action justify-content-between luna_gmtool">
       <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> GM發道具</span>
+    </a>
+    <a href="<?= base_url("luna/luna_gm_product_set") ?>" class="list-group-item list-group-item-action justify-content-between luna_gm_product_set">
+      <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> GM商城設定</span>
     </a>
     <a href="<?= base_url("luna/login/logout") ?>" class="list-group-item list-group-item-action justify-content-between">
       <span><i class="icon-logout g-pos-rel g-top-1 g-mr-8"></i> 登出</span>

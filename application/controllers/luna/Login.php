@@ -38,7 +38,7 @@ class Login extends MY_Base_Controller {
                     // $res['msg'] = "登入成功";
                 } else {
                     $res['status'] = false;
-                    $res['msg'] = "你被鎖了";
+                    $res['msg'] = "你被鎖了，請聯絡GM。";
                 }
             } else {
                 $res['status'] = false;

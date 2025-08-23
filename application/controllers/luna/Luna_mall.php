@@ -1,35 +1,31 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Member_lose_3day extends MY_Base_Controller {
+class Luna_mall extends MY_Base_Controller {
 
 	function __construct() {
 		parent::__construct();
 
 		// $this->load->helper('captcha');
-
-		// $this -> load -> model('Users_dao', 'users_dao');
-		$this -> load -> model('Corp_dao', 'corp_dao');
-		$this -> load -> model('Members_dao', 'dao');
-		$this -> load -> model('Records_dao', 'records_dao');
-
+		$this->load->model('/luna/Members_dao', 'dao');
 	}
 
 	public function index() {
+		if(empty($this->session->userdata('user_id'))) {
+            redirect("/luna/login");
+            return;
+        }
 		$data = array();
-
 		$s_data = $this -> setup_user_data(array());
-
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
 		$res['items'] = $this -> dao -> find_all_by_luna($data['login_user']->code);
 		$data['p'] = count($res['items']);
 		$data['page'] = ceil($data['p']/10);
-
-		$data['now'] = 'member_lose_3day';
+		$data['now'] = 'luna_mall';
 
 		// $this -> to_json($data);
 
-		$this -> load -> view('luna/member_lose_3day', $data);
+		$this -> load -> view('luna/luna_mall', $data);
 	}
 
 	public function get_data() {

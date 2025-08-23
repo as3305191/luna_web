@@ -13,7 +13,10 @@ class Luna_home extends MY_Base_Controller {
 		$data = array();
 		// $count_members_lose_3days_ = array();
 		// $count_today_= array();
-
+		if(empty($this->session->userdata('user_id'))) {
+            redirect("/luna/login");
+            return;
+        }
 		$s_data = $this -> setup_user_data(array());
 		$data['login_user'] = $this -> dao -> find_by('id_loginid',$s_data['login_user_id']);
 	

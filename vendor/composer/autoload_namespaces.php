@@ -8,4 +8,5 @@ $baseDir = dirname($vendorDir);
 return array(
     'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
     'Imagick' => array($vendorDir . '/calcinai/php-imagick/src'),
+    'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
 );
