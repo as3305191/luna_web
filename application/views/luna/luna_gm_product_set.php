@@ -17,10 +17,39 @@
       <div class="container">
         <div class="row">
           <?php $this->load->view("luna/luna_sidebar"); ?>
-
+         
+          <!-- 物品尋找 -->
           <div class="col-lg-9">
             <div class="row g-mb-40">
               <div class="col-lg-12">
+              <!-- 發送物品區塊 -->
+                <div class="p-3 g-pt-15 g-pb-10">
+                  <div class="row g-mb-10">
+                    <div class="col-md-6">
+                      <label class="g-mb-5">玩家帳號/ID（可多個，用逗號或換行分隔）</label>
+                      <textarea id="player_list" class="form-control" rows="4" placeholder="例：playerA,playerB 或多行輸入"></textarea>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="g-mb-5">物品序號（可多個，用逗號分隔；可用 * 或 : 指定數量）</label>
+                      <textarea id="item_codes" class="form-control" rows="4" placeholder="例：11000001,11000002*3,11000003:5"></textarea>
+                      <small class="text-muted">
+                        不寫數量則使用預設數量；允許格式：<code>11000001</code>、<code>11000002*3</code>、<code>11000003:5</code>
+                      </small>
+                    </div>
+                  </div>
+                  <div class="row g-mb-10">
+                    <div class="col-md-3">
+                      <label class="g-mb-5">預設數量</label>
+                      <input id="default_qty" type="number" class="form-control" min="1" value="1">
+                    </div>
+                    <div class="col-md-9 d-flex align-items-end">
+                      <button id="sendItems" class="btn btn-success">發送物品</button>
+                      <span id="sendMsg" class="g-ml-15" style="color:#28a745;"></span>
+                    </div>
+                  </div>
+                  <hr>
+                </div>
+
                 <div class="card border-0">
                   <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0">
                     <h3 class="h6 mb-0"><i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 商品清單（Excel 來源）</h3>
@@ -169,6 +198,35 @@
     });
 
     $(function(){ fetch_page(1); });
+
+
+// 單筆送出
+$('#sendItems').on('click', function() {
+  const character_idx = $('#player_list').val();          // 角色
+  const item_idx = $('#item_codes').val().trim();         // 物品代號（原本你寫成拿 qty 的欄位，反了）
+  const qty = parseInt($('#default_qty').val(), 10) || 0; // 數量（原本你把 item_codes 當 qty，反了）
+
+  if (!character_idx || !item_idx || qty <= 0) {
+    alert('請輸入角色、物品與正確數量'); 
+    return;
+  }
+
+  $.post('<?= site_url("luna/luna_gm_product_set/insert") ?>', {
+    character_idx, item_idx, qty
+  }, function(res) {
+    if (res.success) {
+      alert('發送完成：成功 ' + (res.ok ?? 0) + ' 筆'); // 後端會回 ok=成功數
+    } else {
+      alert('失敗：' + (res.msg || ''));
+    }
+  }, 'json');
+});
+
+
+
+
+
+
   </script>
 </body>
 </html>

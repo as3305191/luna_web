@@ -24,9 +24,9 @@ class Luna_gmtool extends MY_Base_Controller {
 		$data = array();
 		$s_data = $this -> setup_user_data(array());
 		$data['login_user'] = $this -> dao -> find_by_id($s_data['login_user_id']);
-		$res['items'] = $this -> dao -> find_all_by_luna($data['login_user']->code);
-		$data['p'] = count($res['items']);
-		$data['page'] = ceil($data['p']/10);
+		// $res['items'] = $this -> dao -> find_all_by_luna($data['login_user']->code);
+		// $data['p'] = count($res['items']);
+		// $data['page'] = ceil($data['p']/10);
 		$data['now'] = 'luna_gmtool';
 		// $this -> to_json($data);
 		$this -> load -> view('luna/luna_gmtool', $data);

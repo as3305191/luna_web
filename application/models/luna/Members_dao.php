@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Members_dao extends CI_Model {
+class Members_dao extends MY_Model {
 
     protected $member_db;
 
