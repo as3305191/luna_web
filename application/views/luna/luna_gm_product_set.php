@@ -7,6 +7,19 @@
     .pagination-wrap { display:flex; justify-content:center; gap:6px; flex-wrap:wrap; }
     .page-ctrl { cursor:pointer; user-select:none; }
     .page-ellipsis { padding:6px 10px; color:#999; }
+    .badge { display:inline-block; padding:.25em .5em; border-radius:.25rem; font-size:12px; }
+    .badge.gray { background:#e9ecef; color:#495057; }
+    .badge.orange { background:#fff3cd; color:#856404; }
+    .btn-xs { padding:2px 6px; font-size:12px; line-height:1.3; }
+    .table thead th { white-space:nowrap; }
+    .muted { color:#6c757d; }
+    .w-120 { width:120px; }
+    .w-140 { width:140px; }
+    .w-80 { width:80px; }
+    .nowrap { white-space:nowrap; }
+    .loading { opacity:.6; pointer-events:none; }
+    .small { font-size:12px; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
   </style>
 </head>
 <body>
@@ -17,23 +30,26 @@
       <div class="container">
         <div class="row">
           <?php $this->load->view("luna/luna_sidebar"); ?>
-         
+
           <!-- 物品尋找 -->
           <div class="col-lg-9">
             <div class="row g-mb-40">
               <div class="col-lg-12">
-              <!-- 發送物品區塊 -->
+
+                <!-- 發送物品區塊 -->
                 <div class="p-3 g-pt-15 g-pb-10">
                   <div class="row g-mb-10">
                     <div class="col-md-6">
-                      <label class="g-mb-5">玩家帳號/ID（可多個，用逗號或換行分隔）</label>
-                      <textarea id="player_list" class="form-control" rows="4" placeholder="例：playerA,playerB 或多行輸入"></textarea>
+                      <label class="g-mb-5">玩家<mark>角色 ID</mark>（可多個，用逗號或換行分隔；<b>必須是數字</b>）</label>
+                      <textarea id="player_list" class="form-control mono" rows="4" placeholder="例：1001,1002 或逐行輸入"></textarea>
+                      <div class="small muted g-mt-5">後端僅接受純數字（<code>ctype_digit</code>）。</div>
                     </div>
                     <div class="col-md-6">
-                      <label class="g-mb-5">物品序號（可多個，用逗號分隔；可用 * 或 : 指定數量）</label>
-                      <textarea id="item_codes" class="form-control" rows="4" placeholder="例：11000001,11000002*3,11000003:5"></textarea>
+                      <label class="g-mb-5">物品編號（可多個，用逗號/換行；可附數量標記但目前僅做備註）</label>
+                      <textarea id="item_codes" class="form-control mono" rows="4" placeholder="例：13000835,13000828*3,13000830:5"></textarea>
                       <small class="text-muted">
-                        不寫數量則使用預設數量；允許格式：<code>11000001</code>、<code>11000002*3</code>、<code>11000003:5</code>
+                        允許格式：<code>13000835</code>、<code>13000828*3</code>、<code>13000830:5</code>。<br>
+                        目前後端 API 以「預設數量」套用所有物品，<u>送出時會自動剝除數量，只取編號</u>。
                       </small>
                     </div>
                   </div>
@@ -43,18 +59,35 @@
                       <input id="default_qty" type="number" class="form-control" min="1" value="1">
                     </div>
                     <div class="col-md-9 d-flex align-items-end">
-                      <button id="sendItems" class="btn btn-success">發送物品</button>
+                      <!-- <button id="sendItems" class="btn btn-success">發送物品（角色包包）</button> -->
+                      <button id="sendToShop" class="btn btn-warning g-ml-10">送到商城包包</button>
                       <span id="sendMsg" class="g-ml-15" style="color:#28a745;"></span>
                     </div>
                   </div>
+                  <div id="sendResult" class="g-mt-10"></div>
                   <hr>
                 </div>
-
+                <!-- 帳號 → 角色查詢 -->
+                <div class="row g-mb-10">
+                  <div class="col-md-6">
+                    <label class="g-mb-5">帳號 <mark>USER_IDX</mark></label>
+                    <input id="search_user_idx" type="number" class="form-control mono" placeholder="例：123456">
+                    <small class="muted">輸入帳號 USER_IDX，查出底下所有角色。</small>
+                  </div>
+                  <div class="col-md-6 d-flex align-items-end">
+                    <button id="btnSearchUser" class="btn btn-info g-mr-10">查詢帳號角色</button>
+                    <button id="btnAddSelectedChars" class="btn btn-secondary" disabled>將勾選角色加入上方角色ID框</button>
+                  </div>
+                </div>
+                <div id="acc_characters_result" class="g-mb-15"></div>
                 <div class="card border-0">
                   <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0">
-                    <h3 class="h6 mb-0"><i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 商品清單（Excel 來源）</h3>
+                    <h3 class="h6 mb-0">
+                      <i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i>
+                      商品清單（Excel 欄位：O=販售狀態，BG=剩餘時間(秒)，BL=分類代碼）
+                    </h3>
                     <div class="d-flex align-items-center">
-                      <input id="q" type="text" class="form-control form-control-sm" placeholder="搜尋：編號 / 名稱 / 分類" style="width:240px;">
+                      <input id="q" type="text" class="form-control form-control-sm" placeholder="搜尋：編號 / 名稱 / 分類" style="width:260px;">
                     </div>
                   </div>
 
@@ -63,11 +96,12 @@
                       <table class="table table-bordered u-table--v2">
                         <thead class="text-uppercase g-letter-spacing-1">
                           <tr>
-                            <th style="width:140px;">商品編號</th>
+                            <th class="w-140">商品編號</th>
                             <th>名稱</th>
-                            <th style="width:120px;" class="text-right">價格</th>
-                            <th style="width:80px;">庫存</th>
-                            <th style="width:140px;">分類</th>
+                            <th class="w-120 text-right">販售狀態 (O)</th>
+                            <th class="w-120">限時 (BG)</th>
+                            <th class="w-140">分類（BL，含代碼）</th>
+                            <th class="w-120">操作</th>
                           </tr>
                         </thead>
                         <tbody id="dt_list_body"></tbody>
@@ -81,6 +115,7 @@
                     </nav>
                   </div>
                 </div>
+
               </div>
             </div>
           </div><!-- /col-lg-9 -->
@@ -96,15 +131,45 @@
 
   <script>
     const API_GET = '<?= site_url('luna/luna_gm_product_set/get_data') ?>';
+    const API_SEND = '<?= site_url("luna/luna_gm_product_set/insert") ?>';
+    const API_CHAR_LIST = '<?= site_url("luna/luna_gm_product_set/characters_by_user") ?>';
     const CSRF_NAME = '<?= $this->security->get_csrf_token_name(); ?>';
     const CSRF_HASH = '<?= $this->security->get_csrf_hash(); ?>';
 
     let currentPage = 1;
     let currentQ = '';
 
+    // 秒數 → 可讀
+    function humanizeSeconds(sec) {
+      const n = parseInt(sec, 10);
+      if (!n || n <= 0) return '<span class="badge gray" title="0 秒">永久</span>';
+      const day = Math.floor(n / 86400);
+      const hour = Math.floor((n % 86400) / 3600);
+      const min = Math.floor((n % 3600) / 60);
+      let text = '';
+      if (day >= 1 && hour === 0) text = `${day}天`;
+      else if (day >= 1) text = `${day}天${hour}小時`;
+      else if (hour >= 1) text = `${hour}小時${min}分`;
+      else text = `${min}分`;
+      return `<span class="badge orange" title="${n.toLocaleString('zh-Hant-TW')} 秒">${text}</span>`;
+    }
+
+    function normalizeItemCodes(raw) {
+      if (!raw) return '';
+      const parts = raw.replace(/，/g, ',').split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+      const ids = [];
+      parts.forEach(p => {
+        const id = (p.split('*')[0] || p).split(':')[0];
+        if (/^\d+$/.test(id)) ids.push(id);
+      });
+      return Array.from(new Set(ids)).join(',');
+    }
+
     function fetch_page(page) {
-      const payload = { page: page, q: currentQ };
+      const payload = { page, q: currentQ };
       if (CSRF_NAME && CSRF_HASH) payload[CSRF_NAME] = CSRF_HASH;
+
+      $('.table').addClass('loading');
 
       $.ajax({
         type: 'POST',
@@ -120,19 +185,45 @@
           if (res.items && res.items.length) {
             res.items.forEach(function(me){
               const $tr = $('<tr/>');
-              $('<td/>').text(me.product_code || '').appendTo($tr);
+
+              // 商品編號
+              $('<td/>').addClass('mono').text(me.product_code || '').appendTo($tr);
+
+              // 名稱
               $('<td/>').text(me.name || '').appendTo($tr);
-              const priceText = (me.price !== undefined && me.price !== null && me.price !== '')
-                ? Number(me.price).toLocaleString('zh-Hant-TW') : '';
-              $('<td/>').addClass('text-right').text(priceText).appendTo($tr);
-              const stockText = (me.stock !== undefined && me.stock !== null && me.stock !== '')
-                ? parseInt(me.stock, 10) : '';
-              $('<td/>').text(stockText).appendTo($tr);
-              $('<td/>').text(me.category || '').appendTo($tr);
+
+              // 販售狀態(O)
+              const sellstatusText = (me.sellstatus !== undefined && me.sellstatus !== null && me.sellstatus !== '')
+                ? Number(me.sellstatus).toLocaleString('zh-Hant-TW') : '—';
+              $('<td/>').addClass('text-right mono').text(sellstatusText).appendTo($tr);
+
+              // 限時（BG 秒；0=永久；null/空：顯示「—」）
+              let endCellHtml = '—';
+              if (me.endtime !== undefined && me.endtime !== null && me.endtime !== '') {
+                endCellHtml = humanizeSeconds(me.endtime);
+              }
+              $('<td/>').html(endCellHtml).appendTo($tr);
+
+              // 分類（BL → 中文）＋ 原始代碼
+              const cateName = (me.category && String(me.category).trim() !== '') ? me.category : '未分類';
+              const cateCode = (me.category_code !== undefined && me.category_code !== null && me.category_code !== '' && !isNaN(parseInt(me.category_code,10)))
+                ? ` (${parseInt(me.category_code,10)})` : '';
+              $('<td/>').text(cateName + cateCode).appendTo($tr);
+
+              // 操作：加入待發送
+              const $btn = $('<button class="btn btn-primary btn-xs">加入待發送</button>').on('click', function(){
+                const current = $('#item_codes').val().trim();
+                const toAdd = String(me.product_code || '').trim();
+                if (!toAdd) return;
+                let next = current ? (current.endsWith(',') ? current + toAdd : current + ',' + toAdd) : toAdd;
+                $('#item_codes').val(next);
+              });
+              $('<td class="nowrap"/>').append($btn).appendTo($tr);
+
               $tr.appendTo($body);
             });
           } else {
-            $('<tr><td colspan="5" class="text-center">查無資料</td></tr>').appendTo($body);
+            $('<tr><td colspan="6" class="text-center">查無資料</td></tr>').appendTo($body);
           }
 
           currentPage = res.page || 1;
@@ -141,11 +232,14 @@
         error: function(xhr){
           console.error(xhr);
           $('#msg').text('資料載入失敗：' + xhr.status + ' ' + xhr.statusText);
+        },
+        complete: function(){
+          $('.table').removeClass('loading');
         }
       });
     }
 
-    // 分頁：每次顯示 10 個頁碼，含左右鍵與省略號
+    // 分頁
     function render_pagination(page, totalPage){
       const $p = $('#pagination').empty();
       const windowSize = 8;
@@ -199,34 +293,226 @@
 
     $(function(){ fetch_page(1); });
 
+    // 發送（角色包包）
+    $('#sendItems').on('click', function() {
+      const character_raw = $('#player_list').val() || '';
+      const item_raw = $('#item_codes').val() || '';
+      const qty = parseInt($('#default_qty').val(), 10) || 0;
 
-// 單筆送出
-$('#sendItems').on('click', function() {
-  const character_idx = $('#player_list').val();          // 角色
-  const item_idx = $('#item_codes').val().trim();         // 物品代號（原本你寫成拿 qty 的欄位，反了）
-  const qty = parseInt($('#default_qty').val(), 10) || 0; // 數量（原本你把 item_codes 當 qty，反了）
+      // 角色：保留純數字
+      const charParts = character_raw.replace(/，/g, ',').split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+      const charIds = charParts.filter(s => /^\d+$/.test(s));
+      const character_idx = charIds.join(',');
+      if (!character_idx) { alert('請輸入至少 1 個有效的角色 ID（純數字）'); return; }
 
-  if (!character_idx || !item_idx || qty <= 0) {
-    alert('請輸入角色、物品與正確數量'); 
-    return;
-  }
+      // 物品：剝除 * 或 : 數量標記
+      const item_idx = normalizeItemCodes(item_raw);
+      if (!item_idx) { alert('請輸入至少 1 個有效的物品編號（純數字）'); return; }
 
-  $.post('<?= site_url("luna/luna_gm_product_set/insert") ?>', {
-    character_idx, item_idx, qty
-  }, function(res) {
-    if (res.success) {
-      alert('發送完成：成功 ' + (res.ok ?? 0) + ' 筆'); // 後端會回 ok=成功數
-    } else {
-      alert('失敗：' + (res.msg || ''));
+      if (qty <= 0) { alert('請輸入正確的預設數量 (>=1)'); return; }
+
+      const payload = { send_mode: 'char_bag', character_idx, item_idx, qty };
+      if (CSRF_NAME && CSRF_HASH) payload[CSRF_NAME] = CSRF_HASH;
+
+      $('#sendItems, #sendToShop').prop('disabled', true);
+      $('#sendMsg').text('處理中…');
+      $('#sendResult').empty();
+
+      $.post(API_SEND, payload, function(res) {
+        $('#sendMsg').text(res && res.msg ? res.msg : '');
+
+        // 彙整每筆結果
+        const okList = [];
+        const ngList = [];
+        if (res && Array.isArray(res.results)) {
+          res.results.forEach(r => {
+            const line = `角色 ${r.char} × 物品 ${r.item} × 數量 ${r.qty}` + (r.log_idx ? `（LOG ${r.log_idx}）` : '');
+            if (r.ng && r.ng > 0) ngList.push(line + (r.msg ? `｜${r.msg}` : ''));
+            else okList.push(line);
+          });
+        }
+        const $box = $('<div/>');
+
+        if (okList.length) {
+          $box.append(`<div class="g-mb-5"><b>成功 (${okList.length})：</b></div>`);
+          const $ul = $('<ul class="small mono"/>');
+          okList.forEach(s => $ul.append(`<li>${s}</li>`));
+          $box.append($ul);
+        }
+        if (ngList.length) {
+          $box.append(`<div class="g-mb-5"><b style="color:#d9534f">失敗 (${ngList.length})：</b></div>`);
+          const $ul2 = $('<ul class="small mono" style="color:#d9534f"/>');
+          ngList.forEach(s => $ul2.append(`<li>${s}</li>`));
+          $box.append($ul2);
+        }
+        if (!okList.length && !ngList.length) $box.append('<div class="small muted">沒有回傳細節。</div>');
+
+        $('#sendResult').html($box);
+      }, 'json').fail(function(xhr){
+        $('#sendMsg').text('');
+        alert('發送失敗：' + xhr.status + ' ' + xhr.statusText);
+      }).always(function(){
+        $('#sendItems, #sendToShop').prop('disabled', false);
+      });
+    });
+
+    // 送到商城包包（CHARACTER_IDX 由後端用該帳號第一隻角色帶入；ITEM_SHOPIDX=USER_IDX）
+    $('#sendToShop').on('click', function(){
+      const user_idx = parseInt($('#search_user_idx').val(), 10);
+      const item_raw = $('#item_codes').val() || '';
+      const qty = parseInt($('#default_qty').val(), 10) || 0;
+
+      if (!user_idx || user_idx <= 0) { alert('請在「帳號 USER_IDX」輸入正確的帳號'); return; }
+
+      const item_idx = normalizeItemCodes(item_raw);
+      if (!item_idx) { alert('請輸入至少 1 個有效的物品編號（純數字）'); return; }
+      if (qty <= 0) { alert('請輸入正確的預設數量 (>=1)'); return; }
+
+      const payload = { send_mode: 'shop_bag', user_idx, item_idx, qty };
+      if (CSRF_NAME && CSRF_HASH) payload[CSRF_NAME] = CSRF_HASH;
+
+      $('#sendItems, #sendToShop').prop('disabled', true);
+      $('#sendMsg').text('處理中…');
+      $('#sendResult').empty();
+
+      $.post(API_SEND, payload, function(res){
+        $('#sendMsg').text(res && res.msg ? res.msg : '');
+
+        const okList = [];
+        const ngList = [];
+        if (res && Array.isArray(res.results)) {
+          res.results.forEach(r => {
+            const line = `角色 ${r.char} × 物品 ${r.item} × 數量 ${r.qty}` + (r.log_idx ? `（LOG ${r.log_idx}）` : '');
+            if (r.ng && r.ng > 0) ngList.push(line + (r.msg ? `｜${r.msg}` : ''));
+            else okList.push(line);
+          });
+        }
+        const $box = $('<div/>');
+        if (okList.length) {
+          $box.append(`<div class="g-mb-5"><b>成功 (${okList.length})：</b></div>`);
+          const $ul = $('<ul class="small mono"/>');
+          okList.forEach(s => $ul.append(`<li>${s}</li>`));
+          $box.append($ul);
+        }
+        if (ngList.length) {
+          $box.append(`<div class="g-mb-5"><b style="color:#d9534f">失敗 (${ngList.length})：</b></div>`);
+          const $ul2 = $('<ul class="small mono" style="color:#d9534f"/>');
+          ngList.forEach(s => $ul2.append(`<li>${s}</li>`));
+          $box.append($ul2);
+        }
+        if (!okList.length && !ngList.length) $box.append('<div class="small muted">沒有回傳細節。</div>');
+        $('#sendResult').html($box);
+      }, 'json').fail(function(xhr){
+        $('#sendMsg').text('');
+        alert('發送失敗：' + xhr.status + ' ' + xhr.statusText);
+      }).always(function(){
+        $('#sendItems, #sendToShop').prop('disabled', false);
+      });
+    });
+
+    // 新增：帳號→角色 API：把勾選角色加入上方「玩家角色ID」框
+    function addCheckedCharsToTextarea() {
+      const ids = [];
+      $('#acc_characters_result input.char-check:checked').each(function(){
+        const v = $(this).val();
+        if (/^\d+$/.test(v)) ids.push(v);
+      });
+      if (!ids.length) { alert('請先勾選要加入的角色'); return; }
+
+      const current = ($('#player_list').val() || '').replace(/，/g, ',')
+        .split(/[\n,]+/).map(s => s.trim()).filter(Boolean);
+
+      const merged = Array.from(new Set(current.concat(ids))); // 去重
+      $('#player_list').val(merged.join(','));
     }
-  }, 'json');
-});
 
+    // 渲染帳號角色清單
+    function renderAccountCharacters(resp) {
+      const $box = $('#acc_characters_result').empty();
+      $('#btnAddSelectedChars').prop('disabled', true);
 
+      if (resp.error) {
+        $box.html('<div class="small" style="color:#d9534f;">'+ resp.error +'</div>');
+        return;
+      }
+      const list = resp.characters || [];
+      if (!list.length) {
+        $box.html('<div class="small muted">查無角色。</div>');
+        return;
+      }
 
+      const $table = $(`
+        <div class="table-responsive">
+          <table class="table table-sm table-bordered">
+            <thead>
+              <tr>
+                <th class="w-80"><input type="checkbox" id="chk_all_chars"></th>
+                <th class="w-140">角色ID</th>
+                <th>角色名稱</th>
+                <th class="w-80">等級</th>
+                <th class="w-120">職業</th>
+                <th class="w-140">最後異動</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+          <div class="small muted">共 ${list.length} 筆</div>
+        </div>
+      `);
 
+      const $tbody = $table.find('tbody');
+      list.forEach(row => {
+        const tr = `
+          <tr>
+            <td class="text-center">
+              <input type="checkbox" class="char-check" value="${row.CharId}">
+            </td>
+            <td class="mono">${row.CharId}</td>
+            <td>${row.CharName || ''}</td>
+            <td class="text-right">${row.Level ?? ''}</td>
+            <td>${row.Job ?? ''}</td>
+            <td class="small mono">${row.LastModified || ''}</td>
+          </tr>
+        `;
+        $tbody.append(tr);
+      });
 
+      $box.append($table);
 
+      // 全選
+      $('#chk_all_chars').on('change', function(){
+        $('.char-check').prop('checked', $(this).is(':checked'));
+        $('#btnAddSelectedChars').prop('disabled', $('.char-check:checked').length === 0);
+      });
+      // 勾選監聽
+      $box.on('change', '.char-check', function(){
+        const any = $('.char-check:checked').length > 0;
+        $('#btnAddSelectedChars').prop('disabled', !any);
+      });
+    }
+
+    // 綁定：查詢帳號角色
+    $('#btnSearchUser').on('click', function(){
+      const user_idx = parseInt($('#search_user_idx').val(), 10);
+      if (!user_idx || user_idx <= 0) { alert('請輸入正確的 USER_IDX (正整數)'); return; }
+
+      const payload = { user_idx };
+      if (CSRF_NAME && CSRF_HASH) payload[CSRF_NAME] = CSRF_HASH;
+
+      $('#btnSearchUser').prop('disabled', true).text('查詢中…');
+      $('#acc_characters_result').html('<div class="small muted">查詢中…</div>');
+
+      $.post(API_CHAR_LIST, payload, function(res){
+        renderAccountCharacters(res || {});
+      }, 'json').fail(function(xhr){
+        $('#acc_characters_result').html('<div class="small" style="color:#d9534f;">查詢失敗：'+xhr.status+' '+xhr.statusText+'</div>');
+      }).always(function(){
+        $('#btnSearchUser').prop('disabled', false).text('查詢帳號角色');
+      });
+    });
+
+    // 綁定：把勾選角色加到上方角色ID框
+    $('#btnAddSelectedChars').on('click', addCheckedCharsToTextarea);
   </script>
 </body>
 </html>
