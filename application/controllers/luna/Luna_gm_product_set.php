@@ -29,6 +29,7 @@ class Luna_gm_product_set extends MY_Base_Controller {
     if ($this->session->userdata('userlv') !== '2') {
       redirect("/luna/luna_home"); return;
     }
+		$data['userlv'] = $this->session->userdata('userlv');
     $data['now'] = 'luna_gm_product_set';
     $this->load->view('luna/luna_gm_product_set', $data);
   }

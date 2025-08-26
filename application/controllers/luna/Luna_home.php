@@ -6,7 +6,7 @@ class Luna_home extends MY_Base_Controller {
 	function __construct() {
 		parent::__construct();
 
-        $this->load->model('/luna/Members_dao', 'dao');  // 這個 DAO 要連到 chr_log_info
+        $this->load->model('/luna/Members_dao', 'dao');  
 	}
 
 	public function index() {
@@ -19,8 +19,7 @@ class Luna_home extends MY_Base_Controller {
         }
 		$s_data = $this -> setup_user_data(array());
 		$data['login_user'] = $this -> dao -> find_by('id_loginid',$s_data['login_user_id']);
-	
-
+		$data['userlv'] = $this->session->userdata('userlv');
 		// $this -> to_json($data);
 		$this -> load -> view('luna/luna_home', $data);
 	}

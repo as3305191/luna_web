@@ -13,6 +13,8 @@ class Luna_mall extends MY_Base_Controller {
       redirect("/luna/login");
       return;
     }
+    $data['userlv'] = $this->session->userdata('userlv');
+
     $data['now'] = 'luna_mall';
     $this->load->view('luna/luna_mall', $data);
   }
