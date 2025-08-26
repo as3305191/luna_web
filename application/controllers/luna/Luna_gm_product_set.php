@@ -12,36 +12,44 @@ class Luna_gm_product_set extends MY_Base_Controller {
 
   public function __construct() {
     parent::__construct();
-    $this->excel_file = FCPATH . 'assets/itemlistcn.xlsx';
+    $this->excel_file = FCPATH . 'assets/luna/itemlistcn.xlsx';
     $this->cache_file = APPPATH . 'cache/itemlistcn.cache.json';
 
-    // DAO
+    $this->load->model('/luna/Members_dao', 'dao');  
     $this->load->model('/luna/Shop_log_dao', 'shop_log_dao');
     $this->load->model('/luna/Item_dao', 'item_dao');
     $this->load->model('/luna/CHARACTER_dao', 'charDao'); // ✅ 新增
     $this->load->model('/luna/Item_log_dao', 'item_log_dao'); // ★ 新增：道具日誌（LOGDB）
+    $this->load->model('/luna/mall_point_log_dao', 'mall_point_dao'); // ★ 新增：點數日誌（LOGDB）
   }
 
   public function index() {
+    
     if (empty($this->session->userdata('user_id'))) {
       redirect("/luna/login"); return;
     }
     if ($this->session->userdata('userlv') !== '2') {
       redirect("/luna/luna_home"); return;
     }
-		$data['userlv'] = $this->session->userdata('userlv');
+    $s_data = $this->setup_user_data([]); // 你自訂的基底方法
+		$login_user = $this->dao->find_by('id_loginid', $s_data['login_user_id'] ?? '');
+
+		// 先建立 $data，再逐項增加，避免被覆蓋
+		$data = [];
+		$data['login_user'] = $login_user;
+		$data['userlv']     = $login_user ? ($login_user->UserLevel ?? 0) : 0;
     $data['now'] = 'luna_gm_product_set';
     $this->load->view('luna/luna_gm_product_set', $data);
   }
 
-/* ---------------- Excel 讀取（A/B/O/BG/BL） ---------------- */
+/* ---------------- Excel 讀取（含 M 欄 max_stack） ---------------- */
 private function load_all_items() {
   if (!file_exists($this->excel_file)) return ['items' => [], 'mtime' => 0];
 
   $xlsx_mtime = filemtime($this->excel_file);
-  $CACHE_VER = 3; // ← 解析邏輯改動就 +1，確保不吃舊快取
+  $CACHE_VER = 5; // ★ 升版避免吃舊 cache
 
-  // 命中快取（含版本）
+  // 讀快取
   if (file_exists($this->cache_file)) {
     $cache = json_decode(@file_get_contents($this->cache_file), true);
     if (is_array($cache)
@@ -51,27 +59,27 @@ private function load_all_items() {
     }
   }
 
+  // 讀 Excel
   $reader = IOFactory::createReaderForFile($this->excel_file);
   $reader->setReadDataOnly(true);
   $spreadsheet = $reader->load($this->excel_file);
-
-  // 如需指定工作表，可改用：$sheet = $spreadsheet->getSheetByName('Sheet1');
   $sheet = $spreadsheet->getActiveSheet();
 
-  // 欄位字母 → 索引（1-based）
+  // 欄位對應
   $colLetters = [
-    'code'       => 'A',   // ITEM_IDX
-    'name'       => 'B',   // 名稱
-    'sellstatus' => 'O',   // O 欄：販售狀態（寫入 ITEM_SEAL）
-    'endtime'    => 'BG',  // BG 欄：剩餘/限時秒數
-    'cate'       => 'BL',  // BL 欄：分類代碼
+    'code'       => 'A',   // 物品代碼
+    'name'       => 'B',   // 物品名稱
+    'sellstatus' => 'O',   // 銷售狀態
+    'endtime'    => 'BG',  // 到期/封印用數值
+    'cate'       => 'BL',  // 類別（數字）
+    'max_stack'  => 'M',   // ★ 可疊加上限
   ];
   $colIndex = [];
   foreach ($colLetters as $k => $letter) {
     $colIndex[$k] = Coordinate::columnIndexFromString($letter);
   }
 
-  // BL 分類代碼 → 中文
+  // 類別映射
   $categoryMap = [
     0=>'武器', 1=>'盾牌', 2=>'衣服', 3=>'帽子', 4=>'手套', 5=>'鞋子',
     6=>'戒指1', 7=>'戒指2', 8=>'項鍊', 9=>'耳環1', 10=>'耳環2',
@@ -81,74 +89,81 @@ private function load_all_items() {
 
   $highestRow = $sheet->getHighestRow();
   $items = [];
-
-  // 如果第 1 列是表頭，這裡改成 2
-  $startRow = 1;
+  $startRow = 1; // 有表頭就改 2
 
   for ($r = $startRow; $r <= $highestRow; $r++) {
-    // ---- A/B 直接取字串
+    // A: code
     $code = trim((string)$sheet->getCellByColumnAndRow($colIndex['code'], $r)->getCalculatedValue());
+    // B: name
     $name = trim((string)$sheet->getCellByColumnAndRow($colIndex['name'], $r)->getCalculatedValue());
 
-    // ---- O：販售狀態（保留字串/數字；空→null）
+    // O: sellstatus
     $cellO = $sheet->getCellByColumnAndRow($colIndex['sellstatus'], $r);
     $oVal  = $cellO ? $cellO->getValue() : null;
     if ($oVal === null || $oVal === '') $oVal = $cellO ? $cellO->getCalculatedValue() : null;
-    $sellstatus = (is_null($oVal) || trim((string)$oVal) === '')
-      ? null
-      : (is_numeric($oVal) ? (float)$oVal : trim((string)$oVal));
+    $sellstatus = (is_null($oVal) || trim((string)$oVal) === '') ? null
+                 : (is_numeric($oVal) ? (float)$oVal : trim((string)$oVal));
 
-    // ---- BG：秒數（吃 1209600、"1,209,600"、"１２０９６００"、"1209600秒" 等）
+    // BG: endtime
     $cellBG = $sheet->getCellByColumnAndRow($colIndex['endtime'], $r);
     $bgVal  = $cellBG ? $cellBG->getValue() : null;
     if ($bgVal === null || $bgVal === '') $bgVal = $cellBG ? $cellBG->getCalculatedValue() : null;
-
     $endtime = null;
     if ($bgVal !== null && $bgVal !== '') {
       if (is_numeric($bgVal)) {
         $endtime = (int)round($bgVal);
       } else {
         $s = trim((string)$bgVal);
-        if (function_exists('mb_convert_kana')) $s = mb_convert_kana($s, 'n', 'UTF-8'); // 全形→半形
-        $s = preg_replace('/[^0-9\-]/u', '', $s); // 去非數字
+        if (function_exists('mb_convert_kana')) $s = mb_convert_kana($s, 'n', 'UTF-8');
+        $s = preg_replace('/[^0-9\-]/u', '', $s);
         if ($s !== '' && $s !== '-' && preg_match('/^-?\d+$/', $s)) {
           $endtime = (int)$s;
         }
       }
     }
 
-    // ---- BL：分類（強制清洗，抓第一段數字）
+    // BL: cate
     $cellBL = $sheet->getCellByColumnAndRow($colIndex['cate'], $r);
     $blVal  = $cellBL ? $cellBL->getValue() : null;
     if ($blVal === null || $blVal === '') $blVal = $cellBL ? $cellBL->getCalculatedValue() : null;
-
     $cateNum = -1;
     if ($blVal !== null && trim((string)$blVal) !== '') {
       $s = (string)$blVal;
-      $s = preg_replace('/\s+/u', '', $s);                 // 去空白
-      if (function_exists('mb_convert_kana')) $s = mb_convert_kana($s, 'n', 'UTF-8'); // 全形→半形
-      if (preg_match('/-?\d+/', $s, $m)) {                 // 抓第一段數字
+      $s = preg_replace('/\s+/u', '', $s);
+      if (function_exists('mb_convert_kana')) $s = mb_convert_kana($s, 'n', 'UTF-8');
+      if (preg_match('/-?\d+/', $s, $m)) {
         $cateNum = (int)$m[0];
       }
     }
     $cateZh = $categoryMap[$cateNum] ?? '未分類';
 
-    // ---- 空行檢查
-    if ($code === '' && $name === '' && is_null($sellstatus) && is_null($endtime) && $cateNum === -1) {
+    // M: max_stack
+    $cellM = $sheet->getCellByColumnAndRow($colIndex['max_stack'], $r);
+    $mVal  = $cellM ? $cellM->getValue() : null;
+    if ($mVal === null || $mVal === '') $mVal = $cellM ? $cellM->getCalculatedValue() : null;
+    $max_stack = (is_numeric($mVal) && (int)$mVal > 0) ? (int)$mVal : 0;
+
+    // 空列略過
+    if ($code === '' && $name === '' && is_null($sellstatus) && is_null($endtime) && $cateNum === -1 && $max_stack === 0) {
       continue;
     }
+
+    // ITEM_SEAL：BL=34 或 BG>0
+    $item_seal = ($cateNum === 34 || ($endtime !== null && $endtime > 0)) ? 1 : 0;
 
     $items[] = [
       'product_code'  => $code,
       'name'          => $name,
-      'sellstatus'    => $sellstatus,  // O
-      'endtime'       => $endtime,     // BG（秒）
-      'category'      => $cateZh,      // 中文
-      'category_code' => $cateNum,     // 原始代碼（如不需可移除）
+      'sellstatus'    => $sellstatus,
+      'endtime'       => $endtime,
+      'category'      => $cateZh,
+      'category_code' => $cateNum,
+      'item_seal'     => $item_seal,
+      'max_stack'     => $max_stack,
     ];
   }
 
-  // 寫入快取（含版本）
+  // 寫快取
   @file_put_contents($this->cache_file, json_encode([
     'ver'   => $CACHE_VER,
     'mtime' => $xlsx_mtime,
@@ -159,6 +174,136 @@ private function load_all_items() {
 }
 
 
+public function grant_points() {
+  $this->output->set_content_type('application/json');
+
+  // 取得傳入的資料
+  $user_idx_raw = $this->input->post('user_idx', true);   // 逗號/換行分隔
+  $amount       = (int)$this->input->post('amount', true); // 點數數量
+  $memo         = trim((string)$this->input->post('memo', true)); // 備註
+
+  // 驗證
+  if ($amount <= 0 || $amount > 100000000) {
+    echo json_encode(['success'=>false,'msg'=>'點數數量必須是正整數且小於上限']); return;
+  }
+  if (empty($user_idx_raw)) {
+    echo json_encode(['success'=>false,'msg'=>'請輸入至少一個有效的 USER_IDX']); return;
+  }
+
+  // 解析帳號列表（僅保留純數字、去重）
+  $parts = preg_split('/[\s,，\r\n]+/u', $user_idx_raw, -1, PREG_SPLIT_NO_EMPTY);
+  $uids  = [];
+  foreach ($parts as $p) if (preg_match('/^\d+$/', $p)) $uids[(int)$p] = true;
+  $uids = array_keys($uids);
+  if (empty($uids)) {
+    echo json_encode(['success'=>false,'msg'=>'沒有有效的 USER_IDX']); return;
+  }
+
+  // 操作者資訊
+  $s_data        = $this->setup_user_data([]);
+  $admin_loginid = $s_data['login_user_id'] ?? '';
+  $admin_ip      = $this->input->ip_address();
+
+  $results = [];
+  $this->db->trans_begin();
+  try {
+    foreach ($uids as $uid) {
+      // 行鎖避免併發：讀取目前點數（注意欄位 mall_point 無底線）
+      $row = $this->db->query("
+        SELECT mall_point FROM dbo.chr_log_info WITH (UPDLOCK, ROWLOCK)
+        WHERE id_idx = ?
+      ", [$uid])->row_array();
+
+      if (!$row) {
+        $results[] = ['user_idx'=>$uid, 'ok'=>false, 'msg'=>'帳號不存在'];
+        continue;
+      }
+
+      $before = (int)$row['mall_point'];
+      $after  = $before + $amount;
+      if ($after > 2147483647) {
+        $results[] = ['user_idx'=>$uid, 'ok'=>false, 'msg'=>'點數超過 INT 上限'];
+        continue;
+      }
+
+      // 寫回點數（欄位 mall_point）
+      $this->db->query("
+        UPDATE dbo.chr_log_info
+        SET mall_point = mall_point + ?
+        WHERE id_idx = ?
+      ", [$amount, $uid]);
+
+      // 寫 log 到 LUNA_LOGDB_2025（使用已連 logdb 的 mall_point_dao 模型；表名 mall_point_dao）
+      // 這筆 log 失敗不會回滾 mall_point（不同連線跨庫，避免牽連）。
+      $okLog = $this->mall_point_dao->insert_log(
+        $uid, $amount, $before, $after, $memo, $admin_loginid, $admin_ip
+      );
+
+      $results[] = [
+        'user_idx'=>$uid, 'ok'=>true, 'before'=>$before, 'after'=>$after,
+        'log_ok'  => (bool)$okLog
+      ];
+    }
+
+    $any_ok = array_reduce($results, fn($acc,$r)=> $acc || !empty($r['ok']), false);
+    if (!$any_ok) throw new Exception('全部失敗，已回滾。');
+
+    $this->db->trans_commit();
+    echo json_encode([
+      'success'=>true,
+      'msg'    =>'發送點數處理完成',
+      'results'=>$results
+    ]);
+  } catch (Throwable $e) {
+    $this->db->trans_rollback();
+    echo json_encode([
+      'success'=>false,
+      'msg'    =>'處理失敗：' . $e->getMessage(),
+      'results'=>$results
+    ]);
+  }
+}
+
+public function balance() {
+  $this->output->set_content_type('application/json');
+
+  // 未登入
+  if (empty($this->session->userdata('user_id'))) {
+    return $this->output->set_status_header(401)
+      ->set_output(json_encode(['ok'=>false,'msg'=>'not login']));
+  }
+
+  // 你們的共用方法拿登入帳號（通常是 id_loginid）
+  $s_data    = $this->setup_user_data([]);
+  $login_id  = $s_data['login_user_id'] ?? '';
+  $sess_uid  = $this->session->userdata('user_id'); // 可能是 id_idx 或帳號字串
+
+  // 以 id_loginid 或 id_idx 任一命中即可
+  $this->db->select('id_idx, mall_point')
+           ->from('dbo.chr_log_info');
+  if ($login_id !== '') $this->db->or_where('id_loginid', $login_id);
+  if (is_numeric($sess_uid)) $this->db->or_where('id_idx', (int)$sess_uid);
+  $this->db->limit(1);
+  $row = $this->db->get()->row_array();
+
+  if (!$row) {
+    return $this->output->set_status_header(404)
+      ->set_output(json_encode(['ok'=>false,'msg'=>'account not found']));
+  }
+
+  // 回傳並順便帶 CSRF（給前端更新 token）
+  $resp = [
+    'ok'         => true,
+    'user_idx'   => (int)$row['id_idx'],
+    'mall_point' => (int)$row['mall_point'],
+    'ts'         => time(),
+    'csrf'       => [
+      'name' => $this->security->get_csrf_token_name(),
+      'hash' => $this->security->get_csrf_hash(),
+    ],
+  ];
+  return $this->output->set_output(json_encode($resp, JSON_UNESCAPED_UNICODE));
+}
 
   public function get_data() {
     $this->output->set_content_type('application/json');
@@ -217,14 +362,13 @@ public function insert() {
 
   $now = (new DateTime('now', new DateTimeZone('Asia/Taipei')))->format('Y-m-d H:i:s');
 
-  // 參數
-  $send_mode = trim((string)$this->input->post('send_mode')) ?: 'char_bag'; // char_bag | shop_bag
-  $user_idx  = (int)$this->input->post('user_idx'); // 僅 shop_bag 需要
+  $send_mode = trim((string)$this->input->post('send_mode')) ?: 'char_bag';
+  $user_idx  = (int)$this->input->post('user_idx');
   $char_raw  = str_replace('，', ',', (string)$this->input->post('character_idx'));
   $item_raw  = str_replace('，', ',', (string)$this->input->post('item_idx'));
   $qty       = (int)$this->input->post('qty');
 
-  // 物品清單
+  // 解析 item_idx 清單（僅數字）
   $items = array_values(array_filter(array_map(function($v){
     $v = trim($v);
     return ($v !== '' && ctype_digit($v)) ? $v : null;
@@ -235,9 +379,9 @@ public function insert() {
     return;
   }
 
-  // 角色清單（依模式決定）
+  // 解析角色 or 以帳號第一個角色為主（shop_bag）
   $chars = [];
-  $shopIdxForMode = 0; // 預設角色包包
+  $shopIdxForMode = 0;
   $logUserIdxForMode = null;
 
   if ($send_mode === 'shop_bag') {
@@ -245,7 +389,6 @@ public function insert() {
       echo json_encode(['success'=>false,'msg'=>'shop_bag 需提供 user_idx']);
       return;
     }
-    // 取第一隻角色
     $list = $this->charDao->list_by_user($user_idx, false);
     if (empty($list)) {
       echo json_encode(['success'=>false,'msg'=>'此帳號底下沒有角色']);
@@ -254,9 +397,9 @@ public function insert() {
     $firstCharId = (int)$list[0]->CharId;
     $chars = [$firstCharId];
 
-    $shopIdxForMode    = (int)$user_idx; // 商城包包：ITEM_SHOPIDX = 帳號
-    $logUserIdxForMode = (int)$user_idx; // Log 用帳號
-  } else { // char_bag
+    $shopIdxForMode    = (int)$user_idx; // 記在 ITEM_SHOPIDX
+    $logUserIdxForMode = (int)$user_idx; // 記在 LOG 的 USER_IDX/USER_ID
+  } else {
     $chars = array_values(array_filter(array_map(function($v){
       $v = trim($v);
       return ($v !== '' && ctype_digit($v)) ? $v : null;
@@ -265,21 +408,25 @@ public function insert() {
       echo json_encode(['success'=>false,'msg'=>'請輸入至少 1 個角色 ID']);
       return;
     }
-    $shopIdxForMode = 0;  // 角色包包：ITEM_SHOPIDX = 0
-    // Log 用角色ID（逐筆在迴圈內覆寫）
+    $shopIdxForMode = 0;
   }
 
-  // ★ 需求更正：ITEM_SEAL 一律指定為 1（不再讀 Excel O 欄）
-  $item_seal = 1;
+  // ★ 從 Excel Cache 載入：item_seal、max_stack
+  $pack = $this->load_all_items();
+  $itemMap = [];
+  foreach ($pack['items'] as $it) {
+    // key 請視你的 Excel A 欄是否等於 item_idx：必要時做 (string) 或 (int) 正規化
+    $itemMap[(string)$it['product_code']] = $it;
+  }
 
   $results = [];
   foreach ($chars as $charIdx) {
     foreach ($items as $itemIdx) {
+
+      // 先寫入 SHOP LOG（每個角色*每種物品 建一筆）
       $this->db->trans_begin();
 
-      // Log：shop_bag 用帳號；char_bag 用角色
       $logUserIdx = ($send_mode === 'shop_bag') ? $logUserIdxForMode : (int)$charIdx;
-
       $log_data = [
         'TYPE'       => 0,
         'USER_IDX'   => $logUserIdx,
@@ -296,19 +443,44 @@ public function insert() {
         continue;
       }
 
-      // 插入 TB_ITEM
+      // Excel 屬性
+      $key = (string)$itemIdx;
+      $item_seal = isset($itemMap[$key]) ? ($itemMap[$key]['item_seal'] ?? 0) : 0;
+      $max_stack = isset($itemMap[$key]) ? ($itemMap[$key]['max_stack'] ?? 0) : 0;
+
       $ok = 0; $ng = 0;
-      for ($i=0; $i<$qty; $i++) {
-        $row = [
-          'CHARACTER_IDX'   => (int)$charIdx,     // ★ 角色ID（兩種模式都要）
-          'ITEM_IDX'        => (int)$itemIdx,
-          // 'ITEM_POSITION' 不填（NULL）★
-          'ITEM_SHOPIDX'    => $shopIdxForMode,   // ★ char_bag=0；shop_bag=user_idx
-          'ITEM_SHOPLOGIDX' => $log_idx,
-          'ITEM_SEAL'       => $item_seal,        // ★ 固定為 1
-        ];
-        $ret = $this->item_dao->insert_item($row);
-        if ($ret) $ok++; else $ng++;
+      $remain = $qty;
+
+      if ($max_stack > 0) {
+        // 可疊加：依 max_stack 拆批，durability = 當批數量
+        while ($remain > 0) {
+          $stackSize = ($remain >= $max_stack) ? $max_stack : $remain;
+          $row = [
+            'CHARACTER_IDX'   => (int)$charIdx,
+            'ITEM_IDX'        => (int)$itemIdx,
+            'ITEM_SHOPIDX'    => $shopIdxForMode,
+            'ITEM_SHOPLOGIDX' => $log_idx,
+            'ITEM_SEAL'       => $item_seal,
+            'ITEM_DURABILITY' => $stackSize, // ★ 堆疊數放這裡
+          ];
+          $ret = $this->item_dao->insert_item($row);
+          if ($ret) { $ok++; } else { $ng++; }
+          $remain -= $stackSize;
+        }
+      } else {
+        // 不可疊加：durability = 0
+        for ($i=0; $i<$remain; $i++) {
+          $row = [
+            'CHARACTER_IDX'   => (int)$charIdx,
+            'ITEM_IDX'        => (int)$itemIdx,
+            'ITEM_SHOPIDX'    => $shopIdxForMode,
+            'ITEM_SHOPLOGIDX' => $log_idx,
+            'ITEM_SEAL'       => $item_seal,
+            'ITEM_DURABILITY' => 0,
+          ];
+          $ret = $this->item_dao->insert_item($row);
+          if ($ret) { $ok++; } else { $ng++; }
+        }
       }
 
       if ($ng > 0) {

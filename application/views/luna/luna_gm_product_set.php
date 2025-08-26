@@ -35,6 +35,36 @@
           <div class="col-lg-9">
             <div class="row g-mb-40">
               <div class="col-lg-12">
+                <!-- 發點數區塊 -->
+                <div class="card border-0 g-mb-20">
+                  <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0">
+                    <h3 class="h6 mb-0">
+                      <i class="icon-wallet g-pos-rel g-top-1 g-mr-5"></i> 發送點數（依帳號 USER_IDX）
+                    </h3>
+                  </div>
+                  <div class="card-block g-pt-15 g-pb-10">
+                    <div class="row g-mb-10">
+                      <div class="col-md-6">
+                        <label class="g-mb-5">帳號 <mark>USER_IDX</mark>（可多個，用逗號或換行分隔）</label>
+                        <textarea id="mp_user_list" class="form-control mono" rows="4" placeholder="例：12345,67890 或逐行輸入"></textarea>
+                        <div class="small muted g-mt-5">後端僅接受純數字。</div>
+                      </div>
+                      <div class="col-md-3">
+                        <label class="g-mb-5">發送點數（正整數）</label>
+                        <input id="mp_amount" type="number" class="form-control" min="1" value="100">
+                      </div>
+                      <div class="col-md-3">
+                        <label class="g-mb-5">備註（選填）</label>
+                        <input id="mp_memo" type="text" class="form-control" maxlength="200" placeholder="活動補償/GM補發…">
+                      </div>
+                    </div>
+                    <div class="d-flex align-items-center">
+                      <button id="btnGrantPoint" class="btn btn-success">發送點數</button>
+                      <span id="mp_msg" class="g-ml-15" style="color:#28a745;"></span>
+                    </div>
+                    <div id="mp_result" class="g-mt-10"></div>
+                  </div>
+                </div>
 
                 <!-- 發送物品區塊 -->
                 <div class="p-3 g-pt-15 g-pb-10">
@@ -42,14 +72,13 @@
                     <div class="col-md-6">
                       <label class="g-mb-5">玩家<mark>角色 ID</mark>（可多個，用逗號或換行分隔；<b>必須是數字</b>）</label>
                       <textarea id="player_list" class="form-control mono" rows="4" placeholder="例：1001,1002 或逐行輸入"></textarea>
-                      <div class="small muted g-mt-5">後端僅接受純數字（<code>ctype_digit</code>）。</div>
+                      <div class="small muted g-mt-5">後端僅接受純數字。</div>
                     </div>
                     <div class="col-md-6">
-                      <label class="g-mb-5">物品編號（可多個，用逗號/換行；可附數量標記但目前僅做備註）</label>
-                      <textarea id="item_codes" class="form-control mono" rows="4" placeholder="例：13000835,13000828*3,13000830:5"></textarea>
+                      <label class="g-mb-5">物品編號（可用逗號；可附數量標記但目前僅做備註）</label>
+                      <textarea id="item_codes" class="form-control mono" rows="4" placeholder="例：13000835,13000828,13000830"></textarea>
                       <small class="text-muted">
-                        允許格式：<code>13000835</code>、<code>13000828*3</code>、<code>13000830:5</code>。<br>
-                        目前後端 API 以「預設數量」套用所有物品，<u>送出時會自動剝除數量，只取編號</u>。
+                        允許格式：<code>13000835</code>,<code>13000828</code>,<code>13000830</code>。<br>
                       </small>
                     </div>
                   </div>
@@ -59,7 +88,7 @@
                       <input id="default_qty" type="number" class="form-control" min="1" value="1">
                     </div>
                     <div class="col-md-9 d-flex align-items-end">
-                      <!-- <button id="sendItems" class="btn btn-success">發送物品（角色包包）</button> -->
+                      <!-- <button id="sendItems" class="btn btn-success">發送物品（角色包包）角色需重新登入</button> -->
                       <button id="sendToShop" class="btn btn-warning g-ml-10">送到商城包包</button>
                       <span id="sendMsg" class="g-ml-15" style="color:#28a745;"></span>
                     </div>
@@ -133,6 +162,7 @@
     const API_GET = '<?= site_url('luna/luna_gm_product_set/get_data') ?>';
     const API_SEND = '<?= site_url("luna/luna_gm_product_set/insert") ?>';
     const API_CHAR_LIST = '<?= site_url("luna/luna_gm_product_set/characters_by_user") ?>';
+    const API_GRANT_POINTS = '<?= site_url("luna/luna_gm_product_set/grant_points") ?>';
     const CSRF_NAME = '<?= $this->security->get_csrf_token_name(); ?>';
     const CSRF_HASH = '<?= $this->security->get_csrf_hash(); ?>';
 
@@ -292,6 +322,66 @@
     });
 
     $(function(){ fetch_page(1); });
+
+// 點數發送按鈕
+$('#btnGrantPoint').on('click', function(){
+  const raw = ($('#mp_user_list').val() || '').trim();
+  const amt = parseInt($('#mp_amount').val(), 10) || 0;
+  const memo = ($('#mp_memo').val() || '').trim();
+
+  if (!raw) { alert('請輸入至少一個 USER_IDX'); return; }
+  if (amt <= 0) { alert('發送點數必須是正整數'); return; }
+
+  const payload = { user_idx: raw, amount: amt, memo: memo };
+  if (CSRF_NAME && CSRF_HASH) payload[CSRF_NAME] = CSRF_HASH;
+
+  $('#btnGrantPoint').prop('disabled', true).text('處理中…');
+  $('#mp_msg').text('');
+  $('#mp_result').empty();
+
+  $.post(API_GRANT_POINTS, payload, function(res){
+    if (res.success) {
+      $('#mp_msg').text('點數發送成功');
+    } else {
+      $('#mp_msg').text(res.msg || '發送失敗');
+    }
+
+    const $box = $('<div/>');
+    const okList = [];
+    const ngList = [];
+
+    (res.results || []).forEach(r => {
+      if (r.ok) {
+        okList.push(`帳號 ${r.user_idx}：${r.before} ➜ ${r.after}（+${amt}）`);
+      } else {
+        ngList.push(`帳號 ${r.user_idx}：${r.msg || '失敗'}`);
+      }
+    });
+
+    if (okList.length) {
+      $box.append(`<div class="g-mb-5"><b>成功 (${okList.length})：</b></div>`);
+      const $ul = $('<ul class="small mono"/>');
+      okList.forEach(s => $ul.append('<li>'+s+'</li>'));
+      $box.append($ul);
+    }
+    if (ngList.length) {
+      $box.append(`<div class="g-mb-5"><b style="color:#d9534f">失敗 (${ngList.length})：</b></div>`);
+      const $ul2 = $('<ul class="small mono" style="color:#d9534f"/>');
+      ngList.forEach(s => $ul2.append('<li>'+s+'</li>'));
+      $box.append($ul2);
+    }
+    if (!okList.length && !ngList.length) {
+      $box.append('<div class="small muted">沒有回傳細節。</div>');
+    }
+
+    $('#mp_result').html($box);
+  }, 'json').fail(function(xhr){
+    alert('發送失敗：' + xhr.status + ' ' + xhr.statusText);
+  }).always(function(){
+    $('#btnGrantPoint').prop('disabled', false).text('發送點數');
+  });
+});
+
 
     // 發送（角色包包）
     $('#sendItems').on('click', function() {
