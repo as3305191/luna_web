@@ -50,8 +50,8 @@
                         <div class="small muted g-mt-5">後端僅接受純數字。</div>
                       </div>
                       <div class="col-md-3">
-                        <label class="g-mb-5">發送點數（正整數）</label>
-                        <input id="mp_amount" type="number" class="form-control" min="1" value="100">
+                        <label class="g-mb-5">發送點數（可正可負；正數＝加點，負數＝扣點）</label>
+                        <input id="mp_amount" type="number" class="form-control" step="1" value="100">
                       </div>
                       <div class="col-md-3">
                         <label class="g-mb-5">備註（選填）</label>
@@ -330,7 +330,7 @@ $('#btnGrantPoint').on('click', function(){
   const memo = ($('#mp_memo').val() || '').trim();
 
   if (!raw) { alert('請輸入至少一個 USER_IDX'); return; }
-  if (amt <= 0) { alert('發送點數必須是正整數'); return; }
+  if (amt === 0) { alert('點數不能為 0；正數=加點，負數=扣點'); return; }
 
   const payload = { user_idx: raw, amount: amt, memo: memo };
   if (CSRF_NAME && CSRF_HASH) payload[CSRF_NAME] = CSRF_HASH;
@@ -352,11 +352,13 @@ $('#btnGrantPoint').on('click', function(){
 
     (res.results || []).forEach(r => {
       if (r.ok) {
-        okList.push(`帳號 ${r.user_idx}：${r.before} ➜ ${r.after}（+${amt}）`);
+        const delta = (typeof r.amount !== 'undefined') ? r.amount : amt;
+        const sign  = delta > 0 ? '+' : ''; // 負數自帶負號
+        okList.push(`帳號 ${r.user_idx}：${r.before} ➜ ${r.after}（${sign}${delta}）`);
       } else {
         ngList.push(`帳號 ${r.user_idx}：${r.msg || '失敗'}`);
       }
-    });
+});
 
     if (okList.length) {
       $box.append(`<div class="g-mb-5"><b>成功 (${okList.length})：</b></div>`);

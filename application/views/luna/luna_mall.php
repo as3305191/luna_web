@@ -3,6 +3,9 @@
 <head>
   <?php $this->load->view("luna/luna_head"); ?>
   <style>
+     
+    #checkoutLoading { display: none; }
+    #checkoutLoading.is-active { display: flex; }
     :root{
       --primary:#2b7cff;
       --muted:#6c757d;
@@ -70,7 +73,8 @@
       position:fixed; right:18px; bottom:18px; background:#111827; color:#fff; padding:8px 12px;
       border-radius:10px; opacity:0; transform:translateY(10px); transition:.25s ease; z-index:1100; font-size:.92rem;
     }
-    .toast-mini.show{opacity:1; transform:translateY(0)}
+   .toast-mini.show{opacity:1; transform:translateY(0)}
+
   </style>
 </head>
 <body>
@@ -220,7 +224,18 @@
     </button>
   </div>
 </aside>
-
+  <div id="checkoutLoading"
+     style="position:fixed; inset:0; z-index:2000;
+     background:rgba(15,23,42,.7); color:#fff;
+     align-items:center; justify-content:center;
+     font-size:1.2rem; text-align:center;">
+  <div>
+    <div id="checkoutStep">交易準備中...</div>
+    <div class="spinner-border text-light mt-3" role="status" style="width:2.5rem;height:2.5rem;">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>
 <!-- 隱藏表單（結帳） -->
 <form id="checkoutForm" class="d-none" method="post" action="<?=site_url('luna/Luna_mall/checkout')?>">
   <?php if (!empty($csrf_name)): ?>
@@ -235,6 +250,35 @@
 <?php $this->load->view("luna/luna_script"); ?>
 <script>
 (function(){
+  // --- Loading Overlay helpers（同檔可用 + 對外相容） ---
+  var loadingBox = document.getElementById('checkoutLoading');
+  var stepText   = document.getElementById('checkoutStep');
+
+  function showLoading(msg){
+    if (!loadingBox) return;
+    if (stepText) stepText.textContent = msg || '處理中...';
+    loadingBox.classList.add('is-active');   // 用 class 控制顯示
+  }
+  function updateStep(step){
+    if (!stepText) return;
+    if (step==='verify') stepText.textContent = '驗證商品中...';
+    if (step==='point')  stepText.textContent = '扣除點數中...';
+    if (step==='item')   stepText.textContent = '發送物品中...';
+    if (step==='done')   stepText.textContent = '完成！';
+  }
+  function hideLoading(){
+    if (!loadingBox) return;
+    loadingBox.classList.remove('is-active');
+  }
+
+  // 讓其他檔案也能呼叫（避免別的地方又報 undefined）
+  window.showLoading = showLoading;
+  window.updateStep  = updateStep;
+  window.hideLoading = hideLoading;
+
+  // 進頁面保險：如果上次殘留，先關掉
+  try { hideLoading(); } catch(e) {}
+
   /* ---------- Utils ---------- */
   function nf(n){ try{ return new Intl.NumberFormat('zh-Hant-TW').format(n); }catch(e){ return n; } }
   function showToast(msg){
@@ -453,27 +497,53 @@
   /* ---------- 結帳：送 {id,qty,sig}，後端驗章/重算/扣點 ---------- */
   var checkoutForm = document.getElementById('checkoutForm');
   function doCheckout(){
-    if (!CART.length) return;
-    var safeCart = CART.map(it => ({ id: it.id, qty: it.qty, sig: it.sig }));
-    var input = checkoutForm.querySelector('input[name="cart"]');
-    input.value = JSON.stringify(safeCart);
-    var fd = new FormData(checkoutForm);
-    fetch(checkoutForm.getAttribute('action'), { method:'POST', body:fd })
-      .then(r => r.json())
-      .then(res => {
-        // 更新 CSRF
-        if (res && res.csrf_name && res.csrf_hash){
-          var csrf = checkoutForm.querySelector('input[type="hidden"]');
-          if (csrf){ csrf.setAttribute('name', res.csrf_name); csrf.value = res.csrf_hash; }
-        }
-        if (!res || !res.ok){ alert(res && res.msg ? res.msg : '結帳失敗'); return; }
+  if (!CART.length) return;
 
-        alert('購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after));
-        CART = []; redrawCart(); closeCart();
-        if (mpEl) mpEl.textContent = nf(res.after); // 即時刷新點數
-      })
-      .catch(()=> alert('網路異常，請稍後再試'));
-  }
+  var safeCart = CART.map(it => ({ id: it.id, qty: it.qty, sig: it.sig }));
+  var input = checkoutForm.querySelector('input[name="cart"]');
+  input.value = JSON.stringify(safeCart);
+
+  var fd = new FormData(checkoutForm);
+  showLoading('開始交易...');
+
+  // 20 秒防呆，避免 overlay 卡死
+  var bailout = setTimeout(hideLoading, 20000);
+
+  fetch(checkoutForm.getAttribute('action'), { method:'POST', body:fd })
+    .then(r => r.json())
+    .then(res => {
+      // 更新 CSRF（如果後端有給）
+      if (res && res.csrf_name && res.csrf_hash){
+        var csrf = checkoutForm.querySelector('input[type="hidden"]');
+        if (csrf){ csrf.setAttribute('name', res.csrf_name); csrf.value = res.csrf_hash; }
+      }
+
+      if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
+
+      if (!res || !res.ok){
+        alert(res && res.msg ? res.msg : '結帳失敗');
+        hideLoading(); clearTimeout(bailout);
+        return;
+      }
+
+      if (typeof res.after !== 'undefined' && res.after < 0){
+        alert('點數不足，請先儲值再試！');
+        hideLoading(); clearTimeout(bailout);
+        return;
+      }
+
+      alert('購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after));
+      CART = []; redrawCart(); closeCart();
+      if (mpEl && typeof res.after !== 'undefined') mpEl.textContent = nf(res.after);
+
+      hideLoading(); clearTimeout(bailout);
+    })
+    .catch(()=>{
+      alert('網路異常，請稍後再試');
+      hideLoading(); clearTimeout(bailout);
+    });
+}
+
   if (btnCheckout) btnCheckout.addEventListener('click', doCheckout);
 
 })();

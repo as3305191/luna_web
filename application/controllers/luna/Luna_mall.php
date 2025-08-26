@@ -194,33 +194,54 @@ class Luna_mall extends MY_Base_Controller {
     return [$sheetNames, $itemsMap];
   }
 
-  public function checkout() {
+  private function load_all_items(): array {
+  list($sheetNames, $itemsMap) = $this->read_all_sheets_dynamic();
+
+  $all = [];
+  foreach ($sheetNames as $sheet) {
+    foreach ($itemsMap[$sheet] ?? [] as $it) {
+      // ⚠️ 統一欄位名稱，避免 checkout 用不到
+      $all[] = [
+        'product_code' => (string)$it['id'],
+        'name'         => $it['name'],
+        'price'        => (int)$it['price'],
+        'sellstatus'   => (int)$it['price'],  // 後端用 sellstatus 當售價
+        'name_en'      => $it['name_en'] ?? '',
+        'item_seal'    => $it['item_seal'] ?? 0,
+        'max_stack'    => $it['max_stack'] ?? 0,
+      ];
+    }
+  }
+
+  return ['items' => $all];
+}
+
+public function checkout() {
   $this->output->set_content_type('application/json');
 
   if (empty($this->session->userdata('user_id'))) {
     return $this->json_fail('尚未登入');
   }
 
-  // 目前登入者
+  // === Step 1: 驗證商品 ===
+  $progress = ["verify"];
+
   $s_data     = $this->setup_user_data([]);
   $login_user = $this->dao->find_by('id_loginid', $s_data['login_user_id'] ?? '');
   if (!$login_user) return $this->json_fail('找不到帳號');
   $user_idx = (int)$login_user->id_idx;
   $login_id = (string)$login_user->id_loginid;
 
-  // 前端傳入購物車（只允許 item_idx + qty）
   $raw = $this->input->post('cart', true);
   $cart = json_decode($raw, true);
   if (!is_array($cart) || empty($cart)) return $this->json_fail('購物車是空的');
 
-  // 從 Excel 重建商品索引
-  $pack = $this->load_all_items(); // 這個方法會給完整 itemMap
+  $pack = $this->load_all_items();
   $itemMap = [];
   foreach ($pack['items'] as $it) {
     $itemMap[(string)$it['product_code']] = $it;
   }
 
-  // 整理購物車，只比對 item_idx 是否存在 Excel
   $merged = [];
   foreach ($cart as $row) {
     $id  = isset($row['id'])  ? (string)$row['id']  : '';
@@ -235,17 +256,17 @@ class Luna_mall extends MY_Base_Controller {
     $merged[$id] += $qty;
   }
 
-  // 計算總金額（完全依 Excel 的 price）
   $total = 0;
   foreach ($merged as $id => $qty) {
     $price = (int)($itemMap[$id]['sellstatus'] ?? 0); 
-    // ⚠️ 如果你 Excel 有獨立價格欄位，這裡改成那個
     if ($price <= 0) return $this->json_fail("商品 {$id} 不可販售");
     $total += $price * $qty;
   }
   if ($total <= 0) return $this->json_fail('金額計算錯誤');
 
-  // 鎖定並檢查點數
+  // === Step 2: 扣點 ===
+  $progress[] = "point";
+
   $row = $this->db->query("
     SELECT mall_point FROM dbo.chr_log_info WITH (UPDLOCK, ROWLOCK)
     WHERE id_idx = ?
@@ -256,7 +277,6 @@ class Luna_mall extends MY_Base_Controller {
   if ($before < $total) return $this->json_fail('點數不足');
   $after = $before - $total;
 
-  // 找商城包包角色（帳號第一個角色）
   $list = $this->charDao->list_by_user($user_idx, false);
   if (empty($list)) return $this->json_fail('帳號底下沒有角色');
   $charIdx = (int)$list[0]->CharId;
@@ -264,24 +284,23 @@ class Luna_mall extends MY_Base_Controller {
   $now = date('Y-m-d H:i:s');
   $ip  = $this->input->ip_address();
 
-  // 交易開始
+  // === Step 3: 發物品 ===
+  $progress[] = "item";
+
   $this->db->trans_begin();
   try {
-    // 扣點
     $this->db->query("
       UPDATE dbo.chr_log_info
       SET mall_point = mall_point - ?
       WHERE id_idx = ?
     ", [$total, $user_idx]);
 
-    // 發物品
     foreach ($merged as $id => $qty) {
       $info      = $itemMap[$id];
       $itemIdx   = (int)$id;
       $item_seal = (int)($info['item_seal'] ?? 0);
       $max_stack = (int)($info['max_stack'] ?? 0);
 
-      // 建立商城 log
       $this->db->query("
         INSERT INTO LUNA_LOGDB_2025.dbo.TB_ITEM_SHOPWEB_LOG
         (TYPE, USER_IDX, USER_ID, ITEM_IDX, ITEM_DBIDX, SIZE, DATE)
@@ -289,7 +308,6 @@ class Luna_mall extends MY_Base_Controller {
       ", [$user_idx, $login_id, $itemIdx, $itemIdx, $qty, $now]);
       $mall_log_id = $this->db->query("SELECT SCOPE_IDENTITY() AS id")->row()->id;
 
-      // 發送 TB_ITEM
       $remain = $qty;
       if ($max_stack > 0) {
         while ($remain > 0) {
@@ -320,7 +338,6 @@ class Luna_mall extends MY_Base_Controller {
       }
     }
 
-    // 點數異動 log
     if ($this->mall_point_dao && method_exists($this->mall_point_dao, 'insert_log')) {
       @$this->mall_point_dao->insert_log(
         $user_idx, -$total, $before, $after, '線上購物', $login_id, $ip
@@ -328,12 +345,17 @@ class Luna_mall extends MY_Base_Controller {
     }
 
     $this->db->trans_commit();
+
+    // === Step 4: 完成 ===
+    $progress[] = "done";
+
     return $this->json_ok([
-      'msg'    => '購買成功',
-      'before' => $before,
-      'after'  => $after,
-      'total'  => $total,
-      'items'  => array_map(function($id,$qty,$info){
+      'msg'      => '購買成功',
+      'before'   => $before,
+      'after'    => $after,
+      'total'    => $total,
+      'progress' => $progress,
+      'items'    => array_map(function($id,$qty,$info){
         return ['id'=>$id,'qty'=>$qty,'price'=>(int)$info['sellstatus']];
       }, array_keys($merged), $merged, array_intersect_key($itemMap, $merged))
     ]);

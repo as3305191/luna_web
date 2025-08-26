@@ -178,13 +178,13 @@ public function grant_points() {
   $this->output->set_content_type('application/json');
 
   // 取得傳入的資料
-  $user_idx_raw = $this->input->post('user_idx', true);   // 逗號/換行分隔
-  $amount       = (int)$this->input->post('amount', true); // 點數數量
+  $user_idx_raw = $this->input->post('user_idx', true);      // 逗號/換行分隔
+  $amount       = (int)$this->input->post('amount', true);   // 點數，可正可負
   $memo         = trim((string)$this->input->post('memo', true)); // 備註
 
-  // 驗證
-  if ($amount <= 0 || $amount > 100000000) {
-    echo json_encode(['success'=>false,'msg'=>'點數數量必須是正整數且小於上限']); return;
+  // ✅ 驗證：允許負數（扣點），但不能是 0；限制幅度（避免誤操作）
+  if ($amount === 0 || abs($amount) > 100000000) {
+    echo json_encode(['success'=>false,'msg'=>'點數必須在 -100000000 ~ 100000000，且不可為 0']); return;
   }
   if (empty($user_idx_raw)) {
     echo json_encode(['success'=>false,'msg'=>'請輸入至少一個有效的 USER_IDX']); return;
@@ -208,7 +208,7 @@ public function grant_points() {
   $this->db->trans_begin();
   try {
     foreach ($uids as $uid) {
-      // 行鎖避免併發：讀取目前點數（注意欄位 mall_point 無底線）
+      // 先鎖住該使用者行，避免併發（同交易期間有效）
       $row = $this->db->query("
         SELECT mall_point FROM dbo.chr_log_info WITH (UPDLOCK, ROWLOCK)
         WHERE id_idx = ?
@@ -221,27 +221,43 @@ public function grant_points() {
 
       $before = (int)$row['mall_point'];
       $after  = $before + $amount;
+
+      // ✅ 邏輯檢查：扣完不可 < 0；加完不可超過 int 上限
+      if ($after < 0) {
+        $results[] = ['user_idx'=>$uid, 'ok'=>false, 'before'=>$before, 'after_try'=>$after, 'msg'=>'扣點後會變負數，已跳過'];
+        continue;
+      }
       if ($after > 2147483647) {
-        $results[] = ['user_idx'=>$uid, 'ok'=>false, 'msg'=>'點數超過 INT 上限'];
+        $results[] = ['user_idx'=>$uid, 'ok'=>false, 'before'=>$before, 'after_try'=>$after, 'msg'=>'加點超過 INT 上限'];
         continue;
       }
 
-      // 寫回點數（欄位 mall_point）
+      // ✅ 原子更新（含守門條件，防止併發把餘額變負）
       $this->db->query("
         UPDATE dbo.chr_log_info
         SET mall_point = mall_point + ?
         WHERE id_idx = ?
-      ", [$amount, $uid]);
+          AND mall_point + ? >= 0
+          AND mall_point + ? <= 2147483647
+      ", [$amount, $uid, $amount, $amount]);
 
-      // 寫 log 到 LUNA_LOGDB_2025（使用已連 logdb 的 mall_point_dao 模型；表名 mall_point_dao）
-      // 這筆 log 失敗不會回滾 mall_point（不同連線跨庫，避免牽連）。
+      if ($this->db->affected_rows() < 1) {
+        // 可能併發被改過或條件不符
+        $results[] = ['user_idx'=>$uid, 'ok'=>false, 'before'=>$before, 'msg'=>'點數變動衝突或不符合限制（可能被同時修改），已跳過'];
+        continue;
+      }
+
+      // 記 log（允許負數）
       $okLog = $this->mall_point_dao->insert_log(
         $uid, $amount, $before, $after, $memo, $admin_loginid, $admin_ip
       );
 
       $results[] = [
-        'user_idx'=>$uid, 'ok'=>true, 'before'=>$before, 'after'=>$after,
-        'log_ok'  => (bool)$okLog
+        'user_idx'=>$uid, 'ok'=>true,
+        'before'=>$before, 'after'=>$after,
+        'log_ok'=>(bool)$okLog,
+        'action'=> ($amount > 0 ? '加點' : '扣點'),
+        'amount'=>$amount
       ];
     }
 
@@ -251,18 +267,19 @@ public function grant_points() {
     $this->db->trans_commit();
     echo json_encode([
       'success'=>true,
-      'msg'    =>'發送點數處理完成',
+      'msg'    =>'發送點數處理完成（允許負數扣點；已確保扣完不為負）',
       'results'=>$results
-    ]);
+    ], JSON_UNESCAPED_UNICODE);
   } catch (Throwable $e) {
     $this->db->trans_rollback();
     echo json_encode([
       'success'=>false,
       'msg'    =>'處理失敗：' . $e->getMessage(),
       'results'=>$results
-    ]);
+    ], JSON_UNESCAPED_UNICODE);
   }
 }
+
 
 public function balance() {
   $this->output->set_content_type('application/json');
