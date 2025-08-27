@@ -17,7 +17,7 @@
         <!-- Logo -->
           <div class=" no-padding ">
             <div class="col-xs-12 col-sm-8 col-md-5 col-lg-4" style="text-align: center; margin: 0px auto!important; float: left!important;">
-              <img width="180" src="<?= base_url('img/ktx_img/logo.jpg') ?>" >
+              <!-- <img width="180" src="<?= base_url('img/ktx_img/logo.jpg') ?>" > -->
             </div>
           </div>
         <!-- End Logo -->
