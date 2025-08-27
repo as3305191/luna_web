@@ -173,6 +173,105 @@ private function load_all_items() {
   return ['items' => $items, 'mtime' => $xlsx_mtime];
 }
 
+public function create_user() {
+  $this->output->set_content_type('application/json');
+
+  // 限已登入且 GM
+  if (empty($this->session->userdata('user_id'))) {
+    return $this->output->set_output(json_encode(['ok'=>false,'msg'=>'尚未登入']));
+  }
+  if ($this->session->userdata('userlv') !== '2') {
+    return $this->output->set_output(json_encode(['ok'=>false,'msg'=>'權限不足']));
+  }
+
+  // 參數
+  $login     = trim((string)$this->input->post('login', true));
+  $password  = trim((string)$this->input->post('password', true));
+  $userLevel = (int)$this->input->post('userLevel', true);
+
+  // 驗證：英數且 ≥6 碼
+  if (!preg_match('/^[A-Za-z0-9]{6,}$/', $login)) {
+    return $this->output->set_output(json_encode(['ok'=>false,'msg'=>'帳號需為英數且至少 6 碼']));
+  }
+  if (!preg_match('/^[A-Za-z0-9]{6,}$/', $password)) {
+    return $this->output->set_output(json_encode(['ok'=>false,'msg'=>'密碼需為英數且至少 6 碼']));
+  }
+  // 只允許 2（GM）或 6（一般）
+  if (!in_array($userLevel, [2,6], true)) $userLevel = 6;
+
+  // 檢查重複
+  $dup = $this->db->query("
+      SELECT 1 FROM LUNA_MEMBERDB_2025.dbo.chr_log_info WITH (NOLOCK)
+      WHERE id_loginid = ?
+  ", [$login])->row_array();
+  if ($dup) {
+    return $this->output->set_output(json_encode(['ok'=>false,'msg'=>'帳號已存在']));
+  }
+
+  $this->db->trans_begin();
+  try {
+    // 嘗試不帶 id_idx（若資料表 id_idx 是 IDENTITY）
+    $ok = $this->db->query("
+      INSERT INTO LUNA_MEMBERDB_2025.dbo.chr_log_info (id_loginid, id_passwd, UserLevel)
+      VALUES (?, ?, ?)
+    ", [$login, $password, $userLevel]);
+
+    if ($ok) {
+      // 取得新 id
+      $newId = (int)$this->db->insert_id();
+      if ($newId <= 0) {
+        $row = $this->db->query("SELECT CAST(SCOPE_IDENTITY() AS INT) AS id")->row();
+        $newId = $row ? (int)$row->id : 0;
+      }
+      if ($newId <= 0) {
+        // 再查一次（不同驅動保險）
+        $row = $this->db->query("
+          SELECT TOP 1 id_idx FROM LUNA_MEMBERDB_2025.dbo.chr_log_info
+          WHERE id_loginid = ?
+          ORDER BY id_idx DESC
+        ", [$login])->row();
+        $newId = $row ? (int)$row->id_idx : 0;
+      }
+      if ($newId <= 0) throw new \RuntimeException('無法取得新帳號 id_idx');
+
+      $this->db->trans_commit();
+      return $this->output->set_output(json_encode([
+        'ok'=>true, 'msg'=>'建立成功', 'id_idx'=>$newId, 'login'=>$login, 'userLevel'=>$userLevel
+      ]));
+    }
+
+    // 若上面失敗（大多是因為不是 IDENTITY），改走 MAX(id_idx)+1
+    $errA = $this->db->error();
+
+    $row = $this->db->query("
+      SELECT ISNULL(MAX(id_idx), 0) + 1 AS next_id
+      FROM LUNA_MEMBERDB_2025.dbo.chr_log_info WITH (TABLOCKX, HOLDLOCK)
+    ")->row();
+    $nextId = $row ? (int)$row->next_id : 0;
+    if ($nextId <= 0) throw new \RuntimeException('取得新 id 失敗');
+
+    $ok2 = $this->db->query("
+      INSERT INTO LUNA_MEMBERDB_2025.dbo.chr_log_info
+        (id_idx, propid, id_loginid, id_passwd, UserLevel)
+      VALUES (?, ?, ?, ?, ?)
+    ", [$nextId, $nextId, $login, $password, $userLevel]);
+
+    if (!$ok2) {
+      $errB = $this->db->error();
+      throw new \RuntimeException('建立失敗：'.$errA['code'].' '.$errA['message'].' ｜ '.$errB['code'].' '.$errB['message']);
+    }
+
+    $this->db->trans_commit();
+    return $this->output->set_output(json_encode([
+      'ok'=>true, 'msg'=>'建立成功', 'id_idx'=>$nextId, 'login'=>$login, 'userLevel'=>$userLevel
+    ]));
+
+  } catch (\Throwable $e) {
+    $this->db->trans_rollback();
+    return $this->output->set_output(json_encode(['ok'=>false,'msg'=>$e->getMessage()]));
+  }
+}
+
 
 public function grant_points() {
   $this->output->set_content_type('application/json');

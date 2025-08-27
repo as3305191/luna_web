@@ -211,11 +211,12 @@
       </div>
     </section>
 
-    <!-- Footer -->
-    <?php $this -> load -> view("luna/luna_footer")  ?>
-    <!-- End Footer -->
+   
   </main>
-
+<!-- footer 放在 main 外，才能穩定貼底 -->
+<div class="site-footer">
+  <?php $this->load->view("luna/luna_footer"); ?>
+</div>
 <div class="u-outer-spaces-helper"></div>
 
 </body>

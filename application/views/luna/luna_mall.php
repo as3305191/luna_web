@@ -2,80 +2,6 @@
 <html lang="zh-Hant">
 <head>
   <?php $this->load->view("luna/luna_head"); ?>
-  <style>
-     
-    #checkoutLoading { display: none; }
-    #checkoutLoading.is-active { display: flex; }
-    :root{
-      --primary:#2b7cff;
-      --muted:#6c757d;
-      --soft:#f7f9fc;
-      --border:#e9edf2;
-      --shadow:0 10px 30px rgba(18,38,63,.08);
-    }
-    .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
-    .shop-toolbar{gap:.5rem}
-    .product-card{transition:transform .15s ease, box-shadow .15s ease; border:1px solid var(--border)}
-    .product-card:hover{transform:translateY(-2px); box-shadow:var(--shadow)}
-    .price{font-weight:700}
-    .qty-input{max-width:96px}
-    .name-title{margin-bottom:.375rem; font-size:1rem}
-    .name-en{color:var(--muted); font-size:.85rem; line-height:1.2; min-height:1.2em; margin-bottom:.625rem}
-    .scroll-wrap{display:block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis}
-    .scroll-inner{display:inline-block; white-space:nowrap; will-change:transform; padding-right:1rem}
-    .scroll-wrap.marquee{ text-overflow:clip }
-    .scroll-wrap.marquee .scroll-inner{ animation: name-slide var(--slide-sec, 5s) linear 1 }
-    @keyframes name-slide{ from{transform:translateX(0)} to{transform:translateX(calc(-1 * var(--slide-px,0px)))} }
-
-    /* 美化：按鈕 & 徽章 */
-    .btn-pill{border-radius:999px}
-    .badge-dot{display:inline-flex; align-items:center; gap:.35rem; padding:.2rem .6rem; border-radius:999px; background:var(--soft); border:1px solid var(--border)}
-    .badge-dot i{width:.45rem; height:.45rem; border-radius:50%; background:var(--primary); display:inline-block}
-
-    /* 右側抽屜購物車 */
-    .cart-mask{
-      position:fixed; inset:0; background:rgba(15,23,42,.45);
-      opacity:0; visibility:hidden; transition:.25s ease; z-index:1040;
-    }
-    .cart-mask.show{opacity:1; visibility:visible}
-    .cart-drawer{
-      position:fixed; top:0; right:0; height:100vh; width:min(420px,100%);
-      background:#fff; box-shadow:var(--shadow); border-left:1px solid var(--border);
-      transform:translateX(100%); transition:transform .3s ease; z-index:1050;
-      display:flex; flex-direction:column;
-    }
-    .cart-drawer.open{ transform:translateX(0) }
-    .cart-header{
-      position:sticky; top:0; background:#fff; border-bottom:1px solid var(--border);
-      padding:14px 16px; display:flex; align-items:center; justify-content:space-between;
-    }
-    .cart-body{ padding:10px 12px; overflow:auto; flex:1 }
-    .cart-footer{
-      position:sticky; bottom:0; background:#fff; border-top:1px solid var(--border);
-      padding:14px 16px;
-    }
-    .cart-item{
-      display:grid; grid-template-columns:1fr auto; gap:6px 10px;
-      border:1px solid var(--border); border-radius:12px; padding:10px 12px; margin-bottom:10px;
-    }
-    .cart-item .title{font-weight:600}
-    .cart-item .price{color:#0b5; font-weight:700}
-    .qty-wrap{display:inline-flex; align-items:center; border:1px solid var(--border); border-radius:10px; overflow:hidden}
-    .qty-btn{width:32px; height:32px; border:0; background:#f2f5fb; font-weight:700}
-    .qty-input2{width:56px; height:32px; border:0; text-align:center; outline:0}
-    .btn-primary{background:var(--primary); border-color:var(--primary)}
-    .btn-outline-primary{border-color:var(--primary); color:var(--primary)}
-    .btn-outline-primary:hover{background:var(--primary); color:#fff}
-    .shadow-soft{box-shadow:var(--shadow)}
-
-    /* 小通知（加到購物車） */
-    .toast-mini{
-      position:fixed; right:18px; bottom:18px; background:#111827; color:#fff; padding:8px 12px;
-      border-radius:10px; opacity:0; transform:translateY(10px); transition:.25s ease; z-index:1100; font-size:.92rem;
-    }
-   .toast-mini.show{opacity:1; transform:translateY(0)}
-
-  </style>
 </head>
 <body>
 <main>
@@ -91,10 +17,10 @@
             <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0">
               <div class="d-flex align-items-center">
                 <h3 class="h5 mb-0"><i class="icon-bag g-mr-8"></i> 商城</h3>
-                <span class="badge-dot g-ml-15">
+                <!-- <span class="badge-dot g-ml-15">
                   <i></i> 剩餘點數：
                   <span id="mallPoint" class="mono">--</span>
-                </span>
+                </span> -->
               </div>
 
               <div class="shop-toolbar d-flex align-items-center flex-wrap">
@@ -145,7 +71,7 @@
                 <div class="tab-content">
                   <?php $i=0; foreach($tabs as $title): $list = $itemsMap[$title] ?? []; ?>
                     <div class="tab-pane fade <?= $i===0?'show active':'' ?>" id="tab-<?=$i?>" role="tabpanel">
-                      <div class="row" id="grid-<?=$i?>">
+                      <div class="row product-grid" id="grid-<?=$i?>">
                         <?php if (empty($list)): ?>
                           <div class="col-12"><div class="alert alert-secondary mb-0">此分頁目前沒有商品</div></div>
                         <?php else: foreach ($list as $it): ?>
@@ -153,7 +79,8 @@
                                data-id="<?=htmlspecialchars($it['id'])?>"
                                data-name="<?=htmlspecialchars($it['name'])?>"
                                data-price="<?= (int)$it['price'] ?>"
-                               data-sig="<?=htmlspecialchars($it['sig'])?>">
+                               data-sig="<?=htmlspecialchars($it['sig'])?>"
+                               data-match="1">
                             <div class="u-shadow-v18 g-bg-white g-rounded-10 g-pa-15 product-card h-100 d-flex flex-column">
                               <h4 class="name-title" title="<?=htmlspecialchars($it['name'])?>">
                                 <span class="scroll-wrap"><span class="scroll-inner"><?=htmlspecialchars($it['name'])?></span></span>
@@ -165,7 +92,7 @@
                               <div class="d-flex align-items-center g-mb-10">
                                 <div class="qty-wrap">
                                   <button class="qty-btn btnMinus" type="button">−</button>
-                                  <input class="qty-input2" type="number" min="1" max="9999" value="1">
+                                  <input class="qty-input2" type="number" min="1" max="9999" value="1" inputmode="numeric">
                                   <button class="qty-btn btnPlus" type="button">＋</button>
                                 </div>
                               </div>
@@ -180,18 +107,16 @@
                           </div>
                         <?php endforeach; endif; ?>
                       </div>
+
+                      <!-- 分頁按鈕（每個 Tab 各自一組） -->
+                      <nav class="mt-3 pager-wrap">
+                        <ul class="pagination pagination-sm mb-0" data-grid="#grid-<?=$i?>" data-perpage="10" data-page="1"></ul>
+                      </nav>
                     </div>
                   <?php $i++; endforeach; ?>
                 </div>
 
               <?php endif; ?>
-
-              <hr class="g-my-20">
-              <nav class="text-center" aria-label="Page Navigation">
-                <ul class="list-inline mb-0">
-                  <li class="list-inline-item"><span class="u-pagination-v1__item u-pagination-v1-4 g-rounded-50 g-pa-7-16 disabled">已載入全部</span></li>
-                </ul>
-              </nav>
             </div>
           </div>
         </div>
@@ -199,9 +124,12 @@
       </div>
     </div>
   </section>
-
-  <?php $this->load->view("luna/luna_footer"); ?>
 </main>
+
+<!-- footer 放在 main 外，才能穩定貼底 -->
+<div class="site-footer">
+  <?php $this->load->view("luna/luna_footer"); ?>
+</div>
 
 <!-- 右側抽屜：購物車 -->
 <div id="cartMask" class="cart-mask"></div>
@@ -224,7 +152,8 @@
     </button>
   </div>
 </aside>
-  <div id="checkoutLoading"
+
+<div id="checkoutLoading"
      style="position:fixed; inset:0; z-index:2000;
      background:rgba(15,23,42,.7); color:#fff;
      align-items:center; justify-content:center;
@@ -236,6 +165,7 @@
     </div>
   </div>
 </div>
+
 <!-- 隱藏表單（結帳） -->
 <form id="checkoutForm" class="d-none" method="post" action="<?=site_url('luna/Luna_mall/checkout')?>">
   <?php if (!empty($csrf_name)): ?>
@@ -250,41 +180,25 @@
 <?php $this->load->view("luna/luna_script"); ?>
 <script>
 (function(){
-  // --- Loading Overlay helpers（同檔可用 + 對外相容） ---
+  /* ---------- Loading Overlay helpers ---------- */
   var loadingBox = document.getElementById('checkoutLoading');
   var stepText   = document.getElementById('checkoutStep');
-
-  function showLoading(msg){
-    if (!loadingBox) return;
-    if (stepText) stepText.textContent = msg || '處理中...';
-    loadingBox.classList.add('is-active');   // 用 class 控制顯示
-  }
-  function updateStep(step){
-    if (!stepText) return;
+  function showLoading(msg){ if(!loadingBox) return; if(stepText) stepText.textContent = msg || '處理中...'; loadingBox.classList.add('is-active'); }
+  function updateStep(step){ if(!stepText) return;
     if (step==='verify') stepText.textContent = '驗證商品中...';
     if (step==='point')  stepText.textContent = '扣除點數中...';
     if (step==='item')   stepText.textContent = '發送物品中...';
     if (step==='done')   stepText.textContent = '完成！';
   }
-  function hideLoading(){
-    if (!loadingBox) return;
-    loadingBox.classList.remove('is-active');
-  }
-
-  // 讓其他檔案也能呼叫（避免別的地方又報 undefined）
-  window.showLoading = showLoading;
-  window.updateStep  = updateStep;
-  window.hideLoading = hideLoading;
-
-  // 進頁面保險：如果上次殘留，先關掉
-  try { hideLoading(); } catch(e) {}
+  function hideLoading(){ if(!loadingBox) return; loadingBox.classList.remove('is-active'); }
+  window.showLoading = showLoading; window.updateStep = updateStep; window.hideLoading = hideLoading; try{ hideLoading(); }catch(e){}
 
   /* ---------- Utils ---------- */
   function nf(n){ try{ return new Intl.NumberFormat('zh-Hant-TW').format(n); }catch(e){ return n; } }
   function showToast(msg){
     var el = document.getElementById('toastMini'); if(!el) return;
     el.textContent = msg || '完成'; el.classList.add('show');
-    clearTimeout(showToast._t); showToast._t = setTimeout(()=>el.classList.remove('show'), 1400);
+    clearTimeout(showToast._t); showToast._t = setTimeout(()=>el.classList.remove('show'), 1600);
   }
 
   /* ---------- 點數自動更新（10s） ---------- */
@@ -292,16 +206,98 @@
   const mpEl = document.getElementById('mallPoint');
   function refreshPoint(){
     if(!mpEl) return;
-    fetch(ENDPOINT_BAL, {method:'POST', headers:{'X-Requested-With':'XMLHttpRequest'}})
+    fetch(ENDPOINT_BAL, {method:'POST', headers:{'X-Requested-With':'XMLHttpRequest'}, credentials:'include'})
       .then(r => r.ok ? r.json() : null)
-      .then(j => { if(j && j.ok && typeof j.mall_point!=="undefined"){ mpEl.textContent = nf(j.mall_point); } })
+      .then(j => { if(j && j.ok && typeof j.mall_point!=='undefined'){ mpEl.textContent = nf(j.mall_point); } })
       .catch(()=>{});
   }
   refreshPoint(); setInterval(refreshPoint, 10000);
 
-  /* ---------- Tabs（純原生） ---------- */
-  var tabLinks = document.querySelectorAll('.category-tabs a.nav-link');
-  var shopSearch = document.getElementById('shop-search');
+  /* ===========================================================
+     分頁核心（修正版）
+     - 用 data-match="1|0" 標記是否符合搜尋
+     - 依 data-match 的集合做分頁
+     =========================================================== */
+  function getActiveContext(){
+    const pane  = document.querySelector('.tab-pane.active'); if(!pane) return null;
+    const pager = pane.querySelector('.pagination'); if(!pager) return null;
+    const grid  = pane.querySelector(pager.dataset.grid); if(!grid) return null;
+    const per   = Math.max(1, parseInt(pager.dataset.perpage||'12',12));
+    const page  = Math.max(1, parseInt(pager.dataset.page||'1',10));
+    return {pane, pager, grid, per, page};
+  }
+
+  function computeMatched(grid){
+    // 回傳目前符合搜尋的 .product-col（依 data-match 判斷）
+    const all = Array.prototype.slice.call(grid.querySelectorAll('.product-col'));
+    return all.filter(el => String(el.dataset.match) !== '0');
+  }
+
+  function renderPager(pager, totalPages, current, onGoto){
+    pager.innerHTML = '';
+    function add(txt, target, disabled, active){
+      const li = document.createElement('li');
+      li.className = 'page-item' + (disabled?' disabled':'') + (active?' active':'');
+      const a = document.createElement('a');
+      a.className = 'page-link'; a.href = '#'; a.textContent = txt;
+      if(!disabled && !active){
+        a.addEventListener('click', function(e){ e.preventDefault(); onGoto(target); });
+      }
+      li.appendChild(a); pager.appendChild(li);
+    }
+    add('«', 1, current===1, false);
+    add('‹', current-1, current===1, false);
+
+    const windowSize = 7;
+    let from = Math.max(1, current - Math.floor(windowSize/2));
+    let to   = Math.min(totalPages, from + windowSize - 1);
+    from = Math.max(1, to - windowSize + 1);
+
+    for (let p=from; p<=to; p++){ add(String(p), p, false, p===current); }
+
+    add('›', current+1, current===totalPages, false);
+    add('»', totalPages, current===totalPages, false);
+  }
+
+  function applyPagination(){
+    const ctx = getActiveContext(); if(!ctx) return;
+    const {pager, grid, per} = ctx;
+    const matched = computeMatched(grid);
+    const totalPages = Math.max(1, Math.ceil(matched.length / per));
+    let current = Math.min(Math.max(1, parseInt(pager.dataset.page||'1',10)), totalPages);
+    pager.dataset.page = current;
+
+    // 先全部隱藏，再顯示當頁
+    const all = Array.prototype.slice.call(grid.querySelectorAll('.product-col'));
+    all.forEach(el => el.style.display = 'none');
+
+    const start = (current-1)*per, end = current*per;
+    matched.forEach((el, i) => { if(i>=start && i<end) el.style.display = ''; });
+
+    // 空資料提示
+    let empty = grid.querySelector('.__empty_placeholder');
+    if (matched.length === 0) {
+      if (!empty){
+        empty = document.createElement('div');
+        empty.className = '__empty_placeholder col-12';
+        empty.innerHTML = '<div class="alert alert-secondary mb-0 text-center">沒有符合條件的商品</div>';
+        grid.appendChild(empty);
+      }
+    } else if (empty) {
+      empty.parentNode.removeChild(empty);
+    }
+
+    // 畫頁碼
+    renderPager(pager, totalPages, current, function(go){
+      pager.dataset.page = go;
+      applyPagination();
+      grid.scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  }
+
+  /* ---------- Tabs ---------- */
+  var tabLinks  = document.querySelectorAll('.category-tabs a.nav-link');
+  var shopSearch= document.getElementById('shop-search');
   tabLinks.forEach(function(a){
     a.addEventListener('click', function(e){
       e.preventDefault();
@@ -309,19 +305,36 @@
       this.classList.add('active'); this.setAttribute('aria-selected','true');
       document.querySelectorAll('.tab-content .tab-pane').forEach(p=>p.classList.remove('show','active'));
       var pane = document.querySelector(this.getAttribute('href')); if (pane) pane.classList.add('show','active');
+
+      // 清空搜尋：重置 data-match=1
       if (shopSearch) shopSearch.value = '';
-      if (pane) pane.querySelectorAll('.product-col').forEach(el=>el.style.display='');
+      if (pane){
+        pane.querySelectorAll('.product-col').forEach(el=>{
+          el.dataset.match = '1';
+          el.style.display = ''; // 讓分頁來控制可見性
+        });
+        // 分頁重設回第 1 頁
+        const pager = pane.querySelector('.pagination');
+        if (pager){ pager.dataset.page = 1; }
+      }
+      applyPagination();
     });
   });
 
-  /* ---------- 搜尋 ---------- */
+  /* ---------- 搜尋（只標記 data-match，不直接隱藏） ---------- */
   function filterBySearch(){
     var q = (shopSearch.value||'').toLowerCase().trim();
-    var pane = document.querySelector('.tab-pane.active'); if(!pane) return;
-    pane.querySelectorAll('.product-col').forEach(function(el){
+    const ctx = getActiveContext(); if(!ctx) return;
+    const {pane} = ctx;
+    const grid = pane.querySelector('.product-grid'); if (!grid) return;
+
+    grid.querySelectorAll('.product-col').forEach(function(el){
       var name = (el.getAttribute('data-name')||'').toLowerCase();
-      el.style.display = name.indexOf(q) !== -1 ? '' : 'none';
+      el.dataset.match = (q==='' || name.indexOf(q)!==-1) ? '1' : '0';
     });
+    const pager = pane.querySelector('.pagination');
+    if (pager){ pager.dataset.page = 1; } // 回第 1 頁
+    applyPagination();
   }
   if (shopSearch) shopSearch.addEventListener('input', filterBySearch);
 
@@ -331,8 +344,10 @@
     sortMenu.addEventListener('click', function(e){
       var t = e.target.closest('[data-sort]'); if(!t) return; e.preventDefault();
       var mode = t.getAttribute('data-sort');
-      var pane = document.querySelector('.tab-pane.active'); if(!pane) return;
-      var grid = pane.querySelector('.row'); if(!grid) return;
+      const ctx = getActiveContext(); if(!ctx) return;
+      const {pane} = ctx;
+      var grid = pane.querySelector('.product-grid'); if(!grid) return;
+
       var items = Array.prototype.slice.call(grid.querySelectorAll('.product-col'));
       items.sort(function(a,b){
         var an=(a.getAttribute('data-name')||'').toLowerCase();
@@ -346,16 +361,25 @@
         return 0;
       });
       items.forEach(el=>grid.appendChild(el));
+
+      // 排序後回到第 1 頁，再讓分頁控制顯示
+      const pager = pane.querySelector('.pagination');
+      if (pager){ pager.dataset.page = 1; }
+      applyPagination();
     });
   }
 
-  /* ---------- 跑馬燈（滑入才跑） ---------- */
+  /* ---------- 跑馬燈 ---------- */
   function setupMarquee(){
     document.querySelectorAll('.scroll-wrap').forEach(function(wrap){
       var inner = wrap.querySelector('.scroll-inner'); if(!inner) return;
       function start(){
         var diff = Math.ceil(inner.scrollWidth - wrap.clientWidth);
-        if (diff>0){ wrap.style.setProperty('--slide-px', diff+'px'); wrap.style.setProperty('--slide-sec', Math.max(2, diff/40)+'s'); wrap.classList.add('marquee'); }
+        if (diff>0){
+          wrap.style.setProperty('--slide-px', diff+'px');
+          wrap.style.setProperty('--slide-sec', Math.max(2, diff/40)+'s');
+          wrap.classList.add('marquee');
+        }
       }
       function stop(){ wrap.classList.remove('marquee'); }
       wrap.addEventListener('mouseenter', start);
@@ -390,57 +414,63 @@
   var cartCount  = document.getElementById('cartCount');
   var cartCount2 = document.getElementById('cartCount2');
 
-  function openCart(){
-    cartMask.classList.add('show');
-    cartDrawer.classList.add('open');
-    cartDrawer.setAttribute('aria-hidden','false');
-    document.body.style.overflow='hidden';
-  }
-  function closeCart(){
-    cartMask.classList.remove('show');
-    cartDrawer.classList.remove('open');
-    cartDrawer.setAttribute('aria-hidden','true');
-    document.body.style.overflow='';
-  }
+  function openCart(){ cartMask.classList.add('show'); cartDrawer.classList.add('open'); cartDrawer.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; }
+  function closeCart(){ cartMask.classList.remove('show'); cartDrawer.classList.remove('open'); cartDrawer.setAttribute('aria-hidden','true'); document.body.style.overflow=''; }
   if (btnOpen)  btnOpen.addEventListener('click', openCart);
   if (btnClose) btnClose.addEventListener('click', closeCart);
   if (cartMask) cartMask.addEventListener('click', closeCart);
   window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeCart(); });
 
+  function el(tag, attrs, text){
+    var node = document.createElement(tag);
+    if (attrs) for (var k in attrs){
+      if (k==='class') node.className = attrs[k];
+      else if (k==='dataset'){ var ds = attrs[k]; for (var dk in ds){ node.dataset[dk] = ds[dk]; } }
+      else if (k==='html'){ node.innerHTML = attrs[k]; }
+      else node.setAttribute(k, attrs[k]);
+    }
+    if (typeof text==='string') node.textContent = text;
+    return node;
+  }
+
+  let submitting = false;
   function redrawCart(){
     cartBody.innerHTML = '';
     let total = 0;
     if (!CART.length){
-      cartBody.innerHTML = '<div class="text-center text-muted g-my-20">購物車是空的，去逛逛吧～</div>';
+      cartBody.appendChild(el('div', {class:'text-center text-muted g-my-20'}, '購物車是空的，去逛逛吧～'));
     }else{
       CART.forEach(function(it, idx){
         const sub = (it.price||0) * (it.qty||0); total += sub;
-        const row = document.createElement('div'); row.className='cart-item';
-        row.innerHTML = `
-          <div>
-            <div class="title" title="${it.name}">${it.name}</div>
-            <div class="small text-muted">NT$ ${nf(it.price)} / 件</div>
-          </div>
-          <div class="text-right">
-            <button class="btn btn-sm btn-link text-danger del" data-idx="${idx}" title="移除"><i class="fa fa-times"></i></button>
-          </div>
-          <div>
-            <div class="qty-wrap">
-              <button class="qty-btn btnMinus2" data-idx="${idx}" type="button">−</button>
-              <input class="qty-input2 qtyEdit" data-idx="${idx}" type="number" min="1" max="9999" value="${it.qty||1}">
-              <button class="qty-btn btnPlus2" data-idx="${idx}" type="button">＋</button>
-            </div>
-          </div>
-          <div class="text-right price">NT$ ${nf(sub)}</div>
-        `;
+
+        const row = el('div', {class:'cart-item'});
+        const left = el('div');
+        left.appendChild(el('div', {class:'title', title: it.name}, it.name));
+        left.appendChild(el('div', {class:'small text-muted'}, 'NT$ '+ nf(it.price) + ' / 件'));
+
+        const right = el('div', {class:'text-right'});
+        right.appendChild(el('button', {class:'btn btn-sm btn-link text-danger del', type:'button', 'data-idx':idx, html:'<i class="fa fa-times"></i>'}));
+
+        const qtyCell = el('div');
+        const qtyWrap = el('div', {class:'qty-wrap'});
+        qtyWrap.appendChild(el('button', {class:'qty-btn btnMinus2', type:'button', 'data-idx':idx}, '−'));
+        qtyWrap.appendChild(el('input', {class:'qty-input2 qtyEdit', type:'number', min:'1', max:'9999', value:String(it.qty||1), 'data-idx':idx}));
+        qtyWrap.appendChild(el('button', {class:'qty-btn btnPlus2', type:'button', 'data-idx':idx}, '＋'));
+        qtyCell.appendChild(qtyWrap);
+
+        row.appendChild(left);
+        row.appendChild(right);
+        row.appendChild(qtyCell);
+        row.appendChild(el('div', {class:'text-right price'}, 'NT$ ' + nf(sub)));
+
         cartBody.appendChild(row);
       });
     }
     cartTotal.textContent = 'NT$ ' + nf(total);
     cartCount.textContent = CART.length;
     cartCount2.textContent = CART.length;
-    btnCheckout.disabled = CART.length===0;
-    btnCheckoutTop.disabled = CART.length===0;
+    btnCheckout.disabled = CART.length===0 || submitting;
+    btnCheckoutTop.disabled = CART.length===0 || submitting;
   }
 
   function addToCart(id,name,price,sig,qty){
@@ -451,9 +481,9 @@
     redrawCart(); showToast('已加入購物車');
   }
 
-  // 商品卡 -> 加入購物車
   document.addEventListener('click', function(e){
     var btn = e.target.closest('.add-cart-btn'); if(!btn) return;
+    if (submitting) return;
     var col = btn.closest('.product-col'); if(!col) return;
     var id    = (col.getAttribute('data-id')||'')+'';
     var name  = (col.getAttribute('data-name')||'')+'';
@@ -465,9 +495,9 @@
     addToCart(id,name,price,sig,qty);
   });
 
-  // 抽屜內：調整數量 / 刪除
   if (cartBody){
     cartBody.addEventListener('click', function(e){
+      if (submitting) return;
       var del = e.target.closest('.del'); if (del){
         var idx = parseInt(del.getAttribute('data-idx'),10);
         if (!isNaN(idx)){ CART.splice(idx,1); redrawCart(); }
@@ -484,6 +514,7 @@
       }
     });
     cartBody.addEventListener('change', function(e){
+      if (submitting) return;
       var inp = e.target.closest('.qtyEdit'); if (!inp) return;
       var idx = parseInt(inp.getAttribute('data-idx'),10);
       var v = Math.max(1, Math.min(9999, parseInt(inp.value||'1',10)));
@@ -491,61 +522,53 @@
     });
   }
 
-  // 開抽屜 / 頂部結帳也會開抽屜
   document.getElementById('btnCheckoutTop').addEventListener('click', function(){ if(CART.length) openCart(); });
 
-  /* ---------- 結帳：送 {id,qty,sig}，後端驗章/重算/扣點 ---------- */
+  /* ---------- 結帳 ---------- */
   var checkoutForm = document.getElementById('checkoutForm');
+  function lockCartUI(on){
+    submitting = !!on;
+    btnCheckout.classList.toggle('is-disabled', on);
+    btnCheckoutTop.classList.toggle('is-disabled', on);
+    cartDrawer.classList.toggle('is-disabled', on);
+    btnCheckout.disabled = on || CART.length===0;
+    btnCheckoutTop.disabled = on || CART.length===0;
+  }
   function doCheckout(){
-  if (!CART.length) return;
+    if (!CART.length || submitting) return;
+    const safeCart = CART.map(it => ({ id:String(it.id), qty:Math.max(1, parseInt(it.qty,10)||1), sig:String(it.sig) }));
+    const fd = new FormData();
+    <?php if (!empty($csrf_name) && !empty($csrf_hash)): ?>
+    fd.append('<?=$csrf_name?>', '<?=$csrf_hash?>');
+    <?php endif; ?>
+    fd.append('cart', JSON.stringify(safeCart));
 
-  var safeCart = CART.map(it => ({ id: it.id, qty: it.qty, sig: it.sig }));
-  var input = checkoutForm.querySelector('input[name="cart"]');
-  input.value = JSON.stringify(safeCart);
-
-  var fd = new FormData(checkoutForm);
-  showLoading('開始交易...');
-
-  // 20 秒防呆，避免 overlay 卡死
-  var bailout = setTimeout(hideLoading, 20000);
-
-  fetch(checkoutForm.getAttribute('action'), { method:'POST', body:fd })
-    .then(r => r.json())
-    .then(res => {
-      // 更新 CSRF（如果後端有給）
-      if (res && res.csrf_name && res.csrf_hash){
-        var csrf = checkoutForm.querySelector('input[type="hidden"]');
-        if (csrf){ csrf.setAttribute('name', res.csrf_name); csrf.value = res.csrf_hash; }
-      }
-
-      if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
-
-      if (!res || !res.ok){
-        alert(res && res.msg ? res.msg : '結帳失敗');
-        hideLoading(); clearTimeout(bailout);
-        return;
-      }
-
-      if (typeof res.after !== 'undefined' && res.after < 0){
-        alert('點數不足，請先儲值再試！');
-        hideLoading(); clearTimeout(bailout);
-        return;
-      }
-
-      alert('購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after));
-      CART = []; redrawCart(); closeCart();
-      if (mpEl && typeof res.after !== 'undefined') mpEl.textContent = nf(res.after);
-
-      hideLoading(); clearTimeout(bailout);
-    })
-    .catch(()=>{
-      alert('網路異常，請稍後再試');
-      hideLoading(); clearTimeout(bailout);
-    });
-}
-
+    lockCartUI(true); showLoading('開始交易...'); const bailout = setTimeout(hideLoading, 20000);
+    const form = document.getElementById('checkoutForm');
+    fetch(form.getAttribute('action'), { method:'POST', body:fd, headers:{'X-Requested-With':'XMLHttpRequest'}, credentials:'include' })
+      .then(r=>r.json())
+      .then(res=>{
+        <?php if (!empty($csrf_name)): ?>
+        if (res && res.csrf_name && res.csrf_hash) {
+          let csrfInput = form.querySelector(`input[name="<?=$csrf_name?>"]`);
+          if (!csrfInput) { csrfInput = document.createElement('input'); csrfInput.type='hidden'; form.appendChild(csrfInput); }
+          csrfInput.name = res.csrf_name; csrfInput.value = res.csrf_hash;
+        }
+        <?php endif; ?>
+        if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
+        if (!res || !res.ok) { showToast(res && res.msg ? res.msg : '結帳失敗'); hideLoading(); clearTimeout(bailout); lockCartUI(false); return; }
+        alert( res.order_no ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${nf(res.total)}，剩餘點數 ${nf(res.after)}` : '購買成功！扣點 NT$ '+nf(res.total)+'，剩餘點數 '+nf(res.after) );
+        CART = []; redrawCart(); closeCart();
+        const mpEl2 = document.getElementById('mallPoint'); if (mpEl2 && typeof res.after!=='undefined') mpEl2.textContent = nf(res.after);
+        hideLoading(); clearTimeout(bailout); lockCartUI(false);
+      })
+      .catch(()=>{ showToast('網路異常，請稍後再試'); hideLoading(); clearTimeout(bailout); lockCartUI(false); });
+  }
+  var btnCheckout = document.getElementById('btnCheckout');
   if (btnCheckout) btnCheckout.addEventListener('click', doCheckout);
 
+  /* ---------- 初始化：建第一個分頁 ---------- */
+  applyPagination();
 })();
 </script>
 </body>
