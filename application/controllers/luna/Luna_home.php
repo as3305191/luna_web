@@ -21,7 +21,7 @@ class Luna_home extends MY_Base_Controller {
 
 		// 先建立 $data，再逐項增加，避免被覆蓋
 		$data = [];
-		$data['login_user'] = $login_user;
+		$data['login_user'] = $s_data;
 		$data['userlv']     = $login_user ? ($login_user->UserLevel ?? 0) : 0;
 		$data['now'] = 'luna_home';
 		// $this -> to_json($data);

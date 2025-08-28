@@ -54,7 +54,7 @@ class Luna_mall extends MY_Base_Controller {
     $data['itemsMap'] = $itemsMap;
     $data['csrf_name'] = $this->security->get_csrf_token_name();
     $data['csrf_hash'] = $this->security->get_csrf_hash();
-
+    // $this -> to_json($data);
     $this->load->view('luna/luna_mall', $data);
   }
 

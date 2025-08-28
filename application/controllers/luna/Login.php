@@ -31,7 +31,7 @@ class Login extends MY_Base_Controller {
 
             if (!empty($user) && $user->id_passwd == $password) {
                 if($user->UserLevel == 2||$user->UserLevel == 6){
-                    $this->session->set_userdata('user_id', $user->id_idx);
+                    $this->session->set_userdata('user_id', $user->id_loginid);
                     $this->session->set_userdata('userlv', $user->UserLevel);
                     // redirect("/luna/luna_home");
                     // $res['status'] = true;
