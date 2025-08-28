@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 require_once(FCPATH . 'vendor/autoload.php');
 use PhpOffice\PhpSpreadsheet\IOFactory;
-use PhpOffice\PhpSpreadsheet\Cell\Coordinate;
 
 class Luna_gm_product_set extends MY_Base_Controller {
 
@@ -15,7 +14,7 @@ class Luna_gm_product_set extends MY_Base_Controller {
     $this->excel_file = FCPATH . 'assets/luna/itemlistcn.xlsx';
     $this->cache_file = APPPATH . 'cache/itemlistcn.cache.json';
 
-    $this->load->model('/luna/Members_dao', 'dao');  
+    $this->load->model('/luna/Members_dao', 'dao');
     $this->load->model('/luna/Shop_log_dao', 'shop_log_dao');
     $this->load->model('/luna/Item_dao', 'item_dao');
     $this->load->model('/luna/CHARACTER_dao', 'charDao');
@@ -30,12 +29,10 @@ class Luna_gm_product_set extends MY_Base_Controller {
     $user_id = trim((string)$user_id_raw);
     $user_idx_str = trim((string)$user_idx_raw);
 
-    // 兩者皆空
     if ($user_id === '' && $user_idx_str === '') {
       return ['ok'=>false, 'msg'=>'請輸入帳號或 USER_IDX'];
     }
 
-    // 若 user_idx 是純數字，優先用它
     if ($user_idx_str !== '' && ctype_digit($user_idx_str)) {
       $uid = (int)$user_idx_str;
       $row = $this->db->select('id_idx, id_loginid, UserLevel, mall_point')
@@ -46,7 +43,6 @@ class Luna_gm_product_set extends MY_Base_Controller {
       return ['ok'=>true, 'id_idx'=>(int)$row['id_idx'], 'id_loginid'=>$row['id_loginid'], 'row'=>$row];
     }
 
-    // 否則用英數帳號 id_loginid
     if ($user_id !== '' && preg_match('/^[A-Za-z0-9]+$/', $user_id)) {
       $row = $this->db->select('id_idx, id_loginid, UserLevel, mall_point')
                       ->from('dbo.chr_log_info')
@@ -94,113 +90,58 @@ class Luna_gm_product_set extends MY_Base_Controller {
     $this->load->view('luna/luna_gm_product_set', $data);
   }
 
-  /* ========================== Excel 讀取 ========================== */
+  /* ========================== Excel 讀取（無表頭，固定欄位） ========================== */
 
+  /** 依固定欄位順序讀取（無表頭；第一列就是資料） */
   private function load_all_items() {
     if (!file_exists($this->excel_file)) return ['items' => [], 'mtime' => 0];
 
     $xlsx_mtime = filemtime($this->excel_file);
-    $CACHE_VER = 5;
+    $CACHE_VER = 8; // 版本升級，讓舊快取失效
 
     if (file_exists($this->cache_file)) {
       $cache = json_decode(@file_get_contents($this->cache_file), true);
       if (is_array($cache)
-        && isset($cache['mtime']) && intval($cache['mtime']) === $xlsx_mtime
-        && isset($cache['ver']) && intval($cache['ver']) === $CACHE_VER) {
+        && intval($cache['mtime']) === $xlsx_mtime
+        && intval($cache['ver']) === $CACHE_VER) {
         return ['items' => $cache['items'] ?? [], 'mtime' => $xlsx_mtime];
       }
     }
 
     $reader = IOFactory::createReaderForFile($this->excel_file);
     $reader->setReadDataOnly(true);
-    $spreadsheet = $reader->load($this->excel_file);
-    $sheet = $spreadsheet->getActiveSheet();
-
-    $colLetters = [
-      'code'       => 'A',
-      'name'       => 'B',
-      'sellstatus' => 'O',
-      'endtime'    => 'BG',
-      'cate'       => 'BL',
-      'max_stack'  => 'M',
-    ];
-    $colIndex = [];
-    foreach ($colLetters as $k => $letter) {
-      $colIndex[$k] = Coordinate::columnIndexFromString($letter);
-    }
-
-    $categoryMap = [
-      0=>'武器', 1=>'盾牌', 2=>'衣服', 3=>'帽子', 4=>'手套', 5=>'鞋子',
-      6=>'戒指1', 7=>'戒指2', 8=>'項鍊', 9=>'耳環1', 10=>'耳環2',
-      11=>'腰帶', 12=>'臂章', 13=>'眼鏡', 14=>'面具', 15=>'翅膀',
-      16=>'時裝頭飾', 17=>'時裝衣服', 18=>'時裝手套', 19=>'時裝鞋子'
-    ];
-
+    $sheet = $reader->load($this->excel_file)->getActiveSheet();
     $highestRow = $sheet->getHighestRow();
+
+    // 固定欄位對照（A=1, B=2, …）
+    $COL_ItemIdx        = 1;   // A
+    $COL_ItemName       = 2;   // B
+    $COL_Stack          = 13;  // M
+    $COL_Time           = 20;  // T
+    $COL_wSeal          = 57;  // BE  ← 封印欄位（很重要）
+    $COL_dwType         = 64;  // BL
+    $COL_dwTypeDetail   = 65;  // BM
+
     $items = [];
-    $startRow = 1;
+    for ($r = 1; $r <= $highestRow; $r++) { // 無表頭，從第 1 列開始
+      $code = trim((string)$sheet->getCellByColumnAndRow($COL_ItemIdx,  $r)->getValue());
+      $name = trim((string)$sheet->getCellByColumnAndRow($COL_ItemName, $r)->getValue());
+      if ($code === '' && $name === '') continue;
 
-    for ($r = $startRow; $r <= $highestRow; $r++) {
-      $code = trim((string)$sheet->getCellByColumnAndRow($colIndex['code'], $r)->getCalculatedValue());
-      $name = trim((string)$sheet->getCellByColumnAndRow($colIndex['name'], $r)->getCalculatedValue());
-
-      $cellO = $sheet->getCellByColumnAndRow($colIndex['sellstatus'], $r);
-      $oVal  = $cellO ? $cellO->getValue() : null;
-      if ($oVal === null || $oVal === '') $oVal = $cellO ? $cellO->getCalculatedValue() : null;
-      $sellstatus = (is_null($oVal) || trim((string)$oVal) === '') ? null
-                   : (is_numeric($oVal) ? (float)$oVal : trim((string)$oVal));
-
-      $cellBG = $sheet->getCellByColumnAndRow($colIndex['endtime'], $r);
-      $bgVal  = $cellBG ? $cellBG->getValue() : null;
-      if ($bgVal === null || $bgVal === '') $bgVal = $cellBG ? $cellBG->getCalculatedValue() : null;
-      $endtime = null;
-      if ($bgVal !== null && $bgVal !== '') {
-        if (is_numeric($bgVal)) {
-          $endtime = (int)round($bgVal);
-        } else {
-          $s = trim((string)$bgVal);
-          if (function_exists('mb_convert_kana')) $s = mb_convert_kana($s, 'n', 'UTF-8');
-          $s = preg_replace('/[^0-9\-]/u', '', $s);
-          if ($s !== '' && $s !== '-' && preg_match('/^-?\d+$/', $s)) {
-            $endtime = (int)$s;
-          }
-        }
-      }
-
-      $cellBL = $sheet->getCellByColumnAndRow($colIndex['cate'], $r);
-      $blVal  = $cellBL ? $cellBL->getValue() : null;
-      if ($blVal === null || $blVal === '') $blVal = $cellBL ? $cellBL->getCalculatedValue() : null;
-      $cateNum = -1;
-      if ($blVal !== null && trim((string)$blVal) !== '') {
-        $s = (string)$blVal;
-        $s = preg_replace('/\s+/u', '', $s);
-        if (function_exists('mb_convert_kana')) $s = mb_convert_kana($s, 'n', 'UTF-8');
-        if (preg_match('/-?\d+/', $s, $m)) {
-          $cateNum = (int)$m[0];
-        }
-      }
-      $cateZh = $categoryMap[$cateNum] ?? '未分類';
-
-      $cellM = $sheet->getCellByColumnAndRow($colIndex['max_stack'], $r);
-      $mVal  = $cellM ? $cellM->getValue() : null;
-      if ($mVal === null || $mVal === '') $mVal = $cellM ? $cellM->getCalculatedValue() : null;
-      $max_stack = (is_numeric($mVal) && (int)$mVal > 0) ? (int)$mVal : 0;
-
-      if ($code === '' && $name === '' && is_null($sellstatus) && is_null($endtime) && $cateNum === -1 && $max_stack === 0) {
-        continue;
-      }
-
-      $item_seal = ($cateNum === 34 || ($endtime !== null && $endtime > 0)) ? 1 : 0;
+      $stack = (int)$sheet->getCellByColumnAndRow($COL_Stack, $r)->getValue();
+      $time  = (int)$sheet->getCellByColumnAndRow($COL_Time,  $r)->getValue();
+      $seal  = (int)$sheet->getCellByColumnAndRow($COL_wSeal, $r)->getValue();
+      $cate  = (int)$sheet->getCellByColumnAndRow($COL_dwType, $r)->getValue();
+      $cateDetail = (int)$sheet->getCellByColumnAndRow($COL_dwTypeDetail, $r)->getValue();
 
       $items[] = [
-        'product_code'  => $code,
-        'name'          => $name,
-        'sellstatus'    => $sellstatus,
-        'endtime'       => $endtime,
-        'category'      => $cateZh,
-        'category_code' => $cateNum,
-        'item_seal'     => $item_seal,
-        'max_stack'     => $max_stack,
+        'product_code'    => $code,
+        'name'            => $name,
+        'max_stack'       => max(0, $stack),
+        'endtime'         => ($time > 0 ? $time : null),
+        'wSeal'           => $seal, // 直接用 Excel 的 wSeal（BD 欄）
+        'category_code'   => $cate,
+        'category_detail' => $cateDetail,
       ];
     }
 
@@ -409,10 +350,7 @@ class Luna_gm_product_set extends MY_Base_Controller {
         $items = array_values(array_filter($items, function($it) use ($needle){
           $a = mb_strtolower((string)($it['product_code'] ?? ''), 'UTF-8');
           $b = mb_strtolower((string)($it['name'] ?? ''), 'UTF-8');
-          $c = mb_strtolower((string)($it['category'] ?? ''), 'UTF-8');
-          return (strpos($a, $needle) !== false) ||
-                 (strpos($b, $needle) !== false) ||
-                 (strpos($c, $needle) !== false);
+          return (strpos($a, $needle) !== false) || (strpos($b, $needle) !== false);
         }));
       }
 
@@ -428,7 +366,7 @@ class Luna_gm_product_set extends MY_Base_Controller {
         'total'=>$total,
         'page'=>$page,
         'total_page'=>$total_page,
-      ]);
+      ], JSON_UNESCAPED_UNICODE);
     } catch (\Throwable $e) {
       echo json_encode([
         'items'=>[], 'total'=>0, 'page'=>1, 'total_page'=>1,
@@ -437,7 +375,7 @@ class Luna_gm_product_set extends MY_Base_Controller {
     }
   }
 
-  /* ========================== 發送物品 ========================== */
+  /* ========================== 發送物品（統一用 wSeal + Stack，ITEM_POSITION=320） ========================== */
 
   public function insert() {
     $this->output->set_content_type('application/json');
@@ -470,7 +408,7 @@ class Luna_gm_product_set extends MY_Base_Controller {
       $firstCharId = (int)$list[0]->CharId;
       $chars = [$firstCharId];
 
-      $shopIdxForMode    = (int)$user_idx;
+      $shopIdxForMode    = (int)$user_idx; // 商城包包 → 設為帳號的 USER_IDX
       $logUserIdxForMode = (int)$user_idx;
     } else {
       $chars = array_values(array_filter(array_map(function($v){
@@ -481,16 +419,19 @@ class Luna_gm_product_set extends MY_Base_Controller {
       $shopIdxForMode = 0;
     }
 
+    // 取得 Excel Meta（wSeal 與 Stack）
     $pack = $this->load_all_items();
-    $itemMap = [];
+    $itemMeta = [];
     foreach ($pack['items'] as $it) {
-      $itemMap[(string)$it['product_code']] = $it;
+      $itemMeta[(string)$it['product_code']] = [
+        'wSeal'     => (int)($it['wSeal'] ?? 0),
+        'max_stack' => (int)($it['max_stack'] ?? 0),
+      ];
     }
 
     $results = [];
     foreach ($chars as $charIdx) {
       foreach ($items as $itemIdx) {
-        $this->db->trans_begin();
 
         $logUserIdx = ($send_mode === 'shop_bag') ? $logUserIdxForMode : (int)$charIdx;
         $log_data = [
@@ -499,53 +440,60 @@ class Luna_gm_product_set extends MY_Base_Controller {
         ];
         $log_idx = $this->shop_log_dao->insert_item($log_data);
         if ($log_idx === false) {
-          $this->db->trans_rollback();
           $results[] = ['char'=>$charIdx,'item'=>$itemIdx,'qty'=>$qty,'ok'=>0,'ng'=>$qty,'msg'=>'寫入日誌失敗'];
           continue;
         }
 
-        $key = (string)$itemIdx;
-        $item_seal = isset($itemMap[$key]) ? ($itemMap[$key]['item_seal'] ?? 0) : 0;
-        $max_stack = isset($itemMap[$key]) ? ($itemMap[$key]['max_stack'] ?? 0) : 0;
+        $meta = $itemMeta[(string)$itemIdx] ?? ['wSeal'=>0,'max_stack'=>0];
+        $wSeal = (int)$meta['wSeal'];
+        $max_stack = max(0, (int)$meta['max_stack']);
 
         $ok = 0; $ng = 0; $remain = $qty;
 
-        if ($max_stack > 0) {
-          while ($remain > 0) {
-            $stackSize = ($remain >= $max_stack) ? $max_stack : $remain;
-            $row = [
-              'CHARACTER_IDX'=>(int)$charIdx,
-              'ITEM_IDX'=>(int)$itemIdx,
-              'ITEM_SHOPIDX'=>$shopIdxForMode,
-              'ITEM_SHOPLOGIDX'=>$log_idx,
-              'ITEM_SEAL'=>$item_seal,
-              'ITEM_DURABILITY'=>$stackSize,
-            ];
-            $ret = $this->item_dao->insert_item($row);
-            if ($ret) { $ok++; } else { $ng++; }
-            $remain -= $stackSize;
+        $this->db->trans_begin();
+        try {
+          if ($max_stack > 0) {
+            while ($remain > 0) {
+              $stackSize = ($remain >= $max_stack) ? $max_stack : $remain;
+              $row = [
+                'CHARACTER_IDX'   => (int)$charIdx,
+                'ITEM_IDX'        => (int)$itemIdx,
+                'ITEM_SHOPIDX'    => $shopIdxForMode,
+                'ITEM_SHOPLOGIDX' => $log_idx,
+                'ITEM_SEAL'       => $wSeal,
+                'ITEM_DURABILITY' => $stackSize, // 疊加數
+                'ITEM_POSITION'   => 320,        // 固定 320
+              ];
+              $ret = $this->item_dao->insert_item($row);
+              $ret ? $ok++ : $ng++;
+              $remain -= $stackSize;
+            }
+          } else {
+            for ($i=0; $i<$remain; $i++) {
+              $row = [
+                'CHARACTER_IDX'   => (int)$charIdx,
+                'ITEM_IDX'        => (int)$itemIdx,
+                'ITEM_SHOPIDX'    => $shopIdxForMode,
+                'ITEM_SHOPLOGIDX' => $log_idx,
+                'ITEM_SEAL'       => $wSeal,
+                'ITEM_DURABILITY' => 0,
+                'ITEM_POSITION'   => 320,        // 固定 320
+              ];
+              $ret = $this->item_dao->insert_item($row);
+              $ret ? $ok++ : $ng++;
+            }
           }
-        } else {
-          for ($i=0; $i<$remain; $i++) {
-            $row = [
-              'CHARACTER_IDX'=>(int)$charIdx,
-              'ITEM_IDX'=>(int)$itemIdx,
-              'ITEM_SHOPIDX'=>$shopIdxForMode,
-              'ITEM_SHOPLOGIDX'=>$log_idx,
-              'ITEM_SEAL'=>$item_seal,
-              'ITEM_DURABILITY'=>0,
-            ];
-            $ret = $this->item_dao->insert_item($row);
-            if ($ret) { $ok++; } else { $ng++; }
-          }
-        }
 
-        if ($ng > 0) {
+          if ($ng > 0) {
+            $this->db->trans_rollback();
+            $results[] = ['char'=>$charIdx,'item'=>$itemIdx,'qty'=>$qty,'log_idx'=>$log_idx,'ok'=>0,'ng'=>$qty,'msg'=>'TB_ITEM 寫入失敗'];
+          } else {
+            $this->db->trans_commit();
+            $results[] = ['char'=>$charIdx,'item'=>$itemIdx,'qty'=>$qty,'log_idx'=>$log_idx,'ok'=>$ok,'ng'=>0];
+          }
+        } catch (\Throwable $e) {
           $this->db->trans_rollback();
-          $results[] = ['char'=>$charIdx,'item'=>$itemIdx,'qty'=>$qty,'log_idx'=>$log_idx,'ok'=>0,'ng'=>$qty,'msg'=>'TB_ITEM 寫入失敗'];
-        } else {
-          $this->db->trans_commit();
-          $results[] = ['char'=>$charIdx,'item'=>$itemIdx,'qty'=>$qty,'log_idx'=>$log_idx,'ok'=>$ok,'ng'=>0];
+          $results[] = ['char'=>$charIdx,'item'=>$itemIdx,'qty'=>$qty,'log_idx'=>$log_idx,'ok'=>0,'ng'=>$qty,'msg'=>$e->getMessage()];
         }
       }
     }
@@ -555,7 +503,244 @@ class Luna_gm_product_set extends MY_Base_Controller {
       'success'=>!$anyFail,
       'msg'=>$anyFail ? '部分失敗，請查看 results' : '發送完成',
       'results'=>$results
-    ]);
+    ], JSON_UNESCAPED_UNICODE);
+  }
+
+  /** 專用：發送到商城包包（固定 ITEM_POSITION=320，處理 wSeal 與 Stack） */
+  public function send_shop_bag() {
+    $this->output->set_content_type('application/json');
+    if (!$this->require_gm()) return;
+
+    $user_idx = (int)$this->input->post('user_idx');        // 帳號 USER_IDX
+    $item_idx = trim((string)$this->input->post('item_idx'));// 物品ID，可多筆逗號
+    $qty      = (int)$this->input->post('qty');
+
+    if ($user_idx <= 0 || $item_idx === '' || $qty <= 0) {
+      echo json_encode(['ok'=>false,'msg'=>'參數錯誤：請提供 user_idx / item_idx / qty']); return;
+    }
+
+    $list = $this->charDao->list_by_user($user_idx, false);
+    if (empty($list)) { echo json_encode(['ok'=>false,'msg'=>'此帳號沒有任何角色，無法投遞商城包包']); return; }
+    $char_id = (int)$list[0]->CharId;
+
+    $pack = $this->load_all_items();
+    $itemMap = [];
+    foreach ($pack['items'] as $it) $itemMap[(string)$it['product_code']] = $it;
+
+    $now = (new DateTime('now', new DateTimeZone('Asia/Taipei')))->format('Y-m-d H:i:s');
+
+    $items = array_values(array_filter(array_map(function($v){
+      $v = trim($v);
+      return ($v !== '' && ctype_digit($v)) ? $v : null;
+    }, preg_split('/[,\s]+/', str_replace('，', ',', $item_idx), -1, PREG_SPLIT_NO_EMPTY))));
+
+    $results = [];
+
+    foreach ($items as $iid) {
+      $meta = $itemMap[(string)$iid] ?? null;
+      $wSeal     = $meta ? (int)($meta['wSeal'] ?? 0) : 0;
+      $max_stack = $meta ? (int)($meta['max_stack'] ?? 0) : 0;
+
+      $log_data = [
+        'TYPE' => 0,
+        'USER_IDX' => (int)$user_idx,
+        'USER_ID'  => (string)$user_idx,
+        'ITEM_IDX' => (int)$iid,
+        'ITEM_DBIDX' => (int)$iid,
+        'SIZE' => (int)$qty,
+        'DATE' => $now,
+      ];
+      $log_idx = $this->shop_log_dao->insert_item($log_data);
+      if ($log_idx === false) {
+        $results[] = ['item'=>$iid, 'ok'=>false, 'msg'=>'寫入日誌失敗'];
+        continue;
+      }
+
+      $remain = $qty; $ok=0; $ng=0;
+
+      $this->db->trans_begin();
+      try {
+        if ($max_stack > 0) {
+          while ($remain > 0) {
+            $stackSize = ($remain >= $max_stack) ? $max_stack : $remain;
+            $row = [
+              'CHARACTER_IDX'   => $char_id,
+              'ITEM_IDX'        => (int)$iid,
+              'ITEM_SHOPIDX'    => (int)$user_idx,
+              'ITEM_SHOPLOGIDX' => (int)$log_idx,
+              'ITEM_SEAL'       => $wSeal,
+              'ITEM_DURABILITY' => $stackSize,
+              'ITEM_POSITION'   => 320,
+            ];
+            $ret = $this->item_dao->insert_item($row);
+            $ret ? $ok++ : $ng++;
+            $remain -= $stackSize;
+          }
+        } else {
+          for ($i=0; $i<$remain; $i++) {
+            $row = [
+              'CHARACTER_IDX'   => $char_id,
+              'ITEM_IDX'        => (int)$iid,
+              'ITEM_SHOPIDX'    => (int)$user_idx,
+              'ITEM_SHOPLOGIDX' => (int)$log_idx,
+              'ITEM_SEAL'       => $wSeal,
+              'ITEM_DURABILITY' => 0,
+              'ITEM_POSITION'   => 320,
+            ];
+            $ret = $this->item_dao->insert_item($row);
+            $ret ? $ok++ : $ng++;
+          }
+        }
+
+        if ($ng > 0) {
+          $this->db->trans_rollback();
+          $results[] = ['item'=>$iid, 'ok'=>false, 'msg'=>'TB_ITEM 寫入失敗（部分/全部）'];
+        } else {
+          $this->db->trans_commit();
+          $results[] = ['item'=>$iid, 'ok'=>true, 'count'=>$ok, 'seal'=>$wSeal, 'stack_max'=>$max_stack];
+        }
+      } catch (\Throwable $e) {
+        $this->db->trans_rollback();
+        $results[] = ['item'=>$iid, 'ok'=>false, 'msg'=>$e->getMessage()];
+      }
+    }
+
+    $any_ok = array_reduce($results, fn($c,$r)=> $c || !empty($r['ok']), false);
+    echo json_encode(['ok'=>$any_ok,'results'=>$results], JSON_UNESCAPED_UNICODE);
+  }
+
+  /** 多帳號英數、可多道具：固定 ITEM_POSITION=320 */
+  public function send_shop_bag_multi() {
+    $this->output->set_content_type('application/json');
+    // if (!$this->require_gm()) return; // 需要可打開
+
+    $user_ids_raw = trim((string)$this->input->post('user_ids')); // 多個英數帳號
+    $item_raw     = trim((string)$this->input->post('item_idx')); // 多個 item 編號
+    $qty          = (int)$this->input->post('qty');
+
+    if ($qty <= 0) { echo json_encode(['ok'=>false,'msg'=>'qty 需 > 0']); return; }
+
+    $users = array_values(array_filter(array_map(function($s){
+      $s = trim($s);
+      return (preg_match('/^[A-Za-z0-9]+$/', $s)) ? $s : null;
+    }, preg_split('/[\s,，]+/u', $user_ids_raw, -1, PREG_SPLIT_NO_EMPTY))));
+
+    $items = array_values(array_filter(array_map(function($s){
+      $s = trim($s);
+      return (ctype_digit($s)) ? $s : null;
+    }, preg_split('/[\s,，]+/u', $item_raw, -1, PREG_SPLIT_NO_EMPTY))));
+
+    if (empty($users)) { echo json_encode(['ok'=>false,'msg'=>'請輸入至少 1 個有效英數帳號']); return; }
+    if (empty($items)) { echo json_encode(['ok'=>false,'msg'=>'請輸入至少 1 個有效商品編號']); return; }
+
+    // Excel Meta（wSeal + Stack）
+    $pack = $this->load_all_items();
+    $itemMeta = [];
+    foreach ($pack['items'] as $it) {
+      $itemMeta[(string)$it['product_code']] = [
+        'wSeal'     => (int)($it['wSeal'] ?? 0),
+        'max_stack' => (int)($it['max_stack'] ?? 0),
+      ];
+    }
+
+    $now = (new DateTime('now', new DateTimeZone('Asia/Taipei')))->format('Y-m-d H:i:s');
+    $results = [];
+
+    foreach ($users as $login) {
+      $acc = $this->db->select('id_idx')
+        ->from('dbo.chr_log_info')->where('id_loginid', $login)->get()->row_array();
+      if (!$acc) {
+        $results[] = ['user_id'=>$login, 'ok'=>false, 'msg'=>'帳號不存在', 'items'=>[]];
+        continue;
+      }
+      $user_idx = (int)$acc['id_idx'];
+
+      $char = $this->charDao->list_by_user($user_idx, false);
+      if (empty($char)) {
+        $results[] = ['user_id'=>$login, 'user_idx'=>$user_idx, 'ok'=>false, 'msg'=>'此帳號沒有角色', 'items'=>[]];
+        continue;
+      }
+      $char_idx = (int)$char[0]->CharId;
+
+      $userItemResults = [];
+      $all_ok = true;
+
+      foreach ($items as $itemIdx) {
+        $meta = $itemMeta[(string)$itemIdx] ?? ['wSeal'=>0,'max_stack'=>0];
+        $seal = (int)$meta['wSeal'];
+        $stackMax = max(0, (int)$meta['max_stack']);
+
+        $log_data = [
+          'TYPE'=>0,'USER_IDX'=>$user_idx,'USER_ID'=>(string)$user_idx,
+          'ITEM_IDX'=>(int)$itemIdx,'ITEM_DBIDX'=>(int)$itemIdx,'SIZE'=>$qty,'DATE'=>$now,
+        ];
+        $log_idx = $this->shop_log_dao->insert_item($log_data);
+        if ($log_idx === false) {
+          $userItemResults[] = ['item'=>(int)$itemIdx,'ok'=>false,'msg'=>'寫入日誌失敗'];
+          $all_ok = false;
+          continue;
+        }
+
+        $okCount = 0; $need = $qty;
+
+        $this->db->trans_begin();
+        try {
+          if ($stackMax > 0) {
+            while ($need > 0) {
+              $stackSize = ($need >= $stackMax) ? $stackMax : $need;
+              $row = [
+                'CHARACTER_IDX'   => $char_idx,
+                'ITEM_IDX'        => (int)$itemIdx,
+                'ITEM_SHOPIDX'    => $user_idx,
+                'ITEM_SHOPLOGIDX' => $log_idx,
+                'ITEM_SEAL'       => $seal,
+                'ITEM_DURABILITY' => $stackSize,
+                'ITEM_POSITION'   => 320,
+              ];
+              $ret = $this->item_dao->insert_item($row);
+              if (!$ret) throw new \RuntimeException('TB_ITEM 寫入失敗');
+              $okCount++;
+              $need -= $stackSize;
+            }
+          } else {
+            for ($i=0; $i<$need; $i++) {
+              $row = [
+                'CHARACTER_IDX'   => $char_idx,
+                'ITEM_IDX'        => (int)$itemIdx,
+                'ITEM_SHOPIDX'    => $user_idx,
+                'ITEM_SHOPLOGIDX' => $log_idx,
+                'ITEM_SEAL'       => $seal,
+                'ITEM_DURABILITY' => 0,
+                'ITEM_POSITION'   => 320,
+              ];
+              $ret = $this->item_dao->insert_item($row);
+              if (!$ret) throw new \RuntimeException('TB_ITEM 寫入失敗');
+              $okCount++;
+            }
+          }
+
+          $this->db->trans_commit();
+          $userItemResults[] = [
+            'item'=>(int)$itemIdx,'ok'=>true,'count'=>$okCount,
+            'seal'=>$seal,'stack_max'=>$stackMax
+          ];
+        } catch (\Throwable $e) {
+          $this->db->trans_rollback();
+          $userItemResults[] = [
+            'item'=>(int)$itemIdx,'ok'=>false,'msg'=>$e->getMessage()
+          ];
+          $all_ok = false;
+        }
+      } // each item
+
+      $results[] = [
+        'user_id'=>$login,'user_idx'=>$user_idx,
+        'ok'=>$all_ok,'items'=>$userItemResults
+      ];
+    } // each user
+
+    $any_ok = array_reduce($results, fn($c,$u)=> $c || $u['ok'], false);
+    echo json_encode(['ok'=>$any_ok, 'results'=>$results], JSON_UNESCAPED_UNICODE);
   }
 
   /* ========================== 帳號/角色查詢（支援帳號或USER_IDX） ========================== */
@@ -636,7 +821,6 @@ class Luna_gm_product_set extends MY_Base_Controller {
 
     $this->db->trans_begin();
     try {
-      // 取舊值
       $old = $this->db->select('UserLevel')->from('dbo.chr_log_info')->where('id_idx', $uid)->get()->row_array();
       if (!$old) throw new \RuntimeException('帳號不存在');
 
@@ -663,7 +847,6 @@ class Luna_gm_product_set extends MY_Base_Controller {
   }
 
   /* ========================== 角色 DAO（示意） ========================== */
-  // 你原本就有 /application/models/CHARACTER_dao.php，以下為參考放法
   public function list_by_user($user_idx) {
     $activeStates = [0];
     return $this->db->select('
@@ -685,26 +868,25 @@ class Luna_gm_product_set extends MY_Base_Controller {
   }
 
   public function account_search(){
-  $this->output->set_content_type('application/json');
-  $key=trim((string)$this->input->post('key'));
-  if($key===''){echo json_encode(['ok'=>false,'msg'=>'請輸入帳號或 USER_IDX']);return;}
-  if(ctype_digit($key)){
-    $row=$this->db->query("SELECT id_idx,id_loginid,UserLevel,mall_point FROM dbo.chr_log_info WHERE id_idx=?",[intval($key)])->row_array();
-  }else{
-    $row=$this->db->query("SELECT id_idx,id_loginid,UserLevel,mall_point FROM dbo.chr_log_info WHERE id_loginid=?",[ $key ])->row_array();
+    $this->output->set_content_type('application/json');
+    $key=trim((string)$this->input->post('key'));
+    if($key===''){echo json_encode(['ok'=>false,'msg'=>'請輸入帳號或 USER_IDX']);return;}
+    if(ctype_digit($key)){
+      $row=$this->db->query("SELECT id_idx,id_loginid,UserLevel,mall_point FROM dbo.chr_log_info WHERE id_idx=?", [intval($key)])->row_array();
+    }else{
+      $row=$this->db->query("SELECT id_idx,id_loginid,UserLevel,mall_point FROM dbo.chr_log_info WHERE id_loginid=?", [$key])->row_array();
+    }
+    if(!$row){echo json_encode(['ok'=>false,'msg'=>'查無帳號']);return;}
+    echo json_encode(['ok'=>true,'data'=>$row],JSON_UNESCAPED_UNICODE);
   }
-  if(!$row){echo json_encode(['ok'=>false,'msg'=>'查無帳號']);return;}
-  echo json_encode(['ok'=>true,'data'=>$row],JSON_UNESCAPED_UNICODE);
-}
 
-public function account_update(){
-  $this->output->set_content_type('application/json');
-  $id_idx=(int)$this->input->post('id_idx');
-  $level=(int)$this->input->post('level');
-  if(!$id_idx || !in_array($level,[2,4,6])){echo json_encode(['ok'=>false,'msg'=>'參數錯誤']);return;}
-  $this->db->query("UPDATE dbo.chr_log_info SET UserLevel=? WHERE id_idx=?",[$level,$id_idx]);
-  if($this->db->affected_rows()>0){echo json_encode(['ok'=>true]);}
-  else{echo json_encode(['ok'=>false,'msg'=>'更新失敗']);}
-}
-
+  public function account_update(){
+    $this->output->set_content_type('application/json');
+    $id_idx=(int)$this->input->post('id_idx');
+    $level=(int)$this->input->post('level');
+    if(!$id_idx || !in_array($level,[2,4,6])){echo json_encode(['ok'=>false,'msg'=>'參數錯誤']);return;}
+    $this->db->query("UPDATE dbo.chr_log_info SET UserLevel=? WHERE id_idx=?",[$level,$id_idx]);
+    if($this->db->affected_rows()>0){echo json_encode(['ok'=>true]);}
+    else{echo json_encode(['ok'=>false,'msg'=>'更新失敗']);}
+  }
 }

@@ -7,10 +7,12 @@ use PhpOffice\PhpSpreadsheet\IOFactory;
 class Luna_mall extends MY_Base_Controller {
 
   private $excel_file;
+  private $excel_itemlistcn;
 
   function __construct() {
     parent::__construct();
     $this->excel_file = FCPATH . 'assets/luna/item_shop.xlsx';
+    $this->excel_itemlistcn = FCPATH . 'assets/luna/itemlistcn.xlsx';
 
     $this->load->model('/luna/Members_dao', 'dao');
     $this->load->model('/luna/Shop_log_dao', 'shop_log_dao');
@@ -88,57 +90,136 @@ class Luna_mall extends MY_Base_Controller {
     return hash_hmac('sha256', $id.'|'.$price, $salt);
   }
 
-  private function read_all_sheets_dynamic(): array {
-    $sheetNames = []; $itemsMap = [];
-    if (!file_exists($this->excel_file)) return [$sheetNames, $itemsMap];
 
-    $xlsx = IOFactory::load($this->excel_file);
-    $sheetNames = $xlsx->getSheetNames();
+/** 讀 CN 目錄：用 ItemIdx 當 key，帶出 wSeal / Stack / Time / 類別 */
+private function load_cn_catalog(): array {
+  $map = [];
+  if (!file_exists($this->excel_itemlistcn)) return $map;
 
-    foreach ($sheetNames as $sheetName) {
-      $sheet = $xlsx->getSheetByName($sheetName);
-      if (!$sheet) continue;
-      $highestRow = $sheet->getHighestRow();
-      $startRow = 1;
-      for ($r = 1; $r <= $highestRow; $r++) {
-        $a = trim((string)$sheet->getCell("A{$r}")->getValue());
-        $b = trim((string)$sheet->getCell("B{$r}")->getValue());
-        $c = $sheet->getCell("C{$r}")->getValue();
-        if ($a !== '' && $b !== '' && is_numeric($c)) { $startRow = $r; break; }
-      }
-      $items = [];
-      for ($r = $startRow; $r <= $highestRow; $r++) {
-        $id   = trim((string)$sheet->getCell("A{$r}")->getValue());
-        $name = trim((string)$sheet->getCell("B{$r}")->getValue());
-        $cval = $sheet->getCell("C{$r}")->getValue();
-        $name_en = trim((string)$sheet->getCell("D{$r}")->getValue());
-        if ($id==='' || $name==='' || !is_numeric($cval)) continue;
-        $price = (int)$cval;
-        $items[] = ['id'=>$id,'name'=>$name,'price'=>$price,'name_en'=>$name_en];
-      }
-      $itemsMap[$sheetName] = $items;
+  $xlsx = IOFactory::load($this->excel_itemlistcn);
+  $sheet = $xlsx->getActiveSheet();
+  $highestRow = $sheet->getHighestRow();
+
+  // 固定欄位（1-based；無表頭，從第1列讀）
+  $COL_ItemIdx        = 1;   // A
+  $COL_ItemName       = 2;   // B
+  $COL_Stack          = 13;  // M
+  $COL_Time           = 20;  // T
+  $COL_wSeal          = 57;  // BE
+  $COL_dwType         = 64;  // BL
+  $COL_dwTypeDetail   = 65;  // BM
+
+  for ($r = 1; $r <= $highestRow; $r++) {
+    $id   = trim((string)$sheet->getCellByColumnAndRow($COL_ItemIdx,      $r)->getValue());
+    $name = trim((string)$sheet->getCellByColumnAndRow($COL_ItemName,     $r)->getValue());
+    if ($id === '' && $name === '') continue;
+
+    $stack = (int)($sheet->getCellByColumnAndRow($COL_Stack,        $r)->getValue() ?: 0);
+    $time  = (int)($sheet->getCellByColumnAndRow($COL_Time,         $r)->getValue() ?: 0);
+    $seal  = (int)($sheet->getCellByColumnAndRow($COL_wSeal,        $r)->getValue() ?: 0);
+    $cate  = (int)($sheet->getCellByColumnAndRow($COL_dwType,       $r)->getValue() ?: 0);
+    $cdtl  = (int)($sheet->getCellByColumnAndRow($COL_dwTypeDetail, $r)->getValue() ?: 0);
+
+    $map[$id] = [
+      'name'            => $name,
+      'max_stack'       => max(0, $stack),
+      'time_sec'        => $time,     // -1 或 0 視你的表意義（你說 T 欄）
+      'wSeal'           => $seal,     // 直接取 BE 欄
+      'category_code'   => $cate,     // BL
+      'category_detail' => $cdtl,     // BM
+    ];
+  }
+  return $map;
+}
+
+ private function read_all_sheets_dynamic(): array {
+  $sheetNames = []; $itemsMap = [];
+  if (!file_exists($this->excel_file)) return [$sheetNames, $itemsMap];
+
+  $xlsx = IOFactory::load($this->excel_file);
+  $sheetNames = $xlsx->getSheetNames();
+
+  // 欄位位置（1-based）
+  $COL_ItemIdx      = 1;   // A
+  $COL_ItemName     = 2;   // B
+  $COL_Price        = 3;   // C
+  $COL_NameEN       = 4;   // D
+  $COL_wSeal        = 57;  // BE  ← 封印欄位（很重要）
+  $COL_dwType       = 64;  // BL
+  $COL_dwTypeDetail = 65;  // BM
+
+  foreach ($sheetNames as $sheetName) {
+    $sheet = $xlsx->getSheetByName($sheetName);
+    if (!$sheet) continue;
+
+    $highestRow = $sheet->getHighestRow();
+
+    // 嘗試自動找第一筆資料列（A/B 有字且 C 可解析為數字）
+    $startRow = 1;
+    for ($r = 1; $r <= $highestRow; $r++) {
+      $a = trim((string)$sheet->getCellByColumnAndRow($COL_ItemIdx,  $r)->getValue()); // A
+      $b = trim((string)$sheet->getCellByColumnAndRow($COL_ItemName, $r)->getValue()); // B
+      $c = $sheet->getCellByColumnAndRow($COL_Price,   $r)->getValue();               // C
+      if ($a !== '' && $b !== '' && is_numeric($c)) { $startRow = $r; break; }
     }
-    return [$sheetNames, $itemsMap];
+
+    $items = [];
+    for ($r = $startRow; $r <= $highestRow; $r++) {
+      $id      = trim((string)$sheet->getCellByColumnAndRow($COL_ItemIdx,  $r)->getValue());
+      $name    = trim((string)$sheet->getCellByColumnAndRow($COL_ItemName, $r)->getValue());
+      $cval    = $sheet->getCellByColumnAndRow($COL_Price,   $r)->getValue();
+      $name_en = trim((string)$sheet->getCellByColumnAndRow($COL_NameEN,   $r)->getValue());
+
+      if ($id === '' || $name === '' || !is_numeric($cval)) continue;
+      $price = (int)$cval;
+
+      // 讀三個關鍵欄位（若無值就給 0）
+      $wSeal        = (int)($sheet->getCellByColumnAndRow($COL_wSeal,        $r)->getValue() ?: 0);
+      $dwType       = (int)($sheet->getCellByColumnAndRow($COL_dwType,       $r)->getValue() ?: 0);
+      $dwTypeDetail = (int)($sheet->getCellByColumnAndRow($COL_dwTypeDetail, $r)->getValue() ?: 0);
+
+      $items[] = [
+        'id'              => $id,
+        'name'            => $name,
+        'price'           => $price,
+        'name_en'         => $name_en,
+        // 這三個帶出去
+        'item_seal'       => $wSeal,
+        'dwType'          => $dwType,
+        'dwTypeDetail'    => $dwTypeDetail,
+      ];
+    }
+
+    $itemsMap[$sheetName] = $items;
   }
 
-  private function load_all_items(): array {
-    list($sheetNames, $itemsMap) = $this->read_all_sheets_dynamic();
-    $all = [];
-    foreach ($sheetNames as $sheet) {
-      foreach ($itemsMap[$sheet] ?? [] as $it) {
-        $all[] = [
-          'product_code' => (string)$it['id'],
-          'name'         => $it['name'],
-          'price'        => (int)$it['price'],
-          'sellstatus'   => (int)$it['price'],
-          'name_en'      => $it['name_en'] ?? '',
-          'item_seal'    => $it['item_seal'] ?? 0,
-          'max_stack'    => $it['max_stack'] ?? 0,
-        ];
-      }
+  return [$sheetNames, $itemsMap];
+}
+
+private function load_all_items(): array {
+  list($sheetNames, $itemsMap) = $this->read_all_sheets_dynamic();
+
+  $all = [];
+  foreach ($sheetNames as $sheet) {
+    foreach ($itemsMap[$sheet] ?? [] as $it) {
+      $all[] = [
+        'product_code'    => (string)$it['id'],
+        'name'            => (string)$it['name'],
+        'price'           => (int)$it['price'],
+        'sellstatus'      => (int)$it['price'],         // 你原本的用法
+        'name_en'         => (string)($it['name_en'] ?? ''),
+        // 從 Excel 直接帶入
+        'item_seal'       => (int)($it['item_seal'] ?? 0),
+        'category_code'   => (int)($it['dwType'] ?? 0),         // = dwType (BL)
+        'category_detail' => (int)($it['dwTypeDetail'] ?? 0),   // = dwTypeDetail (BM)
+        // 若你之後也要讀 Stack/Time，可在 read_all_sheets_dynamic 一併補，再這裡帶出
+        'max_stack'       => (int)($it['max_stack'] ?? 0),
+      ];
     }
-    return ['items' => $all];
   }
+
+  return ['items' => $all];
+}
 
   /** === Checkout === */
   public function checkout() {

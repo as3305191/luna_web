@@ -115,12 +115,51 @@
                   </div>
                 </div>
 
-                <!-- 送物品 / 查角色 / 商品清單（維持原本，有需要你再接上） -->
+                <!-- 發送商品到商城包包（多帳號；英數） -->
+                <div class="card border-0 g-mb-20">
+                  <div class="card-header g-bg-gray-light-v5 border-0">
+                    <h3 class="h6 mb-0">
+                      <i class="icon-bag g-mr-5"></i> 發送商品到商城包包
+                      <small class="muted">（ITEM_POSITION 固定 320，封印/疊加由後端自動判斷）</small>
+                    </h3>
+                  </div>
+                  <div class="card-block">
+                    <div class="row g-mb-10">
+                      <div class="col-md-6">
+                        <label>帳號清單（id_loginid；可多個，用逗號或換行分隔）</label>
+                        <textarea id="shop_user_ids" class="form-control mono" rows="3"
+                                  placeholder="例如：Player001,PlayerABC&#10;Test999"></textarea>
+                        <div class="small muted g-mt-5">只接受英數字（A-Z, a-z, 0-9）。無效的會被自動忽略。</div>
+                      </div>
+                      <div class="col-md-2">
+                        <label>數量（qty）</label>
+                        <input id="shop_qty" type="number" class="form-control" min="1" step="1" value="1">
+                      </div>
+                      <div class="col-md-4">
+                        <label>商品編號（可多個，以逗號或換行分隔）</label>
+                        <textarea id="shop_item_codes" class="form-control mono" rows="3"
+                                  placeholder="例如：21001685,21000001"></textarea>
+                        <div class="small muted g-mt-5">可直接在下方「商品清單」點 <b>加入待發送</b> 快速填入。</div>
+                      </div>
+                    </div>
+
+                    <div class="d-flex align-items-center">
+                      <button id="btnSendShopBagMulti" class="btn btn-primary">送至商城包包（多人）</button>
+                      <span id="shop_msg" class="g-ml-15"></span>
+                    </div>
+                    <div id="shop_result" class="g-mt-10 small"></div>
+                  </div>
+                </div>
+
+
+
+              <!-- 商品清單 -->
                 <div class="card border-0">
                   <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0">
                     <h3 class="h6 mb-0"><i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 商品清單</h3>
                     <div class="d-flex align-items-center">
-                      <input id="q" type="text" class="form-control form-control-sm" placeholder="搜尋：編號 / 名稱 / 分類" style="width:260px;">
+                      <input id="q" type="text" class="form-control form-control-sm" 
+                            placeholder="搜尋：編號 / 名稱" style="width:260px;">
                     </div>
                   </div>
                   <div class="card-block g-pa-0">
@@ -130,9 +169,8 @@
                           <tr>
                             <th class="w-140">商品編號</th>
                             <th>名稱</th>
-                            <th class="w-120 text-right">販售狀態 (O)</th>
-                            <th class="w-120">限時 (BG)</th>
-                            <th class="w-140">分類（BL，含代碼）</th>
+                            <th class="w-120">限時</th>
+                            <th class="w-140">分類</th>
                             <th class="w-120">操作</th>
                           </tr>
                         </thead>
@@ -145,6 +183,7 @@
                     </nav>
                   </div>
                 </div>
+
 
               </div>
             </div>
@@ -164,6 +203,8 @@
     const API_CREATE_USER   = '<?= site_url("luna/luna_gm_product_set/create_user") ?>';
     const API_ACCT_SEARCH   = '<?= site_url("luna/luna_gm_product_set/account_search") ?>';
     const API_ACCT_UPDATE   = '<?= site_url("luna/luna_gm_product_set/account_update") ?>';
+    const API_SEND_SHOP_BAG = '<?= site_url("luna/luna_gm_product_set/send_shop_bag") ?>';
+    const API_SEND_SHOP_BAG_MULTI = '<?= site_url("luna/luna_gm_product_set/send_shop_bag_multi") ?>';
 
     const CSRF_NAME = '<?= $this->security->get_csrf_token_name(); ?>';
     const CSRF_HASH = '<?= $this->security->get_csrf_hash(); ?>';
@@ -173,16 +214,14 @@
 
     function humanizeSeconds(sec) {
       const n = parseInt(sec, 10);
-      if (!n || n <= 0) return '<span class="badge gray" title="0 秒">永久</span>';
+      if (!n || n <= 0) return '永久';
       const day = Math.floor(n / 86400);
       const hour = Math.floor((n % 86400) / 3600);
       const min = Math.floor((n % 3600) / 60);
-      let text = '';
-      if (day >= 1 && hour === 0) text = `${day}天`;
-      else if (day >= 1) text = `${day}天${hour}小時`;
-      else if (hour >= 1) text = `${hour}小時${min}分`;
-      else text = `${min}分`;
-      return `<span class="badge orange" title="${n.toLocaleString('zh-Hant-TW')} 秒">${text}</span>`;
+      if (day >= 1 && hour === 0) return `${day}天`;
+      if (day >= 1) return `${day}天${hour}小時`;
+      if (hour >= 1) return `${hour}小時${min}分`;
+      return `${min}分`;
     }
 
     function fetch_page(page) {
@@ -200,28 +239,38 @@
               const $tr = $('<tr/>');
               $('<td/>').addClass('mono').text(me.product_code || '').appendTo($tr);
               $('<td/>').text(me.name || '').appendTo($tr);
-              const sellstatusText = (me.sellstatus!==undefined && me.sellstatus!==null && me.sellstatus!=='')
-                ? Number(me.sellstatus).toLocaleString('zh-Hant-TW') : '—';
-              $('<td/>').addClass('text-right mono').text(sellstatusText).appendTo($tr);
-              let endCellHtml = '—';
-              if (me.endtime!==undefined && me.endtime!==null && me.endtime!=='') endCellHtml = humanizeSeconds(me.endtime);
-              $('<td/>').html(endCellHtml).appendTo($tr);
-              const cateName = (me.category && String(me.category).trim()!=='') ? me.category : '未分類';
-              const cateCode = (me.category_code!==undefined && me.category_code!==null && me.category_code!=='' && !isNaN(parseInt(me.category_code,10)))
-                ? ` (${parseInt(me.category_code,10)})` : '';
-              $('<td/>').text(cateName + cateCode).appendTo($tr);
+
+              // 限時秒數
+              $('<td/>').text(me.endtime ? humanizeSeconds(me.endtime) : '永久').appendTo($tr);
+
+              // 分類（大類/細項）
+              $('<td/>').text(`大類:${me.category_code} / 細類:${me.category_detail}`).appendTo($tr);
+
+              // 加入待發送按鈕
               const $btn = $('<button class="btn btn-primary btn-xs">加入待發送</button>').on('click', function(){
-                const current = $('#item_codes').val().trim();
                 const toAdd = String(me.product_code || '').trim();
                 if (!toAdd) return;
-                let next = current ? (current.endsWith(',') ? current + toAdd : current + ',' + toAdd) : toAdd;
-                $('#item_codes').val(next);
+
+                function appendToField(sel) {
+                  const $el = $(sel);
+                  if (!$el.length) return;
+                  const cur = ($el.val() || '').toString().trim();
+                  const next = cur ? (cur.endsWith(',') ? cur + toAdd : cur + ',' + toAdd) : toAdd;
+                  $el.val(next);
+                }
+
+                // 新的（多人商城包包）
+                appendToField('#shop_item_codes');
+                // 若頁面上還有舊欄位也同步
+                appendToField('#item_codes');
               });
+
+
               $('<td class="nowrap"/>').append($btn).appendTo($tr);
               $tr.appendTo($body);
             });
           } else {
-            $('<tr><td colspan="6" class="text-center">查無資料</td></tr>').appendTo($body);
+            $('<tr><td colspan="5" class="text-center">查無資料</td></tr>').appendTo($body);
           }
           currentPage = res.page || 1;
           render_pagination(currentPage, res.total_page || 1);
@@ -277,6 +326,135 @@
         $('#cu_msg').css('color','#d9534f').text('建立失敗：'+xhr.status+' '+xhr.statusText);
       }).always(function(){ $('#btnCreateUser').prop('disabled', false).text('建立帳號'); });
     });
+
+    // 送到商城包包
+    $('#btnSendShopBag').on('click', function(){
+      const user_idx = parseInt($('#shop_user_idx').val(), 10) || 0;
+      const qty      = parseInt($('#shop_qty').val(), 10) || 0;
+      let  rawItems  = ($('#shop_item_codes').val() || '').replace(/，/g, ',').trim();
+
+      if (user_idx <= 0) { alert('請輸入有效的 USER_IDX'); return; }
+      if (qty <= 0)      { alert('數量需大於 0'); return; }
+      if (!rawItems)     { alert('請輸入至少一個商品編號'); return; }
+
+      // 允許多個，以逗號或換行分隔 -> 傳給後端一個逗號字串即可
+      const items = rawItems.split(/[\s,]+/).map(s=>s.trim()).filter(Boolean);
+      if (!items.length) { alert('沒有有效的商品編號'); return; }
+
+      const payload = {
+        user_idx: user_idx,
+        item_idx: items.join(','), // 後端支援逗號多筆
+        qty: qty
+      };
+      if (CSRF_NAME && CSRF_HASH) payload[CSRF_NAME] = CSRF_HASH;
+
+      $('#btnSendShopBag').prop('disabled', true).text('處理中…');
+      $('#shop_msg').text('').css('color', '');
+      $('#shop_result').empty();
+
+      $.post(API_SEND_SHOP_BAG, payload, function(res){
+        const ok = !!(res && (res.ok === true));
+        $('#shop_msg').text(ok ? '發送完成' : (res && res.msg ? res.msg : '發送失敗'))
+                      .css('color', ok ? '#28a745' : '#d9534f');
+
+        // 明細
+        const $box = $('<div/>');
+        (res && res.results ? res.results : []).forEach(r=>{
+          const line = (r.ok)
+            ? `✅ 物品 ${r.item} 成功（寫入 ${r.count||0} 筆，seal=${r.seal||0}，stack_max=${r.stack_max||0}）`
+            : `❌ 物品 ${r.item||'-'} 失敗：${r.msg||'未知錯誤'}`;
+          $box.append($('<div class="mono"/>').text(line));
+        });
+        if (!$box.children().length) $box.append('<div class="small muted">沒有回傳細節。</div>');
+        $('#shop_result').html($box);
+      }, 'json').fail(function(xhr){
+        $('#shop_msg').text('發送失敗：' + xhr.status + ' ' + xhr.statusText).css('color', '#d9534f');
+      }).always(function(){
+        $('#btnSendShopBag').prop('disabled', false).text('送至商城包包');
+      });
+    });
+
+    // 多人送到商城包包（帳號=id_loginid 英數）
+    $('#btnSendShopBagMulti').on('click', function(){
+      // 解析帳號
+      let rawUsers = ($('#shop_user_ids').val() || '').replace(/，/g, ',').trim();
+      const userIds = rawUsers
+        .split(/[\s,]+/)
+        .map(s => s.trim())
+        .filter(s => s.length > 0 && /^[A-Za-z0-9]+$/.test(s)); // 僅保留英數
+
+      // 解析物品
+      let rawItems = ($('#shop_item_codes').val() || '').replace(/，/g, ',').trim();
+      const items = rawItems
+        .split(/[\s,]+/)
+        .map(s => s.trim())
+        .filter(s => /^\d+$/.test(s)); // 僅保留純數字的 itemIdx
+
+      const qty = parseInt($('#shop_qty').val(), 10) || 0;
+
+      if (!userIds.length) { alert('請輸入至少一個有效的英數帳號（id_loginid）'); return; }
+      if (!items.length)   { alert('請輸入至少一個有效的商品編號'); return; }
+      if (qty <= 0)        { alert('數量需大於 0'); return; }
+
+      const payload = {
+        user_ids: userIds.join(','),  // 後端以逗號解析多個帳號
+        item_idx: items.join(','),    // 後端以逗號解析多個物品
+        qty: qty
+      };
+      if (CSRF_NAME && CSRF_HASH) payload[CSRF_NAME] = CSRF_HASH;
+
+      $('#btnSendShopBagMulti').prop('disabled', true).text('處理中…');
+      $('#shop_msg').text('').css('color', '');
+      $('#shop_result').empty();
+
+      $.post(API_SEND_SHOP_BAG_MULTI, payload, function(res){
+        const ok = !!(res && (res.ok === true || res.success === true));
+        $('#shop_msg').text(ok ? '發送完成' : (res && res.msg ? res.msg : '發送失敗'))
+                      .css('color', ok ? '#28a745' : '#d9534f');
+
+        // 顯示結果（容錯：兼容不同後端回傳格式）
+        const $box = $('<div/>');
+
+        // 格式 A：{ ok, results: [ {user_id, user_idx, items:[{item,ok,count,msg,seal,stack_max}]} ] }
+        if (res && Array.isArray(res.results)) {
+          res.results.forEach(u => {
+            const head = `帳號 ${u.user_id || u.account || ''}（IDX:${u.user_idx || '-'}）`;
+            $box.append($('<div class="mono g-mb-5"/>').text(head));
+            if (Array.isArray(u.items) && u.items.length) {
+              u.items.forEach(it => {
+                const line = it.ok
+                  ? `  ✅ 物品 ${it.item} 成功（寫入 ${it.count||0} 筆，seal=${it.seal||0}，stack_max=${it.stack_max||0})`
+                  : `  ❌ 物品 ${it.item||'-'} 失敗：${it.msg||'未知錯誤'}`;
+                $box.append($('<div class="mono"/>').text(line));
+              });
+            }
+          });
+        }
+        // 格式 B：{ ok, details: [同上] }
+        else if (res && Array.isArray(res.details)) {
+          res.details.forEach(u => {
+            const head = `帳號 ${u.user_id || u.account || ''}（IDX:${u.user_idx || '-'}）`;
+            $box.append($('<div class="mono g-mb-5"/>').text(head));
+            (u.items || []).forEach(it => {
+              const line = it.ok
+                ? `  ✅ 物品 ${it.item} 成功（寫入 ${it.count||0} 筆，seal=${it.seal||0}，stack_max=${it.stack_max||0})`
+                : `  ❌ 物品 ${it.item||'-'} 失敗：${it.msg||'未知錯誤'}`;
+              $box.append($('<div class="mono"/>').text(line));
+            });
+          });
+        }
+        else {
+          $box.append('<div class="small muted">沒有回傳細節或格式不符。</div>');
+        }
+
+        $('#shop_result').html($box);
+      }, 'json').fail(function(xhr){
+        $('#shop_msg').text('發送失敗：' + xhr.status + ' ' + xhr.statusText).css('color', '#d9534f');
+      }).always(function(){
+        $('#btnSendShopBagMulti').prop('disabled', false).text('送至商城包包（多人）');
+      });
+    });
+
 
     // 帳號查詢/封鎖/解鎖/升級
     $('#btnAcctSearch').on('click', function(){
