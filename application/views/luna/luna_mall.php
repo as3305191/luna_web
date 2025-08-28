@@ -2,6 +2,12 @@
 <html lang="zh-Hant">
 <head>
   <?php $this->load->view("luna/luna_head"); ?>
+  <meta name="checkout-nonce" content="<?= htmlspecialchars($checkout_nonce ?? '') ?>">
+  <style>
+    /* 載入層：預設隱藏，.is-active 才顯示 */
+    #checkoutLoading{ display:none; }
+    #checkoutLoading.is-active{ display:flex; }
+  </style>
 </head>
 <body>
 <main>
@@ -92,7 +98,7 @@
                               <div class="d-flex align-items-center g-mb-10">
                                 <div class="qty-wrap">
                                   <button class="qty-btn btnMinus" type="button">−</button>
-                                  <input class="qty-input2" type="number" min="1" max="9999" value="1" inputmode="numeric">
+                                  <input class="qty-input2" type="number" min="1" max="99" value="1" inputmode="numeric">
                                   <button class="qty-btn btnPlus" type="button">＋</button>
                                 </div>
                               </div>
@@ -171,6 +177,7 @@
   <?php if (!empty($csrf_name)): ?>
     <input type="hidden" name="<?=$csrf_name?>" value="<?=$csrf_hash?>">
   <?php endif; ?>
+  <input type="hidden" name="nonce" value="<?= htmlspecialchars($checkout_nonce ?? '') ?>">
   <input type="hidden" name="cart">
 </form>
 
@@ -193,6 +200,42 @@
   function hideLoading(){ if(!loadingBox) return; loadingBox.classList.remove('is-active'); }
   window.showLoading = showLoading; window.updateStep = updateStep; window.hideLoading = hideLoading; try{ hideLoading(); }catch(e){}
 
+  /* ---- CSRF / Nonce helpers ---- */
+  function getCsrfPair(){
+    const form = document.getElementById('checkoutForm');
+    if(!form) return {name:null, value:null};
+    const input = form.querySelector('input[type="hidden"]:not([name="nonce"]):not([name="cart"])');
+    return input ? {name: input.name, value: input.value} : {name:null, value:null};
+  }
+  function setCsrfPair(name, value){
+    const form = document.getElementById('checkoutForm'); if(!form) return;
+    // 先移除舊的 CSRF hidden（可能名稱已變）
+    Array.from(form.querySelectorAll('input[type="hidden"]'))
+      .filter(x => x.name !== 'nonce' && x.name !== 'cart')
+      .forEach(x => x.remove());
+    // 新增當前有效 pair
+    let input = document.createElement('input');
+    input.type = 'hidden'; input.name = name; input.value = value;
+    form.appendChild(input);
+  }
+  function getNonce(){
+    const form = document.getElementById('checkoutForm'); if(!form) return '';
+    const input = form.querySelector('input[name="nonce"]'); return input ? input.value : '';
+  }
+  function setNonce(nonce){
+    const form = document.getElementById('checkoutForm'); if(!form) return;
+    let input = form.querySelector('input[name="nonce"]');
+    if(!input){ input = document.createElement('input'); input.type='hidden'; input.name='nonce'; form.appendChild(input); }
+    input.value = nonce || '';
+    // 同步 meta（可選）
+    const m = document.querySelector('meta[name="checkout-nonce"]'); if(m) m.setAttribute('content', input.value);
+  }
+  // 首次初始化 Nonce（來自 <meta>）
+  (function initNonce(){
+    const m = document.querySelector('meta[name="checkout-nonce"]');
+    if (m && m.content) setNonce(m.content);
+  })();
+
   /* ---------- Utils ---------- */
   function nf(n){ try{ return new Intl.NumberFormat('zh-Hant-TW').format(n); }catch(e){ return n; } }
   function showToast(msg){
@@ -204,19 +247,50 @@
   /* ---------- 點數自動更新（10s） ---------- */
   const ENDPOINT_BAL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
   const mpEl = document.getElementById('mallPoint');
+
   function refreshPoint(){
-    if(!mpEl) return;
-    fetch(ENDPOINT_BAL, {method:'POST', headers:{'X-Requested-With':'XMLHttpRequest'}, credentials:'include'})
-      .then(r => r.ok ? r.json() : null)
-      .then(j => { if(j && j.ok && typeof j.mall_point!=='undefined'){ mpEl.textContent = nf(j.mall_point); } })
-      .catch(()=>{});
-  }
-  refreshPoint(); setInterval(refreshPoint, 10000);
+  if(!mpEl) return;
+
+  // 取當前 CSRF pair（hidden 欄位）
+  const pair = getCsrfPair();
+
+  // body: form-data（帶目前的 CSRF）
+  const fd = new FormData();
+  if (pair.name && pair.value) fd.append(pair.name, pair.value);
+
+  // header: 也帶一份（後端若支援 X-CSRF-Token）
+  const headers = {'X-Requested-With':'XMLHttpRequest'};
+  if (pair.value) headers['X-CSRF-Token'] = pair.value;
+
+  fetch(ENDPOINT_BAL, {
+    method:'POST',
+    body: fd,
+    headers,
+    credentials:'include'
+  })
+  .then(r => r.ok ? r.json() : null)
+  .then(j => {
+    // —— 換新 CSRF（方案B：j.csrf = {name, hash}；相容舊版：j.csrf_name / j.csrf_hash）——
+    if (j && j.csrf && j.csrf.name && j.csrf.hash) {
+      setCsrfPair(j.csrf.name, j.csrf.hash);
+    } else if (j && j.csrf_name && j.csrf_hash) {
+      setCsrfPair(j.csrf_name, j.csrf_hash);
+    }
+
+    // 更新點數
+    if (j && j.ok && typeof j.mall_point!=='undefined') {
+      mpEl.textContent = nf(j.mall_point);
+    }
+  })
+  .catch(()=>{ /* 靜默忽略即可 */ });
+}
+
+// 啟動輪詢
+refreshPoint();
+setInterval(refreshPoint, 10000);
 
   /* ===========================================================
-     分頁核心（修正版）
-     - 用 data-match="1|0" 標記是否符合搜尋
-     - 依 data-match 的集合做分頁
+     分頁核心（依 data-match 分頁）
      =========================================================== */
   function getActiveContext(){
     const pane  = document.querySelector('.tab-pane.active'); if(!pane) return null;
@@ -226,13 +300,10 @@
     const page  = Math.max(1, parseInt(pager.dataset.page||'1',10));
     return {pane, pager, grid, per, page};
   }
-
   function computeMatched(grid){
-    // 回傳目前符合搜尋的 .product-col（依 data-match 判斷）
     const all = Array.prototype.slice.call(grid.querySelectorAll('.product-col'));
     return all.filter(el => String(el.dataset.match) !== '0');
   }
-
   function renderPager(pager, totalPages, current, onGoto){
     pager.innerHTML = '';
     function add(txt, target, disabled, active){
@@ -240,25 +311,19 @@
       li.className = 'page-item' + (disabled?' disabled':'') + (active?' active':'');
       const a = document.createElement('a');
       a.className = 'page-link'; a.href = '#'; a.textContent = txt;
-      if(!disabled && !active){
-        a.addEventListener('click', function(e){ e.preventDefault(); onGoto(target); });
-      }
+      if(!disabled && !active){ a.addEventListener('click', function(e){ e.preventDefault(); onGoto(target); }); }
       li.appendChild(a); pager.appendChild(li);
     }
     add('«', 1, current===1, false);
     add('‹', current-1, current===1, false);
-
     const windowSize = 7;
     let from = Math.max(1, current - Math.floor(windowSize/2));
     let to   = Math.min(totalPages, from + windowSize - 1);
     from = Math.max(1, to - windowSize + 1);
-
     for (let p=from; p<=to; p++){ add(String(p), p, false, p===current); }
-
     add('›', current+1, current===totalPages, false);
     add('»', totalPages, current===totalPages, false);
   }
-
   function applyPagination(){
     const ctx = getActiveContext(); if(!ctx) return;
     const {pager, grid, per} = ctx;
@@ -267,14 +332,12 @@
     let current = Math.min(Math.max(1, parseInt(pager.dataset.page||'1',10)), totalPages);
     pager.dataset.page = current;
 
-    // 先全部隱藏，再顯示當頁
     const all = Array.prototype.slice.call(grid.querySelectorAll('.product-col'));
     all.forEach(el => el.style.display = 'none');
 
     const start = (current-1)*per, end = current*per;
     matched.forEach((el, i) => { if(i>=start && i<end) el.style.display = ''; });
 
-    // 空資料提示
     let empty = grid.querySelector('.__empty_placeholder');
     if (matched.length === 0) {
       if (!empty){
@@ -287,7 +350,6 @@
       empty.parentNode.removeChild(empty);
     }
 
-    // 畫頁碼
     renderPager(pager, totalPages, current, function(go){
       pager.dataset.page = go;
       applyPagination();
@@ -306,14 +368,12 @@
       document.querySelectorAll('.tab-content .tab-pane').forEach(p=>p.classList.remove('show','active'));
       var pane = document.querySelector(this.getAttribute('href')); if (pane) pane.classList.add('show','active');
 
-      // 清空搜尋：重置 data-match=1
       if (shopSearch) shopSearch.value = '';
       if (pane){
         pane.querySelectorAll('.product-col').forEach(el=>{
           el.dataset.match = '1';
-          el.style.display = ''; // 讓分頁來控制可見性
+          el.style.display = '';
         });
-        // 分頁重設回第 1 頁
         const pager = pane.querySelector('.pagination');
         if (pager){ pager.dataset.page = 1; }
       }
@@ -321,7 +381,7 @@
     });
   });
 
-  /* ---------- 搜尋（只標記 data-match，不直接隱藏） ---------- */
+  /* ---------- 搜尋 ---------- */
   function filterBySearch(){
     var q = (shopSearch.value||'').toLowerCase().trim();
     const ctx = getActiveContext(); if(!ctx) return;
@@ -333,7 +393,7 @@
       el.dataset.match = (q==='' || name.indexOf(q)!==-1) ? '1' : '0';
     });
     const pager = pane.querySelector('.pagination');
-    if (pager){ pager.dataset.page = 1; } // 回第 1 頁
+    if (pager){ pager.dataset.page = 1; }
     applyPagination();
   }
   if (shopSearch) shopSearch.addEventListener('input', filterBySearch);
@@ -362,7 +422,6 @@
       });
       items.forEach(el=>grid.appendChild(el));
 
-      // 排序後回到第 1 頁，再讓分頁控制顯示
       const pager = pane.querySelector('.pagination');
       if (pager){ pager.dataset.page = 1; }
       applyPagination();
@@ -396,7 +455,7 @@
       var card = e.target.closest('.product-col'); if(!card) return;
       var inp = card.querySelector('.qty-input2'); if(!inp) return;
       var v = parseInt(inp.value||'1',10);
-      v = isNaN(v)?1:v; v = minus ? Math.max(1, v-1) : Math.min(9999, v+1);
+      v = isNaN(v)?1:v; v = minus ? Math.max(1, v-1) : Math.min(99, v+1);
       inp.value = v;
     }
   });
@@ -454,7 +513,7 @@
         const qtyCell = el('div');
         const qtyWrap = el('div', {class:'qty-wrap'});
         qtyWrap.appendChild(el('button', {class:'qty-btn btnMinus2', type:'button', 'data-idx':idx}, '−'));
-        qtyWrap.appendChild(el('input', {class:'qty-input2 qtyEdit', type:'number', min:'1', max:'9999', value:String(it.qty||1), 'data-idx':idx}));
+        qtyWrap.appendChild(el('input', {class:'qty-input2 qtyEdit', type:'number', min:'1', max:'99', value:String(it.qty||1), 'data-idx':idx}));
         qtyWrap.appendChild(el('button', {class:'qty-btn btnPlus2', type:'button', 'data-idx':idx}, '＋'));
         qtyCell.appendChild(qtyWrap);
 
@@ -476,7 +535,7 @@
   function addToCart(id,name,price,sig,qty){
     qty = Math.max(1, parseInt(qty||1,10));
     var i = CART.findIndex(x => String(x.id)===String(id) && x.sig===sig);
-    if (i>=0) CART[i].qty = Math.min(9999, (CART[i].qty||0) + qty);
+    if (i>=0) CART[i].qty = Math.min(99, (CART[i].qty||0) + qty);
     else CART.push({id:String(id), name:String(name), qty:qty, price:parseInt(price,10)||0, sig:String(sig)});
     redrawCart(); showToast('已加入購物車');
   }
@@ -490,7 +549,8 @@
     var price = parseInt(col.getAttribute('data-price')||'0',10);
     var sig   = (col.getAttribute('data-sig')||'')+'';
     var qtyEl = col.querySelector('.qty-input2');
-    var qty   = qtyEl ? parseInt(qtyEl.value||'1',10) : 1;
+    var qtyRaw = qtyEl ? parseInt(qtyEl.value||'1',10) : 1;
+    var qty    = Math.max(1, Math.min(99, qtyRaw));
     if (!id || !sig || qty<=0) return;
     addToCart(id,name,price,sig,qty);
   });
@@ -509,7 +569,7 @@
         var idx = parseInt((minus||plus).getAttribute('data-idx'),10);
         if (isNaN(idx) || !CART[idx]) return;
         var v = CART[idx].qty||1;
-        CART[idx].qty = minus ? Math.max(1, v-1) : Math.min(9999, v+1);
+        CART[idx].qty = minus ? Math.max(1, v-1) : Math.min(99, v+1);
         redrawCart();
       }
     });
@@ -517,7 +577,7 @@
       if (submitting) return;
       var inp = e.target.closest('.qtyEdit'); if (!inp) return;
       var idx = parseInt(inp.getAttribute('data-idx'),10);
-      var v = Math.max(1, Math.min(9999, parseInt(inp.value||'1',10)));
+      var v = Math.max(1, Math.min(99, parseInt(inp.value||'1',10)));
       if (!isNaN(idx) && CART[idx]){ CART[idx].qty = v; redrawCart(); }
     });
   }
@@ -536,34 +596,90 @@
   }
   function doCheckout(){
     if (!CART.length || submitting) return;
-    const safeCart = CART.map(it => ({ id:String(it.id), qty:Math.max(1, parseInt(it.qty,10)||1), sig:String(it.sig) }));
+
+    const safeCart = CART.map(it => ({
+      id:  String(it.id),
+      qty: Math.max(1, Math.min(99, parseInt(it.qty,10)||1)),
+      sig: String(it.sig)
+    }));
+
+    const formEl = document.getElementById('checkoutForm');
     const fd = new FormData();
-    <?php if (!empty($csrf_name) && !empty($csrf_hash)): ?>
-    fd.append('<?=$csrf_name?>', '<?=$csrf_hash?>');
-    <?php endif; ?>
+
+    // CSRF
+    const pair = getCsrfPair();
+    if (pair.name && pair.value) fd.append(pair.name, pair.value);
+
+    // Nonce（一次性）
+    const nonce = getNonce();
+    fd.append('nonce', nonce);
+
+    // 購物車
     fd.append('cart', JSON.stringify(safeCart));
 
-    lockCartUI(true); showLoading('開始交易...'); const bailout = setTimeout(hideLoading, 20000);
-    const form = document.getElementById('checkoutForm');
-    fetch(form.getAttribute('action'), { method:'POST', body:fd, headers:{'X-Requested-With':'XMLHttpRequest'}, credentials:'include' })
-      .then(r=>r.json())
-      .then(res=>{
-        <?php if (!empty($csrf_name)): ?>
-        if (res && res.csrf_name && res.csrf_hash) {
-          let csrfInput = form.querySelector(`input[name="<?=$csrf_name?>"]`);
-          if (!csrfInput) { csrfInput = document.createElement('input'); csrfInput.type='hidden'; form.appendChild(csrfInput); }
-          csrfInput.name = res.csrf_name; csrfInput.value = res.csrf_hash;
+    // UI 鎖定 + 載入提示
+    lockCartUI(true);
+    showLoading('開始交易...');
+    const bailout = setTimeout(hideLoading, 20000);
+
+    // 也把 CSRF 塞進 header（後端支援 X-CSRF-Token）
+    const headers = {'X-Requested-With':'XMLHttpRequest'};
+    if (pair.value) headers['X-CSRF-Token'] = pair.value;
+
+    fetch(formEl.getAttribute('action'), {
+      method:'POST',
+      body:fd,
+      headers,
+      credentials:'include'
+    })
+    .then(async r => {
+      if (!r.ok) {
+        if (r.status === 403) {
+          try {
+            const j = await r.json();
+            if (j && j.csrf_name && j.csrf_hash) setCsrfPair(j.csrf_name, j.csrf_hash);
+            if (j && j.checkout_nonce) setNonce(j.checkout_nonce);
+          } catch (_) {}
+          showToast('安全驗證逾時，請重新整理頁面');
+          hideLoading(); clearTimeout(bailout); lockCartUI(false);
+          throw new Error('CSRF 403');
         }
-        <?php endif; ?>
-        if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
-        if (!res || !res.ok) { showToast(res && res.msg ? res.msg : '結帳失敗'); hideLoading(); clearTimeout(bailout); lockCartUI(false); return; }
-        alert( res.order_no ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${nf(res.total)}，剩餘點數 ${nf(res.after)}` : '購買成功！扣點 NT$ '+nf(res.total)+'，剩餘點數 '+nf(res.after) );
-        CART = []; redrawCart(); closeCart();
-        const mpEl2 = document.getElementById('mallPoint'); if (mpEl2 && typeof res.after!=='undefined') mpEl2.textContent = nf(res.after);
+        throw new Error('HTTP ' + r.status);
+      }
+      const txt = await r.text();
+      try { return JSON.parse(txt); } catch (e) { throw new Error('Bad JSON'); }
+    })
+    .then(res => {
+      if (res && res.csrf_name && res.csrf_hash) setCsrfPair(res.csrf_name, res.csrf_hash);
+      if (res && res.checkout_nonce) setNonce(res.checkout_nonce);
+
+      if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
+
+      if (!res || !res.ok) {
+        showToast(res && res.msg ? res.msg : '結帳失敗');
         hideLoading(); clearTimeout(bailout); lockCartUI(false);
-      })
-      .catch(()=>{ showToast('網路異常，請稍後再試'); hideLoading(); clearTimeout(bailout); lockCartUI(false); });
+        return;
+      }
+
+      alert(
+        res.order_no
+          ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${nf(res.total)}，剩餘點數 ${nf(res.after)}`
+          : '購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after)
+      );
+      CART = []; redrawCart(); closeCart();
+      const mpEl2 = document.getElementById('mallPoint');
+      if (mpEl2 && typeof res.after!=='undefined') mpEl2.textContent = nf(res.after);
+
+      hideLoading(); clearTimeout(bailout); lockCartUI(false);
+    })
+    .catch((err) => {
+      if (String(err && err.message).indexOf('CSRF') === -1) {
+        showToast('網路異常，請稍後再試');
+        hideLoading(); clearTimeout(bailout); lockCartUI(false);
+      }
+    });
   }
+
   var btnCheckout = document.getElementById('btnCheckout');
   if (btnCheckout) btnCheckout.addEventListener('click', doCheckout);
 
