@@ -8,7 +8,7 @@ use Imagick\Geometry;
  */
 class Imagick implements Iterator
 {
-    
+
     const COLOR_BLACK = 11;
     const COLOR_BLUE = 12;
     const COLOR_CYAN = 13;
