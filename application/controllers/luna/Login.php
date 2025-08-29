@@ -11,7 +11,6 @@ class Login extends MY_Base_Controller {
 
     public function index() {
         $data = array();
-        // 已登入 → 跳轉
         if(!empty($this->session->userdata('user_id'))) {
             redirect("/luna/luna_home");
             return;
