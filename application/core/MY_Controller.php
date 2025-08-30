@@ -110,28 +110,56 @@ class MY_Base_Controller extends CI_Controller {
 		}
 	}
 
-	public function setup_user_data($data) {
-	$user_id = $this->session->userdata('user_id');
-	$s_uid   = $this->session->userdata('s_uid');
+	public function setup_user_data($data = []) {
+		// 這兩個分清楚：user_id = 數字 id_idx；login_user_id = 帳號字串
+		$user_idx       = $this->session->userdata('user_id');         // int (id_idx)
+		$login_user_id  = $this->session->userdata('login_user_id');   // string (id_loginid)
+		$userlv         = $this->session->userdata('userlv');
 
-	$user = $this->luna_mem_dao->find_by('id_loginid', $user_id);
-
-	if (empty($user_id)) {
-		if ($this->input->is_ajax_request()) {
-			echo "<script>window.location.reload();</script>";
-		} else {
-			redirect("app/luna/login/logout");
+		// 未登入處理
+		if (empty($user_idx) && ($login_user_id === null || $login_user_id === '')) {
+			if ($this->input->is_ajax_request()) {
+				// 不要回 <script>，給 401 乾淨一些
+				$this->output->set_status_header(401)->set_output('');
+				return $data;
+			} else {
+				redirect("app/luna/login/logout");
+				return $data;
+			}
 		}
-	} else {
-		$data['login_user_id'] = $user_id;
-		$data['l_user'] = $user;
 
-		$array = explode('/', $_SERVER['PATH_INFO']);
-		$last_key_word = substr(strrchr($_SERVER['PATH_INFO'], "/"), 1);
+		// 取使用者資料：有 id_idx 就優先用數字查，否則用帳號字串查
+		if (is_numeric($user_idx)) {
+			$user = $this->luna_mem_dao->find_by('id_idx', (int)$user_idx);
+		} elseif (!empty($login_user_id)) {
+			// 建議你的 DAO 也有 find_by_loginid()（你上面已經做了）
+			if (method_exists($this->luna_mem_dao, 'find_by_loginid')) {
+				$user = $this->luna_mem_dao->find_by_loginid((string)$login_user_id);
+			} else {
+				// 至少強制字串比對
+				$user = $this->luna_mem_dao->find_by('id_loginid', (string)$login_user_id);
+			}
+		} else {
+			$user = null;
+		}
+
+		// 輸出格式：同時提供頂層與巢狀，兼容舊用法
+		$data['login_user_id'] = ($login_user_id === null ? '' : (string)$login_user_id);
+		$data['l_user']        = $user;
+		$data['userlv']        = (int)($userlv ?? 0);
+
+		$data['login_user'] = [
+			'login_user_id' => $data['login_user_id'],
+			'l_user'        => $user,
+		];
+
+		// 這兩行原本會用 PATH_INFO，很多環境沒設會 Notice：可以拿掉或改用 CI 的 URI
+		// $array = explode('/', $_SERVER['PATH_INFO'] ?? '');
+		// $last_key_word = substr(strrchr($_SERVER['PATH_INFO'] ?? '/', "/"), 1);
+
+		return $data;
 	}
 
-	return $data;
-}
 
 
 	function get_between($input, $start, $end) {

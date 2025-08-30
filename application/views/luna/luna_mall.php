@@ -2,6 +2,8 @@
 <html lang="zh-Hant">
 <head>
   <?php $this->load->view("luna/luna_head"); ?>
+  <!-- 供初始化一次性 nonce（可留空字串） -->
+  <meta name="checkout-nonce" content="<?= htmlspecialchars($checkout_nonce ?? '') ?>">
   <style>
     /* 載入層：預設隱藏，.is-active 才顯示 */
     #checkoutLoading{ display:none; }
@@ -22,10 +24,6 @@
             <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0">
               <div class="d-flex align-items-center">
                 <h3 class="h5 mb-0"><i class="icon-bag g-mr-8"></i> 商城</h3>
-                 <span class="badge-dot g-ml-15">
-                  <i></i> 剩餘點數：
-                  <span id="mallPoint" class="mono">--</span>
-                </span>
               </div>
 
               <div class="shop-toolbar d-flex align-items-center flex-wrap">
@@ -180,7 +178,6 @@
   <input type="hidden" name="cart">
 </form>
 
-
 <!-- 小通知 -->
 <div id="toastMini" class="toast-mini">已加入購物車</div>
 
@@ -249,22 +246,25 @@
     checkoutUrl: "<?= site_url('luna/luna_mall/checkout') ?>",
   };
 
- function refreshPoint() {
+  function refreshPoint() {
     $.ajax({
       url: window.APP.balanceUrl,
       method: 'GET',
-      dataType: 'json'
+      dataType: 'json',
+      xhrFields: { withCredentials: true }
     }).done(function(resp){
-      if(resp && resp.ok){
-        $('#mallPoint').text(resp.mall_point);
+      if (resp && resp.ok) $('#mallPoint').text(resp.mall_point);
+      if (resp && resp.csrf_name && resp.csrf_hash) {
         window.CSRF = { name: resp.csrf_name, hash: resp.csrf_hash };
-      } else if (resp && resp.csrf_name) {
-        window.CSRF = { name: resp.csrf_name, hash: resp.csrf_hash };
+        setCsrfPair(resp.csrf_name, resp.csrf_hash); // ★ 同步 hidden
       }
     });
   }
+
   refreshPoint();
-  setInterval(refreshPoint, 10000); // 10 秒更新
+  let refreshTimer = setInterval(refreshPoint, 10000); // 10 秒更新
+  function pauseRefresh(){ if (refreshTimer) { clearInterval(refreshTimer); refreshTimer = null; } }
+  function resumeRefresh(){ if (!refreshTimer) { refreshPoint(); refreshTimer = setInterval(refreshPoint, 10000); } }
 
   /* ===========================================================
      分頁核心（依 data-match 分頁）
@@ -572,86 +572,63 @@
     btnCheckoutTop.disabled = on || CART.length===0;
   }
 
-function doCheckout(){
-  if (!CART.length || submitting) return;
+  function doCheckout(){
+    if (!CART.length || submitting) return;
+    pauseRefresh();
 
-  const safeCart = CART.map(it => ({
-    id:  String(it.id),
-    qty: Math.max(1, Math.min(99, parseInt(it.qty,10)||1)),
-    sig: String(it.sig)
-  }));
+    const formEl = document.getElementById('checkoutForm');
+    const fd = new FormData();
 
-  const formEl = document.getElementById('checkoutForm');
-  const fd = new FormData();
-
-  // hidden CSRF（表單內）
-  const pair = getCsrfPair();
-  if (pair.name && pair.value) fd.append(pair.name, pair.value);
-
-  // Nonce（一次性）
-  const nonce = getNonce();
-  fd.append('nonce', nonce);
-
-  // 購物車
-  fd.append('cart', JSON.stringify(safeCart));
-
-  // UI 鎖定 + 載入提示
-  lockCartUI(true);
-  showLoading('開始交易...');
-  updateStep('verify');
-  const bailout = setTimeout(hideLoading, 20000);
-
-  // Header 也帶 CSRF（雙重容錯）
-  const headers = {'X-Requested-With':'XMLHttpRequest'};
-  if (window.CSRF && window.CSRF.hash) headers['X-CSRF-Token'] = window.CSRF.hash;
-
-  fetch(formEl.getAttribute('action'), {
-    method:'POST',
-    body:fd,
-    headers,
-    credentials:'include'
-  })
-  .then(async r => {
-    const txt = await r.text();
-    let j = null;
-    try { j = JSON.parse(txt); } catch(_){}
-    // 任何狀態都嘗試把後端回來的新 CSRF/nonce 更新掉
-    if (j && j.csrf_name && j.csrf_hash) {
-      window.CSRF = {name: j.csrf_name, hash: j.csrf_hash};
-      setCsrfPair(j.csrf_name, j.csrf_hash);
+    // ★ 如果 hidden 沒跟上 balance 最新值，這裡再同步一次
+    const cur = getCsrfPair();
+    if ((!cur.name || !cur.value) && window.CSRF && window.CSRF.name && window.CSRF.hash) {
+      setCsrfPair(window.CSRF.name, window.CSRF.hash);
     }
-    if (j && j.checkout_nonce) setNonce(j.checkout_nonce);
-    if (!r.ok) throw new Error('HTTP '+r.status);
-    return j;
-  })
-  .then(res => {
-    if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
+    const pair = getCsrfPair();
+    if (pair.name && pair.value) fd.append(pair.name, pair.value);
 
-    if (!res || !res.ok) {
-      showToast(res && res.msg ? res.msg : '結帳失敗');
-      hideLoading(); clearTimeout(bailout); lockCartUI(false);
-      return;
-    }
+    // Nonce & 購物車
+    fd.append('nonce', getNonce());
+    fd.append('cart', JSON.stringify(CART.map(it => ({
+      id:String(it.id), qty:Math.max(1, Math.min(99, parseInt(it.qty,10)||1)), sig:String(it.sig)
+    }))));
 
-    alert(
-      res.order_no
-        ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${nf(res.total)}，剩餘點數 ${nf(res.after)}`
-        : '購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after)
-    );
+    lockCartUI(true);
+    showLoading('開始交易...'); updateStep('verify');
+    const bailout = setTimeout(hideLoading, 20000);
 
-    CART = []; redrawCart(); closeCart();
-    const mpEl2 = document.getElementById('mallPoint');
-    if (mpEl2 && typeof res.after!=='undefined') mpEl2.textContent = nf(res.after);
+    // Header 也帶 CSRF（雙保險），且一定帶 Cookie
+    const headers = {'X-Requested-With':'XMLHttpRequest','Accept':'application/json'};
+    if (window.CSRF && window.CSRF.hash) headers['X-CSRF-Token'] = window.CSRF.hash;
 
-    hideLoading(); clearTimeout(bailout); lockCartUI(false);
-  })
-  .catch((err) => {
-    // 這裡多半是 403/500，前面已經把新 CSRF/nonce 接走了
-    showToast('網路或驗證異常，請再試一次');
-    hideLoading(); clearTimeout(bailout); lockCartUI(false);
-  });
-}
-
+    fetch(formEl.getAttribute('action'), {
+      method:'POST', body:fd, headers, credentials:'include'
+    })
+    .then(async r => {
+      const txt = await r.text(); let j=null; try{ j=JSON.parse(txt);}catch(_){}
+      // 後端回來就更新（成功/失敗都做）
+      if (j && j.csrf_name && j.csrf_hash) { window.CSRF={name:j.csrf_name,hash:j.csrf_hash}; setCsrfPair(j.csrf_name,j.csrf_hash); }
+      if (j && j.checkout_nonce) setNonce(j.checkout_nonce);
+      if (!r.ok) { const e=new Error('HTTP '+r.status); e.payload=j; throw e; }
+      return j;
+    })
+    .then(res => {
+      if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
+      if (!res || !res.ok) {
+        showToast(res && res.msg ? res.msg : '結帳失敗');
+        hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh(); return;
+      }
+      alert(res.order_no ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${nf(res.total)}，剩餘點數 ${nf(res.after)}` :
+                          '購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after));
+      CART=[]; redrawCart(); closeCart();
+      const mp=document.getElementById('mallPoint'); if (mp && typeof res.after!=='undefined') mp.textContent = nf(res.after);
+      hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh();
+    })
+    .catch(err => {
+      showToast((err && err.payload && err.payload.msg) ? err.payload.msg : '網路或驗證異常，請再試一次');
+      hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh();
+    });
+  }
 
   var btnCheckout = document.getElementById('btnCheckout');
   if (btnCheckout) btnCheckout.addEventListener('click', doCheckout);
