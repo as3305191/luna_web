@@ -52,7 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['luna/luna_gm_product_set/balance']['GET']  = 'luna_gm_product_set/balance';
 $route['luna/luna_gm_product_set/balance']['POST'] = 'luna_gm_product_set/balance';
 
-$route['default_controller'] = 'login';
+$route['default_controller'] = 'login';$route['luna/luna_mall/checkout']['POST'] = 'luna/Luna_mall/checkout';
 $route['^(app)/(.+)$'] = "$2";
 
 $route['404_override'] = '';
