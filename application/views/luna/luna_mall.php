@@ -244,36 +244,25 @@
     clearTimeout(showToast._t); showToast._t = setTimeout(()=>el.classList.remove('show'), 1600);
   }
 
-  /* ---------- 點數自動更新（10s） ---------- */
-  const ENDPOINT_BAL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
-  const mpEl = document.getElementById('mallPoint');
+  window.APP = {
+    balanceUrl: "<?= site_url('luna/luna_gm_product_set/balance') ?>",
+    checkoutUrl: "<?= site_url('luna/luna_mall/checkout') ?>",
+  };
 
-  function refreshPoint(){
-    if(!mpEl) return;
-    fetch(ENDPOINT_BAL, {
-      method:'GET',
-      headers: {'X-Requested-With':'XMLHttpRequest', 'Accept':'application/json'},
-      credentials:'include'
-    })
-    .then(r => r.ok ? r.json() : null)
-    .then(j => {
-      if (!j) return;
-      // 後端還是會回 CSRF（之後別的 POST 會用到）
-      if (typeof setCsrfPair === 'function') {
-        if (j.csrf && j.csrf.name && j.csrf.hash) setCsrfPair(j.csrf.name, j.csrf.hash);
-        else if (j.csrf_name && j.csrf_hash)      setCsrfPair(j.csrf_name, j.csrf_hash);
+ function refreshPoint() {
+    $.ajax({
+      url: window.APP.balanceUrl,
+      method: 'GET',
+      dataType: 'json'
+    }).done(function(resp){
+      if(resp && resp.ok){
+        $('#mallPoint').text(resp.mall_point);
+        window.CSRF = { name: resp.csrf_name, hash: resp.csrf_hash };
       }
-      if (j.ok && typeof j.mall_point!=='undefined') {
-        try { mpEl.textContent = new Intl.NumberFormat('zh-Hant-TW').format(j.mall_point); }
-        catch(_) { mpEl.textContent = j.mall_point; }
-      }
-    })
-    .catch(()=>{});
+    });
   }
-
-// 啟動輪詢
-refreshPoint();
-setInterval(refreshPoint, 10000);
+  refreshPoint();
+  setInterval(refreshPoint, 10000); // 10秒更新一次
 
   /* ===========================================================
      分頁核心（依 data-match 分頁）

@@ -73,7 +73,14 @@ class Luna_mall extends MY_Base_Controller {
 
     $this->load->view('luna/luna_mall', $data);
   }
-
+  
+  private function ensure_csrf() {
+    if (method_exists($this->security, 'csrf_set_cookie')) $this->security->csrf_set_cookie();
+    return [
+      'csrf_name' => $this->security->get_csrf_token_name(),
+      'csrf_hash' => $this->security->get_csrf_hash(),
+    ];
+  }
   /* ========================== JSON Helpers ========================== */
 
   private function json_ok(array $extra = []) {
