@@ -429,3 +429,51 @@
   setInterval(function(){ try { refreshMallPoint(); } catch(_) {} }, 10000);
 })();
 </script>
+
+<script>
+/* ==== 全站自動刷新 sidebar 點數（存在 #mallPoint 才會跑） ==== */
+(function(){
+  var ENDPOINT_BAL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
+  var mpEl = document.getElementById('mallPoint');
+  if (!mpEl) return;
+
+  var csrf = {name:null, hash:null};
+
+  function nf(n){ try { return new Intl.NumberFormat('zh-Hant-TW').format(n); } catch(e) { return n; } }
+
+  // 先用 GET 取一次，seed CSRF
+  function seedCsrf(){
+    return fetch(ENDPOINT_BAL, {method:'GET', credentials:'include'})
+      .then(r => r.ok ? r.json() : null)
+      .then(j => {
+        if (j && j.csrf_name && j.csrf_hash) {
+          csrf.name = j.csrf_name;
+          csrf.hash = j.csrf_hash;
+        }
+      }).catch(()=>{});
+  }
+
+  function poll(){
+    var fd = new FormData();
+    if (csrf.name && csrf.hash) fd.append(csrf.name, csrf.hash);
+    fetch(ENDPOINT_BAL, {
+      method:'POST',
+      body: fd,
+      credentials:'include',
+      headers: {'X-Requested-With':'XMLHttpRequest', 'X-CSRF-Token': csrf.hash || ''}
+    })
+    .then(r => r.ok ? r.json() : null)
+    .then(j => {
+      if (!j) return;
+      if (j.csrf_name && j.csrf_hash) { csrf.name = j.csrf_name; csrf.hash = j.csrf_hash; }
+      if (j.ok && typeof j.mall_point !== 'undefined') mpEl.textContent = nf(j.mall_point);
+    })
+    .catch(()=>{});
+  }
+
+  seedCsrf().then(function(){
+    poll();
+    setInterval(poll, 10000);
+  });
+})();
+</script>
