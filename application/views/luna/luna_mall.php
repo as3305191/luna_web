@@ -3,6 +3,7 @@
 <head>
   <?php $this->load->view("luna/luna_head"); ?>
   <meta name="checkout-nonce" content="<?= htmlspecialchars($checkout_nonce ?? '') ?>">
+
   <style>
     /* 載入層：預設隱藏，.is-active 才顯示 */
     #checkoutLoading{ display:none; }
@@ -594,91 +595,121 @@ setInterval(refreshPoint, 10000);
     btnCheckout.disabled = on || CART.length===0;
     btnCheckoutTop.disabled = on || CART.length===0;
   }
-  function doCheckout(){
-    if (!CART.length || submitting) return;
+ 
+<script>
+function doCheckout(){
+  if (!CART.length || submitting) return;
 
-    const safeCart = CART.map(it => ({
-      id:  String(it.id),
-      qty: Math.max(1, Math.min(99, parseInt(it.qty,10)||1)),
-      sig: String(it.sig)
-    }));
+  const safeCart = CART.map(it => ({
+    id:  String(it.id),
+    qty: Math.max(1, Math.min(99, parseInt(it.qty,10)||1)),
+    sig: String(it.sig)
+  }));
 
-    const formEl = document.getElementById('checkoutForm');
-    const fd = new FormData();
+  const formEl = document.getElementById('checkoutForm');
+  const fd = new FormData();
 
-    // CSRF
-    const pair = getCsrfPair();
-    if (pair.name && pair.value) fd.append(pair.name, pair.value);
+  // CSRF
+  const pair = typeof getCsrfPair === 'function' ? getCsrfPair() : {name:null, value:null};
+  if (pair.name && pair.value) fd.append(pair.name, pair.value);
 
-    // Nonce（一次性）
-    const nonce = getNonce();
-    fd.append('nonce', nonce);
+  // Nonce（一次性）
+  const nonce = typeof getNonce === 'function' ? getNonce() : '';
+  fd.append('nonce', nonce);
 
-    // 購物車
-    fd.append('cart', JSON.stringify(safeCart));
+  // Cart
+  fd.append('cart', JSON.stringify(safeCart));
 
-    // UI 鎖定 + 載入提示
-    lockCartUI(true);
-    showLoading('開始交易...');
-    const bailout = setTimeout(hideLoading, 20000);
+  // UI 上鎖 + 載入提示
+  lockCartUI(true);
+  showLoading('開始交易...');
 
-    // 也把 CSRF 塞進 header（後端支援 X-CSRF-Token）
-    const headers = {'X-Requested-With':'XMLHttpRequest'};
-    if (pair.value) headers['X-CSRF-Token'] = pair.value;
+  // 硬逾時（避免永遠轉）
+  const controller = new AbortController();
+  const tmr = setTimeout(() => controller.abort(), 15000); // 15s
 
-    fetch(formEl.getAttribute('action'), {
-      method:'POST',
-      body:fd,
-      headers,
-      credentials:'include'
-    })
-    .then(async r => {
-      if (!r.ok) {
-        if (r.status === 403) {
-          try {
-            const j = await r.json();
-            if (j && j.csrf_name && j.csrf_hash) setCsrfPair(j.csrf_name, j.csrf_hash);
-            if (j && j.checkout_nonce) setNonce(j.checkout_nonce);
-          } catch (_) {}
-          showToast('安全驗證逾時，請重新整理頁面');
-          hideLoading(); clearTimeout(bailout); lockCartUI(false);
-          throw new Error('CSRF 403');
-        }
-        throw new Error('HTTP ' + r.status);
+  const headers = {'X-Requested-With':'XMLHttpRequest', 'Accept':'application/json'};
+  if (pair.value) headers['X-CSRF-Token'] = pair.value;
+
+  fetch(formEl.getAttribute('action'), {
+    method:'POST',
+    body: fd,
+    headers,
+    credentials:'include',
+    signal: controller.signal
+  })
+  .then(async r => {
+    // 嘗試把回應轉 JSON（連錯誤也轉），以便從 403 取新 token
+    let data = null;
+    try { data = await r.clone().json(); } catch(_) {
+      // 不是 JSON，就當作文字；但我們不靠它顯示
+      try { await r.text(); } catch(_){}
+    }
+
+    // 任何回應都先更新 token / nonce（如果有）
+    if (data) {
+      if (typeof setCsrfPair === 'function') {
+        if (data.csrf_name && data.csrf_hash) setCsrfPair(data.csrf_name, data.csrf_hash);
+        if (data.csrf && data.csrf.name && data.csrf.hash) setCsrfPair(data.csrf.name, data.csrf.hash);
       }
-      const txt = await r.text();
-      try { return JSON.parse(txt); } catch (e) { throw new Error('Bad JSON'); }
-    })
-    .then(res => {
-      if (res && res.csrf_name && res.csrf_hash) setCsrfPair(res.csrf_name, res.csrf_hash);
-      if (res && res.checkout_nonce) setNonce(res.checkout_nonce);
-
-      if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
-
-      if (!res || !res.ok) {
-        showToast(res && res.msg ? res.msg : '結帳失敗');
-        hideLoading(); clearTimeout(bailout); lockCartUI(false);
-        return;
+      if (typeof setNonce === 'function' && data.checkout_nonce) {
+        setNonce(data.checkout_nonce);
       }
+      if (Array.isArray(data.progress)) data.progress.forEach(updateStep);
+    }
 
-      alert(
-        res.order_no
-          ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${nf(res.total)}，剩餘點數 ${nf(res.after)}`
-          : '購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after)
-      );
-      CART = []; redrawCart(); closeCart();
+    if (!r.ok) {
+      // 403 大部分是驗證過期 → 已更新 token/nonce，提示重試
+      if (r.status === 403) {
+        showToast('安全驗證過期，已自動更新，請再按一次結帳');
+      } else {
+        showToast('伺服器忙碌或網路異常，稍後再試');
+      }
+      throw new Error('HTTP '+r.status);
+    }
+
+    // 到這裡一定是 2xx
+    return data || {};
+  })
+  .then(res => {
+    if (!res.ok) {
+      showToast(res && res.msg ? res.msg : '結帳失敗');
+      return;
+    }
+
+    // 成功：清購物車、更新點數、關抽屜
+    alert(
+      res.order_no
+        ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${new Intl.NumberFormat('zh-Hant-TW').format(res.total)}，剩餘點數 ${new Intl.NumberFormat('zh-Hant-TW').format(res.after)}`
+        : '購買成功！'
+    );
+    CART = []; redrawCart(); closeCart();
+
+    // 直接更新 sidebar 點數（有就更新，沒有就忽略）
+    if (typeof res.after !== 'undefined') {
       const mpEl2 = document.getElementById('mallPoint');
-      if (mpEl2 && typeof res.after!=='undefined') mpEl2.textContent = nf(res.after);
-
-      hideLoading(); clearTimeout(bailout); lockCartUI(false);
-    })
-    .catch((err) => {
-      if (String(err && err.message).indexOf('CSRF') === -1) {
-        showToast('網路異常，請稍後再試');
-        hideLoading(); clearTimeout(bailout); lockCartUI(false);
+      if (mpEl2) {
+        try { mpEl2.textContent = new Intl.NumberFormat('zh-Hant-TW').format(res.after); }
+        catch(_){ mpEl2.textContent = res.after; }
+      } else if (typeof refreshMallPoint === 'function') {
+        refreshMallPoint();
       }
-    });
-  }
+    }
+  })
+  .catch((err) => {
+    if (err && err.name === 'AbortError') {
+      showToast('連線逾時，請再試一次');
+    } else if (String(err && err.message).indexOf('HTTP') === -1) {
+      showToast('網路異常，請稍後再試');
+    }
+  })
+  .finally(() => {
+    clearTimeout(tmr);
+    hideLoading();
+    lockCartUI(false);
+  });
+}
+</script>
 
   var btnCheckout = document.getElementById('btnCheckout');
   if (btnCheckout) btnCheckout.addEventListener('click', doCheckout);

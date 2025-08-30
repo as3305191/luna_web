@@ -43,7 +43,38 @@
 
       // initialization of HSScrollBar component
       $.HSCore.components.HSScrollBar.init( $('.js-scrollbar') );
-    });
+      const BAL_URL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
+
+  // 這個函式給全站共用，mall/首頁/側欄都能用
+  window.refreshMallPoint = function refreshMallPoint(){
+    const el = document.getElementById('mallPoint');
+    if (!el) return; // 沒有這個元素就跳過
+    fetch(BAL_URL, {
+      method: 'GET',
+      credentials: 'include',
+      headers: {'X-Requested-With':'XMLHttpRequest', 'Accept':'application/json'}
+    })
+    .then(r => r.ok ? r.json() : null)
+    .then(j => {
+      if (!j) return;
+      // 後端每次會回最新 CSRF，一併更新（你已有 setCsrfPair 的話就用它）
+      if (typeof setCsrfPair === 'function') {
+        if (j.csrf_name && j.csrf_hash) setCsrfPair(j.csrf_name, j.csrf_hash);
+        if (j.csrf && j.csrf.name && j.csrf.hash) setCsrfPair(j.csrf.name, j.csrf.hash);
+      }
+      if (j.ok && typeof j.mall_point !== 'undefined') {
+        try {
+          el.textContent = new Intl.NumberFormat('zh-Hant-TW').format(j.mall_point);
+        } catch(_){ el.textContent = j.mall_point; }
+      }
+    })
+    .catch(()=>{});
+  };
+
+  // 首次載入 + 每 10 秒刷新一次
+  try { window.refreshMallPoint(); } catch(_){}
+  setInterval(function(){ try{ window.refreshMallPoint(); }catch(_){}} , 10000);
+  });
 
     $(window).on('load', function () {
       // initialization of header

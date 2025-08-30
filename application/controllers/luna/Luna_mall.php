@@ -44,6 +44,7 @@ class Luna_mall extends MY_Base_Controller {
     $data['login_user'] = $login_user;
     $data['userlv']     = $login_user ? ($login_user->UserLevel ?? 0) : 0;
     $data['now']        = 'luna_mall';
+    $data['checkout_nonce'] = $this->rotate_checkout_nonce();
 
     list($sheetNames, $itemsMap) = $this->read_all_sheets_dynamic();
     $allTitle  = '全部商品(All)';
