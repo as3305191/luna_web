@@ -258,11 +258,13 @@
       if(resp && resp.ok){
         $('#mallPoint').text(resp.mall_point);
         window.CSRF = { name: resp.csrf_name, hash: resp.csrf_hash };
+      } else if (resp && resp.csrf_name) {
+        window.CSRF = { name: resp.csrf_name, hash: resp.csrf_hash };
       }
     });
   }
   refreshPoint();
-  setInterval(refreshPoint, 10000); // 10秒更新一次
+  setInterval(refreshPoint, 10000); // 10 秒更新
 
   /* ===========================================================
      分頁核心（依 data-match 分頁）
@@ -658,5 +660,6 @@ function doCheckout(){
   applyPagination();
 })();
 </script>
+
 </body>
 </html>

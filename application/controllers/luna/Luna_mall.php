@@ -272,241 +272,161 @@ class Luna_mall extends MY_Base_Controller {
 
   /* ========================== Checkout ========================== */
 
-  public function checkout() {
-    if (!$this->require_csrf_or_fail()) return;
-    $this->output->set_content_type('application/json');
+public function checkout(){
+  $this->output->set_content_type('application/json');
 
-    if (empty($this->session->userdata('user_id'))) {
-      return $this->json_fail('尚未登入');
-    }
-    if (!$this->acquire_checkout_mutex()) {
-      return $this->json_fail('操作過於頻繁，請稍後重試');
-    }
-
-    // 讀 cart + nonce（支援 form 與 raw JSON）
-    $raw   = $this->input->post('cart', false);
-    $nonce = (string)$this->input->post('nonce', true);
-    if ($raw === null || $raw === '') {
-      $body = $this->input->raw_input_stream;
-      if ($body) {
-        $asObj = json_decode($body, true);
-        if (isset($asObj['cart']))  $raw   = is_string($asObj['cart'])  ? $asObj['cart']  : json_encode($asObj['cart']);
-        if (isset($asObj['nonce'])) $nonce = (string)$asObj['nonce'];
-      }
-    }
-    if ($nonce === '' || !hash_equals($this->get_checkout_nonce(), $nonce)) {
-      $this->release_checkout_mutex();
-      return $this->json_fail('安全驗證失敗（nonce）', 403);
-    }
-    // 用過就旋轉，避免重送
-    $this->rotate_checkout_nonce();
-
-    $cart = json_decode($raw, true);
-    if (!is_array($cart) || empty($cart)) {
-      $this->release_checkout_mutex();
-      return $this->json_fail('購物車是空的');
-    }
-
-    // 使用者
-    $s_data     = $this->setup_user_data([]);
-    $login_user = $this->dao->find_by('id_loginid', $s_data['login_user_id'] ?? '');
-    if (!$login_user) { $this->release_checkout_mutex(); return $this->json_fail('找不到帳號'); }
-
-    $user_idx = (int)$login_user->id_idx;
-    $login_id = (string)$login_user->id_loginid;
-
-    // 讀商城清單（價格以這裡為準）
-    $pack = $this->load_all_items();
-    $itemMap = [];
-    foreach ($pack['items'] as $it) $itemMap[(string)$it['product_code']] = $it;
-
-    // 驗簽（防過期/改價），同時合併同品項
-    $salt   = $this->get_item_salt();
-    $merged = [];
-    foreach ($cart as $row) {
-      $id  = (string)($row['id']  ?? '');
-      $qty = (int)   ($row['qty'] ?? 0);
-      $sig = (string)($row['sig'] ?? '');
-      if ($id === '' || $qty <= 0) { $this->release_checkout_mutex(); return $this->json_fail('購物車有不合法的商品/數量'); }
-      if (!isset($itemMap[$id]))   { $this->release_checkout_mutex(); return $this->json_fail("找不到商品：{$id}"); }
-      if ($qty > self::MAX_QTY_PER_ITEM) $qty = self::MAX_QTY_PER_ITEM;
-
-      $price_now = (int)$itemMap[$id]['sellstatus'];
-      $server_sig = $this->sign_item($id, $price_now, $salt);
-      if (!hash_equals($server_sig, $sig)) {
-        $this->release_checkout_mutex();
-        return $this->json_fail("商品資訊已更新或驗證失敗，請刷新後再購買（{$id}）");
-      }
-      $merged[$id] = ($merged[$id] ?? 0) + $qty;
-    }
-
-    // 計價（完全用伺服器價）
-    $total = 0;
-    foreach ($merged as $id => $qty) {
-      $price = (int)($itemMap[$id]['sellstatus'] ?? 0);
-      if ($price <= 0) { $this->release_checkout_mutex(); return $this->json_fail("商品 {$id} 不可販售"); }
-      $total += $price * $qty;
-    }
-    if ($total <= 0) { $this->release_checkout_mutex(); return $this->json_fail('金額計算錯誤'); }
-
-    // 取角色（承接商城包包）
-    $list = $this->charDao->list_by_user($user_idx, false);
-    if (empty($list)) { $this->release_checkout_mutex(); return $this->json_fail('帳號底下沒有角色'); }
-    $charIdx = (int)$list[0]->CharId;
-
-    // 讀正表（封印/堆疊/時效）
-    $cnMeta = $this->load_cn_catalog();
-
-    $now = date('Y-m-d H:i:s');
-    $ip  = $this->input->ip_address();
-    $order_no = bin2hex(random_bytes(8)); // 唯一單號；memo 會帶上
-
-    $progress = [];
-    $progress[] = 'verify'; // 前置驗證/定價完成
-
-    // 交易開始（降低隔離級別以減少鎖競爭；SNAPSHOT 可用就用，否則退回 REPEATABLE READ）
-    $this->db->trans_begin();
-    try {
-      try {
-        $this->db->query("SET TRANSACTION ISOLATION LEVEL SNAPSHOT");
-      } catch (\Throwable $e) {
-        $this->db->query("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ");
-      }
-
-      // 扣點（用 OUTPUT 直接拿新餘額，省一次 SELECT）
-      $row = $this->db->query("
-        UPDATE dbo.chr_log_info
-          SET mall_point = mall_point - ?
-        OUTPUT inserted.mall_point AS after_point
-        WHERE id_idx = ? AND mall_point >= ?
-      ", [$total, $user_idx, $total])->row_array();
-
-      if (!$row || !isset($row['after_point'])) {
-        throw new \RuntimeException('點數不足或扣點失敗');
-      }
-
-      $after  = (int)$row['after_point'];
-      $before = $after + $total;
-      $progress[] = 'point';
-
-      // 點數異動 log（memo 帶單號，方便稽核）
-      $ok = $this->db->query("
-        INSERT INTO LUNA_LOGDB_2025.dbo.mall_point_log
-          (user_idx, amount, before_point, after_point, memo, admin_loginid, admin_ip, created_at)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-      ", [$user_idx, -$total, $before, $after, '線上購物#'.$order_no, $login_id, $ip, $now]);
-      if ($ok === FALSE) throw new \RuntimeException('建立 mall_point_log 失敗');
-
-      $mpl_id = (int)$this->db->insert_id();
-      if ($mpl_id <= 0) {
-        $rowId = $this->db->query("SELECT CAST(SCOPE_IDENTITY() AS INT) AS id")->row();
-        $mpl_id = $rowId ? (int)$rowId->id : 0;
-      }
-      if ($mpl_id <= 0) throw new \RuntimeException('取得 mall_point_log.id 失敗');
-
-      // 準備批次插入物品 rows
-      $itemRows = [];
-      foreach ($merged as $id => $qty) {
-        $meta  = $cnMeta[$id] ?? null;    // 正表
-        if (!$meta) throw new \RuntimeException("正表缺少商品資料：{$id}");
-
-        $itemIdx   = (int)$id;
-        $item_seal = (int)($meta['wSeal'] ?? 0);
-        $max_stack = (int)($meta['max_stack'] ?? 0);
-        $time_sec  = (int)($meta['time_sec'] ?? 0); // -1/0=永久；>0=秒
-
-        // 後台 shop-web log（可保持）
-        $this->db->query("
-          INSERT INTO LUNA_LOGDB_2025.dbo.TB_ITEM_SHOPWEB_LOG
-            (TYPE, USER_IDX, USER_ID, ITEM_IDX, ITEM_DBIDX, SIZE, DATE)
-          VALUES (1, ?, ?, ?, ?, ?, ?)
-        ", [$user_idx, $login_id, $itemIdx, $itemIdx, $qty, $now]);
-
-        $remain = $qty;
-        if ($max_stack > 0) {
-          while ($remain > 0) {
-            $stackSize = ($remain >= $max_stack) ? $max_stack : $remain;
-            $row = [
-              'CHARACTER_IDX'   => $charIdx,
-              'ITEM_IDX'        => $itemIdx,
-              'ITEM_SHOPIDX'    => $user_idx,
-              'ITEM_SHOPLOGIDX' => $mpl_id,
-              'mall_log_id'     => $mpl_id,
-              'ITEM_SEAL'       => $item_seal,
-              'ITEM_DURABILITY' => $stackSize,                // 疊加數
-              'ITEM_POSITION'   => self::SHOP_BAG_POSITION,   // 固定 320
-            ];
-            if ($time_sec > 0) {
-              $row['ITEM_LIMITTIME_SEC'] = $time_sec;
-              $row['ITEM_EXPIRETIME']    = date('Y-m-d H:i:s', time() + $time_sec);
-            }
-            $itemRows[] = $row;
-            $remain -= $stackSize;
-          }
-        } else {
-          for ($i=0; $i<$remain; $i++) {
-            $row = [
-              'CHARACTER_IDX'   => $charIdx,
-              'ITEM_IDX'        => $itemIdx,
-              'ITEM_SHOPIDX'    => $user_idx,
-              'ITEM_SHOPLOGIDX' => $mpl_id,
-              'mall_log_id'     => $mpl_id,
-              'ITEM_SEAL'       => $item_seal,
-              'ITEM_DURABILITY' => 0,
-              'ITEM_POSITION'   => self::SHOP_BAG_POSITION,
-            ];
-            if ($time_sec > 0) {
-              $row['ITEM_LIMITTIME_SEC'] = $time_sec;
-              $row['ITEM_EXPIRETIME']    = date('Y-m-d H:i:s', time() + $time_sec);
-            }
-            $itemRows[] = $row;
-          }
-        }
-      }
-
-      // 批次寫入（若 DAO 有 insert_batch 就用，否則逐筆）
-      if (!empty($itemRows)) {
-        if (method_exists($this->item_dao, 'insert_batch')) {
-          foreach (array_chunk($itemRows, self::BATCH_INSERT_SIZE) as $chunk) {
-            $this->item_dao->insert_batch($chunk);
-          }
-        } else {
-          foreach ($itemRows as $r) { $this->item_dao->insert_item($r); }
-        }
-      }
-
-      $progress[] = 'item';
-
-      $this->db->trans_commit();
-
-      // 回傳
-      $respItems = [];
-      foreach ($merged as $id => $qty) {
-        $respItems[] = [
-          'id'    => $id,
-          'qty'   => $qty,
-          'price' => (int)$itemMap[$id]['sellstatus'],
-        ];
-      }
-
-      $progress[] = 'done';
-
-      $this->release_checkout_mutex();
-      return $this->json_ok([
-        'msg'      => '購買成功',
-        'before'   => $before,
-        'after'    => $after,
-        'total'    => $total,
-        'items'    => $respItems,
-        'order_no' => $order_no,
-        'progress' => $progress,
-      ]);
-
-    } catch (\Throwable $e) {
-      $this->db->trans_rollback();
-      $this->release_checkout_mutex();
-      log_message('error', 'Checkout失敗: '.$e->getMessage());
-      return $this->json_fail('交易失敗，請稍後再試');
-    }
+  if (empty($this->session->userdata('user_id'))) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(401)
+      ->set_output(json_encode(['ok'=>false,'msg'=>'not login'] + $csrfNew, JSON_UNESCAPED_UNICODE));
   }
+
+  // CSRF
+  $tokenName = $this->security->get_csrf_token_name();
+  $tokenPost = $this->input->post($tokenName); // 不要 true，避免被 XSS 過濾更動
+  $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
+  $validHash = $this->security->get_csrf_hash();
+  $csrf_ok   = ($tokenPost && hash_equals($validHash, $tokenPost)) || ($tokenHead && hash_equals($validHash, $tokenHead));
+  if(!$csrf_ok){
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(403)
+      ->set_output(json_encode(['ok'=>false,'msg'=>'CSRF 驗證失敗'] + $csrfNew, JSON_UNESCAPED_UNICODE));
+  }
+
+  // 讀 items：不能用 XSS 過濾，否則 JSON 會被破壞
+  $items_json = $this->input->post('items');              // <- 不要加 true
+  if ($items_json === null || $items_json === '') {
+    // 有些前端用 JSON 傳 raw body
+    $items_json = $this->input->raw_input_stream;
+    if (is_string($items_json)) {
+      $tmp = json_decode($items_json, true);
+      if (is_array($tmp) && isset($tmp['items'])) {
+        $items = $tmp['items'];
+      } else {
+        $items = $tmp; // 直接就是 array
+      }
+    } else {
+      $items = null;
+    }
+  } else {
+    $items = json_decode($items_json, true);
+  }
+
+  if (!is_array($items) || empty($items)) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(400)
+      ->set_output(json_encode(['ok'=>false,'msg'=>'items 格式錯誤或為空'] + $csrfNew, JSON_UNESCAPED_UNICODE));
+  }
+
+  // 計總金額
+  $total = 0; $totalQty = 0;
+  foreach ($items as $it) {
+    $qty   = (int)($it['qty']   ?? 0);
+    $price = (int)($it['price'] ?? 0);
+    if ($qty<=0 || $price<0) {
+      $csrfNew = $this->ensure_csrf();
+      return $this->output->set_status_header(400)
+        ->set_output(json_encode(['ok'=>false,'msg'=>'qty/price 非法'] + $csrfNew, JSON_UNESCAPED_UNICODE));
+    }
+    $total    += $qty * $price;
+    $totalQty += $qty;
+  }
+  if ($total<=0) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(400)
+      ->set_output(json_encode(['ok'=>false,'msg'=>'total 金額錯誤'] + $csrfNew, JSON_UNESCAPED_UNICODE));
+  }
+
+  // 取帳號（session 可能放 id_idx 或 id_loginid，兩邊都試）
+  $sess_id  = $this->session->userdata('user_id');
+  $accQuery = $this->db->select('id_idx, id_loginid, mall_point')->from('dbo.chr_log_info');
+  if (ctype_digit((string)$sess_id)) {
+    $accQuery->group_start()
+             ->where('id_idx', (int)$sess_id)
+             ->or_where('id_loginid', (string)$sess_id)
+             ->group_end();
+  } else {
+    $accQuery->where('id_loginid', (string)$sess_id);
+  }
+  $acc = $accQuery->get()->row_array();
+
+  if(!$acc){
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(404)
+      ->set_output(json_encode(['ok'=>false,'msg'=>'account not found'] + $csrfNew, JSON_UNESCAPED_UNICODE));
+  }
+
+  $user_idx = (int)$acc['id_idx'];
+  $before   = (int)$acc['mall_point'];
+
+  $this->db->trans_begin();
+  try {
+    // 原子扣點：確保 mall_point >= total
+    $this->db->query("
+      UPDATE dbo.chr_log_info
+         SET mall_point = mall_point - ?
+       WHERE id_idx = ?
+         AND mall_point >= ?
+    ", [$total, $user_idx, $total]);
+
+    if ($this->db->affected_rows() < 1) {
+      $this->db->trans_rollback();
+      $csrfNew = $this->ensure_csrf();
+      return $this->output->set_status_header(400)
+        ->set_output(json_encode(['ok'=>false,'msg'=>'點數不足或扣點衝突'] + $csrfNew, JSON_UNESCAPED_UNICODE));
+    }
+
+    // Mall point log
+    $after = $before - $total;
+    $ip    = $this->input->ip_address();
+    $memo  = '商城結帳';
+    $this->mall_point_dao->insert_log($user_idx, -$total, $before, $after, $memo, $acc['id_loginid'], $ip);
+
+    // shop_log（TYPE=1：商城購買）
+    $now = (new DateTime('now', new DateTimeZone('Asia/Taipei')))->format('Y-m-d H:i:s');
+    $log_idx = $this->shop_log_dao->insert_item([
+      'TYPE'=>1,
+      'USER_IDX'=>$user_idx,
+      'USER_ID'=>(string)$user_idx,
+      'ITEM_IDX'=>0,
+      'ITEM_DBIDX'=>0,
+      'SIZE'=>$totalQty,
+      'DATE'=>$now,
+    ]);
+    if ($log_idx === false) throw new \RuntimeException('shop_log 失敗');
+
+    // 簡化投遞（發到商城包包 ITEM_POSITION=320；SEAL=0）
+    foreach ($items as $it) {
+      $iid = (int)$it['item_idx'];
+      $qty = (int)$it['qty'];
+      for($i=0;$i<$qty;$i++){
+        $ret = $this->item_dao->insert_item([
+          'CHARACTER_IDX'   => 0,
+          'ITEM_IDX'        => $iid,
+          'ITEM_SHOPIDX'    => $user_idx,
+          'ITEM_SHOPLOGIDX' => $log_idx,
+          'ITEM_SEAL'       => 0,
+          'ITEM_DURABILITY' => 0,
+          'ITEM_POSITION'   => 320,
+        ]);
+        if(!$ret) throw new \RuntimeException('TB_ITEM 寫入失敗');
+      }
+    }
+
+    $this->db->trans_commit();
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_output(json_encode([
+      'ok'=>true,
+      'msg'=>'checkout ok',
+      'before'=>$before,
+      'after'=>$after,
+    ] + $csrfNew, JSON_UNESCAPED_UNICODE));
+  } catch(\Throwable $e){
+    $this->db->trans_rollback();
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(500)
+      ->set_output(json_encode(['ok'=>false,'msg'=>$e->getMessage()] + $csrfNew, JSON_UNESCAPED_UNICODE));
+  }
+}
+
 }
