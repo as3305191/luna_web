@@ -49,8 +49,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
+$route['luna/luna_gm_product_set/balance']['GET']  = 'luna_gm_product_set/balance';
+$route['luna/luna_gm_product_set/balance']['POST'] = 'luna_gm_product_set/balance';
+
 $route['default_controller'] = 'login';
 $route['^(app)/(.+)$'] = "$2";
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
