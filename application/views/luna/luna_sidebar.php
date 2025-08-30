@@ -9,10 +9,10 @@
 
   <!-- 剩餘點數（會自動更新） -->
   <div class="card g-my-15">
-    <div class="card-block g-px-15 g-py-12 d-flex align-items-center justify-content-between">
-      <span class="small g-color-gray-dark-v5">剩餘點數</span>
-      <strong id="mallPoint" class="h5 mb-0 mono">—</strong>
-    </div>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+      剩餘點數
+      <span id="mallPoint" class="mono">--</span>
+    </li>
   </div>
 
   <!-- Sidebar Navigation -->

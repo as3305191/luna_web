@@ -5,6 +5,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
+<meta name="ci-csrf-name" content="<?= $this->security->get_csrf_token_name(); ?>">
+<meta name="ci-csrf-hash" content="<?= $this->security->get_csrf_hash(); ?>">
+<meta name="checkout-nonce" content="<?= htmlspecialchars($checkout_nonce ?? '') ?>">
 
 <link rel="shortcut icon" href="<?= base_url() ?>luna_1/favicon.ico">
 <!-- Google Fonts -->

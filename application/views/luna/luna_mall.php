@@ -2,8 +2,6 @@
 <html lang="zh-Hant">
 <head>
   <?php $this->load->view("luna/luna_head"); ?>
-  <meta name="checkout-nonce" content="<?= htmlspecialchars($checkout_nonce ?? '') ?>">
-
   <style>
     /* 載入層：預設隱藏，.is-active 才顯示 */
     #checkoutLoading{ display:none; }
@@ -24,10 +22,10 @@
             <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0">
               <div class="d-flex align-items-center">
                 <h3 class="h5 mb-0"><i class="icon-bag g-mr-8"></i> 商城</h3>
-                <!-- <span class="badge-dot g-ml-15">
+                 <span class="badge-dot g-ml-15">
                   <i></i> 剩餘點數：
                   <span id="mallPoint" class="mono">--</span>
-                </span> -->
+                </span>
               </div>
 
               <div class="shop-toolbar d-flex align-items-center flex-wrap">
@@ -174,7 +172,8 @@
 </div>
 
 <!-- 隱藏表單（結帳） -->
-<form id="checkoutForm" class="d-none" method="post" action="<?=site_url('luna/Luna_mall/checkout')?>">
+<form id="checkoutForm" class="d-none" method="post" action="<?=site_url('luna/luna_mall/checkout')?>">
+
   <?php if (!empty($csrf_name)): ?>
     <input type="hidden" name="<?=$csrf_name?>" value="<?=$csrf_hash?>">
   <?php endif; ?>
@@ -250,41 +249,27 @@
   const mpEl = document.getElementById('mallPoint');
 
   function refreshPoint(){
-  if(!mpEl) return;
-
-  // 取當前 CSRF pair（hidden 欄位）
-  const pair = getCsrfPair();
-
-  // body: form-data（帶目前的 CSRF）
-  const fd = new FormData();
-  if (pair.name && pair.value) fd.append(pair.name, pair.value);
-
-  // header: 也帶一份（後端若支援 X-CSRF-Token）
-  const headers = {'X-Requested-With':'XMLHttpRequest'};
-  if (pair.value) headers['X-CSRF-Token'] = pair.value;
-
-  fetch(ENDPOINT_BAL, {
-    method:'POST',
-    body: fd,
-    headers,
-    credentials:'include'
-  })
-  .then(r => r.ok ? r.json() : null)
-  .then(j => {
-    // —— 換新 CSRF（方案B：j.csrf = {name, hash}；相容舊版：j.csrf_name / j.csrf_hash）——
-    if (j && j.csrf && j.csrf.name && j.csrf.hash) {
-      setCsrfPair(j.csrf.name, j.csrf.hash);
-    } else if (j && j.csrf_name && j.csrf_hash) {
-      setCsrfPair(j.csrf_name, j.csrf_hash);
-    }
-
-    // 更新點數
-    if (j && j.ok && typeof j.mall_point!=='undefined') {
-      mpEl.textContent = nf(j.mall_point);
-    }
-  })
-  .catch(()=>{ /* 靜默忽略即可 */ });
-}
+    if(!mpEl) return;
+    fetch(ENDPOINT_BAL, {
+      method:'GET',
+      headers: {'X-Requested-With':'XMLHttpRequest', 'Accept':'application/json'},
+      credentials:'include'
+    })
+    .then(r => r.ok ? r.json() : null)
+    .then(j => {
+      if (!j) return;
+      // 後端還是會回 CSRF（之後別的 POST 會用到）
+      if (typeof setCsrfPair === 'function') {
+        if (j.csrf && j.csrf.name && j.csrf.hash) setCsrfPair(j.csrf.name, j.csrf.hash);
+        else if (j.csrf_name && j.csrf_hash)      setCsrfPair(j.csrf_name, j.csrf_hash);
+      }
+      if (j.ok && typeof j.mall_point!=='undefined') {
+        try { mpEl.textContent = new Intl.NumberFormat('zh-Hant-TW').format(j.mall_point); }
+        catch(_) { mpEl.textContent = j.mall_point; }
+      }
+    })
+    .catch(()=>{});
+  }
 
 // 啟動輪詢
 refreshPoint();
@@ -596,7 +581,6 @@ setInterval(refreshPoint, 10000);
     btnCheckoutTop.disabled = on || CART.length===0;
   }
  
-<script>
 function doCheckout(){
   if (!CART.length || submitting) return;
 
@@ -624,7 +608,7 @@ function doCheckout(){
   lockCartUI(true);
   showLoading('開始交易...');
 
-  // 硬逾時（避免永遠轉）
+  // 硬逾時，避免永遠轉圈
   const controller = new AbortController();
   const tmr = setTimeout(() => controller.abort(), 15000); // 15s
 
@@ -639,36 +623,28 @@ function doCheckout(){
     signal: controller.signal
   })
   .then(async r => {
-    // 嘗試把回應轉 JSON（連錯誤也轉），以便從 403 取新 token
     let data = null;
-    try { data = await r.clone().json(); } catch(_) {
-      // 不是 JSON，就當作文字；但我們不靠它顯示
-      try { await r.text(); } catch(_){}
-    }
+    try { data = await r.clone().json(); } catch(_) { try { await r.text(); } catch(_){} }
 
     // 任何回應都先更新 token / nonce（如果有）
     if (data) {
       if (typeof setCsrfPair === 'function') {
-        if (data.csrf_name && data.csrf_hash) setCsrfPair(data.csrf_name, data.csrf_hash);
         if (data.csrf && data.csrf.name && data.csrf.hash) setCsrfPair(data.csrf.name, data.csrf.hash);
+        else if (data.csrf_name && data.csrf_hash)         setCsrfPair(data.csrf_name, data.csrf_hash);
       }
-      if (typeof setNonce === 'function' && data.checkout_nonce) {
-        setNonce(data.checkout_nonce);
-      }
+      if (typeof setNonce === 'function' && data.checkout_nonce) setNonce(data.checkout_nonce);
       if (Array.isArray(data.progress)) data.progress.forEach(updateStep);
     }
 
     if (!r.ok) {
-      // 403 大部分是驗證過期 → 已更新 token/nonce，提示重試
       if (r.status === 403) {
-        showToast('安全驗證過期，已自動更新，請再按一次結帳');
+        showToast('安全驗證已更新，請再按一次結帳');
       } else {
         showToast('伺服器忙碌或網路異常，稍後再試');
       }
       throw new Error('HTTP '+r.status);
     }
 
-    // 到這裡一定是 2xx
     return data || {};
   })
   .then(res => {
@@ -677,7 +653,6 @@ function doCheckout(){
       return;
     }
 
-    // 成功：清購物車、更新點數、關抽屜
     alert(
       res.order_no
         ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${new Intl.NumberFormat('zh-Hant-TW').format(res.total)}，剩餘點數 ${new Intl.NumberFormat('zh-Hant-TW').format(res.after)}`
@@ -685,14 +660,14 @@ function doCheckout(){
     );
     CART = []; redrawCart(); closeCart();
 
-    // 直接更新 sidebar 點數（有就更新，沒有就忽略）
+    // 更新點數（有 sidebar 或 header 就會看到）
     if (typeof res.after !== 'undefined') {
       const mpEl2 = document.getElementById('mallPoint');
       if (mpEl2) {
         try { mpEl2.textContent = new Intl.NumberFormat('zh-Hant-TW').format(res.after); }
         catch(_){ mpEl2.textContent = res.after; }
-      } else if (typeof refreshMallPoint === 'function') {
-        refreshMallPoint();
+      } else if (typeof refreshPoint === 'function') {
+        refreshPoint();
       }
     }
   })
@@ -709,7 +684,7 @@ function doCheckout(){
     lockCartUI(false);
   });
 }
-</script>
+
 
   var btnCheckout = document.getElementById('btnCheckout');
   if (btnCheckout) btnCheckout.addEventListener('click', doCheckout);
