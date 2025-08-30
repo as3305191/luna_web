@@ -146,3 +146,9 @@
     .pagination .page-item.disabled .page-link{ color:#999; pointer-events:none; }
   </style>
 </style>
+<script>
+  window.CSRF = {
+    name: '<?= $this->security->get_csrf_token_name() ?>',
+    hash: '<?= $this->security->get_csrf_hash() ?>'
+  };
+</script>

@@ -172,14 +172,14 @@
 </div>
 
 <!-- 隱藏表單（結帳） -->
-<form id="checkoutForm" class="d-none" method="post" action="<?=site_url('luna/luna_mall/checkout')?>">
-
+<form id="checkoutForm" class="d-none" method="post" action="<?=site_url('luna/Luna_mall/checkout')?>">
   <?php if (!empty($csrf_name)): ?>
     <input type="hidden" name="<?=$csrf_name?>" value="<?=$csrf_hash?>">
   <?php endif; ?>
   <input type="hidden" name="nonce" value="<?= htmlspecialchars($checkout_nonce ?? '') ?>">
   <input type="hidden" name="cart">
 </form>
+
 
 <!-- 小通知 -->
 <div id="toastMini" class="toast-mini">已加入購物車</div>
@@ -580,7 +580,7 @@ setInterval(refreshPoint, 10000);
     btnCheckout.disabled = on || CART.length===0;
     btnCheckoutTop.disabled = on || CART.length===0;
   }
- 
+
 function doCheckout(){
   if (!CART.length || submitting) return;
 
@@ -593,95 +593,71 @@ function doCheckout(){
   const formEl = document.getElementById('checkoutForm');
   const fd = new FormData();
 
-  // CSRF
-  const pair = typeof getCsrfPair === 'function' ? getCsrfPair() : {name:null, value:null};
+  // hidden CSRF（表單內）
+  const pair = getCsrfPair();
   if (pair.name && pair.value) fd.append(pair.name, pair.value);
 
   // Nonce（一次性）
-  const nonce = typeof getNonce === 'function' ? getNonce() : '';
+  const nonce = getNonce();
   fd.append('nonce', nonce);
 
-  // Cart
+  // 購物車
   fd.append('cart', JSON.stringify(safeCart));
 
-  // UI 上鎖 + 載入提示
+  // UI 鎖定 + 載入提示
   lockCartUI(true);
   showLoading('開始交易...');
+  updateStep('verify');
+  const bailout = setTimeout(hideLoading, 20000);
 
-  // 硬逾時，避免永遠轉圈
-  const controller = new AbortController();
-  const tmr = setTimeout(() => controller.abort(), 15000); // 15s
-
-  const headers = {'X-Requested-With':'XMLHttpRequest', 'Accept':'application/json'};
-  if (pair.value) headers['X-CSRF-Token'] = pair.value;
+  // Header 也帶 CSRF（雙重容錯）
+  const headers = {'X-Requested-With':'XMLHttpRequest'};
+  if (window.CSRF && window.CSRF.hash) headers['X-CSRF-Token'] = window.CSRF.hash;
 
   fetch(formEl.getAttribute('action'), {
     method:'POST',
-    body: fd,
+    body:fd,
     headers,
-    credentials:'include',
-    signal: controller.signal
+    credentials:'include'
   })
   .then(async r => {
-    let data = null;
-    try { data = await r.clone().json(); } catch(_) { try { await r.text(); } catch(_){} }
-
-    // 任何回應都先更新 token / nonce（如果有）
-    if (data) {
-      if (typeof setCsrfPair === 'function') {
-        if (data.csrf && data.csrf.name && data.csrf.hash) setCsrfPair(data.csrf.name, data.csrf.hash);
-        else if (data.csrf_name && data.csrf_hash)         setCsrfPair(data.csrf_name, data.csrf_hash);
-      }
-      if (typeof setNonce === 'function' && data.checkout_nonce) setNonce(data.checkout_nonce);
-      if (Array.isArray(data.progress)) data.progress.forEach(updateStep);
+    const txt = await r.text();
+    let j = null;
+    try { j = JSON.parse(txt); } catch(_){}
+    // 任何狀態都嘗試把後端回來的新 CSRF/nonce 更新掉
+    if (j && j.csrf_name && j.csrf_hash) {
+      window.CSRF = {name: j.csrf_name, hash: j.csrf_hash};
+      setCsrfPair(j.csrf_name, j.csrf_hash);
     }
-
-    if (!r.ok) {
-      if (r.status === 403) {
-        showToast('安全驗證已更新，請再按一次結帳');
-      } else {
-        showToast('伺服器忙碌或網路異常，稍後再試');
-      }
-      throw new Error('HTTP '+r.status);
-    }
-
-    return data || {};
+    if (j && j.checkout_nonce) setNonce(j.checkout_nonce);
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    return j;
   })
   .then(res => {
-    if (!res.ok) {
+    if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
+
+    if (!res || !res.ok) {
       showToast(res && res.msg ? res.msg : '結帳失敗');
+      hideLoading(); clearTimeout(bailout); lockCartUI(false);
       return;
     }
 
     alert(
       res.order_no
-        ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${new Intl.NumberFormat('zh-Hant-TW').format(res.total)}，剩餘點數 ${new Intl.NumberFormat('zh-Hant-TW').format(res.after)}`
-        : '購買成功！'
+        ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${nf(res.total)}，剩餘點數 ${nf(res.after)}`
+        : '購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after)
     );
-    CART = []; redrawCart(); closeCart();
 
-    // 更新點數（有 sidebar 或 header 就會看到）
-    if (typeof res.after !== 'undefined') {
-      const mpEl2 = document.getElementById('mallPoint');
-      if (mpEl2) {
-        try { mpEl2.textContent = new Intl.NumberFormat('zh-Hant-TW').format(res.after); }
-        catch(_){ mpEl2.textContent = res.after; }
-      } else if (typeof refreshPoint === 'function') {
-        refreshPoint();
-      }
-    }
+    CART = []; redrawCart(); closeCart();
+    const mpEl2 = document.getElementById('mallPoint');
+    if (mpEl2 && typeof res.after!=='undefined') mpEl2.textContent = nf(res.after);
+
+    hideLoading(); clearTimeout(bailout); lockCartUI(false);
   })
   .catch((err) => {
-    if (err && err.name === 'AbortError') {
-      showToast('連線逾時，請再試一次');
-    } else if (String(err && err.message).indexOf('HTTP') === -1) {
-      showToast('網路異常，請稍後再試');
-    }
-  })
-  .finally(() => {
-    clearTimeout(tmr);
-    hideLoading();
-    lockCartUI(false);
+    // 這裡多半是 403/500，前面已經把新 CSRF/nonce 接走了
+    showToast('網路或驗證異常，請再試一次');
+    hideLoading(); clearTimeout(bailout); lockCartUI(false);
   });
 }
 

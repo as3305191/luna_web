@@ -288,97 +288,757 @@ class Luna_gm_product_set extends MY_Base_Controller {
     }
   }
 
-  public function balance() {
+ public function balance()
+{
   $this->output->set_content_type('application/json');
 
-  // 僅允許 POST
-  if (strtoupper($this->input->method(TRUE)) !== 'POST') {
-    $resp = [
-      'ok' => false,
-      'msg' => 'method not allowed',
-      'csrf_name' => $this->security->get_csrf_token_name(),
-      'csrf_hash' => $this->security->get_csrf_hash(),
-    ];
-    return $this->output->set_status_header(405)
-      ->set_output(json_encode($resp, JSON_UNESCAPED_UNICODE));
-  }
+  // 先確保 CSRF 已建立（第一次呼叫就會種 cookie）
+  $csrf = $this->ensure_csrf();
 
-  // CSRF 驗證（支援表單欄位與 X-CSRF-Token 標頭）
-  $tokenName = $this->security->get_csrf_token_name();
-  $tokenPost = $this->input->post($tokenName, true);
-  $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
-  $validHash = $this->security->get_csrf_hash();
-  $csrf_ok = false;
-  if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
-  if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
-  if (!$csrf_ok) {
-    $resp = [
-      'ok' => false,
-      'msg'=> 'CSRF 驗證失敗',
-      'csrf_name' => $this->security->get_csrf_token_name(),
-      'csrf_hash' => $this->security->get_csrf_hash(),
-    ];
-    return $this->output->set_status_header(403)
-      ->set_output(json_encode($resp, JSON_UNESCAPED_UNICODE));
-  }
+  $method = strtoupper($this->input->method(TRUE));
 
-  // 登入檢查
+  // 登入檢查（GET/POST 都要）
   if (empty($this->session->userdata('user_id'))) {
-    $resp = [
-      'ok' => false,
-      'msg'=> 'not login',
-      'csrf_name' => $this->security->get_csrf_token_name(),
-      'csrf_hash' => $this->security->get_csrf_hash(),
-    ];
+    $csrfNew = $this->ensure_csrf();
     return $this->output->set_status_header(401)
-      ->set_output(json_encode($resp, JSON_UNESCAPED_UNICODE));
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'not login',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
   }
 
-  // 取身份線索
+  // 允許 GET/POST/OPTIONS；POST 需要 CSRF
+  if ($method === 'POST') {
+    $tokenName = $this->security->get_csrf_token_name();
+    $tokenPost = $this->input->post($tokenName, true);
+    $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
+    $validHash = $this->security->get_csrf_hash();
+
+    $csrf_ok = false;
+    if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
+    if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
+
+    if (!$csrf_ok) {
+      $csrfNew = $this->ensure_csrf();
+      return $this->output->set_status_header(403)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'CSRF 驗證失敗',
+          'csrf_name' => $csrfNew['csrf_name'],
+          'csrf_hash' => $csrfNew['csrf_hash'],
+        ], JSON_UNESCAPED_UNICODE));
+    }
+  } else if ($method !== 'GET' && $method !== 'OPTIONS') {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(405)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'method not allowed',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 查詢 mall_point
   $s_data    = $this->setup_user_data([]);
   $login_id  = $s_data['login_user_id'] ?? '';
   $sess_uid  = $this->session->userdata('user_id');
 
-  // 查詢（用 group_start 包起來避免 OR 擴散）
   $this->db->select('id_idx, mall_point')
            ->from('dbo.chr_log_info')
            ->group_start();
 
   $added = false;
-  if ($login_id !== '') {
-    $this->db->where('id_loginid', $login_id);
-    $added = true;
-  }
+  if ($login_id !== '') { $this->db->where('id_loginid', $login_id); $added = true; }
   if (is_numeric($sess_uid)) {
     if ($added) $this->db->or_where('id_idx', (int)$sess_uid);
     else        $this->db->where('id_idx', (int)$sess_uid);
-    $added = true;
   }
   $this->db->group_end()->limit(1);
 
   $row = $this->db->get()->row_array();
 
   if (!$row) {
-    $resp = [
-      'ok' => false,
-      'msg'=> 'account not found',
-      'csrf_name' => $this->security->get_csrf_token_name(),
-      'csrf_hash' => $this->security->get_csrf_hash(),
-    ];
+    $csrfNew = $this->ensure_csrf();
     return $this->output->set_status_header(404)
-      ->set_output(json_encode($resp, JSON_UNESCAPED_UNICODE));
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'account not found',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
   }
 
   // 成功回傳 + 最新 CSRF
-  $resp = [
+  $csrfNew = $this->ensure_csrf();
+  return $this->output->set_output(json_encode([
     'ok' => true,
-    'user_idx' => (int)$row['id_idx'],
+    'user_idx'   => (int)$row['id_idx'],
     'mall_point' => (int)$row['mall_point'],
-    'ts' => time(),
-    'csrf_name' => $this->security->get_csrf_token_name(),
-    'csrf_hash' => $this->security->get_csrf_hash(),
-  ];
-  return $this->output->set_output(json_encode($resp, JSON_UNESCAPED_UNICODE));
+    'ts'         => time(),
+    'csrf_name'  => $csrfNew['csrf_name'],
+    'csrf_hash'  => $csrfNew['csrf_hash'],
+  ], JSON_UNESCAPED_UNICODE));
+}
+public function balance()
+{
+  $this->output->set_content_type('application/json');
+
+  // 先確保 CSRF 已建立（第一次呼叫就會種 cookie）
+  $csrf = $this->ensure_csrf();
+
+  $method = strtoupper($this->input->method(TRUE));
+
+  // 登入檢查（GET/POST 都要）
+  if (empty($this->session->userdata('user_id'))) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(401)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'not login',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 允許 GET/POST/OPTIONS；POST 需要 CSRF
+  if ($method === 'POST') {
+    $tokenName = $this->security->get_csrf_token_name();
+    $tokenPost = $this->input->post($tokenName, true);
+    $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
+    $validHash = $this->security->get_csrf_hash();
+
+    $csrf_ok = false;
+    if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
+    if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
+
+    if (!$csrf_ok) {
+      $csrfNew = $this->ensure_csrf();
+      return $this->output->set_status_header(403)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'CSRF 驗證失敗',
+          'csrf_name' => $csrfNew['csrf_name'],
+          'csrf_hash' => $csrfNew['csrf_hash'],
+        ], JSON_UNESCAPED_UNICODE));
+    }
+  } else if ($method !== 'GET' && $method !== 'OPTIONS') {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(405)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'method not allowed',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 查詢 mall_point
+  $s_data    = $this->setup_user_data([]);
+  $login_id  = $s_data['login_user_id'] ?? '';
+  $sess_uid  = $this->session->userdata('user_id');
+
+  $this->db->select('id_idx, mall_point')
+           ->from('dbo.chr_log_info')
+           ->group_start();
+
+  $added = false;
+  if ($login_id !== '') { $this->db->where('id_loginid', $login_id); $added = true; }
+  if (is_numeric($sess_uid)) {
+    if ($added) $this->db->or_where('id_idx', (int)$sess_uid);
+    else        $this->db->where('id_idx', (int)$sess_uid);
+  }
+  $this->db->group_end()->limit(1);
+
+  $row = $this->db->get()->row_array();
+
+  if (!$row) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(404)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'account not found',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 成功回傳 + 最新 CSRF
+  $csrfNew = $this->ensure_csrf();
+  return $this->output->set_output(json_encode([
+    'ok' => true,
+    'user_idx'   => (int)$row['id_idx'],
+    'mall_point' => (int)$row['mall_point'],
+    'ts'         => time(),
+    'csrf_name'  => $csrfNew['csrf_name'],
+    'csrf_hash'  => $csrfNew['csrf_hash'],
+  ], JSON_UNESCAPED_UNICODE));
+}
+public function balance()
+{
+  $this->output->set_content_type('application/json');
+
+  // 先確保 CSRF 已建立（第一次呼叫就會種 cookie）
+  $csrf = $this->ensure_csrf();
+
+  $method = strtoupper($this->input->method(TRUE));
+
+  // 登入檢查（GET/POST 都要）
+  if (empty($this->session->userdata('user_id'))) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(401)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'not login',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 允許 GET/POST/OPTIONS；POST 需要 CSRF
+  if ($method === 'POST') {
+    $tokenName = $this->security->get_csrf_token_name();
+    $tokenPost = $this->input->post($tokenName, true);
+    $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
+    $validHash = $this->security->get_csrf_hash();
+
+    $csrf_ok = false;
+    if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
+    if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
+
+    if (!$csrf_ok) {
+      $csrfNew = $this->ensure_csrf();
+      return $this->output->set_status_header(403)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'CSRF 驗證失敗',
+          'csrf_name' => $csrfNew['csrf_name'],
+          'csrf_hash' => $csrfNew['csrf_hash'],
+        ], JSON_UNESCAPED_UNICODE));
+    }
+  } else if ($method !== 'GET' && $method !== 'OPTIONS') {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(405)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'method not allowed',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 查詢 mall_point
+  $s_data    = $this->setup_user_data([]);
+  $login_id  = $s_data['login_user_id'] ?? '';
+  $sess_uid  = $this->session->userdata('user_id');
+
+  $this->db->select('id_idx, mall_point')
+           ->from('dbo.chr_log_info')
+           ->group_start();
+
+  $added = false;
+  if ($login_id !== '') { $this->db->where('id_loginid', $login_id); $added = true; }
+  if (is_numeric($sess_uid)) {
+    if ($added) $this->db->or_where('id_idx', (int)$sess_uid);
+    else        $this->db->where('id_idx', (int)$sess_uid);
+  }
+  $this->db->group_end()->limit(1);
+
+  $row = $this->db->get()->row_array();
+
+  if (!$row) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(404)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'account not found',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 成功回傳 + 最新 CSRF
+  $csrfNew = $this->ensure_csrf();
+  return $this->output->set_output(json_encode([
+    'ok' => true,
+    'user_idx'   => (int)$row['id_idx'],
+    'mall_point' => (int)$row['mall_point'],
+    'ts'         => time(),
+    'csrf_name'  => $csrfNew['csrf_name'],
+    'csrf_hash'  => $csrfNew['csrf_hash'],
+  ], JSON_UNESCAPED_UNICODE));
+}
+public function balance()
+{
+  $this->output->set_content_type('application/json');
+
+  // 先確保 CSRF 已建立（第一次呼叫就會種 cookie）
+  $csrf = $this->ensure_csrf();
+
+  $method = strtoupper($this->input->method(TRUE));
+
+  // 登入檢查（GET/POST 都要）
+  if (empty($this->session->userdata('user_id'))) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(401)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'not login',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 允許 GET/POST/OPTIONS；POST 需要 CSRF
+  if ($method === 'POST') {
+    $tokenName = $this->security->get_csrf_token_name();
+    $tokenPost = $this->input->post($tokenName, true);
+    $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
+    $validHash = $this->security->get_csrf_hash();
+
+    $csrf_ok = false;
+    if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
+    if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
+
+    if (!$csrf_ok) {
+      $csrfNew = $this->ensure_csrf();
+      return $this->output->set_status_header(403)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'CSRF 驗證失敗',
+          'csrf_name' => $csrfNew['csrf_name'],
+          'csrf_hash' => $csrfNew['csrf_hash'],
+        ], JSON_UNESCAPED_UNICODE));
+    }
+  } else if ($method !== 'GET' && $method !== 'OPTIONS') {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(405)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'method not allowed',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 查詢 mall_point
+  $s_data    = $this->setup_user_data([]);
+  $login_id  = $s_data['login_user_id'] ?? '';
+  $sess_uid  = $this->session->userdata('user_id');
+
+  $this->db->select('id_idx, mall_point')
+           ->from('dbo.chr_log_info')
+           ->group_start();
+
+  $added = false;
+  if ($login_id !== '') { $this->db->where('id_loginid', $login_id); $added = true; }
+  if (is_numeric($sess_uid)) {
+    if ($added) $this->db->or_where('id_idx', (int)$sess_uid);
+    else        $this->db->where('id_idx', (int)$sess_uid);
+  }
+  $this->db->group_end()->limit(1);
+
+  $row = $this->db->get()->row_array();
+
+  if (!$row) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(404)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'account not found',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 成功回傳 + 最新 CSRF
+  $csrfNew = $this->ensure_csrf();
+  return $this->output->set_output(json_encode([
+    'ok' => true,
+    'user_idx'   => (int)$row['id_idx'],
+    'mall_point' => (int)$row['mall_point'],
+    'ts'         => time(),
+    'csrf_name'  => $csrfNew['csrf_name'],
+    'csrf_hash'  => $csrfNew['csrf_hash'],
+  ], JSON_UNESCAPED_UNICODE));
+}
+public function balance()
+{
+  $this->output->set_content_type('application/json');
+
+  // 先確保 CSRF 已建立（第一次呼叫就會種 cookie）
+  $csrf = $this->ensure_csrf();
+
+  $method = strtoupper($this->input->method(TRUE));
+
+  // 登入檢查（GET/POST 都要）
+  if (empty($this->session->userdata('user_id'))) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(401)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'not login',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 允許 GET/POST/OPTIONS；POST 需要 CSRF
+  if ($method === 'POST') {
+    $tokenName = $this->security->get_csrf_token_name();
+    $tokenPost = $this->input->post($tokenName, true);
+    $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
+    $validHash = $this->security->get_csrf_hash();
+
+    $csrf_ok = false;
+    if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
+    if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
+
+    if (!$csrf_ok) {
+      $csrfNew = $this->ensure_csrf();
+      return $this->output->set_status_header(403)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'CSRF 驗證失敗',
+          'csrf_name' => $csrfNew['csrf_name'],
+          'csrf_hash' => $csrfNew['csrf_hash'],
+        ], JSON_UNESCAPED_UNICODE));
+    }
+  } else if ($method !== 'GET' && $method !== 'OPTIONS') {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(405)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'method not allowed',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 查詢 mall_point
+  $s_data    = $this->setup_user_data([]);
+  $login_id  = $s_data['login_user_id'] ?? '';
+  $sess_uid  = $this->session->userdata('user_id');
+
+  $this->db->select('id_idx, mall_point')
+           ->from('dbo.chr_log_info')
+           ->group_start();
+
+  $added = false;
+  if ($login_id !== '') { $this->db->where('id_loginid', $login_id); $added = true; }
+  if (is_numeric($sess_uid)) {
+    if ($added) $this->db->or_where('id_idx', (int)$sess_uid);
+    else        $this->db->where('id_idx', (int)$sess_uid);
+  }
+  $this->db->group_end()->limit(1);
+
+  $row = $this->db->get()->row_array();
+
+  if (!$row) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(404)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'account not found',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 成功回傳 + 最新 CSRF
+  $csrfNew = $this->ensure_csrf();
+  return $this->output->set_output(json_encode([
+    'ok' => true,
+    'user_idx'   => (int)$row['id_idx'],
+    'mall_point' => (int)$row['mall_point'],
+    'ts'         => time(),
+    'csrf_name'  => $csrfNew['csrf_name'],
+    'csrf_hash'  => $csrfNew['csrf_hash'],
+  ], JSON_UNESCAPED_UNICODE));
+}
+public function balance()
+{
+  $this->output->set_content_type('application/json');
+
+  // 先確保 CSRF 已建立（第一次呼叫就會種 cookie）
+  $csrf = $this->ensure_csrf();
+
+  $method = strtoupper($this->input->method(TRUE));
+
+  // 登入檢查（GET/POST 都要）
+  if (empty($this->session->userdata('user_id'))) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(401)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'not login',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 允許 GET/POST/OPTIONS；POST 需要 CSRF
+  if ($method === 'POST') {
+    $tokenName = $this->security->get_csrf_token_name();
+    $tokenPost = $this->input->post($tokenName, true);
+    $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
+    $validHash = $this->security->get_csrf_hash();
+
+    $csrf_ok = false;
+    if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
+    if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
+
+    if (!$csrf_ok) {
+      $csrfNew = $this->ensure_csrf();
+      return $this->output->set_status_header(403)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'CSRF 驗證失敗',
+          'csrf_name' => $csrfNew['csrf_name'],
+          'csrf_hash' => $csrfNew['csrf_hash'],
+        ], JSON_UNESCAPED_UNICODE));
+    }
+  } else if ($method !== 'GET' && $method !== 'OPTIONS') {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(405)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'method not allowed',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 查詢 mall_point
+  $s_data    = $this->setup_user_data([]);
+  $login_id  = $s_data['login_user_id'] ?? '';
+  $sess_uid  = $this->session->userdata('user_id');
+
+  $this->db->select('id_idx, mall_point')
+           ->from('dbo.chr_log_info')
+           ->group_start();
+
+  $added = false;
+  if ($login_id !== '') { $this->db->where('id_loginid', $login_id); $added = true; }
+  if (is_numeric($sess_uid)) {
+    if ($added) $this->db->or_where('id_idx', (int)$sess_uid);
+    else        $this->db->where('id_idx', (int)$sess_uid);
+  }
+  $this->db->group_end()->limit(1);
+
+  $row = $this->db->get()->row_array();
+
+  if (!$row) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(404)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'account not found',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 成功回傳 + 最新 CSRF
+  $csrfNew = $this->ensure_csrf();
+  return $this->output->set_output(json_encode([
+    'ok' => true,
+    'user_idx'   => (int)$row['id_idx'],
+    'mall_point' => (int)$row['mall_point'],
+    'ts'         => time(),
+    'csrf_name'  => $csrfNew['csrf_name'],
+    'csrf_hash'  => $csrfNew['csrf_hash'],
+  ], JSON_UNESCAPED_UNICODE));
+}
+public function balance()
+{
+  $this->output->set_content_type('application/json');
+
+  // 先確保 CSRF 已建立（第一次呼叫就會種 cookie）
+  $csrf = $this->ensure_csrf();
+
+  $method = strtoupper($this->input->method(TRUE));
+
+  // 登入檢查（GET/POST 都要）
+  if (empty($this->session->userdata('user_id'))) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(401)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'not login',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 允許 GET/POST/OPTIONS；POST 需要 CSRF
+  if ($method === 'POST') {
+    $tokenName = $this->security->get_csrf_token_name();
+    $tokenPost = $this->input->post($tokenName, true);
+    $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
+    $validHash = $this->security->get_csrf_hash();
+
+    $csrf_ok = false;
+    if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
+    if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
+
+    if (!$csrf_ok) {
+      $csrfNew = $this->ensure_csrf();
+      return $this->output->set_status_header(403)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'CSRF 驗證失敗',
+          'csrf_name' => $csrfNew['csrf_name'],
+          'csrf_hash' => $csrfNew['csrf_hash'],
+        ], JSON_UNESCAPED_UNICODE));
+    }
+  } else if ($method !== 'GET' && $method !== 'OPTIONS') {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(405)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'method not allowed',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 查詢 mall_point
+  $s_data    = $this->setup_user_data([]);
+  $login_id  = $s_data['login_user_id'] ?? '';
+  $sess_uid  = $this->session->userdata('user_id');
+
+  $this->db->select('id_idx, mall_point')
+           ->from('dbo.chr_log_info')
+           ->group_start();
+
+  $added = false;
+  if ($login_id !== '') { $this->db->where('id_loginid', $login_id); $added = true; }
+  if (is_numeric($sess_uid)) {
+    if ($added) $this->db->or_where('id_idx', (int)$sess_uid);
+    else        $this->db->where('id_idx', (int)$sess_uid);
+  }
+  $this->db->group_end()->limit(1);
+
+  $row = $this->db->get()->row_array();
+
+  if (!$row) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(404)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'account not found',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 成功回傳 + 最新 CSRF
+  $csrfNew = $this->ensure_csrf();
+  return $this->output->set_output(json_encode([
+    'ok' => true,
+    'user_idx'   => (int)$row['id_idx'],
+    'mall_point' => (int)$row['mall_point'],
+    'ts'         => time(),
+    'csrf_name'  => $csrfNew['csrf_name'],
+    'csrf_hash'  => $csrfNew['csrf_hash'],
+  ], JSON_UNESCAPED_UNICODE));
+}
+public function balance()
+{
+  $this->output->set_content_type('application/json');
+
+  // 先確保 CSRF 已建立（第一次呼叫就會種 cookie）
+  $csrf = $this->ensure_csrf();
+
+  $method = strtoupper($this->input->method(TRUE));
+
+  // 登入檢查（GET/POST 都要）
+  if (empty($this->session->userdata('user_id'))) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(401)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'not login',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 允許 GET/POST/OPTIONS；POST 需要 CSRF
+  if ($method === 'POST') {
+    $tokenName = $this->security->get_csrf_token_name();
+    $tokenPost = $this->input->post($tokenName, true);
+    $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
+    $validHash = $this->security->get_csrf_hash();
+
+    $csrf_ok = false;
+    if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
+    if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
+
+    if (!$csrf_ok) {
+      $csrfNew = $this->ensure_csrf();
+      return $this->output->set_status_header(403)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'CSRF 驗證失敗',
+          'csrf_name' => $csrfNew['csrf_name'],
+          'csrf_hash' => $csrfNew['csrf_hash'],
+        ], JSON_UNESCAPED_UNICODE));
+    }
+  } else if ($method !== 'GET' && $method !== 'OPTIONS') {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(405)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'method not allowed',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 查詢 mall_point
+  $s_data    = $this->setup_user_data([]);
+  $login_id  = $s_data['login_user_id'] ?? '';
+  $sess_uid  = $this->session->userdata('user_id');
+
+  $this->db->select('id_idx, mall_point')
+           ->from('dbo.chr_log_info')
+           ->group_start();
+
+  $added = false;
+  if ($login_id !== '') { $this->db->where('id_loginid', $login_id); $added = true; }
+  if (is_numeric($sess_uid)) {
+    if ($added) $this->db->or_where('id_idx', (int)$sess_uid);
+    else        $this->db->where('id_idx', (int)$sess_uid);
+  }
+  $this->db->group_end()->limit(1);
+
+  $row = $this->db->get()->row_array();
+
+  if (!$row) {
+    $csrfNew = $this->ensure_csrf();
+    return $this->output->set_status_header(404)
+      ->set_output(json_encode([
+        'ok' => false,
+        'msg'=> 'account not found',
+        'csrf_name' => $csrfNew['csrf_name'],
+        'csrf_hash' => $csrfNew['csrf_hash'],
+      ], JSON_UNESCAPED_UNICODE));
+  }
+
+  // 成功回傳 + 最新 CSRF
+  $csrfNew = $this->ensure_csrf();
+  return $this->output->set_output(json_encode([
+    'ok' => true,
+    'user_idx'   => (int)$row['id_idx'],
+    'mall_point' => (int)$row['mall_point'],
+    'ts'         => time(),
+    'csrf_name'  => $csrfNew['csrf_name'],
+    'csrf_hash'  => $csrfNew['csrf_hash'],
+  ], JSON_UNESCAPED_UNICODE));
 }
 
 
