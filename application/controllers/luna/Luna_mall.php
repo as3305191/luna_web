@@ -158,6 +158,29 @@ class Luna_mall extends MY_Base_Controller {
     // keep ts
   }
 
+  /** 取一次 JSON body（若 Content-Type=application/json），避免重複 decode */
+  private function get_json_body(): ?array {
+    static $cached = null;
+    if ($cached !== null) return $cached;
+    $raw = trim($this->input->raw_input_stream ?? '');
+    if ($raw === '') { $cached = null; return null; }
+    $jb = json_decode($raw, true);
+    $cached = is_array($jb) ? $jb : null;
+    return $cached;
+  }
+
+  /** 從 POST / Header / JSON 取 nonce：支援 nonce/checkout_nonce 與 X-Checkout-Nonce */
+  private function read_nonce_from_request(): ?string {
+    $n = $this->input->post('nonce', true);
+    if (!$n) $n = $this->input->post('checkout_nonce', true);
+    if (!$n) $n = $this->input->get_request_header('X-Checkout-Nonce', true);
+    if (!$n) {
+      $jb = $this->get_json_body();
+      if (is_array($jb)) $n = $jb['nonce'] ?? $jb['checkout_nonce'] ?? null;
+    }
+    return is_string($n) ? trim($n) : null;
+  }
+
   /* ========================== Excel Readers ========================== */
 
   /** item_shop.xlsx：只讀取展示必需欄（id/name/price/name_en） */
@@ -332,20 +355,7 @@ class Luna_mall extends MY_Base_Controller {
     return [$sealMap, $durMap];
   }
 
-  /* ========================== 批次工具 ========================== */
 
-  /** 以 insert_batch 分批寫入 TB_ITEM，避免單次 SQL 過大 */
-  private function insert_items_batch(array $rows, int $batchSize = self::BATCH_SIZE): int {
-    if (empty($rows)) return 0;
-    $aff = 0;
-    for ($i = 0; $i < count($rows); $i += $batchSize) {
-      $slice = array_slice($rows, $i, $batchSize);
-      // schema-qualified 表名（與上方 raw SQL 一致）
-      $this->db->insert_batch('dbo.TB_ITEM', $slice);
-      $aff += $this->db->affected_rows();
-    }
-    return $aff;
-  }
 
   /* ========================== Checkout ========================== */
 
@@ -384,14 +394,16 @@ class Luna_mall extends MY_Base_Controller {
     }
     if (!$csrf_ok) return $this->json_fail('CSRF 驗證失敗', 403);
 
-    // 4) Nonce（用過即旋轉）
-    $postNonce = $this->input->post('nonce', true);
-    if ($postNonce) {
-      $sessNonce = $this->session->userdata('checkout_nonce');
-      if (!$sessNonce || !hash_equals($sessNonce, $postNonce)) {
+    // 4) Nonce（用過即旋轉）— 同時支援 form/header/json 與兩種欄位名
+    $reqNonce = $this->read_nonce_from_request();
+    if ($reqNonce !== null && $reqNonce !== '') {
+      $sessNonce = (string)$this->session->userdata('checkout_nonce');
+      if ($sessNonce === '' || !hash_equals($sessNonce, (string)$reqNonce)) {
+        // 失敗時也旋轉，並把下一個可用 nonce 回給前端
         $this->rotate_checkout_nonce();
         return $this->json_fail('nonce 驗證失敗', 400);
       }
+      // 使用過即旋轉，防重送
       $this->rotate_checkout_nonce();
     }
 
@@ -551,11 +563,11 @@ class Luna_mall extends MY_Base_Controller {
       ]);
       if ($log_idx === false) throw new \RuntimeException('shop_log 失敗');
 
-      // 投遞：改成批次 insert_batch；ITEM_SEAL / ITEM_DURABILITY 由 itemlistcn 固定欄位帶入
+      // 投遞：批次 insert_batch；ITEM_SEAL / ITEM_DURABILITY 由 itemlistcn 固定欄位帶入
       $batch = [];
       foreach ($merged as $iid => $qty) {
-        $sealVal = (int)($sealMap[$iid] ?? 0);          // from wSeal (BE)
-        $durVal  = (int)($durMap[$iid]  ?? 0);          // from Stack (M)
+        $sealVal = (int)($sealMap[$iid] ?? 0);  // from wSeal (BE)
+        $durVal  = (int)($durMap[$iid]  ?? 0);  // from Stack (M)
         for ($i=0; $i<$qty; $i++) {
           $batch[] = [
             'CHARACTER_IDX'   => 0,
@@ -570,19 +582,15 @@ class Luna_mall extends MY_Base_Controller {
         }
       }
       if (!empty($batch)) {
-        $aff = $this->insert_items_batch($batch, self::BATCH_SIZE);
+        $aff = $this->item_dao->insert_items_batch($batch, self::BATCH_SIZE);
         if ($aff < count($batch)) {
           throw new \RuntimeException('TB_ITEM 批次寫入不完整');
         }
       }
 
       // 保險補寫：把本次訂單的 items 都補上 mall_log_id（防 DAO 白名單漏欄位）
-      $this->db->query("
-        UPDATE dbo.TB_ITEM
-           SET mall_log_id = ?
-         WHERE ITEM_SHOPLOGIDX = ?
-           AND (mall_log_id IS NULL OR mall_log_id = 0)
-      ", [$mall_id, $log_idx]);
+      $this->item_dao->update_mall_log_id_by_shoplog($mall_id, $log_idx);
+
 
       $progress[] = 'item';
 
