@@ -12,22 +12,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <?php $this -> load -> view("luna/luna_head")  ?>
-</head>
 
 <body>
   <main>
-    <!-- Header -->
-    <?php $this -> load -> view("luna/luna_header")  ?>
+
     <!-- End Header -->
 
     <section class="g-mb-100">
       <div class="container">
         <div class="row">
 
-          <!-- luna Sidebar -->
-          <?php $this -> load -> view("luna/luna_sidebar")  ?>
           <!-- End luna Sidebar -->
 
           <!-- Profile Content -->
@@ -213,198 +207,13 @@
 
    
   </main>
-<!-- footer 放在 main 外，才能穩定貼底 -->
-<div class="site-footer">
-  <?php $this->load->view("luna/luna_footer"); ?>
-</div>
+
 <div class="u-outer-spaces-helper"></div>
 
 </body>
 </html>
-<!-- Product Serach Modal -->
-<div class="modal fade" id="graduate" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-        <h3 id="deleteModalLabel">確認畢業</h3>
-			</div>
-      <fieldset>
-          <div class="form-group">
-            <label class="col-md-3 control-label">學員</label>
-            <div class="col-md-9">
-              <div class="col-md-9">
-                <input type="hidden" class="form-control"  id="m_id" />
-                <input type="text" class="form-control" style = "border-style:none none none none;" id="m_name" readonly/>
-              </div>
-            </div>
-          </div>
-        </fieldset>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-danger btn-sm" onclick="save_graduate()">
-					<i class="fa fa-save"></i> 確認
-				</button>
-				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
-					<i class="fa fa-close"></i> 關閉
-				</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
 
-<div class="modal fade" id="lose_3day" role="dialog" aria-hidden="true">
-	<div class="modal-dialog modal-lg">
-		<div class="modal-content">
-			<div class="modal-header">
-        <h3 id="lose_3day_Label">3天未上線人員</h3>
-			</div>
-      <div class="js-scrollbar card-block  u-info-v1-1 g-bg-white-gradient-v1--after g-height-400 g-pa-0">
-          <?php foreach ($members_lose_3days as $each): ?>
-            <?php if ($each->last_weight): ?>
-            <ul class="list-unstyled">
-              <li class="d-flex justify-content-start g-brd-around g-brd-gray-light-v4 g-pa-20 g-mb-10">
-                <div class="g-mt-2">
-                  <img class="g-width-50 g-height-50 rounded-circle" src="<?=base_url('')?>mgmt/images/get/<?=$each->image_id?>/thumb" alt="Image Description">
-                </div>
-                <div class="align-self-center g-px-10">
-                  <h5 class="h6 g-font-weight-600 g-color-black g-mb-3">
-                      <span class="g-mr-5"><?=$each->user_name?></span>
-                      <!-- <small class="g-font-size-12 g-color-blue">8k+ earned</small> -->
-                    </h5>
-                  <!-- <p class="m-0">Nulla ipsum dolor sit amet adipiscing</p> -->
-                </div>
-              </li>
-            </ul>
-          <?php endif; ?>
-        <?php endforeach; ?>
-      </div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default btn-sm" data-dismiss="modal">
-					<i class="fa fa-close"></i> 關閉
-				</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-<?php $this -> load -> view("luna/luna_script")  ?>
-<!-- End JS -->
 
-<!-- Page Javascript -->
 <script>
-  var baseUrl = '<?=base_url('')?>';
 
-  function for_table(page){
-    var url = baseUrl + 'luna/luna_home/get_data';
-
-    $.ajax({
-      type : "POST",
-      url : url,
-      data : {
-        id: $('#luna_id').val(),
-        page: page
-      },
-      success : function(data) {
-        var $body = $('#dt_list_body').empty();
-        if(data.id!==''){
-          $.each(data.items, function(){
-            var me = this;
-            var $tr = $('<tr class="pointer " user_name="'+me.user_name+'" user_id="'+me.id+'">').click(function(){
-              // $('#graduate').modal('show');//畢業功能
-              // $('#m_name').val($(this).attr('user_name'));
-              // $('#m_id').val($(this).attr('user_id'));
-
-            }).appendTo($body);
-            if(me.image_id>0){
-              $('<td>').html('<img class="g-width-100 g-height-100 rounded-circle g-mb-20" src="'+baseUrl+'mgmt/images/get/' +me.image_id+'/thumb" style="height:100px; width:100px;" />').appendTo($tr);
-            } else{
-              $('<td>').html('未上傳').appendTo($tr);
-            }
-            $('<td>').html(me.user_name).appendTo($tr);
-            $('<td>').html(me.age).appendTo($tr);
-            $('<td>').html(me.height).appendTo($tr);
-            if(me.gender==0){
-              $('<td>').html('女').appendTo($tr);
-            } else{
-              if(me.gender==1){
-                $('<td>').html('男').appendTo($tr);
-              }
-            }
-            $('<td>').html(parseFloat(me.the_new_weight/ 1000).toFixed(2)).appendTo($tr);
-            $('<td>').html(parseFloat(me.the_weight_change/ 1000).toFixed(2)).appendTo($tr);
-            $('<td>').html(parseFloat(me.the_fat_rate_change).toFixed(2)).appendTo($tr);
-            $('<td>').html(me.the_fat_info).appendTo($tr);
-
-          })
-        }
-        $('.u-pagination-v1__item').removeClass('u-pagination-v1-4--active ');
-        $('.s'+page).addClass('u-pagination-v1-4--active');
-      }
-    });
-  }
-
-  // for_table(1);
-
-  function search_member(){
-    var url = baseUrl + 'luna/luna_home/find_today_weight';
-
-    $.ajax({
-      type : "POST",
-      url : url,
-      data : {
-        name: $('#member_name').val(),
-      },
-      success : function(data) {
-        var $body = $('#list_for_today_w').empty();
-        if(data.id!==''){
-          $.each(data.member_weihght, function(){
-            var me = this;
-            var $tr = $('<tr class="pointer">').click(function(){
-            }).appendTo($body);
-            if(me!=='沒有結果'){
-              $('<td>').html(me.user_name).appendTo($tr);
-              $('<td>').html(parseFloat(me.weight/ 1000).toFixed(2)).appendTo($tr);
-              $('<td>').html(me.body_fat_rate).appendTo($tr);
-              $('<td>').html(me.create_time).appendTo($tr);
-            } else{
-              $body;
-            }
-
-          })
-        }
-        // $('.u-pagination-v1__item').removeClass('u-pagination-v1-4--active ');
-      }
-    });
-		}
-
-    function save_graduate() {
-      var url = baseUrl + 'luna/luna_home/update_graduate';
-  		$.ajax({
-  			url : url,
-  			type: 'POST',
-  			data: {
-  				user_id: $('#m_id').val(),
-  			},
-  			dataType: 'json',
-  			success: function(d) {
-  				if(d.success=="true"){
-  					$('#graduate').modal('hide');
-            location.reload();
-  				}
-
-  			},
-
-  			failure:function(){
-  				alert('faialure');
-  			}
-  		});
-  	}
-
-    function show_lose_3days($id_array) {
-      if($id_array>0){//人數大於1才顯示
-        $('#lose_3day').modal('show');//3先沒上線人員顯示
-      }
-    }
-
-
-// search_member();
 </script>
-<!-- End Page Javascript -->

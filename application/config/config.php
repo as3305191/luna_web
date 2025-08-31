@@ -454,7 +454,7 @@ $config['csrf_token_name']  = 'ci_csrf_token';
 $config['csrf_cookie_name'] = 'ci_csrf_token';
 
 // ★ 先關閉自動輪替（除錯時很重要；穩定後再考慮打開）
-$config['csrf_regenerate']  = FALSE;
+$config['csrf_regenerate']  = TRUE;
 
 // 讓 cookie 綁定當前 host（不指定網域，IP/網域都能用）
 $config['cookie_domain']    = '';
