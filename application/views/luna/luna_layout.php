@@ -30,6 +30,7 @@
   <?php $this->load->view("luna/luna_script"); ?>
 
   <style>
+    /* PJAX 區域的 loading 狀態 */
     .pjax-root{position:relative;min-height:200px}
     .pjax-root .pjax-content{transition:opacity .15s ease}
     .pjax-root.loading .pjax-content{opacity:.35}
@@ -38,6 +39,13 @@
     .pjax-root .spinner{width:56px;height:56px;border:4px solid #999;border-top-color:transparent;border-radius:50%;animation:spin .8s linear infinite}
     @keyframes spin{to{transform:rotate(360deg)}}
     @media (max-width:1024px){ body{background-attachment:scroll} } /* 手機避免 fixed 背景卡頓 */
+
+    /* ======================
+       只加寬容器，其他不動
+       ====================== */
+    @media (min-width: 1200px){ .container{ max-width: 1320px; } }  /* 12xx 螢幕 */
+    @media (min-width: 1400px){ .container{ max-width: 1480px; } }  /* 14xx 螢幕 */
+    @media (min-width: 1600px){ .container{ max-width: 1680px; } }  /* 16xx+ 螢幕 */
   </style>
 
   <script>
