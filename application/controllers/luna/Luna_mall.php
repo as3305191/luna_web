@@ -73,9 +73,8 @@ class Luna_mall extends MY_Base_Controller {
     $data['csrf_name'] = $pair['csrf_name'];
     $data['csrf_hash'] = $pair['csrf_hash'];
 
-    // $this->load->view('luna/luna_mall', $data);
-    $data['content_view'] = 'luna/mall_content'; // 新：只放中間內容的 view
-    $this->load->view('luna/luna_layout', $data);     // 新：共用 head/header/sidebar/footer
+    $data['content_view'] = 'luna/mall_content';
+    $this->load->view('luna/luna_layout', $data);
   }
 
   private function ensure_csrf() {
@@ -357,7 +356,30 @@ class Luna_mall extends MY_Base_Controller {
     return [$sealMap, $durMap];
   }
 
-
+  /* ============== 取得玩家第一個角色（盡量不爆炸） ============== */
+  private function get_first_char_id(int $user_idx): int {
+    try {
+      $cands = null;
+      if (method_exists($this->charDao, 'list_by_user')) {
+        $cands = $this->charDao->list_by_user($user_idx, false);
+      } elseif (method_exists($this->charDao, 'list_by_user_idx')) {
+        $cands = $this->charDao->list_by_user_idx($user_idx);
+      } elseif (method_exists($this->charDao, 'find_by_user_idx')) {
+        $cands = $this->charDao->find_by_user_idx($user_idx);
+      } elseif (method_exists($this->charDao, 'find_all_by_user_idx')) {
+        $cands = $this->charDao->find_all_by_user_idx($user_idx);
+      }
+      if (empty($cands)) return 0;
+      $first = is_array($cands) ? reset($cands) : $cands[0];
+      if (is_array($first)) {
+        return (int)($first['CharId'] ?? $first['char_id'] ?? $first['id'] ?? 0);
+      } else {
+        return (int)($first->CharId ?? $first->char_id ?? $first->id ?? 0);
+      }
+    } catch (\Throwable $e) {
+      return 0;
+    }
+  }
 
   /* ========================== Checkout ========================== */
 
@@ -396,16 +418,14 @@ class Luna_mall extends MY_Base_Controller {
     }
     if (!$csrf_ok) return $this->json_fail('CSRF 驗證失敗', 403);
 
-    // 4) Nonce（用過即旋轉）— 同時支援 form/header/json 與兩種欄位名
+    // 4) Nonce（用過即旋轉）
     $reqNonce = $this->read_nonce_from_request();
     if ($reqNonce !== null && $reqNonce !== '') {
       $sessNonce = (string)$this->session->userdata('checkout_nonce');
       if ($sessNonce === '' || !hash_equals($sessNonce, (string)$reqNonce)) {
-        // 失敗時也旋轉，並把下一個可用 nonce 回給前端
         $this->rotate_checkout_nonce();
         return $this->json_fail('nonce 驗證失敗', 400);
       }
-      // 使用過即旋轉，防重送
       $this->rotate_checkout_nonce();
     }
 
@@ -471,7 +491,7 @@ class Luna_mall extends MY_Base_Controller {
       }
     }
 
-    // 8.1) 從 itemlistcn.xlsx 取「固定欄位」meta → 快取 map（seal / durability）
+    // 8.1) 從 itemlistcn.xlsx 取 meta（seal / durability-上限）
     list($sealMap, $durMap) = $this->get_meta_maps_cached();
 
     // 9) （可選）驗簽章
@@ -528,6 +548,9 @@ class Luna_mall extends MY_Base_Controller {
     $user_idx = (int)$acc['id_idx'];
     $before   = (int)$acc['mall_point'];
 
+    // ★ 找到第一個角色（找不到就用 0，仍可入帳號商城包包）
+    $char_id = $this->get_first_char_id($user_idx);
+
     // 13) 扣點 + 記錄 + 投遞（批次）
     $progress = ['verify'];
     $this->db->trans_begin();
@@ -565,34 +588,55 @@ class Luna_mall extends MY_Base_Controller {
       ]);
       if ($log_idx === false) throw new \RuntimeException('shop_log 失敗');
 
-      // 投遞：批次 insert_batch；ITEM_SEAL / ITEM_DURABILITY 由 itemlistcn 固定欄位帶入
+      // ★ 投遞：正確處理堆疊（ITEM_DURABILITY = 該堆疊的實際數量）
       $batch = [];
       foreach ($merged as $iid => $qty) {
-        $sealVal = (int)($sealMap[$iid] ?? 0);  // from wSeal (BE)
-        $durVal  = (int)($durMap[$iid]  ?? 0);  // from Stack (M)
-        for ($i=0; $i<$qty; $i++) {
-          $batch[] = [
-            'CHARACTER_IDX'   => 0,
-            'ITEM_IDX'        => (int)$iid,
-            'ITEM_SHOPIDX'    => $user_idx,
-            'ITEM_SHOPLOGIDX' => $log_idx,
-            'mall_log_id'     => $mall_id,
-            'ITEM_SEAL'       => $sealVal,
-            'ITEM_DURABILITY' => $durVal,
-            'ITEM_POSITION'   => self::SHOP_BAG_POSITION,
-          ];
+        $sealVal  = (int)($sealMap[$iid] ?? 0);
+        $stackMax = (int)($durMap[$iid]  ?? 0);   // 0 或 1 => 不堆疊；>=2 => 可堆疊
+
+        if ($stackMax >= 2) {
+          $remain = (int)$qty;
+          while ($remain > 0) {
+            $stackSize = ($remain >= $stackMax) ? $stackMax : $remain;
+            $batch[] = [
+              'CHARACTER_IDX'   => ($char_id > 0 ? $char_id : 0), // 有角色就投角色，否則投帳號包
+              'ITEM_IDX'        => (int)$iid,
+              'ITEM_SHOPIDX'    => $user_idx,
+              'ITEM_SHOPLOGIDX' => $log_idx,
+              'mall_log_id'     => $mall_id,
+              'ITEM_SEAL'       => $sealVal,
+              'ITEM_DURABILITY' => $stackSize,
+              'ITEM_POSITION'   => self::SHOP_BAG_POSITION,
+            ];
+            $remain -= $stackSize;
+          }
+        } else {
+          for ($i=0; $i<$qty; $i++) {
+            $batch[] = [
+              'CHARACTER_IDX'   => ($char_id > 0 ? $char_id : 0),
+              'ITEM_IDX'        => (int)$iid,
+              'ITEM_SHOPIDX'    => $user_idx,
+              'ITEM_SHOPLOGIDX' => $log_idx,
+              'mall_log_id'     => $mall_id,
+              'ITEM_SEAL'       => $sealVal,
+              'ITEM_DURABILITY' => 0,
+              'ITEM_POSITION'   => self::SHOP_BAG_POSITION,
+            ];
+          }
         }
       }
+
       if (!empty($batch)) {
         $aff = $this->item_dao->insert_items_batch($batch, self::BATCH_SIZE);
-        if ($aff < count($batch)) {
-          throw new \RuntimeException('TB_ITEM 批次寫入不完整');
+        if ($aff === false) {
+          throw new \RuntimeException('TB_ITEM 批次寫入失敗');
         }
       }
 
-      // 保險補寫：把本次訂單的 items 都補上 mall_log_id（防 DAO 白名單漏欄位）
-      $this->item_dao->update_mall_log_id_by_shoplog($mall_id, $log_idx);
-
+      // 保險補寫（DAO 有實作才呼叫）
+      if (method_exists($this->item_dao, 'update_mall_log_id_by_shoplog')) {
+        $this->item_dao->update_mall_log_id_by_shoplog($mall_id, $log_idx);
+      }
 
       $progress[] = 'item';
 
