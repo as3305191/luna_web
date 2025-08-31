@@ -73,7 +73,9 @@ class Luna_mall extends MY_Base_Controller {
     $data['csrf_name'] = $pair['csrf_name'];
     $data['csrf_hash'] = $pair['csrf_hash'];
 
-    $this->load->view('luna/luna_mall', $data);
+    // $this->load->view('luna/luna_mall', $data);
+    $data['content_view'] = 'luna/mall_content'; // 新：只放中間內容的 view
+    $this->load->view('luna/luna_layout', $data);     // 新：共用 head/header/sidebar/footer
   }
 
   private function ensure_csrf() {

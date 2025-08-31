@@ -106,7 +106,9 @@ class Luna_gm_product_set extends MY_Base_Controller {
     $data['now']        = 'luna_gm_product_set';
     $data['csrf_name'] = $this->security->get_csrf_token_name();
     $data['csrf_hash'] = $this->security->get_csrf_hash();
-    $this->load->view('luna/luna_gm_product_set', $data);
+    // $this->load->view('luna/luna_gm_product_set', $data);
+    $data['content_view'] = 'luna/gm_product_set_content'; // 新：只放中間內容的 view
+    $this->load->view('luna/luna_layout', $data);     // 新：共用 head/header/sidebar/footer
   }
 
   /* ========================== Excel 讀取（無表頭，固定欄位） ========================== */
