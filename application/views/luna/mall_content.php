@@ -8,6 +8,41 @@
   /* Loading overlay：預設隱藏，.is-active 顯示為 flex */
   #checkoutLoading{ display:none; }
   #checkoutLoading.is-active{ display:flex; }
+
+  /* ===== 右下角浮動購物車 ===== */
+  .cart-float{
+    position:fixed; right:24px; bottom:24px; z-index:1500; /* 低於 overlay(2000) */
+    display:flex; align-items:center; gap:.75rem;
+    background:#fff; border:1px solid rgba(0,0,0,.06);
+    border-radius:16px; padding:.6rem .7rem;
+    box-shadow:0 10px 30px rgba(15,23,42,.15);
+    transition:transform .18s ease, opacity .18s ease, box-shadow .18s ease;
+    -webkit-backdrop-filter:saturate(140%) blur(6px); backdrop-filter:saturate(140%) blur(6px);
+  }
+  .cart-float .meta{ line-height:1; }
+  .cart-float .label{ font-size:.8rem; color:#6b7280; margin-bottom:4px; }
+  .cart-float .amount{ font-weight:700; }
+  .cart-float .btn-circle{
+    width:40px; height:40px; border-radius:999px; position:relative;
+    display:inline-flex; align-items:center; justify-content:center;
+  }
+  .cart-float .badge{
+    position:absolute; top:-4px; right:-4px; min-width:18px; height:18px;
+    padding:0 5px; border-radius:999px; font-size:.75rem;
+    display:inline-flex; align-items:center; justify-content:center;
+    background:#ef4444; color:#fff; box-shadow:0 0 0 2px #fff;
+  }
+  .cart-float .btn-success{ padding:.5rem .9rem; }
+  .cart-float.is-disabled{ opacity:.65; pointer-events:none; }
+
+  @media (max-width: 576px){
+    .cart-float{
+      left:12px; right:12px; bottom:12px;
+      padding:.55rem .65rem calc(.55rem + env(safe-area-inset-bottom)) .65rem;
+      border-radius:14px; justify-content:space-between;
+    }
+    .cart-float .meta{ margin-left:.25rem; margin-right:auto; }
+  }
 </style>
 
 <section class="g-mb-100">
@@ -144,6 +179,19 @@
   </div>
 </aside>
 
+<!-- 右下角：快速購物車 / 立即結帳（空車也顯示） -->
+<div id="cartFloat" class="cart-float" aria-live="polite" aria-label="快速結帳">
+  <button id="cartFloatOpen" type="button" class="btn btn-light btn-circle" title="查看購物車">
+    <i class="fa fa-shopping-bag"></i>
+    <span id="cartFloatCount" class="badge">0</span>
+  </button>
+  <div class="meta">
+    <div class="label">合計</div>
+    <div id="cartFloatTotal" class="amount">NT$ 0</div>
+  </div>
+  <button id="cartFloatCheckout" type="button" class="btn btn-success btn-pill" disabled>立即結帳</button>
+</div>
+
 <!-- Loading overlay -->
 <div id="checkoutLoading"
      style="position:fixed; inset:0; z-index:2000;
@@ -191,7 +239,6 @@
 
   function setCsrfCookie(name, value){
     if (!name || typeof value!=='string') return;
-    // 統一與 CI 設定相同的 path / SameSite；HTTPS 則加 secure
     var parts = [''+encodeURIComponent(name)+'='+encodeURIComponent(value), 'path=/','SameSite=Lax'];
     if (location.protocol==='https:') parts.push('secure');
     document.cookie = parts.join('; ');
@@ -214,9 +261,8 @@
   }
   function syncCsrfFromServer(name, hash){
     if (!name || !hash) return;
-    setCsrfPair(name, hash);           // 更新 hidden
+    setCsrfPair(name, hash);
     setCsrfCookie(CSRF_COOKIE_NAME, hash); // ★ 同步更新 Cookie
-    // 也備份到全域，讓其他 AJAX 可用
     window.CSRF = { name: name, hash: hash };
   }
   function getNonce(){
@@ -454,6 +500,15 @@
   if (cartMask) cartMask.addEventListener('click', closeCart);
   window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeCart(); });
 
+  // 右下角浮動列
+  var cartFloat        = document.getElementById('cartFloat');
+  var btnFloatOpen     = document.getElementById('cartFloatOpen');
+  var btnFloatCheckout = document.getElementById('cartFloatCheckout');
+  var cartFloatCount   = document.getElementById('cartFloatCount');
+  var cartFloatTotal   = document.getElementById('cartFloatTotal');
+
+  if (btnFloatOpen) btnFloatOpen.addEventListener('click', openCart);
+
   function el(tag, attrs, text){
     var node = document.createElement(tag);
     if (attrs) for (var k in attrs){
@@ -499,11 +554,18 @@
         cartBody.appendChild(row);
       });
     }
+    // 抽屜統計
     cartTotal.textContent = 'NT$ ' + nf(total);
     cartCount.textContent = CART.length;
     cartCount2.textContent = CART.length;
-    btnCheckout.disabled = CART.length===0 || submitting;
+    btnCheckout.disabled    = CART.length===0 || submitting;
     btnCheckoutTop.disabled = CART.length===0 || submitting;
+
+    // ★ 浮動列同步（空車也顯示，但禁用結帳）
+    if (cartFloatTotal)  cartFloatTotal.textContent = 'NT$ ' + nf(total);
+    if (cartFloatCount)  cartFloatCount.textContent = CART.length;
+    if (btnFloatCheckout) btnFloatCheckout.disabled = (CART.length===0 || submitting);
+    if (cartFloat) cartFloat.classList.toggle('is-disabled', submitting);
   }
 
   function addToCart(id,name,price,sig,qty){
@@ -569,7 +631,14 @@
     cartDrawer.classList.toggle('is-disabled', on);
     btnCheckout.disabled = on || CART.length===0;
     btnCheckoutTop.disabled = on || CART.length===0;
+
+    // 浮動列也一起鎖
+    if (cartFloat) cartFloat.classList.toggle('is-disabled', !!on);
+    if (btnFloatCheckout) btnFloatCheckout.disabled = !!on || CART.length===0;
   }
+
+  // 右下角按鈕也能結帳
+  if (btnFloatCheckout) btnFloatCheckout.addEventListener('click', doCheckout);
 
   function ensureCsrfInForm(){
     const cur = getCsrfPair();
@@ -671,5 +740,7 @@
 
   /* ---------- 初始化：建第一個分頁 ---------- */
   applyPagination();
+  // 初次同步一下浮動列數字
+  redrawCart();
 })();
 </script>
