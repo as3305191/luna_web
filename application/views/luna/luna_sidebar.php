@@ -3,7 +3,7 @@
   <!-- User Image -->
   <div class="u-block-hover g-pos-rel">
     <figure>
-      <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="<?= base_url('img/luna/luna.jpg') ?>" alt="Image Description">
+      <img class="img-fluid w-100 u-block-hover__main--zoom-v1" src="<?= base_url('img/luna/luna01.png') ?>" alt="Image Description">
     </figure>
   </div>
 
