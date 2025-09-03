@@ -22,8 +22,10 @@ class Luna_home extends MY_Base_Controller {
 		$data['userlv']     = $login_user ? ($login_user->UserLevel ?? 0) : 0;
 		$data['now'] = 'luna_home';
 		// $this -> to_json($data);
+		// $this -> load -> view('luna/luna_home', $data);
 
-		$this -> load -> view('luna/luna_home', $data);
+		$data['content_view'] = 'luna/luna_home'; // 新：只放中間內容的 view
+		$this->load->view('luna/luna_layout', $data);     // 新：共用 head/header/sidebar/footer
 	}
 
 	public function get_data() {

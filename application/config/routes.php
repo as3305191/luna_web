@@ -49,8 +49,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | Examples:	my-controller/index	-> my_controller/index
 |		my-controller/my-method	-> my_controller/my_method
 */
-$route['default_controller'] = 'login';
+// === GM 面板點數查詢 ===
+$route['luna/luna_gm_product_set/balance']['GET']  = 'luna/Luna_gm_product_set/balance';
+$route['luna/luna_gm_product_set/balance']['POST'] = 'luna/Luna_gm_product_set/balance';
+
+// === 商城結帳 ===
+$route['luna/luna_mall/checkout']['POST'] = 'luna/Luna_mall/checkout';
 $route['^(app)/(.+)$'] = "$2";
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+

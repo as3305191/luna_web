@@ -1,143 +1,123 @@
-<!DOCTYPE html>
-<html lang="zh-Hant">
-<head>
-  <?php $this->load->view("luna/luna_head"); ?>
-  <meta name="checkout-nonce" content="<?= htmlspecialchars($checkout_nonce ?? '') ?>">
-  <style>
-    /* 載入層：預設隱藏，.is-active 才顯示 */
-    #checkoutLoading{ display:none; }
-    #checkoutLoading.is-active{ display:flex; }
-  </style>
-</head>
-<body>
-<main>
-  <?php $this->load->view("luna/luna_header"); ?>
+<?php defined('BASEPATH') OR exit('No direct script access allowed'); ?>
+<style>
+  /* Loading overlay：預設隱藏，.is-active 顯示為 flex */
+  #checkoutLoading{ display:none; }
+  #checkoutLoading.is-active{ display:flex; }
+</style>
 
-  <section class="g-mb-100">
-    <div class="container">
-      <div class="row">
-        <?php $this->load->view("luna/luna_sidebar"); ?>
-
-        <div class="col-lg-9">
-          <div class="card border-0 shadow-soft">
-            <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0">
-              <div class="d-flex align-items-center">
-                <h3 class="h5 mb-0"><i class="icon-bag g-mr-8"></i> 商城</h3>
-                <!-- <span class="badge-dot g-ml-15">
-                  <i></i> 剩餘點數：
-                  <span id="mallPoint" class="mono">--</span>
-                </span> -->
-              </div>
-
-              <div class="shop-toolbar d-flex align-items-center flex-wrap">
-                <div class="input-group" style="min-width:260px">
-                  <input id="shop-search" type="text" class="form-control" placeholder="搜尋商品關鍵字">
-                  <span class="input-group-btn"><button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button></span>
-                </div>
-
-                <div class="dropdown">
-                  <button class="btn btn-sm btn-outline-secondary btn-pill dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown">
-                    <i class="fa fa-filter g-mr-5"></i> 排序
-                  </button>
-                  <div id="sortMenu" class="dropdown-menu dropdown-menu-right">
-                    <a class="dropdown-item" data-sort="name_asc"  href="#">名稱 A→Z</a>
-                    <a class="dropdown-item" data-sort="name_desc" href="#">名稱 Z→A</a>
-                    <a class="dropdown-item" data-sort="price_asc" href="#">價格低→高</a>
-                    <a class="dropdown-item" data-sort="price_desc" href="#">價格高→低</a>
-                  </div>
-                </div>
-
-                <button id="btnCartOpen" class="btn btn-sm btn-primary btn-pill g-ml-5">
-                  <i class="fa fa-shopping-bag"></i>
-                  購物車 <span id="cartCount" class="badge badge-light">0</span>
-                </button>
-                <button id="btnCheckoutTop" class="btn btn-sm btn-success btn-pill g-ml-5" disabled>直接結帳</button>
-              </div>
+<section class="g-mb-100">
+  <div class="container">
+    <div class="row">
+      <!-- ※ sidebar 由 luna_layout 負責，這裡只放右側主要內容 -->
+      <div class="col-lg-9">
+        <div class="card border-0 shadow-soft">
+          <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0">
+            <div class="d-flex align-items-center">
+              <h3 class="h5 mb-0"><i class="icon-bag g-mr-8"></i> 商城</h3>
             </div>
 
-            <div class="card-block g-pt-20 g-pb-10 g-px-20">
-              <?php if (empty($tabs)): ?>
-                <div class="alert alert-info mb-0">Excel 沒資料或路徑未設定！</div>
-              <?php else: ?>
+            <div class="shop-toolbar d-flex align-items-center flex-wrap">
+              <div class="input-group" style="min-width:260px">
+                <input id="shop-search" type="text" class="form-control" placeholder="搜尋商品關鍵字">
+                <span class="input-group-btn"><button class="btn btn-secondary" type="button"><i class="fa fa-search"></i></button></span>
+              </div>
 
-                <!-- Tabs -->
-                <ul class="nav nav-pills category-tabs g-mb-25" role="tablist">
-                  <?php $i=0; foreach($tabs as $title): ?>
-                    <li class="nav-item g-mr-10 g-mb-10">
-                      <a class="nav-link <?= $i===0?'active':'' ?>"
-                         href="#tab-<?=$i?>" role="tab"
-                         aria-controls="tab-<?=$i?>"
-                         aria-selected="<?= $i===0?'true':'false' ?>">
-                        <?=htmlspecialchars($title)?>
-                      </a>
-                    </li>
-                  <?php $i++; endforeach; ?>
-                </ul>
-
-                <div class="tab-content">
-                  <?php $i=0; foreach($tabs as $title): $list = $itemsMap[$title] ?? []; ?>
-                    <div class="tab-pane fade <?= $i===0?'show active':'' ?>" id="tab-<?=$i?>" role="tabpanel">
-                      <div class="row product-grid" id="grid-<?=$i?>">
-                        <?php if (empty($list)): ?>
-                          <div class="col-12"><div class="alert alert-secondary mb-0">此分頁目前沒有商品</div></div>
-                        <?php else: foreach ($list as $it): ?>
-                          <div class="col-sm-6 col-md-4 col-xl-3 g-mb-20 product-col"
-                               data-id="<?=htmlspecialchars($it['id'])?>"
-                               data-name="<?=htmlspecialchars($it['name'])?>"
-                               data-price="<?= (int)$it['price'] ?>"
-                               data-sig="<?=htmlspecialchars($it['sig'])?>"
-                               data-match="1">
-                            <div class="u-shadow-v18 g-bg-white g-rounded-10 g-pa-15 product-card h-100 d-flex flex-column">
-                              <h4 class="name-title" title="<?=htmlspecialchars($it['name'])?>">
-                                <span class="scroll-wrap"><span class="scroll-inner"><?=htmlspecialchars($it['name'])?></span></span>
-                              </h4>
-                              <div class="name-en" title="<?= $it['name_en'] !== '' ? htmlspecialchars($it['name_en']) : '' ?>">
-                                <span class="scroll-wrap"><span class="scroll-inner"><?= $it['name_en'] !== '' ? htmlspecialchars($it['name_en']) : '&nbsp;' ?></span></span>
-                              </div>
-
-                              <div class="d-flex align-items-center g-mb-10">
-                                <div class="qty-wrap">
-                                  <button class="qty-btn btnMinus" type="button">−</button>
-                                  <input class="qty-input2" type="number" min="1" max="99" value="1" inputmode="numeric">
-                                  <button class="qty-btn btnPlus" type="button">＋</button>
-                                </div>
-                              </div>
-
-                              <div class="mt-auto d-flex align-items-center justify-content-between">
-                                <button class="btn btn-sm btn-outline-primary btn-pill add-cart-btn">
-                                  <i class="fa fa-cart-plus g-mr-5"></i> 加入購物車
-                                </button>
-                                <span class="price g-color-primary">NT$ <?=number_format((int)$it['price'])?></span>
-                              </div>
-                            </div>
-                          </div>
-                        <?php endforeach; endif; ?>
-                      </div>
-
-                      <!-- 分頁按鈕（每個 Tab 各自一組） -->
-                      <nav class="mt-3 pager-wrap">
-                        <ul class="pagination pagination-sm mb-0" data-grid="#grid-<?=$i?>" data-perpage="10" data-page="1"></ul>
-                      </nav>
-                    </div>
-                  <?php $i++; endforeach; ?>
+              <div class="dropdown">
+                <button class="btn btn-sm btn-outline-secondary btn-pill dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown">
+                  <i class="fa fa-filter g-mr-5"></i> 排序
+                </button>
+                <div id="sortMenu" class="dropdown-menu dropdown-menu-right">
+                  <a class="dropdown-item" data-sort="name_asc"  href="#">名稱 A→Z</a>
+                  <a class="dropdown-item" data-sort="name_desc" href="#">名稱 Z→A</a>
+                  <a class="dropdown-item" data-sort="price_asc" href="#">價格低→高</a>
+                  <a class="dropdown-item" data-sort="price_desc" href="#">價格高→低</a>
                 </div>
+              </div>
 
-              <?php endif; ?>
+              <button id="btnCartOpen" class="btn btn-sm btn-primary btn-pill g-ml-5">
+                <i class="fa fa-shopping-bag"></i>
+                購物車 <span id="cartCount" class="badge badge-light">0</span>
+              </button>
+              <button id="btnCheckoutTop" class="btn btn-sm btn-success btn-pill g-ml-5" disabled>直接結帳</button>
             </div>
           </div>
-        </div>
 
+          <div class="card-block g-pt-20 g-pb-10 g-px-20">
+            <?php if (empty($tabs)): ?>
+              <div class="alert alert-info mb-0">Excel 沒資料或路徑未設定！</div>
+            <?php else: ?>
+
+              <!-- Tabs -->
+              <ul class="nav nav-pills category-tabs g-mb-25" role="tablist">
+                <?php $i=0; foreach($tabs as $title): ?>
+                  <li class="nav-item g-mr-10 g-mb-10">
+                    <a class="nav-link <?= $i===0?'active':'' ?>"
+                       href="#tab-<?=$i?>" role="tab"
+                       aria-controls="tab-<?=$i?>"
+                       aria-selected="<?= $i===0?'true':'false' ?>">
+                      <?=htmlspecialchars($title)?>
+                    </a>
+                  </li>
+                <?php $i++; endforeach; ?>
+              </ul>
+
+              <div class="tab-content">
+                <?php $i=0; foreach($tabs as $title): $list = $itemsMap[$title] ?? []; ?>
+                  <div class="tab-pane fade <?= $i===0?'show active':'' ?>" id="tab-<?=$i?>" role="tabpanel">
+                    <div class="row product-grid" id="grid-<?=$i?>">
+                      <?php if (empty($list)): ?>
+                        <div class="col-12"><div class="alert alert-secondary mb-0">此分頁目前沒有商品</div></div>
+                      <?php else: foreach ($list as $it): ?>
+                        <div class="col-sm-6 col-md-4 col-xl-3 g-mb-20 product-col"
+                             data-id="<?=htmlspecialchars($it['id'])?>"
+                             data-name="<?=htmlspecialchars($it['name'])?>"
+                             data-price="<?= (int)$it['price'] ?>"
+                             data-sig="<?=htmlspecialchars($it['sig'])?>"
+                             data-match="1">
+                          <div class="u-shadow-v18 g-bg-white g-rounded-10 g-pa-15 product-card h-100 d-flex flex-column">
+                            <h4 class="name-title" title="<?=htmlspecialchars($it['name'])?>">
+                              <span class="scroll-wrap"><span class="scroll-inner"><?=htmlspecialchars($it['name'])?></span></span>
+                            </h4>
+                            <div class="name-en" title="<?= $it['name_en'] !== '' ? htmlspecialchars($it['name_en']) : '' ?>">
+                              <span class="scroll-wrap"><span class="scroll-inner"><?= $it['name_en'] !== '' ? htmlspecialchars($it['name_en']) : '&nbsp;' ?></span></span>
+                            </div>
+
+                            <div class="d-flex align-items-center g-mb-10">
+                              <div class="qty-wrap">
+                                <button class="qty-btn btnMinus" type="button">−</button>
+                                <input class="qty-input2" type="number" min="1" max="99" value="1" inputmode="numeric">
+                                <button class="qty-btn btnPlus" type="button">＋</button>
+                              </div>
+                            </div>
+
+                            <div class="mt-auto d-flex align-items-center justify-content-between">
+                              <button class="btn btn-sm btn-outline-primary btn-pill add-cart-btn">
+                                <i class="fa fa-cart-plus g-mr-5"></i> 加入購物車
+                              </button>
+                              <span class="price g-color-primary">NT$ <?=number_format((int)$it['price'])?></span>
+                            </div>
+                          </div>
+                        </div>
+                      <?php endforeach; endif; ?>
+                    </div>
+
+                    <!-- 分頁按鈕（每個 Tab 各自一組） -->
+                    <nav class="mt-3 pager-wrap">
+                      <ul class="pagination pagination-sm mb-0" data-grid="#grid-<?=$i?>" data-perpage="10" data-page="1"></ul>
+                    </nav>
+                  </div>
+                <?php $i++; endforeach; ?>
+              </div>
+
+            <?php endif; ?>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-</main>
+  </div>
+</section>
 
-<!-- footer 放在 main 外，才能穩定貼底 -->
-<div class="site-footer">
-  <?php $this->load->view("luna/luna_footer"); ?>
-</div>
-
-<!-- 右側抽屜：購物車 -->
+<!-- 右側抽屜：購物車（保留在 partial，layout 不需管） -->
 <div id="cartMask" class="cart-mask"></div>
 <aside id="cartDrawer" class="cart-drawer" aria-hidden="true" aria-label="購物車">
   <div class="cart-header">
@@ -159,6 +139,7 @@
   </div>
 </aside>
 
+<!-- Loading overlay -->
 <div id="checkoutLoading"
      style="position:fixed; inset:0; z-index:2000;
      background:rgba(15,23,42,.7); color:#fff;
@@ -173,7 +154,7 @@
 </div>
 
 <!-- 隱藏表單（結帳） -->
-<form id="checkoutForm" class="d-none" method="post" action="<?=site_url('luna/Luna_mall/checkout')?>">
+<form id="checkoutForm" class="d-none" method="post" action="<?=site_url('luna/luna_mall/checkout')?>">
   <?php if (!empty($csrf_name)): ?>
     <input type="hidden" name="<?=$csrf_name?>" value="<?=$csrf_hash?>">
   <?php endif; ?>
@@ -184,7 +165,6 @@
 <!-- 小通知 -->
 <div id="toastMini" class="toast-mini">已加入購物車</div>
 
-<?php $this->load->view("luna/luna_script"); ?>
 <script>
 (function(){
   /* ---------- Loading Overlay helpers ---------- */
@@ -209,11 +189,9 @@
   }
   function setCsrfPair(name, value){
     const form = document.getElementById('checkoutForm'); if(!form) return;
-    // 先移除舊的 CSRF hidden（可能名稱已變）
     Array.from(form.querySelectorAll('input[type="hidden"]'))
       .filter(x => x.name !== 'nonce' && x.name !== 'cart')
       .forEach(x => x.remove());
-    // 新增當前有效 pair
     let input = document.createElement('input');
     input.type = 'hidden'; input.name = name; input.value = value;
     form.appendChild(input);
@@ -227,14 +205,7 @@
     let input = form.querySelector('input[name="nonce"]');
     if(!input){ input = document.createElement('input'); input.type='hidden'; input.name='nonce'; form.appendChild(input); }
     input.value = nonce || '';
-    // 同步 meta（可選）
-    const m = document.querySelector('meta[name="checkout-nonce"]'); if(m) m.setAttribute('content', input.value);
   }
-  // 首次初始化 Nonce（來自 <meta>）
-  (function initNonce(){
-    const m = document.querySelector('meta[name="checkout-nonce"]');
-    if (m && m.content) setNonce(m.content);
-  })();
 
   /* ---------- Utils ---------- */
   function nf(n){ try{ return new Intl.NumberFormat('zh-Hant-TW').format(n); }catch(e){ return n; } }
@@ -244,50 +215,30 @@
     clearTimeout(showToast._t); showToast._t = setTimeout(()=>el.classList.remove('show'), 1600);
   }
 
-  /* ---------- 點數自動更新（10s） ---------- */
-  const ENDPOINT_BAL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
-  const mpEl = document.getElementById('mallPoint');
+  window.APP = {
+    balanceUrl: "<?= site_url('luna/luna_gm_product_set/balance') ?>",
+    checkoutUrl: "<?= site_url('luna/luna_mall/checkout') ?>",
+  };
 
-  function refreshPoint(){
-  if(!mpEl) return;
+  function refreshPoint() {
+    $.ajax({
+      url: window.APP.balanceUrl,
+      method: 'GET',
+      dataType: 'json',
+      xhrFields: { withCredentials: true }
+    }).done(function(resp){
+      if (resp && resp.ok) $('#mallPoint').text(resp.mall_point);
+      if (resp && resp.csrf_name && resp.csrf_hash) {
+        window.CSRF = { name: resp.csrf_name, hash: resp.csrf_hash };
+        setCsrfPair(resp.csrf_name, resp.csrf_hash);
+      }
+    });
+  }
 
-  // 取當前 CSRF pair（hidden 欄位）
-  const pair = getCsrfPair();
-
-  // body: form-data（帶目前的 CSRF）
-  const fd = new FormData();
-  if (pair.name && pair.value) fd.append(pair.name, pair.value);
-
-  // header: 也帶一份（後端若支援 X-CSRF-Token）
-  const headers = {'X-Requested-With':'XMLHttpRequest'};
-  if (pair.value) headers['X-CSRF-Token'] = pair.value;
-
-  fetch(ENDPOINT_BAL, {
-    method:'POST',
-    body: fd,
-    headers,
-    credentials:'include'
-  })
-  .then(r => r.ok ? r.json() : null)
-  .then(j => {
-    // —— 換新 CSRF（方案B：j.csrf = {name, hash}；相容舊版：j.csrf_name / j.csrf_hash）——
-    if (j && j.csrf && j.csrf.name && j.csrf.hash) {
-      setCsrfPair(j.csrf.name, j.csrf.hash);
-    } else if (j && j.csrf_name && j.csrf_hash) {
-      setCsrfPair(j.csrf_name, j.csrf_hash);
-    }
-
-    // 更新點數
-    if (j && j.ok && typeof j.mall_point!=='undefined') {
-      mpEl.textContent = nf(j.mall_point);
-    }
-  })
-  .catch(()=>{ /* 靜默忽略即可 */ });
-}
-
-// 啟動輪詢
-refreshPoint();
-setInterval(refreshPoint, 10000);
+  refreshPoint();
+  let refreshTimer = setInterval(refreshPoint, 10000);
+  function pauseRefresh(){ if (refreshTimer) { clearInterval(refreshTimer); refreshTimer = null; } }
+  function resumeRefresh(){ if (!refreshTimer) { refreshPoint(); refreshTimer = setInterval(refreshPoint, 10000); } }
 
   /* ===========================================================
      分頁核心（依 data-match 分頁）
@@ -582,7 +533,9 @@ setInterval(refreshPoint, 10000);
     });
   }
 
-  document.getElementById('btnCheckoutTop').addEventListener('click', function(){ if(CART.length) openCart(); });
+  if (document.getElementById('btnCheckoutTop')) {
+    document.getElementById('btnCheckoutTop').addEventListener('click', function(){ if(CART.length) openCart(); });
+  }
 
   /* ---------- 結帳 ---------- */
   var checkoutForm = document.getElementById('checkoutForm');
@@ -594,89 +547,63 @@ setInterval(refreshPoint, 10000);
     btnCheckout.disabled = on || CART.length===0;
     btnCheckoutTop.disabled = on || CART.length===0;
   }
+
   function doCheckout(){
     if (!CART.length || submitting) return;
-
-    const safeCart = CART.map(it => ({
-      id:  String(it.id),
-      qty: Math.max(1, Math.min(99, parseInt(it.qty,10)||1)),
-      sig: String(it.sig)
-    }));
+    pauseRefresh();
 
     const formEl = document.getElementById('checkoutForm');
     const fd = new FormData();
 
-    // CSRF
+    // ★ 確保 hidden 的 CSRF 與 header 一致
+    const cur = getCsrfPair();
+    if ((!cur.name || !cur.value) && window.CSRF && window.CSRF.name && window.CSRF.hash) {
+      setCsrfPair(window.CSRF.name, window.CSRF.hash);
+    }
     const pair = getCsrfPair();
     if (pair.name && pair.value) fd.append(pair.name, pair.value);
 
-    // Nonce（一次性）
-    const nonce = getNonce();
-    fd.append('nonce', nonce);
+    // Nonce & 購物車
+    fd.append('nonce', getNonce());
+    fd.append('cart', JSON.stringify(CART.map(it => ({
+      id:String(it.id),
+      qty:Math.max(1, Math.min(99, parseInt(it.qty,10)||1)),
+      sig:String(it.sig)
+    }))));
 
-    // 購物車
-    fd.append('cart', JSON.stringify(safeCart));
-
-    // UI 鎖定 + 載入提示
     lockCartUI(true);
-    showLoading('開始交易...');
+    showLoading('開始交易...'); updateStep('verify');
     const bailout = setTimeout(hideLoading, 20000);
 
-    // 也把 CSRF 塞進 header（後端支援 X-CSRF-Token）
-    const headers = {'X-Requested-With':'XMLHttpRequest'};
-    if (pair.value) headers['X-CSRF-Token'] = pair.value;
+    // Header 用 hidden 的那組 CSRF（與表單同源）
+    const headers = {'X-Requested-With':'XMLHttpRequest','Accept':'application/json'};
+    if (pair && pair.value) headers['X-CSRF-Token'] = pair.value;
 
     fetch(formEl.getAttribute('action'), {
-      method:'POST',
-      body:fd,
-      headers,
-      credentials:'include'
+      method:'POST', body:fd, headers, credentials:'include'
     })
     .then(async r => {
-      if (!r.ok) {
-        if (r.status === 403) {
-          try {
-            const j = await r.json();
-            if (j && j.csrf_name && j.csrf_hash) setCsrfPair(j.csrf_name, j.csrf_hash);
-            if (j && j.checkout_nonce) setNonce(j.checkout_nonce);
-          } catch (_) {}
-          showToast('安全驗證逾時，請重新整理頁面');
-          hideLoading(); clearTimeout(bailout); lockCartUI(false);
-          throw new Error('CSRF 403');
-        }
-        throw new Error('HTTP ' + r.status);
-      }
-      const txt = await r.text();
-      try { return JSON.parse(txt); } catch (e) { throw new Error('Bad JSON'); }
+      const txt = await r.text(); let j=null; try{ j=JSON.parse(txt);}catch(_){}
+      if (j && j.csrf_name && j.csrf_hash) { window.CSRF={name:j.csrf_name,hash:j.csrf_hash}; setCsrfPair(j.csrf_name,j.csrf_hash); }
+      if (j && j.checkout_nonce) setNonce(j.checkout_nonce);
+      if (!r.ok) { const e=new Error('HTTP '+r.status); e.payload=j; throw e; }
+      return j;
     })
     .then(res => {
-      if (res && res.csrf_name && res.csrf_hash) setCsrfPair(res.csrf_name, res.csrf_hash);
-      if (res && res.checkout_nonce) setNonce(res.checkout_nonce);
-
       if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
-
       if (!res || !res.ok) {
         showToast(res && res.msg ? res.msg : '結帳失敗');
-        hideLoading(); clearTimeout(bailout); lockCartUI(false);
-        return;
+        hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh(); return;
       }
-
-      alert(
-        res.order_no
-          ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${nf(res.total)}，剩餘點數 ${nf(res.after)}`
-          : '購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after)
-      );
-      CART = []; redrawCart(); closeCart();
-      const mpEl2 = document.getElementById('mallPoint');
-      if (mpEl2 && typeof res.after!=='undefined') mpEl2.textContent = nf(res.after);
-
-      hideLoading(); clearTimeout(bailout); lockCartUI(false);
+      alert(res.order_no ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${nf(res.total)}，剩餘點數 ${nf(res.after)}` :
+                          '購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after));
+      CART=[]; redrawCart(); closeCart();
+      const mp=document.getElementById('mallPoint'); if (mp && typeof res.after!=='undefined') mp.textContent = nf(res.after);
+      hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh();
     })
-    .catch((err) => {
-      if (String(err && err.message).indexOf('CSRF') === -1) {
-        showToast('網路異常，請稍後再試');
-        hideLoading(); clearTimeout(bailout); lockCartUI(false);
-      }
+    .catch(err => {
+      showToast((err && err.payload && err.payload.msg) ? err.payload.msg : '網路或驗證異常，請再試一次');
+      hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh();
     });
   }
 
@@ -687,5 +614,3 @@ setInterval(refreshPoint, 10000);
   applyPagination();
 })();
 </script>
-</body>
-</html>

@@ -161,7 +161,7 @@
                   </button>
                 </div>
               </div>
-
+             <input type="hidden" name="<?= $csrf_name ?>" value="<?= $csrf_hash ?>">
               <button class="btn btn-primary w-100 d-inline-flex align-items-center justify-content-center" type="submit" id="btnLogin">
                 <span class="spinner-border spinner-border-sm me-2 d-none" role="status" aria-hidden="true" id="btnSpinner"></span>
                 登入
@@ -171,6 +171,8 @@
                 <small>登入遇到問題？請聯繫管理員</small>
               </div>
             </form>
+            <meta name="csrf-name" content="<?= $csrf_name ?>">
+            <meta name="csrf-hash" content="<?= $csrf_hash ?>">
             <!-- End Form -->
           </div>
         </div>
@@ -207,64 +209,99 @@
 
   <script>
     (function(){
-      // 密碼可視/隱藏
-      const pwd = document.getElementById('passwordField');
-      const tgl = document.getElementById('togglePwd');
-      tgl.addEventListener('click', function(){
-        const on = pwd.type === 'password';
-        pwd.type = on ? 'text' : 'password';
-        this.innerHTML = on ? '<i class="fa fa-eye"></i>' : '<i class="fa fa-eye-slash"></i>';
+  const form = document.getElementById('login-form');
+
+  // 幫 hidden token 做「兜底」：若名稱改了或失蹤就自動補上
+  function ensureCsrfHidden(name, hash) {
+    if (!name || !hash) return;
+    let input = form.querySelector(`input[name="${name}"]`);
+    // 先移除舊的（名稱可能換過）
+    Array.from(form.querySelectorAll('input[type="hidden"]'))
+      .filter(x => x.name !== name)
+      .forEach(x => {
+        if (x.name.startsWith('ci_csrf_') || x.name.includes('csrf')) x.remove();
       });
+    if (!input) {
+      input = document.createElement('input');
+      input.type = 'hidden'; input.name = name;
+      form.appendChild(input);
+    }
+    input.value = hash;
+    const m1 = document.querySelector('meta[name="csrf-name"]');
+    const m2 = document.querySelector('meta[name="csrf-hash"]');
+    if (m1) m1.setAttribute('content', name);
+    if (m2) m2.setAttribute('content', hash);
+  }
 
-      // jQuery Validate + AJAX
-      $("#login-form").validate({
-        rules : {
-          account : { required : true },
-          password : {
-            required : true,
-            minlength : 1,
-            maxlength : 64
+  // 初始把 <meta> 的值寫回 hidden（避免首刷 race condition）
+  ensureCsrfHidden(
+    document.querySelector('meta[name="csrf-name"]')?.content,
+    document.querySelector('meta[name="csrf-hash"]')?.content
+  );
+
+  // 密碼可視/隱藏
+  const pwd = document.getElementById('passwordField');
+  const tgl = document.getElementById('togglePwd');
+  tgl.addEventListener('click', function(){
+    const on = pwd.type === 'password';
+    pwd.type = on ? 'text' : 'password';
+    this.innerHTML = on ? '<i class="fa fa-eye"></i>' : '<i class="fa fa-eye-slash"></i>';
+  });
+
+  $("#login-form").validate({
+    rules : {
+      account : { required : true },
+      password : { required : true, minlength : 1, maxlength : 64 }
+    },
+    messages : {
+      account : { required : '請輸入帳號' },
+      password : { required : '請輸入密碼' }
+    },
+    errorPlacement : function(error, element) {
+      error.addClass('text-danger small mt-1');
+      error.insertAfter(element.closest('.form-group'));
+    },
+    submitHandler : function() {
+      const $btn = $("#btnLogin");
+      const $spn = $("#btnSpinner");
+      $btn.prop('disabled', true);
+      $spn.removeClass('d-none');
+
+      $.ajax({
+        type: "POST",
+        url: '<?= base_url('luna/login/do_login') ?>',
+        dataType: 'json',
+        data: $("#login-form").serialize(), // ✅ 會包含 hidden 的 ci_csrf_token
+        success: function(res){
+          // 無論成功失敗，都優先更新 CSRF
+          if (res && res.csrf_name && res.csrf_hash) {
+            ensureCsrfHidden(res.csrf_name, res.csrf_hash);
           }
-        },
-        messages : {
-          account : { required : '請輸入帳號' },
-          password : { required : '請輸入密碼' }
-        },
-        errorPlacement : function(error, element) {
-          // 浮動標籤下方顯示
-          error.addClass('text-danger small mt-1');
-          error.insertAfter(element.closest('.form-group'));
-        },
-        submitHandler : function(form) {
-          const $btn = $("#btnLogin");
-          const $spn = $("#btnSpinner");
-          $btn.prop('disabled', true);
-          $spn.removeClass('d-none');
 
-          $.ajax({
-            type: "POST",
-            url: '<?= base_url('luna/login/do_login') ?>',
-            dataType: 'json',
-            data: $("#login-form").serialize(),
-            success: function(data){
-              if(data && data.msg){
-                alert(data.msg);
-                $btn.prop('disabled', false);
-                $spn.addClass('d-none');
-                return;
-              }
-              // 預期成功導向
-              location.href = "<?= base_url('luna/luna_home') ?>";
-            },
-            error: function(){
-              alert('登入失敗或連線異常，請稍後再試');
-              $btn.prop('disabled', false);
-              $spn.addClass('d-none');
-            }
-          });
+          if (!res || res.ok !== true) {
+            alert(res && res.msg ? res.msg : '登入失敗');
+            $btn.prop('disabled', false);
+            $spn.addClass('d-none');
+            return;
+          }
+
+          // 成功導向
+          location.href = (res.redirect || "<?= base_url('luna/luna_home') ?>");
+        },
+        error: function(xhr){
+          // 403 多半是 CSRF fail；後端可能沒機會回 JSON，但我們仍可「重載頁面」拿新 token
+          alert('登入失敗或連線異常，請再試一次');
+          $btn.prop('disabled', false);
+          $spn.addClass('d-none');
+
+          // 保守策略：強制刷新頁面（讓 CI 重種 cookie + hash）
+          // location.reload(); // 若你還在調試期，打開這行會更直覺
         }
       });
-    })();
+    }
+  });
+})();
+
   </script>
 </body>
 </html>

@@ -75,3 +75,405 @@
     var now_page = $('#now').val();
     $('.'+now_page).addClass('active');
 </script>
+<script>
+/* ---- Mall 點數輪詢：純 GET，避免 CSRF 造成逾時 ---- */
+(function () {
+  // 後端 balance endpoint（允許 GET）
+  var BAL_URL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
+
+  // 小工具：安全 NumberFormat
+  function nf(n) { try { return new Intl.NumberFormat('zh-Hant-TW').format(n); } catch (e) { return n; } }
+
+  // 從回應自動同步 CSRF（之後其他 POST 會用到）
+  function syncCsrfFrom(resp) {
+    try {
+      if (!resp) return;
+      // 你的專案同時可能回 {csrf:{name,hash}} 或 {csrf_name, csrf_hash}
+      if (resp.csrf && resp.csrf.name && resp.csrf.hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf.name, resp.csrf.hash);
+      } else if (resp.csrf_name && resp.csrf_hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf_name, resp.csrf_hash);
+      }
+    } catch (_) { /* 靜默 */ }
+  }
+
+  // 真的去拉點數
+  function refreshMallPoint() {
+    var el = document.getElementById('mallPoint');
+    if (!el) return; // 頁面沒有就當沒這回事（不報錯）
+    fetch(BAL_URL, {
+      method: 'GET',
+      headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
+      credentials: 'include'
+    })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) {
+      if (!j) return;
+      syncCsrfFrom(j);
+      if (j.ok && typeof j.mall_point !== 'undefined') {
+        el.textContent = nf(j.mall_point);
+      }
+    })
+    .catch(function(){ /* 靜默 */ });
+  }
+
+  // 讓別頁也能手動呼叫（可選）
+  window.refreshMallPoint = refreshMallPoint;
+
+  // DOM Ready 後就跑一次，之後每 10 秒跑一次
+  if (window.jQuery) {
+    jQuery(function(){ try { refreshMallPoint(); } catch (_) {} });
+  } else {
+    // 沒 jQuery 也不會炸
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function(){ try { refreshMallPoint(); } catch (_) {} });
+    } else {
+      try { refreshMallPoint(); } catch (_) {}
+    }
+  }
+  setInterval(function(){ try { refreshMallPoint(); } catch(_) {} }, 10000);
+})();
+</script>
+<script>
+/* ---- Mall 點數輪詢：純 GET，避免 CSRF 造成逾時 ---- */
+(function () {
+  // 後端 balance endpoint（允許 GET）
+  var BAL_URL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
+
+  // 小工具：安全 NumberFormat
+  function nf(n) { try { return new Intl.NumberFormat('zh-Hant-TW').format(n); } catch (e) { return n; } }
+
+  // 從回應自動同步 CSRF（之後其他 POST 會用到）
+  function syncCsrfFrom(resp) {
+    try {
+      if (!resp) return;
+      // 你的專案同時可能回 {csrf:{name,hash}} 或 {csrf_name, csrf_hash}
+      if (resp.csrf && resp.csrf.name && resp.csrf.hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf.name, resp.csrf.hash);
+      } else if (resp.csrf_name && resp.csrf_hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf_name, resp.csrf_hash);
+      }
+    } catch (_) { /* 靜默 */ }
+  }
+
+  // 真的去拉點數
+  function refreshMallPoint() {
+    var el = document.getElementById('mallPoint');
+    if (!el) return; // 頁面沒有就當沒這回事（不報錯）
+    fetch(BAL_URL, {
+      method: 'GET',
+      headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
+      credentials: 'include'
+    })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) {
+      if (!j) return;
+      syncCsrfFrom(j);
+      if (j.ok && typeof j.mall_point !== 'undefined') {
+        el.textContent = nf(j.mall_point);
+      }
+    })
+    .catch(function(){ /* 靜默 */ });
+  }
+
+  // 讓別頁也能手動呼叫（可選）
+  window.refreshMallPoint = refreshMallPoint;
+
+  // DOM Ready 後就跑一次，之後每 10 秒跑一次
+  if (window.jQuery) {
+    jQuery(function(){ try { refreshMallPoint(); } catch (_) {} });
+  } else {
+    // 沒 jQuery 也不會炸
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function(){ try { refreshMallPoint(); } catch (_) {} });
+    } else {
+      try { refreshMallPoint(); } catch (_) {}
+    }
+  }
+  setInterval(function(){ try { refreshMallPoint(); } catch(_) {} }, 10000);
+})();
+</script>
+<script>
+/* ---- Mall 點數輪詢：純 GET，避免 CSRF 造成逾時 ---- */
+(function () {
+  // 後端 balance endpoint（允許 GET）
+  var BAL_URL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
+
+  // 小工具：安全 NumberFormat
+  function nf(n) { try { return new Intl.NumberFormat('zh-Hant-TW').format(n); } catch (e) { return n; } }
+
+  // 從回應自動同步 CSRF（之後其他 POST 會用到）
+  function syncCsrfFrom(resp) {
+    try {
+      if (!resp) return;
+      // 你的專案同時可能回 {csrf:{name,hash}} 或 {csrf_name, csrf_hash}
+      if (resp.csrf && resp.csrf.name && resp.csrf.hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf.name, resp.csrf.hash);
+      } else if (resp.csrf_name && resp.csrf_hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf_name, resp.csrf_hash);
+      }
+    } catch (_) { /* 靜默 */ }
+  }
+
+  // 真的去拉點數
+  function refreshMallPoint() {
+    var el = document.getElementById('mallPoint');
+    if (!el) return; // 頁面沒有就當沒這回事（不報錯）
+    fetch(BAL_URL, {
+      method: 'GET',
+      headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
+      credentials: 'include'
+    })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) {
+      if (!j) return;
+      syncCsrfFrom(j);
+      if (j.ok && typeof j.mall_point !== 'undefined') {
+        el.textContent = nf(j.mall_point);
+      }
+    })
+    .catch(function(){ /* 靜默 */ });
+  }
+
+  // 讓別頁也能手動呼叫（可選）
+  window.refreshMallPoint = refreshMallPoint;
+
+  // DOM Ready 後就跑一次，之後每 10 秒跑一次
+  if (window.jQuery) {
+    jQuery(function(){ try { refreshMallPoint(); } catch (_) {} });
+  } else {
+    // 沒 jQuery 也不會炸
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function(){ try { refreshMallPoint(); } catch (_) {} });
+    } else {
+      try { refreshMallPoint(); } catch (_) {}
+    }
+  }
+  setInterval(function(){ try { refreshMallPoint(); } catch(_) {} }, 10000);
+})();
+</script>
+<script>
+/* ---- Mall 點數輪詢：純 GET，避免 CSRF 造成逾時 ---- */
+(function () {
+  // 後端 balance endpoint（允許 GET）
+  var BAL_URL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
+
+  // 小工具：安全 NumberFormat
+  function nf(n) { try { return new Intl.NumberFormat('zh-Hant-TW').format(n); } catch (e) { return n; } }
+
+  // 從回應自動同步 CSRF（之後其他 POST 會用到）
+  function syncCsrfFrom(resp) {
+    try {
+      if (!resp) return;
+      // 你的專案同時可能回 {csrf:{name,hash}} 或 {csrf_name, csrf_hash}
+      if (resp.csrf && resp.csrf.name && resp.csrf.hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf.name, resp.csrf.hash);
+      } else if (resp.csrf_name && resp.csrf_hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf_name, resp.csrf_hash);
+      }
+    } catch (_) { /* 靜默 */ }
+  }
+
+  // 真的去拉點數
+  function refreshMallPoint() {
+    var el = document.getElementById('mallPoint');
+    if (!el) return; // 頁面沒有就當沒這回事（不報錯）
+    fetch(BAL_URL, {
+      method: 'GET',
+      headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
+      credentials: 'include'
+    })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) {
+      if (!j) return;
+      syncCsrfFrom(j);
+      if (j.ok && typeof j.mall_point !== 'undefined') {
+        el.textContent = nf(j.mall_point);
+      }
+    })
+    .catch(function(){ /* 靜默 */ });
+  }
+
+  // 讓別頁也能手動呼叫（可選）
+  window.refreshMallPoint = refreshMallPoint;
+
+  // DOM Ready 後就跑一次，之後每 10 秒跑一次
+  if (window.jQuery) {
+    jQuery(function(){ try { refreshMallPoint(); } catch (_) {} });
+  } else {
+    // 沒 jQuery 也不會炸
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function(){ try { refreshMallPoint(); } catch (_) {} });
+    } else {
+      try { refreshMallPoint(); } catch (_) {}
+    }
+  }
+  setInterval(function(){ try { refreshMallPoint(); } catch(_) {} }, 10000);
+})();
+</script>
+<script>
+/* ---- Mall 點數輪詢：純 GET，避免 CSRF 造成逾時 ---- */
+(function () {
+  // 後端 balance endpoint（允許 GET）
+  var BAL_URL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
+
+  // 小工具：安全 NumberFormat
+  function nf(n) { try { return new Intl.NumberFormat('zh-Hant-TW').format(n); } catch (e) { return n; } }
+
+  // 從回應自動同步 CSRF（之後其他 POST 會用到）
+  function syncCsrfFrom(resp) {
+    try {
+      if (!resp) return;
+      // 你的專案同時可能回 {csrf:{name,hash}} 或 {csrf_name, csrf_hash}
+      if (resp.csrf && resp.csrf.name && resp.csrf.hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf.name, resp.csrf.hash);
+      } else if (resp.csrf_name && resp.csrf_hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf_name, resp.csrf_hash);
+      }
+    } catch (_) { /* 靜默 */ }
+  }
+
+  // 真的去拉點數
+  function refreshMallPoint() {
+    var el = document.getElementById('mallPoint');
+    if (!el) return; // 頁面沒有就當沒這回事（不報錯）
+    fetch(BAL_URL, {
+      method: 'GET',
+      headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
+      credentials: 'include'
+    })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) {
+      if (!j) return;
+      syncCsrfFrom(j);
+      if (j.ok && typeof j.mall_point !== 'undefined') {
+        el.textContent = nf(j.mall_point);
+      }
+    })
+    .catch(function(){ /* 靜默 */ });
+  }
+
+  // 讓別頁也能手動呼叫（可選）
+  window.refreshMallPoint = refreshMallPoint;
+
+  // DOM Ready 後就跑一次，之後每 10 秒跑一次
+  if (window.jQuery) {
+    jQuery(function(){ try { refreshMallPoint(); } catch (_) {} });
+  } else {
+    // 沒 jQuery 也不會炸
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function(){ try { refreshMallPoint(); } catch (_) {} });
+    } else {
+      try { refreshMallPoint(); } catch (_) {}
+    }
+  }
+  setInterval(function(){ try { refreshMallPoint(); } catch(_) {} }, 10000);
+})();
+</script>
+<script>
+/* ---- Mall 點數輪詢：純 GET，避免 CSRF 造成逾時 ---- */
+(function () {
+  // 後端 balance endpoint（允許 GET）
+  var BAL_URL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
+
+  // 小工具：安全 NumberFormat
+  function nf(n) { try { return new Intl.NumberFormat('zh-Hant-TW').format(n); } catch (e) { return n; } }
+
+  // 從回應自動同步 CSRF（之後其他 POST 會用到）
+  function syncCsrfFrom(resp) {
+    try {
+      if (!resp) return;
+      // 你的專案同時可能回 {csrf:{name,hash}} 或 {csrf_name, csrf_hash}
+      if (resp.csrf && resp.csrf.name && resp.csrf.hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf.name, resp.csrf.hash);
+      } else if (resp.csrf_name && resp.csrf_hash && typeof setCsrfPair === 'function') {
+        setCsrfPair(resp.csrf_name, resp.csrf_hash);
+      }
+    } catch (_) { /* 靜默 */ }
+  }
+
+  // 真的去拉點數
+  function refreshMallPoint() {
+    var el = document.getElementById('mallPoint');
+    if (!el) return; // 頁面沒有就當沒這回事（不報錯）
+    fetch(BAL_URL, {
+      method: 'GET',
+      headers: { 'X-Requested-With': 'XMLHttpRequest', 'Accept': 'application/json' },
+      credentials: 'include'
+    })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) {
+      if (!j) return;
+      syncCsrfFrom(j);
+      if (j.ok && typeof j.mall_point !== 'undefined') {
+        el.textContent = nf(j.mall_point);
+      }
+    })
+    .catch(function(){ /* 靜默 */ });
+  }
+
+  // 讓別頁也能手動呼叫（可選）
+  window.refreshMallPoint = refreshMallPoint;
+
+  // DOM Ready 後就跑一次，之後每 10 秒跑一次
+  if (window.jQuery) {
+    jQuery(function(){ try { refreshMallPoint(); } catch (_) {} });
+  } else {
+    // 沒 jQuery 也不會炸
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', function(){ try { refreshMallPoint(); } catch (_) {} });
+    } else {
+      try { refreshMallPoint(); } catch (_) {}
+    }
+  }
+  setInterval(function(){ try { refreshMallPoint(); } catch(_) {} }, 10000);
+})();
+</script>
+
+<script>
+/* ==== 全站自動刷新 sidebar 點數（存在 #mallPoint 才會跑） ==== */
+(function(){
+  var ENDPOINT_BAL = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
+  var mpEl = document.getElementById('mallPoint');
+  if (!mpEl) return;
+
+  var csrf = {name:null, hash:null};
+
+  function nf(n){ try { return new Intl.NumberFormat('zh-Hant-TW').format(n); } catch(e) { return n; } }
+
+  // 先用 GET 取一次，seed CSRF
+  function seedCsrf(){
+    return fetch(ENDPOINT_BAL, {method:'GET', credentials:'include'})
+      .then(r => r.ok ? r.json() : null)
+      .then(j => {
+        if (j && j.csrf_name && j.csrf_hash) {
+          csrf.name = j.csrf_name;
+          csrf.hash = j.csrf_hash;
+        }
+      }).catch(()=>{});
+  }
+
+  function poll(){
+    var fd = new FormData();
+    if (csrf.name && csrf.hash) fd.append(csrf.name, csrf.hash);
+    fetch(ENDPOINT_BAL, {
+      method:'POST',
+      body: fd,
+      credentials:'include',
+      headers: {'X-Requested-With':'XMLHttpRequest', 'X-CSRF-Token': csrf.hash || ''}
+    })
+    .then(r => r.ok ? r.json() : null)
+    .then(j => {
+      if (!j) return;
+      if (j.csrf_name && j.csrf_hash) { csrf.name = j.csrf_name; csrf.hash = j.csrf_hash; }
+      if (j.ok && typeof j.mall_point !== 'undefined') mpEl.textContent = nf(j.mall_point);
+    })
+    .catch(()=>{});
+  }
+
+  seedCsrf().then(function(){
+    poll();
+    setInterval(poll, 10000);
+  });
+})();
+</script>

@@ -70,6 +70,24 @@ class Luna_gm_product_set extends MY_Base_Controller {
     return true;
   }
 
+  /** 確保 CSRF cookie 與 token 已產生 */
+  private function ensure_csrf() {
+    $cookie = method_exists($this->security,'get_csrf_cookie_name')
+      ? $this->security->get_csrf_cookie_name()
+      : $this->config->item('csrf_cookie_name');
+
+    if (!$this->input->cookie($cookie)) {
+      if (method_exists($this->security, 'csrf_set_cookie')) {
+        $this->security->csrf_set_cookie();
+      }
+    }
+    return [
+      'csrf_name' => $this->security->get_csrf_token_name(),
+      'csrf_hash' => $this->security->get_csrf_hash(),
+    ];
+  }
+
+
   /* ========================== Page ========================== */
 
   public function index() {
@@ -86,8 +104,11 @@ class Luna_gm_product_set extends MY_Base_Controller {
     $data['login_user'] = $login_user;
     $data['userlv']     = $login_user ? ($login_user->UserLevel ?? 0) : 0;
     $data['now']        = 'luna_gm_product_set';
-
-    $this->load->view('luna/luna_gm_product_set', $data);
+    $data['csrf_name'] = $this->security->get_csrf_token_name();
+    $data['csrf_hash'] = $this->security->get_csrf_hash();
+    // $this->load->view('luna/luna_gm_product_set', $data);
+    $data['content_view'] = 'luna/gm_product_set_content'; // 新：只放中間內容的 view
+    $this->load->view('luna/luna_layout', $data);     // 新：共用 head/header/sidebar/footer
   }
 
   /* ========================== Excel 讀取（無表頭，固定欄位） ========================== */
@@ -118,12 +139,12 @@ class Luna_gm_product_set extends MY_Base_Controller {
     $COL_ItemName       = 2;   // B
     $COL_Stack          = 13;  // M
     $COL_Time           = 20;  // T
-    $COL_wSeal          = 57;  // BE  ← 封印欄位（很重要）
+    $COL_wSeal          = 57;  // BE
     $COL_dwType         = 64;  // BL
     $COL_dwTypeDetail   = 65;  // BM
 
     $items = [];
-    for ($r = 1; $r <= $highestRow; $r++) { // 無表頭，從第 1 列開始
+    for ($r = 1; $r <= $highestRow; $r++) {
       $code = trim((string)$sheet->getCellByColumnAndRow($COL_ItemIdx,  $r)->getValue());
       $name = trim((string)$sheet->getCellByColumnAndRow($COL_ItemName, $r)->getValue());
       if ($code === '' && $name === '') continue;
@@ -139,7 +160,7 @@ class Luna_gm_product_set extends MY_Base_Controller {
         'name'            => $name,
         'max_stack'       => max(0, $stack),
         'endtime'         => ($time > 0 ? $time : null),
-        'wSeal'           => $seal, // 直接用 Excel 的 wSeal（BD 欄）
+        'wSeal'           => $seal,
         'category_code'   => $cate,
         'category_detail' => $cateDetail,
       ];
@@ -158,7 +179,6 @@ class Luna_gm_product_set extends MY_Base_Controller {
 
   public function create_user() {
     $this->output->set_content_type('application/json');
-
     if (!$this->require_gm()) return;
 
     $login     = trim((string)$this->input->post('login', true));
@@ -282,156 +302,177 @@ class Luna_gm_product_set extends MY_Base_Controller {
 
       $this->db->trans_commit();
       echo json_encode(['success'=>true,'msg'=>'發送點數完成（以 id_loginid 比對）','results'=>$results], JSON_UNESCAPED_UNICODE);
-    } catch (Throwable $e) {
+    } catch (\Throwable $e) {
       $this->db->trans_rollback();
       echo json_encode(['success'=>false,'msg'=>'處理失敗：'.$e->getMessage(),'results'=>$results], JSON_UNESCAPED_UNICODE);
     }
   }
 
+  /** 查餘額：GET 先 seed CSRF、POST 正式查詢（皆回傳最新 CSRF） */
   public function balance() {
-  $this->output->set_content_type('application/json');
-
-  // 僅允許 POST
-  if (strtoupper($this->input->method(TRUE)) !== 'POST') {
-    $resp = [
-      'ok' => false,
-      'msg' => 'method not allowed',
-      'csrf_name' => $this->security->get_csrf_token_name(),
-      'csrf_hash' => $this->security->get_csrf_hash(),
-    ];
-    return $this->output->set_status_header(405)
-      ->set_output(json_encode($resp, JSON_UNESCAPED_UNICODE));
-  }
-
-  // CSRF 驗證（支援表單欄位與 X-CSRF-Token 標頭）
-  $tokenName = $this->security->get_csrf_token_name();
-  $tokenPost = $this->input->post($tokenName, true);
-  $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
-  $validHash = $this->security->get_csrf_hash();
-  $csrf_ok = false;
-  if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
-  if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
-  if (!$csrf_ok) {
-    $resp = [
-      'ok' => false,
-      'msg'=> 'CSRF 驗證失敗',
-      'csrf_name' => $this->security->get_csrf_token_name(),
-      'csrf_hash' => $this->security->get_csrf_hash(),
-    ];
-    return $this->output->set_status_header(403)
-      ->set_output(json_encode($resp, JSON_UNESCAPED_UNICODE));
-  }
-
-  // 登入檢查
-  if (empty($this->session->userdata('user_id'))) {
-    $resp = [
-      'ok' => false,
-      'msg'=> 'not login',
-      'csrf_name' => $this->security->get_csrf_token_name(),
-      'csrf_hash' => $this->security->get_csrf_hash(),
-    ];
-    return $this->output->set_status_header(401)
-      ->set_output(json_encode($resp, JSON_UNESCAPED_UNICODE));
-  }
-
-  // 取身份線索
-  $s_data    = $this->setup_user_data([]);
-  $login_id  = $s_data['login_user_id'] ?? '';
-  $sess_uid  = $this->session->userdata('user_id');
-
-  // 查詢（用 group_start 包起來避免 OR 擴散）
-  $this->db->select('id_idx, mall_point')
-           ->from('dbo.chr_log_info')
-           ->group_start();
-
-  $added = false;
-  if ($login_id !== '') {
-    $this->db->where('id_loginid', $login_id);
-    $added = true;
-  }
-  if (is_numeric($sess_uid)) {
-    if ($added) $this->db->or_where('id_idx', (int)$sess_uid);
-    else        $this->db->where('id_idx', (int)$sess_uid);
-    $added = true;
-  }
-  $this->db->group_end()->limit(1);
-
-  $row = $this->db->get()->row_array();
-
-  if (!$row) {
-    $resp = [
-      'ok' => false,
-      'msg'=> 'account not found',
-      'csrf_name' => $this->security->get_csrf_token_name(),
-      'csrf_hash' => $this->security->get_csrf_hash(),
-    ];
-    return $this->output->set_status_header(404)
-      ->set_output(json_encode($resp, JSON_UNESCAPED_UNICODE));
-  }
-
-  // 成功回傳 + 最新 CSRF
-  $resp = [
-    'ok' => true,
-    'user_idx' => (int)$row['id_idx'],
-    'mall_point' => (int)$row['mall_point'],
-    'ts' => time(),
-    'csrf_name' => $this->security->get_csrf_token_name(),
-    'csrf_hash' => $this->security->get_csrf_hash(),
-  ];
-  return $this->output->set_output(json_encode($resp, JSON_UNESCAPED_UNICODE));
-}
-
-
-  /* ========================== 商品列表 ========================== */
-
-  public function get_data() {
     $this->output->set_content_type('application/json');
 
-    $page  = max(1, (int)$this->input->post('page'));
-    $q     = trim((string)$this->input->post('q'));
-    $limit = 10;
+    // ---- 只在還沒有 CSRF cookie 時，才種一次 ----
+    $csrf_cookie = method_exists($this->security, 'get_csrf_cookie_name')
+      ? $this->security->get_csrf_cookie_name()
+      : $this->config->item('csrf_cookie_name');
 
-    if (!file_exists($this->excel_file)) {
-      echo json_encode([
-        'items'=>[], 'total'=>0, 'page'=>1, 'total_page'=>1,
-        'error'=>'Excel 檔案不存在：'.$this->excel_file
-      ]);
-      return;
+    if (!$this->input->cookie($csrf_cookie)) {
+      if (method_exists($this->security, 'csrf_set_cookie')) {
+        $this->security->csrf_set_cookie();
+      }
     }
 
-    try {
-      $pack = $this->load_all_items();
-      $items = $pack['items'];
+    $method = strtoupper($this->input->method(TRUE));
 
-      if ($q !== '') {
-        $needle = mb_strtolower($q, 'UTF-8');
-        $items = array_values(array_filter($items, function($it) use ($needle){
-          $a = mb_strtolower((string)($it['product_code'] ?? ''), 'UTF-8');
-          $b = mb_strtolower((string)($it['name'] ?? ''), 'UTF-8');
-          return (strpos($a, $needle) !== false) || (strpos($b, $needle) !== false);
-        }));
+    // ---- 登入檢查 ----
+    if (empty($this->session->userdata('user_id'))) {
+      // 不要再 rotate；直接帶目前 pair 回去
+      return $this->output->set_status_header(401)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'not login',
+          'csrf_name' => $this->security->get_csrf_token_name(),
+          'csrf_hash' => $this->security->get_csrf_hash(),
+        ], JSON_UNESCAPED_UNICODE));
+    }
+
+    // ---- 允許 GET/POST/OPTIONS；只有 POST 驗 CSRF ----
+   if ($method === 'POST') {
+    $tokenName = $this->security->get_csrf_token_name();
+    $tokenPost = $this->input->post($tokenName, false); // 不做 XSS 過濾
+    $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
+    $validHash = $this->security->get_csrf_hash();
+
+    $csrf_ok = false;
+    if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
+    if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
+
+    // ★ 新增：支援 application/json body
+    if (!$csrf_ok) {
+      $raw = trim($this->input->raw_input_stream ?? '');
+      if ($raw !== '') {
+        $jb = json_decode($raw, true);
+        if (is_array($jb)) {
+          $tok = $jb[$tokenName] ?? $jb['csrf'] ?? $jb['token'] ?? null;
+          if (is_string($tok) && hash_equals($validHash, $tok)) $csrf_ok = true;
+        }
+      }
+    }
+
+    if (!$csrf_ok) {
+      return $this->output->set_status_header(403)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'CSRF 驗證失敗',
+          'csrf_name' => $this->security->get_csrf_token_name(),
+          'csrf_hash' => $this->security->get_csrf_hash(),
+        ], JSON_UNESCAPED_UNICODE));
+    }
+  } else if ($method !== 'GET' && $method !== 'OPTIONS') {
+      return $this->output->set_status_header(405)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'method not allowed',
+          'csrf_name' => $this->security->get_csrf_token_name(),
+          'csrf_hash' => $this->security->get_csrf_hash(),
+        ], JSON_UNESCAPED_UNICODE));
+    }
+
+    // ---- 查 mall_point（session or login_id）----
+    $s_data    = $this->setup_user_data([]);
+    $login_id  = $s_data['login_user_id'] ?? '';
+    $sess_uid  = $this->session->userdata('user_id');
+
+    $this->db->select('id_idx, mall_point')
+            ->from('dbo.chr_log_info')
+            ->group_start();
+
+    $added = false;
+    if ($login_id !== '') { 
+      $this->db->where('id_loginid', (string)$login_id);
+      $added = true;
+    }
+    if (is_numeric($sess_uid)) {
+      if ($added) $this->db->or_where('id_idx', (int)$sess_uid);
+      else        $this->db->where('id_idx', (int)$sess_uid);
+    }
+    $this->db->group_end()->limit(1);
+
+    $row = $this->db->get()->row_array();
+
+    if (!$row) {
+      return $this->output->set_status_header(404)
+        ->set_output(json_encode([
+          'ok' => false,
+          'msg'=> 'account not found',
+          'csrf_name' => $this->security->get_csrf_token_name(),
+          'csrf_hash' => $this->security->get_csrf_hash(),
+        ], JSON_UNESCAPED_UNICODE));
+    }
+
+    // ---- 成功：回目前 pair（不 rotate）----
+    return $this->output->set_output(json_encode([
+      'ok' => true,
+      'user_idx'   => (int)$row['id_idx'],
+      'mall_point' => (int)$row['mall_point'],
+      'ts'         => time(),
+      'csrf_name'  => $this->security->get_csrf_token_name(),
+      'csrf_hash'  => $this->security->get_csrf_hash(),
+    ], JSON_UNESCAPED_UNICODE));
+  }
+
+
+    /* ========================== 商品列表 ========================== */
+
+    public function get_data() {
+      $this->output->set_content_type('application/json');
+
+      $page  = max(1, (int)$this->input->post('page'));
+      $q     = trim((string)$this->input->post('q'));
+      $limit = 10;
+
+      if (!file_exists($this->excel_file)) {
+        echo json_encode([
+          'items'=>[], 'total'=>0, 'page'=>1, 'total_page'=>1,
+          'error'=>'Excel 檔案不存在：'.$this->excel_file
+        ]);
+        return;
       }
 
-      $total = count($items);
-      $total_page = max(1, (int)ceil($total / $limit));
-      $page = min($page, $total_page);
+      try {
+        $pack = $this->load_all_items();
+        $items = $pack['items'];
 
-      $offset = ($page - 1) * $limit;
-      $paged_items = array_slice($items, $offset, $limit);
+        if ($q !== '') {
+          $needle = mb_strtolower($q, 'UTF-8');
+          $items = array_values(array_filter($items, function($it) use ($needle){
+            $a = mb_strtolower((string)($it['product_code'] ?? ''), 'UTF-8');
+            $b = mb_strtolower((string)($it['name'] ?? ''), 'UTF-8');
+            return (strpos($a, $needle) !== false) || (strpos($b, $needle) !== false);
+          }));
+        }
 
-      echo json_encode([
-        'items'=>$paged_items,
-        'total'=>$total,
-        'page'=>$page,
-        'total_page'=>$total_page,
-      ], JSON_UNESCAPED_UNICODE);
-    } catch (\Throwable $e) {
-      echo json_encode([
-        'items'=>[], 'total'=>0, 'page'=>1, 'total_page'=>1,
-        'error'=>'讀取失敗：'.$e->getMessage()
-      ]);
+        $total = count($items);
+        $total_page = max(1, (int)ceil($total / $limit));
+        $page = min($page, $total_page);
+
+        $offset = ($page - 1) * $limit;
+        $paged_items = array_slice($items, $offset, $limit);
+
+        echo json_encode([
+          'items'=>$paged_items,
+          'total'=>$total,
+          'page'=>$page,
+          'total_page'=>$total_page,
+        ], JSON_UNESCAPED_UNICODE);
+      } catch (\Throwable $e) {
+        echo json_encode([
+          'items'=>[], 'total'=>0, 'page'=>1, 'total_page'=>1,
+          'error'=>'讀取失敗：'.$e->getMessage()
+        ]);
+      }
     }
-  }
 
   /* ========================== 發送物品（統一用 wSeal + Stack，ITEM_POSITION=320） ========================== */
 
@@ -569,8 +610,8 @@ class Luna_gm_product_set extends MY_Base_Controller {
     $this->output->set_content_type('application/json');
     if (!$this->require_gm()) return;
 
-    $user_idx = (int)$this->input->post('user_idx');        // 帳號 USER_IDX
-    $item_idx = trim((string)$this->input->post('item_idx'));// 物品ID，可多筆逗號
+    $user_idx = (int)$this->input->post('user_idx');
+    $item_idx = trim((string)$this->input->post('item_idx'));
     $qty      = (int)$this->input->post('qty');
 
     if ($user_idx <= 0 || $item_idx === '' || $qty <= 0) {
@@ -670,10 +711,10 @@ class Luna_gm_product_set extends MY_Base_Controller {
   /** 多帳號英數、可多道具：固定 ITEM_POSITION=320 */
   public function send_shop_bag_multi() {
     $this->output->set_content_type('application/json');
-    // if (!$this->require_gm()) return; // 需要可打開
+    // if (!$this->require_gm()) return;
 
-    $user_ids_raw = trim((string)$this->input->post('user_ids')); // 多個英數帳號
-    $item_raw     = trim((string)$this->input->post('item_idx')); // 多個 item 編號
+    $user_ids_raw = trim((string)$this->input->post('user_ids'));
+    $item_raw     = trim((string)$this->input->post('item_idx'));
     $qty          = (int)$this->input->post('qty');
 
     if ($qty <= 0) { echo json_encode(['ok'=>false,'msg'=>'qty 需 > 0']); return; }
@@ -806,8 +847,8 @@ class Luna_gm_product_set extends MY_Base_Controller {
   public function characters_by_user() {
     $this->output->set_content_type('application/json');
 
-    $key_id  = $this->input->post('user_id', true);   // 英數帳號（可空）
-    $key_idx = $this->input->post('user_idx', true);  // 純數字（可空）
+    $key_id  = $this->input->post('user_id', true);
+    $key_idx = $this->input->post('user_idx', true);
 
     $res = $this->resolve_account($key_id, $key_idx);
     if (!$res['ok']) {

@@ -447,12 +447,25 @@ $config['global_xss_filtering'] = FALSE;
 | 'csrf_regenerate' = Regenerate token on every submission
 | 'csrf_exclude_uris' = Array of URIs which ignore CSRF checks
 */
-$config['csrf_protection'] = FALSE;
-$config['csrf_token_name'] = 'csrf_test_name';
-$config['csrf_cookie_name'] = 'csrf_cookie_name';
-$config['csrf_expire'] = 7200;
-$config['csrf_regenerate'] = TRUE;
-$config['csrf_exclude_uris'] = array();
+$config['csrf_protection'] = TRUE;
+
+// ★ 名稱統一成同一個字串（避免一個用 token_name、一個用 cookie_name）
+$config['csrf_token_name']  = 'ci_csrf_token';
+$config['csrf_cookie_name'] = 'ci_csrf_token';
+
+// ★ 先關閉自動輪替（除錯時很重要；穩定後再考慮打開）
+$config['csrf_regenerate']  = FALSE;
+
+// 讓 cookie 綁定當前 host（不指定網域，IP/網域都能用）
+$config['cookie_domain']    = '';
+$config['cookie_path']      = '/';
+
+// 不是 https 的話先關掉 secure；前端要讀值就別設 httponly
+$config['cookie_secure']    = FALSE;
+$config['cookie_httponly']  = FALSE;
+$config['cookie_samesite']  = 'Lax';
+
+
 
 /*
 |--------------------------------------------------------------------------
