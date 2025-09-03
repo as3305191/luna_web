@@ -76,7 +76,7 @@ $query_builder = TRUE;
 
 $db['memberdb'] = array(
     'dsn'      => 'sqlsrv:Server=PONY0116,1433;Database=LUNA_MEMBERDB_2025;',
-    'username' => 'as3305191',
+    'username' => 'sa',
     'password' => 'as09760731',
     'dbdriver' => 'pdo',
     'dbprefix' => '',
@@ -94,7 +94,7 @@ $db['memberdb'] = array(
 
 $db['gamedb'] = array(
     'dsn'      => 'sqlsrv:Server=PONY0116,1433;Database=LUNA_GAMEDB_2025;',
-    'username' => 'as3305191',
+    'username' => 'sa',
     'password' => 'as09760731',
     'dbdriver' => 'pdo',
     'dbprefix' => '',
@@ -112,7 +112,7 @@ $db['gamedb'] = array(
 
 $db['logdb'] = array(
     'dsn'      => 'sqlsrv:Server=PONY0116,1433;Database=LUNA_LOGDB_2025;',
-    'username' => 'as3305191',
+    'username' => 'sa',
     'password' => 'as09760731',
     'dbdriver' => 'pdo',
     'dbprefix' => '',
