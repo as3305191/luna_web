@@ -12,10 +12,10 @@
         "codeigniter/framework": "3.1.11",
         "phpoffice/phpword": "^0.17.0",
         "laminas/laminas-escaper": "^2.6",
-        "lcobucci/jwt": "^3.3",
         "calcinai/php-imagick": "^0.1.2",
         "phpoffice/phpexcel": "^1.8",
-        "phpoffice/phpspreadsheet": "^1.30"
+        "phpoffice/phpspreadsheet": "^1.30",
+        "lcobucci/jwt": "3.4.6"
     },
     "config": {
     "platform": { "php": "7.4.24" }
