@@ -151,9 +151,7 @@
                   </div>
                 </div>
 
-
-
-              <!-- 商品清單 -->
+                <!-- 商品清單 -->
                 <div class="card border-0">
                   <div class="card-header d-flex align-items-center justify-content-between g-bg-gray-light-v5 border-0">
                     <h3 class="h6 mb-0"><i class="icon-directions g-pos-rel g-top-1 g-mr-5"></i> 商品清單</h3>
@@ -184,7 +182,6 @@
                   </div>
                 </div>
 
-
               </div>
             </div>
           </div><!-- /col-lg-9 -->
@@ -195,9 +192,41 @@
 
   <div class="site-footer"><?php $this->load->view("luna/luna_footer"); ?></div>
   <div class="u-outer-spaces-helper"></div>
+
   <?php $this->load->view("luna/luna_script"); ?>
 
+  <!-- ✅ 核心 jQuery（先載），CDN＋本機備援 -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <script>
+    if (!window.jQuery) {
+      document.write('<script src="/assets/js/jquery-3.7.1.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- ✅ jQuery Migrate（一定要在 jQuery 之後） -->
+  <script src="https://code.jquery.com/jquery-migrate-3.4.1.min.js" crossorigin="anonymous"></script>
+  <script>
+    if (!window.jQuery || !jQuery.migrateWarnings) {
+      document.write('<script src="/assets/js/jquery-migrate-3.4.1.min.js"><\/script>');
+    }
+  </script>
+
+  <!-- 其它相依 jQuery 的外掛（如有）：例如 Bootstrap -->
+  <!-- <script src="/assets/js/bootstrap.bundle.min.js"></script> -->
+
+  <!-- ✅ 你的頁面腳本：包 IIFE，避免 noConflict/時機問題 -->
+  <script>
+  (function($){
+    'use strict';
+
+    if (!$) {
+      // 友善提示：如果 jQuery 還是掛了
+      var msgEl = document.getElementById('msg');
+      if (msgEl) msgEl.innerText = 'jQuery 未載入，請檢查網路或檔案路徑。';
+      console.error('jQuery not loaded: $ is undefined.');
+      return;
+    }
+
     const API_GET           = '<?= site_url('luna/luna_gm_product_set/get_data') ?>';
     const API_GRANT_POINTS  = '<?= site_url("luna/luna_gm_product_set/grant_points") ?>';
     const API_CREATE_USER   = '<?= site_url("luna/luna_gm_product_set/create_user") ?>';
@@ -239,18 +268,12 @@
               const $tr = $('<tr/>');
               $('<td/>').addClass('mono').text(me.product_code || '').appendTo($tr);
               $('<td/>').text(me.name || '').appendTo($tr);
-
-              // 限時秒數
               $('<td/>').text(me.endtime ? humanizeSeconds(me.endtime) : '永久').appendTo($tr);
-
-              // 分類（大類/細項）
               $('<td/>').text(`大類:${me.category_code} / 細類:${me.category_detail}`).appendTo($tr);
 
-              // 加入待發送按鈕
               const $btn = $('<button class="btn btn-primary btn-xs">加入待發送</button>').on('click', function(){
                 const toAdd = String(me.product_code || '').trim();
                 if (!toAdd) return;
-
                 function appendToField(sel) {
                   const $el = $(sel);
                   if (!$el.length) return;
@@ -258,13 +281,9 @@
                   const next = cur ? (cur.endsWith(',') ? cur + toAdd : cur + ',' + toAdd) : toAdd;
                   $el.val(next);
                 }
-
-                // 新的（多人商城包包）
                 appendToField('#shop_item_codes');
-                // 若頁面上還有舊欄位也同步
-                appendToField('#item_codes');
+                appendToField('#item_codes'); // 兼容舊欄位
               });
-
 
               $('<td class="nowrap"/>').append($btn).appendTo($tr);
               $tr.appendTo($body);
@@ -302,6 +321,7 @@
       addBtn('»', Math.min(totalPage, page + 1), page >= totalPage);
     }
 
+    // ---- DOM ready ----
     $(function(){ fetch_page(1); });
 
     // 建立帳號
@@ -327,7 +347,7 @@
       }).always(function(){ $('#btnCreateUser').prop('disabled', false).text('建立帳號'); });
     });
 
-    // 送到商城包包
+    // 單人送到商城包包（如果頁面上有單人 UI）
     $('#btnSendShopBag').on('click', function(){
       const user_idx = parseInt($('#shop_user_idx').val(), 10) || 0;
       const qty      = parseInt($('#shop_qty').val(), 10) || 0;
@@ -337,15 +357,10 @@
       if (qty <= 0)      { alert('數量需大於 0'); return; }
       if (!rawItems)     { alert('請輸入至少一個商品編號'); return; }
 
-      // 允許多個，以逗號或換行分隔 -> 傳給後端一個逗號字串即可
       const items = rawItems.split(/[\s,]+/).map(s=>s.trim()).filter(Boolean);
       if (!items.length) { alert('沒有有效的商品編號'); return; }
 
-      const payload = {
-        user_idx: user_idx,
-        item_idx: items.join(','), // 後端支援逗號多筆
-        qty: qty
-      };
+      const payload = { user_idx: user_idx, item_idx: items.join(','), qty: qty };
       if (CSRF_NAME && CSRF_HASH) payload[CSRF_NAME] = CSRF_HASH;
 
       $('#btnSendShopBag').prop('disabled', true).text('處理中…');
@@ -357,7 +372,6 @@
         $('#shop_msg').text(ok ? '發送完成' : (res && res.msg ? res.msg : '發送失敗'))
                       .css('color', ok ? '#28a745' : '#d9534f');
 
-        // 明細
         const $box = $('<div/>');
         (res && res.results ? res.results : []).forEach(r=>{
           const line = (r.ok)
@@ -374,33 +388,19 @@
       });
     });
 
-    // 多人送到商城包包（帳號=id_loginid 英數）
+    // 多人送到商城包包
     $('#btnSendShopBagMulti').on('click', function(){
-      // 解析帳號
       let rawUsers = ($('#shop_user_ids').val() || '').replace(/，/g, ',').trim();
-      const userIds = rawUsers
-        .split(/[\s,]+/)
-        .map(s => s.trim())
-        .filter(s => s.length > 0 && /^[A-Za-z0-9]+$/.test(s)); // 僅保留英數
-
-      // 解析物品
+      const userIds = rawUsers.split(/[\s,]+/).map(s => s.trim()).filter(s => s.length > 0 && /^[A-Za-z0-9]+$/.test(s));
       let rawItems = ($('#shop_item_codes').val() || '').replace(/，/g, ',').trim();
-      const items = rawItems
-        .split(/[\s,]+/)
-        .map(s => s.trim())
-        .filter(s => /^\d+$/.test(s)); // 僅保留純數字的 itemIdx
-
+      const items = rawItems.split(/[\s,]+/).map(s => s.trim()).filter(s => /^\d+$/.test(s));
       const qty = parseInt($('#shop_qty').val(), 10) || 0;
 
       if (!userIds.length) { alert('請輸入至少一個有效的英數帳號（id_loginid）'); return; }
       if (!items.length)   { alert('請輸入至少一個有效的商品編號'); return; }
       if (qty <= 0)        { alert('數量需大於 0'); return; }
 
-      const payload = {
-        user_ids: userIds.join(','),  // 後端以逗號解析多個帳號
-        item_idx: items.join(','),    // 後端以逗號解析多個物品
-        qty: qty
-      };
+      const payload = { user_ids: userIds.join(','), item_idx: items.join(','), qty: qty };
       if (CSRF_NAME && CSRF_HASH) payload[CSRF_NAME] = CSRF_HASH;
 
       $('#btnSendShopBagMulti').prop('disabled', true).text('處理中…');
@@ -412,10 +412,8 @@
         $('#shop_msg').text(ok ? '發送完成' : (res && res.msg ? res.msg : '發送失敗'))
                       .css('color', ok ? '#28a745' : '#d9534f');
 
-        // 顯示結果（容錯：兼容不同後端回傳格式）
         const $box = $('<div/>');
 
-        // 格式 A：{ ok, results: [ {user_id, user_idx, items:[{item,ok,count,msg,seal,stack_max}]} ] }
         if (res && Array.isArray(res.results)) {
           res.results.forEach(u => {
             const head = `帳號 ${u.user_id || u.account || ''}（IDX:${u.user_idx || '-'}）`;
@@ -429,9 +427,7 @@
               });
             }
           });
-        }
-        // 格式 B：{ ok, details: [同上] }
-        else if (res && Array.isArray(res.details)) {
+        } else if (res && Array.isArray(res.details)) {
           res.details.forEach(u => {
             const head = `帳號 ${u.user_id || u.account || ''}（IDX:${u.user_idx || '-'}）`;
             $box.append($('<div class="mono g-mb-5"/>').text(head));
@@ -442,8 +438,7 @@
               $box.append($('<div class="mono"/>').text(line));
             });
           });
-        }
-        else {
+        } else {
           $box.append('<div class="small muted">沒有回傳細節或格式不符。</div>');
         }
 
@@ -454,7 +449,6 @@
         $('#btnSendShopBagMulti').prop('disabled', false).text('送至商城包包（多人）');
       });
     });
-
 
     // 帳號查詢/封鎖/解鎖/升級
     $('#btnAcctSearch').on('click', function(){
@@ -472,6 +466,7 @@
         }
       },'json');
     });
+
     function acctUpdate(level){
       const acct = $('#acct_actions').data('acct'); if(!acct){ return; }
       const payload={}; payload[CSRF_NAME]=CSRF_HASH; payload['id_idx']=acct.id_idx; payload['level']=level;
@@ -527,6 +522,8 @@
       clearTimeout(t);
       t = setTimeout(function(){ currentQ = $('#q').val().trim(); fetch_page(1); }, 300);
     });
+
+  })(window.jQuery);
   </script>
 </body>
 </html>

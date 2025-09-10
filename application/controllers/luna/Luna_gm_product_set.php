@@ -1,30 +1,26 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once(FCPATH . 'vendor/autoload.php');
-use PhpOffice\PhpSpreadsheet\IOFactory;
-
 class Luna_gm_product_set extends MY_Base_Controller {
-
-  private $excel_file;
-  private $cache_file;
 
   public function __construct() {
     parent::__construct();
-    $this->excel_file = FCPATH . 'assets/luna/itemlistcn.xlsx';
-    $this->cache_file = APPPATH . 'cache/itemlistcn.cache.json';
 
     $this->load->model('/luna/Members_dao', 'dao');
     $this->load->model('/luna/Shop_log_dao', 'shop_log_dao');
     $this->load->model('/luna/Item_dao', 'item_dao');
     $this->load->model('/luna/CHARACTER_dao', 'charDao');
     $this->load->model('/luna/Item_log_dao', 'item_log_dao');
-    $this->load->model('/luna/mall_point_log_dao', 'mall_point_dao');
+    $this->load->model('/luna/Mall_point_log_dao', 'mall_point_dao');
+
+    // 重要：所有商品清單與 meta 都走這兩個 DAO（它們內部各自處理該用哪個 DB 連線）
+    $this->load->model('/luna/Web_itemshop_dao', 'web_itemshop_dao');
+    $this->load->model('/luna/Web_item_dao', 'web_item_dao');
   }
 
   /* ========================== 共用/小工具 ========================== */
 
-  /** 以帳號或 USER_IDX 解析帳號，回傳 ['ok'=>bool, 'id_idx'=>int, 'id_loginid'=>string, 'row'=>array|null, 'msg'=>string] */
+  /** 以帳號或 USER_IDX 解析帳號 */
   private function resolve_account($user_id_raw, $user_idx_raw) {
     $user_id = trim((string)$user_id_raw);
     $user_idx_str = trim((string)$user_idx_raw);
@@ -87,7 +83,6 @@ class Luna_gm_product_set extends MY_Base_Controller {
     ];
   }
 
-
   /* ========================== Page ========================== */
 
   public function index() {
@@ -104,75 +99,10 @@ class Luna_gm_product_set extends MY_Base_Controller {
     $data['login_user'] = $login_user;
     $data['userlv']     = $login_user ? ($login_user->UserLevel ?? 0) : 0;
     $data['now']        = 'luna_gm_product_set';
-    $data['csrf_name'] = $this->security->get_csrf_token_name();
-    $data['csrf_hash'] = $this->security->get_csrf_hash();
-    // $this->load->view('luna/luna_gm_product_set', $data);
-    $data['content_view'] = 'luna/gm_product_set_content'; // 新：只放中間內容的 view
-    $this->load->view('luna/luna_layout', $data);     // 新：共用 head/header/sidebar/footer
-  }
-
-  /* ========================== Excel 讀取（無表頭，固定欄位） ========================== */
-
-  /** 依固定欄位順序讀取（無表頭；第一列就是資料） */
-  private function load_all_items() {
-    if (!file_exists($this->excel_file)) return ['items' => [], 'mtime' => 0];
-
-    $xlsx_mtime = filemtime($this->excel_file);
-    $CACHE_VER = 8; // 版本升級，讓舊快取失效
-
-    if (file_exists($this->cache_file)) {
-      $cache = json_decode(@file_get_contents($this->cache_file), true);
-      if (is_array($cache)
-        && intval($cache['mtime']) === $xlsx_mtime
-        && intval($cache['ver']) === $CACHE_VER) {
-        return ['items' => $cache['items'] ?? [], 'mtime' => $xlsx_mtime];
-      }
-    }
-
-    $reader = IOFactory::createReaderForFile($this->excel_file);
-    $reader->setReadDataOnly(true);
-    $sheet = $reader->load($this->excel_file)->getActiveSheet();
-    $highestRow = $sheet->getHighestRow();
-
-    // 固定欄位對照（A=1, B=2, …）
-    $COL_ItemIdx        = 1;   // A
-    $COL_ItemName       = 2;   // B
-    $COL_Stack          = 13;  // M
-    $COL_Time           = 20;  // T
-    $COL_wSeal          = 57;  // BE
-    $COL_dwType         = 64;  // BL
-    $COL_dwTypeDetail   = 65;  // BM
-
-    $items = [];
-    for ($r = 1; $r <= $highestRow; $r++) {
-      $code = trim((string)$sheet->getCellByColumnAndRow($COL_ItemIdx,  $r)->getValue());
-      $name = trim((string)$sheet->getCellByColumnAndRow($COL_ItemName, $r)->getValue());
-      if ($code === '' && $name === '') continue;
-
-      $stack = (int)$sheet->getCellByColumnAndRow($COL_Stack, $r)->getValue();
-      $time  = (int)$sheet->getCellByColumnAndRow($COL_Time,  $r)->getValue();
-      $seal  = (int)$sheet->getCellByColumnAndRow($COL_wSeal, $r)->getValue();
-      $cate  = (int)$sheet->getCellByColumnAndRow($COL_dwType, $r)->getValue();
-      $cateDetail = (int)$sheet->getCellByColumnAndRow($COL_dwTypeDetail, $r)->getValue();
-
-      $items[] = [
-        'product_code'    => $code,
-        'name'            => $name,
-        'max_stack'       => max(0, $stack),
-        'endtime'         => ($time > 0 ? $time : null),
-        'wSeal'           => $seal,
-        'category_code'   => $cate,
-        'category_detail' => $cateDetail,
-      ];
-    }
-
-    @file_put_contents($this->cache_file, json_encode([
-      'ver'   => $CACHE_VER,
-      'mtime' => $xlsx_mtime,
-      'items' => $items
-    ], JSON_UNESCAPED_UNICODE));
-
-    return ['items' => $items, 'mtime' => $xlsx_mtime];
+    $data['csrf_name']  = $this->security->get_csrf_token_name();
+    $data['csrf_hash']  = $this->security->get_csrf_hash();
+    $data['content_view'] = 'luna/gm_product_set_content'; // 中間內容 view
+    $this->load->view('luna/luna_layout', $data);
   }
 
   /* ========================== 建立/點數 ========================== */
@@ -308,11 +238,10 @@ class Luna_gm_product_set extends MY_Base_Controller {
     }
   }
 
-  /** 查餘額：GET 先 seed CSRF、POST 正式查詢（皆回傳最新 CSRF） */
+  /** 查餘額 */
   public function balance() {
     $this->output->set_content_type('application/json');
 
-    // ---- 只在還沒有 CSRF cookie 時，才種一次 ----
     $csrf_cookie = method_exists($this->security, 'get_csrf_cookie_name')
       ? $this->security->get_csrf_cookie_name()
       : $this->config->item('csrf_cookie_name');
@@ -325,9 +254,7 @@ class Luna_gm_product_set extends MY_Base_Controller {
 
     $method = strtoupper($this->input->method(TRUE));
 
-    // ---- 登入檢查 ----
     if (empty($this->session->userdata('user_id'))) {
-      // 不要再 rotate；直接帶目前 pair 回去
       return $this->output->set_status_header(401)
         ->set_output(json_encode([
           'ok' => false,
@@ -337,39 +264,37 @@ class Luna_gm_product_set extends MY_Base_Controller {
         ], JSON_UNESCAPED_UNICODE));
     }
 
-    // ---- 允許 GET/POST/OPTIONS；只有 POST 驗 CSRF ----
-   if ($method === 'POST') {
-    $tokenName = $this->security->get_csrf_token_name();
-    $tokenPost = $this->input->post($tokenName, false); // 不做 XSS 過濾
-    $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
-    $validHash = $this->security->get_csrf_hash();
+    if ($method === 'POST') {
+      $tokenName = $this->security->get_csrf_token_name();
+      $tokenPost = $this->input->post($tokenName, false);
+      $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
+      $validHash = $this->security->get_csrf_hash();
 
-    $csrf_ok = false;
-    if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
-    if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
+      $csrf_ok = false;
+      if ($tokenPost && hash_equals($validHash, $tokenPost)) $csrf_ok = true;
+      if ($tokenHead && hash_equals($validHash, $tokenHead)) $csrf_ok = true;
 
-    // ★ 新增：支援 application/json body
-    if (!$csrf_ok) {
-      $raw = trim($this->input->raw_input_stream ?? '');
-      if ($raw !== '') {
-        $jb = json_decode($raw, true);
-        if (is_array($jb)) {
-          $tok = $jb[$tokenName] ?? $jb['csrf'] ?? $jb['token'] ?? null;
-          if (is_string($tok) && hash_equals($validHash, $tok)) $csrf_ok = true;
+      if (!$csrf_ok) {
+        $raw = trim($this->input->raw_input_stream ?? '');
+        if ($raw !== '') {
+          $jb = json_decode($raw, true);
+          if (is_array($jb)) {
+            $tok = $jb[$tokenName] ?? $jb['csrf'] ?? $jb['token'] ?? null;
+            if (is_string($tok) && hash_equals($validHash, $tok)) $csrf_ok = true;
+          }
         }
       }
-    }
 
-    if (!$csrf_ok) {
-      return $this->output->set_status_header(403)
-        ->set_output(json_encode([
-          'ok' => false,
-          'msg'=> 'CSRF 驗證失敗',
-          'csrf_name' => $this->security->get_csrf_token_name(),
-          'csrf_hash' => $this->security->get_csrf_hash(),
-        ], JSON_UNESCAPED_UNICODE));
-    }
-  } else if ($method !== 'GET' && $method !== 'OPTIONS') {
+      if (!$csrf_ok) {
+        return $this->output->set_status_header(403)
+          ->set_output(json_encode([
+            'ok' => false,
+            'msg'=> 'CSRF 驗證失敗',
+            'csrf_name' => $this->security->get_csrf_token_name(),
+            'csrf_hash' => $this->security->get_csrf_hash(),
+          ], JSON_UNESCAPED_UNICODE));
+      }
+    } else if ($method !== 'GET' && $method !== 'OPTIONS') {
       return $this->output->set_status_header(405)
         ->set_output(json_encode([
           'ok' => false,
@@ -379,7 +304,6 @@ class Luna_gm_product_set extends MY_Base_Controller {
         ], JSON_UNESCAPED_UNICODE));
     }
 
-    // ---- 查 mall_point（session or login_id）----
     $s_data    = $this->setup_user_data([]);
     $login_id  = $s_data['login_user_id'] ?? '';
     $sess_uid  = $this->session->userdata('user_id');
@@ -389,7 +313,7 @@ class Luna_gm_product_set extends MY_Base_Controller {
             ->group_start();
 
     $added = false;
-    if ($login_id !== '') { 
+    if ($login_id !== '') {
       $this->db->where('id_loginid', (string)$login_id);
       $added = true;
     }
@@ -411,7 +335,6 @@ class Luna_gm_product_set extends MY_Base_Controller {
         ], JSON_UNESCAPED_UNICODE));
     }
 
-    // ---- 成功：回目前 pair（不 rotate）----
     return $this->output->set_output(json_encode([
       'ok' => true,
       'user_idx'   => (int)$row['id_idx'],
@@ -422,59 +345,27 @@ class Luna_gm_product_set extends MY_Base_Controller {
     ], JSON_UNESCAPED_UNICODE));
   }
 
+  /* ========================== 商品列表（改用 DAO，不綁 Controller 的 DB） ========================== */
 
-    /* ========================== 商品列表 ========================== */
+  public function get_data() {
+    $this->output->set_content_type('application/json');
 
-    public function get_data() {
-      $this->output->set_content_type('application/json');
+    $page  = max(1, (int)$this->input->post('page'));
+    $q     = trim((string)$this->input->post('q'));
+    $limit = 10;
 
-      $page  = max(1, (int)$this->input->post('page'));
-      $q     = trim((string)$this->input->post('q'));
-      $limit = 10;
+    // 直接用 Web_item_dao，內部會走對的連線與表名
+    $pack = $this->web_item_dao->search_paginated($q, $limit, $page);
 
-      if (!file_exists($this->excel_file)) {
-        echo json_encode([
-          'items'=>[], 'total'=>0, 'page'=>1, 'total_page'=>1,
-          'error'=>'Excel 檔案不存在：'.$this->excel_file
-        ]);
-        return;
-      }
+    echo json_encode([
+      'items'      => $pack['items'],
+      'total'      => $pack['total'],
+      'page'       => $pack['page'],
+      'total_page' => $pack['total_page'],
+    ], JSON_UNESCAPED_UNICODE);
+  }
 
-      try {
-        $pack = $this->load_all_items();
-        $items = $pack['items'];
-
-        if ($q !== '') {
-          $needle = mb_strtolower($q, 'UTF-8');
-          $items = array_values(array_filter($items, function($it) use ($needle){
-            $a = mb_strtolower((string)($it['product_code'] ?? ''), 'UTF-8');
-            $b = mb_strtolower((string)($it['name'] ?? ''), 'UTF-8');
-            return (strpos($a, $needle) !== false) || (strpos($b, $needle) !== false);
-          }));
-        }
-
-        $total = count($items);
-        $total_page = max(1, (int)ceil($total / $limit));
-        $page = min($page, $total_page);
-
-        $offset = ($page - 1) * $limit;
-        $paged_items = array_slice($items, $offset, $limit);
-
-        echo json_encode([
-          'items'=>$paged_items,
-          'total'=>$total,
-          'page'=>$page,
-          'total_page'=>$total_page,
-        ], JSON_UNESCAPED_UNICODE);
-      } catch (\Throwable $e) {
-        echo json_encode([
-          'items'=>[], 'total'=>0, 'page'=>1, 'total_page'=>1,
-          'error'=>'讀取失敗：'.$e->getMessage()
-        ]);
-      }
-    }
-
-  /* ========================== 發送物品（統一用 wSeal + Stack，ITEM_POSITION=320） ========================== */
+  /* ========================== 發送物品（固定 ITEM_POSITION=320） ========================== */
 
   public function insert() {
     $this->output->set_content_type('application/json');
@@ -518,15 +409,8 @@ class Luna_gm_product_set extends MY_Base_Controller {
       $shopIdxForMode = 0;
     }
 
-    // 取得 Excel Meta（wSeal 與 Stack）
-    $pack = $this->load_all_items();
-    $itemMeta = [];
-    foreach ($pack['items'] as $it) {
-      $itemMeta[(string)$it['product_code']] = [
-        'wSeal'     => (int)($it['wSeal'] ?? 0),
-        'max_stack' => (int)($it['max_stack'] ?? 0),
-      ];
-    }
+    // 用 DAO 取 meta（不綁 Controller 的 DB）
+    $metaMap = $this->web_item_dao->get_meta_map_by_ids(array_map('intval', $items));
 
     $results = [];
     foreach ($chars as $charIdx) {
@@ -543,7 +427,7 @@ class Luna_gm_product_set extends MY_Base_Controller {
           continue;
         }
 
-        $meta = $itemMeta[(string)$itemIdx] ?? ['wSeal'=>0,'max_stack'=>0];
+        $meta = $metaMap[(string)$itemIdx] ?? ['wSeal'=>0,'max_stack'=>0];
         $wSeal = (int)$meta['wSeal'];
         $max_stack = max(0, (int)$meta['max_stack']);
 
@@ -560,8 +444,8 @@ class Luna_gm_product_set extends MY_Base_Controller {
                 'ITEM_SHOPIDX'    => $shopIdxForMode,
                 'ITEM_SHOPLOGIDX' => $log_idx,
                 'ITEM_SEAL'       => $wSeal,
-                'ITEM_DURABILITY' => $stackSize, // 疊加數
-                'ITEM_POSITION'   => 320,        // 固定 320
+                'ITEM_DURABILITY' => $stackSize,
+                'ITEM_POSITION'   => 320,
               ];
               $ret = $this->item_dao->insert_item($row);
               $ret ? $ok++ : $ng++;
@@ -576,7 +460,7 @@ class Luna_gm_product_set extends MY_Base_Controller {
                 'ITEM_SHOPLOGIDX' => $log_idx,
                 'ITEM_SEAL'       => $wSeal,
                 'ITEM_DURABILITY' => 0,
-                'ITEM_POSITION'   => 320,        // 固定 320
+                'ITEM_POSITION'   => 320,
               ];
               $ret = $this->item_dao->insert_item($row);
               $ret ? $ok++ : $ng++;
@@ -622,10 +506,6 @@ class Luna_gm_product_set extends MY_Base_Controller {
     if (empty($list)) { echo json_encode(['ok'=>false,'msg'=>'此帳號沒有任何角色，無法投遞商城包包']); return; }
     $char_id = (int)$list[0]->CharId;
 
-    $pack = $this->load_all_items();
-    $itemMap = [];
-    foreach ($pack['items'] as $it) $itemMap[(string)$it['product_code']] = $it;
-
     $now = (new DateTime('now', new DateTimeZone('Asia/Taipei')))->format('Y-m-d H:i:s');
 
     $items = array_values(array_filter(array_map(function($v){
@@ -633,12 +513,15 @@ class Luna_gm_product_set extends MY_Base_Controller {
       return ($v !== '' && ctype_digit($v)) ? $v : null;
     }, preg_split('/[,\s]+/', str_replace('，', ',', $item_idx), -1, PREG_SPLIT_NO_EMPTY))));
 
+    // 用 DAO 取 meta
+    $metaMap = $this->web_item_dao->get_meta_map_by_ids(array_map('intval', $items));
+
     $results = [];
 
     foreach ($items as $iid) {
-      $meta = $itemMap[(string)$iid] ?? null;
-      $wSeal     = $meta ? (int)($meta['wSeal'] ?? 0) : 0;
-      $max_stack = $meta ? (int)($meta['max_stack'] ?? 0) : 0;
+      $meta = $metaMap[(string)$iid] ?? ['wSeal'=>0,'max_stack'=>0];
+      $wSeal     = (int)$meta['wSeal'];
+      $max_stack = (int)$meta['max_stack'];
 
       $log_data = [
         'TYPE' => 0,
@@ -732,15 +615,8 @@ class Luna_gm_product_set extends MY_Base_Controller {
     if (empty($users)) { echo json_encode(['ok'=>false,'msg'=>'請輸入至少 1 個有效英數帳號']); return; }
     if (empty($items)) { echo json_encode(['ok'=>false,'msg'=>'請輸入至少 1 個有效商品編號']); return; }
 
-    // Excel Meta（wSeal + Stack）
-    $pack = $this->load_all_items();
-    $itemMeta = [];
-    foreach ($pack['items'] as $it) {
-      $itemMeta[(string)$it['product_code']] = [
-        'wSeal'     => (int)($it['wSeal'] ?? 0),
-        'max_stack' => (int)($it['max_stack'] ?? 0),
-      ];
-    }
+    // 用 DAO 批次撈 meta
+    $metaMap = $this->web_item_dao->get_meta_map_by_ids(array_map('intval', $items));
 
     $now = (new DateTime('now', new DateTimeZone('Asia/Taipei')))->format('Y-m-d H:i:s');
     $results = [];
@@ -765,9 +641,9 @@ class Luna_gm_product_set extends MY_Base_Controller {
       $all_ok = true;
 
       foreach ($items as $itemIdx) {
-        $meta = $itemMeta[(string)$itemIdx] ?? ['wSeal'=>0,'max_stack'=>0];
-        $seal = (int)$meta['wSeal'];
-        $stackMax = max(0, (int)$meta['max_stack']);
+        $meta     = $metaMap[(string)$itemIdx] ?? ['wSeal'=>0,'max_stack'=>0];
+        $seal     = (int)$meta['wSeal'];
+        $stackMax = (int)$meta['max_stack'];
 
         $log_data = [
           'TYPE'=>0,'USER_IDX'=>$user_idx,'USER_ID'=>(string)$user_idx,

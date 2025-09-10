@@ -1,28 +1,24 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-require_once(FCPATH . 'vendor/autoload.php');
-use PhpOffice\PhpSpreadsheet\IOFactory;
-
 class Luna_mall extends MY_Base_Controller {
 
-  /* --------- 可調參數 --------- */
-  private const MAX_QTY_PER_ITEM = 99;          // 單品一次最多買幾個
-  private const MUTEX_COOLDOWN_SEC = 5;         // 連點/重送最短間隔(秒)
-  private const SHOP_BAG_POSITION = 320;        // 商城包包固定位置
-  private const BATCH_SIZE = 500;               // 批次寫入 TB_ITEM 的筆數
+  /* 可調參數 */
+  private const MAX_QTY_PER_ITEM   = 99;
+  private const MUTEX_COOLDOWN_SEC = 5;
+  private const SHOP_BAG_POSITION  = 320;
+  private const BATCH_SIZE         = 500;
 
-  /* --------- 檔案路徑 --------- */
-  private $excel_file;        // item_shop.xlsx（前端展示/定價）
-  private $excel_itemlistcn;  // itemlistcn.xlsx（正表：封印/堆疊/時效/分類）
-  private $cache_file_meta;   // itemlistcn 快取檔（固定欄位讀法）
+  /** GameDB 連線（指向 LUNA_GAMEDB_2025） */
+  protected $gdb;
 
-  function __construct() {
+  public function __construct() {
     parent::__construct();
+
+    // 重要：請在 config/database.php 設好 'gamedb' DSN 指向 LUNA_GAMEDB_2025
+    $this->gdb = $this->load->database('gamedb', TRUE);
+
     $this->load->driver('cache', ['adapter' => 'apc', 'backup' => 'file']);
-    $this->excel_file       = FCPATH . 'assets/luna/item_shop.xlsx';
-    $this->excel_itemlistcn = FCPATH . 'assets/luna/itemlistcn.xlsx';
-    $this->cache_file_meta  = FCPATH . 'assets/luna/itemlistcn_cache.json';
 
     $this->load->model('/luna/Members_dao',        'dao');
     $this->load->model('/luna/Shop_log_dao',       'shop_log_dao');
@@ -30,6 +26,9 @@ class Luna_mall extends MY_Base_Controller {
     $this->load->model('/luna/CHARACTER_dao',      'charDao');
     $this->load->model('/luna/Item_log_dao',       'item_log_dao');
     $this->load->model('/luna/mall_point_log_dao', 'mall_point_dao');
+
+    // 道具 meta（封印/堆疊/時效）改走 GameDB 的 DAO
+    $this->load->model('/luna/Web_item_dao',       'web_item_dao');
   }
 
   /* ========================== Page ========================== */
@@ -39,28 +38,14 @@ class Luna_mall extends MY_Base_Controller {
       redirect("/luna/login"); return;
     }
 
-    // ★ 先確保 CSRF cookie 已種（僅當尚未存在時，不會每次輪替）
     $pair = $this->ensure_csrf();
-
     $s_data     = $this->setup_user_data([]);
     $login_user = $this->dao->find_by('id_loginid', $s_data['login_user_id'] ?? '');
 
-    $data = [];
-    $data['login_user']     = $login_user;
-    $data['userlv']         = $login_user ? ($login_user->UserLevel ?? 0) : 0;
-    $data['now']            = 'luna_mall';
-    $data['checkout_nonce'] = $this->rotate_checkout_nonce();
+    // 從 GameDB 讀取上架清單（分頁籤 + 商品）
+    [$tabs, $itemsMap] = $this->db_load_shop_tabs_and_items();
 
-    list($sheetNames, $itemsMap) = $this->read_all_sheets_dynamic();
-    $allTitle  = '全部商品(All)';
-    $filtered  = array_values(array_filter($sheetNames, fn($n) => $n !== $allTitle));
-    $all = [];
-    foreach ($filtered as $nm) if (!empty($itemsMap[$nm])) $all = array_merge($all, $itemsMap[$nm]);
-    $tabs = $filtered;
-    array_unshift($tabs, $allTitle);
-    $itemsMap[$allTitle] = $all;
-
-    // 用 session-salt 做展示端簽章（防改價）；實際結帳仍以伺服器價錢為準
+    // 展示簽章（防改價）；實際結帳仍以伺服器 DB 價為準
     $salt = $this->get_item_salt();
     foreach ($itemsMap as &$arr) {
       foreach ($arr as &$it) {
@@ -68,21 +53,147 @@ class Luna_mall extends MY_Base_Controller {
       }
     }
 
-    $data['tabs']      = $tabs;
-    $data['itemsMap']  = $itemsMap;
-    $data['csrf_name'] = $pair['csrf_name'];
-    $data['csrf_hash'] = $pair['csrf_hash'];
+    $data = [];
+    $data['login_user']     = $login_user;
+    $data['userlv']         = $login_user ? ($login_user->UserLevel ?? 0) : 0;
+    $data['now']            = 'luna_mall';
+    $data['checkout_nonce'] = $this->rotate_checkout_nonce();
+    $data['tabs']           = $tabs;
+    $data['itemsMap']       = $itemsMap;
+    $data['csrf_name']      = $pair['csrf_name'];
+    $data['csrf_hash']      = $pair['csrf_hash'];
 
-    $data['content_view'] = 'luna/mall_content';
+    $data['content_view']   = 'luna/mall_content';
     $this->load->view('luna/luna_layout', $data);
+  }
+
+  /* ========================== DB Readers ========================== */
+
+  /**
+   * 讀 GameDB 的 web_itemshop，組成 [$tabs, $itemsMap]
+   * 分頁名稱使用 category（NULL/空白 → '未分類'）
+   * 價格使用 price_cash（若 <=0 或 NULL，退回 price_token）
+   * 僅取 is_active=1 且時間區間內
+   */
+  private function db_load_shop_tabs_and_items(): array {
+    $now = date('Y-m-d H:i:s');
+
+    $this->gdb->from('web_itemshop'); // 連線已指向 LUNA_GAMEDB_2025
+    $this->gdb->where('is_active', 1);
+    // 時間區間：start_time <= now 或 NULL；end_time >= now 或 NULL
+    $this->gdb->group_start()
+                ->where('start_time <=', $now)
+                ->or_where('start_time IS NULL', null, false)
+              ->group_end();
+    $this->gdb->group_start()
+                ->where('end_time >=', $now)
+                ->or_where('end_time IS NULL', null, false)
+              ->group_end();
+
+    // 取必要欄位
+    $this->gdb->select('shop_id, item_id, name_cn, name_en, category, price_cash, price_token, position');
+    // 排序：category, position(NULL 最後), item_id
+    $this->gdb->order_by('category', 'ASC');
+    $this->gdb->order_by('(CASE WHEN position IS NULL THEN 1 ELSE 0 END)', 'ASC', false);
+    $this->gdb->order_by('position', 'ASC');
+    $this->gdb->order_by('item_id', 'ASC');
+
+    $rows = $this->gdb->get()->result_array();
+
+    $tabs = [];
+    $itemsMap = [];
+
+    foreach ($rows as $r) {
+      $tab = trim((string)($r['category'] ?? ''));
+      if ($tab === '') $tab = '未分類';
+
+      // 價格：優先 cash，否則 token
+      $pc = isset($r['price_cash'])  ? (int)$r['price_cash']  : 0;
+      $pt = isset($r['price_token']) ? (int)$r['price_token'] : 0;
+      $price = ($pc > 0) ? $pc : $pt;
+
+      if (!isset($itemsMap[$tab])) { $itemsMap[$tab] = []; $tabs[] = $tab; }
+
+      $itemsMap[$tab][] = [
+        'id'      => (string)$r['item_id'],
+        'name'    => (string)$r['name_cn'],
+        'name_en' => (string)($r['name_en'] ?? ''),
+        'price'   => max(0, (int)$price),
+      ];
+    }
+
+    if (!empty($tabs)) {
+      $allTitle = '全部商品(All)';
+      $all = [];
+      foreach ($tabs as $tn) if (!empty($itemsMap[$tn])) $all = array_merge($all, $itemsMap[$tn]);
+      array_unshift($tabs, $allTitle);
+      $itemsMap[$allTitle] = $all;
+    }
+
+    return [$tabs, $itemsMap];
+  }
+
+  /** 由 GameDB 取價：item_id(int) => price(int) */
+  private function get_sku_prices_db(array $itemIds): array {
+    $itemIds = array_values(array_unique(array_map('intval', $itemIds)));
+    if (empty($itemIds)) return [];
+
+    $now = date('Y-m-d H:i:s');
+
+    $this->gdb->from('web_itemshop');
+    $this->gdb->where('is_active', 1);
+    $this->gdb->where_in('item_id', $itemIds);
+    $this->gdb->group_start()
+                ->where('start_time <=', $now)
+                ->or_where('start_time IS NULL', null, false)
+              ->group_end();
+    $this->gdb->group_start()
+                ->where('end_time >=', $now)
+                ->or_where('end_time IS NULL', null, false)
+              ->group_end();
+    $this->gdb->select('item_id, price_cash, price_token');
+
+    $rows = $this->gdb->get()->result_array();
+    $map = [];
+    foreach ($rows as $r) {
+      $pc = isset($r['price_cash'])  ? (int)$r['price_cash']  : 0;
+      $pt = isset($r['price_token']) ? (int)$r['price_token'] : 0;
+      $price = ($pc > 0) ? $pc : $pt;
+      $map[(int)$r['item_id']] = max(0, (int)$price);
+    }
+    return $map;
+  }
+
+  /* ========================== JSON / 安全工具 ========================== */
+
+  private function json_ok(array $extra = []) {
+    $payload = array_merge(['ok'=>true], $extra, [
+      'csrf_name'      => $this->security->get_csrf_token_name(),
+      'csrf_hash'      => $this->security->get_csrf_hash(),
+      'checkout_nonce' => $this->get_checkout_nonce(),
+    ]);
+    return $this->output->set_content_type('application/json')
+      ->set_output(json_encode($payload, JSON_UNESCAPED_UNICODE));
+  }
+
+  private function json_fail(string $msg, int $status = 200, array $extra = []) {
+    $payload = array_merge([
+      'ok'             => false,
+      'msg'            => $msg,
+      'csrf_name'      => $this->security->get_csrf_token_name(),
+      'csrf_hash'      => $this->security->get_csrf_hash(),
+      'checkout_nonce' => $this->get_checkout_nonce(),
+    ], $extra);
+    $this->output->set_status_header($status);
+    return $this->output->set_content_type('application/json')
+      ->set_output(json_encode($payload, JSON_UNESCAPED_UNICODE));
   }
 
   private function ensure_csrf() {
     $cookieName = $this->config->item('csrf_cookie_name') ?: 'ci_csrf_token';
     $hash = $this->security->get_csrf_hash();
     if (!$this->input->cookie($cookieName, true)) {
-      $expire = (int)$this->config->item('csrf_expire');
-      if ($expire <= 0) $expire = 7200;
+      $expire = (int)$this->config->item('csrf_expire'); if ($expire <= 0) $expire = 7200;
       $this->input->set_cookie([
         'name'     => $cookieName,
         'value'    => $hash,
@@ -100,32 +211,6 @@ class Luna_mall extends MY_Base_Controller {
       'csrf_hash' => $this->security->get_csrf_hash(),
     ];
   }
-
-  /* ========================== JSON Helpers ========================== */
-
-  private function json_ok(array $extra = []) {
-    $payload = array_merge(['ok'=>true], $extra, [
-      'csrf_name'      => $this->security->get_csrf_token_name(),
-      'csrf_hash'      => $this->security->get_csrf_hash(),
-      'checkout_nonce' => $this->get_checkout_nonce(),
-    ]);
-    return $this->output->set_content_type('application/json')
-      ->set_output(json_encode($payload, JSON_UNESCAPED_UNICODE));
-  }
-  private function json_fail(string $msg, int $status = 200, array $extra = []) {
-    $payload = array_merge([
-      'ok'             => false,
-      'msg'            => $msg,
-      'csrf_name'      => $this->security->get_csrf_token_name(),
-      'csrf_hash'      => $this->security->get_csrf_hash(),
-      'checkout_nonce' => $this->get_checkout_nonce(),
-    ], $extra);
-    $this->output->set_status_header($status);
-    return $this->output->set_content_type('application/json')
-      ->set_output(json_encode($payload, JSON_UNESCAPED_UNICODE));
-  }
-
-  /* ========================== 安全工具 ========================== */
 
   private function get_item_salt(): string {
     $salt = $this->session->userdata('item_salt');
@@ -155,11 +240,8 @@ class Luna_mall extends MY_Base_Controller {
     $this->session->set_userdata('checkout_lock_ts', $now);
     return true;
   }
-  private function release_checkout_mutex(): void {
-    // keep ts
-  }
+  private function release_checkout_mutex(): void {}
 
-  /** 取一次 JSON body（若 Content-Type=application/json），避免重複 decode */
   private function get_json_body(): ?array {
     static $cached = null;
     if ($cached !== null) return $cached;
@@ -169,8 +251,6 @@ class Luna_mall extends MY_Base_Controller {
     $cached = is_array($jb) ? $jb : null;
     return $cached;
   }
-
-  /** 從 POST / Header / JSON 取 nonce：支援 nonce/checkout_nonce 與 X-Checkout-Nonce */
   private function read_nonce_from_request(): ?string {
     $n = $this->input->post('nonce', true);
     if (!$n) $n = $this->input->post('checkout_nonce', true);
@@ -182,181 +262,7 @@ class Luna_mall extends MY_Base_Controller {
     return is_string($n) ? trim($n) : null;
   }
 
-  /* ========================== Excel Readers ========================== */
-
-  /** item_shop.xlsx：只讀取展示必需欄（id/name/price/name_en） */
-  private function read_all_sheets_dynamic(): array {
-    $sheetNames = []; $itemsMap = [];
-    if (!file_exists($this->excel_file)) return [$sheetNames, $itemsMap];
-
-    $xlsx = IOFactory::load($this->excel_file);
-    $sheetNames = $xlsx->getSheetNames();
-
-    $COL_ItemIdx  = 1; // A
-    $COL_ItemName = 2; // B
-    $COL_Price    = 3; // C
-    $COL_NameEN   = 4; // D
-
-    foreach ($sheetNames as $sheetName) {
-      $sheet = $xlsx->getSheetByName($sheetName);
-      if (!$sheet) continue;
-
-      $highestRow = $sheet->getHighestRow();
-
-      // 自動找第一筆資料列（A/B 有字且 C 是數字）
-      $startRow = 1;
-      for ($r = 1; $r <= $highestRow; $r++) {
-        $a = trim((string)$sheet->getCellByColumnAndRow($COL_ItemIdx,  $r)->getValue());
-        $b = trim((string)$sheet->getCellByColumnAndRow($COL_ItemName, $r)->getValue());
-        $c = $sheet->getCellByColumnAndRow($COL_Price,   $r)->getValue();
-        if ($a !== '' && $b !== '' && is_numeric($c)) { $startRow = $r; break; }
-      }
-
-      $items = [];
-      for ($r = $startRow; $r <= $highestRow; $r++) {
-        $id      = trim((string)$sheet->getCellByColumnAndRow($COL_ItemIdx,  $r)->getValue());
-        $name    = trim((string)$sheet->getCellByColumnAndRow($COL_ItemName, $r)->getValue());
-        $cval    = $sheet->getCellByColumnAndRow($COL_Price,   $r)->getValue();
-        $name_en = trim((string)$sheet->getCellByColumnAndRow($COL_NameEN,   $r)->getValue());
-        if ($id==='' || $name==='' || !is_numeric($cval)) continue;
-        $price = (int)$cval;
-        $items[] = ['id'=>$id, 'name'=>$name, 'price'=>$price, 'name_en'=>$name_en];
-      }
-      $itemsMap[$sheetName] = $items;
-    }
-    return [$sheetNames, $itemsMap];
-  }
-
-  /** 將 item_shop.xlsx 全併為一張（只帶展示/價格），用 mtime 做快取版本 */
-  private function load_all_items(): array {
-    $ver = (string)@filemtime($this->excel_file) ?: '0';
-    $cacheKey = 'mall_items_all_' . $ver;
-    if ($data = $this->cache->get($cacheKey)) return $data;
-
-    list($sheetNames, $itemsMap) = $this->read_all_sheets_dynamic();
-    $all = [];
-    foreach ($sheetNames as $sheet) {
-      foreach ($itemsMap[$sheet] ?? [] as $it) {
-        $all[] = [
-          'product_code' => (string)$it['id'],
-          'name'         => (string)$it['name'],
-          'price'        => (int)$it['price'],
-          'sellstatus'   => (int)$it['price'],
-          'name_en'      => (string)($it['name_en'] ?? ''),
-        ];
-      }
-    }
-    $data = ['items' => $all];
-    $this->cache->save($cacheKey, $data, 0);
-    return $data;
-  }
-
-  // 以 Excel 價格為準（從 item_shop.xlsx）
-  private function get_sku_prices(array $itemIds): array {
-    if (empty($itemIds)) return [];
-    $itemIds = array_values(array_unique(array_map('strval', $itemIds)));
-    if (empty($itemIds)) return [];
-
-    $pack = $this->load_all_items();
-    $map = [];
-    foreach ($pack['items'] as $it) {
-      $idStr = (string)($it['product_code'] ?? '');
-      if ($idStr === '') continue;
-      $price = (int)($it['price'] ?? 0);
-      if (in_array($idStr, $itemIds, true)) {
-        $map[(int)$idStr] = max(0, $price);
-      }
-    }
-    return $map; // key:int item_idx => price:int
-  }
-
-  /** 用「固定欄位讀法」讀 itemlistcn.xlsx：回傳道具 meta（含 wSeal / max_stack 等） */
-  private function load_itemlistcn_meta(): array {
-    if (!file_exists($this->excel_itemlistcn)) return ['items' => [], 'mtime' => 0];
-
-    $xlsx_mtime = filemtime($this->excel_itemlistcn);
-    $CACHE_VER = 8; // 升版本讓舊快取失效
-
-    if (file_exists($this->cache_file_meta)) {
-      $cache = json_decode(@file_get_contents($this->cache_file_meta), true);
-      if (is_array($cache)
-        && intval($cache['mtime']) === $xlsx_mtime
-        && intval($cache['ver']) === $CACHE_VER) {
-        return ['items' => $cache['items'] ?? [], 'mtime' => $xlsx_mtime];
-      }
-    }
-
-    $reader = IOFactory::createReaderForFile($this->excel_itemlistcn);
-    $reader->setReadDataOnly(true);
-    $sheet = $reader->load($this->excel_itemlistcn)->getActiveSheet();
-    $highestRow = $sheet->getHighestRow();
-
-    // 固定欄位對照（A=1, B=2, …）
-    $COL_ItemIdx        = 1;   // A
-    $COL_ItemName       = 2;   // B
-    $COL_Stack          = 13;  // M  ← 也拿來當 ITEM_DURABILITY
-    $COL_Time           = 20;  // T
-    $COL_wSeal          = 57;  // BE ← 封印
-    $COL_dwType         = 64;  // BL
-    $COL_dwTypeDetail   = 65;  // BM
-
-    $items = [];
-    for ($r = 1; $r <= $highestRow; $r++) {
-      $code = trim((string)$sheet->getCellByColumnAndRow($COL_ItemIdx,  $r)->getValue());
-      $name = trim((string)$sheet->getCellByColumnAndRow($COL_ItemName, $r)->getValue());
-      if ($code === '' && $name === '') continue;
-
-      $stack = (int)$sheet->getCellByColumnAndRow($COL_Stack, $r)->getValue();
-      $time  = (int)$sheet->getCellByColumnAndRow($COL_Time,  $r)->getValue();
-      $seal  = (int)$sheet->getCellByColumnAndRow($COL_wSeal, $r)->getValue();
-      $cate  = (int)$sheet->getCellByColumnAndRow($COL_dwType, $r)->getValue();
-      $cateDetail = (int)$sheet->getCellByColumnAndRow($COL_dwTypeDetail, $r)->getValue();
-
-      $items[] = [
-        'product_code'    => $code,
-        'name'            => $name,
-        'max_stack'       => max(0, $stack),
-        'endtime'         => ($time > 0 ? $time : null),
-        'wSeal'           => $seal,
-        'category_code'   => $cate,
-        'category_detail' => $cateDetail,
-      ];
-    }
-
-    @file_put_contents($this->cache_file_meta, json_encode([
-      'ver'   => $CACHE_VER,
-      'mtime' => $xlsx_mtime,
-      'items' => $items
-    ], JSON_UNESCAPED_UNICODE));
-
-    return ['items' => $items, 'mtime' => $xlsx_mtime];
-  }
-
-  /** 依 itemlistcn.xlsx mtime 快取 seal/dur 對照表（APC/File cache） */
-  private function get_meta_maps_cached(): array {
-    $meta = $this->load_itemlistcn_meta(); // ['items'=>[], 'mtime'=>...]
-    $mtime = (int)($meta['mtime'] ?? 0);
-    $ckey  = 'mall_meta_maps_' . $mtime;
-
-    $maps = $this->cache->get($ckey);
-    if (is_array($maps) && isset($maps['sealMap'], $maps['durMap'])) {
-      return [$maps['sealMap'], $maps['durMap']];
-    }
-
-    $sealMap = []; // item_idx => wSeal
-    $durMap  = []; // item_idx => max_stack → ITEM_DURABILITY
-    foreach (($meta['items'] ?? []) as $it) {
-      $pid = (int)($it['product_code'] ?? 0);
-      if ($pid <= 0) continue;
-      $sealMap[$pid] = (int)($it['wSeal'] ?? 0);
-      $durMap[$pid]  = (int)($it['max_stack'] ?? 0);
-    }
-
-    $this->cache->save($ckey, ['sealMap'=>$sealMap, 'durMap'=>$durMap], 0);
-    return [$sealMap, $durMap];
-  }
-
-  /* ============== 取得玩家第一個角色（盡量不爆炸） ============== */
+  /* ============== 取得玩家第一個角色（保留一致） ============== */
   private function get_first_char_id(int $user_idx): int {
     try {
       $cands = null;
@@ -376,9 +282,7 @@ class Luna_mall extends MY_Base_Controller {
       } else {
         return (int)($first->CharId ?? $first->char_id ?? $first->id ?? 0);
       }
-    } catch (\Throwable $e) {
-      return 0;
-    }
+    } catch (\Throwable $e) { return 0; }
   }
 
   /* ========================== Checkout ========================== */
@@ -386,19 +290,15 @@ class Luna_mall extends MY_Base_Controller {
   public function checkout(){
     $this->output->set_content_type('application/json');
 
-    // 1) 登入
     if (empty($this->session->userdata('user_id')) && empty($this->session->userdata('login_user_id'))) {
       $this->ensure_csrf();
       return $this->json_fail('not login', 401);
     }
 
-    // 2) 確保 CSRF cookie 已存在（僅當不存在時才種）
     $this->ensure_csrf();
 
-    // 3) CSRF 驗證（支援 form field / header / raw JSON）
     $tokenName = $this->security->get_csrf_token_name();
     $validHash = $this->security->get_csrf_hash();
-
     $tokenPost = $this->input->post($tokenName, false);
     $tokenHead = $this->input->get_request_header('X-CSRF-Token', true);
 
@@ -418,7 +318,6 @@ class Luna_mall extends MY_Base_Controller {
     }
     if (!$csrf_ok) return $this->json_fail('CSRF 驗證失敗', 403);
 
-    // 4) Nonce（用過即旋轉）
     $reqNonce = $this->read_nonce_from_request();
     if ($reqNonce !== null && $reqNonce !== '') {
       $sessNonce = (string)$this->session->userdata('checkout_nonce');
@@ -429,45 +328,29 @@ class Luna_mall extends MY_Base_Controller {
       $this->rotate_checkout_nonce();
     }
 
-    // 5) 冷卻互斥（擋連點）
     if (!$this->acquire_checkout_mutex()) {
       return $this->json_fail('操作過於頻繁，請稍後再試', 429);
     }
 
-    // 6) 讀入 items/cart
     $items = null;
     $ij = $this->input->post('items');
-    if (is_string($ij) && $ij !== '') {
-      $tmp = json_decode($ij, true);
-      if (is_array($tmp)) $items = $tmp;
-    } elseif (is_array($this->input->post('items'))) {
-      $items = $this->input->post('items');
-    }
+    if (is_string($ij) && $ij !== '') { $tmp = json_decode($ij, true); if (is_array($tmp)) $items = $tmp; }
+    elseif (is_array($this->input->post('items'))) { $items = $this->input->post('items'); }
+
     if ($items === null) {
       $cj = $this->input->post('cart');
-      if (is_string($cj) && $cj !== '') {
-        $tmp = json_decode($cj, true);
-        if (is_array($tmp)) $items = $tmp;
-      } elseif (is_array($this->input->post('cart'))) {
-        $items = $this->input->post('cart');
-      }
+      if (is_string($cj) && $cj !== '') { $tmp = json_decode($cj, true); if (is_array($tmp)) $items = $tmp; }
+      elseif (is_array($this->input->post('cart'))) { $items = $this->input->post('cart'); }
     }
     if ($items === null) {
       $raw = trim($this->input->raw_input_stream ?? '');
-      if ($raw !== '') {
-        $jb = json_decode($raw, true);
-        if (is_array($jb)) {
-          if (isset($jb['items']) && is_array($jb['items'])) $items = $jb['items'];
-          elseif (isset($jb['cart']) && is_array($jb['cart'])) $items = $jb['cart'];
-        }
-      }
+      if ($raw !== '') { $jb = json_decode($raw, true); if (is_array($jb)) { if (isset($jb['items']) && is_array($jb['items'])) $items = $jb['items']; elseif (isset($jb['cart']) && is_array($jb['cart'])) $items = $jb['cart']; } }
     }
     if (!is_array($items) || empty($items)) {
       $this->release_checkout_mutex();
       return $this->json_fail('items 格式錯誤或為空', 400);
     }
 
-    // 7) 標準化 {item_idx, qty, sig?}
     $norm = [];
     foreach ($items as $r) {
       $iid = (int)($r['item_idx'] ?? $r['id'] ?? 0);
@@ -480,21 +363,19 @@ class Luna_mall extends MY_Base_Controller {
       return $this->json_fail('items 內容無效', 400);
     }
 
-    // 8) 從 item_shop.xlsx 取價
     $ids = array_map(fn($x)=>$x['item_idx'], $norm);
-    $priceMap = $this->get_sku_prices($ids);
+    $priceMap = $this->get_sku_prices_db($ids);
     foreach ($norm as $row) {
       $iid = $row['item_idx'];
-      if (!isset($priceMap[$iid]) || $priceMap[$iid] < 0) {
+      if (!isset($priceMap[$iid]) || $priceMap[$iid] <= 0) {
         $this->release_checkout_mutex();
         return $this->json_fail("商品未上架或無定價: {$iid}", 400);
       }
     }
 
-    // 8.1) 從 itemlistcn.xlsx 取 meta（seal / durability-上限）
-    list($sealMap, $durMap) = $this->get_meta_maps_cached();
+    // GameDB 道具 meta（wSeal / max_stack / endtime）
+    $metaMap = $this->web_item_dao->get_meta_map_by_ids($ids);
 
-    // 9) （可選）驗簽章
     $salt = $this->get_item_salt();
     foreach ($norm as $row) {
       if (!empty($row['sig'])) {
@@ -508,14 +389,8 @@ class Luna_mall extends MY_Base_Controller {
       }
     }
 
-    // 10) 合併數量 & 上限
     $merged = []; $totalQty = 0;
-    foreach ($norm as $row) {
-      $iid = $row['item_idx']; $qty = $row['qty'];
-      if (!isset($merged[$iid])) $merged[$iid] = 0;
-      $merged[$iid] += $qty;
-      $totalQty += $qty;
-    }
+    foreach ($norm as $row) { $iid=$row['item_idx']; $qty=$row['qty']; $merged[$iid]=($merged[$iid]??0)+$qty; $totalQty+=$qty; }
     foreach ($merged as $iid => $q) {
       if ($q > self::MAX_QTY_PER_ITEM) {
         $this->release_checkout_mutex();
@@ -523,7 +398,6 @@ class Luna_mall extends MY_Base_Controller {
       }
     }
 
-    // 11) 後端計總（只信 Excel 價）
     $total = 0;
     foreach ($merged as $iid => $q) $total += (int)$priceMap[$iid] * (int)$q;
     if ($total <= 0) {
@@ -531,7 +405,6 @@ class Luna_mall extends MY_Base_Controller {
       return $this->json_fail('total 金額錯誤', 400);
     }
 
-    // 12) 取帳號
     $sess_idx = $this->session->userdata('user_id');
     $sess_acc = $this->session->userdata('login_user_id');
     $q = $this->db->select('id_idx, id_loginid, mall_point')->from('dbo.chr_log_info');
@@ -540,22 +413,15 @@ class Luna_mall extends MY_Base_Controller {
       if ($sess_acc !== null && $sess_acc !== '') $q->or_where('id_loginid', (string)$sess_acc);
     $q->group_end();
     $acc = $q->limit(1)->get()->row_array();
-    if (!$acc) {
-      $this->release_checkout_mutex();
-      return $this->json_fail('account not found', 404);
-    }
+    if (!$acc) { $this->release_checkout_mutex(); return $this->json_fail('account not found', 404); }
 
     $user_idx = (int)$acc['id_idx'];
     $before   = (int)$acc['mall_point'];
+    $char_id  = $this->get_first_char_id($user_idx);
 
-    // ★ 找到第一個角色（找不到就用 0，仍可入帳號商城包包）
-    $char_id = $this->get_first_char_id($user_idx);
-
-    // 13) 扣點 + 記錄 + 投遞（批次）
     $progress = ['verify'];
     $this->db->trans_begin();
     try {
-      // 扣點（原子）
       $this->db->query("
         UPDATE dbo.chr_log_info
            SET mall_point = mall_point - ?
@@ -571,16 +437,12 @@ class Luna_mall extends MY_Base_Controller {
       $after = $before - $total;
       $progress[] = 'point';
 
-      // log（一定要拿到 log_id）
       $ip = $this->input->ip_address();
       $mall_id = $this->mall_point_dao->insert_log(
-        $user_idx, -$total, $before, $after, '商城結帳(Excel 驗價)', $acc['id_loginid'], $ip
+        $user_idx, -$total, $before, $after, '商城結帳(DB 驗價)', $acc['id_loginid'], $ip
       );
-      if (!is_int($mall_id) || $mall_id <= 0) {
-        throw new \RuntimeException('mall_point_log 新增失敗或回傳非ID');
-      }
+      if (!is_int($mall_id) || $mall_id <= 0) throw new \RuntimeException('mall_point_log 新增失敗');
 
-      // shop_log（TYPE=1）
       $now = (new DateTime('now', new DateTimeZone('Asia/Taipei')))->format('Y-m-d H:i:s');
       $log_idx = $this->shop_log_dao->insert_item([
         'TYPE'=>1,'USER_IDX'=>$user_idx,'USER_ID'=>(string)$user_idx,
@@ -588,23 +450,23 @@ class Luna_mall extends MY_Base_Controller {
       ]);
       if ($log_idx === false) throw new \RuntimeException('shop_log 失敗');
 
-      // ★ 投遞：正確處理堆疊（ITEM_DURABILITY = 該堆疊的實際數量）
       $batch = [];
       foreach ($merged as $iid => $qty) {
-        $sealVal  = (int)($sealMap[$iid] ?? 0);
-        $stackMax = (int)($durMap[$iid]  ?? 0);   // 0 或 1 => 不堆疊；>=2 => 可堆疊
+        $meta = $metaMap[(string)$iid] ?? ['wSeal'=>0,'max_stack'=>0];
+        $seal     = (int)($meta['wSeal'] ?? 0);
+        $stackMax = (int)($meta['max_stack'] ?? 0);
 
         if ($stackMax >= 2) {
           $remain = (int)$qty;
           while ($remain > 0) {
             $stackSize = ($remain >= $stackMax) ? $stackMax : $remain;
             $batch[] = [
-              'CHARACTER_IDX'   => ($char_id > 0 ? $char_id : 0), // 有角色就投角色，否則投帳號包
+              'CHARACTER_IDX'   => ($char_id > 0 ? $char_id : 0),
               'ITEM_IDX'        => (int)$iid,
               'ITEM_SHOPIDX'    => $user_idx,
               'ITEM_SHOPLOGIDX' => $log_idx,
               'mall_log_id'     => $mall_id,
-              'ITEM_SEAL'       => $sealVal,
+              'ITEM_SEAL'       => $seal,
               'ITEM_DURABILITY' => $stackSize,
               'ITEM_POSITION'   => self::SHOP_BAG_POSITION,
             ];
@@ -618,7 +480,7 @@ class Luna_mall extends MY_Base_Controller {
               'ITEM_SHOPIDX'    => $user_idx,
               'ITEM_SHOPLOGIDX' => $log_idx,
               'mall_log_id'     => $mall_id,
-              'ITEM_SEAL'       => $sealVal,
+              'ITEM_SEAL'       => $seal,
               'ITEM_DURABILITY' => 0,
               'ITEM_POSITION'   => self::SHOP_BAG_POSITION,
             ];
@@ -628,12 +490,9 @@ class Luna_mall extends MY_Base_Controller {
 
       if (!empty($batch)) {
         $aff = $this->item_dao->insert_items_batch($batch, self::BATCH_SIZE);
-        if ($aff === false) {
-          throw new \RuntimeException('TB_ITEM 批次寫入失敗');
-        }
+        if ($aff === false) throw new \RuntimeException('TB_ITEM 批次寫入失敗');
       }
 
-      // 保險補寫（DAO 有實作才呼叫）
       if (method_exists($this->item_dao, 'update_mall_log_id_by_shoplog')) {
         $this->item_dao->update_mall_log_id_by_shoplog($mall_id, $log_idx);
       }
@@ -645,7 +504,7 @@ class Luna_mall extends MY_Base_Controller {
       $progress[] = 'done';
 
       return $this->json_ok([
-        'msg'          => 'checkout ok (excel-priced)',
+        'msg'          => 'checkout ok (db-priced)',
         'before'       => $before,
         'after'        => $after,
         'total'        => $total,

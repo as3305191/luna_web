@@ -44,7 +44,7 @@
 
           <div class="card-block g-pt-20 g-pb-10 g-px-20">
             <?php if (empty($tabs)): ?>
-              <div class="alert alert-info mb-0">Excel 沒資料或路徑未設定！</div>
+              <div class="alert alert-info mb-0">目前沒有上架中的商品！</div>
             <?php else: ?>
 
               <!-- Tabs -->
@@ -117,7 +117,7 @@
   </div>
 </section>
 
-<!-- 右側抽屜：購物車（保留在 partial，layout 不需管） -->
+<!-- 右側抽屜：購物車 -->
 <div id="cartMask" class="cart-mask"></div>
 <aside id="cartDrawer" class="cart-drawer" aria-hidden="true" aria-label="購物車">
   <div class="cart-header">
@@ -166,167 +166,179 @@
 <div id="toastMini" class="toast-mini">已加入購物車</div>
 
 <script>
-(function(){
+/* 純原生 JS 版本（無 jQuery），加上 DOMContentLoaded 確保重整可正常初始化 */
+document.addEventListener('DOMContentLoaded', function(){
   /* ---------- Loading Overlay helpers ---------- */
-  var loadingBox = document.getElementById('checkoutLoading');
-  var stepText   = document.getElementById('checkoutStep');
-  function showLoading(msg){ if(!loadingBox) return; if(stepText) stepText.textContent = msg || '處理中...'; loadingBox.classList.add('is-active'); }
-  function updateStep(step){ if(!stepText) return;
-    if (step==='verify') stepText.textContent = '驗證商品中...';
-    if (step==='point')  stepText.textContent = '扣除點數中...';
-    if (step==='item')   stepText.textContent = '發送物品中...';
-    if (step==='done')   stepText.textContent = '完成！';
+  var loadingBox=document.getElementById('checkoutLoading');
+  var stepText=document.getElementById('checkoutStep');
+  function showLoading(msg){ if(!loadingBox) return; if(stepText) stepText.textContent=msg||'處理中...'; loadingBox.classList.add('is-active'); }
+  function updateStep(step){
+    if(!stepText) return;
+    if(step==='verify') stepText.textContent='驗證商品中...';
+    if(step==='point')  stepText.textContent='扣除點數中...';
+    if(step==='item')   stepText.textContent='發送物品中...';
+    if(step==='done')   stepText.textContent='完成！';
   }
   function hideLoading(){ if(!loadingBox) return; loadingBox.classList.remove('is-active'); }
-  window.showLoading = showLoading; window.updateStep = updateStep; window.hideLoading = hideLoading; try{ hideLoading(); }catch(e){}
+  window.showLoading=showLoading; window.updateStep=updateStep; window.hideLoading=hideLoading; try{ hideLoading(); }catch(e){}
 
   /* ---- CSRF / Nonce helpers ---- */
   function getCsrfPair(){
-    const form = document.getElementById('checkoutForm');
-    if(!form) return {name:null, value:null};
-    const input = form.querySelector('input[type="hidden"]:not([name="nonce"]):not([name="cart"])');
-    return input ? {name: input.name, value: input.value} : {name:null, value:null};
+    const form=document.getElementById('checkoutForm');
+    if(!form) return {name:null,value:null};
+    const input=form.querySelector('input[type="hidden"]:not([name="nonce"]):not([name="cart"])');
+    return input?{name:input.name,value:input.value}:{name:null,value:null};
   }
-  function setCsrfPair(name, value){
-    const form = document.getElementById('checkoutForm'); if(!form) return;
+  function setCsrfPair(name,value){
+    const form=document.getElementById('checkoutForm'); if(!form) return;
     Array.from(form.querySelectorAll('input[type="hidden"]'))
-      .filter(x => x.name !== 'nonce' && x.name !== 'cart')
-      .forEach(x => x.remove());
-    let input = document.createElement('input');
-    input.type = 'hidden'; input.name = name; input.value = value;
+      .filter(x=>x.name!=='nonce'&&x.name!=='cart')
+      .forEach(x=>x.remove());
+    const input=document.createElement('input');
+    input.type='hidden'; input.name=name; input.value=value;
     form.appendChild(input);
   }
   function getNonce(){
-    const form = document.getElementById('checkoutForm'); if(!form) return '';
-    const input = form.querySelector('input[name="nonce"]'); return input ? input.value : '';
+    const form=document.getElementById('checkoutForm'); if(!form) return '';
+    const input=form.querySelector('input[name="nonce"]'); return input?input.value:'';
   }
   function setNonce(nonce){
-    const form = document.getElementById('checkoutForm'); if(!form) return;
-    let input = form.querySelector('input[name="nonce"]');
-    if(!input){ input = document.createElement('input'); input.type='hidden'; input.name='nonce'; form.appendChild(input); }
-    input.value = nonce || '';
+    const form=document.getElementById('checkoutForm'); if(!form) return;
+    let input=form.querySelector('input[name="nonce"]');
+    if(!input){ input=document.createElement('input'); input.type='hidden'; input.name='nonce'; form.appendChild(input); }
+    input.value=nonce||'';
   }
 
   /* ---------- Utils ---------- */
   function nf(n){ try{ return new Intl.NumberFormat('zh-Hant-TW').format(n); }catch(e){ return n; } }
   function showToast(msg){
-    var el = document.getElementById('toastMini'); if(!el) return;
-    el.textContent = msg || '完成'; el.classList.add('show');
-    clearTimeout(showToast._t); showToast._t = setTimeout(()=>el.classList.remove('show'), 1600);
+    var el=document.getElementById('toastMini'); if(!el) return;
+    el.textContent=msg||'完成'; el.classList.add('show');
+    clearTimeout(showToast._t); showToast._t=setTimeout(()=>el.classList.remove('show'),1600);
   }
 
-  window.APP = {
-    balanceUrl: "<?= site_url('luna/luna_gm_product_set/balance') ?>",
-    checkoutUrl: "<?= site_url('luna/luna_mall/checkout') ?>",
+  window.APP={
+    balanceUrl:"<?= site_url('luna/luna_gm_product_set/balance') ?>",
+    checkoutUrl:"<?= site_url('luna/luna_mall/checkout') ?>",
   };
 
-  function refreshPoint() {
-    $.ajax({
-      url: window.APP.balanceUrl,
-      method: 'GET',
-      dataType: 'json',
-      xhrFields: { withCredentials: true }
-    }).done(function(resp){
-      if (resp && resp.ok) $('#mallPoint').text(resp.mall_point);
-      if (resp && resp.csrf_name && resp.csrf_hash) {
-        window.CSRF = { name: resp.csrf_name, hash: resp.csrf_hash };
-        setCsrfPair(resp.csrf_name, resp.csrf_hash);
-      }
-    });
+  /* ---------- 以 fetch 輪詢點數（完全移除 jQuery 依賴） ---------- */
+  function refreshPoint(){
+    fetch(window.APP.balanceUrl, { method:'GET', credentials:'include', headers:{'Accept':'application/json'} })
+      .then(async r => { const txt=await r.text(); try{ return JSON.parse(txt);}catch(_){ return null; } })
+      .then(resp => {
+        if (!resp) return;
+        if (resp.ok) {
+          const mp=document.getElementById('mallPoint');
+          if (mp) mp.textContent = nf(resp.mall_point);
+        }
+        if (resp.csrf_name && resp.csrf_hash) {
+          window.CSRF = { name: resp.csrf_name, hash: resp.csrf_hash };
+          setCsrfPair(resp.csrf_name, resp.csrf_hash);
+        }
+      })
+      .catch(()=>{ /* 靜默忽略錯誤 */ });
   }
 
   refreshPoint();
-  let refreshTimer = setInterval(refreshPoint, 10000);
-  function pauseRefresh(){ if (refreshTimer) { clearInterval(refreshTimer); refreshTimer = null; } }
-  function resumeRefresh(){ if (!refreshTimer) { refreshPoint(); refreshTimer = setInterval(refreshPoint, 10000); } }
+  let refreshTimer=setInterval(refreshPoint, 10000);
+  function pauseRefresh(){ if (refreshTimer) { clearInterval(refreshTimer); refreshTimer=null; } }
+  function resumeRefresh(){ if (!refreshTimer) { refreshPoint(); refreshTimer=setInterval(refreshPoint,10000); } }
 
   /* ===========================================================
-     分頁核心（依 data-match 分頁）
+     分頁核心（依 data-match 分頁）。確保重整後立即套用。
      =========================================================== */
+  const DEFAULT_PER_PAGE = 12; // ← 想改每頁筆數改這裡
+
+  // 沒有設定 data-perpage 的地方，統一補上 DEFAULT_PER_PAGE
+  document.querySelectorAll('.pagination').forEach(function(p){
+    if (!p.dataset.perpage) p.dataset.perpage = String(DEFAULT_PER_PAGE);
+    if (!p.dataset.page)    p.dataset.page    = '1';
+  });
+
   function getActiveContext(){
-    const pane  = document.querySelector('.tab-pane.active'); if(!pane) return null;
-    const pager = pane.querySelector('.pagination'); if(!pager) return null;
-    const grid  = pane.querySelector(pager.dataset.grid); if(!grid) return null;
-    const per   = Math.max(1, parseInt(pager.dataset.perpage||'12',12));
-    const page  = Math.max(1, parseInt(pager.dataset.page||'1',10));
+    const pane=document.querySelector('.tab-pane.active'); if(!pane) return null;
+    const pager=pane.querySelector('.pagination'); if(!pager) return null;
+    const grid=pane.querySelector(pager.dataset.grid); if(!grid) return null;
+    const per=Math.max(1, parseInt(pager.dataset.perpage||String(DEFAULT_PER_PAGE), 10));
+    const page=Math.max(1, parseInt(pager.dataset.page||'1', 10));
     return {pane, pager, grid, per, page};
   }
   function computeMatched(grid){
-    const all = Array.prototype.slice.call(grid.querySelectorAll('.product-col'));
+    const all=Array.prototype.slice.call(grid.querySelectorAll('.product-col'));
     return all.filter(el => String(el.dataset.match) !== '0');
   }
   function renderPager(pager, totalPages, current, onGoto){
-    pager.innerHTML = '';
+    pager.innerHTML='';
     function add(txt, target, disabled, active){
-      const li = document.createElement('li');
-      li.className = 'page-item' + (disabled?' disabled':'') + (active?' active':'');
-      const a = document.createElement('a');
-      a.className = 'page-link'; a.href = '#'; a.textContent = txt;
-      if(!disabled && !active){ a.addEventListener('click', function(e){ e.preventDefault(); onGoto(target); }); }
+      const li=document.createElement('li');
+      li.className='page-item'+(disabled?' disabled':'')+(active?' active':'');
+      const a=document.createElement('a');
+      a.className='page-link'; a.href='#'; a.textContent=txt;
+      if(!disabled && !active){
+        a.addEventListener('click', function(e){ e.preventDefault(); onGoto(target); });
+      }
       li.appendChild(a); pager.appendChild(li);
     }
     add('«', 1, current===1, false);
     add('‹', current-1, current===1, false);
-    const windowSize = 7;
-    let from = Math.max(1, current - Math.floor(windowSize/2));
-    let to   = Math.min(totalPages, from + windowSize - 1);
-    from = Math.max(1, to - windowSize + 1);
+    const windowSize=7;
+    let from=Math.max(1, current-Math.floor(windowSize/2));
+    let to=Math.min(totalPages, from+windowSize-1);
+    from=Math.max(1, to-windowSize+1);
     for (let p=from; p<=to; p++){ add(String(p), p, false, p===current); }
     add('›', current+1, current===totalPages, false);
     add('»', totalPages, current===totalPages, false);
   }
   function applyPagination(){
-    const ctx = getActiveContext(); if(!ctx) return;
-    const {pager, grid, per} = ctx;
-    const matched = computeMatched(grid);
-    const totalPages = Math.max(1, Math.ceil(matched.length / per));
-    let current = Math.min(Math.max(1, parseInt(pager.dataset.page||'1',10)), totalPages);
-    pager.dataset.page = current;
+    const ctx=getActiveContext(); if(!ctx) return;
+    const {pager, grid, per}=ctx;
+    const matched=computeMatched(grid);
+    const totalPages=Math.max(1, Math.ceil(matched.length/per));
+    let current=Math.min(Math.max(1, parseInt(pager.dataset.page||'1',10)), totalPages);
+    pager.dataset.page=current;
 
-    const all = Array.prototype.slice.call(grid.querySelectorAll('.product-col'));
-    all.forEach(el => el.style.display = 'none');
+    const all=Array.prototype.slice.call(grid.querySelectorAll('.product-col'));
+    all.forEach(el => el.style.display='none');
 
-    const start = (current-1)*per, end = current*per;
-    matched.forEach((el, i) => { if(i>=start && i<end) el.style.display = ''; });
+    const start=(current-1)*per, end=current*per;
+    matched.forEach((el, i) => { if (i>=start && i<end) el.style.display=''; });
 
-    let empty = grid.querySelector('.__empty_placeholder');
-    if (matched.length === 0) {
+    let empty=grid.querySelector('.__empty_placeholder');
+    if (matched.length===0){
       if (!empty){
-        empty = document.createElement('div');
-        empty.className = '__empty_placeholder col-12';
-        empty.innerHTML = '<div class="alert alert-secondary mb-0 text-center">沒有符合條件的商品</div>';
+        empty=document.createElement('div');
+        empty.className='__empty_placeholder col-12';
+        empty.innerHTML='<div class="alert alert-secondary mb-0 text-center">沒有符合條件的商品</div>';
         grid.appendChild(empty);
       }
-    } else if (empty) {
+    } else if (empty){
       empty.parentNode.removeChild(empty);
     }
 
     renderPager(pager, totalPages, current, function(go){
-      pager.dataset.page = go;
+      pager.dataset.page=go;
       applyPagination();
       grid.scrollIntoView({behavior:'smooth', block:'start'});
     });
   }
 
   /* ---------- Tabs ---------- */
-  var tabLinks  = document.querySelectorAll('.category-tabs a.nav-link');
-  var shopSearch= document.getElementById('shop-search');
+  var tabLinks=document.querySelectorAll('.category-tabs a.nav-link');
+  var shopSearch=document.getElementById('shop-search');
+
   tabLinks.forEach(function(a){
     a.addEventListener('click', function(e){
       e.preventDefault();
       tabLinks.forEach(x=>{ x.classList.remove('active'); x.setAttribute('aria-selected','false'); });
       this.classList.add('active'); this.setAttribute('aria-selected','true');
       document.querySelectorAll('.tab-content .tab-pane').forEach(p=>p.classList.remove('show','active'));
-      var pane = document.querySelector(this.getAttribute('href')); if (pane) pane.classList.add('show','active');
+      var pane=document.querySelector(this.getAttribute('href')); if (pane) pane.classList.add('show','active');
 
-      if (shopSearch) shopSearch.value = '';
+      if (shopSearch) shopSearch.value='';
       if (pane){
-        pane.querySelectorAll('.product-col').forEach(el=>{
-          el.dataset.match = '1';
-          el.style.display = '';
-        });
-        const pager = pane.querySelector('.pagination');
-        if (pager){ pager.dataset.page = 1; }
+        pane.querySelectorAll('.product-col').forEach(el=>{ el.dataset.match='1'; el.style.display=''; });
+        const pager=pane.querySelector('.pagination'); if (pager){ pager.dataset.page= '1'; if (!pager.dataset.perpage) pager.dataset.perpage=String(DEFAULT_PER_PAGE); }
       }
       applyPagination();
     });
@@ -334,32 +346,31 @@
 
   /* ---------- 搜尋 ---------- */
   function filterBySearch(){
-    var q = (shopSearch.value||'').toLowerCase().trim();
-    const ctx = getActiveContext(); if(!ctx) return;
-    const {pane} = ctx;
-    const grid = pane.querySelector('.product-grid'); if (!grid) return;
+    var q=(shopSearch.value||'').toLowerCase().trim();
+    const ctx=getActiveContext(); if(!ctx) return;
+    const {pane}=ctx;
+    const grid=pane.querySelector('.product-grid'); if(!grid) return;
 
     grid.querySelectorAll('.product-col').forEach(function(el){
-      var name = (el.getAttribute('data-name')||'').toLowerCase();
-      el.dataset.match = (q==='' || name.indexOf(q)!==-1) ? '1' : '0';
+      var name=(el.getAttribute('data-name')||'').toLowerCase();
+      el.dataset.match=(q==='' || name.indexOf(q)!==-1) ? '1' : '0';
     });
-    const pager = pane.querySelector('.pagination');
-    if (pager){ pager.dataset.page = 1; }
+    const pager=pane.querySelector('.pagination'); if (pager){ pager.dataset.page='1'; }
     applyPagination();
   }
   if (shopSearch) shopSearch.addEventListener('input', filterBySearch);
 
   /* ---------- 排序 ---------- */
-  var sortMenu = document.getElementById('sortMenu');
+  var sortMenu=document.getElementById('sortMenu');
   if (sortMenu){
     sortMenu.addEventListener('click', function(e){
-      var t = e.target.closest('[data-sort]'); if(!t) return; e.preventDefault();
-      var mode = t.getAttribute('data-sort');
-      const ctx = getActiveContext(); if(!ctx) return;
-      const {pane} = ctx;
-      var grid = pane.querySelector('.product-grid'); if(!grid) return;
+      var t=e.target.closest('[data-sort]'); if(!t) return; e.preventDefault();
+      var mode=t.getAttribute('data-sort');
+      const ctx=getActiveContext(); if(!ctx) return;
+      const {pane}=ctx;
+      var grid=pane.querySelector('.product-grid'); if(!grid) return;
 
-      var items = Array.prototype.slice.call(grid.querySelectorAll('.product-col'));
+      var items=Array.prototype.slice.call(grid.querySelectorAll('.product-col'));
       items.sort(function(a,b){
         var an=(a.getAttribute('data-name')||'').toLowerCase();
         var bn=(b.getAttribute('data-name')||'').toLowerCase();
@@ -373,8 +384,7 @@
       });
       items.forEach(el=>grid.appendChild(el));
 
-      const pager = pane.querySelector('.pagination');
-      if (pager){ pager.dataset.page = 1; }
+      const pager=pane.querySelector('.pagination'); if (pager){ pager.dataset.page='1'; }
       applyPagination();
     });
   }
@@ -382,9 +392,9 @@
   /* ---------- 跑馬燈 ---------- */
   function setupMarquee(){
     document.querySelectorAll('.scroll-wrap').forEach(function(wrap){
-      var inner = wrap.querySelector('.scroll-inner'); if(!inner) return;
+      var inner=wrap.querySelector('.scroll-inner'); if(!inner) return;
       function start(){
-        var diff = Math.ceil(inner.scrollWidth - wrap.clientWidth);
+        var diff=Math.ceil(inner.scrollWidth - wrap.clientWidth);
         if (diff>0){
           wrap.style.setProperty('--slide-px', diff+'px');
           wrap.style.setProperty('--slide-sec', Math.max(2, diff/40)+'s');
@@ -401,18 +411,18 @@
 
   /* ---------- 數量 stepper（卡片內） ---------- */
   document.addEventListener('click', function(e){
-    var minus = e.target.closest('.btnMinus'); var plus = e.target.closest('.btnPlus');
+    var minus=e.target.closest('.btnMinus'); var plus=e.target.closest('.btnPlus');
     if (minus || plus){
-      var card = e.target.closest('.product-col'); if(!card) return;
-      var inp = card.querySelector('.qty-input2'); if(!inp) return;
-      var v = parseInt(inp.value||'1',10);
-      v = isNaN(v)?1:v; v = minus ? Math.max(1, v-1) : Math.min(99, v+1);
-      inp.value = v;
+      var card=e.target.closest('.product-col'); if(!card) return;
+      var inp=card.querySelector('.qty-input2'); if(!inp) return;
+      var v=parseInt(inp.value||'1',10);
+      v=isNaN(v)?1:v; v=minus?Math.max(1, v-1):Math.min(99, v+1);
+      inp.value=v;
     }
   });
 
   /* ---------- Cart（右側抽屜） ---------- */
-  var CART = []; // {id,name,qty,price,sig}
+  var CART=[];
   var cartMask   = document.getElementById('cartMask');
   var cartDrawer = document.getElementById('cartDrawer');
   var btnOpen    = document.getElementById('btnCartOpen');
@@ -432,37 +442,38 @@
   window.addEventListener('keydown', function(e){ if(e.key==='Escape') closeCart(); });
 
   function el(tag, attrs, text){
-    var node = document.createElement(tag);
+    var node=document.createElement(tag);
     if (attrs) for (var k in attrs){
-      if (k==='class') node.className = attrs[k];
-      else if (k==='dataset'){ var ds = attrs[k]; for (var dk in ds){ node.dataset[dk] = ds[dk]; } }
-      else if (k==='html'){ node.innerHTML = attrs[k]; }
+      if (k==='class') node.className=attrs[k];
+      else if (k==='dataset'){ var ds=attrs[k]; for (var dk in ds){ node.dataset[dk]=ds[dk]; } }
+      else if (k==='html'){ node.innerHTML=attrs[k]; }
       else node.setAttribute(k, attrs[k]);
     }
-    if (typeof text==='string') node.textContent = text;
+    if (typeof text==='string') node.textContent=text;
     return node;
   }
 
-  let submitting = false;
+  let submitting=false;
   function redrawCart(){
-    cartBody.innerHTML = '';
-    let total = 0;
+    if (!cartBody) return;
+    cartBody.innerHTML='';
+    let total=0;
     if (!CART.length){
       cartBody.appendChild(el('div', {class:'text-center text-muted g-my-20'}, '購物車是空的，去逛逛吧～'));
     }else{
       CART.forEach(function(it, idx){
-        const sub = (it.price||0) * (it.qty||0); total += sub;
+        const sub=(it.price||0)*(it.qty||0); total+=sub;
 
-        const row = el('div', {class:'cart-item'});
-        const left = el('div');
-        left.appendChild(el('div', {class:'title', title: it.name}, it.name));
+        const row=el('div', {class:'cart-item'});
+        const left=el('div');
+        left.appendChild(el('div', {class:'title', title:it.name}, it.name));
         left.appendChild(el('div', {class:'small text-muted'}, 'NT$ '+ nf(it.price) + ' / 件'));
 
-        const right = el('div', {class:'text-right'});
+        const right=el('div', {class:'text-right'});
         right.appendChild(el('button', {class:'btn btn-sm btn-link text-danger del', type:'button', 'data-idx':idx, html:'<i class="fa fa-times"></i>'}));
 
-        const qtyCell = el('div');
-        const qtyWrap = el('div', {class:'qty-wrap'});
+        const qtyCell=el('div');
+        const qtyWrap=el('div', {class:'qty-wrap'});
         qtyWrap.appendChild(el('button', {class:'qty-btn btnMinus2', type:'button', 'data-idx':idx}, '−'));
         qtyWrap.appendChild(el('input', {class:'qty-input2 qtyEdit', type:'number', min:'1', max:'99', value:String(it.qty||1), 'data-idx':idx}));
         qtyWrap.appendChild(el('button', {class:'qty-btn btnPlus2', type:'button', 'data-idx':idx}, '＋'));
@@ -476,32 +487,32 @@
         cartBody.appendChild(row);
       });
     }
-    cartTotal.textContent = 'NT$ ' + nf(total);
-    cartCount.textContent = CART.length;
-    cartCount2.textContent = CART.length;
-    btnCheckout.disabled = CART.length===0 || submitting;
-    btnCheckoutTop.disabled = CART.length===0 || submitting;
+    if (cartTotal)  cartTotal.textContent='NT$ ' + nf(total);
+    if (cartCount)  cartCount.textContent=CART.length;
+    if (cartCount2) cartCount2.textContent=CART.length;
+    if (btnCheckout)    btnCheckout.disabled = CART.length===0 || submitting;
+    if (btnCheckoutTop) btnCheckoutTop.disabled = CART.length===0 || submitting;
   }
 
   function addToCart(id,name,price,sig,qty){
-    qty = Math.max(1, parseInt(qty||1,10));
-    var i = CART.findIndex(x => String(x.id)===String(id) && x.sig===sig);
+    qty=Math.max(1, parseInt(qty||1,10));
+    var i=CART.findIndex(x => String(x.id)===String(id) && x.sig===sig);
     if (i>=0) CART[i].qty = Math.min(99, (CART[i].qty||0) + qty);
     else CART.push({id:String(id), name:String(name), qty:qty, price:parseInt(price,10)||0, sig:String(sig)});
     redrawCart(); showToast('已加入購物車');
   }
 
   document.addEventListener('click', function(e){
-    var btn = e.target.closest('.add-cart-btn'); if(!btn) return;
+    var btn=e.target.closest('.add-cart-btn'); if(!btn) return;
     if (submitting) return;
-    var col = btn.closest('.product-col'); if(!col) return;
-    var id    = (col.getAttribute('data-id')||'')+'';
-    var name  = (col.getAttribute('data-name')||'')+'';
-    var price = parseInt(col.getAttribute('data-price')||'0',10);
-    var sig   = (col.getAttribute('data-sig')||'')+'';
-    var qtyEl = col.querySelector('.qty-input2');
-    var qtyRaw = qtyEl ? parseInt(qtyEl.value||'1',10) : 1;
-    var qty    = Math.max(1, Math.min(99, qtyRaw));
+    var col=btn.closest('.product-col'); if(!col) return;
+    var id    =(col.getAttribute('data-id')||'')+'';
+    var name  =(col.getAttribute('data-name')||'')+'';
+    var price =parseInt(col.getAttribute('data-price')||'0',10);
+    var sig   =(col.getAttribute('data-sig')||'')+'';
+    var qtyEl =col.querySelector('.qty-input2');
+    var qtyRaw=qtyEl?parseInt(qtyEl.value||'1',10):1;
+    var qty   =Math.max(1, Math.min(99, qtyRaw));
     if (!id || !sig || qty<=0) return;
     addToCart(id,name,price,sig,qty);
   });
@@ -509,61 +520,58 @@
   if (cartBody){
     cartBody.addEventListener('click', function(e){
       if (submitting) return;
-      var del = e.target.closest('.del'); if (del){
-        var idx = parseInt(del.getAttribute('data-idx'),10);
+      var del=e.target.closest('.del'); if (del){
+        var idx=parseInt(del.getAttribute('data-idx'),10);
         if (!isNaN(idx)){ CART.splice(idx,1); redrawCart(); }
         return;
       }
-      var minus = e.target.closest('.btnMinus2');
-      var plus  = e.target.closest('.btnPlus2');
+      var minus=e.target.closest('.btnMinus2');
+      var plus =e.target.closest('.btnPlus2');
       if (minus || plus){
-        var idx = parseInt((minus||plus).getAttribute('data-idx'),10);
+        var idx=parseInt((minus||plus).getAttribute('data-idx'),10);
         if (isNaN(idx) || !CART[idx]) return;
-        var v = CART[idx].qty||1;
+        var v=CART[idx].qty||1;
         CART[idx].qty = minus ? Math.max(1, v-1) : Math.min(99, v+1);
         redrawCart();
       }
     });
     cartBody.addEventListener('change', function(e){
       if (submitting) return;
-      var inp = e.target.closest('.qtyEdit'); if (!inp) return;
-      var idx = parseInt(inp.getAttribute('data-idx'),10);
-      var v = Math.max(1, Math.min(99, parseInt(inp.value||'1',10)));
-      if (!isNaN(idx) && CART[idx]){ CART[idx].qty = v; redrawCart(); }
+      var inp=e.target.closest('.qtyEdit'); if (!inp) return;
+      var idx=parseInt(inp.getAttribute('data-idx'),10);
+      var v=Math.max(1, Math.min(99, parseInt(inp.value||'1',10)));
+      if (!isNaN(idx) && CART[idx]){ CART[idx].qty=v; redrawCart(); }
     });
   }
 
-  if (document.getElementById('btnCheckoutTop')) {
-    document.getElementById('btnCheckoutTop').addEventListener('click', function(){ if(CART.length) openCart(); });
+  if (btnCheckoutTop) {
+    btnCheckoutTop.addEventListener('click', function(){ if(CART.length) openCart(); });
   }
 
   /* ---------- 結帳 ---------- */
-  var checkoutForm = document.getElementById('checkoutForm');
   function lockCartUI(on){
-    submitting = !!on;
-    btnCheckout.classList.toggle('is-disabled', on);
-    btnCheckoutTop.classList.toggle('is-disabled', on);
-    cartDrawer.classList.toggle('is-disabled', on);
-    btnCheckout.disabled = on || CART.length===0;
-    btnCheckoutTop.disabled = on || CART.length===0;
+    submitting=!!on;
+    if (btnCheckout)    btnCheckout.classList.toggle('is-disabled', on);
+    if (btnCheckoutTop) btnCheckoutTop.classList.toggle('is-disabled', on);
+    if (cartDrawer)     cartDrawer.classList.toggle('is-disabled', on);
+    if (btnCheckout)    btnCheckout.disabled = on || CART.length===0;
+    if (btnCheckoutTop) btnCheckoutTop.disabled = on || CART.length===0;
   }
 
   function doCheckout(){
     if (!CART.length || submitting) return;
     pauseRefresh();
 
-    const formEl = document.getElementById('checkoutForm');
-    const fd = new FormData();
+    const formEl=document.getElementById('checkoutForm');
+    const fd=new FormData();
 
-    // ★ 確保 hidden 的 CSRF 與 header 一致
-    const cur = getCsrfPair();
+    const cur=getCsrfPair();
     if ((!cur.name || !cur.value) && window.CSRF && window.CSRF.name && window.CSRF.hash) {
       setCsrfPair(window.CSRF.name, window.CSRF.hash);
     }
-    const pair = getCsrfPair();
+    const pair=getCsrfPair();
     if (pair.name && pair.value) fd.append(pair.name, pair.value);
 
-    // Nonce & 購物車
     fd.append('nonce', getNonce());
     fd.append('cart', JSON.stringify(CART.map(it => ({
       id:String(it.id),
@@ -573,44 +581,41 @@
 
     lockCartUI(true);
     showLoading('開始交易...'); updateStep('verify');
-    const bailout = setTimeout(hideLoading, 20000);
+    const bailout=setTimeout(hideLoading, 20000);
 
-    // Header 用 hidden 的那組 CSRF（與表單同源）
-    const headers = {'X-Requested-With':'XMLHttpRequest','Accept':'application/json'};
-    if (pair && pair.value) headers['X-CSRF-Token'] = pair.value;
+    const headers={'X-Requested-With':'XMLHttpRequest','Accept':'application/json'};
+    if (pair && pair.value) headers['X-CSRF-Token']=pair.value;
 
-    fetch(formEl.getAttribute('action'), {
-      method:'POST', body:fd, headers, credentials:'include'
-    })
-    .then(async r => {
-      const txt = await r.text(); let j=null; try{ j=JSON.parse(txt);}catch(_){}
-      if (j && j.csrf_name && j.csrf_hash) { window.CSRF={name:j.csrf_name,hash:j.csrf_hash}; setCsrfPair(j.csrf_name,j.csrf_hash); }
-      if (j && j.checkout_nonce) setNonce(j.checkout_nonce);
-      if (!r.ok) { const e=new Error('HTTP '+r.status); e.payload=j; throw e; }
-      return j;
-    })
-    .then(res => {
-      if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
-      if (!res || !res.ok) {
-        showToast(res && res.msg ? res.msg : '結帳失敗');
-        hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh(); return;
-      }
-      alert(res.order_no ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${nf(res.total)}，剩餘點數 ${nf(res.after)}` :
-                          '購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after));
-      CART=[]; redrawCart(); closeCart();
-      const mp=document.getElementById('mallPoint'); if (mp && typeof res.after!=='undefined') mp.textContent = nf(res.after);
-      hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh();
-    })
-    .catch(err => {
-      showToast((err && err.payload && err.payload.msg) ? err.payload.msg : '網路或驗證異常，請再試一次');
-      hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh();
-    });
+    fetch(formEl.getAttribute('action'), { method:'POST', body:fd, headers, credentials:'include' })
+      .then(async r => {
+        const txt=await r.text(); let j=null; try{ j=JSON.parse(txt);}catch(_){}
+        if (j && j.csrf_name && j.csrf_hash) { window.CSRF={name:j.csrf_name,hash:j.csrf_hash}; setCsrfPair(j.csrf_name,j.csrf_hash); }
+        if (j && j.checkout_nonce) setNonce(j.checkout_nonce);
+        if (!r.ok) { const e=new Error('HTTP '+r.status); e.payload=j; throw e; }
+        return j;
+      })
+      .then(res => {
+        if (res && Array.isArray(res.progress)) res.progress.forEach(updateStep);
+        if (!res || !res.ok) {
+          showToast(res && res.msg ? res.msg : '結帳失敗');
+          hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh(); return;
+        }
+        alert(res.order_no ? `購買成功（訂單：${res.order_no}）！扣點 NT$ ${nf(res.total)}，剩餘點數 ${nf(res.after)}` :
+                            '購買成功！扣點 NT$ ' + nf(res.total) + '，剩餘點數 ' + nf(res.after));
+        CART=[]; redrawCart(); closeCart();
+        const mp=document.getElementById('mallPoint'); if (mp && typeof res.after!=='undefined') mp.textContent = nf(res.after);
+        hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh();
+      })
+      .catch(err => {
+        showToast((err && err.payload && err.payload.msg) ? err.payload.msg : '網路或驗證異常，請再試一次');
+        hideLoading(); clearTimeout(bailout); lockCartUI(false); resumeRefresh();
+      });
   }
 
-  var btnCheckout = document.getElementById('btnCheckout');
+  const btnCheckout=document.getElementById('btnCheckout');
   if (btnCheckout) btnCheckout.addEventListener('click', doCheckout);
 
-  /* ---------- 初始化：建第一個分頁 ---------- */
+  /* ---------- 首次載入：強制對目前 active 分頁套分頁（包含「全部商品」） ---------- */
   applyPagination();
-})();
+});
 </script>

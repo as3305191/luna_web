@@ -1,3 +1,15 @@
+<style>
+  /* 用於實現類似 fadeOut 和 fadeIn 的效果 */
+  #mallPoint.fade-out {
+    opacity: 0;
+    transition: opacity 0.08s ease-in-out;
+  }
+
+  #mallPoint.fade-in {
+    opacity: 1;
+    transition: opacity 0.08s ease-in-out;
+  }
+</style>
 <div class="col-lg-3 g-mb-50 g-mb-0--lg">
 
   <!-- User Image -->
@@ -41,38 +53,53 @@
 <script>
 (function bootWhenReady(){
   function boot(){
-    if (!window.jQuery) { setTimeout(boot, 60); return; }
-    (function($){
+    if (!window.fetch) { setTimeout(boot, 60); return; }
+    (function(){
       const API_POINT = '<?= site_url("luna/luna_gm_product_set/balance") ?>';
-      const $mp = $('#mallPoint');
-      if (!$mp.length) return;
+      const mp = document.getElementById('mallPoint');
+      if (!mp) return;
 
       let lastVal = null;
       function nf(n){ return new Intl.NumberFormat('zh-Hant-TW').format(n); }
 
       function refreshPoint(){
-        $.getJSON(API_POINT, function(res){
-          if (!res || !res.ok) return;
-          const v = parseInt(res.mall_point || 0, 10);
-          if (v !== lastVal) {
-            lastVal = v;
-            $mp.text(nf(v)).stop(true,true).fadeOut(80).fadeIn(80);
-          }
-        });
+        fetch(API_POINT)
+          .then(response => response.json())
+          .then(res => {
+            if (!res || !res.ok) return;
+            const v = parseInt(res.mall_point || 0, 10);
+            if (v !== lastVal) {
+              lastVal = v;
+              mp.textContent = nf(v);
+              // 代替 fadeOut 和 fadeIn 的效果
+              mp.classList.add('fade-out');
+              setTimeout(() => {
+                mp.classList.remove('fade-out');
+                mp.classList.add('fade-in');
+              }, 80);
+              setTimeout(() => mp.classList.remove('fade-in'), 160); // 清除 fade-in class
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching mall point:', error);
+          });
       }
 
-      // 對外公開：可在任一頁面執行 window.dispatchEvent(new Event('mallpoint:refresh'))
+      // 觸發刷新
       window.addEventListener('mallpoint:refresh', refreshPoint);
 
-      // 進頁面先撈一次，之後每 8 秒輪詢；回到分頁/視窗 focus 也會刷新
+      // 首次載入頁面後馬上刷新，然後每 8 秒刷新一次；回到分頁或視窗 focus 時也刷新
       refreshPoint();
       const t = setInterval(refreshPoint, 8000);
-      document.addEventListener('visibilitychange', ()=>{ if(!document.hidden) refreshPoint(); });
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) refreshPoint();
+      });
       window.addEventListener('focus', refreshPoint);
-      window.addEventListener('beforeunload', ()=> clearInterval(t));
-    })(jQuery);
+      window.addEventListener('beforeunload', () => clearInterval(t));
+    })();
   }
   if (document.readyState === 'complete') boot();
   else window.addEventListener('load', boot);
 })();
+
 </script>
