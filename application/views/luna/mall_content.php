@@ -11,7 +11,7 @@
 
   /* ===== 右下角浮動購物車 ===== */
   .cart-float{
-    position:fixed; right:24px; bottom:24px; z-index:1500; /* 低於 overlay(2000) */
+    position:fixed; right:24px; bottom:24px; z-index:1500;
     display:flex; align-items:center; gap:.75rem;
     background:#fff; border:1px solid rgba(0,0,0,.06);
     border-radius:16px; padding:.6rem .7rem;
@@ -234,16 +234,14 @@
   try{ hideLoading(); }catch(e){}
 
   /* ---------- CSRF / Nonce helpers ---------- */
-  // ★ 把 server 給的 token 同步到 hidden + Cookie（兩者要一致才不會 403）
   const CSRF_COOKIE_NAME = <?= json_encode($csrf_cookie_name) ?>;
 
   function setCsrfCookie(name, value){
     if (!name || typeof value!=='string') return;
-    var parts = [''+encodeURIComponent(name)+'='+encodeURIComponent(value), 'path=/','SameSite=Lax'];
+    var parts = [encodeURIComponent(name)+'='+encodeURIComponent(value), 'path=/','SameSite=Lax'];
     if (location.protocol==='https:') parts.push('secure');
     document.cookie = parts.join('; ');
   }
-
   function getCsrfPair(){
     const form = document.getElementById('checkoutForm');
     if(!form) return {name:null, value:null};
@@ -262,7 +260,7 @@
   function syncCsrfFromServer(name, hash){
     if (!name || !hash) return;
     setCsrfPair(name, hash);
-    setCsrfCookie(CSRF_COOKIE_NAME, hash); // ★ 同步更新 Cookie
+    setCsrfCookie(CSRF_COOKIE_NAME, hash);
     window.CSRF = { name: name, hash: hash };
   }
   function getNonce(){
@@ -289,19 +287,25 @@
     checkoutUrl: "<?= site_url('luna/luna_mall/checkout') ?>",
   };
 
-  function refreshPoint() {
-    $.ajax({
-      url: window.APP.balanceUrl,
-      method: 'GET',
-      dataType: 'json',
-      xhrFields: { withCredentials: true }
-    }).done(function(resp){
-      if (resp && resp.ok) $('#mallPoint').text(resp.mall_point);
-      if (resp && resp.csrf_name && resp.csrf_hash) {
-        // ★ 不只更新 hidden，也把 Cookie 一起同步
+  /* ---------- Mall 點數輪詢（純 fetch，無 jQuery 依賴） ---------- */
+  function refreshPoint(){
+    fetch(window.APP.balanceUrl, {
+      method:'GET',
+      credentials:'include',
+      headers:{'Accept':'application/json','X-Requested-With':'XMLHttpRequest'}
+    })
+    .then(r => r.ok ? r.json() : null)
+    .then(resp => {
+      if (!resp) return;
+      if (resp.ok) {
+        var el = document.getElementById('mallPoint');
+        if (el) el.textContent = nf(resp.mall_point);
+      }
+      if (resp.csrf_name && resp.csrf_hash) {
         syncCsrfFromServer(resp.csrf_name, resp.csrf_hash);
       }
-    });
+    })
+    .catch(()=>{ /* 靜默 */ });
   }
 
   refreshPoint();
@@ -480,7 +484,7 @@
     }
   });
 
-  /* ---------- Cart（右側抽屜） ---------- */
+  /* ---------- Cart（右側抽屜 + 浮動列） ---------- */
   var CART = []; // {id,name,qty,price,sig}
   var cartMask   = document.getElementById('cartMask');
   var cartDrawer = document.getElementById('cartDrawer');
@@ -506,7 +510,6 @@
   var btnFloatCheckout = document.getElementById('cartFloatCheckout');
   var cartFloatCount   = document.getElementById('cartFloatCount');
   var cartFloatTotal   = document.getElementById('cartFloatTotal');
-
   if (btnFloatOpen) btnFloatOpen.addEventListener('click', openCart);
 
   function el(tag, attrs, text){
@@ -561,7 +564,7 @@
     btnCheckout.disabled    = CART.length===0 || submitting;
     btnCheckoutTop.disabled = CART.length===0 || submitting;
 
-    // ★ 浮動列同步（空車也顯示，但禁用結帳）
+    // 浮動列同步（空車也顯示，但禁用結帳）
     if (cartFloatTotal)  cartFloatTotal.textContent = 'NT$ ' + nf(total);
     if (cartFloatCount)  cartFloatCount.textContent = CART.length;
     if (btnFloatCheckout) btnFloatCheckout.disabled = (CART.length===0 || submitting);
@@ -637,14 +640,11 @@
     if (btnFloatCheckout) btnFloatCheckout.disabled = !!on || CART.length===0;
   }
 
-  // 右下角按鈕也能結帳
-  if (btnFloatCheckout) btnFloatCheckout.addEventListener('click', doCheckout);
-
   function ensureCsrfInForm(){
     const cur = getCsrfPair();
     if ((!cur.name || !cur.value) && window.CSRF && window.CSRF.name && window.CSRF.hash) {
       setCsrfPair(window.CSRF.name, window.CSRF.hash);
-      setCsrfCookie(CSRF_COOKIE_NAME, window.CSRF.hash); // ★ 也補 Cookie
+      setCsrfCookie(CSRF_COOKIE_NAME, window.CSRF.hash);
     }
   }
 
@@ -678,7 +678,7 @@
       method:'POST', body:fd, headers, credentials:'include'
     }).then(async r => {
       const txt = await r.text(); let j=null; try{ j=JSON.parse(txt);}catch(_){}
-      // ★ 同步 server 回傳的 token 到 hidden + Cookie
+      // 同步 server 回傳的 token 到 hidden + Cookie
       if (j && j.csrf_name && j.csrf_hash) syncCsrfFromServer(j.csrf_name, j.csrf_hash);
       if (j && j.checkout_nonce) setNonce(j.checkout_nonce);
       return { ok: r.ok, status: r.status, payload: j };
@@ -714,10 +714,7 @@
     postCheckoutOnce()
       .then(res => {
         const j = res.payload || {};
-        // 401：未登入 → 直接導去登入
         if (res.status === 401) { window.location.href = "<?= site_url('luna/login') ?>"; return null; }
-
-        // 首次 CSRF 失敗 → 同步完 token+Cookie 後再重送一次
         if ((!res.ok || j.ok === false) &&
             (res.status === 403 || /csrf/i.test(String(j.msg||''))) &&
             !triedRetry) {
@@ -727,7 +724,7 @@
         return res;
       })
       .then(res2 => {
-        if (!res2) return; // 已導向登入
+        if (!res2) return;
         const j2 = res2.payload || {};
         if (!res2.ok || j2.ok === false) return fail(j2.msg);
         return done(j2);
@@ -736,7 +733,9 @@
   }
 
   var btnCheckout = document.getElementById('btnCheckout');
+  var btnFloatCheckout = document.getElementById('cartFloatCheckout');
   if (btnCheckout) btnCheckout.addEventListener('click', doCheckout);
+  if (btnFloatCheckout) btnFloatCheckout.addEventListener('click', doCheckout);
 
   /* ---------- 初始化：建第一個分頁 ---------- */
   applyPagination();
