@@ -10,9 +10,6 @@
           </span>
           </span>
         </button>
-        <!-- End Responsive Toggle Button -->
-        <!-- <input class="form-control" type="hidden" id="luna_id" value="<?=isset($login_user) ? $login_user->id: '' ?>"/>
-        <input class="form-control" type="hidden" id="now" value="<?=isset($now) ? $now: '' ?>"/> -->
 
         <!-- Logo -->
           <div class=" no-padding ">
