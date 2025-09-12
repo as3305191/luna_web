@@ -1,8 +1,12 @@
 <IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteBase /
+  RewriteEngine On
+  RewriteBase /
 
-    RewriteCond %{REQUEST_FILENAME} !-f
-    RewriteCond %{REQUEST_FILENAME} !-d
-    RewriteRule ^(.*)$ index.php/$1 [L]
+  # 不要重寫 index.php 自己，避免重寫迴圈
+  RewriteCond %{REQUEST_URI} !^/index\.php
+
+  # 不存在的檔案/資料夾才交給 CodeIgniter
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.*)$ index.php/$1 [L]
 </IfModule>

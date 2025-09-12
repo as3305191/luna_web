@@ -38,7 +38,7 @@ $config['base_url'] = $base_url;
  // $root .= rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 //}
 
-$config['base_url'] = 'https://luna3.asuscomm.com/LUNA_WEB/';
+// $config['base_url'] = 'https://luna3.asuscomm.com/LUNA_WEB/';
 // $config['base_url'] = 'http://app.3000world.com.tw/';
 
 /*
