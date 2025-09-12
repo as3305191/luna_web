@@ -23,9 +23,27 @@
 <div class="col-lg-9">
   <div class="row g-mb-40">
     <div class="col-lg-12">
-
       <!-- 新增玩家帳號 -->
       <div class="card border-0 g-mb-20">
+        <div class="card-block">
+          <h3 class="h6 mb-0"><i class="icon-user g-mr-5"></i>編輯 新增物品/商店網址(請謹慎使用)</h3>
+          <div class="row g-mb-10">
+            <div class="card-header g-bg-gray-light-v5 border-0">
+              <h3 class="h6 mb-0">
+                <i class="icon-bag g-mr-5"></i> 所有物品+商店
+                <small class="muted">admin_import/import_all</small>
+              </h3>
+              <h3 class="h6 mb-0">
+                <i class="icon-bag g-mr-5"></i> 物品重新導入
+                <small class="muted">admin_import/itemlistcn</small>
+              </h3>
+              <h3 class="h6 mb-0">
+                <i class="icon-bag g-mr-5"></i> 商店重新導入
+                <small class="muted">admin_import/itemshop</small>
+              </h3> 
+            </div>   
+          </div>        
+        </div>
         <div class="card-header g-bg-gray-light-v5 border-0">
           <h3 class="h6 mb-0"><i class="icon-user g-mr-5"></i> 新增玩家帳號</h3>
         </div>
