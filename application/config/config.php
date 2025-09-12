@@ -23,16 +23,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
+$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') || $_SERVER['SERVER_PORT'] == 443 ? "https://" : "http://";
+$host     = $_SERVER['HTTP_HOST'] ?? 'localhost';
+$script   = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
+$base_url = $protocol . $host . $script;
 
-$root = '';
-if(isset($_SERVER['HTTP_HOST'])) {
-  $root=(isset($_SERVER['HTTPS']) ? "https://" : "http://").$_SERVER['HTTP_HOST'];
+$config['base_url'] = $base_url;
+
+//$root = '';
+//if(isset($_SERVER['HTTP_HOST'])) {
+  //$root=(isset($_SERVER['HTTPS']) ? "https://" : "http://").$_SERVER['HTTP_HOST'];
   // $root=("http://").$_SERVER['HTTP_HOST'];
   // $root.= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
-  $root .= rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
-}
+ // $root .= rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
+//}
 
-$config['base_url'] = $root;
+//$config['base_url'] = $root;
 // $config['base_url'] = 'http://app.3000world.com.tw/';
 
 /*
