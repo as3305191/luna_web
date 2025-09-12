@@ -38,7 +38,7 @@ $config['base_url'] = $base_url;
  // $root .= rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\') . '/';
 //}
 
-//$config['base_url'] = $root;
+$config['base_url'] = 'https://luna3.asuscomm.com/LUNA_WEB/';
 // $config['base_url'] = 'http://app.3000world.com.tw/';
 
 /*
@@ -330,7 +330,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 's3cReT!_1234567890_ASDFGHJKLqwerty';
 
 /*
 |--------------------------------------------------------------------------
@@ -468,8 +468,8 @@ $config['cookie_domain']    = '';
 $config['cookie_path']      = '/';
 
 // 不是 https 的話先關掉 secure；前端要讀值就別設 httponly
-$config['cookie_secure']    = FALSE;
-$config['cookie_httponly']  = FALSE;
+$config['cookie_secure']    = TRUE;
+$config['cookie_httponly']  = TRUE;
 $config['cookie_samesite']  = 'Lax';
 
 

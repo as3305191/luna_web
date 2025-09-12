@@ -61,5 +61,5 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['admin/import/itemlistcn'] = 'admin_import/itemlistcn';
 $route['admin/import/itemshop']   = 'admin_import/itemshop';
-
+$route['default_controller'] = 'luna/login';
 

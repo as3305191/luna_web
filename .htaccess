@@ -1,3 +1,5 @@
 RewriteEngine on
-RewriteCond $1 !^(index\.php|coach_1|assets|download|img|css|fonts|js|lib|stylesheets|images|style|plugins|robots\.txt|plan\.php|copyright\.php|security\.php)
-RewriteRule ^(.*)$ LUNA_WEB/index.php/$1 [L]
+RewriteBase /LUNA_WEB/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
