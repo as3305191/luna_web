@@ -50,7 +50,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |		my-controller/my-method	-> my_controller/my_method
 */
 // === GM 面板點數查詢 ===
-$route['default_controller'] = 'luna/login';
+$route['default_controller'] = 'luna/Login';
 $route['luna/luna_gm_product_set/balance']['GET']  = 'luna/Luna_gm_product_set/balance';
 $route['luna/luna_gm_product_set/balance']['POST'] = 'luna/Luna_gm_product_set/balance';
 
