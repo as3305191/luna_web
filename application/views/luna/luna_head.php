@@ -9,7 +9,7 @@
 <meta name="ci-csrf-hash" content="<?= $this->security->get_csrf_hash(); ?>">
 <meta name="checkout-nonce" content="<?= htmlspecialchars($checkout_nonce ?? '') ?>">
 
-<link rel="shortcut icon" href="<?= base_url('luna_1/favicon.ico') ?>">
+<link rel="shortcut icon" href="<?= base_url('luna_1/luna.ico') ?>">
 
 <!-- CSS Global Compulsory -->
 <link rel="stylesheet" href="<?= base_url('luna_1/assets/vendor/bootstrap/bootstrap.min.css') ?>">
