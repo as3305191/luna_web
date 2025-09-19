@@ -29,9 +29,9 @@
 
   <!-- Sidebar Navigation -->
   <div class="list-group list-group-border-0 g-mb-40">
-    <a href="<?= base_url("luna/luna_home") ?>" class="list-group-item justify-content-between luna_home">
+    <!-- <a href="<?= base_url("luna/luna_home") ?>" class="list-group-item justify-content-between luna_home">
       <span><i class="icon-home g-pos-rel g-top-1 g-mr-8"></i> 主頁</span>
-    </a>
+    </a> -->
 
     <a href="<?= base_url("luna/luna_mall") ?>" class="list-group-item list-group-item-action justify-content-between luna_mall">
       <span><i class="icon-settings g-pos-rel g-top-1 g-mr-8"></i> 線上商城</span>

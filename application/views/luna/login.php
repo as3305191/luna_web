@@ -5,10 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="<?= base_url() ?>luna_1/favicon.ico">
-
   <!-- Google Fonts -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap">
 
@@ -139,10 +135,10 @@
           <div class="auth-card p-4 p-md-5">
             <div class="text-center mb-4">
               <div class="brand-circle mx-auto mb-3">
-                <span>L</span>
+                <span>LUNA3</span>
               </div>
               <h1 class="h3 mb-1" style="font-weight:800;letter-spacing:.3px;">歡迎回來</h1>
-              <div class="text-muted"><small>登入你的 Luna 帳號</small></div>
+              <div class="text-muted"><small>登入你的 Luna3 帳號</small></div>
             </div>
 
             <!-- Form -->
@@ -168,7 +164,7 @@
               </button>
 
               <div class="text-center text-muted mt-3">
-                <small>登入遇到問題？請聯繫管理員</small>
+                <small>登入遇到問題？請聯繫GM</small>
               </div>
             </form>
             <meta name="csrf-name" content="<?= $csrf_name ?>">
@@ -286,7 +282,7 @@
           }
 
           // 成功導向
-          location.href = (res.redirect || "<?= base_url('luna/luna_home') ?>");
+          location.href = (res.redirect || "<?= base_url('luna/luna_mall') ?>");
         },
         error: function(xhr){
           // 403 多半是 CSRF fail；後端可能沒機會回 JSON，但我們仍可「重載頁面」拿新 token
