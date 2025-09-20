@@ -95,7 +95,7 @@ class Admin_Import extends CI_Controller
         $hi = $sheet->getHighestRow();
 
         // 如需每次匯入都清空，解除註解：
-        // $this->db->query('DELETE FROM dbo.web_itemshop');
+        $this->db->query('DELETE FROM dbo.web_itemshop');
         $this->db->query('DELETE FROM dbo.web_item');
 
         $buf = [];
