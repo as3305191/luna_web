@@ -14,7 +14,7 @@ class Login extends MY_Base_Controller {
             $this->security->csrf_set_cookie();
         }
         if (!empty($this->session->userdata('user_id'))) {
-            redirect("/luna/luna_home");
+            redirect("/luna/luna_mall");
             return;
         }
         $data = [
