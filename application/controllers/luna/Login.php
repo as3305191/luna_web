@@ -56,7 +56,7 @@ class Login extends MY_Base_Controller {
 
         // 成功：回傳 redirect + 最新 CSRF，前端會更新 hidden，下一次操作不會 403
         return $this->_json_ok([
-            'redirect' => site_url('luna/luna_home'),
+            'redirect' => site_url('luna/luna_mall'),
             'msg'      => '登入成功',
         ]);
     }
